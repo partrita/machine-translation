@@ -65,25 +65,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./Sequence_Analysis_with_Biopython.html" rel="next">
-<link href="./Python_for_Biologists_A_Complete_Programming_Course.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f265b87640d31df99b0219922ff83384.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../01_python_programming/Streamlining_Your_Research_Laboratory_with_Python.html" rel="next">
+<link href="../01_python_programming/Python_for_Biologists_A_Complete_Programming_Course.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f265b87640d31df99b0219922ff83384.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Managing_Your_Biological_Data_with_Python.html"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_python_programming/PythonMastery.html">파이썬 프로그래밍 및 데이터 관리</a></li><li class="breadcrumb-item"><a href="../01_python_programming/Managing_Your_Biological_Data_with_Python.html"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -168,7 +168,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Mastering Bioinformatics</a> 
+      <a href="../">Mastering Bioinformatics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -180,65 +180,109 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">환영합니다</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">파이썬 프로그래밍 및 데이터 관리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PythonMastery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../01_python_programming/PythonMastery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Mastering_Python_for_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../01_python_programming/Mastering_Python_for_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Python_for_Biologists_A_Complete_Programming_Course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../01_python_programming/Python_for_Biologists_A_Complete_Programming_Course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Managing_Your_Biological_Data_with_Python.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a>
+  <a href="../01_python_programming/Managing_Your_Biological_Data_with_Python.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Sequence_Analysis_with_Biopython.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biopython을 이용한 심화 생명정보학 분석</span></a>
+  <a href="../01_python_programming/Streamlining_Your_Research_Laboratory_with_Python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 연구실 업무 효율 높이기</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">서열 분석 및 단백질 정보학</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Bioinformatics_in_Cancer_and_Cancer_Therapy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암의 생명정보학 (Bioinformatics in Cancer)</span></a>
+  <a href="../02_sequence_protein/Sequence_Analysis_with_Biopython.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biopython을 이용한 심화 생명정보학 분석</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학 및 보건 통계학</span></a>
+  <a href="../02_sequence_protein/Large_Language_Models_in_Protein_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">머신러닝 및 인공지능</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Bioinformatics_and_Drug_Discovery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물정보학 및 신약 개발</span></a>
+  <a href="../03_machine_learning_ai/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학을 위한 딥러닝 (Deep Learning for Biology)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">생명정보학 실무 및 의학 응용</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학을 위한 딥러닝 (Deep Learning for Biology)</span></a>
+  <a href="../04_applications/Bioinformatics_in_Cancer_and_Cancer_Therapy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암의 생명정보학 (Bioinformatics in Cancer)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Large_Language_Models_in_Protein_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../04_applications/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학 및 보건 통계학</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Streamlining_Your_Research_Laboratory_with_Python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 연구실 업무 효율 높이기</span></a>
+  <a href="../04_applications/Bioinformatics_and_Drug_Discovery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물정보학 및 신약 개발</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -1041,7 +1085,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_python_programming/PythonMastery.html">파이썬 프로그래밍 및 데이터 관리</a></li><li class="breadcrumb-item"><a href="../01_python_programming/Managing_Your_Biological_Data_with_Python.html"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></h1>
 </div>
@@ -1068,10 +1112,10 @@ window.Quarto = {
 
 <section id="서문-preface" class="level2">
 <h2 class="anchored" data-anchor-id="서문-preface">서문 (Preface)</h2>
-<p>불과 몇 년 전만 해도 프로그래밍(programming)은 계산 과학자들의 전유물에 가까웠습니다. 하지만 이제 프로그래밍은 생물학을 포함한 다른 분야의 전문가들에게도 점점 더 필수적인 능력이 되고 있습니다. 생물학자로서 반드시 전문 프로그래머가 될 필요는 없지만, 수많은 도구 중 하나로 프로그래밍을 활용한다면 여러분의 과학적 탐구에 큰 도움이 될 것입니다. 이미 눈치채셨겠지만, 프로그래밍 기술을 익히면 데이터 관리와 분석 속도를 획기적으로 높일 수 있습니다. 방대한 양의 데이터를 처리하거나, 동일한 분석을 여러 번 반복해야 할 때, 혹은 특이한 형식의 파일을 파싱(parsing)해야 할 때 프로그래밍은 매우 유용합니다. 하지만 컴퓨터 과학(computer science)이라는 분야가 “건조하고” “개념적으로 어렵게”만 느껴져 선뜻 시작하기 망설여질 수도 있습니다. 바로 그런 분들을 위해 이 책을 썼습니다.</p>
-<p>우리는 자신의 데이터를 직접 제어하고 싶어 하는 생명과학자들을 위해, 그리고 이를 위해 프로그래밍 학습이 필요한 분들을 위해 이 책을 집필했습니다. 프로그래밍 경험이 없는 생물학자들이 파이썬(Python)을 이용해 스스로 생물학 데이터를 다룰 수 있도록 돕는 것이 이 책의 목표입니다.</p>
-<p>서문(Preface)에서는 이 책을 통해 배울 수 있는 내용의 요약과 프로그램(program)에 대한 소개, 그리고 파이썬 프로그래밍 언어(Python programming language)의 개요를 다룹니다.</p>
-<p>생물학자의 요구에 맞게 구성된 이 책이 여러분의 데이터 분석을 돕고, 나아가 더 가치 있는 과학적 발견을 하는 데 기여할 수 있기를 바랍니다.</p>
+<p>불과 몇 년 전만 해도 프로그래밍(programming)은 계산 과학자의 전유물에 가까웠습니다. 하지만 이제 프로그래밍은 생물학을 비롯한 여러 분야의 전문가에게도 필수 역량으로 자리 잡고 있습니다. 생물학자가 반드시 전문 프로그래머가 될 필요는 없지만, 프로그래밍을 하나의 유용한 도구로 활용한다면 과학적 탐구에 큰 힘이 됩니다. 이미 경험하셨듯 프로그래밍 기술을 익히면 데이터 관리와 분석 속도를 획기적으로 높일 수 있습니다. 방대한 데이터를 처리하거나 동일한 분석을 반복해야 할 때, 혹은 특수한 형식의 파일을 파싱(parsing)해야 할 때 프로그래밍은 매우 유용한 해결책이 됩니다. 그러나 컴퓨터 과학(computer science)이 다소 건조하고 개념적으로 어렵게 느껴져 선뜻 시작하지 못하는 경우도 많습니다. 바로 이러한 분들을 위해 이 책을 집필했습니다.</p>
+<p>자신의 데이터를 직접 다루고자 하는 생명과학자와, 이를 위해 프로그래밍을 새로 배우려는 분들을 위해 이 책을 준비했습니다. 프로그래밍 경험이 전혀 없는 생물학자도 파이썬(Python)을 활용해 스스로 생물학 데이터를 처리하고 분석할 수 있도록 돕는 것이 이 책의 주된 목적입니다.</p>
+<p>서문(Preface)에서는 이 책에서 다루는 핵심 내용의 요약, 프로그램(program)의 정의, 그리고 파이썬 프로그래밍 언어(Python programming language)의 개요를 소개합니다.</p>
+<p>생물학자의 실무 니즈에 맞춰 구성된 이 책이 여러분의 데이터 분석 작업을 돕고, 나아가 가치 있는 과학적 발견으로 이어지기를 기대합니다.</p>
 </section>
 <section id="파이썬은-배우기-쉽습니다-python-is-simple-to-learn" class="level1">
 <h1>파이썬은 배우기 쉽습니다 (Python Is Simple to Learn)</h1>
@@ -13825,13 +13869,13 @@ V
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Python_for_Biologists_A_Complete_Programming_Course.html" class="pagination-link" aria-label="초보자를 위한 생명정보학 프로그래밍">
+      <a href="../01_python_programming/Python_for_Biologists_A_Complete_Programming_Course.html" class="pagination-link" aria-label="초보자를 위한 생명정보학 프로그래밍">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Sequence_Analysis_with_Biopython.html" class="pagination-link" aria-label="Biopython을 이용한 심화 생명정보학 분석">
-        <span class="nav-page-text"><span class="chapter-title">Biopython을 이용한 심화 생명정보학 분석</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../01_python_programming/Streamlining_Your_Research_Laboratory_with_Python.html" class="pagination-link" aria-label="파이썬으로 연구실 업무 효율 높이기">
+        <span class="nav-page-text"><span class="chapter-title">파이썬으로 연구실 업무 효율 높이기</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
