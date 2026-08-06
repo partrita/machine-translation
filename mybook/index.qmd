@@ -20,4 +20,6 @@ Mastering Bioinformatics에 오신 것을 환영합니다!
 * Bioinformatics and Computational Biology Solutions Using R and Bioconductor: R과 Bioconductor를 활용한 유전체 데이터 분석 솔루션
 * Bioinformatics and Machine Learning for Cancer Biology: 머신러닝을 이용한 암 생물학 데이터 분석 및 바이오마커 식별
 * Bioinformatics and Drug Discovery: 신약 개발 과정에서의 생명정보학적 접근 및 분석 전략
+* Hands-On Data Visualization: 스프레드시트부터 코드까지 대화형 스토리텔링을 위한 데이터 시각화 실습
+
 

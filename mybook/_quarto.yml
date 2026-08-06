@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 book:
-  title: "Mastering Bioinformatics"
-  author: "Noname"
-  date: "1/24/2026"
+  title: "Machine translation"
+  author: "Deepthought"
+  date: "2025-11-11"
   chapters:
     - index.qmd
     - part: "파이썬 프로그래밍 및 데이터 관리"
@@ -27,6 +27,14 @@ book:
         - 04_applications/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
         - 04_applications/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
         - 04_applications/Bioinformatics_and_Drug_Discovery.md
+    - part: "데이터 시각화"
+      chapters:
+        - dataviz/dataviz.qmd
+    - part: "Rust 컴파일러 개발"
+      chapters:
+        - rust/rustc-dev-guide.qmd
+
+
 
 bibliography: references.bib
 
