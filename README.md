@@ -1,6 +1,6 @@
-# Mastering Python for Bioinformatics (Korean Translation)
+# Machine translate
 
-이 저장소는 Ken Youens-Clark의 저서 **"Mastering Python for Bioinformatics"**의 내용을 한국어로 번역하고, Quarto를 사용하여 웹북 형태로 호스팅하기 위한 템플릿입니다.
+이 저장소는 외국어로 작성된 내용을 한국어로 기계 번역하고, Quarto를 사용하여 웹북 형태로 호스팅하기 위한 템플릿입니다.
 
 ## 프로젝트 구조
 
@@ -19,14 +19,14 @@
 
 ### 로컬 개발 및 미리보기
 
-1.  **저장소 클론:**
+1.  저장소 클론:
 
     ```bash
     git clone https://github.com/partrita/mastering-python-bioinformatics.git
     cd mastering-python-bioinformatics
     ```
 
-2.  **책 미리보기:**
+2.  책 미리보기:
 
     Pixi를 사용하여 Quarto를 실행하고 라이브 미리보기 서버를 시작합니다:
 
@@ -34,7 +34,7 @@
     pixi run quarto preview mybook
     ```
 
-3.  **렌더링 (정적 파일 생성):**
+3.  렌더링 (정적 파일 생성):
 
     ```bash
     pixi run quarto render mybook
@@ -51,6 +51,3 @@ pixi add python pandas biopython  # 필요한 라이브러리 추가 예시
 ## 배포
 
 `main` 브랜치에 푸시하면 GitHub Actions가 자동으로 `mybook` 디렉토리의 내용을 빌드하여 `gh-pages` 브랜치로 배포합니다.
-
----
-**번역 및 유지보수:** Gemini CLI Agent

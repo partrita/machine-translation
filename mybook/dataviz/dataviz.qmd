@@ -4,17 +4,14 @@ subtitle: "Interactive Storytelling from Spreadsheets to Code"
 author:
   - "Jack Dougherty"
   - "Ilya Ilyankou"
-date: today
+date: "2026-08-06"
 format:
   html:
     toc: true
     toc-depth: 3
     number-sections: true
-    theme: cosmo
-    css: css/style.css
 bibliography: data/dataviz.bib
 csl: data/chicago-fullnote-bibliography.csl
-engine: markdown
 ---
 
 
@@ -7142,12 +7139,7 @@ Bookdown은 Markdown 형식이 아닌 HTML 형식으로 표가 포함된 Markdow
 다시 한번 말하지만, 여러분의 경험은 저희의 것과 다를 수 있고 도구들은 계속해서 진화하고 있으므로 [저자들에게의 피드백](#authors)을 환영합니다.
 
 
-
-<!-- BEGIN FILE: 21-references.Rmd -->
-
 \backmatter
-
-<!-- Bookdown + Zotero citation keys에 의해 자동으로 생성되는 아래의 참고문헌 목록. 상단에 "References"가 없이 PDF 출력이 나타날 것이지만, 이것이 가장 최선의 솔루션인 것 같습니다. 자세한 정보는 https://bookdown.org/yihui/bookdown/citations.html 에서 확인하세요 -->
 
 ::: {.content-visible when-format="html"}
 # 참고문헌 {.unnumbered}
