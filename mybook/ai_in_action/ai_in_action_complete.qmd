@@ -72,6 +72,7 @@ $$
 $$
 \underbrace{L(\hat\theta) - L(f^\star)}_{\text{초과 위험}}
 = \underbrace{\big(L(f_{\mathcal{F}}^\star) - L(f^\star)\big)}_{\text{근사 오차}}
+
 + \underbrace{\big(L(\hat\theta) - L(f_{\mathcal{F}}^\star)\big)}_{\text{추정 오차}}.
 $$
 
@@ -107,20 +108,6 @@ flowchart LR
 ------------------------------------------------------------------------
 
 ## 이 책의 대상 독자
-```
-This is fully translated and polished to natural, fluent Korean. I will return it directly.A typical chapter will also include: -> 일반적인 장에는 다음 내용도 포함된다.
-This chapter builds conceptual links that reappear when we discuss attention, contrastive learning, and generative models. -> 이 장은 어텐션, 대조 학습, 생성 모델을 다룰 때 다시 등장하는 개념적 연결 고리를 제공한다.
-convolutional neural networks and their inductive biases, -> 합성곱 신경망(convolutional neural networks)과 그 귀납적 편향(inductive biases),
-modern vision transformers and hybrid architectures, -> 현대적인 비전 트랜스포머(vision transformers)와 하이브리드 아키텍처,
-object detection and segmentation, -> 객체 탐지(object detection) 및 세그멘테이션(segmentation),
-representations of depth and geometry, -> 깊이와 기하학적 구조의 표현,
-neural radiance fields and related 3D modeling techniques, -> 뉴럴 라디언스 필드(neural radiance fields) 및 관련 3D 모델링 기법,
-temporal modeling for video. -> 비디오를 위한 시간적 모델링(temporal modeling).
-How to read this book -> 이 책을 읽는 방법
-
-이 번역 규칙을 적용하여 영어로 남아 있는 부분을 자연스럽고 매끄러운 한국어로 번역하겠습니다.
-
-***
 
 다음 유형 가운데 하나라도 자신에게 해당한다면 이 책에서 많은 도움을 얻을 수 있다.
 
@@ -537,6 +524,7 @@ Python 코드는 다음과 같은 몇 가지 문체 규칙을 반복해서 따�
 ------------------------------------------------------------------------
 
 ## 한 쪽으로 보는 역사적 맥락
+
 뒤의 장에서 다루는 기술적 세부 사항은 기억해 둘 만한 역사 속에 놓여 있다. 아주 간략히 말하면 다음과 같다.
 
 -   초기 기호 AI 연구는 명시적 규칙과 논리에 집중했다.
@@ -568,7 +556,6 @@ Python 코드는 다음과 같은 몇 가지 문체 규칙을 반복해서 따�
 
 이제 시작하자!
 
-
 ---
 
 # 인공지능의 역사
@@ -578,6 +565,7 @@ Python 코드는 다음과 같은 몇 가지 문체 규칙을 반복해서 따�
 이 장은 개념을 다루므로 실행 가능한 코드보다 정확한 서술을 우선한다. 어떤 결과에 정확한 수학적 핵심이 있다면 그 핵심을 명시한다. 수식은 단순히 전환이 일어났다는 사실이 아니라 그 전환이 *왜* 일어났는지를 설명하기 때문이다. 현대의 이야기를 설명하는 데 가장 큰 역할을 하는 수학은 세 가지다. 겨울을 초래한 단층 퍼셉트론의 한계, 겨울을 끝낸 역전파 갱신, 현재 시대를 만든 자기 어텐션 연산과 경험적 스케일링 법칙이다. 각각 시간순으로 알맞은 위치에서 설명한다.
 
 ::: {.callout-note}
+
 ## 세 가지 힘에 대한 주의
 
 이 장에서 “계산량”은 모델을 학습하고 실행하는 데 사용할 수 있는 연산 처리량을 뜻하며, 보통 초당 부동소수점 연산 횟수로 측정한다. “데이터”는 시스템이 학습할 수 있는 기계 판독 가능 예제를 뜻하고, “알고리즘”은 계산량과 데이터를 역량으로 바꾸는 모델 아키텍처와 학습 절차를 뜻한다. 반복해서 등장하는 주장은 합이 아니라 곱의 관계다. 세 요소가 동시에 클 때에만 역량이 커지므로 어느 한 요소라도 0에 가까우면 곱 전체가 0으로 향한다. 1986년의 역전파나 1998년의 합성곱 네트워크처럼 고립된 뛰어난 아이디어가 분야를 바꾸기까지 데이터와 계산량이 따라오기를 수년간 기다려야 했던 이유가 여기에 있다.
@@ -775,6 +763,7 @@ $$
 정직하게 요약하면 세 가지 힘은 다음 전환의 *내용*을 예측하기보다 과거 전환의 *시점과 형태*를 더 잘 설명한다. 다음 도약에도 충분한 데이터와 계산량을 만나는 알고리즘 아이디어가 필요할 가능성이 크다. 그러나 어떤 아이디어가 어떤 병목을 완화할지는 역사도 미리 알려 줄 수 없다.
 
 ## References
+
 1. Turing, A. M. (1936). "On Computable Numbers, with an Application to the Entscheidungsproblem." Proceedings of the London Mathematical Society. https://doi.org/10.1112/plms/s2-42.1.230
 2. McCulloch, W. S., and Pitts, W. (1943). "A Logical Calculus of the Ideas Immanent in Nervous Activity." Bulletin of Mathematical Biophysics. https://doi.org/10.1007/BF02478259
 3. Turing, A. M. (1950). "Computing Machinery and Intelligence." Mind. https://doi.org/10.1093/mind/LIX.236.433
@@ -803,12 +792,11 @@ $$
 26. Hoffmann, J., et al. (2022). "Training Compute-Optimal Large Language Models." NeurIPS. https://arxiv.org/abs/2203.15556
 27. Wei, J., et al. (2022). "Emergent Abilities of Large Language Models." Transactions on Machine Learning Research. https://arxiv.org/abs/2206.07682
 
-
 ---
 
 # 기계 지능의 철학기계가 생각할 수 있는지에 대한 질문은 디지털 컴퓨터 자체보다 오래되었으며, 많은 독자가 인간의 글과 구별하지 못할 텍스트를 대규모 언어 모델이 만들어 내는 지금도 완전히 해결되지 않았다. 이 장에서는 그 질문의 개념적 토대를 살펴본다. 지능이 무엇을 뜻하는지 묻고, 논쟁을 형성한 주요 사고실험과 논증을 검토하며, 수십 년 된 논쟁이 `GPT`, `Claude`, `Gemini` 같은 시스템이 무언가를 이해하는지에 관한 현재의 논쟁을 어떻게 구성하는지 보여 준다. 목표는 문제를 해결하는 것이 아니라 신중하게 사고할 개념적 어휘를 제공하고, 어떤 논쟁이 말의 문제이고 어떤 논쟁이 실질적인 문제인지 구별하며, 어느 쪽이든 실제로 증거가 될 수 있는 것이 무엇인지 파악하게 하는 것이다.
 
-A note on method before we begin. Philosophy of mind proceeds largely by analysis of concepts and by thought experiments, idealized scenarios that isolate one variable so that an intuition can be tested. A thought experiment is not a proof. It is a probe of our concepts, and its force depends on whether the intuition it elicits is reliable and whether the scenario it describes is coherent. Throughout this chapter we will treat each famous argument both as a claim and as an object to be examined, asking not only what it concludes but where its premises could be resisted.
+시작하기 전 방법에 대한 참고 사항. 마음의 철학은 주로 개념 분석과 사고 실험을 통해 진행됩니다, idealized scenarios that isolate one variable so that an intuition can be tested. A thought experiment is not a proof. It is a probe of our concepts, and its force depends on whether the intuition it elicits is reliable and whether the scenario it describes is coherent. Throughout this chapter we will treat each famous argument both as a claim and as an object to be examined, asking not only what it concludes but where its premises could be resisted.
 
 ## 1. 지능의 의미와 정의하기 어려운 이유
 
@@ -839,6 +827,7 @@ A note on method before we begin. Philosophy of mind proceeds largely by analysi
 정의의 문제는 한가한 철학적 사변이 아니다. 연구자가 시스템이 인간 수준의 지능에 도달했다고 주장하거나 비판자가 이를 부정할 때, 양쪽은 사실보다 정의를 두고 의견을 달리하는 경우가 많다. 우리가 무엇을 묻는지 명확히 하면 겉보기 논쟁 중 일부는 말의 문제이고 다른 일부는 실질적인 문제임을 볼 수 있다. 앞으로 살펴보겠지만 언어 모델이 이해하는지에 관한 현대의 논쟁은 새로운 조건 아래에서 행동 기준과 내부 기준의 불일치를 다시 반복하는 측면이 있다. 이제는 제한적이나마 시스템 내부를 들여다보고 내부 표현이 실제로 무엇을 부호화하는지 물을 수 있다는 점이 추가되었다.
 
 ## 2. 튜링 테스트
+
 ### 2.1 튜링의 제안
 
 앨런 튜링은 1950년 논문 「계산 기계와 지능」에서 답하기 어려운 “기계가 생각할 수 있는가?”라는 질문을 피하고 이를 운영 가능한 질문으로 바꾸었다 [@turing1950computing]. 그는 모방 게임을 설명했다. 인간 심문자가 숨겨진 두 참가자, 즉 인간 한 명과 기계 한 대와 텍스트로 대화하며 어느 쪽이 어느 쪽인지 알아내려는 게임이다. 기계가 인간만큼 자주 심문자를 속인다면 우리는 기계가 생각한다고 말할 준비를 해야 한다고 튜링은 제안했다. 이 전환은 의도적으로 행동 중심적이었다. 튜링은 “생각”을 모두가 동의할 수 있도록 정의할 수 있을지 회의적이었으므로, 유능한 기계라면 원칙적으로 통과하거나 실패할 수 있는 시험을 제시했다.
@@ -862,6 +851,7 @@ A note on method before we begin. Philosophy of mind proceeds largely by analysi
 현대 언어 모델은 인간 텍스트로 명시적으로 학습되고 유창한 대화를 만들 수 있지만, 의미를 내부적으로 파악하는지는 바로 논쟁 중인 문제이므로 세 우려를 모두 날카롭게 만든다. 이런 이유 중 일부로 연구 분야는 튜링 테스트에서 표면 모방으로 통과하기 어렵게 설계된 표적 탐침으로 이동했다. 예를 들어 Winograd 스키마 챌린지는 올바른 해석이 세계 지식에 달려 있고 단어 통계만으로는 결정할 수 없는 문장을 사용한다 [@levesque2012winograd].
 
 ## 3. 설의 중국어 방
+
 ### 3.1 논증
 
 1980년 존 설은 완벽한 행동 테스트를 통과하더라도 이해가 성립하지 않을 수 있음을 보여 주는 사고실험을 제시했다 [@searle1980minds]. 설이 방에 갇혀 있다고 상상해 보자. 중국어 사용자가 문으로 질문이 적힌 종이를 밀어 넣는다. 중국어를 전혀 모르는 설은 영어로 쓰인 방대한 규칙서를 참고한다. 규칙서는 기호의 모양만을 기준으로 어떤 중국어 기호를 답으로 써야 하는지 알려 준다. 규칙을 따르면 설은 원어민의 답과 구별할 수 없는 답을 만든다. 방 밖의 사람에게는 방이 중국어를 이해하는 것처럼 보인다. 그러나 방 안에서 유일하게 이해할 수 있는 존재인 설은 중국어를 한마디도 이해하지 못한다. 그는 단지 기호의 형식에 따라 기호를 조작할 뿐이다.
@@ -898,6 +888,7 @@ A note on method before we begin. Philosophy of mind proceeds largely by analysi
 중국어 방은 바로 이 추론을 공격합니다. 시얼은 방(또는 컴퓨터)이 올바른 계산을 수행한다는 점은 인정하면서도 이해는 여전히 나타나지 않는다고 주장하며, 따라서 계산이 마음의 충분조건이 될 수 없다고 봅니다. 그러므로 기능주의자와 계산주의자는 이해가 나타나지 않는다는 점을 부정하거나(시스템 답변은 전체 수준에서 이해가 나타난다고 말합니다), 방이 실제로 중국어 화자와 동일한 기능 조직을 구현한다는 점을 부정해야 합니다(뇌 시뮬레이터 답변은 진정으로 마음을 실현하는 프로그램이 기호 모양을 찾아보는 것보다 훨씬 더 풍부하다고 말합니다). 이것이 이 분야가 갈라지는 정확한 지점이며, 답변들을 살펴볼 때 염두에 둘 가치가 있습니다.
 
 ## 5. 기호 접지
+
 ### 5.1 문제
 
 설의 우려와 밀접하게 연결된 것이 1990년 스티븐 하나드가 제시한 **기호 접지 문제**다 [@harnad1990symbol]. 고전적 AI 시스템 내부의 기호는 이를 읽는 해석자인 우리에게만 의미가 있다. 시스템에게 기호는 똑같이 무의미한 다른 기호와의 관계로만 정의되는 단순한 토큰이다. 하나드는 중국어–중국어 사전만으로 중국어를 배우려는 상황을 비유로 든다. 모든 정의가 더 많은 기호로 이어지고, 그 순환에서 벗어나 세계에 도달할 수 없다. 그렇다면 기호를 조작하는 시스템이 어떻게 기호를 기호가 가리키는 대상과 연결할 수 있을까?
@@ -959,6 +950,7 @@ flowchart TD
 ```
 
 ## 8. 이러한 논쟁이 현대 LLM 논의에 주는 시사점
+
 ### 8.3 실전 예제: 논란이 되는 주장의 진단
 
 놀라운 시연을 본 동료가 특정 모델이 "물리학을 진정으로 이해한다"고 주장한다고 가정해 보자. 동의하거나 비웃기보다는 이 장의 프레임워크를 사용해 그 주장을 분석해 보자.
@@ -978,8 +970,8 @@ flowchart TD
 기계 지능의 철학은 역량 벤치마크가 답할 수 없는 질문을 제공한다. 지능은 많은 능력을 묶고 있으며 행동이 중요한지 그 기저 과정이 중요한지를 두고 의견이 갈리기 때문에 정의하기 어렵다. 튜링 테스트는 질문을 조작적이고 행동적인 형태로 만들었고, 설의 중국어 방은 이해에 행동과 계산만으로 충분한지에 도전했으며, 기능주의와 계산적 마음 이론은 설이 공격한 틀을 제공했다. 기호 접지는 이러한 시스템이 어떻게 세계와 연결될 수 있는지 묻고, 의식은 지능만으로 해결되지 않는 추가 질문을 제기하며, 시스템 반론은 중심 논쟁을 계속 살아 있게 한다. 언어 모델이 이해한다거나 이해하지 못한다는 주장을 읽을 때, 우리는 이 긴 논증 속의 한 수를 읽는 것이다. 논증의 수를 안다고 누가 옳은지 알 수는 없지만, 무엇이 주장되고 어떤 것이 증거가 되며 합리적인 사람들이 어디에서 여전히 의견을 달리하는지는 분명히 볼 수 있다.
 
 ## References::: {#refs}
-:::
 
+:::
 
 ---
 
@@ -1118,38 +1110,36 @@ rmse_expectation = mean_squared_error(y_true_test, y_human_test, squared=False)
 rmse_oracle = mean_squared_error(y_true_test, pred_human_test, squared=False)
 print(f"RMSE between human expectations and reality: {rmse_expectation:.3f}")
 print(f"RMSE if we could perfectly predict human expectations: {rmse_oracle:.3f}")
-```Here is the translation of the provided text into natural, fluent Korean, adhering strictly to all the specified rules (keeping code, inline code/variables, LaTeX, links, and bibliography keys unchanged):
+이 코드는 두 가지 목적을 수행합니다:
 
-This code serves two purposes:
+- 인간의 기대가 얼마나 *구조화되어 있는지* 평가합니다. 모델이 인간의 예측을 잘 예측한다면, 인간의 일반화는 무작위가 아닙니다.
+- `rmse_expectation`을 인간 예측의 내재적 노이즈와 비교함으로써 인간의 기대와 현실 사이의 *괴리(discrepancy)*를 정량화합니다.
 
--   It evaluates how *structured* human expectations are. If the model predicts human predictions well, then human generalization is not random.
--   It quantifies the *discrepancy* between human expectation and reality by comparing `rmse_expectation` against the intrinsic noise in human predictions.
+실제 프로덕션 프로젝트에서는 `Ridge` 대신 더 강력한 아키텍처를 사용할 수 있습니다. 예를 들어, 관찰된 성능의 자연어 요약을 입력으로 받는 소형 트랜스포머를 사용할 수 있습니다. 인간 신념의 불확실성을 포착하기 위해 신뢰 구간이나 베이지안 모델도 함께 사용될 것입니다.
 
-In a production project, we would replace `Ridge` with a more powerful architecture. For example, one could use a small transformer that takes a natural language summary of observed performance as input. To capture the uncertainty in human beliefs, confidence intervals or Bayesian models would also be used.
+#### 해석
 
-#### Interpretation
+만약 다음과 같은 결과를 얻는다면:
 
-If we find that:
+- $\text{RMSE}(\hat{a}^{(h)}, a)$는 크지만,
+- $\text{RMSE}(\tilde{a}, \hat{a}^{(h)})$ ($\tilde{a}$는 인간 기대의 모델)는 작다면,
 
--   $\text{RMSE}(\hat{a}^{(h)}, a)$ is large, but
--   $\text{RMSE}(\tilde{a}, \hat{a}^{(h)})$ (where $\tilde{a}$ is the model of human expectations) is small,
-
-then we have evidence that the problem is not *noise*, but rather *systematic calibration error*. People share a common, but incorrect, mental model of LLM capabilities. Because this mental model is learned and consistent, it can be studied, stress-tested, and potentially corrected through tutorials or interface design.
+문제의 원인이 *노이즈*가 아니라 *체계적인 캘리브레이션 오류(systematic calibration error)*라는 증거를 얻게 됩니다. 사람들은 LLM 역량에 대해 공통적이지만 잘못된 멘탈 모델을 공유하고 있습니다. 이러한 멘탈 모델은 학습 가능하고 일관성이 있으므로, 튜토리얼이나 인터페이스 설계를 통해 연구하고 스트레스 테스트를 거쳐 교정할 수 있습니다.
 
 ------------------------------------------------------------------------
 
-## Formalizing and Systematically Evaluating LLM Brittleness
+## LLM 취약성의 정식화 및 체계적 평가
 
-### What is “Brittleness”?
+### "취약성(Brittleness)"이란 무엇인가?
 
-Informally, a model is said to be brittle when small, intuitively irrelevant changes in the input—which do not change the ground-truth label—produce large and qualitatively different outputs or performance.
+비공식적으로, 정답 레이블을 바꾸지 않는 입측의 작고 직관적으로 무관한 변화가 모델 출력이나 성능에서 크고 질적으로 다른 결과를 가져올 때 모델이 취약(brittle)하다고 말합니다.
 
-We can formalize this in the simplest classification setting. Let $f : \mathcal{X} \to \mathcal{Y}$ be the model and $y(x)$ be the ground-truth label. We define a set of *semantics-preserving transformations* $\mathcal{T}$ over the inputs:
+이를 가장 간단한 분류 환경에서 정식화할 수 있습니다. $f : \mathcal{X} \to \mathcal{Y}$를 모델이라 하고 $y(x)$를 정답 레이블이라 합시다. 입력에 대해 다음과 같이 *의미를 보존하는 변환*의 집합 $\mathcal{T}$를 정의합니다:
 
--   Paraphrasing a question,
--   다른 언어로 번역 후 다시 역번역하기,
--   객관식 질문의 보기 순서 변경하기,
--   논리적으로 동등한 방식으로 부정문 전환 및 극성 조정하기.
+- 질문 패러프레이징,
+- 다른 언어로 번역 후 다시 역번역하기,
+- 객관식 질문의 보기 순서 변경하기,
+- 논리적으로 동등한 방식으로 부정문 전환 및 극성 조정하기.
 
 주어진 입력 $x$에 대해, $y(\tau(x)) = y(x)$이지만 $f(\tau(x)) \ne f(x)$를 만족하는 변환 $\tau \in \mathcal{T}$가 존재한다면 모델은 $x$에서 취약(brittle)합니다. 보다 일반적으로, 예측 분포가 유의미하게 변화하는 경우 취약하다고 판단합니다:
 
@@ -1159,11 +1149,11 @@ $$\mathrm{Brittle}(x) = \max_{\tau \in \mathcal{T}} \left\| p_\theta(y \mid \tau
 
 많은 연구가 이러한 변환을 정확히 구성하고 다양한 태스크에서 취약성을 측정합니다:
 
--   @min2022rethinking showed that randomly shuffling labels in demonstration examples barely changes in-context learning accuracy. This indicates that LLMs often ignore the intended meaning of exemplar-label pairs, relying instead on surface features like format or the list of labels.
--   @khashabi2022prompt discovered "prompt drift" in continuous prompt tuning, where the optimization finds prompt vectors that solve the task but decode into arbitrary or misleading instructions in natural language.
--   @guha2023legalbench explicitly evaluates brittleness to readability and phrasing variations in legal reasoning, including pairs of questions that are legally equivalent but phrased differently.
--   Mozes and subsequent work documented adversarial brittleness in in-context learning. Seemingly innocuous changes in few-shot exemplars can drastically alter behavior on held-out inputs [@mozes_thesis_2024]. ([UCL Discovery](https://discovery.ucl.ac.uk/id/eprint/10190224/2/mmozes_thesis.pdf?utm_source=chatgpt.com "Understanding and Guarding against Natural Language ..."))
--   Recent evaluations of LLM political worldviews measure reliability under paraphrasing, negation, and translation. They found that a model's stance on the same underlying policy can be flipped by minor prompt variations [@probvaa_political_worldviews_2024]. ([arXiv](https://arxiv.org/html/2402.17649v2?utm_source=chatgpt.com "Evaluating the reliability and consistency of political ..."))
+- @min2022rethinking 은 예시(demonstration)의 레이블을 무작위로 섞어도 인콘텍스트 학습 정확도가 거의 변하지 않는다는 점을 보여주었습니다. 이는 LLM이 예시-레이블 쌍의 의도된 의미를 무시하고 형식이나 레이블 목록과 같은 표면적 특징에 의존하는 경우가 많음을 시사합니다.
+- @khashabi2022prompt 는 연속 프롬프트 튜닝에서 "프롬프트 표류(prompt drift)" 현상을 발견했습니다. 최적화가 태스크를 해결하는 프롬프트 벡터를 찾지만, 이것이 자연어로 디코딩되면 임의적이거나 오해의 소지가 있는 지시문이 되는 현상입니다.
+- @guha2023legalbench 는 법률 추론에서 가독성 및 어구 변화에 대한 취약성을 명시적으로 평가합니다. 여기에는 법적으로 동등하지만 다르게 표현된 질문 쌍이 포함됩니다.
+- Mozes와 후속 연구들은 인콘텍스트 학습에서의 적대적 취약성을 기록했습니다. 퓨샷 예시에서의 겉보기에는 무해한 변화가 미보유 입력에 대한 동작을 급격하게 변화시킬 수 있습니다 [@mozes_thesis_2024]. ([UCL Discovery](https://discovery.ucl.ac.uk/id/eprint/10190224/2/mmozes_thesis.pdf?utm_source=chatgpt.com "Understanding and Guarding against Natural Language ..."))
+- 최근 LLM의 정치적 세계관 평가 연구는 패러프레이징, 부정, 번역 조건에서의 신뢰성을 측정했습니다. 이들은 동일한 바탕 정책 입장에 대해 미세한 프롬프트 변화만으로도 모델의 스탠스가 뒤집힐 수 있음을 발견했습니다 [@probvaa_political_worldviews_2024]. ([arXiv](https://arxiv.org/html/2402.17649v2?utm_source=chatgpt.com "Evaluating the reliability and consistency of political ..."))
 
 프롬프트 엔지니어링 및 인콘텍스트 학습에 대한 광범위한 리뷰 [@liu_prompt_survey_2023; @chen_prompt_engineering_review_2025]와 종합해 볼 때, 특정 벤치마크에서는 안정적으로 보이는 모델도 입력 공간의 국소 영역을 탐색할 때는 변덕스럽게 행동한다는 사실이 드러납니다.
 
@@ -1188,11 +1178,11 @@ $$\mathrm{Brittle}(x) = \max_{\tau \in \mathcal{T}} \left\| p_\theta(y \mid \tau
 여기서는 API로 접근 가능한 모든 LLM의 취약성을 수량화하기 위한 최소한의 프레임워크를 설계합니다. 핵심 아이디어는 다음과 같습니다:
 
 1.  기본 프롬프트와 정답(ground-truth) 레이블로 구성된 데이터셋에서 시작합니다.
-2.  Generate variants of each prompt using deterministic rules or another model.
-3.  Query the LLM on both the base prompts and their variants.
-4.  Compute disagreement and accuracy changes.
+2.  결정론적 규칙이나 다른 모델을 사용하여 각 프롬프트의 변형을 생성합니다.
+3.  기본 프롬프트와 변형 프롬프트 모두에서 LLM을 쿼리합니다.
+4.  불일치 및 정확도 변화를 계산합니다.
 
-We focus on text transformations like paraphrasing and negation. For illustration, we treat model queries as a black-box function `call_llm(prompt)`.
+우리는 패러프레이징 및 부정문과 같은 텍스트 변환에 집중합니다. 설명의 편의를 위해 모델 쿼리는 블랙박스 함수 `call_llm(prompt)`로 처리합니다.
 
 ``` python
 import polars as pl
@@ -1257,8 +1247,8 @@ transformed_examples = generate_transformed(base_examples)
 
 def call_llm(prompt: str, temperature: float = 0.0) -> str:
     """
-    Replace this stub with actual calls to OpenAI, Anthropic, etc.
-    Should return a short answer string that can be mapped to a label.
+    이 스텁을 OpenAI, Anthropic 등의 실제 API 호출로 대체하십시오.
+    레이블로 매핑할 수 있는 짧은 답변 문자열을 반환해야 합니다.
     """
     raise NotImplementedError
 
@@ -1325,13 +1315,13 @@ for name in TRANSFORMS.keys():
     col_var = pivot[name]
     disagreement = (col_base != col_var).mean()
     print(f"Disagreement rate for {name}: {disagreement:.3f}")
-```In actual deployment environments, we scale this up as follows:
+```실제 배포 환경에서는 다음과 같은 방식으로 이를 확장합니다:
 
--   Place multiple perturbation families within each category of our taxonomy.
--   Apply richer label mappings and calibration of generative outputs.
--   Employ confidence-aware metrics, measuring not just whether the answer changed, but how much log probability mass shifted.
+-   분류체계의 각 범주 내에 여러 섭동 패밀리를 배치합니다.
+-   더 풍부한 레이블 매핑 및 생성적 출력의 캘리브레이션을 적용합니다.
+-   답변이 변경되었는지 여부뿐만 아니라 로그 확률 질량이 얼마나 이동했는지를 측정하는 신뢰도 인식 지표를 활용합니다.
 
-The key takeaway is that with this tooling in place, we can treat the "vulnerability score" as a first-class evaluation metric on par with accuracy or BLEU, and compare models and prompting strategies accordingly.
+핵심 요점은 이러한 도구가 갖추어지면 "취약성 점수"를 정확도나 BLEU와 대등한 1급 평가 지표로 취급하고, 이에 따라 모델과 프롬프팅 전략을 비교할 수 있다는 점입니다.
 
 ------------------------------------------------------------------------
 
@@ -1527,34 +1517,34 @@ print(f"Adjusted Rand Index between clusters and true DFA states: {ari:.3f}")
 
 On many random DFAs, the model achieves high accuracy but the ARI remains moderate. The model has learned enough regularities to predict the next symbol, but not enough to reconstruct the actual state space. If the environment is slightly modified (for instance, by editing the transition table), the model can fail abruptly. This resembles MIT's findings that even when learning accuracy is near-perfect, navigation models can collapse under minor changes. ([MIT News](https://news.mit.edu/2024/generative-ai-lacks-coherent-world-understanding-1105?utm_source=chatgpt.com "Despite its impressive output, generative AI doesn't have a ..."))
 
-### 3.3 From Toy Automata to Large LLMs
+### 3.3 장난감 오토마톤에서 대형 LLM으로
 
-Scaling up from toy DFAs to real-world LLMs introduces several new challenges.
+장난감 DFA에서 실제 LLM으로 스케일을 확장하면 몇 가지 새로운 과제가 제기됩니다.
 
--   The state space is massive and not known a priori.
--   We lack direct access to the true Myhill–Nerode equivalence classes.
--   Models are trained on a natural mix of tasks rather than a single, controlled environment.
+-   상태 공간이 엄청나게 크고 사전(a priori)에 알 수 없습니다.
+-   진정한 마이힐–네로드 동치류에 직접 접근할 수 없습니다.
+-   모델은 단일의 통제된 환경이 아니라 여러 태스크의 자연스러운 혼합에 대해 학습됩니다.
 
-Nonetheless, the same conceptual framework applies. Recent work uses *probing* methods to linearly decode the world state from the intermediate representations of small toy environments, and then asks whether larger models can successfully use the same probes in similar tasks [@nanda_othello_world_2023; @hazineh_linear_world_2023]. ([Neel Nanda](https://www.neelnanda.io/mechanistic-interpretability/othello?utm_source=chatgpt.com "Actually, Othello-GPT Has A Linear Emergent World ..."))
+그럼에도 불구하고 동일한 개념적 프레임워크가 적용됩니다. 최근 연구는 소형 장난감 환경의 중간 표현에서 세계 상태를 선형적으로 디코딩하기 위해 *탐침(probing)* 방법을 사용한 다음, 더 큰 모델이 유사한 태스크에서 동일한 탐침을 성공적으로 사용할 수 있는지 묻습니다 [@nanda_othello_world_2023; @hazineh_linear_world_2023]. ([Neel Nanda](https://www.neelnanda.io/mechanistic-interpretability/othello?utm_source=chatgpt.com "Actually, Othello-GPT Has A Linear Emergent World ..."))
 
 Other work, including "Evaluating the World Models Used by Pretrained Learners," focuses on task transfer. It asks how models extrapolate to new tasks that depend on latent features of the state, and whether this extrapolation reveals a coherent internal representation [@vafa_world_models_pretrained_2025]. ([OpenReview](https://openreview.net/forum?id=QtKYYatG3Z&utm_source=chatgpt.com "Evaluating the World Models Used by Pretrained Learners"))
 
-The emerging consensus is nuanced.
+새롭게 떠오르는 합의는 미묘합니다.
 
--   LLMs clearly store rich structural information about the world, and various latent structures can be probed.
--   However, even while predicting tokens remarkably well, their world models can be locally inconsistent, vulnerable to changes in environmental dynamics, and misaligned with human conceptual boundaries.
+-   LLMs는 분명히 세계에 대한 풍부한 구조적 정보를 저장하고 있으며, 다양한 잠재 구조를 탐침할 수 있습니다.
+-   그러나 토큰을 놀라울 정도로 잘 예측하는 와중에도 모델의 세계 모델은 국소적으로 불일치할 수 있고, 환경 동역학의 변화에 취약하며, 인간의 개념적 경계와 어긋날 수 있습니다.
 
 ------------------------------------------------------------------------
 
-## 4. A Single Narrative Mode: Population-Level Evidence of Convergence {#sec-narrative-convergence}
+## 4. 단일 서사 모드: 모집단 수준의 수렴 증거 {#sec-narrative-convergence}
 
-The preceding three sections examined individual models: how humans predict a single model's behavior, how a single model responds to perturbations, and what world model a single model possesses. The fourth line of evidence treats models as a *population* and asks where their outputs collectively fall relative to human output. The clearest measurements to date come from creative writing. In this domain, there is no single correct answer, and if models faithfully reproduced the distributions they learned, we might expect them to inherit human-like diversity.
+앞선 세 절에서는 개별 모델을 검토했습니다. 즉, 인간이 단일 모델의 행동을 어떻게 예측하는지, 단일 모델이 섭동에 어떻게 반응하는지, 단일 모델이 어떤 세계 모델을 보유하고 있는지 살펴보았습니다. 네 번째 증거 라인은 모델을 하나의 *모집단*으로 취급하고, 이들의 출력이 인간의 출력과 비교해 집단적으로 어디에 위치하는지 묻습니다. 현재까지 가장 명확한 측정은 창의적 글쓰기 영역에서 나옵니다. 이 영역에서는 단 하나의 정답이 없으며, 모델이 학습한 분포를 충실히 재현한다면 인간다운 다양성을 물려받을 것으로 기대할 수 있습니다.
 
-### 4.1 Five Models, 10,272 Prompts, One Common Domain
+### 4.1 5개 모델, 10,272개 프롬프트, 하나의 공통 영역
 
-The STORYSCOPE study builds a parallel corpus. For each of 10,272 prompts reverse-engineered from human-written short stories, five frontier models (Claude Sonnet 4.6, GPT 5.4, Gemini 3 Flash, DeepSeek V3.2, Kimi K2.5) write a story using the same prompt that the human actually used. The result is a collection of 61,608 stories of approximately 5,000 words from six sources [@russell2026storyscope]. Each story is then annotated with 304 interpretable *narrative* features, intentionally excluding surface-level stylistic markers. Features include whether the protagonist drives the resolution, how non-linear the timeline is, and how explicitly the theme is stated, making each story a point in a z-scored feature space.
+STORYSCOPE 연구는 병렬 말뭉치를 구축합니다. 인간이 쓴 단편 소설에서 역공학으로 추출한 10,272개의 프롬프트 각각에 대해 5개의 최첨단 모델(Claude Sonnet 4.6, GPT 5.4, Gemini 3 Flash, DeepSeek V3.2, Kimi K2.5)이 인간이 실제로 사용한 프롬프트로 소설을 작성합니다. 그 결과 6개의 출처에서 얻은 약 5,000자 분량의 소설 61,608편으로 구성된 말뭉치가 형성됩니다 [@russell2026storyscope]. 각 소설은 표면적 스타일 마커를 의도적으로 제외하고 해석 가능한 304개의 *서사적* 특징으로 주석 처리되어, 각 소설이 z-점수화된 특징 공간 내의 한 점이 됩니다. 특징에는 주인공이 결말을 주도하는지 여부, 타임라인이 얼마나 비선형적인지, 주제가 얼마나 명시적으로 기술되었는지 등이 포함됩니다.
 
-The geometry of the population is striking.
+모집단의 기하 구조는 매우 눈에 띕니다.
 
 -   The five AI sources form a single cluster. The average distance between the human centroid and the AI centroids is 6.6, whereas the distance between AI centroids is 4.3. Even the *closest* human-AI centroid pair (6.2) is further apart than the *farthest* AI-AI pair (6.0). Human writing does not simply broaden the AI cluster; it occupies a different region.
 -   Human stories are more dispersed. The average distance to their own centroid is 33.2, compared to the AI average radius of 27.4. The median 10-nearest-neighbor radius is also 1.13 times larger.
@@ -1562,9 +1552,9 @@ The geometry of the population is striking.
 -   Confusion aligns with the cluster structure. When classifying the author source across the six sources using narrative features, the most frequently confused pairs were entirely AI-to-AI (Gemini and DeepSeek leading). Even excluding all stylistic features, a classifier distinguishes human from AI with a macro-F1 of 93.2%.
 -   The signal is in the structure, not the surface. Rewriting AI stories using a paragraph-level editing framework that strips away AI-typical phrasing [@chakrabarty2025lamp] only slightly reduces detection performance using narrative features, from 95.5% to 93.9% macro-F1. What converges is not the expression, but the choices. AI stories over-explain themes, keep plots causally neat and single-pathed, and resolve cleanly. Human stories allow for ambiguity, subplots, and non-linear time.
 
-### 4.2 Simulating the Geometry
+### 4.2 기하 구조 시뮬레이션
 
-The overall population-level characteristics (a single shifted mode, a tighter cluster, lower rarity) emerge from a simple generative picture. The five sources sample near a common attractor, while the human source samples more broadly elsewhere. The cell below constructs exactly this toy geometry and recomputes the four summary statistics and the discriminant projection corresponding to Figure 2 of the paper. Sizes are chosen to be close to the reported values. The key takeaway is that a single shifted-mode model reproduces all statistics at once.
+전체 모집단 수준의 특성(단일 이동 모드, 더 조밀한 클러스터, 더 낮은 희귀도)은 단순한 생성적 그림에서 비롯됩니다. 5개의 AI 출처는 공통의 이끌개(attractor) 근처에서 표본을 추출하는 반면, 인간 출처는 다른 곳에서 더 넓게 표본을 추출합니다. 아래 셀은 이 장난감 기하 구조를 정확히 구성하고 논문의 그림 2에 해당하는 4가지 요약 통계량과 판별 투영을 다시 계산합니다. 크기는 보고된 수치에 가깝게 선택되었습니다. 핵심 요점은 단일 이동 모드 모델이 이 모든 통계량을 한 번에 재현한다는 점입니다.
 
 ```{python}
 #| label: fig-narrative-convergence
@@ -1635,6 +1625,7 @@ ax.set_title("Simulated narrative feature space: five AI sources, one mode")
 plt.tight_layout()
 plt.show()
 ```
+
 ### 4.3 수렴이 두 관점에 말해 주는 것
 
 어느 쪽의 과장된 해석도 이 측정 결과를 깔끔하게 견디지 못한다.
@@ -1667,7 +1658,6 @@ AI 시스템을 구축하는 실무자에게 이러한 통찰은 몇 가지 구�
 -   출력 다양성이 중요할 때(창작 생성, 아이디어 발상, 합성 데이터) 이를 직접 측정한다. 인간 참조 분포에 대비해 출력의 희귀도와 분산을 추적하고, 여러 공급업체의 앙상블은 독립적이라는 것이 입증되기 전까지 상관된 것으로 취급한다.
 
 다음 장에서는 이러한 아이디어를 정렬과 해석 가능성 도구의 설계 원칙으로 확장할 수 있다. 인간 기대 모델링, 취약성 벤치마크, 세계 모델 진단을 운영 LLM 시스템을 위한 통합 평가 파이프라인으로 결합하는 방식이다.
-
 
 ---
 
@@ -1785,6 +1775,7 @@ biological loose analogy:
 인공 뉴런은 시간 차원을 완전히 버린다. 한 번의 순전파에서 발화율 또는 단순한 추상 활성화로 해석되는 연속 실수를 출력한다. 스파이크도, 시간도, 막 동역학도, 데일의 법칙을 따르는 별도의 흥분성·억제성 채널도, 수상돌기 비선형성도, 확률성도 없다. 정적인 함수 평가일 뿐이다. 이를 사과해야 할 결함으로 볼 필요는 없다. 시스템을 미분 가능하게 만들어 경사 하강법으로 학습할 수 있게 하는 의도적인 추상화이기 때문이다. 하지만 인공 뉴런은 생물학으로 검증된 모델이 아니라 수학에 맞게 최적화된 은유라는 뜻이기도 하다.
 
 ## 5. 비유가 무너지는 지점
+
 ### 5.1 역전파와 생물학적 학습
 
 가장 깊은 차이는 두 시스템이 신용 할당 문제를 해결하는 방식에 있다. 어떤 내부 매개변수가 결과에 대한 책임이나 공로를 가져야 하는지 결정하는 문제다. 인공 네트워크는 역전파를 사용한다. 역전파는 네트워크를 거슬러 연쇄 법칙을 적용해 모든 가중치에 대한 손실 함수의 정확한 그래디언트를 계산한다 [10]. 층이 $\ell = 1, \dots, L$이고 사전 활성화가 $\mathbf{a}^{\ell} = W^{\ell}\mathbf{h}^{\ell-1} + \mathbf{b}^{\ell}$, 활성화가 $\mathbf{h}^{\ell} = g(\mathbf{a}^{\ell})$인 순전파 네트워크에서 오류 신호 $\boldsymbol{\delta}^{\ell} = \partial \mathcal{L} / \partial \mathbf{a}^{\ell}$는 다음 재귀를 따른다.
@@ -1946,6 +1937,7 @@ flowchart LR
 점선 화살표에 문제의 핵심이 모두 담겨 있습니다. 실제 결과 $Y$는 모든 개인에게 잠재적 결과로서 존재하지만, 데이터셋에는 오직 $D = 1$ 분기를 통해서만 기록됩니다.
 
 ## 2. 문제 공식화
+
 ```### 2.1 변수와 관찰 규칙
 
 각 개인을 튜플 $(x, Z, Y)$로 설명한다고 가정합시다. 여기서 $x$는 의사결정자와 분석가 모두가 볼 수 있는 특징이고, $Z$는 의사결정자는 볼 수 있지만 데이터에는 기록되지 않는 특징(관찰 불가능한 특징)이며, $Y$는 이진 결과입니다. 의사결정자는 $D \in \{0, 1\}$을 산출하는 정책을 적용합니다. 기록된 레이블은 다음과 같습니다.
@@ -1976,7 +1968,7 @@ $$
 
 계량경제학 전통에서는 이와 동일한 구조에 다른 방향에서 접근했습니다. @heckman1979sample 은 결과와 상관관계가 있는 규칙에 의해 선택된 표본에서 관계를 추정하면, 선택 과정을 명시적으로 모델링하지 않는 한 편향된 계수가 산출됨을 보여주었습니다. 선택적 레이블은 선택 방정식이 의사결정 정책 $D$인 **표본 선택(sample selection)** 문제입니다. 이러한 연관성은 위험성뿐만 아니라 활용 가능한 해결책도 명확히 해줍니다. 선택 과정을 모델링하거나 도구 변수(instrument)를 찾는 등 표본 선택에 효과적인 방법론들은 선택적 레이블 문제에도 직접적으로 적용될 수 있습니다.
 
-## 3. 단순 평가가 편향을 일으키는 이유### 3.1 Estimands and Available Estimators
+## 3. 단순 평가가 편향을 일으키는 이유### 3.1 추정량과 이용 가능한 추정기
 
 위험 모델 $s(x)$를 구축했고 그 성능을 추정하고자 한다고 가정해 봅시다. 구체적으로, 모델을 모든 대상에게 적용했을 때 직면하게 될 평균 결과, 즉 진양성률(true positive rate)을 추정하고자 합니다. 목표 추정량(estimand)은 모집단 평균입니다:
 
@@ -1984,13 +1976,13 @@ $$
 \mu = \mathbb{E}[Y]
 $$
 
-This is the rate of adverse outcomes across the entire population of defendants or applicants, not just those who were selected. On the other hand, the quantity we can actually calculate from the data is the mean for the observed (selected) subset:
+이는 선택된 인원뿐만 아니라 피고인 또는 신청자 전체 모집단에 걸친 부정적 결과의 비율입니다. 반면, 우리가 데이터에서 실제로 계산할 수 있는 양은 관찰된(선택된) 부분집합에 대한 평균입니다:
 
 $$
 \hat{\mu}_{\text{obs}} = \mathbb{E}[Y \mid D = 1]
 $$
 
-### 3.2 The Selection Bias Identity
+### 3.2 선택 편향 항등식
 
 전기댓값의 법칙(law of total expectation)에 의해 다음이 성립합니다:
 
@@ -2004,7 +1996,7 @@ $$
 \underbrace{\mathbb{E}[Y]}_{\text{Target}} - \underbrace{\mathbb{E}[Y \mid D = 1]}_{\text{Observed}} = P(D = 0)\,\Big(\underbrace{\mathbb{E}[Y \mid D = 0] - \mathbb{E}[Y \mid D = 1]}_{\text{Selection Gap}}\Big)
 $$
 
-The bias of the simple estimator is the product of two factors: $P(D = 0)$, the proportion of the population that is filtered out, and the difference in outcome rates between the filtered and selected groups. Because a competent decision-maker pushes high-risk individuals into $D = 0$, we have $\mathbb{E}[Y \mid D = 0] > \mathbb{E}[Y \mid D = 1]$. Consequently, the selection gap is positive, and the observed rate underestimates the true rate. The fundamental obstacle is that $\mathbb{E}[Y \mid D = 0]$ is structurally unobservable. We can bound or model it, but we cannot read it directly from the data, which is why simple careful bookkeeping cannot eliminate selection bias.
+단순 추정기의 편향은 두 가지 요인의 곱입니다: 걸러진 모집단의 비율인 $P(D = 0)$과, 걸러진 집단과 선택된 집단 간의 결과 비율 차이입니다. 유능한 의사결정자는 고위험군을 $D = 0$으로 밀어 넣기 때문에 $\mathbb{E}[Y \mid D = 0] > \mathbb{E}[Y \mid D = 1]$이 성립합니다. 결과적으로 선택 격차는 양수가 되며, 관측된 비율은 실제 비율을 체계적으로 저평가하게 됩니다. 근본적인 장애물은 $\mathbb{E}[Y \mid D = 0]$을 구조적으로 관찰할 수 없다는 점입니다. 우리는 이를 경계 짓거나 모델링할 수 있지만 데이터에서 직접 읽어낼 수는 없으며, 이것이 단순하고 신중한 장부 정리만으로는 선택 편향을 제거할 수 없는 이유입니다.
 
 ### 3.3 The Problem with Comparing to Human Decisions
 
@@ -2058,7 +2050,9 @@ $$
 
 마지막 선택지는 관찰된 데이터에서 $P(Y \mid x)$를 모델링하여 누락된 레이블을 대체(impute)하는 것입니다. 이는 가장 흔하게 쓰이면서도 가장 위험한 접근법인데, 대체 모델 자체가 선택된 표본으로 학습되어 동일한 MNAR 왜곡을 물려받기 때문입니다. 헤크만(Heckman) 스타일의 보정처럼 신뢰할 수 있는 선택 모델과 결합할 때 대체를 방어할 수는 있지만, 석방된 피고인에 맞춰 학습된 단순한 지도 학습 대체기를 구금된 피고인에게 적용하는 것은 선택 편향(selection bias)을 자신감 있는 수치로 세탁하는 행위에 불과합니다. 이를 해결책이 아니라 민감도를 파악하는 도구로 다루어야 합니다.
 
-## 6. 우려해야 할 시점과 흔한 함정들The selective labeling problem is relevant whenever labels are obtained through a screening decision, and information not recorded by you was validly used in making that decision. Use the following questions as a checklist:
+## 6. 우려해야 할 시점과 흔한 함정들
+
+선택적 레이블 문제는 레이블이 선별 결정을 통해 얻어지고, 사용자에게 기록되지 않은 정보가 그 결정을 내리는 데 정당하게 사용되었을 때마다 발생합니다. 다음 질문들을 체크리스트로 활용하십시오:
 
 - **결과(outcome)가 이전 결정에 의해 차단됩니까?** 훈련 세트의 모든 레이블에 대해 누군가 먼저 "승인(yes)"을 해야 했던 경우라면 선택적 레이블 문제의 영역에 속합니다. 진입 결정이 전혀 없는 순수 관측 데이터는 극히 예외적입니다.
 - **의사결정자가 기록된 것보다 더 많은 정보를 확인했습니까?** 의사결정자가 결과와 상관관계가 있는 비기록 신호 $Z$에 접근할 수 있었다면 매커니즘은 MNAR(무작위가 아닌 누락)이 되며, 단순히 $x$에 대해 가중치를 재조정하는 것으로는 문제를 해결할 수 없습니다.
@@ -2072,11 +2066,13 @@ $$
 
 선택적 레이블링은 사전 결정에 의해 선택된 케이스에 대해서만 결과가 관측되고, 그 결정이 분석가가 이용할 수 없는 정보에 의존했을 때 발생합니다. 이로 인한 누락은 무작위가 아닌 누락(MNAR)이 되며, 관측된 샘플이 모집단을 왜곡하게 만듭니다. 단순 평가의 편향은 선별 제외 비율에 선별 제외 그룹과 선택 그룹 간의 미관측 결과 격차를 곱한 값과 같습니다. 타당한 평가를 위해서는 의사결정에서의 외생적 변동성(@lakkaraju2017selective 및 @kleinberg2018human 의 관대성 도구 변수 접근법), 재가중치를 정당화하는 무시 가능성 가정(@rosenbaum1983central, @coston2020counterfactual), 경계를 통한 부분 식별, 또는 @heckman1979sample 의 전통에 따른 신중한 선택 모델링이 필요합니다. 통일된 교훈은 여러분이 보는 데이터가 바로 여러분이 개선하고자 하는 결정에 의해 형성되었다는 점이며, 이를 기억하지 않고 평가하는 것은 기존 정책에 의해 사전 선택된 커리큘럼에서 모델을 평가하는 것과 같습니다.
 
-# Types of Learning
+# 학습의 유형
 
-Machine learning is often introduced as a single idea: fitting functions to data. In practice, it consists of a taxonomy of learning paradigms defined not by the optimizer used, but by the type of supervisory signal consumed. Understanding this taxonomy makes the difference between treating learning as a black box and treating it as an engineering discipline where the choice of paradigm is directly determined by the data you have, the feedback you can collect, and the cost of acquiring labels. This chapter explores the major paradigms, clarifies their signals, and explains why modern foundation models deliberately combine multiple paradigms.
+머신러닝은 흔히 단일한 아이디어, 즉 데이터에 함수를 맞추는 것으로 소개되곤 합니다. 하지만 실제로는 사용된 최적화기가 아니라 소비되는 지도 신호의 유형에 의해 정의되는 학습 패러다임의 분류체계로 구성됩니다. 이 분류체계를 이해하는 것은 학습을 블랙박스로 취급하는 것과, 보유한 데이터·수집할 수 있는 피드백·레이블 확보 비용에 따라 패러다임 선택이 직접 결정되는 공학 분야로 취급하는 것 사이의 차이를 만들어 냅니다. 이 장에서는 주요 패러다임을 탐구하고, 그 신호들을 명확히 하며, 현대의 파운데이션 모델들이 왜 여러 패러다임을 의도적으로 결합하는지 설명합니다.
 
-## 1. The Core Question: What Is the Signal?모든 학습 패러다임은 한 가지 질문에 답합니다. 모델을 형성하는 정보는 어디에서 오는가? 지도 학습(supervised learning)에서는 사람이 제공한 목표 레이블에서 옵니다. 비지도 학습(unsupervised learning)에서는 입력 자체에 잠재된 구조에서 옵니다. 강화 학습(reinforcement learning)에서는 환경이 제공하는 스칼라 보상에서 옵니다. 아래의 분류 체계는 별개의 알고리즘 목록이 아니라, 이 단일 질문에 대한 서로 다른 대답들의 목록으로 읽는 것이 가장 좋습니다.
+## 1. 핵심 질문: 신호란 무엇인가?
+
+모든 학습 패러다임은 한 가지 질문에 답합니다. 모델을 형성하는 정보는 어디에서 오는가? 지도 학습(supervised learning)에서는 사람이 제공한 목표 레이블에서 옵니다. 비지도 학습(unsupervised learning)에서는 입력 자체에 잠재된 구조에서 옵니다. 강화 학습(reinforcement learning)에서는 환경이 제공하는 스칼라 보상에서 옵니다. 아래의 분류 체계는 별개의 알고리즘 목록이 아니라, 이 단일 질문에 대한 서로 다른 대답들의 목록으로 읽는 것이 가장 좋습니다.
 
 이를 명확히 하기 위해 모든 패러다임에서 반복되는 몇 가지 객체를 고정해 보겠습니다. 입력 $x$는 입력 공간 $\mathcal{X}$에 존재하고, 목표를 사용할 수 있을 때 $y$는 목표 공간 $\mathcal{Y}$에 존재한다고 가정합니다. 세상은 $\mathcal{X} \times \mathcal{Y}$에 대한 고정되어 있지만 알려지지 않은 분포 $\mathcal{D}$에 따라 예제를 생성한다고 가정합니다. 학습자는 가설 클래스 $\mathcal{F} = \{ f_\theta : \theta \in \Theta \}$에서 가설 $f_\theta$를 선택합니다. 성능은 손실 $L(\hat y, y) \ge 0$로 측정되며, 우리가 궁극적으로 관심을 가지는 양은 **위험(risk)**, 즉 실제 분포 하에서의 기대 손실입니다:
 
@@ -2126,8 +2122,7 @@ $$
 
 정확하고 일관되며 배포 조건을 대표하는 레이블을 얻을 수 있을 때 지도 학습을 사용하십시오. 이는 테이블형 데이터 예측, 레이블이 지정된 스캔을 통한 의학적 진단, 신용 평가, 그리고 정답(ground truth)이 존재하고 기록될 수 있는 모든 환경에서 핵심적인 역할을 합니다. 그것의 중심적인 한계는 레이블 확보 비용입니다. 크고 고품질인 레이블 말뭉치를 생성하려면 종종 전문가 어노테이터(annotator)가 필요하며, 레이블 노이즈는 모델로 직접 전파됩니다. 왜냐하면 경험적 위험은 주어지는 목표가 맞든 틀리든 충실히 맞추려 하기 때문입니다. 두 번째 한계는 **공변량 이동(covariate shift)**입니다: 작은 경험적 위험이 작은 실제 위험을 의미한다는 보장은 훈련 및 배포 입력이 분포를 공유할 때만 유효하므로, 한 모집단에서 훈련된 모델이 다른 모집단에서는 조용히 실패할 수 있습니다.
 
-## 3. 비지도 학습Here is the text to output:
-
+## 3. 비지도 학습
 ### 3.1 정의
 
 비지도 학습은 목표 없이 입력만으로 작동합니다. 신호는 데이터의 기하학적 및 통계적 구조입니다. 모델은 그 구조를 발견하도록 요구받습니다: 유사한 예제를 그룹화하거나(클러스터링), 정보를 보존하는 저차원 좌표계를 찾거나(차원 축소), 데이터가 추출된 밀도를 추정합니다.
@@ -2218,12 +2213,16 @@ $$
 대조점은 목적 함수가 아니라 접근성에 있습니다:
 
 ```
+
 # 배치: 전체 데이터셋에 대한 1회 최적화
+
 model = train(all_data)
 
 # 온라인: 각 예제가 도착할 때 업데이트
+
 for x, y in stream:
     model = update(model, x, y)
+
 ```
 
 온라인 학습은 스트리밍 데이터와 시간에 따라 $\mathcal{D}$ 자체가 변화하는 **비정상적(non-stationary)** 분포, 즉 **개념 이동(concept drift)**이라는 현상이 일어나는 상황에 자연스럽게 들어맞습니다. 이 이론은 종종 **후회(regret)**, 즉 학습자의 누적 손실과 사후에 돌아본(in hindsight) 최고의 고정 모델의 누적 손실 간의 차이 관점에서 구성됩니다; 좋은 온라인 알고리즘은 라운드 수에 대해 차하위(sublinearly)로 커지는 후회를 가지므로, 그 평균 성능은 최고의 고정 경쟁자에 수렴합니다.
@@ -2585,7 +2584,9 @@ $$
 프로젝트 자체의 직접적인 의존성은 동일한 형태의 무조건적인 제약 조건입니다. 이러한 모든 함의가 성립하고 선택된 각 버전 자체의 의존성이 충족될 때(제약 조건 집합이 도달 가능성에 대해 닫혀 있을 때) 해결책은 *유효(valid)*합니다. 해결은 프로젝트에 필요한 모든 패키지에 $\bot$ 대신 실제 버전이 할당되는 유효한 $\sigma$를 탐색하는 과정입니다.
 
 ::: {.callout-note}
+
 ## Definition: the version-selection constraint problem버전 및 조건부 의존성 제약 조건이 있는 패키지들이 주어졌을 때, 유효한 할당 $\sigma$가 존재하는지 결정하고, 존재한다면 이를 반환합니다. 선택적 개선 사항은 특정 선호 순서(예: 사용자가 일반적으로 원하는 사전식으로 가장 최신인 버전)에 따라 *가장 최신*인 할당을 요청하는 것입니다.
+
 :::
 
 ### 왜 어려운가
@@ -4499,8 +4500,8 @@ format:
 
 ## Intended Use
 
-This model classifies images into 10 CIFAR-10 categories:
-airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck.
+이 모델은 이미지를 10가지 CIFAR-10 범주로 분류합니다:
+비행기, 자동차, 새, 고양이, 사슴, 개, 개구리, 말, 배, 트럭.
 
 **Primary uses:**
 - Educational demonstrations
@@ -4530,14 +4531,14 @@ airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck.
 ## Limitations
 
 - Only works on 32×32 images
-- Performance degrades on images outside CIFAR-10 distribution
+- CIFAR-10 분포 외부의 이미지에 대해서는 성능이 저하됩니다
 - No adversarial robustness
 - Bias towards training distribution
 
 ## Ethical Considerations
 
-- Dataset contains potential biases in category representation
-- Should not be used for surveillance applications
+- 데이터셋에 범주 표현의 잠재적 편향이 포함되어 있습니다
+- 감시 용도로 사용해서는 안 됩니다
 - Consider privacy implications when deploying
 ```
 
@@ -6721,6 +6722,7 @@ image-classifier/
 ## Citation
 
 If you use this code, please cite...
+
 ````
 
 ## 결론
@@ -18692,6 +18694,7 @@ $$
 $$
 \hat{L}(\theta)
 = \frac{1}{n} \sum_{i=1}^n \ell(f_\theta(x_i), y_i)
+
 + \lambda R(\theta),
 $$
 
@@ -19000,14 +19003,11 @@ def f_scalar(theta: float) -> float:
     """Simple convex function f(theta) = (theta - 3)^2 + 1."""
     return (theta - 3.0) ** 2 + 1.0
 
-
 def f_scalar_grad(theta: float) -> float:
     return 2.0 * (theta - 3.0)
 
-
 def f_scalar_hess(theta: float) -> float:
     return 2.0
-
 
 def gradient_descent_scalar(theta0: float, eta: float, num_steps: int) -> np.ndarray:
     theta = theta0
@@ -19017,7 +19017,6 @@ def gradient_descent_scalar(theta0: float, eta: float, num_steps: int) -> np.nda
         history.append(theta)
     return np.array(history)
 
-
 def newton_scalar(theta0: float, num_steps: int) -> np.ndarray:
     theta = theta0
     history = [theta]
@@ -19026,12 +19025,12 @@ def newton_scalar(theta0: float, num_steps: int) -> np.ndarray:
         history.append(theta)
     return np.array(history)
 
-
 if __name__ == "__main__":
     gd_hist = gradient_descent_scalar(theta0=0.0, eta=0.3, num_steps=10)
     newton_hist = newton_scalar(theta0=0.0, num_steps=3)
     print("Gradient descent trajectory:", gd_hist)
     print("Newton trajectory:", newton_hist)
+
 ```
 
 여기서 Newton's method는 단 한 단계 만에 최솟값으로 바로 이동합니다. 함수가 정확히 2차 함수이고 Hessian이 상수이기 때문입니다.
@@ -19270,6 +19269,7 @@ def backtracking_line_search(
         alpha *= tau
 
     return alpha  # Fallback if condition not met
+
 ```
 
 고차원 딥러닝에서는 다음과 같은 이유로 전체 라인 검색(full line search)을 거의 사용하지 않습니다.
@@ -19647,7 +19647,6 @@ def clip_grad_norm(grad: np.ndarray, max_norm: float) -> np.ndarray:
 
 최적화와 수치 해석 메서드를 확실하게 이해하는 것은, 단순히 딥러닝 라이브러리를 **사용**하는 것과 학습 시스템을 **추론하고, 디버깅하고, 확장**할 수 있는 것 사이의 가장 큰 차이점 중 하나입니다. 책의 나머지 부분은 독자가 이러한 개념들에 익숙하다고 가정하며, 더욱 전문적인 맥락에서 이를 계속해서 발전시켜 나갈 것입니다.
 
-
 ---
 
 # 경사하강법과 그 변형들
@@ -19725,6 +19724,7 @@ $$
 $$
 
 미니 배치는 단일 샘플 SGD에 비해 그래디언트의 분산을 대략 $b$배만큼 줄여주어, 유용한 무작위성을 유지하면서도 더 안정적인 하강 방향을 제공합니다. 이에 못지않게 중요한 점은, 32에서 1024 사이 크기의 배치가 GPU와 TPU의 병렬 산술 연산에 잘 부합하므로 크기 256의 배치를 처리하는 실제 시간이 단일 배치(크기 1)를 처리하는 시간과 그리 큰 차이가 나지 않는다는 것입니다. 딥러닝에서 말하는 SGD라는 용어는 거의 항상 미니 배치 SGD를 의미합니다.
+
 ```for epoch in range(num_epochs):
     for batch in dataloader:          # mini batch of size b
         grads = compute_gradients(batch, params)
@@ -19856,6 +19856,7 @@ v = beta2 * v + (1 - beta2) * g * g
 m_hat = m / (1 - beta1 ** t)
 v_hat = v / (1 - beta2 ** t)
 params = params - lr * m_hat / (v_hat ** 0.5 + eps)
+
 ```
 
 ### 5.4 AdamW와 가중치 감쇠의 분리
@@ -20076,7 +20077,6 @@ $$
 15. Chen, X., et al. "Symbolic Discovery of Optimization Algorithms (Lion)." NeurIPS, 2023. DOI: 10.48550/arXiv.2302.06675
 16. Goodfellow, I., Bengio, Y., and Courville, A. "Deep Learning," Chapter 8: Optimization for Training Deep Models. MIT Press, 2016. https://www.deeplearningbook.org/
 17. Li, S. et al. "OmniOpt: Taxonomy, Geometry, and Benchmarking of Modern Optimizers." 2026. https://arxiv.org/abs/2607.04033
-
 
 ---
 
@@ -20384,7 +20384,6 @@ fn main() {
 
 8. Cortes, C. and Vapnik, V. Support-Vector Networks. *Machine Learning*, 20(3), 1995. https://doi.org/10.1007/BF00994018
 
-
 ---
 
 # 제약 조건이 있는 최적화
@@ -20467,6 +20466,7 @@ $$
 \begin{bmatrix} Q & A^\top \\ A & 0 \end{bmatrix}
 \begin{bmatrix} x^\star \\ \nu^\star \end{bmatrix}
 =
+
 \begin{bmatrix} -c \\ b \end{bmatrix},
 $$
 
@@ -20646,7 +20646,9 @@ import matplotlib.pyplot as plt
 np.random.seed(42)
 
 # Part 1: equality-constrained quadratic solved via the KKT linear system
+
 # minimize 1/2 x^T Q x + c^T x  subject to  A x = b
+
 Q = np.array([[2.0, 0.0], [0.0, 2.0]])
 c = np.array([0.0, 0.0])
 A = np.array([[1.0, 1.0]])
@@ -20660,7 +20662,9 @@ x_eq, nu = sol[:n], sol[n:]
 print(f"Equality-constrained QP: x* = {x_eq}, nu* = {nu}")
 
 # Part 2: inequality-constrained projection solved with scipy SLSQP
+
 # minimize 1/2 ||x - p0||^2  subject to  x1 + x2 <= 1,  x >= 0
+
 p0 = np.array([0.9, 0.8])
 obj = lambda x: 0.5 * np.sum((x - p0) ** 2)
 grad = lambda x: x - p0
@@ -20672,6 +20676,7 @@ print(f"Inequality-constrained QP: x* = {res.x}, objective = {res.fun:.4f}")
 print(f"Active set residual (x1+x2-1) = {res.x[0] + res.x[1] - 1:.6f}")
 
 # Visualize the feasible region and the solution
+
 fig, ax = plt.subplots(figsize=(5.5, 5.0))
 ax.fill([0, 1, 0], [0, 0, 1], alpha=0.25, color="#4C72B0",
         label="feasible region")
@@ -20688,6 +20693,7 @@ ax.set_title("Projection onto a constrained region")
 ax.legend(loc="upper right", fontsize=8); ax.set_aspect("equal")
 plt.tight_layout()
 plt.show()
+
 ```
 
 최적화 도구는 정확히 $x_1 + x_2 = 1$ 직선 위에 위치한 $x^\star = (0.55, 0.45)$를 해로 구합니다. 잔차가 0인 것은 합 제약 조건이 활성화(active) 상태임을 의미하며, 이는 KKT 분석으로 예측한 활성 집합과 일치합니다.
@@ -20779,7 +20785,6 @@ fn main() {
 8. Bertsekas, D. P. *Nonlinear Programming*, 3rd ed. Athena Scientific, 2016. http://www.athenasc.com/nonlinbook.html
 
 9. Bertsekas, D. P. *Constrained Optimization and Lagrange Multiplier Methods*. Academic Press, 1982. https://doi.org/10.1016/C2013-0-10366-2
-
 
 ---
 
@@ -21001,12 +21006,14 @@ import matplotlib.pyplot as plt
 rng = np.random.default_rng(0)
 
 # Strongly convex least-squares: F(theta) = (1/2N) sum (x_i^T theta - y_i)^2
+
 N, d = 4000, 20
 X = rng.standard_normal((N, d))
 theta_true = rng.standard_normal(d)
 y = X @ theta_true + 0.5 * rng.standard_normal(N)
 
 # Exact optimum via the normal equations
+
 theta_star = np.linalg.solve(X.T @ X, X.T @ y)
 F_star = 0.5 * np.mean((X @ theta_star - y) ** 2)
 
@@ -21052,6 +21059,7 @@ plt.legend()
 plt.grid(True, which="both", alpha=0.3)
 plt.tight_layout()
 plt.show()
+
 ```
 
 출력 결과는 이론을 뒷받침합니다. 일정한 스텝 크기에서 세 가지 배치 크기는 그래디언트 분산의 $1/B$ 스케일링과 일치하여, 각각 대략 한 자릿수 차이로 점진적으로 더 낮은 노이즈 플로어에 도달합니다. 반면, $1/t$로 감쇠하는 스텝 크기를 사용한 단일 샘플 실행은 Robbins-Monro 조건이 보장하는 동작대로 모든 일정 스텝 플로어보다 훨씬 아래로 계속 하강합니다. 즉, 감쇠 일정을 통해 초기 속도를 희생하는 대신 정확한 수렴을 얻을 수 있습니다.
@@ -21143,7 +21151,6 @@ fn sgd_step(
 11. Jin, C., Ge, R., Netrapalli, P., Kakade, S. M., and Jordan, M. I. (2017). How to Escape Saddle Points Efficiently. *International Conference on Machine Learning (ICML)*, PMLR 70, 1724-1732. https://proceedings.mlr.press/v70/jin17a.html
 
 12. Ghadimi, S. and Lan, G. (2013). Stochastic First- and Zeroth-Order Methods for Nonconvex Stochastic Programming. *SIAM Journal on Optimization*, 23(4), 2341-2368. https://doi.org/10.1137/120880811
-
 
 ---
 
@@ -21514,7 +21521,6 @@ fn main() {
 9. Blanchard, P., Higham, D. J., and Higham, N. J. "Accurately Computing the Log-Sum-Exp and Softmax Functions." *IMA Journal of Numerical Analysis*, 41(4), 2311 to 2330, 2021. https://doi.org/10.1093/imanum/draa038
 10. Kahan, W. "Pracniques: Further Remarks on Reducing Truncation Errors." *Communications of the ACM*, 8(1), 40, 1965. https://doi.org/10.1145/363707.363723
 
-
 ---
 
 # 수학 기호 참조 가이드
@@ -21797,7 +21803,6 @@ $$
 * Cover and Thomas, *Elements of Information Theory* (2006).
 * Murphy, *Probabilistic Machine Learning: An Introduction* (2022).
 
-
 ---
 
 # The Primacy of Data
@@ -21820,6 +21825,7 @@ flowchart TD
     F --> D
     G --> D
     D --> H["Behavior at deployment"]
+
 ```
 
 ## 1. 데이터가 기반인 이유
@@ -22005,7 +22011,6 @@ $\rho = 0.10$에서의 대칭 노이즈는 결정 경계(decision boundary)를 �
 7. Katherine Lee et al., "Deduplicating Training Data Makes Language Models Better." ACL, 2022. https://arxiv.org/abs/2107.06499
 8. Judea Pearl, "Causality: Models, Reasoning, and Inference." Cambridge University Press, 2nd edition, 2009. https://bayes.cs.ucla.edu/BOOK-2K/
 9. Giorgio Patrini, Alessandro Rozza, Aditya Krishna Menon, Richard Nock, and Lizhen Qu, "Making Deep Neural Networks Robust to Label Noise: A Loss Correction Approach." IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017. https://doi.org/10.1109/CVPR.2017.240
-
 
 ---
 
@@ -22226,7 +22231,6 @@ flowchart TD
 10. The JSON Data Interchange Standard (ECMA 404). https://www.json.org/
 11. Bronstein, M., Bruna, J., Cohen, T., and Velickovic, P. Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges. 2021. https://arxiv.org/abs/2104.13478
 
-
 ---
 
 # 데이터 수집 전략
@@ -22371,8 +22375,11 @@ $$
       act according to current model
   with probability epsilon:
       act randomly and log the outcome
+
   # the epsilon-fraction is a probability sample
+
   # of the space the model would otherwise censor
+
 ```
 
 ### 4.4 구체적 예시: 검검(Censored)된 대출 영역
@@ -22478,7 +22485,6 @@ Working through these questions does not guarantee a perfect dataset, because pe
 8. Ratner, A., Bach, S. H., Ehrenberg, H., Fries, J., Wu, S., and Re, C. "Snorkel: Rapid Training Data Creation with Weak Supervision." *VLDB*, 2017. https://www.vldb.org/pvldb/vol11/p269-ratner.pdf
 9. Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daume III, H., and Crawford, K. "Datasheets for Datasets." *Communications of the ACM*, 2021. https://dl.acm.org/doi/10.1145/3458723
 10. Cohen, J. "A Coefficient of Agreement for Nominal Scales." *Educational and Psychological Measurement*, 1960. https://journals.sagepub.com/doi/10.1177/001316446002000104
-
 
 ---
 
@@ -22671,6 +22677,7 @@ def fetch_with_backoff(session, url, max_retries=5):
             continue
         return resp
     raise RuntimeError(f"giving up on {url}")
+
 ```
 
 ## 5. 동적 페이지 처리하기
@@ -22782,7 +22789,6 @@ $$
 10. "Schema.org Structured Data Vocabulary." https://schema.org/
 11. Brooker, M. "Exponential Backoff and Jitter." Amazon Web Services Architecture Blog, 2015. https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
 
-
 ---
 
 # APIs and Data Integration
@@ -22792,7 +22798,9 @@ $$
 이 장의 일관된 주제는 불확실성 하에서의 신뢰성입니다. 모든 외부 종속성은 실패하거나, 느려지거나, 형태가 변하거나, 상태에 대해 거짓 정보를 제공할 수 있습니다. 데이터 파이프라인은 가장 취약한 외부 시스템과의 상호작용만큼만 신뢰할 수 있습니다. 정밀한 처리가 필요한 부분에 대해서는 페이지네이션 체계의 일관성 보장, 처리율 제한기의 큐잉 동작, 백오프 정책의 예상 대기 시간, 웹훅의 전달 시맨틱 등 근본적인 모델을 제공할 것입니다. 이들은 단순한 장식이 아니며, 기능 열(feature column)의 값이 소리 없이 잘못되는지 또는 신뢰할 수 있는지를 가르는 기준이 됩니다.
 
 ::: callout-note
+
 ## Learning objectives
+
 이 장을 마친 후에는 생소한 API 규격을 읽고 실패할 수 있는 지점을 예측할 수 있어야 하며, REST와 GraphQL 중 적절한 방식을 이유와 함께 선택할 수 있어야 합니다. 또한 올바른 커서 페이지네이션 및 재시도 로직을 구현할 수 있고, 처리율 제한과 지수 백오프를 정량적으로 분석할 수 있어야 하며, 웹훅 수신기를 보호하고, 이질적인 여러 소스를 결합하여 명시적인 조인 시맨틱을 갖춘 검증되고 재현 가능한 단일 테이블을 만들 수 있어야 합니다.
 :::
 
@@ -22803,7 +22811,9 @@ $$
 고객 이탈(churn) 모델을 훈련하려는 실무자에게는 구독 이력, 지원 티켓, 제품 사용 현황, 결제 이벤트 등이 필요합니다. 이 데이터들은 각각 다른 팀이나 벤더가 관리하는 서로 다른 시스템에 존재합니다. API는 내부 구현을 몰라도 다른 프로그램에 데이터나 작업을 요청할 수 있도록 해주는 계약(contract)입니다. 이 계약은 엔드포인트, 입력 값의 형식, 출력 값의 형태, 에러 처리 규칙을 명시합니다. 계약을 준수하면 예측 가능한 데이터를 얻을 수 있지만, 이를 무시하면 3주 후에 알 수 없는 편향이 발생한 피처의 형태로 소리 없는 데이터 오염이 발생하게 됩니다.
 
 ::: callout-tip
+
 ## Definition: API contract
+
 *API 계약(API contract)*은 제공자(provider)와 소비자(consumer) 간의 외부에서 관찰 가능한 합의입니다. 공식적으로는 유효한 요청 세트, 요청에서 허용된 응답 세트로의 매핑, 그리고 호출 전반에 걸쳐 유지되는 불변 특성(예: GET의 멱등성 또는 쓰기 작업의 결과적 가시성)의 튜플로 정의됩니다. 이 계약은 의도적으로 내부 구현에 대해 언급하지 않으며, 이 덕분에 제공자는 소비자 측의 중단 없이 내부 구현을 변경할 수 있고, 소비자는 우연히 관찰했던 문서화되지 않은 동작에 의존해서는 안 됩니다.
 :::
 
@@ -22812,6 +22822,7 @@ $$
 ### 1.2 HTTP API의 형태
 
 대부분의 데이터 API는 HTTP를 기반으로 작동합니다. 요청은 메서드(데이터 조회를 위한 GET, 생성을 위한 POST, 업데이트를 위한 PUT 또는 PATCH, 삭제를 위한 DELETE), URL, 헤더, 선택적인 본문(body)을 포함합니다. 응답은 상태 코드, 헤더, 그리고 대개 JSON 형식인 본문을 포함합니다. 코드에서 가장 먼저 검사해야 할 것은 상태 코드입니다. 200번대 코드는 성공을 의미하고, 400번대 코드는 사용자 측의 실수를 의미하며, 500번대 코드는 서버 측의 실패를 의미합니다. 성공하지 않은 모든 응답을 동일하게 처리하는 것은 초보자가 가장 많이 범하는 실수이며 가장 고통스러운 데이터 버그의 원인입니다.
+
 ``````
 GET /v2/customers?status=active HTTP/1.1
 Host: api.example.com
@@ -29463,6 +29474,7 @@ $$
 
 ```{mermaid}
 ``````
+
 flowchart LR
   A["Collection: consent, lawful basis"] --> B["Labeling: annotator welfare, category validity"]
   B --> C["Storage: security, retention limits"]
@@ -29471,6 +29483,7 @@ flowchart LR
   E --> F["Deployment: contestability, monitoring"]
   F --> G["Deletion: erasure, retraining"]
   G -.->|feedback shapes future collection| A
+
 ```
 
 점선으로 표시된 회귀 에지(return edge)는 이 장의 뒷부분에서 다룰 구조적 위험을 나타냅니다. 즉, 배포된 모델이 향후 학습할 데이터에 영향을 미칠 수 있으므로 데이터 생애주기는 선형이 아니라 순환 고리 형태를 띠게 됩니다.
@@ -29835,8 +29848,11 @@ $$
 이론은 경계의 형태를 알려주지만, 상수가 너무 느슨해서 실제 값으로 직접 쓰기 어려운 경우가 많습니다. 따라서 실제로는 일반화 성능을 경험적으로 추정합니다. 훈련 중에는 전혀 손대지 않는 테스트 세트를 따로 보관해 두고, 하이퍼파라미터를 선택하기 위해 별도의 검증 세트나 교차 검증을 사용합니다. 모델 선택 과정에 테스트 정보가 유출되는 것은 가장 치명적인 실수입니다. 이 유출은 자신도 모르게 모델의 용량 사용량을 부풀려 일반화 보장을 깨뜨립니다. 데이터가 부족할 때 데이터를 여러 개의 훈련 및 검증 폴드(folds)로 반복해서 나누는 교차 검증을 사용하면 실제 위험에 대해 더 낮은 분산의 추정치를 얻을 수 있습니다.
 
 ```python```python
+
 # k-fold cross validation: estimate true risk without
+
 # touching the held-out test set.
+
 def cross_val_risk(fit, S, loss, k=5):
     folds = partition(S, k)
     scores = []
@@ -29846,6 +29862,7 @@ def cross_val_risk(fit, S, loss, k=5):
         h = fit(train)
         scores.append(mean(loss(h(x), y) for x, y in val))
     return mean(scores)
+
 ```
 
 ## 6. 클래식 ML이 여전히 중요한 이유
@@ -30196,6 +30213,7 @@ error
                     ^
               interpolation
                 threshold
+
 ```
 
 ### 5.2 이중 하강(second descent)이 발생하는 이유
@@ -30400,6 +30418,7 @@ X_tr, X_tmp, y_tr, y_tmp = train_test_split(
     X, y, test_size=0.4, stratify=y, random_state=0)
 X_val, X_test, y_val, y_test = train_test_split(
     X_tmp, y_tmp, test_size=0.5, stratify=y_tmp, random_state=0)
+
 ```
 
 ### 5.3 레이블을 넘어선 층화추출
@@ -30490,6 +30509,7 @@ sns.set_theme(style="whitegrid", context="notebook")
 rng = np.random.default_rng(42)
 
 # ---- Data: a smooth signal plus noise, with a known noise floor ----
+
 def true_f(x):
     return np.sin(2.0 * np.pi * x)
 
@@ -30504,6 +30524,7 @@ X_val, X_test, y_val, y_test = train_test_split(
     X_tmp, y_tmp, test_size=0.5, random_state=0)
 
 # ---- Complexity sweep: train vs validation vs test error ----
+
 degrees = list(range(1, 16))
 rows = []
 for d in degrees:
@@ -30528,6 +30549,7 @@ print(f"Mean optimism (test - train) over degrees 10-15 = "
       f"{curve['optimism'].iloc[9:].mean():.4f}")
 
 # ---- Leakage demonstration: features are pure noise, truth = 0.50 ----
+
 ``````python
 m, p = 200, 500
 Xn = rng.normal(size=(m, p))
@@ -33913,15 +33935,15 @@ T_star = minimize(nll, init=1.0, bounds=(0.05, 20.0))   # one scalar
 calibrated = softmax(test_logits / T_star)               # class unchanged
 ```
 
-### 5.4 Practical Guidance
+### 5.4 실무 지침
 
-Three habits separate trustworthy multiclass probabilities from dangerous ones. First, hold out a dedicated calibration split distinct from the test set, because measuring and fixing calibration on the same data you report on is circular. Second, select models and regularization strengths on a proper score such as log loss rather than on accuracy alone, since accuracy is blind to overconfidence. Third, inspect reliability diagrams per class and not just in aggregate, because a model can be well calibrated on average while being wildly off on a rare but important class. When decisions depend on the magnitude of a probability and not merely the top label, recalibration is not optional polish but a required step.
+다중 클래스 확률을 신뢰할 수 있게 만들기 위해 3가지 실무적 습관이 요구됩니다. 첫째, 교정(Calibration) 측정 및 조정을 위한 별도의 전용 검증 분할(Calibration split)을 유지하세요. 동일한 데이터에서 교정을 평가하고 조절하는 것은 순환 논리에 빠지게 됩니다. 둘째, 정밀도/정확도 지표뿐만 아니라 Log loss(크로스 엔트로피)와 같이 확률적 품질을 정확히 평가할 수 있는 적절한 점수 함수(Proper scoring rule)를 기준으로 모델과 정규화 강도를 선택하세요. 셋째, 클래스별 신뢰도 다이어그램(Reliability diagram)을 개별적으로 확인하세요. 드물지만 중요한 클래스에서 확신이 과도하게 치우치는 현상이 발생할 수 있습니다.
 
-## 6. Summary
+## 6. 요약
 
-We began with the difficulty that the binary odds notion does not generalize uniquely to many classes, and we examined three resolutions. One-vs-rest and one-vs-one reduce the problem to binary subproblems, offering modularity and compatibility with any binary learner at the cost of incoherent or vote-based outputs that require coupling to become true probabilities. Multinomial logistic regression generalizes the model itself through the softmax link, optimizing a single convex cross-entropy objective whose gradient is the familiar label minus prediction residual, and producing coherent simplex probabilities with interpretable log odds against a reference category. Finally we stressed that probabilities are only as useful as they are calibrated, introduced the reliability diagram and Expected Calibration Error as diagnostics, proper scores for selection, and temperature scaling as the workhorse recalibration tool. The throughline is that a multiclass classifier should be judged not only by whether it picks the right label but by whether the numbers it attaches to that choice can be believed.
+우리는 이진 오즈(Odds) 개념이 다중 클래스로 직관적으로 확장되지 않는 문제에서 출발하여 세 가지 해결책을 검토했습니다. 일대다(One-vs-rest) 및 일대일(One-vs-one) 방식은 이진 하위 문제로 분할하여 모듈성을 제공하지만 결합 확률 분포를 직접적으로 표현하지는 못합니다. 반면 다항 로지스틱 회귀(Softmax 회귀)는 Softmax 링크 함수를 통해 모델 자체를 확장하여 다중 클래스 확률을 직접 모델링하고, 손실 함수로 볼록 함수인 크로스 엔트로피를 최적화합니다. 마지막으로, 모델이 출력하는 확률값의 신뢰성을 담보하기 위해 ECE(Expected Calibration Error)와 온도 스케일링(Temperature Scaling) 등의 캘리브레이션 기술이 필수적임을 확인했습니다.
 
-## References
+## 참고 문헌 (References)
 
 1. Bishop, C. M. (2006). *Pattern Recognition and Machine Learning*. Springer. https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/
 2. Hastie, T., Tibshirani, R., and Friedman, J. (2009). *The Elements of Statistical Learning*, 2nd ed. Springer. https://hastie.su.domains/ElemStatLearn/
@@ -33935,47 +33957,45 @@ We began with the difficulty that the binary odds notion does not generalize uni
 
 ---
 
-# Softmax Regression
+# Softmax 회귀 (Softmax Regression)
 
-Softmax regression generalizes binary logistic regression to problems with more than two mutually exclusive classes. It is the workhorse classifier that sits at the output of nearly every modern neural network, from image classifiers to large language models, where the final layer maps a vector of scores to a probability distribution over a vocabulary or a label set. This chapter develops the model from first principles, derives the cross-entropy loss and its gradient, establishes the equivalence with multinomial logistic regression, and treats the practical concerns of numerical stability and temperature scaling that determine whether an implementation works at all.
+Softmax 회귀(Softmax Regression)는 이진 로지스틱 회귀를 상호 배타적인 3개 이상의 다중 클래스 분류 문제로 확장한 모델입니다. 이미지 분류기부터 거대 언어 모델(LLM)에 이르기까지 현대 신경망의 출력층에서 로짓(Logit) 벡터를 확률 분포로 변환할 때 핵심적인 역할을 담당합니다.
 
-## 1. The Softmax Function
+## 1. Softmax 함수
 
-### 1.1 Definition
+### 1.1 정의
 
-Given a vector of real-valued scores, often called logits, $\mathbf{z} = (z_1, z_2, \ldots, z_K) \in \mathbb{R}^K$, the softmax function produces a probability vector $\boldsymbol{\sigma}(\mathbf{z}) \in \mathbb{R}^K$ whose $k$-th component is
+로짓(Logit)이라고 불리는 실수값 점수 벡터 $\mathbf{z} = (z_1, z_2, \ldots, z_K) \in \mathbb{R}^K$가 주어졌을 때, Softmax 함수는 $k$번째 성분이 다음과 같이 정의되는 확률 벡터 $\boldsymbol{\sigma}(\mathbf{z}) \in \mathbb{R}^K$를 출력합니다:
 
 $$
 \sigma_k(\mathbf{z}) = \frac{e^{z_k}}{\sum_{j=1}^{K} e^{z_j}}.
 $$
 
-Each output lies strictly in the open interval $(0, 1)$, and the components sum to one:
+각 출력 성분은 열린구간 $(0, 1)$에 속하며, 모든 성분의 합은 1이 됩니다:
 
 $$
 \sum_{k=1}^{K} \sigma_k(\mathbf{z}) = \frac{\sum_{k=1}^{K} e^{z_k}}{\sum_{j=1}^{K} e^{z_j}} = 1.
 $$
 
-The function therefore maps an arbitrary point in $\mathbb{R}^K$ onto the interior of the probability simplex $\Delta^{K-1}$. The name reflects that softmax is a smooth, differentiable surrogate for the $\arg\max$ operator: it concentrates mass on the largest logit without ever forcing the others to exactly zero, which keeps the function differentiable everywhere.
+따라서 이 함수는 $\mathbb{R}^K$ 공간의 임의의 점을 확률 심플렉스(Simplex) $\Delta^{K-1}$ 내부로 매핑합니다. Softmax라는 이름은 이 함수가 $\arg\max$ 연산자의 미분 가능한 매끄러운(Smooth) 근사 함수로서 작동함을 반영합니다.
 
-### 1.2 Properties
+### 1.2 성질
 
-Several properties of softmax matter both for analysis and for implementation.
-
-**Shift invariance.** Adding a constant $c$ to every logit leaves the output unchanged. For any scalar $c$,
+**평행 이동 불변성 (Shift Invariance):** 모든 로짓에 동일한 상수 $c$를 더해도 출력 결과는 변하지 않습니다. 임의의 스칼라 $c$에 대해,
 
 $$
 \sigma_k(\mathbf{z} + c\mathbf{1}) = \frac{e^{z_k + c}}{\sum_j e^{z_j + c}} = \frac{e^{c} e^{z_k}}{e^{c}\sum_j e^{z_j}} = \sigma_k(\mathbf{z}).
 $$
 
-This single fact is the foundation of the numerical stabilization discussed in Section 4. It also reveals that softmax has one redundant degree of freedom: only differences between logits are identifiable, not their absolute level.
+이 성질은 수치적 안정성을 위한 트릭의 기초가 되며, 로짓 간의 상대적 차이만이 식별 가능하다는 것을 보여줍니다.
 
-**Monotonicity and order preservation.** Because the exponential is strictly increasing, $z_i > z_j$ implies $\sigma_i(\mathbf{z}) > \sigma_j(\mathbf{z})$. Softmax never reorders the classes relative to their logits.
+**단조성 및 순서 보존:** 지수함수는 엄격히 증가하므로 $z_i > z_j$이면 $\sigma_i(\mathbf{z}) > \sigma_j(\mathbf{z})$가 성립합니다.
 
-**Saturation.** As the gap between the largest logit and the rest grows, softmax approaches a one-hot vector. Conversely, when all logits are equal, the output is the uniform distribution $(1/K, \ldots, 1/K)$.
+**포화(Saturation):** 가장 큰 로짓과 나머지 로짓 간의 격차가 커질수록 Softmax 출력은 원-핫(One-hot) 벡터에 가까워집니다. 반대로 모든 로짓이 동일하면 균등 분포 $(1/K, \ldots, 1/K)$가 됩니다.
 
-**Non-injectivity.** Owing to shift invariance, softmax is not injective on $\mathbb{R}^K$. It becomes injective once we fix a reference, for example by constraining $z_K = 0$, which is exactly what happens when the binary case collapses to a single logit.
+**비단사성(Non-injectivity):** 평행 이동 불변성으로 인해 Softmax 함수는 $\mathbb{R}^K$에서 단사(Injective) 함수가 아닙니다. 하나 이상의 구체적인 참조 기준(예: $z_K = 0$)을 고정해야 식별 가능성이 확보됩니다.
 
-### 1.3 The Jacobian
+### 1.3 야코비 행렬 (The Jacobian)
 
 The derivative of softmax is needed for backpropagation. Differentiating $\sigma_i$ with respect to $z_j$ gives a clean closed form. For the diagonal entries,
 
@@ -114135,30 +114155,32 @@ cv = SlidingWindowSplitter(window_length=100, step_length=50, fh=[1, 2, 3])
 from mlforecast.utils import PredictionIntervals
 ```
 
-## Practical Guidelines
+## 실무 지침
 
-### Pre-Evaluation Checklist
+### 평가 전 체크리스트
 
-1.  Verify timestamp accuracy and sort order
-2.  Check for timestamp ties and decide on handling
+1.  타임스탬프의 정확성 및 정렬 순서 검증
+2.  동일한 타임스탬프(ties) 처리 방식 결정
 3.  정상성(stationarity) 및 잠재적 개념 표류(concept drift) 평가
 4.  배포 시나리오에 맞는 평가 전략 매칭
 5.  점 추정치뿐만 아니라 분산 추정치 보고
 
-### Common Mistakes
+### 흔한 실수
 
-1.  Shuffling data before splitting (destroys temporal order)
-2.  Computing features using future information
-3.  Using sequential IDs that encode temporal information
-4.  Reusing the same test set during development
-5.  Ignoring concept drift in long time series
+1.  분할 전 데이터 셔플링 (시간 순서 파괴)
+2.  미래 정보를 이용한 특성(feature) 계산
+3.  시간 정보를 인코딩하는 순차적 ID 사용
+4.  개발 과정에서 동일한 테스트 세트 재사용
+5.  긴 시계열에서 개념 표류(concept drift) 무시
 
-### Reporting Standards
+### 보고 기준
 
-When publishing results with temporal evaluation:
+시계열 평가 결과를 제시하거나 출판할 때:
 
-1.  Specify the exact temporal split strategy used
+1.  사용된 정확한 시계열 분할 전략 명시
 2.  여러 시간 창(time window)에 걸친 성능 보고
 3.  신뢰 구간 또는 표준 오차 포함
 4.  누수를 수량화하기 위해 무작위 CV 베이스라인과 비교
-5.  Describe any embargo or purging procedures
+5.  엠바고(embargo) 또는 퍼징(purging) 절차 설명
+
+
