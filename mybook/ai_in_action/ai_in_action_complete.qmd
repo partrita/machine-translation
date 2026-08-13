@@ -796,7 +796,7 @@ $$
 
 # 기계 지능의 철학기계가 생각할 수 있는지에 대한 질문은 디지털 컴퓨터 자체보다 오래되었으며, 많은 독자가 인간의 글과 구별하지 못할 텍스트를 대규모 언어 모델이 만들어 내는 지금도 완전히 해결되지 않았다. 이 장에서는 그 질문의 개념적 토대를 살펴본다. 지능이 무엇을 뜻하는지 묻고, 논쟁을 형성한 주요 사고실험과 논증을 검토하며, 수십 년 된 논쟁이 `GPT`, `Claude`, `Gemini` 같은 시스템이 무언가를 이해하는지에 관한 현재의 논쟁을 어떻게 구성하는지 보여 준다. 목표는 문제를 해결하는 것이 아니라 신중하게 사고할 개념적 어휘를 제공하고, 어떤 논쟁이 말의 문제이고 어떤 논쟁이 실질적인 문제인지 구별하며, 어느 쪽이든 실제로 증거가 될 수 있는 것이 무엇인지 파악하게 하는 것이다.
 
-시작하기 전 방법에 대한 참고 사항. 마음의 철학은 주로 개념 분석과 사고 실험을 통해 진행됩니다, idealized scenarios that isolate one variable so that an intuition can be tested. A thought experiment is not a proof. It is a probe of our concepts, and its force depends on whether the intuition it elicits is reliable and whether the scenario it describes is coherent. Throughout this chapter we will treat each famous argument both as a claim and as an object to be examined, asking not only what it concludes but where its premises could be resisted.
+시작하기 전 방법에 대한 참고 사항. 마음의 철학은 주로 개념 분석과 사고 실험을 통해 진행됩니다. 사고 실험은 하나의 변수만 분리하여 직관을 검증할 수 있는 이상화된 시나리오를 사용합니다. 사고 실험은 증명이 아닙니다. 사고 실험은 우리의 개념을 탐색하는 탐침이며, 그 힘은 그것이 이끌어내는 직관이 신뢰할 만한지, 그리고 그것이 묘사하는 시나리오가 정합적인지에 달려 있습니다. 이 장 전체에서 우리는 각각의 유명한 논증을 하나의 주장인 동시에 검토해야 할 대상으로 다루며, 그 논증이 무엇을 결론짓는지만 묻는 것이 아니라 그 전제가 어디에서 반박될 수 있는지도 함께 묻습니다.
 
 ## 1. 지능의 의미와 정의하기 어려운 이유
 
@@ -2062,7 +2062,7 @@ $$
 
 오픈 소스 도구들은 이러한 전략 중 일부를 직접 지원합니다. 역성향 가중치(Inverse propensity) 및 이중 강건(doubly robust) 추정기는 `scikit-learn` 파이프라인이나 `DoWhy`, `EconML`과 같은 전용 인과 추론 라이브러리에서 사용할 수 있으며, 부분 식별 경계(partial identification bounds)는 몇 줄의 `numpy` 코드로 계산할 수 있습니다. 이러한 도구들이 매커니즘에 대해 신중하게 논증해야 할 필요성을 대체해 주지는 않지만, 정직하게 분석을 수행하는 비용을 줄여줍니다.
 
-## 7. Summary
+## 7. 요약
 
 선택적 레이블링은 사전 결정에 의해 선택된 케이스에 대해서만 결과가 관측되고, 그 결정이 분석가가 이용할 수 없는 정보에 의존했을 때 발생합니다. 이로 인한 누락은 무작위가 아닌 누락(MNAR)이 되며, 관측된 샘플이 모집단을 왜곡하게 만듭니다. 단순 평가의 편향은 선별 제외 비율에 선별 제외 그룹과 선택 그룹 간의 미관측 결과 격차를 곱한 값과 같습니다. 타당한 평가를 위해서는 의사결정에서의 외생적 변동성(@lakkaraju2017selective 및 @kleinberg2018human 의 관대성 도구 변수 접근법), 재가중치를 정당화하는 무시 가능성 가정(@rosenbaum1983central, @coston2020counterfactual), 경계를 통한 부분 식별, 또는 @heckman1979sample 의 전통에 따른 신중한 선택 모델링이 필요합니다. 통일된 교훈은 여러분이 보는 데이터가 바로 여러분이 개선하고자 하는 결정에 의해 형성되었다는 점이며, 이를 기억하지 않고 평가하는 것은 기존 정책에 의해 사전 선택된 커리큘럼에서 모델을 평가하는 것과 같습니다.
 
@@ -12427,7 +12427,7 @@ $$\boldsymbol{\theta}_{t+1} = \boldsymbol{\theta}_t - \eta\, \nabla L(\boldsymbo
 
 ::: {.panel-tabset}
 
-## Python executable
+## Python 실행 가능
 
 ```{python}
 import numpy as np
@@ -37950,45 +37950,45 @@ clf = DecisionTreeClassifier(
 )
 ```
 
-### 2.4 The Horizon Effect
+### 2.4 지평선 효과
 
-Pre-pruning suffers from a well known shortcoming called the horizon effect. Because growth is stopped greedily, the algorithm may reject a split that yields little immediate gain even though it would enable a highly informative split one level deeper. The classic example is the exclusive or pattern, where neither feature alone reduces impurity but the two together separate the classes perfectly. A criterion that stops on the first weak split never discovers the strong interaction below it. This limitation motivates post-pruning, which sidesteps the problem by first growing a large tree and then removing branches that prove unhelpful in hindsight.
+사전 가지치기(pre-pruning)는 지평선 효과(horizon effect)라고 불리는 잘 알려진 단점에 시달린다. 성장이 탐욕적으로(greedy) 종료되기 때문에, 알고리즘은 당장 얻는 이득이 적다는 이유로 분할을 거부하지만, 바로 그 분할 때문에 한 단계 더 깊은 곳에서 매우 유익한 분할이 가능해질 수 있다. 대표적인 예는 배타적 논리합(XOR) 패턴으로, 개별 특성만으로는 불순도를 줄일 수 없지만 두 특성을 함께 사용하면 클래스를 완벽하게 분리할 수 있다. 첫 번째 약한 분할에서 멈추는 기준은 그 아래에 있는 강한 상호작용을 결코 발견하지 못한다. 이러한 한계 때문에 사후 가지치기(post-pruning)가 필요하며, 이는 먼저 큰 나무를 완전히 성장시킨 뒤 hindsight에서 도움이 되지 않는 것으로 판명된 가지들을 제거함으로써 이 문제를 우회한다.
 
-## 3. Cost-Complexity Pruning
+## 3. 비용-복잡도 가지치기
 
-Cost-complexity pruning, also known as weakest-link pruning, is the post-pruning method introduced by Breiman and colleagues in the CART framework. Rather than stopping early, it grows a large tree $T_{\max}$ and then prunes it back by penalizing complexity, producing a nested sequence of subtrees from which the best is selected by validation.
+비용-복잡도 가지치기(cost-complexity pruning)는 가장 약한 연결 가지치기(weakest-link pruning)라고도 불리며, Breiman과 동료들이 CART 프레임워크에서 도입한 사후 가지치기 방법이다. 조기 종료 대신 큰 나무 $T_{\max}$를 완전히 성장시킨 뒤 복잡도에 페널티를 부여하여 가지치기함으로써, 중첩된 부분 나무들의 열(sequence)을 생성하고 이 중에서 검증을 통해 가장 좋은 것을 선택한다.
 
-### 3.1 The Cost-Complexity Criterion
+### 3.1 비용-복잡도 기준
 
-Let $T$ be a tree with set of leaves $\tilde{T}$ and let $|\tilde{T}|$ denote the number of leaves. Define the resubstitution error $R(T)$ as the total error of $T$ on the training data, for example the misclassification cost or the sum of squared residuals aggregated over leaves. The cost-complexity criterion adds a penalty proportional to the number of leaves,
+나무 $T$의 리프 집합을 $\tilde{T}$라 하고 $|\tilde{T}|$를 리프의 개수로 정의하자. 재대입 오차(resubstitution error) $R(T)$를 훈련 데이터에 대한 $T$의 총 오차로 정의하는데, 예를 들어 오분류 비용(misclassification cost)이나 리프에 걸쳐 집계된 제곱 잔차(squared residuals)의 합이다. 비용-복잡도 기준은 리프의 개수에 비례하는 페널티를 추가한다,
 
 $$
 R_\alpha(T) = R(T) + \alpha\,\lvert \tilde{T} \rvert,
 $$
 
-where $\alpha \ge 0$ is the complexity parameter. The parameter $\alpha$ sets the price of an additional leaf measured in units of training error. When $\alpha = 0$ the unpenalized tree $T_{\max}$ minimizes the criterion, since it has the lowest resubstitution error. As $\alpha$ increases, larger trees are penalized more heavily and the minimizing subtree shrinks. For sufficiently large $\alpha$ the optimal tree is the root alone.
+여기서 $\alpha \ge 0$은 복잡도 모수(complexity parameter)이다. $\alpha$는 훈련 오차의 단위로 측정한 추가 리프 한 개의 가격을 설정한다. $\alpha = 0$일 때는 페널티가 없는 나무 $T_{\max}$가 가장 낮은 재대입 오차를 가지므로 기준을 최소화한다. $\alpha$가 커질수록 더 큰 나무에 더 무거운 페널티가 부과되고, 최소화하는 부분 나무는 작아진다. $\alpha$가 충분히 크면 최적 나무는 루트 노드 혼자 남는다.
 
-### 3.2 The Weakest Link
+### 3.2 가장 약한 연결
 
-The central object is the effective alpha of an internal node. For an internal node $t$, let $T_t$ be the branch rooted at $t$, that is the subtree consisting of $t$ and all its descendants. Compare two options. Keeping the branch contributes error $R(T_t)$ with $\lvert \tilde{T}_t \rvert$ leaves. Collapsing the branch into a single leaf at $t$ contributes error $R(t)$ with one leaf. The two are equally costly under the penalized criterion when
+핵심 대상은 내부 노드 $t$의 유효 알파(effective alpha)이다. 내부 노드 $t$에 대해, $T_t$를 $t$를 루트로 하는 가지(branch), 즉 $t$와 그 모든 자손(descendant)으로 구성된 부분 나무라고 하자. 두 선택지를 비교한다. 가지를 유지하면 $\lvert \tilde{T}_t \rvert$개의 리프로 오차 $R(T_t)$가 발생한다. 가지를 $t$에서 하나의 리프로 축소하면(collapse) 리프 하나로 오차 $R(t)$가 발생한다. 이 두 선택지는 페널티가 부여된 기준 하에서 다음과 같을 때 비용이 동등하다:
 
 $$
 R(t) + \alpha = R(T_t) + \alpha\,\lvert \tilde{T}_t \rvert,
 $$
 
-which solving for $\alpha$ gives the effective penalty
+이를 $\alpha$에 대해 풀면 유효 페널티(effective penalty)를 얻는다:
 
 $$
 \alpha_{\mathrm{eff}}(t) = \frac{R(t) - R(T_t)}{\lvert \tilde{T}_t \rvert - 1}.
 $$
 
-The numerator is the increase in training error caused by collapsing the branch, and the denominator is the number of leaves removed. The node with the smallest $\alpha_{\mathrm{eff}}$ is the weakest link, because it offers the least error increase per leaf saved. As $\alpha$ rises from zero, this node is the first whose branch becomes worth collapsing.
+분자는 가지를 축소함으로써 발생하는 훈련 오차의 증가분이고, 분모는 제거되는 리프의 개수이다. $\alpha_{\mathrm{eff}}$가 가장 작은 노드가 가장 약한 연결(weakest link)인데, 이는 절약된 리프당 오차 증가가 가장 적음을 의미하기 때문이다. $\alpha$가 0에서 증가함에 따라 이 노드의 가지가 처음으로 축소할 가치가 생기게 된다.
 
-### 3.3 The Pruning Sequence
+### 3.3 가지치기 순서
 
-The algorithm proceeds by repeatedly finding the weakest link and pruning it. Begin with $T_{\max}$ and $\alpha = 0$. At each step compute $\alpha_{\mathrm{eff}}(t)$ for every internal node, identify the minimizing node, prune its branch to a leaf, and record the $\alpha$ at which the prune occurred. Repeat on the smaller tree until only the root remains.
+알고리즘은 가장 약한 연결을 반복적으로 찾아 가지치기하는 방식으로 진행된다. $T_{\max}$와 $\alpha = 0$에서 시작한다. 각 단계에서 모든 내부 노드에 대해 $\alpha_{\mathrm{eff}}(t)$를 계산하고, 최소값을 갖는 노드를 찾아 해당 가지를 리프로 축소한 뒤, 가지치기가 발생한 $\alpha$를 기록한다. 루트만 남을 때까지 더 작아진 나무에 대해 이를 반복한다.
 
-This produces a finite, strictly nested sequence of subtrees
+이것은 유한하고 엄격하게 중첩된 부분 나무들의 열을 생성한다
 
 $$
 T_{\max} = T_0 \supset T_1 \supset T_2 \supset \cdots \supset T_m = \{\text{root}\},
@@ -38000,11 +38000,11 @@ $$
 0 = \alpha_0 < \alpha_1 < \alpha_2 < \cdots < \alpha_m.
 $$
 
-Breiman and colleagues proved two facts that make this construction powerful. First, for any value of $\alpha$ there is a unique smallest subtree of $T_{\max}$ that minimizes $R_\alpha$, so the criterion has a well defined solution everywhere. Second, that minimizer is always one of the $T_k$ in the sequence above. Each tree $T_k$ is optimal for the entire interval $\alpha \in [\alpha_k, \alpha_{k+1})$. The continuous one parameter family of optimization problems thus collapses to a small discrete set of candidate trees, which is what makes cost-complexity pruning tractable.
+Breiman과 동료들은 이 구성을 강력하게 만드는 두 가지 사실을 증명했다. 첫째, 임의의 $\alpha$ 값에 대해 $R_\alpha$를 최소화하는 $T_{\max}$의 유일한 최소 부분 나무가 존재하므로, 이 기준은 모든 곳에서 잘 정의된 해를 갖는다. 둘째, 그 최소화 나무는 항상 위의 열에 있는 $T_k$ 중 하나이다. 각 나무 $T_k$는 전체 구간 $\alpha \in [\alpha_k, \alpha_{k+1})$에서 최적이다. 따라서 연속적인 단일 모수 최적화 문제군이 작은 이산적 후보 나무 집합으로 축소되며, 이것이 비용-복잡도 가지치기를 다루기 쉽게(tractable) 만드는 이유다.
 
-### 3.4 A Fully Worked Example
+### 3.4 완전히 풀어쓴 예시
 
-To see the weakest-link sequence emerge concretely, take a small tree $T_{\max}$ grown on $N = 200$ training points. We measure resubstitution error $R$ as the misclassification count, so $R(t)$ for an internal node is the number of points at $t$ not belonging to the majority class there. Suppose the tree has three internal nodes whose branch statistics are as follows.
+가장 약한 연결 열이 실제로 어떻게 나타나는지 보기 위해, $N = 200$개의 훈련 지점에서 성장시킨 작은 나무 $T_{\max}$를 생각해 보자. 재대입 오차 $R$을 오분류 횟수(misclassification count)로 측정하므로, 내부 노드 $t$에 대한 $R(t)$는 $t$에서 다수 클래스(majority class)에 속하지 않는 점의 개수이다. 이 나무에 세 개의 내부 노드가 있고, 각 가지의 통계량이 다음과 같다고 가정하자.
 
 | Node | $R(t)$ collapsed | $R(T_t)$ kept | $\lvert \tilde{T}_t \rvert$ | $\alpha_{\mathrm{eff}}(t)$ |
 |------|-----------------|---------------|------------------------------|----------------------------|
@@ -38012,25 +38012,25 @@ To see the weakest-link sequence emerge concretely, take a small tree $T_{\max}$
 | $B$ | $14$ | $6$ | $3$ | $(14-6)/(3-1) = 4.0$ |
 | $C$ | $9$ | $6$ | $2$ | $(9-6)/(2-1) = 3.0$ |
 
-Each $\alpha_{\mathrm{eff}}$ follows directly from
+각 $\\alpha_{\\mathrm{eff}}$는 다음 식에서 직접 유도된다
 
 $$
 \alpha_{\mathrm{eff}}(t) = \frac{R(t) - R(T_t)}{\lvert \tilde{T}_t \rvert - 1}.
 $$
 
-The weakest link is the node with the smallest effective alpha, here node $C$ at $\alpha_{\mathrm{eff}} = 3.0$. As $\alpha$ rises from zero, $C$ is the first branch whose penalized cost of being kept exceeds its collapsed cost, so $C$ is pruned at $\alpha_1 = 3.0$. After collapsing $C$ the error and leaf counts of any ancestor change, the effective alphas are recomputed, and the next weakest link is pruned. The breakpoints are nondecreasing, $\alpha_1 \le \alpha_2 \le \cdots$, which is exactly the monotone sequence that indexes the nested subtrees.
+가장 약한 연결은 유효 알파가 가장 작은 노드로, 여기서는 $\alpha_{\mathrm{eff}} = 3.0$인 노드 $C$이다. $\alpha$가 0에서 증가함에 따라 $C$는 유지 비용의 페널티가 축소 비용을 처음으로 초과하는 가지이므로, $C$는 $\alpha_1 = 3.0$에서 가지치기된다. $C$를 축소한 뒤에는 모든 조상(ancestor) 노드의 오차와 리프 개수가 바뀌고, 유효 알파가 다시 계산되며, 그다음 가장 약한 연결이 가지치기된다. 분기점(breakpoint)들은 $\alpha_1 \le \alpha_2 \le \cdots$로 비감소(nondecreasing)이며, 이것이 바로 중첩된 부분 나무들을 색인하는 단조 열(monotone sequence)이다.
 
-To check the criterion explicitly at node $C$, the kept branch costs $R_\alpha(T_C) = 6 + 2\alpha$ and the collapsed leaf costs $R_\alpha(C) = 9 + \alpha$. These are equal precisely when $9 + \alpha = 6 + 2\alpha$, that is $\alpha = 3$, confirming the formula. For $\alpha < 3$ the branch is worth keeping; for $\alpha > 3$ collapsing it lowers the penalized objective.
+노드 $C$에서 기준을 명시적으로 확인해 보자. 유지된 가지의 비용은 $R_\alpha(T_C) = 6 + 2\alpha$이고, 축소된 리프의 비용은 $R_\alpha(C) = 9 + \alpha$이다. 이 둘은 정확히 $9 + \alpha = 6 + 2\alpha$일 때, 즉 $\alpha = 3$일 때 같아지므로 공식이 확인된다. $\alpha < 3$이면 가지를 유지할 가치가 있고, $\alpha > 3$이면 가지를 축소하는 쪽이 페널티가 부여된 목적 함수를 낮춘다.
 
-The contrast with naive pruning is instructive. Node $B$ removes three leaves at a cost of eight errors, more total leaves removed than $C$, yet its effective alpha $4.0$ is larger, so it is pruned later. Weakest-link pruning rewards error efficiency per leaf rather than raw branch size, which is the precise sense in which it differs from simply deleting the largest branches. The runnable example in Section 6 reproduces this entire breakpoint sequence on a real dataset and plots the resulting tradeoff.
+순진한 가지치기와의 대비는 교훈적이다. 노드 $B$는 8개의 오차 비용으로 리프 3개를 제거하는데, 이는 $C$보다 제거된 총 리프 수가 더 많지만, 그 유효 알파 $4.0$은 더 크므로 더 나중에 가지치기된다. 가장 약한 연결 가지치기는 단순한 가지 크기가 아니라 리프당 오차 효율성에 보상을 주며, 이것이 단순히 가장 큰 가지들을 삭제하는 방식과 구별되는 정확한 의미이다. 6절의 실행 가능한 예제는 실제 데이터셋에서 이 전체 분기점 열을 재현하고 그 결과로 나타나는 트레이드오프를 그래프로 그린다.
 
-## 4. Minimal Cost-Complexity Tuning
+## 4. 최소 비용-복잡도 튜닝
 
-Generating the pruning sequence is only half the task. We still must choose which $\alpha$, and therefore which subtree, to deploy. This is a model selection problem and is solved by estimating generalization error for each candidate.
+가지치기 열을 생성하는 것은 작업의 절반에 불과하다. 우리는 여전히 어떤 $\alpha$, 즉 어떤 부분 나무를 배포할지 선택해야 한다. 이는 모델 선택 문제이며, 각 후보에 대한 일반화 오차를 추정함으로써 해결된다.
 
-### 4.1 Selecting Alpha by Cross-Validation
+### 4.1 교차 검증을 통한 알파 선택
 
-The standard procedure is $k$ fold cross-validation over the values of $\alpha$. Because the relevant breakpoints differ from fold to fold, one typically defines a grid of $\alpha$ values, often the breakpoints from a tree grown on the full data or a geometric mean of consecutive breakpoints. For each $\alpha$ in the grid and each fold, a tree is grown on the training portion, pruned to the subtree optimal for that $\alpha$, and evaluated on the held out portion. Averaging across folds yields a cross-validated error curve as a function of $\alpha$.
+표준적인 절차는 $\alpha$ 값들에 대해 $k$-겹 교차 검증($k$-fold cross-validation)을 수행하는 것이다. 관련 분기점이 폴드마다 다르기 때문에, 보통 $\alpha$ 값들의 격자(grid)를 정의하는데, 이는 전체 데이터에서 성장시킨 나무의 분기점들이나 연속적 분기점들의 기하평균인 경우가 많다. 격자의 각 $\alpha$와 각 폴드에 대해, 훈련 부분에서 나무를 성장시키고 해당 $\alpha$에 최적인 부분 나무로 가지치기한 뒤, 홀드아웃(held-out) 부분에서 평가한다. 폴드에 걸친 평균은 $\alpha$의 함수로서 교차 검증된 오차 곡선을 제공한다.
 
 ```python
 # Obtain the pruning path, then cross-validate over alpha (illustrative)
@@ -38043,27 +38043,27 @@ scores = [cross_val_score(
 best_alpha = alphas[int(np.argmax(scores))]
 ```
 
-### 4.2 The One Standard Error Rule
+### 4.2 단일 표준 오차 규칙
 
-The minimum of the cross-validated error curve is itself an estimate and carries sampling noise, so picking the exact minimizer can select a tree that is slightly too large. Breiman and colleagues recommended the one standard error rule. Let $\alpha^\star$ minimize the cross-validated error $\mathrm{CV}(\alpha)$ with estimated standard error $\mathrm{SE}(\alpha^\star)$. Choose instead the largest $\alpha$, hence the smallest tree, whose error still satisfies
+교차 검증된 오차 곡선의 최솟값 자체도 하나의 추정치이며 표본 잡음(sampling noise)을 수반하므로, 정확한 최소화점을 고르면 다소 지나치게 큰 나무를 선택할 수 있다. Breiman과 동료들은 단일 표준 오차 규칙(one standard error rule)을 권장했다. $\alpha^\star$가 교차 검증 오차 $\mathrm{CV}(\alpha)$를 최소화하고 추정 표준 오차가 $\mathrm{SE}(\alpha^\star)$라고 하자. 대신 오차가 다음 조건을 여전히 만족하는 가장 큰 $\alpha$, 즉 가장 작은 나무를 선택한다:
 
 $$
 \mathrm{CV}(\alpha) \le \mathrm{CV}(\alpha^\star) + \mathrm{SE}(\alpha^\star).
 $$
 
-This deliberately favors simpler models that are statistically indistinguishable from the best, improving interpretability and robustness at a negligible cost in expected accuracy. It encodes a parsimony preference directly into the selection rule.
+이는 최선 모델과 통계적으로 구별할 수 없는 더 단순한 모델을 의도적으로 선호하여, 기대 정확도의 미미한 비용으로 해석 가능성과 견고성을 개선한다. parsimony 선호도를 선택 규칙에 직접 인코딩하는 셈이다.
 
-### 4.3 Relationship to Regularization
+### 4.3 정규화와의 관계
 
-The cost-complexity criterion $R_\alpha(T) = R(T) + \alpha \lvert \tilde{T} \rvert$ is a regularized objective of exactly the same form as ridge or lasso penalties, a loss term plus a complexity penalty scaled by a tuning parameter. Here the complexity measure is the leaf count, a discrete analog of the parameter norm used for linear models. Increasing $\alpha$ shrinks the model class just as increasing the ridge penalty shrinks coefficients toward zero. Viewing pruning through this lens unifies it with the broader theory of regularization and explains why it controls variance so effectively.
+비용-복잡도 기준 $R_\alpha(T) = R(T) + \alpha \lvert \tilde{T} \rvert$는 정확히 릿지(ridge) 또는 라소(lasso) 패널티와 같은 형태의 정규화된 목적 함수(regularized objective)로, 손실 항에 튜닝 모수로 스케일된 복잡도 패널티가 더해진 꼴이다. 여기서 복잡도 측도는 리프 개수이며, 이는 선형 모델에 사용되는 모수 노름(parameter norm)의 이산적 유사물(analog)이다. $\alpha$를 증가시키면 릿지 패널티를 증가시켜 계수를 0 쪽으로 축소하는 것과 마찬가지로 모델 클래스가 축소된다. 이러한 관점에서 가지치기를 바라보면, 이를 더 넓은 정규화 이론과 통합하고 그것이 분산을 효과적으로 제어하는 이유를 설명할 수 있다.
 
-### 4.4 Practical Guidance
+### 4.4 실무적 지침
 
-Several practical points follow from the theory. First, post-pruning by cost-complexity generally outperforms pre-pruning on a single tree because it avoids the horizon effect, though it costs more to grow the full tree first. Second, pre-pruning and post-pruning are complementary rather than exclusive. Setting a modest `min_samples_leaf` before cost-complexity pruning bounds leaf variance and shrinks $T_{\max}$, which speeds the whole pipeline without harming the final fit. Third, when a tree is one base learner inside a random forest or gradient boosting ensemble, the calculus changes. Ensembles average away the variance of individual trees, so individual trees are deliberately left deep, and regularization shifts to ensemble level controls such as the number of trees, the learning rate, and subsampling. Single tree pruning matters most precisely when interpretability of one tree is the goal.
+이 이론에서 몇 가지 실무적 지침이 도출된다. 첫째, 비용-복잡도에 의한 사후 가지치기는 지평선 효과를 피하기 때문에 단일 나무에서는 일반적으로 사전 가지치기보다 성능이 좋지만, 전체 나무를 먼저 성장시켜야 하므로 비용이 더 든다. 둘째, 사전 가지치기와 사후 가지치기는 상호 배타적이지 않고 상보적이다. 비용-복잡도 가지치기를 적용하기 전에 적절한 `min_samples_leaf`를 설정하면 리프 분산을 제한하고 $T_{\max}$를 축소할 수 있으며, 이는 최종 적합도(fit)를 해치지 않으면서 전체 파이프라인의 속도를 높인다. 셋째, 나무가 랜덤 포레스트(random forest)나 그래디언트 부스팅(gradient boosting) 앙상블 내부의 하나의 기본 학습기(base learner)일 때는 계산 방식이 달라진다. 앙상블은 개별 나무의 분산을 평균화하여 제거하므로, 개별 나무는 의도적으로 깊게 남겨두며, 정규화는 나무의 개수, 학습률(learning rate), 서브샘플링(subsampling) 같은 앙상블 수준의 제어로 이동한다. 단일 나무 가지치기는 한 나무의 해석 가능성(interpretability)이 목표일 때 가장 중요하다.
 
-## 5. The Pruning Pipeline at a Glance
+## 5. 가지치기 파이프라인 한눈에 보기
 
-The diagram below traces the full path from a fully grown tree to a deployed model, separating the offline pruning-sequence construction from the cross-validated selection of the operating point.
+아래 다이어그램은 완전히 성장한 나무에서 배포된 모델까지의 전체 경로를 추적하며, 오프라인 가지치기-순서 구성과 교차 검증을 통한 작동점 선택을 구분한다.
 
 ```{mermaid}
 flowchart TD
@@ -38082,11 +38082,11 @@ flowchart TD
     K --> L[Deploy single interpretable tree]
 ```
 
-The loop on the left is purely combinatorial and runs once. The cross-validation on the right is the statistical step that turns the discrete family of candidate trees into a single defensible choice.
+왼쪽의 루프는 순수한 조합적(combinatorial) 절차로 한 번만 실행된다. 오른쪽의 교차 검증은 후보 나무들의 이산적 군(family)을 단일하고 방어 가능한(defensible) 선택으로 바꾸는 통계적 단계이다.
 
-## 6. Implementation and Verification
+## 6. 구현 및 검증
 
-The following cell is fully executable. It grows an unrestricted tree on a real classification dataset, extracts the cost-complexity pruning path, and plots two diagnostic figures: the number of leaves and effective alpha against the breakpoints, and the train versus test accuracy against the breakpoints. It prints a results table of the pruning sequence, selects $\alpha$ by cross-validation, and uses SymPy to verify the weakest-link indifference equation symbolically. A fixed seed makes every number reproducible.
+다음 셀은 완전히 실행 가능하다. 실제 분류 데이터셋에서 제한 없는 나무를 성장시키고, 비용-복잡도 가지치기 경로를 추출하며, 두 가지 진단 그림(diagnostic figure)을 그린다. 하나는 분기점에 대한 리프 개수와 유효 알파의 그래프이고, 다른 하나는 분기점에 대한 훈련 정확도와 테스트 정확도의 그래프이다. 가지치기 순서의 결과 표를 출력하고, 교차 검증으로 $\alpha$를 선택하며, SymPy를 사용해 가장 약한 연결 무차별 방정식(indifference equation)을 기호적으로(symbolic) 검증한다. 고정된 시드(seed)로 모든 숫자를 재현 가능하게 만든다.
 
 ```{python}
 import numpy as np
@@ -38214,11 +38214,11 @@ fig2.tight_layout()
 plt.show()
 ```
 
-The two figures jointly visualize the regularization story of this chapter. The first shows that increasing $\alpha$ monotonically collapses the tree from many leaves toward the root. The second shows the consequence for generalization: training accuracy is highest for the unpruned tree, but test and cross-validated accuracy peak at an intermediate $\alpha$ and then fall as pruning becomes too aggressive, tracing the U-shaped curve from Section 1.2. The CV-best and one-standard-error selections mark two principled operating points on that curve.
+두 그림은 이 장의 정규화 이야기를 함께 시각화한다. 첫째 그림은 $\alpha$를 증가시키면 나무가 많은 리프에서 루트 쪽으로 단조적으로 축소됨을 보여 준다. 둘째 그림은 일반화에 대한 결과를 보여 준다. 가지치기하지 않은 나무에서 훈련 정확도가 가장 높지만, 테스트 정확도와 교차 검증 정확도는 중간 정도의 $\alpha$에서 정점을 찍고 가지치기가 지나치게 공격적으로 되면 감소하여, 1.2절의 U자형 곡선을 그린다. CV-최선과 단일-표준-오차 선택은 그 곡선 위의 두 원칙적인 작동점(operating point)을 표시한다.
 
-### 6.1 The Same Path in Other Languages
+### 6.1 다른 언어에서의 동일한 경로
 
-The cost-complexity idea is not specific to scikit-learn. The tabset below shows the core path-extraction and pruning step in three ecosystems. The Python tab is the executable reference above in miniature; the Julia and Rust tabs are idiomatic equivalents.
+비용-복잡도 아이디어는 scikit-learn에 국한된 것이 아니다. 아래 탭셋(tabset)은 세 가지 에코시스템에서 핵심 경로 추출 및 가지치기 단계를 보여 준다. Python 탭은 위의 실행 가능한 참조를 축소한 것이며, Julia와 Rust 탭은 각 언어에 관용적인 동등 구현이다.
 
 ::: {.panel-tabset}
 
@@ -38240,32 +38240,33 @@ print(f"chosen alpha = {chosen:.6f}, leaves = {pruned.get_n_leaves()}, "
 ## Julia
 
 ```julia
-# DecisionTree.jl exposes post-pruning via merge_leaves / prune_tree.
+# DecisionTree.jl은 merge_leaves / prune_tree를 통해 사후 가지치기를 exposes한다.
 using DecisionTree
 
 model = DecisionTreeClassifier()           # unrestricted growth
 fit!(model, X_train, y_train)
 
-# Prune leaves whose combined purity exceeds a threshold (analogous knob to alpha).
-# Larger threshold collapses more branches, shrinking the tree.
+# 결합된 순도가 임계값을 초과하는 리프를 가지치기한다 (alpha에 analogous한 knob).
+# 더 큰 임계값은 더 많은 가지를 축소하여 나무를 작게 만든다.
 pruned = prune_tree(model.root.node, 0.9)
 acc = sum(apply_tree(pruned, x) == y for (x, y) in zip(eachrow(X_test), y_test)) /
       length(y_test)
-println("pruned test accuracy = ", round(acc, digits = 4))
+println("가지치기 후 테스트 정확도 = ", round(acc, digits = 4))
 ```
 
 ## Rust
 
 ```rust
-// linfa-trees grows CART-style trees; complexity is controlled at fit time
-// via min_weight_split / min_weight_leaf / max_depth (pre-pruning analogs).
+// linfa-trees는 CART 스타일 트리를 성장시킨다; 복잡도는 fitting 시점에
+// min_weight_split / min_weight_leaf / max_depth를 통해 제어된다
+// (사전 가지치기 analogs).
 use linfa::prelude::*;
 use linfa_trees::DecisionTree;
 
 fn main() {
     let (train, test) = linfa_datasets::iris().split_with_ratio(0.7);
 
-    // Tighter constraints play the role of a larger alpha: a smaller tree.
+    // 더 엄격한 제약 조건은 더 큰 alpha의 역할을 수행한다: 더 작은 나무.
     let model = DecisionTree::params()
         .min_weight_leaf(5.0)
         .max_depth(Some(4))
@@ -38274,15 +38275,15 @@ fn main() {
 
     let pred = model.predict(&test);
     let acc = pred.confusion_matrix(&test).unwrap().accuracy();
-    println!("constrained test accuracy = {acc:.4}");
+    println!("제약된 테스트 정확도 = {acc:.4}");
 }
 ```
 
 :::
 
-## 7. Summary
+## 7. 요약
 
-Decision trees overfit because greedy impurity reduction will partition the data until leaves are pure, yielding low bias and high variance. Pre-pruning combats this by constraining growth through maximum depth, minimum sample counts, and minimum impurity decrease, at the cost of susceptibility to the horizon effect. Cost-complexity pruning grows a full tree and prunes it back by minimizing $R(T) + \alpha \lvert \tilde{T} \rvert$, producing a nested sequence of subtrees indexed by the weakest-link breakpoints. The complexity parameter $\alpha$ is then chosen by cross-validation, often with the one standard error rule, selecting the simplest tree that generalizes well. Understood as a regularized objective, pruning takes its place alongside ridge and lasso as a principled control on the bias variance tradeoff.
+결정 나무는 탐욕적 불순도 감소(greedy impurity reduction)가 리프들이 순수해질 때까지 데이터를 분할하기 때문에 과적합되며, 그 결과 낮은 편향과 높은 분산을 갖게 된다. 사전 가지치기는 최대 깊이, 최소 샘플 수, 최소 불순도 감소를 통해 성장을 제약함으로써 이에 대응하지만, 지평선 효과에 취약하다는 대가를 치른다. 비용-복잡도 가지치기는 완전한 나무를 성장시키고 $R(T) + \alpha \lvert \tilde{T} \rvert$를 최소화하여 가지치기함으로써, 가장 약한 연결 분기점으로 색인된 중첩된 부분 나무 열을 생성한다. 그런 다음 복잡도 모수 $\alpha$를 교차 검증으로 선택하며, 종종 단일 표준 오차 규칙을 사용하여 잘 일반화되는 가장 단순한 나무를 선택한다. 정규화된 목적 함수로 이해하면, 가지치기는 편향-분산 트레이드오프에 대한 원칙적인 제어 수단으로서 릿지 및 라소와 함께 자리를 차지한다.
 
 ## References
 
@@ -38296,39 +38297,39 @@ Decision trees overfit because greedy impurity reduction will partition the data
 
 ---
 
-# Regression Trees
+# 회귀 트리
 
-Decision trees are among the most interpretable tools in supervised learning, and their adaptation to continuous targets, the regression tree, is a foundational building block for the ensemble methods that dominate tabular prediction today. This chapter develops regression trees from first principles. We define the model, derive the splitting criterion from variance and mean squared error, study the piecewise-constant predictor it produces, examine smoothing and regularization, and close with the structural limitations that motivate bagging, random forests, and gradient boosting.
+결정 트리는 지도 학습에서 가장 해석하기 쉬운 도구 중 하나이며, 그 도구를 연속형 목표 변수로 확장한 회귀 트리는 오늘날 테이블형 예측을 지배하는 앙상블 방법의 기초 구성 요소이다. 이 장에서는 회귀 트리를 원리부터 전개한다. 모델을 정의하고, 분산과 평균 제곱 오차로부터 분할 기준을 유도하며, 그것이 생성하는 조각별 상수 예측기(piecewise-constant predictor)를 살펴보고, 평활화(smoothing)와 정규화를 검토한 뒤, 배깅, 랜덤 포레스트, 그래디언트 부스팅을 동기부여하는 구조적 한계로 마무리한다.
 
-## 1. From Classification to Continuous Targets
+## 1. 분류에서 연속 목표로
 
-### 1.1 The supervised regression setup
+### 1.1 지도 회귀 설정
 
-We observe training data $\{(x_i, y_i)\}_{i=1}^{n}$ where each $x_i \in \mathbb{R}^p$ is a feature vector and each $y_i \in \mathbb{R}$ is a continuous response. We seek a function $\hat{f}: \mathbb{R}^p \to \mathbb{R}$ that predicts $y$ from $x$ with low expected error. The standard loss is squared error, so we aim to minimize the risk
+우리는 훈련 데이터 $\{(x_i, y_i)\}_{i=1}^{n}$을 관측하며, 여기서 각 $x_i \in \mathbb{R}^p$는 특성 벡터이고 각 $y_i \in \mathbb{R}$는 연속형 반응 변수이다. 우리는 $x$로부터 $y$를 낮은 기대 오차로 예측하는 함수 $\hat{f}: \mathbb{R}^p \to \mathbb{R}$를 찾는다. 표준 손실 함수는 제곱 오차이므로, 우리는 다음과 같은 위험(risk)을 최소화하는 것을 목표로 한다
 
 $$
 R(f) = \mathbb{E}_{(X,Y)}\left[(Y - f(X))^2\right].
 $$
 
-The minimizer over all measurable functions is the conditional mean $f^{*}(x) = \mathbb{E}[Y \mid X = x]$, the regression function. Every estimator in this chapter can be understood as an attempt to approximate $f^{*}$ from finite data.
+모든 가측 함수 중에서 최소화점은 조건부 평균 $f^{*}(x) = \mathbb{E}[Y \mid X = x]$인 회귀 함수이다. 이 장의 모든 추정량은 유한 데이터로부터 $f^{*}$를 근사하려는 시도로 이해할 수 있다.
 
-### 1.2 What a tree represents
+### 1.2 나무가 나타내는 것
 
-A regression tree approximates $f^{*}$ by partitioning the feature space into $M$ disjoint axis-aligned regions $R_1, \dots, R_M$ and assigning a single constant prediction $c_m$ to each region. The model is
+회귀 트리는 특성 공간을 $M$개의 서로소 축-정렬 영역(disjoint axis-aligned regions) $R_1, \dots, R_M$으로 분할하고 각 영역에 단일 상수 예측 $c_m$을 할당함으로써 $f^{*}$를 근사한다. 모델은 다음과 같다
 
 $$
 \hat{f}(x) = \sum_{m=1}^{M} c_m \, \mathbb{1}\{x \in R_m\}.
 $$
 
-The partition is built by recursive binary splitting. Starting from the full space, the algorithm repeatedly chooses a feature $j$ and a threshold $s$ and divides a region into two children,
+이 분할은 재귀적 이진 분할을 통해 구축된다. 전체 공간에서 시작하여, 알고리즘은 반복적으로 하나의 특성 $j$와 임계값 $s$를 선택하고 하나의 영역을 두 자식 영역으로 나눈다,
 
 $$
 R_{\text{left}}(j, s) = \{x : x_j \le s\}, \qquad R_{\text{right}}(j, s) = \{x : x_j > s\},
 $$
 
-producing the familiar binary tree whose leaves correspond to the regions $R_m$. Because each split conditions on a single feature, the resulting partition cells are axis-aligned hyperrectangles. This is the key structural assumption, and it drives both the strengths and the weaknesses we discuss later.
+이로써 리프가 영역 $R_m$에 대응하는 낯익은 이진 트리가 생성된다. 각 분할이 하나의 특성만 조건으로 삼기 때문에, 결과적인 분할 셀들은 축-정렬 초직사각형(axis-aligned hyperrectangles)이다. 이것이 핵심 구조적 가정이며, 이후에 논의할 강점과 약점을 모두 좌우한다.
 
-The diagram below shows how recursive binary splitting turns the full feature space into a tree of axis-aligned regions, where each internal node tests one feature against one threshold and each leaf emits the mean response of the points it contains.
+아래 다이어그램은 재귀적 이진 분할(recursive binary splitting)이 전체 특성 공간을 축에 정렬된 영역들의 트리로 변환하는 방식을 보여 주며, 각 내부 노드는 하나의 특성을 하나의 임계값과 비교하고 각 리프는 자신이 포함하는 점들의 평균 응답을 배출한다.
 
 ```{mermaid}
 flowchart TD
@@ -38348,77 +38349,77 @@ flowchart TD
 | Leaf R3 | Constant $c_3$ equal to the region mean |
 | Leaf R4 | Constant $c_4$ equal to the region mean |
 
-## 2. The Splitting Criterion: Variance and MSE Reduction
+## 2. 분할 기준: 분산과 MSE 감소
 
-### 2.1 Optimal leaf values under squared error
+### 2.1 제곱 오차 하에서 최적의 리프 값
 
-Suppose a region $R_m$ contains the index set $I_m = \{i : x_i \in R_m\}$ with $n_m = |I_m|$ points. For a fixed partition, the constant $c_m$ that minimizes the within-region squared error solves $\min_{c}\, \phi(c)$ where $\phi(c) = \sum_{i \in I_m}(y_i - c)^2$. Differentiating and setting to zero,
+영역 $R_m$이 $n_m = |I_m|$개의 점을 갖는 인덱스 집합 $I_m = \{i : x_i \in R_m\}$을 포함한다고 하자. 고정된 분할에 대해, 영역 내 제곱 오차를 최소화하는 상수 $c_m$은 $\min_{c}\, \phi(c)$를 풀며, 여기서 $\phi(c) = \sum_{i \in I_m}(y_i - c)^2$이다. 미분하여 0으로 두면,
 
 $$
 \phi'(c) = -2 \sum_{i \in I_m}(y_i - c) = 0 \quad\Longrightarrow\quad \sum_{i \in I_m} y_i = n_m\, c,
 $$
 
-which yields the region mean, and the second derivative $\phi''(c) = 2 n_m > 0$ confirms this stationary point is the unique global minimizer:
+이를 통해 영역 평균을 얻으며, 이계 도함수 $\phi''(c) = 2 n_m > 0$은 이 정류점(stationary point)이 유일한 전역 최소점임을 확인해 준다:
 
 $$
 \hat{c}_m = \bar{y}_{R_m} = \frac{1}{n_m} \sum_{i \in I_m} y_i .
 $$
 
-Equivalently, the bias-variance style identity $\phi(c) = \mathrm{SSE}(R_m) + n_m (c - \bar{y}_{R_m})^2$ shows directly that $\phi$ is a parabola in $c$ centered at the mean, so any departure from $\bar{y}_{R_m}$ strictly increases the cost.
+동등하게, 편향-분산 스타일의 항등식 $\phi(c) = \mathrm{SSE}(R_m) + n_m (c - \bar{y}_{R_m})^2$은 $\phi$가 평균을 중심으로 하는 $c$의 포물선임을 직접적으로 보여 주므로, $\bar{y}_{R_m}$으로부터의 어떠한 이탈도 비용을 엄격하게 증가시킨다.
 
-This is the regression analogue of the majority vote in classification. The minimized within-region cost is the residual sum of squares
+이는 분류에서의 다수결 투표(majority vote)에 대응하는 회귀 버전이다. 최소화되고 난 뒤의 영역 내 비용은 잔차 제곱합(residual sum of squares)이다
 
 $$
 \mathrm{SSE}(R_m) = \sum_{i \in I_m} (y_i - \bar{y}_{R_m})^2 = n_m \cdot \widehat{\mathrm{Var}}(y \mid R_m),
 $$
 
-where $\widehat{\mathrm{Var}}$ is the (biased) sample variance of the responses in the region. The total training cost of a tree is the sum over leaves, $\sum_m \mathrm{SSE}(R_m)$.
+여기서 $\widehat{\mathrm{Var}}$는 해당 영역 내 반응 변수들의 (편향된) 표본 분산이다. 나무의 총 훈련 비용은 리프들에 걸친 합, 즉 $\sum_m \mathrm{SSE}(R_m)$이다.
 
-### 2.2 Choosing a split
+### 2.2 분할 선택
 
-Because the responses are continuous, the impurity of a node is naturally measured by variance rather than by Gini index or entropy. Define the node impurity as the mean squared deviation from the node mean,
+반응 변수가 연속형이므로, 노드의 불순도는 지니 지수(Gini index)나 엔트로피(entropy)보다 분산으로 자연스럽게 측정된다. 노드 불순도를 노드 평균으로부터의 평균 제곱 편차로 정의하자,
 
 $$
 Q(R_m) = \frac{1}{n_m} \sum_{i \in I_m} (y_i - \bar{y}_{R_m})^2 .
 $$
 
-When we split $R_m$ on $(j, s)$ into left and right children with $n_L$ and $n_R$ points, the splitting objective is the weighted child impurity
+$R_m$을 $(j, s)$에서 $n_L$개와 $n_R$개의 점을 갖는 왼쪽 및 오른쪽 자식으로 분할할 때, 분할 목적 함수는 가중 자식 불순도이다
 
 $$
 \mathcal{L}(j, s) = \frac{n_L}{n_m} Q(R_L) + \frac{n_R}{n_m} Q(R_R) .
 $$
 
-The greedy algorithm selects the pair $(j, s)$ that minimizes $\mathcal{L}(j, s)$. Equivalently, because the parent impurity is fixed, it maximizes the impurity decrease, often called the variance reduction,
+탐욕적 알고리즘은 $\mathcal{L}(j, s)$를 최소화하는 쌍 $(j, s)$를 선택한다. 동등하게, 부모 불순도는 고정되어 있으므로, 불순도 감소(impurity decrease)를 최대화하며, 이는 종종 분산 감소(variance reduction)라고 불린다,
 
 $$
 \Delta(j, s) = Q(R_m) - \left[ \frac{n_L}{n_m} Q(R_L) + \frac{n_R}{n_m} Q(R_R) \right].
 $$
 
-### 2.3 Why variance reduction equals SSE reduction
+### 2.3 왜 분산 감소는 SSE 감소와 같은가
 
-There is a clean identity connecting the two views. Writing everything in terms of sums of squared errors, the reduction in total SSE achieved by a split is
+두 관점을 연결하는 깔끔한 항등식이 존재한다. 모든 것을 제곱 오차의 합(sums of squared errors)으로 표현하면, 분할에 의해 달성되는 총 SSE의 감소분은 다음과 같다
 
 $$
 \mathrm{SSE}(R_m) - \mathrm{SSE}(R_L) - \mathrm{SSE}(R_R) = n_m \, \Delta(j, s).
 $$
 
-To see why, expand the parent SSE around the parent mean $\bar{y}_m$ and use the analysis-of-variance decomposition that splits total variation into within-group and between-group parts:
+그 이유를 보려면, 부모 평균 $\bar{y}_m$ 주위에서 부모 SSE를 전개하고, 총 변동을 집단 내(within-group) 부분과 집단 간(between-group) 부분으로 분할하는 분산 분석(analysis-of-variance) 분해를 사용하자:
 
 $$
 \underbrace{\sum_{i \in I_m}(y_i - \bar{y}_m)^2}_{\mathrm{SSE}(R_m)} = \underbrace{\sum_{i \in I_L}(y_i - \bar{y}_L)^2 + \sum_{i \in I_R}(y_i - \bar{y}_R)^2}_{\mathrm{SSE}(R_L) + \mathrm{SSE}(R_R)} + \underbrace{n_L(\bar{y}_L - \bar{y}_m)^2 + n_R(\bar{y}_R - \bar{y}_m)^2}_{\text{between-group SSE} \,\ge\, 0}.
 $$
 
-The cross terms vanish because $\sum_{i \in I_L}(y_i - \bar{y}_L) = 0$ by definition of the group mean, and likewise for the right child. Rearranging, the SSE drop equals the nonnegative between-group term, so every split can only decrease training SSE, and the greedy rule simply picks the split that maximizes the between-group separation $n_L(\bar{y}_L - \bar{y}_m)^2 + n_R(\bar{y}_R - \bar{y}_m)^2$. Using $\bar{y}_m = (n_L \bar{y}_L + n_R \bar{y}_R)/n_m$, this between-group term collapses to the compact two-leaf form
+집단 평균의 정의에 의해 $\sum_{i \in I_L}(y_i - \bar{y}_L) = 0$이므로 교차항(cross terms)은 소거되고, 오른쪽 자식도 마찬가지다. 재배열하면, SSE 감소분은 비음수 집단 간 항과 같으므로, 모든 분할은 훈련 SSE를 감소시킬 수만 있으며, 탐욕적 규칙은 단순히 집단 간 분리 $n_L(\bar{y}_L - \bar{y}_m)^2 + n_R(\bar{y}_R - \bar{y}_m)^2$를 최대화하는 분할을 선택한다. $\bar{y}_m = (n_L \bar{y}_L + n_R \bar{y}_R)/n_m$을 사용하면, 이 집단 간 항은 간결한 두 리프 형태로 축소된다
 
 $$
 n_m \, \Delta(j, s) = \frac{n_L \, n_R}{n_m}\,(\bar{y}_L - \bar{y}_R)^2,
 $$
 
-which makes the driver of a good split explicit: it rewards children whose means are far apart and whose sizes are balanced. Minimizing weighted child variance is therefore identical to greedily minimizing the training mean squared error at each step. This is why regression trees are sometimes described as performing coordinate-wise, threshold-wise, greedy least squares fitting. It also exposes the parallel with the bias-variance decomposition: each split spends model complexity to remove a piece of explainable variance from the residuals.
+이로써 좋은 분할의 동인(driver)이 명확해진다. 즉, 평균이 서로 멀리 떨어져 있고 크기가 균형 잡힌 자식들에게 보상을 준다. 가중 자식 분산을 최소화하는 것은 각 단계에서 탐욕적으로 훈련 평균 제곱 오차를 최소화하는 것과 동일하다. 이것이 회귀 트리가 때때로 좌표별(coordinate-wise), 임계값별(threshold-wise), 탐욕적 최소 제곱 적합(greedy least squares fitting)을 수행한다고 설명되는 이유다. 또한 이는 편향-분산 분해와의 평행을 드러낸다. 즉, 각 분할은 설명 가능한 분산의 한 조각을 잔차로부터 제거하기 위해 모델 복잡도를 소비한다.
 
-### 2.4 Efficient evaluation of candidate splits
+### 2.4 후보 분할의 효율적 평가
 
-For a single feature, the candidate thresholds are the midpoints between consecutive sorted values, so there are at most $n_m - 1$ distinct splits to consider. Sorting the region once and sweeping left to right lets us update the child sums incrementally. Maintaining running counts and sums of $y$ and $y^2$ gives each child variance in constant time per candidate, because
+단일 특성에 대해, 후보 임계값들은 연속된 정렬 값들 사이의 중점(midpoint)들이므로, 고려해야 할 서로 다른 분할은 최대 $n_m - 1$개이다. 한 번 정렬한 영역을 왼쪽에서 오른쪽으로 훑으면(sweep), 자식 합들을 점진적으로 갱신할 수 있다. $y$와 $y^2$의 실행 횟수(running counts)와 실행 합(running sums)을 유지하면 후보당 상수 시간에 각 자식의 분산을 구할 수 있는데, 그 이유는 다음과 같다
 
 $$
 \sum_{i \in I}(y_i - \bar{y}_I)^2 = \sum_{i \in I} y_i^2 - \frac{1}{|I|}\left(\sum_{i \in I} y_i\right)^2 .
@@ -38450,21 +38451,21 @@ def best_split(X, y):
     return best
 ```
 
-## 3. Piecewise-Constant Predictions
+## 3. 조각별 상수 예측
 
-### 3.1 The geometry of the predictor
+### 3.1 예측기의 기하
 
-Because every leaf emits a single value, the fitted function $\hat{f}$ is constant on each hyperrectangle and jumps discontinuously across split boundaries. The prediction surface is a staircase: flat treads separated by sharp risers aligned to the coordinate axes. Three consequences follow directly.
+모든 리프가 단일 값을 배출하므로, 적합된 함수 $\hat{f}$는 각 초직사각형 위에서 상수이며 분할 경계를 가로질러 불연속적으로 점프한다. 예측 표면은 계단(staircase)이다. 즉, 좌표축에 정렬된 가파른 층계(risers)로 분리된 평평한 디딤판(treads)으로 구성된다. 세 가지 결과가 직접적으로 따라온다.
 
-First, $\hat{f}$ is not smooth and not continuous, so it cannot represent a gentle linear trend without using many tiny steps. Second, $\hat{f}$ is invariant to any strictly monotone transformation of an individual feature, since only the ordering of $x_j$ values affects the chosen thresholds. This makes trees robust to feature scaling and to skewed inputs, and removes the need for normalization. Third, the predictor extrapolates as a flat plateau: outside the range of the training data in any direction, the prediction equals the value of the nearest boundary leaf and does not continue any trend.
+첫째, $\hat{f}$는 매끄럽지 않고 연속적이지 않으므로, 매우 작은 여러 단계를 사용하지 않고서는 완만한 선형 경향을 표현할 수 없다. 둘째, $\hat{f}$는 개별 특성의 엄격한 단조 변환(strictly monotone transformation)에 대해 불변인데, 이는 $x_j$ 값들의 순서만이 선택된 임계값에 영향을 미치기 때문이다. 이로 인해 트리는 특성 스케일링과 왜곡된 입력(skewed inputs)에 강건하며, 정규화(normalization)의 필요성을 제거한다. 셋째, 예측기는 평탄한 고원(flat plateau)으로 외삽(extrapolate)한다. 즉, 어떤 방향으로든 훈련 데이터의 범위를 벗어나면 예측값은 가장 가까운 경계 리프의 값과 같으며 어떤 경향도 계속되지 않는다.
 
-### 3.2 A worked one-dimensional example
+### 3.2 1차원 예시
 
-Consider a single feature and a target generated by $y = \sin(x) + \varepsilon$. A depth-two tree can make at most three splits and produce four leaves, so it approximates the sine curve by four horizontal segments. Each segment sits at the mean of the responses whose inputs fall in that interval. As we increase depth, the number of segments grows and the staircase tracks the curve more closely, but it never becomes smooth. The approximation error of a piecewise-constant fit on an interval of width $h$ scales like $O(h)$ for a Lipschitz target, which is why trees need increasingly fine partitions, and therefore increasingly many samples, to resolve smooth structure.
+$y = \sin(x) + \varepsilon$으로 생성된 단일 특성과 목표를 생각해 보자. 깊이 2의 트리는 최대 3회 분할하여 4개의 리프를 만들 수 있으므로, 사인 곡선을 4개의 수평 선분으로 근사한다. 각 선분은 해당 구간에 입력이 속하는 반응들의 평균에 위치한다. 깊이를 증가시키면 선분의 개수가 늘어나고 계단은 곡선을 더 가깝게 추적하지만, 결코 매끄러워지지는 않는다. 폭 $h$의 구간에서 조각별 상수 적합의 근사 오차는 립시츠(Lipschitz) 목표에 대해 $O(h)$ 비율로 스케일되므로, 트리는 매끄러운 구조를 분해(resolve)하기 위해 점점 더 미세한 분할, 따라서 점점 더 많은 표본을 필요로 한다.
 
-### 3.3 Computational walkthrough
+### 3.3 계산 워크스루
 
-The cell below fits regression trees of increasing depth to a noisy one-dimensional signal, plots the staircase predictor at each depth, reports a train and test mean squared error table that exposes the bias-variance trade-off, and uses SymPy to confirm symbolically that the leaf mean minimizes within-region SSE. The implementation is open source throughout: NumPy, pandas, Matplotlib, SymPy, and scikit-learn.
+아래 셀은 잡음이 있는 1차원 신호에 대해 깊이가 증가하는 회귀 트리를 적합하고, 각 깊이에서 계단 예측기를 그래프로 그리며, 편향-분산 트레이드오프를 드러내는 훈련 및 테스트 평균 제곱 오차 표를 보고하고, SymPy를 사용해 리프 평균이 영역 내 SSE를 최소화함을 기호적으로 확인한다. 구현은 전반적으로 오픈 소스이다. NumPy, pandas, Matplotlib, SymPy, scikit-learn을 사용한다.
 
 ::: {.panel-tabset}
 
@@ -38499,7 +38500,7 @@ X_te, y_te = X[te], y[te]
 grid = np.linspace(-3.0, 3.0, 600).reshape(-1, 1)
 depths = [1, 2, 3, 5, 8]
 
-# ---- Figure 1: fits at increasing depth -------------------------------
+# ---- 그림 1: 깊이에 따른 적합 -------------------------------
 fig1, axes = plt.subplots(1, len(depths), figsize=(20, 4), sharey=True)
 records = []
 for ax, d in zip(axes, depths):
@@ -38509,15 +38510,15 @@ for ax, d in zip(axes, depths):
     mse_te = mean_squared_error(y_te, tree.predict(X_te))
     records.append((d, tree.get_n_leaves(), mse_tr, mse_te))
 
-    ax.scatter(x, y, s=8, alpha=0.25, color="gray", label="data")
-    ax.plot(grid, true_f(grid), color="black", lw=1.5, label="true f")
+    ax.scatter(x, y, s=8, alpha=0.25, color="gray", label="데이터")
+    ax.plot(grid, true_f(grid), color="black", lw=1.5, label="참 f")
     ax.plot(grid, tree.predict(grid), color="crimson", lw=2.0,
             label=f"depth {d}")
     ax.set_title(f"max_depth = {d}")
     ax.set_xlabel("x")
     ax.legend(fontsize=7, loc="upper left")
 axes[0].set_ylabel("y")
-fig1.suptitle("Regression tree staircase fit at increasing depth", y=1.03)
+fig1.suptitle("깊이가 증가하는 회귀 트리 계단 적합", y=1.03)
 fig1.tight_layout()
 
 # ---- Results table ----------------------------------------------------
@@ -38525,44 +38526,44 @@ table = pd.DataFrame(records,
                      columns=["depth", "n_leaves", "train_MSE", "test_MSE"])
 table["train_MSE"] = table["train_MSE"].round(4)
 table["test_MSE"] = table["test_MSE"].round(4)
-print("Depth vs train/test MSE (noise variance = 0.09):")
+print("깊이 vs 훈련/테스트 MSE (노이즈 분산 = 0.09):")
 print(table.to_string(index=False))
 
 best = table.loc[table["test_MSE"].idxmin()]
-print(f"\nBest test MSE at depth {int(best['depth'])}: "
-      f"{best['test_MSE']:.4f} with {int(best['n_leaves'])} leaves")
-print(f"Deepest tree train MSE {table['train_MSE'].iloc[-1]:.4f} "
-      f"vs test MSE {table['test_MSE'].iloc[-1]:.4f} "
-      f"(overfitting gap = "
+print(f"\n깊이 {int(best['depth'])}에서 최선의 테스트 MSE: "
+      f"{best['test_MSE']:.4f}, 리프 {int(best['n_leaves'])}개")
+print(f"가장 깊은 나무 훈련 MSE {table['train_MSE'].iloc[-1]:.4f} "
+      f"vs 테스트 MSE {table['test_MSE'].iloc[-1]:.4f} "
+      f"(과적합 간격 = "
       f"{table['test_MSE'].iloc[-1] - table['train_MSE'].iloc[-1]:.4f})")
 
-# ---- Figure 2: bias-variance trade-off curve --------------------------
+# ---- 그림 2: 편향-분산 트레이드오프 곡선 --------------------------
 fig2, ax2 = plt.subplots(figsize=(7, 4.5))
-ax2.plot(table["depth"], table["train_MSE"], "o-", label="train MSE")
-ax2.plot(table["depth"], table["test_MSE"], "s-", label="test MSE")
-ax2.axhline(0.09, ls="--", color="gray", lw=1, label="noise floor 0.09")
+ax2.plot(table["depth"], table["train_MSE"], "o-", label="훈련 MSE")
+ax2.plot(table["depth"], table["test_MSE"], "s-", label="테스트 MSE")
+ax2.axhline(0.09, ls="--", color="gray", lw=1, label="노이즈 바닥 0.09")
 ax2.set_xlabel("max_depth")
 ax2.set_ylabel("MSE")
-ax2.set_title("Train MSE falls monotonically; test MSE is U-shaped")
+ax2.set_title("훈련 MSE는 단조 감소; 테스트 MSE는 U자형")
 ax2.legend()
 fig2.tight_layout()
 
-# ---- SymPy proof: leaf mean minimizes within-region SSE ---------------
+# ---- SymPy 증명: 리프 평균이 영역 내 SSE를 최소화한다 ---------------
 c = sp.symbols("c", real=True)
-yk = sp.symbols("y0:4", real=True)             # four illustrative leaf points
+yk = sp.symbols("y0:4", real=True)             # 예시용 리프 점 4개
 sse = sum((yi - c) ** 2 for yi in yk)
 c_star = sp.solve(sp.diff(sse, c), c)[0]
 ybar = sp.Rational(1, 4) * sum(yk)
-print("\nSymPy check (leaf-mean optimality):")
+print("\nSymPy 확인 (리프 평균 최적성):")
 print("  argmin_c  sum (y_i - c)^2  =", sp.simplify(c_star))
-print("  sample mean of leaf points =", sp.simplify(ybar))
-print("  minimizer equals the mean  :", sp.simplify(c_star - ybar) == 0)
-print("  second derivative d2/dc2    =", sp.diff(sse, c, 2),
-      "(> 0, so it is a minimum)")
+print("  리프 점들의 표본 평균 =", sp.simplify(ybar))
+print("  최소화가 평균과 같음      :", sp.simplify(c_star - ybar) == 0)
+print("  이계 도함수 d2/dc2        =", sp.diff(sse, c, 2),
+      "(> 0, 따라서 최소점이다)")
 
-# Verify exactly the number of figures we created.
-assert plt.gcf().number == 2, "expected 2 figures"
-assert len(plt.get_fignums()) == 2, f"expected 2 figures, got {plt.get_fignums()}"
+# 생성한 그림의 개수를 정확히 검증한다.
+assert plt.gcf().number == 2, "그림 2개가 예상됨"
+assert len(plt.get_fignums()) == 2, f"그림 2개가 예상됨, 실제 {plt.get_fignums()}"
 
 plt.show()
 ```

@@ -8,31 +8,45 @@ book:
   date: "2025-11-11"
   chapters:
     - index.qmd
+    - part: "기초 도구"
+      chapters:
+        - linux_commands/linux_commands.qmd
+        - linear_algebra/linear-algebra-book.qmd
     - part: "파이썬 프로그래밍 및 데이터 관리"
       chapters:
-        - 01_python_programming/PythonMastery.qmd
-        - 01_python_programming/Mastering_Python_for_Bioinformatics.qmd
-        - 01_python_programming/Python_for_Biologists_A_Complete_Programming_Course.qmd
-        - 01_python_programming/Managing_Your_Biological_Data_with_Python.qmd
-        - 01_python_programming/Streamlining_Your_Research_Laboratory_with_Python.qmd
+        - python_programming/PythonMastery.qmd
+        - python_programming/Mastering_Python_for_Bioinformatics.qmd
+        - python_programming/Python_for_Biologists_A_Complete_Programming_Course.qmd
+        - python_programming/Managing_Your_Biological_Data_with_Python.qmd
+        - python_programming/Streamlining_Your_Research_Laboratory_with_Python.qmd
     - part: "서열 분석 및 단백질 정보학"
       chapters:
-        - 02_sequence_protein/Sequence_Analysis_with_Biopython.qmd
-        - 02_sequence_protein/Large_Language_Models_in_Protein_Bioinformatics.qmd
+        - sequence_protein/Sequence_Analysis_with_Biopython.qmd
+        - sequence_protein/Large_Language_Models_in_Protein_Bioinformatics.qmd
     - part: "머신러닝 및 인공지능"
       chapters:
-        - 03_machine_learning_ai/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
+        - machine_learning_ai/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
+    - part: "AI 실제 적용"
+      chapters:
+        - ai_in_action/ai_in_action_complete.qmd
     - part: "생명정보학 실무 및 의학 응용"
       chapters:
-        - 04_applications/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
-        - 04_applications/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
-        - 04_applications/Bioinformatics_and_Drug_Discovery.md
+        - applications/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
+        - applications/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
+        - applications/Bioinformatics_and_Drug_Discovery.md
     - part: "데이터 시각화"
       chapters:
         - dataviz/dataviz.qmd
     - part: "Rust 컴파일러 개발"
       chapters:
         - rust/rustc-dev-guide.qmd
+    - part: "생명정보학: LLMs 및 실무"
+      chapters:
+        - bioinformatics/LLMs_in_bioinformatics.qmd
+        - bioinformatics/practical_bioinformatics.qmd
+    - part: "기타"
+      chapters:
+        - misc/The_simple_guide_to_minimalist.qmd
 
 
 
