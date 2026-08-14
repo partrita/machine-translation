@@ -3675,8 +3675,6 @@ print(new_annotation)
 ('ATOM:CA@RES:ALA@CHAIN:B@NUMRES:166', 3) 
 ```
 
-:::
-
 
 ### 10.1 이 장에서 배울 내용
 
@@ -6903,7 +6901,7 @@ png zinc_finger.png
 
 * Q&A: 스크립트를 어떻게 실행하나요?
 
-먼저 명령들을 텍스트 파일(예: zinc_finger.pml)에 복사하십시오. 둘째, PyMOL을 시작하십시오. 마지막으로 zinc_finger.pml 파일을 둔 디렉토리로 이동하여 File -> Run 옵션을 선택하고 스크립트 파일을 선택하십시오. Windows에서는 파일을 더블 클릭하는 것만으로 충분할 수 있습니다. Linux에서는 PyMOL의 텍스트 콘솔을 사용하여 @/home/your_login/Desktop/zinc_finger.pml 이라고 입력할 수 있습니다(Windows는 폴더 이름이 길고 복잡해서 이 방법이 덜 편합니다). Mac OS X에서는 파일을 둔 디렉토리에서 @zinc_finger.pml 이라고 입력할 수 있습니다.
+먼저 명령들을 텍스트 파일(예: `zinc_finger.pml`)에 복사하십시오. 둘째, PyMOL을 시작하십시오. 마지막으로 `zinc_finger.pml` 파일을 둔 디렉토리로 이동하여 File -> Run 옵션을 선택하고 스크립트 파일을 선택하십시오. Windows에서는 파일을 더블 클릭하는 것만으로 충분할 수 있습니다. Linux에서는 PyMOL의 텍스트 콘솔을 사용하여 `@/home/your_login/Desktop/zinc_finger.pml` 이라고 입력할 수 있습니다(Windows는 폴더 이름이 길고 복잡해서 이 방법이 덜 편합니다). Mac OS X에서는 파일을 둔 디렉토리에서 `@zinc_finger.pml` 이라고 입력할 수 있습니다.
 
 ### 17.3 고해상도 이미지를 생성하는 7단계
 
@@ -6923,7 +6921,9 @@ png zinc_finger.png
 
 PyMOL 텍스트 콘솔이 이해하는 명령들은 스크립트 파일에 저장될 수 있습니다. PyMOL 스크립트는 각 줄에 하나의 명령이 있는 일반 텍스트 파일입니다. 보통 텍스트 파일은 .pml 확장자를 가집니다. 스크립트는 PyMOL의 'File' 메뉴에서 불러오거나 @ 뒤에 파일 이름을 붙여 실행할 수 있습니다.
 
+```bash
 @zinc_finger.pml
+```
 
 PyMOL 스크립트는 항상 .pml 확장자를 가져야 합니다.
 
@@ -11223,6 +11223,7 @@ ls -l
 ```bash
 his[Tab]
 ```
+:::
 
 Return 키를 누르면, 현재 디렉토리의 내용(파일 및 하위 디렉토리)이 상세한(즉, 긴) 목록으로 화면에 표시되는 것을 볼 수 있을 것입니다. 다음 명령도 시도해 보십시오.
 

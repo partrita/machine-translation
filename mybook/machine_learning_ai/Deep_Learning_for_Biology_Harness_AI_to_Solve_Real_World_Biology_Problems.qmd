@@ -1337,17 +1337,31 @@ DNA 또는 ATP(세포에서 에너지를 저장하고 전달하는 분자)에 �
 
 앞서 단백질이 무엇인지, 그리고 단백질의 구조가 아미노산의 선형 사슬에서 국부적인 접힘을 거쳐 기능을 가능하게 하는 최종 3D 형태에 이르기까지 어떻게 계층적으로 조직되는지 논의했습니다. 이를 덜 추상적으로 만들기 위해, py3Dmol 라이브러리를 사용하여 예시 단백질 구조를 불러와 시각화해 보겠습니다:
 
+```python
 import py3Dmol   
 import requests   
-def fetch_protein_structure(pdb_id: str) -> str: ""Grab a PDB protein structure from the RCSB Protein Data Bank."""url $=$ f"https://files.rcsb.org/download/{pdb_id}.pdb"response $\equiv$ requests.get(url) return response.text   
-# Protein Data Bank(PDB)는 단백질 구조의 주요 데이터베이스입니다. # 각 구조는 고유한 4글자 PDB ID를 가집니다. 아래에 몇 가지 예시가 있습니다. protein_to_pdb $=$ { "insulin": "3I40", # 인간 인슐린 - 포도당 흡수를 조절합니다. "collagen": "1BKV", # 인간 콜라겐 - 구조적 지지를 제공합니다. "proteasome": "1YAR", # 고세균 프로테아좀 - 단백질을 분해합니다.   
+def fetch_protein_structure(pdb_id: str) -> str:
+    """Grab a PDB protein structure from the RCSB Protein Data Bank."""
+    url = f"https://files.rcsb.org/download/{pdb_id}.pdb"
+    response = requests.get(url)
+    return response.text   
+
+# Protein Data Bank(PDB)는 단백질 구조의 주요 데이터베이스입니다.
+# 각 구조는 고유한 4글자 PDB ID를 가집니다. 아래에 몇 가지 예시가 있습니다.
+protein_to_pdb = {
+    "insulin": "3I40",      # 인간 인슐린 - 포도당 흡수를 조절합니다.
+    "collagen": "1BKV",     # 인간 콜라겐 - 구조적 지지를 제공합니다.
+    "proteasome": "1YAR",   # 고세균 프로테아좀 - 단백질을 분해합니다.   
 }   
-protein $=$ "collagen" # @param ["insulin", "collagen", "proteasome"] pdb_structure $=$ fetch_protein_structure(pdb_id=protein_to_pdb[protein])   
-pdbview $=$ py3Dmol.view(width=400,height=300)   
-pdbviewemodel(pdb_structure,"pdb")   
+
+protein = "collagen" # @param ["insulin", "collagen", "proteasome"]
+pdb_structure = fetch_protein_structure(pdb_id=protein_to_pdb[protein])   
+pdbview = py3Dmol.view(width=400, height=300)   
+pdbview.addModel(pdb_structure, "pdb")   
 pdbview.setStyle({"cartoon": {"color": "spectrum"}})   
-pdbview zoomTo()   
+pdbview.zoomTo()   
 pdbview.show()
+```
 
 함께 제공되는 Colab 노트북에서 이 코드를 실행하면 선택한 단백질의 대화형 3D 렌더링이 표시됩니다. 콜라겐 시각화의 스크린샷은 그림 2-3에 나와 있습니다.
 
@@ -1654,29 +1668,43 @@ plt.title("Model Probabilities for the Masked Amino Acid");
 
 이 코드를 서열을 마스킹하고, 예측을 수행하고, 예측 결과를 그리는 메서드를 가진 더 일반적인 형태인 `MaskPredictor`로 다시 작성해 보겠습니다:
 
-class MaskPredictor:
-
-"""단백질 언어 모델을 사용하여 마스킹된 아미노산을 예측합니다."""
-
-def __init__(self, tokenizer: PreTrainedTokenizer, model: PreTrainedModel): """토크나이저와 사전 훈련된 모델로 초기화합니다.""" self.tokenizer $=$ tokenizer self.model $=$ model
-
-def plot_predictions(self, sequence: str, mask_index: int) ${ } - > { }$ Figure: """마스킹된 아미노산에 대한 예측 확률을 그립니다.""" mask_probs $=$ self.predict(sequence, mask_index) fig, _ $=$ plt.subplots(figsize=(6, 4)) plt.bar(list(self.tokenizer.get_vocab().keys()), mask_probs, color $=$ "grey") plt.xticks(rotation $= 9 0$ ) plt.title(
-
-"Model Probabilities for the Masked Amino Acid\n" f"at Index $=$ {mask_index} (True Amino Acid $=$ {sequence[mask_index]})." return fig
-
 ```python
-def predict(self, sequence: str, mask_index: int) ->jax.Array:
-    '''"특정 위치에서 마스킹된 아미노산에 대한 모델 확률을 반환합니다."''
-    masked_sequence = selfmasked_sequence(sequence, mask_index)
-    masked_entries = selftokenizer(masked_sequence, return_tensors="pt")
-    model_outputs = self.model(**masked_entries)
-    mask_preds = model_outputs.logits[θ, mask_index + 1].detach().numpy()
-    maskisable =jax.nn softmax_mask_preds)
-    return maskisable 
-```
+class MaskPredictor:
+    """단백질 언어 모델을 사용하여 마스킹된 아미노산을 예측합니다."""
 
-@staticmethod   
-def mask_sequence(sequence: str, mask_index: int) -> str: ""입력 서열의 지정된 인덱스에 마스크 토큰을 삽입합니다.""" if mask_index $<  0$ or mask_index $\rightharpoondown$ len(sequence): raise ValueError("Mask index outside of sequence range.") return f"\{sequence[O:\\mask_index]\} <mask> $\text{串}$ sequence[(mask_index + 1):]]"
+    def __init__(self, tokenizer: PreTrainedTokenizer, model: PreTrainedModel):
+        """토크나이저와 사전 훈련된 모델로 초기화합니다."""
+        self.tokenizer = tokenizer
+        self.model = model
+
+    def plot_predictions(self, sequence: str, mask_index: int) -> Figure:
+        """마스킹된 아미노산에 대한 예측 확률을 그립니다."""
+        mask_probs = self.predict(sequence, mask_index)
+        fig, _ = plt.subplots(figsize=(6, 4))
+        plt.bar(list(self.tokenizer.get_vocab().keys()), mask_probs, color="grey")
+        plt.xticks(rotation=90)
+        plt.title(
+            "Model Probabilities for the Masked Amino Acid\n"
+            f"at Index = {mask_index} (True Amino Acid = {sequence[mask_index]})."
+        )
+        return fig
+
+    def predict(self, sequence: str, mask_index: int) -> jax.Array:
+        """특정 위치에서 마스킹된 아미노산에 대한 모델 확률을 반환합니다."""
+        masked_sequence = self.mask_sequence(sequence, mask_index)
+        masked_entries = self.tokenizer(masked_sequence, return_tensors="pt")
+        model_outputs = self.model(**masked_entries)
+        mask_preds = model_outputs.logits[0, mask_index + 1].detach().numpy()
+        mask_probs = jax.nn.softmax(mask_preds)
+        return mask_probs
+
+    @staticmethod
+    def mask_sequence(sequence: str, mask_index: int) -> str:
+        """입력 서열의 지정된 인덱스에 마스크 토큰을 삽입합니다."""
+        if mask_index < 0 or mask_index >= len(sequence):
+            raise ValueError("Mask index outside of sequence range.")
+        return f"{sequence[:mask_index]} <mask {sequence[(mask_index + 1):]}"
+```
 
 다른 위치인 인덱스 26에서 시도해 보겠습니다. 여기서 실제 아미노산은 N(아스파라긴)입니다. 결과는 그림 2-10에 나와 있습니다:
 
@@ -2350,11 +2378,36 @@ dataset_splits = build_dataset( assets("proteins/datasets/protein_dataset"), mod
 
 모델 코드는 다음과 같습니다:
 
-import flax linen as nn   
-from flax.train ing import train_state   
-class Model(nnModule): ""단백질 기능 예측을 위한 단순 MLP.""" num_targets:int dim:int $= 256$ @nn.compact   
-def__call__(self,x): ""입력 특징에 MLP 레이어를 적용합니다.""" $\mathbf{x} = \mathbf{nn}$ .Sequential( [ nn.Dense(self.dim \*2), jax(nn.gelu, nn.Dense(self.dim), jax(nn.gelu, nn.Dense(self.num_targets), ] )x return x   
-def create_train_state(self,rng:jaxArray,dummy_input,tx)->TrainState: ""모델 파라미터를 초기화하고 훈련 상태를 반환합니다.""" variables $=$ self.init(rng,dummy_input) return TrainState.create( apply_fn $\equiv$ self.apply, params=variables["params"], tx $\equiv$ tx
+```python
+import flax.linen as nn   
+from flax.training import train_state   
+
+class Model(nn.Module):
+    """단백질 기능 예측을 위한 단순 MLP."""
+    num_targets: int
+    dim: int = 256
+
+    @nn.compact
+    def __call__(self, x):
+        """입력 특징에 MLP 레이어를 적용합니다."""
+        x = nn.Sequential([
+            nn.Dense(self.dim * 2),
+            nn.gelu,
+            nn.Dense(self.dim),
+            nn.gelu,
+            nn.Dense(self.num_targets),
+        ])(x)
+        return x
+
+    def create_train_state(self, rng: jax.Array, dummy_input, tx) -> TrainState:
+        """모델 파라미터를 초기화하고 훈련 상태를 반환합니다."""
+        variables = self.init(rng, dummy_input)
+        return TrainState.create(
+            apply_fn=self.apply,
+            params=variables["params"],
+            tx=tx
+        )
+```
 
 이 매우 가벼운 모델에 대한 몇 가지 참고 사항:
 
@@ -2388,12 +2441,20 @@ mlp = Model(num_targets=len(target))
 
 구현 방법은 다음과 같습니다:
 
+```python
 @jax.jit   
-def train_step(state, batch): """단일 훈련 단계를 실행하고 모델 파라미터를 업데이트합니다."""   
-def calculate_loss.params): """로짓으로부터 시그모이드 교차 엔트로피 손실을 계산합니다."""" logits $=$ state.apply_fn({"params": params},x $\equiv$ batch["embedding"]） loss $=$ optax.sigmoid_binary CROSS_entropy(logits,batch["target ]).mean() return loss   
-grad_fn $=$ jax.value_and_grad(calculat_loss,has(aux $\coloneqq$ False) loss, grads $=$ grad_fn(state.params)   
-state $=$ state.apply_gradients(gra $\coloneqq$ grads)   
-return state,loss
+def train_step(state, batch):
+    """단일 훈련 단계를 실행하고 모델 파라미터를 업데이트합니다."""   
+    def calculate_loss(params):
+        """로짓으로부터 시그모이드 교차 엔트로피 손실을 계산합니다."""
+        logits = state.apply_fn({"params": params}, x=batch["embedding"])
+        loss = optax.sigmoid_binary_cross_entropy(logits, batch["target"]).mean()
+        return loss   
+    grad_fn = jax.value_and_grad(calculate_loss, has_aux=False)
+    loss, grads = grad_fn(state.params)   
+    state = state.apply_gradients(grads=grads)   
+    return state, loss
+```
 
 ### 이 설정에서:
 
@@ -2402,8 +2463,22 @@ return state,loss
 
 다음으로, `sklearn`의 도구들을 사용하여 손실 외에 모델이 얼마나 잘 수행되고 있는지 평가하기 위한 몇 가지 지표(Metric)를 구현해 보겠습니다:
 
-import sklearn   
-def compute.metrics( targets: np.ndarray,probs: np.ndarray,thresh $= 0.5$ ） $\rightharpoondown$ dict[str,float]: """정확도, 재현율, 정밀도, auPRC 및 auROC를 계산합니다.""" if np.sum(target) $= = 0$ return{ m:0.0 for m in ["accuracy","recall","precision","auprc","auroc"] } return{ "accuracy":metrics.accuracy_score(target,probs $> =$ thresh), "recall": metricsrecall_score(target,probs $> =$ thresh).item(), "precision": metrics.accuracy_score( targets, probes $> =$ thresh, zero_division $= 0.0$ 1).item(), "auprc": metrics_average_precision_score(target,probs).item(), "auroc": metrics.roc_auc_score(target,probs).item(),
+```python
+import sklearn.metrics as metrics
+import numpy as np
+
+def compute_metrics(targets: np.ndarray, probs: np.ndarray, thresh: float = 0.5) -> dict[str, float]:
+    """정확도, 재현율, 정밀도, auPRC 및 auROC를 계산합니다."""
+    if np.sum(targets) == 0:
+        return {m: 0.0 for m in ["accuracy", "recall", "precision", "auprc", "auroc"]}
+    return {
+        "accuracy": metrics.accuracy_score(targets, probs >= thresh),
+        "recall": metrics.recall_score(targets, probs >= thresh).item(),
+        "precision": metrics.precision_score(targets, probs >= thresh, zero_division=0.0).item(),
+        "auprc": metrics.average_precision_score(targets, probs).item(),
+        "auroc": metrics.roc_auc_score(targets, probs).item(),
+    }
+```
 
 각 기능 레이블에 대해 다음 평가 지표들을 추적할 것입니다:
 
