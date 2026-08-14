@@ -19,10 +19,11 @@ book:
         - python_programming/Python_for_Biologists_A_Complete_Programming_Course.qmd
         - python_programming/Managing_Your_Biological_Data_with_Python.qmd
         - python_programming/Streamlining_Your_Research_Laboratory_with_Python.qmd
-    - part: "서열 분석 및 단백질 정보학"
+    - part: "생명정보학 및 단백질 정보학"
       chapters:
-        - sequence_protein/Sequence_Analysis_with_Biopython.qmd
-        - sequence_protein/Large_Language_Models_in_Protein_Bioinformatics.qmd
+        - bioinformatics/Sequence_Analysis_with_Biopython.qmd
+        - bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
+        - bioinformatics/practical_bioinformatics.qmd
     - part: "머신러닝 및 인공지능"
       chapters:
         - machine_learning_ai/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
@@ -40,10 +41,6 @@ book:
     - part: "Rust 컴파일러 개발"
       chapters:
         - rust/rustc-dev-guide.qmd
-    - part: "생명정보학: LLMs 및 실무"
-      chapters:
-        - bioinformatics/LLMs_in_bioinformatics.qmd
-        - bioinformatics/practical_bioinformatics.qmd
     - part: "기타"
       chapters:
         - misc/The_simple_guide_to_minimalist.qmd
