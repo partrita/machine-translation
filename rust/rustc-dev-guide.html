@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3dac5e246fdd9bdc5e35d09ab9b42ca8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f265b87640d31df99b0219922ff83384.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -660,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#git-blame-시-특정-커밋-무시하기" id="toc-git-blame-시-특정-커밋-무시하기" class="nav-link" data-scroll-target="#git-blame-시-특정-커밋-무시하기"><span class="header-section-number">22.3.9</span> <code>git blame</code> 시 특정 커밋 무시하기</a></li>
   </ul></li>
-  <li><a href="#rustbot" id="toc-rustbot" class="nav-link" data-scroll-target="#rustbot"><span class="header-section-number">22.4</span> <span class="citation" data-cites="rustbot">(<strong>rustbot?</strong>)</span> 정복하기</a>
+  <li><a href="#rustbot" id="toc-rustbot" class="nav-link" data-scroll-target="#rustbot"><span class="header-section-number">22.4</span> <code>@rustbot</code> 정복하기</a>
   <ul class="collapse">
   <li><a href="#이슈-담당자-지정-issue-claiming" id="toc-이슈-담당자-지정-issue-claiming" class="nav-link" data-scroll-target="#이슈-담당자-지정-issue-claiming"><span class="header-section-number">22.4.1</span> 이슈 담당자 지정 (Issue claiming)</a></li>
   <li><a href="#issue-relabeling" id="toc-issue-relabeling" class="nav-link" data-scroll-target="#issue-relabeling"><span class="header-section-number">22.4.2</span> Issue relabeling</a></li>
@@ -677,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#implementing-new-features" id="toc-implementing-new-features" class="nav-link" data-scroll-target="#implementing-new-features"><span class="header-section-number">22.6</span> 신규 언어 기능 구현하기</a>
   <ul class="collapse">
-  <li><a href="#rfcbot-fcp-절차" id="toc-rfcbot-fcp-절차" class="nav-link" data-scroll-target="#rfcbot-fcp-절차"><span class="header-section-number">22.6.1</span> <span class="citation" data-cites="rfcbot">(<strong>rfcbot?</strong>)</span> FCP 절차</a></li>
+  <li><a href="#rfcbot-fcp-절차" id="toc-rfcbot-fcp-절차" class="nav-link" data-scroll-target="#rfcbot-fcp-절차"><span class="header-section-number">22.6.1</span> <code>@rfcbot</code> FCP 절차</a></li>
   <li><a href="#기능-구현의-구체적-절차-the-logistics-of-writing-features" id="toc-기능-구현의-구체적-절차-the-logistics-of-writing-features" class="nav-link" data-scroll-target="#기능-구현의-구체적-절차-the-logistics-of-writing-features"><span class="header-section-number">22.6.2</span> 기능 구현의 구체적 절차 (The logistics of writing features)</a>
   <ul class="collapse">
   <li><a href="#경고-주기-warning-cycles" id="toc-경고-주기-warning-cycles" class="nav-link" data-scroll-target="#경고-주기-warning-cycles"><span class="header-section-number">22.6.2.1</span> 경고 주기 (Warning Cycles)</a></li>
@@ -1952,7 +1952,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="전문가-찾기" class="level3" data-number="19.1.1">
 <h3 data-number="19.1.1" class="anchored" data-anchor-id="전문가-찾기"><span class="header-section-number">19.1.1</span> 전문가 찾기</h3>
 <p><code>rustc</code>는 규모가 매우 큰 프로젝트이므로 <code>t-compiler</code> 팀원이라고 해서 컴파일러의 모든 부분을 전부 잘 아는 것은 아닙니다. 컴파일러의 특정 부문에 대한 전문가를 찾고 싶다면 <a href="https://github.com/rust-lang/rust/blob/HEAD/triagebot.toml"><code>triagebot</code> 할당 그룹 목록</a>을 확인해 보세요. <code>triagebot.toml</code> 파일에서 <code>[assign*</code>으로 시작하는 섹션을 참고하시면 됩니다. 적절한 멘션을 찾기 어렵더라도 주저하지 말고 자유롭게 질문해 주시기 바랍니다.</p>
-<p>특정 영역의 담당자를 찾는 또 다른 방법은 최근 해당 코드에 커밋을 남긴 기여자를 확인하는 것입니다. 예를 들어 1.68.2 버전 이후 이름 분석(name resolution) 파트를 다룬 기여자를 찾으려면 <code>git shortlog -n 1.68.2.. compiler/rustc_resolve/</code> 명령을 실행해 볼 수 있습니다. (“Rollup merge”로 시작하는 커밋이나 <code>@bors</code>가 남긴 커밋은 제외하세요.)</p>
+<p>특정 영역의 담당자를 찾는 또 다른 방법은 최근 해당 코드에 커밋을 남긴 기여자를 확인하는 것입니다. 예를 들어 1.68.2 버전 이후 이름 분석(name resolution) 파트를 다룬 기여자를 찾으려면 <code>git shortlog -n 1.68.2.. compiler/rustc_resolve/</code> 명령을 실행해 볼 수 있습니다. (“Rollup merge”로 시작하는 커밋이나 <code>bors</code>가 남긴 커밋은 제외하세요.)</p>
 </section>
 <section id="에티켓" class="level3" data-number="19.1.2">
 <h3 data-number="19.1.2" class="anchored" data-anchor-id="에티켓"><span class="header-section-number">19.1.2</span> 에티켓</h3>
@@ -2065,21 +2065,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>현재 읽고 계신 이 가이드는 컴파일러의 작동 원리와 기여 방법에 대한 정보를 담고 있습니다.</p>
 <p>추가로 다음 사이트들도 개발에 큰 도움이 됩니다.</p>
 <ul>
-<li>[rustc API 문서] – 컴파일러, 내부 도구 및 툴링에 대한 rustdoc API 명세서</li>
-<li>[Forge] – Rust 인프라, 팀 운영 절차 등에 대한 가이드</li>
-<li>[compiler-team] – Rust 컴파일러 팀의 홈베이스 (팀 절차, 활성 작업 그룹 및 일정 안내)</li>
-<li>[std-dev-guide] – 표준 라이브러리 개발을 위한 개발 가이드</li>
-<li>[rust-analyzer book] – rust-analyzer 관련 문서</li>
-<li>[t-compiler Zulip 채널][z]</li>
+<li><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle">rustc API 문서</a> – 컴파일러, 내부 도구 및 툴링에 대한 rustdoc API 명세서</li>
+<li><a href="https://forge.rust-lang.org/">Forge</a> – Rust 인프라, 팀 운영 절차 등에 대한 가이드</li>
+<li><a href="https://github.com/rust-lang/compiler-team/">compiler-team</a> – Rust 컴파일러 팀의 홈베이스 (팀 절차, 활성 작업 그룹 및 일정 안내)</li>
+<li><a href="https://std-dev-guide.rust-lang.org/">std-dev-guide</a> – 표준 라이브러리 개발을 위한 개발 가이드</li>
+<li><a href="https://rust-analyzer.github.io/book/">rust-analyzer book</a> – rust-analyzer 관련 문서</li>
+<li><a href="https://rust-lang.zulipchat.com/#narrow/stream/131828-t-compiler">t-compiler Zulip 채널</a></li>
 <li><a href="http://internals.rust-lang.org">Rust Internals 포럼</a>: Rust 내부 구조에 대해 질문하고 논의하는 커뮤니티 공간</li>
 <li><a href="https://doc.rust-lang.org/reference/">Rust 레퍼런스</a>: 컴파일러 내부를 다루지는 않지만 언어 명세를 파악하기 위한 훌륭한 참조 자료</li>
 <li><a href="https://tomlee.co/2014/04/a-more-detailed-tour-of-the-rust-compiler/">Tom Lee의 블로그 아티클</a>: 다소 이전 자료이지만 컴파일러 구조 이해에 매우 유용한 글</li>
 <li><a href="#tests-intro">Rust 컴파일러 테스트 문서</a></li>
-<li><a href="https://bors.rust-lang.org/help"><span class="citation" data-cites="bors">(<span><strong>bors?</strong></span>)</span> 치트시트</a>: 자동 통합 도구인 bors 사용을 위한 안내서</li>
+<li><a href="https://bors.rust-lang.org/help">bors 치트시트</a>: 자동 통합 도구인 bors 사용을 위한 안내서</li>
 <li>구글 검색: <a href="https://www.google.com/search?q=site:doc.rust-lang.org+your+query+here">모든 Rust 공식 문서 통합 검색</a> (표준 라이브러리, 컴파일러, 가이드북 등)</li>
 <li>Rustdoc 자체 검색: 타입 구조체나 함수 이름을 직접 검색할 수 있으며, 타입 시그니처 검색(예: <code>* -&gt; vec</code>)도 지원합니다. (Rustdoc 페이지에서 <code>?</code>를 누르면 팁을 볼 수 있습니다!)</li>
 </ul>
-<p><span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>: https://github.com/rust-lang/bors [a GitHub repository]: https://github.com/rust-lang/rustc-dev-guide/ [rustc API 문서]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle [Forge]: https://forge.rust-lang.org/ [compiler-team]: https://github.com/rust-lang/compiler-team/ [std-dev-guide]: https://std-dev-guide.rust-lang.org/ [rust-analyzer book]: https://rust-analyzer.github.io/book/ [z]: https://rust-lang.zulipchat.com/#narrow/stream/131828-t-compiler</p>
 </section>
 </section>
 <section id="rustc-빌드-및-디버깅" class="level1" data-number="21">
@@ -3823,7 +3822,7 @@ fn main() {}</code></pre>
 <li>테스트 출력 대상 기본 빌드 디렉터리는 <code>$TEST_BUILD_DIR</code>로 대체됩니다. 예: <code>/path/to/rust/build/x86_64-unknown-linux-gnu/test/ui</code></li>
 <li>실측 표준 라이브러리 경로는 <code>$SRC_DIR_REAL</code>, 컴파일러 소스 경로는 <code>$COMPILER_DIR_REAL</code>로 대체됩니다.</li>
 <li>탭 문자는 <code>\t</code>로 대체됩니다.</li>
-<li>경로 내부의 백슬래시(<code>\</code>)는 휴리스틱에 의해 슬래시(<code>/</code>)로 변환되어 Windows 경로 스타일과의 차이를 통일합니다.</li>
+<li>경로 내부의 백슬래시(<code>)는 휴리스틱에 의해 슬래시(</code>/`)로 변환되어 Windows 경로 스타일과의 차이를 통일합니다.</li>
 <li>CRLF 개행은 LF 개행으로 변환됩니다.</li>
 <li><code>//~ ERROR some message</code> 형태의 에러 라인 주석은 제거됩니다.</li>
 <li>다양한 v0 및 레거시 심볼 해시는 <code>[HASH]</code> 또는 <code>&lt;SYMBOL_HASH&gt;</code> 형태의 자리표시자로 대체됩니다.</li>
@@ -4493,7 +4492,7 @@ fn main() {
 <li><code>needs-crate-type</code> — 쉼표로 구분된 지정 크레이트 타입 중 하나 이상을 타겟 플랫폼이 지원하지 않는 경우 무시합니다 (예: <code>//@ needs-crate-type: cdylib, proc-macro</code> 설정 시 <code>proc-macro</code>를 지원하지 않는 <code>wasm32-unknown-unknown</code> 타겟에서 무시됨).</li>
 <li><code>needs-target-std</code> — 타겟 플랫폼에 std 지원이 없는 경우 무시합니다.
 <ul>
-<li><a href="./compiletest.md#codegen-tests">codegen 테스트에서의 <code>#![no_std]</code>/<code>#![no_core]</code> 및 암묵적 <code>needs-target-std</code></a> 항목도 함께 참조하세요.</li>
+<li><a href="#codegen-tests">codegen 테스트에서의 <code>#![no_std]</code>/<code>#![no_core]</code> 및 암묵적 <code>needs-target-std</code></a> 항목도 함께 참조하세요.</li>
 </ul></li>
 <li><code>ignore-backends</code> — 공백으로 구분하여 명시된 codegen 백엔드들을 무시합니다. 커맨드라인 플래그 <code>--bypass-ignore-backends=[BACKEND]</code>로 오버라이드할 수 있습니다.</li>
 <li><code>needs-backends</code> — 현재 codegen 백엔드가 목록에 지정되어 있는 경우에만 테스트를 구동합니다.</li>
@@ -5119,7 +5118,7 @@ rustc_binary("example") {
 <section id="작업-실행-방법" class="level4" data-number="21.1.22.2">
 <h4 data-number="21.1.22.2" class="anchored" data-anchor-id="작업-실행-방법"><span class="header-section-number">21.1.22.2</span> 작업 실행 방법</h4>
 <p>try 빌드에서 작업을 실행하려면 PR에 다음 댓글을 남기세요:</p>
-<pre class="text"><code>@bors try jobs=optional-x86_64-gnu-autodiff</code></pre>
+<pre class="text"><code>`@bors try jobs=optional-x86_64-gnu-autodiff</code></pre>
 <p>로컬 환경에서 실행하려면 Rust 체크아웃 루트에서 다음 명령어를 실행합니다:</p>
 <pre class="console"><code>$ cargo run --manifest-path src/ci/citool/Cargo.toml run-local optional-x86_64-gnu-autodiff</code></pre>
 <p>CI 작업을 로컬에서 실행하는 법은 <a href="#tests-docker">Docker로 테스트하기</a> 섹션을 참조하세요.</p>
@@ -6098,10 +6097,10 @@ rust.codegen-units = 0  # num_cpus</code></pre>
 </section>
 <section id="r-리뷰어-지정" class="level4" data-number="22.1.4.2">
 <h4 data-number="22.1.4.2" class="anchored" data-anchor-id="r-리뷰어-지정"><span class="header-section-number">22.1.4.2</span> r? (리뷰어 지정)</h4>
-<p>모든 풀 리퀘스트는 다른 담당자의 검토를 거칩니다. 자동 봇인 <span class="citation" data-cites="rustbot">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rustbot" role="doc-biblioref"><strong>rustbot?</strong></a>)</span>이 수정된 파일 경로에 기초하여 무작위로 리뷰 담당자를 지정해 줍니다.</p>
-<p>특정인에게 리뷰를 직접 요청하려는 경우 PR 설명란이나 댓글에 <code>r?</code>을 추가할 수 있습니다. 예를 들어 <span class="citation" data-cites="awesome-reviewer에게">(<a href="../ai_in_action/ai_in_action_complete.html#ref-awesome-reviewer에게" role="doc-biblioref"><strong>awesome-reviewer에게?</strong></a>)</span> 리뷰를 요청하려면 다음과 같이 기재합니다: add the following to the end of the pull request description:</p>
-<pre><code>r? @awesome-reviewer</code></pre>
-<p>이 구문을 추가하면 <span class="citation" data-cites="rustbot">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rustbot" role="doc-biblioref"><strong>rustbot?</strong></a>)</span>이 무작위 리뷰어 대신 지정된 사람에게 PR을 할당합니다. 이는 완전히 선택사항입니다.</p>
+<p>모든 풀 리퀘스트는 다른 담당자의 검토를 거칩니다. 자동 봇인 <a href="https://github.com/rust-lang/triagebot/">rustbot</a>이 수정된 파일 경로에 기초하여 무작위로 리뷰 담당자를 지정해 줍니다.</p>
+<p>특정인에게 리뷰를 직접 요청하려는 경우 PR 설명란이나 댓글에 <code>r?</code>을 추가할 수 있습니다. 예를 들어 <code>@awesome-reviewer</code>에게 리뷰를 요청하려면 다음과 같이 기재합니다: add the following to the end of the pull request description:</p>
+<pre><code>r? `@awesome-reviewer`</code></pre>
+<p>이 구문을 추가하면 <a href="https://github.com/rust-lang/triagebot/">rustbot</a>이 무작위 리뷰어 대신 지정된 사람에게 PR을 할당합니다. 이는 완전히 선택사항입니다.</p>
 <p><code>r? rust-lang/groupname</code> 구문을 작성하여 특정 팀에서 무작위로 리뷰어를 지정받을 수도 있습니다. 예를 들어 진단 메시지 변경 작업을 진행 중이라면 다음과 같이 진단 팀의 리뷰어를 지정받을 수 있습니다:</p>
 <pre><code>r? rust-lang/diagnostics</code></pre>
 <p>지정 가능한 전체 <code>groupname</code> 목록은 [triagebot.toml 설정 파일]의 <code>adhoc_groups</code> 섹션이나 [rust-lang 팀 데이터베이스]의 팀 목록에서 확인할 수 있습니다.</p>
@@ -6129,13 +6128,12 @@ rust.codegen-units = 0  # num_cpus</code></pre>
 <section id="r-승인-및-머지" class="level4" data-number="22.1.4.5">
 <h4 data-number="22.1.4.5" class="anchored" data-anchor-id="r-승인-및-머지"><span class="header-section-number">22.1.4.5</span> r+ (승인 및 머지)</h4>
 <p>리뷰어가 풀 리퀘스트 검토를 완료하면 PR에 <code>r+</code> 주석을 추가합니다. 형태는 다음과 같습니다:</p>
-<pre><code>@bors r+</code></pre>
-<p>이 주석은 통합 봇인 <span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>에게 해당 PR이 최종 승인되었음을 알립니다. 이후 PR은 머지 대기열(<a href="https://bors.rust-lang.org/queue/rust">merge queue</a>)에 진입하며 <span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>가 지원하는 모든 플랫폼에서 <em>전체</em> 테스트 수트를 실행합니다. 모든 플랫폼 테스트를 통과하면 <span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>가 코드를 <code>main</code> 브랜치로 자동 머지하고 PR을 닫습니다.</p>
+<pre><code>`@bors` r+</code></pre>
+<p>이 주석은 통합 봇인 <a href="https://github.com/rust-lang/bors">bors</a>에게 해당 PR이 최종 승인되었음을 알립니다. 이후 PR은 머지 대기열(<a href="https://bors.rust-lang.org/queue/rust">merge queue</a>)에 진입하며 <a href="https://github.com/rust-lang/bors">bors</a>가 지원하는 모든 플랫폼에서 <em>전체</em> 테스트 수트를 실행합니다. 모든 플랫폼 테스트를 통과하면 <a href="https://github.com/rust-lang/bors">bors</a>가 코드를 <code>main</code> 브랜치로 자동 머지하고 PR을 닫습니다.</p>
 <p>변경 규모에 따라 다음과 같이 약간 다른 형식의 <code>r+</code>가 사용될 수 있습니다:</p>
-<pre><code>@bors r+ rollup</code></pre>
-<p><code>rollup</code> 접미사는 <span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>에게 이 변경을 항상 다른 PR들과 “묶어서(rolled up)” 통합하도록 지시합니다. 롤업된 변경사항은 프로세스 속도를 높이기 위해 다른 PR들과 함께 번들로 테스트 및 머지됩니다. 보통 서로 충돌을 일으키지 않는 소규모 변경에 한해 “always roll up” 설정이 적용됩니다.</p>
+<pre><code>`@bors` r+ rollup</code></pre>
+<p><code>rollup</code> 접미사는 <a href="https://github.com/rust-lang/bors">bors</a>에게 이 변경을 항상 다른 PR들과 “묶어서(rolled up)” 통합하도록 지시합니다. 롤업된 변경사항은 프로세스 속도를 높이기 위해 다른 PR들과 함께 번들로 테스트 및 머지됩니다. 보통 서로 충돌을 일으키지 않는 소규모 변경에 한해 “always roll up” 설정이 적용됩니다.</p>
 <p>머지 대기열이 길어지면 처리에 시간이 소요될 수 있으므로 여유 있게 기다려 주세요. 참고로 PR 코드는 절대로 사람이 직접 수동 머지하지 않습니다.</p>
-<p><span class="citation" data-cites="rustbot">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rustbot" role="doc-biblioref"><strong>rustbot?</strong></a>)</span>: https://github.com/rustbot <span class="citation" data-cites="bors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-bors" role="doc-biblioref"><strong>bors?</strong></a>)</span>: https://github.com/rust-lang/bors</p>
 </section>
 <section id="pr-제출하기" class="level4" data-number="22.1.4.6">
 <h4 data-number="22.1.4.6" class="anchored" data-anchor-id="pr-제출하기"><span class="header-section-number">22.1.4.6</span> PR 제출하기</h4>
@@ -6145,10 +6143,10 @@ rust.codegen-units = 0  # num_cpus</code></pre>
 <pre><code>./x test tidy --bless</code></pre>
 <p>매 PR 제출 전(및 PR 내의 매 신규 커밋 전)에 이 검사를 실행하는 것을 권장합니다. git 커밋 전 자동 실행되도록 <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">git hooks</a>를 설정할 수도 있습니다. CI에서도 tidy를 실행하며 통과하지 못하면 빌드가 실패합니다.</p>
 <p>Rust는 _병합 커밋 미사용 정책(no merge-commit policy)_을 따릅니다. 즉 머지 충돌이 발생할 경우 merge 커밋을 생성하지 말고 항상 리베이스(rebase)를 수행해야 합니다. 예를 들어 <code>main</code> 브랜치의 최신 변경사항을 기능 브랜치로 가져올 때 항상 rebase를 사용하세요. PR에 병합 커밋이 포함되어 있으면 <code>has-merge-commits</code> 라벨이 지정됩니다. 인터랙티브 리베이스 등을 통해 병합 커밋을 제거한 후에는 라벨을 다시 제거해야 합니다:</p>
-<pre><code>@rustbot label -has-merge-commits</code></pre>
+<pre><code>`@rustbot` label -has-merge-commits</code></pre>
 <p>상세한 내용은 <a href="https://forge.rust-lang.org/release/issue-triaging.html#applying-and-removing-labels">해당 챕터</a>를 참조하세요.</p>
 <p>머지 충돌이 발생하거나 리뷰어가 수정을 요청하면 PR 상태가 <code>S-waiting-on-author</code>로 변경됩니다. 수정을 완료한 후에는 <code>@rustbot</code>을 사용하여 리뷰 대기 상태(<code>S-waiting-on-review</code>)로 다시 전환해야 합니다:</p>
-<pre><code>@rustbot ready</code></pre>
+<pre><code>`@rustbot` ready</code></pre>
 <p>GitHub은 <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue">키워드를 통한 이슈 자동 닫기</a> 기능을 제공합니다. 이 기능은 이슈 트래커를 깔끔하게 관리하는 데 유용하지만, “closes #123” 텍스트는 커밋 메시지보다는 PR 설명란에 적는 것이 일반적으로 선호됩니다. 특히 리베이스 중에 커밋 메시지에 이슈 번호를 언급하면 해당 이슈에 과도한 알림(“스팸”)이 발생할 수 있습니다.</p>
 <p>하지만 제출한 PR이 stable-to-beta 또는 stable-to-stable 회귀 버그를 수정하는 건이고, 베타 및/또는 안정판 백포트 승인을 받은 상태라면(<code>beta-accepted</code> 및/또는 <code>stable-accepted</code> 라벨 표시), <code>main</code>에 수정을 머지할 때 연관 이슈가 자동 닫히지 않도록 이슈 자동 닫기 키워드를 <em>사용하지 마세요</em>. 이슈 번호는 PR 설명란의 다른 위치에 언급해 주세요. 예를 들어 <code>Fixes (after beta backport) #NNN.</code> 형태로 기재할 수 있습니다.</p>
 <p>후속 조치로, 제목이 <code>[beta]</code> 또는 <code>[stable]</code>로 시작하고 해당 PR을 백포트하는 PR이 올라오는지 주의 깊게 살펴봐 주세요. 백포트 PR이 머지되면 관련 이슈를 닫아도 됩니다. 종결 댓글에는 연관된 모든 PR을 명시해야 합니다. 이슈를 닫을 권한이 없는 경우, 원본 PR에 담당 리뷰어에게 이슈 종결을 요청하는 댓글을 남겨주세요.</p>
@@ -6331,7 +6329,7 @@ rust.codegen-units = 0  # num_cpus</code></pre>
 </section>
 <section id="리뷰어-로테이션-reviewer-rotation" class="level4" data-number="22.2.4.2">
 <h4 data-number="22.2.4.2" class="anchored" data-anchor-id="리뷰어-로테이션-reviewer-rotation"><span class="header-section-number">22.2.4.2</span> 리뷰어 로테이션 (Reviewer rotation)</h4>
-<p>r+ 권한을 획득하면 <a href="https://github.com/rust-lang/rust/blob/36285c5de8915ecc00d91ae0baa79a87ed5858d5/triagebot.toml#L528-L577">리뷰어 로테이션</a>에 추가될 수 있습니다. <a href="https://github.com/rust-lang/triagebot/">triagebot</a>은 새로 제출되는 PR을 리뷰어들에게 <a href="https://forge.rust-lang.org/triagebot/pr-assignment.html">자동 할당</a>해주는 봇입니다. 로테이션에 추가되면 무작위로 PR 리뷰어로 지정됩니다. 직접 검토하기 부담스러운 영역의 PR이 할당된 경우 <code>r? @so-and-so</code>와 같이 댓글을 남겨 다른 사람에게 재할당할 수 있습니다. 누구에게 요청해야 할지 모를 경우 <code>r? @nikomatsakis for reassignment</code>를 기재하면 <span class="citation" data-cites="nikomatsakis가">(<a href="../ai_in_action/ai_in_action_complete.html#ref-nikomatsakis가" role="doc-biblioref"><strong>nikomatsakis가?</strong></a>)</span> 적절한 리뷰어를 찾아 지정해 드립니다.</p>
+<p>r+ 권한을 획득하면 <a href="https://github.com/rust-lang/rust/blob/36285c5de8915ecc00d91ae0baa79a87ed5858d5/triagebot.toml#L528-L577">리뷰어 로테이션</a>에 추가될 수 있습니다. <a href="https://github.com/rust-lang/triagebot/">triagebot</a>은 새로 제출되는 PR을 리뷰어들에게 <a href="https://forge.rust-lang.org/triagebot/pr-assignment.html">자동 할당</a>해주는 봇입니다. 로테이션에 추가되면 무작위로 PR 리뷰어로 지정됩니다. 직접 검토하기 부담스러운 영역의 PR이 할당된 경우 <code>r? @so-and-so</code>와 같이 댓글을 남겨 다른 사람에게 재할당할 수 있습니다. 누구에게 요청해야 할지 모를 경우 <code>r? @nikomatsakis for reassignment</code>를 기재하면 <code>@nikomatsakis</code>가 적절한 리뷰어를 찾아 지정해 드립니다.</p>
 <p>리뷰어 로테이션 참가는 전체 멤버의 리뷰 부담을 낮춰주므로 크게 환영받습니다! 다만 타인의 PR에 대해 적시에 피드백을 제공할 시간적 여유가 부족하다면 명단 등록을 유예하는 것이 좋습니다.</p>
 </section>
 </section>
@@ -6686,23 +6684,23 @@ fatal: Fetched in submodule path 'src/llvm-project', but it did not contain 5a51
 </section>
 </section>
 <section id="rustbot" class="level2" data-number="22.4">
-<h2 data-number="22.4" class="anchored" data-anchor-id="rustbot"><span class="header-section-number">22.4</span> <span class="citation" data-cites="rustbot">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rustbot" role="doc-biblioref"><strong>rustbot?</strong></a>)</span> 정복하기</h2>
+<h2 data-number="22.4" class="anchored" data-anchor-id="rustbot"><span class="header-section-number">22.4</span> <code>@rustbot</code> 정복하기</h2>
 <p><code>@rustbot</code>(<code>triagebot</code>으로도 불림)은 본래 <code>rust-lang</code> GitHub 조직 멤버십 권한이 요구되는 여러 작업들을 일반 기여자들이 직접 수행할 수 있도록 돕는 도우미 로봇입니다. <code>rustc</code> 기여자들에게 가장 유용한 기능은 이슈 담당자 지정(claiming)과 라벨 관리(relabeling)입니다.</p>
 <section id="이슈-담당자-지정-issue-claiming" class="level3" data-number="22.4.1">
 <h3 data-number="22.4.1" class="anchored" data-anchor-id="이슈-담당자-지정-issue-claiming"><span class="header-section-number">22.4.1</span> 이슈 담당자 지정 (Issue claiming)</h3>
 <p><code>@rustbot</code>은 누구든 이슈 담당자로 본인을 지정할 수 있는 명령어를 제공합니다. 작업하고 싶은 이슈를 찾았다면 해당 이슈 스레드에 다음 주석을 댓글로 게시하세요:</p>
-<pre><code>@rustbot claim</code></pre>
+<pre><code>`@rustbot` claim</code></pre>
 <p>아직 담당자가 지정되지 않은 이슈인 경우 <code>@rustbot</code>이 이슈 담당자로 사용자를 등록해 줍니다. GitHub 시스템 제약으로 인해 <code>@rustbot</code>이 일시적으로 보조 플레이스홀더 담당자로 등록된 뒤 상단 본문 주석을 수정하여 해당 이슈가 사용자에게 할당되었음을 표시하는 간접적인 방식으로 할당될 수 있습니다.</p>
 <p>이슈 담당 지정을 해제하려는 경우 <code>@rustbot</code>의 해제 명령을 사용할 수 있습니다:</p>
-<pre><code>@rustbot release-assignment</code></pre>
+<pre><code>`@rustbot` release-assignment</code></pre>
 </section>
 <section id="issue-relabeling" class="level3" data-number="22.4.2">
 <h3 data-number="22.4.2" class="anchored" data-anchor-id="issue-relabeling"><span class="header-section-number">22.4.2</span> Issue relabeling</h3>
 <p>Changing labels for an issue or PR is also normally reserved for members of the organization. However, <code>@rustbot</code> allows you to relabel an issue yourself, only with a few restrictions. This is mostly useful in two cases:</p>
 <p><strong>Helping with issue triage</strong>: Rust’s issue tracker has more than 5,000 open issues at the time of this writing, so labels are the most powerful tool that we have to keep it as tidy as possible. You don’t need to spend hours in the issue tracker to triage issues, but if you open an issue, you should feel free to label it if you are comfortable with doing it yourself.</p>
 <p><strong>PR 상태 갱신</strong>: PR 상태를 반영하기 위해 “상태 라벨”을 사용합니다. 예를 들어 제출한 PR에 병합 충돌이 있는 경우 자동으로 <code>S-waiting-on-author</code> 라벨이 부여되며, PR을 리베이스하기 전까지 리뷰어가 검토하지 않을 수 있습니다. 브랜치를 리베이스한 후 기여자가 라벨을 수정하여 <code>S-waiting-on-author</code>를 제거하고 <code>S-waiting-on-review</code>를 다시 추가해야 합니다. 이 경우 <code>@rustbot</code> 명령어 구문은 다음과 같습니다:</p>
-<pre><code>@rustbot label -S-waiting-on-author +S-waiting-on-review</code></pre>
-<p>이 명령어 구문 규칙은 꽤 유연하여 동일한 동작을 수행하는 여러 변형이 존재합니다. 라벨을 갱신하는 숏컷 명령어도 마련되어 있으며, 예컨대 <code>@rustbot ready</code>는 위 명령어와 완전히 동일하게 작동합니다. 상세한 정보는 <a href="https://forge.rust-lang.org/release/issue-triaging.html#applying-and-removing-labels">라벨 관련 문서</a> 및 <a href="https://forge.rust-lang.org/triagebot/shortcuts.html">단축키 문서</a>를 참조하세요.</p>
+<pre><code>`@rustbot` label -S-waiting-on-author +S-waiting-on-review</code></pre>
+<p>이 명령어 구문 규칙은 꽤 유연하여 동일한 동작을 수행하는 여러 변형이 존재합니다. 라벨을 갱신하는 숏컷 명령어도 마련되어 있으며, 예컨대 <code>@rustbot</code> ready`는 위 명령어와 완전히 동일하게 작동합니다. 상세한 정보는 <a href="https://forge.rust-lang.org/release/issue-triaging.html#applying-and-removing-labels">라벨 관련 문서</a> 및 <a href="https://forge.rust-lang.org/triagebot/shortcuts.html">단축키 문서</a>를 참조하세요.</p>
 </section>
 <section id="기타-봇-명령어" class="level3" data-number="22.4.3">
 <h3 data-number="22.4.3" class="anchored" data-anchor-id="기타-봇-명령어"><span class="header-section-number">22.4.3</span> 기타 봇 명령어</h3>
@@ -6777,8 +6775,8 @@ fn main() {
 <p>이후 RFC 문서에 설명된 대로 최초 기능을 <a href="https://github.com/rust-lang/rust/pull/47752">구현</a>했습니다. 신규 기능이 구현될 때 해당 기능은 <em>기능 게이트(feature gate)</em> 뒤에 배치되며, 이에 따라 해당 기능을 사용하려면 <code>#![feature(my_feature_name)]</code>을 명시해야 합니다. 기능 게이트는 해당 기능이 안정화(stabilized)되는 시점에 제거됩니다.</p>
 <p><strong>대다수 버그 수정 및 일반 개선사항</strong>은 기능 게이트를 요구하지 않습니다. 자유롭게 코드 변경/개선 작업을 진행하시면 됩니다.</p>
 <p><a href="https://github.com/rust-lang/rust">rust-lang/rust</a> 저장소에 PR을 생성하면 봇이 PR 리뷰어를 자동 지정해 줍니다. 함께 협력 중인 특정 Rust 팀 멤버가 있다면 스레드 댓글에 <code>r? @reviewer-github-id</code> (예: <code>r? @eddyb</code>)를 기재하여 해당 리뷰어를 직접 요청할 수 있습니다. 누구를 지정해야 할지 모른다면 누구도 지정하지 마세요. 봇이 수정된 파일들을 바탕으로 리뷰어를 자동 지정해 드립니다.</p>
-<p>리뷰어가 PR을 승인하기 전 수정을 요청할 수 있으며, 코멘트를 남긴 후 <code>S-waiting-on-author</code> 라벨로 표시할 수 있습니다. 이는 요청된 수정을 반영하기 전까지 PR 작업이 작성자에게 차단되어 있음을 의미합니다. 수정 작업을 마치면 <code>@rustbot ready</code> 코멘트를 남겨 PR을 다시 <code>S-waiting-on-review</code> 상태로 전환할 수 있습니다. 이 구문은 <code>S-waiting-on-author</code> 라벨을 제거하고 <code>S-waiting-on-review</code> 라벨을 부가합니다.</p>
-<p>이해되지 않거나 동의하지 않는 부분에 대해서는 부담 없이 질문하거나 의견을 제시하세요. 다만 Rust 팀원이 승인하지 않는 한 PR이 머지되지 않는다는 점을 인지해 주세요. 리뷰어가 <code>r=me after fixing ...</code>과 같은 코멘트를 남겼다면, 이는 사소한 이슈 수정 후 PR 승인을 미리 의사 표명한 것이므로 사소한 수정 완료 후 <code>@bors r=reviewer-github-id</code> (예: <code>@bors r=eddyb</code>) 코멘트를 통해 머지할 수 있음을 의미합니다. 단, <code>r=someone</code> 지정은 승인 권한을 요하므로 권한이 없으면 “🔑 Insufficient privileges…” 메시지가 나타날 수 있습니다. 이 경우 리뷰어에게 PR을 재방문하여 승인해 줄 것을 요청해야 합니다.</p>
+<p>리뷰어가 PR을 승인하기 전 수정을 요청할 수 있으며, 코멘트를 남긴 후 <code>S-waiting-on-author</code> 라벨로 표시할 수 있습니다. 이는 요청된 수정을 반영하기 전까지 PR 작업이 작성자에게 차단되어 있음을 의미합니다. 수정 작업을 마치면 <code>@rustbot</code> ready<code>코멘트를 남겨 PR을 다시</code>S-waiting-on-review<code>상태로 전환할 수 있습니다. 이 구문은</code>S-waiting-on-author<code>라벨을 제거하고</code>S-waiting-on-review` 라벨을 부가합니다.</p>
+<p>이해되지 않거나 동의하지 않는 부분에 대해서는 부담 없이 질문하거나 의견을 제시하세요. 다만 Rust 팀원이 승인하지 않는 한 PR이 머지되지 않는다는 점을 인지해 주세요. 리뷰어가 <code>r=me after fixing ...</code>과 같은 코멘트를 남겼다면, 이는 사소한 이슈 수정 후 PR 승인을 미리 의사 표명한 것이므로 사소한 수정 완료 후 <code>@bors r=reviewer-github-id</code> (예: <code>bors r=eddyb</code>) 코멘트를 통해 머지할 수 있음을 의미합니다. 단, <code>r=someone</code> 지정은 승인 권한을 요하므로 권한이 없으면 “🔑 Insufficient privileges…” 메시지가 나타날 수 있습니다. 이 경우 리뷰어에게 PR을 재방문하여 승인해 줄 것을 요청해야 합니다.</p>
 <p>리뷰어가 PR을 승인하면 <code>@bors</code>라는 또 다른 봇의 대기열로 진입합니다. <code>@bors</code>는 CI 빌드/머지 대기열을 관리합니다. PR이 <code>@bors</code> 대기열 최상단에 도달하면, <code>@bors</code>는 GitHub Actions에서 작성된 PR을 대상으로 모든 테스트를 구동하여 머지 테스트를 수행합니다. 이 작업은 완료까지 꽤 많은 시간이 소요됩니다. 모든 테스트를 통과하면 PR이 머지되고 다음 나이틀리 컴파일러의 일부가 됩니다!</p>
 <p>There are a couple of things that may happen for some PRs during the review process</p>
 <ul>
@@ -6815,7 +6813,7 @@ fn main() {
 <p><strong>참고: 이 섹션은 라이브러리 기능이 아닌 <em>언어(language)</em> 기능 구현을 대상으로 합니다 (라이브러리는 <a href="#stability">별도 절차</a>를 따름).</strong></p>
 <p>언어 변경 제안을 위한 <a href="https://lang-team.rust-lang.org/how_to/propose.html">Rust 언어 디자인 팀 지침</a>도 함께 참조하세요.</p>
 <section id="rfcbot-fcp-절차" class="level3" data-number="22.6.1">
-<h3 data-number="22.6.1" class="anchored" data-anchor-id="rfcbot-fcp-절차"><span class="header-section-number">22.6.1</span> <span class="citation" data-cites="rfcbot">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rfcbot" role="doc-biblioref"><strong>rfcbot?</strong></a>)</span> FCP 절차</h3>
+<h3 data-number="22.6.1" class="anchored" data-anchor-id="rfcbot-fcp-절차"><span class="header-section-number">22.6.1</span> <code>@rfcbot</code> FCP 절차</h3>
 <p>변경사항이 소규모이고, 논란의 여지가 없으며, 하위 호환성을 파괴하지 않고, 사용자 노출 언어 명세에 영향을 주지 않으며 신규 미확정 기능을 부가하지 않는 경우 해당 코드 영역 담당자로부터 r+를 받는 일반 PR 제출만으로 구현이 진행됩니다. 하지만 그렇지 않은 경우 더 많은 절차가 수반됩니다. 컴파일러 내부 개선 작업이라 할지라도 팀원 간 합의 없이 논란의 여지가 있는 변경을 구동하는 것은 비권장됩니다 (인지하지 못한 하위 손상을 방지하는 시스템적 관점 및 커뮤니티적 관점 모두 해당).</p>
 <p>팀 단위의 합의가 필요한 변경 작업에는 최종 의견 수렴 기간(FCP) 제안 절차가 사용됩니다. 관련 팀에 속해 있지 않아 <code>@rfcbot</code> 사용 권한이 없는 경우 해당 권한을 가진 팀원에게 FCP 발의를 요청하세요. 별도 우려사항이 없다면 이청을 수용해 줄 것입니다.</p>
 <p>FCP 절차는 팀 합의가 필수적인 경우에만 요구됩니다. 합의가 필요한 프로세스가 아니고 이의를 제기할 사람이 없다고 판단되는 케이스라면 r+ 승인에 의존하셔도 무방합니다. 예를 들어 컴파일러 내부 예약 네임스페이스인 <code>rustc_</code> 내부의 미확정 커맨드라인 플래그나 속성을 추가/수정하는 작업은, 나이틀리 생태계 전반에서 폭넓게 사용될 것으로 예상되지 않는 한 FCP 없이 구동해도 괜찮습니다. 일부 팀은 이러한 상황에서 사용할 수 있는 더욱 경량화된 절차를 제공합니다. 예를 들어 컴파일러 팀은 전체 합의 없이 의견 및 지원을 수집할 수 있는 경량화된 수단으로 Major Change Proposal(<a href="https://forge.rust-lang.org/compiler/proposals-and-stabilization.html#how-do-i-submit-an-mcp">MCP</a>) 제안을 권장합니다.</p>
@@ -7000,13 +6998,13 @@ fn main() {
 <h3 data-number="22.8.8" class="anchored" data-anchor-id="라이브러리-기능-안정화하기"><span class="header-section-number">22.8.8</span> 라이브러리 기능 안정화하기</h3>
 <p>기능을 안정화하려면 다음 단계를 진행하세요:</p>
 <ol type="1">
-<li><strong><span class="citation" data-cites="T-libs-api">(<a href="../ai_in_action/ai_in_action_complete.html#ref-T-libs-api" role="doc-biblioref"><strong>T-libs-api?</strong></a>)</span></strong> 멤버에게 트래킹 이슈에 대한 FCP 시작을 요청하고 FCP가 완료될 때까지 기다립니다 (<code>disposition-merge</code> 결정 수순).</li>
+<li><strong><code>@T-libs-api</code></strong> 멤버에게 트래킹 이슈에 대한 FCP 시작을 요청하고 FCP가 완료될 때까지 기다립니다 (<code>disposition-merge</code> 결정 수순).</li>
 <li><code>#[unstable(...)]</code> 속성을 <code>#[stable(since = "CURRENT_RUSTC_VERSION")]</code>으로 변경합니다.</li>
 <li>이 API와 연관된 모든 테스트 또는 doc-test에서 <code>#![feature(...)]</code>를 제거합니다. 컴파일러나 도구 내부에서 사용 중인 경우 해당 위치에서도 함께 제거합니다.</li>
 <li>해당 함수가 <code>const fn</code>인 경우 <code>#[rustc_const_stable(since = "CURRENT_RUSTC_VERSION")]</code> 속성을 부가합니다. 아직 const-안정화 대상이 아닌 경우 신규 기능 게이트(신규 트래킹 이슈 지정)를 설정하여 <code>#[rustc_const_unstable(...)]</code> 속성을 추가합니다.</li>
 <li><code>rust-lang/rust</code> 저장소를 대상으로 PR을 제출합니다.
 <ul>
-<li>적절한 라벨 지정: <code>@rustbot modify labels: +T-libs-api</code>.</li>
+<li>적절한 라벨 지정: <code>@rustbot</code> modify labels: +T-libs-api`.</li>
 <li>트래킹 이슈 링크 첨부 및 “Closes #XXXXX” 기재.</li>
 </ul></li>
 </ol>
@@ -7022,7 +7020,7 @@ fn main() {
 <p>앞서 설명한 바와 같이 stable <code>const fn</code> 내부에서는 간접적인 경우라도 unstable const 기능을 사용할 수 없습니다.</p>
 <p>그러나 특정 기능이 확정 안정화될 것임이 명확하거나 stable 우회책이 존재하는 케이스가 있을 수 있습니다. 이 경우 <code>[rustc_allow_const_fn_unstable(feature1, feature2)]</code> 속성을 사용하여 stable (또는 간접 stable) <code>const fn</code> 함수 본문 내부에서 일부 unstable 기능 사용을 예외 허용할 수 있습니다.</p>
 <p>또한 런타임 호출과 컴파일 타임 호출 결과가 동일하게 동작해야 한다는 <code>const fn</code> 불변성 지침을 철저히 준수해야 합니다 (<a href="https://blog.rust-lang.org/2016/04/19/MIR.html">블로그 포스팅 참조</a>). 예를 들어 메모리 주소는 비결정적이며 컴파일 시점에 파악할 수 없으므로 메모리 주소를 정수로 캐스팅(transmute)하는 <code>const fn</code>을 작성해서는 안 됩니다.</p>
-<p><strong><code>const fn</code>에 <code>rustc_allow_const_fn_unstable</code> 속성을 새로 부가할 때 항상 <span class="citation" data-cites="rust-lang/wg-const-eval">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rust-lang/wg-const-eval" role="doc-biblioref"><strong>rust-lang/wg-const-eval?</strong></a>)</span> 팀을 핑하세요.</strong></p>
+<p><strong><code>const fn</code>에 <code>rustc_allow_const_fn_unstable</code> 속성을 새로 부가할 때 항상 <code>@rust-lang/wg-const-eval</code> 팀을 핑하세요.</strong></p>
 </section>
 <section id="staged_api" class="level3" data-number="22.8.11">
 <h3 data-number="22.8.11" class="anchored" data-anchor-id="staged_api"><span class="header-section-number">22.8.11</span> staged_api</h3>
@@ -7125,7 +7123,7 @@ if something { /* XXX */ }</code></pre>
 </section>
 <section id="팀-노미네이션-team-nominations" class="level3" data-number="22.9.5">
 <h3 data-number="22.9.5" class="anchored" data-anchor-id="팀-노미네이션-team-nominations"><span class="header-section-number">22.9.5</span> 팀 노미네이션 (Team nominations)</h3>
-<p>안정화 PR을 개설할 때 lang 팀 및 조율자 그룹(<code>@rust-lang/lang @rust-lang/lang-advisors</code>)과 함께 연관성이 있는 다른 담당 팀들을 CC로 지정하세요:</p>
+<p>안정화 PR을 개설할 때 lang 팀 및 조율자 그룹(<code>@rust-lang/lang</code>, <code>@rust-lang/lang-advisors</code>)과 함께 연관성이 있는 다른 담당 팀들을 CC로 지정하세요:</p>
 <ul>
 <li><code>@rust-lang/types</code>: 타입 시스템 상호작용 관련.</li>
 <li><code>@rust-lang/opsem</code>: unsafe 코드 상호작용 관련.</li>
@@ -7187,7 +7185,7 @@ if something { /* XXX */ }</code></pre>
 <ul>
 <li><em>TODO</em> (Reference PR 링크 첨부)</li>
 </ul>
-<p>cc <span class="citation" data-cites="rust-lang/lang">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rust-lang/lang" role="doc-biblioref"><strong>rust-lang/lang?</strong></a>)</span> <span class="citation" data-cites="rust-lang/lang-advisors">(<a href="../ai_in_action/ai_in_action_complete.html#ref-rust-lang/lang-advisors" role="doc-biblioref"><strong>rust-lang/lang-advisors?</strong></a>)</span></p>
+<p>cc <code>@rust-lang/lang</code> <code>@rust-lang/lang-advisors</code></p>
 <section id="안정화되는-항목-what-is-stabilized" class="level5" data-number="22.9.9.1.1">
 <h5 data-number="22.9.9.1.1" class="anchored" data-anchor-id="안정화되는-항목-what-is-stabilized"><span class="header-section-number">22.9.9.1.1</span> 안정화되는 항목 (What is stabilized)</h5>
 <blockquote class="blockquote">
@@ -8910,7 +8908,7 @@ Build completed successfully in 0:00:00</code></pre>
 <section id="tyty-타입-표현" class="level4" data-number="24.2.2.3">
 <h4 data-number="24.2.2.3" class="anchored" data-anchor-id="tyty-타입-표현"><span class="header-section-number">24.2.2.3</span> <code>ty::Ty</code> (타입 표현)</h4>
 <p>타입은 Rust에서 매우 중요하며 수많은 컴파일러 분석의 핵심을 형성합니다. (사용자 프로그램의) 타입을 나타내는 (컴파일러 내부의) 메인 타입은 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/index.html"><code>rustc_middle::ty::Ty</code></a>입니다. 이것은 매우 중요해서 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/index.html"><code>ty::Ty</code></a>에 대한 전체 챕터를 구비하고 있으나, 지금은 이것이 존재하며 rustc가 타입을 표현하는 방식이라는 점만 언급하고자 합니다!</p>
-<p>또한 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/index.html"><code>rustc_middle::ty</code></a> 모듈이 앞서 언급한 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/context/struct.TyCtxt.html"><code>TyCtxt</code></a> 구조체를 정의한다는 점에 유의하세요.</p>
+<p>또한 <a href="https://doc.rust-lang.org/beta/nightly-rustc/rustc_middle/ty/index.html"><code>rustc_middle::ty</code></a> 모듈이 앞서 언급한 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/context/struct.TyCtxt.html"><code>TyCtxt</code></a> 구조체를 정의한다는 점에 유의하세요.</p>
 </section>
 <section id="병렬-처리-parallelism" class="level4" data-number="24.2.2.4">
 <h4 data-number="24.2.2.4" class="anchored" data-anchor-id="병렬-처리-parallelism"><span class="header-section-number">24.2.2.4</span> 병렬 처리 (Parallelism)</h4>
@@ -9849,7 +9847,7 @@ impl salsa::Database for MyDatabase {
 <section id="수명에-대한-유의사항-notes-on-lifetimes" class="level4" data-number="24.6.2.1">
 <h4 data-number="24.6.2.1" class="anchored" data-anchor-id="수명에-대한-유의사항-notes-on-lifetimes"><span class="header-section-number">24.6.2.1</span> 수명에 대한 유의사항 (Notes on lifetimes)</h4>
 <p>Rust 컴파일러는 거대한 데이터 구조들(<a href="#ast-validation">추상 구문 트리(AST)</a>, <a href="../hir.html">고수준 중간 표현(<code>HIR</code>)</a>, 타입 시스템 등)을 다수 포함하는 상당히 거대한 프로그램이며, 불필요한 메모리 소모를 최소화하기 위해 아레나와 참조에 막대하게 의존합니다. 이는 외부 사용자가 컴파일러에 연동되는 방식(<a href="#rustc-driver-intro">드라이버</a>)에도 영향을 주어 Rust다운 “풀(pull)” 스타일(<code>Iterator</code> 트레이트 생각) 대신 “푸시(push)” 스타일의 API(콜백)를 선호하도록 만듭니다.</p>
-<p>스레드 로컬 저장소(Thread-local storage)와 인터닝은 중복을 줄이는 동시에 만연한 수명(lifetime) 문제로 인한 수많은 인체공학적(ergonomic) 불편을 방지하기 위해 컴파일러 전반에서 널리 사용됩니다. <a href="https://llvm.org/docs/LangRef.html#thread-local-storage-models"><code>rustc_middle::ty::tls</code></a> 모듈은 이러한 스레드 로컬에 접근하는 데 사용되나, 이를 직접 다뤄야 할 일은 거의 없습니다.</p>
+<p>스레드 로컬 저장소(Thread-local storage)와 인터닝은 중복을 줄이는 동시에 만연한 수명(lifetime) 문제로 인한 수많은 인체공학적(ergonomic) 불편을 방지하기 위해 컴파일러 전반에서 널리 사용됩니다. <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/tls/index.html"><code>rustc_middle::ty::tls</code></a> 모듈은 이러한 스레드 로컬에 접근하는 데 사용되나, 이를 직접 다뤄야 할 일은 거의 없습니다.</p>
 </section>
 </section>
 </section>
@@ -10743,7 +10741,7 @@ VHBackref = ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | ':' | 
 <p>모든 지시어는 <code>PATH</code> 인자를 받습니다. 반복을 피하기 위해 <code>-</code>를 전달하여 이전 <code>PATH</code> 인자를 재사용할 수 있습니다. 경로에 크레이트 이름이 포함되어 있으므로, 결과 경로를 단축하기 위해 크레이트 루트에 <code>#![crate_name = "foo"]</code> 속성을 추가하는 것이 관례입니다.</p>
 <p>모든 인자는 <code>COUNT</code> 및 <code>PATH</code> 특수 폼 <code>-</code>를 제외하고 쉘 스타일(단일 또는 이중) 따옴표로 감싸진 문자열 형태를 취합니다.</p>
 <p>모든 지시어(<code>files</code> 제외)는 이름 앞에 <code>!</code>를 붙여 <em>부정(negated)</em> 처리할 수 있습니다. 부정 지시어를 추가하기 전에 <a href="#caveats">주의사항</a>에 대해 읽어보세요.</p>
-<p>쉘 명령과 유사하게 지시어의 마지막 문자가 <code>\</code>인 경우 여러 줄에 걸쳐 확장될 수 있습니다. 이 경우 다음 줄의 시작 부분은 <code>@</code> 없이 <code>//</code>여야 합니다.</p>
+<p>쉘 명령과 유사하게 지시어의 마지막 문자가 <code>인 경우 여러 줄에 걸쳐 확장될 수 있습니다. 이 경우 다음 줄의 시작 부분은</code>@<code>없이</code>//`여야 합니다.</p>
 <p>compiletest 지시어와 유사하게 공백 외에도 콜론 <code>:</code>을 사용하여 지시어 이름과 인자를 구분할 수 있지만, HtmlDocCk 지시어에는 공백이 선호됩니다.</p>
 <p>현재 릴리스 채널(예: <code>stable</code> 또는 <code>nightly</code>)을 가리키는 URL <code>https://doc.rust-lang.org/CHANNEL</code>을 참조하려는 경우 XPath, <code>PATTERN</code> 인자 및 <a href="#snapshot">스냅샷 파일</a>에서 특수 문자열 <code>{channel}</code>을 사용하세요.</p>
 <p>아래에 가능한 모든 지시어가 나열되어 있습니다:</p>
@@ -12272,7 +12270,7 @@ fn foo() {
 </section>
 <section id="thir" class="level2" data-number="25.5">
 <h2 data-number="25.5" class="anchored" data-anchor-id="thir"><span class="header-section-number">25.5</span> THIR</h2>
-<p>THIR (“타입 지정 고수준 중간 표현, Typed High-Level Intermediate Representation”)은 이전에 “고수준 추상 IR”을 의미하는 HAIR로 불렸으며, <a href="../hir-typeck/summary.html">타입 검사</a> 이후에 생성되어 rustc에서 사용하는 또 다른 IR입니다. 이는 (<!-- date-check --> 2024년 1월 기준) <a href="#mir-construction">MIR 생성</a>, <a href="#pat-exhaustive-checking">망라성 검사(exhaustiveness checking)</a>, 및 <a href="#unsafety-checking">안전성 미보장 검사(unsafety checking)</a>에 사용됩니다.</p>
+<p>THIR (“타입 지정 고수준 중간 표현, Typed High-Level Intermediate Representation”)은 이전에 “고수준 추상 IR”을 의미하는 HAIR로 불렸으며, <a href="#hir-typeck-summary">타입 검사</a> 이후에 생성되어 rustc에서 사용하는 또 다른 IR입니다. 이는 (<!-- date-check --> 2024년 1월 기준) <a href="#mir-construction">MIR 생성</a>, <a href="#pat-exhaustive-checking">망라성 검사(exhaustiveness checking)</a>, 및 <a href="#unsafety-checking">안전성 미보장 검사(unsafety checking)</a>에 사용됩니다.</p>
 <p>이름에서 알 수 있듯이 THIR은 타입 검사가 완료된 후 모든 타입이 채워진 <a href="../hir.html">HIR</a>의 하향 변환 버전입니다. 하지만 HIR과 구별되는 몇 가지 다른 흥미로운 특징이 있습니다:</p>
 <ul>
 <li><p>MIR과 마찬가지로 THIR은 본문(body), 즉 “실행 가능한 코드”만 나타냅니다. 여기에는 함수 본문뿐만 아니라 <code>const</code> 이니셜라이저 등도 포함됩니다. 구체적으로 모든 [본문 소유자(body owners)]에 대해 THIR이 생성됩니다. 결과적으로 THIR에는 <code>struct</code>나 <code>trait</code>과 같은 아이템에 대한 표현이 없습니다.</p></li>
@@ -15525,7 +15523,7 @@ impl Foo&lt;&amp;'static isize&gt; for StaticInt;</code></pre>
 <p>동일한 특수화 패밀리의 일부인 한, 여러 impl이 적용될 수 있는 경우에도 트레이트 impl 선택은 성공할 수 있습니다. 이 경우 성공 시 <em>단일</em> impl을 반환하며 – 이는 적용되는 것으로 <em>알려진</em> 가장 특수화된 impl입니다. 그러나 추론 변수가 연관되어 있는 경우 반환된 impl이 코드 생성 시점에 실제로 사용하는 impl이 아닐 수 있습니다. 따라서 (1) 연관 타입이 <code>default</code>를 사용하지 않아 재정의할 수 없거나 (2) 모든 입력 타입을 구체적으로 알 수 있는 경우가 아니면 연관 타입을 프로젝션(투영)하지 않도록 특별히 주의합니다.</p>
 <section id="추가-리소스-1" class="level4" data-number="27.11.7.1">
 <h4 data-number="27.11.7.1" class="anchored" data-anchor-id="추가-리소스-1"><span class="header-section-number">27.11.7.1</span> 추가 리소스</h4>
-<p><span class="citation" data-cites="sunjay의">(<a href="../ai_in_action/ai_in_action_complete.html#ref-sunjay의" role="doc-biblioref"><strong>sunjay의?</strong></a>)</span> <a href="https://www.youtube.com/watch?v=rZqS4bLPL24">이 강연</a>이 유용할 수 있습니다. 강연은 문제와 해결책에 대한 광범위한 개요만 제공함을 염두에 두세요(<span class="citation" data-cites="sunjay">(<a href="../ai_in_action/ai_in_action_complete.html#ref-sunjay" role="doc-biblioref"><strong>sunjay?</strong></a>)</span> 작업의 중간쯤 발표됨). 또한 2018년 6월에 진행되었으므로 시청할 시점에는 일부 내용이 변경되었을 수 있습니다.</p>
+<p><code>@sunjay</code>의 <a href="https://www.youtube.com/watch?v=rZqS4bLPL24">이 강연</a>이 유용할 수 있습니다. 강연은 문제와 해결책에 대한 광범위한 개요만 제공함을 염두에 두세요(<code>@sunjay</code> 작업의 중간쯤 발표됨). 또한 2018년 6월에 진행되었으므로 시청할 시점에는 일부 내용이 변경되었을 수 있습니다.</p>
 </section>
 </section>
 <section id="traits-chalk" class="level3" data-number="27.11.8">
@@ -16735,7 +16733,7 @@ where X: 'a
 <section id="가능한-해결책" class="level6" data-number="27.11.9.5.4.6">
 <h6 data-number="27.11.9.5.4.6" class="anchored" data-anchor-id="가능한-해결책"><span class="header-section-number">27.11.9.5.4.6</span> 가능한 해결책</h6>
 <p>이를 해결하는 가장 쉬운 방법은 2)를 완전히 제거하고 트레이트 풀이기 외부에서 <code>T: Trait</code>을 <code>T: Trait</code> 및 <code>T: SuperTrait</code>으로 항상 정교화(elaborate)하는 것입니다. 이를 통해 1)도 제거할 수 있지만 트레이트에 대한 일반적인 <code>where</code>-바운드를 여전히 증명해야 하므로 이는 단지 추가적인 작업일 뿐입니다.</p>
-<p>1)을 검사할 때 2)의 순환적 사용을 비활성화하는 방법을 구상해 볼 수도 있지만, 최소한 필자(<span class="citation" data-cites="lcnr">(<a href="../ai_in_action/ai_in_action_complete.html#ref-lcnr" role="doc-biblioref"><strong>lcnr?</strong></a>)</span>)의 아이디어는 모두 합리적이기에는 너무 복잡합니다.</p>
+<p>1)을 검사할 때 2)의 순환적 사용을 비활성화하는 방법을 구상해 볼 수도 있지만, 최소한 필자(<code>@lcnr</code>)의 아이디어는 모두 합리적이기에는 너무 복잡합니다.</p>
 </section>
 <section id="normalizes_to-목표와-진행progress" class="level6" data-number="27.11.9.5.4.7">
 <h6 data-number="27.11.9.5.4.7" class="anchored" data-anchor-id="normalizes_to-목표와-진행progress"><span class="header-section-number">27.11.9.5.4.7</span> <code>normalizes_to</code> 목표와 진행(progress)</h6>
@@ -17400,7 +17398,7 @@ if 'static : 'a             -- Subtyping rules for relations</code></pre>
 <section id="coherence" class="level2" data-number="27.14">
 <h2 data-number="27.14" class="anchored" data-anchor-id="coherence"><span class="header-section-number">27.14</span> 일관성(Coherence)</h2>
 <blockquote class="blockquote">
-<p>참고: 이는 <a href="https://github.com/rust-lang/rust/pull/121848"><span class="citation" data-cites="lcnr의">(<span><strong>lcnr의?</strong></span>)</span> 노트</a>를 기반으로 합니다.</p>
+<p>참고: 이는 <a href="https://github.com/rust-lang/rust/pull/121848">lcnr의 노트</a>를 기반으로 합니다.</p>
 </blockquote>
 <p>일관성 검사(Coherence checking)는 트레이트 impl과 inherent impl 모두에 대해 다른 구현과의 겹침(overlap)을 감지합니다. (참고: <a href="https://doc.rust-lang.org/reference/items/implementations.html#inherent-implementations">inherent impls</a>는 <code>impl MyStruct {}</code>와 같은 구체적인 타입의 impl입니다)</p>
 <p>겹치는 트레이트 impl은 항상 에러를 발생시키며, 겹치는 inherent impl은 동일한 이름의 메서드를 가질 때만 에러를 발생시킵니다.</p>
@@ -18109,7 +18107,7 @@ O의 숨겨진 타입 가져오기"]
 <section id="return-position-impl-trait-in-trait" class="level3" data-number="27.17.3">
 <h3 data-number="27.17.3" class="anchored" data-anchor-id="return-position-impl-trait-in-trait"><span class="header-section-number">27.17.3</span> 트레이트 내 반환 위치 impl Trait (RPITIT)</h3>
 <p>트레이트 내 반환 위치 impl Trait(RPITIT)는 개념적으로(그리고 <a href="https://github.com/rust-lang/rust/pull/112988">#112988</a> 이후로는 문자 그대로) 사용자가 트레이트 쪽이나 impl 쪽에 GAT를 직접 정의할 필요 없이, 트레이트 메서드의 RPIT를 제네릭 연관 타입(GAT)으로 변환하는 슈가(sugar)입니다.</p>
-<p>RPITIT는 원래 <a href="https://github.com/rust-lang/rust/pull/101224">#101224</a>에서 구현되었으며, 이는 트레이트 내 async fn(AFIT) 지원을 추가했습니다. AFIT 구현의 일부로서 이전에 RFC가 진행되었던 RPITIT 구현이 무료로 따라왔기 때문입니다. 그 후 <a href="https://rust-lang.github.io/rfcs/3425-return-position-impl-trait-in-traits.html">RFC 3425</a>에서 독립적으로 RFC가 제출되었고, 최근 T-lang에 의해 승인되었습니다.</p>
+<p>RPITIT는 원래 <a href="https://github.com/rust-lang/rust/pull/101224">#101224</a>에서 구현되었으며, 이는 트레이트 내 async fn(AFIT) 지원을 추가했습니다. AFIT 구현의 일부로서 이전에 RFC가 진행되었던 RPITIT 구현이 무료로 따라왔기 때문입니다. 그 후 <a href="https://github.com/rust-lang/rfcs/pull/3425">RFC 3425</a>에서 독립적으로 RFC가 제출되었고, 최근 T-lang에 의해 승인되었습니다.</p>
 <section id="어떻게-작동하나요" class="level4" data-number="27.17.3.1">
 <h4 data-number="27.17.3.1" class="anchored" data-anchor-id="어떻게-작동하나요"><span class="header-section-number">27.17.3.1</span> 어떻게 작동하나요?</h4>
 <p>이 문서는 주로 컴파일 파이프라인 순서대로 정리되어 있습니다:</p>
@@ -20008,7 +20006,7 @@ s.as_bytes();
 <li>성능을 위해 코드 생성은 다른 쓰레드에서 비동기적으로 발생합니다.</li>
 <li>실제 코드 생성은 서드파티 라이브러리(3개 백엔드 중 하나)에 의해 수행됩니다.</li>
 </ul>
-<p>일반적으로 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_codegen_ssa/index.html"><code>rustc_codegen_ssa</code></a> 크레이트는 백엔드에 무관한 코드를 포함하며, <a href="https://llvm.org/"><code>rustc_codegen_llvm</code></a> 크레이트는 LLVM 코드 생성에 특화된 코드를 포함합니다.</p>
+<p>일반적으로 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_codegen_ssa/index.html"><code>rustc_codegen_ssa</code></a> 크레이트는 백엔드에 무관한 코드를 포함하며, <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_codegen_llvm/index.html"><code>rustc_codegen_llvm</code></a> 크레이트는 LLVM 코드 생성에 특화된 코드를 포함합니다.</p>
 <p>매우 고수준에서 진입점은 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_codegen_ssa/base/fn.codegen_crate.html"><code>rustc_codegen_ssa::base::codegen_crate</code></a>입니다. 이 함수는 이 장의 나머지 부분에서 논의할 프로세스를 시작합니다.</p>
 </section>
 <section id="mir-optimizations" class="level2" data-number="28.2">
@@ -20542,11 +20540,11 @@ llvm.optimize = false</code></pre>
 <li>함수 시그니처 및 구조체 정의 내부의 모든 LLVM 전용 타입을 제네릭으로 교체</li>
 <li>LLVM FFI를 호출하는 모든 함수를 백엔드 독립적 코드와 백엔드 간의 인터페이스를 정의할 트레이트 세트 내부로 캡슐화</li>
 </ol>
-<p>LLVM 전용 코드는 <code>rustc_codegen_llvm</code>에 남겨두는 한편, 새로운 트레이트와 백엔드 독립적 코드는 모두 <code>rustc_codegen_ssa</code>(<span class="citation" data-cites="eddyb가">(<a href="../ai_in_action/ai_in_action_complete.html#ref-eddyb가" role="doc-biblioref"><strong>eddyb가?</strong></a>)</span> 제안한 이름)로 이동됩니다.</p>
+<p>LLVM 전용 코드는 <code>rustc_codegen_llvm</code>에 남겨두는 한편, 새로운 트레이트와 백엔드 독립적 코드는 모두 <code>rustc_codegen_ssa</code>(eddyb가 제안한 이름)로 이동됩니다.</p>
 </section>
 <section id="제네릭-타입-및-구조체" class="level5" data-number="28.7.4.1.2">
 <h5 data-number="28.7.4.1.2" class="anchored" data-anchor-id="제네릭-타입-및-구조체"><span class="header-section-number">28.7.4.1.2</span> 제네릭 타입 및 구조체</h5>
-<p><span class="citation" data-cites="irinagpopa는">(<a href="../ai_in_action/ai_in_action_complete.html#ref-irinagpopa는" role="doc-biblioref"><strong>irinagpopa는?</strong></a>)</span> <code>rustc_codegen_llvm</code>의 타입들을 제네릭 <code>Value</code> 타입으로 매개변수화하기 시작했으며, 이는 LLVM에서 참조 <code>&amp;'ll Value</code>로 구현되었습니다. 이 작업은 LLVM의 <code>BasicBlock</code> 및 <code>Type</code> 타입뿐만 아니라 <code>mir</code> 폴더 내부 및 기타 위치의 모든 구조체로 확장되었습니다.</p>
+<p><code>@irinagpopa</code>는 <code>rustc_codegen_llvm</code>의 타입들을 제네릭 <code>Value</code> 타입으로 매개변수화하기 시작했으며, 이는 LLVM에서 참조 <code>&amp;'ll Value</code>로 구현되었습니다. 이 작업은 LLVM의 <code>BasicBlock</code> 및 <code>Type</code> 타입뿐만 아니라 <code>mir</code> 폴더 내부 및 기타 위치의 모든 구조체로 확장되었습니다.</p>
 <p>LLVM 코드 생성에 가장 중요한 두 구조체는 <code>CodegenCx</code>와 <code>Builder</code>입니다. 이들은 여러 라이프타임 매개변수와 <code>Value</code> 타입으로 매개변수화됩니다.</p>
 <pre class="rust,ignore"><code>struct CodegenCx&lt;'ll, 'tcx&gt; {
   /* ... */
@@ -21649,7 +21647,7 @@ error: &lt;user expression 0&gt;:1:6: subscripted value is not an array or point
 </ol>
 <p><strong>TODO</strong>: 중복이 없도록 이 가이드 페이지가 아닌 GDB-Rust 문서에 다음 내용을 언급해야 하는지 파악하기. 이는 다음 주석들과 관련된 내용입니다:</p>
 <p><a href="https://github.com/rust-lang/rustc-dev-guide/pull/316#discussion_r284027340">Tom의 이 주석</a> &gt; gdb의 Rust 확장 및 한계 사항은 gdb 매뉴얼(https://sourceware.org/gdb/onlinedocs/gdb/Rust.html)에 문서화되어 있습니다. 하지만 이는 gdb 편의 변수 및 레지스터가 gdb $ 컨벤션을 따르고 Rust 파서가 gdb @ 확장을 구현한다는 사실을 언급하지 않고 있습니다.</p>
-<p><a href="https://github.com/rust-lang/rustc-dev-guide/pull/316#discussion_r285401353">Aman의 이 질문</a> &gt; <span class="citation" data-cites="tromey">(<a href="../ai_in_action/ai_in_action_complete.html#ref-tromey" role="doc-biblioref"><strong>tromey?</strong></a>)</span> 중복 등을 방지하기 위해 이 문서 대신 GDB-Rust 문서에 이 부분을 언급해야 한다고 생각하시나요?</p>
+<p><a href="https://github.com/rust-lang/rustc-dev-guide/pull/316#discussion_r285401353">Aman의 이 질문</a> &gt; <code>@tromey</code> 중복 등을 방지하기 위해 이 문서 대신 GDB-Rust 문서에 이 부분을 언급해야 한다고 생각하시나요?</p>
 </section>
 </section>
 <section id="lldb" class="level5" data-number="28.11.9.2.2">
@@ -21854,7 +21852,7 @@ error: &lt;user expression 0&gt;:1:6: subscripted value is not an array or point
 </section>
 <section id="크레이트-로딩-crate-loading" class="level3" data-number="28.12.3">
 <h3 data-number="28.12.3" class="anchored" data-anchor-id="크레이트-로딩-crate-loading"><span class="header-section-number">28.12.3</span> 크레이트 로딩 (Crate loading)</h3>
-<p>크레이트 로딩에는 미묘하게 복잡한 부분이 꽤 있을 수 있습니다. <a href="../name-resolution.html">이름 해소(name resolution)</a> 동안 외부 크레이트가 참조될 때(<code>extern crate</code> 또는 경로를 통해), 해소기(resolver)는 크레이트 라이브러리를 찾고 이에 대한 <a href="#metadata">메타데이터</a>를 로드할 책임이 있는 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/creader/struct.CStore.html"><code>CStore</code></a>를 사용합니다. 의존성이 로드된 후 <code>CStore</code>는 해소기가 작업(매크로 전개, 경로 해소 등)을 수행하는 데 필요한 정보를 제공합니다.</p>
+<p>크레이트 로딩에는 미묘하게 복잡한 부분이 꽤 있을 수 있습니다. <a href="#name-resolution">이름 해소(name resolution)</a> 동안 외부 크레이트가 참조될 때(<code>extern crate</code> 또는 경로를 통해), 해소기(resolver)는 크레이트 라이브러리를 찾고 이에 대한 <a href="#metadata">메타데이터</a>를 로드할 책임이 있는 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/creader/struct.CStore.html"><code>CStore</code></a>를 사용합니다. 의존성이 로드된 후 <code>CStore</code>는 해소기가 작업(매크로 전개, 경로 해소 등)을 수행하는 데 필요한 정보를 제공합니다.</p>
 <p>각 외부 크레이트를 로드하기 위해 <code>CStore</code>는 하나의 특정 크레이트에 대한 올바른 파일을 실제로 찾기 위해 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/locator/struct.CrateLocator.html"><code>CrateLocator</code></a>를 사용합니다. <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/locator/index.html"><code>locator</code></a> 모듈에는 로딩이 어떻게 작동하는지 상세히 다루는 훌륭한 문서가 있으며 전체 그림을 파악하기 위해 이를 읽어볼 것을 강력히 권장합니다.</p>
 <p>의존성의 위치는 여러 다른 곳에서 올 수 있습니다. 직접 의존성은 보통 <code>--extern</code> 플래그로 전달되며 로더는 이를 직접 살펴볼 수 있습니다. 직접 의존성은 종종 그 자체의 의존성(마찬가지로 로드되어야 함)에 대한 참조를 가지고 있습니다. 이들은 통상 메타데이터에 일치하는 크레이트 이름과 <a href="#strict-version-hash">SVH</a>를 포함하는 파일을 찾기 위해 <code>-L</code> 플래그로 전달된 디렉토리를 스캔함으로써 찾아집니다. 로더는 의존성을 찾기 위해 <a href="#what-is-a-sysroot">sysroot</a>도 살펴봅니다.</p>
 <p>크레이트가 로드됨에 따라 <code>CStore</code> 내에서 크레이트 메타데이터가 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/rmeta/decoder/struct.CrateMetadata.html"><code>CrateMetadata</code></a> 구조체로 래핑되어 유지됩니다. 해소 및 전개 후 <code>CStore</code>는 남은 컴파일 과정을 위해 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.GlobalCtxt.html"><code>GlobalCtxt</code></a>로 들어갑니다.</p>
@@ -22493,7 +22491,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <td><em>링크 타임 최적화(link-time optimizations)</em>의 약어로, 최종 바이너리가 링크되기 직전에 발생하는 LLVM이 제공하는 최적화 세트입니다. 예를 들어 최종 프로그램에서 절대 사용되지 않는 함수를 제거하는 최적화 등이 포함됩니다. _ThinLTO_는 약간 더 확장 가능하고 효율적이지만 일부 최적화를 희생할 수 있는 LTO 변형입니다. Rust 리포지토리 이슈에서 non-Thin LTO에 부여된 다정한 별명인 “FatLTO”에 대해 읽을 수도 있습니다. LLVM 문서: <a href="https://llvm.org/docs/LinkTimeOptimization.html">여기</a> 및 <a href="https://clang.llvm.org/docs/ThinLTO.html">여기</a>.</td>
 </tr>
 <tr class="odd">
-<td><span id="llvm"><a href="https://llvm.org/">LLVM</a></span></td>
+<td><span id="llvm"><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_codegen_llvm/index.html">LLVM</a></span></td>
 <td>(사실 약어가 아닙니다 :P) 오픈 소스 컴파일러 백엔드. LLVM IR을 받아 네이티브 바이너리를 출력합니다. 다양한 언어(예: Rust)가 LLVM IR을 출력하는 컴파일러 프론트엔드를 구현하고 LLVM을 사용하여 LLVM이 지원하는 모든 플랫폼으로 컴파일할 수 있습니다.</td>
 </tr>
 <tr class="even">
@@ -22502,7 +22500,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 </tr>
 <tr class="odd">
 <td><span id="middle-ty-ir">middle ty IR</span></td>
-<td>타입 검사기와 트레이트 해소기가 사용하는 모듈 <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/index.html"><code>rustc_middle::ty</code></a>에 정의된 타입 모음. 이들은 본질적으로 하나의 <a href="#ir">IR</a>을 형성합니다.</td>
+<td>타입 검사기와 트레이트 해소기가 사용하는 모듈 <a href="https://doc.rust-lang.org/beta/nightly-rustc/rustc_middle/ty/index.html"><code>rustc_middle::ty</code></a>에 정의된 타입 모음. 이들은 본질적으로 하나의 <a href="#ir">IR</a>을 형성합니다.</td>
 </tr>
 <tr class="even">
 <td><span id="mir">MIR</span></td>
@@ -22586,7 +22584,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 </tr>
 <tr class="even">
 <td><span id="rpitit">RPITIT</span></td>
-<td>_return-position <code>impl Trait</code> in trait_의 약어. <a href="#rpit">RPIT</a>와 달리 이는 제네릭 연관 타입(<a href="#gat">GAT</a>)으로 디슈가링됩니다. <a href="https://rust-lang.github.io/rfcs/3425-return-position-impl-trait-in-traits.html">RFC 3425</a>에서 도입되었습니다. (<a href="#return-position-impl-trait-in-trait">자세한 정보</a>)</td>
+<td>_return-position <code>impl Trait</code> in trait_의 약어. <a href="#rpit">RPIT</a>와 달리 이는 제네릭 연관 타입(<a href="#gat">GAT</a>)으로 디슈가링됩니다. <a href="https://github.com/rust-lang/rfcs/pull/3425">RFC 3425</a>에서 도입되었습니다. (<a href="#return-position-impl-trait-in-trait">자세한 정보</a>)</td>
 </tr>
 <tr class="odd">
 <td><span id="rustbuild">rustbuild 👎</span></td>
@@ -22649,7 +22647,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <td>파싱의 가장 작은 단위. 어휘 분석(lexing) 후 토큰이 생성됩니다 (<a href="#the-parser">자세한 정보</a>).</td>
 </tr>
 <tr class="even">
-<td><span id="tls"><a href="https://llvm.org/docs/LangRef.html#thread-local-storage-models">TLS</a></span></td>
+<td><span id="tls"><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/tls/index.html">TLS</a></span></td>
 <td><em>스레드 로컬 저장소(Thread-local storage)</em>. (모든 스레드가 변수를 공유하는 대신) 각 스레드가 자신만의 사본을 갖도록 변수를 정의할 수 있습니다. 이는 LLVM과 일부 상호작용이 있습니다. 모든 플랫폼이 TLS를 지원하는 것은 아닙니다.</td>
 </tr>
 <tr class="odd">
@@ -22810,7 +22808,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <td><code>Rib</code></td>
 <td>struct</td>
 <td>이름의 단일 스코프를 나타냄</td>
-<td><a href="../name-resolution.html">Name resolution</a></td>
+<td><a href="#name-resolution">Name resolution</a></td>
 <td><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_resolve/late/struct.Rib.html">compiler/rustc_resolve/src/lib.rs</a></td>
 </tr>
 <tr class="even">
@@ -22845,7 +22843,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <td><code>rustc_ast::token_stream::TokenStream</code></td>
 <td>struct</td>
 <td><code>TokenTree</code>들로 구성된 토큰의 추상 시퀀스</td>
-<td><a href="../the-parser.html">The parser</a>, <a href="../macro-expansion.html">Macro expansion</a></td>
+<td><a href="../the-parser.html">The parser</a>, <a href="#macro-expansion">Macro expansion</a></td>
 <td><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_ast/tokenstream/struct.TokenStream.html">compiler/rustc_ast/src/tokenstream.rs</a></td>
 </tr>
 <tr class="odd">
@@ -22866,7 +22864,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <td><code>Ty&lt;'tcx&gt;</code></td>
 <td>struct</td>
 <td>타입 검사에 사용되는 타입의 내부 표현</td>
-<td><a href="../hir-typeck/summary.html">Type checking</a></td>
+<td><a href="#hir-typeck-summary">Type checking</a></td>
 <td><a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.Ty.html">compiler/rustc_middle/src/ty/mod.rs</a></td>
 </tr>
 <tr class="even">
@@ -23063,7 +23061,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <li id="fn6"><p>This output is always subject to further changes.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p><a href="#queries-incremental-compilation-in-detail">증분 컴파일 세부사항</a> 챕터는 쿼리가 무엇이며 어떻게 동작하는지 더 상세한 설명을 제공합니다. 본인의 커스텀 쿼리를 직접 작성하려 한다면 일독을 권장합니다.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>상기 규칙들의 한 가지 예외는 MIR을 제자리에서 저렴하게 수정하는 데 채택되는 <code>ty::steal::Steal</code> 타입입니다. 세부사항은 <code>Steal</code> 정의를 참조하세요. <code>@rust-lang/compiler</code> 팀에 알리지 않고 <code>Steal</code>을 새로 채택해서는 <strong>안 됩니다</strong>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>저는 오랫동안 이 알고리즘을 Salsa 알고리즘이라 개명하고 싶었으나 널리 퍼지지 못했습니다. <span class="citation" data-cites="nikomatsakis">(<a href="../ai_in_action/ai_in_action_complete.html#ref-nikomatsakis" role="doc-biblioref"><strong>nikomatsakis?</strong></a>)</span><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>저는 오랫동안 이 알고리즘을 Salsa 알고리즘이라 개명하고 싶었으나 널리 퍼지지 못했습니다. -<code>@nikomatsakis</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>MSVC의 표현식 파서는 <code>&gt;&gt;</code>를 우측 시프트로 취급합니다. 타입 이름에서 연속된 <code>&gt;</code> 사이에 공백(<code>&gt; &gt;</code>)을 두어야 합니다.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>MSVC의 표현식 파서는 <code>&gt;&gt;</code>를 우측 시프트로 취급합니다. 타입 이름에서 연속된 <code>&gt;</code> 사이에 공백(<code>&gt; &gt;</code>)을 두어야 합니다.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>이러한 타입 이름은 디버그 정보 노드의 일부로 생성되지만(그런 다음 Rust 이름을 가진 typedef 노드로 래핑됨), LLVM-IR 노드가 CodeView 노드로 변환되면 타입 이름 정보가 손실됩니다. 이는 CodeView가 기본(primitive) 타입에 대해 특별한 약식 노드를 가지고 있고, 해당 약식 노드에는 “name” 필드가 없기 때문입니다.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -23072,7 +23070,7 @@ where for&lt;'a&gt; F: Fn(&amp;'a u8)</code></pre>
 <li id="fn15"><p>쿼리의 일반적인 개념에 대해서는 <a href="#query">쿼리</a> 장을 참조하세요. #### 패스 구현 및 등록하기 (Implementing and registering a pass)<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16"><p><code>mir_promoted</code> 쿼리는 튜플 <code>(&amp;'tcx Steal&lt;Body&lt;'tcx&gt;&gt;, &amp;'tcx Steal&lt;IndexVec&lt;Promoted, Body&lt;'tcx&gt;&gt;&gt;)</code>를 반환합니다. <code>promoted_mir</code>는 파트 1(<code>&amp;'tcx Steal&lt;IndexVec&lt;Promoted, Body&lt;'tcx&gt;&gt;&gt;</code>)을 훔쳐가고, <code>mir_drops_elaborated_and_const_checked</code>는 파트 0(<code>&amp;'tcx Steal&lt;Body&lt;'tcx&gt;&gt;</code>)을 훔쳐갑니다. 그리고 이들의 훔치기 연산은 서로 무관하므로, 즉 따로 수행될 수 있습니다.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>쿼리의 <code>*</code> 접미사는 동일한 접두사를 가진 쿼리 집합을 나타냅니다. 예를 들어 <code>mir_borrowck*</code>는 <code>mir_borrowck</code>, <code>mir_borrowck_const_arg</code> 및 <code>mir_borrowck_opt_const_arg</code>를 나타냅니다.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>이 경험칙은 <strong><span class="citation" data-cites="estebank">(<a href="../ai_in_action/ai_in_action_complete.html#ref-estebank" role="doc-biblioref"><strong>estebank?</strong></a>)</span></strong>가 <a href="https://github.com/rust-lang/rustc-dev-guide/pull/967#issuecomment-733218283">여기</a>에서 제안했습니다.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>이 경험칙은 <strong><code>@estebank</code></strong>가 <a href="https://github.com/rust-lang/rustc-dev-guide/pull/967#issuecomment-733218283">여기</a>에서 제안했습니다.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn19"><p>드래프트 RFC는 <a href="https://github.com/rust-lang/rfcs/pull/3370">여기</a>를 참조하세요.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20"><p>MSVC의 표현식 파서는 <code>&gt;&gt;</code>를 우측 시프트로 취급합니다. 타입 이름에서 연속된 <code>&gt;</code> 사이에 공백(<code>&gt; &gt;</code>)을 두어야 합니다.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn21"><p>이러한 타입 이름은 디버그 정보 노드의 일부로 생성되지만(그런 다음 Rust 이름을 가진 typedef 노드로 래핑됨), LLVM-IR 노드가 CodeView 노드로 변환되면 타입 이름 정보가 손실됩니다. 이는 CodeView가 기본(primitive) 타입에 대해 특별한 약식 노드를 가지고 있고, 해당 약식 노드에는 “name” 필드가 없기 때문입니다.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
