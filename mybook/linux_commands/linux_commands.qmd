@@ -36,7 +36,7 @@ Copyright (c) 2020 Bobby Iliev
 
 # `ls` 명령어
 
-`ls` 명령어 lets you see the files and directories inside a specific directory *(current working directory by default)*.
+`ls` 명령어는 특정 디렉터리(기본값: 현재 작업 디렉터리) 내의 파일과 디렉터리 목록을 확인할 때 사용합니다.
 기본적으로 파일과 디렉터리를 알파벳 오름차순으로 정렬하여 나열합니다.
 
 ### 예시:
@@ -158,7 +158,7 @@ SELinux를 사용하는 Red Hat 기반 배포판(RHEL, CentOS, Fedora, Rocky Lin
 |`-Z`|`--context`|파일 및 디렉터리의 SELinux 보안 컨텍스트 표시|
 |`-lZ`|<center>-</center>|SELinux 보안 컨텍스트를 포함하여 상세 형식으로 표시|
 
-**Example Output:**
+**출력 예시:**
 
 ```bash
 ls -Z
@@ -214,7 +214,7 @@ drwxr-xr-x 2 user group 4.0K Jan 15 10:25 documents
 
 ### 와일드카드 및 패턴 사용하기:
 
-`ls` 명령어 supports wildcards for pattern matching:
+`ls` 명령어는 패턴 일치를 위한 다양한 와일드카드를 지원합니다.
 
 |**와일드카드**|**설명**|**예시**|**매칭 대상**|
 |:---|:---|:---|:---|
@@ -224,7 +224,7 @@ drwxr-xr-x 2 user group 4.0K Jan 15 10:25 documents
 |`[!]`|대괄호 안에 없는 문자와 매칭|`ls file[!3].txt`|`file1.txt`, `file2.txt` (단, `file3.txt`는 제외)|
 |`{}`|쉼표로 구분된 패턴 중 하나와 매칭|`ls *.{jpg,png,gif}`|해당 확장자를 가진 모든 이미지 파일|
 
-**Examples:**
+**예시:**
 
 ```bash
 # List all PDF and DOCX files
@@ -249,7 +249,7 @@ SELinux를 사용하는 Red Hat 기반 배포판(RHEL, CentOS, Fedora, Rocky Lin
 |`-Z`|`--context`|파일 및 디렉터리의 SELinux 보안 컨텍스트 표시|
 |`-lZ`|<center>-</center>|SELinux 보안 컨텍스트를 포함하여 상세 형식으로 표시|
 
-**Example Output:**
+**출력 예시:**
 
 ```bash
 ls -Z
@@ -619,37 +619,37 @@ cat [OPTION] [FILE]...
 ### 사용 예시:
 
 
-1. To display the content of a file in terminal:
+1. 터미널에 파일 내용 출력:
 
 ```
 tac <specified_file_name>
 ```
 
-2. This option attaches the separator before instead of after.
+2. 구분자를 뒤가 아닌 앞에 붙여서 출력:
 
 ```
 tac -b concat_file_name tac_example_file_name
 ```
 
-3. This option will interpret the separator as a regular expression.
+3. 구분자를 정규 표현식으로 해석하여 처리:
 
 ```
 tac -r concat_file_name tac_example_file_name
 ```
 
-4. This option uses STRING as the separator instead of newline.
+4. 줄바꿈 대신 지정한 문자열을 구분자로 사용:
 
 ```
 tac -s concat_file_name tac_example_file_name
 ```
 
-5. This option will display the help text and exit.
+5. 도움말을 출력하고 종료:
 
 ```
 tac --help
 ```
 
-6. This option will give the version information and exit.
+6. 버전 정보를 출력하고 종료:
 
 ```
 tac --version
@@ -755,44 +755,44 @@ tail -n 10 foo.txt
 tail -f foo.txt
 ```
 
-Press `Ctrl+C` to stop following.
+실시간 추적을 중단하려면 `Ctrl+C`를 누르세요.
 
-### Combine options for log monitoring
+### 로그 모니터링을 위한 옵션 조합
 
 ```
 tail -n 100 -f app.log      # Show last 100 lines, then follow
 tail -f -s 2 slow.log       # Follow with 2-second refresh interval
 ```
 
-### Follow multiple files simultaneously
+### 여러 파일 동시 실시간 모니터링
 
 ```
 tail -f /var/log/nginx/access.log /var/log/nginx/error.log
 ```
 
-### Display specific byte ranges
+### 특정 바이트 범위 출력
 
 ```
 tail -c 100 file.txt        # Last 100 bytes
 tail -c +50 file.txt        # From byte 50 to end
 ```
 
-### Follow logs even after rotation
+### 로그 로테이션 후에도 파일 추적 유지
 
 ```
 tail -F /var/log/app.log
 ```
 
-The `-F` option is crucial for monitoring logs managed by logrotate.
+`-F` 옵션은 logrotate 등으로 관리되는 로그 파일을 끊김 없이 추적할 때 유용합니다.
 
-### Skip header lines
+### 헤더 행 건너뛰기
 
 ```
 tail -n +2 data.csv         # Start from line 2 (skip header)
 tail -n +11 file.txt        # Start from line 11 onwards
 ```
 
-### Quiet mode for multiple files
+### 여러 파일 출력 시 헤더 숨기기(저소음 모드)
 
 ```
 tail -q -n 5 *.log          # No filename headers
@@ -1232,7 +1232,7 @@ df -x file_system_type
 # `help` 명령어
 
 `help` 명령어 displays information about builtin commands.
-Display information about builtin commands.
+셸 내장 명령어에 대한 정보를 출력합니다.
 
 `PATTERN`이 지정된 경우 `PATTERN`과 일치하는 모든 명령어에 대한 상세 도움말을 제공하며, 지정되지 않은 경우 사용 가능한 도움말 항목 목록이 출력됩니다.
 
@@ -1409,7 +1409,7 @@ mkdir folder{01..10}
 
 ## 고급 사용법
 
-### Creating Nested Directories
+### 중첩 디렉터리 생성 (계층 구조)
 
 ```bash
 # Create nested directory structure (creates parent directories)
@@ -1422,7 +1422,7 @@ mkdir -p company/{departments/{hr,finance,it},projects/{web,mobile,desktop}}
 mkdir -p /opt/myapp/{bin,config,logs,data}
 ```
 
-### Setting Permissions During Creation
+### 생성 시 디렉터리 권한 지정
 
 ```bash
 # Create directory with specific permissions (755)
@@ -1441,7 +1441,7 @@ mkdir -m 777 temp_dir
 mkdir -m u=rwx,g=rx,o=rx public_folder
 ```
 
-### Verbose Mode
+### 상세 출력 모드
 
 ```bash
 # Show what directories are being created
@@ -1454,9 +1454,9 @@ mkdir -v dir1 dir2 dir3
 mkdir -pv projects/{frontend/{src,dist},backend/{api,database}}
 ```
 
-## Practical Examples
+## 실무 활용 예제
 
-### Project Structure Creation
+### 프로젝트 디렉터리 구조 생성
 
 ```bash
 # Create a typical web project structure
@@ -1469,7 +1469,7 @@ mkdir -p myproject/{src/{main,test},docs,build,config}
 mkdir -p backups/{daily,weekly,monthly}/{system,database,files}
 ```
 
-### System Administration
+### 시스템 관리 작업
 
 ```bash
 # Create log directories for an application
@@ -1483,7 +1483,7 @@ sudo mkdir -p /var/lib/myapp/data
 sudo mkdir -m 750 /var/lib/myapp/secure
 ```
 
-### User Environment Setup
+### 사용자 환경 구성
 
 ```bash
 # Set up user development environment
@@ -1495,9 +1495,9 @@ mkdir -p ~/documents/{work,personal,finance,education}
 mkdir -p ~/documents/work/{reports,presentations,spreadsheets}
 ```
 
-## Working with Special Characters
+## 특수 문자 및 공백 처리
 
-### Directories with Spaces
+### 공백이 포함된 디렉터리
 
 ```bash
 # Create directory with spaces (use quotes)
@@ -1511,7 +1511,7 @@ mkdir "Dir One" "Dir Two" "Dir Three"
 mkdir My\ Documents
 ```
 
-### Special Characters
+### 특수 문자가 포함된 이름
 
 ```bash
 # Create directories with special characters
@@ -1524,9 +1524,9 @@ mkdir project_2024  # Better than "project 2024"
 mkdir user_data     # Better than "user's data"
 ```
 
-## Error Handling and Validation
+## 오류 처리 및 검증
 
-### Common Error Scenarios
+### 자주 발생하는 오류 상황
 
 ```bash
 # Check if directory exists before creating
@@ -1559,7 +1559,7 @@ create_safe_dir() {
 create_safe_dir "/path/to/new/directory"
 ```
 
-## Combining with Other Commands
+## 다른 명령어와의 조합 활용
 
 ### 디렉터리 Creation and Navigation
 
@@ -1574,7 +1574,7 @@ mkcd() {
 mkcd ~/projects/newproject
 ```
 
-### Creating Directories with Files
+### 디렉터리와 파일 동시 생성
 
 ```bash
 # Create directory structure and add files
@@ -1590,7 +1590,7 @@ mkdir {css,js,images}
 touch index.html css/style.css js/script.js
 ```
 
-### Batch Operations
+### 일괄(배치) 작업
 
 ```bash
 # Create directories from a list
@@ -1608,9 +1608,9 @@ while read dir; do
 done < dirlist.txt
 ```
 
-## Permission and Ownership
+## 권한 및 소유권 관리
 
-### Setting Ownership After Creation
+### 생성 후 소유권 변경
 
 ```bash
 # Create directory and set ownership
@@ -1622,7 +1622,7 @@ sudo mkdir -m 755 /opt/myapp
 sudo chown user:group /opt/myapp
 ```
 
-### Creating Directories for Different Users
+### 특정 사용자를 위한 디렉터리 생성
 
 ```bash
 # Create user-specific directories
@@ -1631,9 +1631,9 @@ sudo chown -R newuser:newuser /home/newuser
 sudo chmod 755 /home/newuser
 ```
 
-## SELinux Context
+## SELinux 보안 컨텍스트
 
-### Setting SELinux Context
+### SELinux 보안 컨텍스트 설정
 
 ```bash
 # Create directory with specific SELinux context
@@ -1645,9 +1645,9 @@ sudo semanage fcontext -a -t httpd_exec_t "/path/to/secure_data(/.*)?"
 sudo restorecon -R /path/to/secure_data
 ```
 
-## Troubleshooting
+## 문제 해결 및 트러블슈팅
 
-### Common Issues and Solutions
+### 자주 묻는 질문 및 해결책
 
 ```bash
 # Permission denied
@@ -2262,7 +2262,7 @@ echo "│   System Info   │"
 echo "└─────────────────┘"
 ```
 
-### Color Output
+###  색상 출력
 
 ```bash
 # ANSI color codes
@@ -2280,9 +2280,9 @@ echo -e "\033[1mBold text\033[0m"
 echo -e "\033[3mItalic text\033[0m"
 ```
 
-## Practical Applications
+##  실무 활용 방안
 
-### System Information Display
+###  시스템 정보 출력
 
 ```bash
 # System status script
@@ -2295,7 +2295,7 @@ echo "Uptime: $(uptime -p)"
 echo "Memory Usage: $(free -h | grep Mem | awk '{print $3"/"$2}')"
 ```
 
-### Configuration File Generation
+###  설정 파일 자동 생성
 
 ```bash
 # Generate configuration file
@@ -2306,7 +2306,7 @@ echo "debug=false" >> app.conf
 echo "log_level=info" >> app.conf
 ```
 
-### Log File Management
+###  로그 파일 관리
 
 ```bash
 # Structured logging
@@ -2323,7 +2323,7 @@ log_info "Application started"
 log_error "Database connection failed"
 ```
 
-### Menu Creation
+###  대화형 메뉴 생성
 
 ```bash
 # Simple menu system
@@ -2340,9 +2340,9 @@ show_menu() {
 }
 ```
 
-## Command Substitution and Variables
+##  명령어 대체 및 변수 활용
 
-### Command Substitution
+###  명령어 대체
 
 ```bash
 # Display command output
@@ -2354,7 +2354,7 @@ echo "Free disk space: $(df -h / | tail -1 | awk '{print $4}')"
 echo "System: $(uname -s), Kernel: $(uname -r), Architecture: $(uname -m)"
 ```
 
-### Array and Variable Manipulation
+###  배열 및 변수 조작
 
 ```bash
 # Array display
@@ -2374,9 +2374,9 @@ echo "Uppercase: ${text^^}"
 echo "Lowercase: ${text,,}"
 ```
 
-## Error Handling and Validation
+## 오류 처리 및 검증
 
-### Input Validation
+###  입력값 검증
 
 ```bash
 # Check if variable is set
@@ -2390,7 +2390,7 @@ fi
 [ -d "/tmp" ] && echo "Directory /tmp exists" || echo "Directory /tmp not found"
 ```
 
-### Error Messages
+###  오류 메시지 처리
 
 ```bash
 # Error to stderr
@@ -2405,9 +2405,9 @@ else
 fi
 ```
 
-## Interactive Features
+##  대화형 기능
 
-### User Prompts
+###  사용자 입력 프롬프트
 
 ```bash
 # Simple prompt
@@ -2426,7 +2426,7 @@ case $answer in
 esac
 ```
 
-### Progress Indicators
+###  진행률 표시기
 
 ```bash
 # Simple progress bar
@@ -2445,9 +2445,9 @@ done
 echo -e "\nDone!"
 ```
 
-## Integration with Other Commands
+## Other Commands와의 통합
 
-### Piping and Redirection
+###  파이프 및 리디렉션 활용
 
 ```bash
 # Pipe to other commands
@@ -2461,7 +2461,7 @@ echo "$PATH" | tr ':' '\n' | sort | uniq
 echo "Important message" | tee -a important.log
 ```
 
-### Data Processing
+###  데이터 가공 및 처리
 
 ```bash
 # Generate data for processing
@@ -2560,7 +2560,7 @@ man echo
 
 ### 예시:
 
-1. View details about a particular user.
+1. 특정 사용자의 상세 정보 확인:
 
 ```
 finger abc
@@ -2578,7 +2578,7 @@ Unread since Sat Jun  7 12:59 2003 (IST)
 No Plan.
 ```
 
-2. View login details and idle status about a user.
+2. 특정 사용자의 로그인 정보 및 유휴 상태 확인:
 
 ```
 finger -s root
@@ -2720,19 +2720,19 @@ $demon# groups
 
 ### 예시:
 
-1. Man page for printf:
+1. `printf` 명령어 매뉴얼 페이지 확인:
 
 ```
 man printf
 ```
 
-2. Man page section 2 for intro:
+2. `intro`에 대한 매뉴얼 2섹션(시스템 호출) 확인:
 
 ```
 man 2 intro
 ```
 
-3. Viewing the Manual for a Local File (using the -l flag):
+3. 로컬 파일의 매뉴얼 페이지 보기 (`-l` 플래그 사용):
 
 ```
 man -l [LOCAL-FILE]
@@ -2818,7 +2818,7 @@ $ passwd [options] [LOGIN]
 w
 ```
 
-2. Show information for the user named *hope*.
+2. *hope* 사용자의 정보 출력:
 
 ```
 w hope
@@ -3876,17 +3876,17 @@ hostname [-a|--alias] [-d|--domain] [-f|--fqdn|--long] [-A|--all-fqdns] [-i|--ip
 ### 예시:
 
 1. ``` hostname -a, hostname --alias ```
-    Display the alias name of the host (if used). This option is deprecated and should not be used anymore.
+    호스트의 별칭(alias)을 표시합니다(사용 중단된 옵션이므로 사용을 권장하지 않습니다).
 
 2. ```hostname -s, hostname --short```
-    Display the short host name. This is the host name cut at the first dot.
+    짧은 호스트 이름을 출력합니다(첫 번째 마침표 앞부분만 표시).
 
 3.  ```hostname -V, hostname --version```
-    Print version information on standard output and exit successfully.
+    버전 정보를 표준 출력으로 표시하고 정상 종료합니다.
 
-### Help Command
+###  도움말 확인
 
-Run below command to view the complete guide to `hostname` command.
+`hostname` 명령어에 대한 자세한 가이드를 보려면 다음 명령을 실행하세요.
 
 ```
 man hostname
@@ -5315,25 +5315,25 @@ iostat [ -c ] [ -d ] [ -h ] [ -N ] [ -k | -m ] [ -t ] [ -V ] [ -x ]
 
 ### 예시:
 
-1. Display a single history-since-boot report for all CPU and Devices:
+1. 부팅 이후 전체 CPU 및 장치 통계 1회 출력:
 
 ```bash
 iostat -d 2
 ```
 
-2. Display a continuous device report at two-second intervals:
+2. 2초 간격으로 장치 보고서 연속 출력:
 
 ```bash
 iostat -d 2 6
 ```
 
-3.Display, for all devices, six reports at two-second intervals:
+3. 모든 장치에 대해 2초 간격으로 6회 통계 출력:
 
 ```bash
 iostat -x sda sdb 2 6
 ```
 
-4.Display, for devices sda and sdb, six extended reports at two-second intervals:
+4. sda 및 sdb 장치에 대해 2초 간격으로 확장 통계 6회 출력:
 
 ```bash
 iostat -p sda 2 6
@@ -6131,11 +6131,11 @@ gunzip [ -acfhklLnNrtvV ] [-S suffix] [ name ... ]
 | `-V` | `--version` | 버전 번호를 표시합니다. |
 
 :::{.callout-note}
-gunzip filename.gz is equivalent to gzip -d filename.gz.
+`gunzip filename.gz`는 `gzip -d filename.gz`와 동일합니다.
 :::
 
 :::{.callout-warning}
-Running gunzip without -c deletes the original compressed file by default.
+기본적으로 `gunzip`을 `-c` 옵션 없이 실행하면 원본 압축 파일이 삭제됩니다.
 :::
 # `hostnamectl` 명령어
 
@@ -6267,7 +6267,7 @@ sudo iptables -R INPUT 1 -p tcp --dport 443 -j ACCEPT
 
 ## Common Rule 예제
 
-### 1. Allow/Block Specific Ports
+###  1. 특정 포트 허용 및 차단
 
 ```bash
 # Allow SSH (port 22)
@@ -6283,7 +6283,7 @@ sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 8080 -j DROP
 ```
 
-### 2. Allow/Block by IP Address
+###  2. IP 주소별 허용 및 차단
 
 ```bash
 # Allow specific IP
@@ -6299,7 +6299,7 @@ sudo iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
 sudo iptables -A INPUT -m iprange --src-range 192.168.1.100-192.168.1.200 -j DROP
 ```
 
-### 3. Allow/Block by Interface
+###  3. 네트워크 인터페이스별 허용 및 차단
 
 ```bash
 # Allow traffic on loopback
@@ -6314,7 +6314,7 @@ sudo iptables -A INPUT -i eth1 -j DROP
 
 ## 고급 규칙
 
-### 1. Stateful Connections
+###  1. 상태 기반 연결(Stateful Connections)
 
 ```bash
 # Allow established and related connections
@@ -6324,7 +6324,7 @@ sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -m state --state NEW -p tcp --dport 22 -j ACCEPT
 ```
 
-### 2. Rate Limiting
+###  2. 연결 속도 및 요청 수 제한
 
 ```bash
 # Limit SSH connections (6 per minute)
@@ -6334,7 +6334,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -m limit --limit 6/min -j ACCEPT
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/sec -j ACCEPT
 ```
 
-### 3. Time-based Rules
+###  3. 시간대별 규칙 적용
 
 ```bash
 # Allow access during business hours
@@ -6344,7 +6344,7 @@ sudo iptables -A INPUT -p tcp --dport 80 -m time --timestart 09:00 --timestop 17
 sudo iptables -A INPUT -p tcp --dport 22 -m time --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
 ```
 
-### 4. Multiport Rules
+###  4. 다중 포트 일괄 규칙
 
 ```bash
 # Allow multiple ports
@@ -6422,7 +6422,7 @@ sudo tail -f /var/log/syslog | grep "DROPPED:"
 
 ## 일반적인 방화벽 구성
 
-### 1. Basic Desktop Firewall
+###  1. 기본 데스크톱 방화벽 설정
 
 ```bash
 #!/bin/bash
@@ -6450,7 +6450,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 ```
 
-### 2. Web Server Firewall
+###  2. 웹 서버 방화벽 설정
 
 ```bash
 #!/bin/bash
@@ -6477,7 +6477,7 @@ sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 ```
 
-### 3. Router/Gateway Configuration
+###  3. 라우터 및 게이트웨이 구성
 
 ```bash
 #!/bin/bash
@@ -6904,51 +6904,51 @@ mpstat [options] [<interval> [<count>]]
 
 ### 예시:
 
-1. To display processor and CPU statistics:
+1. 프로세서 및 CPU 통계 출력:
 
 ```
 mpstat
 ```
 
-2. To display processor number of all CPUs:
+2. 모든 CPU의 프로세서 번호 출력:
 
 ```
 mpstat -P ALL
 ```
 
-3. To get all the information which the tool may collect: 
+3. 수집 가능한 모든 정보 조회:
 
 ```
 mpstat -A
 ```
 
-4. To display CPU utilization by a specific processor: 
+4. 특정 프로세서별 CPU 사용률 출력:
 
 ```
 mpstat -P 0
 ```
 
-5. To display CPU usage with a time interval:
+5. 지정한 시간 간격으로 CPU 사용률 출력:
 
 ``` 
 mpstat 1 5
 ```
 
-**Note: This command will print 5 reports with 1 second time interval**
+**참고: 이 명령어는 1초 간격으로 총 5회의 보고서를 출력합니다.**
 
 # `ncdu` 명령어
 
-`ncdu` (NCurses Disk Usage) is a curses-based version of the well-known `du` command. It provides a fast way to see what directories are using your disk space.
+`ncdu`(NCurses Disk Usage)는 유명한 `du` 명령어를 ncurses 기반의 텍스트 UI로 구현한 도구입니다. 어떤 디렉터리가 디스크 공간을 많이 차지하고 있는지 빠르고 직관적으로 파악할 수 있습니다.
 
-## Example
+## 예제
 
-1. Quiet Mode
+1. 저소음 모드(Quiet Mode)
 
 ```
 ncdu -q
 ```
 
-2. Omit mounted directories
+2. 마운트된 디렉터리 제외
 
 ```
 ncdu -q -x
@@ -6984,37 +6984,37 @@ Linux에서 `uniq` 명령어는 파일에서 반복되는 행을 보고하거나
 uniq kt.txt
 ```
 
-In order to tell the number of times a line was repeated, the syntax would be the following:
+각 줄이 중복된 횟수를 함께 출력하려면 다음과 같이 실행합니다.
 
 ```
 uniq -c kt.txt
 ```
 
-In order to print repeated lines, the syntax would be the following:
+중복된 줄만 출력하려면 다음과 같이 실행합니다.
 
 ```
 uniq -d kt.txt
 ```
 
-In order to print unique lines, the syntax would be the following:
+중복되지 않은 고유한 줄만 출력하려면 다음과 같이 실행합니다.
 
 ```
 uniq -u kt.txt
 ```
 
-In order to allows the N fields to be skipped while comparing uniqueness of the lines, the syntax would be the following:
+줄의 고유성을 비교할 때 처음 N개 필드를 건너뛰려면 다음과 같이 실행합니다.
 
 ```
 uniq -f 2 kt.txt
 ```
 
-In order to allows the N characters to be skipped while comparing uniqueness of the lines, the syntax would be the following:
+줄의 고유성을 비교할 때 처음 N개 문자를 건너뛰려면 다음과 같이 실행합니다.
 
 ```
 uniq -s 5 kt.txt
 ```
 
-In order to to make the comparison case-insensitive, the syntax would be the following:
+대소문자를 구분하지 않고 비교하려면 다음과 같이 실행합니다.
 
 ```
 uniq -i kt.txt
@@ -7075,7 +7075,7 @@ uniq [OPTION] [INPUT[OUTPUT]]
 
 # 구문 요약(Synopsis)
 
-## Querying and Verifying Packages:
+## 패키지 조회 및 검증:
 
 ```
 rpm {-q|--query} [select-options] [query-options]
@@ -7087,7 +7087,7 @@ rpm --import PUBKEY ...
 rpm {-K|--checksig} [--nosignature] [--nodigest] PACKAGE_FILE ...
 ```
 
-## Installing, Upgrading, and Removing Packages:
+## 패키지 설치, 업그레이드 및 삭제:
 
 ```
 rpm {-i|--install} [install-options] PACKAGE_FILE ...
@@ -7112,7 +7112,7 @@ rpm {--setperms|--setugids} PACKAGE_NAME .
 
 ```
 
-### query-options
+### 조회 옵션 (query-options)
 
 ```
 [--changelog] [-c,--configfiles] [-d,--docfiles] [--dump]
@@ -7122,7 +7122,7 @@ rpm {--setperms|--setugids} PACKAGE_NAME .
 [--triggers,--triggerscripts]
 ```
 
-### verify-options
+### 검증 옵션 (verify-options)
 
 ```
 [--nodeps] [--nofiles] [--noscripts]
@@ -7132,7 +7132,7 @@ rpm {--setperms|--setugids} PACKAGE_NAME .
 [--nocaps]
 ```
 
-### install-options
+### 설치 옵션 (install-options)
 
 ```
 [--aid] [--allfiles] [--badreloc] [--excludepath OLDPATH]
@@ -7233,14 +7233,14 @@ scp [OPTION] [user@]SRC_HOST:]file1 [user@]DEST_HOST:]file2
 
 ### Examples :
 
-1. To sleep for 10s
+1. 10초 동안 대기:
 
 ```
 sleep 10s
 ```
  
 
-2. A more generalized command:
+2. 일반적인 형식의 대기 명령:
 
 ```
 sleep NUMBER[SUFFIX]...
@@ -7248,43 +7248,43 @@ sleep NUMBER[SUFFIX]...
 
 ## 옵션
 
-It accepts the following options:
+다음과 같은 옵션을 지원합니다.
 
 1.   --help
-	   > display this help and exit
+	   > 도움말을 표시하고 종료합니다
 2.  --version
-	 >  output version information and exit
+	 > 버전 정보를 출력하고 종료합니다
 
 
 # `split` 명령어
 
 `split` 명령어 in Linux is used to split a file into smaller files.
 
-### Examples
+### 예제
 
-1. Split a file into a smaller file using file name
+1. 파일 이름을 지정하여 작은 파일로 분할:
 
 ```
 split filename.txt
 ```
 
-2. Split a file named filename into segments of 200 lines beginning with prefix file
+2. `filename` 파일을 접두사 `file`을 붙여 200줄 단위로 분할:
 
 ```
 split -l 200 filename file
 ```
 
-This will create files of the name fileaa, fileab, fileac, filead, etc. of 200 lines.
+이 명령은 각각 200줄씩 담긴 `fileaa`, `fileab`, `fileac`, `filead` 등의 파일을 생성합니다.
 
-3. Split a file named filename into segments of 40 bytes with prefix file
+3. `filename` 파일을 접두사 `file`을 붙여 40바이트 단위로 분할:
 
 ```
 split -b 40 filename file
 ```
 
-This will create files of the name fileaa, fileab, fileac, filead, etc. of 40 bytes.
+이 명령은 각각 40바이트 크기의 `fileaa`, `fileab`, `fileac`, `filead` 등의 파일을 생성합니다.
 
-4. Split a file using --verbose to see the files being created.
+4. `--verbose` 옵션으로 분할 파일 생성 과정 확인:
 
 ```
 split filename.txt --verbose
@@ -7506,61 +7506,61 @@ usermod [options] USER
 
 ### 예시:
 
-1. To add a comment/description for a user:
+1. 사용자에 대한 설명(코멘트) 추가:
 
 ```
 sudo usermod -c "This is test user" test_user
 ```
 
-2. To change the home directory of a user:
+2. 사용자의 홈 디렉터리 변경:
 
 ```
 sudo usermod -d /home/sam test_user
 ```
 
-3. To change the expiry date of a user: 
+3. 사용자 계정 만료일 변경:
 
 ```
 sudo usermod -e 2021-10-05 test_user
 ```
 
-4. To change the group of a user: 
+4. 사용자의 기본 그룹 변경:
 
 ```
 sudo usermod -g sam test_user
 ```
 
-5. To change user login name:
+5. 사용자 로그인 이름(계정명) 변경:
 
 ``` 
 sudo usermod -l test_account test_user
 ```
 
-6. To lock a user:
+6. 사용자 계정 잠금:
 
 ```
 sudo usermod -L test_user
 ```
 
-7. To unlock a user:
+7. 사용자 계정 잠금 해제:
 
 ```
 sudo usermod -U test_user
 ```
 
-8. To set an unencrypted password for the user:
+8. 사용자의 미암호화 비밀번호 설정:
 
 ```
 sudo usermod -p test_password test_user
 ```
 
-9. To create a shell for the user:
+9. 사용자의 기본 셸 지정:
 
 ```
 sudo usermod -s /bin/sh test_user
 ```
 
-10. To change the user id of a user:
+10. 사용자의 사용자 ID(UID) 변경:
 
 ``` 
 sudo usermod -u 1234 test_user
@@ -7664,13 +7664,13 @@ io_priority = (cpu_nice + 20) / 5
 
 ### 예시:
 
-1. To show the estimated size of sub-directories in the current directory:
+1. 현재 디렉터리 내 하위 디렉터리의 예상 크기 확인:
 
 ```
 du
 ```
 
-2. To show the estimated size of sub-directories inside a specified directory:
+2. 지정한 디렉터리 내 하위 디렉터리의 예상 크기 확인:
 
 ```
 du {PATH_TO_DIRECTORY}
@@ -8040,19 +8040,19 @@ Linux에서 `ssh` 명령어는 “Secure Shell(보안 셸)”을 의미합니다
 
 ### 예시:
 
-1. Use a Different Port Number for SSH Connection: 	
+1. 특정 포트 번호로 SSH 연결: 	
 
 ```
 ssh test.server.com -p 3322
 ```
 
-2. -i ssh to remote server using a private key?
+2. 개인 키 파일(`-i`)을 사용하여 원격 서버에 SSH 접속:
 
 ```
 ssh -i private.key user_name@host
 ```
 
-3. -l ssh specifying a different username
+3. 다른 사용자 이름을 지정하여 SSH 접속 (`-l`):
 
 ```
 ssh -l alternative-username sample.ssh.com
@@ -8151,7 +8151,7 @@ awk options 'selection _criteria {action }' input-file > output-file
 
 #### Example
 
-Consider the following text file as the input file for below example:
+다음 텍스트 파일을 실습 예제의 입력 파일로 사용합니다.
 
     ```
     $cat > employee.txt
@@ -8164,7 +8164,7 @@ Consider the following text file as the input file for below example:
     tarun peon sales 15000
     ```
 
-1. Default behavior of Awk: By default Awk prints every line of data from the specified file.
+1. `awk`의 기본 동작: 기본적으로 지정한 파일의 모든 데이터 행을 출력합니다.
 
 ```
 $ awk '{print}' employee.txt
@@ -8178,9 +8178,9 @@ amit manager account 47000
 tarun peon sales 15000
 ```
 
-In the above example, no pattern is given. So the actions are applicable to all the lines. Action print without any argument prints the whole line by default, so it prints all the lines of the file without failure. 
+위 예제에서는 패턴을 지정하지 않았으므로 모든 줄에 동작이 적용됩니다. 인자 없는 `print` 동작은 기본적으로 줄 전체를 출력하므로 파일의 모든 내용이 출력됩니다.
 
-2. Print the lines which match the given pattern. 
+2. 지정한 패턴과 일치하는 행만 출력: 
 
 ```
 awk '/manager/ {print}' employee.txt 
@@ -8192,9 +8192,9 @@ varun manager sales 50000
 amit manager account 47000
 ```
 
-In the above example, the awk command prints all the line which matches with the ‘manager’. 
+위 예제에서 `awk` 명령어는 'manager'와 일치하는 모든 줄을 출력합니다.
 
-3. Splitting a Line Into Fields : For each record i.e line, the awk command splits the record delimited by whitespace character by default and stores it in the $n variables. If the line has 4 words, it will be stored in $1, $2, $3 and $4 respectively. Also, $0 represents the whole line.
+3. 줄을 필드로 분할: `awk`는 각 줄(레코드)을 공백을 기준으로 분할하여 `$1`, `$2`, `$3`, `$4` 등의 위치 변수에 순서대로 저장합니다. `$0`은 줄 전체를 나타냅니다.
 
 ```
 $ awk '{print $1,$4}' employee.txt 
@@ -8234,33 +8234,33 @@ crontab [ -u user ] [ -i ] { -e | -l | -r }
 
 ### 예시:
 
-1. The -l option causes the current crontab to be displayed on standard output.
+1. `-l` 옵션: 현재 등록된 crontab 일정을 표준 출력으로 표시합니다.
 
 ```
 crontab -l
 ```
 
-2.  The -r option causes the current crontab to be removed.
+2. `-r` 옵션: 현재 등록된 crontab 일정을 삭제합니다.
 
 ```
 crontab -r
 ```
 
-3. The -e option is used to edit the current crontab using the editor specified by the VISUAL or EDITOR environment variables.  After you exit from the editor,  the modified crontab will be installed automatically.  If neither of the environment variables is defined, then the default editor /usr/bin/editor is used.
+3. `-e` 옵션: `VISUAL` 또는 `EDITOR` 환경 변수에 지정된 편집기를 열어 crontab 일정을 편집합니다. 편집기를 종료하고 저장하면 수정된 일정이 자동으로 적용됩니다. 환경 변수가 없으면 시스템 기본 편집기(`/usr/bin/editor`)가 실행됩니다.
 
 ```
 crontab -e
 ```
 
-4. You can specify the user you want to edit the crontab for.  Every user has its own crontab.  Assume you have a `www-data` user, which is in fact the user Apache is default running as. If you want to edit the crontab for this user you can run the following command
+4. 특정 사용자의 crontab을 지정하여 편집할 수도 있습니다. 모든 사용자는 각자의 crontab을 가집니다. 예를 들어 Apache 웹 서버의 실행 계정인 `www-data` 사용자의 일정을 수정하려면 다음과 같이 실행합니다.
 
 ```
 crontab -u www-data -e 
 ```
 
-### Help Command
+###  도움말 확인
 
-Run below command to view the complete guide to `crontab` command.
+`crontab` 명령어에 대한 전체 가이드를 확인하려면 다음을 참조하세요.
 
 ```
 man crontab
@@ -8353,7 +8353,7 @@ man xargs
 
 ### 예시:
 
-1. Applying nohup to a long-running debian upgrade:
+1. 시간이 오래 걸리는 데비안 패키지 업그레이드에 `nohup` 적용:
 
 ```
 nohup apt-get -y upgrade
@@ -8442,7 +8442,7 @@ Linux의 `tree` 명령어는 디렉터리를 트리 구조로 재귀적으로 �
 tree
 ```
 
-2. -L NUMBER limits the depth of recursion to avoid display very deep trees.
+2. `-L <숫자>` 옵션을 사용하여 너무 깊은 디렉터리 트리가 출력되지 않도록 탐색 깊이를 제한:
 
 ```
 tree -L 2 /
@@ -8664,7 +8664,7 @@ $ printf "%s\n" "Printf command documentation!"
 printf 'Hello\nyoung\nman!'
 ```
 
-The output:
+출력 결과:
 
 ```
 hello 
@@ -8672,15 +8672,15 @@ young
 man!
 ```
 
-The two `\n` break the sentence into 3 parts of words.
+두 개의 `\n` 개행 문자가 문장을 3개의 단어/줄로 나눕니다.
 
-The input:
+입력 데이터:
 
 ```
 printf "%f\n" 2.5 5.75
 ```
 
-The output
+출력 결과
 
 ```
 2.500000
@@ -8746,16 +8746,16 @@ cut OPTION... [FILE]...
 
 ### 예시:
 
-1. To Find and Replace String with `sed`
+1. `sed`로 문자열을 찾아 다른 문자열로 교체:
 
 ```
 sed -i 's/{search_regex}/{replace_value}/g' input-file
 ```
 
-2. For Recursive Find and Replace *(along with `find`)*
+2. `find`와 조합하여 하위 디렉터리 내 문자열을 재귀적으로 일괄 교체:
 
-> Sometimes you may want to recursively search directories for files containing a string and replace the string in all files. This can be done using commands such as find to recursively find files in the directory and piping the file names to `sed`.
-The following command will recursively search for files in the current working directory and pass the file names to `sed`. It will recursively search for files in the current working directory and pass the file names to `sed`.
+> 디렉터리 내에서 특정 문자열을 포함하는 파일을 재귀적으로 검색하여 일괄 교체하고 싶을 때가 있습니다. `find` 명령어로 파일을 찾은 뒤 파이프를 통해 `sed`로 전달하면 손쉽게 처리할 수 있습니다.
+다음 명령어는 현재 작업 디렉터리에서 파일을 재귀적으로 검색한 후 파일 이름을 `sed`로 전달하여 일괄 교체합니다.
 
 ```
 find . -type f -exec sed -i 's/{search_regex}/{replace_value}/g' {} +
@@ -8826,33 +8826,33 @@ Vim 편집기에 관해 가장 많이 검색되는 질문은 매우 재미있어
 vim --version
 ```
 
-If it is already installed it will show its version, else we can run the below commands for the installations:
+이미 설치되어 있다면 버전이 출력되며, 설치되지 않았다면 아래 명령어로 설치할 수 있습니다.
 
-On Ubuntu/Debian:
+Ubuntu/Debian 계열:
 
 ```
 sudo apt-get install vim
 ```
 
-On Arch:
+Arch Linux 계열:
 
 ```
 sudo pacman -S vim
 ```
 
-On CentOS/Fedora:
+CentOS/Fedora 계열:
 
 ```
 sudo yum install vim
 ```
 
-If you want to use advanced features on CentOS/Fedora, you'll need to install enhanced vim editor, to do this run the following command:
+CentOS/Fedora에서 고급 기능을 사용하려면 향상된 vim 에디터를 설치해야 합니다. 다음 명령어를 실행하세요.
 
 ```
 sudo yum install -y vim-enhanced
 ```
 
-On macOS:
+macOS 계열:
 
 ```
 brew install vim
@@ -8866,19 +8866,19 @@ vim [FILE_PATH/FILE_NAME]
 
 ### 예시:
 
-1. To open the file named "demo.txt" from your current directory:
+1. 현재 디렉터리에서 `demo.txt` 파일 열기:
 
 ```
 vim demo.txt
 ```
 
-2. To open the file in a specific directory:
+2. 특정 디렉터리의 파일 열기:
 
 ```
 vim {File_Path/filename}
 ```
 
-3. To open the file starting on a specific line in the file:
+3. 특정 행 번호부터 파일 열기:
 
 ```
 vim {File_Path/filename} +LINE_NUMBER
@@ -9244,7 +9244,7 @@ man find
 rmdir -p a/b/c			// is similar to 'rmdir a/b/c a/b a'
 ```
 
-2. remove multiple directories
+2. 여러 디렉터리 일괄 삭제:
 
 ```
 rmdir a b c				// removes empty directories a,b and c
@@ -10071,7 +10071,9 @@ which에 여러 프로그램과 명령을 전달하면 순서대로 확인합니
 
 예:
 
-```which ping cat uptime date head```
+```bash
+which ping cat uptime date head
+```
 
 ### 옵션
 
@@ -10406,13 +10408,10 @@ fdisk -s /dev/sda
 fdisk -h
 ```
 
-### 구문:
+### 구문(Syntax):
 
-```
+```bash
 fdisk [options] device
-
-### Syntax:
-
 ```
 ### 일부 명령어 옵션:
 
@@ -10610,7 +10609,7 @@ apt-get install quota
 
 ### 구문:
 
-The general syntax for the `quota` command is as follows:
+`quota` 명령어의 기본 구문은 다음과 같습니다.
 
 ```
 quota [ -u [ User ] ] [ -g [ Group ] ] [ -v | -q ]
@@ -10650,29 +10649,29 @@ aplay --help
 
 ## 예제:
 
-1. To play audio for only 10 secs at 2500hz frequency.
+1. 2500Hz 주파수로 10초간 오디오 재생:
 
    ```
    $ aplay -d 10 -r 2500hz sample.mp3
    ```
 
-   > Plays sample.mp3 file for only 10 secs at 2500hz frequency.
+   > `sample.mp3` 파일을 2500Hz 주파수로 10초 동안 재생합니다.
 
-2. To play full audio clip at 2500hz frezuency.
+2. 2500Hz 주파수로 전체 오디오 클립 재생:
 
    ```
    $ aplay -r 2500hz sample.mp3
    ```
 
-   > Plays sample.mp3 file at 2500hz frezuency.
+   > `sample.mp3` 파일을 2500Hz 주파수로 재생합니다.
 
-3. To Display version information.
+3. 버전 정보 출력:
 
    ```
    $ aplay --version
    ```
 
-   > Displays version information. For me it shows aplay: vesrion 1.1.0
+   > 버전 정보를 출력합니다 (예: `aplay: version 1.1.0`).
 
 ---
 
@@ -10750,13 +10749,13 @@ $ spd-say [options] "some text"
 
 ## 예제:
 
-1. To Play the given text as the sound.
+1. 지정한 텍스트를 음성으로 읽어주기:
 
 ```
 $ spd-say "Hello"
 ```
 
->Plays "Hello" in sound.
+> "Hello"라는 음성을 재생합니다.
 
 # `xeyes` 명령어
 
@@ -10782,19 +10781,19 @@ xeyes
 **참고:** `parted`는 변경 사항을 디스크에 즉시 기록하므로 디스크 파티션을 수정할 때 주의해야 합니다.
 ### 예제:
 
-1. Displays partition layout of all block devices:
+1. 모든 블록 장치의 파티션 구조 출력:
 
 ```
 sudo parted -l
 ```
 
-2. Display partition table of a specific `disk`
+2. 특정 디스크의 파티션 테이블 확인:
 
 ```
 sudo parted disk print
 ```
 
-Examples of `disk` are /dev/sda, /dev/sdb
+디스크 장치명의 예: `/dev/sda`, `/dev/sdb`
 
 3. Create a new disk label of `label-type` for a specific disk
 
@@ -10802,9 +10801,9 @@ Examples of `disk` are /dev/sda, /dev/sdb
 sudo parted mklabel disk label-type
 ```
 
-`label-type` can take values "aix", "amiga", "bsd", "dvh", "gpt", "loop", "mac", "msdos", "pc98", or "sun" <br />
+`label-type`은 "gpt", "msdos", "bsd", "mac", "sun" 등의 파티션 테이블 형식을 지정할 수 있습니다.<br />
 
-4. Create a new partition in a specific `disk` of type `part-time`, file system is `fs-type` and of size `size` Mb.
+4. 특정 디스크에 파티션 유형, 파일 시스템 유형 및 크기(MB)를 지정하여 새 파티션 생성:
 
 ```
 sudo parted disk mkpart part-time fs-type 1 size
@@ -10906,7 +10905,7 @@ nl  -i10  -nrz  -s::  -v10  -w4  chap1
 pidof [OPTIONS] PROGRAM_NAME
 ```
 
-To view the help message and all options of the command:
+명령어의 도움말과 전체 옵션을 확인하려면:
 
 ```
 [user@home ~]$ pidof -h
@@ -10947,16 +10946,16 @@ pidof sshd
 pidof -s program_name
 ```
 
-The `-o` option allows you to exclude a process with a given PID from the command output:
+`-o` 옵션을 사용하면 지정한 PID를 가진 프로세스를 결과에서 제외할 수 있습니다.
 
 ```
 pidof -o pid program_name
 ```
 
-When pidof is invoked with the `-o` option, you can use a special PID named %PPID that represents the calling shell or shell script.
+`pidof`에 `-o` 옵션을 사용할 때 호출한 셸이나 스크립트를 나타내는 `%PPID` 특수 값을 지정할 수 있습니다.
 
-To return only the PIDs of the processes that are running with the same root directory, use the `-c` option.
-This option works only pidof is run as `root` or `sudo` user:
+동일한 루트 디렉터리에서 실행 중인 프로세스의 PID만 반환하려면 `-c` 옵션을 사용합니다.
+이 옵션은 `root` 권한이나 `sudo`로 실행할 때만 동작합니다.
 
 ```
 pidof -c pid program_name
@@ -10985,7 +10984,7 @@ shuf -e [OPTION]... [ARG]
 shuf -i LO-HI [OPTION]
 ```
 
-Like other Linux commands, `shuf` command comes with `-–help` option:
+다른 Linux 명령어와 마찬가지로 `shuf` 명령어도 `--help` 옵션을 제공합니다.
 
 ```
 [user@home ~]$ shuf --help
@@ -11033,7 +11032,7 @@ shuf
 3
 ```
 
-Consider an example where Input is taken  from the pipe:
+파이프를 통해 표준 입력을 전달받는 예제입니다.
 
 ```
 {
@@ -11041,7 +11040,7 @@ seq 5 | shuf
 }
 ```
 
-`seq 5` returns the integers sequentially from `1` to `5` while the `shuf` command takes it as input and shuffles the content i.e, the integers from `1` to `5`. Hence, `1` to `5` is displayed as output in random order.
+`seq 5`는 1부터 5까지의 정수를 순서대로 반환하며, `shuf`는 이를 표준 입력으로 받아 무작위로 섞어 출력합니다.
 
 ```
 [user@home ~]$ {
@@ -11066,7 +11065,7 @@ seq 5 | shuf
 shuf file.txt
 ```
 
-Suppose file.txt contains 6 lines, then the shuf command displays the input lines in random order as output.
+`file.txt`에 6개 행이 포함되어 있다고 가정할 때, `shuf` 명령어는 입력된 행들을 무작위 순서로 섞어 출력합니다.
 
 ```
 [user@home ~]$ cat file.txt
@@ -11084,13 +11083,13 @@ line-3
 line-2
 ```
 
-Any number of lines can be randomized by using `-n` option.
+`-n` 옵션을 사용하면 원하는 개수의 줄만 무작위로 추출할 수 있습니다.
 
 ```
 shuf -n 2 file.txt
 ```
 
-This will display any two random lines from the file.
+파일에서 무작위로 선택된 2개의 줄을 출력합니다.
 
 ```
 line-5
@@ -11117,13 +11116,13 @@ D
 E
 ```
 
-Any number of input lines can be displayed using the `-n` option along with `-e` option.
+`-e` 옵션과 함께 `-n` 옵션을 사용하면 무작위로 선택할 줄 수를 지정할 수 있습니다.
 
 ```
 shuf -e -n 2 A B C D E
 ```
 
-This will display any two of the inputs.
+입력값 중 무작위로 2개를 선택하여 출력합니다.
 
 ```
 E
@@ -11160,7 +11159,7 @@ less [options] file_path
 
 ## 옵션
 
-Some popular option flags include:
+자주 쓰이는 주요 옵션 플래그는 다음과 같습니다.
 
 ```
 -E	less automatically exits upon reaching the end of file.
@@ -11170,7 +11169,7 @@ Some popular option flags include:
 -G	Removes all highlights from strings found using search.
 ```
 
-For a complete list of options, refer to the less help file by running:
+전체 옵션 목록을 확인하려면 `less` 실행 중 `h` 키를 누르거나 도움말을 참조하세요.
 
 ```
     less --help
@@ -11196,7 +11195,7 @@ less -N /etc/init/mysql.conf
 less -pERROR /etc/init/mysql.conf
 ```
 
-4. Remove Multiple Blank Lines
+4. 연속된 빈 줄 제거:
 
 ```
 less welcome.txt
@@ -11271,19 +11270,19 @@ $ cmp [OPTION]... FILE1 [FILE2]
 
 다음 예제에서는 세 개의 파일이 있다고 가정합니다.
 
-`file1.txt`:
+`file1.txt` 내용:
 
 ```text
 hello world
 ```
 
-`file2.txt`:
+`file2.txt` 내용:
 
 ```text
 hello world
 ```
 
-`file3.txt`:
+`file3.txt` 내용:
 
 ```text
 hello World
@@ -12210,19 +12209,19 @@ jobs -l
 jobs -p
 ```
 
-4. List only running jobs
+4. 실행 중인 작업만 나열:
 
 ```bash
 jobs -r
 ```
 
-5. List only stopped jobs
+5. 중지된 작업만 나열:
 
 ```bash
 jobs -s
 ```
 
-6. Show status of specific job
+6. 특정 작업의 상태 확인:
 
 ```bash
 jobs %1
@@ -12243,20 +12242,20 @@ find / -name "*.log" > /tmp/logs.txt 2>/dev/null &
 ping google.com > /tmp/ping.txt &
 ```
 
-3. View all jobs
+3. 전체 백그라운드 작업 목록 확인:
 
 ```bash
 jobs
 ```
 
-Output might look like:
+출력 예시:
 
 ```
 [1]-  Running    find / -name "*.log" > /tmp/logs.txt 2>/dev/null &
 [2]+  Running    ping google.com > /tmp/ping.txt &
 ```
 
-4. Stop a running job (Ctrl+Z)
+4. 실행 중인 작업 일시 중지 (`Ctrl+Z`):
 
 ```bash
 # Start a command
@@ -12266,19 +12265,19 @@ vim myfile.txt
 jobs
 ```
 
-5. Bring job to foreground
+5. 작업을 포그라운드로 가져오기:
 
 ```bash
 fg %1
 ```
 
-6. Send job to background
+6. 작업을 백그라운드로 전송:
 
 ```bash
 bg %1
 ```
 
-7. Kill a specific job
+7. 특정 작업 강제 종료:
 
 ```bash
 kill %2
@@ -12385,7 +12384,7 @@ kill $(jobs -p)
 
 `jobs` 명령어 is essential for managing multiple processes and implementing effective workflow management in the shell.
 
-For more details, check the manual: `man jobs` or `help jobs`
+더 자세한 내용은 `man jobs` 또는 `help jobs`를 참조하세요.
 
 # `bg` 명령어
 
@@ -12459,7 +12458,7 @@ Output:
 [1]+  Stopped    find / -name "*.log" > /tmp/findlogs.txt 2>/dev/null
 ```
 
-4. Put the stopped job in background
+4. 일시 중지된 작업을 백그라운드에서 재개:
 
 ```bash
 bg %1
@@ -12471,7 +12470,7 @@ Output:
 [1]+ find / -name "*.log" > /tmp/findlogs.txt 2>/dev/null &
 ```
 
-5. Verify the job is running in background
+5. 작업이 백그라운드에서 실행 중인지 확인:
 
 ```bash
 jobs
@@ -12483,7 +12482,7 @@ Output:
 [1]+  Running    find / -name "*.log" > /tmp/findlogs.txt 2>/dev/null &
 ```
 
-## Practical Examples
+## 실무 활용 예제
 
 1. Working with a text editor
 
@@ -12553,7 +12552,7 @@ bg
 - **Development**: Background compilation while coding
 - **System administration**: Background monitoring while performing other tasks
 
-## Important Notes
+## 중요 참고 사항
 
 - Jobs put in background with `bg` are still attached to the terminal
 - If you close the terminal, background jobs may be terminated
@@ -12564,7 +12563,7 @@ bg
 
 ## Error Handling
 
-If `bg` fails, common reasons include:
+`bg` 실행 실패 시 주요 원인:
 
 - Job doesn't exist
 - Job is already running
@@ -12579,7 +12578,7 @@ If `bg` fails, common reasons include:
 
 `bg` 명령어 is essential for effective multitasking and job management in the shell environment.
 
-For more details, check the manual: `help bg`
+더 자세한 내용은 `help bg` 매뉴얼을 참조하세요.
 
 # `fg` 명령어
 
@@ -12591,11 +12590,11 @@ For more details, check the manual: `help bg`
 fg [job_spec]
 ```
 
-If no job specification is provided, `fg` operates on the current job (most recent job).
+작업 번호를 지정하지 않으면 `fg`는 가장 최근에 중지된 현재 작업에 동작합니다.
 
 ## Job Specifications
 
-You can refer to jobs using different formats:
+작업(Job)을 지정할 때 다음과 같은 형식을 사용할 수 있습니다.
 
 - `%1` - Job number 1
 - `%+` or `%%` - Current job (most recent)
@@ -12623,7 +12622,7 @@ fg %1
 fg %vim
 ```
 
-4. Bring job containing specific text
+4. 특정 문자열을 포함하는 작업을 포그라운드로 전환:
 
 ```bash
 fg %?backup
@@ -12631,7 +12630,7 @@ fg %?backup
 
 ## Complete Job Control Workflow
 
-Here's a typical workflow demonstrating `fg` usage:
+`fg` 명령어를 활용하는 전형적인 작업 흐름:
 
 1. Start a background job
 
@@ -12659,7 +12658,7 @@ Output:
 [2]+  Stopped    vim myfile.txt
 ```
 
-4. Bring vim to foreground
+4. vim 작업을 포그라운드로 전환:
 
 ```bash
 fg %2
@@ -12671,7 +12670,7 @@ fg %2
 fg %1
 ```
 
-## Practical Examples
+## 실무 활용 예제
 
 1. Working with editors
 
@@ -12717,7 +12716,7 @@ ls -la core.*
 fg %gdb
 ```
 
-4. Working with multiple terminals/sessions
+4. 여러 터미널 및 세션 간 작업 관리:
 
 ```bash
 # Start SSH session
@@ -12790,7 +12789,7 @@ kill $MONITOR_PID
 - **Interactive programs**: Return to paused interactive applications
 - **Debugging**: Resume debugger sessions
 
-## Important Notes
+## 중요 참고 사항
 
 - When a job is brought to foreground, it becomes the active process
 - You can only have one foreground job at a time
@@ -12801,13 +12800,13 @@ kill $MONITOR_PID
 
 ## Error Handling
 
-Common issues with `fg`:
+`fg` 사용 시 자주 발생하는 문제:
 
 - Job doesn't exist: `fg: %3: no such job`
 - No jobs available: `fg: no current job`
 - Job already in foreground
 
-## Tips for Effective Usage
+## Tips for Effective 사용법
 
 1. **Use job numbers**: More reliable than partial names
 2. **Check jobs first**: Always run `jobs` to see current status
@@ -12824,9 +12823,9 @@ fg %tail  # Review logs
 fg %vim   # Continue editing
 ```
 
-## Integration with Other Tools
+## Other Tools와의 통합
 
-`fg` works well with:
+`fg` 명령어는 다음과 함께 유용하게 쓰입니다.
 
 - **Terminal multiplexers**: `screen`, `tmux`
 - **Development environments**: IDEs, editors
@@ -12835,7 +12834,7 @@ fg %vim   # Continue editing
 
 `fg` 명령어 is crucial for efficient terminal multitasking and provides seamless switching between different tasks.
 
-For more details, check the manual: `help fg`
+더 자세한 내용은 `help fg` 매뉴얼을 참조하세요.
 
 # `time` 명령어
 
@@ -12866,7 +12865,7 @@ time [options] command [arguments]
 
 ## Output Format
 
-The standard output shows three measurements:
+표준 출력으로 다음 세 가지 측정값이 표시됩니다.
 
 ```
 real    0m2.345s
@@ -12876,7 +12875,7 @@ sys     0m0.567s
 
 ## 옵션
 
-Some popular option flags include:
+자주 쓰이는 주요 옵션 플래그는 다음과 같습니다.
 
 ```
 -p          Use POSIX format output
@@ -12900,25 +12899,25 @@ time ls -la
 time ./my_script.sh
 ```
 
-3. Time a compilation process
+3. 컴파일 과정 소요 시간 측정:
 
 ```bash
 time make all
 ```
 
-4. Time with POSIX format
+4. POSIX 표준 형식으로 시간 측정:
 
 ```bash
 time -p find /usr -name "*.txt"
 ```
 
-5. Save timing information to file
+5. 시간 측정 결과를 파일로 저장:
 
 ```bash
 time -o timing.log -a make clean && make
 ```
 
-6. Verbose timing information
+6. 상세 시간 측정 정보 출력:
 
 ```bash
 time -v python large_calculation.py
@@ -12938,13 +12937,13 @@ time (command1 && command2 && command3)
 /usr/bin/time -f "Time: %E, Memory: %M KB" ./memory_intensive_program
 ```
 
-3. Time and redirect output
+3. 실행 시간 측정 및 출력 리디렉션:
 
 ```bash
 time (find /usr -name "*.log" > found_logs.txt 2>&1)
 ```
 
-4. Compare execution times
+4. 실행 시간 비교 측정:
 
 ```bash
 echo "Method 1:"
@@ -12956,13 +12955,13 @@ time method2_script.sh
 
 ## Using GNU time (Advanced)
 
-The GNU version of `time` (usually at `/usr/bin/time`) provides more detailed information:
+GNU 버전의 `time`(`/usr/bin/time`)은 더욱 상세한 실행 통계를 제공합니다.
 
 ```bash
 /usr/bin/time -v command
 ```
 
-This shows additional statistics like:
+다음과 같은 추가 통계가 함께 표시됩니다.
 
 - Maximum resident set size (memory usage)
 - Page faults
@@ -12985,7 +12984,7 @@ This shows additional statistics like:
 %O    Number of file system outputs
 ```
 
-## Practical Examples
+## 실무 활용 예제
 
 1. Profile a Python script
 
@@ -13007,19 +13006,19 @@ echo "Quick sort:"
 time ./quick_sort < large_dataset.txt
 ```
 
-3. Time database operations
+3. 데이터베이스 작업 소요 시간 측정:
 
 ```bash
 time mysql -u user -p database < complex_query.sql
 ```
 
-4. Time network operations
+4. 네트워크 작업 소요 시간 측정:
 
 ```bash
 time wget https://large-file.example.com/bigfile.zip
 ```
 
-5. Time compression operations
+5. 압축 작업 소요 시간 측정:
 
 ```bash
 echo "gzip compression:"
@@ -13029,7 +13028,7 @@ echo "bzip2 compression:"
 time bzip2 -c large_file.txt > large_file.bz2
 ```
 
-6. Profile build processes
+6. 빌드 프로세스 성능 프로파일링:
 
 ```bash
 echo "Clean build timing:"
@@ -13529,6 +13528,8 @@ sudo ufw allow 1000:2000/udp
 # Allow specific protocol
 sudo ufw allow 53/udp  # DNS
 sudo ufw allow 53/tcp  # DNS over TCP
+```
+
 ### IP 주소 규칙
 
 1. **특정 IP 주소 허용/거부**
@@ -14453,10 +14454,27 @@ nmcli [OPTIONS...] { help | general | networking | radio | connection | device |
 | `nmcli device wifi list`                         | 사용 가능한 모든 Wi-Fi 네트워크 나열                  |
 | `nmcli device wifi connect "SSID" password "PWD"`| 암호로 보호된 Wi-Fi에 연결                |
 
-e sure to backup first!
+# `badblocks` 명령
+
+`badblocks` 명령은 하드 드라이브나 SSD 등의 저장 장치에서 불량 섹터(배드 블록)를 검사하고 찾아내는 유용한 도구입니다.
+
+## 기본 사용법
+
+### 1. 비파괴 읽기 테스트 (기본)
+
+```bash
+# 기본 비파괴 읽기 검사
+sudo badblocks -sv /dev/sdb
+```
+
+### 2. 파괴적 쓰기 테스트 (데이터 손실 주의)
+
+```bash
+# 쓰기 테스트 (모든 데이터가 삭제되므로 사전 백업 필수!)
+# Make sure to backup first!
 sudo badblocks -wsv /dev/sdb
 
-# Multiple pass destructive test
+# 다회차 파괴적 테스트
 sudo badblocks -wsv -p 3 /dev/sdb
 ```
 
@@ -15654,7 +15672,7 @@ ls -l /dev/sdb1
 sudo usermod -a -G disk username
 ```
 
-## Performance Optimization
+## 성능 최적화
 
 ### 1. 블록 크기 선택
 
@@ -16493,7 +16511,7 @@ lsb_release -a
 # Codename:       ThirtySix
 ```
 
-## Alternative Information Sources
+## 대안 정보 소스
 
 ### 1. lsb_release를 사용할 수 없을 때
 
@@ -16649,7 +16667,7 @@ if [[ "$(lsb_release -i -s)" == "Ubuntu" ]]; then
 fi
 ```
 
-## Integration with Configuration Management
+## 설정 관리 도구와의 통합
 
 ### 1. Ansible Facts
 
@@ -16757,7 +16775,7 @@ parse_distro_safe() {
 }
 ```
 
-## Modern Alternatives
+## 최신 대안 명령어
 
 ### 1. hostnamectl (systemd)
 
@@ -17546,7 +17564,7 @@ create_asset_report() {
  apropos -M /usr/share/man file
  ```
  
- ## Practical Examples
+ ## 실무 활용 예제
  
  ### 1. Finding Commands by Function
  
@@ -17745,7 +17763,7 @@ create_asset_report() {
  daily_discovery
  ```
  
- ## Troubleshooting Common Issues
+ ## 문제 해결 및 트러블슈팅 Common Issues
  
  ### 1. No Results Found
  
@@ -17845,7 +17863,7 @@ create_asset_report() {
  apropos -a package update
  ```
  
- ## Integration with Learning
+## Learning와의 통합
  
  ### 1. Command Discovery Script
  
@@ -18033,7 +18051,7 @@ create_asset_report() {
  fi
  ```
  
- ## Best Practices
+ ## 모범 사례 (Best Practices)
  
  ### 1. Effective Searching
  
@@ -18239,7 +18257,7 @@ create_asset_report() {
  sudo dmesg -n 1
  ```
  
- ## Practical Examples
+ ## 실무 활용 예제
  
  ### 1. Hardware Detection
  
@@ -18504,7 +18522,7 @@ create_asset_report() {
  check_system_health
  ```
  
- ## Common Use Cases
+## 일반적인 사용 사례
  
  ### 1. USB Device Troubleshooting
  
@@ -18564,7 +18582,7 @@ create_asset_report() {
  }
  ```
  
- ## Integration with Other Tools
+## Other Tools와의 통합
  
  ### 1. Combining with journalctl
  
@@ -18611,7 +18629,7 @@ create_asset_report() {
  }
  ```
  
- ## Troubleshooting
+ ## 문제 해결 및 트러블슈팅
  
  ### 1. Buffer Size Issues
  
@@ -20159,7 +20177,7 @@ get_storage_info
 
 ## 시스템 분석 스크립트
 
-### 1. Hardware Inventory
+### 1. 하드웨어 인벤토리 확인
 
 ```bash
 #!/bin/bash
@@ -20201,7 +20219,7 @@ hardware_inventory() {
 hardware_inventory > hardware_inventory.txt
 ```
 
-### 2. Driver Status Check
+### 2. 드라이버 상태 확인
 
 ```bash
 #!/bin/bash
@@ -20228,7 +20246,7 @@ check_drivers() {
 check_drivers
 ```
 
-### 3. Performance Analysis
+### 3. 성능 분석
 
 ```bash
 #!/bin/bash
@@ -20262,7 +20280,7 @@ analyze_performance
 
 ## 문제 해결
 
-### 1. Device Detection Issues
+### 1. 장치 인식 문제 해결
 
 ```bash
 # Check if device is detected
@@ -20296,7 +20314,7 @@ check_device_detection "graphics"
 check_device_detection "network"
 ```
 
-### 2. Driver Issues
+### 2. 드라이버 문제 해결
 
 ```bash
 # Find devices without drivers
@@ -20322,7 +20340,7 @@ find_missing_drivers() {
 find_missing_drivers
 ```
 
-### 3. Hardware Compatibility
+### 3. 하드웨어 호환성 확인
 
 ```bash
 # Check hardware compatibility
@@ -20353,7 +20371,7 @@ check_compatibility
 
 ## 고급 사용법
 
-### 1. Configuration Space Analysis
+### 1. PCI 구성 공간(Configuration Space) 분석
 
 ```bash
 # Analyze specific device configuration
@@ -20377,7 +20395,7 @@ analyze_device_config() {
 # Usage: analyze_device_config "00:02.0"
 ```
 
-### 2. Bandwidth Analysis
+### 2. 링크 대역폭 및 속도 분석
 
 ```bash
 # Analyze PCIe bandwidth
@@ -20397,7 +20415,7 @@ analyze_bandwidth() {
 analyze_bandwidth
 ```
 
-### 3. Power Management
+### 3. 전원 관리 상태 확인
 
 ```bash
 # Check power management capabilities
@@ -20413,7 +20431,7 @@ check_power_management
 
 ## 다른 도구와 통합
 
-### 1. Combining with lsmod
+### 1. `lsmod`와 조합하여 드라이버 확인
 
 ```bash
 # Match PCI devices with loaded modules
