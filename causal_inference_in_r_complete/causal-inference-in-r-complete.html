@@ -104,7 +104,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5d24896f051ccf5050ff418be51757cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -909,7 +909,7 @@ if (requireNamespace("tidyverse", quietly = TRUE)) {
 <li><a href="https://mixtape.scunning.com/"><em>Causal Inference: The Mixtape</em></a></li>
 <li><a href="https://theeffectbook.net/"><em>The Effect</em></a></li>
 </ul>
-<p>첫 번째 책은 역학(epidemiology)에 중점을 둡니다. 나머지 두 권은 계량경제학(econometrics)에 중점을 둡니다. 인과 다이어그램에 대해 더 자세히 알고 싶다면 <em>The Book of Why</em> <span class="citation" data-cites="pearl2018why">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-pearl2018why" role="doc-biblioref"><strong>pearl2018why?</strong></a>)</span>도 추천합니다.</p>
+<p>첫 번째 책은 역학(epidemiology)에 중점을 둡니다. 나머지 두 권은 계량경제학(econometrics)에 중점을 둡니다. 인과 다이어그램에 대해 더 자세히 알고 싶다면 <em>The Book of Why</em> <span class="citation" data-cites="pearl2018why">[@pearl2018why]</span>도 추천합니다.</p>
 <section id="설치" class="level2" data-number="24.1">
 <h2 data-number="24.1" class="anchored" data-anchor-id="설치"><span class="header-section-number">24.1</span> 설치</h2>
 <p>이 책은 현재 활발히 개발 중인 여러 패키지를 사용합니다. 필요한 개발 버전을 설치하려면 다음을 사용하세요:</p>
@@ -1026,8 +1026,8 @@ status("complete")</code></pre>
 <section id="일상적인-추론-casual-inference" class="level2" data-number="25.1">
 <h2 data-number="25.1" class="anchored" data-anchor-id="일상적인-추론-casual-inference"><span class="header-section-number">25.1</span> 일상적인 추론 (Casual inference)</h2>
 <p>인과 분석의 핵심은 인과적 질문입니다. 이 질문은 우리가 어떤 데이터를 분석할지, 어떻게 분석할지, 그리고 우리의 추론이 어떤 인구 집단에 적용될지를 결정합니다. 이 책은 성격상 실무에 중점을 두고 있으며, 주로 인과 추론의 분석 단계(analysis stage)를 다룹니다. 좋은 인과적 질문을 명시하는 복잡성에 비하면, 분석 단계는 상당히 간단합니다. 이 책의 처음 6장에서는 인과적 질문이 무엇인지, 질문을 어떻게 개선할 수 있는지 논의하고 몇 가지 사례를 살펴볼 것입니다.</p>
-<p>인과적 질문은 데이터 과학의 주요 과업인 묘사(description), 예측(prediction), 인과 추론(causal inference)과 관련된 통계적 기술로 던질 수 있는 더 넓은 범위의 질문 중 일부입니다 <span class="citation" data-cites="hernan2019">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2019" role="doc-biblioref"><strong>hernan2019?</strong></a>)</span>. 불행히도 이러한 과업들은 우리가 사용하는 기술(예를 들어 회귀 분석은 세 가지 과업 모두에 유용합니다)과 그것들을 이야기하는 방식 때문에 종종 뒤섞이곤 합니다. 연구자들이 무작위 배정되지 않은 데이터로부터 인과 추론에 관심을 가질 때, 인과 효과를 추정하려는 의도를 명확히 밝히는 대신 “연관성(association)”과 같은 완곡한 표현을 사용하는 경우가 많습니다 <span class="citation" data-cites="Hernan2018">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Hernan2018" role="doc-biblioref"><strong>Hernan2018?</strong></a>)</span>.</p>
-<p>예를 들어, 최근 역학 연구의 분석 언어에 대한 연구에 따르면, 추정된 효과를 설명하는 가장 일반적인 어근은 “associate(연관시키다)”였지만, 많은 연구자는 “associate”가 적어도 <em>어느 정도의</em> 인과 효과를 암시한다고 느꼈습니다 (<span class="quarto-unresolved-ref">?fig-word-ranking</span>) <span class="citation" data-cites="haber_causal_language">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-haber_causal_language" role="doc-biblioref"><strong>haber_causal_language?</strong></a>)</span>. 분석된 연구 중 약 1%만이 “cause(원인)”라는 어근을 전혀 사용했습니다. 그럼에도 불구하고 연구의 1/3은 행동 권고안(action recommendations)을 담고 있었으며, 연구자들은 이러한 권고안의 80%가 적어도 어느 정도의 인과적 함의를 가지고 있다고 평가했습니다. 종종 이러한 연구들은 효과에 대한 설명(“associate”나 “compare”와 같은 어근)에서 암시하는 것보다 더 강력한 행동 권고(인과 효과를 암시함)를 내놓습니다. 많은 연구가 목표가 인과 추론임을 암시했음에도 불구하고, 이 책에서 논의하는 것과 같은 공식적인 인과 모델을 사용한 연구는 약 4%에 불과했습니다. 그러나 대부분은 그러한 원인이 이전 연구나 이론에 의해 어떻게 정당화될 수 있는지 논의했습니다.</p>
+<p>인과적 질문은 데이터 과학의 주요 과업인 묘사(description), 예측(prediction), 인과 추론(causal inference)과 관련된 통계적 기술로 던질 수 있는 더 넓은 범위의 질문 중 일부입니다 <span class="citation" data-cites="hernan2019">[@hernan2019]</span>. 불행히도 이러한 과업들은 우리가 사용하는 기술(예를 들어 회귀 분석은 세 가지 과업 모두에 유용합니다)과 그것들을 이야기하는 방식 때문에 종종 뒤섞이곤 합니다. 연구자들이 무작위 배정되지 않은 데이터로부터 인과 추론에 관심을 가질 때, 인과 효과를 추정하려는 의도를 명확히 밝히는 대신 “연관성(association)”과 같은 완곡한 표현을 사용하는 경우가 많습니다 <span class="citation" data-cites="Hernan2018">[@Hernan2018]</span>.</p>
+<p>예를 들어, 최근 역학 연구의 분석 언어에 대한 연구에 따르면, 추정된 효과를 설명하는 가장 일반적인 어근은 “associate(연관시키다)”였지만, 많은 연구자는 “associate”가 적어도 <em>어느 정도의</em> 인과 효과를 암시한다고 느꼈습니다 (<span class="quarto-unresolved-ref">?fig-word-ranking</span>) <span class="citation" data-cites="haber_causal_language">[@haber_causal_language]</span>. 분석된 연구 중 약 1%만이 “cause(원인)”라는 어근을 전혀 사용했습니다. 그럼에도 불구하고 연구의 1/3은 행동 권고안(action recommendations)을 담고 있었으며, 연구자들은 이러한 권고안의 80%가 적어도 어느 정도의 인과적 함의를 가지고 있다고 평가했습니다. 종종 이러한 연구들은 효과에 대한 설명(“associate”나 “compare”와 같은 어근)에서 암시하는 것보다 더 강력한 행동 권고(인과 효과를 암시함)를 내놓습니다. 많은 연구가 목표가 인과 추론임을 암시했음에도 불구하고, 이 책에서 논의하는 것과 같은 공식적인 인과 모델을 사용한 연구는 약 4%에 불과했습니다. 그러나 대부분은 그러한 원인이 이전 연구나 이론에 의해 어떻게 정당화될 수 있는지 논의했습니다.</p>
 <pre class="{r}"><code>#| label: "fig-word-ranking"
 #| fig.cap: "연구자들이 사용한 어근의 인과적 강도 순위. 'Strong' 등급이 많은 어근은 'None'이나 'Weak' 등급이 많은 어근보다 인과적 함의가 더 강합니다. 데이터 출처: @haber_causal_language."
 #| fig.height: 9
@@ -1073,7 +1073,7 @@ rankings |&gt;
 <section id="사례" class="level4" data-number="25.1.1.1">
 <h4 data-number="25.1.1.1" class="anchored" data-anchor-id="사례"><span class="header-section-number">25.1.1.1</span> 사례</h4>
 <p>사건의 수를 세는 것은 우리가 데이터로 할 수 있는 가장 좋은 일 중 하나입니다. EDA는 예측 및 인과 분석 모두에 도움이 되지만, 묘사적 분석은 다른 분석 과업과 독립적으로 가치가 있습니다. 복잡한 머신러닝 모델을 개발할 줄 알았는데 대부분의 시간을 대시보드 제작에 쓰고 있다는 사실을 깨달은 데이터 과학자에게 물어보십시오. 데이터의 분포, 특히 핵심 분석 목표(예: 산업계의 KPI 또는 역학의 질병 발생률)에 대한 분포를 이해하는 것은 많은 유형의 의사 결정에 매우 중요합니다.</p>
-<p>최근 묘사적 분석의 가장 좋은 사례 중 하나는 코로나19 팬데믹에서 나타났습니다 <span class="citation" data-cites="Fox2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Fox2022" role="doc-biblioref"><strong>Fox2022?</strong></a>)</span>. 2020년, 특히 팬데믹 초기 몇 달 동안 묘사적 분석은 위험을 이해하고 자원을 배분하는 데 필수적이었습니다. 코로나바이러스는 다른 호흡기 질환과 유사하기 때문에 위험을 줄이기 위한 많은 공중보건 도구(예: 거리두기, 이후의 마스크 착용)가 있었습니다. 지역별 사례의 묘사 통계는 지역 정책과 그 정책의 강도를 결정하는 데 필수적이었습니다.</p>
+<p>최근 묘사적 분석의 가장 좋은 사례 중 하나는 코로나19 팬데믹에서 나타났습니다 <span class="citation" data-cites="Fox2022">[@Fox2022]</span>. 2020년, 특히 팬데믹 초기 몇 달 동안 묘사적 분석은 위험을 이해하고 자원을 배분하는 데 필수적이었습니다. 코로나바이러스는 다른 호흡기 질환과 유사하기 때문에 위험을 줄이기 위한 많은 공중보건 도구(예: 거리두기, 이후의 마스크 착용)가 있었습니다. 지역별 사례의 묘사 통계는 지역 정책과 그 정책의 강도를 결정하는 데 필수적이었습니다.</p>
 <p>팬데믹 기간 중 더 복잡한 묘사적 분석의 훌륭한 사례는 여러 국가 및 지역의 기대 사망자 수와 관찰된 사망자 수를 비교한 파이낸셜 타임즈(Financial Times)의 지속적인 보고서였습니다<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. 기대 사망자 수 계산은 대부분의 묘사 통계보다 약간 더 정교하지만, 인과 효과를 풀지 않고도(예: 사망이 직접적으로 코로나19 때문인가? 접근 불가능한 의료 서비스 때문인가? 코로나 이후의 심혈관 사건 때문인가?) 현재 사망에 대한 엄청난 양의 정보를 제공했습니다. 2020년 7월의 차트를 (단순화하여) 재현한 이 그래프에서 팬데믹 초기 몇 달 동안의 충격적인 영향을 볼 수 있습니다.</p>
 <pre class="{r}"><code>#| label: fig-ft-chart
 #| fig-width: 10
@@ -1131,9 +1131,9 @@ ggplot(
   )</code></pre>
 <p>다음은 묘사적 분석의 다른 훌륭한 사례들입니다.</p>
 <ul>
-<li><strong>전 세계의 삼림 벌채</strong>. Our World in Data <span class="citation" data-cites="owidforestsanddeforestation">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-owidforestsanddeforestation" role="doc-biblioref"><strong>owidforestsanddeforestation?</strong></a>)</span>는 다양한 주제를 사려 깊게 다루며 대개 묘사적인 보고서를 생성하는 데이터 저널리즘 조직입니다. 이 보고서에서 그들은 산림 면적의 절대적 변화(산림 전이)와 상대적 변화(삼림 벌채 또는 재조림)를 시각화하여 보여주며, 기초 통계와 임업 이론을 사용하여 시간 경과에 따른 산림 상태를 보여주는 유용한 정보를 제공합니다.</li>
-<li><strong>클라미디아 및 임균 감염의 유병률</strong> <span class="citation" data-cites="Miller2004">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Miller2004" role="doc-biblioref"><strong>Miller2004?</strong></a>)</span>. 질병 유병률(현재 얼마나 많은 사람이 질병을 앓고 있는지를 인구당 비율로 나타낸 것)을 측정하는 것은 기초 공중보건(자원, 예방, 교육)과 과학적 이해에 도움이 됩니다. 이 연구에서 저자들은 미국의 모든 고등학교(대상 인구)를 대표하도록 설계된 복잡한 설문 조사를 실시했습니다. 그들은 질문과 관련된 다양한 요인을 다루기 위해 설문 가중치(survey weights)를 사용한 다음 유병률 및 기타 통계를 계산했습니다. 나중에 보겠지만, 가중치는 인과 추론에서도 동일한 이유, 즉 특정 인구 집단을 대상으로 하기 위해 유용합니다. 그렇긴 하지만 모든 가중치 기술이 본질적으로 인과적인 것은 아니며, 이 사례도 그러했습니다.</li>
-<li><strong>인종 및 민족별 자궁 적출술 불평등 추정</strong> <span class="citation" data-cites="Gartner2020">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Gartner2020" role="doc-biblioref"><strong>Gartner2020?</strong></a>)</span>. 묘사적 기술은 경제학이나 역학 같은 분야의 격차를 이해하는 데에도 도움이 됩니다. 이 연구에서 저자들은 인종 또는 민족 배경에 따라 자궁 적출술의 위험이 다른지 물었습니다. 분석이 주요 변수에 의해 층화되어 있기는 하지만 여전히 묘사적입니다. 이 논문의 또 다른 흥미로운 점은 연구가 올바른 대상 인구에 대한 질문에 답하도록 보장하려는 저자들의 노력이었습니다. 그들의 분석은 여러 데이터 소스를 결합하여 실제 인구 유병률을 더 잘 추정했습니다(흔히 제시되는 병원 내 유병률 대신). 그들은 또한 자궁 적출술의 유병률을 조정했습니다. 예를 들어, 실제로 자궁 적출술을 받을 수 있는 사람들(즉, 아직 받지 않은 사람들) 사이에서만 발생률(신규 사례 비율)을 계산했습니다.</li>
+<li><strong>전 세계의 삼림 벌채</strong>. Our World in Data <span class="citation" data-cites="owidforestsanddeforestation">[@owidforestsanddeforestation]</span>는 다양한 주제를 사려 깊게 다루며 대개 묘사적인 보고서를 생성하는 데이터 저널리즘 조직입니다. 이 보고서에서 그들은 산림 면적의 절대적 변화(산림 전이)와 상대적 변화(삼림 벌채 또는 재조림)를 시각화하여 보여주며, 기초 통계와 임업 이론을 사용하여 시간 경과에 따른 산림 상태를 보여주는 유용한 정보를 제공합니다.</li>
+<li><strong>클라미디아 및 임균 감염의 유병률</strong> <span class="citation" data-cites="Miller2004">[@Miller2004]</span>. 질병 유병률(현재 얼마나 많은 사람이 질병을 앓고 있는지를 인구당 비율로 나타낸 것)을 측정하는 것은 기초 공중보건(자원, 예방, 교육)과 과학적 이해에 도움이 됩니다. 이 연구에서 저자들은 미국의 모든 고등학교(대상 인구)를 대표하도록 설계된 복잡한 설문 조사를 실시했습니다. 그들은 질문과 관련된 다양한 요인을 다루기 위해 설문 가중치(survey weights)를 사용한 다음 유병률 및 기타 통계를 계산했습니다. 나중에 보겠지만, 가중치는 인과 추론에서도 동일한 이유, 즉 특정 인구 집단을 대상으로 하기 위해 유용합니다. 그렇긴 하지만 모든 가중치 기술이 본질적으로 인과적인 것은 아니며, 이 사례도 그러했습니다.</li>
+<li><strong>인종 및 민족별 자궁 적출술 불평등 추정</strong> <span class="citation" data-cites="Gartner2020">[@Gartner2020]</span>. 묘사적 기술은 경제학이나 역학 같은 분야의 격차를 이해하는 데에도 도움이 됩니다. 이 연구에서 저자들은 인종 또는 민족 배경에 따라 자궁 적출술의 위험이 다른지 물었습니다. 분석이 주요 변수에 의해 층화되어 있기는 하지만 여전히 묘사적입니다. 이 논문의 또 다른 흥미로운 점은 연구가 올바른 대상 인구에 대한 질문에 답하도록 보장하려는 저자들의 노력이었습니다. 그들의 분석은 여러 데이터 소스를 결합하여 실제 인구 유병률을 더 잘 추정했습니다(흔히 제시되는 병원 내 유병률 대신). 그들은 또한 자궁 적출술의 유병률을 조정했습니다. 예를 들어, 실제로 자궁 적출술을 받을 수 있는 사람들(즉, 아직 받지 않은 사람들) 사이에서만 발생률(신규 사례 비율)을 계산했습니다.</li>
 </ul>
 </section>
 <section id="타당성-validity" class="level4" data-number="25.1.1.2">
@@ -1156,15 +1156,15 @@ ggplot(
 <h3 data-number="25.1.2" class="anchored" data-anchor-id="예측-prediction"><span class="header-section-number">25.1.2</span> 예측 (Prediction)</h3>
 <p>예측의 목표는 데이터를 사용하여 변수를, 대개 새로운 데이터를 정확하게 예측하는 것입니다. 이것이 무엇을 의미하는지는 질문, 도메인 등에 따라 다릅니다. 예측 모델은 동료 검토를 거친 임상 모델부터 소비자 기기에 내장된 맞춤형 머신러닝 모델에 이르기까지 상상할 수 있는 거의 모든 환경에서 사용됩니다. ChatGPT의 기반이 되는 것과 같은 대규모 언어 모델조차도 예측 모델입니다. 즉, 프롬프트에 대한 응답이 어떻게 생겼을지를 예측하는 것입니다.</p>
 <p>예측 모델링은 일반적으로 이 책에서 제시할 인과 모델링을 위한 워크플로와는 다른 워크플로를 사용합니다. 예측의 목표는 대개 새로운 데이터에 대한 예측을 하는 것과 관련이 있기 때문에, 이 유형의 모델링 워크플로는 새로운 데이터에 대한 일반화 능력을 유지하면서 예측 정확도를 최대화하는 데 중점을 둡니다. 이를 종종 편향-분산 트레이드오프(bias-variance trade-off)라고 합니다. 실무에서 이는 데이터를 훈련 세트(모델을 구축하는 데이터 부분)와 테스트 세트(모델을 평가하는 부분, 새로운 데이터에서 어떻게 수행될지에 대한 대리인)로 나누는 것을 의미합니다. 일반적으로 데이터 과학자들은 훈련 세트에 모델이 과적합(overfitting)되는 위험을 더욱 줄이기 위해 교차 검증(cross-validation)이나 다른 샘플링 기술을 사용합니다.</p>
-<p>예측 모델링에 관한 훌륭한 텍스트들이 많이 있으므로, 기술의 목표와 방법을 더 깊이 탐구하려면 관련 문헌들을 참조하시길 바랍니다 <span class="citation" data-cites="kuhn2013a harrell2001 Kuhn_Silge_2022 James_Witten_Hastie_Tibshirani_2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-kuhn2013a" role="doc-biblioref"><strong>kuhn2013a?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-harrell2001" role="doc-biblioref"><strong>harrell2001?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Kuhn_Silge_2022" role="doc-biblioref"><strong>Kuhn_Silge_2022?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-James_Witten_Hastie_Tibshirani_2022" role="doc-biblioref"><strong>James_Witten_Hastie_Tibshirani_2022?</strong></a>)</span>.</p>
+<p>예측 모델링에 관한 훌륭한 텍스트들이 많이 있으므로, 기술의 목표와 방법을 더 깊이 탐구하려면 관련 문헌들을 참조하시길 바랍니다 <span class="citation" data-cites="kuhn2013a harrell2001 Kuhn_Silge_2022 James_Witten_Hastie_Tibshirani_2022">[@kuhn2013a; @harrell2001; @Kuhn_Silge_2022; @James_Witten_Hastie_Tibshirani_2022]</span>.</p>
 <section id="사례-1" class="level4" data-number="25.1.2.1">
 <h4 data-number="25.1.2.1" class="anchored" data-anchor-id="사례-1"><span class="header-section-number">25.1.2.1</span> 사례</h4>
 <p>예측은 데이터 과학에서 가장 인기 있는 주제이며, 이는 주로 산업계의 머신러닝 응용 덕분입니다. 물론 예측은 통계학에서 오랜 역사를 가지고 있으며, 오늘날 인기 있는 많은 모델이 학계 안팎에서 수십 년 동안 사용되어 왔습니다.</p>
-<p>코로나19에 대한 예측 사례를 살펴봅시다<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. 2021년, 연구자들은 급성 코로나19에 대한 심각한 부작용 결과를 예측하기 위한 임상 예후 모델인 ISARIC 4C 악화 모델(ISARIC 4C Deterioration model)을 발표했습니다 <span class="citation" data-cites="Gupta2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Gupta2021" role="doc-biblioref"><strong>Gupta2021?</strong></a>)</span>. 저자들은 이 모델이 개발된 인구 집단, 특히 결과와 후보 예측 변수의 분포를 이해하기 위해 묘사적 분석을 포함했습니다. 이 모델의 유용한 점 중 하나는 코로나 관련 입원 첫날에 흔히 측정되는 항목들을 사용한다는 것입니다. 저자들은 영국의 지역별 교차 검증을 사용하여 이 모델을 구축한 다음, 제외된 지역의 데이터로 모델을 테스트했습니다. 최종 모델에는 11개 항목과 모델 속성, 결과와의 관계 등에 대한 설명이 포함되었습니다. 특히 저자들은 후보 변수를 선택하기 위해 임상 도메인 지식을 사용했지만, 모델 계수를 인과적으로 해석하려는 유혹에 빠지지 않았습니다. 의심할 여지 없이, 이 모델의 예측 가치 중 일부는 결과와 관련된 변수들의 인과 구조에서 비롯되지만, 연구자들은 이 모델로 완전히 다른 목표를 가지고 있었고 그것을 고수했습니다.</p>
+<p>코로나19에 대한 예측 사례를 살펴봅시다<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. 2021년, 연구자들은 급성 코로나19에 대한 심각한 부작용 결과를 예측하기 위한 임상 예후 모델인 ISARIC 4C 악화 모델(ISARIC 4C Deterioration model)을 발표했습니다 <span class="citation" data-cites="Gupta2021">[@Gupta2021]</span>. 저자들은 이 모델이 개발된 인구 집단, 특히 결과와 후보 예측 변수의 분포를 이해하기 위해 묘사적 분석을 포함했습니다. 이 모델의 유용한 점 중 하나는 코로나 관련 입원 첫날에 흔히 측정되는 항목들을 사용한다는 것입니다. 저자들은 영국의 지역별 교차 검증을 사용하여 이 모델을 구축한 다음, 제외된 지역의 데이터로 모델을 테스트했습니다. 최종 모델에는 11개 항목과 모델 속성, 결과와의 관계 등에 대한 설명이 포함되었습니다. 특히 저자들은 후보 변수를 선택하기 위해 임상 도메인 지식을 사용했지만, 모델 계수를 인과적으로 해석하려는 유혹에 빠지지 않았습니다. 의심할 여지 없이, 이 모델의 예측 가치 중 일부는 결과와 관련된 변수들의 인과 구조에서 비롯되지만, 연구자들은 이 모델로 완전히 다른 목표를 가지고 있었고 그것을 고수했습니다.</p>
 <p>예측 분야의 다른 좋은 사례들은 다음과 같습니다:</p>
 <ul>
-<li><p>예측 모델링에서 가장 흥미로운 작업 중 일부는 산업계에서 이루어집니다. 넷플릭스(Netflix)는 정기적으로 그들의 모델링 성공 사례와 새로운 전략에 대한 세부 정보를 <a href="https://research.netflix.com/">연구 블로그</a>에 공유합니다. 그들은 또한 최근 추천 시스템(이 경우에는 사용자에게 쇼와 영화를 추천함)을 위한 딥러닝 모델 사용을 검토하는 논문을 발표했습니다 <span class="citation" data-cites="steck2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-steck2021" role="doc-biblioref"><strong>steck2021?</strong></a>)</span>. 저자들은 모델을 사용한 실험, 그 모델의 세부 사항, 그리고 그들이 직면한 많은 과제를 설명하며 그러한 모델 사용 실무 가이드를 제시했습니다.</p></li>
-<li><p>2020년 초, 건강 연구의 예측 및 예후 모델링 경험이 풍부한 연구자들은 코로나19의 진단 및 예후를 위한 모델들에 대한 리뷰를 발표했습니다 <span class="citation" data-cites="Wynants2020">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Wynants2020" role="doc-biblioref"><strong>Wynants2020?</strong></a>)</span>. 이 리뷰는 그 폭이 넓을 뿐만 아니라 품질이 좋지 않다고 평가된 모델의 수가 엄청나다는 점에서도 흥미롭습니다: “[232개의] 모델들이 편향의 위험이 높거나 불분명하다고 평가되었는데, 이는 주로 대조군 환자의 비대표적 선택, 연구 종료 시까지 관심 사건을 경험하지 않은 환자의 제외, 모델 과적합의 높은 위험, 그리고 불분명한 보고 때문이었습니다.” 이 연구는 또한 <a href="https://www.covprecise.org/">지속적으로 업데이트되는 리뷰(living review)</a>입니다.</p></li>
+<li><p>예측 모델링에서 가장 흥미로운 작업 중 일부는 산업계에서 이루어집니다. 넷플릭스(Netflix)는 정기적으로 그들의 모델링 성공 사례와 새로운 전략에 대한 세부 정보를 <a href="https://research.netflix.com/">연구 블로그</a>에 공유합니다. 그들은 또한 최근 추천 시스템(이 경우에는 사용자에게 쇼와 영화를 추천함)을 위한 딥러닝 모델 사용을 검토하는 논문을 발표했습니다 <span class="citation" data-cites="steck2021">[@steck2021]</span>. 저자들은 모델을 사용한 실험, 그 모델의 세부 사항, 그리고 그들이 직면한 많은 과제를 설명하며 그러한 모델 사용 실무 가이드를 제시했습니다.</p></li>
+<li><p>2020년 초, 건강 연구의 예측 및 예후 모델링 경험이 풍부한 연구자들은 코로나19의 진단 및 예후를 위한 모델들에 대한 리뷰를 발표했습니다 <span class="citation" data-cites="Wynants2020">[@Wynants2020]</span>. 이 리뷰는 그 폭이 넓을 뿐만 아니라 품질이 좋지 않다고 평가된 모델의 수가 엄청나다는 점에서도 흥미롭습니다: “[232개의] 모델들이 편향의 위험이 높거나 불분명하다고 평가되었는데, 이는 주로 대조군 환자의 비대표적 선택, 연구 종료 시까지 관심 사건을 경험하지 않은 환자의 제외, 모델 과적합의 높은 위험, 그리고 불분명한 보고 때문이었습니다.” 이 연구는 또한 <a href="https://www.covprecise.org/">지속적으로 업데이트되는 리뷰(living review)</a>입니다.</p></li>
 </ul>
 </section>
 <section id="타당성-validity-1" class="level4" data-number="25.1.2.2">
@@ -1176,7 +1176,7 @@ ggplot(
 <section id="인과-추론과의-관계-1" class="level4" data-number="25.1.2.3">
 <h4 data-number="25.1.2.3" class="anchored" data-anchor-id="인과-추론과의-관계-1"><span class="header-section-number">25.1.2.3</span> 인과 추론과의 관계</h4>
 <p>예측에서 가장 큰 위험은 모델의 특정 계수가 인과적으로 해석될 수 있다고 가정하는 것입니다. 그렇지 않을 가능성이 큽니다. 모델이 예측은 잘할 수 있지만 인과적인 관점에서는 완전히 편향된 계수를 가질 수도 있습니다. 이 내용은 <a href="#sec-pred-or-explain" class="quarto-xref"><span>섹션 25.1.4</span></a> 및 이 책의 나머지 부분에서 더 자세히 다룰 것입니다.</p>
-<p>종종 사람들은 예측 모델을 위한 특징(변수) 선택 방법을 인과 모델의 교란 요인을 선택하는 데 잘못 사용하곤 합니다. 과적합의 위험은 차치하더라도, 이러한 방법은 예측 모델에는 적절하지만 인과 모델에는 적절하지 않습니다. 예측 메트릭은 질문의 인과 구조를 결정할 수 없으며, 결과에 대한 예측 가치가 있다고 해서 변수가 교란 요인이 되는 것은 아닙니다. 일반적으로 (예측이나 연관 통계가 아닌) 배경 지식이 인과 모델을 위한 변수를 선택하는 데 도움이 되어야 합니다 <span class="citation" data-cites="robinsImpossible">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-robinsImpossible" role="doc-biblioref"><strong>robinsImpossible?</strong></a>)</span>. 우리는 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a>장 및 <a href="#sec-building-models" class="quarto-xref"><span>섹션 32.1</span></a>장에서 이 과정을 자세히 논의할 것입니다.</p>
+<p>종종 사람들은 예측 모델을 위한 특징(변수) 선택 방법을 인과 모델의 교란 요인을 선택하는 데 잘못 사용하곤 합니다. 과적합의 위험은 차치하더라도, 이러한 방법은 예측 모델에는 적절하지만 인과 모델에는 적절하지 않습니다. 예측 메트릭은 질문의 인과 구조를 결정할 수 없으며, 결과에 대한 예측 가치가 있다고 해서 변수가 교란 요인이 되는 것은 아닙니다. 일반적으로 (예측이나 연관 통계가 아닌) 배경 지식이 인과 모델을 위한 변수를 선택하는 데 도움이 되어야 합니다 <span class="citation" data-cites="robinsImpossible">@robinsImpossible</span>. 우리는 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a>장 및 <a href="#sec-building-models" class="quarto-xref"><span>섹션 32.1</span></a>장에서 이 과정을 자세히 논의할 것입니다.</p>
 <p>그럼에도 불구하고 예측은 인과 추론에 필수적입니다. 철학적 관점에서 우리는 서로 다른 <em>만약에(what if)</em> 시나리오의 예측을 비교하고 있습니다: 한 가지 일이 일어났을 때와 다른 일이 일어났을 때 결과가 어떠할 것인가? 우리는 이 주제, 특히 <a href="#sec-counterfactuals" class="quarto-xref"><span>장 27</span></a>장에서 많은 시간을 보낼 것입니다. 또한 실무적 관점에서의 예측도 많이 이야기할 것입니다. 예측 및 일부 묘사에서와 마찬가지로, 인과적 질문에 답하기 위해 모델링 기술을 사용할 것이기 때문입니다. 성향 점수(propensity score) 방법과 g-추정(g-computation)과 같은 기술은 인과적 질문에 답하기 위해 모델 예측을 사용하지만, 모델 자체를 구축하고 해석하는 워크플로는 상당히 다릅니다.</p>
 </section>
 </section>
@@ -1200,12 +1200,12 @@ ggplot(
 </div>
 <section id="사례-2" class="level4" data-number="25.1.3.1">
 <h4 data-number="25.1.3.1" class="anchored" data-anchor-id="사례-2"><span class="header-section-number">25.1.3.1</span> 사례</h4>
-<p>이 책에서 인과 추론의 많은 사례를 보게 되겠지만, 코로나19와 관련된 사례를 계속 살펴봅시다. 팬데믹이 지속되고 백신과 항바이러스 치료제 같은 도구들이 사용 가능해짐에 따라 보편적 마스크 착용과 같은 정책들도 바뀌기 시작했습니다. 2022년 2월, 미국의 매사추세츠주는 공립학교에서의 보편적 마스크 착용을 의무화하는 주 차원의 정책을 철회했습니다 <span class="citation" data-cites="Cowger2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Cowger2022" role="doc-biblioref"><strong>Cowger2022?</strong></a>)</span>. 보스턴 대도시 지역에서는 일부 학군이 정책을 유지한 반면 다른 학군들은 중단했습니다. 중단한 학군들도 정책 변경 후 몇 주에 걸쳐 서로 다른 시점에 중단했습니다. 이러한 정책의 차이는 연구자들이 이 기간 동안 학군 정책의 차이를 활용하여 보편적 마스크 착용이 코로나19 사례에 미치는 영향을 연구할 수 있게 해주었습니다. 연구자들은 코로나19와 관련된 요인들 및 기타 건강 결정 요인들의 분포를 이해하기 위해 학군들의 묘사적 분석을 포함했습니다. 사례에 미치는 보편적 마스크 착용의 효과를 추정하기 위해, 저자들은 정책 관련 인과 추론에서 흔히 쓰이는 이중 차분법(difference-in-differences)이라는 기술을 사용하여 이 효과를 추정했습니다(<a href="#sec-did" class="quarto-xref"><span>장 47</span></a> 에서 논의할 것입니다). 저자들은 마스크 착용을 지속한 학군들이 그렇지 않은 학군들보다 훨씬 적은 수의 사례를 보였음을 발견했습니다. 그들의 분석은 정책 변화로 인해 거의 12,000건의 추가 사례가 발생했으며, 이는 15주간의 연구 기간 동안 그 학군들에서 발생한 사례의 거의 30%에 해당한다고 결론지었습니다.</p>
+<p>이 책에서 인과 추론의 많은 사례를 보게 되겠지만, 코로나19와 관련된 사례를 계속 살펴봅시다. 팬데믹이 지속되고 백신과 항바이러스 치료제 같은 도구들이 사용 가능해짐에 따라 보편적 마스크 착용과 같은 정책들도 바뀌기 시작했습니다. 2022년 2월, 미국의 매사추세츠주는 공립학교에서의 보편적 마스크 착용을 의무화하는 주 차원의 정책을 철회했습니다 <span class="citation" data-cites="Cowger2022">[@Cowger2022]</span>. 보스턴 대도시 지역에서는 일부 학군이 정책을 유지한 반면 다른 학군들은 중단했습니다. 중단한 학군들도 정책 변경 후 몇 주에 걸쳐 서로 다른 시점에 중단했습니다. 이러한 정책의 차이는 연구자들이 이 기간 동안 학군 정책의 차이를 활용하여 보편적 마스크 착용이 코로나19 사례에 미치는 영향을 연구할 수 있게 해주었습니다. 연구자들은 코로나19와 관련된 요인들 및 기타 건강 결정 요인들의 분포를 이해하기 위해 학군들의 묘사적 분석을 포함했습니다. 사례에 미치는 보편적 마스크 착용의 효과를 추정하기 위해, 저자들은 정책 관련 인과 추론에서 흔히 쓰이는 이중 차분법(difference-in-differences)이라는 기술을 사용하여 이 효과를 추정했습니다(<a href="#sec-did" class="quarto-xref"><span>장 47</span></a> 에서 논의할 것입니다). 저자들은 마스크 착용을 지속한 학군들이 그렇지 않은 학군들보다 훨씬 적은 수의 사례를 보였음을 발견했습니다. 그들의 분석은 정책 변화로 인해 거의 12,000건의 추가 사례가 발생했으며, 이는 15주간의 연구 기간 동안 그 학군들에서 발생한 사례의 거의 30%에 해당한다고 결론지었습니다.</p>
 <!-- TODO: add example when code and data are available -->
 <p>다음은 몇 가지 다른 흥미로운 사례들입니다:</p>
 <ul>
 <li><p>넷플릭스는 업무에서 정기적으로 인과 추론을 사용합니다. 2022년에 그들은 자신들이 참여한 <a href="https://netflixtechblog.com/a-survey-of-causal-inference-applications-at-netflix-b62d25175e6f">일부 인과적 과업을 요약한 블로그 포스트</a>를 게시했습니다. 한 가지 흥미로운 사례는 현지화(localization)입니다. 전 세계적인 서비스를 제공하는 넷플릭스는 자막과 더빙을 통해 콘텐츠를 현지화합니다. 무작위 실험은 사용자에게 콘텐츠 제공을 보류하는 것을 의미하므로 좋지 않은 아이디어였고, 그래서 넷플릭스의 연구자들은 잠재적 교란을 해결하면서 현지화의 가치를 이해하기 위해 여러 접근 방식을 사용했습니다. 한 가지 사례는 팬데믹으로 인한 더빙 지연의 영향을 연구하는 것이었습니다. 연구자들은 합성 대조군(synthetic controls, <a href="#sec-did" class="quarto-xref"><span>장 47</span></a>)을 사용하여 이러한 지연이 있을 때와 없을 때의 시청률에 미치는 영향을 시뮬레이션했습니다. 아마도 팬데믹 관련 지연의 타이밍은 일반적으로 더빙 프로세스와 관련된 많은 요인과 무관했을 것이며, 따라서 잠재적 교란의 일부를 줄였을 것입니다.</p></li>
-<li><p>터스키기 연구(Tuskegee Study)는 현대 역사에서 가장 악명 높은 의료 남용 사례 중 하나입니다. 이는 흑인 미국인들이 의료계를 불신하게 된 원인으로 흔히 지목됩니다. 보건 경제학 연구자들은 터스키기 연구가 불신과 기대 수명에 미치는 효과를 평가하기 위해 이중 차분법 기술의 변형을 사용하여 노년층 흑인 남성들을 조사했습니다 <span class="citation" data-cites="Alsan2018">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Alsan2018" role="doc-biblioref"><strong>Alsan2018?</strong></a>)</span>. 결과는 중요하면서도 충격적입니다: “우리는 1972년 그 연구가 공개된 것이 노년층 흑인 남성의 의료적 불신과 사망률 증가, 그리고 외래 및 입원 의사와의 상호작용 감소와 상관관계가 있음을 발견했습니다. 우리의 추정치는 연구 공개에 대한 반응으로 흑인 남성의 45세 시점 기대 수명이 최대 1.5년 감소했음을 시사하며, 이는 1980년 흑인 남성과 백인 남성 간 기대 수명 격차의 약 35%, 남성과 여성 간 격차의 25%를 차지합니다.”</p></li>
+<li><p>터스키기 연구(Tuskegee Study)는 현대 역사에서 가장 악명 높은 의료 남용 사례 중 하나입니다. 이는 흑인 미국인들이 의료계를 불신하게 된 원인으로 흔히 지목됩니다. 보건 경제학 연구자들은 터스키기 연구가 불신과 기대 수명에 미치는 효과를 평가하기 위해 이중 차분법 기술의 변형을 사용하여 노년층 흑인 남성들을 조사했습니다 <span class="citation" data-cites="Alsan2018">[@Alsan2018]</span>. 결과는 중요하면서도 충격적입니다: “우리는 1972년 그 연구가 공개된 것이 노년층 흑인 남성의 의료적 불신과 사망률 증가, 그리고 외래 및 입원 의사와의 상호작용 감소와 상관관계가 있음을 발견했습니다. 우리의 추정치는 연구 공개에 대한 반응으로 흑인 남성의 45세 시점 기대 수명이 최대 1.5년 감소했음을 시사하며, 이는 1980년 흑인 남성과 백인 남성 간 기대 수명 격차의 약 35%, 남성과 여성 간 격차의 25%를 차지합니다.”</p></li>
 </ul>
 </section>
 <section id="타당성-validity-2" class="level4" data-number="25.1.3.2">
@@ -1215,13 +1215,13 @@ ggplot(
 </section>
 <section id="sec-pred-or-explain" class="level3" data-number="25.1.4">
 <h3 data-number="25.1.4" class="anchored" data-anchor-id="sec-pred-or-explain"><span class="header-section-number">25.1.4</span> 왜 올바른 인과 모델이 단순히 최고의 예측 모델이 아닐까요?</h3>
-<p>이쯤 되면 왜 올바른 인과 모델이 단순히 최고의 예측 모델이 아닌지 궁금할 수 있습니다. 두 모델이 관련이 있다는 것은 일리가 있습니다. 당연히 다른 것의 원인이 되는 것은 예측 변수가 될 것이기 때문입니다. 결국 모든 것은 인과 관계이므로, 모든 예측 정보는 우리가 예측하려는 대상의 인과 구조와 어떤 용량으로든 관련이 <em>있습니다</em>. 예측을 잘하는 모델이 인과적이기도 하다는 것이 타당해 보이지 않나요? <em>일부</em> 예측 모델이 훌륭한 인과 모델이 될 수 있고 그 반대도 가능하다는 것은 사실입니다. 불행히도 항상 그런 것은 아닙니다. 인과 효과가 반드시 예측을 특별히 잘해야 하는 것은 아니며, 좋은 예측 변수가 반드시 인과적으로 편향되지 않아야 하는 것도 아닙니다 <span class="citation" data-cites="shmueli2010a">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-shmueli2010a" role="doc-biblioref"><strong>shmueli2010a?</strong></a>)</span>. 데이터만으로는 알 방법이 없으며, 이것이 <a href="#sec-quartets" class="quarto-xref"><span>장 29</span></a> 의 주제입니다.</p>
+<p>이쯤 되면 왜 올바른 인과 모델이 단순히 최고의 예측 모델이 아닌지 궁금할 수 있습니다. 두 모델이 관련이 있다는 것은 일리가 있습니다. 당연히 다른 것의 원인이 되는 것은 예측 변수가 될 것이기 때문입니다. 결국 모든 것은 인과 관계이므로, 모든 예측 정보는 우리가 예측하려는 대상의 인과 구조와 어떤 용량으로든 관련이 <em>있습니다</em>. 예측을 잘하는 모델이 인과적이기도 하다는 것이 타당해 보이지 않나요? <em>일부</em> 예측 모델이 훌륭한 인과 모델이 될 수 있고 그 반대도 가능하다는 것은 사실입니다. 불행히도 항상 그런 것은 아닙니다. 인과 효과가 반드시 예측을 특별히 잘해야 하는 것은 아니며, 좋은 예측 변수가 반드시 인과적으로 편향되지 않아야 하는 것도 아닙니다 <span class="citation" data-cites="shmueli2010a">[@shmueli2010a]</span>. 데이터만으로는 알 방법이 없으며, 이것이 <a href="#sec-quartets" class="quarto-xref"><span>장 29</span></a> 의 주제입니다.</p>
 <p>먼저 인과적 관점을 살펴봅시다. 이쪽이 조금 더 간단하기 때문입니다. 결과 <em>및</em> 노출과 관련된 변수들만 포함하는, 노출에 대해 인과적으로 편향되지 않은 모델을 생각해 보십시오. 다시 말해, 이 모델은 관심 있는 노출에 대해 올바른 답을 제공하지만 결과의 다른 예측 변수들은 포함하지 않습니다(이는 <a href="#sec-strat-outcome" class="quarto-xref"><span>장 30</span></a> 에서 논의한 것처럼 때때로 좋은 아이디어가 될 수 있습니다). 결과에 많은 원인이 있다면, 단일 노출과의 관계를 정확하게 설명하는 모델은 결과를 매우 잘 예측하지는 못할 것입니다. 마찬가지로, 결과에 대한 노출의 실제 인과 효과가 작다면 예측 가치를 거의 가져다주지 못할 것입니다. 즉, 모델의 예측 능력이 높든 낮든 간에 모델이 우리에게 정답을 주고 있는지 구별하는 데 도움이 되지 않습니다. 물론 낮은 예측력은 인과 효과가 응용 관점에서 큰 소용이 없음을 나타낼 수도 있지만, 그것은 여러 통계적 요인에 달려 있습니다.</p>
 <p>예측 모델이 항상 편향되지 않은 인과 모델이 되지는 않는 데에는 두 가지 더 복잡한 이유가 있습니다. 첫 번째 이유로, 인과적 관점에서 정확한 모델을 생각해 보십시오. 이 모델은 결과에 미치는 효과를 추정하며, 이러한 모든 효과는 편향되지 않았습니다. 이러한 이상적인 환경에서도 다른 모델을 사용하여 더 나은 예측을 얻을 수 있습니다. 그 이유는 예측 모델링의 편향-분산 트레이드오프와 관련이 있습니다. 효과가 작거나, 데이터에 노이즈가 많거나, 예측 변수들 사이에 상관관계가 높거나, 데이터가 많지 않을 때, 페널티 회귀(penalized regression)와 같은 편향된 모델을 사용하는 것이 합리적일 수 있습니다. 이러한 모델들은 데이터 외(out-of-data) 예측에서 분산을 개선하는 대신 의도적으로 편향을 도입합니다. 예측과 인과 추론의 목표가 다르기 때문에(정확한 예측, 대개 데이터 외 관측치에 대한 것 vs.&nbsp;편향되지 않은 효과), 추론을 위한 최선의 모델이 반드시 최선의 예측 모델인 것은 아닙니다.</p>
 <!-- TODO: maybe include a simulation to prove it? -->
 <p>둘째, 인과적 관점에서 편향된 변수들이 종종 예측력을 동반하곤 합니다. 모델에 어떤 변수를 포함하고 포함하지 <em>말아야</em> 할지는 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a> 에서 논의하겠지만, 간단한 예를 들어보겠습니다. 교란된 관계의 유명한 사례 중 하나는 여름철 아이스크림 판매량과 범죄율입니다. <a href="https://slate.com/news-and-politics/2013/07/warm-weather-homicide-rates-when-ice-cream-sales-rise-homicides-rise-coincidence.html">묘사적으로 아이스크림 판매량과 범죄는 관련이 있지만</a>, 이 관계는 날씨에 의해 교란됩니다. 예를 들어, 날씨가 더워지면 아이스크림 판매량과 범죄가 모두 증가합니다. (물론 날씨 자체가 범죄를 일으키는 것은 아니기 때문에 이는 단순화된 것이지만, 인과 경로상에 있습니다.)</p>
 <p>여러분이 어두운 방에 있는 사고 실험을 해보십시오. 여러분의 목표는 범죄를 예측하는 것이지만 날씨나 시기는 모릅니다. 하지만 여러분에게는 아이스크림 판매량에 대한 정보가 있습니다. 범죄에 대한 아이스크림 판매량 모델은 인과적 관점에서 편향될 것입니다. 아이스크림 판매가 범죄를 일으키지 않음에도 불구하고 모델은 효과를 보여줄 것이기 때문입니다. 하지만 이 모델은 여러분의 범죄 모델에 약간의 예측 가치를 제공할 것입니다. 이 두 조건의 이유는 동일합니다. 날씨와 아이스크림 판매량은 상관관계가 있고, 날씨와 범죄도 마찬가지이기 때문입니다. 아이스크림 판매량은 완벽하지는 않더라도 날씨에 대한 대리인(proxy) 역할을 성공적으로 수행할 수 있습니다. 그 결과 범죄에 대한 아이스크림 판매의 인과적 영향에 대해서는 편향된 효과 추정치가 나오지만, 범죄에 대해서는 부분적으로 효과적인 예측이 가능해집니다. 인과적 관점에서 유효하지 않은 다른 변수들도, 그 자체가 편향되었거나 인과 효과 추정치에 편향을 도입함으로써 종종 좋은 예측 가치를 제공합니다. 따라서 예측 정확도는 인과 관계의 좋은 척도가 아닙니다.</p>
-<p>이와 밀접한 관련이 있는 개념으로 <em>표 2의 오류(Table Two Fallacy)</em>가 있습니다. 건강 연구 논문에서 묘사적 분석은 종종 표 1에 제시되고, 회귀 모델은 종종 표 2에 제시되기 때문에 붙여진 이름입니다 <span class="citation" data-cites="Westreich2013">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Westreich2013" role="doc-biblioref"><strong>Westreich2013?</strong></a>)</span>. 표 2의 오류는 연구자가 교란 요인과 기타 비노출 변수들을 제시하면서, 특히 그러한 계수들을 마치 인과적인 것처럼 해석할 때 발생합니다. 문제는 어떤 상황에서는 한 변수의 편향되지 않은 효과를 추정하기 위한 모델이 다른 변수의 편향되지 않은 효과를 추정하기 위한 모델과 다를 수 있다는 점입니다. 다시 말해, 교란 요인들의 효과는 그들 자체가 원래 노출과 무관한 다른 변수에 의해 교란될 수 있기 때문에 인과적으로 해석할 수 없습니다.</p>
+<p>이와 밀접한 관련이 있는 개념으로 <em>표 2의 오류(Table Two Fallacy)</em>가 있습니다. 건강 연구 논문에서 묘사적 분석은 종종 표 1에 제시되고, 회귀 모델은 종종 표 2에 제시되기 때문에 붙여진 이름입니다 <span class="citation" data-cites="Westreich2013">[@Westreich2013]</span>. 표 2의 오류는 연구자가 교란 요인과 기타 비노출 변수들을 제시하면서, 특히 그러한 계수들을 마치 인과적인 것처럼 해석할 때 발생합니다. 문제는 어떤 상황에서는 한 변수의 편향되지 않은 효과를 추정하기 위한 모델이 다른 변수의 편향되지 않은 효과를 추정하기 위한 모델과 다를 수 있다는 점입니다. 다시 말해, 교란 요인들의 효과는 그들 자체가 원래 노출과 무관한 다른 변수에 의해 교란될 수 있기 때문에 인과적으로 해석할 수 없습니다.</p>
 <p>묘사적, 예측적, 인과적 분석은 항상 서로의 측면을 어느 정도 포함하고 있습니다. 예측 모델은 결과의 인과 구조로부터 예측력의 일부를 얻고, 인과 모델은 결과에 대한 정보를 포함하고 있기 때문에 어느 정도의 예측력을 가집니다. 하지만 동일한 데이터에서 동일한 모델을 사용하더라도 목표가 다르면 그 목표에 따라 유용성도 달라집니다. <!-- TODO: uncomment this when section is written -- 이 주제에 대해서는 @sec-causal-pred-revisit 에서 더 깊이 다룰 것입니다. --></p>
 </section>
 </section>
@@ -1240,7 +1240,7 @@ knitr::include_graphics("images/sentence-diagram-1.png")</code></pre>
 #| fig-height: 2
 #| fig-cap: "\"흡연은 폐암을 유발한다\"는 인과적 주장의 다이어그램."
 knitr::include_graphics("images/sentence-diagram-2.png")</code></pre>
-<p>좀 더 구체적으로 들어가 봅시다. 2005년 <em>JAMA</em>(미국 의학 협회 저널)에 “흡연 감소가 폐암 위험에 미치는 효과”라는 제목의 연구가 발표되었습니다. 이 연구는 다음과 같이 결론지었습니다: “하루에 15개비 이상의 담배를 피우는 사람들 중에서, 흡연량을 50% 줄이면 폐암 위험이 유의미하게 감소한다.” <span class="citation" data-cites="godtfredsen2005effect">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-godtfredsen2005effect" role="doc-biblioref"><strong>godtfredsen2005effect?</strong></a>)</span> 이 연구는 연구된 기간을 5~10년으로 설명합니다. 이 인과적 주장을 다이어그램으로 그려봅시다. 여기서 우리는 선정 기준(eligibility criteria)과 추정된 인과 효과의 대상 인구(target population)가 동일하다고 가정합니다(하루에 15개비 이상의 담배를 피우는 사람들). 이것이 항상 같아야 하는 것은 아닙니다. <a href="#sec-estimands" class="quarto-xref"><span>장 34</span></a> 에서는 다른 잠재적 대상 인구에 대해 논의할 것입니다.</p>
+<p>좀 더 구체적으로 들어가 봅시다. 2005년 <em>JAMA</em>(미국 의학 협회 저널)에 “흡연 감소가 폐암 위험에 미치는 효과”라는 제목의 연구가 발표되었습니다. 이 연구는 다음과 같이 결론지었습니다: “하루에 15개비 이상의 담배를 피우는 사람들 중에서, 흡연량을 50% 줄이면 폐암 위험이 유의미하게 감소한다.” <span class="citation" data-cites="godtfredsen2005effect">[@godtfredsen2005effect]</span> 이 연구는 연구된 기간을 5~10년으로 설명합니다. 이 인과적 주장을 다이어그램으로 그려봅시다. 여기서 우리는 선정 기준(eligibility criteria)과 추정된 인과 효과의 대상 인구(target population)가 동일하다고 가정합니다(하루에 15개비 이상의 담배를 피우는 사람들). 이것이 항상 같아야 하는 것은 아닙니다. <a href="#sec-estimands" class="quarto-xref"><span>장 34</span></a> 에서는 다른 잠재적 대상 인구에 대해 논의할 것입니다.</p>
 <pre class="{r}"><code>#| echo: false
 #| fig-cap: "[@godtfredsen2005effect]의 결과에 기반한 좀 더 구체적인 인과적 주장의 다이어그램 예시."
 #| label: fig-diagram-3
@@ -1275,20 +1275,20 @@ status("complete")</code></pre>
 <section id="인과적-질문-명시하기" class="level2" data-number="26.1">
 <h2 data-number="26.1" class="anchored" data-anchor-id="인과적-질문-명시하기"><span class="header-section-number">26.1</span> 인과적 질문 명시하기</h2>
 <p>이번 연습에서 답을 찾아볼 인과적 질문은 다음과 같습니다. “모기장(bed net) 사용이 말라리아 위험을 낮추는가?”</p>
-<p>말라리아는 여전히 심각한 공중보건 문제입니다. 2000년 이후 말라리아 발생률은 전반적으로 감소했지만, 2020년 코로나19 팬데믹 기간에는 의료 서비스 중단 등의 여파로 사례와 사망자가 다시 늘어났습니다 <span class="citation" data-cites="worldma">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-worldma" role="doc-biblioref"><strong>worldma?</strong></a>)</span>. 말라리아 사망자의 약 86%가 29개국에 집중되어 있습니다. 전체 사망자의 거의 절반이 나이지리아(27%), 콩고민주공화국(12%), 우간다(5%), 모잠비크(4%), 앙골라(3%), 부르키나파소(3%) 등 6개국에서 발생했습니다. 특히 사망자 대부분은 5세 미만 어린이입니다 <span class="citation" data-cites="Fink2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Fink2022" role="doc-biblioref"><strong>Fink2022?</strong></a>)</span>. 말라리아는 임산부에게도 치명적이며 조산이나 저체중아 출산 등 임신 결과에 악영향을 미칩니다.</p>
+<p>말라리아는 여전히 심각한 공중보건 문제입니다. 2000년 이후 말라리아 발생률은 전반적으로 감소했지만, 2020년 코로나19 팬데믹 기간에는 의료 서비스 중단 등의 여파로 사례와 사망자가 다시 늘어났습니다 <span class="citation" data-cites="worldma">[@worldma]</span>. 말라리아 사망자의 약 86%가 29개국에 집중되어 있습니다. 전체 사망자의 거의 절반이 나이지리아(27%), 콩고민주공화국(12%), 우간다(5%), 모잠비크(4%), 앙골라(3%), 부르키나파소(3%) 등 6개국에서 발생했습니다. 특히 사망자 대부분은 5세 미만 어린이입니다 <span class="citation" data-cites="Fink2022">[@Fink2022]</span>. 말라리아는 임산부에게도 치명적이며 조산이나 저체중아 출산 등 임신 결과에 악영향을 미칩니다.</p>
 <p>모기장은 말라리아 기생충의 주요 숙주인 모기에게 물리지 않도록 물리적 장벽을 제공하여 질병과 사망을 예방합니다. 인류는 아주 오래전부터 모기장을 사용해 왔습니다. 기원전 5세기 그리스의 역사학자 헤로도토스(Herodotus)는 <em>역사(The Histories)</em>에서 이집트인들이 낚시 그물을 모기장 대용으로 쓰는 모습을 기록했습니다.</p>
 <blockquote class="blockquote">
-<p>늪지대 위에 사는 사람들은 수많은 각다귀(gnats)를 피해 높은 타워 위에서 휴식을 취합니다. 각다귀는 바람 때문에 높이 날지 못하기 때문입니다. 타워를 세우기 어려운 지역의 사람들은 투망(casting net)을 활용합니다. 낮에는 물고기를 잡는 데 쓰고, 밤에는 침대 주위에 그물을 둘러 그 안에서 잠을 잡니다. 옷이나 리넨 시트는 각다귀가 뚫고 물 수 있지만, 그물은 통과하지 못합니다 <span class="citation" data-cites="thehist">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-thehist" role="doc-biblioref"><strong>thehist?</strong></a>)</span>.</p>
+<p>늪지대 위에 사는 사람들은 수많은 각다귀(gnats)를 피해 높은 타워 위에서 휴식을 취합니다. 각다귀는 바람 때문에 높이 날지 못하기 때문입니다. 타워를 세우기 어려운 지역의 사람들은 투망(casting net)을 활용합니다. 낮에는 물고기를 잡는 데 쓰고, 밤에는 침대 주위에 그물을 둘러 그 안에서 잠을 잡니다. 옷이나 리넨 시트는 각다귀가 뚫고 물 수 있지만, 그물은 통과하지 못합니다 <span class="citation" data-cites="thehist">[@thehist]</span>.</p>
 </blockquote>
-<p>현대의 모기장은 제2차 세계 대전 당시 러시아 군인들의 사례에서 착안해 살충제 처리가 된 경우가 많지만 <span class="citation" data-cites="nevill1996">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-nevill1996" role="doc-biblioref"><strong>nevill1996?</strong></a>)</span>, 여전히 낚시 그물로 전용되는 사례도 종종 발견됩니다 <span class="citation" data-cites="gettleman2015">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-gettleman2015" role="doc-biblioref"><strong>gettleman2015?</strong></a>)</span>.</p>
+<p>현대의 모기장은 제2차 세계 대전 당시 러시아 군인들의 사례에서 착안해 살충제 처리가 된 경우가 많지만 <span class="citation" data-cites="nevill1996">[@nevill1996]</span>, 여전히 낚시 그물로 전용되는 사례도 종종 발견됩니다 <span class="citation" data-cites="gettleman2015">[@gettleman2015]</span>.</p>
 <p>이 질문을 확인하기 위한 무작위 시험을 상상하는 건 어렵지 않습니다. 참가자를 무작위로 배정해 모기장 사용 여부를 결정하고, 일정 기간 뒤 두 그룹 간의 말라리아 위험 차이를 비교하는 것입니다. 인과 효과를 추정할 때 무작위 배정(Randomization)은 가장 강력한 수단입니다. 분석 결과가 유효하기 위해 필요한 가정의 수를 크게 줄여주기 때문입니다(자세한 내용은 <a href="#sec-assump" class="quarto-xref"><span>섹션 27.3</span></a>장에서 다룹니다). 특히 무작위 배정은 교란(confounding) 문제를 효과적으로 해결하며, 우리가 미처 파악하지 못한 교란 요인들까지도 골고루 배분해 줍니다.</p>
-<p>1990년대의 몇몇 획기적인 시험들은 모기장 사용이 말라리아 위험에 미치는 효과를 연구했습니다. 2004년의 메타 분석에 따르면 살충제 처리 모기장은 (모기장을 사용하지 않는 경우에 비해) 아동 사망률을 17%, 말라리아 기생충 유병률을 13%, 그리고 단순 및 중증 말라리아 사례를 약 50% 감소시켰습니다 <span class="citation" data-cites="lengeler2004">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-lengeler2004" role="doc-biblioref"><strong>lengeler2004?</strong></a>)</span>. 세계보건기구(WHO)가 살충제 처리 모기장을 권장하기 시작한 이후, 살충제 저항성은 큰 우려 사항이 되었습니다. 그러나 시험들에 대한 후속 분석 결과, 그것이 아직 모기장의 공중보건상 이점에 영향을 미치지는 않은 것으로 나타났습니다 <span class="citation" data-cites="pryce2018">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-pryce2018" role="doc-biblioref"><strong>pryce2018?</strong></a>)</span>.</p>
-<p>시험들은 또한 모기장 프로그램의 경제성을 결정하는 데 영향력이 있었습니다. 예를 들어, 한 시험에서는 무료 모기장 배포와 비용 분담 프로그램(참가자가 보조금을 받는 수수료를 지불하는 방식)을 비교했습니다. 연구 저자들은 모기장 수용도가 두 그룹 간에 비슷했으며, 접근이 더 쉬웠던 무료 모기장 배포가 더 많은 생명을 구했고, 구한 생명당 비용도 비용 분담 프로그램보다 저렴하다는 것을 발견했습니다 <span class="citation" data-cites="cohen2010">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-cohen2010" role="doc-biblioref"><strong>cohen2010?</strong></a>)</span>.</p>
+<p>1990년대의 몇몇 획기적인 시험들은 모기장 사용이 말라리아 위험에 미치는 효과를 연구했습니다. 2004년의 메타 분석에 따르면 살충제 처리 모기장은 (모기장을 사용하지 않는 경우에 비해) 아동 사망률을 17%, 말라리아 기생충 유병률을 13%, 그리고 단순 및 중증 말라리아 사례를 약 50% 감소시켰습니다 <span class="citation" data-cites="lengeler2004">[@lengeler2004]</span>. 세계보건기구(WHO)가 살충제 처리 모기장을 권장하기 시작한 이후, 살충제 저항성은 큰 우려 사항이 되었습니다. 그러나 시험들에 대한 후속 분석 결과, 그것이 아직 모기장의 공중보건상 이점에 영향을 미치지는 않은 것으로 나타났습니다 <span class="citation" data-cites="pryce2018">[@pryce2018]</span>.</p>
+<p>시험들은 또한 모기장 프로그램의 경제성을 결정하는 데 영향력이 있었습니다. 예를 들어, 한 시험에서는 무료 모기장 배포와 비용 분담 프로그램(참가자가 보조금을 받는 수수료를 지불하는 방식)을 비교했습니다. 연구 저자들은 모기장 수용도가 두 그룹 간에 비슷했으며, 접근이 더 쉬웠던 무료 모기장 배포가 더 많은 생명을 구했고, 구한 생명당 비용도 비용 분담 프로그램보다 저렴하다는 것을 발견했습니다 <span class="citation" data-cites="cohen2010">[@cohen2010]</span>.</p>
 <p>윤리, 비용, 시간 등 말라리아 위험에 대한 모기장 사용 효과를 추정하기 위한 새로운 무작위 시험을 수행할 수 없는 몇 가지 이유가 있습니다. 우리는 모기장 사용을 지지하는 실질적이고 견고한 증거를 가지고 있지만, 관측 데이터에 기반한 인과 추론이 도움이 될 수 있는 몇 가지 상황을 고려해 봅시다.</p>
 <ul>
 <li><p>이 주제에 대한 시험이 이루어지기 전의 시점을 상상해 보십시오. 사람들이 이미 스스로 이러한 목적으로 모기장을 사용하기 시작했다고 가정해 봅시다. 우리의 목표는 여전히 무작위 시험을 수행하는 것일 수 있지만, 관찰된 데이터를 통해 더 빨리 질문에 답할 수 있습니다. 또한 이 연구 결과는 시험 설계나 중간 정책 제안의 가이드가 될 수 있습니다.</p></li>
-<li><p>때로는 시험을 수행하는 것이 윤리적이지 않을 수도 있습니다. 말라리아 연구에서 이러한 사례의 예는 모기장 효과 연구에서 제기된 질문입니다: 유아기의 말라리아 통제가 질병에 대한 면역 형성을 지연시켜, 결과적으로 인생 후반기에 중증 말라리아나 사망을 초래하는가? 우리는 이제 모기장 사용이 매우 효과적이라는 것을 알고 있기 때문에, 모기장을 <em>지급하지 않는</em> 것은 비윤리적일 것입니다. 최근의 한 관찰 연구는 유아기 모기장 사용이 모든 원인으로 인한 사망률에 미치는 이점이 성인기까지 지속됨을 발견했습니다 <span class="citation" data-cites="Fink2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Fink2022" role="doc-biblioref"><strong>Fink2022?</strong></a>)</span>.</p></li>
-<li><p>우리는 또한 이전 시험과 다른 효과를 추정하거나 다른 인구 집단에 대한 효과를 추정하고 싶을 수도 있습니다. 예를 들어, 무작위 시험과 관찰 연구 모두 살충제 처리 모기장이 (사용률이 충분히 높기만 하다면) 모기장을 사용하는 사람들뿐만 아니라 전체 지역 사회의 말라리아 저항력을 향상시킨다는 점을 더 잘 이해하도록 도왔습니다 <span class="citation" data-cites="howard2000 hawley2003">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-howard2000" role="doc-biblioref"><strong>howard2000?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hawley2003" role="doc-biblioref"><strong>hawley2003?</strong></a>)</span>.</p></li>
+<li><p>때로는 시험을 수행하는 것이 윤리적이지 않을 수도 있습니다. 말라리아 연구에서 이러한 사례의 예는 모기장 효과 연구에서 제기된 질문입니다: 유아기의 말라리아 통제가 질병에 대한 면역 형성을 지연시켜, 결과적으로 인생 후반기에 중증 말라리아나 사망을 초래하는가? 우리는 이제 모기장 사용이 매우 효과적이라는 것을 알고 있기 때문에, 모기장을 <em>지급하지 않는</em> 것은 비윤리적일 것입니다. 최근의 한 관찰 연구는 유아기 모기장 사용이 모든 원인으로 인한 사망률에 미치는 이점이 성인기까지 지속됨을 발견했습니다 <span class="citation" data-cites="Fink2022">[@Fink2022]</span>.</p></li>
+<li><p>우리는 또한 이전 시험과 다른 효과를 추정하거나 다른 인구 집단에 대한 효과를 추정하고 싶을 수도 있습니다. 예를 들어, 무작위 시험과 관찰 연구 모두 살충제 처리 모기장이 (사용률이 충분히 높기만 하다면) 모기장을 사용하는 사람들뿐만 아니라 전체 지역 사회의 말라리아 저항력을 향상시킨다는 점을 더 잘 이해하도록 도왔습니다 <span class="citation" data-cites="howard2000 hawley2003">[@howard2000; @hawley2003]</span>.</p></li>
 </ul>
 <p><a href="#sec-strat-outcome" class="quarto-xref"><span>장 30</span></a> 및 <a href="#sec-g-comp" class="quarto-xref"><span>장 37</span></a> 에서 보겠지만, 이 책에서 논의할 인과 추론 기술들은 무작위 배정이 가능한 상황에서도 종종 유익합니다.</p>
 <p>관찰 연구를 수행할 때도 가능하다면 실행했을 무작위 시험을 끝까지 생각해보는 것이 여전히 도움이 됩니다. 이 인과 분석에서 우리가 모방하려는 시험은 <strong>목표 시험(target trial)</strong>입니다. 목표 시험을 고려하는 것은 우리의 인과적 질문을 더 정밀하게 만드는 데 도움이 됩니다. 우리는 <a href="#sec-designs" class="quarto-xref"><span>섹션 27.4</span></a> 에서 이 프레임워크를 더 명시적으로 사용할 것이지만, 지금은 앞서 제기된 인과적 질문을 고려해 봅시다: 모기장(모기 그물)을 사용하는 것이 말라리아 위험을 줄이는가? 이 질문은 비교적 간단해 보이지만 여전히 모호합니다. <a href="#sec-causal-question" class="quarto-xref"><span>장 25</span></a> 에서 보았듯이, 우리는 몇 가지 핵심 영역을 명확히 해야 합니다:</p>
@@ -1861,7 +1861,7 @@ library(gt)</code></pre>
 바라다볼 수 있는 데까지 멀리 바라다보았습니다.<br>
 — 로버트 프로스트(Robert Frost)</div>
 </blockquote>
-<p>2022년, 미국 래퍼이자 <em>Law and Order: SVU</em>의 핀(Fin)으로 잘 알려진 아이스티(Ice-T)는 <em>Split Decision: Life Stories</em>라는 책을 공동 집필했습니다 <span class="citation" data-cites="split">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-split" role="doc-biblioref"><strong>split?</strong></a>)</span>. 이 책에서 아이스티는 범죄의 삶에서 명성과 성공에 이르기까지의 극적인 여정을 들려주며, 자신의 전 범죄 파트너이자 공동 저자인 스파이크(Spike)의 운명과 대조합니다. 두 사람 모두 로스앤젤레스의 갱단이 지배하는 동네에서 자랐으며 함께 보석 강도 사건을 저질렀습니다. 그들의 삶은 아이스티가 클럽에서 랩을 하다가 발굴되면서 갈라졌습니다. 이를 계기로 그는 범죄의 과거를 뒤로하고 음악, 영화, 텔레비전 분야에서 성공적인 경력을 쌓기 시작했습니다. 반면 스파이크는 보석 강도 현장에서 잡혀 3년 동안 수감되었습니다. 그는 범죄의 삶을 계속했고, 결국 실패한 강도 사건으로 인해 35년에서 종신형에 처하는 징역형을 선고받았습니다. 책의 홍보 문구는 “서로 다른 삶을 사는 두 남자가 만약 다른 선택을 했더라면 그들의 경로가 어떻게 완전히 뒤바뀌었을지”를 설명합니다.</p>
+<p>2022년, 미국 래퍼이자 <em>Law and Order: SVU</em>의 핀(Fin)으로 잘 알려진 아이스티(Ice-T)는 <em>Split Decision: Life Stories</em>라는 책을 공동 집필했습니다 <span class="citation" data-cites="split">[@split]</span>. 이 책에서 아이스티는 범죄의 삶에서 명성과 성공에 이르기까지의 극적인 여정을 들려주며, 자신의 전 범죄 파트너이자 공동 저자인 스파이크(Spike)의 운명과 대조합니다. 두 사람 모두 로스앤젤레스의 갱단이 지배하는 동네에서 자랐으며 함께 보석 강도 사건을 저질렀습니다. 그들의 삶은 아이스티가 클럽에서 랩을 하다가 발굴되면서 갈라졌습니다. 이를 계기로 그는 범죄의 과거를 뒤로하고 음악, 영화, 텔레비전 분야에서 성공적인 경력을 쌓기 시작했습니다. 반면 스파이크는 보석 강도 현장에서 잡혀 3년 동안 수감되었습니다. 그는 범죄의 삶을 계속했고, 결국 실패한 강도 사건으로 인해 35년에서 종신형에 처하는 징역형을 선고받았습니다. 책의 홍보 문구는 “서로 다른 삶을 사는 두 남자가 만약 다른 선택을 했더라면 그들의 경로가 어떻게 완전히 뒤바뀌었을지”를 설명합니다.</p>
 <p>이 매력적인 전제는 우리가 <strong>반사실(counterfactuals)</strong>을 관찰하고 있음을 암시합니다. 하나의 결정(강도질을 계속할 것인지, 아니면 음악가로 성공할 것인지)이 두 사람을 갈라놓기 전까지 동일한 궤적을 따르던 두 삶을 보여줍니다. 한 삶은 감옥행이고 다른 삶은 성공과 명성입니다. 이 책은 아이스티와 그의 친구 스파이크가 이 분기점 이전에 얼마나 비슷했는지(예: 둘 다 로스앤젤레스에서 자랐고, 갱단에 연루되었으며, 함께 보석 강도를 계획함)를 설명하며 시작합니다. 그러다 분기점이 찾아옵니다. 아이스티는 범죄의 삶을 버렸고, 스파이크는 반대로 계속하기로 결정합니다. 이후 아이스티는 명성과 부를 얻었지만 스파이크는 35년에서 종신형을 선고받고 감옥에 갇힙니다. 이 책은 사건 전에는 같았지만 사건 후에는 달라진 두 사람을 다루는 소규모 연구와 같습니다. 스파이크의 결과는 아이스티의 결과에 대한 반사실 역할을 합니다.</p>
 <div id="tbl-causal-map" class="quarto-layout-panel anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2627,12 +2627,12 @@ ggplot(
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>일관성은 때때로 <strong>안정적 단위 처치값 가정(stable-unit-treatment-value assumption)</strong> 또는 <strong>SUTVA</strong>라고 불리기도 합니다 <span class="citation" data-cites="imbens2015causal">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-imbens2015causal" role="doc-biblioref"><strong>imbens2015causal?</strong></a>)</span>. 그러나 인과적 일관성은 통계적 일관성(표본 크기가 커짐에 따라 추정량이 참값에 가까워지는 속성)과는 별개의 개념입니다.</p>
+<p>일관성은 때때로 <strong>안정적 단위 처치값 가정(stable-unit-treatment-value assumption)</strong> 또는 <strong>SUTVA</strong>라고 불리기도 합니다 <span class="citation" data-cites="imbens2015causal">[@imbens2015causal]</span>. 그러나 인과적 일관성은 통계적 일관성(표본 크기가 커짐에 따라 추정량이 참값에 가까워지는 속성)과는 별개의 개념입니다.</p>
 </div>
 </div>
 <section id="잘못-정의된-노출-poorly-defined-exposures" class="level4" data-number="27.3.3.1">
 <h4 data-number="27.3.3.1" class="anchored" data-anchor-id="잘못-정의된-노출-poorly-defined-exposures"><span class="header-section-number">27.3.3.1</span> 잘못 정의된 노출 (Poorly-defined exposures)</h4>
-<p>일관성 위배는 노출이 제대로 정의되지 않았을 때 흔히 발생합니다. 수술(한 의사가 다른 의사보다 수술 절차에 더 숙련된 경우)부터 소득(모든 소득원이 달러 대 달러로 동일한가? 복권 당첨금이 주급과 같은가?), 교육(교육 연수가 학교의 질에 관계없이 동일한 효과를 갖는가?) 등 많은 분야에서 나타납니다 <span class="citation" data-cites="Rehkopf2016">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Rehkopf2016" role="doc-biblioref"><strong>Rehkopf2016?</strong></a>)</span>.</p>
+<p>일관성 위배는 노출이 제대로 정의되지 않았을 때 흔히 발생합니다. 수술(한 의사가 다른 의사보다 수술 절차에 더 숙련된 경우)부터 소득(모든 소득원이 달러 대 달러로 동일한가? 복권 당첨금이 주급과 같은가?), 교육(교육 연수가 학교의 질에 관계없이 동일한 효과를 갖는가?) 등 많은 분야에서 나타납니다 <span class="citation" data-cites="Rehkopf2016">[@Rehkopf2016]</span>.</p>
 <p>두 통의 초콜릿 아이스크림이 있는데 그중 하나가 상했다고 가정해 봅시다. “초콜릿”에 노출된다는 것은 개인이 푼 아이스크림이 어디서 왔느냐(일반 초콜릿 아이스크림인가 아니면 상한 초콜릿 아이스크림인가)에 따라 서로 다른 의미를 가질 수 있습니다; 우리는 이들을 하나의 용어로 묶어서 취급하고 있습니다. 상한 아이스크림을 먹는 것은 여러분이 일반적으로 초콜릿 아이스크림에 대해 어떻게 느끼는지와 관계없이 여러분을 비참하게 만들 것이므로, 이는 동일한 잠재적 결과가 아닙니다.</p>
 <pre class="{r}"><code>data &lt;- tibble(
   id = 1:10,
@@ -3164,7 +3164,7 @@ partners_observed &lt;- data |&gt;
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>여러 버전의 처치나 간섭이 있는 상황에서 효과를 식별하기 위한 방법들도 존재하지만, 이는 기술적이며 일관성 위배 상황에서 더 제한적입니다 <span class="citation" data-cites="Tchetgen2012 VanderWeele2013">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Tchetgen2012" role="doc-biblioref"><strong>Tchetgen2012?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-VanderWeele2013" role="doc-biblioref"><strong>VanderWeele2013?</strong></a>)</span>.</p>
+<p>여러 버전의 처치나 간섭이 있는 상황에서 효과를 식별하기 위한 방법들도 존재하지만, 이는 기술적이며 일관성 위배 상황에서 더 제한적입니다 <span class="citation" data-cites="Tchetgen2012 VanderWeele2013">[@Tchetgen2012; @VanderWeele2013]</span>.</p>
 </div>
 </div>
 <p>마찬가지로, 파트너에게 같은 맛이나 다른 맛을 배정하여 교차 맛 효과(cross-flavor effect)를 계산할 수도 있습니다. 또 다른 옵션은 간섭 효과가 없도록 파트너를 제외하는 것입니다. 핵심은 무엇을 추정하고 싶은지 생각하고, 해당 질문에 대한 잠재적 결과를 가능한 한 정확하게 표현하려고 노력하는 것입니다.</p>
@@ -3261,7 +3261,7 @@ partners_observed &lt;- data |&gt;
 </figcaption>
 </figure>
 </div>
-<p>인과 분석의 설계에는 명확한 인과적 질문이 필요합니다. 그런 다음 우리는 <span class="citation" data-cites="hernan2016using">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2016using" role="doc-biblioref"><strong>hernan2016using?</strong></a>)</span> 이 정의한 목표 시험 프레임워크를 구성하는 다음 7가지 요소로 구성된 <em>프로토콜</em>에 이 질문을 매핑할 수 있습니다:</p>
+<p>인과 분석의 설계에는 명확한 인과적 질문이 필요합니다. 그런 다음 우리는 <span class="citation" data-cites="hernan2016using">@hernan2016using</span> 이 정의한 목표 시험 프레임워크를 구성하는 다음 7가지 요소로 구성된 <em>프로토콜</em>에 이 질문을 매핑할 수 있습니다:</p>
 <ul>
 <li><strong>적격성 기준 (Eligibility criteria)</strong>: 누구를 또는 무엇을 연구에 포함해야 하는가?</li>
 <li><strong>노출 정의 (Exposure definition)</strong>: 적격할 때, 연구 대상 단위가 받게 될 정확한 노출은 무엇인가?</li>
@@ -3455,7 +3455,7 @@ status("complete")</code></pre>
 <p>우리가 어떤 것을 그 자체로만 떼어내려 할 때, 그것이 우주의 모든 것과 끊을 수 없는 수천 개의 보이지 않는 끈으로 단단히 묶여 있음을 발견하게 된다. – 존 뮤어(John Muir)</p>
 </blockquote>
 <p><strong>인과 다이어그램(Causal diagrams)</strong>은 답하고자 하는 질문의 인과 구조 가정을 시각화하는 도구입니다. 무작위 실험에서 인과 구조는 매우 간단합니다. 결과(outcome)에는 원인이 많을 수 있지만, 노출(exposure)의 유일한 원인은 무작위 배정 과정 그 자체입니다(그러기를 바랍니다!). 그러나 많은 비무작위 설정에서 질문 구조는 복잡한 인과 관계의 그물망일 수 있습니다. 인과 다이어그램은 우리가 생각하는 이 구조가 어떤 모습인지 전달하는 데 도움이 됩니다. 인과 구조를 투명하게 공개하는 것 외에도, 인과 다이어그램은 관측 데이터만으로도 편향되지 않은 인과 효과를 추정하는 방법을 식별하게 해주는 놀라운 수학적 속성을 가지고 있습니다. 즉, 올바르게 명시된다면 교환 가능성(exchangeability)을 달성하는 데 도움이 됩니다.</p>
-<p>인과 다이어그램은 점점 더 보편화되고 있습니다. 응용 건강 연구 논문의 인과 다이어그램에 대한 검토 결과 수집된 데이터에 따르면, 시간이 지남에 따라 사용량이 급격히 증가하고 있음을 보여줍니다 <span class="citation" data-cites="Tennant2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Tennant2021" role="doc-biblioref"><strong>Tennant2021?</strong></a>)</span>.</p>
+<p>인과 다이어그램은 점점 더 보편화되고 있습니다. 응용 건강 연구 논문의 인과 다이어그램에 대한 검토 결과 수집된 데이터에 따르면, 시간이 지남에 따라 사용량이 급격히 증가하고 있음을 보여줍니다 <span class="citation" data-cites="Tennant2021">[@Tennant2021]</span>.</p>
 <pre class="{r}"><code>#| label: fig-dag-usage
 #| echo: false
 #| warning: false
@@ -3495,8 +3495,8 @@ dag_data |&gt;
     name = "논문의 비율 (percent of papers)",
     labels = scales::label_percent()
   )</code></pre>
-<p>우리가 사용하는 인과 다이어그램의 유형은 <strong>방향성 비순환 그래프(directed acyclic graphs, DAGs)</strong>라고도 불립니다<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. 이 그래프들은 특정 방향으로 향하는 화살표를 포함하기 때문에 ’방향성(directed)’입니다. 또한 ’비순환(acyclic)’인 이유는 원을 그리며 순환하지 않기 때문입니다. 예를 들어, 어떤 변수가 자기 자신의 원인이 될 수는 없습니다. DAG는 다양한 문제에 사용되지만, 우리는 특히 <strong>인과적 DAG(causal DAGs)</strong>에 관심이 있습니다. 이러한 종류의 DAG는 질문의 인과 구조에 대한 모델이기 때문에 때때로 <strong>구조적 인과 모델(Structural Causal Models, SCMs)</strong>이라고도 불립니다 <span class="citation" data-cites="hernan2021 Pearl_Glymour_Jewell_2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2021" role="doc-biblioref"><strong>hernan2021?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Pearl_Glymour_Jewell_2021" role="doc-biblioref"><strong>Pearl_Glymour_Jewell_2021?</strong></a>)</span>.</p>
-<p>DAG는 변수들 사이의 인과 관계를 묘사합니다. 시각적으로 변수들은 <strong>에지(edges)</strong>와 <strong>노드(nodes)</strong>로 묘사됩니다. 에지는 한 변수에서 다른 변수로 가는 화살표이며, 때로는 아크(arcs) 또는 그냥 화살표라고도 합니다. 노드는 변수 그 자체이며, 때로는 정점(vertices), 점(points), 또는 그냥 변수라고도 합니다. <span class="quarto-unresolved-ref">?fig-dag-basic</span> 에는 <code>x</code>와 <code>y</code>라는 두 개의 노드가 있고, <code>x</code>에서 <code>y</code>로 가는 하나의 에지가 있습니다. 여기서 우리는 <code>x</code>가 <code>y</code>를 유발한다고 말합니다. <code>y</code>는 <code>x</code>의 말을 “듣습니다” <span class="citation" data-cites="Pearl_Glymour_Jewell_2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Pearl_Glymour_Jewell_2021" role="doc-biblioref"><strong>Pearl_Glymour_Jewell_2021?</strong></a>)</span>.</p>
+<p>우리가 사용하는 인과 다이어그램의 유형은 <strong>방향성 비순환 그래프(directed acyclic graphs, DAGs)</strong>라고도 불립니다<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. 이 그래프들은 특정 방향으로 향하는 화살표를 포함하기 때문에 ’방향성(directed)’입니다. 또한 ’비순환(acyclic)’인 이유는 원을 그리며 순환하지 않기 때문입니다. 예를 들어, 어떤 변수가 자기 자신의 원인이 될 수는 없습니다. DAG는 다양한 문제에 사용되지만, 우리는 특히 <strong>인과적 DAG(causal DAGs)</strong>에 관심이 있습니다. 이러한 종류의 DAG는 질문의 인과 구조에 대한 모델이기 때문에 때때로 <strong>구조적 인과 모델(Structural Causal Models, SCMs)</strong>이라고도 불립니다 <span class="citation" data-cites="hernan2021 Pearl_Glymour_Jewell_2021">[@hernan2021; @Pearl_Glymour_Jewell_2021]</span>.</p>
+<p>DAG는 변수들 사이의 인과 관계를 묘사합니다. 시각적으로 변수들은 <strong>에지(edges)</strong>와 <strong>노드(nodes)</strong>로 묘사됩니다. 에지는 한 변수에서 다른 변수로 가는 화살표이며, 때로는 아크(arcs) 또는 그냥 화살표라고도 합니다. 노드는 변수 그 자체이며, 때로는 정점(vertices), 점(points), 또는 그냥 변수라고도 합니다. <span class="quarto-unresolved-ref">?fig-dag-basic</span> 에는 <code>x</code>와 <code>y</code>라는 두 개의 노드가 있고, <code>x</code>에서 <code>y</code>로 가는 하나의 에지가 있습니다. 여기서 우리는 <code>x</code>가 <code>y</code>를 유발한다고 말합니다. <code>y</code>는 <code>x</code>의 말을 “듣습니다” <span class="citation" data-cites="Pearl_Glymour_Jewell_2021">[@Pearl_Glymour_Jewell_2021]</span>.</p>
 <pre class="{r}"><code>#| code-fold: true
 #| message: false
 #| label: fig-dag-basic
@@ -3729,7 +3729,7 @@ collider_t |&gt;
   facet_wrap(~time) +
   theme_dag() +
   scale_color_manual(values = c("TRUE" = "grey85", "FALSE" = "black"))</code></pre>
-<p>인과 관계는 오직 앞으로만 나아갑니다. 그러나 연관성(association)은 시간에 구애받지 않습니다. 그것은 단지 변수들 사이의 수치적 관계에 대한 관찰일 뿐입니다. 우리가 미래를 통제할 때, 우리는 편향을 도입할 위험이 있습니다. 이에 대한 직관을 기르는 데는 시간이 걸립니다. <code>x</code>와 <code>y</code>가 <code>q</code>를 유발하는 유일한 원인이고 세 변수 모두 이진 변수인 경우를 생각해 보십시오. <code>x</code> 또는 <code>y</code> 중 하나가 1일 때 <code>q</code>가 발생합니다. 만약 우리가 <code>q = 1</code>이고 <code>x = 0</code>이라는 것을 안다면, 논리적으로 <code>y = 1</code>임에 틀림없습니다. 따라서 <code>q</code>에 대해 아는 것은 <code>x</code>를 통해 <code>y</code>에 대한 정보를 제공합니다. 이 예시는 극단적이지만, 때때로 <strong>콜라이더 층화 편향(collider-stratification bias)</strong> 또는 <strong>선택 편향(selection bias)</strong>이라고 불리는 이 유형의 편향이 어떻게 발생하는지를 보여줍니다: <code>q</code>에 대한 조건부화(conditioning)는 <code>x</code>와 <code>y</code>에 대한 통계적 정보를 제공하고 그들의 관계를 왜곡합니다 <span class="citation" data-cites="Banack2023">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Banack2023" role="doc-biblioref"><strong>Banack2023?</strong></a>)</span>.</p>
+<p>인과 관계는 오직 앞으로만 나아갑니다. 그러나 연관성(association)은 시간에 구애받지 않습니다. 그것은 단지 변수들 사이의 수치적 관계에 대한 관찰일 뿐입니다. 우리가 미래를 통제할 때, 우리는 편향을 도입할 위험이 있습니다. 이에 대한 직관을 기르는 데는 시간이 걸립니다. <code>x</code>와 <code>y</code>가 <code>q</code>를 유발하는 유일한 원인이고 세 변수 모두 이진 변수인 경우를 생각해 보십시오. <code>x</code> 또는 <code>y</code> 중 하나가 1일 때 <code>q</code>가 발생합니다. 만약 우리가 <code>q = 1</code>이고 <code>x = 0</code>이라는 것을 안다면, 논리적으로 <code>y = 1</code>임에 틀림없습니다. 따라서 <code>q</code>에 대해 아는 것은 <code>x</code>를 통해 <code>y</code>에 대한 정보를 제공합니다. 이 예시는 극단적이지만, 때때로 <strong>콜라이더 층화 편향(collider-stratification bias)</strong> 또는 <strong>선택 편향(selection bias)</strong>이라고 불리는 이 유형의 편향이 어떻게 발생하는지를 보여줍니다: <code>q</code>에 대한 조건부화(conditioning)는 <code>x</code>와 <code>y</code>에 대한 통계적 정보를 제공하고 그들의 관계를 왜곡합니다 <span class="citation" data-cites="Banack2023">[@Banack2023]</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3740,11 +3740,11 @@ collider_t |&gt;
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>우리는 흔히 교환 가능성을 교란이 없다는 가정으로 언급합니다. 사실 이는 완전히 정확한 표현은 아닙니다. 잠재적 결과의 교환 가능성을 위해서는 <strong>열린 비인과적 경로(open, non-causal paths)</strong>가 없어야 합니다 <span class="citation" data-cites="hernan2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2021" role="doc-biblioref"><strong>hernan2021?</strong></a>)</span>. 대부분의 경우 이들은 교란 경로입니다. 그러나 콜라이더에 대한 조건부화 또한 경로를 열 수 있습니다. 이들은 교란 요인이 아님에도 불구하고, 그렇게 함으로써 두 그룹 사이에 비교환 가능성(non-exchangeability)을 생성합니다: 그들은 노출과 결과에 중요한 방식으로 서로 다릅니다.</p>
+<p>우리는 흔히 교환 가능성을 교란이 없다는 가정으로 언급합니다. 사실 이는 완전히 정확한 표현은 아닙니다. 잠재적 결과의 교환 가능성을 위해서는 <strong>열린 비인과적 경로(open, non-causal paths)</strong>가 없어야 합니다 <span class="citation" data-cites="hernan2021">[@hernan2021]</span>. 대부분의 경우 이들은 교란 경로입니다. 그러나 콜라이더에 대한 조건부화 또한 경로를 열 수 있습니다. 이들은 교란 요인이 아님에도 불구하고, 그렇게 함으로써 두 그룹 사이에 비교환 가능성(non-exchangeability)을 생성합니다: 그들은 노출과 결과에 중요한 방식으로 서로 다릅니다.</p>
 <p>열린 비인과적 경로를 <strong>백도어 경로(backdoor paths)</strong>라고도 부릅니다. 우리는 이 용어를 자주 사용할 것인데, 그 이유는 우리가 추정하고자 하는 효과를 편향시키는 모든 열린 경로를 잘 포착하기 때문입니다.</p>
 </div>
 </div>
-<p>따라서 노출과 결과 사이의 인과 구조를 올바르게 식별하는 것은 1) 변수들 사이의 관계에 대해 우리가 내리는 가정을 전달하고 2) 편향의 원인을 식별하는 데 도움이 됩니다. 중요하게도, 2)를 수행함으로써 우리는 종종 1)의 가정을 바탕으로 편향을 방지하는 방법을 식별할 수도 있습니다. <span class="quarto-unresolved-ref">?fig-dag-path-types</span> 에 있는 세 가지 DAG의 단순한 사례에서, 우리는 인과 구조의 성격에 따라 <code>q</code>를 통제해야 할지 말아야 할지를 알 수 있습니다. 우리가 조정해야 할 변수들의 집합을 <strong>조정 집합(adjustment set)</strong>이라고 부릅니다. DAG는 복잡한 설정에서도 조정 집합을 식별하는 데 도움을 줄 수 있습니다 <span class="citation" data-cites="vanderzander2019">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-vanderzander2019" role="doc-biblioref"><strong>vanderzander2019?</strong></a>)</span>.</p>
+<p>따라서 노출과 결과 사이의 인과 구조를 올바르게 식별하는 것은 1) 변수들 사이의 관계에 대해 우리가 내리는 가정을 전달하고 2) 편향의 원인을 식별하는 데 도움이 됩니다. 중요하게도, 2)를 수행함으로써 우리는 종종 1)의 가정을 바탕으로 편향을 방지하는 방법을 식별할 수도 있습니다. <span class="quarto-unresolved-ref">?fig-dag-path-types</span> 에 있는 세 가지 DAG의 단순한 사례에서, 우리는 인과 구조의 성격에 따라 <code>q</code>를 통제해야 할지 말아야 할지를 알 수 있습니다. 우리가 조정해야 할 변수들의 집합을 <strong>조정 집합(adjustment set)</strong>이라고 부릅니다. DAG는 복잡한 설정에서도 조정 집합을 식별하는 데 도움을 줄 수 있습니다 <span class="citation" data-cites="vanderzander2019">[@vanderzander2019]</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3757,7 +3757,7 @@ collider_t |&gt;
 <div class="callout-body-container callout-body">
 <p>DAG는 추론의 중요한 부분임에도 불구하고 상호작용(interaction)이나 효과 추정치 수정(effect estimate modification)에 대해 직접적으로 언급하지 않습니다. 엄밀히 말하면, 상호작용은 DAG에 있는 관계들의 함수 형태(functional form)의 문제입니다. 우리가 DAG에서 변수를 어떻게 모델링할지(예: 스플라인 사용) 명시할 필요가 없는 것처럼, 변수들이 통계적으로 어떻게 상호작용하는지 결정할 필요도 없습니다. 그것은 모델링 단계의 문제입니다.</p>
 <p>우리는 인과 추론에서 여러 방식으로 상호작용을 사용합니다. 한 극단적인 경우로, 상호작용은 단순히 함수 형태의 문제입니다: 상호작용 항이 모델에 포함되지만 전체적인 인과 효과를 얻기 위해 한계화(marginalized)됩니다. 반대로, 우리는 상호작용하는 두 변수가 모두 원인인 <strong>결합 인과 효과(joint causal effects)</strong>에 관심이 있을 수 있습니다. 그 중간 지점에서, 우리는 인과적이라고 가정되지 않는 두 번째 변수에 따라 달라지는 <strong>이질적 인과 효과(heterogeneous causal effects)</strong>를 식별하기 위해 상호작용 항을 사용할 수 있습니다. 인과 추론의 많은 도구들과 마찬가지로, 우리는 동일한 통계적 기술을 서로 다른 질문에 답하기 위해 여러 방식으로 사용합니다. 우리는 <a href="#sec-interaction" class="quarto-xref">Chapter&nbsp;<span>38</span></a> 에서 이 주제를 자세히 다시 다룰 것입니다.</p>
-<p>많은 사람들이 다양한 유형의 아크, 노드 및 기타 주석을 사용하여 DAG에서 상호작용을 표현하려고 시도했지만, 선호되는 방식으로 정착된 접근법은 아직 없습니다 <span class="citation" data-cites="weinberg2007 Nilsson2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-weinberg2007" role="doc-biblioref"><strong>weinberg2007?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Nilsson2021" role="doc-biblioref"><strong>Nilsson2021?</strong></a>)</span>.</p>
+<p>많은 사람들이 다양한 유형의 아크, 노드 및 기타 주석을 사용하여 DAG에서 상호작용을 표현하려고 시도했지만, 선호되는 방식으로 정착된 접근법은 아직 없습니다 <span class="citation" data-cites="weinberg2007 Nilsson2021">[@weinberg2007; @Nilsson2021]</span>.</p>
 </div>
 </div>
 <p>R에서의 예시를 살펴보겠습니다. 우리는 DAG를 구축하고, 시각화하며, 조정 집합과 같은 중요한 정보를 식별하는 방법을 배울 것입니다.</p>
@@ -3873,7 +3873,7 @@ pod_dag &lt;- dagify(
 # 레이아웃 자동 결정
 pod_dag |&gt;
   ggdag(text_size = 2.8)</code></pre>
-<p>우리는 또한 특정 레이아웃을 요청할 수도 있습니다. 예를 들어 DAG에 널리 쓰이는 스기야마(Sugiyama) 알고리즘이 있습니다 <span class="citation" data-cites="sugiyama1981">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-sugiyama1981" role="doc-biblioref"><strong>sugiyama1981?</strong></a>)</span>.</p>
+<p>우리는 또한 특정 레이아웃을 요청할 수도 있습니다. 예를 들어 DAG에 널리 쓰이는 스기야마(Sugiyama) 알고리즘이 있습니다 <span class="citation" data-cites="sugiyama1981">[@sugiyama1981]</span>.</p>
 <pre class="{r}"><code>#| fig-width: 4
 #| fig-height: 4
 #| fig-align: center
@@ -3968,7 +3968,7 @@ podcast_dag_tidy |&gt;
   scale_shape_manual(values = c(adjusted = 15, unadjusted = 19))</code></pre>
 </div>
 </div>
-<p>최소 조정 집합은 유효한 조정 집합의 한 유형일 뿐입니다 <span class="citation" data-cites="vanderzander2019">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-vanderzander2019" role="doc-biblioref"><strong>vanderzander2019?</strong></a>)</span>. 때때로 다른 변수들의 조합을 통해서도 편향되지 않은 효과 추정치를 얻으낼 수 있습니다. ggdag에서 사용할 수 있는 다른 두 가지 옵션은 <strong>전체 조정 집합(full adjustment sets)</strong>과 <strong>표준 조정 집합(canonical adjustment sets)</strong>입니다. 전체 조정 집합은 유효한 결과를 낳는 모든 변수 조합을 의미합니다.</p>
+<p>최소 조정 집합은 유효한 조정 집합의 한 유형일 뿐입니다 <span class="citation" data-cites="vanderzander2019">[@vanderzander2019]</span>. 때때로 다른 변수들의 조합을 통해서도 편향되지 않은 효과 추정치를 얻으낼 수 있습니다. ggdag에서 사용할 수 있는 다른 두 가지 옵션은 <strong>전체 조정 집합(full adjustment sets)</strong>과 <strong>표준 조정 집합(canonical adjustment sets)</strong>입니다. 전체 조정 집합은 유효한 결과를 낳는 모든 변수 조합을 의미합니다.</p>
 <pre class="{r}"><code>#| label: fig-adustment-set-all
 #| fig-width: 6.5
 #| fig-height: 5
@@ -4142,7 +4142,7 @@ ggdag_adjustment_set(podcast_dag2, use_labels = TRUE, use_text = FALSE)</code></
 </section>
 <section id="선택-편향과-매개-분석-selection-bias-and-mediation" class="level3" data-number="28.3.2">
 <h3 data-number="28.3.2" class="anchored" data-anchor-id="선택-편향과-매개-분석-selection-bias-and-mediation"><span class="header-section-number">28.3.2</span> 선택 편향과 매개 분석 (Selection Bias and Mediation)</h3>
-<p>선택 편향(selection bias)은 콜라이더를 조정함으로써 유발되는 편향의 또 다른 이름입니다 <span class="citation" data-cites="lu2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-lu2022" role="doc-biblioref"><strong>lu2022?</strong></a>)</span>. 이것이 “선택 편향”이라고 불리는 이유는 콜라이더 유발 편향의 흔한 형태가 연구 설계에 의해 본질적으로 층화된 변수 — 즉 연구 대상으로의 <em>선택</em> — 이기 때문입니다. 원래의 <code>podcast_dag</code>를 기반으로 하되 한 가지 변수를 추가한 사례를 고려해 봅시다: 학생이 시험장에 나타났는지 여부(<code>showed_up</code>)입니다. 이제 <code>podcast</code>가 <code>exam</code>에 미치는 간접 효과가 존재합니다: 팟캐스트를 듣는 것이 학생들이 시험에 응시하는지 여부에 영향을 미칩니다. 시험장에 나타나지 않은 학생들의 실제 <code>exam</code> 결과는 누락되었습니다; 시험장에 <em>나타난</em> 학생 그룹을 연구함으로써, 우리는 본질적으로 이 변수에 대해 층화하고 있는 것입니다.</p>
+<p>선택 편향(selection bias)은 콜라이더를 조정함으로써 유발되는 편향의 또 다른 이름입니다 <span class="citation" data-cites="lu2022">[@lu2022]</span>. 이것이 “선택 편향”이라고 불리는 이유는 콜라이더 유발 편향의 흔한 형태가 연구 설계에 의해 본질적으로 층화된 변수 — 즉 연구 대상으로의 <em>선택</em> — 이기 때문입니다. 원래의 <code>podcast_dag</code>를 기반으로 하되 한 가지 변수를 추가한 사례를 고려해 봅시다: 학생이 시험장에 나타났는지 여부(<code>showed_up</code>)입니다. 이제 <code>podcast</code>가 <code>exam</code>에 미치는 간접 효과가 존재합니다: 팟캐스트를 듣는 것이 학생들이 시험에 응시하는지 여부에 영향을 미칩니다. 시험장에 나타나지 않은 학생들의 실제 <code>exam</code> 결과는 누락되었습니다; 시험장에 <em>나타난</em> 학생 그룹을 연구함으로써, 우리는 본질적으로 이 변수에 대해 층화하고 있는 것입니다.</p>
 <pre class="{r}"><code>#| label: fig-podcast_dag3
 #| fig-width: 4.5
 #| fig-cap: "`podcast_dag`의 또 다른 변형으로, 이번에는 시험장에 나타난 사람들에 대한 고유한 층화를 포함합니다. 여전히 `podcast`가 `exam`에 미치는 직접 효과는 없지만, `showed_up`을 통한 간접 효과가 존재합니다."
@@ -4259,7 +4259,7 @@ podcast_dag4 |&gt;
 #| fig-cap: "나비 편향에서 `mood`는 콜라이더이자 교란 요인입니다. `mood`에 의한 편향을 통제하는 것은 콜라이더를 조건부화했기 때문에 새로운 경로를 열게 됩니다. 우리는 `u1`이나 `u2` 없이는 모든 백도어 경로를 적절히 닫을 수 없습니다."
 butterfly_bias(x = "podcast", y = "exam", m = "mood", a = "u1", b = "u2") |&gt;
   ggdag(use_text = FALSE, use_labels = TRUE)</code></pre>
-<p>이제 우리는 어려운 상황에 처해 있습니다: <code>mood</code>가 교란 요인이기 때문에 통제해야 하지만, <code>mood</code>를 통제하면 <code>u1</code>에서 <code>u2</code>로 가는 경로가 열립니다. 우리는 두 변수 중 어느 것도 측정하지 않았기 때문에, <code>mood</code>에 대한 조건부화로 인해 열린 경로를 닫을 수 없습니다. 어떻게 해야 할까요? 의심스러울 때는 <code>mood</code>를 통제하는 것이 두 옵션 중 더 낫다는 것이 밝혀졌습니다: 교란 편향은 대개 콜라이더 편향보다 더 심각한 경향이 있고, 콜라이더의 M자형 구조는 미세한 편차에 민감하기 때문입니다(예: 이것이 정확한 구조가 아니라면 종종 편향이 그렇게 나쁘지 않습니다) <span class="citation" data-cites="DingMiratrix2015">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-DingMiratrix2015" role="doc-biblioref"><strong>DingMiratrix2015?</strong></a>)</span>.</p>
+<p>이제 우리는 어려운 상황에 처해 있습니다: <code>mood</code>가 교란 요인이기 때문에 통제해야 하지만, <code>mood</code>를 통제하면 <code>u1</code>에서 <code>u2</code>로 가는 경로가 열립니다. 우리는 두 변수 중 어느 것도 측정하지 않았기 때문에, <code>mood</code>에 대한 조건부화로 인해 열린 경로를 닫을 수 없습니다. 어떻게 해야 할까요? 의심스러울 때는 <code>mood</code>를 통제하는 것이 두 옵션 중 더 낫다는 것이 밝혀졌습니다: 교란 편향은 대개 콜라이더 편향보다 더 심각한 경향이 있고, 콜라이더의 M자형 구조는 미세한 편차에 민감하기 때문입니다(예: 이것이 정확한 구조가 아니라면 종종 편향이 그렇게 나쁘지 않습니다) <span class="citation" data-cites="DingMiratrix2015">[@DingMiratrix2015]</span>.</p>
 <p>선택 편향의 또 다른 흔한 형태는 <strong>추적 관찰 소실(loss-to-follow-up)</strong>로 인한 것입니다: 사람들이 노출 및 결과와 관련된 방식으로 연구에서 중도 탈락하는 경우입니다. 우리는 <a href="#sec-longitudinal" class="quarto-xref"><span>장 42</span></a> 에서 이 주제로 다시 돌아올 것입니다.</p>
 </section>
 </section>
@@ -4297,14 +4297,14 @@ podcast_dag5 &lt;- dagify(
 ggdag(podcast_dag5, use_labels = TRUE, use_text = FALSE)</code></pre>
 <p>이제 노출과 결과 <em>둘 다</em>와 관련되지는 않은 두 개의 변수가 있습니다: <code>podcast</code>를 유발하지만 <code>exam</code>은 유발하지 않는 <code>humor</code>, 그리고 <code>exam</code>을 유발하지만 <code>podcast</code>는 유발하지 않는 <code>grader_mood</code>입니다. 먼저 <code>humor</code>부터 살펴보겠습니다.</p>
 <p>노출을 유발하지만 결과는 유발하지 않는 변수들을 <strong>도구 변수(instrumental variables, IVs)</strong>라고도 부릅립니다. IV는 특정 조건 하에서 이를 통제하면 다른 유형의 편향을 더 악화시킬 수 있는 특이한 상황입니다. 이 방식이 독특한 이유는, IV가 노출이 결과에 미치는 편향되지 않은 효과를 추정하기 위한 완전히 다른 접근 방식을 수행하는 데에도 사용될 수 있다는 점입니다. IV는 계량경제학에서 흔히 사용되며 다른 분야에서도 점점 더 인기를 얻고 있습니다. 요컨대, IV 분석은 지금까지 우리가 이야기한 접근 방식들과는 다른 가정 세트를 사용하여 인과 효과를 추정할 수 있게 해줍니다. 때때로 성향 점수 방법으로는 해결하기 힘든 문제를 IV를 사용하여 해결할 수 있으며, 그 반대의 경우도 마찬가지입니다. 우리는 <a href="#sec-iv-friends" class="quarto-xref"><span>장 46</span></a> 에서 IV에 대해 더 자세히 이야기할 것입니다.</p>
-<p>그렇다면 IV 방법을 사용하지 <em>않는</em> 경우, 교란을 해결하기 위해 고안된 모델에 IV를 포함해야 할까요? 그 변수가 IV인지 아닌지 확실하지 않다면, 아마도 모델에 추가해야 할 것입니다: 그것이 IV일 확률보다는 교란 요인일 확률이 더 높으며, 실제로 IV를 추가함으로써 발생하는 편향은 대개 작기 때문입니다. 따라서 잠재적인 M-구조 변수를 조정하는 것과 마찬가지로, 교란으로 인한 편향의 위험이 더 큽니다 <span class="citation" data-cites="Myers2011">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Myers2011" role="doc-biblioref"><strong>Myers2011?</strong></a>)</span>.</p>
-<p>이제 IV의 반대인, 노출의 원인은 아니지만 결과의 원인인 변수에 대해 이야기해 봅시다. 이러한 변수들은 때때로 <strong>경쟁 노출(competing exposures)</strong>(결과를 유발하기도 하기 때문) 또는 <strong>정밀도 변수(precision variables)</strong>(나중에 보겠지만, 인과 추정치의 정밀도를 높여주기 때문)라고 불립니다. 우리는 이 변수들이 다른 연구 질문에서는 노출일 수 있지만 현재 다루고 있는 연구 질문과의 관계에 집중하고 있으므로 정밀도 변수라고 부르겠습니다 <span class="citation" data-cites="Brookhart2006">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Brookhart2006" role="doc-biblioref"><strong>Brookhart2006?</strong></a>)</span>.</p>
+<p>그렇다면 IV 방법을 사용하지 <em>않는</em> 경우, 교란을 해결하기 위해 고안된 모델에 IV를 포함해야 할까요? 그 변수가 IV인지 아닌지 확실하지 않다면, 아마도 모델에 추가해야 할 것입니다: 그것이 IV일 확률보다는 교란 요인일 확률이 더 높으며, 실제로 IV를 추가함으로써 발생하는 편향은 대개 작기 때문입니다. 따라서 잠재적인 M-구조 변수를 조정하는 것과 마찬가지로, 교란으로 인한 편향의 위험이 더 큽니다 <span class="citation" data-cites="Myers2011">[@Myers2011]</span>.</p>
+<p>이제 IV의 반대인, 노출의 원인은 아니지만 결과의 원인인 변수에 대해 이야기해 봅시다. 이러한 변수들은 때때로 <strong>경쟁 노출(competing exposures)</strong>(결과를 유발하기도 하기 때문) 또는 <strong>정밀도 변수(precision variables)</strong>(나중에 보겠지만, 인과 추정치의 정밀도를 높여주기 때문)라고 불립니다. 우리는 이 변수들이 다른 연구 질문에서는 노출일 수 있지만 현재 다루고 있는 연구 질문과의 관계에 집중하고 있으므로 정밀도 변수라고 부르겠습니다 <span class="citation" data-cites="Brookhart2006">[@Brookhart2006]</span>.</p>
 <p>IV와 마찬가지로, 정밀도 변수는 노출에서 결과로 가는 경로 상에 존재하지 않습니다. 따라서 이들을 포함하는 것이 필수적인 것은 아닙니다. 하지만 IV와 달리, 정밀도 변수를 포함하는 것은 유익합니다. 결과의 다른 원인들을 포함하는 것은 통계 모델이 결과의 변동성 중 일부를 포착하는 데 도움이 됩니다. 이것이 효과의 점 추정치에는 영향을 미치지 않지만, 분산을 감소시켜 표준 오차를 작게 하고 신뢰 구간을 좁게 만듭니다. 따라서 가능하면 이들을 포함할 것을 권장합니다.</p>
 <p>그러므로 <code>grader_mood</code>를 통제할 필요는 없더라도, 데이터셋에 있다면 포함해야 합니다. 마찬가지로 <code>humor</code>는 그것이 정말로 교란 요인일 수 있다고 생각되지 않는 한 모델에 추가하는 것이 좋지 않습니다; 만약 그것이 유효한 도구 변수라면, 대신 IV 방법을 사용하여 효과를 추정하는 것을 고려해 볼 수 있습니다.</p>
 </section>
 <section id="측정-오차와-누락-measurement-error-and-missingness" class="level3" data-number="28.3.4">
 <h3 data-number="28.3.4" class="anchored" data-anchor-id="측정-오차와-누락-measurement-error-and-missingness"><span class="header-section-number">28.3.4</span> 측정 오차와 누락 (Measurement Error and Missingness)</h3>
-<p>DAG는 또한 데이터의 오측정(mismeasurements)으로부터 발생하는 편향을 이해하는 데 도움을 줄 수 있습니다. 여기에는 가장 최악의 오측정인 ’전혀 측정하지 않음’도 포함됩니다. 우리는 <a href="#sec-missingness" class="quarto-xref"><span>장 39</span></a> 에서 이러한 주제들을 다룰 것이지만, 기본 아이디어는 실제 값과 관찰된 값을 분리함으로써 그러한 편향들이 어떻게 작용하는지 더 잘 이해할 수 있다는 것입니다 <span class="citation" data-cites="Hernán2009">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Hernán2009" role="doc-biblioref"><strong>Hernán2009?</strong></a>)</span>. 여기에 <strong>회상 편향(recall bias)</strong>이라고 불리는 편향의 기본적인 예시가 있습니다. 회상 편향은 결과가 참가자의 노출에 대한 기억에 영향을 미칠 때 발생하며, 특히 결과가 발생한 후에야 이전의 노출이 기록되는 후향적 연구에서 문제가 됩니다. 이러한 현상이 발생할 수 있는 예로 암에 대한 환자-대조군 연구가 있습니다. 암에 걸린 사람은 암에 걸리지 않은 사람보다 과거의 노출에 대해 더 많이 반추하려는 동기가 강할 수 있습니다. 따라서 특정 노출에 대한 그들의 기억은 그렇지 않은 사람보다 더 정교해질 수 있습니다.</p>
+<p>DAG는 또한 데이터의 오측정(mismeasurements)으로부터 발생하는 편향을 이해하는 데 도움을 줄 수 있습니다. 여기에는 가장 최악의 오측정인 ’전혀 측정하지 않음’도 포함됩니다. 우리는 <a href="#sec-missingness" class="quarto-xref"><span>장 39</span></a> 에서 이러한 주제들을 다룰 것이지만, 기본 아이디어는 실제 값과 관찰된 값을 분리함으로써 그러한 편향들이 어떻게 작용하는지 더 잘 이해할 수 있다는 것입니다 <span class="citation" data-cites="Hernán2009">[@Hernán2009]</span>. 여기에 <strong>회상 편향(recall bias)</strong>이라고 불리는 편향의 기본적인 예시가 있습니다. 회상 편향은 결과가 참가자의 노출에 대한 기억에 영향을 미칠 때 발생하며, 특히 결과가 발생한 후에야 이전의 노출이 기록되는 후향적 연구에서 문제가 됩니다. 이러한 현상이 발생할 수 있는 예로 암에 대한 환자-대조군 연구가 있습니다. 암에 걸린 사람은 암에 걸리지 않은 사람보다 과거의 노출에 대해 더 많이 반추하려는 동기가 강할 수 있습니다. 따라서 특정 노출에 대한 그들의 기억은 그렇지 않은 사람보다 더 정교해질 수 있습니다.</p>
 <pre class="{r}"><code>#| label: fig-error_dag
 #| fig-width: 5.5
 #| fig-height: 4
@@ -4333,7 +4333,7 @@ error_dag |&gt;
 </section>
 <section id="dag-구축을-위한-권장-사항" class="level2" data-number="28.4">
 <h2 data-number="28.4" class="anchored" data-anchor-id="dag-구축을-위한-권장-사항"><span class="header-section-number">28.4</span> DAG 구축을 위한 권장 사항</h2>
-<p>원칙적으로 DAG를 사용하는 것은 쉽습니다: 존재한다고 생각하는 인과 관계들을 명시하고, 유효한 조정 집합과 같은 정보를 위해 DAG를 쿼리하면 됩니다. 실무적으로 DAG를 구축하는 데는 상당한 시간과 노력이 필요합니다. 연구 질문 자체가 정의하는 것 다음으로, 이는 인과 추론을 하는 데 있어 가장 어려운 단계 중 하나입니다. DAG 구축의 모범 사례에 대한 지침은 거의 존재하지 않습니다. <span class="citation" data-cites="Tennant2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Tennant2021" role="doc-biblioref"><strong>Tennant2021?</strong></a>)</span> 은 연구자들이 DAG를 어떻게 사용하는지 더 잘 이해하기 위해 응용 건강 연구에서 사용된 DAG 데이터를 수집했습니다. <span class="quarto-unresolved-ref">?tbl-dag-properties</span> 는 그들이 수집한 몇 가지 정보를 보여줍니다: DAG에 포함된 노드와 아크의 수의 중앙값, 그 비율, DAG의 포화도(saturation percent), 그리고 얼마나 많은 DAG가 완전히 포화되었는지 등입니다. DAG를 포화시킨다는 것은 시간상 앞으로 나아가는 모든 가능한 화살표를 추가하는 것을 의미합니다. 예를 들어, 완전히 포화된 DAG에서는 시점 1의 임의의 변수가 미래 시점의 모든 변수로 향하는 화살표를 갖게 됩니다. 대부분의 DAG는 약 절반 정도만 포화되었으며, 완전히 포화된 DAG는 거의 없었습니다.</p>
+<p>원칙적으로 DAG를 사용하는 것은 쉽습니다: 존재한다고 생각하는 인과 관계들을 명시하고, 유효한 조정 집합과 같은 정보를 위해 DAG를 쿼리하면 됩니다. 실무적으로 DAG를 구축하는 데는 상당한 시간과 노력이 필요합니다. 연구 질문 자체가 정의하는 것 다음으로, 이는 인과 추론을 하는 데 있어 가장 어려운 단계 중 하나입니다. DAG 구축의 모범 사례에 대한 지침은 거의 존재하지 않습니다. <span class="citation" data-cites="Tennant2021">@Tennant2021</span> 은 연구자들이 DAG를 어떻게 사용하는지 더 잘 이해하기 위해 응용 건강 연구에서 사용된 DAG 데이터를 수집했습니다. <span class="quarto-unresolved-ref">?tbl-dag-properties</span> 는 그들이 수집한 몇 가지 정보를 보여줍니다: DAG에 포함된 노드와 아크의 수의 중앙값, 그 비율, DAG의 포화도(saturation percent), 그리고 얼마나 많은 DAG가 완전히 포화되었는지 등입니다. DAG를 포화시킨다는 것은 시간상 앞으로 나아가는 모든 가능한 화살표를 추가하는 것을 의미합니다. 예를 들어, 완전히 포화된 DAG에서는 시점 1의 임의의 변수가 미래 시점의 모든 변수로 향하는 화살표를 갖게 됩니다. 대부분의 DAG는 약 절반 정도만 포화되었으며, 완전히 포화된 DAG는 거의 없었습니다.</p>
 <p>DAG를 사용한 논문의 약 절반만이 사용된 조정 집합을 보고했습니다. 다시 말해, 연구자들은 연구 질문에 대한 자신들의 가정을 제시했지만, 모델링 단계를 어떻게 처리해야 하는지에 대한 함의나 유효한 조정 집합을 사용했는지 여부는 제시하지 않았습니다. 마찬가지로, 대다수의 연구가 관심 있는 추정 대상(estimand)을 보고하지 않았습니다.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -4393,7 +4393,7 @@ dag_data_used |&gt;
     id = "reporting"
   ) |&gt;
   row_group_order(c("dag_prop", "reporting"))</code></pre>
-<p>이 섹션에서는 <span class="citation" data-cites="Tennant2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Tennant2021" role="doc-biblioref"><strong>Tennant2021?</strong></a>)</span> 과 우리의 DAG 구축 경험을 바탕으로 몇 가지 조언을 드리고자 합니다.</p>
+<p>이 섹션에서는 <span class="citation" data-cites="Tennant2021">@Tennant2021</span> 과 우리의 DAG 구축 경험을 바탕으로 몇 가지 조언을 드리고자 합니다.</p>
 <section id="sec-dags-iterate" class="level3" data-number="28.4.1">
 <h3 data-number="28.4.1" class="anchored" data-anchor-id="sec-dags-iterate"><span class="header-section-number">28.4.1</span> 조기에 그리고 자주 반복하십시오</h3>
 <p>연구 결과의 품질을 위해 할 수 있는 가장 좋은 일 중 하나는 연구를 수행하기 전, 이상적으로는 데이터를 수집하기 전에도 DAG를 만드는 것입니다. 이미 데이터를 가지고 작업 중이라면, 최소한 데이터 분석을 하기 전에 DAG를 구축하십시오. 이 조언은 사전 등록된 분석 계획(pre-registered analysis plans)과 맥락을 같이 합니다: 미리 가정을 선언하는 것은 여러분이 무엇을 해야 할지 명확히 하는 데 도움이 되고, 과적합(overfitting)의 위험(예: 데이터로부터 교란 요인을 잘못 결정하는 것)을 줄여주며, 여러분의 DAG에 대한 피드백을 받을 시간을 제공합니다.</p>
@@ -4410,7 +4410,7 @@ dag_data_used |&gt;
 <h3 data-number="28.4.3" class="anchored" data-anchor-id="노드들을-시간-순서대로-배치하십시오"><span class="header-section-number">28.4.3</span> 노드들을 시간 순서대로 배치하십시오</h3>
 <p>앞서 논의했듯이, 변수들을 왼쪽에서 오른쪽으로 또는 위에서 아래로 시간 순서대로 배치할 것을 권장합니다. 여기에는 두 가지 이유가 있습니다. 첫째, 시간 순서는 여러분의 가정에서 필수적인 부분입니다. 결국, 어떤 것이 원인이 되기 위해서는 다른 것보다 먼저 일어나야 하기 때문입니다. 이를 신중하게 생각하는 것은 여러분의 DAG와 다루어야 할 변수들을 명확하게 해줄 것입니다.</p>
 <p>둘째, 일정 수준 이상의 복잡성을 넘어서면 시간순으로 배치되었을 때 DAG를 읽기가 더 쉽습니다. 그 차원에 대해 덜 생각해도 되기 때문입니다; 그것은 레이아웃에 내재되어 있습니다. <code>ggdag</code>의 시간 순서 알고리즘은 이를 상당 부분 자동화해 주지만, 앞서 보았듯이 때때로 순서에 대한 더 많은 정보를 제공하는 것이 도움이 됩니다.</p>
-<p>관련된 주제로 피드백 루프(feedback loops)가 있습니다 <span class="citation" data-cites="murray2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-murray2022" role="doc-biblioref"><strong>murray2022?</strong></a>)</span>. 종종 우리는 서로를 유발하는 두 가지 요인이 지구 온난화와 에어컨 사용처럼 원을 그리며 일어난다고 생각합니다(에어컨 사용은 지구 온난화를 증가시키고, 이는 날씨를 더 덥게 만들며, 다시 에어컨 사용을 증가시키는 식입니다). 그 관계를 다음과 같이 시각화하고 싶은 유혹이 생깁니다:</p>
+<p>관련된 주제로 피드백 루프(feedback loops)가 있습니다 <span class="citation" data-cites="murray2022">[@murray2022]</span>. 종종 우리는 서로를 유발하는 두 가지 요인이 지구 온난화와 에어컨 사용처럼 원을 그리며 일어난다고 생각합니다(에어컨 사용은 지구 온난화를 증가시키고, 이는 날씨를 더 덥게 만들며, 다시 에어컨 사용을 증가시키는 식입니다). 그 관계를 다음과 같이 시각화하고 싶은 유혹이 생깁니다:</p>
 <pre class="{r}"><code>#| label: fig-feedback-loop
 #| fig-width: 4.5
 #| fig-height: 3.5
@@ -4493,7 +4493,7 @@ dagify(
 </div>
 <div class="callout-body-container callout-body">
 <p>역학에서 표준적인 연구 설계 중 하나는 환자-대조군 연구(case-control study)입니다. 환자-대조군 연구는 연구 대상인 결과가 희귀하거나 발생하기까지 매우 오랜 시간이 걸릴 때(많은 종류의 암과 같이) 유익합니다. 참가자들은 그들의 결과에 따라 연구 대상으로 선택됩니다: 일단 어떤 사람에게 사건이 발생하면 그들은 ’환자(case)’로 등록되고, 사건이 발생하지 않은 ’대조군(control)’과 매칭됩니다. 종종 그들은 다른 요인들에 대해서도 매칭됩니다.</p>
-<p>매칭된 환자-대조군 연구는 설계상 선택 편향(selection bias)을 갖습니다 <span class="citation" data-cites="mansournia2013">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-mansournia2013" role="doc-biblioref"><strong>mansournia2013?</strong></a>)</span>. <span class="quarto-unresolved-ref">?fig-case-control</span> 에서 우리가 연구 대상으로의 선택에 대해 조건부화할 때, 우리는 <code>confounder</code>를 통제하더라도 모든 백도어 경로를 닫을 수 있는 능력을 잃게 됩니다. DAG로만 보면, 전체 설계가 무효인 것처럼 보일 것입니다!</p>
+<p>매칭된 환자-대조군 연구는 설계상 선택 편향(selection bias)을 갖습니다 <span class="citation" data-cites="mansournia2013">[@mansournia2013]</span>. <span class="quarto-unresolved-ref">?fig-case-control</span> 에서 우리가 연구 대상으로의 선택에 대해 조건부화할 때, 우리는 <code>confounder</code>를 통제하더라도 모든 백도어 경로를 닫을 수 있는 능력을 잃게 됩니다. DAG로만 보면, 전체 설계가 무효인 것처럼 보일 것입니다!</p>
 <pre class="{r}"><code>#| label: fig-case-control
 #| fig-width: 4.5
 #| fig-height: 3.2
@@ -4535,7 +4535,7 @@ dagify(
   adjustmentSets()</code></pre>
 <p>하지만 둘 다 누락되었다면 유효한 조정 집합이 존재하지 않습니다.</p>
 <p>변수를 측정하지 못했을 때도 여전히 몇 가지 옵션이 있습니다. 앞서 언급했듯이, 대안적인 조정 집합을 식별할 수 있을 수도 있습니다. 만약 누락된 변수가 모든 백도어 경로를 완전히 닫는 데 필수적이라면, 그 변수가 없을 때의 영향을 이해하기 위해 민감도 분석을 수행할 수 있고 또 수행해야 합니다. 이것이 <a href="#sec-sensitivity" class="quarto-xref">Chapter&nbsp;<span>40</span></a> 의 주제입니다.</p>
-<p>운이 좋은 상황이라면, <strong>대리 교란 요인 (proxy confounder)</strong>을 사용할 수도 있습니다 <span class="citation" data-cites="miao2018">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-miao2018" role="doc-biblioref"><strong>miao2018?</strong></a>)</span>. 대리 교란 요인은 누락된 변수의 효과 중 일부를 통제해 줄 수 있을 정도로 그 변수와 밀접하게 관련된 변수입니다. <span class="quarto-unresolved-ref">?fig-proxy-confounder</span> 처럼 <code>q</code>가 원인 <code>p</code>를 갖는 기본적인 교란 관계의 확장을 고려해 봅시다. 엄밀히 말하면 <code>q</code>가 없다면 백도어 경로를 닫을 수 없고 우리의 효과는 편향될 것입니다. 하지만 실무적으로 <code>p</code>가 <code>q</code>와 높은 상관관계를 갖는다면, <code>p</code>는 <code>q</code>로부터의 교란을 줄이는 수단이 될 수 있습니다. 여러분은 <code>p</code>를 <code>q</code>가 오측정된 버전으로 생각할 수 있습니다; 그것이 <code>q</code>를 통한 편향을 완전히 통제해 주는 경우는 드물겠지만, 최소화하는 데는 도움을 줄 수 있습니다.</p>
+<p>운이 좋은 상황이라면, <strong>대리 교란 요인 (proxy confounder)</strong>을 사용할 수도 있습니다 <span class="citation" data-cites="miao2018">[@miao2018]</span>. 대리 교란 요인은 누락된 변수의 효과 중 일부를 통제해 줄 수 있을 정도로 그 변수와 밀접하게 관련된 변수입니다. <span class="quarto-unresolved-ref">?fig-proxy-confounder</span> 처럼 <code>q</code>가 원인 <code>p</code>를 갖는 기본적인 교란 관계의 확장을 고려해 봅시다. 엄밀히 말하면 <code>q</code>가 없다면 백도어 경로를 닫을 수 없고 우리의 효과는 편향될 것입니다. 하지만 실무적으로 <code>p</code>가 <code>q</code>와 높은 상관관계를 갖는다면, <code>p</code>는 <code>q</code>로부터의 교란을 줄이는 수단이 될 수 있습니다. 여러분은 <code>p</code>를 <code>q</code>가 오측정된 버전으로 생각할 수 있습니다; 그것이 <code>q</code>를 통한 편향을 완전히 통제해 주는 경우는 드물겠지만, 최소화하는 데는 도움을 줄 수 있습니다.</p>
 <pre class="{r}"><code>#| label: fig-proxy-confounder
 #| fig-width: 4.5
 #| fig-height: 3.2
@@ -4645,7 +4645,7 @@ ggdag(podcast_dag_pruned, use_text = FALSE, use_labels = TRUE)</code></pre>
 </section>
 <section id="인과-구조에-집중한-뒤-측정-편향-고려하기" class="level3" data-number="28.4.8">
 <h3 data-number="28.4.8" class="anchored" data-anchor-id="인과-구조에-집중한-뒤-측정-편향-고려하기"><span class="header-section-number">28.4.8</span> 인과 구조에 집중한 뒤 측정 편향 고려하기</h3>
-<p>위에서 보았듯이, 누락과 측정 오차는 편향의 원인이 될 수 있습니다. <a href="#sec-missingness" class="quarto-xref"><span>장 39</span></a> 에서 보겠지만, 우리는 그러한 상황에 대처하기 위한 여러 전략을 가지고 있습니다. 그럼에도 불구하고 우리가 측정하는 거의 모든 것은 어느 정도 부정확합니다. 현재 가지고 있는 데이터에 대한 진정한 DAG는 본질적으로 변수의 측정된 버전에 조건부화되어 있습니다. 그런 의미에서 여러분의 데이터는 항상 미묘하게 잘못되어 있으며, 일종의 신뢰할 수 없는 화자(unreliable narrator)와 같습니다. DAG에 언제 이 정보를 포함해야 할까요? 우리는 먼저 각 변수를 완벽하게 측정했다고 가정하고 DAG의 인과 구조에 집중할 것을 권장합니다 <span class="citation" data-cites="hernan2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2021" role="doc-biblioref"><strong>hernan2021?</strong></a>)</span>. 그 후에 오측정이나 누락이 실제 데이터에 어떻게 영향을 미칠지, 특히 노출, 결과, 그리고 중요한 교란 요인들과 관련하여 고려해 보십시오. 누락된 데이터 대치(imputation)나 민감도 분석과 같이 이러한 원인들로부터 발생하는 편향을 해결하기 위한 전략을 고려하기 위해 이를 대안적인 DAG로 제시하는 것을 선호할 수도 있습니다. 결국 <span class="quarto-unresolved-ref">?fig-error_dag</span> 의 DAG는 모든 백도어 경로를 닫을 수 있는 방법이 없기 때문에 질문에 답할 수 없다는 생각을 갖게 합니다. 모든 열린 경로와 마찬가지로, 이는 편향의 심각성과 그것을 계산해낼 수 있는 우리의 능력에 달려 있습니다.</p>
+<p>위에서 보았듯이, 누락과 측정 오차는 편향의 원인이 될 수 있습니다. <a href="#sec-missingness" class="quarto-xref"><span>장 39</span></a> 에서 보겠지만, 우리는 그러한 상황에 대처하기 위한 여러 전략을 가지고 있습니다. 그럼에도 불구하고 우리가 측정하는 거의 모든 것은 어느 정도 부정확합니다. 현재 가지고 있는 데이터에 대한 진정한 DAG는 본질적으로 변수의 측정된 버전에 조건부화되어 있습니다. 그런 의미에서 여러분의 데이터는 항상 미묘하게 잘못되어 있으며, 일종의 신뢰할 수 없는 화자(unreliable narrator)와 같습니다. DAG에 언제 이 정보를 포함해야 할까요? 우리는 먼저 각 변수를 완벽하게 측정했다고 가정하고 DAG의 인과 구조에 집중할 것을 권장합니다 <span class="citation" data-cites="hernan2021">[@hernan2021]</span>. 그 후에 오측정이나 누락이 실제 데이터에 어떻게 영향을 미칠지, 특히 노출, 결과, 그리고 중요한 교란 요인들과 관련하여 고려해 보십시오. 누락된 데이터 대치(imputation)나 민감도 분석과 같이 이러한 원인들로부터 발생하는 편향을 해결하기 위한 전략을 고려하기 위해 이를 대안적인 DAG로 제시하는 것을 선호할 수도 있습니다. 결국 <span class="quarto-unresolved-ref">?fig-error_dag</span> 의 DAG는 모든 백도어 경로를 닫을 수 있는 방법이 없기 때문에 질문에 답할 수 없다는 생각을 갖게 합니다. 모든 열린 경로와 마찬가지로, 이는 편향의 심각성과 그것을 계산해낼 수 있는 우리의 능력에 달려 있습니다.</p>
 </section>
 <section id="성공-가능성이-가장-높은-조정-집합-선택하기" class="level3" data-number="28.4.9">
 <h3 data-number="28.4.9" class="anchored" data-anchor-id="성공-가능성이-가장-높은-조정-집합-선택하기"><span class="header-section-number">28.4.9</span> 성공 가능성이 가장 높은 조정 집합 선택하기</h3>
@@ -4656,8 +4656,8 @@ ggdag(podcast_dag_pruned, use_text = FALSE, use_labels = TRUE)</code></pre>
 <h3 data-number="28.4.10" class="anchored" data-anchor-id="강건성-체크robustness-checks-사용하기"><span class="header-section-number">28.4.10</span> 강건성 체크(Robustness checks) 사용하기</h3>
 <p>마지막으로, 여러분의 DAG에 대해 강건성 체크를 수행할 것을 권장합니다. 대부분의 조건에서 DAG의 정확성을 결코 검증할 수 없지만, DAG의 함의들을 사용하여 이를 뒷받침할 수는 있습니다. 상황에 따라 세 가지 유형의 강건성 체크가 도움이 될 수 있습니다.</p>
 <ol type="1">
-<li><strong>부정 대조군 (Negative controls)</strong> <span class="citation" data-cites="Lipsitch2010">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Lipsitch2010" role="doc-biblioref"><strong>Lipsitch2010?</strong></a>)</span>. 이는 부정 노출 대조군과 부정 결과 대조군의 두 가지 형태가 있습니다. 아이디어는 하나와는 연관되어 있지만 다른 하나와는 연관되지 않은 것(예: 결과와는 연관되지만 노출과는 연관되지 않은 것)을 찾아내어, 아무런 효과가 나타나지 않아야 함을 이용하는 것입니다. 효과가 나타나지 않아야 하기 때문에, 여러분은 이제 <em>다른</em> 효과들을 얼마나 잘 통제하고 있는지에 대한 측정치(예: 무효값으로부터의 차이)를 갖게 됩니다. 이상적으로 부정 대조군의 교란 요인들은 연구 질문의 것들과 유사해야 합니다.</li>
-<li><strong>DAG-데이터 일관성</strong> <span class="citation" data-cites="Textor2016">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Textor2016" role="doc-biblioref"><strong>Textor2016?</strong></a>)</span>. 부정 대조군은 여러분의 DAG가 갖는 하나의 함의입니다. 이 아이디어를 확장하면 그러한 함의들이 <em>많이</em> 존재합니다. 경로를 차단하는 것은 해당 경로로부터의 통계적 의존성을 제거하기 때문에, 여러분은 DAG의 여러 지점에서 그러한 가정들을 확인할 수 있습니다.</li>
+<li><strong>부정 대조군 (Negative controls)</strong> <span class="citation" data-cites="Lipsitch2010">[@Lipsitch2010]</span>. 이는 부정 노출 대조군과 부정 결과 대조군의 두 가지 형태가 있습니다. 아이디어는 하나와는 연관되어 있지만 다른 하나와는 연관되지 않은 것(예: 결과와는 연관되지만 노출과는 연관되지 않은 것)을 찾아내어, 아무런 효과가 나타나지 않아야 함을 이용하는 것입니다. 효과가 나타나지 않아야 하기 때문에, 여러분은 이제 <em>다른</em> 효과들을 얼마나 잘 통제하고 있는지에 대한 측정치(예: 무효값으로부터의 차이)를 갖게 됩니다. 이상적으로 부정 대조군의 교란 요인들은 연구 질문의 것들과 유사해야 합니다.</li>
+<li><strong>DAG-데이터 일관성</strong> <span class="citation" data-cites="Textor2016">[@Textor2016]</span>. 부정 대조군은 여러분의 DAG가 갖는 하나의 함의입니다. 이 아이디어를 확장하면 그러한 함의들이 <em>많이</em> 존재합니다. 경로를 차단하는 것은 해당 경로로부터의 통계적 의존성을 제거하기 때문에, 여러분은 DAG의 여러 지점에서 그러한 가정들을 확인할 수 있습니다.</li>
 <li><strong>대안적 조정 집합</strong>. 조정 집합들은 대략적으로 동일한 답을 주어야 합니다. 무작위 오차와 측정 오차를 제외하면, 그들은 모두 백도어 경로를 차단하는 집합들이기 때문입니다. 만약 하나 이상의 조정 집합이 합리적으로 보인다면, 여러 모델을 확인해 봄으로써 이를 민감도 분석으로 활용할 수 있습니다.</li>
 </ol>
 <p>우리는 <a href="#sec-sensitivity" class="quarto-xref"><span>장 40</span></a> 에서 이들을 자세히 다룰 것입니다. 여기서 주의할 점은 이들이 여러분의 초기 DAG를 보완하는 것이어야지, 그것을 <em>대체</em>하는 수단이 되어서는 안 된다는 것입니다. 사실 분석 중에 하나 이상의 조정 집합을 사용한다면, 데이터에 결과를 과적합(overfitting)시키는 것을 피하기 위해 그 모든 결과를 보고해야 합니다. 그 모든 결과를 보고해야 합니다.</p>
@@ -4701,8 +4701,8 @@ datasaurus_dozen |&gt;
   ggplot(aes(x, y)) +
   geom_point() +
   facet_wrap(~dataset)</code></pre>
-<p>그러나 인과 추론에서는 시각화만으로도 인과 효과를 풀어내기에 충분하지 않습니다. <a href="#sec-counterfactuals" class="quarto-xref"><span>장 27</span></a> 와 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a> 에서 보았듯이, 상관관계로부터 인과관계를 추론하려면 배경 지식에 기반한 검증 불가능한 가정이 필요합니다 <span class="citation" data-cites="onthei1999">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-onthei1999" role="doc-biblioref"><strong>onthei1999?</strong></a>)</span>.</p>
-<p>앤스콤의 콰르텟에서 영감을 받은 <strong>인과적 콰르텟(Causal Quartet)</strong>은 앤스콤의 콰르텟 및 데이터사우루스 더즌과 많은 동일한 특성을 공유합니다: 데이터셋에 있는 변수들의 수치적 요약이 동일합니다 <span class="citation" data-cites="dagostinomcgowan2023">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-dagostinomcgowan2023" role="doc-biblioref"><strong>dagostinomcgowan2023?</strong></a>)</span>. 이러한 데이터들과 달리, 인과적 콰르텟은 서로 <em>모양</em>도 똑같습니다. 차이점은 각 데이터셋을 생성한 인과 구조에 있습니다. <span class="quarto-unresolved-ref">?fig-causal_quartet_hidden</span> 은 노출(<code>exposure</code>)과 결과(<code>outcome</code>) 사이의 관측된 관계가 사실상 동일한 네 개의 데이터셋을 보여줍니다.</p>
+<p>그러나 인과 추론에서는 시각화만으로도 인과 효과를 풀어내기에 충분하지 않습니다. <a href="#sec-counterfactuals" class="quarto-xref"><span>장 27</span></a> 와 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a> 에서 보았듯이, 상관관계로부터 인과관계를 추론하려면 배경 지식에 기반한 검증 불가능한 가정이 필요합니다 <span class="citation" data-cites="onthei1999">[@onthei1999]</span>.</p>
+<p>앤스콤의 콰르텟에서 영감을 받은 <strong>인과적 콰르텟(Causal Quartet)</strong>은 앤스콤의 콰르텟 및 데이터사우루스 더즌과 많은 동일한 특성을 공유합니다: 데이터셋에 있는 변수들의 수치적 요약이 동일합니다 <span class="citation" data-cites="dagostinomcgowan2023">[@dagostinomcgowan2023]</span>. 이러한 데이터들과 달리, 인과적 콰르텟은 서로 <em>모양</em>도 똑같습니다. 차이점은 각 데이터셋을 생성한 인과 구조에 있습니다. <span class="quarto-unresolved-ref">?fig-causal_quartet_hidden</span> 은 노출(<code>exposure</code>)과 결과(<code>outcome</code>) 사이의 관측된 관계가 사실상 동일한 네 개의 데이터셋을 보여줍니다.</p>
 <pre class="{r}"><code>#| label: fig-causal_quartet_hidden
 #| message: false
 #| fig-cap: "요약 통계와 시각화 결과가 거의 동일한 네 개의 데이터셋인 인과적 콰르텟. 각 데이터셋의 인과 구조는 서로 다르며, 데이터만으로는 어느 것이 어느 것인지 알 수 없습니다."
@@ -5663,7 +5663,7 @@ satisfaction4_strat |&gt;
 <section id="sec-ci-rct" class="level3" data-number="30.3.1">
 <h3 data-number="30.3.1" class="anchored" data-anchor-id="sec-ci-rct"><span class="header-section-number">30.3.1</span> 무작위 시험에서의 인과 방법론</h3>
 <p>무작위 시험은 인과 추론을 위해 우리가 해야 하는 많은 가정들을 완화해 줍니다. 무작위 배정이 성공했다면 교란 요인이 존재하지 않기 때문에 이를 통제할 필요가 없습니다. 그러나 무작위 노출에 대해서도 인과 방법론은 여전히 유용할 수 있습니다.</p>
-<p>업데이트 빈도가 각 고객에게 무작위로 배정되지만, 고객 유형과 업무 시간은 여전히 고객 만족도의 원인인 <span class="quarto-unresolved-ref">?fig-satisfaction-dag2</span> 의 변형을 고려해 봅시다. 다시 말해, 이들은 결과의 원인이지만 노출의 원인은 아닙니다. 우리는 유효한 효과를 얻기 위해 조정되지 않은 회귀 모델이나 간단한 평균 차이를 사용할 수 있습니다. 하지만 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a> 에서 논의했듯이, 노출의 원인은 아니지만 결과의 원인인 변수들을 포함하는 것은 추정치의 통계적 정밀도를 향상시킬 수 있습니다. 세 가지 접근 방식을 살펴봅시다: 조정되지 않은 OLS 결과 모델, 조정된 OLS 결과 모델(직접 조정), 그리고 역확률 가중 모델입니다. <span class="quarto-unresolved-ref">?fig-panel</span> 에서 세 가지 방법 모두 우리에게 편향되지 않은 효과를 제공합니다. 성향 점수의 효과는 한계적(marginal)인 반면, 결과 모델의 효과는 조건부(conditional)입니다. 우리가 데이터를 시뮬레이션한 방식 때문에 두 가지 유형의 효과는 동일합니다. 그러나 조정되지 않은 방법은 신뢰 구간이 더 넓고, 이와 관련하여 표준 오차도 더 큽니다. 직접 조정 방법과 역확률 가중치 부여는 표준 오차가 더 작고, 따라서 신뢰 구간이 더 좁습니다. 무작위 시험에서 기준점 요인들을 조정하기 위해 이와 같이 성향 점수를 사용하는 것이 조정되지 않은 추정치에 비해 정밀도를 <em>항상</em> 향상시키며, 직접 조정에서 얻는 정밀도 이득과 동등하다는 것이 수학적으로 증명되었습니다 <span class="citation" data-cites="williamson2014variance">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-williamson2014variance" role="doc-biblioref"><strong>williamson2014variance?</strong></a>)</span>.</p>
+<p>업데이트 빈도가 각 고객에게 무작위로 배정되지만, 고객 유형과 업무 시간은 여전히 고객 만족도의 원인인 <span class="quarto-unresolved-ref">?fig-satisfaction-dag2</span> 의 변형을 고려해 봅시다. 다시 말해, 이들은 결과의 원인이지만 노출의 원인은 아닙니다. 우리는 유효한 효과를 얻기 위해 조정되지 않은 회귀 모델이나 간단한 평균 차이를 사용할 수 있습니다. 하지만 <a href="#sec-dags" class="quarto-xref"><span>장 28</span></a> 에서 논의했듯이, 노출의 원인은 아니지만 결과의 원인인 변수들을 포함하는 것은 추정치의 통계적 정밀도를 향상시킬 수 있습니다. 세 가지 접근 방식을 살펴봅시다: 조정되지 않은 OLS 결과 모델, 조정된 OLS 결과 모델(직접 조정), 그리고 역확률 가중 모델입니다. <span class="quarto-unresolved-ref">?fig-panel</span> 에서 세 가지 방법 모두 우리에게 편향되지 않은 효과를 제공합니다. 성향 점수의 효과는 한계적(marginal)인 반면, 결과 모델의 효과는 조건부(conditional)입니다. 우리가 데이터를 시뮬레이션한 방식 때문에 두 가지 유형의 효과는 동일합니다. 그러나 조정되지 않은 방법은 신뢰 구간이 더 넓고, 이와 관련하여 표준 오차도 더 큽니다. 직접 조정 방법과 역확률 가중치 부여는 표준 오차가 더 작고, 따라서 신뢰 구간이 더 좁습니다. 무작위 시험에서 기준점 요인들을 조정하기 위해 이와 같이 성향 점수를 사용하는 것이 조정되지 않은 추정치에 비해 정밀도를 <em>항상</em> 향상시키며, 직접 조정에서 얻는 정밀도 이득과 동등하다는 것이 수학적으로 증명되었습니다 <span class="citation" data-cites="williamson2014variance">[@williamson2014variance]</span>.</p>
 <pre class="{r}"><code>#| label: fig-panel
 #| code-fold: true
 #| message: false
@@ -6121,7 +6121,7 @@ seven_dwarfs_9</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>우리는 변수 이름이 깔끔한 관례를 따르는 것을 선호합니다; 이를 위한 한 가지 방법은 Emily Riederer의 “계약으로서의 열 이름(Column Names as Contracts)” 형식을 따르는 것입니다 <span class="citation" data-cites="Riederer_2020">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Riederer_2020" role="doc-biblioref"><strong>Riederer_2020?</strong></a>)</span>. 기본 아이디어는 정보를 인덱싱하기 위해 정밀한 의미를 가진 단어, 문구 또는 스텁(stubs) 세트를 미리 정의하고, 변수 이름을 지을 때 이를 일관되게 사용하는 것입니다. 예를 들어, 이 데이터에서 특정 대기 시간과 관련된 변수들은 <code>wait</code>라는 용어로 시작하고(예: <code>wait_datetime</code>, <code>wait_minutes_actual</code>), 공원 메타데이터에서 가져온 특정 날짜의 공원 관련 변수들은 <code>park</code>라는 용어로 시작합니다(예: <code>park_date</code>, <code>park_temperature_high</code>).</p>
+<p>우리는 변수 이름이 깔끔한 관례를 따르는 것을 선호합니다; 이를 위한 한 가지 방법은 Emily Riederer의 “계약으로서의 열 이름(Column Names as Contracts)” 형식을 따르는 것입니다 <span class="citation" data-cites="Riederer_2020">[@Riederer_2020]</span>. 기본 아이디어는 정보를 인덱싱하기 위해 정밀한 의미를 가진 단어, 문구 또는 스텁(stubs) 세트를 미리 정의하고, 변수 이름을 지을 때 이를 일관되게 사용하는 것입니다. 예를 들어, 이 데이터에서 특정 대기 시간과 관련된 변수들은 <code>wait</code>라는 용어로 시작하고(예: <code>wait_datetime</code>, <code>wait_minutes_actual</code>), 공원 메타데이터에서 가져온 특정 날짜의 공원 관련 변수들은 <code>park</code>라는 용어로 시작합니다(예: <code>park_date</code>, <code>park_temperature_high</code>).</p>
 </div>
 </div>
 <p>2018년에는 매월 약 12~16%의 날에 아침 엑스트라 매직 아워가 있었는데, 한 가지 예외가 있습니다: 12월에는 42%의 날에 아침 엑스트라 매직 아워가 있었습니다.</p>
@@ -6521,7 +6521,7 @@ dag_plot +
 <p>첫째, <span class="quarto-unresolved-ref">?fig-dag-close-paths-1</span>에서처럼 교란 요인들과 노출 사이의 관계를 모델링할 수 있습니다. 노출될 확률인 <strong>성향 점수(propensity score)</strong>를 사용하는 일련의 기술들을 통해 이를 수행할 수 있습니다. 둘째, <span class="quarto-unresolved-ref">?fig-dag-close-paths-2</span>에서처럼 교란 요인들과 결과 사이의 관계를 모델링할 수 있습니다. <strong>결과 모델(outcome model)</strong>을 사용하는 일련의 기술들을 통해 이를 수행할 수 있습니다. 우리는 <a href="#sec-strat-outcome" class="quarto-xref"><span>장 30</span></a>장에서 결과 모델을 보았고, <a href="#sec-g-comp" class="quarto-xref"><span>장 37</span></a>장에서 또 다른 접근 방식을 보게 될 것입니다. 성향 점수와 결과 모델 접근 방식 모두 올바른 DAG를 가지고 관계를 올바르게 모델링했다면 정답을 얻을 수 있게 해줍니다. 대안적으로 <span class="quarto-unresolved-ref">?fig-dag-close-paths-2</span>에서처럼 두 세트의 관계를 모두 모델링할 수 있습니다. <strong>이중 로버스트(doubly robust)</strong> 추정량이라고 불리는 일련의 기술들을 통해 이를 수행할 수 있으며, 이에 대해서는 <a href="#sec-dr" class="quarto-xref"><span>장 44</span></a>장 및 <a href="#sec-causal-ml" class="quarto-xref"><span>장 45</span></a>장에서 다시 다룰 것입니다.</p>
 <p>다음 몇 장에 걸쳐 <span class="quarto-unresolved-ref">?fig-dag-close-paths-1</span>을 통해 경로를 차단하는 성향 점수 기술을 다루겠습니다. 먼저 디즈니가 엑스트라 매직 아워 배정을 무작위로 했다면 어떤 모습일지 생각해 봅시다. 각 날짜가 엑스트라 매직 아워에 배정될 확률이 0.5라고 가정하면, 약 절반은 매직 아워가 있고 나머지는 없을 것입니다. 이 경우 <span class="quarto-unresolved-ref">?fig-dag-close-paths-1</span>에 강조된 화살표는 존재하지 않겠지만 <span class="quarto-unresolved-ref">?fig-dag-close-paths-2</span>에 강조된 화살표는 남습니다. 결과가 아닌 노출(엑스트라 매직 아워 여부)에만 개입했기 때문입니다. 과거 최고 기온, 공원 폐쇄 시간, 티켓 시즌은 여전히 대기 시간에 영향을 미치지만 엑스트라 매직 아워에는 영향을 주지 않습니다. 여기서 노출 확률인 성향 점수는 매일 0.5입니다. 다시 말해 실험에서는 성향 점수를 미리 알고 있습니다. 주어진 날짜는 <code>rbinom(1, 1, 0.5)</code>를 통해 무작위로 결정됩니다.</p>
 <p>디즈니가 더 복잡한 실험을 수행했다고 가정해 봅시다. <em>DAG의 세 변수 수준 내에서</em> 노출을 무작위 배정한 것입니다. 예를 들어 모든 날짜에 기본 확률 0.5를 부여하되, 과거 기온이 화씨 80도 이상이면 확률이 0.1 감소하고, 공원 폐쇄 시간이 오후 10시 이전이면 0.2 증가하며, 성수기 티켓 시즌이면 0.3 감소한다고 합시다. 과거 기온이 86도이고 성수기 티켓 시즌에 오후 9시에 폐장한 날이라면, 그날 아침 엑스트라 매직 아워가 배정될 확률은 <span class="math inline">\(0.5 - 0.1 + 0.2 - 0.3 = 0.3\)</span>이 됩니다. 이 설계는 여전히 무작위 실험이지만 공변량 수준 내에서 무작위화된 것입니다. 이는 무작위 배정되지 않은 데이터에서 가정해야 하는 조건부 교환 가능성(conditional exchangeability)과 매우 비슷합니다. 날짜들이 공변량 수준 내에서 교환 가능하기 때문입니다.</p>
-<p>하지만 우리 사례에서는 이러한 확률을 알 수 없습니다. 만약 이 데이터에서 “숨겨진 실험”을 찾을 수 있다면 어떨까요? 누군가 특정 날짜에 엑스트라 매직 아워를 운영하기로 결정했다는 점을 기억하십시오. 그 의사 결정 과정은 무엇이었을까요? 도메인 지식(처치 배정과 결과 모두에 영향을 주는 요인이 무엇인지 이해하기 위해)과 통계학(조건부 확률을 추정하기 위해)을 결합한다면, 아마도 그 확률을 활용해 교환 가능성을 달성하고 편향되지 않은 인과 효과를 계산할 수 있을 것입니다. <span class="citation" data-cites="rosenbaum1983central">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-rosenbaum1983central" role="doc-biblioref"><strong>rosenbaum1983central?</strong></a>)</span>은 <a href="#sec-assump" class="quarto-xref"><span>섹션 27.3</span></a>장에서 논의한 가정이 충족되는 한, 관찰 연구에서 성향 점수를 조건부화하는 것이 노출 효과의 편향되지 않은 추정으로 이어질 수 있음을 보여주었습니다.</p>
+<p>하지만 우리 사례에서는 이러한 확률을 알 수 없습니다. 만약 이 데이터에서 “숨겨진 실험”을 찾을 수 있다면 어떨까요? 누군가 특정 날짜에 엑스트라 매직 아워를 운영하기로 결정했다는 점을 기억하십시오. 그 의사 결정 과정은 무엇이었을까요? 도메인 지식(처치 배정과 결과 모두에 영향을 주는 요인이 무엇인지 이해하기 위해)과 통계학(조건부 확률을 추정하기 위해)을 결합한다면, 아마도 그 확률을 활용해 교환 가능성을 달성하고 편향되지 않은 인과 효과를 계산할 수 있을 것입니다. <span class="citation" data-cites="rosenbaum1983central">[@rosenbaum1983central]</span>은 <a href="#sec-assump" class="quarto-xref"><span>섹션 27.3</span></a>장에서 논의한 가정이 충족되는 한, 관찰 연구에서 성향 점수를 조건부화하는 것이 노출 효과의 편향되지 않은 추정으로 이어질 수 있음을 보여주었습니다.</p>
 <section id="sec-building-models" class="level2" data-number="32.1">
 <h2 data-number="32.1" class="anchored" data-anchor-id="sec-building-models"><span class="header-section-number">32.1</span> 성향 점수 모델 구축하기</h2>
 <p>성향 점수를 추정하는 방법은 많습니다. 이진 노출이라면 대개 로지스틱 회귀를 사용하지만 다른 접근 방식도 있습니다. 로지스틱 회귀로 얻은 추정치는 인과적 관점에서 해석하기 어려울 수 있으나(<a href="#sec-binary" class="quarto-xref"><span>섹션 35.4</span></a>장에서 더 자세히 다룹니다), 확률을 예측하는 데는 탁월합니다. 노출을 예측값으로 하고 교란 요인을 공변량으로 하는 로지스틱 회귀는 성향 점수 분석을 시작하기에 좋은 지점입니다.</p>
@@ -7203,7 +7203,7 @@ scale_color_manual(
 <h2 data-number="33.3" class="anchored" data-anchor-id="균형-개선하기"><span class="header-section-number">33.3</span> 균형 개선하기</h2>
 <section id="인과-모델링에-예측-지표를-사용하지-마십시오" class="level3" data-number="33.3.1">
 <h3 data-number="33.3.1" class="anchored" data-anchor-id="인과-모델링에-예측-지표를-사용하지-마십시오"><span class="header-section-number">33.3.1</span> 인과 모델링에 예측 지표를 사용하지 마십시오</h3>
-<p>대체로 예측 모델을 구축할 때 흔히 사용되는 지표들은 인과 모델을 구축하는 데 부적절합니다. 연구자와 데이터 과학자들은 종종 R<sup>2</sup>, AUC, 정확도(accuracy), 그리고 (종종 부적절하게) p-값과 같은 지표들을 사용하여 모델에 대한 결정을 내립니다. 그러나 인과 모델의 목표는 결과에 대해 가능한 한 많이 예측하는 것이 아닙니다 <span class="citation" data-cites="hernan2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2021" role="doc-biblioref"><strong>hernan2021?</strong></a>)</span>; 목표는 노출과 결과 사이의 관계를 정확하게 추정하는 것입니다. 인과 모델은 편향되지 않기 위해 특별히 예측을 잘 할 필요가 없습니다.</p>
+<p>대체로 예측 모델을 구축할 때 흔히 사용되는 지표들은 인과 모델을 구축하는 데 부적절합니다. 연구자와 데이터 과학자들은 종종 R<sup>2</sup>, AUC, 정확도(accuracy), 그리고 (종종 부적절하게) p-값과 같은 지표들을 사용하여 모델에 대한 결정을 내립니다. 그러나 인과 모델의 목표는 결과에 대해 가능한 한 많이 예측하는 것이 아닙니다 <span class="citation" data-cites="hernan2021">[@hernan2021]</span>; 목표는 노출과 결과 사이의 관계를 정확하게 추정하는 것입니다. 인과 모델은 편향되지 않기 위해 특별히 예측을 잘 할 필요가 없습니다.</p>
 <p>하지만 이러한 지표들은 모델의 최적의 <strong>함수 형태(functional form)</strong>를 식별하는 데 도움이 될 수 있습니다. 일반적으로 우리는 모델 자체를 구축하기 위해 DAG와 도메인 지식을 사용합니다. 그러나 교란 요인과 결과 또는 노출 사이의 수학적 관계에 대해서는 확신이 없을 수 있습니다. 예를 들어, 그 관계가 선형인지 모를 수 있습니다. 이 관계를 잘못 명시하면 잔차 교란(residual confounding)이 발생할 수 있습니다: 해당 교란 요인을 부분적으로만 통제하게 되어 추정치에 약간의 편향이 남게 될 수 있습니다. 예측 중심의 지표들을 사용하여 다양한 함수 형태를 테스트하는 것은 모델의 정확도를 높이는 데 도움이 될 수 있으며, 잠재적으로 더 나은 통제를 가능하게 합니다.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -7216,10 +7216,10 @@ scale_color_manual(
 </div>
 <div class="callout-body-container callout-body">
 <p>예측 모델링에서 데이터 과학자들은 종종 모델이 데이터의 우연한 패턴에 과적합되는 것을 방지해야 합니다. 모델이 그러한 우연한 패턴을 포착하면, 다른 데이터셋에 대해서는 예측력이 떨어집니다. 그렇다면 인과 모델도 과적합될 수 있을까요?</p>
-<p>짧은 대답은 ’예’입니다. 하지만 로지스틱 회귀 등보다는 머신러닝 기술을 사용할 때 더 발생하기 쉽습니다. 과적합된 모델은 본질적으로 잘못 명시된 모델(misspecified model)입니다 <span class="citation" data-cites="Gelman_2017">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Gelman_2017" role="doc-biblioref"><strong>Gelman_2017?</strong></a>)</span>. 잘못 명시된 모델은 잔차 교란으로 이어지고, 결과적으로 편향된 인과 효과를 낳게 됩니다. 과적합은 또한 확률적 긍정성 위배를 악화시킬 수 있습니다 <span class="citation" data-cites="zivich2022positivity">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-zivich2022positivity" role="doc-biblioref"><strong>zivich2022positivity?</strong></a>)</span>. 올바른 인과 모델(데이터 생성 메커니즘과 일치하는 함수 형태)은 과적합될 수 없습니다. 이는 올바른 예측 모델의 경우에도 마찬가지입니다.</p>
+<p>짧은 대답은 ’예’입니다. 하지만 로지스틱 회귀 등보다는 머신러닝 기술을 사용할 때 더 발생하기 쉽습니다. 과적합된 모델은 본질적으로 잘못 명시된 모델(misspecified model)입니다 <span class="citation" data-cites="Gelman_2017">[@Gelman_2017]</span>. 잘못 명시된 모델은 잔차 교란으로 이어지고, 결과적으로 편향된 인과 효과를 낳게 됩니다. 과적합은 또한 확률적 긍정성 위배를 악화시킬 수 있습니다 <span class="citation" data-cites="zivich2022positivity">[@zivich2022positivity]</span>. 올바른 인과 모델(데이터 생성 메커니즘과 일치하는 함수 형태)은 과적합될 수 없습니다. 이는 올바른 예측 모델의 경우에도 마찬가지입니다.</p>
 <p>하지만 이 답변에는 몇 가지 미묘한 차이가 있습니다. 인과 추론과 예측에서의 과적합은 서로 다릅니다; 우리는 인과 추정치를 다른 데이터셋에 적용하는 것이 아니기 때문입니다(그나마 유사한 것이 운송 가능성(transportability)과 일반화 가능성(generalizability) 문제인데, 이는 <a href="#sec-evidence" class="quarto-xref">Chapter&nbsp;<span>48</span></a>장에서 논의할 것입니다). 인과 모델이 편향되지 않기 위해 특별히 예측을 잘 할 필요가 없다는 사실은 여전히 유효합니다.</p>
 <p>예측 모델링에서 사람들은 외부 데이터에 대한 예측력을 높이기 위해 종종 편향-분산 트레이드오프(bias-variance trade-off)를 사용합니다. 요컨대, 모델 적합의 분산을 개선하고 외부 데이터에 대해 더 나은 예측을 하기 위해 표본에 대한 약간의 편향을 도입합니다. 그러나 우리는 주의해야 합니다: 여기서 ’편향’이라는 단어는 모델 추정치와 <em>데이터셋 내</em> 종속 변수의 실제 값 사이의 불일치를 나타냅니다. 이를 통계적 편향(statistical bias)이라고 부릅시다. 우리가 인과 효과에 대해 말할 때 관심을 갖는 편향(인과적 편향)은 이와 다릅니다. 인과적 편향은 우리의 추정치와 <em>진정한 인과 효과</em> 사이의 불일치입니다. 데이터를 더 잘 예측하기 위해 (통계적) 편향을 도입하는 것이 반드시 인과적 편향을 줄이는 것은 아니며, 실제로는 인과적 편향을 악화시킬 수도 있습니다. 따라서 우리의 목표는 항상 예측력이 아닌, 인과적 가정을 충족하고 올바른 인과 구조를 모델링하는 데 있어야 합니다.</p>
-<p>또 다른 미묘한 점은 과적합이 표본 내 추정치의 표준 오차를 팽창시킬 수 있다는 것인데, 이는 편향-분산 트레이드오프에서의 분산과는 다릅니다 <span class="citation" data-cites="schuster2016">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-schuster2016" role="doc-biblioref"><strong>schuster2016?</strong></a>)</span>. 빈도주의적 관점에서 볼 때, 추정치의 인과적 편향 때문에 신뢰 구간 또한 명목상 커버리지를 갖지 못하게 될 것입니다 (<a href="#sec-appendix-bootstrap" class="quarto-xref"><span>장 49</span></a> 참조).</p>
+<p>또 다른 미묘한 점은 과적합이 표본 내 추정치의 표준 오차를 팽창시킬 수 있다는 것인데, 이는 편향-분산 트레이드오프에서의 분산과는 다릅니다 <span class="citation" data-cites="schuster2016">[@schuster2016]</span>. 빈도주의적 관점에서 볼 때, 추정치의 인과적 편향 때문에 신뢰 구간 또한 명목상 커버리지를 갖지 못하게 될 것입니다 (<a href="#sec-appendix-bootstrap" class="quarto-xref"><span>장 49</span></a> 참조).</p>
 <p>실무적으로는, 과적합을 줄이는 기술인 교차 검증(cross-validation)이 머신러닝을 사용하는 인과 모델에서 자주 사용되며, 이에 대해서는 <a href="#sec-causal-ml" class="quarto-xref">Chapter&nbsp;<span>45</span></a> 에서 논의할 것입니다.</p>
 </div>
 </div>
@@ -7369,12 +7369,12 @@ ab |&gt;
 </section>
 <section id="특정-대상을-염두에-둔-처치-효과-추정" class="level2" data-number="34.2">
 <h2 data-number="34.2" class="anchored" data-anchor-id="특정-대상을-염두에-둔-처치-효과-추정"><span class="header-section-number">34.2</span> 특정 대상을 염두에 둔 처치 효과 추정</h2>
-<p>연구의 목표나 인과적 질문에 따라 우리는 서로 다른 추정 대상을 추정하고 싶을 수 있습니다. 여기서는 가장 일반적인 인과 추정 대상들과 그들의 대상 인구, 그들이 답하는 데 도움이 될 수 있는 인과적 질문들, 그리고 이를 추정하기 위해 사용되는 방법들을 개괄할 것입니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>.</p>
+<p>연구의 목표나 인과적 질문에 따라 우리는 서로 다른 추정 대상을 추정하고 싶을 수 있습니다. 여기서는 가장 일반적인 인과 추정 대상들과 그들의 대상 인구, 그들이 답하는 데 도움이 될 수 있는 인과적 질문들, 그리고 이를 추정하기 위해 사용되는 방법들을 개괄할 것입니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>.</p>
 <section id="평균-처치-효과-average-treatment-effect" class="level3" data-number="34.2.1">
 <h3 data-number="34.2.1" class="anchored" data-anchor-id="평균-처치-효과-average-treatment-effect"><span class="header-section-number">34.2.1</span> 평균 처치 효과 (Average treatment effect)</h3>
 <p>흔히 쓰이는 추정 대상은 평균 처치 효과(average treatment effect, ATE)입니다. 대상 인구(target population)는 관심 있는 <em>전체 표본</em> 또는 인구 집단입니다. 여기서 추정 대상은 모든 개인에 대한 잠재적 결과 차이의 기댓값입니다:</p>
 <p><span class="math display">\[E[Y(1) - Y(0)]\]</span></p>
-<p>예를 들어 “특정 정책을 모든 대상 환자에게 적용해야 하는가?”와 같은 연구 질문이 이에 해당합니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>.</p>
+<p>예를 들어 “특정 정책을 모든 대상 환자에게 적용해야 하는가?”와 같은 연구 질문이 이에 해당합니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>.</p>
 <p>대부분의 무작위 대조 시험은 ATE를 목표 추정 대상으로 설계됩니다. 앞서 <code>ab</code> 데이터에 적용했던 추정량은 이 경우 잘 작동할 것입니다. 우리는 또한 매칭(matching)과 가중치 부여(weighting)라는 다른 두 가지 유형의 추정량도 보았습니다. 비무작위 설정에서 여러분은 전체 매칭(full matching)을 사용하여 ATE를 추정할 수 있습니다. 노출군의 각 관측치는 대조군의 적어도 하나의 관측치와 (그 반대의 경우도 마찬가지로) 복원 없이 매칭됩니다. 매칭을 이용한 추정 대상에 대해서는 <a href="#sec-matching-estimands" class="quarto-xref"><span>섹션 34.3</span></a>에서 더 자세히 논의하겠습니다. 또는 다음과 같은 역확률 가중치를 사용하여 성향 점수 가중치 부여 방식으로 ATE를 추정할 수 있습니다.</p>
 <p><span class="math display">\[w_{ATE} = \frac{X}{p} + \frac{(1 - X)}{1 - p}\]</span></p>
 <p>다시 말해, 가중치는 노출군에 속한 사람들에게는 성향 점수의 역수(1/p)이고, 대조군에게는 (1 - 성향 점수)의 역수(1/(1-p))입니다. 직관적으로 이 가중치는 여러분이 실제로 속했던 그룹에 속할 확률의 역수와 같습니다. 매칭과 가중치 부여 모두에서, 추정량에는 <a href="#sec-outcome-model" class="quarto-xref"><span>장 35</span></a>에서 할 것처럼 결과 모델을 적합시키는 과정이 포함된다는 점에 유의하십시오. 즉, 성향 점수에 기반한 매칭이나 가중치 부여는 ATE 추정의 첫 번째 단계일 뿐입니다. 매칭되거나 가중치가 부여된 데이터를 결과 모델에서 사용해야만 비로소 ATE의 추정치가 생성됩니다.</p>
@@ -7576,7 +7576,7 @@ ggplot(seven_dwarfs_wts, aes(.fitted, group = park_extra_magic_morning)) +
 <h3 data-number="34.2.2" class="anchored" data-anchor-id="처치받은-집단에서의-평균-처치-효과-average-treatment-effect-among-the-treated"><span class="header-section-number">34.2.2</span> 처치받은 집단에서의 평균 처치 효과 (Average treatment effect among the treated)</h3>
 <p>우리가 본 또 다른 추정 대상 — <code>{MatchIt}</code>의 기본 추정 대상이기도 한 — 은 처치받은 집단에서의 평균 처치 효과(average treatment effect among the treated, ATT)입니다. ATT의 대상 인구는 <em>노출된(처치받은)</em> 인구 집단입니다. 이 인과 추정 대상은 노출군에 속한 사람들에 대해 조건부화합니다:</p>
 <p><span class="math display">\[E[Y(1) - Y(0) | X = 1]\]</span></p>
-<p>ATT가 관심 대상이 되는 연구 질문의 예는 “현재 마케팅 캠페인을 받고 있는 사람들에게 캠페인을 중단해야 하는가?” 또는 “현재 처치를 받고 있는 환자들에게 의료진이 처치 권장을 중단해야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>.</p>
+<p>ATT가 관심 대상이 되는 연구 질문의 예는 “현재 마케팅 캠페인을 받고 있는 사람들에게 캠페인을 중단해야 하는가?” 또는 “현재 처치를 받고 있는 환자들에게 의료진이 처치 권장을 중단해야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>.</p>
 <p>ATT는 매칭을 할 때 흔히 사용되는 목표 추정 대상입니다. 여기서는 모든 노출된 관측치들이 포함되고 대조군 관측치와 매칭되며, 대조군의 일부 관측치는 버려질 수 있습니다. 대안적으로, 우리는 가중치 부여를 통해 ATT를 추정할 수 있습니다. ATT 가중치는 다음과 같이 추정됩니다:</p>
 <p><span class="math display">\[w_{ATT} = X + \frac{(1-X)p}{1-p}\]</span></p>
 <p>다시 말해, 처치받은 집단은 1의 가중치를 받고, 처치받지 않은 집단은 처치받을 <em>오즈(odds)</em>와 동일한 가중치를 받습니다. 왜 이 가중치들이 해당 인구 집단을 대상으로 작동할까요? 이 가중치들을 쓰는 다른 방법은 ATE 가중치의 변환으로 보는 것입니다. ATE와 ATT 가중치는 오직 분자만 다릅니다. 가중치의 분자는 때때로 <strong>틸팅 함수(tilting functions)</strong>라고 불립니다. ATE 가중치의 틸팅 함수는 1이고, ATT의 틸팅 함수는 처치받을 확률(성향 점수)입니다. 만약 ATE 가중치에 1을 곱하면 아무것도 변하지 않으며, 우리는 여전히 전체 인구를 다루게 됩니다. 만약 ATE 가중치에 처치 확률을 곱하면, 가중치의 척도가 조정되어 이제 처치받은 집단을 목표로 하게 됩니다.</p>
@@ -7731,7 +7731,7 @@ ggplot(seven_dwarfs_wts, aes(.fitted, group = park_extra_magic_morning)) +
 <h3 data-number="34.2.3" class="anchored" data-anchor-id="비노출군에서의-평균-처치-효과-average-treatment-effect-among-the-unexposed"><span class="header-section-number">34.2.3</span> 비노출군에서의 평균 처치 효과 (Average treatment effect among the unexposed)</h3>
 <p>비노출군(대조군)에서의 평균 처치 효과(ATU 또는 ATC)를 추정하기 위한 대상 인구는 <em>비노출된(처치받지 않은)</em> 인구 집단입니다. 우리는 이 추정 대상을 지칭하기 위해 ATU와 ATC를 모두 사용할 것입니다. 이 인과 추정 대상은 비노출군에 속한 사람들에 대해 조건부화합니다.</p>
 <p><span class="math display">\[E[Y(1) - Y(0) | X = 0]\]</span></p>
-<p>ATU가 관심 대상이 되는 연구 질문의 예는 “현재 마케팅 캠페인을 받지 않는 사람들에게 캠페인을 시작해야 하는가?” 또는 “현재 처치를 받지 않는 환자들에게 의료진이 처치를 확장 권장해야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>.</p>
+<p>ATU가 관심 대상이 되는 연구 질문의 예는 “현재 마케팅 캠페인을 받지 않는 사람들에게 캠페인을 시작해야 하는가?” 또는 “현재 처치를 받지 않는 환자들에게 의료진이 처치를 확장 권장해야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>.</p>
 <p>ATU 또한 매칭을 통해 추정될 수 있습니다. 여기서는 모든 비노출된 관측치들이 포함되고 노출된 관측치와 매칭되며, 노출된 관측치의 일부는 버려질 수 있습니다. 대안적으로, 우리는 가중치 부여를 통해 ATU를 추정할 수 있습니다. ATU 가중치는 다음과 같이 추정됩니다:</p>
 <p><span class="math display">\[w_{ATU} = \frac{X(1-p)}{p}+ (1-X)\]</span></p>
 <p>이는 ATT의 반대입니다: 비노출군이 1의 가중치를 받고, 노출군이 처치받지 않을 오즈와 동일한 가중치를 받습니다. 우리는 비처치 확률을 틸팅 함수로 사용함으로써 비처치 그룹을 목표로 삼고 있습니다.</p>
@@ -7804,7 +7804,7 @@ ggplot(seven_dwarfs_wts, aes(.fitted, group = park_extra_magic_morning)) +
 <h3 data-number="34.2.4" class="anchored" data-anchor-id="균등하게-매칭-가능한-집단에서의-평균-처치-효과-average-treatment-effect-among-the-evenly-matchable"><span class="header-section-number">34.2.4</span> 균등하게 매칭 가능한 집단에서의 평균 처치 효과 (Average treatment effect among the evenly matchable)</h3>
 <p>균등하게 매칭 가능한 집단에서의 평균 처치 효과(average treatment effect among the evenly matchable, ATM)를 추정하기 위한 대상 인구는 균등하게 매칭 가능한 사람들입니다. 이 인과 추정 대상은 어떤 거리 척도에 의해 “균등하게 매칭 가능”하다고 간주되는 사람들에 대해 조건부화합니다.</p>
 <p><span class="math display">\[E[Y(1) - Y(0) | M_d = 1]\]</span></p>
-<p>여기서 <span class="math inline">\(d\)</span> 는 거리 척도를 나타내고, <span class="math inline">\(M_d=1\)</span> 은 해당 거리 척도 하에서 단위가 균등하게 매칭 가능함을 나타냅니다 <span class="citation" data-cites="samuels2017aspects d2018improving">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-samuels2017aspects" role="doc-biblioref"><strong>samuels2017aspects?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-d2018improving" role="doc-biblioref"><strong>d2018improving?</strong></a>)</span>. ATM에 관한 연구 질문의 예로는 “임상적 평형 상태(clinical equipoise)에 있는 사람들이 노출을 받아야 하는가?” 등이 있을 수 있습니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>. 의학에서 <strong>임상적 평형 상태</strong>에 있는 사람들이란 어떻게 처치해야 할지 진정으로 불확실한 사람들을 의미합니다. 이러한 불확실성에 직면하여 최선의 결정을 내리고 싶어 하기 때문에, 이들은 우리가 추론을 이끌어낼 인구 집단의 매우 중요한 부분인 경우가 많습니다.</p>
+<p>여기서 <span class="math inline">\(d\)</span> 는 거리 척도를 나타내고, <span class="math inline">\(M_d=1\)</span> 은 해당 거리 척도 하에서 단위가 균등하게 매칭 가능함을 나타냅니다 <span class="citation" data-cites="samuels2017aspects d2018improving">[@samuels2017aspects; @d2018improving]</span>. ATM에 관한 연구 질문의 예로는 “임상적 평형 상태(clinical equipoise)에 있는 사람들이 노출을 받아야 하는가?” 등이 있을 수 있습니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>. 의학에서 <strong>임상적 평형 상태</strong>에 있는 사람들이란 어떻게 처치해야 할지 진정으로 불확실한 사람들을 의미합니다. 이러한 불확실성에 직면하여 최선의 결정을 내리고 싶어 하기 때문에, 이들은 우리가 추론을 이끌어낼 인구 집단의 매우 중요한 부분인 경우가 많습니다.</p>
 <p>ATM은 매칭을 할 때 흔히 사용되는 목표 추정 대상입니다. 여기서 일부 노출군 관측치는 대조군 관측치와 매칭됩니다. 하지만 두 그룹의 일부 관측치들은 버려질 수도 있습니다. 이러한 유형의 매칭은 종종 캘리퍼(caliper)를 통해 수행되는데, <a href="#sec-matching" class="quarto-xref"><span>섹션 32.3</span></a> 에서 보여준 것처럼 관측치들이 사전에 지정된 캘리퍼 거리 내에 있을 때만 매칭됩니다. 대안적으로, ATM은 가중치 부여를 통해 추정될 수 있습니다. ATM 가중치는 다음과 같이 추정됩니다:</p>
 <p><span class="math display">\[w_{ATM} = \frac{\min \{p, 1-p\}}{Xp + (1-X)(1-p)}\]</span></p>
 <p>ATM의 틸팅 함수는 <span class="math inline">\(min\{p, 1-p\}\)</span> 입니다.</p>
@@ -7875,7 +7875,7 @@ ggplot(seven_dwarfs_wts, aes(.fitted, group = park_extra_magic_morning)) +
 </section>
 <section id="중첩된-집단에서의-평균-처치-효과-average-treatment-effect-among-the-overlap-population" class="level3" data-number="34.2.5">
 <h3 data-number="34.2.5" class="anchored" data-anchor-id="중첩된-집단에서의-평균-처치-효과-average-treatment-effect-among-the-overlap-population"><span class="header-section-number">34.2.5</span> 중첩된 집단에서의 평균 처치 효과 (Average treatment effect among the overlap population)</h3>
-<p>ATM은 임상적 평형 상태에 있는 특정 인구 집단(균등하게 매칭 가능한 사람들)을 추정하지만, 평형 상태를 고려하는 방법에는 여러 가지가 있습니다. 관련된 또 다른 대상 인구는 중첩된 집단에서의 평균 처치 효과(average treatment effect among the overlap population, ATO)입니다. ATO가 관심 대상이 되는 연구 질문의 예는 ATM과 동일하게 “임상적 평형 상태에 있는 사람들이 노출을 받아야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span>.</p>
+<p>ATM은 임상적 평형 상태에 있는 특정 인구 집단(균등하게 매칭 가능한 사람들)을 추정하지만, 평형 상태를 고려하는 방법에는 여러 가지가 있습니다. 관련된 또 다른 대상 인구는 중첩된 집단에서의 평균 처치 효과(average treatment effect among the overlap population, ATO)입니다. ATO가 관심 대상이 되는 연구 질문의 예는 ATM과 동일하게 “임상적 평형 상태에 있는 사람들이 노출을 받아야 하는가?” 등이 있습니다 <span class="citation" data-cites="greifer2021choosing">[@greifer2021choosing]</span>.</p>
 <p>다시 말하지만, 이 가중치들은 ATM 가중치와 유사하지만 약간 감쇄되어 있어 분산 속성이 더 개선되었습니다.</p>
 <p>ATO 가중치는 다음과 같이 추정됩니다:</p>
 <p><span class="math display">\[w_{ATO} = X(1-p) + (1-X)p\]</span></p>
@@ -8178,7 +8178,7 @@ p_atm</code></pre>
 <section id="추정-대상-선택하기-choosing-estimands" class="level2" data-number="34.4">
 <h2 data-number="34.4" class="anchored" data-anchor-id="추정-대상-선택하기-choosing-estimands"><span class="header-section-number">34.4</span> 추정 대상 선택하기 (Choosing estimands)</h2>
 <p>주어진 분석을 위한 추정 대상을 선택할 때 몇 가지 요소를 고려해야 합니다. 서로 다른 추정 대상은 서로 다른 질문에 답합니다; 이상적으로 우리는 질문과 일치하는 추정 대상을 선택할 것입니다. 예를 들어, 만약 디즈니가 아침 엑스트라 매직 아워가 없는 날에 이를 추가할지 여부를 평가하는 데 관심이 있다면, 여기서 ATU가 관심 있는 추정 대상이 될 것입니다. 우리는 또한 가용한 샘플 크기와 노출군 및 비노출군 관측치의 분포(즉, 유한 표본 편향이 문제가 될 수 있는 지) 등에 근거하여 특정 질문에 답하는 것이 얼마나 실용적인지도 고려해야 합니다. ATE 이외의 다른 추정 대상들은 인과적 가정을 완화해주기 때문에, 데이터가 주어졌을 때 더 실용적인 목표가 될 수 있습니다.</p>
-<p>아래는 추정 대상과 이를 추정하기 위한 방법들(R 함수 포함), 그리고 <span class="citation" data-cites="greifer2021choosing">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-greifer2021choosing" role="doc-biblioref"><strong>greifer2021choosing?</strong></a>)</span> 의 표 2에서 확장된 예시 질문들을 요약한 표입니다.</p>
+<p>아래는 추정 대상과 이를 추정하기 위한 방법들(R 함수 포함), 그리고 <span class="citation" data-cites="greifer2021choosing">@greifer2021choosing</span> 의 표 2에서 확장된 예시 질문들을 요약한 표입니다.</p>
 <table class="table">
 <colgroup>
 <col style="width: 20%">
@@ -8251,7 +8251,7 @@ seven_dwarfs_wts |&gt;
 <h2 data-number="34.5" class="anchored" data-anchor-id="다변량-선형-회귀는-어떤-추정-대상을-목표로-하는가"><span class="header-section-number">34.5</span> 다변량 선형 회귀는 어떤 추정 대상을 목표로 하는가?</h2>
 <p><a href="#sec-strat-outcome" class="quarto-xref"><span>장 30</span></a> 에서 우리는 다변량 선형 회귀와 같은 표준적인 방법들이 언제 성공하고 실패하는지 논의했습니다. 그렇다면 <code>lm(outcome ~ exposure + confounder)</code>와 같은 회귀 추정량은 어떤 추정 대상을 추정할까요?</p>
 <p>간단한 문제들을 탐구하다 보면, 다변량 회귀에서 얻는 답이 종종 ATE 가중치로 얻는 답과 가깝다는 것을 알게 될 것입니다. 만약 노출군들 사이의 분포에서 처치군이나 비처치군의 비율이 불균형하게 높다면, 그 답은 ATT나 ATU에 더 가까울 수 있습니다.</p>
-<p>실제로는 우리가 어떤 추정 대상을 다루고 있는지 항상 명확한 것은 아닙니다. 이를 조사하는 한 가지 방법은 선형 회귀로부터 <strong>함축된(implied)</strong> 가중치를 도출하는 기술을 사용하는 것입니다 <span class="citation" data-cites="chattopadhyay2022 aronow2015">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-chattopadhyay2022" role="doc-biblioref"><strong>chattopadhyay2022?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-aronow2015" role="doc-biblioref"><strong>aronow2015?</strong></a>)</span>. <code>{lmw}</code> 패키지를 사용하면 이러한 가중치를 계산할 수 있습니다. 기본값은 ATE에 대한 것이지만, 다른 추정 대상을 목표로 할 수도 있습니다.</p>
+<p>실제로는 우리가 어떤 추정 대상을 다루고 있는지 항상 명확한 것은 아닙니다. 이를 조사하는 한 가지 방법은 선형 회귀로부터 <strong>함축된(implied)</strong> 가중치를 도출하는 기술을 사용하는 것입니다 <span class="citation" data-cites="chattopadhyay2022 aronow2015">[@chattopadhyay2022; @aronow2015]</span>. <code>{lmw}</code> 패키지를 사용하면 이러한 가중치를 계산할 수 있습니다. 기본값은 ATE에 대한 것이지만, 다른 추정 대상을 목표로 할 수도 있습니다.</p>
 <pre class="{r}"><code>library(lmw)
 implied_weights &lt;- lmw(
   ~ park_extra_magic_morning + park_ticket_season + park_close +
@@ -8530,7 +8530,7 @@ results</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>환자-대조군 연구(Case-control studies)는 역학에서 전형적인 설계 방식으로, 참가자들을 결과 상태(outcome status)에 따라 샘플링합니다 <span class="citation" data-cites="schlesselman1982case">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-schlesselman1982case" role="doc-biblioref"><strong>schlesselman1982case?</strong></a>)</span>. 결과가 발생한 ’사례(cases)’를 모집하고, 그 사례들이 나온 인구 집단으로부터 ’대조군(controls)’을 샘플링합니다. 이러한 유형의 연구는 결과가 희귀할 때 사용됩니다. 또한 노출 시점부터 사람들을 추적하는 연구보다 더 빠르고 저렴할 수 있습니다.</p>
+<p>환자-대조군 연구(Case-control studies)는 역학에서 전형적인 설계 방식으로, 참가자들을 결과 상태(outcome status)에 따라 샘플링합니다 <span class="citation" data-cites="schlesselman1982case">[@schlesselman1982case]</span>. 결과가 발생한 ’사례(cases)’를 모집하고, 그 사례들이 나온 인구 집단으로부터 ’대조군(controls)’을 샘플링합니다. 이러한 유형의 연구는 결과가 희귀할 때 사용됩니다. 또한 노출 시점부터 사람들을 추적하는 연구보다 더 빠르고 저렴할 수 있습니다.</p>
 <p>환자-대조군 연구에서의 샘플링 방식 때문에, 결과가 발생하지 않은 모든 개인을 파악할 수 없으므로 기준 위험(baseline risk)을 알 수 없습니다. 흥미롭게도, 여전히 오즈비는 복구할 수 있습니다. 결과가 희귀할 때 오즈비는 위험비에 근사합니다. 그러나 위험 차이는 계산할 수 없습니다.</p>
 </div>
 </div>
@@ -8558,7 +8558,7 @@ results</code></pre>
 </section>
 <section id="sec-non-collapse" class="level3" data-number="35.4.2">
 <h3 data-number="35.4.2" class="anchored" data-anchor-id="sec-non-collapse"><span class="header-section-number">35.4.2</span> 비가산성 (Non-collapsibility)</h3>
-<p>오즈비는 로지스틱 회귀와의 연관성 때문에 편리합니다. 또한 독특한 성질을 가지고 있는데, 바로 <strong>비가산성(non-collapsible)</strong>입니다. 비가산성은 전체 표본에서의 오즈비(한계 오즈비)와 하위 그룹에서의 오즈비(조건부 오즈비)를 비교할 때, 한계 오즈비가 조건부 오즈비의 가중 평균이 아니라는 것을 의미합니다 <span class="citation" data-cites="Didelez2022 Greenland2021 Greenland2021a">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Didelez2022" role="doc-biblioref"><strong>Didelez2022?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Greenland2021" role="doc-biblioref"><strong>Greenland2021?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Greenland2021a" role="doc-biblioref"><strong>Greenland2021a?</strong></a>)</span>. 이는 예를 들어 위험비가 가지고 있는 성질이 아닙니다. 예시를 살펴봅시다.</p>
+<p>오즈비는 로지스틱 회귀와의 연관성 때문에 편리합니다. 또한 독특한 성질을 가지고 있는데, 바로 <strong>비가산성(non-collapsible)</strong>입니다. 비가산성은 전체 표본에서의 오즈비(한계 오즈비)와 하위 그룹에서의 오즈비(조건부 오즈비)를 비교할 때, 한계 오즈비가 조건부 오즈비의 가중 평균이 아니라는 것을 의미합니다 <span class="citation" data-cites="Didelez2022 Greenland2021 Greenland2021a">[@Didelez2022; @Greenland2021; @Greenland2021a]</span>. 이는 예를 들어 위험비가 가지고 있는 성질이 아닙니다. 예시를 살펴봅시다.</p>
 <p><code>outcome</code>, <code>exposure</code>, 그리고 <code>covariate</code>가 있다고 합시다. <code>exposure</code>가 <code>outcome</code>을 유발하고, <code>covariate</code> 또한 그렇습니다 <a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. 하지만 <code>covariate</code>는 <code>exposure</code>를 유발하지 않습니다; 즉, 교란 요인이 <em>아닙니다</em>. 다시 말해, <code>outcome</code>에 대한 <code>exposure</code>의 효과 추정치는 <code>covariate</code>를 고려하든 안 하든 동일해야 합니다.</p>
 <pre class="{r}"><code>#| label: fig-dag-nc
 #| code-fold: true
@@ -8614,8 +8614,8 @@ conditional_rr_1 &lt;- risk_ratio(conditional_tables[, , 2])</code></pre>
 <p><code>covariate</code>는 교란 요인이 아니므로, 원칙적으로 <code>exposure</code>에 대한 효과 추정치에 영향을 주어서는 안 됩니다. <code>covariate</code>에 따른 조건부 오즈비(conditional odds ratios)를 살펴봅시다.</p>
 <pre class="{r}"><code>table(exposure, outcome, covariate)</code></pre>
 <p><code>covariate = 0</code>인 사람들에 대한 오즈비는 <code>r conditional_or_0</code>입니다. <code>covariate = 1</code>인 사람들에 대한 오즈비는 <code>r conditional_or_1</code>입니다. 한계 오즈비인 <code>r marginal_or</code>는 이 두 값 모두보다 작습니다!</p>
-<p>한계 위험비(marginal risk ratio)는 <code>r marginal_rr</code>입니다. <code>covariate = 0</code>인 사람들의 위험비는 <code>r conditional_rr_0</code>입니다. <code>covariate = 1</code>인 사람들의 위험비는 <code>r conditional_rr_1</code>입니다. 이 경우, 한계 위험비는 <code>covariate</code>의 층(strata) 전반에 걸쳐 가산적(collapsible)인 가중 평균입니다 <span class="citation" data-cites="Huitfeldt2019">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Huitfeldt2019" role="doc-biblioref"><strong>Huitfeldt2019?</strong></a>)</span>.</p>
-<p><code>covariate</code>를 추가했을 때 오즈비가 변하고 시뮬레이션의 모델 계수에 더 가까워지기 때문에 이를 반드시 포함해야 한다고 생각하기 쉽습니다. 여기서 중요한 세부 사항은 비가산성(non-collapsibility)이 <em>편향</em>이 아니라는 점입니다. 일부 저자들은 이를 누락 변수 편향(omitted variable bias)으로 설명하기도 하지만, <code>covariate</code>가 교란 요인이 아니기 때문에 한계 오즈비와 조건부 오즈비는 둘 다 옳습니다. 그들은 단순히 서로 다른 추정 대상일 뿐입니다. 조건부 오즈비는 <code>covariate</code>에 조건부화된 오즈비입니다. 이를 다른 오즈비와 유의미하게 비교하려면, 그 오즈비들도 <code>covariate</code>에 조건부화되어야 합니다. 비가산성은 오즈(odds)의 수치적 속성입니다; 그것은 편향을 만들기보다는 조금 더 미묘한 해석을 필요로 하게 만듭니다. 비가산성이 정확히 어떻게 작동하는지는 데이터 생성 메커니즘이 가산적(additive) 척도에서 일어나는지 아니면 승법적(multiplicative) 척도에서 일어나는지에 따라서도 달라집니다; 승법적 척도에서는(우리의 시뮬레이션처럼) 결과와 강하게 관련된 변수를 제거하면 효과 추정치가 변하는 반면, 가산적 척도에서는 결과와 강하게 관련된 변수를 추가하면 비록 그 정도는 작지만 효과가 변합니다 <span class="citation" data-cites="Whitcomb2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Whitcomb2021" role="doc-biblioref"><strong>Whitcomb2021?</strong></a>)</span>. 어떤 버전의 오즈비가 맞는지 걱정하기보다는, 편향되지 않은 추정치를 위해 필수적인 교란 요인들과 분산 감소에 도움이 되는 결과의 예측 요인들에 집중할 것을 권장합니다.</p>
+<p>한계 위험비(marginal risk ratio)는 <code>r marginal_rr</code>입니다. <code>covariate = 0</code>인 사람들의 위험비는 <code>r conditional_rr_0</code>입니다. <code>covariate = 1</code>인 사람들의 위험비는 <code>r conditional_rr_1</code>입니다. 이 경우, 한계 위험비는 <code>covariate</code>의 층(strata) 전반에 걸쳐 가산적(collapsible)인 가중 평균입니다 <span class="citation" data-cites="Huitfeldt2019">[@Huitfeldt2019]</span>.</p>
+<p><code>covariate</code>를 추가했을 때 오즈비가 변하고 시뮬레이션의 모델 계수에 더 가까워지기 때문에 이를 반드시 포함해야 한다고 생각하기 쉽습니다. 여기서 중요한 세부 사항은 비가산성(non-collapsibility)이 <em>편향</em>이 아니라는 점입니다. 일부 저자들은 이를 누락 변수 편향(omitted variable bias)으로 설명하기도 하지만, <code>covariate</code>가 교란 요인이 아니기 때문에 한계 오즈비와 조건부 오즈비는 둘 다 옳습니다. 그들은 단순히 서로 다른 추정 대상일 뿐입니다. 조건부 오즈비는 <code>covariate</code>에 조건부화된 오즈비입니다. 이를 다른 오즈비와 유의미하게 비교하려면, 그 오즈비들도 <code>covariate</code>에 조건부화되어야 합니다. 비가산성은 오즈(odds)의 수치적 속성입니다; 그것은 편향을 만들기보다는 조금 더 미묘한 해석을 필요로 하게 만듭니다. 비가산성이 정확히 어떻게 작동하는지는 데이터 생성 메커니즘이 가산적(additive) 척도에서 일어나는지 아니면 승법적(multiplicative) 척도에서 일어나는지에 따라서도 달라집니다; 승법적 척도에서는(우리의 시뮬레이션처럼) 결과와 강하게 관련된 변수를 제거하면 효과 추정치가 변하는 반면, 가산적 척도에서는 결과와 강하게 관련된 변수를 추가하면 비록 그 정도는 작지만 효과가 변합니다 <span class="citation" data-cites="Whitcomb2021">[@Whitcomb2021]</span>. 어떤 버전의 오즈비가 맞는지 걱정하기보다는, 편향되지 않은 추정치를 위해 필수적인 교란 요인들과 분산 감소에 도움이 되는 결과의 예측 요인들에 집중할 것을 권장합니다.</p>
 <p>오즈비와 위험비, 그리고 상대적 척도와 절대적 척도 사이의 논의는 활발히 이루어져 왔습니다. 우리는 이진 결과에서 오즈비, 위험비, 위험 차이라는 세 가지 측정치를 기준 확률과 함께 모두 제시하기를 제안합니다. 각각은 인과 효과에 대해 서로 다른 관점을 제공합니다. 추정치에 포함된 처치 그룹을 고려하여 이를 해석하도록 주의하십시오. 예를 들어 ATT 가중치로 구한 평균 위험 차이는 처치군에서의 평균 위험 차이를 뜻합니다.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -8821,7 +8821,7 @@ numerators &lt;- numerator_model |&gt;
   left_join(numerators, by = "park_date") |&gt;
   left_join(denominators, by = "park_date") |&gt;
   mutate(swts = numerator / denominator)</code></pre>
-<p>안정화된 가중치는 훨씬 덜 극단적입니다. 안정화된 가중치는 평균이 1에 가까워야 합니다(이 예시에서는 <code>round(mean(wait_times_wts$swts), digits = 2)</code>입니다); 평균이 1에 가까울 때 가상 인구(즉, 가중치 부여 후의 등가 관측치 수)는 원래 모집단 크기와 같아집니다. 만약 평균이 1에서 멀다면, 모델 오명시나 긍정성 위배의 문제가 있을 수 있습니다 <span class="citation" data-cites="hernan2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-hernan2021" role="doc-biblioref"><strong>hernan2021?</strong></a>)</span>.</p>
+<p>안정화된 가중치는 훨씬 덜 극단적입니다. 안정화된 가중치는 평균이 1에 가까워야 합니다(이 예시에서는 <code>round(mean(wait_times_wts$swts), digits = 2)</code>입니다); 평균이 1에 가까울 때 가상 인구(즉, 가중치 부여 후의 등가 관측치 수)는 원래 모집단 크기와 같아집니다. 만약 평균이 1에서 멀다면, 모델 오명시나 긍정성 위배의 문제가 있을 수 있습니다 <span class="citation" data-cites="hernan2021">[@hernan2021]</span>.</p>
 <pre class="{r}"><code>#| label: fig-hist-sd-stable
 #| fig.cap: &gt;
 #|   게시 대기 시간에 대한 안정화된 역확률 가중치 히스토그램. 가중치가 훨씬 합리적이며 결과 모델이 더 잘 작동하게 해줄 것입니다.
@@ -9175,7 +9175,7 @@ fit_wait_minutes &lt;- lm(
     park_temperature_high,
   data = seven_dwarfs_9
 )</code></pre>
-<p>다음으로, 기준점 특성들의 분포로부터 큰 샘플을 추출해야 합니다. 이 샘플의 크기를 얼마나 크게 할지는 대개 계산 자원의 가용성에 따라 결정됩니다; 샘플 크기가 클수록 시뮬레이션 오차로 인한 정밀도 손실 위험을 최소화할 수 있습니다 <span class="citation" data-cites="keil2014">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-keil2014" role="doc-biblioref"><strong>keil2014?</strong></a>)</span>. 현재 사례에서는 크기가 10,000인 데이터 프레임을 생성하기 위해 복원 추출(sampling with replacement)을 사용할 것입니다.</p>
+<p>다음으로, 기준점 특성들의 분포로부터 큰 샘플을 추출해야 합니다. 이 샘플의 크기를 얼마나 크게 할지는 대개 계산 자원의 가용성에 따라 결정됩니다; 샘플 크기가 클수록 시뮬레이션 오차로 인한 정밀도 손실 위험을 최소화할 수 있습니다 <span class="citation" data-cites="keil2014">[@keil2014]</span>. 현재 사례에서는 크기가 10,000인 데이터 프레임을 생성하기 위해 복원 추출(sampling with replacement)을 사용할 것입니다.</p>
 <pre class="{r}"><code># 몬테카를로 실행에서 재현성을 위해 시드를 설정하는 것이 중요합니다
 set.seed(8675309)
 
@@ -9830,7 +9830,7 @@ x_measured &lt;- if_else(
 )
 
 lm(y ~ x_measured)</code></pre>
-<p>일부 연구자들은 무작위 측정 오차가 예측 가능하게 무효 쪽으로 향할 것이라고 기대하지만, 이것이 항상 사실은 아닙니다. 이 가정이 어긋나는 사례는 <span class="citation" data-cites="Yland2022">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Yland2022" role="doc-biblioref"><strong>Yland2022?</strong></a>)</span>를 참조하십시오.</p>
+<p>일부 연구자들은 무작위 측정 오차가 예측 가능하게 무효 쪽으로 향할 것이라고 기대하지만, 이것이 항상 사실은 아닙니다. 이 가정이 어긋나는 사례는 <span class="citation" data-cites="Yland2022">[@Yland2022]</span>를 참조하십시오.</p>
 </div>
 </div>
 <p>하지만 <span class="quarto-unresolved-ref">?fig-meas-err-dag-dep-1</span>처럼 알려지지 않은 단일 요인이 게시 대기 시간과 실제 대기 시간 측정 모두에 영향을 준다고 가정해 봅시다. 앞서 언급한 문제에 더해, 측정 변수의 교란으로 비교환 가능성 문제도 생깁니다(<span class="quarto-unresolved-ref">?fig-meas-err-dag-dep-2</span>). 이를 ’종속적, 비차별적(dependent, non-differential) 측정 오차’라 합니다.</p>
@@ -9955,7 +9955,7 @@ dagify(
   tidy_dagitty() |&gt;
   add_missing() |&gt;
   ggdag2(color = missing, order = 6:7, box.padding = 3.7, seed = 123)</code></pre>
-<p>통계학에서는 보통 결측 메커니즘을 세 가지로 분류합니다. 완전 무작위 결측(MCAR), 무작위 결측(MAR), 비무작위 결측(MNAR)입니다. 이러한 통계적 분류를 DAG로 구조화하여 이해할 수 있습니다<span class="citation" data-cites="Mohan2021">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Mohan2021" role="doc-biblioref"><strong>Mohan2021?</strong></a>)</span>.</p>
+<p>통계학에서는 보통 결측 메커니즘을 세 가지로 분류합니다. 완전 무작위 결측(MCAR), 무작위 결측(MAR), 비무작위 결측(MNAR)입니다. 이러한 통계적 분류를 DAG로 구조화하여 이해할 수 있습니다<span class="citation" data-cites="Mohan2021">[@Mohan2021]</span>.</p>
 <p>먼저 MCAR를 살펴봅시다. MCAR에서 데이터가 결측되는 이유는 데이터셋의 다른 변수와 관련이 없기 때문입니다. <span class="quarto-unresolved-ref">?fig-missing-mcar</span>의 DAG에서 보듯, 결측 지시 변수는 노출(<code>posted</code>)이나 결과(<code>actual</code>)와 연결되지 않았습니다. 이때는 결측 데이터를 무시하고 완전 사례 분석(complete-case analysis)을 수행해도 편향되지 않은 결과를 얻습니다. 다만 정보를 버리기 때문에 정밀도는 낮아집니다.</p>
 <pre class="{r}"><code>#| label: fig-missing-mcar
 #| fig-cap: &gt;
@@ -10168,7 +10168,7 @@ dag_stats |&gt;
   geom_segment(aes(x = lower, xend = upper, y = dag, yend = dag, group = stat)) +
   facet_wrap(~stat, scales = "free_x") +
   labs(y = NULL, color = NULL)</code></pre>
-<p>어떤 효과를 복구할 수 있는지 정리한 포괄적인 개요는 <span class="citation" data-cites="Moreno-Betancur2018">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Moreno-Betancur2018" role="doc-biblioref"><strong>Moreno-Betancur2018?</strong></a>)</span>을 참고하세요.</p>
+<p>어떤 효과를 복구할 수 있는지 정리한 포괄적인 개요는 <span class="citation" data-cites="Moreno-Betancur2018">[@Moreno-Betancur2018]</span>을 참고하세요.</p>
 <p>측정 오차와 마찬가지로 인과 모델의 교란 요인이 실제 대기 시간의 결측 원인이 될 수 있습니다. 예를 들어 시즌이나 기온에 따라 TouringPlans가 측정 인원을 보낼지 결정할 수도 있습니다. 이 데이터의 교란 요인은 모두 관찰되지만, 교란 요인이 결측되면 잔차 교란과 완전 사례(complete case) 층화에 따른 선택 편향이 모두 발생할 수 있습니다.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -10287,7 +10287,7 @@ effect_reg_impute &lt;- fit_ipw_effect(
 <p>이럴 때 다중 대치법(MI)이 효율적인 대안이 될 수 있습니다. 결측값 하나를 “최선의 추정치”로 정하는 대신, MI는 분포에서 예측값을 추출해 결측 데이터의 불확실성을 포착합니다. 이를 통해 요약 통계량(대치 변수의 평균 등)과 후속 조건부 효과(결과 모델에 대치 변수가 포함될 때의 처치 효과 등)를 더 정확하게 추정할 수 있습니다. 이 과정에서 대치된 데이터셋을 여러 개 생성합니다. 보통 5개를 기본으로 생성하지만, 결측치가 많다면 안정적인 결과를 얻기 위해 대치 횟수를 늘려야 합니다. 대개 결측 비율과 비슷하게 대치 횟수를 정하는 것이 좋습니다.</p>
 <p>인과 분석에서 MI를 사용할 때 주의할 모델링 고려 사항은 다음과 같습니다.</p>
 <ol type="1">
-<li>대치 모델에는 최종 결과 모델과 성향 점수 모델에 쓰인 <em>모든 변수를 포함해야</em> 합니다. 처치-결과 관계를 교란하는 변수와 처치 변수, <em>그리고 결과 변수 자체</em>도 포함됩니다(결과 변수가 대치 대상이 아니더라도 포함해야 합니다). 주요 변수, 특히 결과 변수를 빠뜨리면 추정치에 편향이 생길 수 있습니다 <span class="citation" data-cites="d2024behind">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-d2024behind" role="doc-biblioref"><strong>d2024behind?</strong></a>)</span>.</li>
+<li>대치 모델에는 최종 결과 모델과 성향 점수 모델에 쓰인 <em>모든 변수를 포함해야</em> 합니다. 처치-결과 관계를 교란하는 변수와 처치 변수, <em>그리고 결과 변수 자체</em>도 포함됩니다(결과 변수가 대치 대상이 아니더라도 포함해야 합니다). 주요 변수, 특히 결과 변수를 빠뜨리면 추정치에 편향이 생길 수 있습니다 <span class="citation" data-cites="d2024behind">[@d2024behind]</span>.</li>
 <li>회귀 교정과 마찬가지로, <em>이후 분석에서 사용할 것과 같은 함수 형태를 대치 모델에도 적용하십시오</em>. 변수를 스플라인이나 상호작용 항으로 모델링할 계획이라면 대치 단계에서도 이를 반영해야 합니다.</li>
 </ol>
 <p>일반적인 인과 분석 절차는 다음과 같습니다.</p>
@@ -10590,7 +10590,7 @@ tibble(
 </section>
 <section id="부정-대조군-negative-controls" class="level3" data-number="40.1.2">
 <h3 data-number="40.1.2" class="anchored" data-anchor-id="부정-대조군-negative-controls"><span class="header-section-number">40.1.2</span> 부정 대조군 (Negative controls)</h3>
-<p>대안적 조정 집합(alternate adjustment sets)은 DAG의 논리적 함의를 조사하는 한 방법입니다. DAG가 옳다면 열린 백도어 경로를 올바르게 통제하는 방법은 여러 가지가 있을 수 있습니다. 반대로 연구 질문의 인과 구조는 관계가 없어야 하는, 즉 <strong>무효(null)</strong>인 관계들도 함의합니다. 연구자들은 이런 함의를 활용하기 위해 <em>부정 대조군(negative controls)</em>을 이용하기도 합니다. 부정 대조군은 연구 질문과 가능한 한 많은 면에서 유사하지만, 인과적 효과가 <em>없어야</em> 하는 노출(부정 노출 대조군)이나 결과(부정 결과 대조군)를 말합니다. <span class="citation" data-cites="Lipsitch2010">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Lipsitch2010" role="doc-biblioref"><strong>Lipsitch2010?</strong></a>)</span> 은 관찰 연구를 위한 부정 대조군을 설명합니다. 그들의 논문에서는 기초 과학(bench science)에서의 표준적인 대조군들을 언급합니다. 실험실 실험에서는 다음과 같은 조치 중 하나라도 취하면 무효 효과(null effect)가 나타나야 합니다:</p>
+<p>대안적 조정 집합(alternate adjustment sets)은 DAG의 논리적 함의를 조사하는 한 방법입니다. DAG가 옳다면 열린 백도어 경로를 올바르게 통제하는 방법은 여러 가지가 있을 수 있습니다. 반대로 연구 질문의 인과 구조는 관계가 없어야 하는, 즉 <strong>무효(null)</strong>인 관계들도 함의합니다. 연구자들은 이런 함의를 활용하기 위해 <em>부정 대조군(negative controls)</em>을 이용하기도 합니다. 부정 대조군은 연구 질문과 가능한 한 많은 면에서 유사하지만, 인과적 효과가 <em>없어야</em> 하는 노출(부정 노출 대조군)이나 결과(부정 결과 대조군)를 말합니다. <span class="citation" data-cites="Lipsitch2010">@Lipsitch2010</span> 은 관찰 연구를 위한 부정 대조군을 설명합니다. 그들의 논문에서는 기초 과학(bench science)에서의 표준적인 대조군들을 언급합니다. 실험실 실험에서는 다음과 같은 조치 중 하나라도 취하면 무효 효과(null effect)가 나타나야 합니다:</p>
 <ol type="1">
 <li>필수 성분을 빠뜨린다.</li>
 <li>가설상의 활성 성분을 비활성화한다.</li>
@@ -10767,7 +10767,7 @@ universal &lt;- seven_dwarfs_sim2 |&gt;
 </section>
 <section id="dag-데이터-일관성" class="level3" data-number="40.1.3">
 <h3 data-number="40.1.3" class="anchored" data-anchor-id="dag-데이터-일관성"><span class="header-section-number">40.1.3</span> DAG-데이터 일관성</h3>
-<p>부정 대조군은 가정한 인과 구조의 논리적 함의를 활용합니다. 우리는 그 아이디어를 전체 DAG로 확장할 수 있습니다. DAG가 옳다면 내부 변수들이 통계적으로 어떤 관계를 맺어야 하는지(또는 맺지 않아야 하는지)에 대한 많은 함의가 존재합니다. 부정 대조군과 마찬가지로 데이터에서 독립적이어야 할 변수들이 실제로 그러한지 확인할 수 있습니다. 때로 DAG가 변수 간 독립성을 함의하는 방식은 다른 변수에 대한 <em>조건부</em>입니다. 그래서 이 기법을 함의된 조건부 독립성(implied conditional independencies)이라고 부르기도 합니다 <span class="citation" data-cites="Textor2016">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Textor2016" role="doc-biblioref"><strong>Textor2016?</strong></a>)</span>. 원래 DAG를 쿼리하여 변수 간 관계를 어떻게 설명하는지 알아봅시다.</p>
+<p>부정 대조군은 가정한 인과 구조의 논리적 함의를 활용합니다. 우리는 그 아이디어를 전체 DAG로 확장할 수 있습니다. DAG가 옳다면 내부 변수들이 통계적으로 어떤 관계를 맺어야 하는지(또는 맺지 않아야 하는지)에 대한 많은 함의가 존재합니다. 부정 대조군과 마찬가지로 데이터에서 독립적이어야 할 변수들이 실제로 그러한지 확인할 수 있습니다. 때로 DAG가 변수 간 독립성을 함의하는 방식은 다른 변수에 대한 <em>조건부</em>입니다. 그래서 이 기법을 함의된 조건부 독립성(implied conditional independencies)이라고 부르기도 합니다 <span class="citation" data-cites="Textor2016">[@Textor2016]</span>. 원래 DAG를 쿼리하여 변수 간 관계를 어떻게 설명하는지 알아봅시다.</p>
 <pre class="{r}"><code>query_conditional_independence(emm_wait_dag) |&gt;
   unnest(conditioned_on)</code></pre>
 <p>이 DAG에서는 다음 세 관계가 무효(null)여야 합니다. 1) <code>park_close</code>와 <code>park_temperature_high</code>, 2) <code>park_close</code>와 <code>park_ticket_season</code>, 3) <code>park_temperature_high</code>와 <code>park_ticket_season</code>. 이들은 독립성을 위해 다른 변수를 조건부화할 필요가 없습니다. 즉, 무조건부 독립(unconditionally independent) 상태여야 합니다. 상관관계나 회귀 분석 등 간단한 통계 기법을 사용하여 이러한 무효성이 유지되는지 확인할 수 있습니다. 복잡한 DAG에서는 조건부 독립성(conditional independencies)의 수가 급격히 늘어납니다. 따라서 <code>{dagitty}</code>는 이런 함의된 무효성을 바탕으로 DAG와 데이터의 일관성을 자동 확인하는 기능을 제공합니다. <code>{dagitty}</code>는 주어진 조건부 관계의 잔차(residuals)들이 서로 상관되어 있는지 확인하며, 이는 여러 방식으로 자동 모델링됩니다. <code>type = "cis.loess"</code>를 사용하여 비선형 모델로 잔차를 계산하도록 설정하겠습니다. 상관관계를 다루므로 DAG가 옳다면 결과는 0에 가까워야 합니다. 하지만 <span class="quarto-unresolved-ref">?fig-conditional-ind</span>에서 보듯, 한 관계가 성립하지 않습니다. 공원 폐쇄 시간과 티켓 시즌 사이에 상관관계가 존재합니다.</p>
@@ -10952,7 +10952,7 @@ ipw_results_with_days &lt;- fit_ipw_effect(
 <p>지금까지 인과 구조에 대해 세운 가이드라인들을 살펴보았습니다. 이제 수학적 가정을 활용해 서로 다른 조건에서 결과가 어떻게 달라지는지 확인하는 ’정량적 편향 분석’으로 내용을 확장해 보겠습니다.</p>
 <section id="측정되지-않은-교란-요인에-대한-민감도-분석" class="level3" data-number="40.2.1">
 <h3 data-number="40.2.1" class="anchored" data-anchor-id="측정되지-않은-교란-요인에-대한-민감도-분석"><span class="header-section-number">40.2.1</span> 측정되지 않은 교란 요인에 대한 민감도 분석</h3>
-<p>측정되지 않은 교란 요인에 대한 민감도 분석은 관찰 연구 결과가 잠재적인 미측정 요인들에 대해 얼마나 강건한지 평가하는 중요한 도구입니다 <span class="citation" data-cites="d2022sensitivity">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-d2022sensitivity" role="doc-biblioref"><strong>d2022sensitivity?</strong></a>)</span>. 이 분석은 다음 세 가지 핵심 요소에 의존합니다.</p>
+<p>측정되지 않은 교란 요인에 대한 민감도 분석은 관찰 연구 결과가 잠재적인 미측정 요인들에 대해 얼마나 강건한지 평가하는 중요한 도구입니다 <span class="citation" data-cites="d2022sensitivity">[@d2022sensitivity]</span>. 이 분석은 다음 세 가지 핵심 요소에 의존합니다.</p>
 <ol type="1">
 <li>측정된 교란 요인들을 조정한 후의 관찰된 노출-결과 효과</li>
 <li>가상의 미측정 교란 요인과 노출 사이의 추정 관계</li>
@@ -11026,7 +11026,7 @@ emm_wait_dag |&gt;
 <li>분포 무관 접근법(연속형 결과): 부분 <span class="math inline">\(R^2\)</span>를 사용해 노출과 측정된 교란 요인들을 조정한 후, 미측정 교란 요인에 의해 설명되는 결과 변동 비율을 나타냅니다.</li>
 </ol>
 <p>계수 기반 접근법을 사용해 보겠습니다. 사례의 맥락에서 이 효과를 설명하자면 다음과 같습니다. “만약 우리가 엑스트라 매직 아워 여부, 공원 폐쇄 시간, 티켓 시즌을 조정한 후 과거 최고 기온을 1 표준 편차만큼 변화시킨다면, 평균 게시 대기 시간은 어떻게 변할 것인가?” 이 변화가 -2.3분이라고 가정해 봅시다. 즉, 과거 최고 기온이 1 표준 편차만큼 높다면(9도 더 따뜻하다면), 평균 게시 대기 시간은 2.3분 감소할 것으로 예상하는 것입니다.</p>
-<p>수학적인 상세 설명은 <span class="citation" data-cites="d2022sensitivity">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-d2022sensitivity" role="doc-biblioref"><strong>d2022sensitivity?</strong></a>)</span>를 참조하세요.</p>
+<p>수학적인 상세 설명은 <span class="citation" data-cites="d2022sensitivity">[@d2022sensitivity]</span>를 참조하세요.</p>
 </section>
 <section id="구성-요소-결합하기-putting-the-components-together" class="level4" data-number="40.2.1.4">
 <h4 data-number="40.2.1.4" class="anchored" data-anchor-id="구성-요소-결합하기-putting-the-components-together"><span class="header-section-number">40.2.1.4</span> 구성 요소 결합하기 (Putting the components together)</h4>
@@ -12140,7 +12140,7 @@ aipw_result$summary()</code></pre>
 </section>
 <section id="대상-학습-targeted-learning" class="level2" data-number="44.2">
 <h2 data-number="44.2" class="anchored" data-anchor-id="대상-학습-targeted-learning"><span class="header-section-number">44.2</span> 대상 학습 (Targeted Learning)</h2>
-<p><strong>대상 학습(Targeted Learning, TL)</strong>은 Laan과 동료들이 개발한 세미파라메트릭 추정 프레임워크로, 사전에 지정된 추정 대상의 통계적 성능을 최적화하는 것이 목표입니다 <span class="citation" data-cites="laan2006targeted laan2011targeted">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-laan2006targeted" role="doc-biblioref"><strong>laan2006targeted?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-laan2011targeted" role="doc-biblioref"><strong>laan2011targeted?</strong></a>)</span>.</p>
+<p><strong>대상 학습(Targeted Learning, TL)</strong>은 Laan과 동료들이 개발한 세미파라메트릭 추정 프레임워크로, 사전에 지정된 추정 대상의 통계적 성능을 최적화하는 것이 목표입니다 <span class="citation" data-cites="laan2006targeted laan2011targeted">[@laan2006targeted; @laan2011targeted]</span>.</p>
 <p>대상 학습의 핵심 알고리즘은 <strong>TMLE(Targeted Maximum Likelihood Estimation)</strong> 또는 <strong>TMLE(Targeted Minimum Loss-based Estimation)</strong>입니다.</p>
 <section id="tmle의-작동-원리" class="level3" data-number="44.2.1">
 <h3 data-number="44.2.1" class="anchored" data-anchor-id="tmle의-작동-원리"><span class="header-section-number">44.2.1</span> TMLE의 작동 원리</h3>
@@ -13684,7 +13684,7 @@ bootstrapped_resamples_1k |&gt;
 </section>
 <section id="왜-작동하는가" class="level2" data-number="49.3">
 <h2 data-number="49.3" class="anchored" data-anchor-id="왜-작동하는가"><span class="header-section-number">49.3</span> 왜 작동하는가?</h2>
-<p>왜 이 놀랍도록 간단한 알고리즘이 그토록 많은 문제들에 대해 잘 작동할까요? 기술적인 세부 사항에 대해서는 부트스트랩에 관한 원본 논문과 서적<span class="citation" data-cites="efron1979 EfroTibs93">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-efron1979" role="doc-biblioref"><strong>efron1979?</strong></a>; <a href="../ai_in_action_complete/ai_in_action_complete.html#ref-EfroTibs93" role="doc-biblioref"><strong>EfroTibs93?</strong></a>)</span>을 참조하시기 바랍니다. 여기서는 어떤 일이 일어나고 있는지에 대한 직관을 길러 봅시다.</p>
+<p>왜 이 놀랍도록 간단한 알고리즘이 그토록 많은 문제들에 대해 잘 작동할까요? 기술적인 세부 사항에 대해서는 부트스트랩에 관한 원본 논문과 서적<span class="citation" data-cites="efron1979 EfroTibs93">[@efron1979; @EfroTibs93]</span>을 참조하시기 바랍니다. 여기서는 어떤 일이 일어나고 있는지에 대한 직관을 길러 봅시다.</p>
 <p>우리가 이해하고자 하는 모집단(population)을 생각해 봅시다. 때때로 우리는 모집단의 모든 관측치에 대한 데이터를 가지고 있지만, 종종 필요에 의해서나 효율성을 위해 모집단을 샘플링해야 합니다.</p>
 <pre class="{r}"><code>library(tidyverse)
 n &lt;- 1000000
@@ -13793,7 +13793,7 @@ coverage &lt;- between(
 <section id="부트스트랩-재표본은-몇-번이나-해야-할까요" class="level2" data-number="49.5">
 <h2 data-number="49.5" class="anchored" data-anchor-id="부트스트랩-재표본은-몇-번이나-해야-할까요"><span class="header-section-number">49.5</span> 부트스트랩 재표본은 몇 번이나 해야 할까요?</h2>
 <p>이 책에서는 안정성과 계산 속도의 균형을 맞추기 위해 대부분의 문제에 1,000번의 부트스트랩 재표본을 사용합니다. 여러분의 실제 분석에서는 몇 번을 사용해야 할까요?</p>
-<p>수십 번이나 수백 번의 재표본을 권장하는 오래된 지침들을 자주 보게 되지만, 이는 처리 능력이 더 제한적이었던 시절의 이야기입니다. 현대적인 컴퓨터(개인용 노트북조차도)에서는 훨씬 더 많이 수행하는 것이 실용적입니다. <span class="citation" data-cites="Hesterberg2015">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Hesterberg2015" role="doc-biblioref"><strong>Hesterberg2015?</strong></a>)</span> 는 대략적인 추정치를 위해서는 1,000번의 재표본을, 정확도가 중요할 때는 10,000~15,000번의 재표본을 권장합니다. 여기서 “정확도”란 부트스트랩 시뮬레이션 자체로 인한 분산을 최소화하는 것을 의미합니다. 이에 대한 실무적인 테스트 방법은 <code>R</code>번의 재표본 추출을 여러 번 시도해보고, 결과의 안정성 정도에 만족할 때까지 <code>R</code>을 늘려보는 것입니다.</p>
+<p>수십 번이나 수백 번의 재표본을 권장하는 오래된 지침들을 자주 보게 되지만, 이는 처리 능력이 더 제한적이었던 시절의 이야기입니다. 현대적인 컴퓨터(개인용 노트북조차도)에서는 훨씬 더 많이 수행하는 것이 실용적입니다. <span class="citation" data-cites="Hesterberg2015">@Hesterberg2015</span> 는 대략적인 추정치를 위해서는 1,000번의 재표본을, 정확도가 중요할 때는 10,000~15,000번의 재표본을 권장합니다. 여기서 “정확도”란 부트스트랩 시뮬레이션 자체로 인한 분산을 최소화하는 것을 의미합니다. 이에 대한 실무적인 테스트 방법은 <code>R</code>번의 재표본 추출을 여러 번 시도해보고, 결과의 안정성 정도에 만족할 때까지 <code>R</code>을 늘려보는 것입니다.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -13873,7 +13873,7 @@ s8_boots |&gt;
   mutate(boot_min_x = map_dbl(boot_min_x, \(.df) .df$estimate)) |&gt;
   ggplot(aes(x = boot_min_x)) +
   geom_histogram()</code></pre>
-<p>부트스트랩이 바로 작동하지 않는 다른 흔한 상황으로는 규제 회귀(lasso 회귀 등)와 시계열과 같이 강한 상관 구조를 가진 데이터가 있습니다. 종종 그러한 문제들에 대해 작동하는 부트스트랩의 변형 버전이 존재합니다. <code>survey</code> 패키지의 저자이자 R 코어 멤버인 Thomas Lumley는 부트스트랩이 바로 작동하지 않는 흔한 상황들(그리고 그러한 시나리오에서 작동하는 변형된 부트스트랩의 예시들)에 대한 훌륭한 요약을 제공합니다 <span class="citation" data-cites="Lumley_2017">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Lumley_2017" role="doc-biblioref"><strong>Lumley_2017?</strong></a>)</span>. 또한 <span class="citation" data-cites="Hesterberg2015">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Hesterberg2015" role="doc-biblioref"><strong>Hesterberg2015?</strong></a>)</span> 도 참조하십시오.</p>
+<p>부트스트랩이 바로 작동하지 않는 다른 흔한 상황으로는 규제 회귀(lasso 회귀 등)와 시계열과 같이 강한 상관 구조를 가진 데이터가 있습니다. 종종 그러한 문제들에 대해 작동하는 부트스트랩의 변형 버전이 존재합니다. <code>survey</code> 패키지의 저자이자 R 코어 멤버인 Thomas Lumley는 부트스트랩이 바로 작동하지 않는 흔한 상황들(그리고 그러한 시나리오에서 작동하는 변형된 부트스트랩의 예시들)에 대한 훌륭한 요약을 제공합니다 <span class="citation" data-cites="Lumley_2017">[@Lumley_2017]</span>. 또한 <span class="citation" data-cites="Hesterberg2015">@Hesterberg2015</span> 도 참조하십시오.</p>
 
 
 <!-- -->
@@ -13890,9 +13890,9 @@ s8_boots |&gt;
 <li id="fn5"><p>이러한 <em>인과적</em> 가정은 우리가 사용하는 추정량이 요구하는 분포 가정과 같은 <em>통계적</em> 가정에 추가되는 것입니다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>숫자는 표본 크기 때문에 약간 다를 수 있습니다. 표본 크기가 커질수록 무작위 배정으로 교환 가능성이 유지될 가능성이 높아지므로, 충분히 큰 표본을 사용하면 동일한 답을 얻게 됩니다.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>필수적이지만 드물게 관찰되는 세부 사항은 ’dag’가 양의 똥 묻은 털인 <em>daglock</em>을 지칭하는 <a href="https://en.wikipedia.org/wiki/Dag_(slang)">애정 어린 호주식 비속어</a>이기도 하다는 점입니다.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>데이터셋을 생성한 모델들에 대해서는 <span class="citation" data-cites="dagostinomcgowan2023">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-dagostinomcgowan2023" role="doc-biblioref"><strong>dagostinomcgowan2023?</strong></a>)</span> 을 참조하십시오.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>데이터셋을 생성한 모델들에 대해서는 <span class="citation" data-cites="dagostinomcgowan2023">@dagostinomcgowan2023</span> 을 참조하십시오.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>M-편향의 경우, 모델에 <code>covariate</code>를 포함하는 것은 그것이 결과의 원인 중 하나인 <code>u2</code>에 대한 정보를 가지고 있는 만큼 도움이 됩니다. 이 사례에서 데이터 생성 메커니즘은 <code>covariate</code>가 <code>u2</code>보다 <code>u1</code>으로부터 더 많은 정보를 포함하도록 되어 있어서, 예측 가치를 그렇게 많이 추가하지는 않습니다. 무작위 노이즈가 <code>u2</code>가 설명하지 못하는 부분의 대부분을 차지합니다.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>’표 2의 오류(Table Two Fallacy)’는 건강 연구 저널에서 논문의 두 번째 표에 모델 계수 전체 세트를 싣는 경향에서 이름을 따온 것입니다. 이 오류에 대한 자세한 논의는 <span class="citation" data-cites="Westreich2013">(<a href="../ai_in_action_complete/ai_in_action_complete.html#ref-Westreich2013" role="doc-biblioref"><strong>Westreich2013?</strong></a>)</span> 을 참조하십시오.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>’표 2의 오류(Table Two Fallacy)’는 건강 연구 저널에서 논문의 두 번째 표에 모델 계수 전체 세트를 싣는 경향에서 이름을 따온 것입니다. 이 오류에 대한 자세한 논의는 <span class="citation" data-cites="Westreich2013">@Westreich2013</span> 을 참조하십시오.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>또한, OLS는 가산적(collapsible) 효과를 생성합니다. 오즈비(odds ratio)나 위험비(risk ratio)와 같은 다른 효과들은 비가산적(non-collapsible)인데, 이는 교란이 없을 때조차 조건부 오즈비나 위험비가 한계(marginal) 버전과 다를 수 있음을 의미합니다. 우리는 <a href="#sec-non-collapse" class="quarto-xref"><span>섹션 35.4.2</span></a> 에서 비가산성에 대해 논의할 것입니다.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p><em>일상적인(casual)</em> 추론을 하는 사람들은 이런 식으로 단일 모델에서 <em>많은</em> 효과들을 해석하곤 하지만, 우리는 이를 무모한 행동이라고 생각합니다.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13"><p>흥미롭게도 여기서 틸팅 함수는 베르누이 분포의 분산입니다; 우리는 0.5일 때 가장 큰 불확실성을 갖습니다!<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
