@@ -11,42 +11,54 @@ book:
     - part: "기초 도구"
       chapters:
         - linux_commands/linux_commands.qmd
-        - linear_algebra/linear-algebra-book.qmd
+        - linear_algebra_book/linear-algebra-book.qmd
     - part: "파이썬 프로그래밍 및 데이터 관리"
       chapters:
-        - python_programming/PythonMastery.qmd
-        - python_programming/Mastering_Python_for_Bioinformatics.qmd
-        - python_programming/Python_for_Biologists_A_Complete_Programming_Course.qmd
-        - python_programming/Managing_Your_Biological_Data_with_Python.qmd
-        - python_programming/Streamlining_Your_Research_Laboratory_with_Python.qmd
+        - python_mastery/PythonMastery.qmd
+        - mastering_python_for_bioinformatics/Mastering_Python_for_Bioinformatics.qmd
+        - python_for_biologists_a_complete_programming_course/Python_for_Biologists_A_Complete_Programming_Course.qmd
+        - managing_your_biological_data_with_python/Managing_Your_Biological_Data_with_Python.qmd
+        - streamlining_your_research_laboratory_with_python/Streamlining_Your_Research_Laboratory_with_Python.qmd
     - part: "생명정보학 및 단백질 정보학"
       chapters:
-        - bioinformatics/Sequence_Analysis_with_Biopython.qmd
-        - bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
-        - bioinformatics/practical_bioinformatics.qmd
+        - sequence_analysis_with_biopython/Sequence_Analysis_with_Biopython.qmd
+        - large_language_models_in_protein_bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
+        - practical_bioinformatics/practical_bioinformatics.qmd
     - part: "머신러닝 및 인공지능"
       chapters:
-        - machine_learning_ai/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
+        - deep_learning_for_biology_harness_ai_to_solve_real_world_biology_problems/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
     - part: "AI 실제 적용"
       chapters:
-        - ai_in_action/ai_in_action_complete.qmd
+        - ai_in_action_complete/ai_in_action_complete.qmd
     - part: "생명정보학 실무 및 의학 응용"
       chapters:
-        - applications/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
-        - applications/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
-        - applications/Bioinformatics_and_Drug_Discovery.md
+        - bioinformatics_in_cancer_and_cancer_therapy/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
+        - bioinformatics_and_computational_biology_solutions_using_r_and_bioconductor/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
+        - bioinformatics_and_drug_discovery/Bioinformatics_and_Drug_Discovery.md
     - part: "데이터 시각화"
       chapters:
         - dataviz/dataviz.qmd
-    - part: "Rust 컴파일러 개발"
+    - part: "Rust 개발"
       chapters:
-        - rust/rustc-dev-guide.qmd
+        - rustc_dev_guide/rustc-dev-guide.qmd
+        - learn_rust/learn_rust.qmd
+        - rust_python_binding_guide/rust_python_binding_guide.qmd
+    - part: "Swift 프로그래밍"
+      chapters:
+        - swift_for_python_dev/swift_for_python_dev.qmd
+    - part: "데이터 사이언스"
+      chapters:
+        - python_novice_gapminder/python-novice-gapminder.qmd
+        - data_analysis/data_analysis.qmd
+    - part: "R 및 인과 추론"
+      chapters:
+        - causal_inference_in_r_complete/causal-inference-in-r-complete.qmd
     - part: "기타"
       chapters:
-        - misc/The_simple_guide_to_minimalist.qmd
+        - the_simple_guide_to_minimalist/The_simple_guide_to_minimalist.qmd
+        - marketing_research_complete/marketing_research_complete.qmd
 
-
-
+engine: markdown
 bibliography: references.bib
 
 format:
