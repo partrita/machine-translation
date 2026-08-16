@@ -5,24 +5,17 @@ author: "Bobby Iliev"
 
 ![101 Linux Commands cover](images/cover.jpg)
 
-# 모두가 알아야 할 Linux 명령어 101: 오픈 소스 전자책
 
 이 전자책은 누구나 알아 두어야 할 Linux 명령어 101가지를 다루는 오픈 소스 전자책입니다. DevOps/SysOps 엔지니어, 개발자 또는 단순한 Linux 애호가인지와 관계없이, 경력 중 언젠가는 터미널을 사용하게 될 가능성이 높습니다.
 
+:::{.callout-note}
 ## 저자 소개
 
 저는 Bobby Iliev이며 2014년부터 Linux DevOps 엔지니어로 일하고 있습니다. Linux를 열렬히 사랑하고 오픈 소스 운동의 철학을 지지합니다. 할 수 없는 일을 늘 직접 시도하며 그 방법을 배우고, 지식을 나누는 것이 중요하다고 믿습니다.
 
-항상 프로답게 행동하고 좋은 사람들과 함께하며, 열심히 일하고 모든 사람에게 친절해야 한다고 생각합니다. 다른 사람보다 꾸준히 높은 수준으로 성과를 내야 합니다. 그것이 진정한 전문가의 기준입니다.
-
-자세한 내용은 제 블로그 [https://bobbyiliev.com](https://bobbyiliev.com)를 방문하거나 Twitter의 [\@bobbyiliev_](https://twitter.com/bobbyiliev_)와 [YouTube](https://www.youtube.com/channel/UCQWmdHTeAO0UvaNqve9udRw)를 팔로우해 주세요.
-
-## 책 표지
-
-이 전자책의 표지는 [Suhail Kakar](https://twitter.com/SuhailKakar)가 제작했습니다.
-
 ## 라이선스
 
+```
 MIT License
 
 Copyright (c) 2020 Bobby Iliev
@@ -33,6 +26,8 @@ Copyright (c) 2020 Bobby Iliev
 위 저작권 고지와 이 허가 고지는 소프트웨어의 모든 사본 또는 상당 부분에 포함되어야 합니다.
 
 소프트웨어는 상품성, 특정 목적에의 적합성 및 비침해성에 대한 보증을 포함하되 이에 한정되지 않는 어떠한 종류의 명시적 또는 묵시적 보증도 없이 "있는 그대로" 제공됩니다. 어떠한 경우에도 저자 또는 저작권자는 소프트웨어 또는 소프트웨어의 사용이나 기타 거래와 관련하여 발생하는 모든 청구, 손해 또는 기타 책임에 대해 계약, 불법행위 또는 기타 사유를 불문하고 책임을 지지 않습니다.
+```
+:::
 
 # `ls` 명령어
 

@@ -59,12 +59,11 @@ book:
         - marketing_research_complete/marketing_research_complete.qmd
 
 engine: markdown
-bibliography: references.bib
 
 format:
   html:
     theme:
-      - flatly
+      - cosmo
       - brand
     number-sections: false
 
