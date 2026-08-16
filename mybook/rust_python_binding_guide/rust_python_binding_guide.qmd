@@ -90,7 +90,7 @@ features = ["pyo3/extension-module"]
 
 # 프로젝트별 코드 심층 분석
 
-## 1. `string_sum` - 기본 함수 및 서브모듈 구성
+## 1. `string_sum` - 기본 함수 및 서브모듈 구성 {.unnumbered}
 
 `string_sum` 프로젝트는 PyO3의 가장 기본적인 매크로와 서브모듈(Hierarchical Submodule)을 선언하는 방식을 보여줍니다.
 
@@ -153,7 +153,7 @@ fn func() -> String {
 
 ---
 
-## 2. `fibonacci` - 연산 성능 가속 비교
+## 2. `fibonacci` - 연산 성능 가속 비교 {.unnumbered}
 
 `fibonacci` 프로젝트는 반복문 기반 피보나치 계산을 Rust로 작성하고, Python 순수 구현과의 실행 속도를 비교 측정합니다.
 
@@ -223,7 +223,7 @@ assert python_result == rust_result, "계산 결과가 일치하지 않습니다
 
 ---
 
-## 3. `guessing-game` - 표준 입출력 및 외부 크레이트 연동
+## 3. `guessing-game` - 표준 입출력 및 외부 크레이트 연동 {.unnumbered}
 
 `guessing-game`은 Rust 표준 라이브러리의 입출력(`std::io`) 및 외부 난수 생성 라이브러리(`rand`)를 사용하여, Python 프로세스 내에서 완전한 대화형 콘솔 게임을 실행합니다.
 
@@ -283,7 +283,7 @@ fn guessing_game(m: &Bound<'_, PyModule>) -> PyResult<()> {
 
 ---
 
-## 4. `gil` - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩
+## 4. `gil` - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩 {.unnumbered}
 
 Python의 CPython 구현체는 멀티스레드 환경에서도 한 번에 하나의 스레드만 바이트코드를 실행할 수 있도록 GIL을 사용합니다. `gil` 프로젝트는 Rust 측에서 연산 수행 중 GIL을 해제하여 Python 스레드와 진정한 병렬 실행을 달성하는 기법을 보여줍니다.
 
@@ -379,7 +379,7 @@ print(f"Rust 결과: {result[1]}")
 
 ---
 
-## 5. `quiver-pdb` - 대용량 단백질 데이터 파서 & Python CLI
+## 5. `quiver-pdb` - 대용량 단백질 데이터 파서 & Python CLI {.unnumbered}
 
 `quiver-pdb`는 생물정보학에서 사용하는 여러 PDB(Protein Data Bank) 구조 파일을 하나의 압축/태그 기반 아카이브(`.qv`) 파일로 병합, 추출, 분할, 스코어링하는 실전 라이브러리입니다.
 
@@ -527,7 +527,7 @@ if __name__ == "__main__":
 
 ---
 
-## 6. `polodb-python` - 임베디드 NoSQL 데이터베이스 바인딩
+## 6. `polodb-python` - 임베디드 NoSQL 데이터베이스 바인딩 {.unnumbered}
 
 `polodb-python`은 Rust로 작성된 임베디드 문서 지향 데이터베이스 엔진인 `polodb_core`를 Python에서 MongoDB와 유사한 인터페이스로 사용할 수 있게 바인딩한 프로젝트입니다.
 
@@ -555,7 +555,7 @@ if __name__ == "__main__":
 └──────────────────────────────────────────────────────────┘
 ```
 
-### 1) 타입 변환기 (`src/helper_type_translator.rs`)
+### 1) 타입 변환기 (`src/helper_type_translator.rs`) {.unnumbered}
 BSON 포맷과 Python 데이터 타입 간의 재귀적 상호 변환을 담당합니다.
 
 ```rust
@@ -613,7 +613,7 @@ pub fn bson_to_py_obj(py: Python, bson: &Bson) -> PyObject {
 }
 ```
 
-### 2) 데이터베이스 & 컬렉션 래퍼 (`src/py_database.rs`)
+### 2) 데이터베이스 & 컬렉션 래퍼 (`src/py_database.rs`) {.unnumbered}
 
 스레드 안전한 데이터베이스 인스턴스 공유를 위해 `Arc<Mutex<Database>>`를 사용합니다.
 
@@ -676,7 +676,7 @@ impl PyCollection {
 }
 ```
 
-### 3) Pythonic 래퍼 인터페이스 (`polodb/core.py`)
+### 3) Pythonic 래퍼 인터페이스 (`polodb/core.py`) {.unnumbered}
 
 Python 사용자가 Rust 모듈임을 의식하지 않고 직관적으로 사용할 수 있도록 Context Manager(`with`)와 딕셔너리 접근자(`db["users"]`)를 지원합니다.
 
@@ -743,14 +743,14 @@ class Collection:
 
 # PyO3 개발 모범 사례 (Best Practices)
 
-## 1. Rust-Python 데이터 복사 비용 최소화
+## 1. Rust-Python 데이터 복사 비용 최소화 {.unnumbered}
 - Python과 Rust 간에 대규모 데이터셋(리스트, 딕셔너리)을 전달할 때 반복적인 직렬화/역직렬화는 오버헤드를 유발합니다.
 - 가능하면 Rust 내부에서 일괄 처리(Batching)를 진행하거나, `numpy` 배열 / `pyo3-polars`와 같은 버퍼 포인터 기반 무복사(Zero-Copy) 인터페이스를 고려해야 합니다.
 
-## 2. GIL 스코프 최소화
+## 2. GIL 스코프 최소화 {.unnumbered}
 - CPU 바운드 연산이나 대기 시간이 긴 I/O 작업은 반드시 `py.allow_threads`로 감싸서 GIL을 해제해야 Python 멀티스레드 환경의 응답성을 해치지 않습니다.
 
-## 3. 명확한 예외 매핑
+## 3. 명확한 예외 매핑 {.unnumbered}
 - Rust의 `Result<T, E>`는 PyO3의 `PyResult<T>`로 변환하고, 상황에 맞는 표준 Python 예외(`PyValueError`, `PyTypeError`, `PyIOError`, `PyRuntimeError`)를 적절히 매핑해야 Python 사용자가 직관적인 에러 핸들링(`try-except`)을 구현할 수 있습니다.
 
 ---

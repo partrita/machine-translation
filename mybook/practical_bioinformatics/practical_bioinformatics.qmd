@@ -30,7 +30,7 @@ used either stand-alone, or in conjunction with a lecture course.
 
 ### Chapter 1 Introduction to Bioinformatics
 
-# 1.1 What Is Bioinformatics?
+# 1.1 What Is Bioinformatics? {.unnumbered}
 
 The three greatest projects of the twentieth century are the Manhattan project
 (1942-1945), the Apollo project (1961-1972), and human genome project
@@ -65,7 +65,7 @@ e1002021. doi: 10.1371/journal.pcbi.1002021.
 
 1. Wang, M. Gribskov, Practical Bioinformatics, https://doi.org/10.1007/978-981-96-7949-2_1
 
-# 1 Introduction to Bioinformatics
+# 1 Introduction to Bioinformatics {.unnumbered}
 
 and/or biological information flow can be considered as bioinformatics, including
 topics such as genome assembly and annotation, protein structure prediction and
@@ -73,7 +73,7 @@ analysis, biological network analysis, phylogenetic tree construction, high-
 throughput sequencing data analysis, biological image analysis, and all of the
 various "omics."
 
-# 1.2 Sequence Technology
+# 1.2 Sequence Technology {.unnumbered}
 
 Bioinformatics has been driven by the development of sequencing technology,
 which allows scientists to decipher the secrets of DNA sequences. The first-
@@ -110,7 +110,7 @@ whose genomes and transcriptomes have been sequenced and analyzed. This tech-
 nology is currently the most successful and widely used, but long-read sequencing is
 seeing increasing usage.
 
-## 1.3 Topics in Bioinformatics
+## 1.3 Topics in Bioinformatics {.unnumbered}
 
 Table 1.1
 
@@ -139,7 +139,7 @@ data are critically important, and are the focus of this book. DNA, RNA, and pro
 are the raw materials of bioinformatics. We expect the students have some prior
 knowledge of these molecules and of central dogma of biology (Fig. 1.1).
 
-# 1.3 Topics in Bioinformatics
+# 1.3 Topics in Bioinformatics {.unnumbered}
 
 As mentioned before, bioinformatics today covers almost any analysis of biological
 systems that includes computational analysis, prediction, or modeling. This includes
@@ -148,7 +148,7 @@ medical imaging, molecular structure analysis, evolutionary studies, systems bio
 ogy, and, of course, the development of computational analysis tools and databases.
 Such a wide range of topics is impossible to cover in a single text. In this manual, we
 
-# 1 Introduction to Bioinformatics
+# 1 Introduction to Bioinformatics {.unnumbered}
 
 limit ourselves mostly to analyses that are based on primary sequence information
 (although we do go a bit further in looking at differential gene expression). Most of
@@ -180,13 +180,13 @@ alternative treatments. This chapter introduces the concept and mechanisms of
 antibiotic resistance, which we use as an example of how bioinformatics analyses
 can be used to solve biological questions.
 
-# 2.1 Objectives
+# 2.1 Objectives {.unnumbered}
 
 -  Highlighting the importance of bacterial resistance to antibiotics.
 
 -  Introducing the causes and mechanisms of resistance.
 
-# 2.2 Importance of Antibiotic Resistance
+# 2.2 Importance of Antibiotic Resistance {.unnumbered}
 
 Bacterial drug resistance, also called antimicrobial resistance (AMR), is a serious
 worldwide problem. A World Health Organization (WHO) report (April 2014)
@@ -227,7 +227,7 @@ to be concerning or are under watch1
 Antibiotic Resistance Threats in the United States, 2019. 2019 AR Threats Report doi: https://doi.
 org/10.15620/cdc:82532.
 
-## 2.3 Causes of Resistance
+## 2.3 Causes of Resistance {.unnumbered}
 
 Table 2.2 Antibiotic classes and year of commercial introduction
 
@@ -243,7 +243,7 @@ approximately 500,000 people in the United States and results in about 30,000
 deaths (2019). Globally, the numbers are staggering; 4.95 million deaths in 2019
 were associated with antibiotic resistance, resulting in 1.27 million deaths.2
 
-# 2.3 Causes of Resistance
+# 2.3 Causes of Resistance {.unnumbered}
 
 The use of antibiotics is the cause of antibiotic resistance. In biological terms,
 antibiotic treatment is a strong selective pressure. Most bacteria are killed by
@@ -283,7 +283,7 @@ containing remarkably high levels of antibiotics. Hospitals and other urban sour
 also contribute significant amounts of antibiotic-containing effluent to public sewage
 systems, exposing large communities of bacteria to selection for resistance.
 
-# 2.4 Mechanisms of Resistance
+# 2.4 Mechanisms of Resistance {.unnumbered}
 
 Antibiotics have many different mechanisms, but most commonly act by inhibiting
 enzymes important for cell wall biosynthesis, protein synthesis, transcription, DNA
@@ -306,7 +306,7 @@ duction (transfer by a bacteriophage), or by release to the environment and dire
 uptake. Plasmids may be, and frequently are, transferred between species. This
 transfer of genetic material, by processes other than inheritance from the parent, is
 
-## 2.4 Mechanisms of Resistance
+## 2.4 Mechanisms of Resistance {.unnumbered}
 
 Table 2.3 Antibiotic targets and resistance mechanisms
 
@@ -322,7 +322,7 @@ conjugation or the formation of secretion systems.
 Fig. 2.1 Example of an antibiotic resistance plasmid. Arrows indicate genes. The blue regions
 encode proteins involved in conjugative transfer. The red genes are involved in antibiotic resistance
 
-# 2.5 Questions
+# 2.5 Questions {.unnumbered}
 
 Using the introductory material and/or online resources, answer the following:
 
@@ -369,7 +369,7 @@ similarity would not be observed by chance. This chapter will discuss the concep
 of evolution, homology, and how to determine whether genes/proteins are
 homologous.
 
-# 3.1 Objectives
+# 3.1 Objectives {.unnumbered}
 
 -  To understand how evolution causes changes in gene and protein sequences.
 
@@ -377,7 +377,7 @@ homologous.
 
 -  Understand how to use homology to analyze evolution.
 
-# 3.2 Two Kinds of Evolution
+# 3.2 Two Kinds of Evolution {.unnumbered}
 
 Evolution requires two simple processes to act together: One process generates
 inheritable changes in the characteristics of organisms (mutation), and the other
@@ -408,7 +408,7 @@ increasing the frequency of characteristics that enhance fitness in the populati
 This focusing on the characteristics of the population around survival-important
 traits is convergent evolution.
 
-# 3.3 Homologs, Mutations and the Molecular Clock
+# 3.3 Homologs, Mutations and the Molecular Clock {.unnumbered}
 
 Most life on Earth uses DNA as its genetic material. Diversity is generated by
 mutations in the DNA sequence. Mutations can be generated by many processes,
@@ -438,7 +438,7 @@ change. We also do not see mutational changes that are not fixed in the popula-
 tion because the organism with the mutation did not survive and reproduce. These
 issues make the time estimates derived from molecular clocks very inconsistent
 
-## 3.4 Determine Homologous Sequences
+## 3.4 Determine Homologous Sequences {.unnumbered}
 
 (or you can think of them as having a high error rate or variance). Selection, which is
 not at all random, further complicates the picture by removing particular mutational
@@ -458,7 +458,7 @@ might be, for instance, a protein (in this case, we say the proteins are homolog
 that they are homologous). Because of their descent from a common ancestor,
 homologs are likely to have similar structure and function.
 
-# 3.4 Determine Homologous Sequences
+# 3.4 Determine Homologous Sequences {.unnumbered}
 
 In order to tell if genes or proteins have a common ancestor, and thus can be
 expected to have similar structure and function, we need to know how similar we
@@ -543,7 +543,7 @@ the pairs of aligned sequence letters (bases/amino acid residues) and negative s
 for the introduction of spaces, usually called gaps, needed to maximize the matching.
 Gaps are marked with "-" in Fig. 3.1. The differences in the aligned pairs of letters
 
-## 3.4 Determine Homologous Sequences
+## 3.4 Determine Homologous Sequences {.unnumbered}
 
 correspond to substitutions (missense mutations) in the sequences, and the gaps
 correspond to insertion-deletion events. Surprisingly, the distribution of comparison
@@ -609,7 +609,7 @@ possible locations, lengths, and numbers of gaps, and different degrees of trimm
 The similarity score for the local alignment therefore represents the maximum score
 out of a huge number of possible alignments.
 
-# 3.5 Questions
+# 3.5 Questions {.unnumbered}
 
 Using the introductory material and/or online resources, define the following:
 
@@ -653,13 +653,13 @@ example and look at a few useful resources to find information about colistin, i
 mechanism of action, and mechanisms of resistance. Students can follow similar
 approaches to find information about their antibiotic of interest (aoi).
 
-# 4.1 Objectives
+# 4.1 Objectives {.unnumbered}
 
 -  Get familiar with some important biological information resources.
 
 -  Find information about your antibiotic of interest (aoi).
 
-# 4.2 Background
+# 4.2 Background {.unnumbered}
 
 Due to the low cost of DNA sequencing, very large resources devoted to scientific
 literature and to the sequences and structures of both nucleic acids and proteins are
@@ -724,7 +724,7 @@ find specific information, for instance, about antibiotic resistance.
 
 https://www.rbccm.com/en/gib/healthcare/episode/the_healthcare_data_explosion
 
-## 4.2 Background
+## 4.2 Background {.unnumbered}
 
 The simplest kind of query is a keyword query, which searches for a word or
 phrase in the body of stored information. Keyword queries can be powerful, but if
@@ -780,13 +780,13 @@ information is that it follows a standardized vocabulary, making it easier to cr
 queries (the MeSH vocabulary includes about 30,000 terms, so learning it is not
 trivial).
 
-# 4.3 Before Lab Questions
+# 4.3 Before Lab Questions {.unnumbered}
 
 -  Why does a PubMed search for "colistin resistance" produce different results than "colistin AND resistance"?
 
 -  How would you search for articles that mention colistin, and antibiotic resistance but not polymyxin (polymyxins are the class of antibiotics that include colistin)?
 
-# 4.4 Resources and Materials
+# 4.4 Resources and Materials {.unnumbered}
 
 -  PubMed-https://pubmed.ncbi.nlm.nih.gov/
 
@@ -794,7 +794,7 @@ trivial).
 
 -  Comprehensive Antibiotic Resistance Database-https://card.mcmaster.ca/  NCBI databases-https://www.ncbi.nlm.nih.gov/
 
-# 4.5 Activity 1: Selecting an Antibiotic of Interest (aoi)
+# 4.5 Activity 1: Selecting an Antibiotic of Interest (aoi) {.unnumbered}
 
 In order to provide practical examples of different bioinformatics methods, we use
 the polymyxin antibiotic colistin as our example. Using the background information
@@ -814,9 +814,9 @@ information in your notebook-be sure to record the source of the information
 as well. If information contains a date, this is relevant since scientific infor-
 mation is frequently updated.
 
-## 4.6 Activity 2: Finding Some General Information About Your aoi
+## 4.6 Activity 2: Finding Some General Information About Your aoi {.unnumbered}
 
-### 4.6 Activity 2: Finding Some General Information About Your aoi
+### 4.6 Activity 2: Finding Some General Information About Your aoi {.unnumbered}
 
 A good place to begin is by finding a fairly recent review article discussing your
 antibiotics. Review articles tend to be easier to read because they are intended for a
@@ -863,7 +863,7 @@ that sound like they would be informative:
 
 1. Molecular mechanisms of colistin- and multidrug-resistance in bacteria | among patients with hospital-acquired infections. Khurana S, Katiyar A, | Puraswani M, Sharma D, Walia K, Malhotra R, Mathur P. Future Sci | OA. 2023 Aug 28;9(10):FSO896. https://doi.org/10.2144/fsoa-2022-0055. | 2. Plasmid-mediated colistin-resistance genes: mcr. Liu JH, Liu YY, Shen | YB, Yang J, Walsh TR, Wang Y, Shen J. Trends Microbiol. 2023 Nov 25: | S0966-842X(23)00295-0. https://doi.org/10.1016/j.tim.2023.10.006. | 3. A Review of Resistance to Polymyxins and Evolving Mobile Colistin | Resistance Gene (mcr) among Pathogens of Clinical Significance. | Shahzad S, Willcox MDP, Rayamajhee B. Antibiotics (Basel). 2023 Nov | 6;12(11):1597. https://doi.org/10.3390/antibiotics12111597. | Step 3: Perform similar searches for your aoi. Find articles that describe the | anism of your aoi, the mechanisms of resistance, the sources of resistance, and | severity of the resistance problem. | Notebook | Include the 2-3 most informative references in your notebook, as in the | example above. Summarize the information in several paragraphs and include | the text in your notebook. Pay particular attention to identifying the gene(s) | involved in resistance. Keep in mind that many drugs/genes/proteins have | synonyms that may be important in identifying relevant information (record | these as well). You should be able to find information about: |  What are gene names and functional synonyms for the proteins in this | family? |  What antibiotics does the protein family provide resistance to? |  How do the proteins cause resistance? |  Is there an experimentally determined of prediction structure of a resis- | tance protein in this family available ? |  How widespread is the resistance? |  Is resistance a serious medical problem? |  How many patients are affected per year?
 
-## 4.6 Activity 2: Finding Some General Information About Your aoi
+## 4.6 Activity 2: Finding Some General Information About Your aoi {.unnumbered}
 
 Below is an example of summarized information about colistin.
 
@@ -892,7 +892,7 @@ Fig. 4.2 Chemical structure of mcr-1
 
 Fig. 4.3 CARD database search (https://card.mcmaster.ca) for colistin
 
-# 4.7 Activity 3: Obtaining Antibiotic Information from CARD Database
+# 4.7 Activity 3: Obtaining Antibiotic Information from CARD Database {.unnumbered}
 
 The Comprehensive Antibiotic Resistance Database2
 (CARD) has a large collection
@@ -920,11 +920,11 @@ Alcock et al. 2023. CARD 2023: Expanded Curation, Support for Machine Learning, 
 Resistome Prediction at the Comprehensive Antibiotic Resistance Database. Nucleic Acids
 Research, 51, D690-D699
 
-## 4.8 Activity 4: Obtaining Sequence Information from UniProt
+## 4.8 Activity 4: Obtaining Sequence Information from UniProt {.unnumbered}
 
 Fig. 4.4 UniProt search (https://www.Uniprot.org/) for colistin
 
-# 4.8 Activity 4: Obtaining Sequence Information from UniProt
+# 4.8 Activity 4: Obtaining Sequence Information from UniProt {.unnumbered}
 
 UniProt,3
 is a major international database for proteins, supported by both US and
@@ -957,7 +957,7 @@ around 510-540 amino acid residues (emrB and mcr-1), or around 350 residues
 
 Notebook | Look through several pages of results and record the gene names, protein | names, and protein lengths in your notebook. Also, record any additional | enzyme activities that may be relevant to resistance, such as "metallo-beta- | lactamase type 2". | Step 2: More information can be found by clicking the Entry ID (for | A0A0R6L508). The text will provide some information about the function of | protein, as well as other information. This entry describes the discovery of mrc-1, | first reported plasmid-mediated source of colistin resistance. The text also | literature references to more in-depth information. Much more information is | able, including recommended gene and protein names, matches to family | domain databases, and the amino acid sequence itself (downloadable). | We will use all this information in later exercises. The entry also provides an | of links for downloading the gene sequence and the protein sequence from | GenBank/DDBJ. The list of similar proteins is particularly useful in extending | list of genes/proteins involved in this kind of resistance. Also note that there are | to both predicted and experimentally determined three-dimensional protein | tures (for colistin, there are more than 10 structures). | Notebook | Familiarize yourself with the kinds of information available on UniProt and | update the synopsis describing your aoi.
 
-# 4.9 Activity 5: Download Sequences from NCBI
+# 4.9 Activity 5: Download Sequences from NCBI {.unnumbered}
 
 From previous activities, you already have some knowledge of your aoi, we can
 obtain further information about the resistance genes of your aoi. The first thing we
@@ -969,7 +969,7 @@ structure.
 Step 1: Go to the NCBI nucleotide database, and enter the gene name of your aoi in
 the search box; in this case, we used mcr-1 as an example (Fig. 4.5).
 
-## 4.9 Activity 5: Download Sequences from NCBI
+## 4.9 Activity 5: Download Sequences from NCBI {.unnumbered}
 
 Fig. 4.5 Search mcr-1 DNA and protein sequences from NCBI database (https://www.ncbi.nlm.
 nih.gov/)
@@ -1004,7 +1004,7 @@ organism you choose and the sequence information, for example, sequence
 IDs, and the lengths of the DNA and protein sequences. Make sure you save
 them on your computer, and we will use them in the later chapters.
 
-# 4.10 Analysis/Notebook
+# 4.10 Analysis/Notebook {.unnumbered}
 
 From activity 1 to activity 5, you will see a lot of information that is cross-
 linked and repeated in the results. Please summarize the information of your
@@ -1036,7 +1036,7 @@ the statistical background of sequence comparison. Normal distributions are ofte
 used in statistical analyses, however, for sequence comparison, it follows an extreme
 value distribution (EVD), which we will learn in this lab.
 
-# 5.1 Objectives
+# 5.1 Objectives {.unnumbered}
 
 -  Understand the concept of extreme value distributions.
 
@@ -1044,7 +1044,7 @@ value distribution (EVD), which we will learn in this lab.
 
 -  Understand the differences between EVD and normal distributions.
 
-# 5.2 Background
+# 5.2 Background {.unnumbered}
 
 In order to decide if sequences are homologous, we need to know what similarity
 scores to expect for unrelated sequences. Obviously, some random sequences will be
@@ -1082,7 +1082,7 @@ each classroom at Purdue and record only the tallest person's height, that is th
 maximum height in a certain population, we would expect the distribution to be more
 like the red curve in Fig. 5.1. Maximizations always result in EVDs.
 
-# 5.3 Materials
+# 5.3 Materials {.unnumbered}
 
 -  Two index cards
 
@@ -1092,9 +1092,9 @@ like the red curve in Fig. 5.1. Maximizations always result in EVDs.
 
 - (supplemental file 1)
 
-## 5.4 Activity 1: Coin Flipping
+## 5.4 Activity 1: Coin Flipping {.unnumbered}
 
-# 5.4 Activity 1: Coin Flipping
+# 5.4 Activity 1: Coin Flipping {.unnumbered}
 
 The purpose of this activity is to see why extreme value distributions occur and
 compare what you see with random and nonrandom data.
@@ -1155,7 +1155,7 @@ instance, for the series of coin tosses HTTHH HHTHH, there are two runs of lengt
 Report the number of runs of each length as a table with columns showing the length
 of the run and the number of times it was observed (Fig. 5.3). Find the length of the
 
-## 5.5 Activity 2: Real DNA Sequences Showing the Effect of Sample Size
+## 5.5 Activity 2: Real DNA Sequences Showing the Effect of Sample Size {.unnumbered}
 
 Fig. 5.3 Frequency table and graph of different length of runs. (a) Examples of fake and real data.
 The run length is indicated by color. Length 1 is red, length 2 is blue, length 3 is orange, length 4 is
@@ -1172,7 +1172,7 @@ Include the table of run lengths, and plot histograms of the distributions of th
 run lengths. Discuss the differences that you see between the real and fake
 datasets.
 
-# 5.5 Activity 2: Real DNA Sequences Showing the Effect of Sample Size
+# 5.5 Activity 2: Real DNA Sequences Showing the Effect of Sample Size {.unnumbered}
 
 There are two main reasons why it is hard to distinguish between the real and fake
 data in Activity 1. First, we looked at a very small number of observations, only 100.
@@ -1213,7 +1213,7 @@ always zero. For sequences that have equal numbers of the four bases, such as th
 shown here, the number of random matches should be about 25% of the sequence
 length; this is why no matches are seen in the truncated table shown in Fig. 5.5.
 
-## 5.6 Activity 3: Real DNA Sequences Showing the Effect of Sequence Composition
+## 5.6 Activity 3: Real DNA Sequences Showing the Effect of Sequence Composition {.unnumbered}
 
 Fig. 5.5 The frequency table of the number of matches and maximum run-length for different
 sample sizes with 1000 bases long DNA sequences
@@ -1224,7 +1224,7 @@ also plot histograms of the distribution of maximum match length for the
 different sample sizes. See Figs. 5.2 and 5.3, for examples. What is the effect
 of increasing the sample size (pairs of sequences) on the histograms.
 
-# 5.6 Activity 3: Real DNA Sequences Showing the Effect of Sequence Composition
+# 5.6 Activity 3: Real DNA Sequences Showing the Effect of Sequence Composition {.unnumbered}
 
 One of the major variables that affects the number of matches and run-lengths is
 the overall GC content of the sequences. The more skewed the AT vs GC compo-
@@ -1253,7 +1253,7 @@ base DNA sequences with different %GC content (comparison of 100,000 sequence pa
 change in GC content change the peak in either the match histogram or the
 run-length histogram?
 
-# 5.7 Analysis/Notebook
+# 5.7 Analysis/Notebook {.unnumbered}
 
  In activity 1, you plotted histograms of the number of heads in a window of
 five, in what ways do the two distributions (fake and real data) look
@@ -1284,7 +1284,7 @@ resistance (no longer true, unfortunately). Students should have chosen an aoi i
 Chaps. 2 and 3, and use the same approach to identify homologs of your aoi. We will
 use the basic local alignment search tool (BLAST) to identify homologs of your aoi.
 
-# 6.1 Objectives
+# 6.1 Objectives {.unnumbered}
 
  Understand how the similarity of amino acid residues is defined and used to score
 sequence comparisons.
@@ -1292,7 +1292,7 @@ sequence comparisons.
  Know when to apply the various BLAST programs: BlastN, BlastP, BlastX.
  Apply BLAST searches to identify genes related to antibiotic resistance.
 
-# 6.2 Background
+# 6.2 Background {.unnumbered}
 
 With the rapid advances in sequencing technology, many individual genes have been
 sequenced, and many organisms have had their complete genomic sequence deter-
@@ -1354,7 +1354,7 @@ HSP between two sequences is the maximal segment pair (MSP). The lengths of
 the HSPs and MSPs follow an extreme value distribution.
 Step 5: Test whether the MSP is large enough to be significant (not random).
 
-## 6.2 Background
+## 6.2 Background {.unnumbered}
 
 Step 6: Perform a complete local alignment (with gaps) of sequences that pass the
 test from the previous step. While it cannot be theoretically proven, we know,
@@ -1442,7 +1442,7 @@ test for homology is always a comparison to how likely we are to see an equal or
 
 higher score in random sequences, it is easier to conclude that protein sequences are
 
-## 6.2 Background
+## 6.2 Background {.unnumbered}
 
 Fig. 6.2 Blosum62 amino acid scoring matrix. Values are given in 1/2 bit units. Positive values,
 shown in red, indicate amino acid exchanges that are more common in homologous proteins than in
@@ -1477,7 +1477,7 @@ other programs. The most obvious use is when you have segments of DNA from
 different species that you believe encode a gene, but the encoded protein sequences
 are not available.
 
-# 6.3 Before Lab Questions
+# 6.3 Before Lab Questions {.unnumbered}
 
 Using the introductory material and/or online resources, define the following:
 
@@ -1493,7 +1493,7 @@ Using the introductory material and/or online resources, define the following:
 
 -  Why does the presence of homology allow us to conclude that a query sequence has a similar structure and function to a subject sequence?
 
-# 6.4 Resources and Materials
+# 6.4 Resources and Materials {.unnumbered}
 
 -  NCBI/BLAST website: https://blast.ncbi.nlm.nih.gov/Blast.cgi
 
@@ -1501,13 +1501,13 @@ Using the introductory material and/or online resources, define the following:
 
 -  Protein sequence of colistin resistance protein (mcr1_protein.ecoli.fa, supplemen- tal file 3)
 
-# 6.5 Activity 1: BlastN
+# 6.5 Activity 1: BlastN {.unnumbered}
 
 Use a web browser to go to the URL for BLAST listed in Resources and Materials.
 The four primary blast programs are shown in the middle of page: nucleotide
 BLAST (BlastN), protein BLAST (BlastP), blastx, and tblastn (Fig. 6.3).
 
-## 6.5 Activity 1: BlastN
+## 6.5 Activity 1: BlastN {.unnumbered}
 
 Fig. 6.3 BLAST homepage (https://blast.ncbi.nlm.nih.gov/Blast.cgi). Only the top portion is
 shown
@@ -1550,14 +1550,14 @@ PAGE_TYPE=BlastSearch&LINK_LOC=blasthome)
 
 Fig. 6.5 BLAST algorithm parameters
 
-## 6.7 Activity 3: BlastX
+## 6.7 Activity 3: BlastX {.unnumbered}
 
 Step 7: Click the blue button BLAST to start the search. The search will take several
 minutes to complete. You will see the results in a new page.
 
 Notebook | Only a few sequences should match this gene, and those very poorly. Look at | the E-values and lengths of the matches. Are these genes homologs of the | query? | 6.6 Activity 2: BlastP | This activity is similar to Activity 1, except you will search a protein database with | protein sequence. You should see a very big difference in the number of | you can detect. To make the comparison easier, choose the same limitations to | target database as you used with BlastN. | Step 1: This time, click on the "Protein BLAST." The submission is very similar | BlastN. | Step 2: A new page will pop up, and copy the MCR-1 protein sequence into | query box. | Step 3: Database, please choose "Reference Proteins (refseq-protein)" as | database. | Step 4: Organism, please add term "firmacutes (taxid: 1239)" or | (taxid:1239)". This will limit the search to Firmicutes bacteria. | Step 5: Then click the blue button "BLAST" to start the search. | Notebook | The search will take several minutes to complete, then you will see the results. | Record the most significant results in your notebook. Is BlastP more sensitive | than BlastN?
 
-# 6.7 Activity 3: BlastX
+# 6.7 Activity 3: BlastX {.unnumbered}
 
 BlastX compares a nucleotide query to a protein sequence database by translating the
 query in all six possible reading frames (three forward and three backward). This
@@ -1583,7 +1583,7 @@ Notebook
 Again, you will see the results in a few minutes. Summarize the results in your
 notebook.
 
-# 6.8 Activity 4: Collect Sequences from Diverse Taxonomic Groups
+# 6.8 Activity 4: Collect Sequences from Diverse Taxonomic Groups {.unnumbered}
 
 Step 1: BlastP search. Use your aoi protein sequence, we use the Mcr-1 protein
 sequence (mcr1_protein_ecoli.fa) to query the non-redundant protein sequence
@@ -1612,7 +1612,7 @@ Look for sequences that are:
 
 2. The match between the query and subject (database) sequences should cover nearly the whole query sequence.
 
-## 6.9 Analysis/Notebook
+## 6.9 Analysis/Notebook {.unnumbered}
 
 Fig. 6.6 BlastP search (https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_
 TYPE=BlastSearch&LINK_LOC=blasthome). This example shows a search limited to
@@ -1622,7 +1622,7 @@ proteobacteria and excluding Enterobacteriales
 
 2. Completely classified, including genus and species. Do not use unclassified taxa-In future activities we will need the taxonomic information for phyloge- netic analysis (Chap. 10).
 
-# 6.9 Analysis/Notebook
+# 6.9 Analysis/Notebook {.unnumbered}
 
  Why are nucleotide sequences more likely to randomly match than protein
 sequences?
@@ -1676,7 +1676,7 @@ transfer of antibiotic resistance. In this chapter, we will learn how to select 
 from a broad taxonomic range using UniProt. UniProt also provides an alternative
 way to find a broadly distributed set of sequences using the UniRef database.
 
-# 7.1 Objectives
+# 7.1 Objectives {.unnumbered}
 
 -  Select protein sequences related to resistance to your aoi from a broad taxonomic range by comparing to a clustered database.
 
@@ -1690,7 +1690,7 @@ way to find a broadly distributed set of sequences using the UniRef database.
 
 https://doi.org/10.1007/978-981-96-7949-2_7
 
-# 7.2 Background
+# 7.2 Background {.unnumbered}
 
 7 Finding Homologous Sequences Using UniProt
 
@@ -1710,7 +1710,7 @@ of the database, making searching faster, and ensures that the subject sequence 
 have a minimum difference from each other. UniProt provides a version of BLAST
 at its website. The interface is somewhat simpler than the one at NCBI.
 
-# 7.3 Resources and Materials
+# 7.3 Resources and Materials {.unnumbered}
 
 -  UniProt database-https://www.Uniprot.org/
 
@@ -1718,7 +1718,7 @@ at its website. The interface is somewhat simpler than the one at NCBI.
 
 -  Table 7.2 for Highly sequenced bacterial phyla.
 
-# 7.4 Activity 1: BLAST Using UniProt Database
+# 7.4 Activity 1: BLAST Using UniProt Database {.unnumbered}
 
 Step 1: Using the MCR-1 protein sequence, perform a BLAST search at the UniProt
 database1
@@ -1734,7 +1734,7 @@ tative sequence from each matching cluster to your query sequence. The diagram
 The UniProt Consortium, UniProt: a worldwide hub of protein knowledge, Nucleic Acids
 Research, Volume 47, Issue D1, 08 January 2019, Pages D506-D515.
 
-## 7.4 Activity 1: BLAST Using UniProt Database
+## 7.4 Activity 1: BLAST Using UniProt Database {.unnumbered}
 
 Examples of antibiotic resistance search terms
 
@@ -1777,7 +1777,7 @@ sequences that are much longer or shorter than your query (approximately
 Step 5. Rename the header line of each sequence as discussed in the following
 activity.
 
-# 7.5 Activity 2: Selecting Sequences from UniProt
+# 7.5 Activity 2: Selecting Sequences from UniProt {.unnumbered}
 
 To find evidence for horizontal transfer, we want to select sequences for antibiotic
 resistance proteins from a diverse group of genera. We will use the text searching
@@ -1911,13 +1911,13 @@ have already learned how to select sequences using Blast and UniProt (Chap. 7),
 we will use these selected sequences to construct a multiple sequence alignment in
 this chapter.
 
-# 8.1 Objectives
+# 8.1 Objectives {.unnumbered}
 
 -  Construct a MSA of diverse members of an antibiotic resistance gene family.
 
 -  Identify conserved (evolutionarily constrained) regions from MSA.
 
-# 8.2 Background
+# 8.2 Background {.unnumbered}
 
 Multiple sequence alignment (MSA) has been a very active topic of bioinformatics
 almost from the beginning. Exactly solving the MSA problem is extremely difficult,
@@ -1956,13 +1956,13 @@ some errors, the alignment of one or a few sequences to the entire group is more
 likely to be correct. The MSA program that we will use in this lab, Clustal Omega,
 uses this enhanced progressive alignment strategy.
 
-# 8.3 Before Lab Questions
+# 8.3 Before Lab Questions {.unnumbered}
 
 -  What is meant by a progressive alignment?
 
 -  Why are progressive alignments not necessarily optimal?
 
-# 8.4 Resources and Materials
+# 8.4 Resources and Materials {.unnumbered}
 
 -  UniProt Blast search-http://www.Uniprot.org/blast/  Clustal Omega website-https://www.ebi.ac.uk/jdispatcher/msa/clustalo
 
@@ -1973,9 +1973,9 @@ uses this enhanced progressive alignment strategy.
 Guide trees are constructed using distance-based phylogenetics tree construction methods.
 Chapter 10 has more information on constructing trees.
 
-## 8.5 Activity 1: Editing Sequence Names
+## 8.5 Activity 1: Editing Sequence Names {.unnumbered}
 
-# 8.5 Activity 1: Editing Sequence Names
+# 8.5 Activity 1: Editing Sequence Names {.unnumbered}
 
 For the next activity, we need a set of sequences with a broad taxonomic range and
 meaningful names. Chapters 6 and 7 explain how to select groups of sequences from
@@ -2032,7 +2032,7 @@ Gammaproteobacteria, so I might use a name like gprot_ae_salmonica, producing.
 
 Modified sequence ID lines (GenBank and UniProt) | &gt;gprot_ae_salmonica ABO92624.1 putative sulfatase (plasmid) | [Aeromonas salmonicida subsp. salmonicida A449] | &gt;gprot_ae_salmonica tr|A4SUQ2|A4SUQ2_AERS4 Putative sulfatase | OS = Aeromonas salmonicida (strain A449). | Notebook | Record the IDs (accession numbers) and the modified IDs in | notebook.
 
-# 8.6 Activity 2: Constructing a MSA
+# 8.6 Activity 2: Constructing a MSA {.unnumbered}
 
 We will use the Clustal Omega program to make a MSA. Clustal Omega2
 is a
@@ -2055,7 +2055,7 @@ and change the value of the "NUMBER of COMBINED ITERATIONS to
 Madeira F, Madhusoodanan N, Lee J, et al. The EMBL-EBI Job Dispatcher sequence analysis
 tools framework in 2024. Nucleic Acids Research. 2024 July;52(W1):W521-W525.
 
-## 8.6 Activity 2: Constructing a MSA
+## 8.6 Activity 2: Constructing a MSA {.unnumbered}
 
 Fig. 8.1 Clustal omega homepage (https://www.ebi.ac.uk/jdispatcher/msa/clustalo). Red box
 shows optional parameters to change
@@ -2121,11 +2121,11 @@ visualization programs. At the bottom of the Phylogenetic tree, there is a visua
 tion of tree. Unfortunately, large trees are often truncated. We'll look at other tree
 visualizations in Chap. 10.
 
-## 8.7 Activity 3: Visualizing MSA with MView
+## 8.7 Activity 3: Visualizing MSA with MView {.unnumbered}
 
 Fig. 8.3 Part of the phylogenetic tree from ClustalOmega in Newick text format
 
-# 8.7 Activity 3: Visualizing MSA with MView
+# 8.7 Activity 3: Visualizing MSA with MView {.unnumbered}
 
 The Results Viewers tab gives you several options for visualizing the alignment and
 phylogenetic tree. The options on this page actually run additional analysis programs
@@ -2158,7 +2158,7 @@ into blocks and colored (Fig. 8.4). Take particular note of the four lines at th
 bottom of each block where amino acid residues common to 100%, 90%, 80%,
 and 70% of the sequences are shown.
 
-# 8.8 Activity 4: Create a Sequence Logo Using the WebLogo 3 Website
+# 8.8 Activity 4: Create a Sequence Logo Using the WebLogo 3 Website {.unnumbered}
 
 In a sequence logo, the size of the letters represents the conservation of each amino
 acid residue at each position. The highly conserved positions, at which one residue
@@ -2174,12 +2174,12 @@ to see how they work (Fig. 8.5).
 Crooks GE, Hon G, Chandonia JM, Brenner SE WebLogo: A sequence logo generator, Genome
 Research, 14:1188-1190, (2004).
 
-## 8.9 Analysis/Notebook
+## 8.9 Analysis/Notebook {.unnumbered}
 
 Fig. 8.5 Sequence logo of the colistin MSA (partial results). The region shown corresponds to the
 region shown in the Mview result. Notice how much more compact the logo is
 
-# 8.9 Analysis/Notebook
+# 8.9 Analysis/Notebook {.unnumbered}
 
 Record the accession numbers of the sequences used in your multiple
 sequence alignment, as well as the total number of sequences.
@@ -2226,7 +2226,7 @@ ulatory elments such as transcriptional promoters and terminators. In this chapt
 will identify the conserved sequence motifs and examine the relationship between
 the protein's three-dimensional structure and conserved sequence motifs.
 
-# 9.1 Objectives
+# 9.1 Objectives {.unnumbered}
 
 -  Identify protein functional motifs using a variety of motif identification resources.
 
@@ -2234,7 +2234,7 @@ the protein's three-dimensional structure and conserved sequence motifs.
 
 -  Compare conserved motifs to the three-dimensional structure of the protein.
 
-# 9.2 Background
+# 9.2 Background {.unnumbered}
 
 The dictionary definition of a motif is "a recurrent thematic element in an artistic or
 literary work." We use motif similarly when we talk about protein sequences and
@@ -2299,7 +2299,7 @@ for identifying them in large texts (such as genome databases).
 Position-specific scoring matrices (PSSM), also known as position weight matri-
 ces or profiles, can represent all consensus sequences and RE, making them the most
 
-## 9.2 Background
+## 9.2 Background {.unnumbered}
 
 inclusive pattern description. In fact, they retain all first-order information (informa-
 tion that belongs to single residues rather than pairs or larger groups). PSSM can be
@@ -2392,7 +2392,7 @@ environment to the core of the protein, this cage of water is released, thereby 
 This positive entropy change has been called the hydrophobic effect and is one of the main driving
 forces of protein folding.
 
-## 9.2 Background
+## 9.2 Background {.unnumbered}
 
 A second constraint arises due to the tight packing of the protein interior-a
 mutation that substitutes a large residue for a small residue, or vice versa, in the core
@@ -2445,7 +2445,7 @@ use the NCBI iCn3D structure viewer to compare the sequence and structure of the
 Mcr-1 protein. This viewer has the advantage of running directly from a web
 browser. You will perform a similar analysis using one of your aoi proteins.
 
-# 9.3 Before Lab Questions
+# 9.3 Before Lab Questions {.unnumbered}
 
 -  What are sequence motifs? Why are they important?
 
@@ -2455,13 +2455,13 @@ browser. You will perform a similar analysis using one of your aoi proteins.
 
 -  Where in a protein are hydrophobic amino acid residues found?
 
-# 9.4 Resources and Materials
+# 9.4 Resources and Materials {.unnumbered}
 
 -  NCBI/Blast website: https://blast.ncbi.nlm.nih.gov/Blast.cgi
 
 -  InterPro website: https://ebi.ac.uk/interpro/
 
-## 9.5 Activity 1: Identify Sequence Motifs Using CDD
+## 9.5 Activity 1: Identify Sequence Motifs Using CDD {.unnumbered}
 
 -  Eggnog website: http://eggnog6.embl.de
 
@@ -2471,7 +2471,7 @@ browser. You will perform a similar analysis using one of your aoi proteins.
 
 -  Protein sequence of your aoi.
 
-# 9.5 Activity 1: Identify Sequence Motifs Using CDD
+# 9.5 Activity 1: Identify Sequence Motifs Using CDD {.unnumbered}
 
 Use the Blast protein search you performed earlier (Chap. 6) for this section. You
 may be able to find your previous result by clicking the Recent Results tab, but if not,
@@ -2520,7 +2520,7 @@ strength of the match), the molecular function, and the beginning and ending
 
 (continued)
 
-## 9.6 Activity 2: Identify Motifs Using InterPro
+## 9.6 Activity 2: Identify Motifs Using InterPro {.unnumbered}
 
 Fig. 9.5 InterProScan submission page (https://www.ebi.ac.uk/interpro/)
 
@@ -2530,7 +2530,7 @@ regions of the aoi protein related to different conserved domains, or are the
 multiple hits in the same region? What would each of these possibilities
 indicate?
 
-# 9.6 Activity 2: Identify Motifs Using InterPro
+# 9.6 Activity 2: Identify Motifs Using InterPro {.unnumbered}
 
 Step 1: Open the InterProScan3
 submission page (Fig. 9.5), and copy your aoi
@@ -2550,7 +2550,7 @@ Fig. 9.6 InterProScan Results page
 
 -  Domain-Matches to known protein domains. Domains are typically autono- mous regions of genes/proteins that are capable of functioning on their own.  Homologous superfamilies-Gene/protein families that share the same domain structure.  Unintegrated-As InterPro grows, new motifs/domains are added and their annotations are integrated with known features. Unintegrated simply indicates that the features are present but not yet integrated.
 
-## 9.6 Activity 2: Identify Motifs Using InterPro
+## 9.6 Activity 2: Identify Motifs Using InterPro {.unnumbered}
 
 -  Other features-The main information in this area is predicted transmembrane regions, with the corresponding predications of the external and cytoplasmic regions of the protein, and predicted signal peptides (which target proteins for export from this cell). These predictions are highly reliable and provide useful information about the location of the protein in the cell.
 
@@ -2586,7 +2586,7 @@ suggest a possible origin for your aoi protein?
 
 Fig. 9.7 EggNOG sequence search submission page (http://eggnog6.embl.de)
 
-# 9.7 Activity 3: Identify Colistin Resistance-Related Proteins Using EggNOG
+# 9.7 Activity 3: Identify Colistin Resistance-Related Proteins Using EggNOG {.unnumbered}
 
 Eggnog is a database of proteins computationally predicted to be orthologs. Eggnog
 v6.0 (April 2024) contains 17 million orthologous protein groups derived from
@@ -2619,7 +2619,7 @@ Christian von Mering, Jaime Huerta-Cepas, eggNOG 6.0: enabling comparative genom
 12,535 organisms, Nucleic Acids Research, Volume 51, Issue D1, 6 January 2023, Pages D389-
 D394.
 
-## 9.7 Activity 3: Identify Colistin Resistance-Related Proteins Using EggNOG
+## 9.7 Activity 3: Identify Colistin Resistance-Related Proteins Using EggNOG {.unnumbered}
 
 Fig. 9.8 EggNog search results
 
@@ -2656,7 +2656,7 @@ in Chap. 10.
 
 Notebook | Include the phylogenetic tree/functional domain diagram in your notebook. | Note that you can control the appearance of the tree using the Control panel | button. You will probably have to shrink the tree considerably to make it fit. | What pattern do you expect for a gene/protein that is being inherited vertically | (i.e., by normal parent-to-child inheritance)? Is this the pattern you see? | Include specific examples. | Do all major branches of the tree match the same functional domains? What | does this indicate about the function of the protein across the whole | orthologous group? | Step 5: Return to the main result page and select Functional pro fi le. The | profile tabulates the number of times each functional domain is found across | entire functional group. Domains that occur in a majority of orthologs are | ones that most strongly associated with the group. | Notebook | Record the functional domains most associated with this orthologous group | and the percentage of group members they are found in. | Compare and discuss the results obtained with InterPro, CDD, and Egg- | NOG. Make a table summarizing the residue positions and likely functions | associated with the different parts of the sequence. | Are they consistent with each other? Which features/motifs/domains are | unique to only one of the resources used.
 
-# 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure
+# 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure {.unnumbered}
 
 The structure and function of proteins places a strong evolutionary constraint on the
 evolution of proteins. These constraints are the origin of the conserved sequence
@@ -2665,7 +2665,7 @@ ship between the protein's three-dimensional structure and conserved sequence
 motifs. Since the most conserved regions detected in the multiple sequence align-
 ment correspond to the most functionally important regions of the protein, we are
 
-## 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure
+## 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure {.unnumbered}
 
 interested to know if they correspond to any of the sequence motifs. We will walk
 you through the process of comparing the conserved regions in the MSA with the
@@ -2747,7 +2747,7 @@ or by left clicking and moving the mouse across the sequence in the right panel.
 that molecular surfaces are computationally intensive to calculate and rotation will
 be very jerky (suggestion: don't calculate surfaces until you have your final view set
 
-## 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure
+## 9.8 Activity 4: Comparing Motifs with the Three-Dimensional Structure {.unnumbered}
 
 up). Other visualizations, such as showing active site residues as ball and stick
 models don't effect rotation. Several built-in selections are particularly useful: Main
@@ -2829,7 +2829,7 @@ protein. If nothing is known about the catalytic mechanism of your aoi, are the
 conserved regions grouped in the three dimensional structure (this might be the
 location of the protein active site).
 
-# 9.9 Analysis/Notebook
+# 9.9 Analysis/Notebook {.unnumbered}
 
 -  Record the amino acid residues within 6 Å of the active site of your aoi and whether these correspond to any of the conserved sequence regions. Con- vert the numbering of the amino acids to agree with the complete aoi protein sequence, not the numbering shown by iCn3D. Do the same for any other important molecules in the structure, such as the sorbitol of Zn atoms in the MCR-1 structure.
 
@@ -2851,7 +2851,7 @@ makes the construction of the tree simpler. We will use a simple distance-based
 method for tree construction. When the sequences from very distant species are
 closer in the tree than they should be, it is good evidence for horizontal gene transfer.
 
-# 10.1 Objectives
+# 10.1 Objectives {.unnumbered}
 
 -  Understand basic distance-based methods for tree construction.
 
@@ -2863,7 +2863,7 @@ closer in the tree than they should be, it is good evidence for horizontal gene 
 
 feature of
 
-# 10.2 Background
+# 10.2 Background {.unnumbered}
 
 Phenetic and Cladistic Trees
 One of the long-term goals of biology has been to produce the tree of life-a diagram
@@ -2927,7 +2927,7 @@ Step 2: An MSA will be constructed based on the protein sequences. This alignmen
 allows us to calculate the distance between each pair of sequences. The distance
 can be simply the number of positions at which the aligned sequences differ.
 
-## 10.2 Background
+## 10.2 Background {.unnumbered}
 
 Fig. 10.1 Construction of a distance-based tree. The top row shows the original distance matrix
 (based on nucleotide differences between aligned hemoglobin sequences) and the updated distance
@@ -3014,7 +3014,7 @@ While these newer methods are powerful, using them requires considerable theoret
 putational expertise. In spite of their less sophisticated approach, thousands of papers using distance
 methods appear every year.
 
-## 10.2 Background
+## 10.2 Background {.unnumbered}
 
 Fig. 10.2 Known taxonomy of bacteria. The tree was made by AnnoTree (http://annotree.
 uwaterloo.ca/annotree/app/). The parameter settings producing this figure: resolution level is
@@ -3056,7 +3056,7 @@ shows an abbreviated taxonomy for bacteria. Nearly all of these groups are known
 have the MCR-1 protein. Since there are only about 55 families, it is quite feasible to
 identify a MCR-1 protein sequence from each family.
 
-# 10.3 Before Lab Questions
+# 10.3 Before Lab Questions {.unnumbered}
 
 Using the introductory material and/or online resources, define the following:
 
@@ -3072,7 +3072,7 @@ Answer the following questions:
 
 2. Why is the traditional Linnaean classification not considered cladistic?
 
-# 10.4 Resources and Materials
+# 10.4 Resources and Materials {.unnumbered}
 
 -  Relabeled protein sequences for aoi from Chap. 8.
 
@@ -3090,12 +3090,12 @@ Answer the following questions:
 
 10 Building a Phylogenetic Tree
 
-## 10.5 Activity 1: Constructing the Phylogenetic Tree
+## 10.5 Activity 1: Constructing the Phylogenetic Tree {.unnumbered}
 
 Fig. 10.3 Simple Phylogeny submission page (https://www.ebi.ac.uk/jdispatcher/phylogeny/
 simple_phylogeny)
 
-# 10.5 Activity 1: Constructing the Phylogenetic Tree
+# 10.5 Activity 1: Constructing the Phylogenetic Tree {.unnumbered}
 
 We will use the Simple Phylogeny program3
 
@@ -3126,7 +3126,7 @@ program shows a visualization of the tree but, at least in my case, was squashed
 very narrow space; it was hard to make out the details. To get an easier-to-analyze
 tree, select and copy the Newick tree and proceed to the next activity.
 
-# 10.6 Activity 2: Visualizing the Phylogenetic Tree
+# 10.6 Activity 2: Visualizing the Phylogenetic Tree {.unnumbered}
 
 To examine our tree, we will visualize it using an online program called TreeDyn.
 Paste the Newick-formatted version of your tree into the box and press select. You
@@ -3148,7 +3148,7 @@ Dereeper A, Guignon V, Blanc G, Audic S, Buffet S, Chevenet F, Dufayard JF, Guin
 Lefort V, Lescot M, Claverie JM, Gascuel O. Phylogeny.fr: robust phylogenetic analysis for the
 non-specialist. Nucleic Acids Res. 2008 July 1;36(Web Server issue):W465-W469.
 
-## 10.6 Activity 2: Visualizing the Phylogenetic Tree
+## 10.6 Activity 2: Visualizing the Phylogenetic Tree {.unnumbered}
 
 Fig. 10.5 Sample annotated tree. Taxa marked in red are misplaced in the tree. Taxonomic groups
 were assigned by inspection. For instance, Bacilli and Acinetobacter lie outside the Proteobacteria
@@ -3201,7 +3201,7 @@ certain programming skills and statistical knowledge; we will introduce the basi
 steps in RNA-seq analysis, the multiple testing problem, and how to analyze the
 differentially expressed genes in R software in this chapter.
 
-# 11.1 Objectives
+# 11.1 Objectives {.unnumbered}
 
 -  To become familiar with the workflow of RNA-seq.
 
@@ -3209,7 +3209,7 @@ differentially expressed genes in R software in this chapter.
 
 -  To apply DESeq2 package to identify differentially expressed genes.
 
-# 11.2 Background
+# 11.2 Background {.unnumbered}
 
 Messenger RNA is translated into proteins and the levels of many proteins are
 determined by the amount of mRNA that is present. In higher eukaryotic organisms,
@@ -3264,7 +3264,7 @@ After the expression level of each gene or transcript is determined, we use
 statistical analysis to identify differentially expressed genes (DEG) or isoforms
 (step 4). Many statistical methods have been proposed; some of the most commonly
 
-## 11.2 Background
+## 11.2 Background {.unnumbered}
 
 used include edgeR,1
 DESeq2,2
@@ -3349,9 +3349,9 @@ An example of volcano plot. Genes that are differentially expressed are labeled 
 Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA-seq
 data with DESeq2. Genome Biol. 2014;15(12):550. https://doi.org/10.1186/s13059-014-0550-8.
 
-## 11.5 Activity 1: Read Data
+## 11.5 Activity 1: Read Data {.unnumbered}
 
-# 11.3 Before Lab Questions
+# 11.3 Before Lab Questions {.unnumbered}
 
 Using the introductory material and/or online resources, define the following:
 
@@ -3365,13 +3365,13 @@ Using the introductory material and/or online resources, define the following:
 
 5. Adjusted P-value
 
-# 11.4 Resources and Materials
+# 11.4 Resources and Materials {.unnumbered}
 
 -  R software (for downloading and installing R, https://www.r-project.org).
 
 -  DESeq2 packages (this is the link for installing the package https://www. bioconductor.org/packages/release/bioc/html/DESeq2.html).  A count matrix: raw.genes.matrix (supplemental file 4).
 
-# 11.5 Activity 1: Read Data
+# 11.5 Activity 1: Read Data {.unnumbered}
 
 Open R console and type below commands
 
@@ -3399,15 +3399,15 @@ mycountData <- round(data1, digits=0)
 
 head(mycountData)
 
-# 11 Gene Expression Analysis Using RNA-Seq Data
+# 11 Gene Expression Analysis Using RNA-Seq Data {.unnumbered}
 
-# 11.6 Activity 2: Use DESeq2 to Identify DEG with Single-Factor Design
+# 11.6 Activity 2: Use DESeq2 to Identify DEG with Single-Factor Design {.unnumbered}
 
 # DESeq2 | # http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html | # Please follow the instructions from the link above to install the DESeq2 package | # after installation, load the package | library(DESeq2) | # give the conditions for each column, in our example data, the first three are control groups, | then three experimental groups | mycolData &lt;- data.frame(row.names = colnames( mycountData ), condition = | c( "control","control","control","exp","exp","exp" )) | # generate the data object with the experimental design | mydds &lt;- DESeqDataSetFromMatrix(countData = mycountData, colData = mycolData, | design = ~condition) | # pre-filtering, filter the genes that have too few reads | sumcontrol&lt;- rowSums(mycountData[,1:3]) | sumexp &lt;- rowSums(mycountData[,4:6]) | plot(log10(sumcontrol),log10(sumexp)) | # from the plot, you can see there are some genes that have the reads only in one condition, | since we used log10 as the base, in our case, the pre-filtering threshold is set as 100 | mydds &lt;- mydds[ rowSums(counts(mydds)) &gt; 100, ] | mydds$condition &lt;- factor(mydds$condition, levels=c("control","exp")) | mydds &lt;- DESeq(mydds) | myres &lt;- results(mydds) | head(myres) | # Determine threshold, which means how many differentially expressed genes (DEG) will be | kept. We use a combination of adjusted P-value and Log2FC as the filtering conditions. | Sometimes, the number of DEG can be thousands, sometimes only 10 or 20, it depends on the | experimental design and sequencing results. There is no standard or fixed threshold for DEG, | therefore, we need to try different thresholds to see which one gives the reasonable number of | DEG. | resSig &lt;- subset(myres, (padj &lt;= 0.05 &amp; abs(log2FoldChange) &gt;= 1)) | dim(resSig) | # it shows this | # [1] 472 6 | resdata &lt;- merge(as.data.frame(resSig), as.data.frame(counts(mydds, | normalized=FALSE)),by="row.names",sort=FALSE) | head(resdata) | # save results in a file called DEG.csv | write.table(resdata,file="/PathToData/DEG.csv",sep=",")
 
 Further Reading
 
-# 11.7 Activity 3: Plot a Volcano Plot
+# 11.7 Activity 3: Plot a Volcano Plot {.unnumbered}
 
 plot(myres$log2FoldChange , -log10(myres$padj)) | # x axis: log -fold change (biological significance) | # y axis: -log10(adjusted p-value) (statistical significance) | 11.8 Analysis/Notebook |  In the determine threshold step, use different padj and log2FoldChange | mthresholds and compare the results. Make a table of the number of | positive and negative DEG you see with different thresholds? What | should the threshold be? Explain your reasoning |  The volcano plot is simple; please modify the settings such as adding axis | label or changing font size, you may use "?plot" in R for help or try | "ggplot2" package, and produce a nicer volcano plot.
 
@@ -3465,7 +3465,7 @@ https://doi.org/10.1007/978-981-96-7949-2_12
 
 12 Machine Learning Methods in RNA-Seq
 
-# 12.1 Objectives
+# 12.1 Objectives {.unnumbered}
 
 -  Know the difference between supervised learning and unsupervised learning.
 
@@ -3473,7 +3473,7 @@ https://doi.org/10.1007/978-981-96-7949-2_12
 
 -  Learn how to perform cluster and principal component analysis in R.
 
-# 12.2 Background
+# 12.2 Background {.unnumbered}
 
 In the era of big data, machine learning has become a very important and critical
 supporting technology for data analysis and data mining. With the explosion of data,
@@ -3512,7 +3512,7 @@ Cluster Analysis
 In cluster analysis, we group items based on a feature vector - a vector of measure-
 ments of properties for each item in the analysis. For genes, the feature vector is the
 
-## 12.2 Background
+## 12.2 Background {.unnumbered}
 
 expression level of the gene across the studied conditions. For samples, the feature
 vector is the relative expression of each observable gene under each condition. These
@@ -3615,7 +3615,7 @@ frequently contain many highly correlated elements. In a gene expression experi-
 ment these would be sets of genes that respond similarly to the treatment. In a typical
 differential gene expression analysis, many genes may have relative expression
 
-## 12.2 Background
+## 12.2 Background {.unnumbered}
 
 levels that are similar across all experimental conditions. This distorts the pattern
 seen in clustering because the expression values are not independent, and the
@@ -3672,7 +3672,7 @@ that best distinguish the treatment groups, while the heavily weighted genes tha
 define axis 2 do not. The total variance explained by the first two principal compo-
 nents is 93%, which indicates a good capture of the variances.
 
-# 12.3 Before Lab Questions
+# 12.3 Before Lab Questions {.unnumbered}
 
 Using the introductory material and/or online resources, define the following:
 
@@ -3682,13 +3682,13 @@ Using the introductory material and/or online resources, define the following:
 
 3. Hierarchical cluster
 
-# 12.4 Resources and Materials
+# 12.4 Resources and Materials {.unnumbered}
 
 -  R software.
 
 -  A raw count matrix: raw.genes.matrix (supplemental file 4).  A DEG matrix with counts: DEG.csv (supplemental file 5).
 
-# 12.8 Analysis/Notebook
+# 12.8 Analysis/Notebook {.unnumbered}
 
 12 Machine Learning Methods in RNA-Seq
 
