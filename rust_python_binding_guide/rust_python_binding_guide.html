@@ -440,47 +440,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#프로젝트별-코드-심층-분석" id="toc-프로젝트별-코드-심층-분석" class="nav-link" data-scroll-target="#프로젝트별-코드-심층-분석"><span class="header-section-number">23</span> 프로젝트별 코드 심층 분석</a>
   <ul class="collapse">
-  <li><a href="#string_sum---기본-함수-및-서브모듈-구성" id="toc-string_sum---기본-함수-및-서브모듈-구성" class="nav-link" data-scroll-target="#string_sum---기본-함수-및-서브모듈-구성"><span class="header-section-number">23.1</span> 1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</a>
+  <li><a href="#string_sum---기본-함수-및-서브모듈-구성" id="toc-string_sum---기본-함수-및-서브모듈-구성" class="nav-link" data-scroll-target="#string_sum---기본-함수-및-서브모듈-구성">1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</a>
   <ul class="collapse">
-  <li><a href="#rust-소스-코드-string_sumsrclib.rs" id="toc-rust-소스-코드-string_sumsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.1.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</a></li>
-  <li><a href="#코드-분석-및-주요-포인트" id="toc-코드-분석-및-주요-포인트" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트"><span class="header-section-number">23.1.2</span> 코드 분석 및 주요 포인트</a></li>
+  <li><a href="#rust-소스-코드-string_sumsrclib.rs" id="toc-rust-소스-코드-string_sumsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.0.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트" id="toc-코드-분석-및-주요-포인트" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트"><span class="header-section-number">23.0.2</span> 코드 분석 및 주요 포인트</a></li>
   </ul></li>
-  <li><a href="#fibonacci---연산-성능-가속-비교" id="toc-fibonacci---연산-성능-가속-비교" class="nav-link" data-scroll-target="#fibonacci---연산-성능-가속-비교"><span class="header-section-number">23.2</span> 2. <code>fibonacci</code> - 연산 성능 가속 비교</a>
+  <li><a href="#fibonacci---연산-성능-가속-비교" id="toc-fibonacci---연산-성능-가속-비교" class="nav-link" data-scroll-target="#fibonacci---연산-성능-가속-비교">2. <code>fibonacci</code> - 연산 성능 가속 비교</a>
   <ul class="collapse">
-  <li><a href="#rust-소스-코드-fibonaccisrclib.rs" id="toc-rust-소스-코드-fibonaccisrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.2.1</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</a></li>
-  <li><a href="#python-벤치마크-스크립트-fibonaccimain.py" id="toc-python-벤치마크-스크립트-fibonaccimain.py" class="nav-link" data-scroll-target="#python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.2.2</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</a></li>
-  <li><a href="#코드-분석-및-주요-포인트-1" id="toc-코드-분석-및-주요-포인트-1" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-1"><span class="header-section-number">23.2.3</span> 코드 분석 및 주요 포인트</a></li>
+  <li><a href="#rust-소스-코드-fibonaccisrclib.rs" id="toc-rust-소스-코드-fibonaccisrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.0.3</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</a></li>
+  <li><a href="#python-벤치마크-스크립트-fibonaccimain.py" id="toc-python-벤치마크-스크립트-fibonaccimain.py" class="nav-link" data-scroll-target="#python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.0.4</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트-1" id="toc-코드-분석-및-주요-포인트-1" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-1"><span class="header-section-number">23.0.5</span> 코드 분석 및 주요 포인트</a></li>
   </ul></li>
-  <li><a href="#guessing-game---표준-입출력-및-외부-크레이트-연동" id="toc-guessing-game---표준-입출력-및-외부-크레이트-연동" class="nav-link" data-scroll-target="#guessing-game---표준-입출력-및-외부-크레이트-연동"><span class="header-section-number">23.3</span> 3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</a>
+  <li><a href="#guessing-game---표준-입출력-및-외부-크레이트-연동" id="toc-guessing-game---표준-입출력-및-외부-크레이트-연동" class="nav-link" data-scroll-target="#guessing-game---표준-입출력-및-외부-크레이트-연동">3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</a>
   <ul class="collapse">
-  <li><a href="#rust-소스-코드-guessing-gamesrclib.rs" id="toc-rust-소스-코드-guessing-gamesrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.3.1</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</a></li>
-  <li><a href="#코드-분석-및-주요-포인트-2" id="toc-코드-분석-및-주요-포인트-2" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-2"><span class="header-section-number">23.3.2</span> 코드 분석 및 주요 포인트</a></li>
+  <li><a href="#rust-소스-코드-guessing-gamesrclib.rs" id="toc-rust-소스-코드-guessing-gamesrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.0.6</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트-2" id="toc-코드-분석-및-주요-포인트-2" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-2"><span class="header-section-number">23.0.7</span> 코드 분석 및 주요 포인트</a></li>
   </ul></li>
-  <li><a href="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" id="toc-gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="nav-link" data-scroll-target="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩"><span class="header-section-number">23.4</span> 4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</a>
+  <li><a href="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" id="toc-gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="nav-link" data-scroll-target="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩">4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</a>
   <ul class="collapse">
-  <li><a href="#rust-소스-코드-gilsrclib.rs" id="toc-rust-소스-코드-gilsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.4.1</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</a></li>
-  <li><a href="#python-동시성-테스트-gilmain.py" id="toc-python-동시성-테스트-gilmain.py" class="nav-link" data-scroll-target="#python-동시성-테스트-gilmain.py"><span class="header-section-number">23.4.2</span> Python 동시성 테스트 (<code>gil/main.py</code>)</a></li>
-  <li><a href="#핵심-메커니즘" id="toc-핵심-메커니즘" class="nav-link" data-scroll-target="#핵심-메커니즘"><span class="header-section-number">23.4.3</span> 핵심 메커니즘</a></li>
+  <li><a href="#rust-소스-코드-gilsrclib.rs" id="toc-rust-소스-코드-gilsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.0.8</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</a></li>
+  <li><a href="#python-동시성-테스트-gilmain.py" id="toc-python-동시성-테스트-gilmain.py" class="nav-link" data-scroll-target="#python-동시성-테스트-gilmain.py"><span class="header-section-number">23.0.9</span> Python 동시성 테스트 (<code>gil/main.py</code>)</a></li>
+  <li><a href="#핵심-메커니즘" id="toc-핵심-메커니즘" class="nav-link" data-scroll-target="#핵심-메커니즘"><span class="header-section-number">23.0.10</span> 핵심 메커니즘</a></li>
   </ul></li>
-  <li><a href="#quiver-pdb---대용량-단백질-데이터-파서-python-cli" id="toc-quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="nav-link" data-scroll-target="#quiver-pdb---대용량-단백질-데이터-파서-python-cli"><span class="header-section-number">23.5</span> 5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</a>
+  <li><a href="#quiver-pdb---대용량-단백질-데이터-파서-python-cli" id="toc-quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="nav-link" data-scroll-target="#quiver-pdb---대용량-단백질-데이터-파서-python-cli">5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</a>
   <ul class="collapse">
-  <li><a href="#구조체-설계-및-구현-quiver-pdbsrclib.rs" id="toc-구조체-설계-및-구현-quiver-pdbsrclib.rs" class="nav-link" data-scroll-target="#구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.5.1</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</a></li>
-  <li><a href="#python-click-cli-통합-qvsplit.py-예시" id="toc-python-click-cli-통합-qvsplit.py-예시" class="nav-link" data-scroll-target="#python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.5.2</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</a></li>
-  <li><a href="#프로젝트-특징" id="toc-프로젝트-특징" class="nav-link" data-scroll-target="#프로젝트-특징"><span class="header-section-number">23.5.3</span> 프로젝트 특징</a></li>
+  <li><a href="#구조체-설계-및-구현-quiver-pdbsrclib.rs" id="toc-구조체-설계-및-구현-quiver-pdbsrclib.rs" class="nav-link" data-scroll-target="#구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.0.11</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</a></li>
+  <li><a href="#python-click-cli-통합-qvsplit.py-예시" id="toc-python-click-cli-통합-qvsplit.py-예시" class="nav-link" data-scroll-target="#python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.0.12</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</a></li>
+  <li><a href="#프로젝트-특징" id="toc-프로젝트-특징" class="nav-link" data-scroll-target="#프로젝트-특징"><span class="header-section-number">23.0.13</span> 프로젝트 특징</a></li>
   </ul></li>
-  <li><a href="#polodb-python---임베디드-nosql-데이터베이스-바인딩" id="toc-polodb-python---임베디드-nosql-데이터베이스-바인딩" class="nav-link" data-scroll-target="#polodb-python---임베디드-nosql-데이터베이스-바인딩"><span class="header-section-number">23.6</span> 6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</a>
+  <li><a href="#polodb-python---임베디드-nosql-데이터베이스-바인딩" id="toc-polodb-python---임베디드-nosql-데이터베이스-바인딩" class="nav-link" data-scroll-target="#polodb-python---임베디드-nosql-데이터베이스-바인딩">6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</a>
   <ul class="collapse">
-  <li><a href="#아키텍처-다이어그램" id="toc-아키텍처-다이어그램" class="nav-link" data-scroll-target="#아키텍처-다이어그램"><span class="header-section-number">23.6.1</span> 아키텍처 다이어그램</a></li>
-  <li><a href="#타입-변환기-srchelper_type_translator.rs" id="toc-타입-변환기-srchelper_type_translator.rs" class="nav-link" data-scroll-target="#타입-변환기-srchelper_type_translator.rs"><span class="header-section-number">23.6.2</span> 1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</a></li>
-  <li><a href="#데이터베이스-컬렉션-래퍼-srcpy_database.rs" id="toc-데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="nav-link" data-scroll-target="#데이터베이스-컬렉션-래퍼-srcpy_database.rs"><span class="header-section-number">23.6.3</span> 2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</a></li>
-  <li><a href="#pythonic-래퍼-인터페이스-polodbcore.py" id="toc-pythonic-래퍼-인터페이스-polodbcore.py" class="nav-link" data-scroll-target="#pythonic-래퍼-인터페이스-polodbcore.py"><span class="header-section-number">23.6.4</span> 3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</a></li>
+  <li><a href="#아키텍처-다이어그램" id="toc-아키텍처-다이어그램" class="nav-link" data-scroll-target="#아키텍처-다이어그램"><span class="header-section-number">23.0.14</span> 아키텍처 다이어그램</a></li>
+  <li><a href="#타입-변환기-srchelper_type_translator.rs" id="toc-타입-변환기-srchelper_type_translator.rs" class="nav-link" data-scroll-target="#타입-변환기-srchelper_type_translator.rs">1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</a></li>
+  <li><a href="#데이터베이스-컬렉션-래퍼-srcpy_database.rs" id="toc-데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="nav-link" data-scroll-target="#데이터베이스-컬렉션-래퍼-srcpy_database.rs">2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</a></li>
+  <li><a href="#pythonic-래퍼-인터페이스-polodbcore.py" id="toc-pythonic-래퍼-인터페이스-polodbcore.py" class="nav-link" data-scroll-target="#pythonic-래퍼-인터페이스-polodbcore.py">3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#pyo3-개발-모범-사례-best-practices" id="toc-pyo3-개발-모범-사례-best-practices" class="nav-link" data-scroll-target="#pyo3-개발-모범-사례-best-practices"><span class="header-section-number">24</span> PyO3 개발 모범 사례 (Best Practices)</a>
   <ul class="collapse">
-  <li><a href="#rust-python-데이터-복사-비용-최소화" id="toc-rust-python-데이터-복사-비용-최소화" class="nav-link" data-scroll-target="#rust-python-데이터-복사-비용-최소화"><span class="header-section-number">24.1</span> 1. Rust-Python 데이터 복사 비용 최소화</a></li>
-  <li><a href="#gil-스코프-최소화" id="toc-gil-스코프-최소화" class="nav-link" data-scroll-target="#gil-스코프-최소화"><span class="header-section-number">24.2</span> 2. GIL 스코프 최소화</a></li>
-  <li><a href="#명확한-예외-매핑" id="toc-명확한-예외-매핑" class="nav-link" data-scroll-target="#명확한-예외-매핑"><span class="header-section-number">24.3</span> 3. 명확한 예외 매핑</a></li>
+  <li><a href="#rust-python-데이터-복사-비용-최소화" id="toc-rust-python-데이터-복사-비용-최소화" class="nav-link" data-scroll-target="#rust-python-데이터-복사-비용-최소화">1. Rust-Python 데이터 복사 비용 최소화</a></li>
+  <li><a href="#gil-스코프-최소화" id="toc-gil-스코프-최소화" class="nav-link" data-scroll-target="#gil-스코프-최소화">2. GIL 스코프 최소화</a></li>
+  <li><a href="#명확한-예외-매핑" id="toc-명확한-예외-매핑" class="nav-link" data-scroll-target="#명확한-예외-매핑">3. 명확한 예외 매핑</a></li>
   </ul></li>
   <li><a href="#요약-summary" id="toc-요약-summary" class="nav-link" data-scroll-target="#요약-summary"><span class="header-section-number">25</span> 요약 (Summary)</a></li>
   </ul>
@@ -630,11 +630,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="프로젝트별-코드-심층-분석" class="level1" data-number="23">
 <h1 data-number="23"><span class="header-section-number">23</span> 프로젝트별 코드 심층 분석</h1>
-<section id="string_sum---기본-함수-및-서브모듈-구성" class="level2" data-number="23.1">
-<h2 data-number="23.1" class="anchored" data-anchor-id="string_sum---기본-함수-및-서브모듈-구성"><span class="header-section-number">23.1</span> 1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</h2>
+<section id="string_sum---기본-함수-및-서브모듈-구성" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="string_sum---기본-함수-및-서브모듈-구성">1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</h2>
 <p><code>string_sum</code> 프로젝트는 PyO3의 가장 기본적인 매크로와 서브모듈(Hierarchical Submodule)을 선언하는 방식을 보여줍니다.</p>
-<section id="rust-소스-코드-string_sumsrclib.rs" class="level3" data-number="23.1.1">
-<h3 data-number="23.1.1" class="anchored" data-anchor-id="rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.1.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</h3>
+<section id="rust-소스-코드-string_sumsrclib.rs" class="level3" data-number="23.0.1">
+<h3 data-number="23.0.1" class="anchored" data-anchor-id="rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.0.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 두 숫자의 합을 문자열(String)로 포맷팅하여 반환하는 함수</span></span>
@@ -682,8 +682,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"func"</span><span class="op">.</span>to_string()</span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="코드-분석-및-주요-포인트" class="level3" data-number="23.1.2">
-<h3 data-number="23.1.2" class="anchored" data-anchor-id="코드-분석-및-주요-포인트"><span class="header-section-number">23.1.2</span> 코드 분석 및 주요 포인트</h3>
+<section id="코드-분석-및-주요-포인트" class="level3" data-number="23.0.2">
+<h3 data-number="23.0.2" class="anchored" data-anchor-id="코드-분석-및-주요-포인트"><span class="header-section-number">23.0.2</span> 코드 분석 및 주요 포인트</h3>
 <ol type="1">
 <li><strong><code>#[pyfunction]</code></strong>: Rust 함수를 Python에서 호출 가능한 함수로 노출합니다. 반환값으로 <code>PyResult&lt;T&gt;</code>를 사용하여 에러 발생 시 Python 예외를 발생시킬 수 있습니다.</li>
 <li><strong><code>Bound&lt;'_, PyModule&gt;</code> (PyO3 v0.21+ / v0.24)</strong>: PyO3의 신규 메모리 관리 API로, GIL 수명주기와 안전하게 바인딩된 스마트 포인터입니다.</li>
@@ -693,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="fibonacci---연산-성능-가속-비교" class="level2" data-number="23.2">
-<h2 data-number="23.2" class="anchored" data-anchor-id="fibonacci---연산-성능-가속-비교"><span class="header-section-number">23.2</span> 2. <code>fibonacci</code> - 연산 성능 가속 비교</h2>
+<section id="fibonacci---연산-성능-가속-비교" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="fibonacci---연산-성능-가속-비교">2. <code>fibonacci</code> - 연산 성능 가속 비교</h2>
 <p><code>fibonacci</code> 프로젝트는 반복문 기반 피보나치 계산을 Rust로 작성하고, Python 순수 구현과의 실행 속도를 비교 측정합니다.</p>
-<section id="rust-소스-코드-fibonaccisrclib.rs" class="level3" data-number="23.2.1">
-<h3 data-number="23.2.1" class="anchored" data-anchor-id="rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.2.1</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</h3>
+<section id="rust-소스-코드-fibonaccisrclib.rs" class="level3" data-number="23.0.3">
+<h3 data-number="23.0.3" class="anchored" data-anchor-id="rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.0.3</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
@@ -722,8 +722,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="python-벤치마크-스크립트-fibonaccimain.py" class="level3" data-number="23.2.2">
-<h3 data-number="23.2.2" class="anchored" data-anchor-id="python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.2.2</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</h3>
+<section id="python-벤치마크-스크립트-fibonaccimain.py" class="level3" data-number="23.0.4">
+<h3 data-number="23.0.4" class="anchored" data-anchor-id="python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.0.4</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fibonacci <span class="im">import</span> fib <span class="im">as</span> rust_fib</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -752,8 +752,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> python_result <span class="op">==</span> rust_result, <span class="st">"계산 결과가 일치하지 않습니다!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="코드-분석-및-주요-포인트-1" class="level3" data-number="23.2.3">
-<h3 data-number="23.2.3" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-1"><span class="header-section-number">23.2.3</span> 코드 분석 및 주요 포인트</h3>
+<section id="코드-분석-및-주요-포인트-1" class="level3" data-number="23.0.5">
+<h3 data-number="23.0.5" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-1"><span class="header-section-number">23.0.5</span> 코드 분석 및 주요 포인트</h3>
 <ul>
 <li><strong>컴파일 최적화 효과</strong>: Rust의 <code>u64</code> 레지스터 직접 연산 및 루프 언롤링 최적화 덕분에 반복 연산에서 Python 대비 수십~수백 배 빠른 성능을 발휘합니다.</li>
 <li><strong>타입 자동 변환</strong>: Python의 정수형(<code>int</code>)은 Rust의 <code>u64</code>로 자동 역직렬화(Unmarshaling)되고, 반환 시 다시 Python 객체로 래핑됩니다.</li>
@@ -761,11 +761,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="guessing-game---표준-입출력-및-외부-크레이트-연동" class="level2" data-number="23.3">
-<h2 data-number="23.3" class="anchored" data-anchor-id="guessing-game---표준-입출력-및-외부-크레이트-연동"><span class="header-section-number">23.3</span> 3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</h2>
+<section id="guessing-game---표준-입출력-및-외부-크레이트-연동" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="guessing-game---표준-입출력-및-외부-크레이트-연동">3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</h2>
 <p><code>guessing-game</code>은 Rust 표준 라이브러리의 입출력(<code>std::io</code>) 및 외부 난수 생성 라이브러리(<code>rand</code>)를 사용하여, Python 프로세스 내에서 완전한 대화형 콘솔 게임을 실행합니다.</p>
-<section id="rust-소스-코드-guessing-gamesrclib.rs" class="level3" data-number="23.3.1">
-<h3 data-number="23.3.1" class="anchored" data-anchor-id="rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.3.1</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</h3>
+<section id="rust-소스-코드-guessing-gamesrclib.rs" class="level3" data-number="23.0.6">
+<h3 data-number="23.0.6" class="anchored" data-anchor-id="rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.0.6</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">rand::</span>Rng<span class="op">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>Ordering<span class="op">;</span></span>
@@ -812,8 +812,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
 <span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="코드-분석-및-주요-포인트-2" class="level3" data-number="23.3.2">
-<h3 data-number="23.3.2" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-2"><span class="header-section-number">23.3.2</span> 코드 분석 및 주요 포인트</h3>
+<section id="코드-분석-및-주요-포인트-2" class="level3" data-number="23.0.7">
+<h3 data-number="23.0.7" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-2"><span class="header-section-number">23.0.7</span> 코드 분석 및 주요 포인트</h3>
 <ul>
 <li><strong>I/O 스트림 공유</strong>: Rust 함수 내부에서 <code>println!</code>과 <code>io::stdin()</code>을 호출하면 Python 인터프리터가 점유한 표준 입출력 파일 디스크립터(stdout/stdin)를 그대로 공유하여 즉시 콘솔과 상호작용합니다.</li>
 <li><strong>Cargo 의존성 연동</strong>: <code>Cargo.toml</code>에 명시된 <code>rand</code> 의존성이 바인딩 바이너리에 정적 링크되어 추가적인 C/C++ 런타임 종속성 없이 Python에서 사용할 수 있습니다.</li>
@@ -821,11 +821,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="level2" data-number="23.4">
-<h2 data-number="23.4" class="anchored" data-anchor-id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩"><span class="header-section-number">23.4</span> 4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</h2>
+<section id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩">4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</h2>
 <p>Python의 CPython 구현체는 멀티스레드 환경에서도 한 번에 하나의 스레드만 바이트코드를 실행할 수 있도록 GIL을 사용합니다. <code>gil</code> 프로젝트는 Rust 측에서 연산 수행 중 GIL을 해제하여 Python 스레드와 진정한 병렬 실행을 달성하는 기법을 보여줍니다.</p>
-<section id="rust-소스-코드-gilsrclib.rs" class="level3" data-number="23.4.1">
-<h3 data-number="23.4.1" class="anchored" data-anchor-id="rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.4.1</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</h3>
+<section id="rust-소스-코드-gilsrclib.rs" class="level3" data-number="23.0.8">
+<h3 data-number="23.0.8" class="anchored" data-anchor-id="rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.0.8</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -867,8 +867,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
 <span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="python-동시성-테스트-gilmain.py" class="level3" data-number="23.4.2">
-<h3 data-number="23.4.2" class="anchored" data-anchor-id="python-동시성-테스트-gilmain.py"><span class="header-section-number">23.4.2</span> Python 동시성 테스트 (<code>gil/main.py</code>)</h3>
+<section id="python-동시성-테스트-gilmain.py" class="level3" data-number="23.0.9">
+<h3 data-number="23.0.9" class="anchored" data-anchor-id="python-동시성-테스트-gilmain.py"><span class="header-section-number">23.0.9</span> Python 동시성 테스트 (<code>gil/main.py</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gil <span class="im">import</span> double_list</span>
@@ -896,8 +896,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Py 결과: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rust 결과: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="핵심-메커니즘" class="level3" data-number="23.4.3">
-<h3 data-number="23.4.3" class="anchored" data-anchor-id="핵심-메커니즘"><span class="header-section-number">23.4.3</span> 핵심 메커니즘</h3>
+<section id="핵심-메커니즘" class="level3" data-number="23.0.10">
+<h3 data-number="23.0.10" class="anchored" data-anchor-id="핵심-메커니즘"><span class="header-section-number">23.0.10</span> 핵심 메커니즘</h3>
 <pre><code>[Python Main Process]
   │
   ├─ Thread 1 (Python): ──────[ sleep 0.1s ]───[ x*2 ]───[ Exit ]
@@ -912,11 +912,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="level2" data-number="23.5">
-<h2 data-number="23.5" class="anchored" data-anchor-id="quiver-pdb---대용량-단백질-데이터-파서-python-cli"><span class="header-section-number">23.5</span> 5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</h2>
+<section id="quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="quiver-pdb---대용량-단백질-데이터-파서-python-cli">5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</h2>
 <p><code>quiver-pdb</code>는 생물정보학에서 사용하는 여러 PDB(Protein Data Bank) 구조 파일을 하나의 압축/태그 기반 아카이브(<code>.qv</code>) 파일로 병합, 추출, 분할, 스코어링하는 실전 라이브러리입니다.</p>
-<section id="구조체-설계-및-구현-quiver-pdbsrclib.rs" class="level3" data-number="23.5.1">
-<h3 data-number="23.5.1" class="anchored" data-anchor-id="구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.5.1</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</h3>
+<section id="구조체-설계-및-구현-quiver-pdbsrclib.rs" class="level3" data-number="23.0.11">
+<h3 data-number="23.0.11" class="anchored" data-anchor-id="구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.0.11</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::</span>wrap_pyfunction<span class="op">;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::fs::</span><span class="op">{</span>File<span class="op">,</span> OpenOptions<span class="op">};</span></span>
@@ -1021,8 +1021,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
 <span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="python-click-cli-통합-qvsplit.py-예시" class="level3" data-number="23.5.2">
-<h3 data-number="23.5.2" class="anchored" data-anchor-id="python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.5.2</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</h3>
+<section id="python-click-cli-통합-qvsplit.py-예시" class="level3" data-number="23.0.12">
+<h3 data-number="23.0.12" class="anchored" data-anchor-id="python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.0.12</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> click</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> quiver_pdb <span class="im">import</span> qvsplit <span class="im">as</span> rust_qvsplit</span>
@@ -1048,8 +1048,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    qvsplit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="프로젝트-특징" class="level3" data-number="23.5.3">
-<h3 data-number="23.5.3" class="anchored" data-anchor-id="프로젝트-특징"><span class="header-section-number">23.5.3</span> 프로젝트 특징</h3>
+<section id="프로젝트-특징" class="level3" data-number="23.0.13">
+<h3 data-number="23.0.13" class="anchored" data-anchor-id="프로젝트-특징"><span class="header-section-number">23.0.13</span> 프로젝트 특징</h3>
 <ul>
 <li><strong><code>#[pyclass]</code> 및 <code>#[pymethods]</code></strong>: Rust 구조체를 Python 인스턴스화 가능한 클래스로 노출 (<code>Quiver(filename, mode)</code>).</li>
 <li><strong>스트리밍 I/O 성능</strong>: 수 GB 크기의 바이오 데이터셋을 처리할 때 Python 반복문 대신 Rust의 <code>BufReader</code>와 바이트 단위 쓰기를 사용하여 메모리 점유율을 낮추고 I/O 처리량을 극대화합니다.</li>
@@ -1058,11 +1058,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="polodb-python---임베디드-nosql-데이터베이스-바인딩" class="level2" data-number="23.6">
-<h2 data-number="23.6" class="anchored" data-anchor-id="polodb-python---임베디드-nosql-데이터베이스-바인딩"><span class="header-section-number">23.6</span> 6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</h2>
+<section id="polodb-python---임베디드-nosql-데이터베이스-바인딩" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="polodb-python---임베디드-nosql-데이터베이스-바인딩">6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</h2>
 <p><code>polodb-python</code>은 Rust로 작성된 임베디드 문서 지향 데이터베이스 엔진인 <code>polodb_core</code>를 Python에서 MongoDB와 유사한 인터페이스로 사용할 수 있게 바인딩한 프로젝트입니다.</p>
-<section id="아키텍처-다이어그램" class="level3" data-number="23.6.1">
-<h3 data-number="23.6.1" class="anchored" data-anchor-id="아키텍처-다이어그램"><span class="header-section-number">23.6.1</span> 아키텍처 다이어그램</h3>
+<section id="아키텍처-다이어그램" class="level3" data-number="23.0.14">
+<h3 data-number="23.0.14" class="anchored" data-anchor-id="아키텍처-다이어그램"><span class="header-section-number">23.0.14</span> 아키텍처 다이어그램</h3>
 <pre><code>┌──────────────────────────────────────────────────────────┐
 │                   Python 사용자 레이어                    │
 │     PoloDB("test.db") -&gt; Collection -&gt; insert / find     │
@@ -1083,8 +1083,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 │                  polodb_core (NoSQL 엔진)                 │
 └──────────────────────────────────────────────────────────┘</code></pre>
 </section>
-<section id="타입-변환기-srchelper_type_translator.rs" class="level3" data-number="23.6.2">
-<h3 data-number="23.6.2" class="anchored" data-anchor-id="타입-변환기-srchelper_type_translator.rs"><span class="header-section-number">23.6.2</span> 1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</h3>
+<section id="타입-변환기-srchelper_type_translator.rs" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="타입-변환기-srchelper_type_translator.rs">1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</h3>
 <p>BSON 포맷과 Python 데이터 타입 간의 재귀적 상호 변환을 담당합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">polodb_core::bson::</span><span class="op">{</span>Bson<span class="op">,</span> Document<span class="op">};</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
@@ -1139,8 +1139,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="level3" data-number="23.6.3">
-<h3 data-number="23.6.3" class="anchored" data-anchor-id="데이터베이스-컬렉션-래퍼-srcpy_database.rs"><span class="header-section-number">23.6.3</span> 2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</h3>
+<section id="데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="데이터베이스-컬렉션-래퍼-srcpy_database.rs">2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</h3>
 <p>스레드 안전한 데이터베이스 인스턴스 공유를 위해 <code>Arc&lt;Mutex&lt;Database&gt;&gt;</code>를 사용합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyclass<span class="at">]</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> PyDatabase <span class="op">{</span></span>
@@ -1199,8 +1199,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="pythonic-래퍼-인터페이스-polodbcore.py" class="level3" data-number="23.6.4">
-<h3 data-number="23.6.4" class="anchored" data-anchor-id="pythonic-래퍼-인터페이스-polodbcore.py"><span class="header-section-number">23.6.4</span> 3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</h3>
+<section id="pythonic-래퍼-인터페이스-polodbcore.py" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pythonic-래퍼-인터페이스-polodbcore.py">3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</h3>
 <p>Python 사용자가 Rust 모듈임을 의식하지 않고 직관적으로 사용할 수 있도록 Context Manager(<code>with</code>)와 딕셔너리 접근자(<code>db["users"]</code>)를 지원합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rust_polodb <span class="im">import</span> PyDatabase, PyCollection</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
@@ -1264,21 +1264,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="pyo3-개발-모범-사례-best-practices" class="level1" data-number="24">
 <h1 data-number="24"><span class="header-section-number">24</span> PyO3 개발 모범 사례 (Best Practices)</h1>
-<section id="rust-python-데이터-복사-비용-최소화" class="level2" data-number="24.1">
-<h2 data-number="24.1" class="anchored" data-anchor-id="rust-python-데이터-복사-비용-최소화"><span class="header-section-number">24.1</span> 1. Rust-Python 데이터 복사 비용 최소화</h2>
+<section id="rust-python-데이터-복사-비용-최소화" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="rust-python-데이터-복사-비용-최소화">1. Rust-Python 데이터 복사 비용 최소화</h2>
 <ul>
 <li>Python과 Rust 간에 대규모 데이터셋(리스트, 딕셔너리)을 전달할 때 반복적인 직렬화/역직렬화는 오버헤드를 유발합니다.</li>
 <li>가능하면 Rust 내부에서 일괄 처리(Batching)를 진행하거나, <code>numpy</code> 배열 / <code>pyo3-polars</code>와 같은 버퍼 포인터 기반 무복사(Zero-Copy) 인터페이스를 고려해야 합니다.</li>
 </ul>
 </section>
-<section id="gil-스코프-최소화" class="level2" data-number="24.2">
-<h2 data-number="24.2" class="anchored" data-anchor-id="gil-스코프-최소화"><span class="header-section-number">24.2</span> 2. GIL 스코프 최소화</h2>
+<section id="gil-스코프-최소화" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="gil-스코프-최소화">2. GIL 스코프 최소화</h2>
 <ul>
 <li>CPU 바운드 연산이나 대기 시간이 긴 I/O 작업은 반드시 <code>py.allow_threads</code>로 감싸서 GIL을 해제해야 Python 멀티스레드 환경의 응답성을 해치지 않습니다.</li>
 </ul>
 </section>
-<section id="명확한-예외-매핑" class="level2" data-number="24.3">
-<h2 data-number="24.3" class="anchored" data-anchor-id="명확한-예외-매핑"><span class="header-section-number">24.3</span> 3. 명확한 예외 매핑</h2>
+<section id="명확한-예외-매핑" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="명확한-예외-매핑">3. 명확한 예외 매핑</h2>
 <ul>
 <li>Rust의 <code>Result&lt;T, E&gt;</code>는 PyO3의 <code>PyResult&lt;T&gt;</code>로 변환하고, 상황에 맞는 표준 Python 예외(<code>PyValueError</code>, <code>PyTypeError</code>, <code>PyIOError</code>, <code>PyRuntimeError</code>)를 적절히 매핑해야 Python 사용자가 직관적인 에러 핸들링(<code>try-except</code>)을 구현할 수 있습니다.</li>
 </ul>

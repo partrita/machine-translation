@@ -4164,16 +4164,16 @@ q3:NSC.P437.15|uc007afh.1|100|18.338541|17.704857|18.972224|181.643949|2433</cod
 <p>Q &amp; A: 이중 괄호 ()()는 무엇을 의미하나요?</p>
 <p>itemgetter 함수는 함수를 반환합니다. 첫 번째 괄호는 열을 추출하기 위한 중간 함수를 생성하는 itemgetter를 호출하는 데 사용됩니다. 두 번째 괄호는 해당 함수를 데이터에 호출하여 실제 열을 생성합니다. 중간 함수를 사용하면 매우 유연한 방식으로 표의 데이터에 접근할 수 있습니다.</p>
 </section>
-<section id="오름차순내림차순-정렬" class="level3">
-<h3 class="anchored" data-anchor-id="오름차순내림차순-정렬">8.3.4 오름차순/내림차순 정렬</h3>
+<section id="오름차순내림차순-정렬" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="오름차순내림차순-정렬">8.3.4 오름차순/내림차순 정렬</h3>
 <p>내림차순으로 정렬하려면 <code>reverse = True</code>라는 추가 인자를 sorted() 함수에 전달할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">sorted</span>(data, reverse <span class="op">=</span> <span class="va">True</span>)  </span>
 <span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">30</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>] </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>섹션 8.2.2에서는 다음과 같이 할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> <span class="bu">sorted</span>(table, key <span class="op">=</span> itemgetter(<span class="dv">1</span>), reverse <span class="op">=</span> <span class="va">True</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="데이터-구조-정렬-튜플-딕셔너리" class="level3">
-<h3 class="anchored" data-anchor-id="데이터-구조-정렬-튜플-딕셔너리">8.3.5 데이터 구조 정렬 (튜플, 딕셔너리)</h3>
+<section id="데이터-구조-정렬-튜플-딕셔너리" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="데이터-구조-정렬-튜플-딕셔너리">8.3.5 데이터 구조 정렬 (튜플, 딕셔너리)</h3>
 </section>
 </section>
 <section id="리스트를-거쳐-딕셔너리를-키에-따라-정렬하기" class="level1">
@@ -4255,8 +4255,8 @@ q3:NSC.P437.15|uc007afh.1|100|18.338541|17.704857|18.972224|181.643949|2433</cod
 </section>
 </div>
 </div>
-<section id="길이에-따른-문자열-정렬" class="level3">
-<h3 class="anchored" data-anchor-id="길이에-따른-문자열-정렬">8.3.6 길이에 따른 문자열 정렬</h3>
+<section id="길이에-따른-문자열-정렬" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="길이에-따른-문자열-정렬">8.3.6 길이에 따른 문자열 정렬</h3>
 <p>itemgetter 대신 람다 함수(10장, 박스 10.6 참조)와 함께 내장 함수 sorted()를 커스텀 매개변수로 사용할 수 있습니다. 예를 들어 문자열 리스트를 길이에 따라 정렬할 수 있습니다. 이를 위해 sorted()의 매개변수로 정렬에 사용될 “키”를 반환하는 단일 인자 함수를 제공해야 합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb189"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a>```python</span>
 <span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> [<span class="st">'ACCTGGCCA'</span>, <span class="st">'ACTG'</span>, <span class="st">'TACGGCAGGAGACG'</span>, <span class="st">'TTGGATC'</span>]</span>

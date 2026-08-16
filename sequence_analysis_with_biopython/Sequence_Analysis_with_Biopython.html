@@ -472,15 +472,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="서론-파이썬과-생명정보학의-결합" class="level1">
-<h1>1. 서론: 파이썬과 생명정보학의 결합</h1>
+<section id="서론-파이썬과-생명정보학의-결합" class="level1 unnumbered">
+<h1 class="unnumbered">1. 서론: 파이썬과 생명정보학의 결합</h1>
 <p>생명정보학(Bioinformatics)은 현대 생물학 연구의 핵심입니다. 수조 개의 염기서열 데이터가 쏟아지는 유전체학 시대에 데이터를 수동으로 처리하는 것은 불가능에 가깝습니다. 파이썬은 그 간결한 문법과 강력한 과학 계산 생태계를 바탕으로 생명정보학자들에게 가장 사랑받는 도구가 되었습니다.</p>
 <p>그 중심에는 <strong>Biopython</strong> 프로젝트가 있습니다. Biopython은 단순히 파일을 읽고 쓰는 라이브러리를 넘어, 생물학적 서열을 수학적/컴퓨터공학적 객체로 다루고 외부 알고리즘(BLAST, ClustalW 등)과 연동할 수 있는 거대한 프레임워크입니다.</p>
 </section>
-<section id="서열-객체의-심화-이해" class="level1">
-<h1>2. 서열 객체의 심화 이해</h1>
-<section id="seq-객체와-불변성immutability" class="level2">
-<h2 class="anchored" data-anchor-id="seq-객체와-불변성immutability">2.1 Seq 객체와 불변성(Immutability)</h2>
+<section id="서열-객체의-심화-이해" class="level1 unnumbered">
+<h1 class="unnumbered">2. 서열 객체의 심화 이해</h1>
+<section id="seq-객체와-불변성immutability" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="seq-객체와-불변성immutability">2.1 Seq 객체와 불변성(Immutability)</h2>
 <p>Biopython의 <code>Seq</code> 객체는 파이썬 문자열(string)과 마찬가지로 <strong>불변성(immutability)</strong>을 가집니다. 이는 데이터 무결성을 보장하기 위한 핵심적인 설계 원칙입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -491,8 +491,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"오류 발생: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>서열을 직접 수정해야 하는 경우(예: 특정 잔기 치환 또는 돌연변이 삽입)에는 <code>MutableSeq</code> 객체를 활용하거나 리스트 형태로 변환한 뒤 다시 <code>Seq</code> 객체로 재구성해야 합니다.</p>
 </section>
-<section id="전사transcription와-번역translation의-세부-옵션" class="level2">
-<h2 class="anchored" data-anchor-id="전사transcription와-번역translation의-세부-옵션">2.2 전사(Transcription)와 번역(Translation)의 세부 옵션</h2>
+<section id="전사transcription와-번역translation의-세부-옵션" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="전사transcription와-번역translation의-세부-옵션">2.2 전사(Transcription)와 번역(Translation)의 세부 옵션</h2>
 <p>단순한 번역 외에도 Biopython은 유전 암호표(Genetic Code)를 지정할 수 있는 기능을 제공합니다. 미토콘드리아 유전체나 특정 세균의 경우 표준 암호표와 다르기 때문입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>messenger_rna <span class="op">=</span> Seq(<span class="st">"AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 표준 번역</span></span>
@@ -504,11 +504,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"미토콘드리아 번역: </span><span class="sc">{</span>mito_protein<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="ncbi-entrez를-이용한-온라인-데이터-획득" class="level1">
-<h1>3. NCBI Entrez를 이용한 온라인 데이터 획득</h1>
+<section id="ncbi-entrez를-이용한-온라인-데이터-획득" class="level1 unnumbered">
+<h1 class="unnumbered">3. NCBI Entrez를 이용한 온라인 데이터 획득</h1>
 <p>생명정보학 연구의 출발점은 신뢰할 수 있는 데이터의 확보입니다. <code>Bio.Entrez</code> 모듈을 활용하면 웹 브라우저를 거치지 않고도 NCBI 데이터베이스(GenBank, PubMed 등)에 프로그램적으로 접근하여 서열 정보를 원활히 수집할 수 있습니다.</p>
-<section id="이메일-설정과-검색" class="level2">
-<h2 class="anchored" data-anchor-id="이메일-설정과-검색">3.1 이메일 설정과 검색</h2>
+<section id="이메일-설정과-검색" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="이메일-설정과-검색">3.1 이메일 설정과 검색</h2>
 <p>NCBI는 자동화된 요청 시 반드시 이메일 주소를 명시하도록 요구합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> Entrez, SeqIO</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -521,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>id_list <span class="op">=</span> record[<span class="st">"IdList"</span>]</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"검색된 ID 목록: </span><span class="sc">{</span>id_list<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="서열-정보-다운로드-및-저장" class="level2">
-<h2 class="anchored" data-anchor-id="서열-정보-다운로드-및-저장">3.2 서열 정보 다운로드 및 저장</h2>
+<section id="서열-정보-다운로드-및-저장" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="서열-정보-다운로드-및-저장">3.2 서열 정보 다운로드 및 저장</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 첫 번째 ID의 전체 정보 가져오기</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fetch_handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span>id_list[<span class="dv">0</span>], rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>seq_record <span class="op">=</span> SeqIO.read(fetch_handle, <span class="st">"genbank"</span>)</span>
@@ -533,11 +533,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"서열 길이: </span><span class="sc">{</span><span class="bu">len</span>(seq_record.seq)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="서열-정렬sequence-alignment-다루기" class="level1">
-<h1>4. 서열 정렬(Sequence Alignment) 다루기</h1>
+<section id="서열-정렬sequence-alignment-다루기" class="level1 unnumbered">
+<h1 class="unnumbered">4. 서열 정렬(Sequence Alignment) 다루기</h1>
 <p>서열 정렬은 두 개 이상의 서열 사이의 유사성을 비교하여 기능적, 구조적, 진화적 관계를 추론하는 과정입니다.</p>
-<section id="alignio를-이용한-정렬-파일-파싱" class="level2">
-<h2 class="anchored" data-anchor-id="alignio를-이용한-정렬-파일-파싱">4.1 AlignIO를 이용한 정렬 파일 파싱</h2>
+<section id="alignio를-이용한-정렬-파일-파싱" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="alignio를-이용한-정렬-파일-파싱">4.1 AlignIO를 이용한 정렬 파일 파싱</h2>
 <p>Multiple Sequence Alignment(MSA) 결과를 담은 ClustalW나 Phylip 파일을 읽을 때 사용합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -547,8 +547,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># for record in alignment:</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f"{record.id}: {record.seq}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="pairwise2를-이용한-전역-및-지역-정렬" class="level2">
-<h2 class="anchored" data-anchor-id="pairwise2를-이용한-전역-및-지역-정렬">4.2 Pairwise2를 이용한 전역 및 지역 정렬</h2>
+<section id="pairwise2를-이용한-전역-및-지역-정렬" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pairwise2를-이용한-전역-및-지역-정렬">4.2 Pairwise2를 이용한 전역 및 지역 정렬</h2>
 <p>Biopython의 <code>pairwise2</code> 모듈(최신 버전에서는 <code>Bio.Align</code> 권장)을 사용하면 스코어링 시스템을 직접 정의하여 정렬을 수행할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> pairwise2</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.pairwise2 <span class="im">import</span> format_alignment</span>
@@ -564,8 +564,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(format_alignment(<span class="op">*</span>a))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="단백질-구조-분석-bio.pdb" class="level1">
-<h1>5. 단백질 구조 분석 (Bio.PDB)</h1>
+<section id="단백질-구조-분석-bio.pdb" class="level1 unnumbered">
+<h1 class="unnumbered">5. 단백질 구조 분석 (Bio.PDB)</h1>
 <p>단백질의 3차원 구조를 분석하는 것은 약물 설계(Drug Discovery)의 핵심입니다. PDB(Protein Data Bank) 파일을 파싱하여 원자 간의 거리를 계산하거나 구조적 특징을 추출할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.PDB <span class="im">import</span> PDBParser</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -580,8 +580,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             if "CA" in residue:  # Alpha carbon 확인</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                 print(f"Residue: {residue.get_resname()}, Atom: {residue['CA'].get_vector()}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="계통학-분석-bio.phylo" class="level1">
-<h1>6. 계통학 분석 (Bio.Phylo)</h1>
+<section id="계통학-분석-bio.phylo" class="level1 unnumbered">
+<h1 class="unnumbered">6. 계통학 분석 (Bio.Phylo)</h1>
 <p>서열 간의 진화적 거리를 계산하여 계통수(Phylogenetic Tree)를 시각화할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> Phylo</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -590,11 +590,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tree = Phylo.read("example.nwk", "newick")</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Phylo.draw(tree)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="유전체-데이터-시각화" class="level1">
-<h1>7. 유전체 데이터 시각화</h1>
+<section id="유전체-데이터-시각화" class="level1 unnumbered">
+<h1 class="unnumbered">7. 유전체 데이터 시각화</h1>
 <p>생명정보학에서는 데이터의 분포를 한눈에 보는 것이 중요합니다. 파이썬의 <code>matplotlib</code>과 <code>seaborn</code>을 연동하면 전문 학술지 수준의 그래프를 그릴 수 있습니다.</p>
-<section id="염기-분포-히스토그램-그리기" class="level2">
-<h2 class="anchored" data-anchor-id="염기-분포-히스토그램-그리기">7.1 염기 분포 히스토그램 그리기</h2>
+<section id="염기-분포-히스토그램-그리기" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="염기-분포-히스토그램-그리기">7.1 염기 분포 히스토그램 그리기</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -620,16 +620,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="대용량-데이터-처리를-위한-팁" class="level1">
-<h1>8. 대용량 데이터 처리를 위한 팁</h1>
+<section id="대용량-데이터-처리를-위한-팁" class="level1 unnumbered">
+<h1 class="unnumbered">8. 대용량 데이터 처리를 위한 팁</h1>
 <p>현대의 NGS(Next Generation Sequencing) 데이터는 수 기가바이트(GB)에 달합니다. 이러한 파일을 메모리에 한꺼번에 올리면 시스템이 멈출 수 있습니다.</p>
 <ul>
 <li><strong>제너레이터(Generator) 활용</strong>: <code>SeqIO.parse()</code>는 데이터를 하나씩 읽어오는 제너레이터입니다. <code>list()</code>로 감싸지 말고 <code>for</code> 루프에서 직접 사용하세요.</li>
 <li><strong>인덱싱(Indexing)</strong>: 대용량 FASTA 파일에서 특정 서열만 빠르게 찾으려면 <code>SeqIO.index()</code>를 사용하여 사전 형태의 인덱스를 만드세요.</li>
 </ul>
 </section>
-<section id="결론-및-향후-과제" class="level1">
-<h1>9. 결론 및 향후 과제</h1>
+<section id="결론-및-향후-과제" class="level1 unnumbered">
+<h1 class="unnumbered">9. 결론 및 향후 과제</h1>
 <p>Biopython은 생명정보학의 문을 여는 열쇠입니다. 하지만 이 도구들을 효과적으로 사용하려면 파이썬의 핵심 개념인 리스트 컴프리헨션, 데코레이터, 그리고 넘파이(NumPy)와 판다스(Pandas)와 같은 데이터 분석 라이브러리에 대한 깊은 이해가 병행되어야 합니다.</p>
 <p>이제 여러분은 서열을 획득하고, 정렬하며, 3차원 구조를 탐색하는 기초 체력을 갖추었습니다. 다음 단계로는 딥러닝(Deep Learning) 라이브러리인 PyTorch나 TensorFlow를 결합하여 단백질 접힘(Protein Folding) 예측과 같은 최신 연구 분야에 도전해 보시기 바랍니다.</p>
 <hr>
