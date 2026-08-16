@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rust-Python Binding Project">
+<meta name="dcterms.date" content="2026-08-16">
+
+<title>20&nbsp; Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin) – Machine translation</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../swift_for_python_dev/swift_for_python_dev.html" rel="next">
+<link href="../learn_rust/learn_rust.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-272020f90861fd36e421849ba47a8543.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rustc_dev_guide/rustc-dev-guide.html">Rust 개발</a></li><li class="breadcrumb-item"><a href="../rust_python_binding_guide/rust_python_binding_guide.html"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Machine translation</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Machine translation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">기초 도구</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linux_commands/linux_commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">101 Linux Commands</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linear_algebra_book/linear-algebra-book.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">선형대수학: 이론과 실습</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">파이썬 프로그래밍 및 데이터 관리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python_mastery/PythonMastery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mastering_python_for_bioinformatics/Mastering_Python_for_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python_for_biologists_a_complete_programming_course/Python_for_Biologists_A_Complete_Programming_Course.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../managing_your_biological_data_with_python/Managing_Your_Biological_Data_with_Python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 생물학 데이터 관리하기</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../streamlining_your_research_laboratory_with_python/Streamlining_Your_Research_Laboratory_with_Python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 연구실 업무 효율 높이기</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">생명정보학 및 단백질 정보학</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sequence_analysis_with_biopython/Sequence_Analysis_with_Biopython.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biopython을 이용한 심화 생명정보학 분석</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../large_language_models_in_protein_bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practical_bioinformatics/practical_bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Practical Bioinformatics: A Laboratory Manual</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">머신러닝 및 인공지능</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../deep_learning_for_biology_harness_ai_to_solve_real_world_biology_problems/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학을 위한 딥러닝 (Deep Learning for Biology)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">AI 실제 적용</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ai_in_action_complete/ai_in_action_complete.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AI의 실제 적용</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">생명정보학 실무 및 의학 응용</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bioinformatics_in_cancer_and_cancer_therapy/Bioinformatics_in_Cancer_and_Cancer_Therapy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암의 생명정보학 (Bioinformatics in Cancer)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bioinformatics_and_computational_biology_solutions_using_r_and_bioconductor/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물학 및 보건 통계학</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bioinformatics_and_drug_discovery/Bioinformatics_and_Drug_Discovery.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물정보학 및 신약 개발</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">데이터 시각화</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dataviz/dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hands-On Data Visualization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Rust 개발</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rustc_dev_guide/rustc-dev-guide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust Compiler Development Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../learn_rust/learn_rust.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드: 코드 해설서</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rust_python_binding_guide/rust_python_binding_guide.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Swift 프로그래밍</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../swift_for_python_dev/swift_for_python_dev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">데이터 사이언스</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python_novice_gapminder/python-novice-gapminder.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data_analysis/data_analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Guide on Data Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">R 및 인과 추론</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../causal_inference_in_r_complete/causal-inference-in-r-complete.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R을 이용한 인과 추론</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">기타</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../the_simple_guide_to_minimalist/The_simple_guide_to_minimalist.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">미니멀리스트 가이드</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../marketing_research_complete/marketing_research_complete.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Marketing Research</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#개요-overview" id="toc-개요-overview" class="nav-link active" data-scroll-target="#개요-overview"><span class="header-section-number">21</span> 개요 (Overview)</a>
+  <ul class="collapse">
+  <li><a href="#저장소-서브프로젝트-구성" id="toc-저장소-서브프로젝트-구성" class="nav-link" data-scroll-target="#저장소-서브프로젝트-구성"><span class="header-section-number">21.1</span> 저장소 서브프로젝트 구성</a></li>
+  </ul></li>
+  <li><a href="#maturin-pyo3-빌드-시스템" id="toc-maturin-pyo3-빌드-시스템" class="nav-link" data-scroll-target="#maturin-pyo3-빌드-시스템"><span class="header-section-number">22</span> Maturin &amp; PyO3 빌드 시스템</a>
+  <ul class="collapse">
+  <li><a href="#빌드-도구-maturin" id="toc-빌드-도구-maturin" class="nav-link" data-scroll-target="#빌드-도구-maturin"><span class="header-section-number">22.1</span> 빌드 도구: Maturin</a>
+  <ul class="collapse">
+  <li><a href="#주요-명령어" id="toc-주요-명령어" class="nav-link" data-scroll-target="#주요-명령어"><span class="header-section-number">22.1.1</span> 주요 명령어</a></li>
+  </ul></li>
+  <li><a href="#프로젝트-설정-파일-구조" id="toc-프로젝트-설정-파일-구조" class="nav-link" data-scroll-target="#프로젝트-설정-파일-구조"><span class="header-section-number">22.2</span> 프로젝트 설정 파일 구조</a>
+  <ul class="collapse">
+  <li><a href="#cargo.toml-설정-예시" id="toc-cargo.toml-설정-예시" class="nav-link" data-scroll-target="#cargo.toml-설정-예시"><span class="header-section-number">22.2.1</span> <code>Cargo.toml</code> 설정 예시</a></li>
+  <li><a href="#pyproject.toml-설정-예시-pep-517518621" id="toc-pyproject.toml-설정-예시-pep-517518621" class="nav-link" data-scroll-target="#pyproject.toml-설정-예시-pep-517518621"><span class="header-section-number">22.2.2</span> <code>pyproject.toml</code> 설정 예시 (PEP 517/518/621)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#프로젝트별-코드-심층-분석" id="toc-프로젝트별-코드-심층-분석" class="nav-link" data-scroll-target="#프로젝트별-코드-심층-분석"><span class="header-section-number">23</span> 프로젝트별 코드 심층 분석</a>
+  <ul class="collapse">
+  <li><a href="#string_sum---기본-함수-및-서브모듈-구성" id="toc-string_sum---기본-함수-및-서브모듈-구성" class="nav-link" data-scroll-target="#string_sum---기본-함수-및-서브모듈-구성"><span class="header-section-number">23.1</span> 1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</a>
+  <ul class="collapse">
+  <li><a href="#rust-소스-코드-string_sumsrclib.rs" id="toc-rust-소스-코드-string_sumsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.1.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트" id="toc-코드-분석-및-주요-포인트" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트"><span class="header-section-number">23.1.2</span> 코드 분석 및 주요 포인트</a></li>
+  </ul></li>
+  <li><a href="#fibonacci---연산-성능-가속-비교" id="toc-fibonacci---연산-성능-가속-비교" class="nav-link" data-scroll-target="#fibonacci---연산-성능-가속-비교"><span class="header-section-number">23.2</span> 2. <code>fibonacci</code> - 연산 성능 가속 비교</a>
+  <ul class="collapse">
+  <li><a href="#rust-소스-코드-fibonaccisrclib.rs" id="toc-rust-소스-코드-fibonaccisrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.2.1</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</a></li>
+  <li><a href="#python-벤치마크-스크립트-fibonaccimain.py" id="toc-python-벤치마크-스크립트-fibonaccimain.py" class="nav-link" data-scroll-target="#python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.2.2</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트-1" id="toc-코드-분석-및-주요-포인트-1" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-1"><span class="header-section-number">23.2.3</span> 코드 분석 및 주요 포인트</a></li>
+  </ul></li>
+  <li><a href="#guessing-game---표준-입출력-및-외부-크레이트-연동" id="toc-guessing-game---표준-입출력-및-외부-크레이트-연동" class="nav-link" data-scroll-target="#guessing-game---표준-입출력-및-외부-크레이트-연동"><span class="header-section-number">23.3</span> 3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</a>
+  <ul class="collapse">
+  <li><a href="#rust-소스-코드-guessing-gamesrclib.rs" id="toc-rust-소스-코드-guessing-gamesrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.3.1</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</a></li>
+  <li><a href="#코드-분석-및-주요-포인트-2" id="toc-코드-분석-및-주요-포인트-2" class="nav-link" data-scroll-target="#코드-분석-및-주요-포인트-2"><span class="header-section-number">23.3.2</span> 코드 분석 및 주요 포인트</a></li>
+  </ul></li>
+  <li><a href="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" id="toc-gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="nav-link" data-scroll-target="#gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩"><span class="header-section-number">23.4</span> 4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</a>
+  <ul class="collapse">
+  <li><a href="#rust-소스-코드-gilsrclib.rs" id="toc-rust-소스-코드-gilsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.4.1</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</a></li>
+  <li><a href="#python-동시성-테스트-gilmain.py" id="toc-python-동시성-테스트-gilmain.py" class="nav-link" data-scroll-target="#python-동시성-테스트-gilmain.py"><span class="header-section-number">23.4.2</span> Python 동시성 테스트 (<code>gil/main.py</code>)</a></li>
+  <li><a href="#핵심-메커니즘" id="toc-핵심-메커니즘" class="nav-link" data-scroll-target="#핵심-메커니즘"><span class="header-section-number">23.4.3</span> 핵심 메커니즘</a></li>
+  </ul></li>
+  <li><a href="#quiver-pdb---대용량-단백질-데이터-파서-python-cli" id="toc-quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="nav-link" data-scroll-target="#quiver-pdb---대용량-단백질-데이터-파서-python-cli"><span class="header-section-number">23.5</span> 5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</a>
+  <ul class="collapse">
+  <li><a href="#구조체-설계-및-구현-quiver-pdbsrclib.rs" id="toc-구조체-설계-및-구현-quiver-pdbsrclib.rs" class="nav-link" data-scroll-target="#구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.5.1</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</a></li>
+  <li><a href="#python-click-cli-통합-qvsplit.py-예시" id="toc-python-click-cli-통합-qvsplit.py-예시" class="nav-link" data-scroll-target="#python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.5.2</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</a></li>
+  <li><a href="#프로젝트-특징" id="toc-프로젝트-특징" class="nav-link" data-scroll-target="#프로젝트-특징"><span class="header-section-number">23.5.3</span> 프로젝트 특징</a></li>
+  </ul></li>
+  <li><a href="#polodb-python---임베디드-nosql-데이터베이스-바인딩" id="toc-polodb-python---임베디드-nosql-데이터베이스-바인딩" class="nav-link" data-scroll-target="#polodb-python---임베디드-nosql-데이터베이스-바인딩"><span class="header-section-number">23.6</span> 6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</a>
+  <ul class="collapse">
+  <li><a href="#아키텍처-다이어그램" id="toc-아키텍처-다이어그램" class="nav-link" data-scroll-target="#아키텍처-다이어그램"><span class="header-section-number">23.6.1</span> 아키텍처 다이어그램</a></li>
+  <li><a href="#타입-변환기-srchelper_type_translator.rs" id="toc-타입-변환기-srchelper_type_translator.rs" class="nav-link" data-scroll-target="#타입-변환기-srchelper_type_translator.rs"><span class="header-section-number">23.6.2</span> 1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</a></li>
+  <li><a href="#데이터베이스-컬렉션-래퍼-srcpy_database.rs" id="toc-데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="nav-link" data-scroll-target="#데이터베이스-컬렉션-래퍼-srcpy_database.rs"><span class="header-section-number">23.6.3</span> 2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</a></li>
+  <li><a href="#pythonic-래퍼-인터페이스-polodbcore.py" id="toc-pythonic-래퍼-인터페이스-polodbcore.py" class="nav-link" data-scroll-target="#pythonic-래퍼-인터페이스-polodbcore.py"><span class="header-section-number">23.6.4</span> 3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#pyo3-개발-모범-사례-best-practices" id="toc-pyo3-개발-모범-사례-best-practices" class="nav-link" data-scroll-target="#pyo3-개발-모범-사례-best-practices"><span class="header-section-number">24</span> PyO3 개발 모범 사례 (Best Practices)</a>
+  <ul class="collapse">
+  <li><a href="#rust-python-데이터-복사-비용-최소화" id="toc-rust-python-데이터-복사-비용-최소화" class="nav-link" data-scroll-target="#rust-python-데이터-복사-비용-최소화"><span class="header-section-number">24.1</span> 1. Rust-Python 데이터 복사 비용 최소화</a></li>
+  <li><a href="#gil-스코프-최소화" id="toc-gil-스코프-최소화" class="nav-link" data-scroll-target="#gil-스코프-최소화"><span class="header-section-number">24.2</span> 2. GIL 스코프 최소화</a></li>
+  <li><a href="#명확한-예외-매핑" id="toc-명확한-예외-매핑" class="nav-link" data-scroll-target="#명확한-예외-매핑"><span class="header-section-number">24.3</span> 3. 명확한 예외 매핑</a></li>
+  </ul></li>
+  <li><a href="#요약-summary" id="toc-요약-summary" class="nav-link" data-scroll-target="#요약-summary"><span class="header-section-number">25</span> 요약 (Summary)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../rustc_dev_guide/rustc-dev-guide.html">Rust 개발</a></li><li class="breadcrumb-item"><a href="../rust_python_binding_guide/rust_python_binding_guide.html"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></h1>
+<p class="subtitle lead">저장소 내 6개 서브프로젝트 코드 심층 분석 및 실전 바인딩 기법</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rust-Python Binding Project </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 16, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="개요-overview" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> 개요 (Overview)</h1>
+<p>본 문서는 <code>rust-python-binding</code> 저장소에 포함된 모든 예제 프로젝트의 코드와 구조를 체계적으로 해설하는 한국어 가이드 문서입니다.</p>
+<p>Rust의 메모리 안전성 및 고성능 연산 능력과 Python의 풍부한 생태계 및 빠른 프로토타이핑 장점을 결합하기 위해 <strong>PyO3</strong>(Rust-Python 바인딩 프레임워크)와 <strong>Maturin</strong>(빌드 및 패키징 도구)을 활용합니다.</p>
+<section id="저장소-서브프로젝트-구성" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="저장소-서브프로젝트-구성"><span class="header-section-number">21.1</span> 저장소 서브프로젝트 구성</h2>
+<p>저장소는 난이도 및 활용 목적에 따라 다음과 같이 6개의 프로젝트로 구성되어 있습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">디렉토리</th>
+<th style="text-align: left;">핵심 주제</th>
+<th style="text-align: left;">주요 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>string_sum</code></strong></td>
+<td style="text-align: left;">기초 바인딩 &amp; 모듈 구성</td>
+<td style="text-align: left;">기본 함수 바인딩, <code>Bound</code> 스마트 포인터, 서브모듈(Submodule) 등록</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>fibonacci</code></strong></td>
+<td style="text-align: left;">연산 성능 가속</td>
+<td style="text-align: left;">CPU 바운드 연산의 Rust 가속 및 Python과의 성능 비교</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>guessing-game</code></strong></td>
+<td style="text-align: left;">대화형 I/O 연동</td>
+<td style="text-align: left;">Rust의 표준 입출력(<code>std::io</code>) 및 외부 크레이트(<code>rand</code>) 연동</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>gil</code></strong></td>
+<td style="text-align: left;">GIL 제어 및 멀티스레딩</td>
+<td style="text-align: left;"><code>py.allow_threads</code>를 통한 GIL 해제와 <code>Python::with_gil</code> 재획득</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>quiver-pdb</code></strong></td>
+<td style="text-align: left;">파일 파싱 &amp; CLI 패키징</td>
+<td style="text-align: left;">대용량 생물정보학 PDB 데이터 파서, 클래스(<code>#[pyclass]</code>) 및 Click CLI 결합</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>polodb-python</code></strong></td>
+<td style="text-align: left;">임베디드 NoSQL DB 바인딩</td>
+<td style="text-align: left;">Rust 엔진(<code>polodb_core</code>), BSON-Python 타입 변환기, CRUD 인터페이스</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="maturin-pyo3-빌드-시스템" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Maturin &amp; PyO3 빌드 시스템</h1>
+<section id="빌드-도구-maturin" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="빌드-도구-maturin"><span class="header-section-number">22.1</span> 빌드 도구: Maturin</h2>
+<p>Maturin은 Rust 기반 Python 확장 모듈(<code>cdylib</code>)을 빌드하고 휠(Wheel, <code>.whl</code>) 패키지로 배포할 수 있도록 돕는 빌드 백엔드입니다.</p>
+<section id="주요-명령어" class="level3" data-number="22.1.1">
+<h3 data-number="22.1.1" class="anchored" data-anchor-id="주요-명령어"><span class="header-section-number">22.1.1</span> 주요 명령어</h3>
+<ul>
+<li><code>maturin develop</code>: 현재 Python 가상환경에 모듈을 직접 빌드 및 설치(개발용).</li>
+<li><code>maturin develop --release</code>: 컴파일 최적화(<code>-O3</code> 수준)를 적용하여 릴리즈 빌드로 설치.</li>
+<li><code>maturin build</code>: 배포 가능한 휠(<code>.whl</code>) 파일을 <code>target/wheels</code>에 생성.</li>
+<li><code>maturin sdist</code>: 소스 배포판(Source Distribution) 생성.</li>
+</ul>
+</section>
+</section>
+<section id="프로젝트-설정-파일-구조" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="프로젝트-설정-파일-구조"><span class="header-section-number">22.2</span> 프로젝트 설정 파일 구조</h2>
+<p>Rust-Python 혼합 프로젝트는 <code>Cargo.toml</code>과 <code>pyproject.toml</code>을 함께 사용합니다.</p>
+<section id="cargo.toml-설정-예시" class="level3" data-number="22.2.1">
+<h3 data-number="22.2.1" class="anchored" data-anchor-id="cargo.toml-설정-예시"><span class="header-section-number">22.2.1</span> <code>Cargo.toml</code> 설정 예시</h3>
+<p>Rust 동적 라이브러리로 빌드하기 위해 <code>crate-type = ["cdylib"]</code> 지정이 필수적입니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[package]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"my_project"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">edition</span> <span class="op">=</span> <span class="st">"2021"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[lib]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"my_project"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">crate-type</span> <span class="op">=</span> <span class="op">[</span><span class="st">"cdylib"</span><span class="op">]</span> <span class="co"># C-호환 동적 라이브러리 생성</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[dependencies]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">pyo3</span> <span class="op">=</span> <span class="op">{ </span><span class="dt">version</span><span class="op"> =</span> <span class="st">"0.24.0"</span><span class="op">, </span><span class="dt">features</span><span class="op"> =</span> <span class="op">[</span><span class="st">"extension-module"</span><span class="op">] }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pyproject.toml-설정-예시-pep-517518621" class="level3" data-number="22.2.2">
+<h3 data-number="22.2.2" class="anchored" data-anchor-id="pyproject.toml-설정-예시-pep-517518621"><span class="header-section-number">22.2.2</span> <code>pyproject.toml</code> 설정 예시 (PEP 517/518/621)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[build-system]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"maturin&gt;=1.0,&lt;2.0"</span><span class="op">]</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"maturin"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[project]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"my_project"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">requires-python</span> <span class="op">=</span> <span class="st">"&gt;=3.8"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">[tool.maturin]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dt">features</span> <span class="op">=</span> <span class="op">[</span><span class="st">"pyo3/extension-module"</span><span class="op">]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 혼합 프로젝트인 경우 파이썬 소스 위치 지정 가능</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># python-source = "python"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+</section>
+<section id="프로젝트별-코드-심층-분석" class="level1" data-number="23">
+<h1 data-number="23"><span class="header-section-number">23</span> 프로젝트별 코드 심층 분석</h1>
+<section id="string_sum---기본-함수-및-서브모듈-구성" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="string_sum---기본-함수-및-서브모듈-구성"><span class="header-section-number">23.1</span> 1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</h2>
+<p><code>string_sum</code> 프로젝트는 PyO3의 가장 기본적인 매크로와 서브모듈(Hierarchical Submodule)을 선언하는 방식을 보여줍니다.</p>
+<section id="rust-소스-코드-string_sumsrclib.rs" class="level3" data-number="23.1.1">
+<h3 data-number="23.1.1" class="anchored" data-anchor-id="rust-소스-코드-string_sumsrclib.rs"><span class="header-section-number">23.1.1</span> Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 두 숫자의 합을 문자열(String)로 포맷팅하여 반환하는 함수</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> sum_as_string(a<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>((a <span class="op">+</span> b)<span class="op">.</span>to_string())</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">/// 입력받은 숫자를 2배로 만드는 함수</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> double(x<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">/// 파이썬 메인 모듈 정의 (string_sum)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> string_sum(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(sum_as_string<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">/// 단독 모듈 정의 예시 (double)</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> double(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(double<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">/// 서브모듈 계층 구조를 갖는 상위 모듈 (parent_module)</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> parent_module(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    register_child_module(m)<span class="op">?;</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">/// child_module 서브모듈을 생성하여 parent_module에 등록</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> register_child_module(parent_module<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> child_module <span class="op">=</span> <span class="pp">PyModule::</span>new(parent_module<span class="op">.</span>py()<span class="op">,</span> <span class="st">"child_module"</span>)<span class="op">?;</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    child_module<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(func<span class="op">,</span> <span class="op">&amp;</span>child_module)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    parent_module<span class="op">.</span>add_submodule(<span class="op">&amp;</span>child_module)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> func() <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"func"</span><span class="op">.</span>to_string()</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="코드-분석-및-주요-포인트" class="level3" data-number="23.1.2">
+<h3 data-number="23.1.2" class="anchored" data-anchor-id="코드-분석-및-주요-포인트"><span class="header-section-number">23.1.2</span> 코드 분석 및 주요 포인트</h3>
+<ol type="1">
+<li><strong><code>#[pyfunction]</code></strong>: Rust 함수를 Python에서 호출 가능한 함수로 노출합니다. 반환값으로 <code>PyResult&lt;T&gt;</code>를 사용하여 에러 발생 시 Python 예외를 발생시킬 수 있습니다.</li>
+<li><strong><code>Bound&lt;'_, PyModule&gt;</code> (PyO3 v0.21+ / v0.24)</strong>: PyO3의 신규 메모리 관리 API로, GIL 수명주기와 안전하게 바인딩된 스마트 포인터입니다.</li>
+<li><strong><code>wrap_pyfunction!</code></strong>: <code>#[pyfunction]</code>으로 정의된 Rust 함수를 Python 모듈 객체에 등록하기 위한 래퍼 매크로입니다.</li>
+<li><strong>서브모듈 등록 (<code>PyModule::new</code> &amp; <code>add_submodule</code>)</strong>: <code>parent_module.child_module.func()</code> 형태로 Python 계층형 네임스페이스를 Rust 단에서 구성할 수 있습니다.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="fibonacci---연산-성능-가속-비교" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="fibonacci---연산-성능-가속-비교"><span class="header-section-number">23.2</span> 2. <code>fibonacci</code> - 연산 성능 가속 비교</h2>
+<p><code>fibonacci</code> 프로젝트는 반복문 기반 피보나치 계산을 Rust로 작성하고, Python 순수 구현과의 실행 속도를 비교 측정합니다.</p>
+<section id="rust-소스-코드-fibonaccisrclib.rs" class="level3" data-number="23.2.1">
+<h3 data-number="23.2.1" class="anchored" data-anchor-id="rust-소스-코드-fibonaccisrclib.rs"><span class="header-section-number">23.2.1</span> Rust 소스 코드 (<code>fibonacci/src/lib.rs</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib(n<span class="op">:</span> <span class="dt">u64</span>) <span class="op">-&gt;</span> <span class="dt">u64</span> <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> b <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">2</span><span class="op">..=</span>n <span class="op">{</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> temp <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> temp<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    b</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fibonacci(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> py <span class="op">=</span> m<span class="op">.</span>py()<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(fib<span class="op">,</span> py)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="python-벤치마크-스크립트-fibonaccimain.py" class="level3" data-number="23.2.2">
+<h3 data-number="23.2.2" class="anchored" data-anchor-id="python-벤치마크-스크립트-fibonaccimain.py"><span class="header-section-number">23.2.2</span> Python 벤치마크 스크립트 (<code>fibonacci/main.py</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fibonacci <span class="im">import</span> fib <span class="im">as</span> rust_fib</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> py_fib(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""반복문 기반의 순수 파이썬 피보나치 수열 계산"""</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>: </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        a, b <span class="op">=</span> b, a <span class="op">+</span> b</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> b</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이썬 측정</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>start_python <span class="op">=</span> time.time()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>python_result <span class="op">=</span> py_fib(N)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>python_time <span class="op">=</span> time.time() <span class="op">-</span> start_python</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Python으로 계산한 결과 (N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>python_result<span class="sc">}</span><span class="ss"> (소요 시간: </span><span class="sc">{</span>python_time<span class="sc">:.6f}</span><span class="ss"> 초)"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Rust 측정</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>start_rust <span class="op">=</span> time.time()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>rust_result <span class="op">=</span> rust_fib(N)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>rust_time <span class="op">=</span> time.time() <span class="op">-</span> start_rust</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rust로 계산한 결과 (N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>rust_result<span class="sc">}</span><span class="ss"> (소요 시간: </span><span class="sc">{</span>rust_time<span class="sc">:.6f}</span><span class="ss"> 초)"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> python_result <span class="op">==</span> rust_result, <span class="st">"계산 결과가 일치하지 않습니다!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="코드-분석-및-주요-포인트-1" class="level3" data-number="23.2.3">
+<h3 data-number="23.2.3" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-1"><span class="header-section-number">23.2.3</span> 코드 분석 및 주요 포인트</h3>
+<ul>
+<li><strong>컴파일 최적화 효과</strong>: Rust의 <code>u64</code> 레지스터 직접 연산 및 루프 언롤링 최적화 덕분에 반복 연산에서 Python 대비 수십~수백 배 빠른 성능을 발휘합니다.</li>
+<li><strong>타입 자동 변환</strong>: Python의 정수형(<code>int</code>)은 Rust의 <code>u64</code>로 자동 역직렬화(Unmarshaling)되고, 반환 시 다시 Python 객체로 래핑됩니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="guessing-game---표준-입출력-및-외부-크레이트-연동" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="guessing-game---표준-입출력-및-외부-크레이트-연동"><span class="header-section-number">23.3</span> 3. <code>guessing-game</code> - 표준 입출력 및 외부 크레이트 연동</h2>
+<p><code>guessing-game</code>은 Rust 표준 라이브러리의 입출력(<code>std::io</code>) 및 외부 난수 생성 라이브러리(<code>rand</code>)를 사용하여, Python 프로세스 내에서 완전한 대화형 콘솔 게임을 실행합니다.</p>
+<section id="rust-소스-코드-guessing-gamesrclib.rs" class="level3" data-number="23.3.1">
+<h3 data-number="23.3.1" class="anchored" data-anchor-id="rust-소스-코드-guessing-gamesrclib.rs"><span class="header-section-number">23.3.1</span> Rust 소스 코드 (<code>guessing-game/src/lib.rs</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">rand::</span>Rng<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>Ordering<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>io<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> guess_the_number() <span class="op">{</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"Guess the number!"</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1부터 100까지 난수 생성 (rand v0.9+ API)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> secret_number <span class="op">=</span> <span class="pp">rand::</span>rng()<span class="op">.</span>random_range(<span class="dv">1</span><span class="op">..</span><span class="dv">101</span>)<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">loop</span> <span class="op">{</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"Please input your guess."</span>)<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="kw">mut</span> guess <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 표준 입력 읽기</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="pp">io::</span>stdin()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>read_line(<span class="op">&amp;</span><span class="kw">mut</span> guess)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>expect(<span class="st">"Failed to read line"</span>)<span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> guess<span class="op">:</span> <span class="dt">u32</span> <span class="op">=</span> <span class="cf">match</span> guess<span class="op">.</span>trim()<span class="op">.</span>parse() <span class="op">{</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(num) <span class="op">=&gt;</span> num<span class="op">,</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Err</span>(_) <span class="op">=&gt;</span> <span class="cf">continue</span><span class="op">,</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">};</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"You guessed: {}"</span><span class="op">,</span> guess)<span class="op">;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> guess<span class="op">.</span>cmp(<span class="op">&amp;</span>secret_number) <span class="op">{</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>            <span class="pp">Ordering::</span>Less <span class="op">=&gt;</span> <span class="pp">println!</span>(<span class="st">"Too small!"</span>)<span class="op">,</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            <span class="pp">Ordering::</span>Greater <span class="op">=&gt;</span> <span class="pp">println!</span>(<span class="st">"Too big!"</span>)<span class="op">,</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            <span class="pp">Ordering::</span>Equal <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                <span class="pp">println!</span>(<span class="st">"You win!"</span>)<span class="op">;</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> guessing_game(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(guess_the_number<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="코드-분석-및-주요-포인트-2" class="level3" data-number="23.3.2">
+<h3 data-number="23.3.2" class="anchored" data-anchor-id="코드-분석-및-주요-포인트-2"><span class="header-section-number">23.3.2</span> 코드 분석 및 주요 포인트</h3>
+<ul>
+<li><strong>I/O 스트림 공유</strong>: Rust 함수 내부에서 <code>println!</code>과 <code>io::stdin()</code>을 호출하면 Python 인터프리터가 점유한 표준 입출력 파일 디스크립터(stdout/stdin)를 그대로 공유하여 즉시 콘솔과 상호작용합니다.</li>
+<li><strong>Cargo 의존성 연동</strong>: <code>Cargo.toml</code>에 명시된 <code>rand</code> 의존성이 바인딩 바이너리에 정적 링크되어 추가적인 C/C++ 런타임 종속성 없이 Python에서 사용할 수 있습니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="gil---gilglobal-interpreter-lock-릴리즈와-멀티스레딩"><span class="header-section-number">23.4</span> 4. <code>gil</code> - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩</h2>
+<p>Python의 CPython 구현체는 멀티스레드 환경에서도 한 번에 하나의 스레드만 바이트코드를 실행할 수 있도록 GIL을 사용합니다. <code>gil</code> 프로젝트는 Rust 측에서 연산 수행 중 GIL을 해제하여 Python 스레드와 진정한 병렬 실행을 달성하는 기법을 보여줍니다.</p>
+<section id="rust-소스-코드-gilsrclib.rs" class="level3" data-number="23.4.1">
+<h3 data-number="23.4.1" class="anchored" data-anchor-id="rust-소스-코드-gilsrclib.rs"><span class="header-section-number">23.4.1</span> Rust 소스 코드 (<code>gil/src/lib.rs</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::types::</span>PyList<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> double_list(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    py<span class="op">:</span> Python<span class="op">&lt;</span><span class="ot">'_</span><span class="op">&gt;,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    list<span class="op">:</span> Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyList<span class="op">&gt;,</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    result<span class="op">:</span> Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyList<span class="op">&gt;,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    idx<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"Rust: Enter double_list..."</span>)<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1. GIL 해제 블록: 무거운 I/O나 연산 수행 시 Python 스레드가 동작할 수 있게 허용</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    py<span class="op">.</span>allow_threads(<span class="op">||</span> <span class="op">{</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"Rust: Release GIL..."</span>)<span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_secs(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 2. Python 객체에서 Rust 네이티브 데이터 추출 및 변환</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> doubled<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span> <span class="op">=</span> list<span class="op">.</span><span class="pp">extract::</span><span class="op">&lt;</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;&gt;</span>()<span class="op">?.</span>iter()<span class="op">.</span>map(<span class="op">|</span>x<span class="op">|</span> x <span class="op">*</span> <span class="dv">2</span>)<span class="op">.</span>collect()<span class="op">;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 3. Python 힙에 접근하거나 객체를 수정하기 위해 GIL 재획득</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Python::</span>with_gil(<span class="op">|</span>py<span class="op">|</span> <span class="op">{</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"Rust: Acquire GIL..."</span>)<span class="op">;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_secs(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> py_list <span class="op">=</span> <span class="pp">PyList::</span>new(py<span class="op">,</span> <span class="op">&amp;</span>doubled)<span class="op">?;</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"Rust: Exit..."</span>)<span class="op">;</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        result<span class="op">.</span>set_item(idx<span class="op">,</span> py_list)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> gil(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> py <span class="op">=</span> m<span class="op">.</span>py()<span class="op">;</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(double_list<span class="op">,</span> py)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="python-동시성-테스트-gilmain.py" class="level3" data-number="23.4.2">
+<h3 data-number="23.4.2" class="anchored" data-anchor-id="python-동시성-테스트-gilmain.py"><span class="header-section-number">23.4.2</span> Python 동시성 테스트 (<code>gil/main.py</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gil <span class="im">import</span> double_list</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> double_list_py(lst, result, idx):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Py: Enter double_list_py..."</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="fl">0.1</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    result[idx] <span class="op">=</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> lst]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Py: Exit..."</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> [[], []]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># t1: Python 함수 실행 스레드</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> threading.Thread(target<span class="op">=</span>double_list_py, args<span class="op">=</span>(nums, result, <span class="dv">0</span>))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># t2: Rust 함수 실행 스레드 (내부에서 allow_threads 호출)</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> threading.Thread(target<span class="op">=</span>double_list, args<span class="op">=</span>(nums, result, <span class="dv">1</span>))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>t1.start()</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>t2.start()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>t1.join()</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>t2.join()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Py 결과: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rust 결과: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="핵심-메커니즘" class="level3" data-number="23.4.3">
+<h3 data-number="23.4.3" class="anchored" data-anchor-id="핵심-메커니즘"><span class="header-section-number">23.4.3</span> 핵심 메커니즘</h3>
+<pre><code>[Python Main Process]
+  │
+  ├─ Thread 1 (Python): ──────[ sleep 0.1s ]───[ x*2 ]───[ Exit ]
+  │                                ▲
+  │                       GIL 해제 상태로 병렬 진입
+  │                                │
+  └─ Thread 2 (Rust)  : ──[ allow_threads(1s) ]───[ extract &amp; map ]───[ with_gil(1s) ]───[ Exit ]</code></pre>
+<ul>
+<li><strong><code>py.allow_threads</code></strong>: 호출 블록 동안 CPython 인터프리터 잠금을 해제합니다. 이 구간에서는 다른 Python 스레드가 CPU를 양보받아 동작할 수 있습니다.</li>
+<li><strong><code>Python::with_gil</code></strong>: GIL이 해제된 상태의 네이티브 스레드에서 Python 객체(<code>PyList</code>, <code>PyDict</code> 등)를 생성하거나 수정할 때 다시 Lock을 획득합니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="quiver-pdb---대용량-단백질-데이터-파서-python-cli" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="quiver-pdb---대용량-단백질-데이터-파서-python-cli"><span class="header-section-number">23.5</span> 5. <code>quiver-pdb</code> - 대용량 단백질 데이터 파서 &amp; Python CLI</h2>
+<p><code>quiver-pdb</code>는 생물정보학에서 사용하는 여러 PDB(Protein Data Bank) 구조 파일을 하나의 압축/태그 기반 아카이브(<code>.qv</code>) 파일로 병합, 추출, 분할, 스코어링하는 실전 라이브러리입니다.</p>
+<section id="구조체-설계-및-구현-quiver-pdbsrclib.rs" class="level3" data-number="23.5.1">
+<h3 data-number="23.5.1" class="anchored" data-anchor-id="구조체-설계-및-구현-quiver-pdbsrclib.rs"><span class="header-section-number">23.5.1</span> 구조체 설계 및 구현 (<code>quiver-pdb/src/lib.rs</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::</span>wrap_pyfunction<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::fs::</span><span class="op">{</span>File<span class="op">,</span> OpenOptions<span class="op">};</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::io::</span><span class="op">{</span><span class="kw">self</span><span class="op">,</span> <span class="bu">BufRead</span><span class="op">,</span> BufReader<span class="op">,</span> <span class="bu">Write</span><span class="op">,</span> <span class="bu">Read</span><span class="op">};</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::path::</span><span class="dt">Path</span><span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::collections::</span><span class="op">{</span>HashSet<span class="op">,</span> HashMap<span class="op">};</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span><span class="dt">str</span><span class="pp">::</span><span class="bu">FromStr</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 1. Rust 순수 비즈니스 로직 구조체</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Debug</span><span class="at">)]</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> QuiverCore <span class="op">{</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    fnm<span class="op">:</span> <span class="dt">String</span><span class="op">,</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">:</span> <span class="dt">String</span><span class="op">,</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    tags<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;,</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> QuiverCore <span class="op">{</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> new(filename<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> mode<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span><span class="dt">Self</span><span class="op">,</span> <span class="dt">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mode <span class="op">!=</span> <span class="st">"r"</span> <span class="op">&amp;&amp;</span> mode <span class="op">!=</span> <span class="st">"w"</span> <span class="op">{</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">format!</span>(<span class="st">"Quiver file must be opened in 'r' or 'w' mode, not '{}'"</span><span class="op">,</span> mode))<span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> tags <span class="op">=</span> <span class="dt">Self</span><span class="pp">::</span>read_tags(<span class="op">&amp;</span>filename)<span class="op">?;</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Ok</span>(QuiverCore <span class="op">{</span> fnm<span class="op">:</span> filename<span class="op">,</span> mode<span class="op">,</span> tags <span class="op">}</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> read_tags(filename<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;,</span> <span class="dt">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">!</span><span class="dt">Path</span><span class="pp">::</span>new(filename)<span class="op">.</span>exists() <span class="op">{</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">Ok</span>(<span class="pp">vec!</span>[])<span class="op">;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> file <span class="op">=</span> <span class="pp">File::</span>open(filename)<span class="op">.</span>map_err(<span class="op">|</span>e<span class="op">|</span> e<span class="op">.</span>to_string())<span class="op">?;</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> reader <span class="op">=</span> <span class="pp">BufReader::</span>new(file)<span class="op">;</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="kw">mut</span> tags <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> reader<span class="op">.</span>lines() <span class="op">{</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> line <span class="op">=</span> line<span class="op">.</span>map_err(<span class="op">|</span>e<span class="op">|</span> e<span class="op">.</span>to_string())<span class="op">?;</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> line<span class="op">.</span>starts_with(<span class="st">"QV_TAG"</span>) <span class="op">{</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> parts<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>_<span class="op">&gt;</span> <span class="op">=</span> line<span class="op">.</span>split_whitespace()<span class="op">.</span>collect()<span class="op">;</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> parts<span class="op">.</span>len() <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>                    tags<span class="op">.</span>push(parts[<span class="dv">1</span>]<span class="op">.</span>to_string())<span class="op">;</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Ok</span>(tags)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 파일 분할 기능: ntags 단위로 새로운 .qv 파일 생성</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> split(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> ntags<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> outdir<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> prefix<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">,</span> <span class="dt">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">self</span><span class="op">.</span>mode <span class="op">!=</span> <span class="st">"r"</span> <span class="op">{</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">Err</span>(<span class="st">"Quiver file must be opened in read mode."</span><span class="op">.</span>to_string())<span class="op">;</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>        <span class="pp">std::fs::</span>create_dir_all(outdir)<span class="op">.</span>map_err(<span class="op">|</span>e<span class="op">|</span> e<span class="op">.</span>to_string())<span class="op">?;</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ... (버퍼 기반 스트리밍 분할 로직) ...</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Ok</span>(())</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">// 2. PyO3 노출용 래퍼 클래스</span></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyclass<span class="at">]</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Quiver <span class="op">{</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    core<span class="op">:</span> QuiverCore<span class="op">,</span></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymethods<span class="at">]</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> Quiver <span class="op">{</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">#[</span>new<span class="at">]</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> new(filename<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> mode<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span><span class="dt">Self</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="pp">QuiverCore::</span>new(filename<span class="op">,</span> mode) <span class="op">{</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(core) <span class="op">=&gt;</span> <span class="cn">Ok</span>(Quiver <span class="op">{</span> core <span class="op">}</span>)<span class="op">,</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Err</span>(e) <span class="op">=&gt;</span> <span class="cn">Err</span>(<span class="pp">pyo3::exceptions::PyValueError::</span>new_err(e))<span class="op">,</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> get_tags(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>core<span class="op">.</span>get_tags()</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> size(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>core<span class="op">.</span>size()</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... add_pdb, get_pdblines, split 등 바인딩 메서드 ...</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="co">// 3. 독립 pyfunction들: 파일 조작 유틸리티</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> extract_pdbs(py<span class="op">:</span> Python<span class="op">,</span> quiver_file<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span> <span class="co">/* ... */</span> <span class="cn">Ok</span>(()) <span class="op">}</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> extract_scorefile(py<span class="op">:</span> Python<span class="op">,</span> quiver_file<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span> <span class="co">/* ... */</span> <span class="cn">Ok</span>(()) <span class="op">}</span></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyfunction<span class="at">]</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> qvsplit(py<span class="op">:</span> Python<span class="op">,</span> file<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> ntags<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> prefix<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> output_dir<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span> <span class="co">/* ... */</span> <span class="cn">Ok</span>(()) <span class="op">}</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymodule<span class="at">]</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiver_pdb(m<span class="op">:</span> <span class="op">&amp;</span>Bound<span class="op">&lt;</span><span class="ot">'_</span><span class="op">,</span> PyModule<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(qvfrompdbs<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(extract_pdbs<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(list_tags<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(rename_tags<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(qvslice<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(qvsplit<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>add_function(<span class="pp">wrap_pyfunction!</span>(extract_scorefile<span class="op">,</span> m)<span class="op">?</span>)<span class="op">?;</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span><span class="pp">add_class::</span><span class="op">&lt;</span>Quiver<span class="op">&gt;</span>()<span class="op">?;</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="python-click-cli-통합-qvsplit.py-예시" class="level3" data-number="23.5.2">
+<h3 data-number="23.5.2" class="anchored" data-anchor-id="python-click-cli-통합-qvsplit.py-예시"><span class="header-section-number">23.5.2</span> Python Click CLI 통합 (<code>qvsplit.py</code> 예시)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> click</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> quiver_pdb <span class="im">import</span> qvsplit <span class="im">as</span> rust_qvsplit</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">@click.command</span>()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">@click.argument</span>(<span class="st">"file"</span>, <span class="bu">type</span><span class="op">=</span>click.Path(exists<span class="op">=</span><span class="va">True</span>, dir_okay<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">@click.argument</span>(<span class="st">"ntags"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">@click.option</span>(<span class="st">"--prefix"</span>, default<span class="op">=</span><span class="st">"split"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"출력 파일 접두사"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">@click.option</span>(<span class="st">"--output-dir"</span>, <span class="bu">type</span><span class="op">=</span>click.Path(file_okay<span class="op">=</span><span class="va">False</span>, writable<span class="op">=</span><span class="va">True</span>), default<span class="op">=</span><span class="st">"."</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> qvsplit(<span class="bu">file</span>, ntags, prefix, output_dir):</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Quiver 파일을 NTAGS 단위의 작은 파일들로 분할합니다."""</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ntags <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        click.secho(<span class="st">"❌ NTAGS는 양의 정수여야 합니다."</span>, fg<span class="op">=</span><span class="st">"red"</span>, err<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> click.Abort()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    click.secho(<span class="ss">f"📂 파일 읽는 중: </span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss">"</span>, fg<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        rust_qvsplit(<span class="bu">file</span>, ntags, prefix, output_dir)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        click.secho(<span class="ss">f"오류 발생: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>, fg<span class="op">=</span><span class="st">"red"</span>, err<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> click.Abort()</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    qvsplit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="프로젝트-특징" class="level3" data-number="23.5.3">
+<h3 data-number="23.5.3" class="anchored" data-anchor-id="프로젝트-특징"><span class="header-section-number">23.5.3</span> 프로젝트 특징</h3>
+<ul>
+<li><strong><code>#[pyclass]</code> 및 <code>#[pymethods]</code></strong>: Rust 구조체를 Python 인스턴스화 가능한 클래스로 노출 (<code>Quiver(filename, mode)</code>).</li>
+<li><strong>스트리밍 I/O 성능</strong>: 수 GB 크기의 바이오 데이터셋을 처리할 때 Python 반복문 대신 Rust의 <code>BufReader</code>와 바이트 단위 쓰기를 사용하여 메모리 점유율을 낮추고 I/O 처리량을 극대화합니다.</li>
+<li><strong>Python CLI 생태계 활용</strong>: Rust의 성능으로 파싱하고, Python의 <code>click</code> 라이브러리로 사용자 친화적 터미널 UI를 구축합니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="polodb-python---임베디드-nosql-데이터베이스-바인딩" class="level2" data-number="23.6">
+<h2 data-number="23.6" class="anchored" data-anchor-id="polodb-python---임베디드-nosql-데이터베이스-바인딩"><span class="header-section-number">23.6</span> 6. <code>polodb-python</code> - 임베디드 NoSQL 데이터베이스 바인딩</h2>
+<p><code>polodb-python</code>은 Rust로 작성된 임베디드 문서 지향 데이터베이스 엔진인 <code>polodb_core</code>를 Python에서 MongoDB와 유사한 인터페이스로 사용할 수 있게 바인딩한 프로젝트입니다.</p>
+<section id="아키텍처-다이어그램" class="level3" data-number="23.6.1">
+<h3 data-number="23.6.1" class="anchored" data-anchor-id="아키텍처-다이어그램"><span class="header-section-number">23.6.1</span> 아키텍처 다이어그램</h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│                   Python 사용자 레이어                    │
+│     PoloDB("test.db") -&gt; Collection -&gt; insert / find     │
+└─────────────────────────────┬────────────────────────────┘
+                              │ (polodb/core.py)
+┌─────────────────────────────▼────────────────────────────┐
+│                    PyO3 바인딩 레이어                     │
+│               PyDatabase / PyCollection                  │
+└─────────────────────────────┬────────────────────────────┘
+                              │ (helper_type_translator.rs)
+┌─────────────────────────────▼────────────────────────────┐
+│                  양방향 타입 변환 계층                   │
+│   PyDict / PyList / PyAny   &lt;---&gt;   BSON Document / Value │
+└─────────────────────────────┬────────────────────────────┘
+                              │
+┌─────────────────────────────▼────────────────────────────┐
+│                    Rust 네이티브 코어                     │
+│                  polodb_core (NoSQL 엔진)                 │
+└──────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="타입-변환기-srchelper_type_translator.rs" class="level3" data-number="23.6.2">
+<h3 data-number="23.6.2" class="anchored" data-anchor-id="타입-변환기-srchelper_type_translator.rs"><span class="header-section-number">23.6.2</span> 1) 타입 변환기 (<code>src/helper_type_translator.rs</code>)</h3>
+<p>BSON 포맷과 Python 데이터 타입 간의 재귀적 상호 변환을 담당합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">polodb_core::bson::</span><span class="op">{</span>Bson<span class="op">,</span> Document<span class="op">};</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::types::</span><span class="op">{</span>PyBool<span class="op">,</span> PyBytes<span class="op">,</span> PyDict<span class="op">,</span> PyFloat<span class="op">,</span> PyList<span class="op">,</span> PyString<span class="op">};</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Python Dictionary -&gt; Rust BSON Document</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> convert_py_obj_to_document(py_obj<span class="op">:</span> <span class="op">&amp;</span>Py<span class="op">&lt;</span>PyAny<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>Document<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Python::</span>with_gil(<span class="op">|</span>py<span class="op">|</span> <span class="op">{</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Ok</span>(dict) <span class="op">=</span> py_obj<span class="op">.</span><span class="pp">downcast_bound::</span><span class="op">&lt;</span>PyDict<span class="op">&gt;</span>(py) <span class="op">{</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> <span class="kw">mut</span> doc <span class="op">=</span> <span class="pp">Document::</span>new()<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> (key<span class="op">,</span> value) <span class="kw">in</span> dict<span class="op">.</span>iter() <span class="op">{</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> key_str<span class="op">:</span> <span class="dt">String</span> <span class="op">=</span> key<span class="op">.</span>extract()<span class="op">?;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> bson_value <span class="op">=</span> convert_py_obj_to_bson(value<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>as_unbound())<span class="op">?;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                doc<span class="op">.</span>insert(key_str<span class="op">,</span> bson_value)<span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(doc)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Err</span>(<span class="pp">PyErr::new::</span><span class="op">&lt;</span><span class="pp">pyo3::exceptions::</span>PyTypeError<span class="op">,</span> _<span class="op">&gt;</span>(<span class="st">"BSON 변환을 지원하지 않는 타입입니다."</span>))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">// Rust BSON -&gt; Python Object (PyDict, PyList, PyString, PyFloat 등)</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> bson_to_py_obj(py<span class="op">:</span> Python<span class="op">,</span> bson<span class="op">:</span> <span class="op">&amp;</span>Bson) <span class="op">-&gt;</span> PyObject <span class="op">{</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> bson <span class="op">{</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Null <span class="op">=&gt;</span> py<span class="op">.</span><span class="cn">None</span>()<span class="op">,</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Int32(i) <span class="op">=&gt;</span> i<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()<span class="op">,</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Int64(i) <span class="op">=&gt;</span> i<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()<span class="op">,</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Double(f) <span class="op">=&gt;</span> <span class="pp">PyFloat::</span>new(py<span class="op">,</span> <span class="op">*</span>f)<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()<span class="op">,</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span><span class="dt">String</span>(s) <span class="op">=&gt;</span> <span class="pp">PyString::</span>new(py<span class="op">,</span> s)<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()<span class="op">,</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Boolean(b) <span class="op">=&gt;</span> <span class="pp">PyBool::</span>new(py<span class="op">,</span> <span class="op">*</span>b)<span class="op">.</span>as_unbound()<span class="op">.</span>clone_ref(py)<span class="op">.</span>into_any()<span class="op">,</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Array(arr) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> py_list <span class="op">=</span> <span class="pp">PyList::</span>empty(py)<span class="op">;</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> item <span class="kw">in</span> arr <span class="op">{</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                py_list<span class="op">.</span>append(bson_to_py_obj(py<span class="op">,</span> item))<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>            py_list<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>Document(doc) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> py_dict <span class="op">=</span> <span class="pp">PyDict::</span>new(py)<span class="op">;</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> (key<span class="op">,</span> value) <span class="kw">in</span> doc<span class="op">.</span>iter() <span class="op">{</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>                py_dict<span class="op">.</span>set_item(key<span class="op">,</span> bson_to_py_obj(py<span class="op">,</span> value))<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>            py_dict<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Bson::</span>DateTime(dt) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> timestamp <span class="op">=</span> dt<span class="op">.</span>timestamp_millis() <span class="op">/</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> datetime <span class="op">=</span> py<span class="op">.</span>import(<span class="st">"datetime"</span>)<span class="op">.</span>unwrap()<span class="op">.</span>getattr(<span class="st">"datetime"</span>)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>            datetime<span class="op">.</span>call1((timestamp<span class="op">,</span>))<span class="op">.</span>unwrap()<span class="op">.</span>into_pyobject(py)<span class="op">.</span>unwrap()<span class="op">.</span>into()</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>        _ <span class="op">=&gt;</span> py<span class="op">.</span><span class="cn">None</span>()<span class="op">,</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="데이터베이스-컬렉션-래퍼-srcpy_database.rs" class="level3" data-number="23.6.3">
+<h3 data-number="23.6.3" class="anchored" data-anchor-id="데이터베이스-컬렉션-래퍼-srcpy_database.rs"><span class="header-section-number">23.6.3</span> 2) 데이터베이스 &amp; 컬렉션 래퍼 (<code>src/py_database.rs</code>)</h3>
+<p>스레드 안전한 데이터베이스 인스턴스 공유를 위해 <code>Arc&lt;Mutex&lt;Database&gt;&gt;</code>를 사용합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyclass<span class="at">]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> PyDatabase <span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    inner<span class="op">:</span> Arc<span class="op">&lt;</span>Mutex<span class="op">&lt;</span>Database<span class="op">&gt;&gt;,</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymethods<span class="at">]</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> PyDatabase <span class="op">{</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">#[</span>new<span class="at">]</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> new(path<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span><span class="dt">Self</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> db_path <span class="op">=</span> <span class="dt">Path</span><span class="pp">::</span>new(path)<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="pp">Database::</span>open_path(db_path) <span class="op">{</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(db) <span class="op">=&gt;</span> <span class="cn">Ok</span>(PyDatabase <span class="op">{</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                inner<span class="op">:</span> <span class="pp">Arc::</span>new(<span class="pp">Mutex::</span>new(db))<span class="op">,</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span>)<span class="op">,</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Err</span>(e) <span class="op">=&gt;</span> <span class="cn">Err</span>(<span class="pp">PyOSError::</span>new_err(e<span class="op">.</span>to_string()))<span class="op">,</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> collection(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> name<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>PyCollection<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> guard <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>inner<span class="op">.</span>lock()</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>map_err(<span class="op">|</span>e<span class="op">|</span> <span class="pp">PyRuntimeError::</span>new_err(<span class="pp">format!</span>(<span class="st">"Failed to lock: {}"</span><span class="op">,</span> e)))<span class="op">?;</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> rust_collection <span class="op">=</span> guard<span class="op">.</span><span class="pp">collection::</span><span class="op">&lt;</span>Document<span class="op">&gt;</span>(name)<span class="op">;</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Ok</span>(<span class="pp">PyCollection::</span>from(rust_collection))</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pyclass<span class="at">]</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> PyCollection <span class="op">{</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    inner<span class="op">:</span> Arc<span class="op">&lt;</span>Collection<span class="op">&lt;</span>Document<span class="op">&gt;&gt;,</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>pymethods<span class="at">]</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> PyCollection <span class="op">{</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> insert_one(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> doc<span class="op">:</span> Py<span class="op">&lt;</span>PyDict<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span>PyObject<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Python::</span>with_gil(<span class="op">|</span>py<span class="op">|</span> <span class="op">{</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> bson_doc <span class="op">=</span> convert_py_obj_to_document(<span class="op">&amp;</span>doc<span class="op">.</span>into_py_any(py)<span class="op">.</span>unwrap())<span class="op">?;</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">match</span> <span class="kw">self</span><span class="op">.</span>inner<span class="op">.</span>insert_one(bson_doc) <span class="op">{</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>                <span class="cn">Ok</span>(result) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">let</span> dict <span class="op">=</span> <span class="pp">PyDict::</span>new(py)<span class="op">;</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>                    dict<span class="op">.</span>set_item(<span class="st">"inserted_id"</span><span class="op">,</span> bson_to_py_obj(py<span class="op">,</span> <span class="op">&amp;</span>result<span class="op">.</span>inserted_id))<span class="op">?;</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">Ok</span>(dict<span class="op">.</span>into_py_any(py)<span class="op">.</span>unwrap())</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>                <span class="cn">Err</span>(e) <span class="op">=&gt;</span> <span class="cn">Err</span>(<span class="pp">PyRuntimeError::</span>new_err(<span class="pp">format!</span>(<span class="st">"Insert error: {}"</span><span class="op">,</span> e)))<span class="op">,</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> find_one(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> py<span class="op">:</span> Python<span class="op">,</span> filter<span class="op">:</span> Py<span class="op">&lt;</span>PyDict<span class="op">&gt;</span>) <span class="op">-&gt;</span> PyResult<span class="op">&lt;</span><span class="dt">Option</span><span class="op">&lt;</span>PyObject<span class="op">&gt;&gt;</span> <span class="op">{</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> filter_doc <span class="op">=</span> convert_py_obj_to_document(<span class="op">&amp;</span>filter<span class="op">.</span>into_py_any(py)<span class="op">.</span>unwrap())<span class="op">?;</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="kw">self</span><span class="op">.</span>inner<span class="op">.</span>find_one(filter_doc) <span class="op">{</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(<span class="cn">Some</span>(result_doc)) <span class="op">=&gt;</span> <span class="cn">Ok</span>(<span class="cn">Some</span>(document_to_pydict(py<span class="op">,</span> result_doc)<span class="op">?.</span>into_py_any(py)<span class="op">.</span>unwrap()))<span class="op">,</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(<span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">Ok</span>(<span class="cn">None</span>)<span class="op">,</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Err</span>(err) <span class="op">=&gt;</span> <span class="cn">Err</span>(<span class="pp">PyRuntimeError::</span>new_err(<span class="pp">format!</span>(<span class="st">"Find error: {}"</span><span class="op">,</span> err)))<span class="op">,</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pythonic-래퍼-인터페이스-polodbcore.py" class="level3" data-number="23.6.4">
+<h3 data-number="23.6.4" class="anchored" data-anchor-id="pythonic-래퍼-인터페이스-polodbcore.py"><span class="header-section-number">23.6.4</span> 3) Pythonic 래퍼 인터페이스 (<code>polodb/core.py</code>)</h3>
+<p>Python 사용자가 Rust 모듈임을 의식하지 않고 직관적으로 사용할 수 있도록 Context Manager(<code>with</code>)와 딕셔너리 접근자(<code>db["users"]</code>)를 지원합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rust_polodb <span class="im">import</span> PyDatabase, PyCollection</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PoloDB:</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._path <span class="op">=</span> path</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__rust_db <span class="op">=</span> PyDatabase(<span class="va">self</span>._path)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__enter__</span>(<span class="va">self</span>):</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__rust_db <span class="op">=</span> PyDatabase(<span class="va">self</span>._path)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__exit__</span>(<span class="va">self</span>, exc_type, exc_val, exc_tb):</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, name: <span class="bu">str</span>):</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.collection(name)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name: <span class="bu">str</span>):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__getitem__</span>(name)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> collection(<span class="va">self</span>, name: <span class="bu">str</span>):</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.list_collection_names():</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.__rust_db.create_collection(name)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Collection(<span class="va">self</span>.__rust_db.collection(name))</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> list_collection_names(<span class="va">self</span>):</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_db.list_collection_names()</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Collection:</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, rust_collection: PyCollection) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__rust_collection: PyCollection <span class="op">=</span> rust_collection</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> insert_one(<span class="va">self</span>, entry: <span class="bu">dict</span>):</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.insert_one(entry)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> insert_many(<span class="va">self</span>, entries: <span class="bu">list</span>):</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.insert_many(entries)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> find_one(<span class="va">self</span>, <span class="bu">filter</span>: <span class="bu">dict</span>):</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.find_one(<span class="bu">filter</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> find(<span class="va">self</span>, <span class="bu">filter</span>: <span class="bu">dict</span>):</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.find(<span class="bu">filter</span>)</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_one(<span class="va">self</span>, <span class="bu">filter</span>: <span class="bu">dict</span>, update_doc: <span class="bu">dict</span>, upsert: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>):</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> upsert:</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">self</span>.__rust_collection.update_one(<span class="bu">filter</span>, update_doc)</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.upsert(<span class="bu">filter</span>, update_doc)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> delete_one(<span class="va">self</span>, <span class="bu">filter</span>: <span class="bu">dict</span>):</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.delete_one(<span class="bu">filter</span>)</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="bu">len</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__rust_collection.count_documents()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+</section>
+<section id="pyo3-개발-모범-사례-best-practices" class="level1" data-number="24">
+<h1 data-number="24"><span class="header-section-number">24</span> PyO3 개발 모범 사례 (Best Practices)</h1>
+<section id="rust-python-데이터-복사-비용-최소화" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="rust-python-데이터-복사-비용-최소화"><span class="header-section-number">24.1</span> 1. Rust-Python 데이터 복사 비용 최소화</h2>
+<ul>
+<li>Python과 Rust 간에 대규모 데이터셋(리스트, 딕셔너리)을 전달할 때 반복적인 직렬화/역직렬화는 오버헤드를 유발합니다.</li>
+<li>가능하면 Rust 내부에서 일괄 처리(Batching)를 진행하거나, <code>numpy</code> 배열 / <code>pyo3-polars</code>와 같은 버퍼 포인터 기반 무복사(Zero-Copy) 인터페이스를 고려해야 합니다.</li>
+</ul>
+</section>
+<section id="gil-스코프-최소화" class="level2" data-number="24.2">
+<h2 data-number="24.2" class="anchored" data-anchor-id="gil-스코프-최소화"><span class="header-section-number">24.2</span> 2. GIL 스코프 최소화</h2>
+<ul>
+<li>CPU 바운드 연산이나 대기 시간이 긴 I/O 작업은 반드시 <code>py.allow_threads</code>로 감싸서 GIL을 해제해야 Python 멀티스레드 환경의 응답성을 해치지 않습니다.</li>
+</ul>
+</section>
+<section id="명확한-예외-매핑" class="level2" data-number="24.3">
+<h2 data-number="24.3" class="anchored" data-anchor-id="명확한-예외-매핑"><span class="header-section-number">24.3</span> 3. 명확한 예외 매핑</h2>
+<ul>
+<li>Rust의 <code>Result&lt;T, E&gt;</code>는 PyO3의 <code>PyResult&lt;T&gt;</code>로 변환하고, 상황에 맞는 표준 Python 예외(<code>PyValueError</code>, <code>PyTypeError</code>, <code>PyIOError</code>, <code>PyRuntimeError</code>)를 적절히 매핑해야 Python 사용자가 직관적인 에러 핸들링(<code>try-except</code>)을 구현할 수 있습니다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="요약-summary" class="level1" data-number="25">
+<h1 data-number="25"><span class="header-section-number">25</span> 요약 (Summary)</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">단계</th>
+<th style="text-align: left;">도구/방법</th>
+<th style="text-align: left;">주요 이점</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>바인딩 작성</strong></td>
+<td style="text-align: left;"><code>PyO3</code> (<code>#[pyfunction]</code>, <code>#[pyclass]</code>, <code>Bound</code>)</td>
+<td style="text-align: left;">컴파일 타임 타입 검사 및 안전한 GIL 관리</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>빌드 &amp; 패키징</strong></td>
+<td style="text-align: left;"><code>Maturin</code> (<code>maturin develop</code>, <code>maturin build</code>)</td>
+<td style="text-align: left;"><code>Cargo.toml</code> 기반의 설정 없는 자동 바이너리 휠 생성</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>최적화 &amp; 동시성</strong></td>
+<td style="text-align: left;"><code>py.allow_threads</code> &amp; <code>Python::with_gil</code></td>
+<td style="text-align: left;">Python GIL 제약을 우회하여 진정한 멀티코어 병렬화 달성</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Pythonic 래핑</strong></td>
+<td style="text-align: left;">Python 레이어 (<code>__getitem__</code>, <code>Context Manager</code>)</td>
+<td style="text-align: left;">순수 Python 라이브러리와 동일한 사용자 경험 제공</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../learn_rust/learn_rust.html" class="pagination-link" aria-label="러스트 프로그래밍 완벽 가이드: 코드 해설서">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">러스트 프로그래밍 완벽 가이드: 코드 해설서</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../swift_for_python_dev/swift_for_python_dev.html" class="pagination-link" aria-label="파이썬 개발자를 위한 Swift 학습 가이드">
+        <span class="nav-page-text"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
