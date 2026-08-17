@@ -1,21 +1,7 @@
 ---
-engine: markdown
 title: "Gapminder 데이터를 이용한 파이썬 초급 실습"
 author: "Allen Lee, Carpentry Instructors"
-date: "today"
-format:
-  html:
-    theme: cosmo
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: show
-    code-copy: true
-    code-tools: true
-execute:
-  eval: false
-  error: true
-  freeze: auto
+date: "2026-08-15"
 ---
 
 # 소개 {.unnumbered}

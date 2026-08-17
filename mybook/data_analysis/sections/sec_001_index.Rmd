@@ -1,0 +1,264 @@
+<!-- ========================================= -->
+<!-- Chapter: index.Rmd -->
+<!-- ========================================= -->
+
+
+<img src="images/cover.jpg" class="cover" width="250" height="328"/> 이 책은 복잡한 데이터 분석 과정을 명쾌하고 알기 쉽게 풀어내어 누구나 쉽게 접근할 수 있도록 돕고자 기획되었습니다. 비록 전문 통계학자나 계량경제학자, 데이터 과학자는 아니지만, 직접 설명하고 실무에 적용하면서 배우는 과정의 가치를 굳게 믿고 있습니다. 이 책을 집필하는 과정은 저에게도 뜻깊은 배움의 여정이었으며, 독자 여러분께도 같은 경험이 되기를 바랍니다.
+
+이 책은 통계학, 계량경제학, 데이터 과학을 처음 접하는 입문자부터, 이 분야에 관심을 두고 더 깊은 지식을 쌓고자 하는 모든 분을 위해 쓰였습니다. 저의 주 연구 분야는 마케팅이지만, 이 책에서 다루는 원리와 방법론은 과학적 연구 방법이나 데이터 분석을 활용하는 모든 학문과 실무 영역에 두루 적용할 수 있습니다.
+
+데이터 분석과 인과추론이라는 매력적인 분야에 첫발을 내딛는 예비 통계학자, 계량경제학자, 데이터 과학자 여러분께 이 책이 든든한 길잡이가 되기를 바랍니다.
+
+::: {style="text-align:center"}
+
+![](images/logo.png){width="300" height="300"}
+
+:::
+
+```{r, out.width='25%', fig.align='center', echo=FALSE, eval = FALSE}
+knitr::include_graphics('logo.png')
+```
+
+------------------------------------------------------------------------
+
+## 인용 방법 {.unnumbered}
+
+### **제1권: 데이터 분석의 기초 (Foundations of Data Analysis)**
+
+**1. APA (제7판)**
+
+Nguyen, M. (2025). *Foundations of data analysis* (Vol. 1). Springer Cham. [https://doi.org/10.1007/978-3-032-01858-8](https://tidd.ly/4oL3N2X)
+
+**2. MLA (제8판)**
+
+Nguyen, Mike. *Foundations of Data Analysis*. Vol. 1, Springer Cham, 2025. DOI: [10.1007/978-3-032-01858-8](https://tidd.ly/4oL3N2X).
+
+**3. Chicago (제17판)**
+
+Nguyen, Mike. 2025. *Foundations of Data Analysis*. Vol. 1. Cham: Springer. [https://doi.org/10.1007/978-3-032-01858-8](https://tidd.ly/4oL3N2X).
+
+**4. Harvard**
+
+Nguyen, M. (2025) *Foundations of Data Analysis*. Vol. 1. Springer Cham. Available at: [https://doi.org/10.1007/978-3-032-01858-8](https://tidd.ly/4oL3N2X)
+
+```{r, eval=FALSE}
+@book{Nguyen2025Vol1,
+  author    = {Nguyen, Mike},
+  title     = {Foundations of Data Analysis},
+  volume    = {1},
+  year      = {2025},
+  publisher = {Springer Cham},
+  doi       = {10.1007/978-3-032-01858-8},
+  url       = {https://doi.org/10.1007/978-3-032-01858-8}
+}
+```
+
+------------------------------------------------------------------------
+
+### **제2권: 데이터 분석을 위한 회귀 기법 (Regression Techniques for Data Analysis)**
+
+**1. APA (제7판)**
+
+Nguyen, M. (2025). *Regression techniques for data analysis* (Vol. 2). Springer Cham. [https://link.springer.com/book/9783032018342](https://tidd.ly/47PJ7kB)
+
+**2. MLA (제8판)**
+
+Nguyen, Mike. *Regression Techniques for Data Analysis*. Vol. 2, Springer Cham, 2025. [https://link.springer.com/book/9783032018342](https://tidd.ly/47PJ7kB).
+
+**3. Chicago (제17판)**
+
+Nguyen, Mike. 2025. *Regression Techniques for Data Analysis*. Vol. 2. Cham: Springer. [https://link.springer.com/book/9783032018342](https://tidd.ly/47PJ7kB).
+
+**4. Harvard**
+
+Nguyen, M. (2025) *Regression Techniques for Data Analysis*. Vol. 2. Springer Cham. Available at: [https://link.springer.com/book/9783032018342](https://tidd.ly/47PJ7kB)
+
+```{r, eval = FALSE}
+@book{Nguyen2025Vol2,
+  author    = {Nguyen, Mike},
+  title     = {Regression Techniques for Data Analysis},
+  volume    = {2},
+  year      = {2025},
+  publisher = {Springer Cham},
+  isbn      = {978-3-032-01834-2},
+  url       = {https://link.springer.com/book/9783032018342}
+}
+```
+
+------------------------------------------------------------------------
+
+### **제3권: 고급 모델링과 데이터 당면 과제 (Advanced Modeling and Data Challenges)**
+
+**1. APA (제7판)**
+
+Nguyen, M. (2025). *Advanced modeling and data challenges* (Vol. 3). Springer Cham. [https://link.springer.com/book/9783032017185](https://tidd.ly/3JrB3xm)
+
+**2. MLA (제8판)**
+
+Nguyen, Mike. *Advanced Modeling and Data Challenges*. Vol. 3, Springer Cham, 2025. [https://link.springer.com/book/9783032017185](https://tidd.ly/3JrB3xm).
+
+**3. Chicago (제17판)**
+
+Nguyen, Mike. 2025. *Advanced Modeling and Data Challenges*. Vol. 3. Cham: Springer. [https://link.springer.com/book/9783032017185](https://tidd.ly/3JrB3xm).
+
+**4. Harvard**
+
+Nguyen, M. (2025) *Advanced Modeling and Data Challenges*. Vol. 3. Springer Cham. Available at: [https://link.springer.com/book/9783032017185](https://tidd.ly/3JrB3xm)
+
+```{r, eval = FALSE}
+@book{Nguyen2025Vol3,
+  author    = {Nguyen, Mike},
+  title     = {Advanced Modeling and Data Challenges},
+  volume    = {3},
+  year      = {2025},
+  publisher = {Springer Cham},
+  isbn      = {978-3-032-01718-5},
+  url       = {https://link.springer.com/book/9783032017185}
+}
+```
+
+------------------------------------------------------------------------
+
+### **제4권: 실험 설계 (Experimental Design)**
+
+**1. APA (제7판)**
+
+Nguyen, M. (2025). *Experimental design* (Vol. 4). Springer Cham. [https://link.springer.com/book/9783032018380](https://tidd.ly/4oFridQ)
+
+**2. MLA (제8판)**
+
+Nguyen, Mike. *Experimental Design*. Vol. 4, Springer Cham, 2025. [https://link.springer.com/book/9783032018380](https://tidd.ly/4oFridQ).
+
+**3. Chicago (제17판)**
+
+Nguyen, Mike. 2025. *Experimental Design*. Vol. 4. Cham: Springer. [https://link.springer.com/book/9783032018380](https://tidd.ly/4oFridQ).
+
+**4. Harvard**
+
+Nguyen, M. (2025) *Experimental Design*. Vol. 4. Springer Cham. Available at: [https://link.springer.com/book/9783032018380](https://tidd.ly/4oFridQ)
+
+```{r, eval = FALSE}
+@book{Nguyen2025Vol4,
+  author    = {Nguyen, Mike},
+  title     = {Experimental Design},
+  volume    = {4},
+  year      = {2025},
+  publisher = {Springer Cham},
+  isbn      = {978-3-032-01838-0},
+  url       = {https://link.springer.com/book/9783032018380}
+}
+```
+
+------------------------------------------------------------------------
+
+# 서론 (Introduction)
+
+21세기에 접어든 이래, 통계학, 정보기술, 컴퓨터 과학, 그리고 급부상하는 데이터 과학 분야를 중심으로 눈부신 발전과 혁신이 이어지고 있습니다. 그러나 이러한 흐름 속에서 *빅데이터(big data)*, *머신러닝(machine learning)*, *딥러닝(deep learning)*과 같은 **유행어(buzzwords)**가 지나치게 남발되는 부작용도 나타났습니다. 이들 용어는 맥락에 맞게 쓰일 때는 강력하지만, 때로는 그 기저에 깔린 근본적인 원리를 가리기도 합니다.
+
+각 응용 분야마다 고유한 계량적 하위 분야가 존재합니다:
+
+- 경제학의 **계량경제학(Econometrics)**\
+- 심리학의 **심리측정학(Psychometrics)**\
+- 화학의 **화학통계학(Chemometrics)**\
+- 스포츠 분석의 **세이버메트릭스(Sabermetrics)**\
+- 보건학 및 의학의 **생물통계학(Biostatistics)**
+
+일반적으로 이러한 분야들은 다음과 같은 포괄적인 명칭으로 묶이곤 합니다:
+
+- **데이터 과학 (Data Science)**\
+- **응용통계학 (Applied Statistics)**\
+- **계산사회과학 (Computational Social Science)**
+
+새로운 도구와 기술을 익히는 것은 매우 흥미로운 일이지만, 방대한 개념을 온전히 머릿속에 담아두기란 결코 쉽지 않습니다. 저에게 있어 이러한 아이디어를 내재화하고 실전에 적용하는 가장 효과적인 방법은, 데이터 분석의 전 과정을 처음부터 끝까지 직접 기록하며 정리하는 것이었습니다.
+
+이러한 취지를 바탕으로, 이제 매력적인 데이터 분석의 세계로 함께 떠나보겠습니다.
+
+::: {style="text-align:center"}
+
+![](images/meme.jpg){width="450" height="350"}
+
+:::
+
+```{r fig.align='center', echo=FALSE, include = FALSE}
+library("jpeg")
+knitr::include_graphics('images/meme.jpg')
+```
+
+## 일반적인 권장 사항 (General Recommendations)
+
+- 데이터 분석 숙달의 핵심은 **실습과 반복**입니다. 코드를 직접 한 줄이라도 더 작성해보고, 다양한 함수를 익히며 실험을 거듭할수록 데이터 분석은 더욱 흥미롭고 보람찬 과정이 될 것입니다.
+
+- 본 도서는 독자의 관심사와 수준에 따라 다음과 같이 다양한 방식으로 활용할 수 있습니다:
+
+    - **선택적 학습**: 특정 분석 방법이나 도구에 관심이 있다면 목차를 통해 해당 절로 바로 이동하세요.
+    - **순차적 학습**: 전통적인 통계 및 데이터 분석 학습 경로를 따르고자 한다면 [선형 회귀(Linear Regression)] 섹션부터 시작하는 것을 권장합니다.
+    - **실험적 접근**: 실험 설계와 가설 검정에 집중하고 싶다면 [분산 분석(ANOVA)] 섹션을 살펴보세요.
+
+- 이론적 배경보다 **실무 적용**에 주된 관심이 있는 독자라면 각 장의 요약(summary) 및 적용(application) 절을 중심으로 학습하시기 바랍니다.
+
+- 개념이 명확히 이해되지 않을 때는 온라인 자료를 적극적으로 참고하세요. 이 책은 핵심 길잡이 역할을 하며, 튜토리얼이나 기술 블로그 등의 외부 자료가 추가적인 통찰을 제공할 것입니다.
+
+- 책에 수록된 예제 코드를 수정하거나 응용할 때는 R에 내장된 도움말 기능을 활용하세요:
+
+    - 특정 함수의 상세 정보를 확인하려면 R 콘솔에 `help(함수명)` 또는 `?함수명`을 입력합니다.
+    - 예를 들어 `hist` 함수의 세부 사항을 확인하려면 콘솔에 `?hist` 또는 `help(hist)`를 입력합니다.
+
+- 아울러 온라인 검색(구글, ChatGPT 등) 또한 매우 강력한 도구입니다. R에서는 동일한 분석 결과를 얻기 위해 다양한 패키지를 활용할 수 있으므로, *"histogram in R"*과 같은 간단한 검색만으로도 다양한 접근법과 예시를 찾을 수 있습니다.
+
+이러한 전략을 활용하면 자신의 목표에 맞추어 학습 효율을 극대화하고 이 책의 가치를 온전히 누릴 수 있습니다.
+
+**통계학의 주요 도구**
+
+- 확률론 (Probability Theory)
+- 수학적 해석학 (Mathematical Analysis)
+- 컴퓨터 과학 (Computer Science)
+- 수치해석학 (Numerical Analysis)
+- 데이터베이스 관리 (Database Management)
+
+```{r warning=FALSE, eval=FALSE, include=FALSE}
+if (!require("pacman"))
+    install.packages("pacman")
+if (!require("devtools"))
+    install.packages("devtools")
+library("pacman")
+library("devtools")
+```
+
+```{r include=FALSE}
+# R 패키지용 bib 데이터베이스 자동 생성
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+**코드 재현 환경 (Code Replication)**
+
+본 도서는 `r R.version.string` 및 다음 패키지 환경에서 작성되었습니다:
+
+```{r, echo = FALSE, results="asis"}
+# usethis::use_description_defaults()
+# usethis::use_description(package = c("tidyverse","usethis"),check_name = F)
+# 
+# # .libPaths()
+# deps <- desc::desc_get_deps("C:/Program Files/R/R-4.0.4/library") 
+# deps <- desc::desc_get_deps("C:/Users/tn9k4/OneDrive - University of Missouri/Documents/R/win-library/4.0")
+
+# if you want to make it beautiful for markdown
+deps <- desc::desc_get_deps()
+pkgs <- sort(deps$package[deps$type == "Imports"])
+pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
+df <- tibble::tibble(
+  package = pkgs$package,
+  version = pkgs$ondiskversion,
+  source = gsub("@", "\\\\@", pkgs$source)
+)
+knitr::kable(df, format = "markdown",
+             caption = "사용된 R 패키지 및 버전")
+```
+
+```{r, echo=FALSE}
+devtools::session_info()
+# usethis::use_package("dplyr") # Default is "Imports"
+# usethis::use_package("ggplot2", "Suggests")` # Suggests
+```

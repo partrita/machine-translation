@@ -1,0 +1,2227 @@
+<!-- ========================================= -->
+<!-- Chapter: 02.1-prerequisites.Rmd -->
+<!-- ========================================= -->
+
+
+# 선수 지식 (Prerequisites)
+
+이 장에서는 효과적인 통계 분석을 수행하는 데 필수적인 수학적 및 계산적 도구들을 복습합니다. [행렬론(Matrix Theory)]과 선형대수학의 핵심 개념부터 시작하여, 확률변수, 확률분포, 기댓값을 포함하는 기초 [확률론(Probability Theory)]을 살펴봅니다. 또한 함수, 도함수, 로그와 같은 중요한 수학적 기초를 되짚어본 후, R을 활용한 데이터 입출력 및 데이터 조작과 같은 실무적 요소로 나아갑니다. 이러한 주제들을 탄탄히 다져둠으로써 독자 여러분은 이후 장에서 제시될 고급 통계 방법론을 다룰 수 있는 충분한 역량을 갖추게 될 것입니다.
+
+```{r setup, include=FALSE}
+# knitr::opts_chunk$set(warning = FALSE, message = FALSE,cache = TRUE) 
+knitr::opts_chunk$set(out.width = "100%")
+```
+
+이러한 주제들에 대해 이미 충분한 이해를 갖추고 있다면, 곧바로 [기술통계학(Descriptive Statistics)] 섹션으로 넘어가 응용 데이터 분석을 시작하셔도 좋습니다.
+
+그림 \@ref(fig:include-image)는 학문 분야에 따라 동일한 기초 통계 작업이 어떻게 다른 이름으로 포장되는지를 유쾌하게 보여줍니다.
+
+```{r include-image, fig.cap="AI와 머신러닝에 관한 밈(Meme)", out.width="70%", fig.alt="데이터 분석을 은유하는 벽의 균열 변화 과정을 묘사한 3컷 만화. 첫 번째 컷에서는 한 사람이 '통계학(Statistics)'이라는 라벨이 붙은 벽의 균열을 관찰합니다. 두 번째 컷에서는 '머신러닝(Machine Learning)'이라는 라벨과 함께 균열에 액자를 씌웁니다. 세 번째 컷에서는 'AI'라는 라벨과 함께 액자에 담긴 균열을 청중에게 전시하며 자신감 있게 미소 짓습니다. 아래쪽의 더 큰 이미지에서는 'AI'라는 굵은 텍스트 옆에서 만족스러운 표정으로 서 있는 사람을 보여줍니다. 이 만화는 데이터 과학에서 기본적인 관찰이 고급 프레젠테이션으로 발전하는 과정을 해학적으로 나타냅니다."}
+knitr::include_graphics("images/meme_01.png")
+```
+
+<!-- ![](images/Famous-internet-meme-displaying-the-relation-between-statistics-Machine-Learning-and.png){width="90%"} -->
+
+## 행렬론 (Matrix Theory)
+
+행렬 $\mathbf{A}$는 원래의 행렬(원시 행렬)을 나타냅니다. 이는 행 $i$와 열 $j$를 나타내는 원소 $a_{ij}$로 구성된 $2 \times 2$ 행렬입니다.
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+$$ 
+
+$\mathbf{A}'$는 $\mathbf{A}$의 전치행렬(transpose)입니다. 행렬의 전치는 행과 열을 서로 바꿉니다.
+
+$$
+\mathbf{A}' =
+\begin{bmatrix}
+a_{11} & a_{21} \\
+a_{12} & a_{22}
+\end{bmatrix}
+$$
+
+선형대수학의 연산을 이해하는 데 필수적인 행렬의 기본 성질과 규칙은 다음과 같습니다:
+
+$$
+\begin{aligned}
+\mathbf{(ABC)'}   & = \mathbf{C'B'A'} \quad &\text{(곱의 전치는 순서가 역순이 됨)} \\
+\mathbf{A(B+C)}   & = \mathbf{AB + AC} \quad &\text{(분배법칙)} \\
+\mathbf{AB}       & \neq \mathbf{BA} \quad &\text{(행렬 곱셈은 교환법칙이 성립하지 않음)} \\
+\mathbf{(A')'}    & = \mathbf{A} \quad &\text{(이중 전치는 원래 행렬이 됨)} \\
+\mathbf{(A+B)'}   & = \mathbf{A' + B'} \quad &\text{(합의 전치는 전치의 합과 같음)} \\
+\mathbf{(AB)'}    & = \mathbf{B'A'} \quad &\text{(곱의 전치는 순서가 역순이 됨)} \\
+\mathbf{(AB)^{-1}} & = \mathbf{B^{-1}A^{-1}} \quad &\text{(곱의 역행렬은 순서가 역순이 됨)} \\
+\mathbf{A+B}      & = \mathbf{B + A} \quad &\text{(행렬 덧셈은 교환법칙이 성립함)} \\
+\mathbf{AA^{-1}}  & = \mathbf{I} \quad &\text{(행렬과 역행렬의 곱은 단위행렬)} 
+\end{aligned}
+$$ 
+
+이러한 성질들은 연립방정식의 풀이, 모형 최적화, 데이터 변환을 수행할 때 매우 중요합니다.
+
+행렬 $\mathbf{A}$의 역행렬이 존재하면 이를 **가역행렬(invertible)**이라 부릅니다. $\mathbf{A}$의 역행렬이 존재하지 않으면 이를 **특이행렬(singular)**이라고 합니다.
+
+두 행렬 $\mathbf{A}$와 $\mathbf{B}$의 곱은 다음과 같이 계산됩니다:
+
+$$
+\begin{aligned}
+\mathbf{A} &= 
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\ 
+a_{21} & a_{22} & a_{23} 
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31} & \sum_{i=1}^{3}a_{1i}b_{i2} & \sum_{i=1}^{3}a_{1i}b_{i3} \\
+\sum_{i=1}^{3}a_{2i}b_{i1} & \sum_{i=1}^{3}a_{2i}b_{i2} & \sum_{i=1}^{3}a_{2i}b_{i3}
+\end{bmatrix} 
+\end{aligned}
+$$
+
+**이차형식 (Quadratic Form)**
+
+$\mathbf{a}$를 $3 \times 1$ 벡터라고 할 때, 행렬 $\mathbf{B}$를 포함하는 이차형식(quadratic form)은 다음과 같이 주어집니다:
+
+$$
+\mathbf{a'Ba} = \sum_{i=1}^{3}\sum_{j=1}^{3}a_i b_{ij} a_{j}
+$$
+
+**벡터의 길이 (Length of a Vector)**
+
+벡터 $\mathbf{a}$의 **길이**(또는 2-노름, 2-norm)는 $||\mathbf{a}||$로 표기하며, 벡터 자기 자신과의 내적(inner product)의 제곱근으로 정의됩니다:
+
+$$
+||\mathbf{a}|| = \sqrt{\mathbf{a'a}}
+$$
+
+### 행렬의 랭크(계수) (Rank of a Matrix)
+
+행렬의 **랭크(계수, rank)**는 다음을 의미합니다:
+
+-   열(또는 행)들이 생성하는 공간의 차원.
+-   선형 독립(linearly independent)인 열 또는 행의 개수.
+
+$n \times k$ 행렬 $\mathbf{A}$와 $k \times k$ 행렬 $\mathbf{B}$에 대해 다음과 같은 성질이 성립합니다:
+
+-   $\text{rank}(\mathbf{A}) \leq \min(n, k)$
+-   $\text{rank}(\mathbf{A}) = \text{rank}(\mathbf{A'}) = \text{rank}(\mathbf{A'A}) = \text{rank}(\mathbf{AA'})$
+-   $\text{rank}(\mathbf{AB}) = \min(\text{rank}(\mathbf{A}), \text{rank}(\mathbf{B}))$
+-   $\mathbf{B}$가 가역(비특이) 행렬일 필요충분조건은 $\text{rank}(\mathbf{B}) = k$이다.
+
+### 행렬의 역행렬 (Inverse of a Matrix)
+
+스칼라 대수에서는 $a = 0$이면 $1/a$이 존재하지 않습니다.
+
+행렬 대수에서 행렬이 **비특이(non-singular)**이면 가역(invertible)입니다. 즉, 행렬식(determinant)이 0이 아니며 역행렬이 존재합니다. 정방행렬(square matrix) $\mathbf{A}$가 가역이라는 것은 다음을 만족하는 또 다른 정방행렬 $\mathbf{B}$가 존재함을 뜻합니다:
+
+$$
+\mathbf{AB} = \mathbf{I} \quad \text{(단위행렬, Identity Matrix)}.
+$$
+
+이 경우, $\mathbf{A}^{-1} = \mathbf{B}$입니다.
+
+$2 \times 2$ 행렬의 경우:
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+$$
+
+역행렬은 다음과 같습니다:
+
+$$
+\mathbf{A}^{-1} =
+\frac{1}{ad-bc}
+\begin{bmatrix}
+d & -b \\
+-c & a
+\end{bmatrix}
+$$
+
+이 역행렬은 $ad - bc \neq 0$일 때만 존재하며, 여기서 $ad - bc$는 $\mathbf{A}$의 행렬식입니다.
+
+분할 블록 행렬(partitioned block matrix)의 경우:
+
+$$
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+\mathbf{(A-BD^{-1}C)^{-1}} & \mathbf{-(A-BD^{-1}C)^{-1}BD^{-1}} \\
+\mathbf{-D^{-1}C(A-BD^{-1}C)^{-1}} & \mathbf{D^{-1}+D^{-1}C(A-BD^{-1}C)^{-1}BD^{-1}}
+\end{bmatrix}
+$$
+
+이 공식은 $\mathbf{D}$와 $\mathbf{A - BD^{-1}C}$가 가역이라고 가정합니다.
+
+**비특이 행렬의 역행렬 성질**
+
+1.  $\mathbf{(A^{-1})^{-1}} = \mathbf{A}$
+2.  0이 아닌 스칼라 $b$에 대해, $\mathbf{(bA)^{-1} = b^{-1}A^{-1}}$
+3.  행렬 $\mathbf{B}$에 대해, $\mathbf{(BA)^{-1} = B^{-1}A^{-1}}$ ($\mathbf{B}$가 비특이 행렬일 때만 성립).
+4.  $\mathbf{(A^{-1})' = (A')^{-1}}$ (역행렬의 전치는 전치행렬의 역행렬과 같음).
+5.  $\mathbf{1/A}$로 표기하지 말고, 항상 $\mathbf{A^{-1}}$를 사용해야 합니다.
+
+**참고 사항**:
+
+-   행렬의 행렬식은 역행렬의 존재 여부를 결정합니다. 정방행렬의 경우 행렬식이 $0$이면 행렬이 **특이(singular)**하며 역행렬이 존재하지 않습니다.
+
+-   특히 분할 행렬이나 블록 행렬을 다룰 때는 가역성 조건을 항상 확인해야 합니다.
+
+### 행렬의 부호성 (Definiteness of a Matrix)
+
+대칭 정방행렬 $k \times k$ 행렬 $\mathbf{A}$는 다음 조건에 따라 분류됩니다:
+
+-   **양의 준정부호(Positive Semi-Definite, PSD)**: 임의의 0이 아닌 $k \times 1$ 벡터 $\mathbf{x}$에 대해 다음을 만족하면 $\mathbf{A}$는 PSD입니다: $$
+    \mathbf{x'Ax \geq 0}.
+    $$
+
+-   **음의 준정부호(Negative Semi-Definite, NSD)**: 임의의 0이 아닌 $k \times 1$ 벡터 $\mathbf{x}$에 대해 다음을 만족하면 $\mathbf{A}$는 NSD입니다: $$
+    \mathbf{x'Ax \leq 0}.
+    $$
+
+-   **부정부호(Indefinite)**: $\mathbf{A}$가 PSD도 아니고 NSD도 아닌 경우 부정부호(indefinite)입니다.
+
+**단위행렬(identity matrix)**은 항상 **양의 정부호(Positive Definite, PD)**입니다.
+
+**예제**
+
+$\mathbf{x} = (x_1, x_2)'$라 하고, $2 \times 2$ 단위행렬 $\mathbf{I}$를 고려해 보겠습니다:
+
+$$
+\begin{aligned}
+\mathbf{x'Ix} 
+&= (x_1, x_2) 
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} \\
+&=
+(x_1, x_2)
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix} \\
+&=
+x_1^2 + x_2^2 \geq 0.
+\end{aligned}
+$$
+
+따라서 모든 0이 아닌 $\mathbf{x}$에 대해 $\mathbf{x'Ix} > 0$이므로 $\mathbf{I}$는 양의 정부호(PD)입니다.
+
+**부호성의 성질**
+
+1.  모든 분산-공분산 행렬은 양의 준정부호(PSD)입니다.
+2.  행렬 $\mathbf{A}$가 PSD일 필요충분조건은 다음을 만족하는 행렬 $\mathbf{B}$가 존재하는 것입니다: $$
+    \mathbf{A = B'B}.
+    $$
+3.  $\mathbf{A}$가 PSD이면 적합한(conformable) 크기의 임의의 행렬 $\mathbf{B}$에 대해 $\mathbf{B'AB}$ 또한 PSD입니다.
+4.  $\mathbf{A}$와 $\mathbf{C}$가 비특이 행렬이면, $\mathbf{A - C}$가 PSD일 필요충분조건은 $\mathbf{C^{-1} - A^{-1}}$가 PSD인 것입니다.
+5.  $\mathbf{A}$가 PD(또는 ND)이면, $\mathbf{A^{-1}}$ 또한 PD(또는 ND)입니다.
+
+**참고 사항**
+
+-   **부정부호(indefinite)** 행렬 $\mathbf{A}$는 PSD도 아니고 NSD도 아닙니다. 이 개념은 스칼라 대수에는 직접적으로 대응되는 개념이 없습니다.
+-   정방행렬이 PSD이면서 가역(invertible)이면, 그 행렬은 PD입니다.
+
+**부호성의 예시**
+
+1.  **가역 / 부정부호 (Invertible / Indefinite)**: $$
+    \begin{bmatrix}
+    -1 & 0 \\
+    0 & 10
+    \end{bmatrix}
+    $$
+
+2.  **비가역 / 부정부호 (Non-Invertible / Indefinite)**: $$
+    \begin{bmatrix}
+    0 & 1 \\
+    0 & 0
+    \end{bmatrix}
+    $$
+
+3.  **가역 / 양의 준정부호 (Invertible / PSD)**: $$
+    \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{bmatrix}
+    $$
+
+4.  **비가역 / 양의 준정부호 (Non-Invertible / PSD)**: $$
+    \begin{bmatrix}
+    0 & 0 \\
+    0 & 1
+    \end{bmatrix}
+    $$
+
+### 행렬 미적분학 (Matrix Calculus)
+
+$x$가 $1 \times k$ 행 벡터일 때, 스칼라 함수 $y = f(x_1, x_2, \dots, x_k) = f(x)$를 고려해 보겠습니다.
+
+#### 그래디언트 (1계 도함수, First-Order Derivative)
+
+벡터 $x$에 대한 $f(x)$의 1계 도함수인 그래디언트(gradient, 기울기 벡터)는 다음과 같이 주어집니다:
+
+$$
+\frac{\partial f(x)}{\partial x} =
+\begin{bmatrix}
+\frac{\partial f(x)}{\partial x_1} \\
+\frac{\partial f(x)}{\partial x_2} \\
+\vdots \\
+\frac{\partial f(x)}{\partial x_k}
+\end{bmatrix}
+$$
+
+#### 헤시안 (2계 도함수, Second-Order Derivative)
+
+$x$에 대한 $f(x)$의 2계 도함수인 헤시안(Hessian)은 다음과 같이 정의되는 대칭행렬입니다:
+
+$$
+\frac{\partial^2 f(x)}{\partial x \partial x'} =
+\begin{bmatrix}
+\frac{\partial^2 f(x)}{\partial x_1^2} & \frac{\partial^2 f(x)}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f(x)}{\partial x_1 \partial x_k} \\
+\frac{\partial^2 f(x)}{\partial x_2 \partial x_1} & \frac{\partial^2 f(x)}{\partial x_2^2} & \cdots & \frac{\partial^2 f(x)}{\partial x_2 \partial x_k} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 f(x)}{\partial x_k \partial x_1} & \frac{\partial^2 f(x)}{\partial x_k \partial x_2} & \cdots & \frac{\partial^2 f(x)}{\partial x_k^2}
+\end{bmatrix}
+$$
+
+#### 행렬에 대한 스칼라 함수의 도함수 (Derivative of a Scalar Function with Respect to a Matrix)
+
+$f(\mathbf{X})$를 스칼라 함수라 하고, $\mathbf{X}$를 $n \times p$ 행렬이라 할 때, 도함수는 다음과 같습니다:
+
+$$
+\frac{\partial f(\mathbf{X})}{\partial \mathbf{X}} = 
+\begin{bmatrix}
+\frac{\partial f(\mathbf{X})}{\partial x_{11}} & \cdots & \frac{\partial f(\mathbf{X})}{\partial x_{1p}} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f(\mathbf{X})}{\partial x_{n1}} & \cdots & \frac{\partial f(\mathbf{X})}{\partial x_{np}}
+\end{bmatrix}
+$$
+
+#### 주요 행렬 도함수 공식 (Common Matrix Derivatives)
+
+1.  $\mathbf{a}$가 벡터이고 $\mathbf{A}$가 $\mathbf{y}$와 무관한 행렬일 때:
+    -   $\frac{\partial \mathbf{a'y}}{\partial \mathbf{y}} = \mathbf{a}$
+    -   $\frac{\partial \mathbf{y'y}}{\partial \mathbf{y}} = 2\mathbf{y}$
+    -   $\frac{\partial \mathbf{y'Ay}}{\partial \mathbf{y}} = (\mathbf{A} + \mathbf{A'})\mathbf{y}$
+2.  $\mathbf{X}$가 대칭행렬일 때:
+    -   $\frac{\partial |\mathbf{X}|}{\partial x_{ij}} = \begin{cases} X_{ii}, & i = j \\ X_{ij}, & i \neq j \end{cases}$ (여기서 $X_{ij}$는 $\mathbf{X}$의 $(i,j)$번째 여인수(cofactor)).
+3.  $\mathbf{X}$가 대칭행렬이고 $\mathbf{A}$가 $\mathbf{X}$와 무관한 행렬일 때:
+    -   $\frac{\partial \text{tr}(\mathbf{XA})}{\partial \mathbf{X}} = \mathbf{A} + \mathbf{A'} - \text{diag}(\mathbf{A})$.
+4.  $\mathbf{X}$가 대칭행렬이고, $\mathbf{J}_{ij}$를 $(i,j)$ 위치만 1이고 나머지는 0인 행렬이라 할 때:
+    -   $\frac{\partial \mathbf{X}^{-1}}{\partial x_{ij}} = \begin{cases} -\mathbf{X}^{-1}\mathbf{J}_{ii}\mathbf{X}^{-1}, & i = j \\ -\mathbf{X}^{-1}(\mathbf{J}_{ij} + \mathbf{J}_{ji})\mathbf{X}^{-1}, & i \neq j \end{cases}.$
+
+### 스칼라 및 벡터 공간에서의 최적화 (Optimization in Scalar and Vector Spaces)
+
+최적화(Optimization)는 함수의 최솟값 또는 최댓값을 찾는 과정입니다. 최적화 조건은 함수가 스칼라를 다루는지 벡터를 다루는지에 따라 달라집니다. 아래는 스칼라 최적화와 벡터 최적화의 비교입니다:
+
++--------------------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------+
+| 조건                                                   | **스칼라 최적화 (Scalar Optimization)**        | **벡터 최적화 (Vector Optimization)**                                                   |
++========================================================+================================================+=========================================================================================+
+| **1계 조건 (First-Order Condition)**                   | $$\frac{\partial f(x_0)}{\partial x} = 0$$     | $$\frac{\partial f(x_0)}{\partial x} = \begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix}$$ |
++--------------------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------+
+| **2계 조건 (Second-Order Condition)**                  | $$\frac{\partial^2 f(x_0)}{\partial x^2} > 0$$ | $$\frac{\partial^2 f(x_0)}{\partial x \partial x'} > 0$$                                |
+|                                                        |                                                |                                                                                         |
+| **볼록(convex)** 함수의 경우 **최솟값**을 의미함.      |                                                |                                                                                         |
++--------------------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------+
+| **오목(concave)** 함수의 경우 **최댓값**을 의미함.     | $$\frac{\partial^2 f(x_0)}{\partial x^2} < 0$$ | $$\frac{\partial^2 f(x_0)}{\partial x \partial x'} < 0$$                                |
++--------------------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------+
+
+: 스칼라 및 벡터 최적화 조건
+
+**주요 개념**
+
+1.  **1계 조건 (First-Order Condition)**:
+    -   임계점(critical point)에서 함수의 **1계 도함수**는 0이어야 합니다. 이는 스칼라 함수와 벡터 함수 모두에 적용됩니다:
+        -   스칼라의 경우, $\frac{\partial f(x)}{\partial x} = 0$으로 임계점을 식별합니다.
+        -   벡터의 경우, $\frac{\partial f(x)}{\partial x}$는 **그래디언트 벡터(gradient vector)**이며, 그래디언트의 모든 원소가 0일 때 조건이 만족됩니다.
+2.  **2계 조건 (Second-Order Condition)**:
+    -   **2계 도함수**는 임계점이 최솟값인지, 최댓값인지, 아니면 안장점(saddle point)인지를 결정합니다:
+        -   스칼라 함수의 경우, $\frac{\partial^2 f(x)}{\partial x^2} > 0$이면 **국소 최솟값(local minimum)**을 의미하고, $\frac{\partial^2 f(x)}{\partial x^2} < 0$이면 **국소 최댓값(local maximum)**을 의미합니다.
+        -   벡터 함수의 경우, 헤시안 행렬 $\frac{\partial^2 f(x)}{\partial x \partial x'}$이 다음과 같아야 합니다:
+            -   **양의 정부호(Positive Definite)**: **최솟값** (볼록 함수).
+            -   **음의 정부호(Negative Definite)**: **최댓값** (오목 함수).
+            -   **부정부호(Indefinite)**: **안장점** (최솟값도 최댓값도 아님).
+3.  **볼록 함수와 오목 함수 (Convex and Concave Functions)**:
+    -   함수 $f(x)$는:
+        -   $\frac{\partial^2 f(x)}{\partial x^2} > 0$이거나 헤시안 $\frac{\partial^2 f(x)}{\partial x \partial x'}$이 양의 정부호이면 **볼록(convex)**합니다.
+        -   $\frac{\partial^2 f(x)}{\partial x^2} < 0$이거나 헤시안이 음의 정부호이면 **오목(concave)**합니다.
+    -   볼록성은 최소화 문제에서 전역 최적화(global optimization)를 보장하며, 오목성은 최대화 문제에서 전역 최적화를 보장합니다.
+4.  **헤시안 행렬 (Hessian Matrix)**:
+    -   벡터 최적화에서 헤시안 $\frac{\partial^2 f(x)}{\partial x \partial x'}$은 임계점의 성격을 규명하는 데 결정적인 역할을 합니다:
+        -   양의 정부호 헤시안: 모든 고윳값이 양수입니다.
+        -   음의 정부호 헤시안: 모든 고윳값이 음수입니다.
+        -   부정부호 헤시안: 고윳값들의 부호가 혼합되어 있습니다.
+
+### 촐레스키 분해 (Cholesky Decomposition)
+
+통계 분석과 수치 선형대수학에서 행렬을 다루기 쉬운 형태로 분해하는 것은 효율적인 계산을 위해 필수적입니다. 이러한 중요한 인수분해 방법 중 하나가 바로 **촐레스키 분해(Cholesky Decomposition)**입니다. 이는 (복소수 공간의) **에르미트(Hermitian)** 행렬 또는 (실수 공간의) **대칭(symmetric)**인 **양의 정부호(positive-definite)** 행렬에 적용됩니다.
+
+$n \times n$ 양의 정부호 행렬 $A$가 주어졌을 때, 촐레스키 분해는 다음과 같이 정의됩니다:
+
+$$
+A = L L^{*},
+$$
+
+여기서:
+
+-   $L$은 대각 원소가 모두 엄격한 양수(strictly positive)인 하삼각행렬(lower-triangular matrix)입니다.
+-   $L^{*}$는 $L$의 *켤레 전치(conjugate transpose)*를 나타냅니다(실수 행렬의 경우 단순히 전치행렬 $L^{T}$가 됨).
+
+촐레스키 분해는 계산 효율성이 높고 수치적으로 안정적이어서 다양한 응용 분야, 특히 공분산 행렬, 선형 시스템, 확률분포를 광범위하게 다루는 통계학에서 핵심적으로 활용되는 기법입니다.
+
+촐레스키 분해를 계산하는 방법을 살펴보기 전에, 행렬이 *양의 정부호(positive-definite)*라는 것이 무엇을 의미하는지 명확히 할 필요가 있습니다. 실수 대칭행렬 $A$에 대해:
+
+-   모든 0이 아닌 벡터 $x$에 대해 다음이 성립하면 $A$는 *양의 정부호*입니다: $$
+    x^T A  x > 0.
+    $$
+-   또는 $A$의 모든 고윳값이 엄격한 양수(strictly positive)라는 점으로 양의 정부호성을 특성화할 수도 있습니다.
+
+통계학에서 다루는 많은 중요한 행렬, 특히 공분산 행렬이나 정밀도 행렬(precision matrix, 집중 행렬)은 대칭이면서 동시에 양의 정부호입니다.
+
+------------------------------------------------------------------------
+
+#### 존재성 (Existence)
+
+대칭이면서 양의 정부호인 실수 $n \times n$ 행렬 $A$는 항상 촐레스키 분해 $A = L L^T$가 가능합니다. 이 정리는 통계학에서 유효한(즉, 양의 정부호인) 모든 공분산 행렬을 촐레스키 분해를 통해 분해할 수 있음을 보장합니다.
+
+#### 유일성 (Uniqueness)
+
+$L$의 대각 원소가 *엄격한 양수*여야 한다는 조건을 추가하면, $L$은 *유일(unique)*합니다. 즉, 대각 원소가 엄격한 양수인 다른 하삼각행렬은 동일한 인수분해를 생성할 수 없습니다. 이러한 유일성은 소프트웨어 구현에서 일관된 수치 결과를 보장하는 데 매우 유용합니다.
+
+#### 촐레스키 인자 $L$ 구성하기 (Constructing the Cholesky Factor $L$)
+
+실수 대칭 양의 정부호 행렬 $A \in \mathbb{R}^{n \times n}$이 주어졌을 때, $A = LL^T$를 만족하는 하삼각행렬 $L$을 구하고자 합니다. 이를 구하는 한 가지 방법은 다음과 같은 단계별 절차(표준 선형대수 라이브러리에 주로 구현되어 있음)를 사용하는 것입니다:
+
+1.  $L$을 $n \times n$ 영행렬로 **초기화**합니다.
+2.  행 $i = 1, 2, \dots, n$에 대해 **반복**합니다:
+    1.  각 행 $i$에 대해 다음을 계산합니다: $$
+        L_{ii} = \sqrt{A_{ii} - \sum_{k=1}^{i-1} L_{ik}^2}.
+        $$
+    2.  각 열 $j = i+1, i+2, \dots, n$에 대해 다음을 계산합니다: $$
+        L_{ji} = \frac{1}{L_{ii}}
+                  \left(A_{ji} - \sum_{k=1}^{i-1} L_{jk} L_{ik}\right).
+        $$
+    3.  $L$의 나머지 원소들은 0으로 유지되거나 후속 단계에서 계산됩니다.
+3.  결과: $L$은 하삼각행렬이고, $L^T$는 그 전치행렬입니다.
+
+촐레스키 분해의 계산 비용은 일반적인 LU 분해의 약 절반 수준입니다. 구체적으로 약 $\frac{1}{3} n^3$회의 부동소수점 연산(flops)이 필요하므로, 양의 정부호 시스템에 대해 다른 분해법보다 실무에서 훨씬 더 효율적입니다.
+
+------------------------------------------------------------------------
+
+#### 예제 (Illustrative Example)
+
+간단한 $3 \times 3$ 양의 정부호 행렬을 고려해 보겠습니다:
+
+$$
+A = 
+\begin{pmatrix}
+4 & 2 & 4 \\
+2 & 5 & 6 \\
+4 & 6 & 20
+\end{pmatrix}.
+$$
+
+$A$가 양의 정부호라고 가정합니다(주요 소행렬식을 계산하거나 모든 $x \neq 0$에 대해 $x^T A x > 0$임을 검증하여 확인할 수 있습니다). 단계별로 $L$을 구해 보겠습니다:
+
+1.  $L_{11}$ **계산**:\
+    $$
+    L_{11} = \sqrt{A_{11}} = \sqrt{4} = 2.
+    $$
+2.  $L_{21}$ 및 $L_{31}$ **계산**:
+    -   $L_{21} = \frac{A_{21}}{L_{11}} = \frac{2}{2} = 1.\
+    -   $L_{31} = \frac{A_{31}}{L_{11}} = \frac{4}{2} = 2.$
+3.  $L_{22}$ **계산**:\
+    $$
+    L_{22} = \sqrt{A_{22} - L_{21}^2} 
+            = \sqrt{5 - 1^2}
+            = \sqrt{4} = 2.
+    $$
+4.  $L_{32}$ **계산**:\
+    $$
+    L_{32} = \frac{A_{32} - L_{31} L_{21}}{L_{22}}
+            = \frac{6 - (2)(1)}{2}
+            = \frac{4}{2} = 2.
+    $$
+5.  $L_{33}$ **계산**:\
+    $$
+    L_{33} = \sqrt{A_{33} - (L_{31}^2 + L_{32}^2)}
+            = \sqrt{20 - (2^2 + 2^2)}
+            = \sqrt{20 - 8}
+            = \sqrt{12}
+            = 2\sqrt{3}.
+    $$
+
+따라서 다음과 같습니다:
+
+$$
+L = 
+\begin{pmatrix}
+2 & 0 & 0 \\
+1 & 2 & 0 \\
+2 & 2 & 2\sqrt{3}
+\end{pmatrix}.
+$$
+
+$L L^T = A$임을 직접 검증할 수 있습니다.
+
+------------------------------------------------------------------------
+
+#### 통계학에서의 응용 (Applications in Statistics)
+
+##### 선형 연립방정식 풀이 (Solving Linear Systems)
+
+흔히 마주치는 통계학 문제는 $x$에 대해 $A x = b$를 푸는 것입니다. 예를 들어 회귀분석이나 베이즈 사후 최빈값(Bayesian posterior modes)을 계산할 때, 공분산 행렬이나 정밀도 행렬이 포함된 선형 연립방정식을 풀어야 하는 경우가 많습니다. $A = LL^T$를 이용하면:
+
+1.  전진 대입법(Forward Substitution): $L y = b$를 풉니다.
+2.  후진 대입법(Backward Substitution): $L^T x = y$를 풉니다.
+
+이 2단계 과정은 수치적 불안정성으로 인해 권장되지 않는 $A$의 역행렬을 직접 구하는 방식보다 훨씬 안정적이고 효율적입니다.
+
+##### 상관된 확률벡터 생성 (Generating Correlated Random Vectors)
+
+시뮬레이션 기반 통계학(예: 몬테카를로 방법)에서는 공분산 행렬이 $\Sigma$인 **다변량 정규분포(multivariate normal distribution)** $\mathcal{N}(\mu, \Sigma)$로부터 무작위 표본을 생성해야 하는 경우가 많습니다. 그 단계는 다음과 같습니다:
+
+1.  독립 표준정규분포 변수들로 구성된 벡터 $z \sim \mathcal{N}(0, I)$를 생성합니다.
+2.  $\Sigma = LL^T$일 때, $x = \mu + Lz$를 계산합니다.
+
+그러면 $x$는 목표로 하는 공분산 구조 $\Sigma$를 갖게 됩니다. 이 기법은 베이지안 통계(예: MCMC 샘플링) 및 금융 모델링(예: 포트폴리오 시뮬레이션)에서 널리 활용됩니다.
+
+##### 가우시안 프로세스와 크리깅 (Gaussian Processes and Kriging)
+
+가우시안 프로세스 모델링(공간통계학, 머신러닝, 지구통계학에서 흔히 사용됨)에서는 관측 데이터 지점 간의 상관관계를 설명하는 대규모 공분산 행렬을 빈번하게 다룹니다:
+
+$$
+\Sigma = 
+\begin{pmatrix}
+k(x_1, x_1) & k(x_1, x_2) & \cdots & k(x_1, x_n) \\
+k(x_2, x_1) & k(x_2, x_2) & \cdots & k(x_2, x_n) \\
+\vdots      & \vdots      & \ddots & \vdots      \\
+k(x_n, x_1) & k(x_n, x_2) & \cdots & k(x_n, x_n)
+\end{pmatrix},
+$$
+
+여기서 $k(\cdot, \cdot)$는 공분산(커널) 함수입니다. 로그 가능도(log-likelihood)를 평가하기 위해 $\Sigma$를 반복해서 역행렬 계산하거나 분해해야 할 수 있습니다:
+
+$$
+\log \mathcal{L}(\theta) \sim 
+- \tfrac{1}{2} \left( y - m(\theta) \right)^T \Sigma^{-1} \left( y - m(\theta) \right) 
+- \tfrac{1}{2} \log \left| \Sigma \right|,
+$$
+
+여기서 $m(\theta)$는 평균 함수이고 $\theta$는 모수입니다. $\Sigma$의 촐레스키 인자 $L$을 사용하면 다음과 같은 이점이 있습니다:
+
+-   역행렬을 명시적으로 계산하는 대신 $L$을 이용한 연립방정식 풀이를 통해 $\Sigma^{-1}$ 연산을 수행할 수 있습니다.
+-   $\log|\Sigma|$는 $2 \sum_{i=1}^n \log L_{ii}$로 간편하게 계산할 수 있습니다.
+
+따라서 촐레스키 분해는 가우시안 프로세스 계산의 핵심 중추 역할을 합니다.
+
+##### 공분산 행렬을 활용한 베이지안 추론 (Bayesian Inference with Covariance Matrices)
+
+많은 베이지안 모델, 특히 위계적 모델(hierarchical models)에서는 모수에 대해 다변량 정규 사전분포(prior)를 가정합니다. 촐레스키 분해는 다음과 같은 목적으로 활용됩니다:
+
+-   이러한 사전분포 또는 사후분포(posterior distributions)로부터 표본 추출.
+-   대규모 공분산 행렬의 정규화(regularization).
+-   공분산 구조를 분해하여 마르코프 연쇄 몬테카를로(MCMC) 계산 속도 향상.
+
+------------------------------------------------------------------------
+
+#### 기타 참고 사항 (Other Notes)
+
+1.  수치적 안정성 고려사항 (Numerical Stability Considerations)
+
+촐레스키 분해는 양의 정부호 행렬에 적용할 때 일반적인 LU 분해보다 수치적으로 더 안정적인 것으로 평가받습니다. 행 또는 열 피벗팅(pivoting)이 필요하지 않으므로 반올림 오차가 더 작을 수 있습니다. 물론 실제 환경에서는 소프트웨어 구현에 따라 차이가 있을 수 있으며, 조건수(condition number)가 극도로 나쁜 병태 행렬(ill-conditioned matrices)은 여전히 수치적 문제를 야기할 수 있습니다.
+
+2.  우리가 통상적으로 $\mathbf{A}^{-1}$를 직접 계산하지 않는 이유 (Why We *Don't* Usually Compute $\mathbf{A}^{-1}$)
+
+통계학(특히 오래된 교재)에서는 $\Sigma^{-1}$이 포함된 공식을 흔히 볼 수 있습니다. 그러나 역행렬을 명시적으로 계산하는 것은 다음과 같은 이유로 권장되지 않습니다:
+
+-   수치적으로 덜 안정적입니다.
+-   더 많은 연산량을 요구합니다.
+-   $\Sigma^{-1}$이 필요한 것처럼 보이는 많은 작업은 촐레스키 인자 $L$을 통해 연립방정식을 푸는 편이 훨씬 효율적입니다.
+
+따라서 "**역행렬을 구하지 말고, 연립방정식을 풀어라 (solve, don't invert)**"는 수치해석의 유명한 격언입니다. $\Sigma^{-1} b$와 같은 표현식을 마주치면, 직접 역행렬을 계산하는 대신 촐레스키 인자 $L$과 $L^T$를 활용하여 전진 및 후진 대입법으로 $\Sigma x = b$를 풀 수 있습니다.
+
+3.  추가 변형 및 확장 (Further Variants and Extensions)
+
+-   불완전 촐레스키 분해 (Incomplete Cholesky): 특히 대규모 희소(sparse) 시스템에서 완전한 촐레스키 분해가 너무 비용이 많이 들 때 반복 해법(iterative solvers)에서 사용됩니다.
+-   $LDL^T$ 분해: 제곱근 계산을 피하는 변형 기법으로, 양의 준정부호 또는 부정부호 시스템에 피벗팅 전략과 함께 주의 깊게 사용됩니다.
+
+------------------------------------------------------------------------
+
+## 확률론 (Probability Theory)
+
+<!-- ![](images/meme-stat.jpg){width="80%"} -->
+
+### 확률의 공리와 정리 (Axioms and Theorems of Probability)
+
+1.  $S$를 실험의 표본공간(sample space)이라 할 때: $$
+    P[S] = 1
+    $$ (표본공간의 확률은 항상 1이다.)
+
+2.  임의의 사건 $A$에 대해: $$
+    P[A] \geq 0
+    $$ (확률은 항상 음이 아닌 값을 가진다.)
+
+3.  $A_1, A_2, A_3, \dots$를 유한개 또는 가산 무한개의 상호 배반(mutually exclusive) 사건들의 모임이라 할 때: $$
+    P[A_1 \cup A_2 \cup A_3 \dots] = P[A_1] + P[A_2] + P[A_3] + \dots
+    $$ (상호 배반 사건들의 합사건 확률은 각 사건의 확률의 합과 같다.)
+
+4.  공집합의 확률: $$
+    P[\emptyset] = 0
+    $$
+
+5.  여사건 규칙(Complement Rule): $$
+    P[A'] = 1 - P[A]
+    $$
+
+6.  두 사건의 합사건 확률: $$
+    P[A_1 \cup A_2] = P[A_1] + P[A_2] - P[A_1 \cap A_2]
+    $$
+
+#### 조건부 확률 (Conditional Probability)
+
+$B$가 주어졌을 때 $A$의 조건부 확률은 다음과 같이 정의됩니다:
+
+$$
+P[A|B] = \frac{P[A \cap B]}{P[B]}, \quad \text{단, } P[B] \neq 0.
+$$
+
+#### 독립 사건 (Independent Events)
+
+두 사건 $A$와 $B$가 독립일 필요충분조건은 다음과 같습니다:
+
+1.  $P[A \cap B] = P[A]P[B]$
+2.  $P[A|B] = P[A]$
+3.  $P[B|A] = P[B]$
+
+사건들의 모임 $A_1, A_2, \dots, A_n$이 상호 독립일 필요충분조건은 모든 부분 모임이 독립인 것입니다.
+
+#### 곱셈 법칙 (Multiplication Rule)
+
+두 사건의 교사건(결합) 확률은 다음과 같이 계산할 수 있습니다: $$
+P[A \cap B] = P[A|B]P[B] = P[B|A]P[A].
+$$
+
+#### 베이즈 정리 (Bayes' Theorem)
+
+$A_1, A_2, \dots, A_n$을 그 합집합이 $S$가 되는 상호 배반 사건들의 모임이라 하고, $B$를 $P[B] \neq 0$인 사건이라 할 때, 임의의 사건 $A_j$ ($j = 1, 2, \dots, n$)에 대해 다음이 성립합니다: $$
+P[A_j|B] = \frac{P[B|A_j]P[A_j]}{\sum_{i=1}^n P[B|A_i]P[A_i]}.
+$$
+
+#### 젠센 부등식 (Jensen's Inequality)
+
+-   $g(x)$가 볼록 함수(convex function)이면: $$
+    E[g(X)] \geq g(E[X])
+    $$
+
+-   $g(x)$가 오목 함수(concave function)이면: $$
+    E[g(X)] \leq g(E[X]).
+    $$
+
+젠센 부등식(Jensen's inequality)은 모표준편차($\sigma$)의 추정량으로 표본표준편차($s$)를 사용할 때, 왜 이것이 편향된 추정량(biased estimator)이 되는지를 명확히 보여주는 유용한 도구입니다.
+
+-   모표준편차 $\sigma$는 다음과 같이 정의됩니다: $$
+    \sigma = \sqrt{\mathbb{E}[(X - \mu)^2]},
+    $$ 여기서 $\mu = \mathbb{E}[X]$는 모평균입니다.
+
+-   표본표준편차 $s$는 다음과 같이 주어집니다: $$
+    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2},
+    $$ 여기서 $\bar{X}$는 표본평균입니다.
+
+-   $s$를 $\sigma$의 추정량으로 사용할 때, 그 기댓값은 오목 함수인 제곱근 함수를 포함하게 됩니다.
+
+**젠센 부등식의 적용**
+
+표준오차 공식은 제곱근을 포함합니다: $$
+\sqrt{\mathbb{E}[s^2]}.
+$$
+
+그러나 제곱근 함수는 오목(concave) 함수이므로, 젠센 부등식에 의해 다음이 성립합니다: $$
+\sqrt{\mathbb{E}[s^2]} \leq \mathbb{E}[\sqrt{s^2}] = \mathbb{E}[s].
+$$
+
+이 부등식은 $s$(표본표준편차)의 기대값이 모표준편차 $\sigma$를 체계적으로 과소추정(underestimate)함을 보여줍니다.
+
+**편향의 정량화**
+
+편향(bias)은 다음으로 인해 발생합니다: $$
+\mathbb{E}[s] \neq \sigma.
+$$
+
+이 편향을 보정하기 위해, 표본표준편차와 모표준편차 간의 다음과 같은 관계를 활용할 수 있습니다: $$
+\mathbb{E}[s] = \sigma \cdot \sqrt{\frac{n-1}{n}},
+$$ 여기서 $n$은 표본 크기입니다. 이 편향은 $n$이 커질수록 감소하며, 추정량은 점근적으로 비편향(asymptotically unbiased) 추정량이 됩니다.
+
+젠센 부등식을 통해 제곱근 함수의 오목성이 $s$를 $\sigma$의 편향 추정량으로 만들고, 모표준편차를 체계적으로 과소추정하게 함을 확인할 수 있습니다.
+
+#### 반복 기댓값의 법칙 (Law of Iterated Expectation)
+
+**반복 기댓값의 법칙(Law of Iterated Expectation, LIE)**에 따르면 두 확률변수 $X$와 $Y$에 대해 다음이 성립합니다:
+
+$$
+E(X) = E(E(X|Y)).
+$$
+
+이는 $X$의 기댓값을 구할 때, 먼저 조건부 기댓값 $E(X|Y)$를 계산한 다음, $Y$의 분포에 대해 이 값의 기댓값을 취함으로써 얻을 수 있음을 의미합니다.
+
+#### 상관관계와 독립성 (Correlation and Independence)
+
+확률변수 간의 관계의 강도는 가장 강한 관계부터 가장 약한 관계 순으로 다음과 같이 나열할 수 있습니다:
+
+1.  **독립성 (Independence)**: 
+    -   $f(x, y) = f_X(x)f_Y(y)$
+    -   $f_{Y|X}(y|x) = f_Y(y)$ 및 $f_{X|Y}(x|y) = f_X(x)$
+    -   $E[g_1(X)g_2(Y)] = E[g_1(X)]E[g_2(Y)]$
+2.  **평균 독립성 (Mean Independence)** (독립성에 의해 함의됨):
+    -   다음을 만족하면 $Y$는 $X$에 대해 평균 독립입니다: $$
+        E[Y|X] = E[Y].
+        $$
+    -   $E[Xg(Y)] = E[X]E[g(Y)]$
+3.  **비상관성 (Uncorrelatedness)** (독립성 및 평균 독립성에 의해 함의됨):
+    -   $\text{Cov}(X, Y) = 0$
+    -   $\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$
+    -   $E[XY] = E[X]E[Y]$
+
+### 중심극한정리 (Central Limit Theorem)
+
+**중심극한정리(Central Limit Theorem, CLT)**에 따르면, 모집단의 원래 분포와 관계없이 표본 크기가 충분히 크면($n \geq 25$), 표본평균 또는 표본비율의 표집분포(sampling distribution)가 정규분포에 수렴합니다.
+
+$X_1, X_2, \dots, X_n$을 평균이 $\mu$이고 분산이 $\sigma^2$인 분포 $X$로부터 추출한 크기 $n$의 무작위 표본(random sample)이라 하겠습니다. 이때 $n$이 충분히 크면:
+
+1.  표본평균 $\bar{X}$는 근사적으로 정규분포를 따릅니다: $$
+    \mu_{\bar{X}} = \mu, \quad \sigma^2_{\bar{X}} = \frac{\sigma^2}{n}.
+    $$
+
+2.  표본비율 $\hat{p}$는 근사적으로 정규분포를 따릅니다: $$
+    \mu_{\hat{p}} = p, \quad \sigma^2_{\hat{p}} = \frac{p(1-p)}{n}.
+    $$
+
+3.  표본비율의 차이 $\hat{p}_1 - \hat{p}_2$는 근사적으로 정규분포를 따릅니다: $$
+    \mu_{\hat{p}_1 - \hat{p}_2} = p_1 - p_2, \quad \sigma^2_{\hat{p}_1 - \hat{p}_2} = \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}.
+    $$
+
+4.  표본평균의 차이 $\bar{X}_1 - \bar{X}_2$는 근사적으로 정규분포를 따릅니다: $$
+    \mu_{\bar{X}_1 - \bar{X}_2} = \mu_1 - \mu_2, \quad \sigma^2_{\bar{X}_1 - \bar{X}_2} = \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}.
+    $$
+
+5.  다음 확률변수들은 근사적으로 표준정규분포를 따릅니다:
+
+    -   $\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}$
+    -   $\frac{\hat{p} - p}{\sqrt{\frac{p(1-p)}{n}}}$
+    -   $\frac{(\hat{p}_1 - \hat{p}_2) - (p_1 - p_2)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}}$
+    -   $\frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}$
+
+#### 표본평균의 극한분포 (Limiting Distribution of the Sample Mean)
+
+$\{X_i\}_{i=1}^{n}$이 유한한 평균 $\mu$와 유한한 분산 $\sigma^2$를 갖는 분포로부터 추출된 iid(독립동일분포) 무작위 표본일 때, $\sqrt{n}$으로 척도화된 표본평균 $\bar{X}$는 다음과 같은 극한분포를 갖습니다:
+
+$$
+\sqrt{n}(\bar{X} - \mu) \xrightarrow{d} N(0, \sigma^2).
+$$
+
+표본평균을 표준화하면 다음과 같습니다: $$
+\frac{\sqrt{n}(\bar{X} - \mu)}{\sigma} \xrightarrow{d} N(0, 1).
+$$
+
+**참고 사항**:
+
+-   중심극한정리(CLT)는 임의의 분포(연속형, 이산형, 또는 미지의 분포)에서 추출된 대부분의 무작위 표본에 대해 성립합니다.
+-   이는 다변량 경우로도 확장됩니다: 확률벡터의 무작위 표본은 다변량 정규분포로 수렴합니다.
+
+#### 점근분산과 극한분산 (Asymptotic Variance and Limiting Variance)
+
+**점근분산(Asymptotic Variance, Avar)**: $$
+Avar(\sqrt{n}(\bar{X} - \mu)) = \sigma^2.
+$$
+
+-   표본 크기($n$)가 무한대로 갈 때 추정량의 극한분포가 갖는 분산을 의미합니다.
+
+-   점근분포(예: 정규분포)에서 척도화된 추정량 $\sqrt{n}(\bar{X} - \mu)$의 변동성을 특성화합니다.
+
+**극한분산 (Limiting Variance, $\lim_{n \to \infty} Var$)**
+
+$$
+\lim_{n \to \infty} Var(\sqrt{n}(\bar{x}-\mu)) = \sigma^2
+$$
+
+-   $n \to \infty$일 때 $\sqrt{n}(\bar{x} - \mu)$의 실제 분산이 수렴하는 극한값을 나타냅니다.
+
+잘 정의된 양호한 추정량(well-behaved estimator)의 경우,
+
+$$
+Avar(\sqrt{n}(\bar{X} - \mu)) = \lim_{n \to \infty} Var(\sqrt{n}(\bar{x}-\mu)) = \sigma^2.
+$$
+
+그러나 **점근분산이 반드시 분산의 극한값과 같을 필요는 없습니다**. 점근분산은 극한분포로부터 유도되는 반면, 극한분산은 분산 수열의 수렴 결과이기 때문입니다.
+
+$$
+Avar(.) \neq \lim_{n \to \infty} Var(.)
+$$
+
+-   점근분산 $Avar$와 극한분산 $\lim_{n \to \infty} Var$는 수치적으로는 모두 $\sigma^2$와 같을 수 있지만, 개념적 정의는 서로 다릅니다.
+
+-   $Avar(\cdot) \neq \lim_{n \to \infty} Var(\cdot)$는 수치적 결과가 일치할 수 있더라도 유도 방식과 본질적인 의미가 다름을 강조합니다:
+
+    -   $Avar$는 추정량의 점근(대표본) 분포에 의존합니다.
+
+    -   $\lim_{n \to \infty} Var(\cdot)$는 $n$이 증가함에 따른 분산 수열 자체의 수렴을 다룹니다.
+
+두 값이 일치하지 않는 경우:
+
+1.  **표본 분위수 (Sample Quantiles)**: $0 < p < 1$인 $p$차 표본 분위수를 고려해 보겠습니다. 정칙성 조건(regularity conditions) 하에서 표본 분위수의 점근분포는 정규분포이며, 분산은 $p$와 해당 분위수에서의 분포 밀도에 의존합니다. 그러나 표본 크기가 커짐에 따라 표본 분위수 자체의 분산이 이 극한으로 반드시 수렴하지는 않을 수 있습니다.
+2.  **부트스트랩 방법 (Bootstrap Methods)**: 통계량의 분포를 추정하기 위해 부트스트래핑 기법을 사용할 때, 부트스트랩 분포는 원래 통계량과 다른 극한분포로 수렴할 수 있습니다. 이 경우 부트스트랩 분포의 분산(부트스트랩 분산)은 원래 통계량의 극한분산과 다를 수 있습니다.
+3.  **무작위로 변동하는 점근적 거동을 갖는 통계량 (Statistics with Randomly Varying Asymptotic Behavior)**: 일부 경우 통계량의 점근적 거동이 표본 경로에 따라 무작위로 달라질 수 있습니다. 이러한 통계량의 경우 점근분산이 극한분산의 일치추정량을 제공하지 못할 수 있습니다.
+4.  **점근적 거동이 변동하는 M-추정량 (M-estimators with Varying Asymptotic Behavior)**: M-추정량은 기저 분포의 꼬리 거동(tail behavior)에 따라 서로 다른 점근적 거동을 보일 수 있습니다. 꼬리가 두꺼운 중미 분포(heavy-tailed distributions)의 경우 표본 크기가 커지더라도 추정량의 분산이 안정화되지 않아, 점근분산이 극한분포의 분산과 달라질 수 있습니다.
+
+### 확률변수 (Random Variable)
+
+확률변수는 **이산확률변수(discrete)**와 **연속확률변수(continuous)**로 분류할 수 있으며, 각 유형을 정의하는 고유한 성질과 함수를 갖습니다.
+
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+|                                      | **이산확률변수 (Discrete Variable)**                                                                    | **연속확률변수 (Continuous Variable)**                                                                                       |
++======================================+=========================================================================================================+==============================================================================================================================+
+| **정의**                             | 유한개 또는 가산 무한개의 값만을 가질 수 있는 확률변수입니다.                                           | 특정 실수 구간(또는 구간들) 내의 모든 값을 가질 수 있는 확률변수로, $P(X=x) = 0$입니다.                                      |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| **밀도함수**                         | 다음을 만족하는 함수 $f$를 $X$의 밀도함수(질량함수)라고 합니다:                                         | 다음을 만족하는 함수 $f$를 $X$의 확률밀도함수라고 합니다:                                                                    |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+|                                      | 1\. $f(x) \geq 0$                                                                                       | 1\. 임의의 실수 $x$에 대해 $f(x) \geq 0$                                                                                     |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+|                                      | 2\. $\sum_{x} f(x) = 1$                                                                                 | 2\. $\int_{-\infty}^{\infty} f(x)  dx = 1$                                                                                 |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+|                                      | 3\. 실수 $x$에 대해 $f(x) = P(X = x)$                                                                   | 3\. 실수 $a, b$에 대해 $P[a \leq X \leq b] = \int_{a}^{b} f(x)  dx$                                                         |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| **누적분포함수**                     | $F(x) = P(X \leq x)$                                                                                    | $F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t)  dt$                                                                         |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| $E[H(X)]$                            | $\sum_{x} H(x) f(x)$                                                                                    | $\int_{-\infty}^{\infty} H(x) f(x)  dx$                                                                                    |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| $\mu = E[X]$                         | $\sum_{x} x f(x)$                                                                                       | $\int_{-\infty}^{\infty} x f(x)  dx$                                                                                       |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| **원적률 (Ordinary Moments)**        | $\sum_{x} x^k f(x)$                                                                                     | $\int_{-\infty}^{\infty} x^k f(x)  dx$                                                                                     |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| **적률생성함수 (MGF)**               | $m_X(t) = E[e^{tX}] = \sum_{x} e^{tx} f(x)$                                                             | $m_X(t) = E[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} f(x)  dx$                                                             |
++--------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+
+: 이산확률변수와 연속확률변수의 비교
+
+**기댓값의 성질**
+
+-   임의의 상수 $c$에 대해 $E[c] = c$.
+-   임의의 상수 $c$에 대해 $E[cX] = cE[X]$.
+-   $E[X + Y] = E[X] + E[Y]$.
+-   $X$와 $Y$가 독립이면 $E[XY] = E[X]E[Y]$.
+
+**분산의 성질**
+
+-   임의의 상수 $c$에 대해 $\text{Var}(c) = 0$.
+-   임의의 상수 $c$에 대해 $\text{Var}(cX) = c^2 \text{Var}(X)$.
+-   $\text{Var}(X) \geq 0$.
+-   $\text{Var}(X) = E[X^2] - (E[X])^2$.
+-   $\text{Var}(X + c) = \text{Var}(X)$.
+-   $X$와 $Y$가 독립이면 $\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$.
+
+표준편차 $\sigma$는 다음과 같이 주어집니다: $$
+\sigma = \sqrt{\sigma^2} = \sqrt{\text{Var}(X)}.
+$$
+
+#### 다변량 확률변수 (Multivariate Random Variables)
+
+$y_1, \dots, y_p$를 평균이 $\mu_1, \dots, \mu_p$인 확률변수들이라고 하겠습니다. 그러면:
+
+$$
+\mathbf{y} = \begin{bmatrix}
+y_1 \\
+\vdots \\
+y_p
+\end{bmatrix}, \quad E[\mathbf{y}] = \begin{bmatrix}
+\mu_1 \\
+\vdots \\
+\mu_p
+\end{bmatrix} = \boldsymbol{\mu}.
+$$
+
+$y_i$와 $y_j$ 사이의 공분산은 $\sigma_{ij} = \text{Cov}(y_i, y_j)$입니다. 분산-공분산(또는 산포) 행렬은 다음과 같습니다:
+
+$$
+\mathbf{\Sigma} = (\sigma_{ij})= \begin{bmatrix}
+\sigma_{11} & \sigma_{12} & \dots & \sigma_{1p} \\
+\sigma_{21} & \sigma_{22} & \dots & \sigma_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sigma_{p1} & \sigma_{p2} & \dots & \sigma_{pp}
+\end{bmatrix}.
+$$
+
+여기서 $\mathbf{\Sigma}$는 대칭행렬이며 $(p+1)p/2$개의 고유한(독립적인) 모수를 갖습니다.
+
+대안적으로, $u_{p \times 1}$와 $v_{v \times 1}$를 평균이 $\mathbf{\mu_u}$와 $\mathbf{\mu_v}$인 확률벡터라고 하겠습니다. 그러면
+
+$$ \mathbf{\Sigma_{uv}} = cov(\mathbf{u,v}) = E[\mathbf{(u-\mu_u)(v-\mu_v)'}] $$
+
+$\Sigma_{uv} \neq \Sigma_{vu}$이지만 ($\Sigma_{uv} = \Sigma_{vu}'$가 성립합니다).
+
+**공분산 행렬의 성질**
+
+1.  대칭성: $\mathbf{\Sigma}' = \mathbf{\Sigma}$.
+2.  **고윳값 분해(Eigen-Decomposition)** (스펙트럼 분해, 대칭 분해): $\mathbf{\Sigma = \Phi \Lambda \Phi}$ (여기서 $\mathbf{\Phi}$는 $\mathbf{\Phi \Phi' = I}$를 만족하는 정규직교 고유벡터 행렬이고, $\mathbf{\Lambda}$는 대각선에 고윳값 $(\lambda_1,...,\lambda_p)$을 갖는 대각행렬).
+3.  비음정부호성(Non-Negative Definiteness): 임의의 $\mathbf{a} \in R^p$에 대해 $\mathbf{a \Sigma a} \ge 0$. 동치 조건으로 $\mathbf{\Sigma}$의 고윳값은 $\lambda_1 \ge ... \ge \lambda_p \ge 0$를 만족함.
+4.  일반화 분산(Generalized Variance): $|\mathbf{\Sigma}| = \lambda_1 \dots \lambda_p \geq 0$.
+5.  대각합(Trace): $\text{tr}(\mathbf{\Sigma}) = \lambda_1 + \dots + \lambda_p = \sigma_{11} + \dots+ \sigma_{pp} = \sum \sigma_{ii}$ = 분산의 합 (총분산, total variance).
+
+**참고**: $\mathbf{\Sigma}$는 양의 정부호(positive definite)여야 합니다. 이는 모든 고윳값이 양수이며, $\mathbf{\Sigma}^{-1}\mathbf{\Sigma}= \mathbf{I}_{p \times p} = \mathbf{\Sigma}\mathbf{\Sigma}^{-1}$를 만족하는 역행렬 $\mathbf{\Sigma}^{-1}$가 존재함을 의미합니다.
+
+#### 상관행렬 (Correlation Matrices)
+
+상관계수 $\rho_{ij}$와 상관행렬 $\mathbf{R}$은 다음과 같이 정의됩니다:
+
+$$
+\rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}}, \quad \mathbf{R} = \begin{bmatrix}
+1 & \rho_{12} & \dots & \rho_{1p} \\
+\rho_{21} & 1 & \dots & \rho_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+\rho_{p1} & \rho_{p2} & \dots & 1
+\end{bmatrix}.
+$$
+
+여기서 모든 $i$에 대해 $\rho_{ii} = 1$입니다.
+
+#### 선형변환 (Linear Transformations)
+
+$\mathbf{A}$와 $\mathbf{B}$를 상수 행렬이라 하고, $\mathbf{c}$와 $\mathbf{d}$를 상수 벡터라 할 때:
+
+-   $E[\mathbf{Ay + c}] = \mathbf{A \mu_y + c}$.
+-   $\text{Var}(\mathbf{Ay + c}) = \mathbf{A \Sigma_y A'}$.
+-   $\text{Cov}(\mathbf{Ay + c, By + d}) = \mathbf{A \Sigma_y B'}$.
+
+### 적률생성함수 (Moment Generating Function)
+
+#### 적률생성함수의 성질
+
+1.  $\frac{d^k(m_X(t))}{dt^k} \bigg|_{t=0} = E[X^k]$ ($t=0$에서의 $k$계 도함수는 $X$의 $k$차 적률을 제공합니다).
+2.  $\mu = E[X] = m_X'(0)$ ($t=0$에서의 1계 도함수는 평균을 제공합니다).
+3.  $E[X^2] = m_X''(0)$ ($t=0$에서의 2계 도함수는 2차 적률을 제공합니다).
+
+#### 적률생성함수 관련 정리
+
+$X_1, X_2, \dots, X_n, Y$를 각각 MGF $m_{X_1}(t), m_{X_2}(t), \dots, m_{X_n}(t), m_Y(t)$를 갖는 확률변수라 하겠습니다:
+
+1.  0을 포함하는 어떤 열린 구간 내의 모든 $t$에 대해 $m_{X_1}(t) = m_{X_2}(t)$이면, $X_1$과 $X_2$는 동일한 분포를 따릅니다.
+2.  $Y = \alpha + \beta X_1$이면: $$
+    m_Y(t) = e^{\alpha t}m_{X_1}(\beta t).
+    $$
+3.  $X_1, X_2, \dots, X_n$이 독립이고 $Y = \alpha_0 + \alpha_1 X_1 + \alpha_2 X_2 + \dots + \alpha_n X_n$ ($\alpha_0, \alpha_1, \dots, \alpha_n$은 상수)이면: $$
+    m_Y(t) = e^{\alpha_0 t} m_{X_1}(\alpha_1 t) m_{X_2}(\alpha_2 t) \dots m_{X_n}(\alpha_n t).
+    $$
+4.  $X_1, X_2, \dots, X_n$이 각각 평균 $\mu_1, \mu_2, \dots, \mu_n$과 분산 $\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2$를 갖는 독립 정규확률변수라고 하겠습니다. 만약 $Y = \alpha_0 + \alpha_1 X_1 + \alpha_2 X_2 + \dots + \alpha_n X_n$이면:
+    -   $Y$는 정규분포를 따릅니다.
+    -   평균: $\mu_Y = \alpha_0 + \alpha_1 \mu_1 + \alpha_2 \mu_2 + \dots + \alpha_n \mu_n$.
+    -   분산: $\sigma_Y^2 = \alpha_1^2 \sigma_1^2 + \alpha_2^2 \sigma_2^2 + \dots + \alpha_n^2 \sigma_n^2$.
+
+------------------------------------------------------------------------
+
+### 적률 (Moments)
+
++--------------+-------------------------------+-------------------------------------------+
+| 적률         | 원적률 (Uncentered)           | 중심적률 (Centered)                       |
++==============+===============================+===========================================+
+| 1차          | $E[X] = \mu = \text{Mean}(X)$ |                                           |
++--------------+-------------------------------+-------------------------------------------+
+| 2차          | $E[X^2]$                      | $E[(X-\mu)^2] = \text{Var}(X) = \sigma^2$ |
++--------------+-------------------------------+-------------------------------------------+
+| 3차          | $E[X^3]$                      | $E[(X-\mu)^3]$                            |
++--------------+-------------------------------+-------------------------------------------+
+| 4차          | $E[X^4]$                      | $E[(X-\mu)^4]$                            |
++--------------+-------------------------------+-------------------------------------------+
+
+: 확률변수의 1~4차 중심적률 및 비중심(원)적률
+
+-   **왜도(Skewness)**: $\text{Skewness}(X) = \frac{E[(X-\mu)^3]}{\sigma^3}$
+
+    -   정의: 왜도는 평균을 중심으로 한 확률분포의 비대칭성을 측정합니다.
+    -   해석: 
+        -   양의 왜도(Positive skewness): 오른쪽 꼬리(높은 값)가 왼쪽 꼬리보다 더 길거나 두껍습니다.
+
+        -   음의 왜도(Negative skewness): 왼쪽 꼬리(낮은 값)가 오른쪽 꼬리보다 더 길거나 두껍습니다.
+
+        -   왜도 = 0: 데이터가 대칭을 이룹니다.
+
+-   **첨도(Kurtosis)**: $\text{Kurtosis}(X) = \frac{E[(X-\mu)^4]}{\sigma^4}$
+
+    -   정의: 첨도는 확률분포의 "꼬리의 두께(tailedness)" 또는 꼬리의 중량감을 측정합니다.
+
+    -   초과 첨도(Excess kurtosis, 흔히 보고됨): 정규분포의 첨도인 3과 비교하기 위해 첨도에서 3을 뺀 값입니다.
+
+    -   해석: 
+
+        -   높은 첨도 (\>3): 두꺼운 꼬리(heavy tails), 극단적인 이상치(outliers)가 더 많이 발생함.
+
+        -   낮은 첨도 (\<3): 얇은 꼬리(light tails), 이상치가 적게 발생함.
+
+        -   정규분포 첨도 = 3: 비교 기준이 됨.
+
+### 왜도 (Skewness)
+
+왜도는 분포의 비대칭성을 측정합니다:
+
+1.  **양의 왜도 (오른쪽 꼬리 왜도, Positive skew)**: 오른쪽(높은 값)이 길게 늘어집니다.
+
+    -   양의 왜도는 분포의 오른쪽 꼬리(높은 값)가 더 길거나 두꺼울 때 발생합니다.
+
+    -   예시: 
+
+        -   **소득 분포**: 대다수의 사람들은 중간 수준의 소득을 벌지만, 소수의 초고소득자가 분포의 오른쪽 꼬리를 길게 늘어뜨립니다.
+
+        -   **주택 가격**: 대부분의 주택은 적정 가격대에 머물지만, 소수의 초호화 대저택이 매우 길고 비싼 상위 꼬리를 만듭니다.
+
+그림 \@ref(fig:viz-positive-skew)는 시뮬레이션된 소득 및 주택 가격 분포를 통해 양의 왜도를 보여줍니다.
+
+```{r viz-positive-skew, fig.cap="양의 왜도 시각화", fig.alt="양의 왜도를 갖는 두 분포를 나란히 보여주는 히스토그램. 왼쪽 그래프는 고가 주택으로 인해 오른쪽으로 꼬리가 길게 뻗은 주택 가격 분포를 나타냅니다. 오른쪽 그래프는 고소득자로 인해 오른쪽 꼬리가 길게 늘어진 소득 분포를 나타냅니다."}
+# 필수 라이브러리 불러오기
+library(ggplot2)
+
+# 양의 왜도 데이터 시뮬레이션
+set.seed(123)
+positive_skew_income <-
+    rbeta(1000, 5, 2) * 100  # 소득 분포 예시
+positive_skew_housing <-
+    rbeta(1000, 5, 2) * 1000  # 주택 가격 예시
+
+# 데이터 결합
+data_positive_skew <- data.frame(
+    value = c(positive_skew_income, positive_skew_housing),
+    example = c(rep("Income Distribution", 1000),
+                rep("Housing Prices", 1000))
+)
+
+# 양의 왜도 시각화
+ggplot(data_positive_skew, aes(x = value, fill = example)) +
+    geom_histogram(bins = 30,
+                   alpha = 0.7,
+                   position = "identity") +
+    facet_wrap( ~ example, scales = "free") +
+    labs(title = "Visualization of Positive Skew",
+         x = "Value",
+         y = "Frequency") +
+    theme_minimal()
+
+```
+
+-   **소득 분포(Income Distribution)** 예시에서는 대다수 사람들이 보통의 소득을 올리지만, 소수의 고소득자가 오른쪽 꼬리를 늘립니다.
+-   **주택 가격(Housing Prices)** 예시에서는 대부분의 주택 가격이 합리적인 범위에 있지만, 소수의 대저택이 길고 비싼 오른쪽 꼬리를 형성합니다.
+
+2.  **음의 왜도 (왼쪽 꼬리 왜도, Negative Skew / Left Skew)**
+
+-   음의 왜도는 분포의 왼쪽 꼬리(낮은 값)가 더 길거나 두꺼울 때 발생합니다.
+
+-   예시: 
+
+    -   **쉬운 시험 점수**: 시험이 매우 쉬우면 대다수 학생이 높은 점수를 받고, 소수의 학생만 낮은 점수를 받아 왼쪽 꼬리가 길어집니다.
+
+    -   **은퇴 연령**: 대부분의 사람들은 공통적인 정년(예: 65세 이상) 즈음에 은퇴하며, 매우 일찍 은퇴하는 사람의 수는 적어 왼쪽 꼬리를 늘립니다.
+
+그림 \@ref(fig:viz-negative-skew)는 시뮬레이션된 쉬운 시험 점수와 은퇴 연령 분포를 통해 음의 왜도를 보여줍니다.
+
+```{r viz-negative-skew, fig.cap="음의 왜도 시각화", fig.alt="음의 왜도를 갖는 두 분포를 나란히 보여주는 히스토그램. 왼쪽 그래프는 왼쪽으로 긴 꼬리를 가진 쉬운 시험 점수를 나타냅니다. 오른쪽 그래프는 왼쪽 꼬리가 길게 뻗은 은퇴 연령 분포를 나타냅니다."}
+# 음의 왜도 데이터 시뮬레이션
+set.seed(123)
+negative_skew_test <-
+    10 - rbeta(1000, 5, 2) * 10  # 쉬운 시험 점수 예시
+negative_skew_retirement <-
+    80 - rbeta(1000, 5, 2) * 20  # 은퇴 연령 예시
+
+# 데이터 결합
+data_negative_skew <- data.frame(
+    value = c(negative_skew_test, negative_skew_retirement),
+    example = c(rep("Easy Test Scores", 1000),
+                rep("Retirement Age", 1000))
+)
+
+# 음의 왜도 시각화
+ggplot(data_negative_skew, aes(x = value, fill = example)) +
+    geom_histogram(bins = 30,
+                   alpha = 0.7,
+                   position = "identity") +
+    facet_wrap( ~ example, scales = "free") +
+    labs(title = "Visualization of Negative Skew",
+         x = "Value",
+         y = "Frequency") +
+    theme_minimal()
+```
+
+-   **쉬운 시험 점수(Easy Test Scores)** 예시에서는 대다수 학생이 우수한 성적을 거두지만, 소수의 낮은 점수가 왼쪽 꼬리를 형성합니다.
+
+-   **은퇴 연령(Retirement Age)** 예시에서는 대부분의 사람들이 비슷한 나이에 은퇴하지만, 소수의 조기 은퇴자가 왼쪽 꼬리를 늘립니다.
+
+### 첨도 (Kurtosis)
+
+첨도는 꼬리의 "뾰족한 정도(peakedness)" 또는 꼬리의 두께(중량감)를 측정합니다:
+
+-   **높은 첨도 (급첨, High kurtosis)**: 뾰족하고 높은 정점과 두꺼운 꼬리를 가집니다.
+
+    -   예시: 위기 상황에서의 금융 시장 수익률 (극단적인 손실 또는 이익 발생).
+
+-   **낮은 첨도 (평첨, Low kurtosis)**: 완만한 정점과 얇은 꼬리를 가집니다.
+
+    -   예시: 인간의 키 분포 (평균으로부터의 극단적 편차가 적음).
+
+그림 \@ref(fig:viz-kurtosis)는 높은 첨도(시장 수익률)와 낮은 첨도(키 분포)를 대비하여 보여줍니다.
+
+```{r viz-kurtosis, fig.cap="첨도 시각화", fig.alt="시장 수익률의 높은 첨도와 키 분포의 낮은 첨도를 비교하는 막대 그래프. y축은 빈도, x축은 값을 나타냅니다. 분홍색 막대는 뾰족한 정점을 가진 높은 첨도를 나타내며, 파란색 막대는 완만한 분포를 가진 낮은 첨도를 나타냅니다. 오른쪽 범례는 각 첨도의 색상 구분을 나타냅니다."}
+# 첨도 데이터 시뮬레이션
+low_kurtosis <- runif(1000, 0, 10) 
+high_kurtosis <- c(rnorm(900, 5, 1), rnorm(100, 5, 5))
+
+# 데이터 결합
+data_kurtosis <- data.frame(
+  value = c(low_kurtosis, high_kurtosis),
+  kurtosis_type = c(rep("Low Kurtosis (Height Distribution)", 1000), 
+                    rep("High Kurtosis (Market Returns)", 1000))
+)
+
+# 첨도 시각화
+ggplot(data_kurtosis, aes(x = value, fill = kurtosis_type)) +
+  geom_histogram(bins = 30, alpha = 0.7, position = "identity") +
+  facet_wrap(~kurtosis_type) +
+  labs(
+    title = "Visualization of Kurtosis",
+    x = "Value",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+-   왼쪽 패널은 인간의 키 분포와 유사한 **낮은 첨도(low kurtosis)**를 보여주며, 정점이 완만하고 꼬리가 얇습니다.
+
+-   오른쪽 패널은 금융 시장 수익률을 반영하는 **높은 첨도(high kurtosis)**를 보여주며, 극단적인 수익이나 손실을 나타내는 이상치가 더 많이 존재합니다.
+
+------------------------------------------------------------------------
+
+#### 조건부 적률 (Conditional Moments)
+
+$X=x$가 주어졌을 때 확률변수 $Y$에 대해:
+
+1.  **기댓값 (Expected Value)**: $$
+    E[Y|X=x] =
+    \begin{cases}
+    \sum_y y f_Y(y|x) & \text{(이산확률변수의 경우)}, \\
+    \int_y y f_Y(y|x)  dy & \text{(연속확률변수의 경우)}.
+    \end{cases}
+    $$
+
+2.  **분산 (Variance)**: $$
+    \text{Var}(Y|X=x) =
+    \begin{cases}
+    \sum_y (y - E[Y|X=x])^2 f_Y(y|x) & \text{(이산확률변수의 경우)}, \\
+    \int_y (y - E[Y|X=x])^2 f_Y(y|x)  dy & \text{(연속확률변수의 경우)}.
+    \end{cases}
+    $$
+
+------------------------------------------------------------------------
+
+#### 다변량 적률 (Multivariate Moments)
+
+1.  **기댓값**: $$
+    E
+    \begin{bmatrix}
+    X \\
+    Y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    E[X] \\
+    E[Y]
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    \mu_X \\
+    \mu_Y
+    \end{bmatrix}
+    $$
+
+2.  **분산-공분산 행렬**: $$
+    \begin{aligned}
+    \text{Var}
+    \begin{bmatrix}
+    X \\
+    Y
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+    \text{Var}(X) & \text{Cov}(X, Y) \\
+    \text{Cov}(X, Y) & \text{Var}(Y)
+    \end{bmatrix}
+    \\
+    &=
+    \begin{bmatrix}
+    E[(X-\mu_X)^2] & E[(X-\mu_X)(Y-\mu_Y)] \\
+    E[(X-\mu_X)(Y-\mu_Y)] & E[(Y-\mu_Y)^2]
+    \end{bmatrix}
+    \end{aligned}
+    $$
+
+------------------------------------------------------------------------
+
+#### 적률의 성질 (Properties of Moments)
+
+1.  $E[aX + bY + c] = aE[X] + bE[Y] + c$
+2.  $\text{Var}(aX + bY + c) = a^2 \text{Var}(X) + b^2 \text{Var}(Y) + 2ab \text{Cov}(X, Y)$
+3.  $\text{Cov}(aX + bY, cX + dY) = ac \text{Var}(X) + bd \text{Var}(Y) + (ad + bc) \text{Cov}(X, Y)$
+4.  상관계수: $\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}$
+
+### 확률분포 (Distributions)
+
+#### 조건부 분포 (Conditional Distributions)
+
+$$
+f_{X|Y}(x|y) = \frac{f(x, y)}{f_Y(y)}
+$$
+
+$X$와 $Y$가 독립이면:
+
+$$
+f_{X|Y}(x|y) = f_X(x).
+$$
+
+------------------------------------------------------------------------
+
+#### 이산확률분포 (Discrete Distributions)
+
+##### 베르누이 분포 (Bernoulli Distribution) {#bernoulli-distribution}
+
+단일 시행을 나타내는 확률변수 $X$가 다음과 같은 조건을 만족할 때 베르누이 분포를 따른다고 하며, $X \sim \text{Bernoulli}(p)$로 표기합니다:
+
+-   성공 확률 $p$
+
+-   실패 확률 $q = 1-p$.
+
+**밀도함수(확률질량함수)**$$
+f(x) = p^x (1-p)^{1-x}, \quad x \in \{0, 1\}
+$$
+
+**누적분포함수(CDF)**: 수치표 또는 직접 계산 활용.
+
+**확률밀도(질량)함수(PDF/PMF)**
+
+그림 \@ref(fig:bernoulli-hist)는 베르누이$(0.5)$ 표본의 경험적 PMF를 보여줍니다.
+
+```{r bernoulli-hist, fig.cap="베르누이 분포 히스토그램", fig.alt="빈도 분포를 보여주는 히스토그램. x축은 0에서 1까지의 값을 나타내고, y축은 0에서 500까지의 빈도를 나타냅니다. 값 0과 1에 각각 약 500의 빈도를 가진 두 개의 막대가 표시됩니다."}
+hist(
+    mc2d::rbern(1000, prob = 0.5),
+    main = "Histogram of Bernoulli Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**평균**
+
+$$
+\mu = E[X] = p
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = p(1-p)
+$$
+
+------------------------------------------------------------------------
+
+##### 이항분포 (Binomial Distribution)
+
+$X \sim B(n, p)$는 $n$회의 독립적인 베르누이 시행에서 나타나는 성공 횟수를 나타내며:
+
+-   $n$은 시행 횟수입니다.
+
+-   $p$는 성공 확률입니다.
+
+-   각 시행은 동일하고 상호 독립적이며, 성공 확률($p$)과 실패 확률($q = 1 - p$)은 모든 시행에서 일정하게 유지됩니다.
+
+**밀도함수**
+
+$$
+f(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x = 0, 1, \dots, n
+$$
+
+**확률밀도(질량)함수(PDF/PMF)**
+
+그림 \@ref(fig:binomial-hist)는 이항$(100, 0.5)$ 표본의 경험적 PMF를 보여줍니다.
+
+```{r binomial-hist, fig.cap="이항분포 히스토그램", fig.alt="y축에 빈도, x축에 값을 표시한 이항분포의 히스토그램. 차트는 값 50 부근에서 정점을 이루며 대칭적인 분포를 나타내어 가장 빈번하게 발생하는 값을 보여줍니다. 빈도는 0에서 350까지이며, 값은 30에서 70까지 분포합니다."}
+hist(
+    rbinom(1000, size = 100, prob = 0.5),
+    main = "Histogram of Binomial Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = (1 - p + p e^t)^n
+$$
+
+**평균**
+
+$$
+\mu = np
+$$
+
+**분산**
+
+$$
+\sigma^2 = np(1-p)
+$$
+
+------------------------------------------------------------------------
+
+##### 포아송 분포 (Poisson Distribution)
+
+$X \sim \text{Poisson}(\lambda)$는 평균 발생률이 $\lambda$일 때, 고정된 구간 내에서 어떤 사건이 발생하는 횟수를 모델링합니다.
+
+-   시간, 길이, 공간의 연속적인 "구간"에서 이산 사건을 관측하는 포아송 과정(Poisson process)에서 도출됩니다.
+
+-   확률변수 $X$는 $s$ 단위 구간 내에서 사건이 발생하는 횟수입니다.
+
+-   모수 $\lambda$는 측정 단위당 해당 사건의 평균 발생 횟수입니다. 분포 표기에는 모수 $k = \lambda s$를 사용합니다.
+
+**밀도함수**
+
+$$
+f(x) = \frac{e^{-k} k^x}{x!}, \quad x = 0, 1, 2, \dots
+$$
+
+**누적분포함수(CDF)**
+
+**확률밀도(질량)함수(PDF/PMF)**
+
+그림 \@ref(fig:poisson-hist)는 포아송$(\lambda = 5)$ 표본의 경험적 PMF를 보여줍니다.
+
+```{r poisson-hist, fig.cap="포아송 분포 히스토그램", fig.alt="세로축에 빈도, 가로축에 값을 표시한 히스토그램. 차트는 5 부근에서 가장 높은 빈도를 보이며 15를 향해 점차 감소하는 오른쪽으로 꼬리가 긴 분포를 나타냅니다."}
+hist(rpois(1000, lambda = 5),
+     main = "Histogram of Poisson Distribution",
+     xlab = "Value",
+     ylab = "Frequency")
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = e^{k (e^t - 1)}
+$$
+
+**평균**
+
+$$
+\mu = E(X) = k
+$$
+
+**분산**
+
+$$
+\sigma^2 = Var(X) = k
+$$
+
+------------------------------------------------------------------------
+
+##### 기하분포 (Geometric Distribution)
+
+$X \sim \text{G}(p)$는 첫 번째 성공을 얻기까지 필요한 시행 횟수를 모델링하며:
+
+-   $p$: 성공 확률
+
+-   $q = 1-p$: 실패 확률.
+
+-   실험은 일련의 연속 시행으로 구성됩니다. 각 시행의 결과는 "성공(s)" 또는 "실패(f)"로 분류될 수 있습니다(즉, 베르누이 시행).
+
+-   한 시행의 결과가 다른 시행의 결과에 아무런 영향을 미치지 않는다는 점에서 각 시행은 동일하고 독립적입니다(즉, 비기억성, memorylessness). 성공 확률($p$)과 실패 확률($q = 1- p$)은 시행마다 동일하게 유지됩니다.
+
+**밀도함수**
+
+$$
+f(x) = p(1-p)^{x-1}, \quad x = 1, 2, \dots
+$$
+
+**누적분포함수(CDF)**$$
+F(x) = 1 - (1-p)^x
+$$
+
+**확률밀도(질량)함수(PDF/PMF)**
+
+그림 \@ref(fig:geometric-hist)는 기하$(0.5)$ 표본의 경험적 PMF를 보여줍니다.
+
+```{r geometric-hist, fig.cap="기하분포 히스토그램", fig.alt="y축에 빈도, x축에 값을 표시한 기하분포의 히스토그램. 막대의 높이가 왼쪽에서 오른쪽으로 갈수록 낮아져 낮은 값에서 높은 빈도를 나타내고 값이 증가할수록 빈도가 점차 감소합니다."}
+hist(rgeom(1000, prob = 0.5),
+     main = "Histogram of Geometric Distribution",
+     xlab = "Value",
+     ylab = "Frequency")
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = \frac{p e^t}{1 - (1-p)e^t}, \quad t < -\ln(1-p)
+$$
+
+**평균**
+
+$$
+\mu = \frac{1}{p}
+$$
+
+**분산**
+
+$$
+\sigma^2 = \frac{1-p}{p^2}
+$$
+
+------------------------------------------------------------------------
+
+##### 초기하분포 (Hypergeometric Distribution)
+
+$X \sim \text{H}(N, r, n)$은 크기 $N$인 모집단에서 비복원 추출(without replacement)로 추출한 크기 $n$의 표본 중 성공 횟수를 모델링하며:
+
+-   $r$개는 관심 특성을 지니고 있음
+
+-   $N-r$개는 관심 특성을 지니고 있지 않음.
+
+**밀도함수**
+
+$$
+f(x) = \frac{\binom{r}{x} \binom{N-r}{n-x}}{\binom{N}{n}}, \quad \max(0, n-(N-r)) \leq x \leq \min(n, r)
+$$
+
+**확률밀도(질량)함수(PDF/PMF)**
+
+그림 \@ref(fig:hypergeometric-hist)는 초기하분포의 전형적인 PDF 형태를 보여주기 위해 시뮬레이션된 표본을 나타냅니다.
+
+```{r hypergeometric-hist, fig.cap="초기하분포 히스토그램", fig.alt="y축에 빈도, x축에 16부터 28까지의 값을 표시한 초기하분포의 히스토그램. 막대는 20에서 22 사이의 값 부근에서 정점을 이루어 가장 빈번하게 발생함을 보여줍니다."}
+hist(
+    rhyper(1000, m = 50, n = 20, k = 30),
+    main = "Histogram of Hypergeometric Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**평균**$$
+\mu = E[X] = \frac{n r}{N}
+$$
+
+**분산**$$
+\sigma^2 = \text{Var}(X) = n \frac{r}{N} \frac{N-r}{N} \frac{N-n}{N-1}
+$$
+
+**참고**: $N$이 큰 경우($\frac{n}{N} \leq 0.05$일 때), 초기하분포는 $p = \frac{r}{N}$인 이항분포로 근사할 수 있습니다.
+
+#### 연속확률분포 (Continuous Distributions)
+
+##### 균등분포 (Uniform Distribution)
+
+동일한 길이의 하위 구간에 대해 확률이 "동등하게 나타나는(equally likely)" 구간 $(a, b)$에 정의됩니다.
+
+**밀도함수**: $$
+f(x) = \frac{1}{b-a}, \quad a < x < b
+$$
+
+**누적분포함수(CDF)**$$
+F(x) =
+\begin{cases}
+0 & \text{if } x < a \\
+\frac{x-a}{b-a} & a \le x \le b \\
+1 & \text{if } x > b
+\end{cases}
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:uniform-hist)는 균등$(0, 1)$ 표본의 경험적 PDF를 보여줍니다.
+
+```{r uniform-hist, fig.cap="균등분포 히스토그램", fig.alt="x축에 0.0에서 1.0까지의 값과 y축에 빈도를 나타내는 균등분포 히스토그램. 막대의 높이가 거의 동일하여 모든 값의 범위가 대략 같은 빈도로 발생함을 나타냅니다."}
+hist(
+    runif(1000, min = 0, max = 1),
+    main = "Histogram of Uniform Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**$$
+m_X(t) =
+\begin{cases}
+\frac{e^{tb} - e^{ta}}{t(b-a)} & \text{if } t \neq 0 \\
+1 & \text{if } t = 0
+\end{cases}
+$$
+
+**평균**$$
+\mu = E[X] = \frac{a + b}{2}
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = \frac{(b-a)^2}{12}
+$$
+
+------------------------------------------------------------------------
+
+##### 감마분포 (Gamma Distribution)
+
+감마분포는 지수분포와 카이제곱($\chi^2$) 분포를 정의하는 데 사용됩니다.
+
+**감마 함수(gamma function)**는 다음과 같이 정의됩니다: $$
+\Gamma(\alpha) = \int_0^{\infty} z^{\alpha-1}e^{-z}dz, \quad \alpha > 0
+$$
+
+**감마 함수의 성질**:
+
+-   $\Gamma(1) = 1$
+
+-   $\alpha > 1$에 대해, $\Gamma(\alpha) = (\alpha-1)\Gamma(\alpha-1)$
+
+-   $n$이 정수이고 $n > 1$이면, $\Gamma(n) = (n-1)!$
+
+**밀도함수**:
+
+$$
+f(x) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}} x^{\alpha-1} e^{-x/\beta}, \quad x > 0
+$$
+
+**누적분포함수(CDF)** ($\alpha = n$이고 $x>0$이 양의 정수일 때):
+
+$$
+F(x, n, \beta) = 1 - \sum_{k=0}^{n-1} \frac{(\frac{x}{\beta})^k e^{-x/\beta}}{k!}
+$$
+
+**확률밀도함수(PDF)**:
+
+그림 \@ref(fig:gamma-hist)는 형상모수(shape) $5$, 척도/율(rate) $1$인 감마 표본의 경험적 PDF를 보여줍니다.
+
+```{r gamma-hist, fig.cap="감마분포 히스토그램", fig.alt="감마분포의 히스토그램. x축은 0에서 15까지의 값을 나타내고, y축은 0에서 300까지의 빈도를 보여줍니다. 히스토그램은 값 5 부근에서 가장 높은 빈도를 보이며 오른쪽으로 꼬리가 긴 분포를 나타냅니다."}
+hist(
+    rgamma(n = 1000, shape = 5, rate = 1),
+    main = "Histogram of Gamma Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = (1 - \beta t)^{-\alpha}, \quad t < \frac{1}{\beta}
+$$
+
+**평균**
+
+$$
+\mu = E[X] = \alpha \beta
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = \alpha \beta^2
+$$
+
+------------------------------------------------------------------------
+
+##### 정규분포 (Normal Distribution)
+
+$N(\mu, \sigma^2)$로 표기되는 정규분포는 모수 $\mu$(평균)와 $\sigma^2$(분산)을 갖는 대칭적인 종 모양(bell-shaped)의 분포입니다. 가우스 분포(Gaussian distribution)라고도 알려져 있습니다.
+
+**밀도함수**:
+
+$$
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^2}, \quad -\infty < x < \infty,  \sigma > 0
+$$
+
+**누적분포함수(CDF)**: 수치표 또는 수치적 방법 활용.
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:normal-hist)는 표준정규분포 표본의 경험적 PDF를 보여줍니다.
+
+```{r normal-hist, fig.cap="정규분포 히스토그램", fig.alt="y축에 빈도, x축에 -3부터 3까지의 값을 표시한 히스토그램. 차트는 0에서 정점을 이루는 대칭적인 분포를 보여주며 정규분포의 특징을 나타냅니다."}
+hist(
+    rnorm(1000, mean = 0, sd = 1),
+    main = "Histogram of Normal Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = e^{\mu t + \frac{\sigma^2 t^2}{2}}
+$$
+
+**평균**
+
+$$
+\mu = E[X]
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X)
+$$
+
+**표준정규확률변수**:
+
+-   평균 $\mu = 0$이고 표준편차 $\sigma = 1$인 정규확률변수 $Z$를 표준정규확률변수라고 부릅니다.
+
+-   평균 $\mu$와 표준편차 $\sigma$를 갖는 임의의 정규확률변수 $X$는 다음과 같이 표준정규확률변수 $Z$로 변환(표준화)할 수 있습니다: $$
+    Z = \frac{X - \mu}{\sigma}
+    $$
+
+**이항분포의 정규 근사**:
+
+$X$가 모수 $n$과 $p$를 갖는 이항분포를 따른다고 하겠습니다. $n$이 충분히 크고:
+
+-   $p \le 0.5$이고 $np > 5$이거나,
+
+-   $p > 0.5$이고 $n(1-p) > 5$이면,
+
+$X$는 평균 $\mu = np$, 표준편차 $\sigma = \sqrt{np(1-p)}$인 정규분포를 근사적으로 따릅니다.
+
+정규 근사를 사용할 때는 연속성 수정(continuity correction)을 위해 필요에 따라 0.5를 더하거나 뺍니다.
+
+**이산확률 근사 정규분포 (연속성 수정 적용)**:
+
+| 이산확률 | 근사 정규확률 (수정 적용) |
+|:------------:|:------------------------------:|
+|  $P(X = c)$  |   $P(c -0.5 < Y < c + 0.5)$    |
+|  $P(X < c)$  |        $P(Y < c - 0.5)$        |
+| $P(X \le c)$ |        $P(Y < c + 0.5)$        |
+|  $P(X > c)$  |        $P(Y > c + 0.5)$        |
+| $P(X \ge c)$ |        $P(Y > c - 0.5)$        |
+
+: 이산확률의 정규 근사를 위한 연속성 수정
+
+**정규확률 규칙 (경험적 규칙, Empirical Rule)**
+
+$X$가 모수 $\mu$와 $\sigma$를 갖는 정규분포를 따를 때,
+
+-   $P(-\sigma < X - \mu < \sigma) \approx .68$
+-   $P(-2\sigma < X - \mu < 2\sigma) \approx .95$
+-   $P(-3\sigma < X - \mu < 3\sigma) \approx .997$
+
+------------------------------------------------------------------------
+
+##### 로지스틱 분포 (Logistic Distribution)
+
+로지스틱 분포는 로지스틱 회귀 및 기타 다양한 통계 모델링에 흔히 사용되는 연속확률분포입니다. 정규분포와 유사하지만 꼬리가 더 두꺼워 극단값이 더 잘 발생할 수 있습니다. - 로지스틱 분포는 $\mu$를 중심으로 대칭입니다. - 두꺼운 꼬리 특성 덕분에 간헐적으로 극단값이 나타나는 결과를 모델링하는 데 유용합니다.
+
+**밀도함수**
+
+$$
+f(x; \mu, s) = \frac{e^{-(x-\mu)/s}}{s \left(1 + e^{-(x-\mu)/s}\right)^2}, \quad -\infty < x < \infty
+$$
+
+여기서 $\mu$는 위치 모수(평균)이고 $s > 0$은 척도 모수입니다.
+
+**누적분포함수(CDF)**
+
+$$
+F(x; \mu, s) = \frac{1}{1 + e^{-(x-\mu)/s}}, \quad -\infty < x < \infty
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:logistic-hist)는 위치 $0$, 척도 $1$인 로지스틱 표본의 경험적 PDF를 보여줍니다.
+
+```{r logistic-hist, fig.cap="로지스틱 분포 히스토그램", fig.alt = "y축에 빈도, x축에 -6부터 8까지의 값을 표시한 로지스틱 분포 히스토그램. 분포는 0을 중심으로 형성되어 있으며 중앙 부근의 막대 빈도가 가장 높아 대칭적인 형태를 나타냅니다."}
+hist(
+    rlogis(1000, location = 0, scale = 1),
+    main = "Histogram of Logistic Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+로지스틱 분포의 적률생성함수(MGF)는 대부분의 $t$에 대해 기댓값이 발산하므로 존재하지 않습니다.
+
+**평균**
+
+$$
+\mu = E[X] = \mu
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = \frac{\pi^2 s^2}{3}
+$$
+
+------------------------------------------------------------------------
+
+##### 라플라스 분포 (Laplace Distribution)
+
+이중 지수분포(double exponential distribution)라고도 알려진 라플라스 분포는 경제학, 금융학, 공학 분야에서 자주 사용되는 연속확률분포입니다. 평균에서의 뾰족한 정점과 정규분포 대비 두꺼운 꼬리가 특징입니다.
+
+-   라플라스 분포는 $\mu$를 중심으로 대칭입니다.
+-   정규분포보다 꼬리가 두꺼워 극단적인 이상치가 포함된 데이터를 모델링하는 데 적합합니다.
+
+**밀도함수**
+
+$$
+f(x; \mu, b) = \frac{1}{2b} e^{-|x-\mu|/b}, \quad -\infty < x < \infty
+$$
+
+여기서 $\mu$는 위치 모수(평균)이고 $b > 0$은 척도 모수입니다.
+
+**누적분포함수(CDF)**
+
+$$
+F(x; \mu, b) =
+\begin{cases}
+    \frac{1}{2} e^{(x-\mu)/b} & \text{if } x < \mu \\
+    1 - \frac{1}{2} e^{-(x-\mu)/b} & \text{if } x \ge \mu
+\end{cases}
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:laplace-hist)는 위치 $0$, 척도 $1$인 라플라스 표본의 경험적 PDF를 보여줍니다.
+
+```{r laplace-hist, fig.cap="라플라스 분포 히스토그램", fig.alt="값의 빈도 분포를 보여주는 히스토그램. x축은 -5에서 5까지, y축은 0에서 300까지의 범위를 가집니다. 차트는 0에서 정점을 이루는 대칭 분포를 나타내며 중앙 주변 값의 빈도가 더 높음을 보여줍니다."}
+hist(
+    VGAM::rlaplace(1000, location = 0, scale = 1),
+    main = "Histogram of Laplace Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = \frac{e^{\mu t}}{1 - b^2 t^2}, \quad |t| < \frac{1}{b}
+$$
+
+**평균**
+
+$$
+\mu = E[X] = \mu
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = 2b^2
+$$
+
+------------------------------------------------------------------------
+
+##### 로그정규분포 (Lognormal Distribution)
+
+로그정규분포는 로그 변환된 값이 정규분포를 따르는 확률변수의 연속확률분포입니다. 소득이나 생물학적 측정값과 같이 양의 왜도(오른쪽으로 긴 꼬리)를 갖는 변수를 모델링하는 데 자주 사용됩니다.
+
+-   로그정규분포는 양의 왜도를 갖습니다.
+-   음수 값을 가질 수 없는 데이터를 모델링하는 데 유용하며, 금융 및 환경 연구에서 널리 활용됩니다.
+
+**밀도함수**
+
+$$
+f(x; \mu, \sigma) = \frac{1}{x \sigma \sqrt{2\pi}} e^{-(\ln(x) - \mu)^2 / (2\sigma^2)}, \quad x > 0
+$$
+
+여기서 $\mu$는 기저 정규분포의 평균이고 $\sigma > 0$은 표준편차입니다.
+
+**누적분포함수(CDF)**
+
+로그정규분포의 누적분포함수는 다음과 같이 주어집니다:
+
+$$
+F(x; \mu, \sigma) = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{\ln(x) - \mu}{\sigma \sqrt{2}} \right) \right], \quad x > 0
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:lognormal-hist)는 $\mu = 0$, $\sigma = 1$인 로그정규 표본의 경험적 PDF를 보여줍니다.
+
+```{r lognormal-hist, fig.cap="로그정규분포 히스토그램", fig.alt="y축에 빈도, x축에 값을 표시한 로그정규분포 히스토그램. 대부분의 데이터가 낮은 값에 집중되어 있고 값이 커질수록 빈도가 감소하는 오른쪽으로 꼬리가 긴 분포를 나타냅니다. 가장 높은 빈도의 막대는 0 근처에 위치하며 5를 넘어가면 빈도가 크게 감소합니다."}
+hist(
+    rlnorm(1000, meanlog = 0, sdlog = 1),
+    main = "Histogram of Lognormal Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+로그정규분포의 적률생성함수(MGF)는 단순한 닫힌 형태(closed form)로 존재하지 않습니다.
+
+**평균**
+
+$$
+E[X] = e^{\mu + \sigma^2 / 2}
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = \left( e^{\sigma^2} - 1 \right) e^{2\mu + \sigma^2}
+$$
+
+------------------------------------------------------------------------
+
+##### 지수분포 (Exponential Distribution)
+
+$\text{Exp}(\lambda)$로 표기되는 지수분포는 $\alpha = 1$인 감마분포의 특수한 경우입니다.
+
+-   일정한 비율(rate)로 발생하는 독립 사건들 사이의 대기 시간을 모델링하는 데 흔히 사용됩니다. 신뢰성 분석(reliability analysis)과 대기행렬 이론(queuing theory)에 널리 적용됩니다.
+
+-   지수분포는 비기억성(memoryless)을 지니며, 이는 미래에 사건이 발생할 확률이 과거의 경과 시간과 무관함을 의미합니다.
+
+-   다음 고객이 도착할 때까지의 시간이나 방사성 입자가 붕괴할 때까지의 시간과 같은 대기 시간을 모델링하는 데 일반적으로 사용됩니다.
+
+**밀도함수**
+
+$$
+f(x) = \frac{1}{\beta} e^{-x/\beta}, \quad x, \beta > 0
+$$
+
+**누적분포함수(CDF)**$$
+F(x) =
+\begin{cases}
+0 & \text{if } x \le 0 \\
+1 - e^{-x/\beta} & \text{if } x > 0
+\end{cases}
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:exponential-hist)는 비율(rate) $1$인 지수분포 표본의 경험적 PDF를 보여줍니다.
+
+```{r exponential-hist, fig.cap="지수분포 히스토그램", fig.alt="지수분포의 히스토그램. 막대 차트는 세로축에 빈도를, 가로축에 0에서 8까지의 값을 나타냅니다. 막대는 0 부근에서 가장 높은 빈도를 보이고 값이 증가할수록 감소하는 추세를 나타냅니다."}
+hist(rexp(n = 1000, rate = 1),
+     main = "Histogram of Exponential Distribution",
+     xlab = "Value",
+     ylab = "Frequency")
+```
+
+**적률생성함수(MGF)**$$
+m_X(t) = (1-\beta t)^{-1}, \quad t < 1/\beta
+$$
+
+**평균**$$
+\mu = E[X] = \beta
+$$
+
+**분산**$$
+\sigma^2 = \text{Var}(X) = \beta^2
+$$
+
+------------------------------------------------------------------------
+
+##### 카이제곱분포 (Chi-Squared Distribution)
+
+카이제곱분포는 통계적 추론, 특히 가설 검정 및 분산에 대한 신뢰구간 구축에 흔히 사용되는 연속확률분포입니다. 적합도 검정(goodness-of-fit tests)에도 널리 활용됩니다.
+
+-   카이제곱분포는 양수 값에 대해서만 정의됩니다.
+-   $k$개의 독립적인 표준정규확률변수의 제곱합의 분포를 모델링하는 데 자주 사용됩니다.
+
+**밀도함수**
+
+$$
+f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2}, \quad x \ge 0
+$$
+
+여기서 $k$는 자유도이고 $\Gamma$는 감마 함수입니다.
+
+**누적분포함수(CDF)**
+
+카이제곱분포의 누적분포함수는 다음과 같이 주어집니다:
+
+$$
+F(x; k) = \frac{\gamma(k/2, x/2)}{\Gamma(k/2)}, \quad x \ge 0
+$$
+
+여기서 $\gamma$는 하부 불완전 감마 함수(lower incomplete gamma function)입니다.
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:chi-squared-hist)는 자유도 $5$인 카이제곱 표본의 경험적 PDF를 보여줍니다.
+
+```{r chi-squared-hist, fig.cap="카이제곱분포 히스토그램", fig.alt="카이제곱분포의 히스토그램. 막대 그래프는 0부터 20까지의 값에 대한 빈도를 표시합니다. y축은 빈도를 나타내며 50, 100, 200, 300 구간이 표시되어 있습니다. x축은 값을 나타내며 값이 증가함에 따라 빈도가 감소하는 추세를 보입니다."}
+hist(
+    rchisq(1000, df = 5),
+    main = "Histogram of Chi-Squared Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_X(t) = (1 - 2t)^{-k/2}, \quad t < \frac{1}{2}
+$$
+
+**평균**
+
+$$
+E[X] = k
+$$
+
+**분산**
+
+$$
+\sigma^2 = \text{Var}(X) = 2k
+$$
+
+------------------------------------------------------------------------
+
+##### 스튜던트 t-분포 (Student's T Distribution)
+
+**스튜던트 t-분포(Student's t-distribution)**는 20세기 초 기네스 양조장(Guinness Brewery)의 통계학자였던 **윌리엄 실리 고셋(William Sealy Gosset)**의 이름을 따서 명명되었습니다. 고셋은 품질 관리에서 소표본 문제를 해결하기 위해 t-분포를 개발했습니다. 기네스 사가 직원의 실명 논문 발표를 금지했기 때문에, 고셋은 1908년 논문을 발표할 때 **"Student(학생)"**라는 필명을 사용했습니다 [@student1908probable]. 통계학에 기여한 그의 공로를 기려 이 이름이 오늘날까지 사용되고 있습니다.
+
+$T(v)$로 표기되는 스튜던트 t-분포는 다음과 같이 정의됩니다: $$
+T = \frac{Z}{\sqrt{\chi^2_v / v}},
+$$ 여기서 $Z$는 표준정규확률변수이고, $\chi^2_v$는 자유도 $v$인 카이제곱분포를 따릅니다.
+
+스튜던트 t-분포는 표본 크기가 작거나 모분산을 알 수 없을 때 모수를 추정하기 위한 통계적 추론에 널리 사용되는 연속확률분포입니다. 정규분포와 유사하지만 꼬리가 더 두꺼워 소표본 분석에서 더욱 강건(robust)합니다.
+
+-   스튜던트 t-분포는 0을 중심으로 대칭입니다.
+-   정규분포보다 꼬리가 두꺼워 이상치나 소표본을 다루는 데 유용합니다.
+
+**밀도함수**
+
+$$
+f(x;v) = \frac{\Gamma((v + 1)/2)}{\sqrt{v \pi} \Gamma(v/2)} \left( 1 + \frac{x^2}{v} \right)^{-(v + 1)/2}
+$$
+
+여기서 $v$는 자유도이고 $\Gamma(x)$는 감마 함수입니다.
+
+**누적분포함수(CDF)**
+
+스튜던트 t-분포의 누적분포함수는 형태가 복잡하여 일반적으로 수치적 방법을 사용하여 계산합니다.
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:student-t-hist)는 자유도 $5$인 스튜던트 t 표본의 경험적 PDF를 보여줍니다.
+
+```{r student-t-hist, fig.cap="스튜던트 t-분포 히스토그램", fig.alt="스튜던트 t-분포의 히스토그램. 막대 그래프는 세로축에 빈도를, 가로축에 -6부터 6까지의 값을 표시합니다. 분포는 0을 중심으로 집중되어 있으며 대부분의 값이 -2와 2 사이에 집중되어 종 모양 곡선을 형성합니다."}
+hist(
+    rt(1000, df = 5),
+    main = "Histogram of Student's T Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+스튜던트 t-분포의 적률생성함수(MGF)는 단순한 닫힌 형태로 존재하지 않습니다.
+
+**평균**
+
+$v > 1$일 때:
+
+$$
+E[X] = 0
+$$
+
+**분산**
+
+$v > 2$일 때:
+
+$$
+\sigma^2 =  \text{Var}(X) = \frac{v}{v - 2}
+$$
+
+------------------------------------------------------------------------
+
+##### 비중심 t-분포 (Non-central T Distribution)
+
+$T(v, \lambda)$로 표기되는 비중심 t-분포는 스튜던트 t-분포의 일반화된 형태입니다. 다음과 같이 정의됩니다: $$
+T = \frac{Z + \lambda}{\sqrt{\chi^2_v / v}},
+$$ 여기서 $Z$는 표준정규확률변수, $\chi^2_v$는 자유도 $v$인 카이제곱분포를 따르며, $\lambda$는 **비중심 모수(non-centrality parameter)**입니다. 이 추가 모수는 분포에 비대칭성을 도입합니다.
+
+비중심 t-분포는 가설 검정에서 대립가설 하의 상황과 같이 귀무가설이 성립하지 않는 경우에 발생합니다. 비중심 모수 $\lambda$는 평균이 0에서 벗어난 정도를 나타냅니다.
+
+-   $\lambda = 0$일 때 비중심 t-분포는 스튜던트 t-분포로 환원됩니다.
+-   $\lambda \neq 0$일 때 분포는 비대칭(왜곡)되며, $\lambda$가 커질수록 왜도가 증가합니다.
+
+**밀도함수**
+
+비중심 t-분포의 밀도함수는 더 복잡하며 $v$와 $\lambda$에 의존합니다. 이는 무한 급수의 형태로 표현될 수 있습니다:
+
+$$
+f(x; v, \lambda) = \sum_{k=0}^\infty \frac{e^{-\lambda^2/2}(\lambda^2/2)^k}{k!} \cdot \frac{\Gamma((v + k + 1)/2)}{\sqrt{v \pi} \Gamma((v + k)/2)} \left( 1 + \frac{x^2}{v} \right)^{-(v + k + 1)/2}.
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:noncentral-t-hist)는 자유도 $5$, 비중심 모수 $\lambda = 2$인 비중심 t 표본의 경험적 PDF를 보여줍니다.
+
+```{r noncentral-t-hist, fig.cap="비중심 t-분포 히스토그램", fig.alt="비중심 t-분포의 히스토그램. 막대 그래프는 y축에 빈도를, x축에 값을 표시합니다. 분포는 0에서 5 사이의 값 부근에서 더 높은 빈도를 보이며 5를 초과하면 빈도가 크게 감소합니다."}
+n <- 100  # 표본 크기
+df <- 5    # 자유도
+lambda <- 2  # 비중심 모수
+
+
+hist(
+  rt(n, df = df, ncp = lambda),
+  main = "Histogram of Non-central T Distribution",
+  xlab = "Value",
+  ylab = "Frequency"
+)
+```
+
+**누적분포함수(CDF)**
+
+비중심 t-분포의 누적분포함수는 복잡성으로 인해 통상 수치적 방법을 사용하여 계산됩니다.
+
+**평균**
+
+$v > 1$일 때:
+
+$$
+E[T] = \lambda \sqrt{\frac{v}{2}} \cdot \frac{\Gamma((v - 1)/2)}{\Gamma(v/2)}.
+$$
+
+**분산**
+
+$v > 2$일 때:
+
+$$
+\text{Var}(T) = \frac{v}{v - 2} + \lambda^2.
+$$
+
+------------------------------------------------------------------------
+
++-------------------------+-------------------------------------+-----------------------------------------------+
+| 특징                    | 스튜던트 t-분포                     | 비중심 t-분포                                 |
++=========================+=====================================+===============================================+
+| 정의                    | $T = \frac{Z}{\sqrt{\chi^2_v / v}}$ | $T = \frac{Z + \lambda}{\sqrt{\chi^2_v / v}}$ |
++-------------------------+-------------------------------------+-----------------------------------------------+
+| 중심 위치               | 0                                   | $\lambda$                                     |
++-------------------------+-------------------------------------+-----------------------------------------------+
+| 대칭성                  | 대칭                                | $\lambda \neq 0$일 때 비대칭(왜곡)          |
++-------------------------+-------------------------------------+-----------------------------------------------+
+| 모수                    | 자유도 ($v$)                        | $v$ 및 $\lambda$                             |
++-------------------------+-------------------------------------+-----------------------------------------------+
+| $v \to \infty$ 형태     | Normal(0, 1)                        | Normal($\lambda$, 1)                          |
+|                         |                                     |                                               |
+| (df $\to \infty$)      |                                     |                                               |
++-------------------------+-------------------------------------+-----------------------------------------------+
+| 주요 응용               | 귀무가설 하의 가설 검정             | 검정력 분석, 대립가설 검정                    |
++-------------------------+-------------------------------------+-----------------------------------------------+
+
+: 스튜던트 t-분포와 비중심 t-분포의 비교
+
+스튜던트 $t$-분포가 표준 가설 검정 및 신뢰구간에 사용되는 반면, 비중심 t-분포는 검정력(power) 및 표본 크기 계산과 같이 귀무가설이 성립하지 않는 시나리오에 응용됩니다.
+
+##### F-분포 (F Distribution)
+
+$F(d_1, d_2)$로 표기되는 F-분포는 엄격히 양수 값을 가지며 분산을 비교하는 데 사용됩니다.
+
+**정의**: $$
+F = \frac{\chi^2_{d_1} / d_1}{\chi^2_{d_2} / d_2},
+$$ 여기서 $\chi^2_{d_1}$과 $\chi^2_{d_2}$는 각각 자유도가 $d_1$과 $d_2$인 독립 카이제곱 확률변수입니다.
+
+분포는 비대칭이며 결코 음수 값을 갖지 않습니다.
+
+F-분포는 분산분석(ANOVA)과 같이 분산을 비교하는 맥락에서 검정통계량의 귀무분포로 자주 나타납니다.
+
+**밀도함수**
+
+$$
+f(x; d_1, d_2) = \frac{\sqrt{\frac{(d_1 x)^{d_1} d_2^{d_2}}{(d_1 x + d_2)^{d_1 + d_2}}}}{x B\left( \frac{d_1}{2}, \frac{d_2}{2} \right)}, \quad x > 0
+$$
+
+여기서 $d_1$과 $d_2$는 자유도이고 $B$는 베타 함수입니다.
+
+**누적분포함수(CDF)**
+
+F-분포의 누적분포함수는 일반적으로 수치적 방법을 사용하여 계산합니다.
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:f-distribution-hist)는 자유도가 $d_1 = 5$, $d_2 = 2$인 F 표본의 경험적 PDF를 보여줍니다.
+
+```{r f-distribution-hist, fig.cap="F-분포 히스토그램", fig.alt="y축에 빈도, x축에 값을 표시한 히스토그램. 가장 낮은 값 범위에서 높은 빈도를 나타내는 단일 막대가 두드러지게 표시됩니다."}
+hist(
+    rf(1000, df1 = 5, df2 = 2),
+    main = "Histogram of F Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+F-분포의 적률생성함수(MGF)는 단순한 닫힌 형태로 존재하지 않습니다.
+
+**평균**
+
+$d_2 > 2$일 때:
+
+$$
+E[X] = \frac{d_2}{d_2 - 2}
+$$
+
+**분산**
+
+$d_2 > 4$일 때:
+
+$$
+\sigma^2 = \text{Var}(X) = \frac{2 d_2^2 (d_1 + d_2 - 2)}{d_1 (d_2 - 2)^2 (d_2 - 4)}
+$$
+
+------------------------------------------------------------------------
+
+##### 코시 분포 (Cauchy Distribution)
+
+코시 분포는 물리학에서 자주 사용되는 연속확률분포로, 정규분포보다 훨씬 두꺼운 꼬리를 가집니다. 유한한 평균이나 분산이 존재하지 않는다는 점이 큰 특징입니다.
+
+-   코시 분포는 유한한 평균이나 분산을 갖지 않습니다.
+-   [중심극한정리]와 약대수의 법칙이 코시 분포에는 적용되지 않습니다.
+
+**밀도함수**
+
+$$
+f(x; x_0, \gamma) = \frac{1}{\pi \gamma \left[ 1 + \left( \frac{x - x_0}{\gamma} 
+\right)^2 \right]}
+$$
+
+여기서 $x_0$은 위치 모수이고 $\gamma > 0$은 척도 모수입니다.
+
+**누적분포함수(CDF)**
+
+코시 분포의 누적분포함수는 다음과 같이 주어집니다:
+
+$$
+F(x; x_0, \gamma) = \frac{1}{\pi} \arctan \left( \frac{x - x_0}{\gamma}  \right) + \frac{1}{2}
+$$
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:cauchy-hist)는 위치 $0$, 척도 $1$인 코시 표본의 경험적 PDF를 보여줍니다. 가로축을 지배하는 극단적인 꼬리에 주목하세요.
+
+```{r cauchy-hist, fig.cap="코시 분포 히스토그램", fig.alt="값의 빈도 분포를 보여주는 히스토그램. x축은 -2000에서 500까지, y축은 0에서 500까지의 범위를 가집니다. 차트는 0 부근에서 높은 빈도를 보이는 두드러진 막대를 나타냅니다."}
+hist(
+    rcauchy(1000, location = 0, scale = 1),
+    main = "Histogram of Cauchy Distribution",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+코시 분포의 적률생성함수(MGF)는 존재하지 않습니다.
+
+**평균**
+
+코시 분포의 평균은 정의되지 않습니다(undefined).
+
+**분산**
+
+코시 분포의 분산은 정의되지 않습니다(undefined).
+
+------------------------------------------------------------------------
+
+##### 다변량 정규분포 (Multivariate Normal Distribution)
+
+$y$를 평균이 $\mu$이고 분산-공분산 행렬이 $\Sigma$인 $p$차원 다변량 정규(multivariate normal, MVN) 확률변수라 하겠습니다. $y$의 밀도함수는 다음과 같이 주어집니다:
+
+$$ f(\mathbf{y}) = \frac{1}{(2\pi)^{p/2}|\mathbf{\Sigma}|^{1/2}} \exp\left(-\frac{1}{2} (\mathbf{y}-\mu)' \Sigma^{-1} (\mathbf{y}-\mu)\right) $$
+
+여기서 $|\mathbf{\Sigma}|$는 분산-공분산 행렬 $\Sigma$의 행렬식을 나타내며, $\mathbf{y} \sim N_p(\mathbf{\mu}, \mathbf{\Sigma})$입니다.
+
+**성질**:
+
+-   $\mathbf{A}_{r \times p}$를 고정된 행렬이라 할 때, $\mathbf{A y} \sim N_r(\mathbf{A \mu}, \mathbf{A \Sigma A'})$입니다. 단, $r \le p$이어야 하며, $\mathbf{A \Sigma A'}$의 비특이성을 보장하기 위해 $\mathbf{A}$의 모든 행은 선형 독립이어야 합니다.
+-   $\mathbf{G}$를 $\mathbf{\Sigma^{-1} = G G'}$를 만족하는 행렬이라 할 때, $\mathbf{G'y} \sim N_p(\mathbf{G'\mu}, \mathbf{I})$ 및 $\mathbf{G'(y - \mu)} \sim N_p(\mathbf{0}, \mathbf{I})$입니다.
+-   $y_1, \dots, y_p$의 임의의 고정된 선형 결합 $\mathbf{c'y}$는 $\mathbf{c'y} \sim N_1(\mathbf{c'\mu}, \mathbf{c'\Sigma c})$를 따릅니다.
+
+**대표본 성질 (Large Sample Properties)**
+
+$y_1, \dots, y_n$이 평균 $\mu$, 분산-공분산 행렬 $\Sigma$를 갖는 모집단으로부터의 무작위 표본이라고 하겠습니다:
+
+$$ \mathbf{Y} \sim MVN(\mathbf{\mu}, \mathbf{\Sigma}) $$
+
+그러면:
+
+-   $\bar{\mathbf{y}} = \frac{1}{n} \sum_{i=1}^n \mathbf{y}_i$는 $\mathbf{\mu}$의 일치추정량(consistent estimator)입니다.
+-   $\mathbf{S} = \frac{1}{n-1} \sum_{i=1}^n (\mathbf{y}_i - \bar{\mathbf{y}})(\mathbf{y}_i - \bar{\mathbf{y}})'$는 $\mathbf{\Sigma}$의 일치추정량입니다.
+-   다변량 중심극한정리(Multivariate Central Limit Theorem): 일변량의 경우와 유사하게, $n$이 $p$에 비해 충분히 클 때(예: $n \ge 25p$), $\sqrt{n}(\bar{\mathbf{y}} - \mu) \sim N_p(\mathbf{0}, \mathbf{\Sigma})$가 성립하며, 이는 $\bar{\mathbf{y}} \sim N_p(\mathbf{\mu}, \mathbf{\Sigma/n})$과 동치입니다.
+-   왈드 정리(Wald's Theorem): $n$이 $p$에 비해 충분히 클 때, $n(\bar{\mathbf{y}} - \mu)' \mathbf{S^{-1}} (\bar{\mathbf{y}} - \mu) \sim \chi^2_{(p)}$입니다.
+
+**밀도함수**
+
+$$
+f(\mathbf{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = \frac{1}{(2\pi)^{k/2} | \boldsymbol{\Sigma}|^{1/2}} \exp\left( -\frac{1}{2} (\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) 
+\right)
+$$
+
+여기서 $\boldsymbol{\mu}$는 평균 벡터, $\boldsymbol{\Sigma}$는 공분산 행렬, $\mathbf{x} \in \mathbb{R}^k$이며 $k$는 변수의 개수입니다.
+
+**누적분포함수(CDF)**
+
+다변량 정규분포의 누적분포함수는 단순한 닫힌 형태로 존재하지 않으며 일반적으로 수치적 방법을 사용하여 계산합니다.
+
+**확률밀도함수(PDF)**
+
+그림 \@ref(fig:mvn-hist)는 이변량 정규분포 표본에서 첫 번째 변수의 경험적 주변(marginal) PDF를 보여줍니다.
+
+```{r mvn-hist, fig.cap="다변량 정규분포(MVN) 히스토그램 (첫 번째 변수)", fig.alt="다변량 정규분포 히스토그램(첫 번째 변수). 히스토그램은 -3에서 3까지의 값에 대한 빈도 분포를 보여줍니다. 가장 높은 빈도는 값 0 부근에서 나타나며 정규분포 형태를 나타냅니다. y축은 빈도를 나타내고 x축은 값을 나타냅니다."}
+k <- 2
+n <- 1000
+mu <- c(0, 0)
+sigma <- matrix(c(1, 0.5, 0.5, 1), nrow = k)
+library(MASS)
+hist(
+    mvrnorm(n, mu = mu, Sigma = sigma)[,1],
+    main = "Histogram of MVN Distribution (1st Var)",
+    xlab = "Value",
+    ylab = "Frequency"
+)
+```
+
+**적률생성함수(MGF)**
+
+$$
+m_{\mathbf{X}}(\mathbf{t}) = \exp\left(\boldsymbol{\mu}^T \mathbf{t} + \frac{1}{2} \mathbf{t}^T \boldsymbol{\Sigma} \mathbf{t} 
+\right)
+$$
+
+**평균**
+
+$$
+E[\mathbf{X}] = \boldsymbol{\mu}
+$$
+
+**분산**
+
+$$
+\text{Var}(\mathbf{X}) = \boldsymbol{\Sigma}
+$$

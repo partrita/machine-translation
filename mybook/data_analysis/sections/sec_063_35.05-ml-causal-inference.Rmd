@@ -1,0 +1,920 @@
+<!-- ========================================= -->
+<!-- Chapter: 35.05-ml-causal-inference.Rmd -->
+<!-- ========================================= -->
+
+
+# 인과 추론을 위한 머신러닝 {#sec-ml-causal}
+
+관찰자료에서 인과 추론을 수행하려면 처치와 결과에 공동으로 영향을 미치는 교란변수를 조정해야 한다. 선형 회귀, 성향점수 가중, 모수적 매칭을 중심으로 한 고전적 도구는 분석자가 결과 표면이나 처치 할당 메커니즘 가운데 하나를 올바르게 지정한 모형으로 표현할 수 있다고 가정한다. 공변량 수가 많거나 결과와의 함수 관계를 알 수 없거나 모집단에서 처치 효과가 복잡하게 달라지면 이러한 모수적 가정은 취약해진다. 머신러닝은 바로 이러한 고차원 성가신 함수(nuisance function)에 유연하고 데이터 적응적인 추정량을 제공한다. 현대 문헌의 핵심 기여는 블랙박스 학습기 위에서 구축된 인과 추정량이라도 유효한 신뢰구간을 유지하도록 유연한 예측과 반모수 이론의 구조를 결합하는 방법을 제시한 데 있다.
+
+이 장에서는 이러한 결합을 전개한다. 먼저 순진한 플러그인 머신러닝이 인과 문제에서 실패하는 이유, 즉 정규화 편향 문제를 살펴본다. 이어서 이를 해결하는 도구인 Neyman 직교 점수, 교차 적합(cross-fitting), @chernozhukov2018double의 이중 또는 편향 제거 머신러닝을 구축한다. 이를 증강 역확률 가중과 표적 최대우도 추정이라는 오래된 이중 강건 전통 및 SuperLearner를 통한 앙상블 학습과 연결한다. 다음으로 이질성을 다루면서 인과 포레스트와 일반화 랜덤 포레스트가 개인별 효과의 변화를 복원하는 방법과 메타 학습기의 보완적 모듈형 접근을 설명한다. 마지막으로 시간 정보를 고려한 확장인 시간적 인과 포레스트를 소개하고 실무 지침과 주의점을 정리한다.
+
+## 인과 추론에 머신러닝을 사용하는 이유
+
+### 고차원 교란
+
+관측 가능한 변수에 의한 선택(selection-on-observables) 식별은 공변량 벡터 $X$를 조건으로 할 때 처치 $W$가 무작위로 배정된 것과 같다는 비혼란성(unconfoundedness) 가정에 기반한다. $X$가 풍부할수록 이 가정의 신뢰성은 높아진다. 소수의 공변량만 조건으로 삼는 연구는 누락된 변수가 비교를 여전히 교란한다는 비판을 받기 쉽다. 수백 또는 수천 개의 공변량과 상호작용, 유연한 변환을 포함하면 식별 가정은 강화되지만 고전적 모수 추정량은 압도된다. 관측치보다 공변량이 많은 경우 보통최소제곱은 정의조차 되지 않으며, $p < n$인 경우에도 $p$가 $n$에 가까워지면 분산이 폭발한다.
+
+Lasso, 랜덤 포레스트, 그래디언트 부스팅, 신경망과 같은 머신러닝 방법은 작은 편향을 감수하고 분산을 크게 줄여 고차원에서 잘 예측하도록 설계되었다. 따라서 이 학습기 중 하나로 결과 회귀나 성향점수를 추정한 뒤 그 결과를 표준 인과 추정량에 플러그인하고 싶은 유혹이 생긴다. 그러나 다음 절에서 보듯 이를 순진하게 수행하면 추론에 필요한 통계적 보장이 무너진다.
+
+### 정규화 편향 문제
+
+부분 선형 모형을 생각하자.
+$$
+Y = \theta_0 W + g_0(X) + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid X, W] = 0,
+$$
+여기서 $\theta_0$는 관심 인과 모수이고 $g_0$는 교란변수의 알려지지 않은 복잡한 함수일 수 있다. 직접적인 방법은 머신러닝 방법으로 $g_0$를 $\hat{g}$로 추정한 뒤 잔차 $Y - \hat{g}(X)$를 $W$에 회귀하는 것이다. 구체적으로 $\theta_0$를 다음과 같이 추정한다고 하자.
+$$
+\hat{\theta} = \left(\frac{1}{n}\sum_i W_i^2\right)^{-1} \frac{1}{n}\sum_i W_i \bigl(Y_i - \hat{g}(X_i)\bigr).
+$$
+스케일된 오차를 분해하면 두 항이 나타난다.
+$$
+\sqrt{n}(\hat{\theta} - \theta_0) = \underbrace{a}_{\text{well behaved}} + \underbrace{b}_{\text{regularization bias}},
+$$
+여기서 두 번째 항은 $\frac{1}{\sqrt{n}}\sum_i W_i \bigl(g_0(X_i) - \hat{g}(X_i)\bigr)$를 포함한다. 모든 머신러닝 추정량은 분산을 통제하기 위해 계수를 축소하거나 트리 깊이를 제한하는 등 정규화를 수행하므로, $g_0 - \hat{g}$의 0으로의 수렴 속도는 모수적 속도 $n^{-1/2}$보다 느리다. 따라서 편향항 $b$는 발산하고, $\hat{\theta}$는 유효한 신뢰구간에 필요한 속도로조차 일치하지 않는다. 이것이 정규화 편향이며 플러그인 편향 또는 1차 편향이라고도 한다. 이는 소표본에서만 생기는 성가신 문제가 아니라, 해당 성가신 함수의 오차에 민감한 인과 함수 안에 편향되고 느리게 수렴하는 추정량을 사용하는 데 따른 구조적 결과다.
+
+두 가지 아이디어가 이를 해결한다. 첫째, 성가신 함수의 오차에 1차적으로 둔감하도록 추정 방정식을 구성한다. 이것이 Neyman 직교성이다. 둘째, 최종 추정량을 계산하는 자료와 분리된 자료에서 성가신 함수를 추정해, 그렇지 않으면 편향을 다시 유입시키는 의존성을 끊는다. 이것이 교차 적합이다. 둘은 이중 머신러닝의 핵심이다.
+
+## 이중 및 편향 제거 머신러닝
+
+@chernozhukov2018double의 이중 또는 편향 제거 머신러닝 프레임워크는 임의의 머신러닝 방법으로 추정한 고차원 성가신 함수가 존재할 때 저차원 인과 모수를 추정하는 일반적 절차를 제공한다. 이 프레임워크는 Neyman 직교 점수와 교차 적합이라는 두 기둥 위에 세워진다.
+
+### Neyman 직교 점수
+
+관심 모수 $\theta_0$가 모멘트 조건 $\mathbb{E}[\psi(Z; \theta_0, \eta_0)] = 0$을 만족한다고 하자. 여기서 $Z$는 관측자료를 모은 것이고, $\psi$는 알려진 점수 함수이며, $\eta_0$는 성가신 함수를 뜻한다. 참값에서 성가신 함수에 대한 기댓값의 미분이 0이면 이 점수는 Neyman 직교다.
+$$
+\partial_\eta \, \mathbb{E}\bigl[\psi(Z; \theta_0, \eta)\bigr]\Big|_{\eta = \eta_0} = 0.
+$$
+직교성은 $\hat{\eta}$의 작은 오차가 모멘트 조건에 2차 효과만 미친다는 뜻이다. 머신러닝 오차는 느리지만 병리적이지 않으므로, 각 성가신 함수가 $n^{-1/4}$보다 빠른 속도로 추정되면 $\|\hat{\eta} - \eta_0\|^2$ 형태의 2차항은 $n^{-1/2}$보다 빠르게 0으로 간다. 유연한 학습기는 이러한 속도를 달성할 수 있다. 따라서 1차 정규화 편향은 구성 단계에서 제거된다.
+
+부분 선형 모형에서 순진한 점수 $W(Y - \theta W - g(X))$는 $W$와의 상관을 통해 $g$의 오차에 민감하므로 직교가 아니다. 직교 점수는 처치에서도 교란변수의 영향을 제거한다. 조건부 처치 평균 $m_0(X) = \mathbb{E}[W \mid X]$와 잔차화한 처치 $V = W - m_0(X)$를 정의하자. Robinson 방식의 직교 점수는 다음과 같다.
+$$
+\psi(Z; \theta, \eta) = \bigl(Y - g(X) - \theta\,(W - m(X))\bigr)\,\bigl(W - m(X)\bigr),
+$$
+성가신 함수는 $\eta = (g, m)$이다. 이는 @robinson1988root의 고전적 반모수 부분 선형 회귀를 이루는 부분 제거 추정량이며, 여기서는 두 성가신 함수를 모두 머신러닝으로 추정한다. 직관적으로 유연한 학습기로 $Y$와 $W$를 각각 $X$에 대해 잔차화한 뒤, $Y$ 잔차를 $W$ 잔차에 회귀한다. 이러한 상호 잔차화가 어느 성가신 함수의 오차에도 점수를 강건하게 만든다.
+
+### 교차 적합
+
+직교 점수를 사용하더라도 같은 관측치를 성가신 함수 추정과 모멘트 조건 평가에 재사용하면 과적합 편향이 생기고 학습기에 강한 경험과정 조건이 필요하다. 교차 적합은 표본을 분할해 이를 제거한다. 자료를 $K$개 폴드로 나누고, 각 폴드 $k$에 대해 그 밖의 관측치로 성가신 함수를 추정한 다음 폴드 밖에서 얻은 추정량으로 보류된 폴드의 직교 점수를 평가한다. 폴드별 모멘트 조건을 평균하고 $\theta$를 풀면 교차 적합 추정량을 얻는다. 폴드의 역할을 바꾸어 평균하면 완전한 효율성을 회복한다. 교차 적합은 Donsker 유형 복잡도 제약 없이 사실상 어떤 학습기든 사용할 수 있게 하므로 현대의 유연한 모형에 실용적이다.
+
+그 결과 추정량은 $\sqrt{n}$-일치하고 점근적으로 정규이며,
+$$
+\sqrt{n}\,(\hat{\theta} - \theta_0) \;\xrightarrow{d}\; \mathcal{N}\!\left(0,\; \sigma^2\right),
+$$
+분산은 점수로 추정할 수 있다. 따라서 1단계가 블랙박스여도 통상적인 Wald 신뢰구간이 유효하다.
+
+### 부분 선형 모형과 상호작용 모형
+
+이 프레임워크는 두 가지 주요 모형을 포괄한다. 앞의 부분 선형 모형은 일정한 처치 효과 $\theta_0$를 부과하지만 교란 함수 $g_0$에는 제약을 두지 않는다. 상호작용 회귀 모형은 일정한 효과 가정을 완화하고 평균 처치 효과를 목표로 한다.
+$$
+\theta_0 = \mathbb{E}\bigl[\mu_0(1, X) - \mu_0(0, X)\bigr],
+$$
+여기서 $\mu_0(w, x) = \mathbb{E}[Y \mid W = w, X = x]$이다. 직교 점수는 다음 절에서 소개할 증강 역확률 가중(AIPW) 점수이며, 결과 회귀 $\mu_0$와 성향점수 $e_0(X) = \mathbb{P}(W = 1 \mid X)$를 성가신 함수로 둔다. 따라서 상호작용 모형의 이중 머신러닝은 교차 적합한 머신러닝 성가신 함수를 사용하는 AIPW다.
+
+### 실행 가능한 부분 선형 예제
+
+다음 시뮬레이션은 깨끗한 세션에서 실행되도록 base R만 사용해 직교화와 교차 적합의 논리를 처음부터 보여준다. 비선형 교란 표면을 갖는 부분 선형 모형에서 자료를 생성하고, 순진한 플러그인 추정량과 교차 적합 직교 추정량을 비교한다.
+
+```{r dml-sim}
+set.seed(123)
+
+n <- 2000
+p <- 10
+X <- matrix(runif(n * p), n, p)
+
+# Nonlinear confounding for both treatment and outcome
+g0 <- function(X) sin(2 * pi * X[, 1]) + X[, 2]^2 + 0.5 * X[, 3]
+m0 <- function(X) plogis(1.5 * X[, 1] - X[, 2])
+
+theta_true <- 1.0
+W <- m0(X) + rnorm(n, sd = 0.3)          # continuous treatment
+Y <- theta_true * W + g0(X) + rnorm(n, sd = 1)
+
+dat <- data.frame(Y = Y, W = W, X)
+
+# Naive plug-in: estimate g on full data, regress residual on W
+naive_fit <- lm(Y ~ poly(X1, 3) + poly(X2, 3) + X3, data = dat)
+resid_Y <- dat$Y - predict(naive_fit)
+theta_naive <- coef(lm(resid_Y ~ dat$W - 1))
+
+# Cross-fitted orthogonal (partialling-out) estimator
+K <- 5
+folds <- sample(rep(1:K, length.out = n))
+vY <- numeric(n); vW <- numeric(n)
+for (k in 1:K) {
+    tr <- folds != k
+    te <- folds == k
+    gY <- lm(Y ~ poly(X1, 3) + poly(X2, 3) + X3, data = dat[tr, ])
+    gW <- lm(W ~ poly(X1, 3) + poly(X2, 3) + X3, data = dat[tr, ])
+    vY[te] <- dat$Y[te] - predict(gY, newdata = dat[te, ])
+    vW[te] <- dat$W[te] - predict(gW, newdata = dat[te, ])
+}
+theta_dml <- sum(vW * vY) / sum(vW * vW)
+
+c(naive = theta_naive, dml = theta_dml, truth = theta_true)
+```
+
+직교 교차 적합 추정량은 참값 1에 가깝지만, 순진한 플러그인은 처치를 잔차화하지 않아 편향된다. 다항 회귀 대신 실제 머신러닝 학습기를 사용하면 같은 논리로 훨씬 고차원에서 유효한 추론을 수행할 수 있다. 실제로 `DoubleML` 패키지는 다양한 학습기로 이 도구를 구현한다.
+
+```{r dml-package, eval=FALSE}
+# Production implementation with the DoubleML package and a random forest.
+library(DoubleML)
+library(mlr3)
+library(mlr3learners)
+
+dml_data <- DoubleMLData$new(
+    dat,
+    y_col = "Y",
+    d_cols = "W",
+    x_cols = paste0("X", 1:p)
+)
+
+learner <- lrn("regr.ranger", num.trees = 500)
+dml_plr <- DoubleMLPLR$new(
+    dml_data,
+    ml_l = learner$clone(),
+    ml_m = learner$clone(),
+    n_folds = 5
+)
+dml_plr$fit()
+dml_plr$summary()
+```
+
+## 이중 강건 추정과 표적 학습
+
+상호작용 모형의 이중 머신러닝은 이중 강건 추정량을 중심으로 발전한 생물통계학의 오랜 전통과 밀접하다. 이 전통을 이해하면 AIPW 점수가 직교인 이유와 표적 최대우도 추정의 동기를 분명히 알 수 있다.
+
+### 증강 역확률 가중
+
+비혼란성하의 평균 처치 효과에는 두 가지 간단한 추정량이 있다. 결과 회귀는 $\hat{\mu}(w, x)$에서 두 잠재 결과를 대치하고 그 차이를 평균한다. 역확률 가중은 역성향점수 $\hat{e}(x)$로 관측 결과를 재가중한다. 각각은 하나의 성가신 모형이 올바를 때에만 일치한다. 증강 역확률 가중 추정량은 이 둘을 영향 함수 형태로 결합한다.
+$$
+\hat{\tau}_{\text{AIPW}} = \frac{1}{n}\sum_{i=1}^{n}\Biggl[\hat{\mu}(1, X_i) - \hat{\mu}(0, X_i) + \frac{W_i\bigl(Y_i - \hat{\mu}(1, X_i)\bigr)}{\hat{e}(X_i)} - \frac{(1 - W_i)\bigl(Y_i - \hat{\mu}(0, X_i)\bigr)}{1 - \hat{e}(X_i)}\Biggr].
+$$
+이 추정량은 이중 강건하다. 결과 모형이나 성향 모형 중 하나만 올바르게 지정되어도 일치하며, 반드시 둘 다 올바를 필요는 없다. 증강항은 모멘트 조건을 Neyman 직교로 만드는 보정항이므로, 교차 적합 AIPW가 상호작용 모형의 이중 머신러닝 추정량이 된다. 이중 강건성은 @robins2000marginal의 결측자료 및 주변 구조 모형 문헌과 @scharfstein1999adjusting의 증강 이론에 뿌리를 두며, 이 연구들에서 처치 효과의 효율적 영향 함수가 처음 특성화되었다.
+
+### 표적 최대우도 추정
+
+@vanderlaan2006targeted가 개발한 표적 최대우도 추정(TMLE)은 다른 경로로 동일한 이중 강건성과 반모수 효율성을 달성하는 대입 추정량이다. 머신러닝 예측을 목표 모수에 직접 플러그인하는 대신 TMLE는 두 단계로 진행한다. 먼저 보통 유연한 학습기로 결과 회귀의 초기 추정량을 얻는다. 다음으로 효율적 영향 함수 추정 방정식을 만족하도록 방향을 정한 모수적 변동 부분모형으로 초기 적합을 갱신한다. 이 변동에는 추정 성향점수로 만든 영리한 공변량이 사용된다. 최종 대입 추정량은 모수의 자연스러운 범위를 지키며, 예를 들어 이항 결과에서 유효한 확률로 남고, 영향 함수 접근법의 효율성과 이중 강건성을 물려받는다.
+
+TMLE가 일반 AIPW보다 갖는 장점은 주로 실용적이다. TMLE는 대입 추정량이므로 성향점수가 0이나 1에 가까울 때 더 안정적이며 자연스러운 모수 공간 밖의 추정량을 만들지 않는다. 개념적으로 AIPW와 TMLE는 점근적으로 효율적이고 이중 강건한 같은 추정량군의 두 구성원이다. `tmle` 패키지는 R에서 이 방법을 구현한다.
+
+```{r tmle-example, eval=FALSE}
+library(tmle)
+library(SuperLearner)
+
+tmle_fit <- tmle(
+    Y = Y, A = W, W = X,
+    Q.SL.library = c("SL.glm", "SL.ranger", "SL.glmnet"),
+    g.SL.library = c("SL.glm", "SL.ranger", "SL.glmnet")
+)
+tmle_fit$estimates$ATE
+```
+
+### SuperLearner 앙상블
+
+성가신 함수에 어떤 머신러닝 방법을 선택할지는 자연스러운 고민이다. @vanderlaan2007super의 SuperLearner는 아예 하나를 선택하지 않는 방식으로 답한다. 단순한 모수 모형부터 유연한 앙상블까지 후보 학습기 라이브러리를 만들고, 교차 검증 예측의 최적 볼록 결합을 구성한다. 가중치는 교차 검증 위험을 최소화하도록 정하며, 오라클 결과에 따르면 이 앙상블은 점근적으로 라이브러리의 최선 단일 알고리즘 또는 최선의 가중 결합만큼 성능이 좋다. SuperLearner 자체가 유효한 예측 방법이므로 AIPW, TMLE, 이중 머신러닝의 성가신 함수 추정량으로 바로 사용할 수 있으며, 적절한 학습기에 대한 사전 지식이 없을 때 권장되는 기본값이다.
+
+```{r superlearner-example, eval=FALSE}
+library(SuperLearner)
+
+sl_lib <- c("SL.mean", "SL.glm", "SL.glmnet", "SL.ranger", "SL.xgboost")
+sl_fit <- SuperLearner(
+    Y = Y, X = as.data.frame(X),
+    family = gaussian(),
+    SL.library = sl_lib,
+    cvControl = list(V = 10)
+)
+sl_fit  # prints the learned ensemble weights
+```
+
+### 유연한 성가신 함수 학습기
+
+Several learners recur as components of these ensembles and as standalone nuisance estimators. The Lasso of @tibshirani1996 performs variable selection and shrinkage, and its high-dimensional inference theory underpins the post-double-selection approach of @belloni2014inference and @belloni2014high, an early and influential instance of orthogonalized estimation that prefigures double machine learning. Random forests, introduced by @breiman2001random and based on the recursive partitioning of @breiman2017classification, provide flexible, low-tuning regression for both the outcome and the propensity score. Gradient boosting machines build additive ensembles of shallow trees and are common for propensity score estimation. Bayesian additive regression trees offer a flexible, regularized sum-of-trees prior with automatic uncertainty quantification and are widely used for the outcome surface in causal applications, including the endogeneity-aware formulation of @hill2021endogeneity. The unifying message is that any of these can serve as a nuisance learner, and the orthogonal-score plus cross-fitting machinery makes the downstream causal estimate robust to the particular choice.
+
+## 대규모 조합 실험을 위한 딥러닝
+
+The double machine learning machinery of this chapter was built for a single treatment. Large online platforms face a harder version of the problem: they run hundreds of randomized experiments concurrently, and any given user is enrolled in many of them at once. @ye2025deep study this setting, which they call combinatorial experimentation, and develop a debiased deep learning (DeDL) framework that extends the Neyman-orthogonality and cross-fitting ideas of double machine learning to the case where the treatment itself is a high-dimensional combination of binary A/B tests. This section develops their framework, reports their empirical validation on a large-scale video-sharing platform, and then replicates the mechanics end to end on synthetic data built to their own specification, using a genuine deep network trained with `torch`.
+
+### 조합 실험 문제
+
+To use user traffic efficiently, a large platform typically randomizes each of its many concurrent experiments independently, an orthogonal traffic assignment design. Orthogonality guarantees a credible causal estimate for each individual experiment, but it means that the joint effect of any particular combination of treatments is essentially never directly observed: with $m$ concurrent binary experiments there are $2^m$ possible treatment combinations, and testing all of them exhaustively with a classical full factorial design requires traffic that grows exponentially in $m$. Practitioners' default workaround is to assume treatment effects are linearly additive, so that the effect of running two experiments together is simply the sum of their solo effects, and to make expansion decisions for each experiment independently of the others.
+
+@ye2025deep show empirically that this assumption is not innocuous. Collaborating with a large-scale short-video platform that, for one unusual set of three experiments, tested every one of the $2^3 = 8$ treatment combinations on the same population, they document combinations whose true joint effect diverges sharply from the linear-addition prediction, with the direction and magnitude of the gap varying by user subgroup: some segments show increasing marginal returns to combined treatment and others show decreasing marginal returns, exactly the heterogeneity that a flexible nuisance model can capture but a linear rule cannot.
+
+Formally, let $T \in \{0,1\}^m$ denote a user's combination of treatments across $m$ concurrent experiments, $X$ her pre-treatment covariates, and $Y$ her outcome. The framework assumes a semiparametric data-generating process
+$$
+\mathbb{E}[Y \mid X = x, T = t] = G(\theta^*(x), t),
+$$
+where $G$ is a known link function and $\theta^*(\cdot)$ is an unknown, potentially high-dimensional nuisance function of the covariates, estimated with a deep neural network. The link function is the interpretable, structural piece of the model; the network supplies the flexibility needed to capture rich covariate heterogeneity in how users respond.
+
+### 연결 함수와 구조화된 네트워크
+
+The choice of $G$ encodes the economic content of the model. @ye2025deep propose four link functions, differing in how they let individual treatment effects combine. The multiplicative form, $G(\theta(x),t) = \theta_0(x)\prod_{k=1}^m (1+\theta_k(x)t_k)$, captures relative, compounding effects but only increasing marginal returns. The sigmoid forms instead use the convex-concave shape of the logistic curve to capture both increasing and decreasing marginal returns within the same model, which is essential given the heterogeneity documented above. The generalized sigmoid form II,
+$$
+G(\theta(x), t) = \frac{\theta_{m+1}(x)}{1+\exp\bigl(-(\theta_0(x) + \theta_1(x)t_1 + \cdots + \theta_m(x)t_m)\bigr)},
+$$
+is the most flexible of the four, letting $\theta_{m+1}(x)$ set an individual-specific ceiling on the outcome, and is the specification @ye2025deep adopt for their empirical analysis and their main simulation study. A user near the bottom or top of the sigmoid experiences diminishing returns to further treatment, while a user in the linear part of the curve experiences roughly additive or even accelerating returns, so the same link function nests both of the patterns observed in Figure 1 of the paper.
+
+The network architecture mirrors the link function directly. Two small feed-forward networks with ReLU activations map covariates $x$ to the parameters $\theta_0(x), \theta_1(x), \dots, \theta_m(x)$; a final layer produces $\theta_{m+1}(x)$; and a fixed, non-trainable sigmoid layer combines these estimated parameters with the observed treatment vector $t$ to produce the predicted outcome. Training minimizes ordinary mean squared error, $\ell(y,t,\theta(x)) = (y - G(\theta(x),t))^2$, exactly as in a standard regression network; the only departure from an off-the-shelf DNN is that the treatment enters through the final structural layer rather than as an ordinary input feature.
+
+This structure has a striking practical payoff. Because the link function has only $m+2$ free nuisance components per individual ($\theta_0,\ldots,\theta_m,\theta_{m+1}$), identification and convergence of $\hat\theta(\cdot)$ require observing only $m+2$ of the $2^m$ treatment combinations, the control condition, each of the $m$ individual experiments, and one combination of two, rather than all $2^m$. For ten concurrent experiments this is $12$ combinations instead of $1{,}024$, a reduction from exponential to linear traffic requirements that is what makes the framework usable on a real platform.
+
+### 영향 함수에 의한 편향 제거
+
+A network trained this way delivers an accurate predictor of $\mathbb{E}[Y\mid X,T]$, but the plug-in estimator of the average treatment effect,
+$$
+\hat\mu(t) = \frac{1}{n}\sum_{i=1}^n \Bigl(G(\hat\theta(x_i), t) - G(\hat\theta(x_i), t_0)\Bigr),
+$$
+inherits the same regularization bias problem that motivated double machine learning earlier in this chapter, now amplified by the fact that $\theta(\cdot)$ is vector-valued and the link function is nonlinear in $\theta$. @ye2025deep derive the semiparametric influence function for $\mu(t)$ using the pathwise-derivative method, obtaining a plug-in term corrected by a debiasing term,
+$$
+\psi(z,\theta,\Lambda; t, t_0) = \underbrace{H(x,\theta(x); t,t_0)}_{\text{plug-in}} - \underbrace{H_\theta(x,\theta(x);t,t_0)' \Lambda(x)^{-1} \ell_\theta(y,\check t,\theta(x))}_{\text{debiasing term}},
+$$
+where $H(x,\theta(x);t,t_0) = G(\theta(x),t) - G(\theta(x),t_0)$ is the advantage of combination $t$ over the control, $H_\theta$ and $\ell_\theta$ are the gradients of $H$ and of the training loss with respect to $\theta$, and $\Lambda(x) = 2\,\mathbb{E}[G_\theta(\theta(x),T)G_\theta(\theta(x),T)' \mid X=x]$ is a generalized information matrix computed from the known treatment-assignment mechanism. Because the debiasing term removes the first-order sensitivity of $\hat\mu(t)$ to errors in $\hat\theta$, the resulting estimator is Neyman orthogonal, exactly the property that made double machine learning valid earlier in the chapter, now derived for a vector-valued nuisance sitting inside a nonlinear structural layer rather than a scalar regression function.
+
+Combined with cross-fitting, this yields the DeDL algorithm: split the data, train the structured network on one part to obtain $\hat\theta(\cdot)$ and $\hat\Lambda(\cdot)$, then average the influence function $\psi$ over the held-out part to construct
+$$
+\hat\mu_{\text{DeDL}}(t) = \frac{1}{|S|}\sum_{i \in S} \psi(z_i, \hat\theta(x_i), \hat\Lambda(x_i); t, t_0), \qquad
+\hat\Psi_{\text{DeDL}}(t;\mu) = \frac{1}{|S|}\sum_{i \in S}\bigl(\psi_i - \hat\mu_{\text{DeDL}}(t)\bigr)^2,
+$$
+with the resulting Wald confidence interval $\hat\mu_{\text{DeDL}}(t) \pm z_{1-\alpha/2}\sqrt{\hat\Psi_{\text{DeDL}}(t;\mu)/n}$. Under regularity conditions that require the network to converge at the rate $\|\hat\theta - \theta^*\|_{L^2} = o(n^{-1/4})$, standard for DNN estimators, @ye2025deep prove $\hat\mu_{\text{DeDL}}(t)$ is $\sqrt n$-consistent and asymptotically normal for every treatment combination $t$ simultaneously, and that the empirically best combination $\hat t^* = \arg\max_t \hat\mu_{\text{DeDL}}(t)$ agrees with the true best combination with probability approaching one. The same influence-function machinery, applied to the advantage of $\hat t^*$ over any other combination, delivers valid inference for the best-arm identification problem as well.
+
+### 대규모 플랫폼의 증거
+
+@ye2025deep validate the framework on data from three concurrent A/B tests on a short-video platform, each testing a recommendation-algorithm change on a different product surface (a discovery page, a live-stream page, and a personalized feed). Because the platform ran all three experiments on the same population under a fully factorial deployment, the outcomes of all $2^3=8$ treatment combinations are genuinely observed for roughly 2.07 million stratified users, which lets the authors treat five combinations as "observed" (the control, the three individual experiments, and the fully combined treatment, the combinations a platform would realistically see from independent A/B tests followed by one back-test) and three as artificially "unobserved," then check whether DeDL, trained only on the observed combinations, recovers the true, independently measured effects of the held-out ones.
+
+```{r combexp-platform-o-table, echo=FALSE}
+knitr::kable(
+  data.frame(
+    Combination = c("(0,0,0)", "(0,0,1)", "(0,1,0)", "(1,0,0)", "(1,1,1)", "(1,1,0)", "(1,0,1)", "(0,1,1)"),
+    `Relative ATE` = c("0.000%", "-1.091%", "-0.267%", "-0.758%", "-2.121%", "-0.689%", "-2.299%", "-1.387%"),
+    `관측 여부` = c("예", "예", "예", "예", "예", "아니오", "아니오", "아니오"),
+    check.names = FALSE
+  ),
+  caption = "Ground-truth relative average treatment effect for all eight combinations of three concurrent experiments on Platform O, and which were treated as observed versus artificially held out for validation. The best arm is $t^*=(1,0,1)$. Source: @ye2025deep, Table 2.",
+  align = c("l", "r", "c")
+)
+```
+
+```{r combexp-platform-o-metrics, echo=FALSE}
+knitr::kable(
+  data.frame(
+    Estimator = c("선형 가산", "선형 회귀", "순수 DNN", "구조화된 DNN (편향 제거 없음)", "DeDL"),
+    `Correct direction (held out)` = c("2/3", "2/3", "2/3", "2/3", "3/3"),
+    `MAPE (held out)` = c("30.06%", "4.90%", "6.86%", "14.71%", "1.75%"),
+    `Correct direction (all 8)` = c("7/8", "7/8", "6/8", "6/8", "8/8"),
+    `MAPE (all 8)` = c("12.02%", "17.37%", "14.76%", "14.03%", "3.07%"),
+    check.names = FALSE
+  ),
+  caption = "Performance of DeDL against linear-addition, linear-regression, pure-DNN, and undebiased structured-DNN benchmarks in recovering the ATE of held-out treatment combinations and of all eight combinations. Source: @ye2025deep, Table 3.",
+  align = c("l", "r", "r", "r", "r")
+)
+```
+
+The comparison in the second table is the paper's central empirical result: DeDL dominates every benchmark on every metric, correctly signing and identifying the significance of all three held-out combinations while the linear-addition and linear-regression benchmarks each miss one, and cutting the mean absolute percentage error on held-out combinations by roughly two-thirds relative to the next-best method. Comparing the undebiased structured DNN (SDL) against DeDL isolates the value of the influence-function correction specifically: without debiasing, the confidence intervals are too narrow and understate the true sampling variability, which would inflate false discovery rates in a platform that used them to decide which combination to ship, while DeDL's intervals have the correct coverage. The authors also report a revealing interaction with training quality: the advantage of debiasing over the plug-in SDL estimator only appears once the network is trained to convergence, tracking the same $o(n^{-1/4})$ rate condition that the theory requires; with an undertrained network, or with a badly misspecified link function, debiasing can inject more noise than it removes, so in practice one should monitor the network's cross-validation loss, and compare it to an unrestricted DNN that also takes treatment as a direct input, before trusting the debiased estimates.
+
+### 공식 재현 패키지
+
+@ye2025deep have released an official code and data package at [github.com/zikunye2/deep_learning_based_causal_inference_for_combinatorial_experiments](https://github.com/zikunye2/deep_learning_based_causal_inference_for_combinatorial_experiments), which is worth knowing about independently of the replication below. The repository ships two Jupyter notebooks, `main.ipynb` and `figure1.ipynb`, that reproduce every table and figure in the paper, including the heterogeneity plot in Figure 1, Tables 2 through 4 above, and the CATE and four-fold-DeDL results in Tables 5 through 7 that space does not permit covering here. Because Platform O's real data are proprietary, the authors instead release a synthetic stand-in, `synthetic_data.csv`, with 50,000 rows carrying the same schema as the real deployment: 78 pre-treatment covariates (device, browsing, geography, follower and fan counts, activity level), the three binary treatment indicators `is_DP`, `is_LP`, `is_FYP`, an outcome `y`, and a pre-assigned `kfold` column for the four-way cross-fitting behind Table 7. The synthetic outcome does not reproduce the literal proprietary effect sizes in Table 2, so it validates the pipeline rather than the published numbers, but it is a substantially more realistic covariate structure than a hand-rolled simulation, and readers who want to run the authors' own PyTorch implementation on data with genuine platform-scale dimensionality should start there.
+
+### 프레임워크 전체 재현
+
+Because the released synthetic data intentionally does not carry the paper's true effect sizes, we build our own synthetic environment with a known, checkable ground truth to validate the DeDL machinery, generated to the authors' own specification for their simulation study (their Section 5). This has the advantage of letting us confirm that the estimator, implemented independently in R with a real neural network rather than the authors' Python code, recovers a ground truth we control exactly, which is a complementary check to running their notebooks: an independent reimplementation in a different language reaching the same qualitative conclusions is stronger evidence that the result is about the method and not about a particular codebase. We generate $m$ concurrent binary experiments, covariates $X \sim U(0,1)^{10}$, and nuisance functions $\theta_j^*(x) = (A_j'x)^3$ for a random coefficient matrix $A$, combined through the generalized sigmoid form II link. Consistent with the platform setting, only $m+2$ of the $2^m$ treatment combinations are ever observed during training, so the estimator never sees most of the combinations whose effects it is asked to recover.
+
+```{r combexp-single-run, message=FALSE, warning=FALSE, cache=TRUE}
+library(torch)
+
+set.seed(2025); torch_manual_seed(2025)
+
+dX <- 10L; m <- 4L
+
+# True nuisance functions: cubic transforms of a random linear index.
+A <- matrix(runif((m + 1) * dX, -0.5, 0.5), nrow = m + 1)
+theta_m1_true <- runif(1, 10, 20)
+theta_star <- function(X) { raw <- X %*% t(A); sign(raw) * abs(raw)^3 }
+G_true <- function(X, Tmat) {
+  th <- theta_star(X)
+  u <- th[, 1] + rowSums(th[, -1, drop = FALSE] * Tmat)
+  theta_m1_true / (1 + exp(-u))
+}
+
+# Partial-observation support: control, each single treatment, and one pair (m + 2 combinations).
+all_combos <- as.matrix(expand.grid(rep(list(0:1), m)))
+obs_support <- all_combos[rowSums(all_combos) %in% c(0, 1), , drop = FALSE]
+extra <- rep(0, m); extra[1:2] <- 1
+obs_support <- rbind(obs_support, extra)
+storage.mode(obs_support) <- "double"
+n_support <- nrow(obs_support)
+t0 <- rep(0, m)
+
+sample_partial <- function(n) {
+  X <- matrix(runif(n * dX), n, dX)
+  idx <- sample.int(n_support, n, replace = TRUE)
+  Tmat <- obs_support[idx, , drop = FALSE]
+  y <- G_true(X, Tmat) + runif(n, -0.05, 0.05)
+  list(X = X, T = Tmat, y = y)
+}
+
+train <- sample_partial(500L * m)
+
+# Structured network: two-layer MLP maps X to theta_0(x),...,theta_m(x);
+# theta_{m+1} is a single trainable scale parameter, as in the paper's simulation.
+net <- nn_module(
+  initialize = function(dX, hidden, out_dim) {
+    self$fc1 <- nn_linear(dX, hidden)
+    self$fc2 <- nn_linear(hidden, hidden)
+    self$fc3 <- nn_linear(hidden, out_dim)
+  },
+  forward = function(x) x |> self$fc1() |> nnf_relu() |> self$fc2() |> nnf_relu() |> self$fc3()
+)
+model <- net(dX, hidden = 10L, out_dim = m + 1L)
+theta_m1_hat <- torch_tensor(15, requires_grad = TRUE)
+
+Xtr <- torch_tensor(train$X, dtype = torch_float())
+Ttr <- torch_tensor(train$T, dtype = torch_float())
+ytr <- torch_tensor(train$y, dtype = torch_float())
+opt <- optim_adam(c(model$parameters, list(theta_m1_hat)), lr = 0.01)
+
+forward_G <- function(X, Tt) {
+  th <- model(X)
+  u <- th[, 1] + torch_sum(th[, 2:(m + 1)] * Tt, dim = 2)
+  theta_m1_hat / (1 + torch_exp(-u))
+}
+for (epoch in seq_len(500L)) {
+  opt$zero_grad()
+  loss <- nnf_mse_loss(forward_G(Xtr, Ttr), ytr)
+  loss$backward(); opt$step()
+}
+
+theta_hat_fn <- function(X) {
+  with_no_grad({ th <- model(torch_tensor(X, dtype = torch_float())) })
+  as.matrix(th)
+}
+theta_m1_val <- as.numeric(theta_m1_hat)
+
+# Closed-form sigmoid gradients (G is a sigmoid, so its theta-gradient has a simple form).
+G_hat_row <- function(th_row, t) theta_m1_val / (1 + exp(-(th_row[1] + sum(th_row[-1] * t))))
+Gtheta_hat_row <- function(th_row, t) {
+  u <- th_row[1] + sum(th_row[-1] * t)
+  s <- 1 / (1 + exp(-u)); ds <- s * (1 - s)
+  c(theta_m1_val * ds, theta_m1_val * ds * t, s)
+}
+
+inf_data <- sample_partial(500L * m)
+th_inf <- theta_hat_fn(inf_data$X)
+d <- m + 2L
+
+# Per-unit debiasing correction Lambda(x_i)^{-1} ell_theta(y_i, t_i, theta_hat(x_i));
+# this does not depend on the target combination t, so it is computed once and reused.
+correction <- matrix(0, nrow(inf_data$X), d)
+for (i in seq_len(nrow(inf_data$X))) {
+  th_i <- th_inf[i, ]
+  Lam <- matrix(0, d, d)
+  for (k in seq_len(n_support)) {
+    g <- Gtheta_hat_row(th_i, obs_support[k, ])
+    Lam <- Lam + outer(g, g)
+  }
+  Lam <- Lam * 2 / n_support + diag(0.0005, d)
+  g_ti <- Gtheta_hat_row(th_i, inf_data$T[i, ])
+  ell_th <- 2 * g_ti * (G_hat_row(th_i, inf_data$T[i, ]) - inf_data$y[i])
+  correction[i, ] <- solve(Lam, ell_th)
+}
+
+# Linear-addition and linear-regression benchmarks, fit on the same observed data.
+lr_dat <- data.frame(y = train$y, train$X, train$T)
+names(lr_dat) <- c("y", paste0("x", seq_len(dX)), paste0("t", seq_len(m)))
+lr_fit <- lm(y ~ ., data = lr_dat)
+
+y0 <- mean(train$y[rowSums(train$T) == 0])
+la_effects <- sapply(seq_len(m), function(k) {
+  sel <- train$T[, k] == 1 & rowSums(train$T) == 1
+  mean(train$y[sel]) - y0
+})
+
+Xmc <- matrix(runif(10000L * dX), 10000L, dX)
+mu_true <- function(t) mean(G_true(Xmc, matrix(t, nrow(Xmc), m, byrow = TRUE))) -
+                        mean(G_true(Xmc, matrix(t0, nrow(Xmc), m, byrow = TRUE)))
+
+combo_results <- data.frame()
+for (k in seq_len(nrow(all_combos))) {
+  t_target <- as.numeric(all_combos[k, ])
+  if (all(t_target == t0)) next
+  n_inf <- nrow(inf_data$X)
+
+  Hx  <- sapply(seq_len(n_inf), function(i) G_hat_row(th_inf[i, ], t_target) - G_hat_row(th_inf[i, ], t0))
+  Hth <- t(sapply(seq_len(n_inf), function(i) Gtheta_hat_row(th_inf[i, ], t_target) - Gtheta_hat_row(th_inf[i, ], t0)))
+  psi <- Hx - rowSums(Hth * correction)
+
+  newx  <- data.frame(matrix(runif(2000L * dX), 2000L, dX)); names(newx) <- paste0("x", seq_len(dX))
+  newt1 <- as.data.frame(matrix(t_target, 2000L, m, byrow = TRUE)); names(newt1) <- paste0("t", seq_len(m))
+  newt0 <- as.data.frame(matrix(t0, 2000L, m, byrow = TRUE)); names(newt0) <- paste0("t", seq_len(m))
+
+  combo_results <- rbind(combo_results, data.frame(
+    combo = paste(t_target, collapse = ""),
+    truth = mu_true(t_target),
+    LA    = sum(la_effects[t_target == 1]),
+    LR    = mean(predict(lr_fit, cbind(newx, newt1))) - mean(predict(lr_fit, cbind(newx, newt0))),
+    SDL   = mean(Hx),
+    DeDL  = mean(psi),
+    DeDL_se = sd(psi) / sqrt(n_inf),
+    observed = any(apply(obs_support, 1, function(s) all(s == t_target)))
+  ))
+}
+```
+
+```{r combexp-single-table, echo=FALSE}
+disp <- combo_results[, c("combo", "truth", "LA", "LR", "SDL", "DeDL", "DeDL_se", "observed")]
+disp[c("truth", "LA", "LR", "SDL", "DeDL", "DeDL_se")] <-
+  lapply(disp[c("truth", "LA", "LR", "SDL", "DeDL", "DeDL_se")], round, 4)
+knitr::kable(
+  disp,
+  col.names = c("조합", "참 ATE", "선형 가산", "선형 회귀", "구조화된 DNN (편향 제거 없음)", "DeDL", "DeDL 표준오차", "관측 여부"),
+  caption = "Estimated average treatment effect of every non-control combination of four synthetic concurrent experiments, against ground truth, for four benchmark estimators trained on only $m+2=6$ of the $2^4=16$ possible combinations.",
+  align = c("l", rep("r", 6), "c")
+)
+```
+
+```{r combexp-mae, echo=FALSE}
+mae <- sapply(c("LA", "LR", "SDL", "DeDL"), function(col) mean(abs(combo_results[[col]] - combo_results$truth)))
+knitr::kable(
+  data.frame(Estimator = names(mae), MAE = round(mae, 4)),
+  caption = "Mean absolute error against ground truth across all fifteen non-control treatment combinations."
+)
+```
+
+```{r combexp-ci-fig, fig.cap="DeDL point estimates and 95 percent confidence intervals against ground truth for every treatment combination in the synthetic replication. Combinations marked as observed were part of the training support; the rest were never seen during training.", message=FALSE, warning=FALSE}
+library(ggplot2)
+
+combo_results$combo <- factor(combo_results$combo, levels = combo_results$combo[order(combo_results$observed, decreasing = TRUE)])
+
+ggplot(combo_results, aes(x = combo)) +
+  geom_point(aes(y = truth, color = "Truth"), size = 2.5, shape = 18) +
+  geom_pointrange(aes(y = DeDL, ymin = DeDL - 1.96 * DeDL_se, ymax = DeDL + 1.96 * DeDL_se, color = "DeDL")) +
+  labs(x = "처치 조합", y = "평균 처치 효과", color = NULL) +
+  causalverse::ama_theme() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+The DeDL confidence intervals cover the true effect for essentially every combination, including those the network never saw a single training example of, which is the payoff of Neyman orthogonality: the debiasing term corrects for the network's residual approximation error well enough to deliver valid inference on combinations entirely outside the training support.
+
+### 실험 규모 확대에 따른 선형 가산성의 비용
+
+The platform's central practical question is how badly the default linear-addition heuristic degrades as more experiments run concurrently. We repeat the exercise above for $m \in \{3,4,5\}$ concurrent experiments, each replicated twice with independently redrawn nuisance functions to average out simulation noise, exactly the design of the paper's own Section 5.1 robustness check.
+
+```{r combexp-sweep, message=FALSE, warning=FALSE, cache=TRUE}
+run_dedl_experiment <- function(m, dX = 10L, n_epochs = 400L, seed = 1) {
+  set.seed(seed); torch_manual_seed(seed)
+
+  A <- matrix(runif((m + 1) * dX, -0.5, 0.5), nrow = m + 1)
+  theta_m1_true <- runif(1, 10, 20)
+  theta_star <- function(X) { raw <- X %*% t(A); sign(raw) * abs(raw)^3 }
+  G_true <- function(X, Tmat) {
+    th <- theta_star(X)
+    u <- th[, 1] + rowSums(th[, -1, drop = FALSE] * Tmat)
+    theta_m1_true / (1 + exp(-u))
+  }
+
+  all_combos <- as.matrix(expand.grid(rep(list(0:1), m)))
+  obs_support <- all_combos[rowSums(all_combos) %in% c(0, 1), , drop = FALSE]
+  extra <- rep(0, m); extra[1:2] <- 1
+  obs_support <- rbind(obs_support, extra)
+  storage.mode(obs_support) <- "double"
+  n_support <- nrow(obs_support)
+  t0 <- rep(0, m)
+
+  sample_partial <- function(n) {
+    X <- matrix(runif(n * dX), n, dX)
+    idx <- sample.int(n_support, n, replace = TRUE)
+    Tmat <- obs_support[idx, , drop = FALSE]
+    y <- G_true(X, Tmat) + runif(n, -0.05, 0.05)
+    list(X = X, T = Tmat, y = y)
+  }
+
+  train <- sample_partial(500L * m)
+
+  net <- nn_module(
+    initialize = function(dX, hidden, out_dim) {
+      self$fc1 <- nn_linear(dX, hidden)
+      self$fc2 <- nn_linear(hidden, hidden)
+      self$fc3 <- nn_linear(hidden, out_dim)
+    },
+    forward = function(x) x |> self$fc1() |> nnf_relu() |> self$fc2() |> nnf_relu() |> self$fc3()
+  )
+  model <- net(dX, hidden = 10L, out_dim = m + 1L)
+  theta_m1_hat <- torch_tensor(15, requires_grad = TRUE)
+
+  Xtr <- torch_tensor(train$X, dtype = torch_float())
+  Ttr <- torch_tensor(train$T, dtype = torch_float())
+  ytr <- torch_tensor(train$y, dtype = torch_float())
+  opt <- optim_adam(c(model$parameters, list(theta_m1_hat)), lr = 0.01)
+
+  forward_G <- function(X, Tt) {
+    th <- model(X)
+    u <- th[, 1] + torch_sum(th[, 2:(m + 1)] * Tt, dim = 2)
+    theta_m1_hat / (1 + torch_exp(-u))
+  }
+  for (epoch in seq_len(n_epochs)) {
+    opt$zero_grad()
+    loss <- nnf_mse_loss(forward_G(Xtr, Ttr), ytr)
+    loss$backward(); opt$step()
+  }
+
+  theta_hat_fn <- function(X) {
+    with_no_grad({ th <- model(torch_tensor(X, dtype = torch_float())) })
+    as.matrix(th)
+  }
+  theta_m1_val <- as.numeric(theta_m1_hat)
+
+  G_hat_row <- function(th_row, t) theta_m1_val / (1 + exp(-(th_row[1] + sum(th_row[-1] * t))))
+  Gtheta_hat_row <- function(th_row, t) {
+    u <- th_row[1] + sum(th_row[-1] * t)
+    s <- 1 / (1 + exp(-u)); ds <- s * (1 - s)
+    c(theta_m1_val * ds, theta_m1_val * ds * t, s)
+  }
+
+  inf_data <- sample_partial(500L * m)
+  th_inf <- theta_hat_fn(inf_data$X)
+  d <- m + 2L
+  n_inf <- nrow(inf_data$X)
+
+  correction <- matrix(0, n_inf, d)
+  for (i in seq_len(n_inf)) {
+    th_i <- th_inf[i, ]
+    Lam <- matrix(0, d, d)
+    for (k in seq_len(n_support)) {
+      g <- Gtheta_hat_row(th_i, obs_support[k, ])
+      Lam <- Lam + outer(g, g)
+    }
+    Lam <- Lam * 2 / n_support + diag(0.0005, d)
+    g_ti <- Gtheta_hat_row(th_i, inf_data$T[i, ])
+    ell_th <- 2 * g_ti * (G_hat_row(th_i, inf_data$T[i, ]) - inf_data$y[i])
+    correction[i, ] <- solve(Lam, ell_th)
+  }
+
+  lr_dat <- data.frame(y = train$y, train$X, train$T)
+  names(lr_dat) <- c("y", paste0("x", seq_len(dX)), paste0("t", seq_len(m)))
+  lr_fit <- lm(y ~ ., data = lr_dat)
+
+  y0 <- mean(train$y[rowSums(train$T) == 0])
+  la_effects <- sapply(seq_len(m), function(k) {
+    sel <- train$T[, k] == 1 & rowSums(train$T) == 1
+    mean(train$y[sel]) - y0
+  })
+
+  Xmc <- matrix(runif(10000L * dX), 10000L, dX)
+  mu_true <- function(t) mean(G_true(Xmc, matrix(t, nrow(Xmc), m, byrow = TRUE))) -
+                          mean(G_true(Xmc, matrix(t0, nrow(Xmc), m, byrow = TRUE)))
+
+  out <- data.frame()
+  for (k in seq_len(nrow(all_combos))) {
+    t_target <- as.numeric(all_combos[k, ])
+    if (all(t_target == t0)) next
+    truth <- mu_true(t_target)
+
+    Hx  <- sapply(seq_len(n_inf), function(i) G_hat_row(th_inf[i, ], t_target) - G_hat_row(th_inf[i, ], t0))
+    Hth <- t(sapply(seq_len(n_inf), function(i) Gtheta_hat_row(th_inf[i, ], t_target) - Gtheta_hat_row(th_inf[i, ], t0)))
+    psi <- Hx - rowSums(Hth * correction)
+
+    newx  <- data.frame(matrix(runif(2000L * dX), 2000L, dX)); names(newx) <- paste0("x", seq_len(dX))
+    newt1 <- as.data.frame(matrix(t_target, 2000L, m, byrow = TRUE)); names(newt1) <- paste0("t", seq_len(m))
+    newt0 <- as.data.frame(matrix(t0, 2000L, m, byrow = TRUE)); names(newt0) <- paste0("t", seq_len(m))
+
+    out <- rbind(out, data.frame(
+      m = m, truth = truth,
+      LA = sum(la_effects[t_target == 1]),
+      LR = mean(predict(lr_fit, cbind(newx, newt1))) - mean(predict(lr_fit, cbind(newx, newt0))),
+      SDL = mean(Hx), DeDL = mean(psi)
+    ))
+  }
+  rm(model, opt, Xtr, Ttr, ytr, th_inf, correction)
+  out
+}
+
+# Two replicates per m keep the sweep's total runtime bounded; gc() after each
+# replicate prevents torch's per-call tensor allocations from accumulating
+# across the loop, which otherwise slows later iterations substantially.
+sweep_results <- data.frame()
+for (m_val in c(3L, 4L, 5L)) {
+  for (rep in 1:2) {
+    r <- run_dedl_experiment(m_val, n_epochs = 300L, seed = 100 * m_val + rep)
+    sweep_results <- rbind(sweep_results, r)
+    gc(full = TRUE)
+  }
+}
+
+mae_by_m <- aggregate(
+  cbind(LA = abs(LA - truth), LR = abs(LR - truth), SDL = abs(SDL - truth), DeDL = abs(DeDL - truth)) ~ m,
+  data = sweep_results, FUN = mean
+)
+```
+
+```{r combexp-sweep-fig, fig.cap="Mean absolute error against ground truth as the number of concurrent experiments m increases, averaged over two independently redrawn synthetic environments per m. The linear-addition and linear-regression benchmarks assume additive effects and degrade as more experiments interact; the structured deep network, with or without debiasing, uses the same $m+2$ observed combinations regardless of m and remains comparatively stable.", message=FALSE, warning=FALSE}
+mae_long <- reshape(mae_by_m, direction = "long", varying = c("LA", "LR", "SDL", "DeDL"),
+                     v.names = "MAE", timevar = "Estimator", times = c("LA", "LR", "SDL", "DeDL"))
+
+ggplot(mae_long, aes(x = m, y = MAE, color = Estimator)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "동시 실험 수 (m)", y = "참값 대비 평균 절대 오차") +
+  causalverse::ama_theme()
+```
+
+The qualitative pattern matches the paper's own Figure 8: the linear-addition and linear-regression estimators, which hard-code an additive structure that becomes more wrong as more experiments interact, do not improve as $m$ grows and often worsen, while the structured network, trained on only $m+2$ observed combinations no matter how large $m$ is, holds up because its sigmoid link nests genuine nonlinear interaction. This is the practical case for the framework: a platform that already runs hundreds of concurrent experiments cannot expand its factorial coverage as $m$ grows, but a structured, orthogonalized deep network can still deliver valid, increasingly necessary estimates of combinations it has never tested.
+
+### 실무 지침
+
+Three lessons from @ye2025deep are worth carrying forward whenever deep learning is combined with Neyman orthogonality on a structural model layer rather than an unrestricted regression. First, the debiasing term is only as good as the first-stage network; when training has not converged, plain plug-in and debiased estimates are similar, and the value of debiasing appears only once training loss is genuinely small, so cross-validation loss during training is a useful diagnostic before trusting the debiased estimate. Second, a misspecified link function is more dangerous with debiasing than without, because the correction term amplifies rather than removes bias from a structural form that does not nest the truth; comparing the structured network's validation loss against an unrestricted "pure DNN" that takes treatment as a raw input alongside the covariates, exactly the PDL benchmark @ye2025deep use in Table 3, is a practical specification check that does not require knowing the true link function in advance. Third, and most important for scale, the framework's traffic requirement grows linearly rather than exponentially in the number of concurrent experiments, which is what turns a theoretically elegant debiasing result into something a platform running hundreds of A/B tests can actually deploy.
+
+## 이질적 처치 효과
+
+Average effects answer whether a treatment works on the whole. Many questions instead concern for whom it works, which is captured by the conditional average treatment effect (CATE)
+$$
+\tau(x) = \mathbb{E}\bigl[Y(1) - Y(0) \mid X = x\bigr].
+$$
+Estimating $\tau(x)$ is a function-estimation problem rather than a scalar-estimation problem, and it is where tree-based and meta-learning methods come into their own.
+
+### 인과 포레스트와 일반화 랜덤 포레스트
+
+Causal forests, introduced by @wager2018estimation, adapt the random forest to estimate $\tau(x)$ rather than a conditional mean. The key conceptual move, developed more generally in the generalized random forest of @athey2019generalized, is to view a forest not as an ensemble of predictions but as an adaptive kernel or weighting function. A forest grown on the data assigns to a target point $x$ a set of similarity weights $\alpha_i(x)$, the frequency with which training observation $i$ falls in the same leaf as $x$ across the trees,
+$$
+\alpha_i(x) = \frac{1}{B}\sum_{b=1}^{B} \frac{\mathbf{1}\{X_i \in L_b(x)\}}{\lvert L_b(x)\rvert},
+$$
+where $L_b(x)$ is the leaf of tree $b$ containing $x$. These weights then define a local, weighted version of any estimating equation. For heterogeneous effects the local estimating equation is a residualized treatment-effect regression, in the spirit of the R-learner described below, so the forest solves a weighted partialling-out problem in the neighborhood of each $x$. This connects causal forests directly to the orthogonalization theme of the chapter.
+
+Two features make the inference valid. First, the trees split to maximize heterogeneity in the treatment effect rather than to predict the outcome, so the adaptive neighborhoods are tailored to the causal target. Second, the forest uses honest splitting: the sample used to choose the splits is disjoint from the sample used to estimate the effect within each leaf. Honesty removes the overfitting bias that adaptive partitioning would otherwise introduce and is what allows @wager2018estimation to derive asymptotic normality of the pointwise estimates, hence pointwise confidence intervals for $\tau(x)$. The generalized random forest of @athey2019generalized extends the same kernel-weighting and honesty principles to a broad class of moment-condition problems, including instrumental variables and quantile estimation, and provides the theoretical foundation in the Annals of Statistics. An accessible empirical walkthrough appears in @athey2019estimating.
+
+The following simulation builds the honest-forest CATE estimate conceptually using only base R, generating heterogeneous effects driven by a single covariate.
+
+```{r cate-sim}
+set.seed(2024)
+n <- 4000
+p <- 5
+X <- matrix(runif(n * p), n, p)
+e <- 0.5                                   # randomized treatment for clarity
+W <- rbinom(n, 1, e)
+tau_fun <- function(x) 1 + 2 * (x[, 1] > 0.5)   # effect doubles past 0.5
+mu0 <- function(x) x[, 2] + sin(2 * pi * x[, 3])
+Y <- mu0(X) + W * tau_fun(X) + rnorm(n)
+
+# Stratified difference-in-means as a transparent CATE proxy:
+# compare treated vs control within bins of the effect modifier X1.
+bins <- cut(X[, 1], breaks = seq(0, 1, by = 0.25), include.lowest = TRUE)
+cate_by_bin <- tapply(seq_len(n), bins, function(idx) {
+    mean(Y[idx][W[idx] == 1]) - mean(Y[idx][W[idx] == 0])
+})
+round(cate_by_bin, 2)
+```
+
+The estimated effect jumps as $X_1$ crosses 0.5, recovering the simulated heterogeneity. A causal forest automates this binning adaptively and over many covariates at once. The production estimator uses the `grf` package.
+
+```{r grf-example, eval=FALSE}
+library(grf)
+
+cf <- causal_forest(
+    X = X, Y = Y, W = W,
+    num.trees = 2000,
+    honesty = TRUE
+)
+
+# Out-of-bag CATE predictions and pointwise standard errors
+tau_hat <- predict(cf, estimate.variance = TRUE)
+head(tau_hat)
+
+# Doubly robust average treatment effect from the forest
+average_treatment_effect(cf)
+
+# Test for the presence of heterogeneity
+test_calibration(cf)
+```
+
+### R-학습기와 메타 학습기
+
+A complementary, modular philosophy estimates the CATE by reducing it to a sequence of standard prediction problems, each of which can be solved with any off-the-shelf learner. These are the meta-learners. The S-learner trains a single model on the pooled data with treatment as an additional feature, then takes the difference in predictions setting $W = 1$ versus $W = 0$. The T-learner trains two separate outcome models, one per treatment arm, and differences them. The X-learner, proposed by @kunzel2019metalearners, refines the T-learner by imputing individual treatment effects, regressing them on covariates within each arm, and combining the two CATE estimates with propensity-based weights. The X-learner performs especially well when the treatment groups are very unequal in size or when one potential-outcome surface is much smoother than the other, settings where the T-learner wastes data.
+
+The R-learner formalizes the residualization idea as a loss function. Starting from the Robinson decomposition, one residualizes the outcome and the treatment on the covariates, $\tilde{Y} = Y - \hat{m}(X)$ and $\tilde{W} = W - \hat{e}(X)$, and then estimates the CATE by minimizing the weighted criterion
+$$
+\hat{\tau}(\cdot) = \arg\min_{\tau}\; \frac{1}{n}\sum_{i=1}^{n}\Bigl(\tilde{Y}_i - \tau(X_i)\,\tilde{W}_i\Bigr)^2 + \Lambda\bigl(\tau\bigr),
+$$
+where $\Lambda$ is a regularizer on the CATE function. Because the nuisances enter only through the residuals, the objective is Neyman orthogonal, so errors in $\hat{m}$ and $\hat{e}$ have a second-order effect on the estimated heterogeneity. Causal forests can be seen as solving a local version of this same R-learner objective, which is why the two approaches are tightly linked.
+
+```{r meta-learner-example, eval=FALSE}
+library(rlearner)   # R-, S-, T-, X-learners with glmnet or boosting
+
+# R-learner with cross-validated lasso nuisances
+rfit <- rlasso(x = X, w = W, y = Y)
+tau_rlearner <- predict(rfit, X)
+
+# X-learner via the same package family
+xfit <- xboost(x = X, w = W, y = Y)
+tau_xlearner <- predict(xfit, X)
+```
+
+The choice among meta-learners and forests is empirical. Forests provide honest pointwise inference and require little tuning; meta-learners offer flexibility in the choice of base learner and can exploit structure such as smoothness or sparsity. A common workflow estimates the CATE several ways and checks that the qualitative conclusions about who benefits are stable across methods.
+
+## 이 방법으로 논문 출판하기: 마케팅 타기팅 연구
+
+The methods in this chapter are not only academically interesting; they are the engine behind a recognizable genre of empirical paper that publishes regularly in the top marketing and quantitative-marketing journals. Knowing the shape of that genre is useful both for reading the literature and for producing work that can survive its review process, so this section first describes the template and then replicates it end to end on a public dataset with production-grade code.
+
+### 출판 가능한 논문의 형태
+
+The papers that use heterogeneous-treatment-effect machinery to publish in Marketing Science, the Journal of Marketing Research, Management Science, and Quantitative Marketing and Economics share a common skeleton, and the contribution is rarely the estimator itself, which is taken off the shelf, but the design and the decision it informs. The canonical reference is @hitsch2024heterogeneous, who lay out the modern recipe explicitly: start from a randomized experiment or a credibly exogenous source of variation that identifies the treatment effect without functional-form heroics, estimate the conditional average treatment effect with a causal forest, and then, crucially, evaluate targeting policies rather than reporting the CATE as an end in itself. Their central methodological insight, which separates a publishable paper from a classroom exercise, is that the quantity a manager cares about is the value of a policy that assigns treatment based on covariates, and that this policy value can be estimated with a doubly robust score even when the underlying CATE estimates are noisy. The estimand is the profit or outcome of a targeting rule, not the accuracy of the effect surface.
+
+The substantive surprises that make such papers worth publishing usually come from the gap between the effect of a treatment and the characteristics that managers intuitively target. @ascarza2018retention provides the discipline's clearest cautionary result, showing through field experiments that the customers at highest risk of churning, the natural target of a retention campaign, are not the customers whose behavior responds most to intervention, so that a campaign aimed at high-risk customers can be nearly worthless while the same budget aimed at high-responsiveness customers pays off. The lesson, that one should target the treatment effect rather than the baseline level, is exactly what a causal forest operationalizes, and it recurs across the literature. @simester2020targeting stress-test the machine-learning targeting pipeline against the data problems that real firms face, missing covariates, distribution shift between the experiment and the deployment population, and small samples, and document which methods degrade gracefully, a robustness contribution that is itself publishable. @yoganarasimhan2023design use these tools to design and evaluate optimal free-trial lengths for a subscription product, turning an estimated heterogeneous effect into a personalized policy and quantifying its lift over the firm's status quo, while @rafieian2021targeting bring the same logic to mobile advertising and weigh the targeting gains against their privacy costs.
+
+A second strand earns its place by getting the identification right at scale rather than by the heterogeneity machinery. @gordon2019comparison compare experimental and observational advertising-effect estimates across large Facebook field experiments and show how far selection-on-observables adjustments, including propensity and double-machine-learning style methods, fall short of the experimental benchmark, a sobering result about the limits of observational causal inference in marketing. @dube2023personalized run experiments to estimate personalized price elasticities and then compute the welfare consequences of personalized pricing, combining experimentation, heterogeneous-effect estimation, and a welfare calculation into one paper. On the methodological side, @knaus2021machine give the kind of careful empirical Monte Carlo comparison of heterogeneous-effect estimators that lets applied researchers choose among causal forests, the R-learner, and the various meta-learners with evidence rather than fashion. The throughline is that the estimator is a commodity and the contribution lives in the design, the data, the policy question, and the honesty of the evaluation.
+
+### Hillstrom 이메일 실험에서 타기팅 워크플로 재현
+
+To make the recipe concrete we replicate its core on a genuinely public marketing field experiment, the email campaign released by Kevin Hillstrom through the MineThatData challenge, which has become a standard benchmark for targeting research because it is a real randomized experiment with customer covariates and behavioral outcomes. Sixty-four thousand customers were randomly assigned to receive an email featuring men's merchandise, an email featuring women's merchandise, or no email, and the data record whether each customer visited the site, made a purchase, and how much they spent in the following two weeks. We use the clean two-arm comparison of the women's email against no email, with website visits as the outcome, and ask the question a manager actually faces: given the covariates, whom should we email?
+
+```{r mktg-hillstrom-data, message=FALSE, warning=FALSE}
+email <- read.csv("data/hillstrom_email.csv")
+
+# Clean two-arm experiment: women's email versus no email.
+email <- email[email$segment %in% c("Womens E-Mail", "No E-Mail"), ]
+
+W <- as.integer(email$segment == "Womens E-Mail")   # treatment: received email
+Y <- email$visit                                     # outcome: visited the site
+
+# Covariates the firm knows before sending: purchase recency, dollar history,
+# past category, tenure, acquisition channel, and location type.
+X <- data.frame(
+  recency   = email$recency,
+  history   = email$history,
+  mens      = email$mens,
+  womens    = email$womens,
+  newbie    = email$newbie,
+  phone     = as.integer(email$channel == "Phone"),
+  web       = as.integer(email$channel == "Web"),
+  zip_urban = as.integer(email$zip_code == "Urban"),
+  zip_rural = as.integer(email$zip_code == "Rural")
+)
+
+c(customers = nrow(X), treated = sum(W), baseline_visit_rate = round(mean(Y), 4))
+```
+
+The first step is the credibility anchor, the average treatment effect. Because assignment was randomized, even a simple difference in means identifies it, but we estimate it from a causal forest so that the same fitted object delivers both the average effect and the heterogeneity. The forest residualizes the outcome and the treatment on the covariates internally, the orthogonalization of the earlier sections, and returns a doubly robust average effect.
+
+```{r mktg-hillstrom-forest, message=FALSE, warning=FALSE, cache=TRUE}
+library(grf)
+
+set.seed(42)
+cf <- causal_forest(as.matrix(X), Y, W, num.trees = 1000, seed = 42)
+
+ate <- average_treatment_effect(cf, target.sample = "all")
+calib <- test_calibration(cf)
+tau_hat <- predict(cf)$predictions
+```
+
+```{r mktg-hillstrom-ate, echo=FALSE}
+knitr::kable(
+  data.frame(
+    Quantity = c("평균 처치 효과 (방문 확률)",
+                 "이질성 검정 (differential.forest.prediction)"),
+    Estimate = c(round(ate[["estimate"]], 4),
+                 round(calib["differential.forest.prediction", "Estimate"], 3)),
+    `Std. Error` = c(round(ate[["std.err"]], 4),
+                     round(calib["differential.forest.prediction", "Std. Error"], 3)),
+    check.names = FALSE
+  ),
+  caption = "Average effect of the women's email on the probability of a site visit, and the calibration test for whether the forest detects genuine effect heterogeneity. A differential-prediction coefficient near one with a small standard error is evidence of real heterogeneity.",
+  align = c("l", "r", "r")
+)
+```
+
+The women's email raises the probability of a site visit by roughly four percentage points off a baseline near thirteen percent, a large and precisely estimated effect. The calibration test of @wager2018estimation regresses the held-out outcome on the mean forest prediction and on the demeaned forest prediction; the coefficient on the differential prediction is well above zero and many standard errors from it, which is the formal evidence that the effect genuinely varies across customers rather than the forest manufacturing spurious variation. Figure \@ref(fig:mktg-cate-fig) shows the spread of the individual effect estimates, which range from slightly negative to well above the average, the raw material of any targeting decision.
+
+```{r mktg-cate-fig, fig.cap="Distribution of estimated conditional average treatment effects of the women's email on site visits across customers. The dashed line marks the average effect. A minority of customers have near-zero or negative estimated effects and are candidates for suppression.", message=FALSE, warning=FALSE}
+library(ggplot2)
+
+ggplot(data.frame(tau = tau_hat), aes(tau)) +
+  geom_histogram(bins = 40) +
+  geom_vline(xintercept = ate[["estimate"]], linetype = "dashed") +
+  labs(x = "방문 확률에 대한 추정 처치 효과",
+       y = "고객 수") +
+  causalverse::ama_theme()
+```
+
+Detecting heterogeneity is not the same as profiting from it, and the next step is the one @hitsch2024heterogeneous insist on: quantify how much value a targeting rule that prioritizes by estimated effect actually delivers. The rank-weighted average treatment effect, computed by `rank_average_treatment_effect`, measures exactly this. It traces the average effect among the customers the model ranks most responsive as we expand the targeted fraction from the few down to everyone, and the area under that curve, the AUTOC, summarizes the gain from prioritizing by the estimated CATE over treating a random customer. Figure \@ref(fig:mktg-toc-fig) plots the curve.
+
+```{r mktg-toc-fig, fig.cap="Targeting operator characteristic curve. The vertical axis is the average treatment effect among the top fraction of customers ranked by estimated responsiveness; the horizontal axis is that fraction. A curve lying above zero and sloping down means the model concentrates the effect in the customers it prioritizes, which is the value of targeting.", message=FALSE, warning=FALSE}
+rate <- rank_average_treatment_effect(cf, tau_hat)
+
+ggplot(rate$TOC, aes(q, estimate)) +
+  geom_line() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  labs(x = "타기팅 고객 비율 (반응성이 높은 순서)",
+       y = "타기팅 고객의 평균 효과") +
+  causalverse::ama_theme()
+```
+
+```{r mktg-rate-print, echo=FALSE}
+cat(sprintf("RATE (AUTOC): %.4f  (std. error %.4f)\n", rate$estimate, rate$std.err))
+```
+
+The curve slopes downward and the AUTOC is several standard errors above zero, so the forest is genuinely separating responsive from unresponsive customers rather than ranking them at random. The final step converts that ranking into a deployable rule and evaluates it honestly. The `policytree` package of @athey2019generalized learns a shallow, interpretable decision tree that maps covariates directly to a treat-or-not recommendation, fit on the doubly robust scores from the forest so that the learned policy inherits the orthogonality that protects it from nuisance error. We fit a depth-two tree on a subsample for speed and then evaluate several policies against the same doubly robust scores.
+
+```{r mktg-policytree, message=FALSE, warning=FALSE, cache=TRUE}
+library(policytree)
+
+dr_scores <- double_robust_scores(cf)
+
+# Learn an interpretable depth-2 targeting rule (subsample for tractable search).
+set.seed(7)
+sub <- sample(nrow(X), 10000)
+ptree <- policy_tree(X[sub, ], dr_scores[sub, ], depth = 2)
+
+# Apply the rule to everyone; action 2 = send email, 1 = withhold.
+send <- predict(ptree, X) == 2
+
+# Doubly robust value of each policy: expected incremental visits per customer
+# relative to emailing no one.
+policy_value <- function(treat) mean(ifelse(treat, dr_scores[, 2], dr_scores[, 1]) - dr_scores[, 1])
+
+value_table <- data.frame(
+  Policy = c("Email no one", "Email everyone",
+             "Email if estimated effect > 0", "Learned policy tree"),
+  `Share emailed` = c(0, 1, mean(tau_hat > 0), mean(send)),
+  `Incremental visits per customer` = c(
+    0, policy_value(rep(TRUE, nrow(X))),
+    policy_value(tau_hat > 0), policy_value(send)),
+  check.names = FALSE
+)
+```
+
+```{r mktg-policytree-table, echo=FALSE}
+disp <- value_table
+disp[["Share emailed"]] <- round(disp[["Share emailed"]], 3)
+disp[["Incremental visits per customer"]] <- round(disp[["Incremental visits per customer"]], 4)
+knitr::kable(
+  disp,
+  caption = "Doubly robust value of alternative targeting policies on the Hillstrom experiment, measured as incremental site visits per customer relative to emailing no one. The learned policy tree captures nearly the full lift of a blanket campaign while contacting substantially fewer customers.",
+  align = c("l", "r", "r")
+)
+```
+
+The policy comparison is where the managerial payoff appears, and it carries the same counterintuitive flavor as @ascarza2018retention. Because the email helps the great majority of customers, emailing everyone produces the largest raw lift in visits, and a naive reading would stop there. The learned policy tree, however, achieves nearly the same incremental visits while emailing only about seventy percent of the customers, which means the firm can shed roughly a third of its mailing cost for a small fraction of the benefit, and the tree is fully transparent about who it drops, splitting on past purchase history and category in a way a manager can inspect and defend. When the outcome is replaced by profit net of contact cost, as it would be in a deployment, the policies that look tied on raw visits separate sharply, and the targeting rule dominates the blanket campaign. This is precisely the structure of the published papers: a randomized design for identification, a flexible forest for the heterogeneity, an honest doubly robust evaluation of the policy rather than the effect, and a managerial conclusion that the obvious blanket strategy leaves money on the table.
+
+The replication is also a template a reader can extend toward a publishable contribution. Swapping the visit outcome for `spend` turns the analysis into a revenue-targeting problem; subtracting a per-email cost converts the policy value into profit and sharpens the case for selective mailing; using all three experimental arms moves from a binary treatment to a multi-armed targeting problem that `policytree` handles directly; and validating the learned policy on a held-out portion of the experiment, or on the men's-email arm, supplies the out-of-sample evidence that referees expect. The full toolchain, `grf` for the forest, `rank_average_treatment_effect` for the targeting value, and `policytree` for the deployable rule, is the same one behind the papers cited above, which is why working through it on public data is the most direct way to learn how such studies are built.
+
+## 시간적 인과 포레스트
+
+The forest machinery extends naturally to settings with a strong temporal structure, where every unit is eventually exposed to a widely known event and a clean contemporaneous control group does not exist. This arises with public announcements, recalls, security breaches, and similar shocks, where it is impossible to find a group unaware of the event that would still be representative of the affected population. The temporal causal inference design of @turjeman2023data addresses this by matching across cohorts that adopted at different times, so that newer participants who experienced the event early in their tenure are compared with the early trajectories of older participants who had not yet been exposed.
+
+The core idea is to make calendar time and tenure separate axes. Let $H_T$ denote the cohort that joined $T$ time units before the event; this treated cohort is observed for $T + 3$ units, with the final units after the event. Control trajectories are assembled from earlier cohorts $H_1, \dots, H_{T-1}$, tracked from their own adoption up to the event or to the matched tenure window, whichever comes first. Each cohort plays a dual role, sometimes treated and sometimes control, except for those at the extreme ends of the window. Because the design relies on comparing trajectories rather than a single contemporaneous control, it requires a large sample so that subgroups with comparable time trends can be matched.
+
+The figure below illustrates the design with simulated cohorts, showing the same activity curves on a calendar-time axis and on a tenure axis. On the tenure axis the cohorts line up, making clear that the control cohorts simply had not yet reached the event when the treated cohort did.
+
+```{r tcf-design, eval=FALSE}
+library(ggplot2)
+library(patchwork)
+
+tenure <- seq(0, 100, length.out = 100)
+generate_cohort <- function(name, start_time, mean, sd) {
+    data.frame(
+        tenure = tenure,
+        cohort = name,
+        time   = seq(start_time, start_time + 99, by = 1),
+        value  = dnorm(tenure, mean = mean, sd = sd)
+    )
+}
+cohorts <- list(
+    generate_cohort("Cohort 1",  1, 47, 15),
+    generate_cohort("Cohort 2", 10, 48, 17),
+    generate_cohort("Cohort 3", 20, 52, 20),
+    generate_cohort("Cohort 4", 30, 53, 18),
+    generate_cohort("treatment", 40, 50, 16)
+)
+final_dataset <- do.call(rbind, cohorts)
+
+plot_time <- ggplot(final_dataset, aes(time, value, color = cohort)) +
+    geom_line() +
+    geom_vline(xintercept = c(40, 90), linetype = "dashed") +
+    labs(title = "Value vs. Calendar Time", x = "Time", y = "Value")
+
+plot_tenure <- ggplot(final_dataset, aes(tenure, value, color = cohort)) +
+    geom_line() +
+    geom_vline(xintercept = c(0, 50), linetype = "dashed") +
+    labs(title = "Value vs. Tenure", x = "Tenure", y = "Value")
+
+plot_time / plot_tenure
+```
+
+Identification rests on the usual selection-on-observables assumptions, reinterpreted for the temporal setting. The stable unit treatment value assumption requires no interference, which holds across cohorts because their treatment exposures occur at different points in calendar time, though it can be strained when treated units influence one another after the shock. Conditional independence requires that, given the covariates including the time trend, cohort membership is as good as randomly assigned; this is checked empirically with pre-treatment parallel-trends tests, including bidirectional Granger tests and Kolmogorov-Smirnov comparisons of the pre-event trajectories. Overlap requires that every unit had a positive propensity of treatment at any tenure, which the design satisfies because all units are eventually treated and the estimated propensity is bounded away from zero and one. Exogeneity of covariates requires that the shock was unforeseen, or at least equally anticipated across cohorts.
+
+Temporal causal forests then extend the causal forest in two ways identified by @turjeman2023data as improving root-mean-squared error and recovery of heterogeneous effects. First, the covariate vector $X_i$ is augmented to include the unit's time trend, so the forest groups units that are homogeneous in their activity trajectories, in effect estimating a counterfactual time path for each unit and ensuring that treated and control units share similar pre-event trends. Second, as a robustness analysis, the nuisance functions are estimated with the local linear forest of @friedberg2020local, which fits a local linear correction within each leaf and improves accuracy when the underlying surface is smooth; this refinement is feasible when cohort timelines are of equal length. The result is a method that recovers both the average effect of a public shock and its heterogeneity across individuals while respecting the temporal structure that rules out a conventional control group.
+
+## 실무 지침과 주의점
+
+Several practical considerations govern whether these methods deliver on their promise.
+
+Cross-fitting is not optional. The asymptotic guarantees of double machine learning depend on estimating the nuisance functions on data separate from the data used to form the final estimate. Skipping this step reintroduces overfitting bias and invalidates the confidence intervals, even when an orthogonal score is used.
+
+Orthogonality protects only against slow nuisance errors, not against violations of identification. If unconfoundedness fails because an important confounder is unobserved, no amount of flexible nuisance estimation will recover the causal effect. Machine learning strengthens the case for conditional ignorability by allowing a rich conditioning set, but it cannot test the assumption itself. The role of these methods is to remove functional-form and high-dimensionality concerns, leaving the identifying assumptions to be defended on substantive grounds.
+
+Overlap matters more, not less, with flexible models. Inverse propensity weights become unstable when estimated propensities approach zero or one, and flexible learners can produce extreme propensity estimates. Diagnosing the propensity distribution, trimming or stabilizing extreme weights, and preferring substitution estimators such as TMLE that are less sensitive to small denominators all help. Reporting the distribution of estimated propensity scores should be routine.
+
+Heterogeneity claims require discipline. A causal forest will always produce a varying $\tau(x)$, but the variation may be noise. The honest forest delivers pointwise standard errors, and calibration tests such as the best-linear-predictor test assess whether the estimated heterogeneity is real. Out-of-sample validation, for instance ranking units by predicted effect and checking that the realized effect ordering agrees, guards against overinterpreting spurious patterns.
+
+Sample size and tuning are real constraints. Like other nonparametric and matching methods, forests and meta-learners need substantial data for stable results, especially when estimating heterogeneity across many covariates or when treatment groups are imbalanced. The SuperLearner reduces the burden of choosing a single learner, but it multiplies computation, and the analyst should ensure that the cross-validation used inside the ensemble is nested properly within the cross-fitting used for the causal estimate.
+
+Finally, transparency and replication remain essential. The flexibility that makes these methods powerful also makes them harder to scrutinize. Pre-registering the estimand, the conditioning set, and the validation plan, and reporting results across several estimators, keeps the analysis honest and the conclusions credible.

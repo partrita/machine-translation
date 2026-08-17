@@ -1,0 +1,864 @@
+<!-- ========================================= -->
+<!-- Chapter: 45-clustered-inference.Rmd -->
+<!-- ========================================= -->
+
+
+# 군집화 및 강건 추론 {#sec-clustered-inference}
+
+실증 연구에서 가장 많은 노력이 들어가는 부분은 점 추정치이다. 연구 설계를 선택하고, 식별 가정을 정당화하며, 적절한 추정량을 고르는 일이다. 그러나 점 추정치만으로는 아무것도 말할 수 없다. 점 추정치에 표준오차, 신뢰구간, $p$-값이 함께 제시될 때 비로소 하나의 발견이 된다. 이 장에서는 그 후반부를 올바르게 처리하는 방법을 다룬다.
+
+핵심 메시지는 간단하다. 오차가 상관되어 있어도 통상최소제곱(OLS)은 불편하고 일관된 점 추정치를 제공할 수 있다. 그러나 소프트웨어가 보고하는 *기본* 표준오차는 오차가 서로 독립이며 동일하게 분포한다는 가정에 의존한다. 이 가정이 깨지면 계수는 여전히 괜찮을 수 있지만 표준오차는 크게 틀리며, 대개 너무 작아진다. 그 결과 신뢰구간은 지나치게 좁아지고, $t$-통계량은 지나치게 커지며, 참인 귀무가설이 명목상 5%보다 훨씬 자주 기각된다.
+
+응용 연구에서 iid 가정이 깨지는 가장 흔한 이유는 *군집화(clustering)*이다. 관측치가 집단(학교 안의 학생, 기업 안의 노동자, 동일 주에 대한 반복 관측)으로 나뉘고 집단 내부에서 오차가 상관되기 때문이다. 이 장에서는 군집화가 중요한 이유에 대한 직관을 제시하고, 군집화를 무시하거나 잘못된 수준에서 수행할 때 무엇이 잘못되는지 시뮬레이션으로 보인 뒤, 이 책 앞부분에서 다룬 설계별로 어느 수준에서 군집화할지에 대한 실용적 지침으로 마무리한다.
+
+여기서의 논의는 세 편의 주요 논문을 따른다. @cameron2015practitioner는 확립된 실무 지침서이다. @mackinnon2023guide는 2015년 이후의 소표본 보정, 잭나이프 방법, 와일드 군집 부트스트랩 문헌을 반영해 이를 갱신한다. @abadie2020sampling과 @abadie2023should는 표본추출 기반 불확실성과 설계 기반 불확실성을 구분하여 군집화 보정이 실제로 필요한 경우를 명확히 한다. 이 논문들은 함께 개념적 기초, 현대적 도구 모음, 그리고 이 장 후반부의 실무적 판단을 뒷받침하는 설계 기반 관점을 다룬다.
+
+## 이것이 중요한 이유: 실증적 기록 {#sec-clu-audit}
+
+응용 연구가 표준오차를 일관되게 올바르게 처리한다면 이 장의 방법론적 내용은 학술적 연습에 그칠 것이다. 그러나 주요 저널의 여러 감사 연구와 메타 연구는 실제로 그렇지 않음을 보여준다. ‘군집화 결정’은 출판되는 결과와 복제를 견디는 결과에 가장 큰 영향을 미치는 소수의 방법론적 선택에 속한다. 아래에서 검토하는 논문들은 이후 논의의 중요성을 뒷받침한다.
+
+### 차분의 차분에 대한 최초의 감사 연구 {#sec-clu-audit-bertrand}
+
+@bertrand2004much는 기초가 되는 감사 연구이다. 이들은 주요 경제학 저널의 DiD 논문 92편을 조사하고, 거의 어느 논문도 단위 내부 결과의 계열상관을 다루지 않았음을 지적했다. 이어 실제 Current Population Survey 자료에 위약 실험을 적용했다. 임의의 주에 임의의 연도에 가상의 처치를 배정하고 DiD를 추정한 다음, 처치효과가 0이라는 귀무가설이 얼마나 자주 기각되는지 확인한 것이다. 조사 대상 논문이 사용한 관행적 표준오차를 적용하면 명목상 5% 수준의 기각률은 약 45%였다. 이 증거에 따르면 해당 문헌에서 ‘유의한’ DiD 발견의 대략 절반은 거짓 양성이었을 것이다. 표준오차를 단위 수준에서 군집화하자 기각률은 명목 수준에 가까워졌다. 이 논문은 DiD 추론의 관행을 바꾸었으며, 패널 자료의 처치효과에서 단위별 군집화가 표준이 된 이유이기도 하다.
+
+### 금융 및 회계 패널 자료의 감사 {#sec-clu-audit-petersen}
+
+@petersen2009estimating은 실증 금융 분야에서 유사한 감사 연구를 수행했다. *Journal of Finance*, *Journal of Financial Economics*, *Review of Financial Studies*에 실린 논문 207편을 조사하고, 사용된 표준오차 방법인 Fama-MacBeth, 보정 없는 OLS, White의 이분산성 강건 방법, Newey-West, 군집화 방법을 분류했다. 이어 기업효과와 시간효과를 모두 포함한 패널 자료를 시뮬레이션하여 각 선택이 기각률에 미치는 비용을 보였다. 상관의 한 차원을 무시한 방법은 표준오차를 과소추정했고, 기각률은 명목 수준의 몇 배에 달했다. 이 논문은 현대 실증 기업금융에서 기업과 연도에 대한 이중 군집화를 기본값으로 만들었다.
+
+@gow2010correcting은 회계 분야에서 이에 직접 대응하는 연구이다. 이들은 *Journal of Accounting Research*, *Journal of Accounting and Economics*, *The Accounting Review*를 조사하고, 회계 패널 연구에서 사용된 표준오차 방법을 기록한 뒤, 횡단면 의존성과 시계열 의존성을 모두 보정하여 자기자본비용, 부채비용, 회계 보수주의 문헌의 발표 결과를 재분석했다. 적절한 이중 군집화를 적용하면 여러 결과가 달라졌다. 이 논문은 회계 분야에서 @petersen2009estimating이 금융 분야에서 수행한 역할을 한다.
+
+@conley2018inference는 회계와 금융 분야의 감사를 갱신하고 확장했으며, 해당 분야의 전형적인 패널 자료에서 나타나는 의존 구조(기업, 산업, 시간)에 주목했다. 이 연구는 @petersen2009estimating과 @gow2010correcting의 자연스러운 후속편이며, 현재는 두 원 논문과 함께 인용되는 실무 참고문헌이다.
+
+### 방법론적 선택이 발견을 좌우하는 방식 {#sec-clu-audit-mitton}
+
+@mitton2022methodological은 실증 기업금융에서 연구자의 *자유도(researcher degrees of freedom)*를 정량화하여 감사를 한 단계 확장했다. 그는 전형적인 레버리지 회귀에서 종속변수의 정의, 변수 변환, 이상치 처리, 표준오차 절차 등을 포함한 열 가지 통상적 방법론 선택을 바꾸었다. 그 결과 생긴 사양의 우주에서 ‘선호’ 사양을 선택할 재량이 있는 연구자는 *무작위로 생성된* 설명변수의 70% 이상이 5% 수준에서 통계적으로 유의하다고 보고할 수 있었다. 표준오차 선택도 그러한 자유도 중 하나이며, 표준오차만 바꾸어도 계수의 판정이 유의에서 비유의로 뒤집힐 수 있다.
+
+@gormley2014common은 실증 기업금융이 관측되지 않은 이질성을 처리하는 방식을 감사한 관련 연구이다. 이들은 적절히 군집화한 표준오차와 함께 산업 고정효과를 포함하는 대신 종속변수를 ‘산업 조정’하는 관행이 편향되고 신뢰할 수 없는 추론을 낳는다고 보였다. 이 논문은 해당 분야에서 매우 많이 인용되어, 이후 기업금융 논문은 Gormley-Matsa 기준에 비추어 고정효과와 군집화 선택을 관행적으로 정당화한다.
+
+### 수익률의 횡단면과 다중 검정 {#sec-clu-audit-harvey}
+
+@harvey2016cross는 주식수익률의 횡단면을 예측한다고 주장된 발표 요인 316개의 목록을 작성하고, $t$-통계량 임계값에 다중 검정 보정을 적용하면 대부분의 요인이 기준에 미달한다고 주장했다. 이는 기초적인 SE 추정치가 잘못되었다는 뜻이 아니다(대부분 이분산성 강건 또는 Newey-West 방식이었다). 문헌이 수백 개의 후보 예측변수를 훑어본 상황에서 $t$-통계량이 2를 넘는다는 사실을 해석하는 방식이 지나치게 관대하다는 뜻이다. @harvey2017presidential은 American Finance Association 회장 연설에서 이 주장을 핵심 논지로 삼았다. 두 논문은 함께 실증 자산가격결정에서 개별 발표 $t$-통계량을 읽는 방식을 바꾸었다.
+
+### 경제학 전반의 감사 연구 {#sec-clu-audit-econ}
+
+@brodeur2020methods는 주요 경제학 저널 25곳에서 약 21,000개의 검정통계량을 조사하고, 인과추론 방법(도구변수, 회귀 불연속, 무작위 통제 실험, 차분의 차분)별로 구분했다. 그리고 관행적 $0.05$ 임계값 주변에서 $p$-해킹된 문헌에 나타나는 전형적인 두 봉우리 형태의 $p$-곡선을 기록했다. 팽창 정도는 방법에 따라 다르며 IV가 가장 크게 영향을 받고 RCT가 가장 적게 영향을 받는다. 저자들은 표준오차 선택이 경계선상의 $t$-통계량을 유의성 기준선 너머로 밀어 올리는 연구자의 수단 중 하나라고 명시한다.
+
+@young2019channeling은 American Economic Association 저널에 발표된 거의 모든 무작위 실험을 대상으로 Fisher 무작위화 검정을 사용해 추론을 다시 수행했다. 명목상 유의했던 군집 또는 강건 표준오차 결과 중 상당 부분이 무작위화 기반 추론을 통과하지 못했다. 이 논문은 처치 단위가 수백 개보다 적은 실험에서 무작위화 검정을 사실상 기본적인 강건성 점검으로 만들었다.
+
+@ioannidis2017power는 경제학 문헌 전반의 추정치 64,076개를 메타분석하여 통계적 검정력이 중앙값 기준 약 0.18이라고 보고했다. 낮은 검정력이 유의성에 따른 선택과 결합하면 발표된 효과크기가 부풀려진다. 실제보다 검정력이 높아 보이게 만드는 표준오차 선택은 이 문제를 더욱 악화시킨다.
+
+@christensen2018transparency는 경제학의 광범위한 투명성·신뢰성 운동을 종합한 *Journal of Economic Literature* 논문이다. 이 연구는 사전등록, 복제, 사양 유연성을 다루며, 표준오차 선택이 발표된 발견의 취약성을 키우는 역할에 상당한 지면을 할애한다.
+
+@conley2025standard는 이 계열에서 가장 최근의 감사 연구이다. 이 연구는 천천히 변하는 공간 변수를 사용하는 국가 간 회귀와 지속성 회귀를 대상으로, 그러한 설정에서는 통상적인 Conley HAC 표준오차조차 과도하게 기각한다는 점을 Monte Carlo로 보이고 발표된 지속성 연구의 표본을 재분석한다. 무시하기 어려운 비율의 결과가 보정된 추론을 견디지 못한다. 이 논문은 Section \@ref(sec-clu-spatial)에서 더 자세히 논의한다.
+
+### 경제학과 금융을 넘어 {#sec-clu-audit-other-fields}
+
+실무 감사 문헌은 다른 경험적 사회과학과 응용통계학으로도 확장되었으며, 각 분야는 Petersen 2009와 Bertrand-Duflo-Mullainathan 2004에 대응하는 자체 연구를 내놓았다.
+
+*정치학*에서 @esarey2019practical은 출판된 정량 연구가 군집 자료를 처리하는 방식을 조사하고, 점근적 CR1 $t$-검정, 와일드 군집 부트스트랩, 확률효과 대안을 비교한다. 군집 수가 적을 때 통상적인 CR1이 표준오차를 과소추정한다는 사실을 보이며, 이는 국가 간 또는 주 간 정치학 패널에서 예외가 아니라 일반적이다. 따라서 해당 문헌의 기본 강건성 점검으로 와일드 군집 부트스트랩을 권고한다.
+
+*심리학과 교육학*에서 @mcneish2016modeling은 5~30개 군집으로 다층모형을 적합하는 연구자를 위한 표준적인 시뮬레이션 포함 튜토리얼이다. 이는 교실 또는 학교 단위 무작위시험에서 전형적인 규모다. 이들은 Kenward-Roger 또는 Satterthwaite 자유도를 적용한 REML, CR2 군집 강건 SE, 완전 베이지안 대안 중 어떤 추정량이 이 범위에서 명목 수준의 포함률을 제공하는지, 그리고 `lme4` 기본값처럼 그렇지 못한 추정량이 무엇인지 보인다. @mcneish2017unnecessary는 *Psychological Methods*에 실린 후속 논문으로, 계층적 선형모형을 기본으로 삼는 관행이 흔히 불필요하며 군집 강건 표준오차를 사용하는 단일 수준 회귀가 더 투명한 선택이라고 주장한다.
+
+*공중보건과 임상시험*에서는 군집 무작위시험에 대한 체계적 문헌고찰이 이에 해당한다. @wright2015review는 출판된 군집 RCT가 공변량 조정과 표준오차 보정을 어떻게 처리하는지 조사하고 방법론적 지침과 실제 관행 사이에 큰 격차가 있음을 보고한다. @eldridge2008internal은 300개 군집 RCT를 대상으로 더 광범위한 체계적 문헌고찰을 수행하여, 설계 단계(표본 크기 계산)와 분석 단계 모두에서 군집화를 고려하지 않는 관행이 널리 퍼져 있음을 확인한다. 두 논문은 군집시험을 위한 *CONSORT* 확장의 기초이며, 앞서 본 금융·회계 감사 연구에 해당하는 공중보건 분야의 연구다.
+
+### 도구 모음의 발전 {#sec-clu-audit-toolkit}
+
+군집 강건 추론의 방법론적 역사는 이러한 감사 연구에 대한 대응의 연속으로 읽을 수 있다. @white1980heteroskedasticity는 이분산성 강건 표준오차를 도입했다. @liang1986longitudinal과 @arellano1987computing은 1980년대에 이를 군집 선형모형과 고정효과 모형으로 확장했다. 2000년대에는 다중 군집화(@petersen2009estimating; @cameron2011robust; @thompson2011simple), 와일드 군집 부트스트랩(@cameron2008bootstrap), 군집화 시점을 설계 관점에서 재정식화하는 접근(@abadie2020sampling; @abadie2023should)이 등장했다. 2010년대와 2020년대에는 소표본 보정(@imbens2016robust; @pustejovsky2018small), 처치 군집 수가 적을 때의 방법(@mackinnon2018wild; @hagemann2025single), 빠른 잭나이프·부트스트랩 변형(@djogbenou2019asymptotic; @mackinnon2023jackknife)이 추가되었다. @mackinnon2019cluster는 이 흐름을 추적하는 종합 논문으로, 이러한 혁신의 누적 효과가 응용계량경제학에서 회귀표를 읽는 방식을 실질적으로 바꾸었다고 주장한다.
+
+### 독자에게 의미하는 바 {#sec-clu-audit-implication}
+
+실증 기록에서 두 가지 결론이 나온다. 첫째, 이 장의 나머지에서 논의하는 방법론적 선택은 발표된 발견이 실제인지 여부에 실질적인 영향을 미친다. 둘째, 이러한 선택은 충분히 면밀하게 연구되었으므로 관행이나 최근 심사 의견에서 좋아 보였다는 이유로 표준오차 절차를 고를 변명이 더는 없다. 아래의 시뮬레이션과 작업 예제는 감사 문헌이 방법을 제대로 적용하지 않을 때 어떤 일이 일어나는지 보여주었기 때문에 이를 진지하게 다룬다.
+
+## 추론 문제 {#sec-clu-inference-problem}
+
+다음 선형 모형을 생각하자.
+
+$$
+y_i = x_i' \beta + u_i .
+$$
+
+OLS는 잔차제곱합을 최소화하여 $\hat\beta$를 추정한다. 표본분산은 다음과 같다.
+
+$$
+V(\hat\beta) = (X'X)^{-1} \, X' \, \Omega \, X \, (X'X)^{-1},
+$$
+
+여기서 $\Omega = V(u \mid X)$는 오차의 분산-공분산 행렬이다. 모든 것은 $\Omega$에 대해 어떤 가정을 받아들일지에 달려 있다.
+
+1. 등분산이고 독립적인 오차라는 고전적 가정에서는 $\Omega = \sigma^2 I$이고, 식은 익숙한 $\hat\sigma^2 (X'X)^{-1}$로 단순화된다. 이것이 기본 표준오차이다.
+2. 이분산성에서는 $\Omega$가 대각행렬이지만 대각 원소가 서로 다르다. @white1980heteroskedasticity의 이분산성 강건(또는 "White", "HC") 추정량은 $\Omega$를 제곱잔차의 대각행렬로 대체한다.
+3. 군집화에서는 $\Omega$가 블록 대각행렬이다. 군집 사이에서는 0이지만 각 군집 *내부*에는 0이 아닌 비대각 원소가 있다. 군집 강건 추정량은 이 경우를 대상으로 한다.
+
+점 추정치 $\hat\beta$는 전혀 $\Omega$에 의존하지 않는다. 의존하는 것은 *분산*이다. 따라서 실무적 질문은 “군집화 때문에 내 계수가 편향되었는가?”가 아니라 “군집 내부 상관을 없다고 가정했기 때문에 내 표준오차가 너무 작은가?”이다.
+
+## 군집 내부 상관이 표준오차를 줄이는 이유 {#sec-clu-intuition}
+
+핵심 직관은 정보에 관한 것이다. 관측치가 독립이면 새로운 관측치는 $\beta$에 대한 새롭고 독립적인 정보를 하나씩 더한다. 군집 내부 관측치가 양의 상관을 가지면 이미 표본에 포함된 군집의 새 관측치는 부분적으로 중복된다. 우리가 어느 정도 이미 알고 있던 내용을 알려주기 때문이다. 표본에는 $N$개의 독립 관측치가 있는 것처럼 보이지만, *유효* 독립 관측치 수는 군집 수에 더 가깝다.
+
+모든 $N$개 관측치가 독립인 것처럼 표준오차를 계산하면 실제보다 많은 정보를 가진 것으로 간주하게 된다. 그 결과 표준오차가 너무 작아진다.
+
+군집의 크기가 같고, 설명변수가 군집 내부에서 일정하며, 군집 내부 오차 상관이 일정하면 이 효과는 깔끔한 폐쇄형으로 표현된다. 참 표본분산과 기본 공식이 보고하는 분산의 비율은 **Moulton 요인**이다 [@moulton1986random; @moulton1990illustration]:
+
+$$
+\frac{V_{\text{true}}(\hat\beta)}{V_{\text{OLS}}(\hat\beta)} = 1 + (n - 1)\,\rho ,
+$$
+
+여기서 $n$은 군집당 관측치 수이고 $\rho$는 오차의 군내상관이다. 기본 표준오차가 올바르려면 $\sqrt{1 + (n-1)\rho}$만큼 늘려야 한다.
+
+이 공식에서 두 가지를 기억할 필요가 있다. 첫째, 왜곡은 군집 *크기*와 함께 커진다. $\rho = 0.1$, $n = 100$이면 분산은 대략 11배 과소평가되고 표준오차는 3배 이상 과소평가된다. 군집이 크면 작은 상관도 큰 오류를 만든다. 둘째, 왜곡은 설명변수에도 의존한다. 위 공식은 최악의 경우인 군집 내부에서 일정한 설명변수를 가정한다. 일반적으로 군집 강건 분산과 이분산성 강건 분산의 차이는 다음 세 요소와 함께 커진다 [@cameron2015practitioner]:
+
+1. 관심 설명변수의 군내상관,
+2. 오차의 군내상관,
+3. 군집당 관측치 수.
+
+후보 그룹 안에서 설명변수나 오차 중 하나라도 상관되지 않는다면 그 그룹으로 군집화해도 거의 달라지지 않는다. 이것이 뒤의 의사결정 지침을 관통하는 핵심이다. 군집화는 *처치변수와 오차 모두*가 그룹 수준에서 변할 때 정확히 중요하다.
+
+### 시뮬레이션: 군집화를 무시하는 비용 {#sec-clu-sim-ignore}
+
+이를 가장 명확히 확인하는 방법은 참값을 알고 있는 자료를 시뮬레이션한 뒤, 각 표준오차가 구성상 참인 가설을 얼마나 자주 기각하는지 확인하는 것이다. 기울기가 정확히 0인 자료를 생성하고 5% 수준에서 $H_0: \beta = 0$을 검정한 다음, 반복 시행에서 기각률을 기록한다. 올바른 표준오차의 기각률은 약 5%다. 너무 작은 표준오차는 훨씬 더 자주 기각한다.
+
+```{r clu-sim1-setup}
+library(sandwich)
+library(lmtest)
+
+# One Monte Carlo experiment: returns the rejection rate of a true null
+# under three standard errors (default iid, HC1 robust, cluster-robust).
+sim_cluster_se <- function(G, n_g, rho, reps = 2000, seed = 1) {
+    set.seed(seed)
+    N  <- G * n_g
+    cl <- rep(seq_len(G), each = n_g)
+    rej <- matrix(NA_real_, reps, 3,
+                  dimnames = list(NULL, c("iid", "robust_hc1", "cluster")))
+    for (r in seq_len(reps)) {
+        # error = cluster-level component a_g + idiosyncratic e
+        a <- rnorm(G, 0, sqrt(rho))[cl]
+        e <- rnorm(N, 0, sqrt(1 - rho))
+        u <- a + e
+        # regressor also carries a within-cluster component
+        x <- rnorm(G)[cl] + rnorm(N)
+        y <- u                                  # true slope is exactly 0
+        m <- lm(y ~ x)
+        b  <- coef(m)[["x"]]
+        se <- c(sqrt(vcov(m)["x", "x"]),
+                sqrt(vcovHC(m, type = "HC1")["x", "x"]),
+                sqrt(vcovCL(m, cluster = cl)["x", "x"]))
+        # cluster-robust t uses G - 1 degrees of freedom
+        cv <- c(qt(.975, N - 2), qt(.975, N - 2), qt(.975, G - 1))
+        rej[r, ] <- as.numeric(abs(b / se) > cv)
+    }
+    colMeans(rej)
+}
+```
+
+군집 수를 50으로 고정하고 군내상관과 군집 크기의 격자 전체에서 이를 실행한다.
+
+```{r clu-sim1-run}
+grid1 <- expand.grid(rho = c(0, 0.2, 0.5), n_g = c(5, 30))
+res1  <- t(mapply(function(rho, n_g)
+    sim_cluster_se(G = 50, n_g = n_g, rho = rho, reps = 2000),
+    grid1$rho, grid1$n_g))
+res1  <- cbind(grid1, res1)
+knitr::kable(res1, digits = 3,
+             col.names = c("Intra-class corr.", "Cluster size",
+                           "Default (iid)", "Robust (HC1)", "Cluster-robust"),
+             caption = "Rejection rate of a true null hypothesis at the 5% level. A correct standard error rejects about 0.05 of the time.")
+```
+
+```{r clu-sim1-plot, fig.height=3.6, fig.cap="Rejection rate of a true null by standard-error type. The default and heteroskedasticity-robust standard errors over-reject sharply once errors are correlated within larger clusters; the cluster-robust standard error stays near the nominal 5% line."}
+library(ggplot2)
+library(tidyr)
+
+plot1 <- res1 |>
+    pivot_longer(c(`iid`, `robust_hc1`, `cluster`),
+                 names_to = "se_type", values_to = "rejection") |>
+    mutate(se_type = factor(se_type,
+                            levels = c("iid", "robust_hc1", "cluster"),
+                            labels = c("Default (iid)", "Robust (HC1)",
+                                       "Cluster-robust")),
+           cluster_size = paste("Cluster size", n_g))
+
+ggplot(plot1, aes(rho, rejection, colour = se_type)) +
+    geom_hline(yintercept = 0.05, linetype = "dashed") +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~ cluster_size) +
+    labs(x = "Intra-class correlation of errors",
+         y = "Rejection rate of a true null",
+         colour = NULL) +
+    theme_minimal()
+```
+
+Table \@ref(tab:clu-sim1-run)과 Figure \@ref(fig:clu-sim1-plot)은 이 패턴이 Moulton 공식과 일치함을 확인해 준다. 군집 내부 상관이 없으면 세 표준오차 모두 약 5%의 기각률을 보인다. 상관이 커질수록 기본 표준오차와 이분산성 강건 표준오차는 지나치게 자주 기각하며, 군집이 클수록 문제가 훨씬 심하다. 이분산성 강건 표준오차는 여기서 도움이 되지 않는다. $\Omega$ 대각선의 비일정 분산은 보정하지만 군집 내부 비대각 원소는 여전히 무시하기 때문이다. 기각률을 명목 수준에 가깝게 유지하는 것은 군집 강건 표준오차뿐이다.
+
+## 군집 강건 분산 추정 {#sec-clu-crve}
+
+군집 강건 분산 추정량(CRVE)은 sandwich 공식을 사용해 $\Omega$의 군집 내부 블록을 자료에서 직접 추정한다.
+
+$$
+\hat V_{\text{clu}}(\hat\beta) = (X'X)^{-1} \left( \sum_{g=1}^{G} X_g' \, \hat u_g \, \hat u_g' \, X_g \right) (X'X)^{-1},
+$$
+
+$g$는 $G$개 군집을 색인하고, $X_g$는 군집 $g$의 설명변수를 쌓은 행렬이며, $\hat u_g$는 해당 군집의 잔차 벡터이다. 핵심은 군집 내부 상관에 대한 모형을 가정하지 않는다는 점이다. 오차가 군집 *간에는* 상관되지 않는 한, 외적 $\hat u_g \hat u_g'$가 군집 내부에 존재하는 어떤 상관 구조든 흡수한다.
+
+이러한 일반성에는 대가가 따른다. CRVE는 관측치 수 $N$이 아니라 군집 수 $G$가 증가할 때 일관적이다. 고정된 군집 집합에 관측치를 더 추가해도 너무 적은 군집으로 계산한 CRVE의 문제는 해결되지 않는다. 이것이 Section \@ref(sec-clu-few)의 소수 군집 문제를 야기하는 가정이다.
+
+CRVE의 계보도 알아둘 가치가 있다. @white1980heteroskedasticity는 이분산성 강건 특수 경우를 도입했다. @liang1986longitudinal은 이를 군집 선형·비선형 모형으로 확장했고, @arellano1987computing은 패널 자료의 고정효과 추정량에 적용했다. 이분산성과 자기상관을 일관되게 보정하는(HAC) 표준오차 [@newey1986simple]는 시계열 상관이라는 관련 문제를 다룬다. 패널이 짧을 때는 시간 단위 군집화가 더 단순하고 투명한 대안인 경우가 많다.
+
+군집 강건 표준오차는 *대개* 기본 표준오차보다 크지만 항상 그런 것은 아니다. 군집 내부 오차 상관이 음수이거나, 군집화의 효과가 작아 두 추정량의 차이가 주로 잡음에 불과하거나, 유한 표본에서 CRVE 자체가 잡음이 많은 추정치일 때 더 작게 나올 수 있다. 흔히 사용하는 보수적 경험칙은 기본 표준오차와 군집 강건 표준오차 중 큰 값을 보고하는 것이다. 두 값을 결합하는 공식 검정은 @yang2005combining에 제시되어 있다.
+
+## 잘못된 수준에서의 군집화 {#sec-clu-wrong-level}
+
+군집화가 중요하다는 것을 아는 것은 문제의 절반에 불과하다. 더 어려운 질문은 *어떤* 집단을 기준으로 군집화할 것인가이다. 실제 자료는 중첩되어 있다. 학생은 교실에, 교실은 학교에, 학교는 교육구에 속한다. 이들 어느 수준에서도 군집화할 수 있으며, 선택에 따라 표준오차가 달라진다.
+
+잘못하는 방식은 두 가지이며, 둘은 대칭적이지 않다.
+
+**지나치게 세밀하게** 군집화하면, 즉 실제 상관이 존재하는 수준보다 낮은 수준에서 군집화하면 상관이 보정되지 않은 채 남는다. 표준오차는 여전히 너무 작고 검정은 여전히 과도하게 기각한다. 군집화를 전혀 하지 않는 것과 같은 실패지만 덜 눈에 띌 뿐이다.
+
+**너무 거칠게** 군집화하는 것, 즉 상관이 존재하는 수준보다 높은 수준에서 군집화하는 것은 상관을 처리할 때 안전한 방향이다. 더 거친 집단에는 그 안에 중첩된 더 세밀한 집단의 군집 내부 상관이 모두 포함되므로 CRVE는 여전히 유효하다. 다만 대가는 다르다. 더 거친 군집은 *더 적은* 군집을 의미하며, 소수 군집으로 계산한 CRVE는 하향 편향된다. 이 문제가 Section \@ref(sec-clu-few)의 주제이다.
+
+### 시뮬레이션: 지나치게 세밀한 군집화 {#sec-clu-sim-finely}
+
+세 수준의 계층을 만든다. 개인은 주에, 주는 지역에 중첩된다. 오차 상관은 전적으로 *주* 수준에서 생성된다. 그런 다음 개인별(너무 세밀함), 주별(정확함), 지역별(너무 거침)의 세 방식으로 군집화한다.
+
+```{r clu-sim2}
+sim_wrong_level <- function(reps = 2000, seed = 3) {
+    set.seed(seed)
+    n_region        <- 30
+    states_region   <- 5
+    ind_state       <- 20
+    n_state <- n_region * states_region
+    N       <- n_state * ind_state
+    region  <- rep(seq_len(n_region), each = states_region * ind_state)
+    state   <- rep(seq_len(n_state),  each = ind_state)
+    ind     <- seq_len(N)
+
+    rej <- se_mean <- matrix(NA_real_, reps, 3,
+        dimnames = list(NULL, c("by_individual", "by_state", "by_region")))
+    for (r in seq_len(reps)) {
+        # true error correlation lives at the STATE level
+        y <- rnorm(n_state, 0, sqrt(0.5))[state] + rnorm(N, 0, sqrt(0.5))
+        x <- rnorm(n_state)[state] + rnorm(N)   # regressor also clustered by state
+        m <- lm(y ~ x)
+        b <- coef(m)[["x"]]
+        se <- c(sqrt(vcovCL(m, cluster = ind)["x", "x"]),
+                sqrt(vcovCL(m, cluster = state)["x", "x"]),
+                sqrt(vcovCL(m, cluster = region)["x", "x"]))
+        cv <- c(qt(.975, N - 1), qt(.975, n_state - 1), qt(.975, n_region - 1))
+        rej[r, ]     <- as.numeric(abs(b / se) > cv)
+        se_mean[r, ] <- se
+    }
+    rbind(`Rejection rate` = colMeans(rej),
+          `Mean standard error` = colMeans(se_mean))
+}
+
+res2 <- sim_wrong_level()
+knitr::kable(res2, digits = 3,
+             col.names = c("Cluster by individual", "Cluster by state",
+                           "Cluster by region"),
+             caption = "Errors are correlated at the state level. Clustering finer than the truth (by individual) over-rejects; clustering at or above the truth controls the rejection rate.")
+```
+
+Table \@ref(tab:clu-sim2)는 실제 주 수준 상관보다 더 세밀한 개인별 군집화가 너무 작은 표준오차와 5%를 크게 웃도는 기각률을 낳는다는 것을 보여준다. 올바른 수준인 주별 군집화는 기각률을 통제한다. 한 수준 더 거친 지역별 군집화도 여기서는 각 지역이 그 안에 중첩된 모든 주를 포함하고 평균을 낼 지역이 여전히 30개이므로 기각률을 통제한다. 일반적인 교훈은 다음과 같다. 확신이 없으면 더 거친 수준에서 군집화하라. 거칠게 묶는 것의 위험은 타당성 상실이 아니라 다음에 다룰 소수 군집 문제이기 때문이다.
+
+## 소수 군집 문제 {#sec-clu-few}
+
+CRVE는 군집 수에 대한 점근적 논리로 정당화된다. $G$가 작으면 이 논리는 약해지고 CRVE는 하향 편향된다. 즉 실제 분산을 과소평가하므로 올바른 수준에서 군집화했더라도 검정이 과도하게 기각한다. 이 편향은 잔차로 군집 내부 오차 블록을 추정할 때 발생하며, 잔차는 구조적으로 너무 작다. 이 효과는 군집이 많을 때에만 평균적으로 상쇄된다.
+
+‘소수’가 얼마나 적은지를 정하는 보편적 기준은 없다. 문헌은 군집의 균형 정도와 설명변수의 분포에 따라 20개, 30개 또는 50개 미만의 군집을 경고 기준으로 제시한다 [@cameron2015practitioner]. 군집 수가 50개 이하인 주 수준 정책 연구는 이 범위 안에 불안하게 놓인다.
+
+표준적인 해결책은 @cameron2008bootstrap의 **와일드 군집 부트스트랩**이다. CRVE의 점근 분포를 신뢰하는 대신 재표본추출로 검정통계량의 분포를 구성한다. 가장 성능이 좋은 방식은 재표본추출할 잔차를 계산할 때 귀무가설을 부과하고, 무작위 $\pm 1$ (Rademacher) 가중치를 사용해 한 군집의 모든 잔차 부호를 함께 뒤집는다. 군집이 5~6개뿐인 경우에도 잘 작동하며 [@cameron2008bootstrap], 불균등한 군집 크기를 위한 개선 방법은 @mackinnon2017wild에 제시되어 있다.
+
+### 시뮬레이션: 소수 군집과 와일드 군집 부트스트랩 {#sec-clu-sim-few}
+
+추가 의존성이 없고 알고리즘을 직접 적어 보면 절차가 명확해지므로, 제한된 와일드 군집 부트스트랩을 직접 구현한다.
+
+```{r clu-sim3-wcb}
+# Restricted wild cluster bootstrap p-value for H0: slope on x = 0.
+wcb_pvalue <- function(y, x, cl, B = 399) {
+    m_unrestricted <- lm(y ~ x)
+    t_obs <- coef(m_unrestricted)[["x"]] /
+        sqrt(vcovCL(m_unrestricted, cluster = cl)["x", "x"])
+
+    # restricted fit imposes the null: regress y on the intercept only
+    m_restricted <- lm(y ~ 1)
+    yhat <- fitted(m_restricted)
+    uhat <- resid(m_restricted)
+
+    gid <- match(cl, unique(cl))
+    G   <- length(unique(cl))
+    t_star <- numeric(B)
+    for (b in seq_len(B)) {
+        w  <- sample(c(-1, 1), G, replace = TRUE)[gid]  # one weight per cluster
+        yb <- yhat + w * uhat
+        mb <- lm(yb ~ x)
+        t_star[b] <- coef(mb)[["x"]] /
+            sqrt(vcovCL(mb, cluster = cl)["x", "x"])
+    }
+    mean(abs(t_star) >= abs(t_obs))
+}
+```
+
+그런 다음 군집 수를 변화시키며 세 검정을 비교한다. 즉, $t(G-1)$ 임계값을 사용하는 통상적인 군집 강건 $t$-검정, Bell-McCaffrey의 Satterthwaite 자유도를 적용한 *CR2* 편향 감소 분산 [@imbens2016robust; @pustejovsky2018small], 제한된 와일드 군집 부트스트랩이다.
+
+```{r clu-sim3-run, message=FALSE}
+library(clubSandwich)
+
+sim_few_clusters <- function(G, n_g = 30, rho = 0.5,
+                             reps = 300, B = 399, seed = 2) {
+    set.seed(seed)
+    N  <- G * n_g
+    cl <- rep(seq_len(G), each = n_g)
+    rej_t <- rej_cr2 <- rej_wcb <- numeric(reps)
+    for (r in seq_len(reps)) {
+        y <- rnorm(G, 0, sqrt(rho))[cl] + rnorm(N, 0, sqrt(1 - rho))
+        x <- rnorm(G)[cl] + rnorm(N)
+        d <- data.frame(y = y, x = x, cl = cl)
+        m <- lm(y ~ x, data = d)
+        # 1. Ordinary CR1 cluster-robust t against t(G-1)
+        t_cl <- coef(m)[["x"]] / sqrt(vcovCL(m, cluster = cl)["x", "x"])
+        rej_t[r]   <- abs(t_cl) > qt(.975, G - 1)
+        # 2. CR2 with Satterthwaite degrees of freedom (clubSandwich)
+        ct <- coef_test(m, vcov = "CR2", cluster = d$cl,
+                        coefs = "x", test = "Satterthwaite")
+        rej_cr2[r] <- ct$p_Satt < 0.05
+        # 3. Restricted wild cluster bootstrap (Rademacher)
+        rej_wcb[r] <- wcb_pvalue(y, x, cl, B = B) < 0.05
+    }
+    c(cluster_t = mean(rej_t),
+      CR2_Satt  = mean(rej_cr2),
+      wild_boot = mean(rej_wcb))
+}
+
+g_values <- c(5, 10, 20, 30, 50)
+res3 <- t(sapply(g_values, sim_few_clusters))
+res3 <- data.frame(n_clusters = g_values, res3)
+knitr::kable(res3, digits = 3,
+             col.names = c("Number of clusters", "Cluster-robust t",
+                           "CR2 + Satterthwaite", "Wild cluster bootstrap"),
+             caption = "Rejection rate of a true null with few clusters. The ordinary cluster-robust t over-rejects sharply. CR2 with Satterthwaite degrees of freedom recovers most of the gap with no resampling; the wild cluster bootstrap is closest to nominal across all G.")
+```
+
+```{r clu-sim3-plot, fig.height=3.6, fig.cap="Rejection rate of a true null against the number of clusters. CR1 cluster-robust is unreliable with few clusters; CR2 with Satterthwaite degrees of freedom is a large cheap improvement; the wild cluster bootstrap controls the rejection rate even at five clusters."}
+res3 |>
+    pivot_longer(c(cluster_t, CR2_Satt, wild_boot),
+                 names_to = "method", values_to = "rejection") |>
+    mutate(method = factor(method,
+                           c("cluster_t", "CR2_Satt", "wild_boot"),
+                           c("Cluster-robust t", "CR2 + Satterthwaite",
+                             "Wild cluster bootstrap"))) |>
+    ggplot(aes(n_clusters, rejection, colour = method)) +
+    geom_hline(yintercept = 0.05, linetype = "dashed") +
+    geom_line() +
+    geom_point() +
+    labs(x = "Number of clusters", y = "Rejection rate of a true null",
+         colour = NULL) +
+    theme_minimal()
+```
+
+Table \@ref(tab:clu-sim3-run)과 Figure \@ref(fig:clu-sim3-plot)은 그 결과를 보여준다. 군집이 5개 또는 10개이면 올바른 수준에서 군집화했더라도 통상적인 군집 강건 $t$-검정은 참인 귀무가설을 지나치게 자주 기각한다. Satterthwaite 자유도를 적용한 CR2는 재표본추출 없이도 격차의 대부분을 줄이며, @djogbenou2019asymptotic에 의해 점근적으로 정당화되는 와일드 군집 부트스트랩은 전체 구간에서 5%에 가깝게 유지된다. 실무적 의미는 분명하다. 군집이 30개보다 적다면 점근적 군집 강건 $t$-검정을 단독으로 신뢰할 수 없다.
+
+### 소수 군집을 위한 개선 방법 {#sec-clu-refinements}
+
+소수 군집 문제는 서로 보완적인 해결책에 관한 작은 문헌을 낳았다. 그중 선택은 “소수”가 실제로 얼마나 적은지, 군집 크기가 얼마나 균형적인지, 처치가 군집 전체에 얼마나 집중되어 있는지에 달려 있다. @mackinnon2023guide는 부트스트랩과 잭나이프 측면에서 @cameron2015practitioner를 갱신하는 가장 최신의 개관을 제공한다.
+
+가장 비용이 적은 개선책은 Bell-McCaffrey의 *CR2* 편향 감소 분산 추정량이다. 이는 @imbens2016robust에 의해 경제학에 널리 알려졌고 @pustejovsky2018small에 의해 고정효과 모형으로 일반화되었다. CR2는 작동적 등분산 가정 아래 통상적인 CR1 추정량의 편향을 정확히 보정하는 레버리지 요인으로 군집 잔차 외적을 확대하고, 그 결과 분산에 불균형한 군집 크기에 맞춰지는 *Satterthwaite* 자유도를 결합한다. 위 시뮬레이션은 CR2가 재표본추출 없이 와일드 군집 부트스트랩과의 격차를 대부분 줄임을 보여준다. `clubSandwich` 패키지는 `lm`, `plm`, `lme4` 모형에 CR2(및 잭나이프 변형 CR3)를 구현한다.
+
+A separate question is how few is "few." @carter2017asymptotic show that the relevant quantity is not the raw cluster count $G$ but an *effective* number $G^{*}$ that depends on the variation of cluster sizes and on the concentration of the regressor of interest across clusters. In balanced cluster-randomized designs $G^{*}$ is close to $G$. In designs with heavily unbalanced cluster sizes, or where treatment is concentrated in a handful of clusters, $G^{*}$ can be a small fraction of $G$. The `summclust` package reports $G^{*}$ alongside leverage diagnostics.
+
+처치가 매우 적은 수의 군집에 집중되면 실패 양상이 질적으로 달라지고 와일드 군집 부트스트랩 자체도 실패하기 시작한다. @mackinnon2018wild는 이 경우를 명시적으로 진단한다. 처치 군집이 하나뿐이면 와일드 군집 부트스트랩은 퇴화된 분포를 만든다. 최신 해결책으로는 단일 처치 군집의 경우에 무작위화 검정을 제공하는 @hagemann2025single과, 근사 대칭성 아래에서 무작위화 검정을 개발하여 @ibragimov2010t의 군집별 $t$-통계량 결합을 정당화하는 @canay2017randomization이 있다. @hagemann2025permutation은 이질적인 군집 수가 유한할 때 순열 추론을 확장한다. @ferman2019inference는 처치 집단이 적고 이분산성이 있는 DiD를 위해 유사한 보정법을 개발한다.
+
+보다 일반적으로 무작위화 추론은 실험과 준실험의 핵심 강건성 점검이 되었다. @young2019channeling은 AEA 저널의 무작위 실험 논문 전체에 대해 Fisher 무작위화 검정으로 추론을 다시 수행했으며, 명목상 유의한 군집 또는 강건 표준오차 결과 중 상당수가 살아남지 못함을 발견했다. 교훈은 군집화가 틀렸다는 것이 아니라, 통상적 기준값 부근의 군집 $p$-값에는 무작위화 기반의 타당성 점검이 필요하다는 것이다.
+
+마지막으로 군집 강건 분산의 잭나이프 변형이 부트스트랩의 빠른 경쟁자로 다시 등장했다. @mackinnon2023jackknife는 개선된 잭나이프(CR3J)가 대규모 자료에서 와일드 군집 부트스트랩과 비슷한 검정 크기를 훨씬 짧은 실행 시간으로 달성한다고 보인다. 따라서 $G$가 점근 근사를 적용하기에 충분히 크지만 자료가 너무 커서 $B \geq 999$회의 부트스트랩 반복이 부담스러운 경우 실용적인 선택이 된다. `summclust` 패키지가 이를 구현한다.
+
+## 다중 방향 군집화 {#sec-clu-multiway}
+
+지금까지 군집은 중첩되어 있었다. 모든 개인은 정확히 하나의 주에, 모든 주는 정확히 하나의 지역에 속한다. 그러나 많은 패널은 대신 *비중첩* 상관구조를 갖는다. 기업의 결과는 기업 내부에서 시간에 따라 상관되고, 공통 충격을 통해 한 해 안의 기업 간에도 상관된다. 어느 집단도 다른 집단에 중첩되지 않는다.
+
+일방향 군집화는 이 차원 중 하나만 흡수할 수 있다. 기업별로 군집화하면 연도 내부 상관이 보정되지 않고, 연도별로 군집화하면 기업 내부 상관이 보정되지 않는다. 어느 경우든 표준오차가 너무 작다. 해결책은 다중 군집화로, 각 차원의 분산을 추정한 뒤 포함-배제 원리로 결합한다.
+
+이중 군집화는 경험적 금융에서 특히 풍부한 역사를 갖는다. 기업-연도 관측치 패널에는 기업 내부의 계열상관과 한 해 안에서 기업 간 동시상관이 모두 나타나기 때문이다. @petersen2009estimating은 모의 금융 자료에서 이용 가능한 접근법(Fama-MacBeth, Newey-West, 이중 군집화)을 비교하여 이 두 차원을 동시에 처리하는 방법은 이중 군집화뿐임을 보였다. @thompson2011simple은 경험적 연구자를 대상으로 매우 명료하게 설명하면서 이중 군집화 분산의 폐쇄형을 독립적으로 도출했다. 일반적인 이론적 처리는 @cameron2011robust에 있으며, @bester2011inference는 이중 군집화, Conley HAC, Driscoll-Kraay를 하나의 군집 공분산 체계의 특수한 경우로 볼 수 있음을 보인다.
+
+### 시뮬레이션: 이중 방향 군집화 {#sec-clu-sim-twoway}
+
+We generate a panel where the error has both a unit component and a time component, so the errors are correlated within a unit across time *and* within a time period across units.
+
+```{r clu-sim4}
+sim_two_way <- function(N_unit = 50, T_time = 30, reps = 2000, seed = 4) {
+    set.seed(seed)
+    N    <- N_unit * T_time
+    unit <- rep(seq_len(N_unit), each = T_time)
+    time <- rep(seq_len(T_time), times = N_unit)
+    rej  <- matrix(NA_real_, reps, 4,
+        dimnames = list(NULL, c("iid", "by_unit", "by_time", "two_way")))
+    for (r in seq_len(reps)) {
+        # error = unit component + time component + idiosyncratic
+        y <- rnorm(N_unit, 0, sqrt(1/3))[unit] +
+             rnorm(T_time, 0, sqrt(1/3))[time] +
+             rnorm(N, 0, sqrt(1/3))
+        x <- rnorm(N_unit)[unit] + rnorm(T_time)[time] + rnorm(N)
+        m <- lm(y ~ x)
+        b <- coef(m)[["x"]]
+        se <- c(sqrt(vcov(m)["x", "x"]),
+                sqrt(vcovCL(m, cluster = unit)["x", "x"]),
+                sqrt(vcovCL(m, cluster = time)["x", "x"]),
+                sqrt(vcovCL(m, cluster = data.frame(unit, time))["x", "x"]))
+        cv <- c(qt(.975, N - 2), qt(.975, N_unit - 1), qt(.975, T_time - 1),
+                qt(.975, min(N_unit, T_time) - 1))
+        rej[r, ] <- as.numeric(abs(b / se) > cv)
+    }
+    colMeans(rej)
+}
+
+res4 <- sim_two_way()
+knitr::kable(t(data.frame(`Rejection rate` = res4, check.names = FALSE)),
+             digits = 3,
+             col.names = c("Default (iid)", "Cluster by unit",
+                           "Cluster by time", "Two-way cluster"),
+             caption = "Errors are correlated within units and within time periods. One-way clustering corrects only one dimension and still over-rejects; two-way clustering controls the rejection rate.")
+```
+
+Table \@ref(tab:clu-sim4)는 두 일방향 군집화가 기본값보다 개선되지만 각각 한 차원의 상관을 보정하지 못해 여전히 과도하게 기각한다는 것을 보여준다. 기각률을 5%에 가깝게 되돌리는 것은 이중 군집화뿐이다. 비용에도 유의하라. 유효 자유도가 더 작은 차원에 의해 결정되므로 이중 군집화는 *두* 차원 모두에 충분한 군집이 있어야 한다. 기업은 많지만 연도가 8개뿐인 패널은 연도별 군집화로부터 거의 보호받지 못하며, Section \@ref(sec-clu-few)의 소수 군집 문제가 그 차원에 적용된다. @mackinnon2020wild는 와일드 군집 부트스트랩을 다중 차원으로 확장했으며, 한 차원이 짧을 때 권장되는 대안이다.
+
+## 군집을 넘어: 공간·시간·네트워크 의존성 {#sec-clu-spatial}
+
+군집 강건 분산 추정량은 군집을 블랙박스로 취급하여 상당한 일반성을 얻지만 대가가 있다. 분석자는 한 군집이 끝나고 다음 군집이 시작되는 지점을 알아야 한다. 실제 상관구조는 이보다 더 연속적인 경우가 많다. 같은 주의 두 단위는 의존하고, 인접한 주의 두 단위도 정도는 조금 약하지만 의존한다. 기업-연도 충격은 주 경계에서 사라지지 않고 거리에 따라 감소한다. 서로 관련되지만 구별되는 두 추정량 계열은 “군집 안 또는 군집 밖”이라는 양분법을 완화한다.
+
+첫 번째 계열은 *공간 HAC*로, @conley1999gmm에서 시작되어 위치가 오차를 포함해 측정되는 경우를 위해 @conley2007spatial에서 정교화되었다. 이 아이디어는 @newey1986simple의 시계열 HAC를 2차원 공간으로 일반화한다. 분산은 모든 쌍별 외적 $X_i' \hat u_i \hat u_j X_j$의 가중합으로 구성되며, 가중치 $K(d_{ij})$는 가까운 쌍에서 1이고 거리 절단값을 넘으면 0으로 감소한다. 공간 HAC는 분석자가 이산적인 군집 분할을 정해야 할 필요가 없다는 점이 공간 설정에서 CRVE보다 큰 장점이다. 대가는 절단값이 조정 선택이라는 점이며, 추정량은 HAC의 소표본 특성을 물려받는다. 절단값이 너무 작으면 포함률이 낮고, 너무 크면 잡음이 생긴다.
+
+The second family handles *panel data with cross-sectional and serial dependence simultaneously*. The classical estimator is @driscoll1998consistent, which applies a time-series HAC to cross-sectionally averaged moment conditions and is consistent as $T \to \infty$ regardless of how $N$ grows. @hansen2007asymptotic provides the formal theory for the cluster-robust variance estimator when $T$ is large rather than $N$, which is the relevant case in macro and finance panels. @vogelsang2012heteroskedasticity unifies these results under a HAR (heteroskedasticity-and-autocorrelation-robust) framework that also accommodates spatial correlation in panel models with fixed effects. @bester2011inference shows that all of these estimators, plus the multiway CRVE of Section \@ref(sec-clu-multiway), can be viewed as cluster-covariance estimators with different definitions of "cluster" (geographic neighborhood, time block, firm). @conley2018inference is a practitioner-oriented guide aimed specifically at accounting and finance applications, complementing @petersen2009estimating.
+
+A recent and important critique is @conley2025standard, who show that many cross-country and persistence regressions exhibit *spurious* spatial correlation that is not absorbed by Conley HAC at conventional cutoffs. The reason is that the regressor itself can be smooth enough in space that the relevant distance over which residuals are correlated exceeds the sample's spatial extent. The lesson is not that Conley HAC is wrong but that the cutoff should be chosen to reflect the actual smoothness of the data, and that an additional structural assumption (or a randomization-style placebo on permuted locations) may be necessary in highly persistent spatial settings.
+
+### 시뮬레이션: 허위 공간 회귀 {#sec-clu-sim-spatial}
+
+The cleanest way to internalize the @conley2025standard warning is to simulate it. We generate two *independent* spatially smoothed processes on a 20-by-20 grid (so $N = 400$). Each is a Gaussian convolution of white noise. We then regress one on the other, where the true coefficient is zero by construction, and check how often each standard error rejects the true null. We compare three estimators: default OLS, naive clustering at the level of 4-by-4 spatial blocks, and a uniform-kernel Conley HAC at a fixed distance cutoff.
+
+```{r clu-conley-helpers}
+# Spatially smoothed Gaussian noise on a (side x side) grid.
+spatial_smooth <- function(side, kernel_sd) {
+    grid  <- expand.grid(gx = seq_len(side), gy = seq_len(side))
+    D     <- as.matrix(dist(grid))
+    W     <- exp(-D^2 / (2 * kernel_sd^2))
+    W     <- W / rowSums(W)
+    list(coords = grid, values = as.numeric(W %*% rnorm(nrow(grid))))
+}
+
+# Uniform-kernel Conley spatial HAC standard error for one slope.
+conley_se <- function(model, coords, cutoff) {
+    X       <- model.matrix(model)
+    u       <- residuals(model)
+    XtX_inv <- solve(crossprod(X))
+    D       <- as.matrix(dist(coords))
+    K       <- (D <= cutoff) * 1                       # uniform kernel
+    uX      <- sweep(X, 1, u, `*`)
+    meat    <- t(uX) %*% K %*% uX
+    sqrt(diag(XtX_inv %*% meat %*% XtX_inv))
+}
+```
+
+```{r clu-sim-spatial}
+sim_spurious_spatial <- function(side = 20, reps = 400, kernel_sd = 2,
+                                 cutoff = 3, seed = 7) {
+    set.seed(seed)
+    N <- side^2
+    rej <- matrix(NA_real_, reps, 3,
+                  dimnames = list(NULL, c("iid", "block_cluster", "conley")))
+    for (r in seq_len(reps)) {
+        sx     <- spatial_smooth(side, kernel_sd)
+        sy     <- spatial_smooth(side, kernel_sd)
+        coords <- sx$coords
+        d      <- data.frame(x = sx$values, y = sy$values)
+        m      <- lm(y ~ x, data = d)
+        b      <- coef(m)[["x"]]
+        # 4x4 spatial blocks as "naive cluster"
+        block  <- (coords$gx - 1) %/% 4 * 100 + (coords$gy - 1) %/% 4
+        se_iid <- sqrt(vcov(m)["x", "x"])
+        se_blk <- sqrt(vcovCL(m, cluster = block)["x", "x"])
+        se_con <- conley_se(m, coords, cutoff = cutoff)[["x"]]
+        cv <- c(qt(.975, N - 2),
+                qt(.975, length(unique(block)) - 1),
+                qt(.975, N - 2))
+        rej[r, ] <- as.numeric(abs(b / c(se_iid, se_blk, se_con)) > cv)
+    }
+    colMeans(rej)
+}
+
+res_spatial <- rbind(
+    `Cutoff 3` = sim_spurious_spatial(cutoff = 3),
+    `Cutoff 6` = sim_spurious_spatial(cutoff = 6)
+)
+knitr::kable(
+    res_spatial,
+    digits = 3,
+    col.names = c("Default (iid)", "Block cluster (4x4)", "Conley HAC"),
+    caption = "Spurious spatial regression. Two independent spatially smoothed processes regressed on each other (true beta = 0). The default standard error rejects at over 70%; block clustering under-corrects because correlation crosses block boundaries; Conley HAC reduces the over-rejection sharply but still under-corrects at a cutoff close to the smoothing kernel, illustrating the Conley and Kelly (2025) concern. A larger cutoff helps but adds noise to the estimator."
+)
+```
+
+Table \@ref(tab:clu-sim-spatial) summarizes the rejection rates. With strong spatial autocorrelation in both variables, the default OLS standard error sees them as carrying $N$ independent pieces of information when they really carry far fewer, and rejects a null that is true by construction at a wildly inflated rate. Block clustering at a 4-by-4 spatial partition helps but still under-corrects because the smoothing kernel reaches across block boundaries. Conley HAC reduces the rejection rate sharply, but at a cutoff close to the underlying smoothing scale it still over-rejects, and only a much larger cutoff brings the rejection rate close to nominal. This is exactly the @conley2025standard concern. In real-world cross-country or persistence regressions the analyst has no externally credible estimate of the spatial scale, and a cutoff chosen too small can leave substantial spurious correlation in the residuals. Best-practice diagnostics are (i) report Conley HAC at several cutoffs and look for the smallest cutoff at which the standard errors stabilize, (ii) run a randomization placebo by permuting locations, and (iii) when feasible, impose explicit structure on the spatial process rather than relying on a non-parametric HAC alone.
+
+R implementations of Conley HAC are available in the `conleyreg` package; Stata users have `acreg` [@colella2023acreg], which extends the same logic to arbitrary correlation structures including networks.
+
+## 네트워크 및 간섭 군집화 {#sec-clu-network}
+
+단위가 정돈된 군집에 중첩되는 대신 네트워크로 연결되어 있다면 군집 강건 체계를 다시 일반화해야 한다. 가장 단순한 정식화는 @aronow2017estimating이 도입한 *노출 매핑*이다. 단위가 어느 이산 군집에 속하는지 묻는 대신, 어떤 다른 단위의 처치가 이 단위의 결과에 영향을 줄 수 있는지 묻는다. 노출 매핑은 결합된 처치 배정 공간을 더 작은 “노출 상태” 집합으로 나누고, 군집 강건 분산은 이 상태를 군집으로 사용해 계산한다. 이 체계는 친구 네트워크의 파급효과, 교통 네트워크의 전염, 교실 내 동료 효과를 모두 다룰 만큼 일반적이다.
+
+@leung2022causal develops the asymptotic theory for *approximate neighborhood interference*: the assumption that a unit's potential outcomes depend on its own treatment plus the treatments of units within a bounded network neighborhood. This delivers a CLT and consistency results under conditions on how fast the neighborhood "fades" with network distance, providing a principled answer to "how far should we cluster" in a network setting.
+
+The closest generalization of the CRVE itself to networks is @leung2023network. He shows that a *network cluster-robust* variance estimator, computed by treating the residual outer products of all pairs at network distance below a chosen radius as one cluster, achieves valid inference under conditions analogous to the spatial-HAC ones. The Stata package `acreg` [@colella2023acreg] implements distance-based and network-based variants of this estimator; in R, `conleyreg` extends Conley HAC to network-based metrics. Empirical work that runs regressions on network data without any such correction (for example, paper-citation networks or village-level social-network data) typically reports standard errors that are far too small; @leung2023network is the methodologically rigorous fix.
+
+A practical caveat: estimating the network itself is often the binding constraint. When the analyst observes the network with error, or treats a coarse proxy (such as physical distance) as the network, the network cluster-robust variance can still be invalid. Cross-checks include rerunning the estimator with progressively larger network radii to confirm the standard errors stabilize, and using randomization inference on permuted network labels as a placebo.
+
+## 군집화 수준 선택: 의사결정 지침 {#sec-clu-decision}
+
+시뮬레이션은 @cameron2015practitioner가 제시하고 @abadie2023should가 정교화한 하나의 원리를 가리킨다. 처치가 배정되고 오차가 상관되는 수준에서 군집화하라. 군집화는 관심 설명변수와 오차가 모두 그룹 수준에서 변할 때만 중요하다. 처치가 개인별로 배정되고 설계로 인한 그룹 상관이 없다면 군집화는 불필요하다. 처치가 전체 그룹에 배정되었다면 배정 수준에서 군집화하지 않는 것은 명백한 오류다.
+
+Two guiding questions operationalize this:
+
+1. *Correlation.* Is there reason to believe both the treatment variable and the errors are correlated within a candidate grouping? If yes, cluster broadly enough to capture it. If either is plausibly uncorrelated within the group, clustering there changes little.
+2. *Count.* Does the candidate grouping leave enough clusters to make the CRVE reliable? Coarser is safer for capturing correlation but reduces the cluster count, and too few clusters reintroduces over-rejection.
+
+이 두 질문은 서로 반대 방향으로 작용하며 편향-분산 절충을 반영한다. 최적 수준에 대한 공식 검정은 없다. 합의된 지침은 가능하면 더 거칠고 집계된 수준을 택하되 소수 군집 문제에 주의하라는 것이다. 거친 수준에서 군집 수가 너무 적다면 더 세밀한 수준으로 후퇴하지 말고 와일드 군집 부트스트랩을 함께 사용하라 [@cameron2008bootstrap]. 한 집단이 다른 집단에 완전히 중첩되면 더 보수적인 추론을 위해 상위 수준에서 군집화하라 [@cameron2011robust].
+
+### 설계 기반 군집화와 표본추출 기반 군집화 {#sec-clu-design-based}
+
+이 원리의 더 깊은 개념적 근거는 회귀에서 *표본추출 기반* 불확실성과 *설계 기반* 불확실성을 구분해 형식화한 @abadie2020sampling에 있다. 표본추출 기반 불확실성은 통상적인 관점이다. 더 큰 모집단에서 $N$개 관측치를 표본추출하고 그 추출에서의 표본 변동성을 표준오차에 반영한다. 설계 기반 불확실성은 표본을 고정된 것으로 보고 *어떤 단위가 처치를 받았는지*의 무작위성을 반영하며, 이는 Fisher 무작위화 검정과 정확히 같다. 연구 설계에 따라 군집 강건 표준오차는 이 두 관점 중 하나 또는 모두에서 정당화되며, 어떤 관점이 작동하는지에 따라 군집화가 필요할 수도 불필요할 수도 있다.
+
+@abadie2023should make the practical implication explicit. If treatment is randomized at the group level (e.g., a state policy applied to all individuals in the state), both the sampling-based and design-based standard errors require clustering at that group level. If treatment is randomized at the individual level and the sample itself is not a cluster sample, the design-based standard error is just heteroskedasticity-robust; the conventional cluster-robust estimator can be conservative and adds noise. The presence of a group identifier in the data is not, on its own, a reason to cluster. The reason is the design.
+
+A small simulation makes the point concrete. We generate cluster-correlated errors in both arms but vary how treatment is assigned: in one arm treatment is constant within a cluster (group-randomized), in the other it is independent across individuals.
+
+```{r clu-sim-design-based}
+sim_design_based <- function(G = 50, n_g = 30, reps = 1500, seed = 5) {
+    set.seed(seed)
+    N  <- G * n_g
+    cl <- rep(seq_len(G), each = n_g)
+    rej_grp <- rej_ind <- matrix(NA_real_, reps, 3,
+        dimnames = list(NULL, c("iid", "robust_HC1", "cluster")))
+    for (r in seq_len(reps)) {
+        # error has within-cluster correlation; true beta = 0
+        u <- rnorm(G, 0, sqrt(0.5))[cl] + rnorm(N, 0, sqrt(0.5))
+        # arm A: cluster-randomized treatment (constant within cluster)
+        D_grp <- rbinom(G, 1, 0.5)[cl]
+        m_grp <- lm(u ~ D_grp)
+        # arm B: individually randomized treatment
+        D_ind <- rbinom(N, 1, 0.5)
+        m_ind <- lm(u ~ D_ind)
+        for (j in 1:2) {
+            m <- if (j == 1) m_grp else m_ind
+            v <- coef(m)[[2]]
+            se <- c(sqrt(vcov(m)[2, 2]),
+                    sqrt(vcovHC(m, type = "HC1")[2, 2]),
+                    sqrt(vcovCL(m, cluster = cl)[2, 2]))
+            cv <- c(qt(.975, N - 2), qt(.975, N - 2), qt(.975, G - 1))
+            r_j <- as.numeric(abs(v / se) > cv)
+            if (j == 1) rej_grp[r, ] <- r_j else rej_ind[r, ] <- r_j
+        }
+    }
+    rbind(`Cluster-randomized treatment`     = colMeans(rej_grp),
+          `Individually randomized treatment` = colMeans(rej_ind))
+}
+
+res_db <- sim_design_based()
+knitr::kable(res_db, digits = 3,
+             col.names = c("Default (iid)", "Robust (HC1)", "Cluster-robust"),
+             caption = "Rejection rate of a true null when within-cluster error correlation is fixed but the design varies. In the cluster-randomized arm only cluster-robust controls size; in the individually randomized arm all three estimators are valid and cluster-robust is over-conservative. Clustering is a property of the design, not of the error structure alone.")
+```
+
+Table \@ref(tab:clu-sim-design-based)는 이 대비를 분명히 보여준다. 군집 무작위화 부문은 익숙한 결과를 재현한다. 오차의 군집 구조를 무시하면 기본 표준오차와 HC 표준오차의 검정 크기가 크게 낮아진다. 개인 무작위화 부문은 @abadie2023should의 요점을 보여준다. 군집 내부 오차 상관은 있지만 설계로 인한 군집화가 없으면 HC1만으로도 명목 검정 크기를 달성하며, 군집 강건 표준오차는 *타당하지만 불필요하다*. 더 크거나 불균형한 설계에서는 이 부문의 군집 강건 추정량이 대체로 약간 보수적이 된다. 실무적 메시지는 자료에 주 또는 기업 변수가 있다는 사실만으로 그 수준에서 군집화할 필요는 없다는 것이다.
+
+### 의사결정 트리 {#sec-clu-tree}
+
+Figure \@ref(fig:clu-decision-tree) condenses the principle into a sequence of yes/no questions and points at the corresponding remedies. It is meant as a visual companion to the decision table that follows, not a replacement.
+
+```{r clu-decision-tree, message=FALSE, screenshot.opts = list(vwidth = 1200, vheight = 800), dev="png", fig.cap="A decision tree for choosing a standard-error strategy. Green nodes are point answers; orange nodes are conditional on cluster count G; purple nodes route to non-cluster generalizations covered earlier in the chapter."}
+library(DiagrammeR)
+grViz("
+digraph cluster_decision {
+  graph [layout = dot, rankdir = TB, fontsize = 11];
+  node  [shape = box, style = 'rounded,filled', fontname = 'Helvetica',
+         fillcolor = '#F0F4F8'];
+  edge  [fontname = 'Helvetica', fontsize = 10];
+
+  q1 [label = 'Is treatment assigned\\nat the group level?'];
+  q2 [label = 'Is the sample a cluster\\nsample of a population?'];
+  q3 [label = 'How many clusters G?'];
+  q4 [label = 'Is the dependence\\nnon-nested\\n(e.g., firm and year)?'];
+  q5 [label = 'Is the dependence\\ncontinuous in space,\\ntime, or network?'];
+
+  a_grp [fillcolor = '#D4E8D4', label = 'Cluster at the\\ngroup of assignment'];
+  a_smp [fillcolor = '#D4E8D4', label = 'Cluster at the\\nsampling unit'];
+  a_hc  [fillcolor = '#D4E8D4', label = 'HC-robust likely\\nsufficient\\n(Abadie et al. 2023)'];
+
+  a_5   [fillcolor = '#FAE5D3', label = 'Single- or few-cluster\\nmethods (Hagemann 2025;\\nCanay-Romano-Shaikh 2017)'];
+  a_30  [fillcolor = '#FAE5D3', label = 'CR2 + Satterthwaite\\n(Imbens-Kolesar 2016)\\nor wild cluster bootstrap'];
+  a_50  [fillcolor = '#FAE5D3', label = 'CR1 with t(G-1) critical;\\nWCB as sanity check'];
+  a_big [fillcolor = '#D4E8D4', label = 'Standard CRVE;\\ncheck effective G\\n(Carter et al. 2017)'];
+
+  a_mw  [fillcolor = '#D4E8D4', label = 'Multiway clustering;\\nWCB if any dim is short\\n(MacKinnon et al. 2021)'];
+  a_one [fillcolor = '#D4E8D4', label = 'One-way clustering at\\ncoarsest correlated level'];
+
+  a_con [fillcolor = '#E8D4E8', label = 'Conley spatial HAC\\n(Conley 1999)'];
+  a_dk  [fillcolor = '#E8D4E8', label = 'Driscoll-Kraay or\\nHansen large-T CRVE'];
+  a_net [fillcolor = '#E8D4E8', label = 'Network cluster-robust\\n(Leung 2023)'];
+
+  q1 -> a_grp [label = 'Yes'];
+  q1 -> q2   [label = 'No'];
+  q2 -> a_smp [label = 'Yes'];
+  q2 -> a_hc  [label = 'No'];
+  a_grp -> q3;
+  a_smp -> q3;
+  q3 -> a_5   [label = 'G < 5'];
+  q3 -> a_30  [label = '5 to 30'];
+  q3 -> a_50  [label = '30 to 50'];
+  q3 -> a_big [label = 'G > 50'];
+  a_big -> q4;
+  q4 -> a_mw  [label = 'Yes'];
+  q4 -> q5    [label = 'No'];
+  q5 -> a_con [label = 'Spatial'];
+  q5 -> a_dk  [label = 'Long-T panel'];
+  q5 -> a_net [label = 'Network'];
+  q5 -> a_one [label = 'Discrete clusters'];
+}
+", height = 600)
+```
+
+### 설계별 의사결정 표 {#sec-clu-table}
+
+아래 표는 이 책 앞부분에서 다룬 설계를 권장 군집화 수준에 대응시킨다. 정확한 조회에는 표를 사용하고, 개념적 경로는 위의 트리를 사용하라.
+
+| Design or data structure | Cluster on | Rationale |
+|---|---|---|
+| Cross-sectional data with group-assigned treatment | The group that received the treatment assignment | Treatment and errors both vary at the group level [@abadie2023should] |
+| Cross-sectional data, individually assigned treatment, no group structure | Clustering not needed; use heteroskedasticity-robust | No design-induced clustering [@abadie2020sampling; @abadie2023should] |
+| Panel or difference-in-differences | The unit (individual, firm, state) | Errors are serially correlated within a unit over time [@bertrand2004much] |
+| Panel with common time shocks across units | Two-way, by unit and by time | Non-nested correlation in both dimensions [@cameron2011robust; @petersen2009estimating; @thompson2011simple] |
+| Staggered-adoption difference-in-differences | The unit | Same serial-correlation logic; treatment timing varies but the unit is still the correlated group |
+| Stacked difference-in-differences, units unique to one sub-experiment | The unit | Units do not recur, so the unit is the correlated group [@deshpande2019screened] |
+| Stacked difference-in-differences, units reused across sub-experiments | Unit by sub-experiment interaction | A unit appears in several stacks; the interaction is the correct correlated group [@cengiz2019effect] |
+| Regression discontinuity | The unit, or mass points of the running variable if it is discrete | Repeated observations or discreteness induce within-group correlation |
+| Instrumental variables | The level at which the instrument varies | Correlation is induced at the level of the exogenous variation |
+| Shift-share instruments | At the level of the exogenous shocks, with recentering | The shock structure, not the exposure data, dictates the SE adjustment [@adao2019shift; @borusyak2022quasi] |
+| Spatially correlated treatment | Conley HAC, or a grouping broad enough to span the spatial scale | Pairwise correlation that decays smoothly with distance [@conley1999gmm; @conley2025standard] |
+| Long-T panel with cross-sectional dependence | Driscoll-Kraay or Hansen large-T CRVE | Both serial and cross-sectional correlation [@driscoll1998consistent; @hansen2007asymptotic] |
+| Network data with spillovers | Network cluster-robust via exposure mapping | Smooth dependence along network adjacency [@aronow2017estimating; @leung2023network] |
+| Few treated clusters (G_treated $\leq$ 2) | Randomization or single-cluster inference | WCB and CRVE both fail; use specialized tests [@hagemann2025single; @canay2017randomization; @ibragimov2010t] |
+
+### 특정 설계에 대한 주의사항 {#sec-clu-design-notes}
+
+A few entries in the table deserve a sentence more.
+
+For difference-in-differences, @bertrand2004much is the canonical warning: outcomes within a unit are highly serially correlated over time, so treating the many time periods of a panel as independent observations badly understates the standard error of a policy effect. @roth2023whats reviews the modern toolkit (staggered-adoption estimators, parallel-trends sensitivity, weighting diagnostics) and treats inference as a first-class concern throughout.
+
+For stacked difference-in-differences, the subtlety is that the estimator builds a separate clean comparison (a "sub-experiment") around each adoption cohort, and the same unit can serve as a control in several sub-experiments. When that happens, the unit appears multiple times in the stacked dataset, and the correlated group is the unit by sub-experiment combination [@cengiz2019effect]. When the design is constructed so that each unit belongs to only one sub-experiment, clustering on the unit alone is correct [@deshpande2019screened].
+
+For shift-share or Bartik instruments, the SE problem is different: the instrument $Z_{lt} = \sum_k s_{lk} g_{kt}$ shares its sector-level shocks $g_{kt}$ across all regions $l$, inducing a correlation structure that no region-level clustering can fix. @adao2019shift derive the correct inference under sectoral-shock randomness, and @borusyak2022quasi develop a recentered-shock variant whose standard errors have a much simpler closed form. The dedicated shift-share treatment is in Section [Bartik Instrument](#sec-bartik-instrument); this chapter is the right place only to flag that "cluster at the region level" is the wrong default for shift-share designs.
+
+For treatment assigned to groups (the row that opens the table), @abadie2020sampling and @abadie2023should make the important clarification that clustering is a property of the sampling and assignment design, not a mechanical reaction to the presence of groups in the data. If treatment was randomized at the group level, clustering at that level is required. If groups exist in the data but treatment varies within them and the sample is not itself clustered, clustering can be unnecessary and merely costs precision, as the design-based simulation above demonstrated.
+
+## 실무 권고 {#sec-clu-practice}
+
+응용 연구를 위한 간단한 점검 목록은 다음과 같다.
+
+1. 처치가 배정되는 수준과 오차가 상관될 가능성이 있는 수준을 식별한다. 이 중 가장 거친 수준에서 군집화한다.
+2. 군집이 중첩되어 있으면 더 높은 수준에서 군집화한다.
+3. 군집 수를 센다. 대략 30개 미만이면 점근적 CR1 $t$-검정보다 Satterthwaite 자유도를 적용한 CR2 또는 와일드 군집 부트스트랩으로 추론한다. 5개 미만이면 단일 군집 또는 무작위화 방법을 사용한다.
+4. 두 차원에 비중첩 상관이 있으면 이중 방향 군집화를 사용하고 두 차원 모두 군집 수가 충분한지 확인한다. 그렇지 않으면 군집이 적은 차원에 와일드 군집 부트스트랩을 적용한다.
+5. 공간 또는 네트워크 의존성이 있으면 기저 의존 구조와 맞지 않는 이산적 군집 분할보다 Conley HAC 또는 네트워크 군집 강건 방법을 우선한다.
+6. 기본 표준오차와 군집 강건 표준오차가 다르면 더 큰 값을 보고하고, 어느 값을 사용했는지 밝힌다. 두 값의 큰 차이 자체가 군집화가 중요하다는 증거이다.
+7. 군집화는 설계상의 결정이지 마지막에 시도하는 강건성 점검이 아니다. 군집화가 $p$-값을 어떻게 바꾸는지 보기 전에 수준을 결정한다.
+
+## 소프트웨어: 단계별 예제 {#sec-clu-software}
+
+이 장에서 설명한 모든 방법에는 안정적인 R 구현이 있다. 이 절에서는 패키지별로 하나의 단계별 예제를 살펴본다. 모두 동일한 공유 자료를 사용하므로, 같은 점 추정치가 방법에 따라 서로 다른 표준오차와 $p$-값을 갖는 모습을 확인할 수 있다. 각 예제는 유지 관리되는 CRAN 패키지 버전을 사용하며, 절 끝의 표에 적힌 버전이 아래 출력에 사용된 버전이다.
+
+### 설정: 공유 패널 {#sec-clu-software-setup}
+
+25년 동안 관측된 40개 기업의 균형 패널을 시뮬레이션한다. 오차는 기업 내부에서 상관되며(기업 수준의 무작위 충격과 개별적 잡음의 합), 설명변수에도 기업 수준의 성분이 있다. 참 기울기는 $\beta = 0.3$이다.
+
+```{r clu-pkg-setup}
+suppressPackageStartupMessages({
+    library(sandwich)
+    library(lmtest)
+    library(clubSandwich)
+    library(fwildclusterboot)
+    library(summclust)
+    library(fixest)
+})
+
+set.seed(1)
+G <- 40
+panel <- data.frame(
+    firm = factor(rep(seq_len(G), each = 25)),
+    year = factor(rep(seq_len(25), times = G))
+)
+panel$x <- rnorm(G)[as.integer(panel$firm)] + rnorm(nrow(panel))
+panel$y <- 0.3 * panel$x +
+    rnorm(G)[as.integer(panel$firm)] + rnorm(nrow(panel))
+fit <- lm(y ~ x, data = panel)
+```
+
+### `sandwich`를 이용한 이분산성 강건 및 군집 강건 SE {#sec-clu-pkg-sandwich}
+
+`sandwich` 패키지는 R의 군집 강건 생태계의 기반이며 2004년부터 계속 유지 관리되고 있다 [@zeileis2020various]. `vcovHC`는 이분산성 강건(‘White’ 또는 ‘HC’) 표준오차를, `vcovCL`은 일방향 및 이중 방향 군집 강건 표준오차를 제공한다. 두 결과 모두 `lmtest::coeftest`에 전달해 익숙한 계수표를 만들 수 있다.
+
+```{r clu-pkg-sandwich}
+# Default (iid) SE
+coeftest(fit)["x", ]
+# HC1 heteroskedasticity-robust SE
+coeftest(fit, vcov = vcovHC, type = "HC1")["x", ]
+# One-way cluster-robust SE, clustered by firm
+coeftest(fit, vcov = vcovCL, cluster = ~ firm)["x", ]
+# Two-way cluster-robust SE, clustered by firm and year
+coeftest(fit, vcov = vcovCL, cluster = ~ firm + year)["x", ]
+```
+
+기본 표준오차는 기업 내부 오차 상관을 무시하므로 너무 작다. HC1은 이분산성만 보정하므로 여기서도 유사하게 너무 작다. 군집 강건 표준오차는 SE를 대략 세 배로 늘리고 $t$-통계량을 약 8에서 약 2.5로 낮춘다. 이 시뮬레이션에는 강한 연도 효과가 없으므로 이중 방향 버전도 비슷한 SE를 산출한다.
+
+### Satterthwaite 자유도를 적용한 CR2: `clubSandwich` {#sec-clu-pkg-clubsandwich}
+
+`clubSandwich` implements the bias-reduced CR2 variance of @pustejovsky2018small along with Satterthwaite degrees of freedom that adapt to imbalanced cluster sizes. It is the standard R implementation of small-sample cluster-robust inference [@imbens2016robust].
+
+```{r clu-pkg-clubsandwich}
+coef_test(fit, vcov = "CR2", cluster = panel$firm,
+          coefs = "x", test = "Satterthwaite")
+```
+
+The Satterthwaite degrees of freedom (around 27 here, well below the 999 of the naive $t$-test) and the slightly larger SE deliver a more conservative inference than the asymptotic cluster-robust $t$. With moderate cluster counts (5 to 30) CR2 should be the default rather than CR1.
+
+### 와일드 군집 부트스트랩: `fwildclusterboot` {#sec-clu-pkg-wcb}
+
+`fwildclusterboot` is the R port of David Roodman's Stata `boottest` package [@roodman2019fast]. It implements the restricted wild cluster bootstrap of @cameron2008bootstrap and is the package to reach for when the cluster count is small or the design has few treated clusters [@mackinnon2018wild].
+
+```{r clu-pkg-wcb}
+set.seed(2)
+bt <- boottest(fit, param = "x", clustid = "firm",
+               B = 999, type = "rademacher")
+bt
+```
+
+The bootstrap $p$-value and confidence interval do not rely on the asymptotic distribution of the cluster-robust $t$, which is why they perform well when the cluster count is below 30 even if the CR1 $t$-test would not. For multiway clustering with a short dimension, pass a two-element `clustid`.
+
+### 잭나이프와 유효 군집 수: `summclust` {#sec-clu-pkg-summclust}
+
+`summclust` is the implementation companion to @mackinnon2023jackknife and reports the CR3J jackknife variance, leverage diagnostics, and the effective number of clusters from @carter2017asymptotic. The diagnostics are useful even when the goal is not to switch to the jackknife: a small effective $G$, or a few clusters with very high leverage, are warning signs that asymptotic cluster-robust inference is unreliable.
+
+```{r clu-pkg-summclust}
+sc <- summclust(fit, cluster = ~ firm, params = "x")
+summary(sc)
+```
+
+The leverage and partial-leverage rows tell the analyst whether a single cluster is driving the result. The jackknife SE is the principled small-sample point estimate, and pairing it with the wild cluster bootstrap is the redundant-but-safe combination recommended by @mackinnon2023guide for designs with concentrated treatment.
+
+### 통합 패널 추정: `fixest` {#sec-clu-pkg-fixest}
+
+`fixest::feols` is the workhorse panel-data estimator in modern applied econometrics. It absorbs high-dimensional fixed effects, computes one- or multi-way clustered standard errors in a single call, and produces publication-quality side-by-side tables via `etable`.
+
+```{r clu-pkg-fixest}
+f_one <- feols(y ~ x, data = panel, cluster = ~ firm)
+f_two <- feols(y ~ x, data = panel, cluster = ~ firm + year)
+etable(f_one, f_two)
+```
+
+For panel designs with fixed effects, write `feols(y ~ x | firm + year, data = panel, cluster = ~ firm)`; the `| firm + year` syntax absorbs both fixed effects efficiently. For stacked difference-in-differences with units reused across sub-experiments, cluster on `~ firm^sub_experiment`.
+
+### 공간 및 네트워크 표준오차 {#sec-clu-pkg-spatial}
+
+For spatial designs, the R package `conleyreg` implements the Conley HAC estimator and its Bartlett-kernel variants; the Stata equivalent is `acreg` [@colella2023acreg], which also handles arbitrary network-based correlation structures. A minimal Conley HAC implementation was already provided in Section \@ref(sec-clu-sim-spatial); it is sufficient for a teaching example, but for production work the published packages handle distance computation, kernel choice, and panel extensions more robustly. Network cluster-robust standard errors of @leung2023network are also available in `acreg` and in dedicated R implementations distributed via GitHub.
+
+### 함수 입력값과 패키지 간 호환성 {#sec-clu-pkg-inputs}
+
+The examples above all start from an `lm` fit because that is the lowest-common-denominator object. In practice readers will fit with `fixest::feols`, `plm::plm`, `lfe::felm`, `lme4::lmer`, `ivreg::ivreg`, or a `glm`, and the question becomes: which inference package will accept which model object, and in what format must the cluster variable be passed.
+
+Two patterns matter. The first is what the function calls a "cluster": some want a vector, some want a formula, some want a column-name string. The second is which model classes each function dispatches on. The two tables below cover both.
+
+#### 함수별 군집 지정 형식
+
+| Function | Accepted formats for the cluster argument | Example |
+|---|---|---|
+| `sandwich::vcovCL` | formula, vector, factor, or `data.frame` (for multiway) | `cluster = ~ firm`, `cluster = panel$firm`, `cluster = data.frame(unit, time)` |
+| `clubSandwich::coef_test` / `vcovCR` | vector or factor, *not* a formula | `cluster = panel$firm` |
+| `fwildclusterboot::boottest` | string name of a column in the data passed to the fit | `clustid = "firm"` (or `c("firm","year")` for two-way) |
+| `summclust::summclust` | formula evaluated in the fit's data | `cluster = ~ firm` |
+| `fixest::feols(..., cluster=)` | formula; supports interactions with `^` for stacked DiD | `cluster = ~ firm`, `cluster = ~ firm + year`, `cluster = ~ firm^sub_experiment` |
+
+A common bug: passing `cluster = ~ firm` to `clubSandwich::coef_test`. It expects a vector. Use `cluster = panel$firm` or `cluster = model.frame(fit)$firm`. The other direction (passing a vector where a formula is expected) usually works because the function falls back to vector dispatch, but the formula form is more robust because it re-resolves against the fit's data.
+
+#### 함수가 허용하는 모형 클래스
+
+The check marks below reflect the maintained CRAN versions used in this chapter. Where a package has partial support, that means the API works but with caveats (typically: cluster argument format differs, or certain methods like predict are not extended).
+
+| Package / function | `lm` | `glm` | `fixest::feols` | `plm::plm` | `lfe::felm` | `lme4::lmer` | `ivreg::ivreg` |
+|---|---|---|---|---|---|---|---|
+| `sandwich::vcovCL` / `vcovHC` | yes | yes | partial (use fixest's built-in) | yes | yes | partial | yes |
+| `clubSandwich::coef_test` | yes | yes | no (use fixest or summclust) | yes | no | yes | no |
+| `fwildclusterboot::boottest` | yes | no | yes | no | no | no | yes |
+| `summclust::summclust` | yes | no | yes | no | no | no | no |
+| `fixest` built-in `cluster=` | n/a | n/a | yes | n/a | n/a | n/a | n/a |
+
+The practical decision rule from this matrix:
+
+- If you fit with `lm` or `glm`, every package above is available. This is why the examples in this chapter use `lm`: the same `fit` works with all five inference packages.
+- If you fit with `fixest::feols` (the recommended choice for panel and DiD work because of high-dimensional fixed effects), use fixest's built-in `cluster=` for routine work, `fwildclusterboot::boottest` for the wild cluster bootstrap, and `summclust` for the jackknife and effective $G$.
+- If you fit with `plm::plm` (the classical panel-data package), use `sandwich::vcovCL` for CR1 and `clubSandwich::coef_test` for CR2.
+- If you fit with `lme4::lmer` (mixed-effects), `clubSandwich` is the right call for CR2 with Satterthwaite df; the others do not dispatch on `lmerMod`.
+- For `lfe::felm`, use `sandwich::vcovCL`; `clubSandwich` does not support it, and `lfe` itself has been superseded by `fixest` for new work.
+
+#### 패키지 간 일관성 점검
+
+To make the compatibility tangible, the cell below refits the chapter's example with `fixest::feols` and confirms that fixest's built-in cluster-robust standard error and `sandwich::vcovCL` on the equivalent `lm` fit give the same number (up to a small-sample degrees-of-freedom adjustment).
+
+```{r clu-pkg-cross}
+fit_lm    <- lm(y ~ x, data = panel)
+fit_feols <- feols(y ~ x, data = panel, cluster = ~ firm)
+
+# fixest's built-in cluster-robust SE
+se_fixest <- se(fit_feols)[["x"]]
+# sandwich's CR1 on the lm fit
+se_sand <- sqrt(vcovCL(fit_lm, cluster = ~ firm)["x", "x"])
+# clubSandwich's CR2 on the lm fit (more conservative in small samples)
+se_cr2  <- coef_test(fit_lm, vcov = "CR2",
+                     cluster = panel$firm, coefs = "x")$SE
+
+data.frame(method = c("fixest CR1", "sandwich CR1 (lm)",
+                      "clubSandwich CR2 (lm)"),
+           SE = c(se_fixest, se_sand, se_cr2))
+```
+
+The `fixest` and `sandwich` numbers agree to all printed digits because both implement the same CR1 formula and apply the same finite-sample adjustment for an OLS regression. The `clubSandwich` CR2 number is slightly larger, as expected: CR2 inflates the variance to correct the finite-sample bias and trades a tiny amount of efficiency for size control.
+
+#### 각 함수가 궁극적으로 필요로 하는 입력값
+
+Across all of the packages above, the inputs reduce to three things:
+
+1. A fitted model object that exposes residuals, the model matrix, and (when applicable) sample weights through standard generics. Any of `lm`, `glm`, `feols`, `plm`, `lmer`, `ivreg` qualify; user-defined model classes do not unless they implement `residuals()`, `model.matrix()`, and `bread()` (`sandwich::bread`) appropriately.
+2. A grouping variable for the cluster, in the format the specific function wants. The grouping must be the same length as the data used to fit the model and aligned to its rows.
+3. The coefficient name to test (`coefs`, `param`, or `params`, depending on the package), and for bootstrap-based functions, a number of replications $B$.
+
+The reason `sandwich` is such a foundation is that its `bread()` and `meat()` generics let any well-behaved model class slot in. If you have a custom estimator, implementing those two methods is the minimum work to make every cluster-robust tool in the ecosystem usable on it.
+
+### 안정적이고 최신인 패키지 한눈에 보기 {#sec-clu-package-stability}
+
+The table below summarizes the packages used above, with the CRAN-version maturity status and the situation each is the right call for. Versions are those used in this chapter; all are on CRAN and actively maintained.
+
+| Package | Version | Maintainer | Use this when... | Reference |
+|---|---|---|---|---|
+| `sandwich` | 3.1.1 | Achim Zeileis (since 2004) | You need HC, HAC, or cluster-robust variance for any `lm`, `glm`, `survreg` model. The foundation; nearly every other cluster-SE package builds on or interoperates with it. | @zeileis2020various |
+| `lmtest` | 0.9.40 | Hothorn et al. | Companion to `sandwich`; provides `coeftest()` for displaying test statistics with any custom variance matrix. | Hothorn et al., CRAN |
+| `clubSandwich` | 0.6.1 | James Pustejovsky | The cluster count is moderate (5 to 30 or so) and you want CR2 with Satterthwaite degrees of freedom rather than the asymptotic CR1 $t$. Also handles `plm`, `lme4`, `lmer`, `robumeta`. | @pustejovsky2018small |
+| `fwildclusterboot` | 0.14.3 | Alexander Fischer | The cluster count is small (under 30), there are few treated clusters, or you want a non-asymptotic $p$-value as a sanity check. R port of Roodman's Stata `boottest`. | @roodman2019fast |
+| `summclust` | 0.7.2 | MacKinnon, Nielsen, Webb | You want the CR3J jackknife, the @carter2017asymptotic effective number of clusters, or leverage diagnostics. The implementation companion to @mackinnon2023jackknife. | @mackinnon2023jackknife |
+| `fixest` | 0.13.2 | Laurent Berg{\'e} | You are estimating a panel or DiD model with one or more fixed-effects dimensions. The fastest high-dimensional FE estimator in R; built-in one- and multi-way clustering with no extra package call. | @zeileis2020various (compatible) |
+| `conleyreg` (or `acreg` in Stata) | not on every machine | Christian D{\"u}ben; Colella et al. in Stata | Spatial dependence with a distance metric, or arbitrary correlation along a network. | @colella2023acreg |
+| `plm`, `lfe` | 2.6.6, 3.1.1 | Croissant, Millo; Gaure | Mature alternatives to `fixest` for panel-data fixed-effects estimation; both interoperate with `sandwich` for cluster-robust SE. | @croissant2008panel |
+
+A reasonable default workflow for a new applied paper is: estimate with `fixest::feols(... | <fixed effects>, cluster = ~ <design level>)`, report the cluster-robust SE, and pair it with a `fwildclusterboot::boottest` wild cluster bootstrap $p$-value as a sanity check. If the cluster count is below 30, also report the `clubSandwich::coef_test(..., vcov = "CR2", test = "Satterthwaite")` result. For spatial or network designs, swap in `conleyreg` (R) or `acreg` (Stata). The comprehensive practitioner overview is @mackinnon2023guide.
+
+## 요약 {#sec-clu-summary}
+
+군집화는 점 추정치가 아니라 표준오차의 문제이다. 군집 내부 상관이 있으면 자료가 원시 표본 크기가 암시하는 것보다 적은 독립 정보를 담으므로, 독립성을 가정해 계산한 표준오차는 너무 작고 검정은 과도하게 기각한다. 군집 강건 분산 추정량은 상관 구조를 모형화하지 않고 이를 보정하지만, 신뢰성을 위해 많은 군집이 필요하다. 2015년 이후의 도구 모음은 소표본에서도 점근적 논리를 작동시키는 세 가지 개선 계열을 발전시켰다. 중간 규모 $G$를 위한 Satterthwaite 자유도의 CR2, 표준적인 소수 군집 상황을 위한 와일드 군집 부트스트랩과 그 다중 방향 확장, 그리고 처치가 소수 군집에 집중된 경우의 무작위화 또는 단일 군집 방법이다.
+
+이 장의 시뮬레이션은 이러한 실패 양상을 추적한다. 군집화를 무시하거나 지나치게 세밀하게 하면 상관이 보정되지 않아 과도하게 기각한다. 지나치게 거칠게 군집화하면 상관 처리에는 안전하지만 군집 수가 너무 적어질 수 있고, CRVE의 소표본 편향으로 다시 과도하게 기각하게 된다. 두 차원의 비중첩 상관에는 이중 방향 군집화가 필요하다. 공간, 시간 또는 네트워크의 연속적 의존성에는 Section \@ref(sec-clu-spatial)과 Section \@ref(sec-clu-network)에서 다룬 일반화가 필요하다.
+
+통합된 메시지는 군집화가 설계상의 선택이라는 것이다. @abadie2020sampling과 @abadie2023should의 더 깊은 관점에 따르면 군집화 수준은 *무작위성이 유입되는 곳*, 즉 처치의 배정 메커니즘과 자료의 표본추출 메커니즘에 의해 결정된다. 자료에 집단 식별자가 있다는 사실만으로 그 식별자에 군집화할 이유가 되지는 않는다. 설계가 요구하는 수준을 선택하고, 설계가 모호하면 실행 가능한 더 거친 수준을 택하며, 점근적 검정을 신뢰하기 전에 군집 수를 세고, 군집 수가 중간 정도라면 통상적인 군집 강건 표준오차에 CR2 또는 와일드 군집 부트스트랩 점검을 함께 적용한다.

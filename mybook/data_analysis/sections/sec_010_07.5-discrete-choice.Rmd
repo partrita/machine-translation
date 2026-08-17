@@ -1,0 +1,541 @@
+<!-- ========================================= -->
+<!-- Chapter: 07.5-discrete-choice.Rmd -->
+<!-- ========================================= -->
+
+
+# 이산선택 및 제한종속변수 모형 (Discrete Choice and Limited Dependent Variables) {#sec-discrete-choice}
+
+경제학 및 사회과학에서 다루는 대부분의 결과변수는 선형 회귀에서 가정하는 매끄럽고 한계가 없는 연속형(unbounded continua) 변수가 아닙니다. 사람들은 취업 여부를 결정하고, 어떤 교통수단을 이용할지 선택하며, 몇 명의 자녀를 가질지 고민하거나, 여러 브랜드 중 어떤 제품을 구매할지 선택합니다. 이러한 의사결정으로 인해 도출되는 결과변수는 이항(binary), 순서형(ordered), 범주가 많은 비순서형(unordered with many categories), 특정 경계에서 중도절단(censored), 또는 음이 아닌 정수(non-negative integers)로 제한된 형태를 띱니다. 이러한 결과변수에 선형 모형을 적합하면 0 미만이나 1을 초과하는 예측 확률이 발생할 수 있고, 우연적이 아니라 구조적으로 내재된 이분산성(heteroskedasticity)이 생기며, 경제 이론상 일정하지 않아야 할 편효과(partial effects)가 모형 설정상 상수로 고정되는 문제가 발생합니다.
+
+본 장에서는 이러한 제한종속변수(limited dependent variables)를 다루기 위한 현대적 분석 도구를 체계적으로 정리합니다. @mcfadden1974conditional 에 의해 정립된 중심 개념은 확률효용 모형(Random Utility Model)입니다. 의사결정자는 잠재 효용(latent utility)이 가장 높은 대안을 선택하며, 계량경제학자는 그 효용 자체가 아니라 오직 관측된 '선택'만을 보게 됩니다. 효용의 관측되지 않는 오차 성분에 대한 다양한 분포 가정을 통해 로짓(logit), 프로빗(probit), 순서형(ordered), 다항(multinomial), 중첩(nested), 혼합(mixed) 모형 등이 도출됩니다. 본 장은 이항 선택 사례에서 출발하여, 순서형 및 비순서형 다항 결과로 확장하고, 한계효과(marginal effects)와 탄력성(elasticities)을 통한 모형 해석을 다룬 후, 가산 데이터(count data), 희귀 사건(rare events), 로그 0 문제(log-of-zero problem), 그리고 총량 수요 추정(aggregate demand estimation)으로 나아갑니다. 총량 수요 추정 내용은 \@ref(sec-structural-io) 절의 구조적 산업조직론(structural industrial organization) 논의와 직접 연결됩니다.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+set.seed(1)
+```
+
+## 잠재변수 및 확률효용 프레임워크 (The Latent-Variable and Random-Utility Framework)
+
+본 장에서 다루는 모든 모형을 통합적으로 설명하는 방법은, 관측된 이산적 결과를 유발하는 관측되지 않은 연속형 지수(index), 즉 잠재변수(latent variable)를 상정하는 것입니다.
+
+### 이항 반응 (Binary Outcomes)
+
+$y_i \in \{0,1\}$을 고용 여부와 같은 이항 결과변수라 하고, 다음과 같은 잠재적 성향(latent propensity)이 존재한다고 가정해 봅시다.
+
+$$
+y_i^* = \mathbf{x}_i' \boldsymbol\beta + \varepsilon_i, \qquad
+y_i = \mathbf{1}(y_i^* > 0).
+$$
+
+우리는 잠재 지수가 0으로 표준화된 임계값(threshold)을 넘을 때 정확히 $y_i = 1$을 관측합니다. 이때 성공(1)이 나타날 조건부 확률은 다음과 같습니다.
+
+$$
+P(y_i = 1 \mid \mathbf{x}_i)
+= P(\varepsilon_i > -\mathbf{x}_i'\boldsymbol\beta)
+= 1 - F(-\mathbf{x}_i'\boldsymbol\beta)
+= F(\mathbf{x}_i'\boldsymbol\beta),
+$$
+
+여기서 마지막 등호는 오차 분포의 대칭성을 이용한 것이며, $F$는 $\varepsilon_i$의 누적분포함수(cdf)입니다. 실무에서는 $F$로 두 가지 분포가 주로 사용됩니다.
+
+$\varepsilon_i$가 표준 로지스틱 분포(standard logistic distribution)를 따르면 $F(z) = \Lambda(z) = e^z / (1 + e^z)$가 되어 로짓 모형(logit model)을 얻습니다. $\varepsilon_i$가 표준정규분포를 따르면 $F(z) = \Phi(z)$가 되어 프로빗 모형(probit model)을 얻습니다. 잠재변수는 자연스러운 척도(scale)가 없기 때문에 $\varepsilon_i$의 분산은 정규화됩니다. 즉, 프로빗에서는 1로, 로짓에서는 $\pi^2/3$으로 정규화됩니다. 따라서 두 모형의 계수는 대략 이 척도 인자의 비율인 $\pi/\sqrt 3 \approx 1.81$ 정도 차이가 나며, 이것이 로짓 계수가 일반적으로 프로빗 계수보다 1.6~1.8배 정도 크게 추정되는 이유입니다.
+
+동일한 확률을 효용 극대화(utility maximization) 관점에서도 도출할 수 있습니다. 두 상태의 효용이 각각 $U_{i1} = \mathbf{x}_i'\boldsymbol\beta_1 + \epsilon_{i1}$과 $U_{i0} = \mathbf{x}_i'\boldsymbol\beta_0 + \epsilon_{i0}$이라고 가정해 봅시다. 행위자는 $U_{i1} > U_{i0}$일 때 상태 1을 선택하게 되며, 이는 $\boldsymbol\beta = \boldsymbol\beta_1 - \boldsymbol\beta_0$, $\varepsilon_i = \epsilon_{i0} - \epsilon_{i1}$로 둔 잠재지수 표현식과 정확히 일치합니다. 두 효용 충격(utility shocks)이 서로 독립인 제1종 극치분포(Type-I Extreme Value, Gumbel)를 따르면 그 차이는 로지스틱 분포가 되어 로짓 모형이 도출되고, 두 오차가 결합정규분포(joint normal)를 따르면 프로빗 모형이 도출됩니다. 이와 같이 잠재지수 관점과 확률효용 관점 사이의 동치성은 이항 선택 모형이 이후 전개되는 모든 논의의 자연스러운 기초가 되도록 만듭니다.
+
+### 순서형 반응 (Ordered Outcomes)
+
+결과변수가 리커트 척도(Likert scale)의 설문 응답, 신용 등급(bond rating), 또는 교육 수준과 같이 순서가 있는 범주형인 경우, 단일 잠재변수는 추정 대상인 일련의 절단점(cut points) $-\infty = \kappa_0 < \kappa_1 < \cdots < \kappa_J = \infty$에 의해 구분됩니다.
+
+$$
+y_i = j \quad \text{if} \quad \kappa_{j-1} < y_i^* \le \kappa_j,
+\qquad y_i^* = \mathbf{x}_i'\boldsymbol\beta + \varepsilon_i.
+$$
+
+이에 따른 각 범주별 확률은 누적분포함수의 차이로 주어집니다.
+
+$$
+P(y_i = j \mid \mathbf{x}_i) = F(\kappa_j - \mathbf{x}_i'\boldsymbol\beta) - F(\kappa_{j-1} - \mathbf{x}_i'\boldsymbol\beta),
+$$
+
+$F = \Lambda$이면 순서형 로짓(ordered logit), $F = \Phi$이면 순서형 프로빗(ordered probit)이 됩니다. 절편(intercept)은 절단점들에 흡수되므로 별도로 식별(identify)되지 않습니다. 여기서 핵심적인 행동적 제약은 비례승산(proportional-odds) 또는 평행회귀(parallel-regressions) 가정입니다. 즉, 단일 계수 벡터 $\boldsymbol\beta$가 모든 임계값에 대해 잠재 지수를 동시에 동일하게 이동시킨다고 가정합니다. 만약 이 가정이 기각된다면, 일반화 순서형 모형(generalized ordered model)이나 순서를 무시한 다항 모형(multinomial model)을 사용하는 것이 바람직합니다.
+
+### 비순서형 다항 반응 (Unordered Multinomial Outcomes)
+
+$J$개의 대안 사이에 자연스러운 순서가 없을 때, 잠재지수의 논리는 $J$개의 독립적인 효용으로 일반화됩니다.
+
+$$
+U_{ij} = V_{ij} + \varepsilon_{ij}, \qquad j = 1, \dots, J,
+$$
+
+행위자는 모든 $k$에 대해 $U_{ij} \ge U_{ik}$일 때 대안 $j$를 선택합니다. 결정론적 부분(deterministic part) $V_{ij}$는 대안의 관측된 속성과 의사결정자의 특성을 포함하며, 확률적 부분(stochastic part) $\varepsilon_{ij}$는 분석가가 관측할 수 없는 모든 요소를 담고 있습니다. 개인 $i$가 대안 $l$을 선택할 확률은 다음과 같습니다.
+
+$$
+P_{il} = P\bigl(V_{il} + \varepsilon_{il} \ge V_{ij} + \varepsilon_{ij} \ \forall j\bigr).
+$$
+
+벡터 $(\varepsilon_{i1},\dots,\varepsilon_{iJ})$에 대해 가정하는 분포에 따라 모형이 결정됩니다. 독립적이고 동일하게 분포하는(i.i.d.) 굼벨(Gumbel) 오차는 다항 로짓(multinomial logit) 및 조건부 로짓(conditional logit)을 산출하며, 집단 내에서 상관된 굼벨 오차는 중첩 로짓(nested logit)을, 다변량 정규 오차는 다항 프로빗(multinomial probit)을, 계수에 대한 혼합 분포는 혼합 로짓(mixed logit)을 산출합니다. 이제 각각을 차례대로 살펴보겠습니다.
+
+## 이항 선택의 실제 (Binary Choice in Practice)
+
+### 로짓 모형 (The Logit Model)
+
+로짓 모형은 성공 확률을 선형 지수의 역로짓(inverse-logit, 로지스틱) 변환으로 정의합니다.
+
+$$
+P(y_i = 1 \mid \mathbf{x}_i)
+= \Lambda(\mathbf{x}_i'\boldsymbol\beta)
+= \frac{e^{\mathbf{x}_i'\boldsymbol\beta}}{1 + e^{\mathbf{x}_i'\boldsymbol\beta}}.
+$$
+
+선형 지수에 대해 정리하면 모수에 대해 선형인 로그 승산(log-odds, 로짓)을 얻을 수 있습니다.
+
+$$
+\ln\!\left(\frac{P(y_i=1\mid\mathbf{x}_i)}{1 - P(y_i=1\mid\mathbf{x}_i)}\right)
+= \mathbf{x}_i'\boldsymbol\beta .
+$$
+
+$x_{ik}$가 1단위 증가하면 로그 승산은 $\beta_k$만큼 증가하며, 이는 동등하게 승산(odds)에 $e^{\beta_k}$ 즉 승산비(odds ratio)를 곱한 것과 같습니다. 이 모형은 최대우도추정법(Maximum Likelihood Estimation, MLE)으로 추정되며, 로그우도함수가 전역적으로 오목(globally concave)하므로 수렴이 빠르고 안정적입니다.
+
+다음 시뮬레이션 예제는 독립된 세션에서 실행 가능하며, 추정, 승산비 및 예측 확률 계산을 보여줍니다.
+
+```{r}
+n <- 2000
+x1 <- rnorm(n)
+x2 <- rnorm(n)
+x3 <- rbinom(n, 1, 0.5)
+eta <- -0.5 + 0.8 * x1 - 0.4 * x2 + 0.6 * x3
+p <- 1 / (1 + exp(-eta))
+y <- rbinom(n, 1, p)
+dat <- data.frame(y, x1, x2, x3)
+
+fit_logit <- glm(y ~ x1 + x2 + x3, family = binomial(link = "logit"),
+                 data = dat)
+summary(fit_logit)$coefficients
+```
+
+추정된 계수는 로그 승산 척도에 있습니다. 이를 지수변환($\exp$)하면 승산비가 되고, 1을 빼면 승산의 백분율 변화로 나타낼 수 있습니다.
+
+```{r}
+cbind(estimate = round(coef(fit_logit), 4),
+      odds_ratio = round(exp(coef(fit_logit)), 4),
+      pct_change = round((exp(coef(fit_logit)) - 1) * 100, 2))
+```
+
+이항 설명변수에 대한 승산비 $e^{\beta_k}$는 해당 변수가 1일 때 $y=1$일 승산이 0일 때에 비해 $e^{\beta_k}$배 높음을 의미합니다. 로지스틱 누적분포함수가 비선형이기 때문에, 확률 자체에 미치는 효과는 개별 관측치가 곡선상의 어느 위치에 있는지에 따라 달라집니다. 이 점은 한계효과 절에서 다시 다룹니다.
+
+예측 확률을 구하려면 적합된 선형 지수에 역로짓 변환을 적용합니다. 설명변수의 표본 평균에서 평가한 확률은 다음과 같습니다.
+
+```{r}
+inv_logit <- function(z) 1 / (1 + exp(-z))
+xbar <- colMeans(dat[, c("x1", "x2", "x3")])
+inv_logit(coef(fit_logit)[1] + sum(coef(fit_logit)[-1] * xbar))
+```
+
+`predict` 메서드는 동일한 값과 함께 표준오차를 제공하므로, 이를 통해 예측 확률에 대한 점별 신뢰구간(pointwise confidence intervals)을 구할 수 있습니다.
+
+```{r}
+nd <- data.frame(x1 = mean(dat$x1), x2 = mean(dat$x2),
+                 x3 = c(0, 1))
+pr <- predict(fit_logit, newdata = nd, type = "response", se.fit = TRUE)
+data.frame(nd,
+           prob = pr$fit,
+           lower = pr$fit - 1.96 * pr$se.fit,
+           upper = pr$fit + 1.96 * pr$se.fit)
+```
+
+### 프로빗 모형 (The Probit Model)
+
+프로빗 모형은 로지스틱 누적분포함수를 표준정규 누적분포함수로 대체합니다.
+
+$$
+P(y_i = 1 \mid \mathbf{x}_i) = \Phi(\mathbf{x}_i'\boldsymbol\beta),
+$$
+
+여기서 $\Phi$는 표준정규 cdf입니다. 오차가 분산이 1로 고정된 정규분포를 따른다는 점을 제외하면 잠재변수 유도 과정은 완전히 동일합니다. $\Phi$는 지수를 선형화하는 닫힌 형태(closed-form)의 역함수가 없기 때문에 승산비로 해석할 수 없으며, 프로빗 계수는 부호와 한계효과를 통해 해석합니다.
+
+로짓과 프로빗은 부호, 유의성 및 적합 확률 측면에서 거의 항상 일치하며, 주로 오차 분포의 꼬리 두께(tail thickness)에서 차이가 납니다. 로짓은 꼬리 부분에 다소 더 많은 확률 질량을 부여하므로, 극단적인 지수 값에 대해 약간 더 높은 확률을 예측합니다. 둘 중 어느 모형을 선택할지는 대개 관례의 문제입니다. 역학(epidemiology)과 선택 모델링(choice modeling)에서는 승산비 해석 및 확률효용과의 명시적 연결 덕분에 로짓이 우세한 반면, 계량경제학에서는 특히 이항 방정식이 표본선택(sample-selection)이나 연립방정식(simultaneous-equations) 모형과 같은 더 큰 정규분포 시스템의 일부일 때 프로빗이 널리 사용됩니다.
+
+```{r}
+fit_probit <- glm(y ~ x1 + x2 + x3, family = binomial(link = "probit"),
+                  data = dat)
+ratio <- coef(fit_logit) / coef(fit_probit)
+round(ratio, 3)
+```
+
+로짓 계수와 프로빗 계수의 비율은 이론적 척도 인자인 $\pi/\sqrt{3} \approx 1.81$ 근처에 밀집되어 있으며, 이는 두 모형의 차이가 경제학적 내용보다는 주로 잠재 분산의 재조정(rescaling)에서 비롯됨을 확인해 줍니다.
+
+실무적 주의사항: 결과가 완벽하게 예측되는 완전분리(separation) 현상이 발생하면 최대우도 추정치가 무한대로 발산하고 표준오차가 폭발합니다. 벌점화 우도(penalized likelihood), 예를 들어 퍼스 바이어스 보정(Firth bias correction)을 적용하면 유한한 추정치를 얻을 수 있으며, 이는 뒤에서 논의할 소표본 및 희귀 사건 편향을 완화하는 동일한 기법입니다.
+
+## 순서형 반응의 실제 (Ordered Outcomes in Practice)
+
+### 순서형 로짓과 순서형 프로빗 (Ordered Logit and Ordered Probit)
+
+순서형 반응의 경우 각 범주 확률은 절단점에서 평가된 연결함수의 차이로 계산됩니다. 추정은 역시 최대우도법을 사용하며, $\boldsymbol\beta$와 임계값 집합 $\{\kappa_j\}$를 동시에 추정합니다. $\beta_k$의 부호는 설명변수가 잠재 지수를 어느 방향으로 이동시키는지, 따라서 상위 결과 범주가 나타날 확률이 높아지는지 낮아지는지를 알려주지만, 그 크기가 구체적인 범주별 확률로 변환되는 것은 오직 절단점을 통해서만 결정됩니다.
+
+아래 예제는 순서형 반응 데이터를 시뮬레이션하고 `MASS::polr`을 사용하여 두 연결함수를 모두 적합합니다.
+
+```{r}
+ystar <- 0.9 * x1 - 0.5 * x2 + rlogis(n)
+cuts <- quantile(ystar, c(1/3, 2/3))
+yo <- cut(ystar, breaks = c(-Inf, cuts, Inf), labels = c("low", "mid", "high"))
+od <- data.frame(yo, x1, x2)
+
+library(MASS)
+fit_ologit <- polr(yo ~ x1 + x2, data = od, method = "logistic", Hess = TRUE)
+fit_oprobit <- polr(yo ~ x1 + x2, data = od, method = "probit", Hess = TRUE)
+summary(fit_ologit)$coefficients
+```
+
+순서형 로짓에서 계수를 지수변환하면 비례승산비(proportional-odds ratio)를 얻을 수 있습니다. 이는 모든 하위 범주들을 합친 것 대비 상위 범주에 속할 승산에 미치는 승수적 효과(multiplicative effect)를 나타내며, 이 비율은 모든 절단점에 걸쳐 일정하다고 가정됩니다. 예측 범주 확률은 `type = "probs"` 옵션을 통해 구할 수 있습니다.
+
+```{r}
+nd_o <- data.frame(x1 = c(-1, 0, 1), x2 = 0)
+round(predict(fit_ologit, newdata = nd_o, type = "probs"), 3)
+```
+
+$x_1$이 증가함에 따라 확률 질량이 낮은 범주에서 높은 범주로 이동하며, 이는 양의 잠재지수 계수가 갖는 전형적인 특징입니다. 이러한 명쾌한 해석의 바탕이 되는 평행회귀(parallel-regressions) 가정은 반드시 검정되어야 합니다. 브랜트 검정(Brant test)이나 일반화 순서형 모형과의 우도비(likelihood-ratio) 비교가 이 용도로 사용됩니다. 만약 이 가정이 기각된다면, 순서를 버리고 다항 모형을 추정함으로써 효율성을 희생하는 대신 강건성을 확보할 수 있습니다.
+
+## 다항 로짓과 조건부 로짓 (Multinomial and Conditional Logit)
+
+### 설명변수가 투입되는 두 가지 방식 (Two Ways Regressors Enter)
+
+순서가 없는 대안을 다룰 때는 두 종류의 설명변수를 구분하는 것이 필수적입니다. 소득이나 연령과 같은 의사결정자의 특성(characteristics of the decision maker)은 대안에 따라 변하지 않으므로 대안별 고유 계수(alternative-specific coefficients)와 함께 투입되어야 합니다. 이것이 다항 로짓(multinomial logit)입니다. 반면 가격이나 이동 시간과 같은 대안의 속성(attributes of the alternatives)은 대안에 따라 달라지며 단일한 일반 계수(generic coefficient)와 함께 투입됩니다. 이것이 @mcfadden1974conditional 의 조건부 로짓(conditional logit)입니다. 두 방식을 결합한 모형은 초기 문헌에서 종종 혼합(mixed) 모형으로 불렸으나, 현재 이 용어는 주로 확률계수(random coefficients) 모형을 지칭합니다.
+
+결정론적 효용을 다음과 같이 표기할 때,
+
+$$
+V_{ij} = \alpha_j + \mathbf{z}_i'\boldsymbol\gamma_j + \mathbf{x}_{ij}'\boldsymbol\beta,
+$$
+
+i.i.d. 굼벨 오차 하에서의 선택 확률은 다음과 같은 로짓 점유율(logit shares)이 됩니다.
+
+$$
+P_{ij} = \frac{\exp(V_{ij})}{\sum_{k=1}^J \exp(V_{ik})}.
+$$
+
+효용의 차이만이 중요하므로, 하나의 대안을 기준(reference) 대안으로 설정합니다. 기준 대안의 상수항과 $\boldsymbol\gamma$는 0으로 정규화되므로, 식별 가능한 대안별 상수항 및 계수 벡터는 최대 $J-1$개입니다.
+
+### nnet과 mlogit을 활용한 추정 (Estimation with nnet and mlogit)
+
+`nnet::multinom` 함수는 개체 특성 변수(case-specific regressors)를 포함하는 다항 로짓을 적합합니다. 다음 예제는 연속형 공변량에 의해 유도되는 3개 범주의 선택을 시뮬레이션합니다.
+
+```{r, include = FALSE}
+# 아래 시뮬레이션 효용을 위한 굼벨 난수 생성 (추가 패키지 의존성 방지)
+rgumbel <- function(k) -log(-log(runif(k)))
+```
+
+```{r}
+score <- rnorm(n)
+female <- rbinom(n, 1, 0.5)
+u_low <- -0.6 - 0.9 * score + 0.2 * female + rgumbel(n)
+u_mid <- rep(0, n) + rgumbel(n)
+u_hi  <- -0.3 + 0.7 * score - 0.1 * female + rgumbel(n)
+choice <- max.col(cbind(u_low, u_mid, u_hi))
+ses <- factor(c("low", "mid", "hi")[choice], levels = c("mid", "low", "hi"))
+md <- data.frame(ses, score, female)
+
+library(nnet)
+fit_mnl <- multinom(ses ~ score + female, data = md, trace = FALSE)
+summary(fit_mnl)$coefficients
+```
+
+각 계수 행은 기준 범주(여기서는 `mid`) 대비 해당 범주를 비교합니다. 계수를 지수변환하면 상대위험비(relative-risk ratio, RRR)를 얻을 수 있으며, 이는 설명변수가 1단위 증가할 때 기준 범주 대비 해당 범주가 선택될 확률의 승수적 변화를 나타냅니다. 예측 확률은 마찬가지로 `type = "probs"`를 지정한 `predict` 메서드를 통해 계산할 수 있습니다.
+
+`mlogit` 패키지는 대안당 1개 행으로 구성된 롱 포맷(long format) 데이터를 입력받고 대안에 따라 속성이 변하도록 지원하기 때문에, 조건부 로짓 및 더 복잡한 선택 모형을 위한 핵심 도구입니다. 전형적인 예제로 가구가 5가지 난방 시스템 중 하나를 선택하고 설치비용(installation cost)과 운영비용(operating cost)이 설명변수로 사용되는 `Heating` 데이터를 활용합니다. 이 코드 청크는 패키지와 내장 데이터에 의존하므로 실행(`eval = FALSE`)하지 않고 코드만 제시합니다.
+
+```{r, eval = FALSE}
+library(mlogit)
+data("Heating", package = "mlogit")
+H <- dfidx(Heating, choice = "depvar", varying = c(3:12))
+
+# 일반 비용 계수, 대안별 상수항 없음
+m0 <- mlogit(depvar ~ ic + oc | 0, H)
+summary(m0)
+
+# 열펌프(heat-pump) 대안을 기준으로 정규화한 대안별 상수항 추가
+mc <- mlogit(depvar ~ ic + oc, H, reflevel = "hp")
+apply(fitted(mc, outcome = FALSE), 2, mean)  # 이제 관측된 점유율과 정확히 일치함
+```
+
+대안별 상수항 전체 세트를 포함하면 평균 예측 확률이 관측된 시장 점유율과 정확히 일치하게 됩니다. 이는 유용한 진단 지표이자 뒤에서 다룰 총량 수요 추정에서 사용되는 부동점(fixed point) 조건입니다.
+
+### 지불용의액과 소비자 잉여 (Willingness to Pay and Consumer Surplus)
+
+비용 속성을 포함하여 효용을 추정할 때 얻을 수 있는 핵심적인 이점은 계수 간의 비율이 화폐 단위로 표현된 한계대체율(Marginal Rate of Substitution, MRS)이 된다는 점입니다. 효용함수에 계수가 $\beta_{ic}$인 설치비용과 계수가 $\beta_{oc}$인 운영비용이 포함되어 있다면, $dV = \beta_{ic}\, d(ic) + \beta_{oc}\, d(oc) = 0$으로 둠으로써 연간 운영비용 1달러 절감에 대해 지불할 용의가 있는 설치비용 증가분, 즉 지불용의액(Willingness to Pay, WTP)을 다음과 같이 구할 수 있습니다.
+
+$$
+\left.-\frac{d(ic)}{d(oc)}\right|_{dV = 0} = \frac{\beta_{oc}}{\beta_{ic}} .
+$$
+
+```{r, eval = FALSE}
+wtp <- coef(mc)["oc"] / coef(mc)["ic"]   # 연간 1달러 절감당 지불 가능한 자본 비용(달러)
+r <- 1 / wtp                              # 암묵적 할인율
+c(wtp = wtp, discount_rate = r)
+```
+
+이러한 지불용의액의 역수는 가구가 영구적인 연간 1달러 절감 흐름에 적용하는 암묵적 할인율(implied discount rate)이 되며, 연구자들은 추정된 상충관계(trade-off)가 경제학적으로 타당한지 평가하는 데 이 값을 활용합니다.
+
+후생 분석(welfare analysis)과 관련하여, @small1981applied 는 로짓 모형에서 기대 최대 효용이 다음과 같이 닫힌 형태의 로그합(log-sum, 포괄가치 inclusive value라고도 함)을 가짐을 보였습니다.
+
+$$
+E\Bigl(\max_j U_{ij}\Bigr) = \ln \sum_{j=1}^J e^{V_{ij}} + C,
+$$
+
+여기서 $C$는 차분을 취할 때 상쇄되는 상수입니다. 로그합의 변화량을 소득의 한계효용(가격 또는 비용 계수의 음수값)으로 나누면, 정책으로 인한 속성 변화를 소비자 잉여의 보상변화(Compensating Variation, CV) 측도로 환산할 수 있습니다. `mlogit`의 `logsum` 함수는 이 항을 직접 계산하므로, 예를 들어 대중교통 이동 시간 단축으로 인한 후생 잉여는 정책 변화 전후의 포괄가치 차이를 적절히 스케일링하여 계산할 수 있습니다.
+
+### 선택 모형에서의 한계효과 (Marginal Effects in Choice Models)
+
+개체 특성 설명변수(case-specific regressor)에 대해 대안 $l$이 선택될 확률에 미치는 한계효과는 다음과 같습니다.
+
+$$
+\frac{\partial P_{il}}{\partial z_i}
+= P_{il}\Bigl(\beta_l - \textstyle\sum_j P_{ij}\beta_j\Bigr),
+$$
+
+따라서 효과의 부호는 해당 대안의 고유 계수와 모든 계수의 확률 가중 평균을 비교한 결과에 따라 결정됩니다. 가장 큰 계수와 가장 작은 계수만이 부호가 보장되며, 중간 위치의 대안들은 어느 방향으로든 움직일 수 있습니다. 대안별 속성(alternative-specific attribute)에 대해 자체(own) 및 교차(cross) 효과는 다음과 같습니다.
+
+$$
+\frac{\partial P_{il}}{\partial x_{il}} = \beta\, P_{il}(1 - P_{il}),
+\qquad
+\frac{\partial P_{il}}{\partial x_{ik}} = -\beta\, P_{il} P_{ik},
+$$
+
+따라서 특정 대안의 자체 속성이 개선되면 해당 대안의 선택 확률이 증가하고, 모든 경쟁 대안의 확률은 비례적으로 감소합니다. 이러한 비례성이 바로 다음에 살펴볼 무관한 대안의 독립성(IIA) 속성입니다.
+
+## 무관한 대안의 독립성 (The Independence of Irrelevant Alternatives)
+
+### IIA 속성과 그에 대한 비판 (The Property and Its Critique)
+
+모든 i.i.d. 로짓 모형에서 두 대안의 선택 확률 비율은 제3의 대안의 존재나 속성과 무관하게 오직 해당 두 대안에 의해서만 결정됩니다.
+
+$$
+\frac{P_{il}}{P_{im}} = \frac{e^{V_{il}}}{e^{V_{im}}} = e^{V_{il} - V_{im}}.
+$$
+
+이것이 바로 무관한 대안의 독립성(Independence of Irrelevant Alternatives, IIA)입니다. 이는 대안의 일부분(subset)만으로도 일치추정(consistent estimation)을 가능하게 하므로 대단히 편리하지만, 실제로는 자주 위배되는 강력한 실질적 제약을 부과합니다.
+
+고전적인 반례는 빨간 버스/파란 버스 문제(red-bus/blue-bus problem)입니다. 어떤 통근자가 자가용을 운전할 확률과 빨간 버스를 탈 확률이 각각 $1/2$로 동일하다고 가정해 봅시다. 이제 색상만 다르고 다른 모든 면에서 빨간 버스와 동일한 파란 버스를 도입합니다. 직관적으로 두 버스는 거의 완전한 대체재이므로 자가용의 점유율은 $1/2$ 근처를 유지하고 두 버스가 나머지 절반을 나누어 가져야 합니다. 그러나 IIA는 세 가지 대안의 점유율을 모두 $1/3$로 강제합니다. 왜냐하면 IIA는 파란 버스가 거의 쌍둥이나 다름없는 빨간 버스로부터 점유율을 대부분 가져오는 것이 아니라, 자가용과 빨간 버스로부터 비례적으로 점유율을 가져온다고 처리하기 때문입니다. 이러한 실패의 근본 원인은 대안 간 효용 충격이 서로 독립이라는 가정에 있습니다. 버스들은 관측되지 않은 속성을 공유하므로 오차항들이 서로 상관되어 있으며, 이는 독립성 전제를 위배합니다. 중첩 로짓, 혼합 로짓, 다항 프로빗은 모두 이 가정을 완화하는 모형들입니다.
+
+### IIA 검정: 하우스만과 맥패든 (Testing IIA: Hausman and McFadden)
+
+@hausman1984specification 은 IIA가 성립한다면 전체 선택 집합(full choice set)에서 추정한 모형과 제한된 부분 집합(restricted subset)에서 추정한 모형이 모두 일치성을 가져야 하지만, 전체 집합 추정량만이 효율적이라는 논리에 기반하여 IIA에 대한 명세 검정(specification test)을 제안했습니다. 검정통계량은 다음과 같은 이차형식(quadratic form)입니다.
+
+$$
+H = (\hat{\boldsymbol\beta}_s - \hat{\boldsymbol\beta}_f)'
+\bigl(\hat{\mathbf V}_s - \hat{\mathbf V}_f\bigr)^{-1}
+(\hat{\boldsymbol\beta}_s - \hat{\boldsymbol\beta}_f),
+$$
+
+여기서 $\hat{\boldsymbol\beta}_f$와 $\hat{\mathbf V}_f$는 전체 선택 집합에서 얻은 추정치이고, $\hat{\boldsymbol\beta}_s$와 $\hat{\mathbf V}_s$는 공통 계수로 제한된 부분 집합에서 얻은 추정치입니다. IIA라는 귀무가설 하에서 $H$는 공통 계수의 개수와 같은 자유도를 갖는 점근적 카이제곱 분포를 따릅니다. 통계량이 크다는 것은 대안을 제외했을 때 추정치가 크게 변한다는 신호이며, 이는 IIA가 기각되고 더 풍부한 상관 구조가 필요함을 의미합니다. 이 검정은 유한 표본에서 공분산 행렬의 차분이 양의 준정부호(positive definite)가 되지 않는 등 표본 성질이 불안정할 수 있으므로, 해당 응용 분야에서 IIA의 실질적인 타당성과 함께 종합적으로 해석하는 것이 좋습니다.
+
+## IIA 가정의 완화 (Relaxing IIA)
+
+### 중첩 로짓 (Nested Logit)
+
+@mcfadden1978modelling 의 중첩 로짓(Nested Logit)은 대안들을 여러 개의 둥지(nests)로 묶어 둥지 내부의 오차항 간에는 상관관계를 허용하되, 둥지 간의 오차는 여전히 독립으로 유지합니다. 오차항들의 결합 cdf는 다음과 같은 일반화 극치(Generalized Extreme Value, GEV) 형태를 갖습니다.
+
+$$
+\exp\!\left(-\sum_{m=1}^{M}\Bigl(\sum_{j \in B_m} e^{-\varepsilon_j/\lambda_m}\Bigr)^{\lambda_m}\right),
+$$
+
+여기서 $B_m$은 둥지 $m$에 속한 대안들의 집합이고, $\lambda_m \in (0,1]$은 둥지 내 상관관계를 통제하는 모수입니다. 모든 둥지에 대해 $\lambda_m = 1$이면 오차는 i.i.d. 굼벨이 되어 일반 로짓 모형으로 축소됩니다. $\lambda_m$이 작을수록 더 강한 상관관계를 의미하므로, $1 - \lambda_m$은 둥지 내 의존성(within-nest dependence)의 측도가 됩니다. 선택 확률은 둥지의 한계 확률과 둥지 내 대안의 조건부 확률의 곱으로 깔끔하게 분해됩니다.
+
+$$
+P_j = \underbrace{\frac{e^{Z_j/\lambda_l}}{\sum_{k\in B_l} e^{Z_k/\lambda_l}}}_{\text{둥지 내(within-nest)}}
+\times
+\underbrace{\frac{e^{W_l + \lambda_l I_l}}{\sum_{m} e^{W_m + \lambda_m I_m}}}_{\text{둥지 간(across-nest)}},
+\qquad
+I_l = \ln \sum_{k\in B_l} e^{Z_k/\lambda_l},
+$$
+
+여기서 $I_l$은 둥지 $l$의 포괄가치(inclusive value)이며, $W_l + \lambda_l I_l$은 해당 둥지에서 최선의 대안을 선택할 때의 기대 효용입니다. IIA는 둥지 내부에서는 성립하지만 둥지 간에는 성립하지 않으므로, 두 버스를 동일한 둥지에 묶음으로써 빨간 버스/파란 버스 문제를 해결합니다. 이 모형은 완전정보 최대우도법(Full-Information Maximum Likelihood, FIML)으로 추정하거나, 하위(둥지 내) 모형을 먼저 추정한 후 그 포괄가치를 상위(둥지) 모형에 투입하는 2단계 순차 추정법(일치성은 있으나 효율성은 다소 떨어짐)으로 추정할 수 있습니다. 모든 둥지 모수가 1이라는 가설(중첩 없음)과 둥지 모수들이 서로 같다는 가설은 우도비 검정, 왈드 검정, 또는 스코어 검정을 통해 검정할 수 있습니다.
+
+### 다항 프로빗 (Multinomial Probit)
+
+다항 프로빗(Multinomial Probit)은 효용 오차항들이 제약 없는 공분산 행렬 $\boldsymbol\Omega$를 갖는 결합 정규분포를 따르도록 허용합니다.
+
+$$
+U_{ij} = V_{ij} + \varepsilon_{ij}, \qquad
+(\varepsilon_{i1},\dots,\varepsilon_{iJ})' \sim N(\mathbf 0, \boldsymbol\Omega),
+$$
+
+따라서 어떠한 대체 패턴도 허용되며 IIA 가정은 완전히 배제됩니다. 그 대가로 선택 확률은 닫힌 형태가 존재하지 않는 $(J-1)$차원 정규 적분(normal integrals)이 됩니다. 효용의 차이만이 식별 가능하므로, 차분 행렬 $M^l$에 대해 오차 차분의 공분산이 $\boldsymbol\Omega^l = M^l \boldsymbol\Omega M^{l\prime}$인 오차 차분 모형으로 추정되며, 전체 척도는 분산 하나를 정규화하여 고정합니다. $J$개의 대안이 있을 때 공분산 행렬은 $J(J+1)/2$개의 구조적 모수를 가지며, 이 중 $J(J-1)/2 - 1$개만이 식별됩니다. 적분값은 시뮬레이션을 통해 계산되는데, GHK(Geweke-Hajivassiliou-Keane) 평활 순환 시뮬레이터(smooth recursive simulator)를 사용하여 결합 확률을 절단 정규분포(truncated normal)의 난수 추출로 계산되는 조건부 1변량 정규 확률들의 곱으로 분해합니다. 이후 시뮬레이션 최대우도법(Simulated Maximum Likelihood, SML)을 통해 시뮬레이션된 확률을 극대화합니다.
+
+### 혼합(확률계수) 로짓 (Mixed (Random-Parameters) Logit)
+
+@train2009discrete 에 의해 정리되고 대중화된 혼합 로짓(Mixed Logit)은 선호 계수(taste coefficients)가 혼합 분포(mixing distribution)에 따라 개인마다 다르게 변하도록 허용합니다. 개별 추출값 $\boldsymbol\beta_i$가 주어졌을 때 조건부 확률은 일반 로짓 형태를 띱니다.
+
+$$
+P_{il}\mid\boldsymbol\beta_i = \frac{e^{\boldsymbol\beta_i'\mathbf x_{il}}}{\sum_j e^{\boldsymbol\beta_i'\mathbf x_{ij}}},
+$$
+
+그리고 무조건부 확률은 선호 분포 전체에 대해 적분하여 구합니다.
+
+$$
+P_{il} = \int \frac{e^{\boldsymbol\beta'\mathbf x_{il}}}{\sum_j e^{\boldsymbol\beta'\mathbf x_{ij}}}\, f(\boldsymbol\beta;\boldsymbol\theta)\, d\boldsymbol\beta .
+$$
+
+@mcfadden2000mixed 는 적절한 혼합 분포 $f$를 선택함으로써 혼합 로짓이 모든 확률효용 선택 모형을 임의의 정밀도로 근사할 수 있음을 증명하였으며, 확률계수가 대안 간 효용의 상관관계를 유도하기 때문에 IIA 가정을 깨뜨린다는 점을 보였습니다. 이 적분은 닫힌 형태가 없으므로 시뮬레이션 최대우도법을 사용하여 추정합니다. 즉, 주로 분산 감소 효과가 있는 할톤 수열(Halton sequences)을 이용해 $\boldsymbol\beta$의 값을 $R$번 추출한 뒤 조건부 확률들의 평균을 구하고 이를 극대화합니다. 분포는 경제학적 논리에 부합하도록 선택됩니다. 부호가 바뀔 수 있는 선호에 대해서는 정규분포나 변환 정규분포를, 음수를 유지해야 하는 가격 계수에 대해서는 로그정규분포나 부호 제약 분포를 사용하며, 로그정규분포의 두꺼운 꼬리가 비현실적인 값을 유발할 때는 유계 삼각분포(bounded triangular)나 균등분포(uniform distribution)를 사용합니다. 패널 데이터의 경우 동일한 개인의 반복된 선택을 통해 개인별 계수를 더욱 정확하게 식별할 수 있으며, 개인 사후 평균(individual posterior means) $\hat{\boldsymbol\beta}_i = \sum_r P_{ir}\boldsymbol\beta_r / \sum_r P_{ir}$을 통해 각 개인의 선호를 요약할 수 있습니다. 화폐 단위의 상충관계가 주요 관심 대상인 경우 선호 공간(preference space) 대신 지불용의액 공간(willingness-to-pay space)에서 모수를 직접 설정할 수도 있습니다.
+
+### 잠재계층 로짓 (Latent Class Logit)
+
+혼합 로짓의 연속형 혼합에 대한 이산적 대안은 잠재계층 모형(Latent Class Model)입니다. 이 모형에서는 모집단이 유한한 $C$개의 세분시장(segments)으로 구성되며, 각 세분시장은 고유한 계수 벡터 $\boldsymbol\beta_c$와 개인 특성에 따라 달라질 수 있는 계층 소속 확률 $\pi_c$를 갖습니다. 선택 확률은 세분시장 가중 평균으로 주어집니다.
+
+$$
+P_{il} = \sum_{c=1}^{C} \pi_c \,
+\frac{e^{\boldsymbol\beta_c'\mathbf x_{il}}}{\sum_j e^{\boldsymbol\beta_c'\mathbf x_{ij}}} .
+$$
+
+잠재계층 로짓은 이질성이 매끄러운 연속 분포보다는 충성 고객 대 가격 민감 고객과 같이 소수의 구별되는 소비자 유형으로 더 잘 설명되는 응용 분야에 적합하며, 혼합 분포에 대한 모수적 형태를 가정할 필요가 없다는 장점이 있습니다. 빈 계층이 존재할 수 있을 때 통상적인 우도비 검정은 비표준적이므로, 계층 수는 BIC와 같은 정보 기준(information criteria)을 바탕으로 선택합니다. R에서는 `gmnl` 패키지를 통해 혼합 로짓과 잠재계층 로짓을 모두 추정할 수 있습니다.
+
+## 해석, 한계효과 및 적합도 (Interpretation, Marginal Effects, and Fit)
+
+### 평균에서의 편효과 대 평균 편효과 (Partial Effect at the Average versus Average Partial Effect)
+
+본 장의 모든 모형은 비선형이므로 계수 자체가 편효과(partial effect)가 아니며, 설명변수가 확률에 미치는 효과를 요약하는 데는 두 가지 뚜렷한 접근법이 존재합니다. 이 둘의 차이는 명확히 짚고 넘어갈 가치가 있습니다.
+
+|             | PEA                                                                                          | APE                                                              |
+|-------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| 용어        | 평균에서의 편효과 (Partial effect at the average)                                              | 평균 편효과 (Average partial effect)                              |
+| 정의        | 모든 설명변수를 표본 평균에 고정한 가상의 사례에 대해 설명변수가 결과에 미치는 효과             | 모든 설명변수의 경험적 분포 전체에 걸쳐 평균화된 설명변수의 효과 |
+| 계산 방식   | 모든 설명변수를 표본 평균값으로 설정한 후 확률의 기울기를 계산                                 | 각 관측치별로 편효과를 계산한 후 이를 평균함                     |
+
+상호작용항이나 다항식이 없는 일반 선형 모형에서는 편효과가 관측치 간에 변하지 않으므로 두 값이 일치합니다. 그러나 상호작용항, 다항식, 또는 로짓이나 프로빗과 같은 연결함수로 인해 조건부 평균이 선형성을 벗어나는 순간, 평균에서의 편효과(PEA)와 평균 편효과(APE)는 일반적으로 서로 달라집니다. APE는 가상의 평균적 개인을 묘사하기보다는 실제 행위자들의 분포 전체에 걸쳐 평균을 취하기 때문에 일반적으로 모집단에 대해 더 의미 있는 요약치입니다. 반면 PEA는 예를 들어 이항 설명변수의 평균값이 정수가 아닌 경우처럼 데이터의 지지집합(support)을 벗어난 지점에서 계산될 위험이 있습니다. 프로빗 모형에서 $x_k$가 확률에 미치는 한계효과는 $\phi(\mathbf x_i'\boldsymbol\beta)\,\beta_k$이고, 로짓 모형에서는 $\Lambda(\mathbf x_i'\boldsymbol\beta)(1-\Lambda(\mathbf x_i'\boldsymbol\beta))\,\beta_k$입니다. 첫 번째 형태를 표본 전체에서 평균하면 APE가 되고, $\bar{\mathbf x}$에서 평가하면 PEA가 됩니다.
+
+```{r}
+# 개별 기울기를 평균하여 로짓 모형에서 x1의 평균 편효과(APE) 계산
+lp <- predict(fit_logit, type = "link")
+ape_x1 <- mean(dlogis(lp)) * coef(fit_logit)["x1"]
+# 평균에서의 편효과(PEA) 계산
+pea_x1 <- dlogis(sum(coef(fit_logit) * c(1, colMeans(dat[, c("x1","x2","x3")])))) *
+  coef(fit_logit)["x1"]
+c(APE = unname(ape_x1), PEA = unname(pea_x1))
+```
+
+이산형 설명변수의 경우 편효과는 예측 확률의 차이인 $P(y=1\mid x_k=1) - P(y=1\mid x_k=0)$로 정의되며, 이는 공변량의 평균에서 평가하거나(PEA 방식의 이산 효과), 표본 전체에서 평균화하여(APE 방식의 이산 효과) 계산할 수 있습니다. 여기서도 APE 방식이 일반적으로 선호됩니다.
+
+### 탄력성과 준탄력성 (Elasticities and Semi-Elasticities)
+
+연구자들은 수준 효과(level effect)보다는 단위에 구애받지 않는 요약치나 백분율 해석을 원하는 경우가 많습니다. 탄력성(Elasticity)은 편효과에 설명변수 대비 조건부 평균의 비율을 곱하여 척도를 재조정합니다.
+
+$$
+\frac{\partial E(Y\mid\mathbf x)}{\partial x_j}\cdot \frac{x_j}{E(Y\mid\mathbf x)}
+= \frac{\partial \ln E(Y\mid\mathbf x)}{\partial \ln x_j},
+$$
+
+이는 평균과 설명변수가 모두 양수일 때 유효합니다. 준탄력성(Semi-elasticity)은 둘 중 하나로만 척도를 재조정하여, 설명변수 1단위 변화에 따른 결과변수의 백분율 변화 또는 설명변수의 비례적 변화에 따른 결과변수의 수준 변화를 나타냅니다. 결과변수의 로그가 선형인 모형 $\ln Y = \beta_0 + \beta_1 \ln x_1 + \beta_2 x_2 + u$에서 계수 $\beta_1$은 불변 탄력성(constant elasticity)이고, $100\,\beta_2$는 $x_2$ 1단위 변화에 따른 $Y$의 근사적 백분율 변화를 나타내는 준탄력성입니다.
+
+미묘하지만 중요한 점은 진정한 조건부 평균의 탄력성과 로그-선형 회귀의 기울기 간의 차이입니다. 젠센 부등식(Jensen's inequality)에 의해 $E(\ln Y) \ne \ln E(Y)$이므로 둘은 동일한 대상이 아닙니다. 그러나 오차가 승수적(multiplicative)으로 유입되고 설명변수와 독립인 경우, 즉 $Y = \exp(\mathbf x'\boldsymbol\beta)\exp(u)$로 표기하여 $\delta = E(e^u)$일 때 $\ln E(Y\mid\mathbf x) = \ln\delta + \mathbf x'\boldsymbol\beta$가 성립하면 미분값은 서로 일치합니다.
+
+$$
+\frac{\partial \ln E(Y\mid\mathbf x)}{\partial \ln x_j}
+= \frac{\partial E(\ln Y\mid\mathbf x)}{\partial \ln x_j} = \beta_j .
+$$
+
+따라서 로그-선형 계수는 원래 수준의 탄력성에 대한 좋은 근사치가 됩니다. 다만 수준값을 예측할 때는 가법 상수 $\ln\delta$를 신중하게 처리해야 하며, 결과변수가 0이 될 수 있을 때는 이 문제가 매우 심각해지는데 이에 대해서는 아래에서 다룹니다.
+
+### 비선형 모형에서의 상호작용항 (Interaction Terms in Nonlinear Models)
+
+비선형 모형에서 상호작용항을 다룰 때는 각별한 주의가 필요합니다. 선형 모형에서 상호작용 효과는 단순히 교차곱(product term) 변수의 계수입니다. 그러나 로짓이나 프로빗에서는 두 설명변수에 대한 확률의 교차 편미분(cross partial)이 상호작용항의 계수와 일치하지 않습니다. 이는 연결함수의 곡률(curvature)을 수반하며, 상호작용항이 모형에 포함되지 않은 경우에도 0이 아닐 수 있고 관측치에 따라 부호가 뒤바뀔 수도 있습니다. @ai2003interaction 은 올바른 상호작용 효과가 전체 교차도함수이며, 이를 각 관측치별로 계산한 후 요약해야 하고, 그 부호와 유의성이 교차곱 계수를 단순 판독한 결과와 크게 다를 수 있음을 보였습니다. 실무적인 교훈은 상호작용 효과를 단일 계수와 그 $t$-통계량에서 읽어내지 말고, 관련된 공변량 값들에 걸친 예측 확률의 이중차분(differences in differences)으로 계산해야 한다는 것입니다.
+
+### 모형 적합도와 분류 성능 (Model Fit and Classification)
+
+이러한 모형에서 우도 기반 $R^2$ 유사 측도는 맥패든의 의사 $R^2$(McFadden's pseudo-$R^2$)입니다.
+
+$$
+R^2_{\text{McF}} = 1 - \frac{\ln \hat L_{\text{full}}}{\ln \hat L_0},
+$$
+
+이는 절편만 포함된 모형 대비 최대화된 로그우도의 비례적 개선도를 나타냅니다. 0과 1 사이에 유계되지만 선형 $R^2$와 같은 분산 설명 비율의 의미를 갖지는 않습니다. 대략 0.2에서 0.4 사이의 값만으로도 이미 매우 우수한 적합도를 나타냅니다. 상호보완적인 의사결정 중심의 지표는 분류 정확도(classification accuracy, 적중률 hit rate)입니다. 이는 적합 확률이 특정 임계값(0.5보다는 표본 내 1의 비율을 사용하는 경우가 많음)을 초과할 때 $y = 1$로 예측하고, 혼동 행렬(confusion matrix)에서 정분류와 오분류를 교차 집계하여 구합니다. 적중률은 임의의 분류 기준값에 의존하므로, 모든 임계값에 걸쳐 민감도(sensitivity) 대 1-특이도(1 - specificity)를 적분한 ROC 곡선 아래 면적(AUC)이 임계값에 독립적인 판별력 요약 지표로 활용됩니다.
+
+```{r}
+ll_full <- as.numeric(logLik(fit_logit))
+ll_null <- as.numeric(logLik(update(fit_logit, . ~ 1)))
+mcfadden_r2 <- 1 - ll_full / ll_null
+
+phat <- predict(fit_logit, type = "response")
+pred_class <- as.integer(phat > mean(dat$y))
+hit_rate <- mean(pred_class == dat$y)
+c(mcfadden_pseudo_R2 = mcfadden_r2, hit_rate = hit_rate)
+```
+
+## 희귀 사건 (Rare Events)
+
+로지스틱 회귀는 결과 중 하나가 매우 드물게 발생하는 희귀 사건 데이터(전쟁, 금융 위기, 희귀 질환에 관한 연구나 @arikan2019 와 같이 경영학에서 이례적인 기업 간 거래 형성 등을 연구할 때 나타나는 데이터)에서 유한 표본 편향을 갖습니다. @king2001logistic 은 최대우도 로짓이 희귀 사건의 발생 확률을 체계적으로 과소추정함을 보였습니다. 이는 스코어 함수(score function)의 편향 항이 관심 대상인 사건의 수가 적을 때 가장 두드러지기 때문입니다. 이 문제는 두 번째 비효율성과 결합됩니다. 즉, 사건이 드물 때 방대한 비사건(non-events) 데이터를 수집하는 것은 비용이 많이 들면서도 정보량은 거의 더해주지 못합니다.
+
+해결책은 두 가지로 구성됩니다. 첫째는 편향 보정(bias correction)입니다. @king2001logistic 추정량은 계수에 해석적 유한 표본 보정(Firth 벌점화 우도 접근법과 밀접히 연관됨)을 적용하여, 추정된 사건 확률을 진정한 값 쪽으로 유의미하게 상향 조정합니다. 둘째는 효율적인 표본설계(sampling design)입니다. 모든 희귀 사건과 비사건의 일부 표본만을 수집하는 내생적 표본추출(endogenous sampling) 또는 선택 기반 표본추출(choice-based sampling)은 사전확률 보정(prior-correction)이나 가중치 조정을 통해 알려진 모집단 사건 비율로 절편을 보정해 주기만 하면 데이터 수집 비용의 일부만으로도 대부분의 정보를 확보할 수 있습니다. R에서는 `Zelig`와 `logistf` 패키지가 이러한 보정 기법을 구현하고 있습니다. 요컨대 수많은 0 사이에 소수의 1만이 존재하는 표본에 적합된 기본 로짓 모형의 희귀 결과 예측 확률을 액면 그대로 신뢰해서는 안 됩니다.
+
+## 가산 데이터 (Count Data)
+
+기업이 출원한 특허 수, 환자의 병원 방문 횟수, 교차로에서의 사고 발생 건수처럼 결과변수가 가산치(count)인 경우 자연스러운 출발점은 포아송 회귀(Poisson regression)입니다. 포아송 회귀는 조건부 평균을 지수함수로 모형화하여 적합값이 음수가 되지 않도록 보장하며,
+
+$$
+E(y_i \mid \mathbf x_i) = \exp(\mathbf x_i'\boldsymbol\beta),
+$$
+
+가산치가 포아송 분포를 따른다고 가정합니다. 이때 계수는 준탄력성으로 해석됩니다. 즉, $100\,\beta_k$는 $x_k$가 1단위 증가할 때 기대 가산치의 근사적 백분율 변화를 나타냅니다.
+
+```{r}
+xc <- rnorm(n)
+mu <- exp(0.4 + 0.5 * xc)
+yc <- rpois(n, mu)
+cd <- data.frame(yc, xc)
+fit_pois <- glm(yc ~ xc, family = poisson(link = "log"), data = cd)
+summary(fit_pois)$coefficients
+```
+
+### 과산포와 음이항 모형 (Overdispersion and the Negative Binomial)
+
+포아송 모형은 조건부 분산이 조건부 평균과 같다는 등산포(equidispersion) 제약을 부과합니다. 그러나 실제 가산 데이터는 관측되지 않은 이질성이나 사건의 군집화로 인해 분산이 평균을 초과하는 과산포(overdispersion)를 보이는 경우가 대부분입니다. 과산포를 무시하더라도 계수 추정치는 여전히 일치성을 유지하지만, 보고되는 표준오차가 과도하게 작아져 통계적 유의성이 과장됩니다. @cameron1986econometric 의 아이디어에 기반한 공식 검정법은 잔차 제곱에 대한 보조 표현식을 적합된 평균에 회귀시켜 분산이 평균보다 빠르게 증가하는지 확인합니다.
+
+```{r}
+# 보조 과산포 검정: 분산 대 평균
+muhat <- predict(fit_pois, type = "response")
+z <- ((cd$yc - muhat)^2 - cd$yc) / muhat
+od_test <- summary(lm(z ~ muhat - 1))$coefficients
+od_test
+```
+
+과산포가 존재할 때의 표준적인 해결책은 포아송 평균에 감마 분포를 따르는 승수적 오차를 추가하여 분산이 평균의 이차함수가 되도록 허용하는 음이항 회귀(negative binomial regression)이며, `MASS::glm.nb`로 적합할 수 있습니다. 매우 매력적인 강건성 결과 중 하나는 평균 모형이 올바르게 명세되어 있기만 하다면 전체 분포가 오명세되어 있더라도 포아송 추정량이 조건부 평균 모수에 대해 여전히 일치성을 유지한다는 점입니다. 이것이 바로 @wooldridge1999quasi 의 준최대우도(Quasi-Maximum Likelihood, QML) 성질입니다. 따라서 포아송 점추정치와 이분산 강건(heteroskedasticity-robust) 또는 군집 강건(cluster-robust) 표준오차를 결합하는 방식은 데이터가 엄격하게 포아송 분포를 따를 것을 요구하지 않는 안전한 기본 전략입니다. 만약 음이항 모형으로도 감당하기 어려울 정도로 0이 많은 가산 데이터라면, 0 생성 과정과 양의 가산치 생성 과정을 분리하는 영과잉(zero-inflated) 모형과 허들(hurdle) 모형으로 프레임워크를 확장할 수 있습니다.
+
+### 비선형 모형에서의 내생성 설명변수 (Endogenous Regressors in Nonlinear Models)
+
+내생성 설명변수(관측되지 않은 요인과 상관된 처치)를 포함하는 이항 또는 가산 결과변수는 단순히 비선형 모형에 2단계 최소제곱법(2SLS)을 적용하는 방식으로는 해결할 수 없습니다. 1단계의 적합값을 2단계 로짓이나 포아송에 그대로 대입하는 것은 이른바 '금지된 회귀(forbidden regression)'로서 일치성을 갖지 못합니다. 이때 적절한 도구는 통제함수 접근법(control-function approach)입니다. 즉, 내생 설명변수에 대한 1단계 축약형(reduced form)을 추정한 후, 1단계 잔차를 2단계 비선형 모형에 추가 설명변수로 포함하여 오차의 내생적 부분을 흡수하도록 만듭니다. @petrin2010control 은 이산선택 수요 모형을 위한 통제함수 전략을 개발하였고, @wooldridge2015control 은 다양한 비선형 모형 전반에 걸친 적용을 체계화하였습니다. 또한 1단계 잔차의 계수는 외생성에 대한 직접적인 검정을 제공합니다. 이 계수가 통계적으로 유의하지 않다면 해당 설명변수를 외생적인 것으로 간주할 수 있습니다.
+
+## 로그 0 문제 (The Log-of-Zero Problem)
+
+무역 흐름(trade flows), 지출액(expenditures), 기업 매출(firm sales)처럼 0에 대량의 관측치가 몰려 있는 음이 아닌 결과변수를 다룰 때, 흔히 $\ln(y)$, $\ln(1+y)$, 또는 어떤 작은 상수 $c$에 대해 $\ln(y + c)$를 취해 모형화하려는 유혹에 빠지기 쉽습니다. @chen2024logs 는 이러한 관행이 겉보기보다 훨씬 위험함을 밝혔습니다. 결과변수가 0에 확률 질량을 가질 때, 로그 형태의 변환에서 도출되는 추정대상(estimand)은 0 근처의 척도에 민감하기 때문에 $y$를 측정한 임의의 단위에 의존하게 되며, 변환된 척도에서의 평균처치효과(ATE)는 단위에 불변인(units-invariant) 백분율 효과로 해석될 수 없습니다. 더욱 심각한 점은 결과변수의 측정 단위를 단순히 재조정(rescaling)하는 것만으로도 추정된 효과의 부호가 바뀔 수 있다는 사실입니다. 저자들의 권고는 먼저 목표가 수준(level)에 미치는 효과인지(이 경우 0을 자연스럽게 처리하고 단위 불변인 비례적 해석을 제공하는 강건 표준오차 기반 포아송 회귀가 적절함), 아니면 외연적 마진(extensive margin)과 집약적 마진(intensive margin)에 미치는 효과를 분리하는 것인지 결정하고, 추정대상이 단위의 인위적 산물에 불과한 $\ln(1+y)$ 유형의 변환을 피하라는 것입니다. 이는 앞서 다룬 가산 데이터 논의와 직접 연결됩니다. 포아송 준최대우도(Poisson QML)가 표준적인 작업 도구로 자리 잡은 이유는 0을 완벽히 수용하고, 평균이 음수가 되지 않도록 유지하며, 결과변수를 임의로 이동시키지 않고도 계수에 깔끔한 준탄력성 해석을 부여하기 때문입니다.
+
+## 총량 수요 추정 (Aggregate Demand Estimation)
+
+앞서 다룬 선택 모형들은 개별 단위의 데이터를 사용합니다. 산업조직론(industrial organization)의 방대한 문헌에서는 총량 시장 점유율, 가격 및 제품 특성 데이터로부터 수요를 추정하는데, 이는 개별 소비자의 선택은 관측되지 않지만 시장 차원의 결과는 기록되어 있는 경우 자연스러운 데이터 구조입니다. 이 내용은 \@ref(sec-structural-io) 절의 구조적 모형 분석으로 이어지는 가교 역할을 합니다.
+
+### 베리 역변환 (Berry Inversion)
+
+@berry1994estimating 은 확률효용 모형을 총량 데이터에 적용하는 방법을 제시했습니다. 시장 $t$에서 소비자 $i$가 제품 $j$에 대해 갖는 효용은 다음과 같습니다.
+
+$$
+u_{ijt} = \mathbf x_{jt}'\boldsymbol\beta - \alpha p_{jt} + \xi_{jt} + \varepsilon_{ijt},
+$$
+
+여기서 $\xi_{jt}$는 소비자는 관측하지만 계량경제학자는 관측하지 못하는 제품-시장 특성(예: 수요에 영향을 미치는 품질)입니다. 로짓 선택 확률을 소비자 전체에 걸쳐 집계하면 평균 효용 $\delta_{jt} = \mathbf x_{jt}'\boldsymbol\beta - \alpha p_{jt} + \xi_{jt}$의 함수로서 예측 시장 점유율이 도출됩니다. 핵심 통찰은 점유율 방정식을 역변환할 수 있다는 점입니다. 즉, 관측된 시장 점유율이 주어지면 평균 효용 벡터를 유일하게 풀 수 있습니다. 기본 로짓 모형의 경우 역변환은 다음과 같이 닫힌 형태를 갖습니다.
+
+$$
+\ln(s_{jt}) - \ln(s_{0t}) = \delta_{jt} = \mathbf x_{jt}'\boldsymbol\beta - \alpha p_{jt} + \xi_{jt},
+$$
+
+여기서 $s_{0t}$는 외부 대안(구매하지 않는 옵션)의 점유율입니다. 이 역변환은 점유율에 대한 모형을 $\delta$에 대한 선형 회귀로 바꾸어 놓으며, 관측되지 않는 $\xi_{jt}$가 구조적 오차항의 역할을 하게 됩니다.
+
+### 가격 내생성과 도구변수 (Price Endogeneity and Instruments)
+
+베리 역변환은 즉각적으로 한 가지 문제점을 드러냅니다. 가격 $p_{jt}$는 관측되지 않은 품질 $\xi_{jt}$와 상관되어 있다는 점입니다. 왜냐하면 기업은 소비자가 관측되지 않은 이유로 높게 평가하는 제품에 대해 더 높은 가격을 책정하기 때문입니다. 따라서 역변환된 방정식에 통상최소제곱법(OLS)을 적용하면 편향되고(일반적으로 0 쪽으로 감쇠됨) 과소추정된 수요 탄력성을 얻게 됩니다. 그러므로 가격은 도구변수화되어야 합니다. 표준적인 도구변수는 가격을 변동시키지만 수요에는 직접 영향을 미치지 않는 비용 이동 요인(cost shifters)과, 경쟁 환경을 통해 제품의 마크업(markup)을 변화시키면서도 해당 제품 자체의 수요 충격에는 포함되지 않는 경쟁 제품의 특성, 즉 BLP 도구변수(BLP instruments)입니다. 추정은 조건부 모멘트 $E(\xi_{jt}\mid \mathbf z_{jt}) = 0$에 기초한 일반화적률법(Generalized Method of Moments, GMM)을 통해 진행됩니다. 마이크로 데이터 선택 모형을 위한 대안으로는 효용 방정식에 1단계 가격 잔차를 추가하는 @petrin2010control 의 통제함수 접근법이 있습니다.
+
+### 확률계수 수요 모형 (BLP) (Random-Coefficients Demand (BLP))
+
+총량 데이터에 적용된 기본 로짓 모형은 IIA 속성을 그대로 이어받으므로, 교차 가격 탄력성이 제품 간 유사도가 아니라 오직 시장 점유율에만 의존하게 되어 빨간 버스/파란 버스 비판에서 제기된 비현실적인 대체 패턴을 만듭니다. BLP 모형으로 불리는 @berry1995automobile 은 선호 계수 $\boldsymbol\beta_i$와 가격 민감도 $\alpha_i$가 소비자 분포에 따라 변하도록 허용함으로써 이 문제를 해결하며, 이는 혼합 로짓 개념을 총량 데이터에 정확히 적용한 것입니다. 확률계수는 소비자가 유사한 특성을 가진 제품으로 대체하도록 유도하므로, 특정 미니밴의 가격 인하는 모든 자동차에서 균등하게 점유율을 흡수하는 것이 아니라 다른 미니밴들로부터 불균등하게 많은 점유율을 끌어오게 되어 현실적인 자체 및 교차 가격 탄력성을 생성합니다.
+
+추정은 3개의 루프(loops)를 중첩하여 진행됩니다. 내부 루프(inner loop)는 수축 매핑(contraction mapping)을 통해 점유율 방정식 시스템을 풀어, 임의의 후보 모수 벡터에 대해 예측 점유율과 관측 점유율을 일치시키는 평균 효용 $\delta_{jt}$를 도출합니다. 중간 단계에서는 구조적 오차 $\xi_{jt} = \delta_{jt} - (\mathbf x_{jt}'\boldsymbol\beta - \alpha p_{jt})$를 구성하고 이를 도구변수와 결합하여 GMM 모멘트를 구축합니다. 외부 루프(outer loop)는 GMM 목적함수를 최소화하도록 비선형 확률계수 모수를 탐색합니다. 확률계수(대체) 모수의 식별은 경쟁 제품의 특성에 점유율이 어떻게 반응하는지로부터 도출되며, 이것이 BLP 도구변수가 핵심적인 이유입니다. R에서는 `BLPestimatoR` 패키지가 완전한 추정량을 구현하고 있습니다. 이러한 수요 시스템의 비모수적 식별을 포함한 계량경제학적 기초는 @berry2014identification 에서 발전되었으며, 수요 추정부터 반사실적 합병 및 후생 분석에 이르는 완전한 구조적 분석 과정은 \@ref(sec-structural-io) 절에서 다룹니다.
+
+## 요약 (Summary)
+
+확률효용 모형(random utility model)은 본 장을 관통하는 핵심 줄기입니다. 임계값을 넘는 잠재 지수는 이항 로짓과 프로빗을 생성하고, 순서화된 구간으로 분할된 단일 지수는 순서형 로짓과 프로빗을 도출하며, 경쟁하는 대안별 효용은 다항 로짓과 조건부 로짓을 구성하는데, 이들의 i.i.d. 굼벨 오차는 무관한 대안의 독립성(IIA)을 부과합니다. 이 가정을 완화하려는 시도는 중첩 로짓, 다항 프로빗, 그리고 매우 유연한 혼합 로짓 및 잠재계층 로짓의 개발로 이어졌습니다. 이러한 모형들은 모두 비선형이므로, 평균에서의 편효과(PEA)와 평균 편효과(APE)의 구분이 중요한 한계효과, 탄력성 및 준탄력성, 그리고 상호작용항과 모형 적합도에 대한 신중한 처리를 통해 해석이 이루어집니다. 동일한 우도 기반 방법론은 포아송 및 음이항 회귀를 통해 가산 데이터로 확장되며, 여기서 강건 표준오차를 결합한 포아송 준최대우도(Poisson QML)는 강건한 기본 접근법이자 로그 0 변환을 지양하라는 현대적 조언의 근거를 명확히 해줍니다. 마지막으로 베리 역변환과 BLP 확률계수 및 내생 가격에 대한 도구변수를 결합하여 소비자 전체에 걸쳐 확률효용 논리를 집계함으로써, \@ref(sec-structural-io) 절의 구조적 산업조직론 분석을 뒷받침하는 수요 시스템을 도출할 수 있습니다.

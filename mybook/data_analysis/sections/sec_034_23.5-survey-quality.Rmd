@@ -1,0 +1,1713 @@
+<!-- ========================================= -->
+<!-- Chapter: 23.5-survey-quality.Rmd -->
+<!-- ========================================= -->
+
+
+# 설문조사 및 응답 품질 (Survey and Response Quality) {#sec-survey-reliability}
+
+설문 연구(Survey research)는 사회과학, 마케팅, 보건학 분야에서 실증적 기록의 상당 부분을 생성합니다. 이러한 기록의 신뢰성은 설문 응답의 본질에 관한 일련의 연쇄적 가정에 의존합니다. 즉, 측정 도구가 측정하고자 하는 바를 제대로 측정하고 있는가(타당도, validity), 반복 측정이 동일한 결과를 도출하는가(신뢰도, reliability), 응답자가 연구자가 의도한 방식으로 문항을 읽고 이해하여 응답하는가(인지적 충실도, cognitive fidelity), 실현된 표본이 목표 모집단에 대한 정보를 제공하는가(대표성, representativeness), 그리고 응답 과정이 사회적 바람직성 편향, 조사 방식(mode), 면접원, 피로도 또는 기타 체계적 왜곡에 의해 오염되지 않았는가 하는 점입니다. 이 연쇄 고리의 각 연결고리는 저마다 취약성을 지니고 있으며, 설문 방법론(survey methodology)이라는 학문 분야는 지난 60년 동안 이러한 취약성을 분류하고 부분적으로 완화하는 데 전념해 왔습니다.
+
+본 장은 이러한 연구 흐름을 집대성하며 두 가지 핵심적인 통합 주제를 제시합니다. 첫 번째는 설문 및 응답 품질을 위협하는 요인들을 인지적·기계적 처리 파이프라인의 어느 단계에서 유입되는지에 따라 정리한 **분류 체계(taxonomy)**입니다. 두 번째는 고전적 신뢰도 프레임워크를 한 단계 뛰어넘는 **응답자 측면의 분산 분해(response-side variance decomposition)**입니다. 흔히 "측정 오차(measurement error)"로 치부되는 분산의 상당 부분은 통상적인 의미의 오차가 아닙니다. 이는 응답 과정 자체에 존재하는 **내재적 확률성(intrinsic stochasticity)**이며, 생물학, 뇌영상학, 물리학의 측정 모델에서 오래전부터 인정해 온 환원 불가능한 노이즈(irreducible noise)와 동일한 성격을 띱니다. 이를 인식하면 신뢰도를 측정하는 방식, 응답자를 필터링하는 방식, 의사결정을 모델링하는 방식, 그리고 결과를 보고하는 방식이 근본적으로 달라집니다.
+
+우리는 이 두 주제를 모두 심도 있게 다룹니다. 본 장은 내재적 확률성만을 배타적으로 다루지도 않으며, 일반적인 설문 방법론 교과서에 머무르지도 않습니다. 본 장은 신뢰성을 위협하는 요인이 어디에 존재하는지 완전히 파악하고 현대적 도구 모음을 통해 각 문제를 해결해야 하는 분석가를 위한 실무 지침서입니다.
+
+여기서의 논의는 여섯 가지 문헌 체계를 바탕으로 구성됩니다. (1) @cronbach1955construct의 구성 타당도(construct validity) 프레임워크와 @campbell1959convergent의 다특질-다방법 행렬(multitrait-multimethod matrix)로 시작된 *타당도 이론(Validity theory)*은 도구가 측정하고자 주장하는 대상을 측정한다는 것이 무엇을 의미하는지 정의합니다. (2) 응답 과정을 일련의 인지적 연산으로 분해하고 각 단계에서의 오차 원인을 규명하는 *설문 응답의 인지심리학(Cognitive psychology of survey response)* [@tourangeau2000psychology; @schwarz1999self; @krosnick1991; @krosnick1999survey; @schaeffer2020advances]. (3) 반세기 동안 학계에서 활용되어 온 검사-재검사, 내적 일관성 및 준마르코프 심플렉스 도구를 제공하는 *고전 심리측정 신뢰도 이론(Classical psychometric reliability theory)* [@lord1968; @cronbach1951coefficient; @heise1969separating; @wiley1970estimation; @alwin2007margins]. (4) 체계적인 비실질적 응답 패턴(긍정 편향, 극단 응답, 중간점 선택, 일렬 표기, 불성실 신속 응답, 무의견 게임)과 이를 완화하는 설계 선택지를 분류한 *응답 양식 및 만족화 문헌(Response-style and satisficing literature)* [@krosnick1991; @greenleaf1992measuring; @baumgartner2001response; @vanvaerenbergh2013response; @zhang2014speeding; @krosnick2002impact]. (5) 총설문오차(Total Survey Error) 프레임워크 및 실무 참고 문헌에 집약된 *현대 설문 방법론의 통합 이론* [@groves2009survey; @saris2014design; @beatty2007research; @willis2005cognitive; @schaeffer2010interviewers; @heerwegh2009mode; @holbrook2003telephone; @stantcheva2023how]. (6) 고전적 심리측정 프레임워크에서 오차로 귀인했던 잔차 불안정성에 대해 기제적 설명을 제공하는 *확률 일치에 관한 의사결정론 및 행동경제학 문헌(Decision-theoretic and behavioural-economic literature on probability matching)* [@vulkan2000; @erev1998predicting; @lo2021; @kahneman1979prospect]. 최근의 설문 방법론 연구들은 이러한 흐름들을 연결하여 엄밀한 식별 가정 하에서 응답 불안정성을 수량화하고 있으며 [@clayton2025; @jenke2026working], 부주의한 응답(careless responding) 관련 문헌 [@meade2012identifying; @curran2016methods; @oppenheimer2009; @berinsky2014; @hauser2016; @aronow2019note; @chandler2014nonnaivete]은 이러한 프레임워크를 실용적인 필터 설계로 전환하고 있습니다.
+
+> **로드맵 (Roadmap).** 제\@ref(sec-cognitive-process)절에서는 응답자가 설문 문항에 답변하는 4단계 인지 모형을 소개하고 각 단계에서 오차와 노이즈가 유입되는 지점을 규명합니다. 제\@ref(sec-tse)절에서는 총설문오차(Total Survey Error) 프레임워크를 검토하고 본 장의 기여를 그 안에서 위치매김합니다. 제\@ref(sec-validity)절에서는 타당도를 신뢰도와 구분되는 핵심 과제로 다룹니다(구성 타당도, 수렴 타당도, 판별 타당도, 예측 타당도 및 핵심적인 조작화 도구인 @campbell1959convergent 다특질-다방법 행렬). 제\@ref(sec-response-styles)절에서는 @krosnick1991, @greenleaf1992measuring, @baumgartner2001response, @vanvaerenbergh2013response, @zhang2014speeding, @krosnick2002impact를 바탕으로 응답 양식(긍정 편향, 극단 응답, 중간점 선택, 일렬 표기, 불성실 신속 응답, 무의견 게임, 무작위 응답)의 현대적 분류 체계를 제시합니다. 제\@ref(sec-mode-effects)절에서는 조사 방식 효과, 면접원 효과, 그리고 표준 사전 검사로서의 인지적 면접법을 다룹니다 [@holbrook2003telephone; @heerwegh2009mode; @schaeffer2010interviewers; @schaeffer2020advances; @beatty2007research; @willis2005cognitive]. 제\@ref(sec-defining-instability)절에서는 응답 불안정성을 공식적으로 정의하고 추정량을 제시합니다. 제\@ref(sec-classical-reliability)절에서는 고전 신뢰도 이론(크론바흐 $\alpha$, 급내상관계수(ICC), 하이즈-와일리 심플렉스)을 검토하고 이것이 내재적 확률성에 대해 왜 침묵하는지 보여줍니다. 제\@ref(sec-three-way-decomp)절에서는 3원 분산 분해를 발전시킵니다. 제\@ref(sec-decision-theory)절에서는 의사결정론적 기초를 제공합니다. 제\@ref(sec-modulators)절과 제\@ref(sec-tot)절에서는 확률성을 조절하는 요인과 이를 필터링하는 방법을 논의합니다. 제\@ref(sec-design-implications)절에서는 설문 설계를 위한 권장사항을 제시하고, 제\@ref(sec-analysis-implications)절에서는 닫힌 형태의 감쇄 보정, SIMEX 절차, 최신 컨조인트 감사(pAMCE, AMIE, 만족화, $\bar D$ 보정; @hainmueller2014causal, @egami2019causal, @delacuesta2022improving, @bansak2018number, @clayton2025)를 포함한 분석적 권장사항을 제공합니다. 제\@ref(sec-survey-reliability-applied)절에서는 일렬 표기, 불성실 신속 응답, 최장 연속 동일 응답 및 마할라노비스 기반 부주의 응답 탐지를 포함한 실무용 완전 R 워크플로를 제공합니다. 제\@ref(sec-anchoring-vignettes)절부터 제\@ref(sec-mrp)절에서는 동일 세션 내 반복 측정 프레임워크를 보완하는 세 가지 고급 설계 및 분석 주제를 다룹니다(비교가능성을 위한 앵커링 비네트 [@king2004enhancing; @king2007comparing], 무작위 응답, 목록 실험 및 @rosenfeld2016empirical 실증 검증 벤치마크를 포함한 민감한 질문 방법론 [@warner1965randomized; @blair2012statistical; @bullock2011statistical; @glynn2013statistical], 심층 상호작용 및 동적 IRT 확장을 결합한 다수준 회귀 및 사후계층화(MRP) [@park2004bayesian; @wang2015forecasting; @ghitza2013deep; @caughey2015dynamic; @lax2009estimate]). 제\@ref(sec-online-panels)절에서는 온라인 패널 품질, 비순수성, 직업적 응답자, 중복 계정 및 봇 탐지를 다룹니다 [@chandler2014nonnaivete; @berinsky2012evaluating]. 제\@ref(sec-llm)절에서는 합성 응답자와 거대언어모델(LLM)을 다룹니다 [@argyle2023out; @bisbee2024synthetic]. 제\@ref(sec-robustness)절에서는 현대적 강건성, 재현성 및 부정행위 탐지 도구 모음을 다룹니다 [@simmons2011false; @simonsohn2014pcurve; @simonsohn2013just; @simonsohn2020specification; @ioannidis2005why; @osc2015estimating; @camerer2018evaluating]. 본 장은 인과추론에 관한 짧은 제언, 요약, 추가 참고 문헌 목록 및 연습문제로 마무리됩니다. 독자적인 설문 설계에 관한 가장 포괄적인 현대적 지침서로는 @stantcheva2023how 가 가장 훌륭한 출발점입니다.
+
+------------------------------------------------------------------------
+
+## 설문 문항 응답의 인지 과정 {#sec-cognitive-process}
+
+응답자가 설문 문항에 대한 답변을 어떻게 구성하는지에 대해 가장 큰 영향력을 미친 통합 모형은 @tourangeau2000psychology 의 4단계 모형입니다. 이 모형은 응답 과정을 다음과 같이 분해합니다.
+
+1.  문항의 이해(Comprehension).
+2.  기억으로부터 관련된 정보의 인출(Retrieval).
+3.  인출된 정보를 종합하여 잠정적 답변을 도출하는 판단(Judgment).
+4.  도출된 판단을 제시된 응답 범주에 대응시키는 응답 선택(Response selection).
+
+각 단계마다 고유한 오차 유입 원인이 존재합니다. 그림 \@ref(fig:cognitive-flow)는 4단계 파이프라인을 각 단계에서 발생하는 지배적인 오차 기제가 분기되는 흐름도로 나타낸 것이며, 표 \@ref(tab:cognitive-stages)는 참고를 위해 동일한 내용을 표 형태로 정리한 것입니다.
+
+```{r cognitive-flow, fig.cap="설문 응답의 4단계 인지 모형 (Tourangeau, Rips and Rasinski 2000) 흐름도. 응답자의 답변은 순차적인 네 가지 인지 단계를 거쳐 진행되며, 각 단계별 지배적인 오차 기제가 분기선으로 표시되어 있습니다.", fig.width=8, fig.height=4.5, echo=FALSE, screenshot.opts=list(vwidth=992, selector='.html-widget'), dev="png"}
+suppressPackageStartupMessages(library(DiagrammeR))
+
+DiagrammeR::grViz("
+digraph cognitive {
+  graph [rankdir = LR, splines = ortho, nodesep = 0.5, ranksep = 0.6]
+  node  [shape = box, style = 'filled,rounded', fillcolor = '#dbe7f5',
+         fontname = 'Helvetica', fontsize = 11, width = 1.6, height = 0.55]
+  edge  [fontname = 'Helvetica', fontsize = 9, color = '#444444']
+
+  Q   [label = '제시된 문항\\n(Question)', fillcolor = '#cfead0']
+  S1  [label = '1. 문항 이해\\n(Comprehension)']
+  S2  [label = '2. 정보 인출\\n(Retrieval)']
+  S3  [label = '3. 판단 형성\\n(Judgment)']
+  S4  [label = '4. 응답 선택\\n(Response selection)']
+  A   [label = '기록된 응답\\n(Answer)', fillcolor = '#f2d9b1']
+
+  E1  [label = '문항 표현\\n모호한 용어\\n이중 질문', shape = note, fillcolor = '#fdecec', height = 0.7, width = 1.7]
+  E2  [label = '회상 실패\\n가용성 편향\\n증거 누락', shape = note, fillcolor = '#fdecec', height = 0.7, width = 1.7]
+  E3  [label = '닻내림 효과\\n프레이밍\\n만족화\\n기분-정보 효과', shape = note, fillcolor = '#fdecec', height = 0.8, width = 1.7]
+  E4  [label = '긍정 편향\\n극단/중간점\\n척도 해석 오류', shape = note, fillcolor = '#fdecec', height = 0.7, width = 1.7]
+
+  Q -> S1 -> S2 -> S3 -> S4 -> A
+  S1 -> E1 [style = dashed]
+  S2 -> E2 [style = dashed]
+  S3 -> E3 [style = dashed]
+  S4 -> E4 [style = dashed]
+
+  { rank = same; S1; E1 }
+  { rank = same; S2; E2 }
+  { rank = same; S3; E3 }
+  { rank = same; S4; E4 }
+}
+", height = 360)
+```
+
+
+
+```{r cognitive-stages, echo=FALSE}
+stages <- tibble::tibble(
+  `단계 (Stage)`             = c("1. 문항 이해 (Comprehension)",
+                        "2. 정보 인출 (Retrieval)",
+                        "3. 판단 형성 (Judgment)",
+                        "4. 응답 선택 (Response selection)"),
+  `인지적 연산 (Cognitive operation)` = c("구문 파악, 지시 대상 지정, 화용론적 의미 추론",
+                            "관련 신념, 경험 에피소드, 태도를 기억에서 탐색",
+                            "인출된 증거를 종합하여 잠정적 답변 구성",
+                            "형성된 답변을 제시된 응답 선택지에 매핑"),
+  `지배적 오차 기제 (Dominant error mechanism)` = c("문항 표현의 모호함, 모호한 용어, 이중 질문(Double-barrelled)",
+                                 "회상 실패, 가용성 편향, 관련 증거 누락",
+                                 "닻내림(Anchoring), 프레이밍, 만족화(Satisficing), 기분-정보 효과",
+                                 "긍정 편향(Acquiescence), 중심화 경향, 극단 응답, 척도 해석 오류")
+)
+
+knitr::kable(
+  stages,
+  caption = "설문 응답의 4단계 인지 모형과 각 단계별 지배적 오차 기제. Tourangeau, Rips, and Rasinski (2000) 수정.",
+  booktabs = TRUE
+)
+```
+
+표 \@ref(tab:cognitive-stages)로부터 본 장 전체에 걸쳐 반복되는 몇 가지 중요한 시사점을 도출할 수 있습니다.
+
+첫째, 대부분의 도구 측면(instrument-side) 측정 오차 개선 연구는 1단계와 4단계를 목표로 합니다. 즉, 명확한 문항 작성은 이해 오차를 줄이고, 잘 보정된 응답 척도는 매핑 오차를 줄입니다. 반면 내부 단계인 2단계와 3단계는 설문 도구의 통제 범위를 크게 벗어납니다.
+
+둘째, 최적화-만족화 간 절충(optimizing--satisficing tradeoff) [@krosnick1991; @krosnick1999survey]은 3단계에 위치합니다. 응답자는 유한한 인지적 자원을 지니고 있으며, 증거를 온전히 인출하고 통합하는 데 드는 비용이 인지된 이점을 초과하면 응답자는 만족화(satisficing)를 선택하여 최적이 아닌 그럴듯한 답변을 생성합니다. 만족화는 문항 복잡성과 응답자 피로도가 응답 노이즈를 팽창시키는 인지적 기제이며, 이는 내재적 확률성이 실증적 특징을 나타내는 이유를 설명할 때 반복적으로 지목될 기제입니다.
+
+셋째, 4단계에서의 확률 일치(Probability matching, 제\@ref(sec-decision-theory)절)는 혼동하기 쉽지만 3단계에서의 만족화와 개념적으로 구별됩니다. 만족화가 인지적 노력의 배분을 반영한다면, 확률 일치는 내부적인 확률적 판단이 선택으로 전환되는 방식을 반영합니다. 둘 다 $\bar D$를 팽창시키지만, 서로 다른 설계상의 대응을 요구합니다.
+
+4단계 모형은 고전적인 문항 표현(question-wording) 문헌을 위치시키기에도 적합한 틀입니다. @schwarz1999self 는 자극의 미묘한 특징(척도의 언어적 라벨, 숫자 범위, 선택지 순서, 이전 질문들)이 획득된 응답을 체계적으로 변화시킨다는 30년간의 실험 증거를 종합했습니다. 두 가지 대표적 발견이 이를 잘 보여줍니다. 응답자들에게 "정말로 짜증이 나는(really irritated)" 빈도를 물을 때 응답 선택지가 "1년에 1회 미만"에서 "한 달에 1회 이상"으로 주어지면 드물게 짜증이 난다고 보고하지만, 선택지가 "하루에 1회 미만"에서 "한 달에 수 회"로 주어지면 훨씬 더 자주 짜증이 난다고 보고합니다. 일일 텔레비전 시청 시간에 대한 응답 선택지가 중간값 2시간을 중심으로 구성되면 응답자들은 낮게 닻을 내리고, 4시간을 중심으로 구성되면 높게 닻을 내립니다. 이는 단순한 특이 사례가 아니며, 응답 선택지 구성이 1단계와 4단계에 작용하여 나타나는 체계적 효과입니다. 설문 방법론에서 이러한 효과를 가장 광범위하게 분류한 문헌은 여전히 @schuman1981questions 입니다.
+
+------------------------------------------------------------------------
+
+## 총설문오차(Total Survey Error) 프레임워크 {#sec-tse}
+
+설문 추정치에서 오차가 발생하는 경로를 종합한 표준 대학원 수준의 이론적 틀은 @groves2009survey 의 **총설문오차(Total Survey Error, TSE)** 프레임워크입니다. TSE는 추정 오차를 표 \@ref(tab:tse-components)에 제시된 구성 요소들로 구분합니다. 이 프레임워크는 설문 방법론 감사의 공용어로 통용되며, 본 장의 기여를 이 프레임워크 내에서 위치매김함으로써 주장하는 바를 명확히 할 수 있습니다.
+
+```{r tse-components, echo=FALSE}
+tse <- tibble::tibble(
+  `구성 요소 (Component)` = c("커버리지 오차 (Coverage error)", "표본추출 오차 (Sampling error)", "무응답 오차 (Nonresponse error)",
+                "측정 오차: 조사 도구 (Measurement error - instrument)", "측정 오차: 응답자 (Measurement error - respondent)",
+                "처리 오차 (Processing error)"),
+  `오차 원인 (Source)` = c("목표 모집단과 표본추출틀 사이의 불일치",
+             "동일한 추출틀에서 추출된 동일 크기 표본 간의 변동",
+             "실현된 표본 내에서 응답자와 무응답자 간의 체계적 차이",
+             "문항 표현, 조사 방식, 면접원, 레이아웃",
+             "이해, 인출, 판단, 응답 선택 과정",
+             "코딩, 데이터 편집, 가중치 부여, 대체(Imputation)"),
+  `감소 방안 (Reducible by)` = c("추출틀 개선, 다중 추출틀 설계",
+                     "표본 크기 $n$ 확대, 설계 기반 분산 축소 (표본추출 장 참조)",
+                     "타겟팅된 추적 조사, 가중치 조정",
+                     "인지적 사전 검사, 조사 방식 일치화, 문항 재설계",
+                     "1단계 및 4단계 설계 개선, *그러나 2·3단계의 노이즈는 제거 불가*",
+                     "프로세스 감사, 이중 코딩(Double coding)")
+)
+
+knitr::kable(
+  tse,
+  caption = "총설문오차(Total Survey Error) 프레임워크. Groves et al. (2009) 수정. 본 장의 기여는 응답자 측면의 측정 오차 항목에 집중되어 있습니다.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(latex_options = "scale_down",
+                            bootstrap_options = "striped")
+```
+
+그림 \@ref(fig:tse-tree)는 이 프레임워크를 분류 체계 트리 형태로 렌더링하여, 본 장의 기여가 집중된 응답자 측면 측정 오차 분기를 강조하여 보여줍니다.
+
+```{r tse-tree, fig.cap="분류 체계 트리로 나타낸 총설문오차(Total Survey Error) 프레임워크. 본 장은 강조 표시된 응답자 측면 측정 오차 분기에 초점을 맞추며, 나머지 분기들은 표본추출, 대체(Imputation), 편향 등의 다른 장에서 다룹니다.", fig.width=8, fig.height=5, echo=FALSE, screenshot.opts=list(vwidth=992, selector='.html-widget'), dev="png"}
+suppressPackageStartupMessages(library(DiagrammeR))
+
+DiagrammeR::grViz("
+digraph tse {
+  graph [rankdir = TB, nodesep = 0.4, ranksep = 0.5]
+  node  [shape = box, style = 'filled,rounded',
+         fontname = 'Helvetica', fontsize = 10]
+  edge  [color = '#444444']
+
+  TSE [label = '총설문오차 (Total Survey Error)', fillcolor = '#cfead0', fontsize = 12, height = 0.45, width = 2]
+
+  REP [label = '대표성 (Representation)\\n(표본에 포함된 대상)', fillcolor = '#dbe7f5', height = 0.6, width = 2]
+  MEA [label = '측정 (Measurement)\\n(응답자가 보고한 내용)', fillcolor = '#dbe7f5', height = 0.6, width = 2]
+
+  C   [label = '커버리지 오차', fillcolor = '#eef2f7']
+  Sm  [label = '표본추출 오차', fillcolor = '#eef2f7']
+  N   [label = '무응답 오차', fillcolor = '#eef2f7']
+  Mi  [label = '측정 오차 (도구 측면)', fillcolor = '#eef2f7']
+  Mr  [label = '측정 오차 (응답자 측면)', fillcolor = '#fcd7d2', penwidth = 2]
+  Pe  [label = '처리 오차', fillcolor = '#eef2f7']
+
+  IS  [label = '내재적\\n확률성', fillcolor = '#fcd7d2', shape = note, penwidth = 1]
+  SD  [label = '사회적 바람직성\\n편향', fillcolor = '#fcd7d2', shape = note]
+  RS  [label = '응답\\n양식', fillcolor = '#fcd7d2', shape = note]
+  CB  [label = '회상 /\\n인지적 실패', fillcolor = '#fcd7d2', shape = note]
+
+  TSE -> REP
+  TSE -> MEA
+  REP -> C; REP -> Sm; REP -> N
+  MEA -> Mi; MEA -> Mr; MEA -> Pe
+  Mr -> IS [style = dashed]
+  Mr -> SD [style = dashed]
+  Mr -> RS [style = dashed]
+  Mr -> CB [style = dashed]
+}
+", height = 420)
+```
+
+본 장의 기여는 그림 \@ref(fig:tse-tree)와 표 \@ref(tab:tse-components)의 응답자 측면 분기, 즉 응답자 자신의 응답 생성 과정에 기인하는 측정 오차 부분에 위치합니다. 기존 연구에서는 이 항목을 설문 도구 설계를 개선하면 언젠가는 줄일 수 있는 잔차로 취급해 왔으나, 실제로는 그 상당 부분이 내재적 확률성이라는 구조적 특성을 지니고 있어 설문 설계만으로는 제거할 수 없다는 것이 본 장의 핵심 주장입니다.
+
+------------------------------------------------------------------------
+
+## 타당도: 우리가 측정하고자 하는 것을 제대로 측정하고 있는가? {#sec-validity}
+
+신뢰도(Reliability)와 타당도(Validity)는 개념적으로 구별됩니다. 완벽하게 신뢰할 수 있는 도구라도 엉뚱한 대상을 측정할 수 있으며, 타당한 도구라도 노이즈가 클 수 있습니다. 본 장의 대부분은 신뢰도와 노이즈를 다루지만, 본 절에서는 나머지 논의의 전제가 되는 타당도 프레임워크를 간략히 정립합니다.
+
+@cronbach1955construct 는 측정의 핵심 질문으로서 **구성 타당도(Construct validity)**라는 현대적 개념을 도입했습니다. 즉, 측정 도구가 측정하고자 주장하는 잠재 구성개념(latent construct)을 실제로 측정하고 있는가 하는 문제입니다. 그들은 네 가지 유형의 타당도를 구분하였으며, 이 중 세 가지는 현대적 도구 모음의 핵심으로 남아 있습니다(표 \@ref(tab:validity-types)).
+
+```{r validity-types, echo=FALSE}
+val_tab <- tibble::tibble(
+  `타당도 유형 (Type)` = c("내용 타당도 (Content validity)",
+           "기준 타당도: 동시 (Criterion - concurrent)",
+           "기준 타당도: 예측 (Criterion - predictive)",
+           "구성 타당도: 수렴 (Construct - convergent)",
+           "구성 타당도: 판별 (Construct - discriminant)",
+           "안면 타당도 (Face validity)",
+           "기지집단 타당도 (Known-groups validity)"),
+  `핵심 질문 (Question)` = c("문항들이 구성개념의 개념적 영역 전체를 포괄하는가?",
+               "측정 도구가 동시점의 기준(Gold standard) 측정치와 상관관계를 갖는가?",
+               "측정 도구가 이론적으로 관심 있는 미래의 결과를 잘 예측하는가?",
+               "동일한 구성개념을 측정한 도구들 간에 강한 상관관계가 존재하는가?",
+               "서로 다른 구성개념을 측정한 도구들 간에 약한 상관관계가 나타나는가?",
+               "측정 도구가 응답자와 검토자에게 상식적으로 타당해 보이는가?",
+               "해당 구성개념에서 차이가 있는 것으로 알려진 집단 간에 도구 측정치가 유의하게 다른가?"),
+  `표준 검정법 (Standard test)` = c("개념 도메인 맵에 기반한 전문가 검토",
+                       "기준 측정치와의 피어슨/폴리코릭 상관계수",
+                       "표본 외(Out-of-sample) 예측 성능 검증",
+                       "MTMM 행렬의 이종방법-단일특질 상관계수",
+                       "이종특질 상관계수가 단일특질 상관계수보다 작음을 확인",
+                       "인지적 면접 및 사전 검사 검토",
+                       "독립표본 t-검정 또는 기지집단 구조방정식 모형(SEM)")
+)
+
+knitr::kable(
+  val_tab,
+  caption = "설문 측정의 주요 타당도 유형, 각 유형이 다루는 질문 및 표준 검정법. Cronbach and Meehl (1955), Campbell and Fiske (1959) 수정.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(latex_options = "scale_down",
+                            bootstrap_options = "striped")
+```
+
+마케팅 연구 전통에서 구성 타당도를 구조방정식으로 조작화한 표준 문헌은 @bagozzi1988evaluation 입니다. 이들은 SEM 기반 측정 모델 평가를 위한 표준 체크리스트(합성 신뢰도, 평균분산추출값(AVE), $\chi^2$ 및 증분 적합도 지수, $\sqrt{\mathrm{AVE}}$ 대 구성개념 간 상관관계를 통한 판별 타당도 검정)를 확립했습니다. 마케팅 연구 분야 독자에게는 Bagozzi and Yi가 출발점이며, 보다 광범위한 SEM 메커니즘은 구조방정식 모형 장에서 다룹니다.
+
+구성 타당도를 조작화한 가장 영향력 있는 도구는 @campbell1959convergent 의 **다특질-다방법(multitrait-multimethod, MTMM) 행렬**입니다. MTMM 행렬은 $T \times M$ 측정치($T$개의 특질 각각을 $M$개의 방법으로 측정한 것)의 상관계수 행렬입니다. 수렴 타당도는 *단일특질-이종방법(monotrait-heteromethod)* 대각선에서 확인됩니다. 즉, *서로 다른* 방법으로 측정한 *동일한* 특질의 측정치들은 강한 상관관계를 보여야 합니다. 판별 타당도는 *이종특질-이종방법(heterotrait-heteromethod)* 비대각선에서 확인됩니다. 즉, *서로 다른* 방법으로 측정한 *서로 다른* 특질의 측정치들은 약한 상관관계를 보여야 합니다. 수렴 타당도를 충족하지 못하는 특질은 도구에 의해 측정되지 않은 것이며, 판별 타당도를 충족하지 못하는 특질은 인접 구성개념과 구별되지 않는 것입니다. @saris2014design 은 특질 분산, 방법 분산, 고유 분산을 동시에 추정하는 MTMM-MTSM 확장을 포함하여 MTMM의 현대적 구조방정식 조작화를 제시했습니다.
+
+새로운 설문 도구를 설계하는 분석가를 위한 실무적 위계는 다음과 같습니다.
+
+1.  구성개념의 영역을 정의합니다. 해당 구성개념이 무엇이고 무엇이 아닌지 명시합니다. 전문가 패널을 통해 도메인 맵을 검증합니다(내용 타당도).
+2.  목표 모집단의 구성원을 대상으로 문항에 대한 인지적 사전 검사를 실시합니다(안면 타당도, 이해도).
+3.  활용 가능한 기준 척도가 있다면 이를 함께 투입하여 파일럿 조사를 수행합니다(기준 타당도).
+4.  다중 구성개념 도구의 경우 예산이 허용된다면 MTMM 설계를 적용합니다(수렴 및 판별 타당도).
+5.  도구를 현장에 적용하고 신뢰도를 측정합니다(본 장의 나머지 부분).
+
+> 순서가 중요합니다. 타당도는 신뢰도에 선행합니다. 잘못된 구성개념을 신뢰성 있게 측정하는 것은 분석가에게 거짓 확신을 심어주기 때문에 아무것도 측정하지 않는 것보다 더 해롭습니다. 본 장의 나머지 부분은 타당도 검증 작업이 이미 완료되었다고 가정합니다.
+
+### 측정 불변성 (Measurement invariance)
+
+집단 간, 시점 간, 또는 조사 방식 간 비교를 수행할 때 타당도를 확보하려면 집단 내 구성 타당도 이상의 조건이 필요합니다. 즉, 잠재 요인 구조가 비교 단위 전반에서 *동등하게* 유지되어야 합니다. @vandenberg2000review 는 측정 불변성 위계를 다음과 같은 중첩된 확인적 요인 분석(CFA) 제약 조건으로 체계화했습니다: (a) 형태 불변성(configural invariance, 동일한 요인 구조), (b) 동일성/측정단위 불변성(metric invariance, 동일한 요인 적재량), (c) 절편/스칼라 불변성(scalar invariance, 동일한 문항 절편), (d) 엄격 불변성(strict invariance, 동일한 문항 잔차 분산). 잠재 평균의 집단 간 비교에는 최소한 측정단위 및 스칼라 불변성이 요구되며, 잠재 요인에 대한 회귀계수 비교에는 최소한 측정단위 불변성이 필요합니다. R의 `lavaan` 및 `semTools` 패키지에서 표준 검정을 제공합니다.
+
+문화 간 또는 조사 방식 간 비교를 수행하는 설문 연구에서 측정 불변성은 제\@ref(sec-anchoring-vignettes)절의 앵커링 비네트 체계에 대응하는 구조방정식 모형 측면의 대응물입니다. 둘 다 차등 문항 기능(differential item functioning)을 진단하지만, 불변성 검정은 모수적 구조방정식 가정에 의존하는 반면 앵커링 비네트는 비모수적 캘리브레이션 설계를 활용합니다.
+
+### 타당도 체계와 본 장의 다른 내용과의 연계
+
+제\@ref(sec-classical-reliability)절에서 다루는 심리측정 신뢰도 체계는 반복 측정 시 도구가 얼마나 *일관되게* 작동하는지를 측정합니다. 제\@ref(sec-response-styles)절부터 제\@ref(sec-mode-effects)절까지의 응답 품질 체계는 응답자가 자신의 역할을 진지하게 수행하고 있는지를 평가하며, 제\@ref(sec-defining-instability)절부터 제\@ref(sec-decision-theory)절까지 발전시키는 내재적 확률성 프레임워크는 앞선 두 진단을 통과하고도 남아 있는 응답자 내부 노이즈의 환원 불가능한 요소를 다룹니다.
+
+------------------------------------------------------------------------
+
+## 응답 양식, 만족화 및 비실질적 응답 {#sec-response-styles}
+
+타당한 도구와 주의 깊은 응답자가 존재하더라도, 기록된 분산의 상당 부분은 실질적 내용보다는 응답 과정 자체에 의해 유도되는 패턴인 **체계적 비실질적 응답(systematic non-substantive responding)**을 반영합니다. 고전적 분류 체계 [@krosnick1991; @baumgartner2001response; @vanvaerenbergh2013response]는 표 \@ref(tab:response-styles)의 패턴들을 구분합니다.
+
+```{r response-styles, echo=FALSE}
+rs_tab <- tibble::tibble(
+  `응답 양식 (Style)` = c("긍정 편향 / 순응 (ARS)",
+            "부정 편향 (DARS)",
+            "극단 응답 양식 (ERS)",
+            "중간점 / 중심화 경향 (MRS)",
+            "순 긍정 편향 (NARS)",
+            "비조건부 / 무작위 응답",
+            "일렬 표기 (Straightlining)",
+            "불성실 신속 응답 (Speeding)"),
+  `정의 (Definition)` = c("문항 내용과 무관하게 동의하려는 경향",
+                 "문항 내용과 무관하게 반대하려는 경향",
+                 "척도의 양 끝점을 선택하려는 경향",
+                 "척도의 중간점을 선택하려는 경향",
+                 "ARS에서 DARS를 뺀 비율적 수치",
+                 "문항 내용과 무관한 무작위 응답",
+                 "행렬형 문항 전체에 걸쳐 동일한 응답 선택",
+                 "문항 이해에 필요한 최소 기준 미만의 과업 시간"),
+  `단일 문항 탐지법 (Detection)` = c("문항 쌍(긍정형 vs. 부정형) 일치도",
+                                 "문항 쌍(긍정형 vs. 부정형) 불일치도",
+                                 "Greenleaf (1992) ERS 척도",
+                                 "중간점 응답의 빈도",
+                                 "ARS와 DARS의 복합 지표",
+                                 "마할라노비스 거리, 일관성 지표",
+                                 "행렬형 문항 내 행별 분산",
+                                 "응답자 내 과업 소요 시간(TOT) 백분위수"),
+  `완화 설계 (Mitigating design)` = c("역코딩 문항, 균형 척도",
+                          "역코딩 문항, 균형 척도",
+                          "7점 이상의 비앵커링 척도 지양",
+                          "짝수 선택지를 사용하여 중간점 배제",
+                          "역코딩이 포함된 균형 척도",
+                          "인지적 사전 검사, 해석 불가능한 문항 제거",
+                          "문항 순서 무작위화, 긴 행렬형 질문 지양",
+                          "사전 연습(Burn-in) TOT 기준선 적용 (제\\@ref(sec-tot)절)")
+)
+
+knitr::kable(
+  rs_tab,
+  caption = "응답 양식의 분류 체계, 탐지 진단법 및 완화 설계 방안. Baumgartner and Steenkamp (2001), Greenleaf (1992), Krosnick (1991), Van Vaerenbergh and Thomas (2013), Zhang and Conrad (2014) 수정.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(latex_options = "scale_down",
+                            bootstrap_options = "striped")
+```
+
+### 최적화-만족화 간 절충 (The optimizing--satisficing tradeoff)
+
+표 \@ref(tab:response-styles)의 대부분을 관통하는 핵심 기제는 @krosnick1991 의 *만족화(satisficing)* 모형입니다. 응답자는 인지된 한계 편익이 인지된 한계 비용과 같아질 때까지 4단계 인지 모형(제\@ref(sec-cognitive-process)절)의 단계들에 인지적 노력을 투입한 뒤, 나머지 단계를 건너뜁니다. *강한 만족화(Strong satisficing)*는 이해 단계에서 응답 과정을 중단하고 휴리스틱 답변(긍정 편향, 중간점 선택, 일렬 표기)으로 대체하는 것을 말하며, *약한 만족화(Weak satisficing)*는 인출 및 판단 단계를 단축하고 부분적인 증거에 기초한 답변으로 대체하는 것을 말합니다.
+
+주요 실증적 규칙성은 만족화가 문항 복잡성에 따라 증가하고, 응답자의 능력과 동기에 따라 감소하며, 설문 길이가 길어질수록 팽창한다는 점입니다. 이는 동일한 문항이라 하더라도 긴 설문의 *첫 3분의 1* 지점이 *마지막 3분의 1* 지점보다 일반적으로 더 깔끔한 측정치를 제공한다는 것을 의미합니다.
+
+### 긍정 편향, 극단성 및 중간점 편향 (Acquiescence, extremity, and midpoint)
+
+@baumgartner2001response 는 마케팅 연구 분야에서 응답 양식 분류 체계를 현대적으로 조작화했습니다. 유럽연합(EU) 11개국의 소비자 설문조사를 활용하여 다음과 같은 사실을 밝혔습니다.
+
+-   ARS, DARS, ERS, MRS는 *체계적*(응답자 내에서 안정적임)이며 *상관되어*(ARS가 높은 응답자는 전형적으로 ERS도 높음) 있으며, 이는 독립적인 특이 행동이라기보다는 저차원 잠재 구조를 반영함을 시사합니다.
+-   응답 양식은 (i) 역코딩 문항의 비율과 (ii) 척도 평균의 척도 중간점 대비 편차에 비례하는 크기로 척도 점수에 편향을 유발합니다.
+-   기저의 실질적 구성개념이 동일하더라도 문화권 간에 응답 양식의 유병률이 다르면 실질 척도 점수의 국가 간 비교가 크게 왜곡될 수 있습니다.
+
+해결책은 자연스럽게 도출됩니다. 긍정 편향에 의한 왜곡을 상쇄하기 위해 역코딩 문항을 포함하고, 중간점 선택을 억제하기 위해 짝수 개의 선택지를 가진 척도를 사용하며, (a) 보조 문항 세트를 통해 응답 양식을 측정 [@greenleaf1992measuring]하여 그 분산을 부분 제거(partial-out)하거나, (b) 실질 특질과 함께 잠재 ERS를 제2의 요인으로 복원하는 문항반응이론(IRT) 기반 극단 응답 양식 추정을 사용합니다.
+
+### 일렬 표기(Straightlining)와 불성실 신속 응답(Speeding)
+
+행렬형 그리드 문항이나 유사 문항의 긴 배터리에서 가장 심각한 두 가지 패턴은 *일렬 표기*(그리드의 모든 행에 걸쳐 동일한 응답을 선택함)와 *불성실 신속 응답*(합리적인 이해가 불가능할 정도로 지나치게 빠르게 응답함)입니다. @zhang2014speeding 은 이 둘이 밀접하게 결합되어 있음을 입증했습니다. 초기 문항에서 빠르게 응답한 응답자는 이후의 그리드 문항에서 일렬 표기를 보일 확률이 극적으로 높으며, 속도-일렬 표기 결합은 교육 수준이 낮거나 젊은 응답자일수록 가장 강하게 나타납니다.
+
+탐지는 두 가지 간단한 조작화를 통해 이루어집니다. 첫째, **최장 연속 동일 응답(long-string)** $L_i = \max_j \mathbb{1}\{X_{i,j} = X_{i,j-1}\}$ 은 응답자 $i$ 내에서 가장 길게 연속된 동일 응답의 수를 계산합니다. 표본 특화 기준치(일반적으로 95번째 백분위수, 또는 $K$행 그리드에서 $0.7 \times K$를 초과하는 값)를 넘어서면 일렬 표기로 분류합니다. 둘째, **페이지 수준 불성실 신속 응답** $\mathrm{Speed}_i^{(p)} = \mathrm{TOT}_i^{(p)} / \overline{\mathrm{TOT}^{(p)}}$ 은 페이지 수준 중앙값 시간의 0.5 미만인 응답자를 플래그합니다. 제\@ref(sec-survey-reliability-applied)절에서 실무 코드를 제공합니다.
+
+### "모름" 응답 및 문항 무응답 (Don't-know responses and item nonresponse)
+
+비실질적 응답의 또 다른 요소는 "잘 모름(Don't Know, DK)" 또는 "의견 없음(No Opinion)" 선택지가 제공될 때 이를 선택하는 행위입니다. @krosnick2002impact 는 정통 설문 연구자의 직관(즉, DK를 제공하면 진정한 의견이 없는 응답자의 무작위 추측을 줄일 수 있다는 생각)과 달리, 실제 데이터에서는 인지 능력이 *낮은* 응답자, 구두가 아닌 *비밀* 방식으로 응답하는 응답자, 긴 설문의 *후반부*에 도달한 응답자에 의해 DK가 주로 선택된다는 만족화의 전형적 특징을 보여줍니다. 따라서 DK 옵션을 포함하는 것은 쉬운 이탈을 유도함으로써 설문 도구의 전체 정보량을 오히려 *감소*시킬 수 있습니다.
+
+이에 따른 권장사항은 설계 맥락에 따라 달라집니다. 인구의 상당 부분이 실제로 의견을 가지고 있지 않다고 판단되는 경우(관심도가 낮은 정책 문항, 새로운 구성개념), DK를 제공하고 이를 실질적인 응답으로 처리해야 합니다. 반면 모집단의 대부분이 어떤 형태로든 의견을 가지고 있다고 판단되는 경우(잘 알려진 이슈, 확고한 태도), DK를 제외하고 만족화된 응답을 줄이는 대가로 강제 선택에 따른 약간의 노이즈를 수용하는 것이 바람직합니다.
+
+### 순수 비조건부/무작위 응답 (Pure non-contingent responding)
+
+위의 구조화된 패턴 외에도 일부 응답자는 단순히 무작위로 응답합니다. 응답 벡터에 대한 **마할라노비스 거리(Mahalanobis distance)** $D_i^2 = (\mathbf{x}_i - \bar{\mathbf{x}})^\top \mathbf{S}^{-1} (\mathbf{x}_i - \bar{\mathbf{x}})$ 는 다변량 이상치를 탐지합니다. **개인-전체 상관(person-total correlation)** $r_i = \mathrm{cor}(\mathbf{x}_i, \bar{\mathbf{x}}_{-i})$ 는 응답 패턴이 표본 평균 응답 패턴과 상관을 보이지 않는 응답자를 식별합니다. @meade2012identifying 는 단일 지표에 의존하기보다 최장 연속 동일 응답 및 과업 시간(TOT) 진단법과 함께 이 두 가지를 모두 계산하고 *결합 분포*를 활용할 것을 권장합니다. 제\@ref(sec-careless-detection)절에서 이러한 결합 탐지 도구 세트를 구현합니다.
+
+------------------------------------------------------------------------
+
+## 조사 방식, 면접원 및 사전조사 효과 {#sec-mode-effects}
+
+설문 조사 방식(Mode)과 면접원의 특성은 사소한 설계 요소가 아닙니다. 조사 방식의 변경은 동일한 설문 도구 내의 실질적인 처치 효과에 필적하는 수준으로 응답 분포를 변화시킬 수 있으며, 민감한 단일 문항에서 면접원에 의해 유발된 효과는 모집단 추정치의 표준오차를 압도할 수 있습니다.
+
+### 조사 방식 효과 (Mode effects)
+
+방대한 실증 문헌들이 조사 방식 효과를 입증하고 있습니다. @holbrook2003telephone 은 긴 설문지를 사용한 전국 확률 표본에서 전화 면접과 대면 면접을 비교했습니다. 동일한 설문 설계 하에서 전화 응답자는 대면 응답자에 비해 더 많이 만족화(중간점 선택, 무의견, 일렬 표기 증가)를 보였고, 민감한 문항에서 더 큰 사회적 바람직성 편향을 나타냈습니다. @heerwegh2009mode 는 단일 표본 내에서 무작위 배정을 통해 동일한 도구의 대면 조사와 웹 조사를 비교했습니다. 웹 환경은 문항 무응답률이 높고 주관식 응답 길이가 짧아지는 대가로 민감한 문항에 대한 사회적 바람직성 편향을 줄였습니다. @schaeffer2020advances 의 종합 연구는 응답 분포의 형태, 중도 이탈률, 인지 부하에 대한 추가적인 조사 방식 효과를 체계화했습니다.
+
+분석을 위한 시사점은 명확합니다. 필터 기준선(filter floor)을 조사 방식별로 보정해야 하며 결코 하나로 합쳐서는 안 됩니다. 대면 컨조인트 문항에 적합한 6초의 TOT 기준선은 온라인 자기기입식 동일 문항에는 너무 느슨하며, 면접원이 지문을 소리 내어 읽어주는 전화 조사 동일 문항에는 너무 엄격합니다.
+
+### 면접원 효과 (Interviewer effects)
+
+면접원이 개입하는 경우 추가적인 설계 효과가 발생합니다. 면접원마다 질문을 읽고, 응답을 캐묻고(probe), 답변을 코딩하는 방식에 차이가 있습니다. @schaeffer2010interviewers 와 @schaeffer2020advances 는 표준화 면접 문헌을 종합하여 다음과 같은 두 가지 실무적 시사점을 제시했습니다.
+
+1.  설문 응답에 대한 모든 다수준 모형에서 면접원 ID는 하나의 계층(level)으로 포함되어야 합니다. 면접원에 기인하는 분산은 결코 작지 않으며, 이를 0으로 취급하면 표준오차가 과소추정되어 1종 오류가 증가합니다.
+2.  면접원 분산은 품질 진단 도구입니다. 단일한 객관적 답변이 나와야 마땅한 질문(예: 사실 회상 문항)에서 큰 면접원 분산이 나타난다면 면접원에 의해 도입된 측정 오차를 시사하며, 재교육이나 문항 재설계의 필요성을 나타냅니다.
+
+### 표준 사전 검사로서의 인지적 면접법 (Cognitive interviewing as the standard pretest)
+
+@beatty2007research 는 설문 문항 사전 검사를 위한 표준 인지적 면접 프로토콜을 종합했습니다. 응답자에게 초안 문항을 제시하고 구어 프로토콜(생각 말하기(think-aloud), 정형화된 탐색 질문, 사후 디브리핑)을 병행하여 이해, 인출, 판단 상의 문제를 드러냅니다. @willis2005cognitive 는 실무자를 위한 매뉴얼을 제시했습니다.
+
+새로운 설문 도구를 위한 실행 가능한 인지적 면접 프로토콜은 다음과 같습니다.
+
+1.  문항 초안을 작성합니다.
+2.  목표 모집단을 대표하는 8~15명의 응답자를 모집합니다.
+3.  생각 말하기 또는 동시 탐색 구어 프로토콜을 적용하여 각 초안 문항을 실시합니다.
+4.  관찰된 문제를 4단계 모형(이해, 인출, 판단, 응답 선택)의 단계별로 코딩합니다.
+5.  3회 이상의 인터뷰에서 동일한 문제가 반복되는 문항을 수정합니다.
+6.  이 과정을 반복합니다.
+
+인지적 면접은 대규모 현장 사전 검사를 보완하는 것이지 대체하는 것이 아닙니다. 현장 사전 검사에서의 행동 코딩(면접원의 추가 질문 빈도, 응답자의 설명 요청, 중도 이탈 기록)은 인지적 면접이 놓칠 수 있는 설계상의 문제, 특히 면접원 조사 방식에서의 문제를 포착합니다 [@schaeffer2010interviewers].
+
+------------------------------------------------------------------------
+
+## 설문 응답 불안정성의 정의 {#sec-defining-instability}
+
+### 설정 및 표기법
+
+$N$명의 응답자로 구성된 유한 모집단과 이진(binary) 설문 문항을 고려해 봅시다. $C_{it} \in \{0, 1\}$ 를 시행 $t \in \{1, 2\}$ 에서 응답자 $i$의 관측된 선택이라 합시다. 여기서 두 시행은 일정 시간 간격과 중간 개입 문항들로 분리되어 있습니다. **개인 수준 설문 불안정성(individual-level survey instability)**을 다음의 지시변수로 정의합니다.
+
+\begin{equation}
+D_i \;=\; \mathbb{1}\!\left( C_{i1} \neq C_{i2} \right),
+(\#eq:individual-d)
+\end{equation}
+
+그리고 **모집단 평균 불안정성(population mean instability)**은 모집단 전체에 대한 식 \@ref(eq:individual-d)의 $D_i$의 평균입니다.
+
+\begin{equation}
+\Delta \;=\; \frac{1}{N} \sum_{i=1}^{N} D_i.
+(\#eq:population-d)
+\end{equation}
+
+식 \@ref(eq:population-d)에서 그 여집합인 $1 - \Delta$ 는 이진 문항에 대한 *응답자 내 신뢰도(intra-respondent reliability)*라고도 불립니다. 이는 평가자 간 신뢰도(동일 대상에 대한 *평가자 간* 일치도), 내적 일관성(크론바흐 $\alpha$, 척도 내 *문항 간* 일치도; 제\@ref(sec-classical-reliability)절), 단일차원성(문항들이 단일 잠재 요인에 적재되는지 여부)과 개념적으로 명확히 다릅니다. 응답자 내 신뢰도는 응답자 내·문항 내 차원의 신뢰도 개념입니다.
+
+포함 지시변수 $S_i \in \{0,1\}$ 및 포함 확률 $\pi_i^{\mathrm{(samp)}}$ 을 갖는 표본설계 하에서 추출된 $n < N$명의 표본에 대해, $\Delta$의 설계 기반 비편향 호비츠-톰슨(Horvitz--Thompson) 추정량은 다음과 같습니다.
+
+\begin{equation}
+\widehat{\Delta} \;=\; \frac{1}{N}\sum_{i=1}^{N} \frac{S_i\, D_i}{\pi_i^{\mathrm{(samp)}}}.
+(\#eq:ht-d)
+\end{equation}
+
+비복원 단순 무작위 추출 및 무시 가능한 무응답 하에서, 식 \@ref(eq:ht-d)는 표본평균 $\bar D = n^{-1} \sum_{i:S_i=1} D_i$ 로 단순화됩니다. 본 장의 나머지 부분에서는 $\bar D$를 사용합니다. 표본설계가 단순 무작위에서 벗어날 때 필요한 설계 기반 보정은 표본추출 장에서 다룹니다.
+
+### 식별 가정 (Identifying assumptions)
+
+$\bar D$가 단순한 차이 비율이 아닌 진정한 의미의 *불안정성(instability)*을 추정하기 위해서는 세 가지 가정이 성립해야 합니다.
+
+**가정 1 (실질적 변화 없음, No material change).** 두 시행 사이에 질문의 의미나 응답 선택지의 가치를 바꿀 만한 어떠한 정보도 응답자 $i$에게 도달하지 않았습니다. 즉, 해당 문항과 관련된 응답자의 정보 집합 $\mathcal{F}_i$는 두 시행 모두에서 동일합니다.
+
+**가정 2 (기억 효과 없음, No memory).** 시행 $t = 2$에서 응답자 $i$는 $t = 1$에서 해당 질문을 받았다는 사실을 기억하지 못합니다. 기억이 존재한다면 $C_{i2}$는 응답 과정의 독립적인 추출이 아니라 $C_{i1}$의 함수가 됩니다.
+
+**가정 3 (무작위 이탈, Attrition at random).** 응답자 $i$가 두 시행 모두에서 관측되는지 여부는 관측된 공변량을 조건으로 할 때 $D_i$와 독립입니다.
+
+이 세 가지 가정은 전통적인 패널 설문조사에서는 동시에 만족하기 어려운 상충 관계를 갖습니다(표 \@ref(tab:assumption-tradeoff)).
+
+```{r assumption-tradeoff, echo=FALSE}
+tradeoff <- tibble::tibble(
+  `설계 (Design)` = c("긴 간격의 패널 웨이브",
+             "짧은 간격의 패널 웨이브",
+             "동일 세션 내 반복 측정"),
+  `A1 (변화 없음)` = c("어려움; 웨이브 사이에 세상이 변함",
+                       "수월함; 짧은 시간 간격",
+                       "자명하게 성립 (단일 세션)"),
+  `A2 (기억 없음)` = c("수월함; 긴 시간 간격",
+                       "어려움; 최근 질문을 기억함",
+                       "충분한 방해 문항으로 성립 [@clayton2025]"),
+  `A3 (무작위 이탈)` = c("어려움; 선택적 이탈 발생",
+                                 "수월함; 짧은 시간 간격",
+                                 "자명하게 성립 (세션 내 이탈 거의 없음)")
+)
+
+knitr::kable(
+  tradeoff,
+  caption = "세 가지 반복 측정 설계에 대한 $\\bar D$의 식별 가정. 동일 세션 내 반복 측정은 세 가정을 동시에 만족할 수 있는 유일한 설계입니다.",
+  booktabs = TRUE
+)
+```
+
+따라서 $\Delta$를 깔끔하게 추정하기 위한 방법론적 접근은 단일 설문 세션 내에서 방해 문항(distractor items)을 사이에 두고 동일한 문항을 두 번 질문하는 것입니다. 동일 세션 내 반복 측정은 구조상 가정 1을 만족하고, 세션 내 이탈이 거의 없으므로 가정 3을 만족하며, 방해 문항 블록이 충분하다면 가정 2를 만족합니다. @clayton2025 설계에서는 적절히 선택된 3개 이상의 방해 문항이 있을 때 응답자들이 반복 질문을 알아차렸다고 보고하는 경우가 사실상 전무하여 가정 2가 실증적으로 성립합니다. 세 가정이 모두 성립할 때 $\Delta \in [0, 1]$이지만, 독립적인 베르누이 추출에서 도출되는 실질적 최댓값은 $0.5$입니다.
+
+### 검사-재검사 상관계수보다 $\bar D$를 선호하는 이유
+
+이진 문항의 경우, 분석적 목적에서 $\bar D$는 검사-재검사 상관계수보다 세 가지 이유로 엄밀하게 더 많은 정보를 담고 있습니다.
+
+첫째, $\bar D$는 결과변수와 동일한 척도(불일치 확률) 상에 있는 반면, 상관계수는 무차원이며 실질적 의미로 해석하기가 더 어렵습니다.
+
+둘째, $\bar D$는 직접적인 의사결정론적 해석을 갖습니다. 임의로 선택된 응답자의 기록된 답변이 잠시 후 데이터를 다시 수집했을 때 달라질 확률을 직접 알려줍니다. 어떠한 상관계수도 이 수치를 직접 제공하지 못합니다.
+
+셋째, $\bar D$는 결과변수의 한계 분포(marginal distribution)에 의존하지 않지만 상관계수는 의존합니다. 고전적인 관계식은 다음과 같습니다.
+
+\begin{equation}
+r_{tt} \;=\; 1 - \frac{\bar D}{2 p (1-p)},
+(\#eq:rtt-vs-d)
+\end{equation}
+
+여기서 $p = \Pr(C = 1)$ 입니다. 식 \@ref(eq:rtt-vs-d)는 한계 의존성을 명시적으로 보여줍니다. $\bar D$를 고정할 때, $p$가 $\tfrac{1}{2}$에 가까워질수록 $r_{tt}$는 0을 향해 줄어듭니다. 이는 이분화된 데이터에 대한 폴리코릭 상관계수 및 피어슨 상관계수가 한계 분포에 의존한다는 고전적 사실의 이진 문항 버전입니다. @achen1975 가 정치행동론에서의 표준적 논의를 제시했으며, 광범위한 심리측정 문헌 [@alwin2007margins]도 순서형 문항에 대해 동일한 패턴을 확인하고 있습니다.
+
+표 \@ref(tab:rtt-d-comparison)는 이러한 의존성을 구체적으로 보여줍니다. 동일한 $\bar D = 0.20$에 대해, 내포된 $r_{tt}$는 $p = 0.5$일 때 0.60에서 $p = 0.2$일 때 0.38까지 변합니다. $r_{tt}$만 보는 독자는 한계 분포에 따라 동일한 기저 응답 과정에 대해 전혀 다른 결론을 내리게 됩니다.
+
+```{r rtt-d-comparison, echo=FALSE}
+rtt_table <- tibble::tibble(
+  `D-bar`   = c(0.10, 0.10, 0.10, 0.20, 0.20, 0.20, 0.30, 0.30, 0.30),
+  `p = Pr(C=1)` = rep(c(0.50, 0.30, 0.20), times = 3),
+  `r_tt`     = c(0.80, 0.762, 0.688,
+                 0.60, 0.524, 0.375,
+                 0.40, 0.286, 0.062)
+)
+
+knitr::kable(
+  rtt_table, digits = 3,
+  caption = "검사-재검사 상관계수의 응답 한계 분포 의존성. 세 가지 $\\bar D$ 값과 세 가지 $p$ 값의 조합. 동일한 불안정성에서도 $r_{tt}$는 크게 달라집니다.",
+  booktabs = TRUE
+)
+```
+
+따라서 우리는 이진 설문 문항의 기본 신뢰도 통계량으로 $\bar D$를 보고하고, 기존 문헌과의 비교가 필요한 경우에*만* 검사-재검사 상관계수를 병기할 것을 권장합니다.
+
+### $\bar D$의 표본 분포
+
+$D_i \in \{0,1\}$ 이며 단순 무작위 추출 하에서 응답자 간에 독립적으로 추출되므로, $\bar D$는 모집단 분산 $\Delta(1-\Delta)$를 갖는 독립적인 베르누이$(\Delta)$ 확률변수들의 표본평균입니다. 표준오차는 다음과 같습니다.
+
+\begin{equation}
+\mathrm{SE}(\bar D) \;=\; \sqrt{\frac{\Delta(1-\Delta)}{n}} \;\approx\; \sqrt{\frac{\bar D(1-\bar D)}{n}}.
+(\#eq:se-d)
+\end{equation}
+
+식 \@ref(eq:se-d)에 기초한 양측 $1 - \alpha$ 왈드(Wald) 신뢰구간은 $\bar D \pm z_{1-\alpha/2}\mathrm{SE}(\bar D)$ 입니다. 소표본이거나 $\bar D$가 0 또는 0.5에 가까운 경우 왈드 구간 대신 클로퍼-피어슨(Clopper--Pearson) 정확 신뢰구간이나 윌슨 스코어(Wilson score) 구간을 사용하는 것이 바람직합니다. 제\@ref(sec-survey-reliability-applied)절에서 두 방법을 모두 예시합니다.
+
+비이진 문항의 경우 $\bar D$의 자연스러운 일반화는 응답자 내 평균 절대 불일치(mean absolute discrepancy)이며, 순서형 문항의 경우 반복 측정 간의 응답자 내 스피어만 순위 상관계수입니다. 수학적 형식은 바뀌지만, *내재적 확률성을 식별하기 위해 동일 세션 내 반복 측정 종속변수를 사용한다*는 핵심 개념은 동일합니다.
+
+------------------------------------------------------------------------
+
+## 고전 신뢰도 이론과 그 한계 {#sec-classical-reliability}
+
+3원 분산 분해를 발전시키기 전에 고전 심리측정학이 이미 제공하는 바를 명확히 할 필요가 있습니다. 본 장의 주장은 고전 신뢰도 이론이 틀렸다는 것이 아니라, 노이즈의 특정 구성 요소에 대해 침묵하고 있다는 것입니다. 고전 이론이 무엇을 식별하는지 정확히 아는 것은 고전 이론이 식별하지 못하는 것이 무엇인지를 파악하기 위한 전제 조건입니다.
+
+### 고전적 분해
+
+기초적인 참고 문헌은 @lord1968 입니다. 관측 점수 $X$는 진점수 $T$와 오차항 $E$로 분해됩니다.
+
+\begin{equation}
+X \;=\; T + E,\qquad \mathrm{Var}(X) \;=\; \mathrm{Var}(T) + \mathrm{Var}(E),
+(\#eq:classical-decomp)
+\end{equation}
+
+여기서 정의상 $\mathrm{Cov}(T, E) = 0$ 입니다. 측정의 신뢰도는 다음과 같습니다.
+
+\begin{equation}
+\rho \;=\; \frac{\mathrm{Var}(T)}{\mathrm{Var}(T) + \mathrm{Var}(E)} \;=\; 1 - \frac{\mathrm{Var}(E)}{\mathrm{Var}(X)},
+(\#eq:reliability)
+\end{equation}
+
+이는 $[0, 1]$ 사이의 값입니다. 식 \@ref(eq:reliability)의 $\rho$에 대한 표준 추정량은 데이터의 성격에 따라 달라집니다.
+
+### 다문항 척도를 위한 크론바흐 알파(Cronbach's $\alpha$)
+
+측정이 $k$개 문항 척도로 구성될 때, 표준적인 내적 일관성 추정량은 @cronbach1951coefficient 의 $\alpha$입니다.
+
+\begin{equation}
+\alpha \;=\; \frac{k}{k - 1} \left( 1 - \frac{\sum_{j=1}^{k} \mathrm{Var}(X_j)}{\mathrm{Var}\!\left(\sum_{j=1}^{k} X_j\right)} \right),
+(\#eq:alpha)
+\end{equation}
+
+식 \@ref(eq:alpha)는 문항들이 $\tau$-동등(tau-equivalent)하다는 가정 하에서 $\rho$의 하한값입니다. 크론바흐 $\alpha$는 응답자 내·문항 내 노이즈에 대해 침묵하며, *문항 간* 일관성만을 요약합니다. $\alpha = 0.95$인 척도라도 개별 문항 각각에서는 여전히 $\bar D = 0.25$를 나타낼 수 있습니다.
+
+### $\alpha$의 우수한 대안인 오메가 계수($\omega$)
+
+크론바흐 $\alpha$가 학계의 기본 신뢰도 통계량으로 널리 쓰이고 있지만, 심리측정학자들은 $\tau$-동등성 가정이 무너질 때 $\alpha$가 형편없는 하한값이자 진정한 신뢰도의 왜곡된 점추정치라고 수십 년간 지적해 왔습니다. 현대적인 대안은 척도의 요인분석적 표현에서 도출되는 @mcdonald1999test 의 오메가 계수($\omega$)입니다. 요인 적재량 $\lambda_j$와 문항 잔차 분산 $\psi_j^2$를 갖는 단일 요인 척도에 대해, 총점수 신뢰도는 다음과 같습니다.
+
+\begin{equation}
+\omega_t \;=\; \frac{(\sum_{j} \lambda_j)^2}{(\sum_{j} \lambda_j)^2 + \sum_{j} \psi_j^2}.
+(\#eq:omega)
+\end{equation}
+
+동류 척도(congeneric scales)의 경우 식 \@ref(eq:omega)에서 $\omega_t \ge \alpha$ 가 성립하며, 등호는 $\tau$-동등성(동일한 적재량) 하에서만 성립합니다. @revelle2009coefficients 는 총점수 신뢰도로서 $\omega_t$를, 일반 요인에 기인하는 분산 비율로서 $\omega_h$를 사용하고 $\alpha$는 폐기해야 한다고 주장합니다. R의 `psych` 패키지는 세 가지를 모두 보고합니다. 실무자에게는 학계의 보고 관행이 따라잡을 때까지 $\alpha$와 함께 $\omega_t$를 병기할 것을 권장합니다.
+
+### 일반화가능도 이론 (Generalizability theory)
+
+고전 검사 이론은 분산을 단일 진점수 성분과 단일 오차 성분으로만 분할합니다(식 \@ref(eq:classical-decomp)). 일반화가능도 이론(G-이론) [@cronbach1972dependability]은 이를 문항, 평가자, 측정 시점 및 분석가가 개별적으로 식별하고자 하는 기타 모든 분산 원인 등 다중의 식별된 국면(facets)으로 일반화합니다. 이 프레임워크는 특정 의사결정 맥락(절대적 해석 대 상대적 해석)에 맞춘 *일반화가능도 계수* $E\rho^2$를 산출하며, 대안적 측정 설계(더 많은 문항, 평가자, 시점) 하에서 신뢰도가 어떻게 변할지 분석가가 예측할 수 있게 해줍니다.
+
+G-이론은 식 \@ref(eq:three-way-decomp)의 3원 분해를 수용하기에 가장 자연스러운 이론적 기반입니다. 내재적 확률성은 G-이론이 일급 객체로 다루는 응답자-측정시점 간 상호작용 분산 성분입니다. R의 `gtheory` 패키지가 표준 분산 성분 추정을 구현합니다. 본 장에서 다루는 것 이상으로 분산 분해를 심화하고자 하는 분석가에게 적합한 틀로서 G-이론을 언급해 둡니다.
+
+### 검사-재검사 상관계수 및 하이즈-와일리 심플렉스 (Heise--Wiley simplex)
+
+종단적 설계에서 자연스러운 신뢰도 추정량은 식 \@ref(eq:rtt-vs-d)에 정의된 검사-재검사 상관계수 $r_{tt}$입니다. 고전적인 반론 [@heise1969separating; @wiley1970estimation]은 측정 시점 간의 간격이 0이 아닌 한, $r_{tt}$가 *비신뢰성*(응답자 내부 측정 노이즈)과 *진정한 변화*(응답자 내부 태도 변화)를 혼동한다는 점입니다.
+
+@heise1969separating 은 동일 문항을 세 번 측정하면 자기회귀 측정 모델의 적률 조건을 사용하여 신뢰도와 안정성을 분리할 수 있음을 보여주었습니다. 시점 $t$에서의 관측 점수를 $X_t$, 잠재 진점수를 $T_t$라 하고 다음을 가정합니다.
+
+\begin{align}
+X_t &= T_t + E_t, & E_t &\sim \mathcal{N}(0, \sigma_E^2),\ \mathrm{시점}\ t\text{ 간 독립}, \\
+T_t &= \beta_t T_{t-1} + U_t, & U_t &\sim \mathcal{N}(0, \sigma_U^2).
+\end{align}
+
+아래 제시된 하이즈 추정량의 식별을 위해서는 $\mathrm{Var}(T_t)$가 시간에 따라 불변하여 신뢰도 $\rho = \mathrm{Var}(T_t)/\mathrm{Var}(X_t)$가 웨이브 간에 일정하다는 **정상성 가정(stationarity assumption)**이 필요합니다. @wiley1970estimation 은 추가 웨이브를 활용하여 이 가정을 완화하고 시간에 따라 변하는 오차 분산을 허용하는 심플렉스의 최대우도 버전을 개발했습니다. 정상성 가정 하에서 3개 웨이브가 주어지면 세 가지 쌍별 상관계수 $r_{12}, r_{23}, r_{13}$이 $(\rho, \beta_1, \beta_2)$를 과대식별하여 다음과 같은 하이즈 추정량을 도출합니다.
+
+\begin{equation}
+\hat\rho_2 \;=\; \frac{r_{12} \cdot r_{23}}{r_{13}},\qquad \hat\beta_1 \;=\; \frac{r_{13}}{r_{23}},\qquad \hat\beta_2 \;=\; \frac{r_{13}}{r_{12}}.
+(\#eq:heise)
+\end{equation}
+
+하이즈-와일리 심플렉스는 사회학 및 정치학에서 종단적 신뢰도 추정을 위한 고전적 도구로 남아 있습니다.
+
+> **심플렉스가 내재적 확률성에 대해 침묵하는 이유.** 심플렉스는 *웨이브 간 독립적인 측정 오차를 가정*하는 웨이브 간 공분산으로부터 $\rho$와 $\beta_t$를 식별합니다. 만약 잔차 노이즈의 일부가 각 측정 시점에서 응답자 수준의 분포로부터 새롭게 추출되는 내재적 확률성이라면, 심플렉스는 이를 $\sigma_E^2$로 흡수하여 "측정 오차"로 명명합니다. 이 분해는 수학적으로는 일관되지만, "더 나은 측정 도구를 통해 원칙적으로 제거할 수 있는 노이즈"라는 실질적 해석은 틀린 것입니다.
+
+### 다특질-다방법(MTMM) 신뢰도
+
+@saris2014design 은 현대적인 와일리 스타일의 통합을 제시합니다. MTMM(다특질-다방법) 설계는 $T$개의 특질 각각을 $M$개의 방법으로 측정하여 응답자당 $TM$개의 측정치를 얻고, 구조방정식 모형으로부터 특질 분산, 방법 분산, 고유 분산을 식별합니다. MTMM은 설문 방법론에서 최고의 신뢰도 평가 기법이지만, 심플렉스와 동일한 한계를 공유합니다. 즉, 각 측정 시점에서 응답자 수준 확률 과정에서 추출되는 모든 노이즈는 고유 분산 항으로 흡수되어 별도로 식별되지 않습니다.
+
+동일 설문 내 반복 종속변수 프로토콜(제\@ref(sec-tot)절)은 이러한 관점에서 볼 때 단일 세션 내 반복 측정을 결합한 단일 특질-단일 방법 설계입니다. 특질/방법의 포괄성을 희생하는 대신, 도구 노이즈로부터 내재적 확률성을 분리해내는 능력을 얻습니다.
+
+------------------------------------------------------------------------
+
+## 3원 분산 분해 {#sec-three-way-decomp}
+
+식 \@ref(eq:classical-decomp)의 고전적 분해는 신호(signal)가 아닌 모든 것을 단일 잔차로 뭉뚱그립니다. 우리는 이를 다음과 같이 대체해야 한다고 주장합니다.
+
+\begin{equation}
+\mathrm{Var}(X) \;=\; \underbrace{\mathrm{Var}(T)}_{\text{신호}} \;+\; \underbrace{\mathrm{Var}(M)}_{\text{측정 오차 (도구 측면)}} \;+\; \underbrace{\mathrm{Var}(S)}_{\text{내재적 확률성 (응답자 측면)}},
+(\#eq:three-way-decomp)
+\end{equation}
+
+식 \@ref(eq:three-way-decomp)에서 $T, M, S$는 쌍별로 무상관입니다. 세 번째 항은 측정 도구의 결함이 아니라 *응답자*의 응답 생성 과정에 속하는 노이즈를 포착합니다. 새로운 신뢰도 비율은 다음과 같습니다.
+
+\begin{equation}
+\rho^{\ast} \;=\; \frac{\mathrm{Var}(T)}{\mathrm{Var}(T) + \mathrm{Var}(M) + \mathrm{Var}(S)}.
+(\#eq:rho-star)
+\end{equation}
+
+식 \@ref(eq:rho-star)에 정의된 $\rho^{\ast}$는 일반적으로 $\rho^{\ast} \le \rho$를 만족합니다. 고전적인 $\rho$는 $\mathrm{Var}(M) + \mathrm{Var}(S)$를 단일 잔차로 혼동하지만, $\rho^{\ast}$는 둘을 분리합니다.
+
+이는 단순한 용어상의 구분이 아니며, 직접적인 실증적 결과를 수반합니다(표 \@ref(tab:two-vs-three)).
+
+```{r two-vs-three, echo=FALSE}
+two_vs_three <- tibble::tibble(
+  `질문 (Question)` = c("도구 개선이 잔차를 줄여주는가?",
+               "동일 세션 내 반복 측정으로 잔차가 식별되는가?",
+               "고전적 검사-재검사로 잔차가 식별되는가?",
+               "잔차가 회귀계수를 감쇄(attenuate)시키는가?",
+               "차분(DiD, RDD)에서 잔차가 상쇄되는가?"),
+  `2원 분해 (Lord-Novick)` = c("항상 그렇다 (정의상)",
+                              "그렇다",
+                              "그렇다 (단, Heise 심플렉스 주의점 참조)",
+                              "그렇다, 감쇄 인자에 의해",
+                              "그렇다, 평균적으로"),
+  `3원 분해 (본 장)` = c("$\\mathrm{Var}(M)$만 감소; $\\mathrm{Var}(S)$는 환원 불가",
+                                 "$\\mathrm{Var}(M) + \\mathrm{Var}(S)$가 결합 식별됨",
+                                 "$\\mathrm{Var}(S)$가 오차항으로 흡수됨",
+                                 "$\\mathrm{Var}(M)$은 그러함; $\\mathrm{Var}(S)$ 부분은 제\\@ref(sec-attenuation-correction)절의 보정 필요",
+                                 "둘 다 그렇다, 평균적으로")
+)
+
+knitr::kable(
+  two_vs_three,
+  caption = "3원 분산 분해의 실증적 시사점. 고전적 2원 분해와의 대부분의 차이는 분석가가 잔차에 대해 무엇을 할 수 있고 무엇을 할 수 없는지에 달려 있습니다.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(latex_options = "scale_down",
+                            bootstrap_options = "striped")
+```
+
+3원 분해는 설문 연구에만 국한되지 않습니다. 표 \@ref(tab:decomp-analogs)는 인접 학문 분야에서의 유사한 분해를 보여줍니다.
+
+```{r decomp-analogs, echo=FALSE}
+analogs <- tibble::tibble(
+  `학문 분야 (Field)`                      = c("설문 연구 (본 장)",
+                                 "유전자 발현 노이즈 [@elowitz2002]",
+                                 "fMRI / 뇌영상학",
+                                 "연성 물질 / 콜로이드 물리학",
+                                 "고전 검사 이론 [@lord1968]"),
+  `측정 도구 측면 분산` = c("측정 오차 (M)",
+                                 "외인성 노이즈 (Extrinsic noise)",
+                                 "열 노이즈 / 스캐너 노이즈",
+                                 "회절 / 광학적 한계",
+                                 "측정 오차 (Error of measurement)"),
+  `측정 대상 측면 분산`    = c("내재적 확률성 (S)",
+                                 "내재적 유전자 발현 노이즈",
+                                 "생리학적 / 자발적 뇌활동",
+                                 "브라운 운동 (Brownian motion)",
+                                 "진점수 변동 (True-score variation)")
+)
+
+knitr::kable(
+  analogs,
+  caption = "학문 분야별 3원 분산 분해. 동일 설문 내 반복 종속변수는 Elowitz et al. (2002) 설계의 이중 형광 리포터와 동일한 역할을 수행합니다. 즉, 개체 간 분산으로부터 개체 내 분산을 분리합니다.",
+  booktabs = TRUE
+)
+```
+
+유전자 발현 노이즈와의 유비는 특히 긴밀합니다. @elowitz2002 는 동일 세포 내에서 두 개의 동일한 형광 리포터를 동시에 측정함으로써 단백질 발현 노이즈에 대한 *내재적* 기여와 *외인성* 기여를 분리했습니다. 세포 내 불일치는 내재적이며, 내재적 노이즈를 뺀 후의 세포 간 불일치는 외인성입니다. 설문 내 반복 종속변수는 정확히 이와 동일한 역할을 수행합니다. 즉, 도구 측면의 개선으로는 제거할 수 없는 응답자 내부 노이즈 성분을 분리해 냅니다.
+
+응용 분석가에게 시사하는 바는 명확합니다. 이진 결과변수에서 예컨대 $\bar D = 0.20$을 관측하고 이미 도구의 편향을 제거하는 세심한 작업을 완료했다면, 연구에 실패했다고 결론내리지 마십시오. 해당 모집단과 문항에 대한 환원 불가능한 기준선에 도달하고 있다고 결론짓고, 그에 따라 추론과 보고를 조정해야 합니다.
+
+------------------------------------------------------------------------
+
+## 의사결정론적 기초 {#sec-decision-theory}
+
+내재적 확률성의 존재는 고전 신뢰도 이론이 답하지 못하는 질문을 던집니다. 즉, 노이즈는 어떤 기제를 통해 응답으로 유입되는가 하는 점입니다. 완전한 답을 얻으려면 응답자가 자신의 (잠재적으로 불확실한) 선호를 어떻게 관측된 선택으로 변환하는지에 대한 모형이 필요합니다. 현실성이 높아지는 순서대로 세 가지 후보 모형을 검토합니다.
+
+### 기대효용 (결정론적 모형)
+
+$\theta_i \in \{0, 1\}$ 를 응답자 $i$의 진정한 선호라 하고(제\@ref(sec-classical-reliability)절의 고전 신뢰도 비율 $\rho$와의 혼동을 피하기 위해 $\rho$ 대신 $\theta$를 사용함), $\pi_i \in [0,1]$ 를 $\theta_i = 1$일 것이라는 그들의 신념이라 합시다. (특이적 충격이 없는) 기대효용 하에서 응답자는 항상 옳을 확률이 더 높은 선택지를 선택합니다.
+
+\begin{equation}
+C_{it} \;=\; \mathbb{1}\!\left( \pi_i > 0.5 \right).
+(\#eq:eu)
+\end{equation}
+
+식 \@ref(eq:eu) 하에서는 $\pi_{i1} = \pi_{i2}$가 모든 응답자에 대해 $C_{i1} = C_{i2}$를 함의하므로, 자신의 선호를 알고 있는 모든 응답자에 대해 $D_i = 0$이 됩니다. 이 모형은 불안정성이 전혀 관측되지 않을 것으로 예측하지만, 이는 합리적인 크기의 표본에서는 실증적으로 명백히 거짓입니다.
+
+### 확률효용 (확률적 입력, 결정론적 의사결정 규칙)
+
+이산선택 모델링의 기초가 되는 경제학적 해결책은 결정 직전에 평균이 0인 충격을 추가하는 것입니다.
+
+\begin{equation}
+C_{it} \;=\; \mathbb{1}\!\left( \pi_i + \eta_{it} > 0.5 \right),\qquad \eta_{it} \perp \!\!\! \perp \eta_{is}\ \text{for}\ t \neq s,
+(\#eq:rum)
+\end{equation}
+
+여기서 $\eta_{it}$는 각 시행마다 새롭게 추출됩니다. 이것이 @hainmueller2014causal AMCE 추정량을 포함한 모든 로짓(logit) 및 프로빗(probit) 이산선택 모형의 기초입니다. 식 \@ref(eq:rum) 하에서 불안정성은 양수이지만, $|\pi_i - 0.5|$가 커지거나 $\mathrm{Var}(\eta_{it})$가 0으로 줄어들면 사라집니다. 응답자당 불안정성은 다음과 같습니다.
+
+\begin{equation}
+\Delta_i^{\mathrm{RUM}} \;=\; 2\, p_i (1 - p_i),\qquad p_i \;=\; \Pr(\pi_i + \eta_{it} > 0.5),
+(\#eq:rum-instab)
+\end{equation}
+
+식 \@ref(eq:rum-instab)는 임의의 단봉 대칭 충격에 대해 $|\pi_i - 0.5|$의 엄격한 감소함수입니다. RUM은 일탈이 평균이 0인 충격으로 유입되는 한 @kahneman1979prospect 의 전망이론적 기대효용 일탈과 일관성을 갖지만, 본질적으로 확률적인 선택과는 일치하지 않습니다.
+
+### 확률 일치 (환원 불가능한 확률성)
+
+심리학적 대안은 신념이 완벽하게 알려져 있을 때조차 선택 자체를 확률적인 것으로 취급합니다.
+
+\begin{equation}
+C_{it} \;\sim\; \mathrm{Bernoulli}(\pi_i),\qquad C_{i1} \perp \!\!\! \perp C_{i2}\mid \pi_i.
+(\#eq:pm)
+\end{equation}
+
+식 \@ref(eq:pm) 하에서는 $\pi_i$에 대해 완벽한 정보를 가진 응답자라 하더라도 반드시 더 높은 확률의 선택지를 선택하는 것은 *아닙니다*. 기대되는 응답자당 불안정성은 다음과 같습니다.
+
+\begin{equation}
+\Delta_i^{\mathrm{PM}} \;=\; 2\, \pi_i (1 - \pi_i),
+(\#eq:pm-instability)
+\end{equation}
+
+식 \@ref(eq:pm-instability)는 $\pi_i \in (0, 1)$일 때 항상 엄격한 양수이며 $\pi_i = 0.5$에서 최댓값 $0.5$에 도달합니다. 확률 일치(Probability matching)는 인간, 영장류, 어류, 비둘기, 꿀벌에서 모두 관찰되었으며, 이를 없애기 위한 반세기의 설계 노력에도 불구하고 실험 의사결정 과학에서 가장 일관되게 재현되는 발견 중 하나로 남아 있습니다 [@vulkan2000; @lo2021]. 이 현상은 단순한 기이함이 아닙니다. 인센티브가 부여된 금융 의사결정 실험에서도 통계 교육을 받은 피험자들조차 극대화하기보다는 체계적으로 무작위화를 선택하며 [@lo2021], 확률 일치를 *예측*하는 강화학습 모형은 실험적 게임 플레이 데이터에 자연스럽게 적합합니다 [@erev1998predicting].
+
+### 응용 분석가에게 이것이 중요한 이유
+
+설문 결과변수에 이진 로짓 모형을 적합한다고 가정해 봅시다. 표준적 해석은 선형 예측기를 체계적 부분으로 취급하고 로짓 충격을 측정 오차와 유사한 노이즈로 취급합니다. 그러나 응답자가 실제로 확률 일치를 따르고 있다면 로짓 충격은 고전적 의미의 오차가 아니며, 응답자의 의사결정 과정이 갖는 고유한 특성입니다. 두 가지 결과가 뒤따릅니다.
+
+첫째, 응답자가 확률 일치를 수행할 때 로짓 모형에서 복원된 조건부 선택 확률 $\widehat{\Pr}(C = 1 \mid X)$은 $0.5$를 향해 편향될 수 있습니다. 모형은 충격을 조건으로 한 결정론적 선택을 가정하지만 실제 선택은 환원 불가능한 베르누이$(\pi)$이기 때문입니다. @clayton2025 는 @hainmueller2014causal AMCE 프레임워크 하에서 강제선택 컨조인트 실험에 대한 해당 보정법을 도출했습니다.
+
+둘째, 내재적 확률성을 *응답변수*에서의 고전적 측정오차(errors-in-variables)로 취급하는 것은 도움이 되지 않습니다. 고전적 측정오차 체계는 노이즈가 설명변수에 있다고 가정하기 때문입니다. 확률 일치 하에서는 노이즈가 응답변수 자체에 존재하므로 다른 감쇄 패턴을 생성합니다(제\@ref(sec-attenuation-correction)절).
+
+간단한 시뮬레이션을 통해 이러한 질적 차이를 시각화할 수 있습니다. 그림 \@ref(fig:prob-match-sim)은 세 가지 모형 하에서 $\pi_i$의 함수로서 $\Delta_i$를 도식화한 것입니다.
+
+```{r prob-match-sim, fig.cap="세 가지 응답 모형 하에서 기저 신념 $\\pi_i$의 함수로서의 응답자별 불안정성 $\\Delta_i$. 확률 일치는 $\\pi_i = 0.5$에서 $\\Delta_i = 0.5$로 정점을 찍는 매끄러운 2차 곡선을 예측합니다. 작은 충격을 가진 확률효용은 $\\pi_i = 0.5$ 근처에서 날카로운 피크를 예측합니다. 기대효용은 동일하게 0을 예측합니다. 실증적으로 관측되는 불안정성 프로파일은 확률 일치 곡선과 가장 잘 일치합니다.", fig.width=7, fig.height=4.5}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+pi_grid <- tibble(pi = seq(0, 1, length.out = 401))
+
+eu_instab  <- function(pi) rep(0, length(pi))
+pm_instab  <- function(pi) 2 * pi * (1 - pi)
+rum_instab <- function(pi, sd) {
+  p <- 1 - pnorm(0.5 - pi, sd = sd)
+  2 * p * (1 - p)
+}
+
+sim_df <- pi_grid |>
+  mutate(
+    `기대효용 (Expected utility)`         = eu_instab(pi),
+    `확률 일치 (Probability matching)`     = pm_instab(pi),
+    `확률효용 (sd=0.1)`  = rum_instab(pi, sd = 0.1),
+    `확률효용 (sd=0.3)`  = rum_instab(pi, sd = 0.3)
+  ) |>
+  pivot_longer(-pi, names_to = "model", values_to = "instability")
+
+ggplot(sim_df, aes(pi, instability, colour = model, linetype = model)) +
+  geom_line(linewidth = 1) +
+  geom_hline(yintercept = 0.23, linetype = "dotted", colour = "grey40") +
+  annotate("text", x = 0.05, y = 0.245,
+           label = "실증적 기준선 (Empirical floor) ~ 0.23",
+           hjust = 0, size = 3.5, colour = "grey25") +
+  scale_y_continuous(limits = c(0, 0.55), breaks = seq(0, 0.5, 0.1)) +
+  labs(x = expression(paste("신념 (Belief) ", pi[i])),
+       y = expression(paste("응답자별 불안정성 ", Delta[i])),
+       colour = NULL, linetype = NULL,
+       title = "세 가지 응답 모형과 세 가지 불안정성 프로파일") +
+  theme(legend.position = "bottom")
+```
+
+그림 \@ref(fig:prob-match-sim)은 세 가지 사실을 명확히 보여줍니다. 첫째, 기대효용은 $\pi_i$와 관계없이 모든 응답자에 대해 0의 불안정성을 예측합니다. 둘째, 확률 일치는 $\pi_i = 0.5$에서 $\Delta_i = 0.5$로 정점을 찍고 신념이 확실해질수록 감소하지만 양 끝점을 제외하고는 결코 0에 도달하지 않습니다. 셋째, 작은 노이즈를 가진 확률효용은 $\pi_i = 0.5$ 근처에 집중되며, 노이즈가 커질수록 넓게 퍼져 기저 과정은 다름에도 불구하고 확률 일치 곡선의 형태에 근접합니다.
+
+------------------------------------------------------------------------
+
+## 의사결정 모형을 넘어서: 확률성을 조절하는 요인들 {#sec-modulators}
+
+의사결정이 확률적이라는 점을 받아들이면, 그 확률성의 크기를 무엇이 조절하는지 질문할 수 있습니다. 설문 방법론과 인지심리학의 실증 문헌은 이에 대한 답을 응답과의 근접성에 따라 중첩된 4단계 수준으로 체계화합니다.
+
+### 인지 과정 수준
+
+세 가지 조절 요인이 직접적인 설문 설계 시사점을 갖습니다.
+
+1.  인지적 복잡성(Cognitive complexity). 더 많은 인지 자원을 요구하는 문항(긴 질문, 많은 선택지, 낯선 어휘)일수록 더 큰 불안정성을 생성합니다. 응답자 전체에 걸친 평균 과업 소요 시간(TOT)은 복잡성의 유용한 대리변수이지만, 응답자 내에서는 주의 집중도와 교란됩니다. 응답자가 노력이 드는 인출과 통합을 단축하는 방식에 대한 고전적 분석, 즉 @krosnick1991 과 @krosnick1999survey 의 *만족화(satisficing)*는 복잡성이 내재적 확률성을 팽창시키는 인지적 기제를 설명합니다. 인출 비용이 높을 때 응답자는 부분적인 증거만을 표집하여 노이즈가 낀 방식으로 통합합니다.
+
+2.  응답자 내부의 과업 소요 시간. 문항별 임계값 미만에서는 불안정성이 $0.5$를 향해 급격히 치솟습니다. 임계값을 넘어서면 불안정성은 모집단 기준선 근처에서 안정화됩니다. 플랫폼이 허용하는 경우 Page Visibility API를 활용하여 숨김 페이지 시간을 제외함으로써 *실제 집중된(attended)* 과업 소요 시간을 복원할 수 있습니다. 이를 사용할 수 없는 경우 원시 페이지 체류 시간은 집중 시간의 상한선이 됩니다. 제\@ref(sec-survey-reliability-applied)절에서 캘리브레이션 절차를 제시합니다.
+
+3.  시행 간 처리 과정의 차이(Divergent processing). 충분한 시간이 주어지더라도 두 번째 시행에서 문항에 다르게 주의를 기울이는 응답자는 더 큰 불안정성을 생성합니다. 이는 안구 추적을 통해 실험적으로 측정되어 왔습니다. 대부분의 응용 연구에서는 이를 직접 측정할 수 없지만, 두 시행 간의 점화(priming) 차이에 세심한 주의를 기울여야 할 필요성을 제기합니다.
+
+### 심리적 상태 수준
+
+불량 데이터 품질을 걸러내기 위한 후보 필터로서 네 가지 심리적 상태가 연구되어 왔습니다. 이들은 (a) 의식적으로 통제 가능한지, (b) 다른 설문 문항의 영향을 받는지, (c) 단일 세션 내에서 스스로 안정적인지에 따라 구분됩니다. 표 \@ref(tab:psych-states)에 요약되어 있습니다.
+
+```{r psych-states, echo=FALSE}
+states <- tibble::tibble(
+  `심리 상태 (State)`           = c("선행 몰두/잡념 (Preoccupation)", "딴생각 (Mind-wandering)",
+                      "페르소나/기분 자기보고", "주의력 확인 문항 (IMC)"),
+  `다른 문항의 영향 여부` = c("아니오", "예", "아니오", "예"),
+  `의식적 통제 가능 여부`   = c("아니오", "아니오", "예", "예"),
+  `세션 내 안정성 여부`     = c("예", "아니오", "아니오", "아니오")
+)
+
+knitr::kable(
+  states,
+  caption = "후보 필터로 평가된 네 가지 심리적 상태. 선행 몰두 상태(Preoccupation)만이 세 가지 특성을 모두 만족합니다.",
+  booktabs = TRUE
+)
+```
+
+표 \@ref(tab:psych-states)에 제시된 세 가지 특성을 모두 만족하는 것은 **선행 몰두/잡념 상태(preoccupation)**뿐입니다. 다른 상태들은 연구 변수로는 유용하지만 1차 필터로는 문제가 있습니다. 5가지 기준 평가가 제\@ref(sec-filters)절에 나타납니다.
+
+### 개인 특성 수준
+
+인구통계학적 요인, 사회경제적 위치, 사전 지식이 불안정성을 예측합니다. 고령 응답자는 인지 속도가 느림에도 불구하고 젊은 응답자보다 종종 *더 낮은* 불안정성을 보이는데, 이는 선행 몰두 상태가 덜하고 딴생각을 덜 하기 때문인 것으로 보입니다. 이것이 연령에 따라 응답자를 필터링해도 된다는 면죄부는 아니지만(그렇게 하면 추정 대상 모수가 달라짐), 유용한 진단 정보가 되며 주요 인구통계 변수별로 층화된 $\bar D$를 항상 보고해야 하는 근거가 됩니다.
+
+응답 양식 문헌 [@krosnick1999survey; @schwarz1999self]은 여기서 관련된 몇 가지 개인 수준 패턴을 식별합니다. 긍정 편향(내용과 무관하게 동의함), 극단 응답(척도 끝점 선호), 중심화 경향(척도 중간점 선호)이 그것입니다. 이 세 가지는 문항이 시행 간에 의미적 극성을 바꿀 때 $\bar D$를 팽창시키며, 이것이 동일 세션 내 반복 측정에서 문항 표현을 동일하게 유지해야 하는 이유 중 하나입니다. 사회적 바람직성 응답 편향 [@crowne1960new; @tourangeau1996asking]은 구별되지만 관련된 문제입니다. 응답자들은 인지된 규범에 부합하는 방향으로 민감한 문항에 대해 체계적으로 허위 보고를 합니다. 이는 추정된 $\Pr(C = 1)$에 편향을 유발하지만, 인지된 규범이 시행 간에 바뀌지 않는 한 반드시 $\bar D$를 팽창시키는 것은 아닙니다.
+
+### 문항 특성 수준
+
+문항들은 위의 모든 요인에 대한 민감도에서 차이를 보입니다. 문항의 $\bar D$를 예측하는 단일한 최고의 예측 변수는 전문가 평가나 사전 검사 평균 TOT로 보정된 복잡성 척도 상의 위치입니다. @krosnick1999survey 의 질문 설계 효과 검토와 @schuman1981questions 의 광범위한 문항 표현 실험 목록은 $\bar D$를 팽창시키는 문항 특성에 대한 실무 메뉴를 제공합니다.
+
+-   이중 질문(Double-barrelled questions, 하나의 문항에 두 개의 명제를 결합함).
+-   부정형 문구 문항, 특히 긍정형 문항들 사이에 끼워 넣은 부정 문항.
+-   앵커가 없는 척도에서 7개 이상의 응답 선택지를 가진 문항.
+-   구체적인 수치 추정을 요구하는 문항 ("지난달에 몇 번이나...").
+-   3개월 이상 지난 과거의 사건을 묻는 문항.
+
+이러한 문항들이야말로 사전 검사가 가장 가치 있고 동일 세션 내 반복 측정이 가장 많은 정보를 제공하는 문항입니다. 단순한 문항들(예: 잘 앵커링된 5개 이하의 선택지를 가진 양극 태도 문항을 한 번 질문하는 경우)은 긴 설문 도구에서도 전체 $\bar D$에 상대적으로 적게 기여합니다.
+
+------------------------------------------------------------------------
+
+## 필터 설계: 5가지 기준 {#sec-filters}
+
+데이터 품질을 개선하기 위해 응답자를 필터링하는 것은 필요하지만 위험합니다. 훌륭한 필터는 다음 5가지 기준을 모두 충족해야 합니다.
+
+1.  다른 설문 문항에 대한 외생성. 필터가 설문의 나머지 내용에 의해 영향을 받지 않아야 합니다.
+2.  의식적 선택에 대한 외생성. 응답자가 필터를 회피하기 위해 "정답"을 쉽게 만들어낼 수 없어야 합니다.
+3.  예측 타당도. 필터가 실제로 불안정성이나 불량 데이터 품질의 다른 지표들을 예측해야 합니다.
+4.  다른 문항에 대한 처치 효과 부재. 필터 문항을 포함하는 것이 후속 문항들에 대한 응답을 변화시키지 않아야 합니다.
+5.  설문 내 안정성. 필터 문항 자체가 설문 진행 기간 동안 안정적으로 유지되어야 합니다.
+
+실증적 증거는 이러한 기준에 따라 네 가지 후보 필터를 평가합니다. 표 \@ref(tab:filter-eval)에 요약되어 있습니다.
+
+```{r filter-eval, echo=FALSE}
+filters <- tibble::tibble(
+  `필터 후보 (Filter)` = c("선행 몰두/잡념 (Preoccupation)",
+             "딴생각 탐색 (Mind-wandering probe)",
+             "페르소나/기분 자기보고",
+             "주의력 확인 문항 (IMC)"),
+  `(1) 문항에 외생적?`   = c("예", "아니오",  "예", "아니오"),
+  `(2) 의식적 선택 아님?` = c("예", "예", "아니오",  "아니오"),
+  `(3) 불안정성 예측?` = c("예", "예", "예", "혼재됨"),
+  `(4) 처치 효과 없음?`      = c("예", "예", "예", "아니오"),
+  `(5) 설문 내 안정적?`     = c("예", "아니오",  "아니오",  "아니오"),
+  `최종 판정 (Verdict)` = c("1차 필터로 권장",
+              "연구용으로만 사용",
+              "연구용으로만 사용",
+              "1차 필터 지양")
+)
+
+knitr::kable(
+  filters,
+  caption = "5가지 기준에 따라 평가된 필터 후보들. 선행 몰두(Preoccupation)만이 5가지를 모두 만족하며 권장되는 1차 필터입니다.",
+  booktabs = TRUE
+) |>
+  kableExtra::kable_styling(latex_options = "scale_down",
+                            bootstrap_options = "striped")
+```
+
+### 주의력 확인 문항을 주 필터로 사용하는 것에 대한 비판
+
+@oppenheimer2009 의 지시사항 조작 점검(IMC, Instructional Manipulation Check)은 온라인 설문 연구에서 여전히 가장 널리 쓰이는 품질 필터입니다. 그러나 IMC를 *1차(primary)* 필터로 사용하는 것에 대한 실증적 비판은 세 가지로 요약됩니다.
+
+첫째, IMC를 포함하면 응답자가 후속 문항들을 읽는 방식이 달라집니다. 진지한 질문이 아닌 잠재적인 함정으로 취급하게 되며, 이는 @oppenheimer2009 에 문서화된 그라이스(Grice) 협력 규범의 위반을 낳습니다. 이는 표 \@ref(tab:filter-eval)의 기준 (4) 위반입니다.
+
+둘째, 일반적으로 사용되는 IMC의 통과율은 모집단, 문구 표현, 플랫폼에 따라 약 3분의 1에서 표본 전체에 이르기까지 극심하게 달라집니다 [@berinsky2014; @hauser2016; @berinsky2012evaluating]. 즉, 필터가 안정적인 구성개념을 측정하지 못하며, 이는 기준 (5) 위반입니다.
+
+셋째, IMC를 통과하지 못한 응답자를 제외하면 결과변수와 상관된 관측 변수에 대한 선택 편향이 발생합니다. @aronow2019note 는 공식적인 편향을 도출하여 설문 종속변수를 갖는 표준 무작위 실험 환경에서 이 편향이 무시할 수 없음을 보였습니다. @berinsky2014 는 스크리너 통과율이 정치적·인구통계학적으로 유의미한 응답자 특성과 상관되어 있어 탈락자를 제외하면 분석 대상 모집단 자체가 재정의된다고 보고합니다.
+
+종합적인 결론은 IMC가 쓸모없다는 것이 아니라(연구 진단용이나 심사자들의 기대에 부응하는 용도로는 여전히 가치가 있음), *1차적인* 탈락 필터로는 부적절하다는 것입니다.
+
+### 부주의한 응답의 다변량 탐지 {#sec-careless-detection}
+
+부주의한 응답 문헌 [@meade2012identifying; @curran2016methods; @ward2023dealing]은 단일 IMC를 넘어서는 일련의 탐지 지표를 개발했습니다. 문헌에서 반복적으로 등장하는 다섯 가지 계열은 다음과 같습니다.
+
+1.  최장 연속 동일 응답(Long-string) 지표. 연속된 동일 응답의 최댓값. 긴 연속 응답은 노력을 들이지 않은 일렬 표기(straightlining)를 시사합니다.
+2.  문항 간 표준편차. 역코딩 문항 쌍에 걸친 응답자 내부 SD. 이질적인 척도에서 0에 가까운 SD는 긍정 편향을 시사합니다.
+3.  개인-전체 상관(Person-total correlation). 응답자의 답변 벡터와 표본 평균 답변 벡터 간의 상관관계. 매우 낮거나 음수인 값은 변칙적입니다.
+4.  마할라노비스 거리(Mahalanobis distance). 응답 벡터에 대한 다변량 이상치 탐지.
+5.  응답 시간 이상치. 문항별 최소 기준선 미만의 과업 시간(TOT) (제\@ref(sec-tot)절).
+
+@meade2012identifying 는 단일 지표로 대상을 탈락시키기보다는 여러 지표를 병렬로 계산하고 결합 분포를 사용하여 응답자를 플래그할 것을 권장합니다. @ward2023dealing 의 *Annual Review of Psychology* 종합 연구는 예방(도구 설계, 지시 응답 문항), 식별(위의 지표들 및 일관성 기반 계열), 보고 권장사항을 통합하여 현재 가장 훌륭한 출발점을 제공합니다. 유병률 기준선은 @necka2016measuring 에서 제시하는데, MTurk, 대학생, 지역사회 표본의 문제 응답자 비율을 나란히 보고하며 부주의한 응답의 비율 자체보다는 *구성(composition)*이 모집단 출처에 따라 다르다는 점을 밝힙니다. 본 장의 권장사항은 이들과 일치합니다. 즉, 지표들을 보고하고, 탈락보다는 플래그를 적용하며, 실질적 분석과 함께 결합 분포를 공개하는 것입니다.
+
+### 권장되는 1차 필터: 선행 몰두/잡념 상태 (Preoccupation)
+
+검증된 4점 척도 선행 몰두 문항은 동의 직후, 그리고 어떠한 핵심 문항도 제시되기 전에 투입됩니다. 실행 가능한 문구는 다음과 같습니다.
+
+> *누구나 새로운 과업(예: 이 설문조사)을 시작할 때 머릿속에 여러 가지 생각을 가지고 참여하게 됩니다. 설문조사를 시작하기 직전, 배우자/연인, 직장, 건강, 자녀, 친구, 금전 문제 또는 기타 걱정거리로 인해 얼마나 생각이 복잡하거나 몰두해 계셨습니까?*\
+> (1) 매우 복잡했음(Very preoccupied); (2) 꽤 복잡했음(Fairly preoccupied); (3) 약간 복잡했음(Slightly preoccupied); (4) 전혀 복잡하지 않았음(Not at all preoccupied).
+
+이 응답을 4수준 순서형 변수로 처리합니다. **선행 몰두 상태만을 근거로 응답자를 탈락시키지 마십시오.** 그렇게 하면 추정 대상 모수가 변경됩니다. 결과적으로 얻어지는 표본이 결과변수와 상관된 변수에서 모집단을 더 이상 대표하지 못하기 때문입니다. 대신 몰두 상태가 심한 응답자에게 *플래그*를 부여하고, 플래그된 하위 집합을 포함한 추정치와 제외한 추정치를 나란히 보고하십시오. 이렇게 하면 모집단 수준의 추정 대상을 보존하면서도 가장 몰두된 응답자들에게 결론이 얼마나 의존하는지 독자에게 알릴 수 있습니다.
+
+------------------------------------------------------------------------
+
+## 외생적 품질 측정치로서의 과업 소요 시간(TOT) {#sec-tot}
+
+두 번째로 권장되는 품질 신호는 핵심 문항이 아닌 *사전 연습(burn-in)* 문항에서 측정된 **과업 소요 시간(Time on Task, TOT)**입니다. 이 구분은 중요합니다. 핵심 문항에서의 TOT는 내생적입니다(응답자가 문항이 어려워서, 잡념이 많아서, 또는 매우 주의 깊어서 느릴 수 있으며, 사후적으로 이를 분리할 수 없음). 반면 사전 연습 문항에서의 TOT는 외생적인 측정치를 제공합니다.
+
+실무 워크플로는 다음과 같습니다.
+
+1.  선행 몰두 문항과 첫 번째 핵심 문항 사이에 2~3개의 사전 연습 문항을 삽입합니다. 문항 형식을 핵심 문항(컨조인트, 리커트, 객관식 등)과 일치시킵니다.
+2.  각 사전 연습 문항에 대해 초 단위 TOT를 기록합니다.
+3.  응답자별로 사전 연습 문항들의 평균 TOT를 계산합니다.
+4.  인지적 복잡성에 적합한 기준선(floor)을 적용합니다. 이 기준선은 문항별로 상이하며 실증적으로 보정되어야 합니다. 보정 절차는 제\@ref(sec-survey-reliability-applied)절의 2단계를 참조하십시오.
+
+그림 \@ref(fig:tot-sim)은 TOT와 불안정성 간의 관계를 시뮬레이션으로 보여줍니다.
+
+```{r tot-sim, fig.cap="시뮬레이션된 과업 소요 시간(TOT) 대 불안정성 관계. 문항별 특정 임계값(여기서 사용된 컨조인트 스타일 문항의 경우 약 6초) 미만에서는 불안정성이 동전 던지기 수준인 0.5를 향해 급격히 치솟습니다. 임계값을 초과하면 불안정성은 기준선 비율 근처에서 안정화됩니다. 임계값은 문항 복잡성에 따라 달라지며 각 설문 도구마다 보정되어야 합니다.", fig.width=7, fig.height=4.5}
+library(dplyr)
+library(ggplot2)
+
+set.seed(123)
+n <- 2000
+tot_seconds <- rgamma(n, shape = 2, scale = 4) + 0.5
+
+true_instability <- pmin(0.5, 0.5 - 0.28 * (1 - exp(-0.4 * (tot_seconds - 1))))
+true_instability <- pmax(true_instability, 0.22)
+
+D_obs <- rbinom(n, 1, true_instability)
+
+df_tot <- tibble(
+  tot = tot_seconds,
+  D   = D_obs
+)
+
+ggplot(df_tot, aes(tot, D)) +
+  geom_point(alpha = 0.15, position = position_jitter(height = 0.03)) +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), colour = "firebrick", linewidth = 1.2) +
+  geom_vline(xintercept = 6, linetype = "dashed", colour = "grey30") +
+  annotate("text", x = 6.3, y = 0.85,
+           label = "보정된 기준선 (Calibrated floor) = 6초",
+           hjust = 0, size = 3.5) +
+  scale_x_continuous(limits = c(0, 30)) +
+  labs(x = "사전 연습 문항 평균 과업 소요 시간 (초)",
+       y = "관측된 불안정성 D (0 = 일치, 1 = 불일치)",
+       title = "과업 소요 시간과 응답 불안정성: 임계값 효과")
+```
+
+------------------------------------------------------------------------
+
+## 설문 설계를 위한 실무적 시사점 {#sec-design-implications}
+
+위의 이론과 증거는 설문 조사표를 작성하는 실무자에게 직접적인 지침을 제공합니다.
+
+1.  **반복 측정 포함.** 핵심 종속변수에 대해 3개 이상의 방해 문항을 사이에 두고 단일 세션 내 반복 측정을 설계하십시오. $\bar D$를 추정하기 위해 표본 전체가 필요하지는 않으며, 무작위 20~30% 하위 표본으로도 충분합니다.
+2.  **선행 몰두 문항 배치.** 동의 직후, 첫 문항 이전에 4점 척도 몰두 문항을 배치하십시오.
+3.  **사전 연습 문항 삽입.** 핵심 문항과 동일한 형식의 사전 연습 문항을 2~3개 배치하여 외생적 TOT 기준선을 측정하십시오.
+4.  **역코딩 및 균형 척도.** 긍정 편향을 진단하고 상쇄하기 위해 척도 배터리에 역코딩 문항을 포함하십시오.
+5.  **긴 행렬형 질문 피하기.** 긴 그리드는 일렬 표기와 불성실 신속 응답을 유발합니다. 문항들을 개별 화면으로 분할하거나 순서를 무작위화하십시오.
+6.  **사전 검사.** 복잡한 문항에 대해 인지적 면접과 현장 사전 검사를 실시하여 이해 및 매핑 오류를 사전에 차단하십시오.
+
+------------------------------------------------------------------------
+
+## 분석을 위한 시사점 {#sec-analysis-implications}
+
+### 표준오차 및 유효 표본 크기
+
+내재적 확률성은 추정치의 분산을 팽창시키며 유효 표본 크기를 감소시킵니다. 이진 결과변수의 경우, 노이즈가 없는 완벽한 응답 하에서의 유효 표본 크기 $n_{\text{eff}}$는 다음과 같이 근사할 수 있습니다.
+
+\begin{equation}
+n_{\text{eff}} \;\approx\; n \,(1 - 2\bar D)^2.
+(\#eq:neff)
+\end{equation}
+
+예를 들어 $\bar D = 0.20$인 경우, $n = 1000$명의 표본은 통계적 정밀도 측면에서 노이즈가 없는 데이터의 약 $1000 \times (1 - 0.40)^2 = 360$명에 불과한 정보를 제공합니다. 표본 크기 계획 시 이를 반드시 고려해야 합니다.
+
+### 컨조인트 및 이산선택 분석
+
+컨조인트 분석에서 내재적 확률성은 네 가지 주요 과제를 야기합니다.
+
+1.  **모집단 AMCE(pAMCE).** @delacuesta2022improving 은 속성 수준의 표본 분포가 목표 모집단과 다를 때 발생하는 문제를 해결하기 위해 pAMCE를 개발했습니다.
+2.  **한계를 넘어서는 인과적 상호작용.** @egami2019causal 은 요인 설계에서 다중 속성 상호작용으로 AMCE를 적절히 일반화한 **평균 한계 상호작용 효과(AMIE)**를 개발했습니다. 기존 상호작용 효과와 달리 AMIE는 기준 조건의 선택에 의존하지 않으므로 고차 상호작용에 대해서도 부호와 크기를 명확히 해석할 수 있습니다.
+3.  **선택 과업 만족화.** @bansak2018number 는 응답자당 최대 30개의 쌍별 프로파일 과업을 부여하여 컨조인트 도구를 테스트한 결과 만족화로 인한 AMCE 저하를 발견했으나, 그 크기는 "상당히 제한적"이었습니다. 이는 설계의 유효성을 훼손하지 않고도 많은 과업을 부여할 수 있음을 시사하지만, 계획된 과업 수의 상한선에서 과업 피로도를 사전에 검사해야 합니다.
+4.  **응답자 내부 측정 오차.** @clayton2025 의 오분류형 측정 오차 보정은 반복 종속변수로부터 얻은 $\bar D$를 사용하여 감쇄되지 않은 효과를 복원하기 위해 AMCE/pAMCE/AMIE와 함께 적용되어야 합니다. 이를 적용하지 않으면 AMCE는 0을 향해 편향되며, 그 편향은 결코 작지 않습니다. @clayton2025 는 8개의 저명한 출판 컨조인트 분석에서 편향이 상당했음을 정량화했습니다. @hainmueller2015validating 의 컨조인트 실험에 대한 행동 검증 연구는 실세계 선택 확률이 컨조인트로 복원된 AMCE와 긴밀하게 일치함을 보여주어 컨조인트 설계가 실제 선호에 대해 유익함을 확립했습니다. @clayton2025 는 응답자 내부 측정 오차 보정이 이러한 일치성을 더욱 강화함을 보여줍니다.
+
+이 4가지 감사 요소(pAMCE, AMIE, 만족화, $\bar D$ 보정)는 현대 컨조인트 분석의 최소 수용 기준을 정의합니다.
+
+본 장에서 깊이 다루지는 않지만 마케팅 응용에서 리커트 척도의 대안으로 언급할 가치가 있는 진술 선호 방법은 **최선-최악 척도법(Best-Worst Scaling, MaxDiff)**입니다. 응답자는 항목 목록을 보고 각 부분집합에서 가장 좋은 것과 가장 나쁜 것을 선택합니다. 결과적으로 얻어지는 강제 선택 데이터는 동일 항목에 대한 리커트 평정보다 응답 양식 오염이 훨씬 적은 완전 순서형 순위를 식별합니다 [@louviere2015best]. MaxDiff는 이제 마케팅 연구에서 속성 중요도 추정을 위한 표준으로 자리 잡았으며 리커트 대비 극단 응답 및 긍정 편향을 줄이는 것으로 입증되었습니다. 민감하거나 응답 양식에 취약한 구성개념에 대해 리커트 배터리를 고려하는 분석가에게 MaxDiff는 선호되는 대안입니다.
+
+### 이진 회귀분석을 위한 닫힌 형태의 감쇄 보정 {#sec-attenuation-correction}
+
+이진 설문 결과변수를 공변량에 회귀시키는 광범위한 분석의 경우, 가장 단순하면서도 방어 가능한 보정은 응답자 내부 노이즈를 대칭적 오분류(symmetric misclassification)로 처리하는 것입니다. 회귀분석의 관측된 이진 결과변수를 $Y_i$라 합시다(제\@ref(sec-defining-instability)절의 세션 내 반복 측정 표기법에서 첫 번째 시행인 $Y_i = C_{i1}$과 동일함). *진정한* 이진 결과변수가 $Y^\ast$이고, 관측된 $Y$가 확률 $1 - q$로 $Y^\ast$와 같고 확률 $q$로 $1 - Y^\ast$와 같으며, $q$는 시행당 반전 확률이고 노이즈는 공변량과 독립이라고 가정해 봅시다. $Y$를 $X$에 회귀시키는 *선형 확률 모형(LPM)*의 경우, 고전적인 Aigner (1973) 및 @bound2001measurement 결과는 감쇄 인자 $1 - 2q$를 제공합니다(따라서 식 \@ref(eq:beta-corr)의 보정은 선형 회귀에 대해 정확합니다). $Y$를 $X$에 회귀시키는 *로지스틱 회귀*의 경우 감쇄는 $1 - 2q$로 단순 곱셈되지 않으며, 해당 보정은 @clayton2025 의 구조적 컨조인트 추정량이나 다음에 설명할 SIMEX 절차를 필요로 합니다. 제\@ref(sec-survey-reliability-applied)절의 6단계에서는 선형 확률 적합에는 정확하고 로지스틱 적합에는 근사적인 1차 조정으로 닫힌 형태의 보정을 적용하며, 7단계에서는 보다 강건한 대안으로 SIMEX를 적용합니다.
+
+\begin{equation}
+\widehat\beta_{\text{naive}}^{\,\text{LPM}} \;=\; (1 - 2q)\,\beta_{\text{true}}
+\quad\Longleftrightarrow\quad
+\widehat\beta_{\text{corrected}}^{\,\text{LPM}} \;=\; \frac{\widehat\beta_{\text{naive}}^{\,\text{LPM}}}{1 - 2q}.
+(\#eq:attn-corr)
+\end{equation}
+
+설문 내 반복 측정은 $q$를 식별합니다. 독립적인 노이즈 하에서 $\bar D = 2q(1-q)$ 이므로 다음이 성립합니다.
+
+\begin{equation}
+\widehat q \;=\; \frac{1 - \sqrt{1 - 2 \bar D}}{2}, \qquad 1 - 2\widehat q \;=\; \sqrt{1 - 2\bar D}.
+(\#eq:q-from-d)
+\end{equation}
+
+식 \@ref(eq:attn-corr)와 \@ref(eq:q-from-d)를 결합하면 실용적인 추정량이 도출됩니다.
+
+\begin{equation}
+\widehat\beta_{\text{corrected}} \;=\; \frac{\widehat\beta_{\text{naive}}}{\sqrt{1 - 2\bar D}}.
+(\#eq:beta-corr)
+\end{equation}
+
+표준오차 보정은 델타 방법(delta method)에 의해 따르거나, 보다 간단하게는 회귀분석과 $\bar D$ 추정에 대해 결합 쌍별 부트스트랩(paired-bootstrap) 재표집을 수행하여 도출할 수 있습니다(제\@ref(sec-survey-reliability-applied)절, 6단계). 식 \@ref(eq:beta-corr)는 기저 노이즈가 대칭적 오분류가 아닌 확률 일치일 때 근사적입니다. 우리는 이를 유용한 1차 조정으로 취급하며 구조적 컨조인트 보정에 대해서는 @clayton2025 를 참조합니다.
+
+### SIMEX 대안
+
+비대칭 노이즈를 수용하는 보다 유연한 보정을 원하는 분석가를 위해 **SIMEX (시뮬레이션-외삽법, Simulation-Extrapolation)** 절차가 비모수적 대안이 됩니다. SIMEX 절차는 다음과 같습니다.
+
+1.  기준선 이상의 다중 노이즈 수준 $\lambda \in \{0.5, 1.0, 1.5, 2.0\}$에서 관측된 $Y$에 추가 노이즈를 더하여 여러 개의 더 노이즈가 심한 데이터셋을 생성합니다.
+2.  각 노이즈 데이터셋에 대해 회귀모형을 적합하고 추정된 계수를 기록합니다.
+3.  노이즈-계수 관계를 노이즈가 없는 극한인 $\lambda = -1$로 역외삽(extrapolate back)합니다.
+
+제\@ref(sec-survey-reliability-applied)절의 7단계에서 작동하는 SIMEX 구현을 제시합니다.
+
+### 메타분석
+
+설문 기반 연구의 메타분석에서 효과 크기의 이질성은 출판 편향이나 조절변수뿐만 아니라 기저 설문의 내재적 확률성을 부분적으로 반영합니다. 이것이 표준 메타분석 절차를 바꾸지는 않지만 잔차 이질성이 이러한 관점에서 논의되어야 함을 시사합니다. PET--PEESE 및 Vevea--Hedges는 여전히 유효하며, 이를 적용한 후의 잔차에 대한 *해석*이 달라집니다.
+
+### 보고해야 할 통계량
+
+대부분의 설문 분석은 조건부 평균만을 보고합니다. 우리는 이에 더하여 다음 항목들을 보고할 것을 권장합니다.
+
+-   부트스트랩 또는 해석적 신뢰구간을 포함한 핵심 종속변수의 $\bar D$.
+-   선행 몰두(Preoccupation) 응답의 분포.
+-   사전 연습 TOT의 분포(중앙값, IQR, 보정된 기준선 미만 백분율).
+-   플래그된 하위 집합과 플래그되지 않은 하위 집합에 대해 별도로 계산된 조건부 평균 및 유의미한 차이 여부에 대한 간략한 기술.
+-   이진 결과변수에 대한 회귀분석 보고 시 나이브 계수와 함께 식 \@ref(eq:beta-corr)의 보정된 계수 병기.
+
+이러한 항목들을 추가하는 데는 공간이 거의 들지 않지만, 보고된 추정치가 실제로 무엇을 나타내는지 독자가 평가하는 능력을 크게 향상시킵니다.
+
+------------------------------------------------------------------------
+
+## R을 활용한 실무 워크플로 {#sec-survey-reliability-applied}
+
+원시 설문 데이터부터 품질을 고려한 분석 표에 이르는 전체 파이프라인을 보여주는 실습 예제로 본 장을 마무리합니다. 이 예제는 현실적인 모수 설정을 가진 시뮬레이션 데이터를 사용하며, 코드는 최소한의 수정만으로 실제 데이터에 직접 이식하여 사용할 수 있도록 설계되었습니다.
+
+### 0단계: 현실적인 설문 데이터 시뮬레이션
+
+```{r sim-data}
+library(dplyr)
+library(tidyr)
+
+set.seed(20260506)
+n <- 1500
+
+respondents <- tibble(respondent_id = 1:n) |>
+  mutate(
+    age_group = sample(
+      c("18-25", "26-40", "41-60", "61+"), n,
+      replace = TRUE, prob = c(0.25, 0.35, 0.25, 0.15)
+    ),
+    preoccupation = sample(
+      1:4, n, replace = TRUE,
+      prob = c(0.10, 0.24, 0.36, 0.30)
+    ),
+    bi_tot_mean    = pmax(
+      1.5,
+      rgamma(n, shape = 4, scale = 3) -
+        0.5 * (5 - preoccupation) +
+        ifelse(age_group == "61+", 4, 0)
+    ),
+    bi_below_floor = bi_tot_mean < 6,
+    pi_i           = plogis(rnorm(n, mean = 0.30, sd = 1.20)),
+    Q1a            = rbinom(n, 1, pi_i),
+    pi_eff         = pmin(0.95, pmax(0.05,
+      pi_i + rnorm(n, 0,
+                   0.05 + 0.05 * (5 - preoccupation) +
+                   0.10  * bi_below_floor)
+    )),
+    Q1b            = rbinom(n, 1, pi_eff),
+    D              = as.integer(Q1a != Q1b),
+    x_covariate    = rnorm(n)
+  )
+
+dplyr::glimpse(respondents)
+```
+
+### 1단계: 부트스트랩 신뢰구간과 함께 $\bar D$ 계산
+
+표 \@ref(tab:baseline-d)는 왈드 기반 표준오차와 함께 표본평균 불안정성을 보고합니다.
+
+```{r baseline-d}
+baseline_d <- respondents |>
+  summarise(
+    n      = dplyr::n(),
+    D_mean = mean(D),
+    D_se   = sqrt(D_mean * (1 - D_mean) / n)
+  )
+
+knitr::kable(
+  baseline_d, digits = 4,
+  caption = "왈드 표준오차를 적용한 표본평균 불안정성."
+)
+```
+
+```{r boot-d}
+# B = 2000 부트스트랩 재표집을 통해 백분위수 신뢰구간 산출
+set.seed(42)
+B <- 2000
+boot_d <- replicate(B, {
+  idx <- sample.int(nrow(respondents), replace = TRUE)
+  mean(respondents$D[idx])
+})
+
+d_ci <- quantile(boot_d, probs = c(0.025, 0.975))
+cat(sprintf("D-bar: %.4f (95%% 부트스트랩 CI: [%.4f, %.4f])\n",
+            mean(respondents$D), d_ci[1], d_ci[2]))
+```
+
+### 2단계: TOT 기준선 보정
+
+그림 \@ref(fig:tot-floor-calib)는 실증적 과업 소요 시간-불안정성 곡선을 적합하여 급격한 증가가 발생하는 굴절점(elbow)을 시각적으로 식별합니다.
+
+```{r tot-floor-calib, fig.cap="실증적 TOT-불안정성 관계. 약 6초 미만에서 불안정성이 급격히 증가하므로 이 문항 배터리의 품질 필터 기준선으로 6초를 설정합니다.", fig.width=7, fig.height=4.5}
+library(ggplot2)
+
+ggplot(respondents, aes(bi_tot_mean, D)) +
+  geom_point(alpha = 0.15, position = position_jitter(height = 0.03)) +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"), colour = "navy", linewidth = 1.2) +
+  geom_vline(xintercept = 6, linetype = "dashed", colour = "firebrick") +
+  scale_x_continuous(limits = c(0, 30)) +
+  labs(x = "사전 연습 평균 TOT (초)",
+       y = "불안정성 D (0/1)",
+       title = "TOT 품질 기준선 식별")
+```
+
+### 3단계: 품질 필터 적용
+
+```{r quality-filter}
+respondents_q <- respondents |>
+  mutate(
+    # (1) TOT 기준선 미달 탈락 플래그
+    flag_speeding = bi_below_floor,
+    # (2) 높은 몰두 상태 플래그
+    flag_preoccupied = preoccupation == 1L,
+    # 복합 품질 상태 정의
+    filter_outcome = case_when(
+      flag_speeding ~ "drop_floor",
+      flag_preoccupied ~ "flag_preoccupied",
+      TRUE ~ "keep"
+    )
+  )
+
+table(respondents_q$filter_outcome)
+```
+
+### 4단계: 나란히 비교하는 추정치 산출
+
+```{r side-by-side}
+summary_table <- respondents_q |>
+  group_by(filter_outcome) |>
+  summarise(
+    n      = dplyr::n(),
+    pct    = round(100 * n / nrow(respondents_q), 1),
+    D_bar  = round(mean(D), 4),
+    D_se   = round(sqrt(D_bar * (1 - D_bar) / n), 4),
+    Q1_mean = round(mean(Q1a), 4)
+  )
+
+knitr::kable(
+  summary_table,
+  caption = "품질 필터 범주별 표본 크기, 불안정성 및 결과변수 평균의 비교."
+)
+```
+
+### 5단계: 혼합효과 모형을 통한 잠재 신념 $\pi_i$ 추정
+
+```{r mixed-pi}
+library(lme4)
+
+# 장시간 및 단시간 시행 데이터를 long 포맷으로 재구성
+long_resp <- respondents_q |>
+  select(respondent_id, age_group, preoccupation, bi_tot_mean, Q1a, Q1b, x_covariate) |>
+  pivot_longer(cols = c(Q1a, Q1b), names_to = "wave", values_to = "Y")
+
+# 응답자 랜덤 절편을 포함한 일반화 선형 혼합 모형(GLMM) 적합
+glmm_fit <- glmer(Y ~ x_covariate + (1 | respondent_id),
+                  data = long_resp, family = binomial)
+summary(glmm_fit)
+```
+
+### 6단계: 닫힌 형태의 감쇄 보정
+
+```{r attn-correction}
+# 1. 단순 로짓 회귀 적합 (시행 1 focal DV 기준)
+naive_logit <- glm(Q1a ~ x_covariate, data = respondents, family = binomial)
+beta_naive <- coef(naive_logit)["x_covariate"]
+se_naive <- summary(naive_logit)$coefficients["x_covariate", "Std. Error"]
+
+# 2. 닫힌 형태 보정 공식 적용
+D_est <- mean(respondents$D)
+correction_factor <- sqrt(max(0.01, 1 - 2 * D_est))
+beta_corrected <- beta_naive / correction_factor
+
+# 3. 쌍별 부트스트랩을 통한 보정 표준오차 산출
+set.seed(123)
+boot_betas <- replicate(1000, {
+  idx <- sample.int(nrow(respondents), replace = TRUE)
+  df_b <- respondents[idx, ]
+  m_b <- glm(Q1a ~ x_covariate, data = df_b, family = binomial)
+  b_n <- coef(m_b)["x_covariate"]
+  d_b <- mean(df_b$D)
+  cf  <- sqrt(max(0.01, 1 - 2 * d_b))
+  b_n / cf
+})
+
+se_corrected <- sd(boot_betas)
+
+res_df <- tibble(
+  `추정치 유형` = c("나이브 (Naive)", "보정됨 (Corrected)"),
+  `Beta (계수)` = c(round(beta_naive, 4), round(beta_corrected, 4)),
+  `표준오차 (SE)` = c(round(se_naive, 4), round(se_corrected, 4)),
+  `95% CI 하한` = c(round(beta_naive - 1.96 * se_naive, 4), round(beta_corrected - 1.96 * se_corrected, 4)),
+  `95% CI 상한` = c(round(beta_naive + 1.96 * se_naive, 4), round(beta_corrected + 1.96 * se_corrected, 4))
+)
+
+knitr::kable(
+  res_df,
+  caption = "이진 결과변수 로짓 회귀에 대한 닫힌 형태 감쇄 보정 결과."
+)
+```
+
+### 7단계: SIMEX 보정
+
+```{r simex, fig.cap="SIMEX 외삽. 계수 추정치를 노이즈가 없는 극한인 $\\lambda = -1$로 역외삽합니다.", fig.width=7, fig.height=4.5}
+# SIMEX 절차 구현
+lambdas <- c(0.5, 1.0, 1.5, 2.0)
+simex_coefs <- numeric(length(lambdas))
+
+set.seed(999)
+for (k in seq_along(lambdas)) {
+  lam <- lambdas[k]
+  # 추가 반전 확률
+  q_add <- (1 - sqrt(max(0.01, 1 - 2 * D_est * lam))) / 2
+  flip <- rbinom(nrow(respondents), 1, q_add)
+  Y_noisy <- ifelse(flip == 1, 1 - respondents$Q1a, respondents$Q1a)
+  m_sim <- glm(Y_noisy ~ x_covariate, data = respondents, family = binomial)
+  simex_coefs[k] <- coef(m_sim)["x_covariate"]
+}
+
+# 2차 다항식 외삽 적합
+fit_simex <- lm(c(beta_naive, simex_coefs) ~ poly(c(0, lambdas), 2, raw = TRUE))
+beta_simex <- predict(fit_simex, newdata = data.frame(c = -1))[1]
+
+simex_plot_df <- tibble(
+  lambda = c(0, lambdas),
+  beta   = c(beta_naive, simex_coefs)
+)
+
+grid_lam <- tibble(lambda = seq(-1.2, 2.2, length.out = 100))
+grid_lam$beta_pred <- predict(fit_simex, newdata = data.frame(lambda = grid_lam$lambda))
+
+ggplot(simex_plot_df, aes(lambda, beta)) +
+  geom_point(size = 3, colour = "navy") +
+  geom_line(data = grid_lam, aes(lambda, beta_pred), colour = "navy", linetype = "solid") +
+  geom_vline(xintercept = -1, linetype = "dashed", colour = "red") +
+  geom_hline(yintercept = beta_simex, linetype = "dotted", colour = "red") +
+  annotate("text", x = -1, y = beta_simex,
+           label = sprintf(" SIMEX = %.3f", beta_simex),
+           hjust = 0, vjust = -0.5, colour = "red") +
+  scale_x_continuous(limits = c(-1.2, 2.2),
+                     breaks = c(-1, 0, 0.5, 1, 1.5, 2)) +
+  labs(x = expression(lambda),
+       y = expression(widehat(beta)[x]),
+       title = "노이즈 없는 극한으로의 SIMEX 외삽")
+```
+
+SIMEX 추정치(그림 \@ref(fig:simex)의 빨간색 점선)는 표 \@ref(tab:attn-correction)의 닫힌 형태 보정과 일치합니다. SIMEX 부트스트랩의 표준오차는 오분류 모델의 모수적 구조를 온전히 활용하지 않기 때문에 다소 큽니다.
+
+### 8단계: 하위 집합 진단
+
+그림 \@ref(fig:d-by-preocc)는 선행 몰두 수준별로 $\bar D$가 어떻게 달라지는지 보여줍니다. 이는 데이터에서 몰두 문항이 실제로 작동하고 있음을 검증하는 용량-반응(dose--response) 검증입니다.
+
+```{r d-by-preocc, fig.cap="선행 몰두 수준별 평균 불안정성. 용량-반응 기울기는 표본에서 선행 몰두 문항이 예측된 대로 기능하고 있다는 진단 증거입니다.", fig.width=7, fig.height=4.5}
+library(ggplot2)
+
+preocc_summary <- respondents |>
+  dplyr::group_by(preoccupation) |>
+  dplyr::summarise(
+    D_mean = mean(D),
+    D_se   = sd(D) / sqrt(dplyr::n()),
+    n      = dplyr::n(),
+    .groups = "drop"
+  ) |>
+  dplyr::mutate(preocc_label = factor(
+    preoccupation,
+    levels = 4:1,
+    labels = c("전혀 없음", "약간 있음", "꽤 있음", "매우 심함")
+  ))
+
+ggplot(preocc_summary, aes(preocc_label, D_mean)) +
+  geom_col(fill = "steelblue", alpha = 0.85) +
+  geom_errorbar(aes(ymin = D_mean - 1.96 * D_se,
+                    ymax = D_mean + 1.96 * D_se),
+                width = 0.2) +
+  geom_text(aes(label = sprintf("%.2f", D_mean)),
+            vjust = -0.5, size = 3.8) +
+  labs(x = "선행 몰두 수준 (역코딩됨)",
+       y = expression(paste("평균 불안정성 ", bar(D))),
+       title = "용량-반응: 선행 몰두가 높을수록 불안정성 증가",
+       subtitle = "기울기 자체가 품질 진단 기준입니다.")
+```
+
+그림 \@ref(fig:d-by-preocc)의 패턴은 표 \@ref(tab:filter-eval)의 기준 (3) 검정입니다. 만약 용량-반응 기울기가 평평하다면 몰두 문항이 해당 표본에서 불안정성을 예측하지 못하는 것이므로 필터를 신뢰하기 전에 재검증해야 합니다.
+
+### 9단계: 부주의한 응답 진단
+
+@meade2012identifying 와 @curran2016methods 를 따라, 표 \@ref(tab:careless)는 시뮬레이션 데이터에 대해 소규모 부주의 응답 지표 세트를 계산합니다. 다수의 리커트 문항이 포함된 실제 설문 도구에서는 전체 응답 벡터에 대해 이러한 지표들이 계산됩니다.
+
+```{r careless}
+set.seed(31)
+
+# 부주의 응답 진단에 현실적인 입력을 제공하기 위해 기존 데이터와 함께
+# 10문항 태도 그리드를 시뮬레이션합니다. 실제로는 실제 도구에서 생성됩니다.
+n <- nrow(respondents)
+K_grid <- 10
+grid_items <- matrix(
+  rbinom(n * K_grid, size = 4, prob = plogis(rnorm(n))) + 1L,
+  nrow = n, ncol = K_grid,
+  dimnames = list(NULL, paste0("g", seq_len(K_grid)))
+)
+# 일부 하위 집합에 일렬 표기(Straightlining) 주입
+straight_idx <- sample(seq_len(n), size = round(0.05 * n))
+grid_items[straight_idx, ] <- 3L
+
+# 최장 연속 동일 응답(Long-string): 각 행 내에서 가장 긴 동일 응답의 길이
+long_string_run <- function(x) {
+  r <- rle(as.integer(x))$lengths
+  max(r)
+}
+LS <- apply(grid_items, 1, long_string_run)
+
+# 그리드 전반의 응답자 내 표준편차: 0에 가까우면 일렬 표기를 시사함
+grid_sd <- apply(grid_items, 1, sd)
+
+# 개인-전체 상관: 응답자의 응답 벡터 대 문항 전반의 표본 평균 응답 벡터
+item_means <- colMeans(grid_items)
+person_total <- apply(grid_items, 1, function(r) {
+  if (sd(r) == 0) NA_real_ else suppressWarnings(cor(r, item_means))
+})
+
+# 그리드 상의 마할라노비스 거리
+m_dist <- mahalanobis(
+  grid_items,
+  center = colMeans(grid_items),
+  cov    = cov(grid_items)
+)
+
+careless_df <- tibble::tibble(
+  `지표 (Metric)` = c("최장 연속 동일 응답 평균",
+             "최장 연속 동일 응답 중앙값",
+             "최장 연속 동일 응답 >= 7 응답자 비율 (%)",
+             "그리드 내 응답자 표준편차 중앙값",
+             "그리드 표준편차 == 0 응답자 비율 (%)",
+             "개인-전체 상관 중앙값",
+             "개인-전체 상관 < 0 응답자 비율 (%)",
+             "마할라노비스: 카이제곱(10) 95번째 백분위수 초과 비율 (%)",
+             "사전 연습 TOT 기준선 미달 비율 (%)"),
+  `수치 (Value)`  = c(round(mean(LS), 2),
+             round(median(LS), 2),
+             round(100 * mean(LS >= 7), 1),
+             round(median(grid_sd), 2),
+             round(100 * mean(grid_sd == 0), 1),
+             round(median(person_total, na.rm = TRUE), 3),
+             round(100 * mean(person_total < 0, na.rm = TRUE), 1),
+             round(100 * mean(m_dist > qchisq(0.95, df = K_grid)), 1),
+             round(100 * mean(respondents$bi_below_floor), 1))
+)
+
+knitr::kable(
+  careless_df,
+  caption = "사전 연습 TOT 기준선과 함께 시뮬레이션된 10문항 태도 그리드에서 계산된 부주의 응답 진단 지표. 최장 연속 동일 응답, 응답자 내 표준편차, 개인-전체 상관, 마할라노비스 거리는 Meade and Craig (2012) 및 Curran (2016)을 따릅니다. 결합 적용: 두 개 이상의 지표에서 실패한 응답자는 단 하나만 실패한 응답자보다 플래그 대상 후보로 훨씬 더 강력합니다."
+)
+```
+
+### 10단계: 데이터 품질 블록
+
+표 \@ref(tab:quality-block)는 독자가 추정치의 신뢰성을 평가하는 데 필요한 모든 것을 제공하는 간결한 "데이터 품질 블록"입니다. 실제 논문에서는 표본 설명 단락 바로 뒤에 작은 표로 나타나며, 클라이언트 대상 보고서에서는 방법론 부록에 포함됩니다.
+
+```{r quality-block}
+quality_block <- tibble::tibble(
+  `지표 (Metric)` = c("모집된 총 표본 (N)",
+             "기준선 미달 제외 후 N",
+             "미플래그 N (가장 엄격한 기준)",
+             "D-bar (전체 표본)",
+             "D-bar (미플래그 표본)",
+             "매우 몰두된 응답자 비율 (%)",
+             "TOT 기준선 미달 비율 (%)",
+             "사전 연습 TOT 중앙값 (초)",
+             "나이브 beta_x",
+             "보정된 beta_x"),
+  `수치 (Value)`  = c(nrow(respondents),
+             sum(respondents_q$filter_outcome != "drop_floor"),
+             sum(respondents_q$filter_outcome == "keep"),
+             round(mean(respondents$D), 3),
+             round(mean(respondents_q$D[
+               respondents_q$filter_outcome == "keep"
+             ]), 3),
+             round(100 * mean(respondents$preoccupation == 1L), 1),
+             round(100 * mean(respondents$bi_below_floor), 1),
+             round(median(respondents$bi_tot_mean), 1),
+             round(beta_naive, 3),
+             round(beta_corrected, 3))
+)
+
+knitr::kable(
+  quality_block,
+  caption = "방법론 섹션을 위한 데이터 품질 블록. 기술적 품질 지표와 보정된 실질 추정치를 모두 포함합니다."
+)
+```
+
+------------------------------------------------------------------------
+
+## 문화 간 및 개인 간 비교가능성: 앵커링 비네트 {#sec-anchoring-vignettes}
+
+응답자들이 *동일한 응답 척도*를 *서로 다른 방식*으로 사용할 때 또 다른 식별 문제가 발생합니다. 두 응답자가 "이동의 자유"나 "정부에 대한 신뢰"에 대해 동일한 수준을 보고하더라도 각 응답자가 자신의 삶의 경험에 암묵적으로 척도의 닻을 내리고 있기 때문에 완전히 다른 의미를 가질 수 있습니다. 고전적인 예시는 주관적 건강 평가의 국가 간 비교입니다. 모든 객관적 지표에서 건강 상태가 더 나쁜 국가의 응답자들이 일상적으로 자신의 건강을 더 양호하다고 평가합니다. 데이터가 틀린 것이 아니라 *비교 불가능한(incomparable)* 것입니다.
+
+@king2004enhancing 은 표준 해결책으로서 **앵커링 비네트(anchoring vignettes)**를 도입했습니다. 비네트는 제3자에 대한 짧은 가상 시나리오 설명이며, 응답자는 핵심 자기평가 문항과 동일한 척도로 이를 평가합니다. 각 응답자의 비네트 평정값을 자기평가값과 비교함으로써 분석가는 응답자 고유의 척도 닻내림(scale anchoring)을 식별하고 자기평가를 공통 척도로 보정할 수 있습니다. @king2007comparing 은 어떤 비네트를 사용할지 평가하고 선택하는 방법론을 발전시켰습니다.
+
+### 차등 문항 기능(DIF) 문제
+
+잠재 특질을 $Y_i^\ast$라 합시다. 범주 $k \in \{1, \dots, K\}$를 가진 순서형 척도에서 관측된 자기평가 $y_i$는 다음과 같이 생성됩니다.
+
+\begin{equation}
+y_i \;=\; k \quad \Longleftrightarrow \quad \tau_i^{(k-1)} \;\le\; Y_i^\ast \;<\; \tau_i^{(k)},
+(\#eq:cutpoints)
+\end{equation}
+
+여기서 $\tau_i^{(0)} = -\infty$, $\tau_i^{(K)} = +\infty$ 이며, 절단점 $\boldsymbol{\tau}_i = (\tau_i^{(1)}, \dots, \tau_i^{(K-1)})$ 은 응답자마다 다릅니다. 이를 **차등 문항 기능(differential item functioning, DIF)**이라 부릅니다. $\boldsymbol{\tau}_i$가 응답자 특성(예: 국가, 교육 수준)에 따라 변하면 관측된 순서형 점수 $y_i$의 단순 비교는 편향됩니다.
+
+### 비네트를 통한 식별
+
+$J$개의 비네트가 제공된다고 합시다. 각 비네트 $j$는 고정된 객관적 특질 수준 $\theta_j$를 가진 가상 인물을 묘사합니다. 응답자 $i$의 비네트 $j$에 대한 관측된 평정 $z_{ij}$는 자기평가와 동일한 절단점 $\boldsymbol{\tau}_i$를 따릅니다.
+
+\begin{equation}
+z_{ij} \;=\; k \quad \Longleftrightarrow \quad \tau_i^{(k-1)} \;\le\; \theta_j + \epsilon_{ij} \;<\; \tau_i^{(k)}.
+(\#eq:vignette-rating)
+\end{equation}
+
+두 가지 핵심 가정이 식별을 가능하게 합니다.
+
+1.  **응답 일관성(Response consistency).** 응답자 $i$는 가상 인물(비네트)을 평가할 때와 자신을 평가할 때 동일한 절단점 $\boldsymbol{\tau}_i$를 사용합니다.
+2.  **비네트 등가성(Vignette equivalence).** 비네트에 묘사된 진정한 특질 수준 $\theta_j$는 모든 응답자에게 동일하게 인식됩니다.
+
+이 두 가정 하에서 @king2004enhancing 의 비모수적 결합 척도는 관측된 자기평가 $y_i$를 비네트 평정 $z_{i1}, \dots, z_{iJ}$에 대한 위치로 변환합니다. 예를 들어 정렬된 2개의 비네트($z_{i1} < z_{i2}$)에 대해 보정된 척도 $C_i$는 $y_i < z_{i1}$일 때 1, $y_i = z_{i1}$일 때 2, $z_{i1} < y_i < z_{i2}$일 때 3, $y_i = z_{i2}$일 때 4, $y_i > z_{i2}$일 때 5를 취합니다. 모수적 분석의 경우 비네트-보정 순서형 프로빗 모형(CHOPIT)이 R의 `anchoring` 패키지를 통해 구현됩니다.
+
+------------------------------------------------------------------------
+
+## 민감한 질문 방법론 {#sec-sensitive}
+
+직접 질문 시 사회적 바람직성 편향이나 사법적 처벌 우려로 인해 허위 보고나 무응답이 발생하는 민감한 질문(약물 복용, 투표 불참, 탈세, 부정행위 등)에 대해 설문 방법론은 세 가지 주요 도구를 제공합니다.
+
+### 무작위 응답 기법 (Randomised response)
+
+@warner1965randomized 의 고전적 기법은 동전 던지기와 같은 무작위화 장치를 사용하여 응답자의 답변을 보호합니다. 예를 들어 응답자는 동전을 던져 앞면이 나오면 진실을 답하고, 뒷면이 나오면 "예"라고 답합니다. 조사자는 개별 응답자가 진실을 말했는지 알 수 없지만, 전체 표본에서 민감한 행동의 참 비율 $\pi$를 비편향적으로 복원할 수 있습니다.
+
+\begin{equation}
+\widehat\pi \;=\; \frac{\widehat P - (1 - p_{\text{truth}})}{p_{\text{truth}}},
+(\#eq:rrt)
+\end{equation}
+
+여기서 $\widehat P$는 관측된 "예" 비율이며 $p_{\text{truth}}$는 진실을 응답하도록 배정된 확률입니다.
+
+### 목록 실험 (문항 계수 기법, Item count technique)
+
+@blair2012statistical 과 @glynn2013statistical 은 비침습적인 대안으로 목록 실험을 공식화했습니다. 표본을 무작위로 두 집단으로 나눕니다.
+
+-   **통제 집단:** $J$개의 비민감 항목 목록을 받고 동의하는 총 개수(0~$J$)를 보고합니다.
+-   **처치 집단:** $J$개의 비민감 항목에 1개의 민감 문항이 추가된 총 $J+1$개 목록을 받고 동의하는 총 개수(0~$J+1$)를 보고합니다.
+
+처치 집단과 통제 집단의 평균 응답 개수 차이가 민감 문항에 동의하는 비율 $\pi_{\text{sensitive}}$의 비편향 추정량이 됩니다. 천장 효과(ceiling effects, 모든 비민감 항목에 동의하여 민감 문항 동의가 드러나는 현상)와 바닥 효과(floor effects)를 피하기 위해 음의 상관관계를 가진 비민감 항목들을 신중히 설계해야 합니다. R의 `list` 패키지가 결합 분석을 제공합니다.
+
+### 지지 실험 (Endorsement experiments)
+
+@bullock2011statistical 의 지지 실험은 민감한 행위자나 정책에 대한 지지를 측정하기 위해 무작위로 정책에 해당 행위자의 지지 문구를 추가하고 정책 지지도 변화를 측정합니다.
+
+### 어떤 기법을 언제 사용해야 하는가
+
+```{r sensitive-method-comparison, echo=FALSE}
+sens_tab <- tibble::tibble(
+  `방법 (Method)` = c("직접 질문 (Direct)", "무작위 응답 (RRT)", "목록 실험 (List)", "지지 실험 (Endorsement)"),
+  `인지적 부하` = c("낮음", "높음 (무작위화 이해 필요)", "보통 (개수 세기)", "낮음 (일반 문항과 동일)"),
+  `분산 손실 (표본 효율)` = c("없음 (기준)", "큼 (RRT 페널티)", "매우 큼 ($O(1/n)$ 분산 팽창)", "보통"),
+  `주요 위험 요인` = c("사회적 바람직성 편향", "지시 불이행, 의심", "설계 효과 (비민감 항목 간섭)", "미약한 처치 강도"),
+  `권장 사용 환경` = c("비민감 문항", "대면 조사, 강력한 신뢰", "온라인 설문, 이진 태도", "민감 집단/지도자 지지도")
+)
+
+knitr::kable(
+  sens_tab,
+  caption = "민감한 질문 방법론 간의 비교.",
+  booktabs = TRUE
+)
+```
+
+그림 \@ref(fig:sensitive-tree)는 연구 맥락에 따른 의사결정 트리를 보여줍니다.
+
+```{r sensitive-tree, fig.cap="민감한 문항 설계 선택을 위한 의사결정 트리.", fig.width=7, fig.height=4, echo=FALSE, dev="png"}
+DiagrammeR::grViz("
+digraph sens_tree {
+  graph [rankdir = TB, nodesep = 0.4, ranksep = 0.4]
+  node  [shape = box, style = 'filled,rounded', fillcolor = '#dbe7f5', fontname = 'Helvetica', fontsize = 10]
+  edge  [fontname = 'Helvetica', fontsize = 9]
+
+  Q1 [label = '문항이 사회적으로 민감하거나 낙인이 찍혀 있는가?', fillcolor = '#cfead0']
+  D1 [label = '직접 질문 사용\\n(Direct Questioning)', fillcolor = '#eef2f7']
+  Q2 [label = '관심 대상이 집단/행위자 지지도인가,']
+  D2 [label = '지지 실험 사용\\n(Endorsement Experiment)', fillcolor = '#f2d9b1']
+  Q3 [label = '온라인 자기기입식 조사인가?']
+  D3 [label = '목록 실험 사용\\n(List Experiment)', fillcolor = '#fcd7d2']
+  D4 [label = '무작위 응답 기법 사용\\n(Randomised Response)', fillcolor = '#fcd7d2']
+
+  Q1 -> D1 [label = '아니오']
+  Q1 -> Q2 [label = '예']
+  Q2 -> D2 [label = '행위자 지지']
+  Q2 -> Q3 [label = '특정 행동/태도']
+  Q3 -> D3 [label = '예 (온라인)']
+  Q3 -> D4 [label = '아니오 (대면/전화)']
+}
+", height = 300)
+```
+
+------------------------------------------------------------------------
+
+## 다수준 회귀 및 사후계층화 (MRP) {#sec-mrp}
+
+비대표적 표본(예: 대규모 온라인 패널)으로부터 하위 지리적 영역(예: 주별, 선거구별)의 대중 의견을 추정하는 가장 강력한 현대적 도구는 **다수준 회귀 및 사후계층화(Multilevel Regression and Poststratification, MRP)**입니다 [@park2004bayesian; @lax2009estimate].
+
+### 2단계 MRP 절차
+
+MRP는 두 단계로 진행됩니다.
+
+**1단계: 다수준 모형 적합.** 인구통계학적 범주 $j$와 지리적 단위 $s$의 교차 셀 $c = (j, s)$에 속한 개인 $i$의 응답 $Y_i$에 대해 다수준 로짓 모형을 적합합니다.
+
+\begin{equation}
+\Pr(Y_i = 1) \;=\; \text{logit}^{-1}\left( \alpha + \mathbf{X}_j \boldsymbol{\beta} + \alpha_{s[i]}^{\text{state}} + \alpha_{j[i]}^{\text{demo}} \right),
+(\#eq:mrp-stage1)
+\end{equation}
+
+여기서 주 수준 효과 $\alpha_s^{\text{state}} \sim \mathcal{N}(0, \sigma_{\text{state}}^2)$ 및 인구통계 효과들은 부분 풀링(partial pooling)을 통해 정규화되어 데이터가 희소한 셀에서도 과적합 없이 안정적인 추정치를 도출합니다.
+
+**2단계: 인구총조사 기반 사후계층화.** 센서스(Census) 데이터로부터 각 셀 $c$의 실제 모집단 수 $N_c$를 가져와 각 지리적 단위 $s$에 대한 모집단 지지도를 가중 평균으로 계산합니다.
+
+\begin{equation}
+\widehat\theta_s \;=\; \frac{\sum_{c \in s} N_c \, \widehat\pi_c}{\sum_{c \in s} N_c}.
+(\#eq:mrp-stage2)
+\end{equation}
+
+그림 \@ref(fig:mrp-pipeline)는 2단계 MRP 파이프라인을 보여줍니다.
+
+```{r mrp-pipeline, fig.cap="2단계 다수준 회귀 및 사후계층화(MRP) 파이프라인. 표본 데이터의 다수준 모델링과 센서스 사후계층화를 결합합니다.", fig.width=7, fig.height=3.5, echo=FALSE, dev="png"}
+DiagrammeR::grViz("
+digraph mrp {
+  graph [rankdir = LR, splines = ortho, nodesep = 0.5, ranksep = 0.5]
+  node  [shape = box, style = 'filled,rounded', fillcolor = '#dbe7f5', fontname = 'Helvetica', fontsize = 10]
+  edge  [fontname = 'Helvetica', fontsize = 9]
+
+  S  [label = '비대표 표본 데이터\\n(Survey Data)', fillcolor = '#cfead0']
+  M1 [label = '1단계: 다수준 모형\\n셀별 지지도 추정 (pi_c)', fillcolor = '#f2d9b1']
+  C  [label = '인구총조사 데이터\\n셀별 인구수 (N_c)', fillcolor = '#cfead0']
+  M2 [label = '2단계: 사후계층화\\n가중 평균 도출 (theta_s)', fillcolor = '#fcd7d2']
+  O  [label = '주별/선거구별\\n고정밀 여론 추정치', fillcolor = '#eef2f7']
+
+  S -> M1
+  M1 -> M2
+  C -> M2
+  M2 -> O
+}
+", height = 240)
+```
+
+### 가중치 대안: 레이킹(Raking) 및 캘리브레이션
+
+전통적인 서베이 가중치 기법인 반복비례적합법(Raking)은 변수별 주변 분포만을 일치시키는 반면, MRP는 다수준 모형을 통해 심층 교차 셀(deep cross-cells) 간의 상호작용을 모델링하므로 소지역 추정에서 훨씬 우수한 성능을 발휘합니다 [@wang2015forecasting].
+
+### 비대표 표본에서 MRP가 작동하는 이유
+
+표본선택이 셀 정의 공변량(연령, 인종, 교육, 성별, 지역)에만 조건부로 의존한다면(무시 가능성 가정), 모델 적합치는 각 셀 내에서 비편향적이며 센서스 가중치를 통해 모집단 대표성이 복원됩니다.
+
+### 발전된 확장: 심층 상호작용, 동적 IRT, 주별 여론 벤치마킹
+
+최신 MRP 연구는 기계학습(BART, 딥러닝)을 결합한 심층 상호작용 모형 [@ghitza2013deep] 및 시간에 따른 시계열 변동을 추적하는 동적 IRT-MRP 모형 [@caughey2015dynamic]으로 확장되고 있습니다.
+
+------------------------------------------------------------------------
+
+## 강건성, 재현성 및 데이터 조작 탐지 {#sec-robustness}
+
+### 연구자의 자유도와 위양성 (False positives)
+
+@simmons2011false 는 데이터 수집 및 분석 단계에서 연구자가 행사하는 유연성(연구자의 자유도, researcher degrees of freedom; 공변량 선택, 이상치 제거, 종속변수 변환 등)이 실제 효과가 없음에도 통계적으로 유의한 결과를 보고할 확률(위양성률)을 60% 이상으로 팽창시킬 수 있음을 입증했습니다.
+
+### p-곡선 (p-curve)
+
+@simonsohn2014pcurve 는 통계적으로 유의한 $p$-값들의 분포를 분석하는 $p$-곡선 기법을 제시했습니다. 진정한 효과가 존재할 때 $p$-곡선은 오른쪽으로 갈수록 급격히 하강하는 형태($p < 0.01$에 집중)를 띠며, $p$-해킹(p-hacking)이 존재할 때는 0.05 직전에 비정상적으로 집중됩니다.
+
+### 명세 곡선 분석 (Specification curve analysis)
+
+@simonsohn2020specification 은 연구자의 자의적 선택에 따른 결과를 모두 나열하는 **명세 곡선 분석(Specification Curve Analysis)**을 개발했습니다. 타당한 모든 모형 명세(공변량 조합, 하위 표본, 추정 기법)에 걸쳐 추정치를 계산하고 비모수적 순열 검정을 통해 효과의 전반적 유의성을 평가합니다.
+
+### 조작된 데이터의 탐지
+
+@simonsohn2013just 는 복사-붙여넣기 패턴, 지나치게 완벽한 통계적 관계, 벤포드의 법칙(Benford's law) 위반, 비정상적으로 작은 분산 등을 통해 조작된 설문 데이터를 적발하는 포렌식 도구를 제시했습니다.
+
+### 신뢰할 수 있는 설문 기반 논문을 위한 체크리스트
+
+```{r robustness-checklist, echo=FALSE}
+chk <- tibble::tibble(
+  `단계 (Stage)` = c("1. 사전 등록", "2. 도구 사전 검사", "3. 품질 신호 측정", "4. 강건성 분석", "5. 데이터 공개"),
+  `필수 이행 사항 (Action item)` = c("가설, 표본 수집 계획, 핵심 모형 명세 사전 등록 (OSF, AsPredicted)",
+                          "인지적 면접 및 현장 파일럿을 통한 이해도/DIF 사전 검증",
+                          "선행 몰두(Preoccupation), 사전 연습 TOT, 반복 종속변수(D-bar) 측정",
+                          "플래그 포함/제외 결과 병기, 명세 곡선 분석 수행",
+                          "익명화된 원시 데이터, 설문지 전문, 분석 재현 코드 완전 공개")
+)
+
+knitr::kable(
+  chk,
+  caption = "신뢰할 수 있는 설문 기반 연구를 위한 5단계 강건성 체크리스트.",
+  booktabs = TRUE
+)
+```
+
+------------------------------------------------------------------------
+
+## 온라인 패널 및 플랫폼 응답자 {#sec-online-panels}
+
+### 비순수성 / 숙련 응답자 문제 (Non-naïveté)
+
+MTurk, Prolific, Lucid 등의 온라인 패널 응답자들은 수백~수천 개의 설문에 참여한 '전문 응답자'인 경우가 많습니다. @chandler2014nonnaivete 는 이러한 비순수성이 표준 실험 처치 효과의 크기를 체계적으로 감소시킴을 입증했습니다.
+
+### 직업적 응답자 및 중복 계정
+
+동일한 개인이 여러 계정을 생성하거나 가상사설망(VPN)을 통해 지리적 제한을 우회하여 중복 참여하는 현상이 만연합니다. IP 주소 로깅, 지오로케이션 검증 및 고유 브라우저 핑거프린팅이 필수적입니다.
+
+### MTurk 데이터 품질 저하 {#sec-mturk-decline}
+
+2018년 이후 Amazon Mechanical Turk의 데이터 품질은 봇 농장과 저품질 응답자의 유입으로 인해 급격히 저하되었습니다 [@chmielewski2020mturk; @kay2025why]. 반면 Prolific과 같은 플랫폼은 엄격한 신원 검증과 참여자 관리를 통해 상대적으로 높은 품질을 유지하고 있습니다.
+
+### 플랫폼별 비교
+
+-   **Prolific:** 높은 데이터 품질, 엄격한 참가자 보상 및 신원 인증, 학술 연구에 최적.
+-   **MTurk:** 과거의 대표 플랫폼이었으나 심각한 봇 문제 존재, 고급 자격 조건(CloudResearch Approved) 적용 필수.
+-   **Lucid / Dynata:** 대규모 시장 조사 및 대표성 있는 할당 표본 추출에 유리하나 만족화 비율 주의 필요.
+
+### 봇 및 자동화된 응답자
+
+LLM 기반 봇이나 스크립트가 설문을 자동으로 완료하는 위협이 급증하고 있습니다. reCAPTCHA v3, 보이지 않는 허니팟(honeypot) 문항, 문맥 이해를 요구하는 개방형 주관식 문항 검증을 병행해야 합니다.
+
+### 보고 지침
+
+온라인 패널을 사용할 때는 플랫폼 명칭, 모집 기간, 참여자 보상(시간당 환산액), 스크리닝 기준, 탈락률 및 봇 탐지 절차를 논문에 상세히 명시해야 합니다.
+
+------------------------------------------------------------------------
+
+## 합성 응답자와 거대언어모델(LLM) {#sec-llm}
+
+GPT-4, Claude와 같은 거대언어모델(LLM)을 활용하여 설문 응답을 시뮬레이션하는 '합성 응답자(Synthetic Respondents)' 연구가 급부상하고 있습니다 [@argyle2023out; @bisbee2024synthetic]. LLM은 페르소나 프롬프팅을 통해 특정 인구통계학적 집단의 응답 분포를 놀라울 정도로 정밀하게 모사할 수 있습니다.
+
+그러나 다음과 같은 명확한 한계가 존재합니다. (1) **인간 내재적 확률성과의 괴리:** LLM은 결정론적 디코딩이나 인위적 온도(temperature) 노이즈에 의존하여 인간 특유의 인지적 피로도 및 확률 일치 패턴을 온전히 재현하지 못합니다. (2) **사회적 바람직성 및 정렬 편향:** RLHF(인간 피드백 기반 강화학습) 과정에서 주입된 안전성 편향으로 인해 민감한 문항에서 극단적 태도를 회피하는 경향이 있습니다. 합성 응답자는 설문 도구의 사전 파일럿 테스트 및 가설 생성 도구로는 유용하지만, 인간 모집단에 대한 실증적 증거를 대체할 수는 없습니다.
+
+------------------------------------------------------------------------
+
+## 설문 측정 결과변수를 활용한 인과추론
+
+설문조사로 측정된 종속변수를 사용하는 인과추론 연구(RCT, 이중차분법(DiD), 회귀단절(RDD) 등)에서 내재적 확률성은 중요한 시사점을 갖습니다.
+
+-   **점추정치의 비편향성:** 내재적 확률성 노이즈가 처치 배정과 독립적인 경우(가장 일반적인 상황), 처치 효과의 점추정치는 평균적으로 여전히 비편향적입니다.
+-   **통계적 검정력 감소:** 추가적인 오차 분산 $\mathrm{Var}(S)$로 인해 표준오차가 커지고 검정력이 저하됩니다.
+-   **차분 설계에서의 특성:** 이중차분법(DiD) 및 회귀단절(RDD)에서 응답자 내부의 확률적 변동은 평균적으로 상쇄되지만, 표준오차는 고전 이론이 예측하는 것보다 크게 유지됩니다. 따라서 표본 크기 계산 시 $\bar D$를 고려한 검정력 보정이 필수적입니다.
+
+------------------------------------------------------------------------
+
+## 요약
+
+1.  설문 측정 오차의 상당 부분은 도구의 결함이 아니라 응답자 의사결정 과정의 **내재적 확률성(Intrinsic Stochasticity)**에 기인합니다.
+2.  고전적 2원 분산 분해를 $\mathrm{Var}(X) = \mathrm{Var}(T) + \mathrm{Var}(M) + \mathrm{Var}(S)$의 **3원 분산 분해**로 대체해야 합니다.
+3.  단일 세션 내 반복 측정 종속변수를 통해 계산되는 **불안정성 $\bar D$**는 내재적 확률성을 식별하는 핵심 지표입니다.
+4.  부주의한 응답자를 거르기 위한 1차 필터로는 주의력 확인 문항(IMC)보다 **선행 몰두(Preoccupation)**와 사전 연습 **과업 소요 시간(TOT)**이 우수합니다.
+5.  이진 회귀분석 및 컨조인트 분석에서는 $\bar D$를 활용한 **감쇄 보정**을 적용하여 진정한 효과 크기를 복원해야 합니다.
+
+------------------------------------------------------------------------
+
+## 더 읽을거리 {.unnumbered}
+
+-   **설문 방법론 및 인지 과정:** Tourangeau, Rips, and Rasinski (2000), *The Psychology of Survey Response*; Groves et al. (2009), *Total Survey Error in Practice*; Stantcheva (2023), "How to Run Surveys: A Guide for Practitioners".
+-   **신뢰도 및 내재적 확률성:** Lord and Novick (1968), *Statistical Theories of Mental Test Scores*; Clayton et al. (2025), "Measuring and Correcting for Response Instability in Surveys"; McDonald (1999), *Test Theory: A Unified Treatment*.
+-   **부주의 응답 및 데이터 품질:** Meade and Craig (2012), "Identifying Careless Responses in Survey Data"; Ward and Meade (2023), "Dealing with Careless Responding in Survey Data: Prevention, Identification, and Solutions"; Oppenheimer et al. (2009), "Instructional Manipulation Checks".
+-   **고급 설문 설계 (MRP, 비네트, 민감 문항):** Gelman and Little (1997), King et al. (2004), Blair and Imai (2012), Rosenfeld et al. (2016).
+
+------------------------------------------------------------------------
+
+## 연습문제 {.unnumbered}
+
+1.  *개념적 이해.* 설문 도구 측면의 측정 오차 감소(더 명확한 문구 표현, 정밀한 응답 척도)가 일반적으로 $\bar D$를 감소시키지 못하는 이유를 본인의 언어로 설명하시오. 어떠한 상황에서 문구 수정이 $\bar D$를 감소시킬 수 있는가?
+
+2.  *수학적 유도.* 신념 $\pi_i$를 가진 확률 일치(probability matching) 하에서 $\Delta_i = 2\pi_i(1 - \pi_i)$임을 증명하시오. 어떤 $\pi_i$ 값에서 $\Delta_i$가 극대화되는가? 내포된 최댓값은 얼마인가?
+
+3.  *수학적 유도.* 식 \@ref(eq:rtt-vs-d)를 증명하시오. 그런 다음 표 \@ref(tab:rtt-d-comparison)의 수치들을 다시 도출하고, 검사-재검사 상관계수만을 보고하는 연구들에 대해 이것이 시사하는 바를 논하시오.
+
+4.  *하이즈 심플렉스.* 식 \@ref(eq:heise)를 사용하여 $r_{12} = 0.7$, $r_{23} = 0.7$, $r_{13} = 0.5$일 때 $\hat\rho_2$를 계산하시오. 결과를 해석하고, 이것이 $\rho^{\ast}$와 $\rho$ 간의 비교에 대해 무엇을 시사하는지 설명하시오.
+
+5.  *시뮬레이션.* 제\@ref(sec-survey-reliability-applied)절의 시뮬레이션을 수정하여 $\pi_i$가 공변량 $x_i$에 의존하도록 설정하시오. $x_i$의 수준별로 $\bar D$를 별도로 추정하고, 그 변동이 모집단에 대해 무엇을 말해주는지 논하시오.
+
+6.  *실무 설계.* 귀하의 연구 분야 주제에 대해 동일 설문 내 반복 종속변수 프로토콜을 설계하시오. 핵심 문항, 방해 문항의 개수 및 유형, 사전 연습 문항, 선행 몰두 문항을 구체화하시오. 제\@ref(sec-filters)절의 기준을 사용하여 각 선택을 정당화하시오.
+
+7.  *비판적 검토.* 조작 점검 문항에 실패한 피험자를 제외할 때 발생하는 편향에 관한 @aronow2019note 를 읽으시오. 그 발견과 제\@ref(sec-filters)절에서 주의력 확인 문항을 *1차* 필터로 사용하지 말라는 권장사항을 조화시키시오. 두 권장사항이 일치하는 지점은 어디이며, 본 장이 더 나아간 지점은 어디인가?
+
+8.  *재현 연구.* 이진 핵심 종속변수를 사용하는 출판된 설문 기반 논문을 하나 선택하시오. 잔차 분산의 10%가 내재적 확률성이라는 가정 하에 내포된 $\bar D$ 기준선을 계산(또는 보고된 수치로부터 추정)하시오. 식 \@ref(eq:beta-corr)의 닫힌 형태 보정을 적용하시오. 해당 논문의 핵심 주장이 여전히 유지되는가?
+
+9.  *SIMEX.* 제\@ref(sec-survey-reliability-applied)절의 7단계 SIMEX 절차를 $\lambda \in \{0.5, 1.0, 1.5, 2.0, 2.5, 3.0\}$으로 재실행하고 외삽된 추정치를 닫힌 형태 추정치와 비교하시오. 두 추정치는 언제 갈라지는가?
+
+10. *컨조인트 분석.* 10개 속성과 2개 프로파일 강제 선택 설계를 갖는 컨조인트 실험에서 (i) $\bar D$를 측정하고 (ii) @clayton2025 보정을 적용하는 방안을 개략적으로 서술하시오. 추가 측정에 드는 응답자 시간 비용은 얼마인가?
+
+11. *타당도 (MTMM).* 3가지 방법(리커트 자기보고, 목록 실험, 행동적 지불의사 과업)으로 3가지 특질(정부 신뢰, 기업 신뢰, 과학자 신뢰)을 측정한 데이터가 있습니다. $9 \times 9$ MTMM 상관계수 행렬을 스케치하시오. 단일특질-이종방법 항목, 이종특질-단일방법 항목, 이종특질-이종방법 항목을 식별하시오. 어떤 패턴이 수렴 타당도를 만족하는가? 어떤 패턴이 판별 타당도를 만족하는가? 답변에 @campbell1959convergent 를 인용하시오.
+
+12. *조사 방식 효과.* 단일 민감 문항에 대한 사회적 바람직성 편향을 추정하기 위한 개체 내(within-subject) 조사 방식 비교를 설계하시오. 어떤 방식들을 비교해야 하는가? 식별 가정은 무엇인가? @heerwegh2009mode 설계가 조사 방식과 표본의 교란을 피하는 데 어떻게 도움이 되는가?
+
+13. *MRP.* $n = 800$명의 미국 성인 비확률 온라인 표본을 보유하고 있으며 특정 정책에 대한 주 수준 지지도를 추정하고자 합니다. (i) 식 \@ref(eq:mrp-stage1)의 다수준 모형, (ii) 셀 정의 공변량, (iii) 모집단 참조 추출틀, (iv) 필요한 셀별 모집단 비율을 명시하시오. @lax2009estimate 를 따라 단순 분할 집계와 MRP 추정치의 정밀도를 비교하시오.
+
+14. *앵커링 비네트.* 4점 척도에서 "의료계에 대한 신뢰" 자기보고를 보정하기 위한 3개의 비네트를 설계하시오. 각 비네트는 객관적 신뢰도가 응답자 간에 일정하게 고정된 가상의 의사를 묘사해야 합니다. 각 비네트의 객관적 수준 선택을 정당화하시오. 식 \@ref(eq:vignette-rating)를 사용하여 응답자별 절단점을 어떻게 복원할지 설명하시오.
+
+15. *민감한 질문.* 낙인찍힌 정치적 입장에 대한 지지도를 연구하고 있습니다. 목록 실험, 무작위 응답 기법, 지지 실험 중 하나를 실행할 수 있습니다. 각 설계에 대해 (i) 식별 가정, (ii) 추정량, (iii) 직접 질문 대비 분산 손실(페널티)을 기술하시오. 어떤 기법을 사용하겠으며 그 이유는 무엇인가? @rosenfeld2016empirical 의 실증적 증거를 인용하시오.
+
+16. *부주의 응답 탐지.* 접근 가능한 다문항 리커트 그리드가 포함된 설문 도구를 활용하시오. 제\@ref(sec-survey-reliability-applied)절의 9단계 코드를 따라 (i) 최장 연속 동일 응답 지표, (ii) 응답자 내 SD, (iii) 개인-전체 상관, (iv) 마할라노비스 거리를 구현하시오. 결합 분포를 보고하고, 플래그 임계값을 결정한 후 그 근거를 제시하시오.
+
+17. *응답 양식.* 16번 연습문제의 동일한 도구를 사용하여 @greenleaf1992measuring 에 따라 극단 응답 양식(ERS)을 추정하시오. ERS와 실질 척도 점수 간의 상관계수를 계산하시오. 그 상관관계가 척도의 타당도에 대해 무엇을 시사하는가?
+
+18. *$\omega$ 대 $\alpha$ 계수.* 16번 연습문제의 다문항 척도에 대해 `psych` 패키지를 사용하여 크론바흐 $\alpha$와 맥도널드 $\omega_t$(식 \@ref(eq:omega))를 모두 계산하시오. 둘을 비교하시오. 어떤 조건에서 일치하고 어떤 조건에서 불일치하는가?
+
+19. *MTurk 품질 감사.* @kay2025why 와 @shimoni2025assessing 을 읽으시오. 두 논문 모두 MTurk 데이터 품질에 대해 강한 결론에 도달하지만 해당 플랫폼을 구제할 수 있는지에 대해 의견이 엇갈립니다. (i) 각 연구가 내린 표본추출 결정(자격 수준, 스크리닝 도구, 보상), (ii) 각 연구가 사용한 진단법, (iii) 두 연구의 결론을 조화시킬 수 있는 가장 작은 설계 차이를 규명하시오. 그런 다음 귀하의 다음 온라인 연구에서 어떤 결론을 채택하겠는지 기술하고 그 선택을 방어하시오.
+
+20. *의미론적 반의어 진단.* 귀하의 연구 분야 구성개념에 대해 6문항 의미론적 반의어 쌍 세트(3개 쌍, 주의 깊은 응답자라면 두 문항 간에 완벽에 가까운 음의 상관관계를 보여야 하도록 작성된 쌍)를 설계하시오. 선택한 두 플랫폼에 이를 적용하고 쌍 내 문항 간 상관계수를 보고하시오. @kay2025why 를 따라 이 패턴을 플랫폼 품질 진단으로 해석하시오.

@@ -1,12 +1,6 @@
 ---
-title: "Rust Compiler Development Guide"
+title: "Rust 컴파일러 개발 가이드"
 author: "The Rust Project Developers"
-format:
-  html:
-    toc: true
-    toc-depth: 4
-    number-sections: true
-    code-fold: false
 ---
 
 # 시작하기 {#getting-started}

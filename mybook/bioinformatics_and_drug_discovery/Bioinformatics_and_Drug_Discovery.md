@@ -1,8 +1,7 @@
-# 생물정보학 및 신약 개발
-
-Richard S. Larson · Tudor I. Oprea 편집
-
-# 서문
+---
+title: "생물정보학 및 신약 개발"
+author: "Richard S. Larson, Tudor I. Oprea"
+---
 
 최근 몇 년 동안 수많은 혁신적인 생물정보학 방법과 기술이 등장하면서, 새로운 분자 및 세포 수준의 치료 표적을 더욱 신속하게 식별할 수 있게 되었습니다. 이제 생물정보학은 합리적인 신약 개발 과정에서 필수적인 도구로 확고히 자리 잡았다고 해도 과언이 아닙니다.
 
@@ -13,104 +12,6 @@ Richard S. Larson · Tudor I. Oprea 편집
 개별 연구자가 이 모든 기술을 숙지하는 것은 사실상 불가능하기에, 본 도서는 『Methods in Molecular Biology』 시리즈의 다른 도서들과는 조금 다른 장 구성을 채택했습니다. 각 장에서는 먼저 기술의 이론과 응용 분야를 소개한 뒤, 해당 기술과 소프트웨어를 활용한 실용적인 절차를 이어서 설명합니다. 그동안 방법론의 파이프라인과 이를 통해 수행되는 생물학적 분석의 폭은 시간이 흐름에 따라 계속 확장되어 왔습니다.
 
 『생물정보학 및 신약 개발』은 학계(생물학자, 정보학자, 화학자, 생화학자), 임상의, 제약회사 과학자 등 신약 설계의 다양한 측면에 관심이 있는 모든 분을 대상으로 합니다. 이번 판의 각 장은 해당 방법론을 일상적으로 활용하는 저명한 연구자들이 집필하였습니다. 편집자들은 이 책이 독자들에게 핵심적인 주제에 대한 통찰력을 제공하는 동시에, 설명된 기술을 재현할 수 있도록 신뢰할 수 있는 단계별 지침을 제공하기를 희망합니다.
-
-미국 뉴멕시코주 앨버커키
-
-Richard S. Larson
-
-Tudor I. Oprea
-
-# 제1부 신약 개발의 중개 생물정보학
-
-1 항생제 상호작용 측정을 위한 소형 체커보드 분석법 . 3 Melike Cokol-Cakmak, Murat Cokol
-2 약물 조합을 위한 고처리량 스크리닝 . 11 Paul Shinn, Lu Chen, Marc Ferrer, Zina Itkin, Carleen Klumpp-Thomas, Crystal McKnight, Sam Michael, Tim Mierzwa, Craig Thomas, Kelli Wilson, Rajarshi Guha
-3 대규모 생물활성 데이터의 후처리 . 37 Jason Bret Harris
-4 약물 표적 온톨로지 개발 방법: 지식 습득 및 표현 방법론(KNARM) . 49 Hande Ku¨c¸u¨k McGinty, Ubbo Visser, Stephan Schu¨rer
-
-# 제2부 신약 개발의 정보학
-
-5 사전 기반 텍스트 마이닝 가이드 . 73 Helen V. Cook, Lars Juhl Jensen
-6 빅데이터를 활용한 신약 개발의 혁신 . 91 Benjamin S. Glicksberg, Li Li, Rong Chen, Joel Dudley, Bin Chen
-7 가상 스크리닝 전 화합물 라이브러리 준비 방법 . 119 Cristian G. Bologa, Oleg Ursu, Tudor I. Oprea
-8 정량적 구조-물성 상관관계(QSPR) 모델 구축 . 139 Robert D. Clark, Pankaj R. Daga
-9 이온 이동도 질량 분석법(IM-MS)을 이용한 저분자 약물 및 약물 유사 분자의 이성질체 및 구조 분석 . 161 Shawn T. Phillips, James N. Dodds, Jody C. May, John A. McLean
-
-# 제3부 신약 개발의 임상 연구 정보학
-
-10 신약 개발 가속화 및 정밀 의료를 위한 계산 플랫폼 및 가이드 . 181 Ioannis N. Melas, Theodore Sakellaropoulos, Junguk Hur, Dimitris Messinis, Ellen Y. Guo, Leonidas G. Alexopoulos, Jane P. F. Bai
-11 시스템 약리학을 위한 옴익스 데이터 통합 및 분석 . 199 Hansaim Lim, Lei Xie
-12 임상 연구의 생물정보학 기반 도구 및 소프트웨어: 새로운 신생 분야 . 215 Parveen Bansal, Malika Arora, Vikas Gupta, Mukesh Maithani
-13 신약 개발을 위한 텍스트 마이닝 . 231 Si Zheng, Shazia Dharssi, Meng Wu, Jiao Li, Zhiyong Lu
-
-# 제4부 신약 개발의 임상 정보학
-
-14 정밀 스타틴 치료 및 머신러닝을 위한 빅데이터 코호트 추출 . 255 Terrence J. Adam, Chih-Lin Chi
-15 L1000 게놈 및 프로테오믹 빅데이터 기반의 약물 시그니처 감지 . 273 Wei Chen, Xiaobo Zhou
-16 약물 효과 예측을 위한 L1000 게놈 및 프로테오믹 빅데이터 통합 . 287 Wei Chen, Xiaobo Zhou
-17 질병 하위 유형 발견을 위한 베이지안 네트워크 접근 방식 . 299 Mei-Sing Ong
-
-찾아보기 323
-
-# 기여자
-
-TERRENCE J. ADAM  미네소타 대학교 약학대학 약물 케어 및 건강 시스템 학과, 보건 정보학, 사회 및 행정 약학, 미국 미네소타주 미니애폴리스
-LEONIDAS G. ALEXOPOULOS  국립 아테네 공과대학교 기계공학부, 그리스 조그라포우
-MALIKA ARORA  구루 고빈드 싱 의과대학 다학제 연구부, 인도 파리드콧
-JANE P. F. BAI  미국 식품의약국(FDA) 약물 평가 및 연구 센터 임상 약학국, 미국 메릴랜드주 실버 스프링
-PARVEEN BANSAL  바바 파리드 보건 과학 대학교 우수 연구 센터, 인도 파리드콧
-CRISTIAN G. BOLOGA  뉴멕시코 대학교 의과대학 내과 중개 정보학부, 미국 뉴멕시코주 앨버커키
-BIN CHEN  캘리포니아 대학교 바카 계산 보건 과학 연구소, 미국 캘리포니아주 샌프란시스코; 미시간 주립 대학교 소아과 및 인간 발달 학과, 미국 미시간주 그랜드 래피즈; 미시간 주립 대학교 약리학 및 독성학 학과, 미국 미시간주 그랜드 래피즈
-LU CHEN  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-RONG CHEN 미시간 주립 대학교 유전 및 게놈 과학부 차세대 헬스케어 연구소, 미국 뉴욕주 뉴욕; Sema4(마운트 사이나이 벤처), 미국 코네티컷주 스탬퍼드
-WEI CHEN  웨이크 포레스트 대학교 의과대학 방사선과, 미국 노스캐롤라이나주 윈스턴세일럼
-CHIH-LIN CHI  미네소타 대학교 간호대학, 미국 미네소타주 미니애폴리스
-ROBERT D. CLARK  Simulations Plus, Inc., 미국 캘리포니아주 랭커스터
-MURAT COKOL  터프츠 대학교 의과대학 분자 생물학 및 미생물학 학과, 미국 매사추세츠주 보스턴; 하버드 의과대학 시스템 약리학 실험실, 미국 매사추세츠주 보스턴
-MELIKE COKOL-CAKMAK  사반치 대학교 공학 및 자연 과학부, 터키 이스탄불 투즐라
-HELEN V. COOK  캠브리지 대학교 임상 의과대학, 영국 캠브리지; 코펜하겐 대학교 보건 및 의료 과학부 노보 노디스크 재단 단백질 연구 센터, 덴마크 코펜하겐
-PANKAJ R. DAGA  Simulations Plus, Inc., 미국 캘리포니아주 랭커스터
-SHAZIA DHARSSI  국립 보건원(NIH) 국립 의학 도서관(NLM) 국립 생물공학 정보 센터(NCBI), 미국 메릴랜드주 베데스다
-JAMES N. DODDS  밴더빌트 대학교 화학과, 혁신 기술 센터, 밴더빌트-잉그램 암 센터, 밴더빌트 화학 생물학 연구소, 밴더빌트 통합 바이오 시스템 연구 및 교육 연구소, 미국 테네시주 내슈빌
-JOEL DUDLEY  마운트 사이나이 이칸 의과대학 유전 및 게놈 과학부 차세대 헬스케어 연구소, 미국 뉴욕주 뉴욕
-MARC FERRER  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-
-BENJAMIN S. GLICKSBERG  캘리포니아 대학교 바카 계산 보건 과학 연구소, 미국 캘리포니아주 샌프란시스코; 마운트 사이나이 이칸 의과대학 유전 및 게놈 과학부 차세대 헬스케어 연구소, 미국 뉴욕주 뉴욕
-RAJARSHI GUHA  Vertex Pharmaceuticals, 미국 메릴랜드주 록빌
-ELLEN Y. GUO  일리노이 대학교 시카고 약학대학, 미국 일리노이주 시카고
-VIKAS GUPTA  바바 파리드 보건 과학 대학교 우수 연구 센터, 인도 파리드콧
-JASON BRET HARRIS  Collaborative Drug Discovery (CDD), Inc., 미국 캘리포니아주 벌링게임
-JUNGUK HUR  미국 식품의약국(FDA) 약물 평가 및 연구 센터 임상 약학국, 미국 메릴랜드주 실버 스프링; 노스다코타 대학교 의과대학 및 보건 과학부 의생명 과학과, 미국 노스다코타주 그랜드 포크스
-ZINA ITKIN  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-LARS JUHL JENSEN  코펜하겐 대학교 보건 및 의료 과학부 노보 노디스크 재단 단백질 연구 센터, 덴마크 코펜하겐
-CARLEEN KLUMPP-THOMAS  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-HANDE KU¨ C¸ U¨ K MCGINTY  마이애미 대학교 컴퓨터 과학과, 미국 플로리다주 코럴 게이블즈; Collaborative Drug Discovery, Inc., 미국 캘리포니아주 벌링게임
-JIAO LI  중국 의학 과학원 및 북경 협화 의과대학 의학 정보 연구소 및 도서관, 중국 베이징
-LI LI  마운트 사이나이 이칸 의과대학 유전 및 게놈 과학부 차세대 헬스케어 연구소, 미국 뉴욕주 뉴욕; Sema4(마운트 사이나이 벤처), 미국 코네티컷주 스탬퍼드
-HANSAIM LIM  뉴욕 시립 대학교 대학원 센터 생화학 박사 과정, 미국 뉴욕주 뉴욕
-ZHIYONG LU  국립 보건원(NIH) 국립 의학 도서관(NLM) 국립 생물공학 정보 센터(NCBI), 미국 메릴랜드주 베데스다
-MUKESH MAITHANI  구루 고빈드 싱 의과대학 다학제 연구부, 인도 파리드콧
-JODY C. MAY  밴더빌트 대학교 화학과, 혁신 기술 센터, 밴더빌트-잉그램 암 센터, 밴더빌트 화학 생물학 연구소, 밴더빌트 통합 바이오 시스템 연구 및 교육 연구소, 미국 테네시주 내슈빌
-CRYSTAL MCKNIGHT  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-JOHN A. MCLEAN  밴더빌트 대학교 화학과, 혁신 기술 센터, 밴더빌트-잉그램 암 센터, 밴더빌트 화학 생물학 연구소, 밴더빌트 통합 바이오 시스템 연구 및 교육 연구소, 미국 테네시주 내슈빌
-IOANNIS N. MELAS  미국 식품의약국(FDA) 약물 평가 및 연구 센터 임상 약학국, 미국 메릴랜드주 실버 스프링; UCB Pharma 중개 생물정보학부, 영국 슬라우
-DIMITRIS MESSINIS  미국 식품의약국(FDA) 약물 평가 및 연구 센터 임상 약학국, 미국 메릴랜드주 실버 스프링; 국립 아테네 공과대학교 기계공학부, 그리스 조그라포우
-SAM MICHAEL  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-
-TIM MIERZWA  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-MEI-SING ONG  하버드 의과대학 인구 의학부 및 하버드 필그림 헬스케어 연구소, 미국 매사추세츠주 보스턴; 보스턴 어린이 병원 계산 보건 정보학 프로그램, 미국 매사추세츠주 보스턴
-TUDOR I. OPREA  뉴멕시코 대학교 의과대학 내과 중개 정보학부, 미국 뉴멕시코주 앨버커키
-SHAWN T. PHILLIPS  밴더빌트 대학교 화학과, 혁신 기술 센터, 밴더빌트-잉그램 암 센터, 밴더빌트 화학 생물학 연구소, 밴더빌트 통합 바이오 시스템 연구 및 교육 연구소, 미국 테네시주 내슈빌
-THEODORE SAKELLAROPOULOS  미국 식품의약국(FDA) 약물 평가 및 연구 센터 임상 약학국, 미국 메릴랜드주 실버 스프링; 뉴욕 대학교 의과대학 병리학과, 미국 뉴욕주 뉴욕
-STEPHAN SCHU¨ RER  마이애미 대학교 밀러 의과대학 분자 및 세포 약리학과, 미국 플로리다주 마이애미; 마이애미 대학교 계산 과학 센터, 미국 플로리다주 코럴 게이블즈
-PAUL SHINN  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-CRAIG THOMAS  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-OLEG URSU  머크 연구소, 미국 매사추세츠주 보스턴; 뉴멕시코 대학교 의과대학 내과 중개 정보학부, 미국 뉴멕시코주 앨버커키
-UBBO VISSER  마이애미 대학교 컴퓨터 과학과, 미국 플로리다주 코럴 게이블즈
-KELLI WILSON  국립 중개 과학 센터, 미국 메릴랜드주 록빌
-MENG WU  중국 의학 과학원 및 북경 협화 의과대학 의학 정보 연구소 및 도서관, 중국 베이징
-LEI XIE  뉴욕 시립 대학교 대학원 센터 생화학 박사 과정, 미국 뉴욕주 뉴욕; 뉴욕 시립 대학교 헌터 칼리지 컴퓨터 과학과, 미국 뉴욕주 뉴욕
-SI ZHENG  중국 의학 과학원 및 북경 협화 의과대학 의학 정보 연구소 및 도서관, 중국 베이징
-XIAOBO ZHOU  웨이크 포레스트 대학교 의과대학 방사선과, 미국 노스캐롤라이나주 윈스턴세일럼; 텍스트 대학교 휴스턴 보건 과학 센터 의생명 정보학 대학, 미국 텍사스주 휴스턴
 
 # 제1부
 

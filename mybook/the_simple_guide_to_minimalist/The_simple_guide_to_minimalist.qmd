@@ -1,6 +1,6 @@
 ---
 title: "미니멀리스트 가이드"
-author: "Leo"
+author: "레오 바바우타(Leo Babauta)"
 date: 2026-08-11
 ---
 

@@ -1,0 +1,21 @@
+<!-- ========================================= -->
+<!-- Chapter: 08-linear-mixed-models.Rmd -->
+<!-- ========================================= -->
+
+
+# 선형 혼합 모형 (Linear Mixed Models) {#sec-linear-mixed-models}
+
+
+> **본 장의 전체 내용은 출간된 Springer 도서에서 확인하실 수 있습니다.**\
+> 온라인 미리보기는 출판사 정책에 따라 일부로 제한됩니다.
+
+전체 내용을 확인하시려면 Springer 도서를 참고하시기 바랍니다:
+
+| 권차 | 도서명                                     | 링크                                       |
+|---------------|---------------------------|--------------------|
+| 1    | *Foundations of Data Analysis*            | [Springer에서 구매](https://tidd.ly/4oL3N2X) |
+| 2    | *Regression Techniques for Data Analysis* | [Springer에서 구매](https://tidd.ly/47PJ7kB) |
+| 3    | *Advanced Modeling and Data Challenges*   | [Springer에서 구매](https://tidd.ly/3JrB3xm) |
+| 4    | *Experimental Design*                     | [Springer에서 구매](https://tidd.ly/4oFridQ) |
+
+

@@ -1,0 +1,1621 @@
+<!-- ========================================= -->
+<!-- Chapter: 06-nonlinear-regession.Rmd -->
+<!-- ========================================= -->
+
+
+# 비선형 회귀 {#non-linear-regression}
+
+선형성을 넘어, 본 장에서는 결정론적(deterministic) 및 확률적(stochastic) 비선형 모델을 살펴봅니다. 비선형 최소자승법(Nonlinear Least Squares, NLS) 하에서의 통계적 추론을 정형화하고, 내재적 곡률(intrinsic curvature)과 외재적 곡률(extrinsic curvature)의 차이를 강조하며, 식별가능성(identifiability) 문제를 탐구합니다.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(kableExtra)
+library(knitr)
+library(nlstools)
+library(investr)
+library(MASS)
+```
+
+비선형 회귀(Non-linear regression) 모델은 모수에 대한 평균 함수의 도함수가 하나 이상의 모수에 의존한다는 점에서 선형 회귀 모델과 근본적으로 다릅니다. 이러한 의존성은 모델의 복잡성을 더하지만, 복잡하고 정교한 관계를 모델링할 수 있는 훨씬 더 큰 유연성을 제공합니다.
+
+**선형 회귀(Linear Regression):**
+
+-   **모델 형태 예시(Model Form Example):** 대표적인 선형 회귀 모델은 $y = \beta_0 + \beta_1 x$와 같으며, 여기서 $\beta_0$와 $\beta_1$은 모수(parameter)입니다.
+
+-   **모수 효과(Parameter Effect):** 각 모수가 $y$에 미치는 영향은 일정합니다. 예를 들어 $\beta_1$이 1만큼 증가하면, 현재 $\beta_1$의 값과 상관없이 $y$의 변화량은 항상 $x$입니다.
+
+-   **도함수(Derivatives):** 각 모수에 대한 $y$의 편도함수(예: $\frac{\partial y}{\partial \beta_1} = x$)는 모수 $\beta_0$나 $\beta_1$ 자체에 의존하지 않습니다. 이는 오직 데이터 $x$에만 의존합니다. 따라서 최적 적합선을 찾는 수학적 과정이 직관적이고 단순합니다.
+
+-   [보통 최소자승법(Ordinary Least Squares)]과 같은 닫힌 형태의 해(closed-form solution)를 통해 직접 추정할 수 있습니다.
+
+**비선형 회귀(Non-linear Regression):**
+
+-   **모델 형태 예시(Model Form Example):** $y = \alpha \cdot e^{\beta x}$를 생각해 봅시다. 여기서 $\alpha$와 $\beta$는 모수이지만, 둘 사이의 관계는 직선이 아닙니다.
+
+-   **모수 효과(Parameter Effect):** $\alpha$ 또는 $\beta$를 변경할 때 $y$에 미치는 영향은 일정하지 않습니다. 예를 들어 $\beta$를 변경하면 $y$에 미치는 영향은 $x$뿐만 아니라 현재 $\beta$의 값에도 의존합니다. 이로 인해 예측 및 모수 조정이 더 복잡해집니다.
+
+-   **도함수(Derivatives):** $\beta$에 대해 편미분하면 $\frac{\partial y}{\partial \beta} = \alpha x e^{\beta x}$가 됩니다. 이 도함수는 $\alpha$, $\beta$, $x$ 모두에 의존함을 알 수 있습니다. 선형 회귀와 달리, $\beta$의 변화에 대한 $y$의 민감도는 $\beta$ 자체의 값에 따라 달라집니다.
+
+-   닫힌 형태의 해를 구하기 어려우므로 가우스-뉴턴 알고리즘(Gauss-Newton Algorithm)과 같은 반복적 알고리즘(iterative algorithm)을 통한 추정이 필요합니다.
+
+| 특징 (Feature) | 선형 회귀 (Linear Regression) | 비선형 회귀 (Non-Linear Regression) |
+|--------------------|-----------------------|--------------------------|
+| 관계 (Relationship) | 모수에 대해 선형 (Linear in parameters) | 모수에 대해 비선형 (Non-linear in parameters) |
+| 해석 용이성 (Interpretability) | 높음 (High) | 종종 어려움 (Often challenging) |
+| 추정 방법 (Estimation) | 닫힌 형태의 해 (Closed-form solutions) | 반복 알고리즘 (Iterative algorithms) |
+| 계산 비용 (Computational Cost) | 낮음 (Low) | 높음 (Higher) |
+
+: 요약 표: 선형 회귀 vs. 비선형 회귀
+
+**비선형 회귀의 주요 특징(Key Features of Non-linear regression):**
+
+-   복잡한 함수 형태(Complex Functional Forms): 비선형 회귀는 직선이나 평면이 아닌 다양한 형태의 곡선 관계를 허용합니다.
+-   해석상의 난점(Interpretability Challenges): 특히 함수 형태가 복잡한 경우 비선형 모델은 해석하기 어려울 수 있습니다.
+-   실무적 활용 사례(Practical Use Cases): 
+    -   성장 곡선(Growth curves)
+    -   고차 다항식(High-order polynomials)
+    -   선형 근사(Linear approximations, 예: 테일러 전개)
+    -   국소 선형 모델 또는 기저 함수 집합(Collections of locally linear models or basis functions, 예: 스플라인)
+
+이러한 접근법들은 데이터를 근사할 수 있지만, 해석력 저하 문제를 겪거나 데이터가 희소할 때 일반화가 잘 되지 않을 수 있습니다. 따라서 본질적 비선형 모델(intrinsically non-linear models)이 선호되는 경우가 많습니다.
+
+------------------------------------------------------------------------
+
+**본질적 비선형 모델(Intrinsically Non-Linear Models)**
+
+본질적 비선형 회귀 모델의 일반적인 형태는 다음과 같습니다:
+
+$$
+Y_i = f(\mathbf{x}_i; \mathbf{\theta}) + \epsilon_i
+$$
+
+여기서:
+
+-   $f(\mathbf{x}_i; \mathbf{\theta})$: $E(Y_i)$를 독립변수 $\mathbf{x}_i$와 연결하는 **비선형 함수(non-linear function)**.
+-   $\mathbf{x}_i$: 독립변수들의 $k \times 1$ 벡터 (고정값).
+-   $\mathbf{\theta}$: 모수들의 $p \times 1$ 벡터.
+-   $\epsilon_i$: 독립이고 동일하게 분포된(i.i.d.) 확률 오차로, 일반적으로 평균이 0이고 일정한 분산 $\sigma^2$을 갖는 것으로 가정합니다. 경우에 따라 $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$로 가정합니다.
+
+예시: 지수 성장 모델(Exponential Growth Model)
+
+대표적인 비선형 모델은 지수 성장 함수입니다:
+
+$$
+y = \theta_1 e^{\theta_2 x} + \epsilon
+$$
+
+여기서:
+
+-   $\theta_1$: 초기값(Initial value).
+-   $\theta_2$: 성장률(Growth rate).
+-   $x$: 독립변수(예: 시간).
+-   $\epsilon$: 확률 오차(Random error).
+
+------------------------------------------------------------------------
+
+## 추론 {#inference}
+
+$\epsilon_i \sim \text{iid}(0, \sigma^2)$인 $Y_i = f(\mathbf{x}_i, \theta) + \epsilon_i$에서, 잔차제곱합(sum of squared errors)을 최소화하여 모수($\hat{\theta}$)를 추정할 수 있습니다:
+
+$$
+\sum_{i=1}^{n} \big(Y_i - f(\mathbf{x}_i, \theta)\big)^2
+$$
+
+$\hat{\theta}$를 최소화 추정량이라 할 때, 잔차의 분산은 다음과 같이 추정됩니다:
+
+$$
+s^2 = \hat{\sigma}^2_{\epsilon} = \frac{\sum_{i=1}^{n} \big(Y_i - f(\mathbf{x}_i, \hat{\theta})\big)^2}{n - p}
+$$
+
+여기서 $p$는 $\mathbf{\theta}$에 포함된 모수의 개수이고, $n$은 관측치 수입니다.
+
+------------------------------------------------------------------------
+
+**$\hat{\theta}$의 점근 분포(Asymptotic Distribution)**
+
+정칙성 조건(regularity conditions, 주로 $\epsilon_i \sim N(0, \sigma^2)$이거나 중심극한정리 논증을 적용할 수 있을 만큼 $n$이 충분히 크다는 조건) 하에서, 모수 추정량 $\hat{\theta}$는 다음과 같은 점근적 정규분포(asymptotic normal distribution)를 따릅니다:
+
+$$
+\hat{\theta} \sim AN(\mathbf{\theta}, \sigma^2[\mathbf{F}(\theta)'\mathbf{F}(\theta)]^{-1})
+$$
+
+여기서
+
+-   $AN$은 "점근적 정규성(asymptotic normality)"을 의미합니다.
+-   $\mathbf{F}(\theta)$는 $\hat{\theta}$에서 평가된, $\mathbf{\theta}$에 대한 $f(\mathbf{x}_i, \theta)$의 편도함수들로 구성된 $n \times p$ 야코비 행렬(Jacobian matrix)입니다. 구체적으로 다음과 같습니다:
+
+$$
+\mathbf{F}(\theta) = \begin{pmatrix}
+\frac{\partial f(\mathbf{x}_1, \boldsymbol{\theta})}{\partial \theta_1} & \cdots & \frac{\partial f(\mathbf{x}_1, \boldsymbol{\theta})}{\partial \theta_p} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f(\mathbf{x}_n, \boldsymbol{\theta})}{\partial \theta_1} & \cdots & \frac{\partial f(\mathbf{x}_n, \boldsymbol{\theta})}{\partial \theta_p}
+\end{pmatrix}
+$$
+
+점근적 정규성은 표본 크기 $n$이 커짐에 따라 $\hat{\theta}$의 표집 분포(sampling distribution)가 정규분포에 수렴함을 의미하며, 이를 바탕으로 모수에 대한 통계적 추론이 가능해집니다.
+
+### 모수의 선형 함수 {#linear-functions-of-the-parameters}
+
+"모수의 선형 함수(Linear function of the parameters)"란 $\mathbf{a}$가 특정 (상수) 대비 벡터(contrast vector)일 때 $\mathbf{a}'\boldsymbol{\theta}$ 형태로 표현될 수 있는 수량을 의미합니다. 대표적인 예는 다음과 같습니다:
+
+-   단일 모수 $\theta_j$ ($j$번째 위치에 1이 있고 나머지 위치에는 0이 있는 벡터 $\mathbf{a}$ 사용).
+
+-   차이, 합 또는 기타 대비(contrasts, 예: $\theta_1 - \theta_2$).
+
+$\theta_1 - \theta_2$와 같이 모수들의 선형 결합에 관심이 있다고 가정해 봅시다. 대비 벡터 $\mathbf{a}$를 다음과 같이 정의합니다:
+
+$$
+\mathbf{a} = (0, 1, -1)'
+$$
+
+이제 $\mathbf{a'\theta}$에 대한 추론을 고려합니다 ($\mathbf{a}$는 $p$차원 벡터일 수 있습니다). 확률 벡터 $\mathbf{Z}$의 선형 결합에 대한 기댓값 및 분산 성질을 적용하면:
+
+$$
+\begin{aligned}
+E(\mathbf{a'Z}) &= \mathbf{a'}E(\mathbf{Z}) \\
+\text{Var}(\mathbf{a'Z}) &= \mathbf{a'} \text{Var}(\mathbf{Z}) \mathbf{a}
+\end{aligned}
+$$
+
+따라서 다음을 얻습니다:
+
+$$
+\begin{aligned}
+E(\mathbf{a'\hat{\theta}}) &= \mathbf{a'}E(\hat{\theta}) \approx \mathbf{a}' \theta \\
+\text{Var}(\mathbf{a'} \hat{\theta}) &= \mathbf{a'} \text{Var}(\hat{\theta}) \mathbf{a} \approx \sigma^2 \mathbf{a'[\mathbf{F}(\theta)'\mathbf{F}(\theta)]^{-1}a}
+\end{aligned}
+$$
+
+그러므로,
+
+$$
+\mathbf{a'\hat{\theta}} \sim AN\big(\mathbf{a'\theta}, \sigma^2 \mathbf{a'[\mathbf{F}(\theta)'\mathbf{F}(\theta)]^{-1}a}\big)
+$$
+
+------------------------------------------------------------------------
+
+#### 선형 대비의 신뢰구간
+
+$\mathbf{a'\hat{\theta}}$는 $s^2$과 점근적으로 독립이므로($O(1/n)$ 차수까지), $\mathbf{a'\theta}$에 대한 양측 $100(1-\alpha)\%$ 신뢰구간은 다음과 같이 주어집니다:
+
+$$
+\mathbf{a'\theta} \pm t_{(1-\alpha/2, n-p)} s \sqrt{\mathbf{a'[\mathbf{F}(\hat{\theta})'\mathbf{F}(\hat{\theta})]^{-1}a}}
+$$
+
+여기서
+
+-   $t_{(1-\alpha/2, n-p)}$는 자유도가 $n - p$인 $t$-분포의 임계값입니다.
+-   $s = \sqrt{\hat{\sigma^2}_\epsilon}$는 잔차의 추정 표준편차입니다.
+
+**특수한 경우**: 단일 모수 $\theta_j$
+
+단일 모수 $\theta_j$에 초점을 맞추는 경우, $\mathbf{a'} = (0, \dots, 1, \dots, 0)$($j$번째 위치에 1)으로 둡니다. 그러면 $\theta_j$에 대한 신뢰구간은 다음과 같습니다:
+
+$$
+\hat{\theta}_j \pm t_{(1-\alpha/2, n-p)} s \sqrt{\hat{c}^j}
+$$
+
+여기서 $\hat{c}^j$는 $[\mathbf{F}(\hat{\theta})'\mathbf{F}(\hat{\theta})]^{-1}$의 $j$번째 대각 원소입니다.
+
+------------------------------------------------------------------------
+
+### 모수의 비선형 함수 {#nonlinear-functions-of-parameters}
+
+많은 경우 우리는 $\boldsymbol{\theta}$의 비선형 함수에 관심을 가집니다. $h(\boldsymbol{\theta})$를 이러한 함수(예: 모수 간의 비율, 지수 함수의 차이 등)라고 합시다.
+
+$h(\theta)$가 모수의 비선형 함수일 때, $\theta$ 주변에서 **테일러 급수 전개(Taylor series expansion)**를 사용하여 $h(\hat{\theta})$를 근사할 수 있습니다:
+
+$$
+h(\hat{\theta}) \approx h(\theta) + \mathbf{h}' [\hat{\theta} - \theta]
+$$
+
+여기서
+
+-   $\mathbf{h} = \left( \frac{\partial h}{\partial \theta_1}, \frac{\partial h}{\partial \theta_2}, \dots, \frac{\partial h}{\partial \theta_p} \right)'$는 편도함수들의 그래디언트 벡터(gradient vector)입니다.
+
+**주요 근사(Key Approximations):**
+
+1.  **$\hat{\theta}$의 기댓값과 분산** ($\hat{\theta}$의 점근적 정규성 활용): $$
+    \begin{aligned}
+    E(\hat{\theta}) &\approx \theta, \\
+    \text{Var}(\hat{\theta}) &\approx \sigma^2 [\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1}.
+    \end{aligned}
+    $$
+
+2.  **$h(\hat{\theta})$의 기댓값과 분산** ((근사적) 선형 변환의 기댓값 및 분산 성질): $$
+    \begin{aligned}
+    E(h(\hat{\theta})) &\approx h(\theta), \\
+    \text{Var}(h(\hat{\theta})) &\approx \sigma^2 \mathbf{h}'[\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{h}.
+    \end{aligned}$$
+
+이 결과들을 종합하면 다음을 얻습니다:
+
+$$
+h(\hat{\theta}) \sim AN(h(\theta), \sigma^2 \mathbf{h}' [\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{h}),
+$$
+
+여기서 $AN$은 점근적 정규성을 나타냅니다.
+
+**$h(\theta)$에 대한 신뢰구간:**
+
+$h(\theta)$에 대한 근사적 $100(1-\alpha)\%$ 신뢰구간은 다음과 같습니다:
+
+$$
+h(\hat{\theta}) \pm t_{(1-\alpha/2, n-p)} s \sqrt{\mathbf{h}'[\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{h}},
+$$
+
+여기서 $\mathbf{h}$와 $\mathbf{F}(\theta)$는 $\hat{\theta}$에서 평가됩니다.
+
+------------------------------------------------------------------------
+
+$x = x_0$에서 새로운 관측치 $Y_0$에 대한 **예측구간(prediction interval)**을 계산하기 위해:
+
+1.  **모델 정의(Model Definition)**: $$
+    Y_0 = f(x_0; \theta) + \epsilon_0, \quad \epsilon_0 \sim N(0, \sigma^2),
+    $$ 예측값: $$
+    \hat{Y}_0 = f(x_0, \hat{\theta}).
+    $$
+
+2.  **$\hat{Y}_0$에 대한 근사(Approximation for $\hat{Y}_0$)**: $n \to \infty$일 때 $\hat{\theta} \to \theta$이므로 다음이 성립합니다: $$
+    f(x_0, \hat{\theta}) \approx f(x_0, \theta) + \mathbf{f}_0(\theta)' [\hat{\theta} - \theta],
+    $$ 여기서: $$
+    \mathbf{f}_0(\theta) = \left( \frac{\partial f(x_0, \theta)}{\partial \theta_1}, \dots, \frac{\partial f(x_0, \theta)}{\partial \theta_p} \right)'.
+    $$
+
+3.  **오차 근사(Error Approximation)**: $$
+    \begin{aligned}Y_0 - \hat{Y}_0 &\approx Y_0  - f(x_0,\theta) - f_0(\theta)'[\hat{\theta}-\theta]  \\&= \epsilon_0 - f_0(\theta)'[\hat{\theta}-\theta]\end{aligned}
+    $$
+
+4.  **$Y_0 - \hat{Y}_0$의 분산(Variance of $Y_0 - \hat{Y}_0$)**: $$
+    \begin{aligned}
+    \text{Var}(Y_0 - \hat{Y}_0) &\approx \text{Var}(\epsilon_0 - \mathbf{f}_0(\theta)' [\hat{\theta} - \theta]) \\
+    &= \sigma^2 + \sigma^2 \mathbf{f}_0(\theta)' [\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{f}_0(\theta) \\
+    &= \sigma^2 \big(1 + \mathbf{f}_0(\theta)' [\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{f}_0(\theta)\big).
+    \end{aligned}
+    $$
+
+따라서 예측 오차 $Y_0 - \hat{Y}_0$는 점근적 정규분포를 따릅니다:
+
+$$
+Y_0 - \hat{Y}_0 \sim AN\big(0, \sigma^2 \big(1 + \mathbf{f}_0(\theta)' [\mathbf{F}(\theta)' \mathbf{F}(\theta)]^{-1} \mathbf{f}_0(\theta)\big)\big).
+$$
+
+$Y_0$에 대한 $100(1-\alpha)\%$ 예측구간은 다음과 같습니다:
+
+$$
+\hat{Y}_0 \pm t_{(1-\alpha/2, n-p)} s \sqrt{1 + \mathbf{f}_0(\hat{\theta})' [\mathbf{F}(\hat{\theta})' \mathbf{F}(\hat{\theta})]^{-1} \mathbf{f}_0(\hat{\theta})}.
+$$
+
+여기서 $\mathbf{f}_0$와 $\mathbf{F}$에 $\hat{\theta}$를 대입합니다. $s$는 $\sigma$의 추정치임을 상기하십시오.
+
+------------------------------------------------------------------------
+
+때로는 개별 미래 관측치에 대한 예측구간이 아니라 $E(Y_i)$(즉, $x_0$에서의 평균 반응(mean response))에 대한 신뢰구간을 구하고자 할 수 있습니다. 이 경우 확률 오차 $\epsilon_0$에 대한 분산 항은 포함되지 않습니다. 따라서 공식은 동일하지만 "+1"이 빠집니다:
+
+$$
+E(Y_0) \approx f(x_0; \theta),
+$$
+
+신뢰구간은 다음과 같습니다:
+
+$$
+f(x_0, \hat{\theta}) \pm t_{(1-\alpha/2, n-p)} s \sqrt{\mathbf{f}_0(\hat{\theta})' [\mathbf{F}(\hat{\theta})' \mathbf{F}(\hat{\theta})]^{-1} \mathbf{f}_0(\hat{\theta})}.
+$$
+
+**요약(Summary)**
+
+-   [모수의 선형 함수]: 함수 $f(x, \theta)$가 $$f(x, \theta) = \theta_1 g_1(x) + \theta_2 g_2(x) + \dots + \theta_p g_p(x)$$ 형태로 작성될 수 있고 $g_j(x)$가 $\theta$에 의존하지 않는다면, 이는 $\theta$에 대해 선형입니다. 이 경우 야코비 행렬 $\mathbf{F}(\theta)$는 $\theta$ 자체에 의존하지 않고($x_i$에만 의존), 정확한 공식은 선형 회귀에서 친숙한 결과와 일치합니다.
+
+-   [모수의 비선형 함수]: $f(x, \theta)$가 비선형적인 방식으로 $\theta$에 의존하는 경우(예: $\theta_1 e^{\theta_2 x}, \beta_1/\beta_2$ 또는 더 복잡한 수식), $\mathbf{F}(\theta)$는 $\theta$에 의존합니다. 추정에는 일반적으로 반복 수치 최적화 방법(예: 가우스-뉴턴, 레벤버그-마쿼트)이 필요하며, 점근적 결과는 $\hat{\theta}$에서 평가된 편도함수에 의존합니다. 그럼에도 불구하고 점근적 정규성 논증 덕분에 최종 추론 공식(예: 신뢰구간, 예측구간)은 유사한 형태를 갖습니다.
+
+------------------------------------------------------------------------
+
+## 비선형 최소자승 추정 {#non-linear-least-squares-estimation}
+
+$\hat{\theta}$로 표기되는 $\theta$의 최소자승(least squares, LS) 추정량은 잔차제곱합(residual sum of squares)을 최소화합니다:
+
+$$
+S(\hat{\theta}) = SSE(\hat{\theta}) = \sum_{i=1}^{n} \{Y_i - f(\mathbf{x}_i; \hat{\theta})\}^2
+$$
+
+이를 풀기 위해 각 $\theta_j$에 대한 $S(\theta)$의 편도함수를 구하고 이를 0으로 설정하여 정규방정식(normal equations)을 도출합니다:
+
+$$
+\frac{\partial S(\theta)}{\partial \theta_j} = -2 \sum_{i=1}^{n} \{Y_i - f(\mathbf{x}_i; \theta)\} \frac{\partial f(\mathbf{x}_i; \theta)}{\partial \theta_j} = 0
+$$
+
+그러나 이러한 방정식은 본질적으로 비선형이며, 대부분의 경우 해석적으로(analytically) 풀 수 없습니다. 결과적으로 해를 효율적으로 근사하기 위해 다양한 추정 기법이 사용됩니다. 이러한 접근법은 다음과 같습니다:
+
+-   [반복 최적화](#iterative-optimization-nonlinear-regression): 오차를 최소화하기 위해 연속적인 반복을 통해 추정치를 개선하는 방법.
+-   무미분 방법(Derivative-free methods): 그래디언트 정보에 의존하지 않는 기법으로, 복잡하거나 매끄럽지 않은(non-smooth) 함수에 유용함.
+-   확률적 휴리스틱(Stochastic heuristics): 해 공간을 탐색하기 위해 무작위성을 통합한 알고리즘(예: 유전 알고리즘 또는 시뮬레이티드 어닐링).
+-   선형화(Linearization): 해석적 또는 수치적 해를 구하기 위해 비선형 모델을 선형 모델로 근사함.
+-   하이브리드 접근법(Hybrid approaches): 향상된 추정을 위해 여러 방법의 장점을 결합함.
+
+| **범주 (Category)** | **방법 (Method)** | **최적 활용처 (Best For)** | **도함수 사용? (Derivative?)** | **최적화 범위 (Optimization)** | **계산 비용 (Comp. Cost)** |
+|:---|:---|:---|:---|:---|:---|
+| [반복 최적화](#iterative-optimization-nonlinear-regression) | [경사하강법 (Steepest Descent / Gradient Descent)](#steepest-descent) | 단순한 문제, 느린 수렴 | 예 | 국소 (Local) | 낮음 (Low) |
+| **반복 최적화** | [가우스-뉴턴 알고리즘 (Gauss-Newton Algorithm)](#gauss-newton-algorithm) | GD보다 빠름, 정확한 2계 도함수 정보 무시 | 예 | 국소 | 중간 (Medium) |
+| **반복 최적화** | [레벤버그-마쿼트 알고리즘 (Levenberg-Marquardt Algorithm)](#levenberg-marquardt) | GN과 GD의 균형, 강건함 | 예 | 국소 | 중간 |
+| **반복 최적화** | [뉴턴-라프슨 방법 (Newton-Raphson Method)](#newton-raphson) | 이차 수렴(Quadratic convergence), 헤시안 필요 | 예 | 국소 | 높음 (High) |
+| **반복 최적화** | [준뉴턴 방법 (Quasi-Newton Method)](#quasi-newton-method) | 대규모 문제에 대한 헤시안 근사 | 예 | 국소 | 중간 |
+| **반복 최적화** | [신뢰 영역 반사 알고리즘 (Trust-Region Reflective Algorithm)](#trust-region-reflective-algorithm) | 제약 조건 처리, 강건함 | 예 | 국소 | 높음 |
+| 무미분 방법 | 할선법 (Secant Method) | 함수 평가값으로부터 도함수 근사 | 아니오 | 국소 | 중간 |
+| **무미분 방법** | 넬더-미드 심플렉스 (Nelder-Mead Simplex) | 도함수 불필요, 휴리스틱 | 아니오 | 국소 | 중간 |
+| **무미분 방법** | 파월 방법 (Powell's Method) | 직선 탐색(Line search), 명시적 그래디언트 없음 | 아니오 | 국소 | 중간 |
+| **무미분 방법** | 그리드 탐색 (Grid Search) | 전수 탐색 (저차원에서 최적) | 아니오 | 전역 (Global) | 매우 높음 (Very High) |
+| **무미분 방법** | 훅-지브스 패턴 탐색 (Hooke-Jeeves Pattern Search) | 패턴 기반, 블랙박스 최적화 | 아니오 | 국소 | 중간 |
+| **무미분 방법** | 이분법 (Bisection Method) | 단순한 근/구간 기반 접근법 | 아니오 | 국소 | 낮음 |
+| 확률적 휴리스틱 | 시뮬레이티드 어닐링 (Simulated Annealing) | 국소 최적해 탈출, 매끄럽지 않은 문제 | 아니오 | 전역 | 높음 |
+| **확률적 휴리스틱** | 유전 알고리즘 (Genetic Algorithm) | 넓은 탐색 공간, 모수 진화 | 아니오 | 전역 | 높음 |
+| **확률적 휴리스틱** | 입자 군집 최적화 (Particle Swarm Optimization) | 군집 기반, 종종 빠른 전역 수렴 | 아니오 | 전역 | 중간 |
+| **확률적 휴리스틱** | 진화 전략 (Evolutionary Strategies) | 고차원, 적응형 보폭(step-size) | 아니오 | 전역 | 높음 |
+| **확률적 휴리스틱** | 차분 진화 알고리즘 (Differential Evolution Algorithm) | 강건한 전역 최적화기, 개체군 기반 | 아니오 | 전역 | 높음 |
+| **확률적 휴리스틱** | 개미 군집 최적화 (Ant Colony Optimization, ACO) | 이산 / 조합 최적화 문제 | 아니오 | 전역 | 높음 |
+| 선형화 | 테일러 급수 근사 (Taylor Series Approximation) | 비선형성의 국소 근사 | 예 | 국소 | 낮음 |
+| **선형화** | 로그 선형화 (Log-Linearization) | 비선형 방정식 변환 | 예 | 국소 | 낮음 |
+| 하이브리드 | 적응형 레벤버그-마쿼트 (Adaptive Levenberg-Marquardt) | LM에서 감쇠 계수 동적 조정 | 예 | 국소 | 중간 |
+| **하이브리드** | 하이브리드 유전 알고리즘 & LM (GA-LM) | GA로 대략 탐색, LM으로 정밀 조정 | 아니오 | 하이브리드 (Hybrid) | 높음 |
+| **하이브리드** | 신경망 기반 NLLS (Neural Network-Based NLLS) | 복잡한 비선형 최소자승을 위한 딥러닝 | 아니오 | 하이브리드 | 매우 높음 |
+
+: 비선형 추정을 위한 최적화 방법 비교
+
+------------------------------------------------------------------------
+
+### 반복 최적화 {#iterative-optimization-nonlinear-regression}
+
+#### 가우스-뉴턴 알고리즘 {#gauss-newton-algorithm}
+
+가우스-뉴턴 알고리즘(Gauss-Newton Algorithm)은 비선형 최소자승 문제에서 모수를 추정하는 데 사용되는 반복 최적화 기법입니다. 이 알고리즘은 1차 도함수를 사용하여 헤시안 행렬(Hessian matrix)을 근사함으로써 모수 추정치를 갱신하므로, 많은 실무 응용(예: 금융 및 마케팅 분석의 회귀 모델)에서 계산 효율성이 뛰어납니다. 목표는 잔차제곱합(SSE):
+
+$$
+SSE(\theta) = \sum_{i=1}^{n} [Y_i - f_i(\theta)]^2,
+$$
+
+을 최소화하는 것이며, 여기서 $\mathbf{Y} = [Y_1, \dots, Y_n]'$은 관측된 반응변수이고, $f_i(\theta)$는 모델의 예측값입니다.
+
+------------------------------------------------------------------------
+
+**테일러 전개를 통한 반복적 개선**
+
+가우스-뉴턴 알고리즘은 초기 추정치 $\hat{\theta}^{(0)}$ 주변에서 $f(\mathbf{x}_i; \theta)$의 **테일러 급수 전개(Taylor series expansion)**를 사용하여 초기 추정치 $\hat{\theta}^{(0)}$를 반복적으로 개선합니다. 관측 모델에서 시작합니다:
+
+$$
+Y_i = f(\mathbf{x}_i; \theta) + \epsilon_i.
+$$
+
+$\hat{\theta}^{(0)}$ 주변에서 $f(\mathbf{x}_i; \theta)$를 전개하고 고차항을 무시하면(나머지 항이 작다고 가정), 다음을 얻습니다:
+
+$$
+\begin{aligned}
+Y_i &\approx f(\mathbf{x}_i; \hat{\theta}^{(0)}) 
++ \sum_{j=1}^{p} \frac{\partial f(\mathbf{x}_i; \theta)}{\partial \theta_j} \bigg|_{\theta = \hat{\theta}^{(0)}} 
+\left(\theta_j - \hat{\theta}_j^{(0)}\right) 
++ \epsilon_i.
+\end{aligned}
+$$
+
+**행렬 형태**로 나타내기 위해,
+
+$$
+\mathbf{Y} =
+\begin{bmatrix}
+Y_1 \\ \vdots \\ Y_n
+\end{bmatrix}, 
+\quad
+\mathbf{f}(\hat{\theta}^{(0)}) =
+\begin{bmatrix}
+f(\mathbf{x}_1, \hat{\theta}^{(0)}) \\ \vdots \\ f(\mathbf{x}_n, \hat{\theta}^{(0)})
+\end{bmatrix},
+$$
+
+로 두고, 편도함수들의 **야코비 행렬(Jacobian matrix)**을 다음과 같이 정의합니다:
+
+$$
+\mathbf{F}(\hat{\theta}^{(0)}) =
+\begin{bmatrix}
+\frac{\partial f(\mathbf{x}_1, \theta)}{\partial \theta_1} & \cdots & \frac{\partial f(\mathbf{x}_1, \theta)}{\partial \theta_p} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f(\mathbf{x}_n, \theta)}{\partial \theta_1} & \cdots & \frac{\partial f(\mathbf{x}_n, \theta)}{\partial \theta_p}
+\end{bmatrix}_{\theta = \hat{\theta}^{(0)}}.
+$$
+
+그러면,
+
+$$
+\mathbf{Y} \approx \mathbf{f}(\hat{\theta}^{(0)}) 
++ \mathbf{F}(\hat{\theta}^{(0)})(\theta - \hat{\theta}^{(0)}) + \epsilon,
+$$
+
+이며, 여기서 $\epsilon = [\epsilon_1, \dots, \epsilon_n]'$은 평균이 $0$이고 분산이 $\sigma^2$인 i.i.d.로 가정합니다.
+
+이 선형 근사로부터,
+
+$$
+\mathbf{Y} - \mathbf{f}(\hat{\theta}^{(0)}) 
+\approx \mathbf{F}(\hat{\theta}^{(0)})(\theta - \hat{\theta}^{(0)}).
+$$
+
+**최소자승(least squares)** 관점에서 $\theta - \hat{\theta}^{(0)}$에 대해 풀면 가우스 증분(Gauss increment) $\hat{\delta}^{(1)}$을 얻을 수 있으므로 다음과 같이 갱신합니다:
+
+$$
+\hat{\theta}^{(1)} = \hat{\theta}^{(0)} + \hat{\delta}^{(1)}.
+$$
+
+------------------------------------------------------------------------
+
+**단계별 절차(Step-by-Step Procedure)**
+
+1.  **초기화(Initialize)**: 초기 추정치 $\hat{\theta}^{(0)}$로 시작하고 $j = 0$으로 설정합니다.
+2.  **테일러 전개 계산(Compute Taylor Expansion)**: $\mathbf{f}(\hat{\theta}^{(j)})$와 $\mathbf{F}(\hat{\theta}^{(j)})$를 계산합니다.
+3.  **증분 계산(Solve for Increment)**: $\mathbf{Y} - \mathbf{f}(\hat{\theta}^{(j)}) \approx \mathbf{F}(\hat{\theta}^{(j)}) (\theta - \hat{\theta}^{(j)})$를 선형 모델로 취급하여 보통 최소자승법(OLS)을 사용해 $\hat{\delta}^{(j+1)}$를 계산합니다.
+4.  **모수 갱신(Update Parameters)**: $\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} + \hat{\delta}^{(j+1)}$로 설정합니다.
+5.  **수렴 여부 확인(Check for Convergence)**: 수렴 기준(아래 참조)을 만족하면 중단하고, 그렇지 않으면 2단계로 돌아갑니다.
+6.  **분산 추정(Estimate Variance)**: 수렴 후 $\epsilon \sim (\mathbf{0}, \sigma^2 \mathbf{I})$로 가정합니다. 분산 $\sigma^2$은 다음과 같이 추정할 수 있습니다:
+
+$$
+\hat{\sigma}^2 = \frac{1}{n-p} \left(\mathbf{Y} - \mathbf{f}(\mathbf{x}; \hat{\theta})\right)' \left(\mathbf{Y} - \mathbf{f}(\mathbf{x}; \hat{\theta})\right).
+$$
+
+------------------------------------------------------------------------
+
+**수렴 기준(Convergence Criteria)**
+
+반복을 언제 중단할지 결정하는 일반적인 기준은 다음과 같습니다:
+
+1.  **목적함수 변화량(Objective Function Change)**: $$
+    \frac{\left|SSE(\hat{\theta}^{(j+1)}) - SSE(\hat{\theta}^{(j)})\right|}{SSE(\hat{\theta}^{(j)})} < \gamma_1.
+    $$
+2.  **모수 변화량(Parameter Change)**: $$
+    \left|\hat{\theta}^{(j+1)} - \hat{\theta}^{(j)}\right| < \gamma_2.
+    $$
+3.  **잔차 투영 기준(Residual Projection Criterion)**: 잔차가 [@bates1981relative]에 정의된 수렴 조건을 만족할 때.
+
+------------------------------------------------------------------------
+
+갱신 단계를 바라보는 또 다른 관점은 **최솟값의 필요조건(necessary condition for a minimum)**을 살펴보는 것입니다: $\theta$에 대한 $SSE(\theta)$의 그래디언트는 0이어야 합니다.
+
+$$
+SSE(\theta) = \sum_{i=1}^{n} [Y_i - f_i(\theta)]^2,
+$$
+
+에 대해 그래디언트는 다음과 같습니다:
+
+$$
+\frac{\partial SSE(\theta)}{\partial \theta} 
+= 2\mathbf{F}(\theta)' \left[\mathbf{Y} - \mathbf{f}(\theta)\right].
+$$
+
+반복 $j$에서 $j+1$로의 가우스-뉴턴 갱신 규칙을 사용하면:
+
+$$
+\begin{aligned}
+\hat{\theta}^{(j+1)} 
+&= \hat{\theta}^{(j)} + \hat{\delta}^{(j+1)} \\
+&= \hat{\theta}^{(j)} + \left[\mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)})\right]^{-1} 
+\mathbf{F}(\hat{\theta}^{(j)})' \left[\mathbf{Y} - \mathbf{f}(\hat{\theta}^{(j)})\right] \\
+&= \hat{\theta}^{(j)} 
+- \frac{1}{2} \left[\mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)})\right]^{-1} 
+ \frac{\partial SSE(\hat{\theta}^{(j)})}{\partial \theta},
+\end{aligned}
+$$
+
+여기서:
+
+-   $\frac{\partial SSE(\hat{\theta}^{(j)})}{\partial \theta}$는 SSE의 **가장 가파른 상승 방향(steepest ascent)**을 가리키는 **그래디언트 벡터(gradient vector)**입니다.
+-   $\left[\mathbf{F}(\hat{\theta}^{(j)})'\mathbf{F}(\hat{\theta}^{(j)})\right]^{-1}$는 개선 방향으로 얼마나 이동할지를 제어하는 **보폭(step size)**을 결정합니다.
+-   $-\tfrac{1}{2}$ 계수는 **가장 가파른 하강 방향(direction of steepest descent)**으로 이동하도록 하여 SSE를 **최소화**하는 데 기여합니다.
+
+가우스-뉴턴 방법은 해 주변에서 비선형 모델이 **1차 테일러 전개**로 정확하게 근사될 수 있을 때 잘 작동합니다. 만약 잔차 함수 $\mathbf{r}(\theta) = \mathbf{Y} - \mathbf{f}(\theta)$의 근사적 선형성(near-linearity) 가정이 위배되면 수렴이 느려지거나 전혀 수렴하지 않을 수 있습니다. 이러한 경우 가우스-뉴턴에 감쇠 파라미터를 추가하여 수정한 [레벤버그-마쿼트 알고리즘](#levenberg-marquardt)과 같이 더욱 강건한 방법이 선호되는 경우가 많습니다.
+
+------------------------------------------------------------------------
+
+```{r}
+# 필요한 패키지 로드
+library(minpack.lm)  # 비선형 최소자승 함수 제공
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    # theta는 모수 벡터: theta[1] = A, theta[2] = B
+    # x는 독립변수
+    # 모델 형태: A * exp(B * x)
+    theta[1] * exp(theta[2] * x)
+}
+
+# 명확성을 위해 SSE 함수 정의
+sse <- function(theta, x, y) {
+    # SSE = 실제 y와 모델 예측값 사이의 잔차제곱합
+    sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# 합성 데이터 생성
+set.seed(123)                     # 재현성을 위한 시드 설정
+x <- seq(0, 10, length.out = 100) # 0부터 10까지 100개 점
+true_theta <- c(2, 0.3)           # 참 모수 값
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 처음 몇 개 데이터 포인트 출력
+head(data.frame(x, y))
+
+# nls.lm을 사용한 가우스-뉴턴 최적화 (확장 형태로서의 레벤버그-마쿼트)
+# theta의 초기 추측값: c(1, 0.1)
+fit <- nls.lm(
+    par = c(1, 0.1),
+    fn = function(theta)
+        y - nonlinear_model(theta, x)
+)
+
+# 추정된 모수 출력
+cat("추정된 모수 (A, B):\n")
+print(fit$par)
+```
+
+1.  A*exp(B*x)를 반환하는 모델 `nonlinear_model(theta, x)`을 정의했습니다.
+2.  `true_theta` 값을 사용하여 합성 데이터를 생성하고 확률 오차(random noise)를 추가했습니다.
+3.  `minpack.lm` 패키지의 `nls.lm(...)`을 사용하여 데이터를 적합했습니다:
+    -   `par = c(1, 0.1)`은 초기 모수 추측값입니다.
+    -   `fn = function(theta) y - nonlinear_model(theta, x)`는 잔차 함수(관측값 - 예측값)입니다.
+4.  `fit$par`는 알고리즘이 수렴한 후 추정된 모수를 제공합니다.
+
+그림 \@ref(fig:fig-gauss-newton-levenberg-marquardt)는 시뮬레이션된 관측치와 가우스-뉴턴 / 레벤버그-마쿼트 솔버를 통해 복원된 적합 곡선을 비교하여 보여줍니다.
+
+```{r fig-gauss-newton-levenberg-marquardt, fig.cap="데이터 및 적합 곡선 (가우스-뉴턴/레벤버그-마쿼트)", fig.alt="‘데이터 및 적합 곡선 (가우스-뉴턴/레벤버그-마쿼트)’이라는 제목의 산점도와 적합 곡선. x축은 0부터 10까지의 'x'이고, y축은 0부터 40까지의 'y'로 레이블되어 있습니다. 검은 점은 데이터 포인트를 나타내고, 빨간 선은 적합 곡선을 나타냅니다. 범례에는 검은 점이 '데이터', 빨간 선이 '적합 곡선'으로 표시되어 있습니다.", out.width="100%", fig.align='center'}
+# 데이터 및 적합 모델 시각화
+plot(
+  x,
+  y,
+  main = "Data and Fitted Curve (Gauss-Newton/Levenberg-Marquardt)",
+  xlab = "x",
+  ylab = "y",
+  pch = 19,
+  cex = 0.5
+)
+curve(
+  nonlinear_model(fit$par, x),
+  from = 0,
+  to = 10,
+  add = TRUE,
+  col = "red",
+  lwd = 2
+)
+legend(
+  "topleft",
+  legend = c("Data", "Fitted Curve"),
+  pch = c(19, NA),
+  lty = c(NA, 1),
+  col = c("black", "red")
+)
+```
+
+#### 수정된 가우스-뉴턴 알고리즘 {#modified-gauss-newton-algorithm}
+
+수정된 가우스-뉴턴 알고리즘(Modified Gauss-Newton Algorithm)은 보폭을 조절하고 국소 최솟값을 지나치는(overshooting) 현상을 방지하기 위해 학습률(learning rate) $\alpha_j$를 도입합니다. 표준 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)은 전체 이동 방향 $\hat{\delta}^{(j+1)}$이 최적이라고 가정하지만, 실제로는 특히 비선형성이 강한 문제에서 최솟값을 지나치거나 수치적 불안정성을 유발할 수 있습니다. 수정된 방식은 보폭 축소를 도입하여 알고리즘을 더욱 강건하게 만듭니다.
+
+갱신 단계를 다음과 같이 재정의합니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} + \alpha_j \hat{\delta}^{(j+1)}, \quad 0 < \alpha_j < 1,
+$$
+
+여기서:
+
+-   $\alpha_j$는 **학습률(learning rate)**로, 이동 단계 $\hat{\delta}^{(j+1)}$를 얼마나 취할지 제어합니다.
+-   $\alpha_j = 1$이면 표준 가우스-뉴턴 방법을 얻게 됩니다.
+-   $\alpha_j$가 너무 작으면 수렴이 느려지고, 너무 크면 알고리즘이 발산할 수 있습니다.
+
+이 학습률 $\alpha_j$는 **적응형 보폭 조정(adaptive step size adjustments)**을 가능하게 하여 과도한 모수 도약을 방지하고 각 반복마다 SSE가 감소하도록 보장합니다.
+
+------------------------------------------------------------------------
+
+$\alpha_j$를 결정하는 일반적인 접근법은 **보폭 반감법(step halving)**으로, 각 반복이 SSE를 감소시키는 방향으로 진행되도록 보장합니다. 고정된 $\alpha_j$를 사용하는 대신 SSE가 감소할 때까지 반복적으로 보폭을 줄여나갑니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} + \frac{1}{2^k}\hat{\delta}^{(j+1)},
+$$
+
+여기서:
+
+-   $k$는 다음을 만족하는 가장 작은 음이 아닌 정수입니다:
+
+$$
+SSE(\hat{\theta}^{(j)} + \frac{1}{2^k} \hat{\delta}^{(j+1)}) < SSE(\hat{\theta}^{(j)}).
+$$
+
+즉, 전체 보폭 $\hat{\delta}^{(j+1)}$로 시작한 후, $\hat{\delta}^{(j+1)}/2$, $\hat{\delta}^{(j+1)}/4$ 등을 시도하여 SSE가 감소할 때까지 진행합니다.
+
+**보폭 반감법 알고리즘(Algorithm for Step Halving):**
+
+1.  가우스-뉴턴 이동 단계 $\hat{\delta}^{(j+1)}$를 계산합니다.
+2.  초기 $\alpha_j = 1$로 설정합니다.
+3.  갱신된 모수 $\hat{\theta}^{(j)} + \alpha_j \hat{\delta}^{(j+1)}$가 SSE를 증가시키면 $\alpha_j$를 2로 나눕니다.
+4.  SSE가 감소할 때까지 반복합니다.
+
+이는 **SSE의 단조 감소를 보장**하여 지나치게 공격적인 이동으로 인한 발산을 방지합니다.
+
+------------------------------------------------------------------------
+
+**수정된 알고리즘의 일반화된 형태(Generalized Form of the Modified Algorithm)**
+
+보폭 제어와 행렬 $\mathbf{A}_j$를 포함하는 갱신 규칙의 보다 일반적인 형태는 다음과 같습니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j \mathbf{A}_j \frac{\partial Q(\hat{\theta}^{(j)})}{\partial \theta},
+$$
+
+여기서:
+
+-   $\mathbf{A}_j$는 갱신 방향을 사전 조건화(precondition)하는 **양의 정부호 행렬(positive definite matrix)**입니다.
+-   $\alpha_j$는 **학습률(learning rate)**입니다.
+-   $\frac{\partial Q(\hat{\theta}^{(j)})}{\partial \theta}$는 목적함수 $Q(\theta)$의 **그래디언트(gradient)**이며, 비선형 회귀에서는 일반적으로 SSE입니다.
+
+------------------------------------------------------------------------
+
+**수정된 가우스-뉴턴 알고리즘과의 연계(Connection to the Modified Gauss-Newton Algorithm)**
+
+**수정된 가우스-뉴턴 알고리즘**은 이 프레임워크에 다음과 같이 부합합니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j [\mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)})]^{-1} \frac{\partial SSE(\hat{\theta}^{(j)})}{\partial \theta}.
+$$
+
+여기서 다음을 확인할 수 있습니다:
+
+-   **목적함수**: $Q = SSE$.
+-   **사전조건자 행렬**: $[\mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)})]^{-1} = \mathbf{A}$.
+
+따라서 표준 가우스-뉴턴 방법은 사전 조건화된 경사하강법 접근법을 취하는 더 넓은 최적화 프레임워크의 특수한 경우로 해석될 수 있습니다.
+
+------------------------------------------------------------------------
+
+```{r}
+# 필요한 패키지 로드
+library(minpack.lm)
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+  theta[1] * exp(theta[2] * x)
+}
+
+# 잔차제곱합(SSE) 함수 정의
+sse <- function(theta, x, y) {
+  sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 보폭 반감법을 적용한 가우스-뉴턴
+gauss_newton_modified <-
+  function(theta_init,
+           x,
+           y,
+           tol = 1e-6,
+           max_iter = 100) {
+    theta <- theta_init
+    for (j in 1:max_iter) {
+      # 야코비 행렬을 수치적으로 계산
+      epsilon <- 1e-6
+      F_matrix <-
+        matrix(0, nrow = length(y), ncol = length(theta))
+      for (p in 1:length(theta)) {
+        theta_perturb <- theta
+        theta_perturb[p] <- theta[p] + epsilon
+        F_matrix[, p] <-
+          (nonlinear_model(theta_perturb, x)-nonlinear_model(theta, x))/epsilon
+      }
+      
+      # 잔차 계산
+      residuals <- y - nonlinear_model(theta, x)
+      
+      # 가우스-뉴턴 이동 단계 계산
+      delta <-
+        solve(t(F_matrix) %*% F_matrix) %*% t(F_matrix) %*% residuals
+      
+      # 보폭 반감법 구현
+      alpha <- 1
+      k <- 0
+      while (sse(theta + alpha * delta, x, y) >= sse(theta, x, y) &&
+             k < 10) {
+        alpha <- alpha / 2
+        k <- k + 1
+      }
+      
+      # theta 갱신
+      theta_new <- theta + alpha * delta
+      
+      # 수렴 여부 확인
+      if (sum(abs(theta_new - theta)) < tol) {
+        break
+      }
+      
+      theta <- theta_new
+    }
+    return(theta)
+  }
+
+# 수정된 가우스-뉴턴 알고리즘 실행
+theta_init <- c(1, 0.1)  # 초기 모수 추측값
+estimated_theta <- gauss_newton_modified(theta_init, x, y)
+
+# 추정된 모수 출력
+cat("수정된 가우스-뉴턴을 사용한 추정 모수 (A, B):\n")
+print(estimated_theta)
+```
+
+그림 \@ref(fig:fig-modified-gauss-newton)는 수정된 가우스-뉴턴 갱신 규칙을 적용하여 얻은 적합 결과를 시각화합니다.
+
+```{r fig-modified-gauss-newton, fig.cap="수정된 가우스-뉴턴", fig.alt="데이터 포인트와 적합 곡선을 보여주는 '수정된 가우스-뉴턴' 산점도. x축은 0부터 10까지, y축은 0부터 40까지의 범위입니다. 검은 점은 데이터 포인트를 나타내고, 빨간 선은 적합 곡선을 나타냅니다. 범례에는 '데이터'가 검은 점으로, '적합 곡선'이 빨간 선으로 표시되어 있습니다.", out.width="100%", fig.align='center'}
+# 데이터 및 적합 곡선 시각화
+plot(
+  x,
+  y,
+  main = "Modified Gauss-Newton: Data & Fitted Curve",
+  pch = 19,
+  cex = 0.5,
+  xlab = "x",
+  ylab = "y"
+)
+curve(
+  nonlinear_model(estimated_theta, x),
+  from = 0,
+  to = 10,
+  add = TRUE,
+  col = "red",
+  lwd = 2
+)
+legend(
+  "topleft",
+  legend = c("Data", "Fitted Curve"),
+  pch = c(19, NA),
+  lty = c(NA, 1),
+  col = c("black", "red")
+)
+```
+
+#### 경사하강법 (최급강하법) {#steepest-descent}
+
+경사하강법(Gradient Descent)으로 흔히 불리는 최급강하법(Steepest Descent Method)은 목적함수 $\mathbf{Q}(\theta)$를 최소화하는 모수 추정치를 찾기 위한 기본적인 반복 최적화 기법입니다. 이는 사전조건자 행렬 $\mathbf{A}_j$가 단위행렬로 대체된 [수정된 가우스-뉴턴 알고리즘](#modified-gauss-newton-algorithm)의 특수한 경우입니다.
+
+갱신 규칙은 다음과 같습니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j \mathbf{I}_{p \times p}\frac{\partial \mathbf{Q}(\hat{\theta}^{(j)})}{\partial \theta},
+$$
+
+여기서:
+
+-   $\alpha_j$는 보폭을 결정하는 **학습률(learning rate)**입니다.
+-   $\mathbf{I}_{p \times p}$는 **단위행렬(identity matrix)**로, 갱신이 **음의 그래디언트(negative gradient)** 방향으로 이루어짐을 의미합니다.
+-   $\frac{\partial \mathbf{Q}(\hat{\theta}^{(j)})}{\partial \theta}$는 **가장 가파른 상승 방향**을 가리키는 **그래디언트 벡터(gradient vector)**이며, 음부호를 통해 최솟값을 향한 이동을 보장합니다.
+
+##### 경사하강법의 특징 (Characteristics of Steepest Descent)
+
+-   **느린 수렴(Slow to converge):** 알고리즘이 그래디언트 방향으로 이동하지만 곡률(curvature)을 고려하지 않기 때문에, 특히 조건수가 나쁜 문제(ill-conditioned problems)에서 수렴이 매우 느릴 수 있습니다.
+-   **초기 빠른 이동(Moves rapidly initially):** 초반에는 **빠른 진전(fast initial progress)**을 보일 수 있으나, 최솟값에 가까워질수록 보폭이 작아져 수렴이 느려집니다.
+-   **초기화에 유용(Useful for initialization):** 구현이 간단하고 직관적이어서 **뉴턴 방법(Newton's method)**이나 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)과 같은 고급 기법의 **초기값(starting values)**을 얻는 데 자주 사용됩니다.
+
+------------------------------------------------------------------------
+
+| 방법 (Method) | 갱신 규칙 (Update Rule) | 장점 (Advantages) | 단점 (Disadvantages) |
+|:---|:---|:---|:---|
+| **경사하강법 (Steepest Descent)** | $\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j \mathbf{I} \nabla Q(\theta)$ | 단순함, 1차 도함수만 필요 | 느린 수렴, $\alpha_j$에 민감함 |
+| **가우스-뉴턴 (Gauss-Newton)** | $\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \mathbf{H}^{-1} \nabla Q(\theta)$ | 곡률 활용, 해 근처에서 더 빠름 | 야코비 행렬 계산 필요, 발산 가능성 있음 |
+
+: 경사하강법과 가우스-뉴턴 최적화 방법 비교
+
+**핵심 차이점**은 경사하강법이 그래디언트 방향**만** 고려하는 반면, 가우스-뉴턴과 뉴턴 방법은 곡률 정보를 반영한다는 점입니다.
+
+------------------------------------------------------------------------
+
+학습률 $\alpha_j$의 선택
+
+적절한 **학습률** 선택은 경사하강법의 성공에 결정적입니다:
+
+-   **너무 큰 경우**: 알고리즘이 최솟값을 지나쳐 발산할 수 있습니다.
+-   **너무 작은 경우**: 수렴이 **매우 느려집니다**.
+-   **적응형 전략(Adaptive strategies)**:
+    -   **고정 보폭(Fixed step size)**: $\alpha_j$가 일정함.
+    -   **보폭 감소(Step size decay)**: 반복에 따라 $\alpha_j$가 감소함(예: $\alpha_j = \frac{1}{j}$).
+    -   **직선 탐색(Line search)**: 그래디언트 방향을 따라 $\mathbf{Q}(\theta^{(j+1)})$를 최소화하는 $\alpha_j$를 선택함.
+
+일반적인 접근법은 $\mathbf{Q}(\theta)$의 감소가 관찰될 때까지 $\alpha_j$를 반복적으로 줄여나가는 **백트래킹 직선 탐색(backtracking line search)**입니다.
+
+------------------------------------------------------------------------
+
+```{r}
+# 필요한 패키지 로드
+library(ggplot2)
+
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    theta[1] * exp(theta[2] * x)
+}
+
+# 잔차제곱합(SSE) 함수 정의
+sse <- function(theta, x, y) {
+    sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# theta에 대한 SSE의 그래디언트 정의 (수치적 계산)
+gradient_sse <- function(theta, x, y) {
+    n <- length(y)
+    residuals <- y - nonlinear_model(theta, x)
+    
+    # theta_1에 대한 편도함수
+    grad_1 <- -2 * sum(residuals * exp(theta[2] * x))
+    
+    # theta_2에 대한 편도함수
+    grad_2 <- -2 * sum(residuals * theta[1] * x * exp(theta[2] * x))
+    
+    return(c(grad_1, grad_2))
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 안전한 경사하강법 구현
+gradient_descent <-
+    function(theta_init,
+             x,
+             y,
+             alpha = 0.01,
+             tol = 1e-6,
+             max_iter = 500) {
+        theta <- theta_init
+        sse_values <- numeric(max_iter)
+        
+        for (j in 1:max_iter) {
+            grad <- gradient_sse(theta, x, y)
+            
+            # 그래디언트의 NaN 또는 Inf 값 확인 (발산 방지)
+            if (any(is.na(grad)) || any(is.infinite(grad))) {
+                cat("반복",
+                    j,
+                    "에서 수치적 불안정성 감지됨\n")
+                break
+            }
+            
+            # 갱신 단계
+            theta_new <- theta - alpha * grad
+            sse_values[j] <- sse(theta_new, x, y)
+            
+            # 수렴 여부 확인
+            if (!is.finite(sse_values[j])) {
+                cat("반복", j, "에서 발산 감지됨\n")
+                break
+            }
+            
+            if (sum(abs(theta_new - theta)) < tol) {
+                cat(j, "회 반복 후 수렴 완료.\n")
+                return(list(theta = theta_new, sse_values = sse_values[1:j]))
+            }
+            
+            theta <- theta_new
+        }
+        
+        return(list(theta = theta, sse_values = sse_values))
+    }
+
+# 안전한 구현을 사용한 경사하강법 실행
+theta_init <- c(1, 0.1)  # 초기 추측값
+alpha <- 0.001           # 학습률
+result <- gradient_descent(theta_init, x, y, alpha)
+
+# 결과 추출
+estimated_theta <- result$theta
+sse_values <- result$sse_values
+
+# 추정된 모수 출력
+cat("경사하강법을 사용한 추정 모수 (A, B):\n")
+print(estimated_theta)
+```
+
+그림 \@ref(fig:fig-gradient-descent-convergence)는 경사하강법이 최솟값을 향해 반복 진행함에 따라 잔차제곱합이 어떻게 감소하는지를 보여줍니다.
+
+```{r fig-gradient-descent-convergence, fig.cap="경사하강법 수렴 과정", fig.alt="'경사하강법 수렴 과정'이라는 제목의 차트로, y축에는 잔차제곱합(SSE), x축에는 반복 횟수가 표시되어 있습니다. 파란 선은 SSE 0.05에서 시작하여 빠르게 0으로 떨어지며 500회 반복 동안 일정하게 유지되어 수렴을 나타냅니다.", out.width="100%", fig.align='center'}
+# 반복에 따른 SSE 수렴 과정 시각화
+# sse_values에 유효한 데이터가 있는지 확인
+sse_df <- data.frame(
+  Iteration = seq_along(sse_values),
+  SSE = sse_values
+)
+
+# ggplot()을 사용한 개선된 시각화
+ggplot(sse_df, aes(x = Iteration, y = SSE)) +
+  geom_line(color = "blue", linewidth = 1) +
+  labs(
+    title = "Gradient Descent Convergence",
+    x = "Iteration",
+    y = "SSE"
+  ) +
+  theme_minimal()
+```
+
+1.  [경사하강법 (최급강하법)](#steepest-descent)은 가장 가파른 하강 방향으로 이동하므로 지그재그(zigzagging) 형태의 거동을 보일 수 있습니다.
+2.  차원별로 함수의 곡률 차이가 크게 날 때 느린 수렴이 발생합니다.
+3.  학습률 조정(tuning)이 중요합니다:
+    -   너무 크면 알고리즘이 발산합니다.
+
+    -   너무 작으면 진전이 매우 느립니다.
+4.  초기화에 유용함: [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)이나 뉴턴 방법과 같은 고급 방법으로 전환하기 전에 최적해 근처로 접근하는 데 자주 사용됩니다.
+
+경사하강법의 성능을 개선하기 위해 몇 가지 고급 기법이 사용됩니다:
+
+-   **모멘텀 경사하강법(Momentum Gradient Descent)**: 갱신을 부드럽게 하고 진동을 줄이기 위해 모멘텀 항을 추가합니다.
+
+-   **적응형 학습률(Adaptive Learning Rates)**:
+
+    -   AdaGrad: 과거 그래디언트를 기반으로 모수별 $\alpha_j$를 개별 조정합니다.
+
+    -   RMSprop: 갱신 크기를 조절하기 위해 과거 그래디언트의 이동 평균을 사용합니다.
+
+    -   Adam (Adaptive Moment Estimation): 모멘텀과 적응형 학습률을 결합합니다.
+
+실무에서 Adam은 머신러닝과 딥러닝에서 널리 사용되는 반면, 비선형 회귀에서는 가우스-뉴턴을 포함한 뉴턴 기반 방법이 선호됩니다.
+
+------------------------------------------------------------------------
+
+#### 레벤버그-마쿼트 알고리즘 {#levenberg-marquardt}
+
+레벤버그-마쿼트 알고리즘(Levenberg-Marquardt Algorithm)은 비선형 최소자승 문제를 해결하기 위해 널리 사용되는 최적화 기법입니다. 이는 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)과 [경사하강법 (최급강하법)](#steepest-descent)을 혼합하여 문제 조건에 따라 두 방법 사이를 동적으로 전환하는 적응형 기법입니다.
+
+갱신 규칙은 다음과 같습니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j [\mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)}) + \tau \mathbf{I}_{p \times p}]\frac{\partial \mathbf{Q}(\hat{\theta}^{(j)})}{\partial \theta}
+$$
+
+여기서:
+
+-   $\tau$는 **감쇠 파라미터(damping parameter)**로, 갱신 단계가 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)처럼 동작할지 [경사하강법 (최급강하법)](#steepest-descent)처럼 동작할지를 제어합니다.
+-   $\mathbf{I}_{p \times p}$는 수치적 안정성을 보장하는 **단위행렬(identity matrix)**입니다.
+-   $\mathbf{F}(\hat{\theta}^{(j)})$는 편도함수들의 **야코비 행렬(Jacobian matrix)**입니다.
+-   $\frac{\partial \mathbf{Q}(\hat{\theta}^{(j)})}{\partial \theta}$는 **그래디언트 벡터(gradient vector)**입니다.
+-   $\alpha_j$는 보폭을 결정하는 **학습률(learning rate)**입니다.
+
+레벤버그-마쿼트 알고리즘은 야코비 행렬 $\mathbf{F}(\hat{\theta}^{(j)})$가 거의 특이행렬(singular matrix)에 가까워 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm) 단독으로는 실패할 수 있는 상황에서 특히 유용합니다.
+
+-   $\tau$가 클 때 이 방법은 경사하강법처럼 동작하여 안정성을 확보합니다.
+-   $\tau$가 작을 때 가우스-뉴턴처럼 동작하여 수렴을 가속화합니다.
+-   $\tau$의 적응형 제어:
+    -   $SSE(\hat{\theta}^{(j+1)}) < SSE(\hat{\theta}^{(j)})$이면 $\tau$를 줄입니다: $$
+        \tau \gets \tau / 10
+        $$
+    -   그렇지 않으면 안정화를 위해 $\tau$를 늘립니다: $$
+        \tau \gets 10\tau
+        $$
+
+이러한 조정을 통해 알고리즘은 불안정성을 피하면서 효율적으로 이동할 수 있습니다.
+
+```{r}
+# 필요한 패키지 로드
+library(minpack.lm)
+library(ggplot2)
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    theta[1] * exp(theta[2] * x)
+}
+
+# SSE 함수 정의
+sse <- function(theta, x, y) {
+    sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 강건한 레벤버그-마쿼트 최적화 구현
+levenberg_marquardt <-
+    function(theta_init,
+             x,
+             y,
+             tol = 1e-6,
+             max_iter = 500,
+             tau_init = 1) {
+        theta <- theta_init
+        tau <- tau_init
+        lambda <- 1e-8  # 작은 정규화 항
+        sse_values <- numeric(max_iter)
+        
+        for (j in 1:max_iter) {
+            # 야코비 행렬을 수치적으로 계산
+            epsilon <- 1e-6
+            F_matrix <-
+                matrix(0, nrow = length(y), ncol = length(theta))
+            for (p in 1:length(theta)) {
+                theta_perturb <- theta
+                theta_perturb[p] <- theta[p] + epsilon
+                F_matrix[, p] <-
+                    (nonlinear_model(theta_perturb, x) 
+                     - nonlinear_model(theta, x)) / epsilon
+            }
+            
+            # 잔차 계산
+            residuals <- y - nonlinear_model(theta, x)
+            
+            # 레벤버그-마쿼트 갱신 계산
+            A <-
+                t(F_matrix) %*% F_matrix + tau * diag(length(theta)) 
+            + lambda * diag(length(theta))  # 정규화된 A
+            delta <- tryCatch(
+                solve(A) %*% t(F_matrix) %*% residuals,
+                error = function(e) {
+                    cat("반복",
+                        j,
+                        "에서 특이행렬 감지됨 - tau 증가\n")
+                    tau <<- tau * 10  # 안정화를 위해 tau 증가
+                    # NaN 갱신을 방지하기 위해 0 벡터 반환
+                    return(rep(0, length(theta)))  
+                }
+            )
+            
+            theta_new <- theta + delta
+            
+            # 새로운 SSE 계산
+            sse_values[j] <- sse(theta_new, x, y)
+            
+            # tau를 동적으로 조정
+            if (sse_values[j] < sse(theta, x, y)) {
+                # tau를 줄이되 너무 작아지지 않도록 방지
+                tau <-
+                    max(tau / 10, 1e-8)  
+            } else {
+                tau <- tau * 10  # SSE가 증가하면 tau 증가
+            }
+            
+            # 수렴 여부 확인
+            if (sum(abs(delta)) < tol) {
+                cat(j, "회 반복 후 수렴 완료.\n")
+                return(list(theta = theta_new, sse_values = sse_values[1:j]))
+            }
+            
+            theta <- theta_new
+        }
+        
+        return(list(theta = theta, sse_values = sse_values))
+    }
+
+# 레벤버그-마쿼트 실행
+theta_init <- c(1, 0.1)  # 초기 추측값
+result <- levenberg_marquardt(theta_init, x, y)
+
+# 결과 추출
+estimated_theta <- result$theta
+sse_values <- result$sse_values
+
+# 추정된 모수 출력
+cat("레벤버그-마쿼트를 사용한 추정 모수 (A, B):\n")
+print(estimated_theta)
+```
+
+그림 \@ref(fig:fig-lv-convergence)는 감쇠 파라미터가 조정되기 전의 일시적인 급증을 포함하여, 레벤버그-마쿼트 알고리즘 하에서의 SSE 궤적을 보여줍니다.
+
+```{r fig-lv-convergence, fig.cap="레벤버그-마쿼트 수렴 과정", fig.alt="'레벤버그-마쿼트 수렴 과정'이라는 제목의 차트로, y축에는 잔차제곱합(SSE), x축에는 반복 횟수가 표시되어 있습니다. 9번째 반복에서 SSE가 크게 증가하는 뾰족한 피크가 나타난 후 기준선으로 돌아옵니다. x축은 0부터 12까지, y축은 0부터 20,000까지입니다.", out.width="100%", fig.align='center'}
+# 반복에 따른 SSE 수렴 과정 시각화
+sse_df <-
+    data.frame(Iteration = seq_along(sse_values), SSE = sse_values)
+
+ggplot(sse_df, aes(x = Iteration, y = SSE)) +
+    geom_line(color = "blue", linewidth = 1) +
+    labs(title = "Levenberg-Marquardt Convergence",
+         x = "Iteration",
+         y = "SSE") +
+    theme_minimal()
+```
+
+-   **초기 안정성 (평탄한 SSE)**
+
+    -   처음 몇 번의 반복 동안 SSE가 0에 가깝게 유지되며, 이는 알고리즘이 초기에 안정적으로 동작하고 있음을 시사합니다.
+
+    -   이는 초기 모수 추측값이 적절했거나, 갱신 폭이 작아 SSE에 큰 영향을 미치지 못했음을 나타낼 수 있습니다.
+
+-   **SSE의 급격한 폭발 (반복 \~8-9)**
+
+    -   반복 9에서의 급격한 SSE 스파이크는 최적화 과정에서의 수치적 불안정성 또는 발산을 나타냅니다.
+
+    -   이는 다음 요인들에 기인할 수 있습니다:
+
+        -   불량 조건(ill-conditioned) 야코비 행렬: 이동 방향이 잘못 추정되어 불안정한 도약이 발생함.
+
+        -   갑작스러운 큰 갱신 폭(`delta`): 감쇠 파라미터(`tau`)가 너무 공격적으로 감소하여 제어되지 않은 이동 단계가 발생함.
+
+        -   부동소수점 문제: `A`가 거의 특이행렬에 가까워지면 `solve(A)`를 계산하는 과정에서 지나치게 큰 값이 생성될 수 있음.
+
+-   **안정성 회복 (반복 9 이후)**
+
+    -   스파이크 이후 SSE가 즉시 낮은 값으로 회복되며, 이는 불안정성을 감지한 후 감쇠 파라미터(`tau`)가 증가되었음을 시사합니다.
+
+    -   이는 레벤버그-마쿼트의 적응적 특성과 일치합니다:
+
+        -   특정 단계가 바람직하지 않은 SSE 증가로 이어지면, 알고리즘은 다음 단계를 더 보수적으로 만들기 위해 `tau`를 증가시킵니다.
+
+        -   다음 단계에서 안정화되면 `tau`가 다시 감소할 수 있습니다.
+
+#### 뉴턴-라프슨 알고리즘 {#newton-raphson}
+
+뉴턴-라프슨 방법(Newton-Raphson method)은 비선형 최소자승 문제에 사용되는 2차 최적화(second-order optimization) 기법입니다. 1차 방법([경사하강법 (최급강하법)](#steepest-descent) 및 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm))과 달리, 뉴턴-라프슨은 더 빠른 수렴을 위해 목적함수의 1차 및 2차 도함수를 모두 사용합니다.
+
+갱신 규칙은 다음과 같습니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j \left[\frac{\partial^2 Q(\hat{\theta}^{(j)})}{\partial \theta \partial \theta'}\right]^{-1} \frac{\partial Q(\hat{\theta}^{(j)})}{\partial \theta}
+$$
+
+여기서:
+
+-   $\frac{\partial Q(\hat{\theta}^{(j)})}{\partial \theta}$는 **그래디언트 벡터**(목적함수의 1차 도함수)입니다.
+-   $\frac{\partial^2 Q(\hat{\theta}^{(j)})}{\partial \theta \partial \theta'}$는 **헤시안 행렬(Hessian matrix)**(목적함수의 2차 도함수)입니다.
+-   $\alpha_j$는 보폭을 제어하는 **학습률(learning rate)**입니다.
+
+비선형 최소자승 문제에서 **헤시안 행렬**은 다음과 같습니다:
+
+$$
+\frac{\partial^2 Q(\hat{\theta}^{(j)})}{\partial \theta \partial \theta'} = 2 \mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)}) - 2\sum_{i=1}^{n} [Y_i - f(x_i;\theta)] \frac{\partial^2 f(x_i;\theta)}{\partial \theta \partial \theta'}
+$$
+
+여기서:
+
+-   첫 번째 항 $2 \mathbf{F}(\hat{\theta}^{(j)})' \mathbf{F}(\hat{\theta}^{(j)})$는 [가우스-뉴턴 알고리즘](#gauss-newton-algorithm)에서와 동일합니다.
+-   두 번째 항 $-2\sum_{i=1}^{n} [Y_i - f(x_i;\theta)] \frac{\partial^2 f(x_i;\theta)}{\partial \theta \partial \theta'}$는 2차 도함수를 포함합니다.
+
+**주요 관찰 사항(Key Observations)**
+
+-   가우스-뉴턴 vs. 뉴턴-라프슨:
+    -   가우스-뉴턴은 두 번째 항을 무시하여 헤시안을 근사합니다.
+    -   뉴턴-라프슨은 2차 도함수를 명시적으로 통합하므로 더 정밀하지만 계산 비용이 많이 듭니다.
+-   과제 및 난점(Challenges):
+    -   헤시안 행렬이 특이행렬(singular)이 되어 역행렬 계산이 불가능할 수 있습니다.
+    -   복잡한 함수의 경우 2차 도함수를 계산하는 것이 종종 어렵습니다.
+
+```{r}
+# 필요한 패키지 로드
+library(ggplot2)
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    theta[1] * exp(theta[2] * x)
+}
+
+# SSE 함수 정의
+sse <- function(theta, x, y) {
+    sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# SSE의 그래디언트 (1차 도함수) 계산
+gradient_sse <- function(theta, x, y) {
+    residuals <- y - nonlinear_model(theta, x)
+    
+    # theta_1에 대한 편도함수
+    grad_1 <- -2 * sum(residuals * exp(theta[2] * x))
+    
+    # theta_2에 대한 편도함수
+    grad_2 <- -2 * sum(residuals * theta[1] * x * exp(theta[2] * x))
+    
+    return(c(grad_1, grad_2))
+}
+
+# SSE의 헤시안 (2차 도함수) 계산
+hessian_sse <- function(theta, x, y) {
+    residuals <- y - nonlinear_model(theta, x)
+    
+    # 2차 도함수 계산
+    H_11 <- 2 * sum(exp(2 * theta[2] * x))
+    H_12 <- 2 * sum(x * exp(2 * theta[2] * x) * theta[1])
+    H_21 <- H_12
+    
+    term1 <- 2 * sum((x ^ 2) * exp(2 * theta[2] * x) * theta[1] ^ 2)
+    term2 <- 2 * sum(residuals * (x ^ 2) * exp(theta[2] * x))
+    
+    H_22 <- term1 - term2
+    
+    return(matrix(
+        c(H_11, H_12, H_21, H_22),
+        nrow = 2,
+        byrow = TRUE
+    ))
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 뉴턴-라프슨 최적화 구현
+newton_raphson <-
+    function(theta_init,
+             x,
+             y,
+             tol = 1e-6,
+             max_iter = 500) {
+        theta <- theta_init
+        sse_values <- numeric(max_iter)
+        
+        for (j in 1:max_iter) {
+            grad <- gradient_sse(theta, x, y)
+            hessian <- hessian_sse(theta, x, y)
+            
+            # 헤시안의 가역성 확인
+            if (det(hessian) == 0) {
+                cat("반복",
+                    j,
+                    "에서 헤시안이 특이행렬임 - 대신 단위행렬 사용.\n")
+                # 특이행렬인 경우 단위행렬로 대체
+                hessian <-
+                    diag(length(theta))  
+            }
+            
+            # 뉴턴 갱신 계산
+            delta <- solve(hessian) %*% grad
+            theta_new <- theta - delta
+            sse_values[j] <- sse(theta_new, x, y)
+            
+            # 수렴 여부 확인
+            if (sum(abs(delta)) < tol) {
+                cat(j, "회 반복 후 수렴 완료.\n")
+                return(list(theta = theta_new, sse_values = sse_values[1:j]))
+            }
+            
+            theta <- theta_new
+        }
+        
+        return(list(theta = theta, sse_values = sse_values))
+    }
+
+# 뉴턴-라프슨 실행
+theta_init <- c(1, 0.1)  # 초기 추측값
+result <- newton_raphson(theta_init, x, y)
+
+# 결과 추출
+estimated_theta <- result$theta
+sse_values <- result$sse_values
+
+# 추정된 모수 출력
+cat("뉴턴-라프슨을 사용한 추정 모수 (A, B):\n")
+print(estimated_theta)
+```
+
+그림 \@ref(fig:fig-nr-convergence)는 초기 추측값이 최적점에 가까울 때 뉴턴-라프슨 방법의 특징인 빠른 이차 수렴(quadratic convergence)을 보여줍니다.
+
+```{r fig-nr-convergence, fig.cap="뉴턴-라프슨 수렴 과정", fig.alt="'뉴턴-라프슨 수렴 과정'이라는 제목의 차트로, y축에는 잔차제곱합(SSE), x축에는 반복 횟수가 표시되어 있습니다. 처음 몇 번의 반복 내에서 SSE가 0에 가깝게 급격히 감소하여 빠른 수렴을 보여줍니다. 선은 파란색이며 초기 하강 후 평평해집니다.", out.width="100%", fig.align='center'}
+# 반복에 따른 SSE 수렴 과정 시각화
+sse_df <-
+    data.frame(Iteration = seq_along(sse_values), SSE = sse_values)
+
+ggplot(sse_df, aes(x = Iteration, y = SSE)) +
+    geom_line(color = "blue", size = 1) +
+    labs(title = "Newton-Raphson Convergence",
+         x = "Iteration",
+         y = "SSE") +
+    theme_minimal()
+```
+
+#### 준뉴턴 방법 {#quasi-newton-method}
+
+준뉴턴 방법(Quasi-Newton method)은 헤시안 행렬을 명시적으로 계산할 필요 없이 뉴턴 방법을 근사하는 최적화 기법입니다. 대신 1차 도함수 정보를 바탕으로 헤시안에 대한 근사 행렬 $\mathbf{H}_j$를 반복적으로 구축합니다.
+
+갱신 규칙은 다음과 같습니다:
+
+$$
+\hat{\theta}^{(j+1)} = \hat{\theta}^{(j)} - \alpha_j \mathbf{H}_j^{-1}\frac{\partial \mathbf{Q}(\hat{\theta}^{(j)})}{\partial \theta}
+$$
+
+여기서:
+
+-   $\mathbf{H}_j$는 **헤시안 행렬**에 대한 **대칭 양의 정부호 근사 행렬(symmetric positive definite approximation)**입니다.
+-   $j \to \infty$에 따라 $\mathbf{H}_j$는 **실제 헤시안**에 가까워집니다.
+-   $\frac{\partial Q(\hat{\theta}^{(j)})}{\partial \theta}$는 **그래디언트 벡터**입니다.
+-   $\alpha_j$는 보폭을 조절하는 **학습률**입니다.
+
+[뉴턴-라프슨 방법](#newton-raphson) 대신 준뉴턴을 사용하는 이유:
+
+-   뉴턴-라프슨은 헤시안 행렬을 명시적으로 계산해야 하므로 계산 비용이 많이 들고 특이행렬이 될 위험이 있습니다.
+-   준뉴턴은 반복적으로 근사함으로써 헤시안을 직접 계산하는 것을 회피합니다.
+-   1차 방법(헤시안 없이 그래디언트만 필요한 방법) 중에서 준뉴턴 방법의 성능이 가장 뛰어납니다.
+
+------------------------------------------------------------------------
+
+**헤시안 근사(Hessian Approximation)**
+
+헤시안 $\mathbf{H}_j$를 직접 계산하는 대신, 준뉴턴 방법은 근사 행렬 $\mathbf{H}_j$를 반복적으로 갱신합니다.
+
+가장 널리 사용되는 공식 중 하나는 **BFGS(Broyden-Fletcher-Goldfarb-Shanno) 갱신식**입니다:
+
+$$
+\mathbf{H}_{j+1} = \mathbf{H}_j + \frac{(\mathbf{s}_j \mathbf{s}_j')}{\mathbf{s}_j' \mathbf{y}_j} - \frac{\mathbf{H}_j \mathbf{y}_j \mathbf{y}_j' \mathbf{H}_j}{\mathbf{y}_j' \mathbf{H}_j \mathbf{y}_j}
+$$
+
+여기서:
+
+-   $\mathbf{s}_j = \hat{\theta}^{(j+1)} - \hat{\theta}^{(j)}$ (모수의 변화량).
+-   $\mathbf{y}_j = \nabla Q(\hat{\theta}^{(j+1)}) - \nabla Q(\hat{\theta}^{(j)})$ (그래디언트의 변화량).
+-   $\mathbf{H}_j$는 현재의 **역헤시안 근사 행렬(inverse Hessian approximation)**입니다.
+
+------------------------------------------------------------------------
+
+```{r}
+# 필요한 패키지 로드
+library(ggplot2)
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    theta[1] * exp(theta[2] * x)
+}
+
+# SSE 함수 정의
+sse <- function(theta, x, y) {
+    sum((y - nonlinear_model(theta, x))^2)
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# optim()을 사용한 BFGS 최적화 실행
+theta_init <- c(1, 0.1)  # 초기 추측값
+result <- optim(
+    par = theta_init,
+    fn = function(theta) sse(theta, x, y),  # SSE 최소화
+    method = "BFGS",
+    control = list(trace = 0)  # 최적화 진행 상황 출력 생략
+    # control = list(trace = 1, REPORT = 1)  # 최적화 진행 상황 출력
+)
+
+# 결과 추출
+estimated_theta <- result$par
+sse_final <- result$value
+convergence_status <- result$convergence  # 0은 성공적인 수렴을 의미함
+
+# 추정된 모수 출력
+cat("\n=== 최적화 결과 ===\n")
+cat("준뉴턴 BFGS를 사용한 추정 모수 (A, B):\n")
+print(estimated_theta)
+
+# 최종 SSE 출력
+cat("\n최종 SSE:", sse_final, "\n")
+```
+
+#### 신뢰 영역 반사 알고리즘 {#trust-region-reflective-algorithm}
+
+신뢰 영역 반사(Trust-Region Reflective, TRR) 알고리즘은 비선형 최소자승 문제에 사용되는 최적화 기법입니다. 뉴턴 방법이나 그래디언트 기반 접근법과 달리, TRR은 갱신을 신뢰 영역(trust region) 내로 동적으로 제한하여 안정성을 확보하고 최솟값을 지나치는 오버슈팅을 방지합니다.
+
+목표는 목적함수 $Q(\theta)$(예: 잔차제곱합, SSE)를 최소화하는 것입니다:
+
+$$
+\hat{\theta} = \arg\min_{\theta} Q(\theta)
+$$
+
+전체 뉴턴 이동 단계를 그대로 취하는 대신, TRR은 다음 **이차 부문제(quadratic subproblem)**를 해결합니다:
+
+$$
+\min_{\delta} m_j(\delta) = Q(\hat{\theta}^{(j)}) + \nabla Q(\hat{\theta}^{(j)})' \delta + \frac{1}{2} \delta' \mathbf{H}_j \delta
+$$
+
+제약 조건:
+
+$$
+\|\delta\| \leq \Delta_j
+$$
+
+여기서:
+
+-   $\mathbf{H}_j$는 **헤시안 행렬의 근사치**입니다.
+
+-   $\nabla Q(\hat{\theta}^{(j)})$는 **그래디언트 벡터**입니다.
+
+-   $\Delta_j$는 동적으로 조정되는 **신뢰 영역 반경(trust-region radius)**입니다.
+
+------------------------------------------------------------------------
+
+**신뢰 영역 조정(Trust-Region Adjustments)**
+
+알고리즘은 비율 $\rho_j$를 기반으로 **보폭을 동적으로 수정**합니다:
+
+$$
+\rho_j = \frac{Q(\hat{\theta}^{(j)}) - Q(\hat{\theta}^{(j)} + \delta)}{m_j(0) - m_j(\delta)}
+$$
+
+-   **만약** $\rho_j > 0.75$이고 $\|\delta\| = \Delta_j$이면, 신뢰 영역을 확장합니다: $$
+    \Delta_{j+1} = 2 \Delta_j
+    $$
+
+-   **만약** $\rho_j < 0.25$이면, 신뢰 영역을 축소합니다: $$
+    \Delta_{j+1} = \frac{1}{2} \Delta_j
+    $$
+
+-   **만약** $\rho_j > 0$이면 단계를 수락하고, 그렇지 않으면 거절합니다.
+
+이동 단계가 **제약 조건을 위반하는 경우**, 가능 영역(feasible region) 내부로 **반사(reflected back)**됩니다:
+
+$$
+\hat{\theta}^{(j+1)} = \max(\hat{\theta}^{(j)} + \delta, \theta_{\min})
+$$
+
+이를 통해 최적화가 **모수 경계(parameter bounds)를 준수**하도록 보장합니다.
+
+------------------------------------------------------------------------
+
+```{r}
+# 필요한 패키지 로드
+library(ggplot2)
+
+
+# 비선형 함수 정의 (지수 모델)
+nonlinear_model <- function(theta, x) {
+    theta[1] * exp(theta[2] * x)
+}
+
+# SSE 함수 정의
+sse <- function(theta, x, y) {
+    sum((y - nonlinear_model(theta, x)) ^ 2)
+}
+
+# SSE의 그래디언트 (1차 도함수) 계산
+gradient_sse <- function(theta, x, y) {
+    residuals <- y - nonlinear_model(theta, x)
+    
+    # theta_1에 대한 편도함수
+    grad_1 <- -2 * sum(residuals * exp(theta[2] * x))
+    
+    # theta_2에 대한 편도함수
+    grad_2 <- -2 * sum(residuals * theta[1] * x * exp(theta[2] * x))
+    
+    return(c(grad_1, grad_2))
+}
+
+# SSE의 헤시안 근사치 계산
+hessian_sse <- function(theta, x, y) {
+    residuals <- y - nonlinear_model(theta, x)
+    
+    # 2차 도함수 계산
+    H_11 <- 2 * sum(exp(2 * theta[2] * x))
+    H_12 <- 2 * sum(x * exp(2 * theta[2] * x) * theta[1])
+    H_21 <- H_12
+    
+    term1 <- 2 * sum((x ^ 2) * exp(2 * theta[2] * x) * theta[1] ^ 2)
+    term2 <- 2 * sum(residuals * (x ^ 2) * exp(theta[2] * x))
+    
+    H_22 <- term1 - term2
+    
+    return(matrix(
+        c(H_11, H_12, H_21, H_22),
+        nrow = 2,
+        byrow = TRUE
+    ))
+}
+
+# 합성 데이터 생성
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+true_theta <- c(2, 0.3)
+y <- nonlinear_model(true_theta, x) + rnorm(length(x), sd = 0.5)
+
+# 수동 신뢰 영역 반사 최적화 구현
+trust_region_reflective <-
+    function(theta_init,
+             x,
+             y,
+             tol = 1e-6,
+             max_iter = 500,
+             delta_max = 1.0) {
+        theta <- theta_init
+        delta_j <- 0.5  # 초기 신뢰 영역 크기
+        n <- length(theta)
+        sse_values <- numeric(max_iter)
+        
+        for (j in 1:max_iter) {
+            grad <- gradient_sse(theta, x, y)
+            hessian <- hessian_sse(theta, x, y)
+            
+            # 헤시안의 가역성 확인
+            if (det(hessian) == 0) {
+                cat("반복",
+                    j,
+                    "에서 헤시안이 특이행렬임 - 대신 단위행렬 사용.\n")
+                hessian <-
+                    diag(n)  # 특이행렬인 경우 단위행렬로 대체
+            }
+            
+            # 뉴턴 이동 단계 계산
+            delta_full <- -solve(hessian) %*% grad
+            
+            # 신뢰 영역 제약 조건 적용
+            if (sqrt(sum(delta_full ^ 2)) > delta_j) {
+                # 이동 크기 조정
+                delta <-
+                    (delta_j / sqrt(sum(delta_full ^ 2))) * delta_full  
+            } else {
+                delta <- delta_full
+            }
+            
+            # 새로운 theta를 계산하고 제약 조건을 만족하는지 확인
+            theta_new <-
+                pmax(theta + delta, c(0,-Inf))  # 하한으로 반사
+            sse_new <- sse(theta_new, x, y)
+            
+            # 일치 비율(rho_j) 계산
+            predicted_reduction <-
+                -t(grad) %*% delta - 0.5 * t(delta) %*% hessian %*% delta
+            actual_reduction <- sse(theta, x, y) - sse_new
+            rho_j <- actual_reduction / predicted_reduction
+            
+            # 신뢰 영역 크기 조정
+            if (rho_j < 0.25) {
+                delta_j <- max(delta_j / 2, 1e-4)  # 축소
+            } else if (rho_j > 0.75 &&
+                       sqrt(sum(delta ^ 2)) == delta_j) {
+                delta_j <- min(2 * delta_j, delta_max)  # 확장
+            }
+            
+            # 단계 수락 또는 거절
+            if (rho_j > 0) {
+                theta <- theta_new  # 단계 수락
+            } else {
+                cat("반복", j, "에서 단계 거절됨\n")
+            }
+            
+            sse_values[j] <- sse(theta, x, y)
+            
+            # 수렴 여부 확인
+            if (sum(abs(delta)) < tol) {
+                cat(j, "회 반복 후 수렴 완료.\n")
+                return(list(theta = theta, sse_values = sse_values[1:j]))
+            }
+        }
+        
+        return(list(theta = theta, sse_values = sse_values))
+    }
+
+# 수동 신뢰 영역 반사 알고리즘 실행
+theta_init <- c(1, 0.1)  # 초기 추측값
+result <- trust_region_reflective(theta_init, x, y)
+
+# 결과 추출
+estimated_theta <- result$theta
+sse_values <- result$sse_values
+```
+
+그림 \@ref(fig:fig-trust-region-convergence)는 진전이 정체될 때 보폭을 줄이는 신뢰 영역 반사 방법의 SSE 경로를 도식화한 것입니다.
+
+```{r fig-trust-region-convergence, fig.cap="신뢰 영역 반사 수렴 과정", fig.alt="'신뢰 영역 반사 수렴 과정'이라는 제목의 그래프로, 반복에 따른 SSE(잔차제곱합)의 수렴을 보여줍니다. X축은 0부터 500까지의 반복 횟수를 나타내고, Y축은 12,500부터 20,000까지의 SSE 값을 나타냅니다. 곡선은 초기에 SSE가 급격히 감소하다가 반복이 증가함에 따라 안정화되는 모습을 보입니다. 그래프는 파란색으로 표시되어 있습니다.", out.width="100%", fig.align='center'}
+# 반복에 따른 SSE 수렴 과정 시각화
+sse_df <-
+    data.frame(Iteration = seq_along(sse_values), SSE = sse_values)
+
+ggplot(sse_df, aes(x = Iteration, y = SSE)) +
+    geom_line(color = "blue", size = 1) +
+    labs(title = "Trust-Region Reflective Convergence",
+         x = "Iteration",
+         y = "SSE") +
+    theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+> **본 장의 전체 내용은 출간된 Springer 도서에서 확인하실 수 있습니다.**\
+> 온라인 미리보기는 출판사 정책에 따라 일부로 제한됩니다.
+
+전체 내용을 확인하시려면 Springer 도서를 참고하시기 바랍니다:
+
+| 권차 | 도서명                                     | 링크                                       |
+|---------------|---------------------------|--------------------|
+| 1    | *Foundations of Data Analysis*            | [Springer에서 구매](https://tidd.ly/4oL3N2X) |
+| 2    | *Regression Techniques for Data Analysis* | [Springer에서 구매](https://tidd.ly/47PJ7kB) |
+| 3    | *Advanced Modeling and Data Challenges*   | [Springer에서 구매](https://tidd.ly/3JrB3xm) |
+| 4    | *Experimental Design*                     | [Springer에서 구매](https://tidd.ly/4oFridQ) |
+

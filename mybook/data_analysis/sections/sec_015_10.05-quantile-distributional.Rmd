@@ -1,0 +1,529 @@
+<!-- ========================================= -->
+<!-- Chapter: 10.05-quantile-distributional.Rmd -->
+<!-- ========================================= -->
+
+
+# 분위수 회귀 및 분포적 방법 (Quantile Regression and Distributional Methods) {#sec-quantile-distributional}
+
+비모수 회귀를 다룬 이전 장(제\@ref(sec-nonparametric-regression)장)에서는 조건부 평균 $E[Y \mid X]$의 함수 형태(functional form)에 대한 가정을 완화하여 데이터가 회귀 곡선의 형태를 결정하도록 했습니다. 본 장에서는 이와 다르면서도 더욱 근본적인 가정, 즉 공변량(covariate)이 반응변수(outcome)와 맺는 관계를 조건부 평균만으로 충분히 요약할 수 있다는 가정을 완화합니다. 많은 경제학적 질문은 분산(spread), 왜도(skewness), 꼬리 거동(tail behavior), 불평등(inequality) 등 평균만으로는 결코 드러낼 수 없는 반응변수 분포의 특성에 관심을 둡니다. 분위수 회귀(quantile regression)와 더 넓은 범주의 분포적 방법론(distributional methods)은 조건부 분위수 함수 $Q_\tau(Y \mid X)$, 나아가 조건부 분포 전체 $F_{Y \mid X}$를 목표로 삼습니다. 이 두 가지 가정 완화의 흐름은 비모수 분위수 회귀(nonparametric quantile regression)에서 만나 함수 형태와 분포 요약 모두를 한 번에 자유롭게 만듭니다.
+
+본 장은 단계적으로 내용을 전개합니다. 먼저 모집단 및 표본 분위수의 정의, 분위수를 최적 예측자(optimal predictor)로 규정하는 체크 함수(check function), 그리고 이것이 일반화하는 최소 절대 편차(least absolute deviations; LAD) 개념으로 시작합니다. 이어서 조건부 분위수 함수와 @koenker1978regression 의 선형 분위수 회귀 추정량, 점근적 추론(asymptotic inference), 강건성(robustness) 특성을 다룹니다. 다음으로 @powell1986censored 에 따른 중도절단 분위수 회귀(censored quantile regression)를 살펴보고, 분위수 처치 효과(quantile treatment effects; QTE)와 평균 처치 효과(average treatment effects; ATE) 간의 뚜렷한 차이를 논의합니다. 분포 회귀(distribution regression)는 동일한 분포적 대상을 다루는 상호보완적인 경로를 제공하며, 마지막으로 단일 요약 통계량이 아닌 전체 분포의 우열을 매기는 확률 지배(stochastic dominance)를 다루며 장을 마무리합니다.
+
+## 방법론 간의 관계 {#sec-qd-how-relate}
+
+본격적으로 들어가기에 앞서, 본 장과 비모수 회귀 내용 간의 관계를 정리해 두는 것이 유용합니다. 표준적인 최소제곱법(least squares)은 $E[Y \mid X]$에 대한 모수적 함수 형태(통상적으로 모수에 대해 선형)와, 이 조건부 평균이 추정할 가치가 있는 유일한 대상이라는 가정을 둘 다 취합니다. 비모수 회귀는 조건부 평균에 계속 초점을 맞추되 함수 형태를 버리고, 커널(kernel), 국소 다항식(local polynomial), 스플라인(spline) 등을 통해 $E[Y \mid X = x]$를 유연하게 추정합니다. 반면 분위수 및 분포적 방법론은 기본적으로 정반대의 접근법을 취합니다. 선형 분위수 회귀는 각 분위수 수준에서 공변량에 대해 선형인 모수적 함수 형태를 유지하지만, 단 하나의 중심 위치 요약치(central summary)가 관심 관계를 모두 포착할 수 있다는 전제를 버립니다. 대신 다양한 분위수 수준 $\tau$에 걸쳐 $Q_\tau(Y \mid X)$를 추적함으로써 공변량이 조건부 분포의 위치(location), 척도(scale), 형상(shape)을 어떻게 변화시키는지 복원합니다.
+
+이 두 가지 아이디어는 서로 직교(orthogonal)하므로 결합(composable)이 가능합니다. 함수 형태를 완화하면 비모수 평균 회귀가 됩니다. 평균 요약 가정을 완화하면 분위수 회귀가 됩니다. 둘 다 완화하면 비모수 분위수 회귀가 되며, 여기서는 각 $\tau$에 대해 $x$에 따라 국소적이고 유연하게 $Q_\tau(Y \mid X = x)$를 추정합니다. 분포적 관점은 여기서 한 걸음 더 나아갑니다. 한 번에 하나의 분위수만 추정하는 대신, 분포 회귀는 조건부 분포 함수 전체를 추정한 뒤 이를 역함수화(inverting)하여 분위수, 익스펙타일(expectile), 불평등 지표, 꼬리 확률 등을 모두 단 하나의 추정 대상으로부터 도출 가능한 범함수(functional)로 만듭니다.
+
+## 분위수와 분위수 함수 (Quantiles and the Quantile Function) {#sec-qd-quantile-function}
+
+분포를 평균 하나로 요약하면 많은 정보가 손실됩니다. $Y \sim N(\mu, \sigma^2)$인 경우 평균만으로는 산포(spread)를 알 수 없으며, 비대칭이거나 꼬리가 두꺼운(heavy-tailed) 분포의 경우 정책적으로 가장 중요할 때가 많은 왜도나 꼬리 확률 질량(tail mass)을 숨기게 됩니다. 분위수는 형태, 산포도, 꼬리 부분을 직접 설명함으로써 평균을 보완합니다.
+
+$\tau \in (0,1)$를 분위수 지수(quantile index) 또는 분위수 수준(quantile level)이라 부르며, 때로는 분위수 순위(quantile rank)라고도 합니다. 누적분포함수(cumulative distribution function; CDF) $F_Y$를 갖는 확률변수 $Y$에 대해, $\tau$-분위수 $Q_\tau(Y)$는 확률 질량의 $\tau$ 비율이 그 이하에 놓이게 되는 값입니다. 따라서 $F_Y$가 연속이고 엄격히 증가(strictly increasing)할 때 $F_Y(Q_\tau(Y)) = \tau$가 성립합니다. 평탄한 구간(flat spot)이나 도약(jump)이 있는 경우를 포괄하기 위해 일반적인 정의에서는 좌연속 일반화 역함수(left-continuous generalized inverse)를 사용합니다.
+
+$$
+Q_\tau(Y) \equiv \inf\{ y : F_Y(y) \ge \tau \}.
+$$
+
+분위수를 $\tau$의 함수로 바라보면 $0 < \tau < 1$에 대한 분위수 함수(quantile function) $Q_Y(\tau) \equiv \inf\{ y : F_Y(y) \ge \tau \}$를 얻습니다. 몇 가지 구조적 특성이 성립합니다. $F_Y$가 역함수를 가지면 $Q_Y = F_Y^{-1}$입니다. $F_Y$에 평탄한 구간(확률밀도가 0인 영역)이 있으면 $Q_Y$에는 도약이 발생합니다. $Y$가 이산형일 때처럼 $F_Y$에 도약이 있으면 $Q_Y$에는 그에 상응하는 평탄한 구간이 생깁니다. 누적분포함수는 우연속이고 좌극한을 갖는(right-continuous with left limits; RCLL) 반면, 분위수 함수는 좌연속이고 우극한을 갖습니다(left-continuous with right limits; LCRL). $\tau$-분위수와 $100\tau$ 백분위수(percentile)는 동일한 대상이므로, $Q_{0.5}(Y)$는 중앙값(median)이고 $Q_{0.9}(Y) - Q_{0.1}(Y)$는 산포의 강건한 측정치인 십분위수 범위(interdecile range)입니다.
+
+```{r qd-quantile-function-demo, fig.width=6, fig.height=4}
+# 우측 꼬리가 긴(오른쪽 왜곡) 표본의 경험적 CDF 및 분위수 함수
+set.seed(1)
+y <- rlnorm(500, meanlog = 0, sdlog = 0.6)
+
+tau <- seq(0.01, 0.99, by = 0.01)
+qf <- quantile(y, probs = tau, type = 7)
+
+ggplot(data.frame(tau = tau, q = qf), aes(tau, q)) +
+    geom_line(color = "steelblue", linewidth = 1) +
+    labs(
+        x = expression(tau),
+        y = expression(Q[tau](Y)),
+        title = "로그정규분포 표본의 경험적 분위수 함수"
+    )
+```
+
+## 최적 예측자로서의 분위수: 체크 함수 (The Check Function) {#sec-qd-check-function}
+
+평균과 마찬가지로 분위수 또한 손실 함수(loss function) 하에서의 최적 예측자(optimal predictor)로 도출됩니다. 손실 함수 $L(y, g)$는 실제 실현값이 $y$일 때 $g$로 예측하는 데 따르는 비용을 측정합니다. 기대 손실 $E[L(Y, g)]$은 위험(risk)이라고도 부르며, $Y$의 분포에 대해 평균을 취한 값이고 최적 예측자는 이 위험을 최소화합니다.
+
+$$
+g_L^* \equiv \arg\min_g E[L(Y, g)].
+$$
+
+이차 손실(quadratic loss) $L_2(y, g) = (y - g)^2$ 하에서 최적 예측자는 평균입니다. 일계 조건(first-order condition)은 $0 = \tfrac{d}{dg} E[(Y - g)^2] = -2\,E[Y - g^*]$이므로 $g_2^* = E(Y)$가 되며, 이는 평균 제곱 예측 오차(mean squared prediction error; MSPE)를 최소화하는 값입니다. 이차 손실 대신 절대 손실(absolute loss) $L_1(y, g) = |y - g|$을 사용하면 중앙값 $Q_{0.5}(Y) = \arg\min_g E[|Y - g|]$을 얻습니다. 그 이유는 직관적입니다. 절대 손실은 과대 예측과 과소 예측에 대해 대칭적이고 선형적으로 페널티를 부과하며, 중앙값은 양쪽의 확률 질량을 균등하게 맞추기 때문입니다.
+
+모수 하나로 정의되는 비대칭 손실 함수족(one-parameter family of asymmetric loss functions)은 이를 중앙값에서 임의의 모든 분위수로 확장합니다. 주어진 $\tau \in (0,1)$에 대해, 틱(tick) 또는 핀볼 함수(pinball function)라고도 불리는 **체크 함수(check function)**는 다음과 같이 정의됩니다.
+
+$$
+\rho_\tau(u) \equiv u\,(\tau - \mathbb{1}\{u < 0\}) = \begin{cases} \tau\, u & u \ge 0, \\ (\tau - 1)\, u & u < 0. \end{cases}
+$$
+
+이 함수는 양의 잔차(과소 예측, $g < y$)에는 $\tau$의 가중치를 부여하고, 음의 잔차(과대 예측, $g > y$)에는 $1 - \tau$의 가중치를 부여합니다. $\tau = 0.5$일 때는 두 가중치가 동일하여 $\rho_{0.5}(u) = |u|/2$가 되며, 이는 절대 손실과 상수 배(1/2) 차이만 있을 뿐 본질적으로 같습니다. 보다 일반적으로 $\tau$-분위수는 체크 함수 손실 하에서의 최적 예측자입니다.
+
+$$
+Q_\tau(Y) = \arg\min_g E[\rho_\tau(Y - g)].
+$$
+
+$\tau = 0.95$일 때 손실 함수는 과대 예측보다 과소 예측에 훨씬 더 큰 페널티를 부여하며, 이는 최적 예측자를 오른쪽 꼬리 쪽으로 밀어 올려 정확히 $Q_{0.95}(Y)$가 위치한 곳에 도달하게 만듭니다. 이처럼 체크 함수는 높은 분위수를 합리적인 예측값(rational forecast)으로 만드는 비대칭 비용 구조를 부호화합니다.
+
+```{r qd-check-function, fig.width=6, fig.height=4}
+check_loss <- function(u, tau) u * (tau - (u < 0))
+
+grid <- expand.grid(
+    u = seq(-3, 3, length.out = 401),
+    tau = c(0.1, 0.5, 0.9)
+)
+grid$loss <- check_loss(grid$u, grid$tau)
+grid$tau <- factor(grid$tau, labels = c("tau=0.1", "tau=0.5", "tau=0.9"))
+
+ggplot(grid, aes(u, loss, color = tau)) +
+    geom_line(linewidth = 1) +
+    labs(
+        x = "잔차 u = y - g",
+        y = expression(rho[tau](u)),
+        color = NULL,
+        title = "세 가지 분위수 수준에 대한 체크(핀볼) 손실"
+    )
+```
+
+## 무조건부 분위수 추정 (Estimating Unconditional Quantiles) {#sec-qd-estimating}
+
+표본 평균으로 이어지는 두 가지 경로와 마찬가지로, 모집단 분위수에서 표본 추정량으로 도달하는 두 가지 동등한 경로가 존재합니다. 첫 번째는 플러그인(plug-in) 또는 유추 원리(analogy principle)입니다. 독립동일분포(i.i.d.) 데이터에서 경험적 분포 함수(empirical distribution function; ECDF)는 다음과 같습니다.
+
+$$
+\hat F_Y(y) = \frac{1}{n} \sum_{i=1}^n \mathbb{1}\{Y_i \le y\},
+$$
+
+이는 $y$ 이하인 관측값의 표본 비율입니다. 모집단 정의에 $\hat F_Y$를 대입(플러그인)하면 평균의 경우 $\hat E(Y) = \int y \, d\hat F_Y(y) = \bar Y_n$이 되고, 분위수의 경우 표본 $\tau$-분위수
+
+$$
+\hat Q_\tau(Y) = \inf\{ y : \hat F_Y(y) \ge \tau \}
+$$
+
+를 얻습니다. 두 번째 경로는 모집단 최소화 문제를 그에 상응하는 표본 문제로 대체하는 것입니다. 평균의 경우 $\hat E(Y) = \arg\min_g \tfrac{1}{n}\sum_i (Y_i - g)^2$을 통해 최소제곱법을 복원합니다. 분위수의 경우 이에 대응하는 최적화 문제는 다음과 같습니다.
+
+$$
+\hat Q_\tau(Y) = \arg\min_g \frac{1}{n} \sum_{i=1}^n \rho_\tau(Y_i - g),
+$$
+
+이는 가중 최소 절대 편차(weighted least absolute deviations) 문제입니다. 이 두 경로는 동일한 추정량을 산출합니다. 그중 최소화 경로는 조건부 설정으로 깔끔하게 일반화되며 분위수 회귀의 기초를 이룹니다.
+
+```{r qd-estimating, fig.width=6, fig.height=4}
+# 체크 함수 위험의 최소화는 표본 분위수를 복원함
+set.seed(7)
+y <- rgamma(400, shape = 2, rate = 1)
+tau <- 0.75
+
+risk <- function(g) mean((y - g) * (tau - ((y - g) < 0)))
+g_grid <- seq(min(y), max(y), length.out = 2000)
+g_hat <- g_grid[which.min(vapply(g_grid, risk, numeric(1)))]
+
+c(minimizer = g_hat, sample_quantile = unname(quantile(y, tau, type = 1)))
+```
+
+경험적 체크 함수 위험의 최소값(minimizer)과 순서 통계량(order statistic) 기반의 표본 분위수는 그리드의 이산성(discreteness)과 분위수 정의 방식(quantile convention)의 차이를 제외하면 일치합니다.
+
+## 조건부 분위수 함수와 분위수 회귀 (Conditional Quantile Functions and Quantile Regression) {#sec-qd-conditional}
+
+조건부 기댓값 함수 $E[Y \mid X]$는 오직 제곱 손실(squared loss) 하에서만 $X$가 주어졌을 때 $Y$의 최적 예측자입니다. 다른 손실 함수를 사용하면 최적 예측자도 바뀌며, 체크 함수 손실 하에서는 조건부 분위수 함수가 최적 예측자가 됩니다. 모집단 조건부 $\tau$-분위수는 다음과 같습니다.
+
+$$
+Q_\tau(Y \mid X = x) = \arg\min_g E[\rho_\tau(Y - g) \mid X = x].
+$$
+
+@koenker1978regression 은 조건부 분위수가 공변량에 대해 선형이라는 가정, 즉 $Q_\tau(Y \mid X = x) = x'\beta(\tau)$을 설정하고, 경험적 체크 함수 위험을 최소화하여 계수 벡터를 추정하는 선형 분위수 회귀(linear quantile regression)를 제안했습니다.
+
+$$
+\hat\beta(\tau) = \arg\min_{b} \frac{1}{n} \sum_{i=1}^n \rho_\tau(Y_i - X_i' b).
+$$
+
+계수 벡터 $\beta(\tau)$는 $\tau$에 따라 달라질 수 있으며, 이는 바로 본 방법론이 단순한 중심 경향 이상의 것을 설명할 수 있게 해주는 핵심입니다. 특정 공변량은 반응변수의 하위 분위수를 한 방향으로 이동시키고 상위 분위수를 다른 방향으로 이동시켜, 평균 회귀가 상쇄해 버리는 산포와 형태에 대한 효과를 포착할 수 있습니다. $\tau = 0.5$로 설정하면 조건부 중앙값 회귀, 즉 최소 절대 편차(LAD) 추정량이 되며, 이는 보통 최소제곱법(OLS)보다 $Y$의 이상치(outlier)에 훨씬 더 강건합니다. 이 추정량은 선형 계획법(linear program)의 해이며, @koenker2005quantile 의 포괄적 저작에서 상술된 바와 같이 대규모 표본에서도 효율적으로 계산됩니다. @koenker2001quantile 의 설명은 실제 응용 사례와 함께 이해하기 쉬운 입문을 제공합니다.
+
+```{r qd-quantreg, eval=FALSE}
+# quantreg 패키지를 이용한 선형 분위수 회귀 (Koenker & Bassett)
+library(quantreg)
+
+set.seed(11)
+n <- 600
+x <- runif(n, 0, 5)
+# 위치-척도(location-scale) 설계: x가 증가함에 따라 y의 산포가 커지므로 분위수 기울기가 달라짐
+y <- 1 + 0.8 * x + (0.5 + 0.4 * x) * rnorm(n)
+dat <- data.frame(x = x, y = y)
+
+taus <- c(0.1, 0.25, 0.5, 0.75, 0.9)
+fit_qr <- rq(y ~ x, tau = taus, data = dat)
+summary(fit_qr)
+
+fit_ols <- lm(y ~ x, data = dat)
+coef(fit_ols)
+```
+
+$X$가 커짐에 따라 $Y$의 조건부 산포가 넓어지는 위치-척도(location-scale) 설계에서는 추정된 기울기 $\hat\beta_1(\tau)$가 $\tau$에 따라 증가합니다. 상위 분위수는 하위 분위수보다 더 빠르게 부채꼴 모양으로 퍼지며, 보통 최소제곱법(OLS)은 단 하나의 평균 기울기만을 보고하므로 이러한 이분산성(heteroskedastic) 구조를 완전히 놓칩니다. 아래 코드는 외부 패키지 없이 직접 최적화를 수행하는 방식으로 이 현상을 재현합니다.
+
+```{r qd-quantreg-base, fig.width=6, fig.height=4}
+# 직접 최적화를 통한 자체 구현 선형 분위수 회귀
+set.seed(11)
+n <- 600
+x <- runif(n, 0, 5)
+y <- 1 + 0.8 * x + (0.5 + 0.4 * x) * rnorm(n)
+
+rq_fit <- function(y, x, tau) {
+    risk <- function(b) {
+        r <- y - (b[1] + b[2] * x)
+        mean(r * (tau - (r < 0)))
+    }
+    optim(c(0, 0), risk, method = "Nelder-Mead")$par
+}
+
+taus <- c(0.1, 0.5, 0.9)
+coefs <- t(vapply(taus, function(t) rq_fit(y, x, t), numeric(2)))
+rownames(coefs) <- paste0("tau=", taus)
+colnames(coefs) <- c("intercept", "slope")
+coefs
+```
+
+기울기 추정치가 $\tau$ 전반에 걸쳐 증가하는 것은, 상위 조건부 분위수가 하위 분위수보다 $X$에 더 강하게 반응한다는 것을 보여주며, 이는 조건부 산포가 증가하고 있음을 나타내는 특징적인 징후입니다.
+
+## 분위수 추정량의 통계적 추론 (Inference for Quantile Estimators) {#sec-qd-inference}
+
+독립동일분포(i.i.d.) 표본추출 하에서 무조건부 표본 분위수의 점근 분포(asymptotic distribution)는 다음과 같습니다.
+
+$$
+\sqrt{n}\,\big(\hat Q_\tau(Y) - Q_\tau(Y)\big) \xrightarrow{d} N\!\left(0,\; \frac{\tau(1 - \tau)}{[f_Y(Q_\tau(Y))]^2}\right),
+$$
+
+여기서 $f_Y$는 해당 분위수에서 평가된 $Y$의 확률밀도입니다. 분모에 위치한 밀도는 희소성 항(sparsity term; 분위수 밀도 함수의 역수)이며, 확률밀도가 낮은 영역(즉, 꼬리 부분)의 분위수일수록 덜 정밀하게 추정된다는 점을 분명하게 보여줍니다. 점근 표준편차의 일치 추정량(consistent estimate) $\hat\sigma$를 구하면 점근적으로 정확한 포함 확률을 갖는 왈드 신뢰구간(Wald interval) $\hat Q_\tau(Y) \pm 1.96\,\hat\sigma/\sqrt{n}$을 구성할 수 있습니다.
+
+동일한 구조가 분위수 회귀 계수에도 적용되며, 이들의 점근 분산은 희소성 가중치가 부여된 샌드위치 형태(sparsity-weighted sandwich form)를 갖습니다. 유한 표본에서 희소성을 비모수적으로 추정하는 것은 매우 까다로우며, 밀도 추정 오차로 인해 플러그인 표준오차가 왜곡될 수 있습니다. 따라서 실무에서는 리샘플링(resampling) 기법을 선호하는 경우가 많습니다. 베이지안 부트스트랩을 포함한 부트스트랩(bootstrap) 및 그 변형 기법들은 직접적인 밀도 추정을 우회하며, 순위 점수 검정의 역변환(inversion of rank-score tests)은 이분산성에 강건한 비모수적(distribution-free) 신뢰구간을 제공합니다. @koenker2005quantile 은 이러한 대안들과 각 방법의 장단점을 상세히 정리하고 있습니다.
+
+```{r qd-inference, fig.width=6, fig.height=4}
+# 희소성이 정밀도를 지배함: 꼬리 분위수는 중앙 분위수보다 잡음(노이즈)이 큼
+set.seed(3)
+sim_se <- function(tau, n = 400, reps = 400) {
+    est <- replicate(reps, quantile(rnorm(n), tau, type = 7))
+    sd(est)
+}
+taus <- c(0.05, 0.25, 0.5, 0.75, 0.95)
+se <- vapply(taus, sim_se, numeric(1))
+data.frame(tau = taus, monte_carlo_se = round(se, 4))
+```
+
+시뮬레이션된 표준오차는 중앙값에서 가장 작고 꼬리 쪽으로 갈수록 커지는데, 이는 희소성 항이 예측하는 바와 정확히 일치합니다.
+
+## 강건성과 효율성 (Robustness and Efficiency) {#sec-qd-robustness}
+
+중앙값은 평균이 존재하지 않는 분포를 포함하여 모든 분포에서 잘 정의됩니다. 코시 분포(Cauchy distribution)는 중앙값이 0이지만 유한한 평균을 갖지 않으며, 분위수 기반 요약은 이러한 분포에서도 여전히 유의미합니다. 또한 중앙값은 오염(contamination)에 강합니다. 만약 $i = 1, \dots, 98$에 대해 $Y_i = i$이고 $Y_{99} = J$라면, $J \to \infty$일 때 표본 평균은 발산하지만 표본 중앙값은 50으로 고정됩니다. 이러한 붕괴 강건성(breakdown robustness)은 조건부 중앙값 회귀로도 확장되어, 최소제곱법보다 반응변수의 이상치에 훨씬 더 잘 견딥니다.
+
+그러나 이러한 강건성은 일면적(one-sided)입니다. 분위수 회귀는 $Y$의 이상치로부터는 보호되지만, 극단적인 공변량 값이 적합 결과를 지배할 수 있으므로 $X$ 공간의 고레버리지 이상치(high-leverage outliers)에는 취약합니다. 최소 중앙값 제곱(least median of squares; LMS)이나 최소 절사 제곱(least trimmed squares; LTS)과 같이 설계 공간의 오염을 다루도록 고안된 추정량들이 이러한 별도의 문제를 해결합니다. 효율성 측면도 존재합니다. 데이터의 꼬리가 두꺼울 때 중앙값은 더 작은 표본 분산을 가져 평균보다 효율적일 수 있는 반면, 가우스(정규) 데이터 하에서는 평균이 더 효율적인 요약 통계량입니다. 따라서 평균과 분위수 목표 사이의 선택은 분포의 어떤 특성에 관심이 있는지에 대한 질문이자, 데이터 생성 환경에 대한 강건성 문제이기도 합니다.
+
+## 중도절단 분위수 회귀 (Censored Quantile Regression) {#sec-qd-censoring}
+
+분위수는 반응변수가 중도절단(censored)되었을 때 특히 유용합니다. 여기서 중도절단이란 관측값이 참값의 알려진 비가역적(noninvertible) 함수여서 참값을 항상 온전히 복원할 수 없는 상태를 의미합니다. 소득 데이터의 상단 코딩(top-coding, 상한 제한)이 대표적인 예입니다. 실제 소득을 $Y^*$라 하고 상단 코딩 임계값을 $c$라 하면, 관측된 반응변수는 다음과 같습니다.
+
+$$
+Y = \begin{cases} Y^* & \text{if } Y^* \le c, \\ c & \text{if } Y^* > c. \end{cases}
+$$
+
+$P(Y = c) = P(Y^* \ge c)$이므로, $Y^*$가 연속형이라 할지라도 관측된 분포는 $c$에서 확률 질량이 뭉치는 질량점(mass point)을 가지며, 관측된 분포 함수는 $c$에서 1로 도약합니다.
+
+$$
+F_Y(y) = \begin{cases} F_{Y^*}(y) & y < c, \\ 1 & y \ge c. \end{cases}
+$$
+
+관측되지 않는 상위 꼬리에 의존하기 때문에 중도절단된 데이터로부터 $Y^*$의 평균은 식별(identify)되지 않으며, 대체(imputation)를 하려면 해당 꼬리에 대한 강한 가정이 필요합니다. 반면 중도절단점 아래에 위치한 분위수는 이 문제를 완전히 우회합니다. $Q_\tau(Y^*) < c$를 만족할 만큼 충분히 작은 $\tau$에 대한 모든 분위수 $Q_\tau(Y^*)$는 식별됩니다. 중도절단이 분포의 하위 부분에는 전혀 영향을 주지 않기 때문입니다. 이러한 분위수로 구축된 불평등 지표(예: 90-10 십분위수 범위)는 이 식별성을 그대로 물려받아 중도절단된 상단부에 대한 지식 없이도 계산할 수 있습니다.
+
+@powell1986censored 은 이러한 통찰을 추정량으로 발전시켰습니다. 핵심 관찰은 중도절단 연산이 단조 변환과 가환(commute)한다는 점이며, 따라서 중도절단된 반응변수의 조건부 분위수는 잠재 반응변수의 조건부 분위수를 중도절단한 것과 같습니다.
+
+$$
+Q_\tau(Y \mid X = x) = \min\{\, c,\; x'\beta(\tau) \,\},
+$$
+
+여기서 중도절단점은 알려진 상수 $c$입니다. 파월(Powell)의 중도절단 최소 절대 편차(Censored Least Absolute Deviations; CLAD) 추정량은 이렇게 중도절단된 적합값에 체크 함수 위험을 적용하여 최소화합니다.
+
+$$
+\hat\beta(\tau) = \arg\min_b \frac{1}{n} \sum_{i=1}^n \rho_\tau\big(Y_i - \min\{c, X_i' b\}\big).
+$$
+
+이 방법은 토빗(Tobit) 모형과 달리 오차항에 대한 특정 분포 가정을 필요로 하지 않으며, 이분산성 하에서도 일치성을 유지합니다. 목적함수가 비볼록(nonconvex)이어서 계산 시 반복 선형 계획법(iterative linear programming)이나 관련 알고리즘을 사용해야 하지만, 완전하게 명시된 우도(likelihood) 대신 분위수에 기반하여 중도절단 데이터를 준모수적(semiparametric)으로 처리할 수 있다는 강력한 이점을 제공합니다.
+
+```{r qd-censoring, fig.width=6, fig.height=4}
+# 상단 코딩(top-coding)은 상위 꼬리를 왜곡하지만 하위 분위수는 그대로 보존함
+set.seed(5)
+ystar <- rlnorm(2000, meanlog = 1, sdlog = 0.7)
+c_top <- quantile(ystar, 0.85)
+y_obs <- pmin(ystar, c_top)
+
+taus <- c(0.25, 0.5, 0.75, 0.9, 0.95)
+comparison <- data.frame(
+    tau = taus,
+    latent = round(quantile(ystar, taus), 2),
+    observed = round(quantile(y_obs, taus), 2)
+)
+comparison
+```
+
+잠재 분위수와 관측 분위수는 85번째 백분위수 이하에서는 정확히 일치하고 그 이상에서는 갈라지는데, 이는 왜 하위 및 중앙 분위수로 기술된 질문은 상단 코딩 하에서도 온전히 유지되는 반면 평균 기반 질문은 그렇지 못한지를 잘 보여줍니다.
+
+## 분위수 처치 효과 대 평균 처치 효과 (Quantile Treatment Effects versus Average Treatment Effects) {#sec-qd-qte}
+
+평균 목표와 분위수 목표 간의 차이는 인과 추론(causal analysis)에서 가장 두드러집니다. 개별 경제주체의 처치 및 미처치 잠재적 결과(potential outcomes)를 각각 $Y_1$과 $Y_0$이라 하고, 개별 처치 효과를 $Y_1 - Y_0$이라 하겠습니다. 기댓값 연산은 선형적이므로 평균 처치 효과(average treatment effect; ATE)는 $E(Y_1 - Y_0) = E(Y_1) - E(Y_0)$로 분해되어, 평균 처치 효과는 잠재적 결과들의 평균 차이와 같습니다. 그러나 분위수는 이러한 선형성을 갖지 않습니다. 일반적으로 다음이 성립합니다.
+
+$$
+Q_\tau(Y_1 - Y_0) \neq Q_\tau(Y_1) - Q_\tau(Y_0).
+$$
+
+이 두 대상은 서로 다른 질문에 답합니다. 주변 결과 분포(marginal outcome distribution)들 사이의 수평적 거리로 정의되는 분위수 처치 효과(Quantile Treatment Effect; QTE)는 다음과 같습니다.
+
+$$
+\text{QTE}(\tau) \equiv Q_\tau(Y_1) - Q_\tau(Y_0).
+$$
+
+이는 처치 집단 분포의 $\tau$-분위수와 통제 집단 분포의 $\tau$-분위수를 비교합니다. 처치를 받았을 때 $\tau$-분위수에 위치하는 개인이 통제 상태에서 $\tau$-분위수에 위치했을 사람과 동일인일 필요는 없으므로, 이는 특정 개인에게 미치는 효과를 설명하는 것이 아닙니다. 반면 $Y_1 - Y_0$의 분포를 구하려면 잠재적 결과들의 결합 분포(joint distribution)가 필요하며, 이는 순위 보존(rank invariance)이나 유사한 가정 없이는 데이터로부터 식별될 수 없습니다.
+
+간단한 수치 예시를 통해 이 차이를 구체적으로 확인할 수 있습니다. 동일한 확률을 갖는 네 가지 유형의 잠재적 결과가 다음과 같다고 가정해 보겠습니다.
+
+| $Y_0$ | $Y_1$ | $Y_1 - Y_0$ | 확률 (Probability) |
+|:-----:|:-----:|:-----------:|:------------------:|
+|   0   |   1   |      1      |        0.25        |
+|   1   |   2   |      1      |        0.25        |
+|   2   |   4   |      2      |        0.25        |
+|   3   |   0   |     -3      |        0.25        |
+
+여기서 $E(Y_0) = 6/4$, $E(Y_1) = 7/4$이며, 평균 처치 효과는 $E(Y_1 - Y_0) = (1 + 1 + 2 - 3)/4 = 1/4$로서 $E(Y_1) - E(Y_0)$와 같습니다. 분위수 수준 $\tau = 0.4$에서 분위수 처치 효과는 주변 분위수의 차이인 $Q_{0.4}(Y_1) - Q_{0.4}(Y_0) = 1 - 1 = 0$인 반면, 처치 효과 분포 자체의 분위수는 $Q_{0.4}(Y_1 - Y_0) = 1$입니다. 처치로부터 가장 혜택을 받지 못하고 오히려 손해를 본 네 번째 유형이 순위를 뒤흔들어(scramble), 처치 분포에서의 위치가 통제 분포에서의 위치와 일치하지 않기 때문에 두 값이 갈라지게 됩니다.
+
+```{r qd-qte}
+y0 <- c(0, 1, 2, 3)
+y1 <- c(1, 2, 4, 0)
+prob <- rep(0.25, 4)
+
+ate <- sum((y1 - y0) * prob)
+# tau = 0.4에서의 주변 분포 분위수 (type-1 / 좌연속 정의 방식)
+q <- function(values, p) sort(values)[ceiling(p * length(values))]
+qte_04 <- q(y1, 0.4) - q(y0, 0.4)
+q_te_04 <- q(y1 - y0, 0.4)
+
+c(ATE = ate, QTE_marginal_diff = qte_04, Q_of_TE = q_te_04)
+```
+
+동일한 점을 구조적 관점에서 살펴보면 결과를 $Y = \beta_0(U) + \beta_1(U) X$로 쓸 수 있으며, 여기서 잠재 순위 변수(latent rank variable) $U$는 관측되지 않는 이질성(unobserved heterogeneity)을 나타냅니다. 단조성, $U$와 $X$의 독립성, 그리고 $U \sim \text{Unif}(0,1)$이라는 정규화 하에서 조건부 분위수는 선형 $Q_\tau(Y \mid X = x) = \beta_0(\tau) + \beta_1(\tau) x$이 되며, 분위수 회귀 계수 $\beta_1(\tau)$는 $\tau$ 순위에 위치한 개인에 대한 효과라는 구조적 의미를 갖습니다. 그러나 처치가 자의적으로 선택되는 환경에서는 독립성 가정 $U \perp\!\!\!\perp X$이 너무 강하고 비현실적일 때가 많습니다. @chernozhukov2005iv 는 분위수 처치 효과의 도구변수(instrumental variables) 모형을 통해 이 가정을 완화하였으며, 처치의 내생성을 허용하면서 순위 변수와 독립인 도구변수를 통해 구조적 분위수 효과를 식별합니다. 이들의 프레임워크는 선형 분위수 회귀 개념을 내생성이 존재하는 환경으로 확장한 것으로, 2단계 최소제곱법(2SLS)의 분위수 버전에 해당합니다.
+
+## 분포 회귀와 무조건부 분위수 효과 (Distribution Regression and Unconditional Quantile Effects) {#sec-qd-distribution-regression}
+
+분위수 회귀는 한 번에 하나의 조건부 분위수를 추정합니다. 반면 분포 회귀(distribution regression)는 조건부 분포 함수 전체를 추정한 뒤 원하는 범함수를 추출하는 상호보완적 접근법을 취합니다. 기본 아이디어는 임계값 $y$의 그리드에 대해 $F_{Y \mid X}(y \mid x) = \Lambda(x'\beta(y))$를 모형화하는 것이며, 여기서 $\Lambda$는 로지스틱이나 프로빗과 같이 잘 알려진 연결 함수(link function)입니다. 각 임계값은 공변량에 대해 회귀되는 이항 반응변수 $\mathbb{1}\{Y \le y\}$를 정의하며, $y$에 걸쳐 적합된 조건부 분포 함수들을 쌓아 올림(stacking)으로써 조건부 분포 전체에 대한 추정치를 생성합니다. 이를 역함수화하면 조건부 분위수를 복원할 수 있으므로, 분포 회귀와 분위수 회귀는 서로 반대 방향(하나는 임계값을 기준으로 인덱싱하고 다른 하나는 순위를 기준으로 인덱싱)에서 동일한 기저 대상을 목표로 삼습니다. 분포 회귀 접근법은 이산형 및 혼합형(mixed) 반응변수를 매끄럽게 처리하며 정책 분석을 위한 반사실적 분포(counterfactual distributions)를 제공하는데, 이는 @chernozhukov2013counterfactual 에서 체계화되었습니다.
+
+이와 구별되면서도 밀접한 관련이 있는 질문은 조건부 분위수가 아니라 반응변수의 **무조건부(또는 주변) 분위수**에 미치는 공변량의 효과에 관한 것입니다. @firpo2009unconditional 의 재중심화 영향 함수(Recentered Influence Function; RIF) 회귀가 이에 대한 답을 제공합니다. 이 방법은 반응변수를 무조건부 분위수 통계량의 재중심화 영향 함수로 대체하고 이 변환된 변수를 공변량에 대해 회귀시킴으로써, 공변량 분포의 한계적 이동(marginal shift)이 무조건부 분위수에 미치는 효과를 도출합니다. 집단 내(within-group) 조건부 분위수가 아니라 전체 인구 집단에서 노조 가입이 임금 분포의 90번째 백분위수에 미치는 효과와 같이 정책적 질문이 결과 변수의 전반적 분포를 대상으로 할 때, 이 무조건부 분위수 편효과(unconditional quantile partial effect)는 자연스러운 분석 목표가 됩니다.
+
+```{r qd-distribution-regression, fig.width=6, fig.height=4}
+# 분포 회귀: 이항 회귀 그리드를 통해 F(y | x)를 추정한 뒤,
+# 이를 역함수화하여 조건부 분위수를 도출
+set.seed(21)
+n <- 1500
+x <- runif(n, 0, 4)
+y <- 0.5 + 0.6 * x + (0.6 + 0.3 * x) * rnorm(n)
+
+y_grid <- quantile(y, probs = seq(0.05, 0.95, by = 0.05))
+x_eval <- 3
+
+# 각 임계값에서 1{Y <= y_k}의 로짓 모형을 x에 적합하고 x_eval에서 예측
+F_hat <- vapply(y_grid, function(yk) {
+    fit <- glm((y <= yk) ~ x, family = binomial())
+    predict(fit, newdata = data.frame(x = x_eval), type = "response")
+}, numeric(1))
+
+# 몇 가지 목표 분위수에 대해 추정된 조건부 CDF를 역함수화
+invert <- function(tau) min(y_grid[F_hat >= tau])
+data.frame(tau = c(0.25, 0.5, 0.75),
+           cond_quantile_at_x3 = sapply(c(0.25, 0.5, 0.75), invert))
+```
+
+역함수화된 분포 회귀는 평가 지점에서의 조건부 분위수를 제공하며, 분위수 회귀가 직접 추정하는 것과 동일한 분포 정보를 복원합니다.
+
+## 확률 지배 (Stochastic Dominance) {#sec-qd-dominance}
+
+분위수 및 분포적 방법론은 평균으로는 제기할 수 없는 질문, 즉 한 분포 전체가 다른 분포보다 언제 더 선호되는가라는 질문을 던집니다. 1차 확률 지배(First-Order Stochastic Dominance; FSD)가 이에 대한 답을 제시합니다. 모든 약증가(weakly increasing) 효용 함수에 대해 $Y_1$ 하에서의 기대 효용이 $Y_2$ 하에서의 기대 효용보다 크거나 같을 때, $Y_1$이 $Y_2$를 1차 확률 지배한다고 하며 이를 $Y_1 \succeq_{\text{FSD}} Y_2$로 표기합니다.
+
+$$
+E[u(Y_1)] \ge E[u(Y_2)] \quad \text{모든 약증가 함수 } u\text{에 대하여}.
+$$
+
+이 추상적인 조건은 두 가지 구체적이고 동등한 특성화를 갖습니다. 분포 함수 관점에서 $Y_1$이 $Y_2$를 지배하는 것은 모든 $y$에 대해 $F_1(y) \le F_2(y)$인 것과 동치이며, 따라서 지배하는 분포는 항상 다른 분포보다 아래쪽(또는 같음)에 위치합니다. 분위수 함수 관점에서는 이 관계가 뒤집혀 모든 $\tau$에 대해 $Q_1(\tau) \ge Q_2(\tau)$가 되므로, 지배하는 분포는 모든 순위에서 더 큰(또는 같은) 분위수를 갖습니다. 분위수 함수가 분포 함수의 역함수이기 때문에 이 두 진술은 동일한 의미를 갖습니다. 모든 점에서 분포 함수가 더 낮다는 것은 더 큰 값들에 확률 질량이 더 많이 실려 있음을 의미하고, 이는 더 큰 분위수를 의미하며, 따라서 단조 증가 효용 함수를 갖는 모든 의사결정자가 $Y_1$을 선호함을 뜻합니다.
+
+1차 확률 지배는 매우 강한 순서 관계(ordering)여서 분포 함수들이 교차할 경우 성립하지 않는 경우가 많습니다. 누적분포함수의 적분값을 비교하여 정의되는 2차 확률 지배(Second-Order Stochastic Dominance; SSD)는 오목한(concave) 효용 함수를 갖는 위험 회피적(risk-averse) 의사결정자들을 위해 분포의 순위를 매기며, 1차 지배보다 더 빈번하게 충족됩니다. 실증적으로는 추정된 분포 함수나 분위수 함수를 비교하여 확률 지배를 검정하며, 정규 검정 절차는 곡선들의 표본 변동성을 고려합니다. 본 장과의 연관성은 직접적입니다. 분포 회귀와 분위수 회귀는 확률 지배가 비교하는 바로 그 곡선들을 추정하므로, 분포 방법론 툴킷은 분포를 요약하는 것뿐만 아니라 광범위한 선호 체계를 존중하는 방식으로 대립하는 분포 간의 우열을 가릴 수 있는 역량을 제공합니다.
+
+```{r qd-dominance, fig.width=6, fig.height=4}
+# 경험적 CDF를 통한 1차 확률 지배의 시각화
+set.seed(9)
+a <- rnorm(2000, mean = 1, sd = 1)
+b <- rnorm(2000, mean = 0, sd = 1) # a가 b를 지배: 동일한 산포, 더 높은 위치
+
+df <- rbind(
+    data.frame(y = a, dist = "Y1 (mean 1)"),
+    data.frame(y = b, dist = "Y2 (mean 0)")
+)
+
+ggplot(df, aes(y, color = dist)) +
+    stat_ecdf(linewidth = 1) +
+    labs(
+        x = "y", y = expression(F(y)), color = NULL,
+        title = "1차 확률 지배: F1이 F2 아래에 위치함"
+    )
+```
+
+$Y_1$의 경험적 분포 함수는 $Y_2$의 경험적 분포 함수보다 모든 곳에서 아래에 위치하며, 이는 1차 확률 지배의 전형적인 시각적 특징입니다. 따라서 단조 증가 효용을 갖는 모든 의사결정자는 $Y_1$을 선호합니다.
+
+## 최근 발전 동향: 분포 머신러닝과 인과추론의 최전선 {#sec-qd-frontier}
+
+앞서 설명한 고전적 방법론 체계는 선형 조건부 분위수와 분포 함수를 추정합니다. 최근 연구의 세 가지 흐름은 이를 유연한 함수군(flexible function classes), 유효한 유한 표본 추론(valid finite-sample inference), 현대적 인과 설계(modern causal designs)로 확장하며 연구의 최전선을 형성하고 있습니다.
+
+첫 번째 흐름은 선형 지수(linear index)를 머신러닝으로 대체하는 것입니다. 분위수 회귀 포레스트(Quantile Regression Forests)는 랜덤 포레스트를 구축하고 적응적 이웃(adaptive neighborhoods)을 재사용하여 조건부 평균뿐만 아니라 조건부 분포 전체를 추정함으로써, 모수적 형태 없이도 모든 수준의 조건부 분위수를 도출합니다 [@meinshausen2006quantile]. @athey2019generalized 의 일반화 랜덤 포레스트(Generalized Random Forests; GRF)는 이 아이디어를 국소 적률(local moment) 프레임워크에 배치하여 이질적 처치 효과(heterogeneous treatment effects)와 도구변수 분위수 효과도 도출할 수 있게 하였으며, 체크 손실 하에서의 그래디언트 부스팅(gradient boosting)은 이에 상응하는 부스팅 기법을 제공합니다. 이러한 방법들은 조건부 분포가 수많은 공변량에 미지의 상호작용 방식으로 의존할 때, 즉 선형 분위수 기울기가 너무 경직적인 환경에서 큰 강점을 발휘합니다. 이에 더해 매우 중요한 또 다른 발전은 이러한 임의의 추정량에 비모수적(distribution-free) 보장을 부여하는 것입니다. 컨포멀 분위수 회귀(Conformalized Quantile Regression; CQR)는 적합된 분위수 모형이 산출한 구간을 별도의 홀드아웃(held-out) 표본에 대해 보정(calibrate)함으로써, 분위수 모형의 정규 명시 여부와 무관하게 결과 예측 띠(prediction band)가 정확한 유한 표본 포함 확률을 달성하도록 하며 [@romano2019conformalized], 분위수 머신러닝의 적응성과 컨포멀 추론(conformal inference)의 정직성(honesty)을 결합합니다.
+
+두 번째 흐름은 분포적 목표를 고차원 및 이중 강건(doubly robust) 인과추론 툴킷에 접목하는 것입니다. 고차원 통제변수를 활용한 프로그램 평가는 정규화(regularization)를 통해 통제변수를 선택한 후 국소 분위수 처치 효과에 대한 정직한 추론을 제공하며 [@belloni2017program], @chernozhukov2018double 의 이중 머신러닝(Double Machine Learning; DML) 프레임워크는 유연하게 추정된 성가신 모수(nuisance parameters)의 1계 오차에 대해 분위수 및 분포 인과 모수를 강건하게 만드는 네이만 직교 점수(Neyman-orthogonal scores)를 제공합니다. 정렬 효과(sorted effects) 방법은 균등 추론(uniform inference)과 함께 편효과 분포의 백분위수를 보고하여, 단 하나의 평균 효과를 누가 얼마만큼 영향을 받는지에 대한 완전한 그림으로 바꾸어 놓으며 [@chernozhukov2018sorted], 이는 앞선 절의 분위수 및 분포 회귀를 보완하는 이질성에 대한 분포적 해석을 제공합니다.
+
+세 번째 흐름은 분포를 현대적 인과 설계에 내재화하는 것입니다. 변화 속의 변화(Changes-in-Changes; CiC) 모형은 비선형 이중차분(DiD) 가정 하에서 일반적인 평행 추세 설계가 평균만 식별할 수 있는 상황에서도 반사실적 결과 분포 전체와 분위수 처치 효과를 식별합니다 [@athey2006identification]. 패널 확장 모형은 분포 안정성 조건 하에서 처치집단에 대한 분위수 처치 효과(QTT)를 추정합니다 [@callaway2019quantile]. 분포 합성 통제(Distributional Synthetic Controls)는 처치 단위의 전체 반사실적 분위수 함수를 통제 단위 분위수 함수들의 가중 무게중심(weighted barycenter / Wasserstein barycenter)으로 재구성하여, 합성 통제 아이디어를 단일 시계열에서 분포 전체로 확장합니다 [@gunsilius2023distributional]. 고차원 패널의 경우, 분위수 요인 모형(Quantile Factor Models)은 잠재 요인이 각 시계열의 평균뿐만 아니라 분위수를 이동시키도록 하여 평균 요인 모형이 놓치는 꼬리와 산포의 공통 변동을 포착합니다 [@chen2021quantile]. 이 세 흐름 전체를 관통하는 핵심 주제는 일관됩니다. 즉, 관심 대상은 조건부 분포이며, 방법론적 진보는 이를 유연하고, 방어 가능하며, 인과적으로 추정하는 데 있습니다.
+
+## 비즈니스 및 경영 연구에서의 분위수 및 분포 방법론 {#sec-qd-business}
+
+이러한 방법론들은 결과 분포의 꼬리, 산포, 형태 자체가 경제학적 의미를 갖는 실증 경영학 연구 전반에서 핵심적인 위치를 차지하고 있으며, 특히 최고 수준 학술지 응용 사례가 가장 집중된 분야는 금융(finance)입니다. 아래에서 재현할 @adrian2019vulnerable 의 성장-위험(Growth-at-Risk; GaR) 프로그램은 여러 분위수에 걸쳐 미래 GDP 성장률을 금융 여건에 대해 회귀 분석하여, 금융 여건이 긴축될 때 하위 분위수는 급격히 악화되는 반면 상위 분위수는 거의 변하지 않는다는 점을 밝혔습니다. 즉, 금융 불안이 위협하는 것은 거시경제 전망의 중심부가 아니라 하방 위험(downside risk)이라는 점을 보여줍니다. 동일한 회귀 분위수 논리가 금융시장 위험의 주요 측정 지표들의 기초를 이룹니다. 조건부 자기회귀 위험가치(Conditional Autoregressive Value-at-Risk; CAViaR) 모형은 개별 기업의 위험가치(Value-at-Risk; VaR)를 수익률의 동적 조건부 분위수로 직접 추정합니다 [@engle2004caviar]. 시스템적 위험 측정 지표인 CoVaR(Conditional VaR)는 특정 금융기관이 부실에 빠졌을 때 금융 시스템 전체의 위험가치를 분위수 회귀로부터 도출하여, 꼬리 위험의 동조 현상(tail co-movement)을 금융 감독 지표로 변환합니다 [@adrian2016covar]. 또한 SRISK와 같은 자본부족액(capital shortfall) 측정 지표는 시스템적 꼬리 사건 발생 시 기업에 필요한 자본확충 규모를 정량화합니다 [@brownlees2017srisk]. VaR와 기대 숏폴(Expected Shortfall; ES)이 시장 위험에 대한 규제 언어인 만큼, 이 둘의 동시 유도 가능성(joint elicitability)을 활용하여 두 지표를 동시에 추정하는 결합 회귀 모형은 현재 매우 활발한 방법론적 프론티어입니다 [@patton2019dynamic].
+
+금융을 넘어, 분포적 방법론은 정책이나 개입이 결과 분포를 균일하게 이동시키는 것이 아니라 분포의 형태를 재편할 것으로 예상되는 모든 곳에서 자연스러운 도구가 됩니다. 공공 및 노동경제학에서 분위수 처치 효과는 평균 효과가 숨기는 이질성을 드러냅니다. 복지 개혁 실험에 대한 분포 분석은 평균적 영향으로는 완전히 놓치는 소득 분포 특정 구간에 효과가 집중되어 있음을 보여주며 [@bitler2006mean], 도구변수 분위수 방법은 순응자(compliers)에 대해 직업 훈련이 훈련생 소득 분위수에 미치는 효과를 복원하고 [@abadie2002instrumental], 군집 및 분포 설계(bunching-and-distributional designs)는 최저임금이 임금 분포의 하위 꼬리를 어떻게 재편하는지 추적합니다 [@cengiz2019effect]. 무조건부 분위수 회귀 및 그 분해 기법은 임금 불평등의 변화를 공변량 효과와 가격(수익률) 효과로 귀속시키는 표준적인 핵심 도구로 남아 있습니다 [@firpo2009unconditional]. 마케팅과 운영관리(OM) 분야에서는 이러한 도구들의 활용이 비교적 최근에 시작되었으나 빠르게 증가하고 있습니다. 분포 인과추론을 뒷받침하는 편향 제거 머신러닝(debiased machine learning)은 마케팅에서 타깃 프로모션 효과를 분해하는 데 적용되었으며 [@ellickson2023estimating], 특성 기반 신문판매원 문제(feature-based newsvendor)에서는 이윤 극대화 주문량이 수요의 조건부 분위수 자체임을 인식하여, 평균 예측이 아닌 분위수 목적함수가 재고 결정을 위한 올바른 학습 목표임을 규명했습니다 [@ban2019big]. 이 모든 것을 관통하는 공통점은 재고 부족, 하방 위험, 최악의 서비스 수준, 또는 고객 가치 분포의 최하단에 관심을 갖는 관리자는 곧 분위수에 대한 질문을 던지고 있는 것이며, 이러한 방법론들이 그에 대한 직접적인 해답을 제공한다는 점입니다.
+
+## 실증 재현: 성장-위험 (Growth-at-Risk) {#sec-qd-gar}
+
+최신 데이터를 바탕으로 @adrian2019vulnerable 의 핵심 결과를 재현해 봅니다. 이 실증 분석은 FRED의 1973년부터 2025년까지의 분기별 시계열 데이터를 사용하여, 1분기 후의 연율화 실질 GDP 성장률을 현재 성장률 및 시카고 연방준비은행의 국가금융여건지수(National Financial Conditions Index; NFCI)에 대해 5개 분위수별로 나누어 회귀 분석합니다. 분위수 전반에 걸친 금융 여건 계수의 변화가 이 분석의 핵심입니다.
+
+```{r qd-gar-fit, message=FALSE, warning=FALSE}
+library(quantreg)
+gar <- read.csv("data/gar/vulnerable_growth.csv")
+gar$date <- as.Date(gar$date)
+gar$y_next <- c(gar$gdp_growth[-1], NA)      # 다음 분기 연율화 실질 GDP 성장률
+gar <- gar[complete.cases(gar), ]
+
+taus  <- c(0.05, 0.25, 0.50, 0.75, 0.95)
+qfits <- lapply(taus, function(t) rq(y_next ~ gdp_growth + nfci, tau = t, data = gar))
+nfci_coef <- vapply(qfits, function(f) coef(f)[["nfci"]], numeric(1))
+knitr::kable(
+  data.frame(Quantile = taus, `NFCI 계수` = round(nfci_coef, 2), check.names = FALSE),
+  caption = "1973-2025년 국가금융여건지수(NFCI) 및 현재 성장률에 대한 1분기 후 연율화 실질 GDP 성장률의 분위수 회귀 분석. 금융 여건이 1단위 긴축될 때 미래 성장률의 5번째 백분위수는 중앙값보다 훨씬 더 큰 폭으로 하락하는 반면, 95번째 백분위수는 사실상 영향을 받지 않습니다."
+)
+```
+
+핵심은 비대칭성(asymmetry)에 있습니다. 금융 여건 지수가 1단위 긴축되면 다음 분기 성장률의 5번째 백분위수는 연율 기준 약 2%포인트 하락하지만, 95번째 백분위수는 거의 변하지 않습니다. 즉, 금융 불안은 거의 전적으로 성장률 분포의 하방에만 작용합니다. 시간에 따른 적합된 5번째 백분위수 예측치를 추적하면 금융 당국이 모니터링하는 조건부 최악의 시나리오인 성장-위험(Growth-at-Risk; GaR) 시계열을 얻을 수 있습니다.
+
+```{r qd-gar-series, fig.width=7, fig.height=4, message=FALSE, warning=FALSE, fig.cap="실현된 1분기 후 성장률(회색)과 조건부 5번째 백분위수 예측치인 성장-위험(Growth-at-Risk, 빨간색). 국가금융여건지수가 급등했던 2008년 및 2020년 금융 위기 당시에 하방 위험 예측치가 급격히 붕괴하는 것을 확인할 수 있습니다."}
+library(ggplot2)
+gar$gar5 <- predict(qfits[[1]], gar)         # 적합된 5번째 백분위수 = 성장-위험(GaR)
+ggplot(gar, aes(date)) +
+  geom_hline(yintercept = 0, color = "grey80") +
+  geom_line(aes(y = y_next), color = "grey65") +
+  geom_line(aes(y = gar5), color = "firebrick", linewidth = 0.9) +
+  labs(x = NULL, y = "다음 분기 연율화 실질 GDP 성장률 (%)")
+```
+
+다섯 개의 적합된 분위수로부터 완전한 예측 밀도(predictive density)를 도출하기 위해, @adrian2019vulnerable 은 이 분위수들에 일치하는 왜도-$t$ 분포(skewed-$t$ distribution)를 적합하였습니다. 이는 분위수 추정치들을 금융 여건에 따라 왜도가 달라지는 밀도 함수로 평활화(smoothing)해 줍니다. 평온한 분기와 위기 분기를 비교해 보면 평균 예측이 무엇을 숨기고 있는지 명확히 드러납니다.
+
+```{r qd-gar-density, fig.width=7, fig.height=4, message=FALSE, warning=FALSE, fig.cap="평온한 분기(2005년 4분기)와 위기 분기(2008년 4분기)에 분위수 회귀 예측치를 왜도-t 분포로 적합한 다음 분기 성장률의 조건부 예측 밀도. 금융 스트레스는 분포 전체를 왼쪽으로 이동시킬 뿐만 아니라 하위 꼬리를 길게 늘려 성장-위험(파선)을 큰 폭의 음수로 끌어내립니다."}
+library(sn)
+fit_skewt <- function(qv) {
+  obj <- function(p) {
+    v <- tryCatch(qst(taus, xi = p[1], omega = exp(p[2]), alpha = p[3], nu = 2 + exp(p[4])),
+                  error = function(e) NA)
+    if (any(!is.finite(v))) return(1e8)
+    sum((v - qv)^2)
+  }
+  optim(c(median(qv), log(sd(qv)), -1, log(3)), obj,
+        method = "Nelder-Mead", control = list(maxit = 3000))$par
+}
+grid <- seq(-16, 12, length.out = 400)
+dens <- do.call(rbind, lapply(as.Date(c("2005-10-01", "2008-10-01")), function(dt) {
+  i  <- which(gar$date == dt)
+  qv <- vapply(qfits, function(f) predict(f, gar[i, ]), numeric(1))
+  p  <- fit_skewt(qv)
+  pars <- list(xi = p[1], omega = exp(p[2]), alpha = p[3], nu = 2 + exp(p[4]))
+  data.frame(
+    period = paste0(format(dt, "%Y"), " Q4"),
+    y = grid,
+    density = do.call(dst, c(list(x = grid), pars)),
+    gar5 = do.call(qst, c(list(p = 0.05), pars))
+  )
+}))
+ggplot(dens, aes(y, density, color = period)) +
+  geom_line(linewidth = 0.9) +
+  geom_vline(aes(xintercept = gar5, color = period), linetype = "dashed") +
+  labs(x = "다음 분기 연율화 실질 GDP 성장률 (%)", y = "예측 밀도", color = NULL)
+```
+
+위기 분기의 밀도는 평온한 분기의 밀도가 단순히 통째로 왼쪽으로 평행 이동한 것이 아닙니다. 상위 꼬리는 거의 변하지 않은 반면, 하위 꼬리가 길게 늘어지고 왜곡되어 성장-위험(GaR)을 중앙값보다 훨씬 아래로 끌어내렸습니다. 이것이 바로 평균 예측이나 평균 중심의 대칭적 구간 예측으로는 지워질 수밖에 없는 분포적 정보이며, 분위수 회귀가 거시 금융 위험 모니터링의 표준적인 도구로 자리잡게 된 이유입니다.
+
+## 요약 (Summary) {#sec-qd-summary}
+
+분위수 및 분포적 방법론은 계량경제학의 관심을 조건부 평균에서 조건부 분포로 이동시킵니다. 체크 함수는 분위수를 비대칭 손실 하에서의 최적 예측자로 규정하며, 이에 상응하는 표본 손실을 최소화함으로써 @koenker1978regression 의 분위수 회귀 추정량을 얻습니다. 분위수 수준에 따라 계수가 달라지도록 허용함으로써, 본 방법론은 평균 회귀가 상쇄해 버리는 산포, 왜도, 꼬리에 대한 효과를 온전히 설명할 수 있습니다. @powell1986censored 에 따른 중도절단 분위수 회귀는 상위 꼬리가 상단 코딩(top-coding)되어 있더라도 하위 분위수는 식별된다는 사실을 활용합니다. 분위수 처치 효과는 전체 결과 분포들을 비교하는 것이며 개별 처치 효과의 분포와 혼동해서는 안 되고, 도구변수 분위수 방법은 내생적 처치가 존재하는 상황으로 분석을 확장합니다. 분포 회귀와 재중심화 영향 함수(RIF) 회귀는 각각 전체 조건부 분포와 무조건부 분위수 효과를 추정하며, 확률 지배는 이러한 곡선들을 활용하여 광범위한 선호 체계에 걸쳐 분포들의 순위를 매깁니다. 제\@ref(sec-nonparametric-regression)장의 비모수 평균 회귀와 결합되고 비모수 분위수 회귀에서 만나게 됨으로써, 이러한 도구들은 공변량이 평균적인 결과뿐만 아니라 결과의 전체 분포를 어떻게 형성하는지에 대한 유연하고 포괄적인 설명을 완성합니다.
+
+<!--
+NEW BIB ENTRIES
+
+@article{koenker1978regression,
+  title     = {Regression Quantiles},
+  author    = {Koenker, Roger and Bassett, Gilbert},
+  year      = {1978},
+  journal   = {Econometrica},
+  volume    = {46},
+  number    = {1},
+  pages     = {33--50},
+  publisher = {The Econometric Society}
+}
+
+@article{koenker2001quantile,
+  title     = {Quantile Regression},
+  author    = {Koenker, Roger and Hallock, Kevin F.},
+  year      = {2001},
+  journal   = {Journal of Economic Perspectives},
+  volume    = {15},
+  number    = {4},
+  pages     = {143--156},
+  publisher = {American Economic Association}
+}
+
+@book{koenker2005quantile,
+  title     = {Quantile Regression},
+  author    = {Koenker, Roger},
+  year      = {2005},
+  publisher = {Cambridge University Press},
+  address   = {Cambridge},
+  series    = {Econometric Society Monographs}
+}
+
+@article{powell1986censored,
+  title     = {Censored Regression Quantiles},
+  author    = {Powell, James L.},
+  year      = {1986},
+  journal   = {Journal of Econometrics},
+  volume    = {32},
+  number    = {1},
+  pages     = {143--155},
+  publisher = {Elsevier}
+}
+
+@article{firpo2009unconditional,
+  title     = {Unconditional Quantile Regressions},
+  author    = {Firpo, Sergio and Fortin, Nicole M. and Lemieux, Thomas},
+  year      = {2009},
+  journal   = {Econometrica},
+  volume    = {77},
+  number    = {3},
+  pages     = {953--973},
+  publisher = {The Econometric Society}
+}
+
+@article{chernozhukov2013counterfactual,
+  title     = {Inference on Counterfactual Distributions},
+  author    = {Chernozhukov, Victor and Fern{\'a}ndez-Val, Iv{\'a}n and Melly, Blaise},
+  year      = {2013},
+  journal   = {Econometrica},
+  volume    = {81},
+  number    = {6},
+  pages     = {2205--2268},
+  publisher = {The Econometric Society}
+}
+-->

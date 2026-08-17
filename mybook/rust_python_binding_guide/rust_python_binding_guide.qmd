@@ -1,18 +1,8 @@
 ---
 title: "Rust-Python 바인딩 종합 가이드 (PyO3 & Maturin)"
 subtitle: "저장소 내 6개 서브프로젝트 코드 심층 분석 및 실전 바인딩 기법"
-author: "Rust-Python Binding Project"
+author: "Taeyoon Kim"
 date: "2026-08-16"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: false
-    theme: cosmo
-    highlight-style: github
-execute:
-  eval: false
 ---
 
 # 개요 (Overview)

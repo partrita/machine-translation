@@ -1,0 +1,2827 @@
+<!-- ========================================= -->
+<!-- Chapter: 36-endogeneity.Rmd -->
+<!-- ========================================= -->
+
+
+# 내생성(Endogeneity) {#sec-endogeneity}
+
+응용 연구에서는 회귀계수가 **인과관계(causal relationships)**를 나타낸다고 간주하기 쉽다. 예를 들어 광고비의 양(+)의 계수는 광고 예산을 늘리면 매출이 증가한다는 증거로 해석될 수 있다. 그러나 이러한 해석은 모형에 포함한 독립변수가 **외생적(exogenous)**이라는 중요한 가정에 의존한다.
+
+이 장에서는 이 가정을 위협하는 핵심 요인인 [내생성(endogeneity)](#sec-endogeneity)을 살펴본다.
+
+내생성이란 회귀모형에서 설명변수가 오차항과 상관된 모든 상황을 말한다. 이런 상황에서는 **계수 추정치가 편향되고 불일치적(biased and inconsistent)**이 되며, 인과적 주장은 타당하지 않다.
+
+------------------------------------------------------------------------
+
+내생성이 어디에서 비롯되는지 이해하기 위해 익숙한 선형 회귀모형부터 살펴보자.
+
+$$
+\mathbf{Y = X \beta + \epsilon}
+$$
+
+여기서:
+
+-   $\mathbf{Y}$는 관측된 결과의 $n \times 1$ 벡터이고,
+-   $\mathbf{X}$는 설명변수의 $n \times k$ 행렬이다(절편이 있으면 1로 이루어진 열을 포함한다).
+-   $\beta$는 알려지지 않은 모수의 $k \times 1$ 벡터이고,
+-   $\epsilon$은 관측되지 않은 오차항의 $n \times 1$ 벡터이다.
+
+[
+통상최소제곱(Ordinary Least Squares)] 추정량은 다음과 같다.
+
+$$
+\begin{aligned}
+\hat{\beta}_{OLS} &= (\mathbf{X}'\mathbf{X})^{-1}(\mathbf{X}'\mathbf{Y}) \\
+&= (\mathbf{X}'\mathbf{X})^{-1}(\mathbf{X}'(\mathbf{X\beta + \epsilon})) \\
+&= (\mathbf{X}'\mathbf{X})^{-1}(\mathbf{X}'\mathbf{X})\beta + (\mathbf{X}'\mathbf{X})^{-1}(\mathbf{X}'\epsilon) \\
+&= \beta + (\mathbf{X}'\mathbf{X})^{-1}(\mathbf{X}'\epsilon)
+\end{aligned}
+$$
+
+이 유도식에서 알 수 있듯이 OLS가 **불편(unbiased)**이 되려면 두 번째 항의 기댓값이 0이어야 한다. 즉,
+
+$$
+E[(\mathbf{X}'\mathbf{\epsilon})] = 0 \quad \text{or equivalently,} \quad Cov(\mathbf{X}, \epsilon) = 0
+$$
+
+타당한 추정치를 얻으려면 OLS에는 다음 두 조건이 필요하다.
+
+1.  조건부 평균이 0(Zero Conditional Mean): \
+    $$
+    E[\epsilon \mid \mathbf{X}] = 0
+    $$ 이는 회귀변수를 조건으로 삼으면 체계적인 오차가 남지 않는다는 뜻이다.
+
+2.  **회귀변수와 오차의 무상관(No Correlation Between Regressors and Errors)**:\
+    $$
+    Cov(\mathbf{X}, \epsilon) = 0
+    $$ 이는 더 강한 요구조건이다. 이 조건이 성립하지 않으면 내생성 문제가 발생한다.
+
+첫 번째 조건은 절편을 포함하거나 오차의 분포적 특성을 고려하면 충족되는 경우가 많다. 반면 $\mathbf{X}$와 $\epsilon$ 사이에 상관이 없어야 한다는 두 번째 조건은 특히 관측자료에서 충족하기가 훨씬 어렵다.
+
+내생성은 회귀의 핵심 가정 중 하나를 위반하며, 다음과 같은 심각한 결과를 낳는다.
+
+-   계수 편향: 추정치가 참인 모수값과 체계적으로 달라진다.
+-   불일치성: 표본 크기가 증가해도 편향이 사라지지 않는다.
+-   잘못된 추론: 가설검정과 신뢰구간을 신뢰하기 어려워진다.
+-   오도하는 의사결정: 비즈니스와 정책 환경에서 비용이 큰 오류로 이어질 수 있다.
+
+------------------------------------------------------------------------
+
+내생성에는 몇 가지 흔한 원인이 있다 [@hill2021endogeneity]. 그러나 대부분의 문제는 다음 두 가지 큰 범주로 나뉘며, 아래에서 차례로 다룬다: [내생적 처치(Endogenous Treatment)](#sec-endogenous-treatment)와 [내생적 표본 선택(Endogenous Sample Selection)](#sec-endogenous-sample-selection).
+
+### 내생적 처치(Endogenous Treatment)
+
+처치변수가 오차항과 상관되어 있다. 아래의 네 가지 대표적 메커니즘은 모두 $Cov(\mathbf{X}, \epsilon) = 0$의 위반으로 귀결되지만, 편향의 방향과 효과적인 해결책의 종류는 서로 다르다.
+
+-   [**누락변수 편향(Omitted Variable Bias, OVB)**](#sec-omitted-variable-bias). 관련 변수가 모형에서 누락되고 그 변수가 설명변수 및 결과변수 모두와 상관될 때 발생한다. 누락된 변수가 포함된 회귀변수와 상관되고 *동시에* 종속변수에도 영향을 미칠 때 OVB 문제가 발생한다. 어느 한 조건이라도 성립하지 않으면 편향은 없다.
+
+    예시(경제학): 교육이 소득에 미치는 효과를 추정하려 하지만, 일반적인 비관측 요인(예: 동기, 능력/재능 또는 자기선택)이 식별전략을 위협한다.
+
+    예시(마케팅): 매출을 광고비에 회귀하면서 제품 품질을 누락했다고 하자. 품질이 높은 제품이 더 많은 광고를 받고 동시에 더 높은 매출을 낸다면, 광고비 계수에 품질의 효과 일부가 섞여 상향 편향이 발생한다.
+
+    예시(재무): 기업 성과를 경영진 보수에 회귀하면 경영진의 능력이 누락될 수 있다. 능력이 뛰어난 경영진이 더 높은 보수를 받고 더 나은 성과도 낸다면 OVB로 인해 추론이 편향된다.
+
+-   [**동시성(Simultaneity, 피드백 효과)**](#sec-simultaneity). 종속변수와 설명변수가 균형에서 **동시에(jointly)** 결정될 때 발생한다.
+
+    예시(경제학): 수요·공급 모형에서는 가격과 수요량이 함께 결정된다. 공급을 모형화하지 않고 수요량을 가격에 회귀하면 수요 민감도의 추정치가 편향된다.
+
+-   [**역인과성(Reverse Causality)**](#sec-reverse-causality). 모형의 가정과 반대 방향으로 인과관계가 흐르는 동시성의 특수한 경우다.
+
+    예시(보건정책): 단순한 모형은 건강 결과를 보험 가입 여부에 회귀할 수 있다. 그러나 건강이 좋지 않은 사람이 보험에 가입할 가능성이 더 높을 수 있으므로 역인과성이 발생한다.
+
+    더 긴 기간(예: 연도별 기업 자료)에서는 회귀 추정치에 미치는 영향이라는 관점에서 역인과성이 동시성과 똑같이 보일 수 있다.
+
+-   [**측정오차(Measurement Errors)**](#sec-measurement-error). 관련 변수를 포함하더라도 **부정확한 측정**은 편향을 유발한다. $X$의 고전적 측정오차는 **감쇠 편향(attenuation bias)**을 일으켜 추정 계수를 0 쪽으로 편향시키며, 설문자료·행동 측정치·행정기록에서 자주 발생한다.
+
+    예시(디지털 마케팅): 클릭률이나 광고 노출은 브라우저 쿠키 또는 기기 ID로 추적할 수 있지만, 이러한 식별자는 완벽하지 않다. 그 결과 발생한 측정오차는 광고 효과의 추정치를 하향 편향시킨다.
+
+### 내생적 표본 선택(Endogenous Sample Selection)
+
+표본에 포함될 가능성이 결과변수와 관련될 때 표본 선택은 내생성의 원인이 된다.
+
+예시(노동경제학): 취업자만 사용해 교육이 임금에 미치는 효과를 추정하면 현재 일하지 않는 사람은 제외된다. 취업 여부가 비관측 특성(예: 동기)과 상관된다면 임금방정식은 편향된다.
+
+------------------------------------------------------------------------
+
+요약 표: 내생성의 유형은 표 \@ref(tab:endog-types)에 정리되어 있다.
+
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+| Type                                                            | Mechanism                                                 | Example Context                             |
++=================================================================+===========================================================+=============================================+
+| [Omitted Variable Bias](#sec-omitted-variable-bias)             | Omitted variable affects both $X$ and $Y$                 | Managerial talent in finance, brand quality |
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+| [Simultaneity](#sec-simultaneity)                               | $X$ and $Y$ determined jointly                            | Price $\leftrightarrow$ Demand              |
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+| [Reverse Causality](#sec-reverse-causality)                     | $Y$ causes $X$ (opposite direction from model assumption) | Health $\to$ Insurance                      |
+|                                                                 |                                                           |                                             |
+|                                                                 |                                                           | Revenue $\to$ Ad Spend                      |
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+| [Measurement Error](#sec-measurement-error)                     | $X$ is observed with error                                | Digital metrics, survey measures            |
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+| [Endogenous Sample Selection](#sec-endogenous-sample-selection) | Sample selection is correlated with outcome               | Labor force participation, customer panels  |
++-----------------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+
+
+표: (\#tab:endog-types) 내생성의 일반적인 원인, 각 원인을 유발하는 메커니즘 및 대표적인 예시 맥락.
+
+------------------------------------------------------------------------
+
+내생성이 항상 치명적인 것은 아니다. 내생성을 식별하고 이에 맞게 조정할 수 있다면 여전히 신뢰할 만한 추론을 할 수 있다.
+
+1.  [통제변수(Control Variables)](#sec-controls)
+
+누락변수가 의심되지만 해당 변수의 자료가 있다면 통제변수로 포함할 수 있다. 이를 "[관측가능변수에 의한 선택(selection on observables)](#sec-selection-on-observables)" 접근법이라고 한다.
+
+그러나 이 전략은 다음과 같은 이유로 충분하지 않은 경우가 많다.
+
+-   중요한 요인 중 상당수가 **관측되지 않는다**(예: 동기, 능력, 기대).
+-   측정된 변수에 **측정오차**가 포함되어 새로운 편향이 생길 수 있다.
+
+2.  내생성 도구상자(Toolbox for Endogeneity)
+
+비관측 요인이 관련된 경우를 포함해 더 복잡한 문제를 다루기 위해 고급 방법을 소개한다([인과추론 도구상자(Causal Inference Toolbox)](#sec-causal-inference) 참조).
+
+------------------------------------------------------------------------
+
+## 내생적 처치(Endogenous Treatment) {#sec-endogenous-treatment}
+
+내생적 처치는 관심 변수(“처치”)가 무작위로 배정되지 않고 결과의 비관측 결정요인과 상관될 때 발생한다. 앞서 살펴본 것처럼 이는 누락변수, 동시성 또는 역인과성에서 비롯될 수 있다. 또한 참인 변수가 이론적으로 외생적이라 하더라도 [측정오차](#sec-measurement-error)가 실제로는 해당 변수를 내생적으로 만들 수 있다.
+
+이 절에서는 특히 설명변수의 [측정오차](#sec-measurement-error)가 어떻게 편향(일반적으로 감쇠 편향)을 유발하는지, 그리고 왜 이것이 응용 연구의 핵심 관심사인지에 초점을 둔다.
+
+------------------------------------------------------------------------
+
+### 측정오차(Measurement Errors) {#sec-measurement-error}
+
+측정오차는 변수의 **참값(true value)**과 **관측값(측정값, observed value)** 사이의 차이를 말한다. 거의 모든 실증 자료에는 연구자가 기록한 것과 실제로 일어난 것 사이에 어느 정도 불일치가 있으며, 그 격차의 크기에 따라 추정치가 기저의 인과관계를 반영하는 정도와 기록 과정 자체를 반영하는 정도가 달라진다. 관측 환경에서 문제는 단일한 이상치인 경우가 드물며, 변수를 수집·전사·보고하는 방식에 체계적으로 내재한 특성이다.
+
+부정확한 측정이 자료에 들어오는 가장 흔한 경로는 몇 가지 큰 원인으로 묶을 수 있다.
+
+-   측정오차의 원인:
+    -   코딩 오류: 수작업 또는 소프트웨어로 인해 발생하는 데이터 입력 실수.
+    -   보고 오류: 자기보고 편향, 회상 문제 또는 전략적 오보고.
+
+이러한 기계적 원인이 중요한 이유는 잡음의 *통계적 구조*를 형성하기 때문이며, 그 구조에 따라 결과적인 편향이 무해한지 파괴적인지가 결정된다.
+
+#### 측정오차의 두 가지 큰 유형
+
+분석을 위해서는 OLS에 매우 다른 결과를 초래하는 두 체계로 측정오차를 구분하는 것이 유용하다. 첫 번째는 큰 표본에서 사라지는 일반적인 잡음처럼 작동하고, 두 번째는 극한에서도 남는 구조를 도입해 추정치의 부호를 뒤집을 수 있다.
+
+1.  **무작위(확률적) 오차(Random (Stochastic) Error)** --- [*고전적 측정오차(Classical Measurement Error)*](#sec-classical-measurement-error)
+    -   잡음은 예측할 수 없고 기댓값에서 상쇄된다.
+    -   오차는 참변수 및 회귀오차와 **무상관**이다.
+    -   설문자료와 추적 오류에서 흔히 발생한다.
+2.  **체계적(비고전적) 오차(Systematic (Non-classical) Error)** --- [*비무작위 편향(Non-Random Bias)*](#sec-non-classical-measurement-error)
+    -   측정오차가 관측치 전반에서 일관된 패턴을 보인다.
+    -   다음과 같은 원인에서 자주 발생한다.
+        -   도구 오류: 예를 들어 센서 고장, 보정되지 않은 저울.
+        -   방법 오류: 부실한 표본추출, 설문 설계의 결함.
+        -   인적 오류: 판단 오류, 사회적 바람직성 편향.
+
+두 체계의 구분은 단순한 분류 작업이 아니다. 어떤 해결책이 적절한지, 그리고 어느 정도까지 복원할 수 있는지를 결정한다. 무작위 오차는 추정된 효과의 방향을 보존하면서 크기만 줄이지만, 체계적 오차는 상관 패턴에 따라 추정치를 어느 방향으로든 끌어갈 수 있다.
+
+**핵심 통찰**:
+
+-   *무작위 오차*는 **잡음**을 추가해 추정치를 0 쪽으로 밀어낸다.
+-   *체계적 오차*는 **편향**을 도입해 추정치를 위쪽 또는 아래쪽으로 이동시킨다.
+
+이 절의 나머지 부분에서는 각 체계를 형식화한다. 먼저 표준적인 유도를 통해 명확한 감쇠 결과를 얻는 [고전적 경우](#sec-classical-measurement-error)를 살펴본 뒤, 일반적으로 [도구변수(instrumental variable)](#sec-instrumental-variables) 또는 검증 표본이 필요한 [비고전적 경우](#sec-non-classical-measurement-error)로 넘어간다.
+
+------------------------------------------------------------------------
+
+#### 고전적 측정오차(Classical Measurement Error) {#sec-classical-measurement-error}
+
+##### 우변 변수(Right-Hand Side Variable) {#sec-right-hand-side-variable}
+
+가장 흔하고 분석적으로 다루기 쉬운 경우인 설명변수의 **고전적 측정오차**를 살펴보자.
+
+참인 모형이 다음과 같다고 하자.
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + u_i
+$$
+
+$X_i$를 직접 관측하지 못하고 다음을 관측한다고 하자.
+
+$$
+\tilde{X}_i = X_i + e_i
+$$
+
+$e_i$는 고전적이라고 가정한 **측정오차**다.
+
+-   $E[e_i] = 0$
+-   $Cov(X_i, e_i) = 0$
+-   $Cov(e_i, u_i) = 0$
+
+이제 $\tilde{X}_i$를 회귀식에 대입하면,
+
+$$
+\begin{aligned}
+Y_i &= \beta_0 + \beta_1 ( \tilde{X}_i - e_i ) + u_i \\
+&= \beta_0 + \beta_1 \tilde{X}_i + (u_i - \beta_1 e_i) \\
+&= \beta_0 + \beta_1 \tilde{X}_i + v_i
+\end{aligned}
+$$
+
+$v_i = u_i - \beta_1 e_i$는 **복합 오차(composite error)** 항이다.
+
+$\tilde{X}_i$와 $v_i$ 모두 $e_i$를 포함하므로 다음이 성립한다.
+
+$$
+Cov(\tilde{X}_i, v_i) \neq 0
+$$
+
+이 상관은 외생성 가정을 위반하고 [내생성](#sec-endogeneity)을 유발한다.
+
+------------------------------------------------------------------------
+
+점근적 편향은 다음과 같이 유도할 수 있다.
+
+$$
+\begin{aligned}
+E[\tilde{X}_i v_i] &= E[(X_i + e_i)(u_i - \beta_1 e_i)] \\
+&= -\beta_1 Var(e_i) \\
+&\neq 0
+\end{aligned}
+$$
+
+따라서 다음을 알 수 있다.
+
+-   $\beta_1 > 0$이면 $\hat{\beta}_1$은 **하향** 편향된다.
+-   $\beta_1 < 0$이면 $\hat{\beta}_1$은 **상향** 편향된다.
+
+이를 **감쇠 편향(attenuation bias)**이라고 하며, 추정된 효과가 0 쪽으로 편향된다는 뜻이다.
+
+**오차의 분산** $Var(e_i)$이 증가하거나 $\frac{Var(e_i)}{Var(\tilde{X}_i)} \to 1$이 되면 이 편향은 더욱 심해진다.
+
+------------------------------------------------------------------------
+
+**감쇠 계수(Attenuation Factor)**
+
+잡음이 포함된 회귀변수에 기초한 OLS 추정량은 다음과 같다.
+
+$$
+\hat{\beta}_{OLS} = \frac{ \text{cov}(\tilde{X}, Y)}{\text{var}(\tilde{X})} = \frac{\text{cov}(X + e, \beta X + u)}{\text{var}(X + e)}.
+$$
+
+고전적 측정오차의 가정을 이용하면 다음을 얻는다.
+
+$$
+plim\ \hat{\beta}_{OLS} = \beta \cdot \frac{\sigma_X^2}{\sigma_X^2 + \sigma_e^2} = \beta \cdot \lambda,
+$$
+
+여기서:
+
+-   $\sigma_X^2$는 참 회귀변수 $X$의 분산이고,
+-   $\sigma_e^2$는 측정오차 $e$의 분산이며,
+-   $\lambda = \frac{\sigma_X^2}{\sigma_X^2 + \sigma_e^2}$는 **신뢰도 비율(reliability ratio)**, **신호 대 전체 분산 비율(signal-to-total variance ratio)** 또는 **감쇠 계수(attenuation factor)**라고 한다.
+
+$\lambda \in (0, 1]$이므로 편향은 항상 추정치를 0 쪽으로 감쇠시킨다. 감쇠 편향의 정도는 다음과 같다.
+
+$$
+\hat{\beta}_{OLS} - \beta = - (1 - \lambda)\beta,
+$$
+
+따라서 다음이 성립한다.
+
+-   $\lambda = 1$이면 $\hat{\beta}_{OLS} = \beta$ --- 편향이 없다(측정오차가 없다).
+-   $\lambda < 1$이면 $\hat{\beta}_{OLS} < \beta$ --- 0을 향해 감쇠된다.
+
+------------------------------------------------------------------------
+
+**측정오차에 관한 중요 사항**
+
+-   **데이터 변환은 측정오차를 확대할 수 있다.**
+
+    참인 모형이 비선형이라고 하자.
+
+    $$
+    y = \beta x + \gamma x^2 + \epsilon,
+    $$
+
+    $x$가 고전적 오차를 포함해 측정된다면 $\hat{\gamma}$의 감쇠 계수는 $\hat{\beta}$ 감쇠 계수의 **대략 제곱**이 된다.
+
+    $$
+    \lambda_{\hat{\gamma}} \approx \lambda_{\hat{\beta}}^2.
+    $$
+
+    이는 비선형 변환(예: 제곱, 로그)이 측정오차 문제를 악화시킬 수 있음을 보여준다.
+
+-   **공변량을 포함하면 감쇠 편향이 커질 수 있다.**
+
+    오측정된 변수와 상관된 공변량을 추가하면 관심 계수의 편향이 **악화**될 수 있으며, 특히 해당 공변량의 측정오차를 고려하지 않은 경우 그러하다.
+
+------------------------------------------------------------------------
+
+**측정오차의 해결책**
+
+고전적 측정오차로 인한 감쇠 편향을 다루기 위해 다음 전략을 고려할 수 있다.
+
+1.  **검증 자료 또는 설문 정보를 사용**해 $\sigma_X^2$, $\sigma_e^2$ 또는 $\lambda$를 추정하고 보정 방법(예: SIMEX, 회귀 보정)을 적용한다.
+2.  [도구변수 접근법(Instrumental Variables Approach)](#sec-instrumental-variables)\
+    다음 조건을 만족하는 도구 $Z$를 사용한다.
+    -   참변수 $X$와 상관된다.
+    -   회귀오차 $\epsilon$과 무상관이다.
+    -   측정오차 $e$와 무상관이다.
+3.  **분석을 재고한다.**\
+    좋은 도구나 검증 자료가 없고 감쇠 편향이 지나치게 크다면 분석 또는 연구 질문을 재고하는 것이 바람직할 수 있다.
+
+------------------------------------------------------------------------
+
+##### 좌변 변수(Left-Hand Side Variable) {#sec-left-hand-side-variable}
+
+**종속변수**(즉, 반응변수 또는 결과변수)의 측정오차는 설명변수의 측정오차와 근본적으로 다르다. 종속변수 측정오차는 회귀계수의 일치적 추정에는 대체로 **문제가 덜하지만**(예: 조건부 평균 0 가정을 위반하지 않음), **통계적 추론**(예: 표준오차 증가)이나 모형 적합도에는 반드시 그렇다고 할 수 없다.
+
+------------------------------------------------------------------------
+
+표준 선형 회귀모형에 관심이 있다고 하자.
+
+$$
+Y_i = \beta X_i + u_i,
+$$
+
+하지만 $Y_i$를 직접 관측하지 못하고 다음을 관측한다.
+
+$$
+\tilde{Y}_i = Y_i + v_i,
+$$
+
+여기서:
+
+-   $v_i$는 종속변수의 측정오차이고,
+-   $E[v_i] = 0$(평균이 0)이며,
+-   $v_i$는 $X_i$ 및 $u_i$와 무상관이고,
+-   $v_i$는 **등분산(homoskedastic)**이며 관측치 간 독립이다.
+
+> **여기서는 특히 주의해야 한다!**
+>
+> 이는 고전적 오차의 가정이다.
+>
+> 1.  **평균 0:** $\mathbb{E}[v\mid X]=0$.
+> 2.  **외생성:** $v$는 각 회귀변수 **및** 구조적 교란항 $\epsilon$과 무상관이다(즉, $\operatorname{Cov}(X,v)=\operatorname{Cov}(\epsilon,v)=0$).
+> 3.  대수의 법칙이 적용되기 위한 **등분산성/유한 모멘트**.
+
+------------------------------------------------------------------------
+
+실제로 추정하는 회귀식은 다음과 같다.
+
+$$
+\tilde{Y}_i = \beta X_i + u_i + v_i.
+$$
+
+복합 오차항을 다음과 같이 정의할 수 있다.
+
+$$
+\tilde{u}_i = u_i + v_i,
+$$
+
+그러면 모형은 다음과 같이 된다.
+
+$$
+\tilde{Y}_i = \beta X_i + \tilde{u}_i.
+$$
+
+고전적 오차 가정 아래에서 추가 잡음은 복합 오차항 $\tilde{u}_i$를 단순히 키울 뿐이며, 다음과 같이
+
+$$ 
+\hat\beta^{\text{OLS}}    =\beta + ( X' X)^{-1} X'(u+v) \xrightarrow{p} \beta , 
+$$
+
+추정량은 **일치적**으로 유지되고 분산만 증가한다.
+
+------------------------------------------------------------------------
+
+**핵심 통찰**
+
+-   $\hat{\beta}$의 **불편성과 일치성**:
+
+    고전적 가정 아래에서 성립하는 $E[\tilde{u}_i \mid X_i] = 0$(즉, $E[u_i \mid X_i] = 0$ 및 $E[v_i \mid X_i] = 0$)가 성립하는 한 $\beta$의 OLS 추정량은 **불편**이고 **일치적**이다.
+
+    이는 [좌변](#sec-left-hand-side-variable)의 측정오차가 **내생성을 유발하지 않기** 때문이다. 조건부 평균 0 가정이 보존된다.
+
+-   해석(인과효과의 식별):
+
+    계량경제학자와 인과 연구자는 엄격한 외생성 아래에서 인과효과를 **일치적으로 추정**하는 데 주로 관심을 둔다. $v_i$는 결과에 잡음만 추가하고 $X_i$와 체계적으로 관련되지 않으므로 기울기 추정치 $\hat{\beta}$는 인과효과 $\beta$의 타당한 추정치로 남는다.
+
+-   통계적 함의(추론과 정밀도):
+
+    $\hat{\beta}$는 일치적이지만 추가된 잡음 $v_i$로 인해 오차항의 분산은 증가한다. 구체적으로,
+
+    $$
+    \text{Var}(\tilde{u}_i) = \text{Var}(u_i) + \text{Var}(v_i) = \sigma_u^2 + \sigma_v^2.
+    $$
+
+    이에 따라 다음이 발생한다.
+
+    -   **잔차 분산 증가** $\Rightarrow$ $R^2$ 감소
+    -   계수 추정치의 **표준오차 증가**
+    -   **신뢰구간 확대**로 인한 추론의 정밀도 감소
+
+    따라서 점 추정치는 타당하더라도 **추론은 약해진다**. 가설검정의 검정력은 낮아지고 결론의 정밀도는 떨어진다.
+
+------------------------------------------------------------------------
+
+**실제 예시**
+
+-   $X$가 마케팅 투자이고 $Y$가 매출이라고 하자.
+-   매출이 잡음을 포함해 측정되더라도(예: 잘못 기록된 매출자료, 반올림, 보고 지연) 마케팅 계수는 여전히 일치적으로 추정된다.
+-   그러나 추정치의 불확실성은 커진다. 신뢰구간이 넓어져 특히 소표본에서 통계적으로 유의한 효과를 발견하기 어려워질 수 있다.
+
+------------------------------------------------------------------------
+
+**요약 표: 측정오차의 결과**
+
+표 \@ref(tab:endog-measurement-error-consequences)는 회귀변수와 결과변수의 측정오차가 초래하는 결과를 비교한다.
+
+| Location of Measurement Error | Bias in $\hat{\beta}$ | Consistency | Affects Inference? | Typical Concern           |
+|-------------------------------|-----------------------|-------------|--------------------|---------------------------|
+| Regressor ($X$)               | Yes (attenuation)     | No          | Yes                | Econometric & statistical |
+| Outcome ($Y$)                 | No                    | Yes         | Yes                | Mainly statistical        |
+
+표: (\#tab:endog-measurement-error-consequences) 회귀변수와 결과변수의 고전적 측정오차가 OLS의 편향, 일치성 및 추론에 미치는 결과.
+
+------------------------------------------------------------------------
+
+#### 비고전적 측정오차(Non-Classical Measurement Error) {#sec-non-classical-measurement-error}
+
+In the classical measurement error model, we assume that the measurement error $\epsilon$ is **independent** of the true variable $X$ and of the regression disturbance $u$. However, in many realistic data scenarios, this assumption does not hold. [Non-classical measurement error](#sec-non-classical-measurement-error) refers to cases where:
+
+-   $\epsilon$ is **correlated** with $X$,
+-   or possibly even **correlated** with $u$.
+
+Violating the classical assumptions introduces additional and potentially complex biases in OLS estimation.
+
+------------------------------------------------------------------------
+
+Recall that in the [classical measurement error model](#sec-classical-measurement-error), we observe:
+
+$$
+\tilde{X} = X + \epsilon,
+$$
+
+where:
+
+-   $\epsilon$ is independent of $X$ and $u$,
+-   $E[\epsilon] = 0$.
+
+The true model is:
+
+$$
+Y = \beta X + u.
+$$
+
+Then, OLS based on the mismeasured regressor gives:
+
+$$
+\hat{\beta}_{OLS} = \frac{\text{cov}(\tilde{X}, Y)}{\text{var}(\tilde{X})} = \frac{\text{cov}(X + \epsilon, \beta X + u)}{\text{var}(X + \epsilon)}.
+$$
+
+With classical assumptions, this simplifies to:
+
+$$
+plim\ \hat{\beta}_{OLS} = \beta \cdot \frac{\sigma_X^2}{\sigma_X^2 + \sigma_\epsilon^2} = \beta \cdot \lambda,
+$$
+
+where $\lambda$ is the **reliability ratio**, which attenuates $\hat{\beta}$ toward zero.
+
+------------------------------------------------------------------------
+
+Let us now relax the independence assumption and allow for correlation between $X$ and $\epsilon$. In particular, suppose:
+
+-   $\text{cov}(X, \epsilon) = \sigma_{X\epsilon} \ne 0$.
+
+Then the probability limit of the OLS estimator becomes:
+
+$$
+\begin{aligned}
+plim\ \hat{\beta} 
+&= \frac{\text{cov}(X + \epsilon, \beta X + u)}{\text{var}(X + \epsilon)} \\
+&= \frac{\beta (\sigma_X^2 + \sigma_{X\epsilon})}{\sigma_X^2 + \sigma_\epsilon^2 + 2 \sigma_{X\epsilon}}.
+\end{aligned}
+$$
+
+We can rewrite this as:
+
+$$
+\begin{aligned}
+plim\ \hat{\beta} 
+&= \beta \left(1 - \frac{\sigma_\epsilon^2 + \sigma_{X\epsilon}}{\sigma_X^2 + \sigma_\epsilon^2 + 2 \sigma_{X\epsilon}} \right) \\
+&= \beta (1 - b_{\epsilon \tilde{X}}),
+\end{aligned}
+$$
+
+where $b_{\epsilon \tilde{X}}$ is the **regression coefficient of** $\epsilon$ on $\tilde{X}$, or more precisely:
+
+$$
+b_{\epsilon \tilde{X}} = \frac{\text{cov}(\epsilon, \tilde{X})}{\text{var}(\tilde{X})}.
+$$
+
+This makes clear that the bias in $\hat{\beta}$ depends on how strongly the measurement error is correlated with the observed regressor $\tilde{X}$. This general formulation nests the [classical case](#sec-classical-measurement-error) as a special case:
+
+-   In classical error: $\sigma_{X\epsilon} = 0 \Rightarrow b_{\epsilon \tilde{X}} = \frac{\sigma^2_\epsilon}{\sigma^2_X + \sigma^2_\epsilon} = 1 - \lambda$.
+
+------------------------------------------------------------------------
+
+**Implications of Non-Classical Measurement Error**
+
+-   When $\sigma_{X\epsilon} > 0$, the **attenuation bias can increase or decrease** depending on the balance of variances.
+-   In particular:
+    -   If more than **half of the variance in** $\tilde{X}$ is due to measurement error, increasing $\sigma_{X\epsilon}$ increases attenuation.
+    -   If less than half is due to measurement error, it can actually **reduce** attenuation.
+-   This phenomenon is sometimes called **mean-reverting measurement error**: the measurement error pulls observed values toward the mean, distorting estimates [@bound1989measurement, @bound2001measurement].
+
+------------------------------------------------------------------------
+
+##### 비고전적 측정오차의 일반적 틀
+
+@bound2001measurement offer a unified matrix framework that accommodates measurement error in both the independent and dependent variables.
+
+Let the true model be:
+
+$$
+\mathbf{Y = X \beta + \epsilon},
+$$
+
+but we observe $\tilde{X} = X + U$ and $\tilde{Y} = Y + v$, where:
+
+-   $U$ is a matrix of measurement error in $X$,
+-   $v$ is a vector of measurement error in $Y$.
+
+Then, the observed model becomes:
+
+$$
+\hat{\beta} = (\tilde{X}' \tilde{X})^{-1} \tilde{X}' \tilde{Y}.
+$$
+
+Substituting the observed quantities:
+
+$$
+\begin{aligned}
+\tilde{Y} &= Y + v = X \beta + \epsilon + v, \\
+&= \tilde{X} \beta - U \beta + v + \epsilon.
+\end{aligned}
+$$
+
+Hence,
+
+$$
+\hat{\beta} = (\tilde{X}' \tilde{X})^{-1} \tilde{X}' (\tilde{X} \beta - U \beta + v + \epsilon),
+$$
+
+which simplifies to:
+
+$$
+\hat{\beta} = \beta + (\tilde{X}' \tilde{X})^{-1} \tilde{X}' (-U \beta + v + \epsilon).
+$$
+
+Taking the probability limit:
+
+$$
+plim\ \hat{\beta} = \beta + plim\ [(\tilde{X}' \tilde{X})^{-1} \tilde{X}' (-U \beta + v)],
+$$
+
+Now define:
+
+$$
+W = [U \quad v],
+$$
+
+and we can express the bias compactly as:
+
+$$
+plim\ \hat{\beta} = \beta + plim\ [(\tilde{X}' \tilde{X})^{-1} \tilde{X}' W 
+\begin{bmatrix}
+- \beta \\
+1
+\end{bmatrix}
+].
+$$
+
+This formulation highlights a powerful insight:
+
+> Bias in $\hat{\beta}$ arises from the linear projection of the measurement errors onto the observed $\tilde{X}$.
+
+This expression **does not assert** that $v$ *necessarily* biases $\hat\beta$; it simply makes explicit that bias arises whenever the *linear projection* of $(U\beta-v)$ onto $\tilde X$ is non‑zero. Three cases illustrate the point (Table \@ref(tab:endog-measurement-error-cases)).
+
++--------------------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| Case                                                               | Key correlation                   | Consequence for $\hat\beta$                        |
++--------------------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| [**Classical Y‑error only**](#sec-left-hand-side-variable)         | projection term vanishes          | **Consistent**; larger standard errors             |
+|                                                                    |                                   |                                                    |
+| $U\equiv0, \operatorname{Cov}(\tilde X,v)=0$                     |                                   |                                                    |
++--------------------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| **Correlated Y‑error**                                             | projection picks up $v$           | **Biased** (attenuation or sign reversal possible) |
+|                                                                    |                                   |                                                    |
+| $U\equiv0, \operatorname{Cov}(\tilde X,v)\neq0$                  |                                   |                                                    |
++--------------------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| **Both X‑ and Y‑error, independent**                               | $U\beta$ projects onto $\tilde X$ | **Biased** because of $U$, **not** $v$             |
+|                                                                    |                                   |                                                    |
+| $\operatorname{Cov}(X,U)\neq0, \operatorname{Cov}(\tilde X,v)=0$ |                                   |                                                    |
++--------------------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+
+표: (\#tab:endog-measurement-error-cases) 세 가지 측정오차 사례와 각각이 OLS 편향 및 일치성에 미치는 결과.
+
+따라서 [통상적인](#sec-left-hand-side-variable) “무해한 $Y$ 잡음” 결과는 첫 번째 행의 특수한 경우다.
+
+------------------------------------------------------------------------
+
+**실무적 함의**
+
+1.  **가정을 명시적으로 점검한다.** 자료가 자기보고, 동시적 대리변수 또는 모형화된 결과로 생성되었다면 $\operatorname{Cov}(X,v)=0$이라고 가정하는 것은 대체로 안전하지 않다.
+
+2.  $Y$의 **상관된 오차**는 다음 경로로 유입될 수 있다.
+
+    -   **공통 데이터 생성 메커니즘**(예: 동일한 설문 모듈이 소득($Y$)과 근로시간($X$)을 모두 기록하는 경우).
+    -   $v$가 $\tilde Y$를 만드는 데 사용된 특성과의 상관을 물려받는 **예측으로 생성된 변수**.
+
+3.  행정자료나 센서 자료에서는 **공동 오측정**($U$와 $v$의 상관)이 흔하다. 이 경우 $X$에 대해서는 “고전적”인 $v$조차 $\tilde X=X+U$와 상관될 수 있다.
+
+> $Y$의 측정오차는 강한 외생성과 독립성 조건 아래에서만 *무해하다*. Bound, Brown, Mathiowetz의 행렬 형식 [@bound2001measurement]은 이러한 조건이 깨지거나 $X$ 자체가 오측정되면 $X$의 감쇠 편향을 낳는 동일한 사영 논리가 $v$의 편향을 $\hat\beta$로 전달할 수도 있음을 보여준다.
+
+따라서 배운 경험칙은 좁은 고전적 상황에서는 맞지만, @bound2001measurement는 실증 연구가 이러한 안전한 범위를 벗어나는 경우가 많다는 점을 상기시킨다.
+
+------------------------------------------------------------------------
+
+**결과와 보정**
+
+-   비고전적 오차는 항상 감쇠를 일으키는 고전적 경우와 달리 **과대추정 또는 과소추정**을 초래할 수 있다.
+-   편향의 방향과 크기는 $X$, $\epsilon$, $v$의 상관 구조에 따라 달라진다.
+-   체계적 오보고가 발생하는 많은 설문 및 행정자료 환경에서 이는 심각한 문제를 일으킨다.
+
+------------------------------------------------------------------------
+
+**실무적 해결책**
+
+1.  [도구변수(Instrumental Variables)](#sec-instrumental-variables)\
+    참변수 $X$와 상관되지만 측정오차 및 회귀 교란항과는 무상관인 도구 $Z$를 사용한다. IV는 [고전적](#sec-classical-measurement-error) 오차와 [비고전적](#sec-non-classical-measurement-error) 오차로 인한 편향을 모두 제거하는 데 도움이 될 수 있다.
+
+2.  **검증 연구(Validation Studies)**\
+    정확한 측정치를 가진 자료의 일부를 사용해 측정오차의 구조를 추정하고 회귀 보정, 다중대치 또는 SIMEX와 같은 기법으로 추정치를 보정한다.
+
+3.  **오차 과정의 모형화(Modeling the Error Process)**\
+    특히 종단자료나 패널자료에서 측정오차 과정을 명시적으로 모형화한다(예: 상태공간 모형 또는 Bayesian 접근법).
+
+4.  **이항/더미변수의 경우**\
+    이항 회귀변수의 비고전적 오차(예: 오분류)도 편향을 일으키지만 IV 방법은 여전히 적용된다. 예를 들어 설문자료에서 교육수준이 잘못 보고되었다면 유효한 도구(예: 정책에 따른 변이)로 오분류 편향을 보정할 수 있다.
+
+------------------------------------------------------------------------
+
+**요약**
+
+표 \@ref(tab:endog-classical-vs-nonclassical-error)는 고전적 측정오차와 비고전적 측정오차를 비교한다.
+
+| Feature                      | Classical Error    | Non-Classical Error             |
+|------------------------------|--------------------|---------------------------------|
+| $\text{Cov}(X, \epsilon)$    | 0                  | $\ne 0$                         |
+| Bias in $\hat{\beta}$        | Always attenuation | Can attenuate or inflate        |
+| Consistency of OLS           | No                 | No                              |
+| Effect of Variance Structure | Predictable        | Depends on $\sigma_{X\epsilon}$ |
+| Fixable with IV              | Yes                | Yes                             |
+
+표: (\#tab:endog-classical-vs-nonclassical-error) 편향의 방향, 일치성 및 해결책을 기준으로 비교한 고전적 측정오차와 비고전적 측정오차.
+
+> 요컨대 **비고전적 측정오차는 감쇠 편향이라는 안심할 만한 규칙성을 깨뜨린다**. 오차의 성격과 구조에 따라 임의의 편향을 만들 수 있다. [도구변수](#sec-instrumental-variables)와 검증 연구가 이 복잡한 문제를 다루는 유일하게 신뢰할 만한 도구인 경우가 많다.
+
+------------------------------------------------------------------------
+
+#### 상관 추정에서 측정오차의 해결
+
+##### 상관계수의 Bayesian 보정
+
+We begin by expressing the Bayesian posterior for a correlation coefficient $\rho$:
+
+$$
+\begin{aligned}
+P(\rho \mid \text{data}) &= \frac{P(\text{data} \mid \rho) P(\rho)}{P(\text{data})} \\
+\text{Posterior Probability} &\propto \text{Likelihood} \times \text{Prior Probability}
+\end{aligned}
+$$
+
+Where:
+
+-   $\rho$ is the true population correlation coefficient
+-   $P(\text{data} \mid \rho)$ is the likelihood function
+-   $P(\rho)$ is the prior density of $\rho$
+-   $P(\text{data})$ is the marginal likelihood (a normalizing constant)
+
+With sample correlation coefficient $r$:
+
+$$
+r = \frac{S_{xy}}{\sqrt{S_{xx} S_{yy}}}
+$$
+
+According to @schisterman2003estimation, pp. 3, the posterior density of $\rho$ can be approximated as:
+
+$$
+P(\rho \mid x, y) \propto P(\rho) \cdot \frac{(1 - \rho^2)^{(n - 1)/2}}{(1 - \rho r)^{n - 3/2}}
+$$
+
+This approximation leads to a posterior that can be modeled via the Fisher transformation:
+
+-   Let $\rho = \tanh(\xi)$, where $\xi \sim N(z, 1/n)$
+-   $r = \tanh(z)$ is the Fisher-transformed correlation
+
+Using conjugate normal approximations, we derive the posterior for the transformed correlation $\xi$ as:
+
+-   **Posterior Variance:**
+
+$$
+\sigma^2_{\text{posterior}} = \frac{1}{n_{\text{prior}} + n_{\text{likelihood}}}
+$$
+
+-   **Posterior Mean:**
+
+$$
+\mu_{\text{posterior}} = \sigma^2_{\text{posterior}} \left(n_{\text{prior}} \cdot \tanh^{-1}(r_{\text{prior}}) + n_{\text{likelihood}} \cdot \tanh^{-1}(r_{\text{likelihood}})\right)
+$$
+
+To simplify the mathematics, we may assume a prior of the form:
+
+$$
+P(\rho) \propto (1 - \rho^2)^c
+$$
+
+where $c$ controls the strength of the prior. If no prior information is available, we can set $c = 0$ so that $P(\rho) \propto 1$.
+
+------------------------------------------------------------------------
+
+**Example: Combining Estimates from Two Studies**
+
+Let:
+
+-   Current study: $r_{\text{likelihood}} = 0.5$, $n_{\text{likelihood}} = 200$
+-   Prior study: $r_{\text{prior}} = 0.2765$, $n_{\text{prior}} = 50205$
+
+**Step 1: Posterior Variance**
+
+$$
+\sigma^2_{\text{posterior}} = \frac{1}{50205 + 200} = 0.0000198393
+$$
+
+**Step 2: Posterior Mean**
+
+Apply Fisher transformation:
+
+-   $\tanh^{-1}(0.2765) \approx 0.2841$
+-   $\tanh^{-1}(0.5) = 0.5493$
+
+Then:
+
+$$
+\begin{aligned}
+\mu_{\text{posterior}} &= 0.0000198393 \times (50205 \times 0.2841 + 200 \times 0.5493) \\
+&= 0.0000198393 \times (14260.7 + 109.86) \\
+&= 0.0000198393 \times 14370.56 = 0.2850
+\end{aligned}
+$$
+
+Thus, the posterior distribution of $\xi = \tanh^{-1}(\rho)$ is:
+
+$$
+\xi \sim N(0.2850, 0.0000198393)
+$$
+
+Transforming back:
+
+-   Posterior mean correlation: $\rho = \tanh(0.2850) = 0.2776$
+-   95% CI for $\xi$: $0.2850 \pm 1.96 \cdot \sqrt{0.0000198393} = (0.2762, 0.2937)$
+-   Transforming endpoints: $\tanh(0.2762) = 0.2694$, $\tanh(0.2937) = 0.2855$
+
+The Bayesian posterior distribution for the correlation coefficient is:
+
+-   Mean: $\hat{\rho}_{\text{posterior}} = 0.2776$
+-   95% CI: $(0.2694,\ 0.2855)$
+
+------------------------------------------------------------------------
+
+This Bayesian adjustment is especially useful when:
+
+1.  There is high sampling variation due to small sample sizes
+2.  Measurement error attenuates the observed correlation
+3.  Combining evidence from multiple studies (meta-analytic context)
+
+By leveraging prior information and applying the Fisher transformation, researchers can obtain a more stable and accurate estimate of the true underlying correlation.
+
+```{r}
+# Define inputs
+n_new  <- 200
+r_new  <- 0.5
+alpha  <- 0.05
+
+# Bayesian update function for correlation coefficient
+update_correlation <- function(n_new, r_new, alpha) {
+  
+  # Prior (meta-analysis study)
+  n_meta <- 50205
+  r_meta <- 0.2765
+  
+  # Step 1: Posterior variance (in Fisher-z space)
+  var_xi <- 1 / (n_new + n_meta)
+  
+  # Step 2: Posterior mean (in Fisher-z space)
+  mu_xi <- var_xi * (n_meta * atanh(r_meta) + n_new * atanh(r_new))
+  
+  # Step 3: Confidence interval in Fisher-z space
+  z_crit    <- qnorm(1 - alpha / 2)
+  upper_xi  <- mu_xi + z_crit * sqrt(var_xi)
+  lower_xi  <- mu_xi - z_crit * sqrt(var_xi)
+  
+  # Step 4: Transform back to correlation scale
+  mean_rho  <- tanh(mu_xi)
+  upper_rho <- tanh(upper_xi)
+  lower_rho <- tanh(lower_xi)
+  
+  # Return all values as a list
+  list(
+    mu_xi     = mu_xi,
+    var_xi    = var_xi,
+    upper_xi  = upper_xi,
+    lower_xi  = lower_xi,
+    mean_rho  = mean_rho,
+    upper_rho = upper_rho,
+    lower_rho = lower_rho
+  )
+}
+
+
+# Run update
+updated <-
+    update_correlation(n_new = n_new,
+                       r_new = r_new,
+                       alpha = alpha)
+
+# Display updated posterior mean and confidence interval
+cat("Posterior mean of rho:", round(updated$mean_rho, 4), "\n")
+cat(
+    "95% CI for rho: (",
+    round(updated$lower_rho, 4),
+    ",",
+    round(updated$upper_rho, 4),
+    ")\n"
+)
+
+# For comparison: Classical (frequentist) confidence interval around r_new
+se_r  <- sqrt(1 / n_new)
+z_r   <- qnorm(1 - alpha / 2) * se_r
+ci_lo <- r_new - z_r
+ci_hi <- r_new + z_r
+
+cat("Frequentist 95% CI for r:",
+    round(ci_lo, 4),
+    "to",
+    round(ci_hi, 4),
+    "\n")
+```
+
+------------------------------------------------------------------------
+
+### 동시성(Simultaneity) {#sec-simultaneity}
+
+Simultaneity arises when at least one of the explanatory variables in a regression model is **jointly determined** with the dependent variable, violating a critical assumption for causal inference: **temporal precedence**.
+
+#### 동시성이 중요한 이유
+
+-   In classical regression, we assume that regressors are determined exogenously, that is, not influenced by the dependent variable.
+-   Simultaneity introduces [endogeneity](#sec-endogeneity), where regressors are correlated with the error term, rendering OLS **estimators biased and inconsistent**.
+-   This has major implications in fields like economics, marketing, finance, and social sciences, where feedback mechanisms or equilibrium processes are common.
+
+#### 실제 사례
+
+-   Demand and supply: Price and quantity are determined together in market equilibrium.
+-   Sales and advertising: Advertising influences sales, but firms also adjust advertising based on current or anticipated sales.
+-   Productivity and investment: Higher productivity may attract investment, but investment can improve productivity.
+
+------------------------------------------------------------------------
+
+#### 동시방정식 체계
+
+We begin with a basic two-equation structural model:
+
+$$
+\begin{aligned}
+Y_i &= \beta_0 + \beta_1 X_i + u_i \quad \text{(Structural equation for } Y) \\
+X_i &= \alpha_0 + \alpha_1 Y_i + v_i \quad \text{(Structural equation for } X)
+\end{aligned}
+$$
+
+Here:
+
+-   $Y_i$ and $X_i$ are [endogenous variables](#sec-endogeneity) --- both determined within the system.
+-   $u_i$ and $v_i$ are structural error terms, assumed to be uncorrelated with the exogenous variables (if any).
+
+The equations form a **simultaneous system** because each endogenous variable appears on the right-hand side of the other's equation.
+
+------------------------------------------------------------------------
+
+To uncover the statistical properties of these equations, we solve for $Y_i$ and $X_i$ as functions of the error terms only:
+
+$$
+\begin{aligned}
+Y_i &= \frac{\beta_0 + \beta_1 \alpha_0}{1 - \alpha_1 \beta_1} + \frac{\beta_1 v_i + u_i}{1 - \alpha_1 \beta_1} \\
+X_i &= \frac{\alpha_0 + \alpha_1 \beta_0}{1 - \alpha_1 \beta_1} + \frac{v_i + \alpha_1 u_i}{1 - \alpha_1 \beta_1}
+\end{aligned}
+$$
+
+These are the **reduced-form equations**, expressing the endogenous variables as functions of exogenous factors and disturbances.
+
+------------------------------------------------------------------------
+
+#### OLS에서의 동시성 편향
+
+If we naïvely estimate the first equation using OLS, assuming $X_i$ is exogenous, we get:
+
+$$
+\text{Bias: } \quad Cov(X_i, u_i) = Cov\left(\frac{v_i + \alpha_1 u_i}{1 - \alpha_1 \beta_1}, u_i\right) = \frac{\alpha_1}{1 - \alpha_1 \beta_1} \cdot Var(u_i)
+$$
+
+This violates the [Gauss-Markov Theorem] that regressors be uncorrelated with the error term. The OLS estimator for $\beta_1$ is **biased and inconsistent**.
+
+------------------------------------------------------------------------
+
+To allow for identification and estimation, we introduce **exogenous variables**:
+
+$$
+\begin{cases}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 T_i + u_i \\
+X_i = \alpha_0 + \alpha_1 Y_i + \alpha_2 Z_i + v_i
+\end{cases}
+$$
+
+Where:
+
+-   $X_i$, $Y_i$ --- [endogenous](#sec-endogeneity) variables
+-   $T_i$, $Z_i$ --- **exogenous** variables, not influenced by any variable in the system
+
+------------------------------------------------------------------------
+
+Solving this system algebraically yields the reduced form model:
+
+$$
+\begin{cases}\begin{aligned}Y_i &= \frac{\beta_0 + \beta_1 \alpha_0}{1 - \alpha_1 \beta_1} + \frac{\beta_1 \alpha_2}{1 - \alpha_1 \beta_1} Z_i + \frac{\beta_2}{1 - \alpha_1 \beta_1} T_i + \tilde{u}_i \\&= B_0 + B_1 Z_i + B_2 T_i + \tilde{u}_i\end{aligned}\\\begin{aligned}X_i &= \frac{\alpha_0 + \alpha_1 \beta_0}{1 - \alpha_1 \beta_1} + \frac{\alpha_2}{1 - \alpha_1 \beta_1} Z_i + \frac{\alpha_1\beta_2}{1 - \alpha_1 \beta_1} T_i + \tilde{v}_i \\&= A_0 + A_1 Z_i + A_2 T_i + \tilde{v}_i\end{aligned}\end{cases}
+$$
+
+The reduced form expresses **endogenous variables as functions of exogenous instruments**, which we can estimate using OLS.
+
+------------------------------------------------------------------------
+
+Using reduced-form estimates $(A_1, A_2, B_1, B_2)$, we can identify (recover) the structural coefficients:
+
+$$
+\begin{aligned}
+\beta_1 &= \frac{B_1}{A_1} \\
+\beta_2 &= B_2 \left(1 - \frac{B_1 A_2}{A_1 B_2}\right) \\
+\alpha_1 &= \frac{A_2}{B_2} \\
+\alpha_2 &= A_1 \left(1 - \frac{B_1 A_2}{A_1 B_2} \right)
+\end{aligned}
+$$
+
+------------------------------------------------------------------------
+
+#### 식별 조건
+
+Estimation of structural parameters is only possible if the model is **identified**.
+
+**Order Condition (Necessary but Not Sufficient)**
+
+A structural equation is **identified** if:
+
+$$
+K - k \ge m - 1
+$$
+
+Where:
+
+-   $M$ = total number of endogenous variables in the system
+
+-   $m$ = number of endogenous variables in the given equation
+
+-   $K$ = number of total exogenous variables in the system
+
+-   $k$ = number of exogenous variables appearing in the given equation
+
+-   Just-identified: $K - k = m - 1$ (exact identification)
+
+-   Over-identified: $K - k > m - 1$ (more instruments than necessary)
+
+-   Under-identified: $K - k < m - 1$ (cannot be estimated)
+
+> Note: The order condition is necessary but not sufficient. The **rank condition** must also be satisfied for full identification, which we cover in [Instrumental Variables](#sec-instrumental-variables).
+
+This simultaneous equations framework provides the foundation for [instrumental variable](#sec-instrumental-variables) estimation, where:
+
+-   Exogenous variables not appearing in a structural equation serve as **instruments**.
+-   These instruments allow consistent estimation of endogenous regressors' effects.
+
+The reduced-form equations are often used to generate fitted values of endogenous regressors, which are then used in a Two-Stage Least Squares estimation process
+
+------------------------------------------------------------------------
+
+### 역인과성(Reverse Causality) {#sec-reverse-causality}
+
+Reverse causality refers to a situation in which the **direction of causation** is opposite to what is presumed. Specifically, we may model a relationship where variable $X$ is assumed to cause $Y$, but in reality, $Y$ causes $X$, or both influence each other in a feedback loop.
+
+This violates a fundamental assumption for causal inference: **temporal precedence** --- the cause must come before the effect. In the presence of reverse causality, the relationship between $X$ and $Y$ becomes ambiguous, and statistical estimators such as OLS become **biased and inconsistent**.
+
+------------------------------------------------------------------------
+
+In a standard linear regression model:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + u_i
+$$
+
+We interpret $\beta_1$ as the causal effect of $X$ on $Y$. However, this interpretation implicitly assumes that:
+
+-   $X_i$ is exogenous (uncorrelated with $u_i$)
+-   Changes in $X_i$ occur prior to or independently of changes in $Y_i$
+
+If $Y_i$ also affects $X_i$, then $X_i$ is not exogenous --- it is [endogenous](#sec-endogeneity), because it is correlated with $u_i$ via the reverse causal path.
+
+------------------------------------------------------------------------
+
+Reverse causality is especially problematic in observational data where interventions are not randomly assigned. Some key examples include:
+
+-   Health and income: Higher income may improve health outcomes, but healthier individuals may also earn more (e.g., due to better productivity or fewer sick days).
+-   Education and wages: Education raises wages, but higher-income individuals might afford better education --- or individuals with higher innate ability (reflected in $u$) pursue more education and also earn more.
+-   Crime and policing: Increased police presence is often assumed to reduce crime, but high-crime areas are also likely to receive more police resources.
+-   Advertising and sales: Firms advertise more to boost sales, but high sales may also lead to higher advertising budgets --- especially when revenue is reinvested in marketing.
+
+------------------------------------------------------------------------
+
+To model reverse causality explicitly, consider:
+
+#### 방정식 체계
+
+$$
+\begin{aligned}
+Y_i &= \beta_0 + \beta_1 X_i + u_i \quad &\text{(Y depends on X)} \\
+X_i &= \gamma_0 + \gamma_1 Y_i + v_i \quad &\text{(X depends on Y)}
+\end{aligned}
+$$
+
+This feedback loop represents a **simultaneous system**, but where the **causality direction is unclear**. The two equations indicate that **both variables are endogenous**.
+
+Even if we estimate only the first equation using OLS, the bias becomes apparent:
+
+$$
+Cov(X_i, u_i) \ne 0 \quad \Rightarrow \quad \hat{\beta}_1 \text{ is biased}
+$$
+
+Why? Because $X_i$ is determined by $Y_i$, which itself depends on $u_i$. Thus, $X_i$ indirectly depends on $u_i$.
+
+------------------------------------------------------------------------
+
+In causal diagram notation (Directed Acyclic Graphs, or DAGs), reverse causality violates the acyclicity assumption. Here's an example:
+
+-   Intended model: $X \rightarrow Y$
+-   Reality: $X \leftrightarrow Y$ (feedback loop)
+
+This **non-directional causality** prevents us from interpreting coefficients causally unless additional identification strategies are applied.
+
+------------------------------------------------------------------------
+
+OLS assumes:
+
+$$
+E[u_i \mid X_i] = 0
+$$
+
+Under reverse causality, this condition fails. The resulting estimator $\hat{\beta}_1$ captures both the effect of $X$ on $Y$ and the feedback from $Y$ to $X$, leading to:
+
+-   [Omitted variable bias](#sec-omitted-variable-bias): $X_i$ captures unobserved information from $Y_i$
+-   [Simultaneity bias](#sec-simultaneity): caused by the endogenous nature of $X_i$
+
+------------------------------------------------------------------------
+
+#### 동시성과의 구분
+
+Reverse causality is a **special case** of endogeneity, often manifesting as simultaneity. However, the key distinction is:
+
+-   [Simultaneity](#sec-simultaneity): Variables are determined together (e.g., in equilibrium models), and both are modeled explicitly in a system.
+-   [Reverse causality](#sec-reverse-causality): Only one equation is estimated, and the true causal direction is unknown or opposite to what is modeled.
+
+Reverse causality may or may not involve a full simultaneous system --- it's often **unrecognized** or **assumed away**, making it especially dangerous in empirical research.
+
+------------------------------------------------------------------------
+
+There are no mechanical tests that definitively detect reverse causality, but researchers can:
+
+-   Use temporal data (lags): Estimate $Y_{it} = \beta_0 + \beta_1 X_{i,t-1} + u_{it}$ and examine the temporal precedence of variables.
+-   Apply Granger causality tests in time series (not strictly causal, but helpful diagnostically).
+-   Use theoretical reasoning to justify directionality.
+-   Check robustness across different time frames or [instrumental variables](#sec-instrumental-variables).
+
+------------------------------------------------------------------------
+
+#### 역인과성의 해결책
+
+Because reverse causality is a special case of [endogeneity](#sec-endogeneity), the toolkit overlaps substantially with the methods used elsewhere in this chapter. The strategies below differ mainly in *how* they break the feedback loop: by finding variation that flows only one way, by removing the unobserved drivers of the loop, or by modelling both directions explicitly. The right choice depends on what data and identifying variation are available.
+
+1.  [Instrumental Variables](#sec-instrumental-variables)
+
+The IV approach isolates the variation in $X$ that comes from a source plausibly outside the loop, then uses only that variation to estimate the effect on $Y$.
+
+-   Find a variable $Z$ that affects $X$ but is not affected by $Y$, nor correlated with $u_i$.
+-   First stage: $X_i = \pi_0 + \pi_1 Z_i + e_i$
+-   Second stage: $\hat{X}_i$ from the first stage is used in the regression for $Y$.
+
+2.  [Randomized Controlled Trials](#sec-the-gold-standard-randomized-controlled-trials) (RCTs)
+
+When researchers can intervene directly, randomization severs the reverse arrow by construction.
+
+-   In experiments, the treatment (e.g., $X$) is assigned randomly and therefore exogenous by design.
+
+3.  Natural Experiments / [Quasi-Experimental Designs](#sec-quasi-experimental)
+
+When direct experimentation is infeasible, quasi-experiments substitute a policy or shock that mimics random assignment.
+
+-   Use external shocks or policy changes that affect $X$ but not $Y$ directly (e.g., [difference-in-differences](#sec-difference-in-differences), [regression discontinuity](#sec-regression-discontinuity)).
+
+4.  Panel Data Methods
+
+Repeated observations on the same units allow researchers to net out time-invariant unobservables that might otherwise be driving both $X$ and $Y$.
+
+-   Use fixed-effects or difference estimators to eliminate time-invariant confounders.
+-   Lag independent variables to examine delayed effects and improve causal direction inference.
+
+5.  Structural Equation Modeling
+
+When feedback is genuinely two-directional and theoretically informed, modelling the full system avoids the need to take sides on which equation is "the" causal one.
+
+-   Estimate a full system of equations to explicitly model feedback.
+
+------------------------------------------------------------------------
+
+### 누락변수 편향(Omitted Variable Bias) {#sec-omitted-variable-bias}
+
+**Omitted Variable Bias (OVB)** arises when a relevant explanatory variable that influences the dependent variable is left out of the regression model, and the omitted variable is **correlated** with one or more included regressors. This violates the exogeneity assumption of OLS and leads to **biased and inconsistent** estimators.
+
+Suppose we are interested in estimating the effect of an independent variable $X$ on an outcome $Y$, and the true data-generating process is:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 Z_i + u_i
+$$
+
+However, if we omit $Z_i$ and estimate the model:
+
+$$
+Y_i = \gamma_0 + \gamma_1 X_i + \varepsilon_i
+$$
+
+Then the estimate $\hat{\gamma}_1$ may be biased because $X_i$ may be correlated with $Z_i$, and $Z_i$ influences $Y_i$.
+
+------------------------------------------------------------------------
+
+Let us derive the bias formally.
+
+True model:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 Z_i + u_i \quad \text{(1)}
+$$
+
+Estimated model (with $Z_i$ omitted):
+
+$$
+Y_i = \gamma_0 + \gamma_1 X_i + \varepsilon_i \quad \text{(2)}
+$$
+
+Now, substitute the true model into the omitted model:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 Z_i + u_i = \gamma_0 + \gamma_1 X_i + \varepsilon_i
+$$
+
+Comparing both models, the omitted variable becomes part of the new error term:
+
+$$
+\varepsilon_i = \beta_2 Z_i + u_i
+$$
+
+Now, consider the OLS assumption:
+
+$$
+E[\varepsilon_i \mid X_i] = 0 \quad \text{(OLS requirement)}
+$$
+
+But since $\varepsilon_i = \beta_2 Z_i + u_i$ and $Z_i$ is correlated with $X_i$, we have:
+
+$$
+Cov(X_i, \varepsilon_i) = \beta_2 Cov(X_i, Z_i) \ne 0
+$$
+
+Therefore, OLS assumption fails, and $\hat{\gamma}_1$ is **biased**.
+
+------------------------------------------------------------------------
+
+Let us calculate the **expected value** of the OLS estimator $\hat{\gamma}_1$.
+
+From regression theory, when omitting $Z_i$, the expected value of $\hat{\gamma}_1$ is:
+
+$$
+E[\hat{\gamma}_1] = \beta_1 + \beta_2 \cdot \frac{Cov(X_i, Z_i)}{Var(X_i)}
+$$
+
+This is the **Omitted Variable Bias formula**.
+
+> **Interpretation**:\
+> The bias in $\hat{\gamma}_1$ depends on: - $\beta_2$: the true effect of the omitted variable on $Y$ - $Cov(X_i, Z_i)$: the correlation between $X$ and the omitted variable $Z$
+
+------------------------------------------------------------------------
+
+#### 편향의 방향
+
+-   If $\beta_2 > 0$ and $Cov(X_i, Z_i) > 0$: $\hat{\gamma}_1$ is **upward biased**
+-   If $\beta_2 < 0$ and $Cov(X_i, Z_i) > 0$: $\hat{\gamma}_1$ is **downward biased**
+-   If $Cov(X_i, Z_i) = 0$: **No bias**, even if $Z_i$ is omitted
+
+> **Note**: Uncorrelated omitted variables do **not** bias the OLS estimator, although they may reduce precision.
+
+------------------------------------------------------------------------
+
+#### 실제 예시: 교육과 소득
+
+Suppose we model:
+
+$$
+\text{Earnings}_i = \gamma_0 + \gamma_1 \cdot \text{Education}_i + \varepsilon_i
+$$
+
+But the true model includes ability ($Z_i$):
+
+$$
+\text{Earnings}_i = \beta_0 + \beta_1 \cdot \text{Education}_i + \beta_2 \cdot \text{Ability}_i + u_i
+$$
+
+Omitting "ability" --- a determinant of both education and earnings --- leads to bias in the estimated effect of education:
+
+-   If more able individuals pursue more education and ability raises earnings ($\beta_2 > 0$), then $\hat{\gamma}_1$ overstates the true return to education.
+
+------------------------------------------------------------------------
+
+#### 다중 회귀로의 일반화
+
+In models with multiple regressors, omitting a relevant variable that is correlated with at least one included regressor will bias all coefficients affected by the correlation structure.
+
+For example:
+
+$$
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i
+$$
+
+If $X_2$ is omitted, and $Cov(X_1, X_2) \ne 0$, then:
+
+$$
+E[\hat{\gamma}_1] = \beta_1 + \beta_2 \cdot \frac{Cov(X_1, X_2)}{Var(X_1)}
+$$
+
+------------------------------------------------------------------------
+
+#### OVB의 해결책
+
+The remedies below are ordered roughly from least to most demanding in terms of identifying assumptions. The simplest case, where the offending variable is observed, requires only a richer regression specification. As the omitted variable becomes harder to measure or fundamentally unobservable, researchers must lean on auxiliary variation: an external instrument, repeated observations on the same units, or random assignment.
+
+1.  Include the omitted variable
+
+The most direct fix is to stop omitting it. When $Z$ is measured (or a credible proxy is available), simply adding it to the regression closes the back-door path that creates the bias. This is the [selection-on-observables](#sec-selection-on-observables) strategy.
+
+-   If $Z$ is observed, include it in the regression model.
+
+2.  Use [Instrumental Variables](#sec-instrumental-variables)
+
+When $Z$ cannot be measured directly, an instrument $W$ provides a workaround: it isolates a slice of the variation in $X$ that is unrelated to the omitted confounder, allowing consistent estimation even though $Z$ remains unobserved.
+
+-   If $Z$ is unobserved but $X$ is endogenous, find an instrument $W$:
+
+    -   Relevance: $Cov(W, X) \ne 0$
+    -   Exogeneity: $Cov(W, u) = 0$
+
+3.  Use Panel Data Methods
+
+If the omitted variable is fixed within units over time (such as managerial talent or innate ability), longitudinal variation lets researchers difference it out without ever observing it.
+
+-   Fixed Effects: eliminate time-invariant omitted variables.
+-   [**Difference-in-Differences**](#sec-difference-in-differences): exploit temporal variation to isolate effects.
+
+4.  [Experimental Designs](#sec-the-gold-standard-randomized-controlled-trials)
+
+When feasible, randomization is the cleanest remedy because it makes the omitted variable irrelevant by construction: assignment is independent of every confounder, observed or not.
+
+-   **Randomization** ensures omitted variables are orthogonal to treatment, avoiding bias.
+
+------------------------------------------------------------------------
+
+## 도구변수 없는 식별: Gaussian Copula 보정 {#sec-copula-correction}
+
+Every remedy for an endogenous regressor surveyed so far, from [Instrumental Variables](#sec-instrumental-variables) to the [Control Function Approach](#sec-control-function-approach), rests on the same scarce resource: a valid instrument that shifts the endogenous regressor without touching the outcome except through that regressor. Credible instruments are hard to find and harder to defend, and a weak or invalid one can leave estimates more biased than OLS.
+
+A separate family of methods sidesteps the search for an instrument altogether. Instead of borrowing exogenous variation from outside the model, these *instrument-free* methods extract identifying information from the joint distribution of the observed variables. The three best known are the latent instrumental variable approach [@ebbes2005solving], the higher-moment and heteroskedasticity-based instruments of @lewbel2012using, and the Gaussian copula correction introduced to marketing by @park2012handling. The copula method has become the most widely applied of the three because it is simple to implement and extends naturally to nonlinear models. @qian2025practical provide the current practical guide, and this section follows their treatment, drawing the cautions from @becker2022revisiting and @eckert2023addressing and the recent refinements from @yang2025addressing.
+
+The trade is explicit. Instrument-free identification replaces an exclusion restriction, which is an economic argument about the data-generating process, with a distributional assumption, which is a statistical argument about functional form. Neither is testable in full, and the copula approach is no exception. It is best understood as a complement to a credible design and a robustness check, not as a substitute for thinking about identification [@papies2017addressing].
+
+### 설정과 직관
+
+Consider the structural model with a single continuous endogenous regressor $P_i$ and a vector of exogenous controls $\mathbf{X}_i$:
+
+$$
+Y_i = \beta_0 + \beta_P P_i + \mathbf{X}_i' \boldsymbol{\gamma} + \varepsilon_i, \qquad \text{Cov}(P_i, \varepsilon_i) = \rho \, \sigma_P \sigma_\varepsilon \ne 0 .
+$$
+
+The endogeneity is summarized by the correlation $\rho$ between the regressor and the structural error. OLS attributes the part of $Y$ driven by $\varepsilon$ to $P$, so $\hat{\beta}_P^{OLS}$ is biased by an amount that does not vanish as $n$ grows.
+
+The copula approach makes two modeling commitments. First, the structural error is normal, $\varepsilon_i \sim N(0, \sigma_\varepsilon^2)$. Second, the endogenous regressor has a continuous but *non-normal* marginal distribution $F_P$. The dependence between $P_i$ and $\varepsilon_i$ is then modeled with a Gaussian copula, which couples the two marginals through a single correlation parameter $\rho$ while leaving each marginal unrestricted. The asymmetry between the two assumptions, a normal error but a non-normal regressor, is exactly what makes the model identifiable, as the next subsections show.
+
+### Gaussian Copula 통제함수
+
+Apply the probability integral transform to the regressor and map it onto the normal scale:
+
+$$
+P_i^* = \Phi^{-1}\!\big(F_P(P_i)\big),
+$$
+
+where $\Phi^{-1}$ is the standard normal quantile function. By construction $P_i^*$ is a standard normal variable that preserves the rank ordering of $P_i$. Under the Gaussian copula assumption, the pair $\big(P_i^*, \varepsilon_i / \sigma_\varepsilon\big)$ is bivariate standard normal with correlation $\rho$, so the conditional mean of the error given the regressor is linear in $P_i^*$:
+
+$$
+E[\varepsilon_i \mid P_i] = \rho \, \sigma_\varepsilon \, P_i^* .
+$$
+
+This is the key result. The endogenous part of the error is a known function of the regressor up to the scalar $\lambda \equiv \rho \sigma_\varepsilon$. Augmenting the regression with $P_i^*$ as a generated control variable purges it:
+
+$$
+Y_i = \beta_0 + \beta_P P_i + \mathbf{X}_i' \boldsymbol{\gamma} + \lambda \, P_i^* + \nu_i, \qquad E[\nu_i \mid P_i, \mathbf{X}_i] = 0 .
+$$
+
+OLS on this augmented equation is consistent for $\beta_P$. The control term $P_i^*$ plays the same role as the inverse Mills ratio in a [Heckman correction](#sec-heckman-type-control-function) or the first-stage residual in a [control function](#sec-control-function-approach): it absorbs the component of the disturbance that is correlated with the regressor. The difference is that no instrument is needed to construct it. In practice $F_P$ is unknown and is replaced by the rescaled empirical CDF, $\hat{F}_P(P_i) = \big(\text{rank}(P_i) - 0.5\big) / n$, which keeps the transformed values away from the $\pm\infty$ tails.
+
+### 비정규성이 필요한 이유 {#sec-copula-nonnormality}
+
+The non-normality of $P_i$ is not a technical nicety; it is the identifying assumption. Suppose the regressor were normal, $P_i \sim N(\mu_P, \sigma_P^2)$. Then $F_P(P_i) = \Phi\big((P_i - \mu_P)/\sigma_P\big)$, and the copula term collapses to a linear function of the regressor itself:
+
+$$
+P_i^* = \Phi^{-1}\!\big(F_P(P_i)\big) = \frac{P_i - \mu_P}{\sigma_P} .
+$$
+
+The generated control $P_i^*$ is then perfectly collinear with $P_i$, and the augmented regression cannot separate $\beta_P$ from $\lambda$. Identification fails completely. Away from normality the transform $\Phi^{-1}(F_P(\cdot))$ is nonlinear, $P_i^*$ carries information not contained in $P_i$, and the two coefficients become separately estimable. The strength of identification therefore grows with the departure of $P_i$ from normality, measured by skewness and excess kurtosis. This is the single most important diagnostic for the method, and it is why a researcher must inspect the regressor's distribution before trusting the correction.
+
+### Implementation in R
+
+The simulation below follows the canonical construction. A Gaussian copula couples the regressor and the error through a correlation $\rho$, and the regressor is then given a skewed (exponential) marginal so that OLS is biased and the copula correction has something to fix.
+
+```{r copula-dgp}
+library(tidyverse)
+library(boot)
+library(moments)
+
+set.seed(2026)
+n <- 2000
+
+# Gaussian copula: (a, e) are bivariate standard normal with correlation rho.
+# 'a' generates the regressor; 'e' generates the error. Their correlation is
+# the source of endogeneity.
+rho <- 0.6
+a <- rnorm(n)
+e <- rho * a + sqrt(1 - rho^2) * rnorm(n)
+
+# Endogenous regressor: skewed exponential marginal built from 'a' by the
+# inverse-CDF transform P = F_P^{-1}(Phi(a)).
+P <- qexp(pnorm(a), rate = 1)
+
+# Exogenous control, independent of the error
+x <- rnorm(n)
+
+# Structural error: normal, correlated with P through the copula
+sigma_eps <- 1.5
+eps <- sigma_eps * e
+
+beta0_true <- 0.5
+betaP_true <- 1.5
+gamma_true <- 0.8
+Y <- beta0_true + betaP_true * P + gamma_true * x + eps
+
+dat <- tibble(Y, P, x)
+
+# The identifying feature: the regressor is far from normal
+c(skewness = skewness(P), kurtosis = kurtosis(P))
+shapiro.test(sample(P, 1000))$p.value
+```
+
+A naive regression is biased upward, because the positive regressor-error correlation loads onto $\hat{\beta}_P$:
+
+```{r copula-ols}
+m_ols <- lm(Y ~ P + x, data = dat)
+coef(m_ols)["P"]
+```
+
+The copula correction adds the single generated term $P_i^*$ and recovers the truth. Because $P_i^*$ is estimated from the data, the conventional OLS standard errors understate uncertainty, so they are obtained by a nonparametric bootstrap that regenerates the term inside each resample.
+
+```{r copula-manual}
+# Gaussian copula control term: rank -> uniform -> normal quantile
+copula_term <- function(p) {
+    n <- length(p)
+    qnorm((rank(p) - 0.5) / n)
+}
+
+dat <- dat %>% mutate(Pstar = copula_term(P))
+m_cop <- lm(Y ~ P + x + Pstar, data = dat)
+coef(m_cop)["P"]
+
+# Bootstrap standard error, regenerating Pstar in each resample
+boot_betaP <- function(data, idx) {
+    d <- data[idx, ]
+    d$Pstar <- copula_term(d$P)
+    coef(lm(Y ~ P + x + Pstar, data = d))["P"]
+}
+
+set.seed(1)
+b <- boot(dat[, c("Y", "P", "x")], boot_betaP, R = 1000)
+c(estimate = b$t0, boot_se = sd(b$t))
+```
+
+The `REndo` package implements the same estimator (and its multi-regressor and joint-likelihood variants) directly. The pipe in the formula separates the full regressor list from the endogenous, continuous regressors:
+
+```{r copula-rendo}
+library(REndo)
+m_rendo <- copulaCorrection(
+    Y ~ P + x | continuous(P),
+    data = dat,
+    num.boots = 1000,
+    verbose = FALSE
+)
+summary(m_rendo)$coefficients
+```
+
+To see that the correction is not noise, the small Monte Carlo below contrasts the sampling distribution of the OLS and copula estimators across repeated samples. The copula estimator centers on the true value while OLS is systematically off (Figure \@ref(fig:copula-monte-carlo)).
+
+```{r copula-monte-carlo, fig.cap="Sampling distributions of the OLS and Gaussian copula estimators of the endogenous coefficient across 500 simulated samples. OLS is centered well above the true value (dashed line); the copula correction recenters the estimator on the truth."}
+sim_once <- function(n = 1000, rho = 0.6, sigma_eps = 1.5) {
+    a <- rnorm(n)
+    e <- rho * a + sqrt(1 - rho^2) * rnorm(n)
+    P <- qexp(pnorm(a), rate = 1)
+    x <- rnorm(n)
+    eps <- sigma_eps * e
+    Y <- 0.5 + 1.5 * P + 0.8 * x + eps
+    Pstar <- qnorm((rank(P) - 0.5) / n)
+    c(
+        OLS = coef(lm(Y ~ P + x))["P"],
+        Copula = coef(lm(Y ~ P + x + Pstar))["P"]
+    )
+}
+
+set.seed(123)
+mc <- map_dfr(1:500, ~ as_tibble_row(sim_once())) %>%
+    set_names(c("OLS", "Copula")) %>%
+    pivot_longer(everything(), names_to = "Estimator", values_to = "betaP")
+
+ggplot(mc, aes(x = betaP, fill = Estimator)) +
+    geom_density(alpha = 0.5) +
+    geom_vline(xintercept = 1.5, linetype = "dashed") +
+    labs(x = expression(hat(beta)[P]), y = "Density") +
+    causalverse::ama_theme()
+```
+
+### 내생적 회귀변수가 정규분포인 경우
+
+The failure mode from Section \@ref(sec-copula-nonnormality) is worth seeing in code, because in practice a near-normal regressor produces an unstable correction rather than an error message. Rebuilding the regressor as normal makes $P_i^*$ almost perfectly collinear with $P_i$:
+
+```{r copula-normal-fail}
+set.seed(7)
+a2 <- rnorm(n)
+e2 <- 0.6 * a2 + sqrt(1 - 0.6^2) * rnorm(n)
+Pn <- a2                         # normal marginal, no skew transform
+eps2 <- 1.5 * e2
+Yn <- 0.5 + 1.5 * Pn + 0.8 * x + eps2
+
+Pstar_n <- copula_term(Pn)
+cor(Pn, Pstar_n)                 # near 1: severe collinearity
+
+m_fail <- lm(Yn ~ Pn + x + Pstar_n)
+summary(m_fail)$coefficients["Pn", c("Estimate", "Std. Error")]
+```
+
+The point estimate is erratic and the standard error explodes. The lesson is that the copula correction quietly stops working precisely when the identifying assumption is weak, so the skewness and normality checks above are mandatory before reporting it, not optional.
+
+### 진단과 가정
+
+Simulation evidence shows the estimator is reliable only inside a fairly narrow envelope [@becker2022revisiting; @eckert2023addressing]. Before applying it, work through the following checklist.
+
+1.  Confirm strong non-normality of the endogenous regressor. Inspect a histogram, report skewness and kurtosis, and run a formal test such as Shapiro-Wilk or Anderson-Darling. @becker2022revisiting find the correction unreliable unless the regressor departs clearly from normality; a regressor that merely fails a normality test in a large sample is not enough, the departure must be substantial.
+
+2.  Take the normal-error assumption seriously. @eckert2023addressing show that a non-normal structural error degrades the estimator, sometimes leaving it more biased than OLS. The error is unobserved, so this cannot be tested directly, but heavy skew or fat tails in the residuals of a benchmark model are a warning sign.
+
+3.  Use a large sample. The empirical CDF transform and the bootstrap both rely on sample size; the method is fragile in samples of a few hundred observations and is best reserved for the thousands.
+
+4.  Always bootstrap the standard errors. The copula term is a generated regressor, so analytic OLS standard errors are too small and overstate precision.
+
+5.  Be cautious with several endogenous regressors at once and with regressors that are themselves correlated. The original estimator assumes the exogenous controls are uncorrelated with the endogenous regressor, and it deteriorates when that fails, which motivates the refinement in the next subsection.
+
+### 확장과 최근 발전
+
+The basic estimator has known weak spots, and a sequence of published refinements has addressed them.
+
+-   Correlated and non-continuous regressors. The original method can be badly biased when the endogenous regressor is correlated with the exogenous controls, or when it is discrete or close to normal. @yang2025addressing develop a two-stage copula generated regressor estimator, *2sCOPE*, that first partials the regressors out of one another and yields consistent estimates even with correlated, normally distributed, or discrete endogenous regressors. It is the natural upgrade when the diagnostics above raise concerns.
+
+-   Higher-order and nonlinear terms. When the model includes a square or interaction of the endogenous regressor, each non-redundant endogenous term needs its own copula control. @qian2025practical detail how to construct the copula control function in these cases and how to handle several endogenous regressors jointly.
+
+-   Nonlinear outcome models. Because the copula term enters as an additive control, the approach carries over to logit, probit, and count models in the same way the [control function](#sec-control-function-approach) does, where it is often preferable to [2SLS](#sec-two-stage-least-squares-estimation).
+
+### 권고사항
+
+The copula correction is genuinely useful when no instrument is available, but it is also easy to misuse. A defensible application looks like this.
+
+1.  Treat it as a complement, not a replacement. Where a plausible instrument or design exists, lead with it and use the copula estimate as a robustness check. Agreement across the two strategies is far more convincing than either alone.
+
+2.  Earn the assumption before you use it. Report the distribution of the endogenous regressor and a formal non-normality test, and decline the method when the regressor is close to normal rather than forcing a correction that Section \@ref(sec-copula-correction) shows will be unstable.
+
+3.  Report bootstrapped inference and a sensitivity analysis. Show the OLS estimate, the corrected estimate, and the bootstrap standard error side by side, and where feasible compare the basic estimator against 2sCOPE so readers can judge robustness to correlated regressors.
+
+4.  Prefer the modern variant in hard cases. With multiple, correlated, discrete, or weakly skewed endogenous regressors, use 2sCOPE [@yang2025addressing] rather than the original joint-likelihood estimator.
+
+5.  Be transparent about what identifies the estimate. The result is driven entirely by a functional-form assumption on the regressor and a normality assumption on the error. State this plainly, because a reader cannot assess the correction without it [@eckert2023addressing].
+
+Table \@ref(tab:copula-vs-iv) summarizes how the copula correction sits relative to instrument-based remedies.
+
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+| Feature                 | Instrumental Variables / Control Function       | Gaussian Copula Correction                      |
++=========================+=================================================+=================================================+
+| Identifying assumption  | Valid instrument (relevant and excludable)      | Non-normal regressor and normal error           |
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+| Extra data required     | At least one instrument                         | None beyond the model variables                 |
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+| Main failure mode       | Weak or invalid instrument                      | Near-normal regressor; non-normal error         |
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+| Testability             | Overidentification tests when instruments exceed | Regressor non-normality is checkable; the error |
+|                         | regressors                                      | assumption is not                               |
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+| Inference               | Standard analytic or robust errors              | Bootstrap (generated regressor)                 |
++-------------------------+-------------------------------------------------+-------------------------------------------------+
+
+Table: (\#tab:copula-vs-iv) Instrument-based remedies versus the Gaussian copula correction for an endogenous regressor.
+
+------------------------------------------------------------------------
+
+## 내생적 표본 선택(Endogenous Sample Selection) {#sec-endogenous-sample-selection}
+
+Endogenous sample selection arises in **observational** or **non-experimental** research whenever the inclusion of observations (or assignment to treatment) is **not random**, and the same unobservable factors influencing selection also affect the outcome of interest. This scenario leads to **biased and inconsistent** estimates of causal parameters (e.g., [Average Treatment Effect](#sec-notation-quasi-experimental)) if not properly addressed.
+
+This problem was first formalized in the econometric literature by @heckman1974shadow, @heckman1976common, and @heckman1979sample, whose work addressed the issue in the context of labor force participation among women. Later, @amemiya1984tobit generalize the method. Now, it has since been applied widely across social sciences, epidemiology, marketing, and finance.
+
+Endogenous sample selection is often conflated with general selection bias, but it is important to understand that sample selection refers specifically to the inclusion of observations into the estimation sample, not just to assignment into treatment (i.e., selection bias).
+
+This problem comes in many names such as self-selection problem, incidental truncation, or omitted variable (i.e., the omitted variable is how people were selected into the sample). Some disciplines consider nonresponse/selection bias as sample selection:
+
+-   When unobservable factors that affect who is in the sample are independent of unobservable factors that affect the outcome, the sample selection is not endogenous. Hence, the sample selection is ignorable and estimator that ignores sample selection is still consistent.
+-   When the unobservable factors that affect who is included in the sample are correlated with the unobservable factors that affect the outcome, the sample selection is endogenous and not ignorable, because estimators that ignore endogenous sample selection are not consistent (we don't know which part of the observable outcome is related to the causal relationship and which part is due to different people were selected for the treatment and control groups).
+
+Many evaluation studies use observational data, and in such data:
+
+-   Participants are not randomly assigned.
+-   Treatment or exposure is determined by individual or institutional choices.
+-   Counterfactual outcomes are not observed.
+-   The treatment indicator is often endogenous.
+
+Some notable terminologies include:
+
+1.  Truncation: Occurs when data are collected only from a restricted subpopulation based on the value of a variable.
+    -   Left truncation: Values below a threshold are excluded (e.g., only high-income individuals are surveyed).
+    -   Right truncation: Values above a threshold are excluded.
+2.  Censoring: Occurs when the variable is **observed but coarsened** beyond a threshold.
+    -   E.g., incomes below a certain level are coded as zero; arrest counts above a threshold are top-coded.
+3.  Incidental Truncation: Refers to selection based on a latent variable (e.g., employment decisions), **not directly observed**. This is what makes Heckman's model distinct.
+    -   Also called **non-random sample selection**.
+    -   The error in the outcome equation is correlated with the selection indicator.
+
+Researchers often categorize self-selection into:
+
+-   **Negative (Mitigation-Based) Selection:** Individuals select into a treatment or sample to address an existing problem, so they start off with worse potential outcomes.
+    -   Bias direction: Underestimates true treatment effects (makes the treatment look less effective than it is).
+    -   Individuals select into treatment to combat a problem they already face.
+    -   Examples: 
+        -   People at high risk of severe illness (e.g., elderly or immunocompromised individuals) are more likely to get vaccinated. If we compare vaccinated vs. unvaccinated individuals without adjusting for risk factors, we might mistakenly conclude that vaccines are ineffective simply because vaccinated individuals had worse initial health conditions.
+        -   Evaluating the effect of job training programs, where unemployed individuals with the greatest difficulty finding jobs are most likely to enroll, leading to underestimated program benefits.
+-   **Positive (Preference-Based) Selection:** Individuals select into a treatment or sample because they have advantageous traits, preferences, or resources. Hence, those who take treatment are systematically better off compared to those who do not.
+    -   Bias direction: Overestimates true treatment effects (makes the treatment look more effective than it is).
+    -   Individuals select into treatment because they inherently prefer it, rather than because of an underlying problem.
+    -   **Examples:**
+        -   People who are health-conscious and physically active are more likely to join a fitness program. If we compare fitness program participants to non-participants, we might falsely attribute their better health outcomes to the program, when in reality, their pre-existing lifestyle contributed to their improved health.
+        -   Evaluating the effect of private school education, where students who attend private schools often come from wealthier families with greater academic support, making it difficult to isolate the true impact of the school itself.
+
+Both forms of selection reflect correlation between unobservables (driving selection) and potential outcomes, the hallmark of endogenous selection bias.
+
+------------------------------------------------------------------------
+
+Some seminal applied works in this area include:
+
+1.  **Labor Force Participation** [@heckman1974shadow]
+
+-   Wages are observed **only** for women who choose to work.
+-   Unobservable preferences (reservation wages) drive participation.
+-   Ignoring this leads to **biased estimates of the returns to education**.
+
+2.  **Union Membership** [@lewis1986union]
+
+-   Wages differ between union and non-union workers.
+-   But union membership is not exogenous: workers choose to join based on anticipated benefits.
+-   Naïve OLS yields biased estimates of union premium.
+
+3.  **College Attendance** [@card1999causal; @card2001estimating]
+
+-   Comparing income of college graduates vs. non-graduates.
+-   Attending college is a choice based on expected gains, ability, or family background.
+-   A treatment effect model (described next) is more appropriate here.
+
+------------------------------------------------------------------------
+
+### 통합 모형 틀
+
+Though often conflated, there are several overlapping models to address endogenous selection:
+
+1.  [Sample Selection Model](#sec-sample-selection-model) [@heckman1979sample]: Outcome is *unobserved* if an agent is not selected into the sample.
+2.  [Treatment Effect Model](#sec-treatment-effect-switching-model): Outcome is observed for both groups (treated vs. untreated), but treatment assignment is endogenous.
+3.  [Heckman-Type / Control Function Approaches](#sec-heckman-type-control-function): Decompose the endogenous regressor or incorporate a correction term (Inverse Mills Ratio or residual) to control for endogeneity.
+
+All revolve around the challenge: unobserved factors affect both who is included (or treated) and outcomes.
+
+To formalize the problem, we consider the outcome and selection equations. Let:
+
+-   $y_i$: observed outcome (e.g., wage)
+-   $x_i$: covariates affecting outcome
+-   $z_i$: covariates affecting selection
+-   $w_i$: binary indicator for selection into the sample (e.g., employment)
+
+#### 표본 선택 모형(Sample Selection Model) {#sec-sample-selection-model}
+
+We begin with an **outcome equation**, which describes the variable of interest $y_i$. However, we only observe $y_i$ if a certain **selection mechanism** indicates it is part of the sample. That mechanism is captured by a binary indicator $w_i = 1$. Formally, the observed outcome equation is:
+
+$$
+\begin{aligned}
+y_i &= x_i' \beta + \varepsilon_i, \quad &\text{(Observed only if } w_i = 1\text{)}, \\
+\varepsilon_i &\sim N(0, \sigma_\varepsilon^2).
+\end{aligned}
+$$
+
+Here, $x_i$ is a vector of explanatory variables (or covariates) that explain $y_i$. The noise term $\varepsilon_i$ is assumed to be normally distributed with mean zero and variance $\sigma_\varepsilon^2$. However, because we only see $y_i$ for those cases in which $w_i = 1$, we must account for how the selection occurs.
+
+Next, we specify the **selection equation** via a **latent index model**. Let $w_i^*$ be an unobserved latent variable:
+
+$$
+\begin{aligned}
+w_i^* &= z_i' \gamma + u_i, \\
+w_i &= \begin{cases}
+1 & \text{if } w_i^* > 0, \\
+0 & \text{otherwise}.
+\end{cases}
+\end{aligned}
+$$
+
+Here, $z_i$ is a vector of variables that influence whether or not $y_i$ is observed. In practice, $z_i$ may overlap with $x_i$, but can also include variables not in the outcome equation. For **identification**, we normalize $\mathrm{Var}(u_i) = 1$. This is analogous to the probit model's standard normalization.
+
+Because $w_i = 1$ exactly when $w_i^* > 0$, this event occurs if $u_i \ge -z_i' \gamma$. Therefore,
+
+$$
+\begin{aligned} 
+P(w_i = 1) 
+&= P(u_i \ge -z_i' \gamma),\\ 
+&= 1 - \Phi(-z_i'\gamma), \\ 
+&= \Phi(z_i'\gamma),
+\end{aligned}
+$$
+
+where we use the symmetry of the standard normal distribution.
+
+We assume $(\varepsilon_i, u_i)$ are **jointly normally distributed** with correlation $\rho$. In other words,
+
+$$
+\begin{pmatrix}
+\varepsilon_i \\
+u_i
+\end{pmatrix}
+\sim \mathcal{N} \!\Biggl(
+\begin{pmatrix} 0 \\ 0 \end{pmatrix},
+\begin{pmatrix} \sigma^2_\varepsilon & \rho \sigma_\varepsilon \\
+\rho \sigma_\varepsilon & 1 \end{pmatrix}
+\Biggr).
+$$
+
+-   If $\rho = 0$, the selection is exogenous: whether $y_i$ is observed is unrelated to unobserved determinants of $y_i$.
+-   If $\rho \neq 0$, **sample selection is endogenous**. Failing to model this selection mechanism leads to biased estimates of $\beta$.
+
+Interpreting $\rho$
+
+-   $\rho > 0$: Individuals with higher unobserved components in $\varepsilon_i$ (and thus typically larger $y_i$) are **more likely** to appear in the sample. (Positive selection)
+-   $\rho < 0$: Individuals with higher unobserved components in $\varepsilon_i$ are **less likely** to appear. (Negative selection)
+-   $\rho = 0$: No endogenous selection. Observed outcomes are effectively random with respect to the unobserved part of $y_i$.
+
+In empirical practice, $\rho$ signals the direction of bias one might expect if the selection process is ignored.
+
+Often, it is helpful to visualize how part of the distribution of $u_i$ (the error in the selection equation) is truncated based on the threshold $w_i^*>0$. Figure \@ref(fig:endog-heckman-selection-truncation) draws the standard normal density of $u_i$ and shades the region $u_i > -z_i'\gamma$ that is included in the observed sample.
+
+```{r endog-heckman-selection-truncation, fig.cap="Standard normal density of the selection-equation error $u_i$ in Heckman's model, with the region $u_i > -z_i'\\gamma$ shaded to mark the observations that survive the selection threshold."}
+x = seq(-3, 3, length = 200)
+y = dnorm(x, mean = 0, sd = 1)
+plot(x,
+     y,
+     type = "l",
+     main =  bquote("Probability distribution of" ~ u[i]))
+
+x_shaded = seq(0.3, 3, length = 100)
+y_shaded = dnorm(x_shaded, 0, 1)
+polygon(c(0.3, x_shaded, 3), c(0, y_shaded, 0), col = "gray")
+
+text(1, 0.1, expression(1 - Phi(-z[i] * gamma)))
+arrows(-0.5, 0.1, 0.3, 0, length = 0.15)
+text(-0.5, 0.12, expression(-z[i] * gamma))
+legend("topright",
+       "Gray = Prob of Observed",
+       pch = 1,
+       inset = 0.02)
+
+```
+
+In this figure, the gray‐shaded area represents $u_i > -z_i'\gamma$. Observations in that range are included in the sample. If $\rho\neq 0$, then the unobserved factors that drive $u_i$ also affect $\varepsilon_i$, causing a non‐representative sample of $\varepsilon_i$.
+
+A core insight of the Heckman model is the conditional expectation of $y_i$ given $w_i=1$:
+
+$$
+E(y_i \mid w_i = 1)
+=
+E(y_i \mid w_i^*>0)
+=
+E(x_i'\beta + \varepsilon_i \mid u_i > -z_i'\gamma).
+$$
+
+Since $x_i'\beta$ is nonrandom (conditional on $x_i$), we get
+
+$$
+E(y_i \mid w_i=1)
+= x_i'\beta + E(\varepsilon_i \mid u_i > -z_i'\gamma).
+$$
+
+From bivariate normal properties:
+
+$$
+\varepsilon_i | u_i=a \sim N\left(\rho\sigma_{\varepsilon}\cdot a, (1-\rho^2)\sigma_{\varepsilon}^2\right)
+$$
+
+Thus,
+
+$$
+E(\varepsilon_i \mid u_i > -z_i'\gamma)
+=
+\rho\sigma_{\varepsilon}
+E(u_i \mid u_i > -z_i'\gamma).
+$$
+
+If $U\sim N(0,1)$, then
+
+$$
+E(U \mid U>a)
+= \frac{\phi(a)}{1-\Phi(a)}
+= \frac{\phi(a)}{\Phi(-a)},
+$$ where $\phi$ is the standard normal pdf, $\Phi$ is the cdf. By symmetry, $\phi(-a)=\phi(a)$ and $\Phi(-a)=1-\Phi(a)$. Letting $a = -z_i'\gamma$ yields
+
+$$
+E(U \mid U > -z_i'\gamma) 
+= \frac{\phi(-z_i'\gamma)}{1-\Phi(-z_i'\gamma)}
+= \frac{\phi(z_i'\gamma)}{\Phi(z_i'\gamma)}.
+$$
+
+Define the **Inverse Mills Ratio** (IMR) as
+
+$$
+\lambda(x)
+= \frac{\phi(x)}{\Phi(x)}.
+$$
+
+Hence,
+
+$$
+E(\varepsilon_i \mid u_i > -z_i'\gamma)
+= \rho\sigma_{\varepsilon}\lambda(z_i'\gamma),
+$$ and therefore
+
+$$
+\boxed{
+E(y_i \mid w_i=1)
+= x_i'\beta 
++
+\rho\sigma_{\varepsilon}
+\frac{\phi(z_i'\gamma)}{\Phi(z_i'\gamma)}.
+}
+$$
+
+This extra term is the so‐called **Heckman correction**.
+
+The IMR appears in the two‐step procedure as a regressor for bias correction. It has useful derivatives:
+
+$$
+\frac{d}{dx}[\text{IMR}(x)] = \frac{d}{dx}\left[\frac{\phi(x)}{\Phi(x)}\right] = -x\text{IMR}(x)-[\text{IMR}(x)]^2
+$$
+
+
+This arises from the quotient rule and the fact that $\phi'(x)=-x\phi(x)$, $\Phi'(x)=\phi(x)$. The derivative property also helps in interpreting marginal effects in selection models.
+
+------------------------------------------------------------------------
+
+#### 처치효과(전환) 모형(Treatment Effect (Switching) Model) {#sec-treatment-effect-switching-model}
+
+While the sample selection model is used when outcome is only observed for one group (e.g., $D = 1$), the treatment effect model is used when outcomes are observed for both groups, but treatment assignment is endogenous.
+
+Treatment Effect Model Equations:
+
+-   Outcome: $$ y_i = x_i' \beta + D_i \delta + \varepsilon_i $$
+-   Selection: $$\begin{aligned}
+D_i^* &= z_i' \gamma + u_i \\
+D_i &= 1 \text{ if } D_i^* > 0
+\end{aligned}$$
+
+
+Where:
+
+-   $D_i$ is the treatment indicator.
+
+-   $(\varepsilon_i, u_i)$ are again bivariate normal with correlation $\rho$.
+
+The treatment effect model is sometimes called a **switching regression**.
+
+#### Heckman 유형과 통제함수의 비교 {#sec-heckman-type-control-function}
+
+-   Heckman Sample Selection: Insert an Inverse Mills Ratio (IMR) to adjust the outcome equation for non-random truncation.
+-   Control Function: Residual-based or predicted-endogenous-variable approach that mirrors IV logic, but typically *still* requires an instrument or parametric assumption.
+
+Table \@ref(tab:endog-heckman-vs-control-function) summarises the differences between the Heckman sample selection model and Heckman-type control-function corrections.
+
+|                            |                                                                                                                                                 |                                                                                                                                                                                                                                   |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                            | **Heckman Sample Selection Model**                                                                                                              | **Heckman-Type Corrections**                                                                                                                                                                                                      |
+| When                       | Only observes one sample (treated), addressing selection bias directly.                                                                         | Two samples are observed (treated and untreated), known as the control function approach.                                                                                                                                         |
+| Model                      | Probit                                                                                                                                          | OLS (even for dummy endogenous variable)                                                                                                                                                                                          |
+| Integration of 1st stage   | Also include a term (called Inverse Mills ratio) besides the endogenous variable.                                                               | Decompose the endogenous variable to get the part that is uncorrelated with the error terms of the outcome equation. Either use the predicted endogenous variable directly or include the residual from the first-stage equation. |
+| Advantages and Assumptions | Provides a direct test for endogeneity via the coefficient of the inverse Mills ratio but requires the assumption of joint normality of errors. | Does not require the assumption of joint normality, but can't test for endogeneity directly.                                                                                                                                      |
+
+Table: (\#tab:endog-heckman-vs-control-function) Heckman sample selection model versus Heckman-type control-function corrections.
+
+------------------------------------------------------------------------
+
+### 추정 방법
+
+#### Heckman의 2단계 추정량(Heckit)
+
+**Step 1: Estimate Selection Equation with Probit**
+
+We estimate the probability of being included in the sample: $$ P(w_i = 1 \mid z_i) = \Phi(z_i' \gamma) $$
+
+From the estimated model, we compute the **Inverse Mills Ratio (IMR)**: $$ \lambda_i = \frac{\phi(z_i' \hat{\gamma})}{\Phi(z_i' \hat{\gamma})} $$
+
+This term captures the expected value of the error in the outcome equation, conditional on selection.
+
+**Step 2: Include IMR in Outcome Equation**
+
+We then estimate the regression: $$ y_i = x_i' \beta + \delta \lambda_i + \nu_i $$
+
+-   If $\delta$ is significantly different from 0, selection bias is present.
+-   $\lambda_i$ corrects for the non-random selection.
+-   OLS on this augmented model yields consistent estimates of $\beta$ under the joint normality assumption.
+-   Pros: Conceptually simple; widely used.
+-   Cons: Relies heavily on the bivariate normal assumption for $(\varepsilon_i, u_i)$. If no good exclusion variable is available, identification rests on the functional form.
+
+Specifically, the model can be identified **without an exclusion restriction**, but in such cases, identification is driven purely by the **non-linearity** of the probit function and the normality assumption (through the IMR). This is **fragile**.
+
+-   With strong exclusion restriction for the covariate in the correction equation, the variation in this variable can help identify the control for selection.
+-   With weak exclusion restriction, and the variable exists in both steps, it's the assumed error structure that identifies the control for selection [@heckman2004using].
+-   In management, @wolfolds2019misaccounting found that papers should have valid exclusion conditions, because without these, simulations show that results using the Heckman method are less reliable than those obtained with OLS.
+
+For robust identification, we prefer an **exclusion restriction**:
+
+-   A variable that affects selection (through $z_i$) but not the outcome.
+-   Example: Distance to a training center might affect the probability of enrollment, but not post-training income.
+
+Without such a variable, the model relies solely on functional form.
+
+The Heckman two-step estimation procedure is less efficient than FIML. One key limitation is that the two-step estimator does not fully exploit the joint distribution of the error terms across equations, leading to a loss of efficiency. Moreover, the two-step approach may introduce **measurement error** in the second stage. This arises because the inverse Mills ratio used in the second stage is itself an estimated regressor, which can lead to biased standard errors and inference.
+
+```{r}
+###########################
+#   SIM 1: Heckman 2-step #
+###########################
+suppressPackageStartupMessages(library(MASS))
+
+set.seed(123)
+n <- 1000
+rho <- 0.5
+beta_true <- 2
+
+gamma_true <- 1.0
+Sigma <- matrix(c(1, rho, rho, 1), 2)
+errors <- mvrnorm(n, c(0,0), Sigma)
+
+epsilon <- errors[,1]
+u       <- errors[,2]
+
+x <- rnorm(n)
+w <- rnorm(n)
+
+# Selection
+z_star <- w*gamma_true + u
+z <- ifelse(z_star>0,1,0)
+
+# Outcome
+
+y_star <- x * beta_true + epsilon
+# Observed only if z=1
+y_obs <- ifelse(z == 1, y_star, NA)
+
+# Step 1: Probit
+sel_mod <- glm(z ~ w, family = binomial(link = "probit"))
+z_hat <- predict(sel_mod, type = "link")
+lambda_vals <- dnorm(z_hat) / pnorm(z_hat)
+
+# Step 2: OLS on observed + IMR
+data_heck <- data.frame(y = y_obs,
+                        x = x,
+                        imr = lambda_vals,
+                        z = z)
+observed_data <- subset(data_heck, z == 1)
+heck_lm <- lm(y ~ x + imr, data = observed_data)
+summary(heck_lm)
+
+cat("True beta=", beta_true, "\n")
+cat("Heckman 2-step estimated beta=", coef(heck_lm)["x"], "\n")
+```
+
+#### 완전정보 최대우도법
+
+Jointly estimates the selection and outcome equations via ML, assuming:
+
+$$
+\biggl(\varepsilon_i, u_i\biggr) \sim \mathcal{N}\biggl(\begin{pmatrix}0\\0\end{pmatrix},\begin{pmatrix}\sigma_{\varepsilon}^2 & \rho\sigma_{\varepsilon}\\\rho\sigma_{\varepsilon} & 1\end{pmatrix}\biggr).
+$$
+
+-   Pros: More efficient if the distributional assumption is correct. Allows a direct test of $\rho=0$ (LR test).
+-   Cons: More sensitive to specification errors (i.e., requires stronger distributional assumptions); potentially complex to implement.
+
+We can use the **`sampleSelection`** package in R to perform full maximum likelihood estimation for the same data:
+
+```{r}
+#############################
+# SIM 2: 2-step vs. FIML    #
+#############################
+
+suppressPackageStartupMessages(library(sampleSelection))
+
+# Using same data (z, x, y_obs) from above
+
+# 1) Heckman 2-step (built-in)
+heck2 <-
+    selection(z ~ w, y_obs ~ x, method = "2step", data = data_heck)
+summary(heck2)
+
+# 2) FIML
+heckFIML <-
+    selection(z ~ w, y_obs ~ x, method = "ml", data = data_heck)
+summary(heckFIML)
+```
+
+You can compare the coefficient estimates on `x` from `heck2` vs. `heckFIML`. In large samples, both should converge to the true $\beta$. FIML is typically more efficient, but if the normality assumption is violated, both can be biased.
+
+#### CF 및 IV 접근법
+
+When the joint-normality assumption underlying [Heckman's two-step procedure](#sec-heckman-type-control-function) is uncomfortable, researchers often turn to two closely related strategies that exploit the same identifying variation but ask less of the error distribution. Both rely on an exclusion restriction, a variable that shifts selection or treatment without entering the outcome equation directly.
+
+1.  **Control Function**
+
+The [control-function approach](#sec-control-function-approach) reframes endogeneity as an omitted-variable problem and then plugs the omitted piece back in: it estimates a first-stage residual that captures the unobserved component driving selection, and includes that residual as an extra regressor in the outcome equation.
+
+-   Residual-based approach: Regress the selection (or treatment) variable on excluded instruments and included controls. Obtain the predicted residual. Include that residual in the main outcome regression.
+-   If correlated residual is significant, that indicates endogeneity; adjusting for it can correct bias.
+-   Often used in the context of treatment effect models or simultaneously with IV logic.
+
+2.  [Instrumental Variables](#sec-instrumental-variables)
+
+The IV strategy is more familiar from the broader endogeneity toolkit: rather than absorbing the unobserved component, it isolates the slice of variation that is orthogonal to it.
+
+-   In the pure treatment effect context, an IV must affect treatment assignment but not the outcome directly.
+-   For sample selection, an exclusion restriction ("instrument") must shift selection but not outcomes.
+-   Example: Distance to a training center influences participation in a job program but not post-training earnings.
+
+------------------------------------------------------------------------
+
+### 이론적 연관성
+
+#### 절단분포에서의 조건부 기댓값
+
+In the sample selection scenario:
+
+$$
+\begin{aligned}
+\mathbb{E}[y_i\mid w_i=1] &= x_i\beta + \mathbb{E}[\varepsilon_i\mid w_i^*>0],\\
+&= x_i\beta + \rho\sigma_{\varepsilon}\frac{\phi(z_i'\gamma)}{\Phi(z_i'\gamma)},
+\end{aligned}
+$$
+
+where $\rho\sigma_{\varepsilon}$ is the covariance term and $\phi$ and $\Phi$ are the standard normal PDF and CDF, respectively. This formula underpins the inverse Mills ratio correction.
+
+-   If $\rho>0$, then the same unobservables that increase the likelihood of selection also increase outcomes, implying positive selection.
+-   If $\rho<0$, selection is negatively correlated with outcomes.
+-   $\hat{\rho}$: Estimated correlation of error terms. If significantly different from 0, endogenous selection is present.
+-   Wald or Likelihood Ratio Test: Used to test $H_0: \rho = 0$.
+-   Lambda ($\hat{\lambda}$): product of $\hat{\rho} \hat{\sigma}_\varepsilon$; measures the strength of selection bias.
+-   Inverse Mills Ratio: Can be saved and inspected to understand sample inclusion probabilities.
+
+#### 모형 간 관계
+
+All the models in [Unifying Model Frameworks] can be seen as special or generalized cases:
+
+-   If one only has data for the selected group, it's a sample selection setup.
+
+-   If data for both groups exist, but assignment is endogenous, it's a treatment effect problem.
+
+-   If there's a valid instrument, one can do a control function or IV approach.
+
+-   If the normality assumption holds and selection is truly parametric, Heckman or FIML correct for the bias.
+
+Summary Table of Methods, given in Table \@ref(tab:endog-selection-methods).
+
+| **Method**              | **Data Observed**                                               | **Key Assumption**                       | **Exclusion?**       | **Pros**                                | **Cons**                                                   |
+|-------------------------|-----------------------------------------------------------------|------------------------------------------|----------------------|-----------------------------------------|------------------------------------------------------------|
+| OLS (Naive)             | Full or partial, ignoring selection                             | No endogeneity in errors                 | Not required         | Simple to implement                     | Biased if endogeneity is present                           |
+| Heckman 2-Step (Heckit) | Outcome only for selected group                                 | Joint normal errors; linear functional   | Strongly recommended | Intuitive, widely used                  | Sensitive to normality/functional form.                    |
+| FIML (Full ML)          | Same as Heckman (subset observed)                               | Joint normal errors                      | Strongly recommended | More efficient, direct test of $\rho=0$ | Complex, more sensitive to misspecification                |
+| Control Function        | Observed data for both or one group (depending on setup)        | Some form of valid instrument or exog.   | Yes (instrument)     | Extends easily to many models           | Must find valid instrument, no direct test for endogeneity |
+| Instrumental Variables  | Observed data for both groups, or entire sample (for selection) | IV must affect selection but not outcome | Yes (instrument)     | Common approach in program evaluation   | Exclusion restriction validity is critical                 |
+
+Table: (\#tab:endog-selection-methods) Methods for handling endogenous sample selection, with data requirements, key assumptions, and trade-offs.
+
+------------------------------------------------------------------------
+
+#### 주의점
+
+The selection-correction machinery is powerful, but every assumption it leans on becomes a potential point of failure in applied work. The concerns below are not abstract worries: each one has been documented to materially change conclusions in published applications, and together they explain why selection-correction estimates are often reported alongside, rather than in place of, naive OLS results. They split into roughly two camps: problems with the *data* (small samples, weak exclusion restrictions) and problems with the *model* (distributional assumptions, generated regressors, choice of estimator).
+
+1.  Small Samples: Two-step procedures can be unstable in smaller datasets.
+2.  Exclusion Restrictions: Without a credible variable that predicts selection but not outcomes, identification depends purely on functional form (bivariate normal + nonlinearity of probit).
+3.  Distributional Assumption: If normality is seriously violated, neither 2-step nor FIML may reliably remove bias.
+4.  Measurement Error in IMR: The second-stage includes an *estimated* regressor $\hat{\lambda}_i$, which can add noise.
+5.  Connection to IV: If a strong instrument exists, one could proceed with a [control function](#sec-control-function-approach) or standard [IV](#sec-instrumental-variables) in a treatment effect setup. But for sample selection (lack of data on unselected), the Heckman approach is more common.
+6.  Presence of Correlation between the Error Terms: The [Heckman treatment effect model](#sec-heckman-type-control-function) outperforms OLS when $\rho \neq 0$ because it corrects for selection bias due to unobserved factors. However, when $\rho = 0$, the correction is unnecessary and can introduce inefficiency, making simpler methods more accurate.
+
+Taken together, these caveats argue for treating selection-correction estimates as one input into a robustness exercise rather than as a definitive answer. When the corrected and uncorrected estimates agree, the case is strong; when they diverge dramatically and the exclusion restriction is thin, neither point estimate should be trusted on its own.
+
+------------------------------------------------------------------------
+
+### Tobit-2: Heckman의 표본 선택 모형
+
+The Tobit-2 model, also known as **Heckman's standard sample selection model**, is designed to correct for sample selection bias. This arises when the outcome variable is only observed for a non-random subset of the population, and the selection process is correlated with the outcome of interest.
+
+A key assumption of the model is the **joint normality of the error terms** in the selection and outcome equations.
+
+#### 소득 동태 패널 연구
+
+We demonstrate the model using the classic dataset from @mroz1984sensitivity, which provides data from the 1975 Panel Study of Income Dynamics on married women's labor-force participation and wages.
+
+We aim to estimate the log of hourly wages for married women, using:
+
+-   `educ`: Years of education
+-   `exper`: Years of work experience
+-   `exper^2`: Experience squared (to capture non-linear effects)
+-   `city`: A dummy for residence in a big city
+
+However, wages are only observed for those who participated in the labor force, meaning an OLS regression using only this subsample would suffer from selection bias.
+
+Because we also have data on non-participants, we can use Heckman's two-step method to correct for this bias.
+
+------------------------------------------------------------------------
+
+1.  **Load and Prepare Data**
+
+```{r}
+library(sampleSelection)
+library(dplyr)
+library(nnet)
+library(ggplot2)
+library(reshape2)
+
+data("Mroz87")  # PSID data on married women in 1975
+Mroz87 = Mroz87 %>%
+  mutate(kids = kids5 + kids618)  # total number of children
+head(Mroz87)
+```
+
+2.  **Model Overview**
+
+The two-step Heckman selection model proceeds as follows:
+
+1.  Selection Equation (Probit): \
+    Models the probability of labor force participation (`lfp = 1`) as a function of variables that affect the decision to work.
+
+2.  Outcome Equation (Wage): \
+    Models log wages conditional on working. A correction term, the IMR, is included to account for the non-random selection into work.
+
+##### Step 1: Naive OLS on Observed Wages
+
+```{r}
+ols1 = lm(log(wage) ~ educ + exper + I(exper ^ 2) + city,
+          data = subset(Mroz87, lfp == 1))
+summary(ols1)
+```
+
+This OLS is biased because it only includes women who chose to work.
+
+##### Step 2: Heckman Two-Step Estimation
+
+```{r}
+# Heckman 2-step estimation
+heck1 = heckit(
+    selection = lfp ~ age + I(age ^ 2) + kids + huswage + educ,
+    outcome = log(wage) ~ educ + exper + I(exper ^ 2) + city,
+    data = Mroz87
+)
+
+# Stage 1: Selection equation (probit)
+summary(heck1$probit)
+
+# Stage 2: Wage equation with selection correction
+summary(heck1$lm)
+
+```
+
+The variable `kids` is used only in the selection equation. This follows good practice: at least one variable should appear only in the selection equation (serving as an instrument) to help identify the model.
+
+```{r}
+# ML estimation of Heckman selection model
+ml1 = selection(
+  selection = lfp ~ age + I(age^2) + kids + huswage + educ,
+  outcome = log(wage) ~ educ + exper + I(exper^2) + city,
+  data = Mroz87
+)
+summary(ml1)
+
+```
+
+The MLE approach jointly estimates both equations, yielding consistent and asymptotically efficient estimates.
+
+##### Manual Implementation: Constructing the IMR
+
+```{r}
+# Step 1: Probit model
+myprob <- probit(lfp ~ age + I(age^2) + kids + huswage + educ,
+                 data = Mroz87)
+summary(myprob)
+
+# Step 2: Compute IMR
+imr <- invMillsRatio(myprob)
+Mroz87$IMR1 <- imr$IMR1
+
+# Step 3: Wage regression including IMR
+manually_est <- lm(log(wage) ~ educ + exper + I(exper^2) + city + IMR1,
+                   data = Mroz87,
+                   subset = (lfp == 1))
+summary(manually_est)
+
+```
+
+##### Equivalent Method Using `glm` and Manual IMR Calculation
+
+```{r}
+# Probit via glm
+probit_selection <- glm(
+  lfp ~ age + I(age^2) + kids + huswage + educ,
+  data = Mroz87,
+  family = binomial(link = 'probit')
+)
+
+# Compute predicted latent index and IMR
+probit_lp <- -predict(probit_selection)
+inv_mills <- dnorm(probit_lp) / (1 - pnorm(probit_lp))
+Mroz87$inv_mills <- inv_mills
+
+# Second stage: Wage regression with correction
+probit_outcome <- glm(
+  log(wage) ~ educ + exper + I(exper^2) + city + inv_mills,
+  data = Mroz87,
+  subset = (lfp == 1)
+)
+summary(probit_outcome)
+
+```
+
+##### Comparing Models
+
+The table below compares the OLS, Heckman two-step, maximum-likelihood, and manually-implemented Heckman estimates of the married-women's wage equation on the Mroz data, with robust standard errors reported for the OLS column.
+
+```{r endog-heckman-mroz-comparison}
+library(stargazer)
+library(plm)
+library(sandwich)
+
+# Custom robust SE function
+cse = function(reg) {
+  sqrt(diag(vcovHC(reg, type = "HC1")))
+}
+
+# Comparison table
+stargazer(
+  ols1, heck1, ml1, manually_est,
+  se = list(cse(ols1), NULL, NULL, NULL),
+  title = "Married Women's Wage Regressions: OLS vs Heckman Models",
+  type = "text",
+  df = FALSE,
+  digits = 4,
+  selection.equation = TRUE
+)
+```
+
+-   IMR: If the coefficient on the IMR is statistically significant, it suggests selection bias is present and that OLS estimates are biased.
+
+-   $\rho$: Represents the estimated correlation between the error terms of the selection and outcome equations. A significant $\rho$ implies non-random selection, justifying the Heckman correction.
+
+-   In our case, if the IMR coefficient is not statistically different from zero, then selection bias may not be a serious concern.
+
+#### The Role of Exclusion Restrictions in Heckman's Model
+
+This example, adapted from the `sampleSelection`, demonstrates the identification of the sample selection model using simulated data.
+
+We compare two cases:
+
+-   One where an **exclusion restriction** is present (i.e., selection and outcome equations use different regressors).
+
+-   One where the **same regressor** is used in both equations.
+
+------------------------------------------------------------------------
+
+**Case 1: With Exclusion Restriction**
+
+```{r}
+set.seed(0)
+library(sampleSelection)
+library(mvtnorm)
+
+
+# Simulate bivariate normal error terms with correlation -0.7
+eps <-
+    rmvnorm(500, mean = c(0, 0), sigma = matrix(c(1,-0.7,-0.7, 1), 2, 2))
+
+# Independent explanatory variable for selection equation
+xs <- runif(500)
+
+# Selection: Probit model (latent utility model)
+ys_latent <- xs + eps[, 1]
+ys <- ys_latent > 0  # observed participation indicator (TRUE/FALSE)
+
+# Independent explanatory variable for outcome equation
+xo <- runif(500)
+
+# Latent outcome variable
+yo_latent <- xo + eps[, 2]
+
+# Observed outcome: only when selected (ys == TRUE)
+yo <- yo_latent * ys
+
+# Estimate Heckman's selection model
+model_with_exclusion <-
+    selection(selection = ys ~ xs, outcome = yo ~ xo)
+summary(model_with_exclusion)
+```
+
+**Key Observations:**
+
+-   The variables `xs` and `xo` are **independent**, fulfilling the **exclusion restriction**.
+
+-   The outcome equation is identified not only by the non-linearity of the model but also by the presence of a regressor in the selection equation that is absent from the outcome equation.
+
+This mirrors realistic scenarios in applied business settings, such as:
+
+-   Participation in the labor force driven by family or geographic factors (`xs`), while wages depend on skills or education (`xo`).
+
+-   Loan application driven by personal risk preferences, while interest rates depend on credit score or income.
+
+------------------------------------------------------------------------
+
+**Case 2: Without Exclusion Restriction**
+
+```{r}
+# Now use the same regressor (xs) in both equations
+yo_latent2 <- xs + eps[, 2]
+yo2 <- yo_latent2 * ys
+
+# Re-estimate model without exclusion restriction
+model_no_exclusion <-
+    selection(selection = ys ~ xs, outcome = yo2 ~ xs)
+summary(model_no_exclusion)
+
+```
+
+**What changes?**
+
+-   The estimates remain approximately unbiased because the model is still identified by functional form (non-linear selection mechanism).
+
+-   However, the standard errors are substantially larger, leading to less precise inference.
+
+**Why Exclusion Restrictions Matter**
+
+The exclusion restriction improves identification by introducing additional variation that affects selection but not the outcome. This is a common recommendation in empirical work:
+
+-   In the first case, `xs` helps explain who is selected, while `xo` helps explain the outcome, enabling more precise estimates.
+
+-   In the second case, all variation comes from `xs`, meaning the model relies solely on the distributional assumptions (e.g., joint normality of errors) for identification.
+
+**Best Practice (for applied researchers):**
+
+> Always try to include at least one variable in the selection equation that does **not appear in the outcome equation**. This helps identify the model and improves estimation precision.
+
+------------------------------------------------------------------------
+
+### Tobit-5: 전환 회귀 모형
+
+The **Tobit-5** model, also known as the **Switching Regression Model**, generalizes Heckman's sample selection model to allow for two separate outcome equations:
+
+-   One model for participants
+-   A different model for non-participants
+
+Assumptions:
+
+-   The selection process determines which outcome equation is observed.
+-   There is at least one variable in the selection equation that does not appear in the outcome equations (i.e., an exclusion restriction), which improves identification.
+-   The errors from all three equations (selection, outcome1, outcome2) are assumed to be jointly normally distributed.
+
+This model is especially relevant when selection is endogenous and both groups (selected and unselected) have distinct data-generating processes.
+
+------------------------------------------------------------------------
+
+#### Simulated Example: With Exclusion Restriction
+
+```{r}
+set.seed(0)
+library(sampleSelection)
+library(mvtnorm)
+
+# Define a 3x3 covariance matrix with positive correlations
+vc <- diag(3)
+vc[lower.tri(vc)] <- c(0.9, 0.5, 0.1)
+vc[upper.tri(vc)] <- t(vc)[upper.tri(vc)]
+
+# Generate multivariate normal error terms
+eps <- rmvnorm(500, mean = c(0, 0, 0), sigma = vc)
+
+# Selection equation regressor (xs), uniformly distributed
+xs <- runif(500)
+
+# Binary selection indicator: ys = 1 if selected
+ys <- xs + eps[, 1] > 0
+
+# Separate regressors for two regimes (fulfilling exclusion restriction)
+xo1 <- runif(500)
+yo1 <- xo1 + eps[, 2]  # Outcome for selected group
+
+xo2 <- runif(500)
+yo2 <- xo2 + eps[, 3]  # Outcome for non-selected group
+
+# Fit switching regression model
+model_switch <- selection(ys ~ xs, list(yo1 ~ xo1, yo2 ~ xo2))
+summary(model_switch)
+```
+
+The estimated coefficients are close to the true values (intercept = 0, slope = 1), and the model converges well due to correct specification and valid exclusion restriction.
+
+#### Example: Functional Form Misspecification
+
+To demonstrate how **non-normal errors** or skewed distributions affect the model, consider the following:
+
+```{r}
+set.seed(0)
+eps <- rmvnorm(1000, mean = rep(0, 3), sigma = vc)
+
+# Induce skewness: squared errors minus 1 to ensure mean zero
+eps <- eps^2 - 1
+
+# Generate xs on a skewed interval [-1, 0]
+xs <- runif(1000, -1, 0)
+ys <- xs + eps[, 1] > 0
+
+xo1 <- runif(1000)
+yo1 <- xo1 + eps[, 2]
+
+xo2 <- runif(1000)
+yo2 <- xo2 + eps[, 3]
+
+# Attempt model estimation
+summary(selection(ys ~ xs, list(yo1 ~ xo1, yo2 ~ xo2), iterlim = 20))
+
+```
+
+Even though the exclusion restriction is preserved, non-normal errors introduce bias in the intercept estimates, and convergence is less reliable. This illustrates how functional form misspecification (i.e., deviations from assumed distributional forms) impacts performance.
+
+#### Example: No Exclusion Restriction
+
+Here we remove the exclusion restriction by using the same regressor (`xs`) in both outcome equations.
+
+```{r}
+set.seed(0)
+xs <- runif(1000, -1, 1)
+ys <- xs + eps[, 1] > 0
+
+yo1 <- xs + eps[, 2]
+yo2 <- xs + eps[, 3]
+
+# Fit switching regression without exclusion restriction
+summary(tmp <-
+            selection(ys ~ xs, list(yo1 ~ xs, yo2 ~ xs), iterlim = 20))
+
+```
+
+This model may fail to converge or produce biased estimates, especially for the intercepts. Even if it does converge, the reliability of the inference is questionable due to weak identification from using the same regressor across all equations.
+
+**Notes on Estimation and Convergence**
+
+The log-likelihood function of switching regression models is not globally concave, so the estimation process may:
+
+-   Fail to converge
+
+-   Converge to a local maximum
+
+Practical Tips:
+
+-   Try different starting values or random seeds
+
+-   Use alternative maximization algorithms (e.g., `optim` control)
+
+-   Consider rescaling variables or centering predictors
+
+-   Refer to [Non-Linear Regression] for advanced diagnostics
+
+Model Comparison Summary, given in Table \@ref(tab:endog-switching-scenarios).
+
+| Scenario                      | Exclusion Restriction | Convergence | Bias             | Variance |
+|-------------------------------|-----------------------|-------------|------------------|----------|
+| Well-specified with exclusion | Yes                   | Likely      | No               | Low      |
+| Misspecified distribution     | Yes                   | Risky       | Yes (intercepts) | Moderate |
+| No exclusion restriction      | No                    | Often fails | Yes              | High     |
+
+Table: (\#tab:endog-switching-scenarios) Switching-regression scenarios and their consequences for convergence, bias, and variance.
+
+------------------------------------------------------------------------
+
+### 패턴-혼합 모형(Pattern-Mixture Models) {#sec-pattern-mixture-models}
+
+In the context of endogenous sample selection, one of the central challenges is modeling the joint distribution of the outcome and the selection mechanism when data are [Missing Not At Random (MNAR)]. In this framework, the probability that an outcome is observed may depend on unobserved values of that outcome, making the missingness mechanism **nonignorable**.
+
+Previously, we discussed the **selection model** approach (e.g., Heckman's Tobit-2 model), which factorizes the joint distribution as:
+
+$$
+\mathbb{P}(Y, R) = \mathbb{P}(Y) \cdot \mathbb{P}(R \mid Y),
+$$
+
+where:
+
+-   $Y$ is the outcome of interest,
+
+-   $R$ is the response indicator (with $R = 1$ if $Y$ is observed, $R = 0$ otherwise).
+
+This approach models the selection process explicitly via $\mathbb{P}(R \mid Y)$, often using a parametric model such as the probit.
+
+However, the **pattern-mixture model (PMM)** offers an alternative and equally valid factorization:
+
+$$
+\mathbb{P}(Y, R) = \mathbb{P}(Y \mid R) \cdot \mathbb{P}(R),
+$$
+
+which decomposes the joint distribution by conditioning on the response pattern. This approach is particularly advantageous when the selection mechanism is complex, or when interest lies in modeling how the outcome distribution varies across response strata.
+
+------------------------------------------------------------------------
+
+#### 패턴-혼합 모형의 정의
+
+Let $(Y_i, R_i)$ for $i = 1, \dots, n$ denote the observed data, where:
+
+-   $Y_i \in \mathbb{R}^p$ is the multivariate outcome of interest,
+-   $R_i \in \{0,1\}^p$ is a missingness pattern indicator vector, where $R_{ij} = 1$ indicates that $Y_{ij}$ is observed.
+
+Define $\mathcal{R}$ as the finite set of all possible response patterns. For each pattern $r \in \mathcal{R}$, partition the outcome vector $Y$ into:
+
+-   $Y_{(r)}$: observed components of $Y$ under pattern $r$,
+-   $Y_{(\bar{r})}$: missing components of $Y$ under pattern $r$.
+
+The joint distribution can then be factorized according to the pattern-mixture model as:
+
+$$
+f(Y, R) = f(Y \mid R = r) \cdot \mathbb{P}(R = r), \quad r \in \mathcal{R}.
+$$
+
+The marginal distribution of $Y$ is obtained by summing over all response patterns:
+
+$$
+f(Y) = \sum_{r \in \mathcal{R}} f(Y \mid R = r) \cdot \mathbb{P}(R = r).
+$$
+
+In the simplest case of binary response patterns (complete responders $R=1$ and complete nonresponders $R=0$), this reduces to:
+
+$$
+\mathbb{P}(Y) = \mathbb{P}(Y \mid R = 1) \cdot \mathbb{P}(R = 1) + \mathbb{P}(Y \mid R = 0) \cdot \mathbb{P}(R = 0).
+$$
+
+Thus, the overall distribution of $Y$ is explicitly treated as a **mixture** of distributions for responders and nonresponders. While $\mathbb{P}(Y \mid R = 1)$ can be directly estimated from observed data, $\mathbb{P}(Y \mid R = 0)$ cannot be identified from data alone, necessitating additional assumptions or sensitivity parameters for its estimation.
+
+Common approaches for addressing non-identifiability involve defining plausible deviations from $\mathbb{P}(Y \mid R = 1)$ using specific sensitivity parameters such as:
+
+-   Shift Bias: Adjusting imputed values by a constant $\delta$ to reflect systematic differences in nonresponders.
+-   Scale Bias: Scaling imputed values to account for differing variability.
+-   Shape Bias: Reweighting imputations, for example, using methods like Selection-Indicator Reweighting (SIR), to capture distributional shape differences.
+
+In this discussion, primary focus is placed on the shift parameter $\delta$, hypothesizing that nonresponse shifts the mean of $Y$ by $\delta$ units.
+
+In practice, since only observed components $Y_{(r)}$ are available for individuals with missing data, modeling the full conditional distribution $f(Y \mid R = r)$ requires extrapolating from observed to unobserved components.
+
+------------------------------------------------------------------------
+
+#### 모형화 전략과 식별가능성
+
+Suppose the full-data conditional distribution is parameterized by pattern-specific parameters $\theta_r$ for each response pattern $r \in \mathcal{R}$:
+
+$$
+f(Y \mid R = r; \theta_r), \quad \text{with } \theta = \{\theta_r : r \in \mathcal{R}\}.
+$$
+
+Then, the marginal distribution of $Y$ can be expressed as:
+
+$$
+f(Y; \theta, \psi) = \sum_{r \in \mathcal{R}} f(Y \mid R = r; \theta_r) \cdot \mathbb{P}(R = r; \psi),
+$$
+
+where $\psi$ parameterizes the distribution of response patterns.
+
+Important points about identifiability include:
+
+-   The model is inherently non-identifiable without explicit assumptions regarding the distribution of missing components $Y_{(\bar{r})}$.
+-   Estimating $f(Y_{(\bar{r})} \mid Y_{(r)}, R = r)$ requires external information, expert knowledge, or assumptions encapsulated in sensitivity parameters.
+
+The conditional density for each response pattern can be further decomposed as:
+
+$$
+f(Y \mid R = r) = f(Y_{(r)} \mid R = r) \cdot f(Y_{(\bar{r})} \mid Y_{(r)}, R = r).
+$$
+
+-   The first term $f(Y_{(r)} \mid R = r)$ is estimable directly from observed data.
+-   The second term $f(Y_{(\bar{r})} \mid Y_{(r)}, R = r)$ cannot be identified from observed data alone and must rely on assumptions or additional sensitivity analysis.
+
+------------------------------------------------------------------------
+
+#### 위치 이동 모형
+
+A widely used strategy in PMMs is to introduce a **location shift** for the unobserved outcomes. Specifically, assume that:
+
+$$
+Y_{(\bar{r})} \mid Y_{(r)}, R = r \sim \mathcal{L}(Y_{(\bar{r})} \mid Y_{(r)}, R = r = r^*) + \delta_r,
+$$
+
+where:
+
+-   $r^*$ denotes a fully observed (reference) pattern (e.g., $R = 1^p$),
+
+-   $\delta_r$ is a vector of **sensitivity parameters** that quantify the mean shift for missing outcomes under pattern $r$.
+
+More formally, for each $r \in \mathcal{R}$ and unobserved component $j \in \bar{r}$, we specify:
+
+$$
+\mathbb{E}[Y_j \mid Y_{(r)}, R = r] = \mathbb{E}[Y_j \mid Y_{(r)}, R = r^*] + \delta_{rj}.
+$$
+
+Under this framework:
+
+-   Setting $\delta_r = 0$ corresponds to the MAR assumption (i.e., ignorability).
+-   Nonzero $\delta_r$ introduces controlled deviations from MAR and enables sensitivity analysis.
+
+------------------------------------------------------------------------
+
+#### 패턴-혼합 모형의 민감도 분석
+
+To evaluate the robustness of inferences to the missing data mechanism, we perform sensitivity analysis by varying $\delta_r$ over plausible ranges.
+
+**Bias in Estimation**
+
+Let $\mu = \mathbb{E}[Y]$ be the target estimand. Under the pattern-mixture decomposition:
+
+$$
+\mu = \sum_{r \in \mathcal{R}} \mathbb{E}[Y \mid R = r] \cdot \mathbb{P}(R = r),
+$$
+
+and under the shift model:
+
+$$
+\mathbb{E}[Y \mid R = r] = \tilde{\mu}_r + \delta_r^{*},
+$$
+
+where:
+
+-   $\tilde{\mu}_r$ is the mean computed using observed data (e.g., via imputation under MAR),
+
+-   $\delta_r^{*}$ is a vector with entries equal to the mean shifts $\delta_{rj}$ for missing components and 0 for observed components.
+
+Therefore, the overall bias induced by nonzero shifts is:
+
+$$
+\Delta = \sum_{r \in \mathcal{R}} \delta_r^{*} \cdot \mathbb{P}(R = r).
+$$
+
+This highlights how the overall expectation depends linearly on the sensitivity parameters and their associated pattern probabilities.
+
+##### 실무적 권고사항
+
+-   Use subject-matter knowledge to specify plausible ranges for $\delta_r$.
+-   Consider standard increments (e.g., $\pm 0.2$ SD units) or domain-specific metrics (e.g., $\pm 5$ P/E for valuation).
+-   If the dataset is large and the number of missingness patterns is small (e.g., monotone dropout), more detailed pattern-specific modeling is feasible.
+
+------------------------------------------------------------------------
+
+#### 다변량 및 종단자료로의 일반화
+
+Suppose $Y = (Y_1, \dots, Y_T)$ is a longitudinal outcome. Let $D \in \{1, \dots, T+1\}$ denote the dropout time, where $D = t$ implies observation up to time $t-1$.
+
+Then the pattern-mixture factorization becomes:
+
+$$
+f(Y, D) = f(Y \mid D = t) \cdot \mathbb{P}(D = t), \quad t = 2, \dots, T+1.
+$$
+
+Assume a parametric model:
+
+$$
+Y_j \mid D = t \sim \mathcal{N}(\beta_{0t} + \beta_{1t} t_j, \sigma_t^2), \quad \text{for } j = 1, \dots, T.
+$$
+
+Then the overall mean trajectory becomes:
+
+$$
+\mathbb{E}[Y_j] = \sum_{t=2}^{T+1} (\beta_{0t} + \beta_{1t} t_j) \cdot \mathbb{P}(D = t).
+$$
+
+This model allows for dropout-pattern-specific trajectories and can flexibly account for deviations in the distributional shape due to dropout.
+
+------------------------------------------------------------------------
+
+#### 선택 모형과의 비교
+
+Table \@ref(tab:endog-selection-vs-pattern-mixture) contrasts selection and pattern-mixture models for non-ignorable missingness.
+
+| Feature                        | Selection Model                            | Pattern-Mixture Model                      |
+|--------------------------------|--------------------------------------------|--------------------------------------------|
+| Factorization                  | $\mathbb{P}(Y) \cdot \mathbb{P}(R \mid Y)$ | $\mathbb{P}(Y \mid R) \cdot \mathbb{P}(R)$ |
+| Target of modeling             | Missingness process $\mathbb{P}(R \mid Y)$ | Distribution of $Y$ under $R$              |
+| Assumption for identifiability | MAR (often Probit)                         | Extrapolation (e.g., shift $\delta$)       |
+| Modeling burden                | On $\mathbb{P}(R \mid Y)$                  | On $f(Y \mid R)$                           |
+| Sensitivity analysis           | Less interpretable                         | Easily parameterized (via $\delta$)        |
+
+Table: (\#tab:endog-selection-vs-pattern-mixture) Selection model versus pattern-mixture model for missing-not-at-random data, compared on factorization, modelling target, and identifying assumption.
+
+```{r}
+library(tidyverse)
+library(mice)
+library(mvtnorm)
+library(ggplot2)
+library(broom)
+library(patchwork)
+```
+
+1.  **Simulate Longitudinal Dropout Data**
+
+We simulate a 3-time-point longitudinal outcome, where dropout depends on unobserved future outcomes, i.e., MNAR.
+
+```{r}
+set.seed(123)
+
+# Parameters
+n <- 100
+time <- c(0, 1, 2)
+beta <- c(100, 5)  # intercept and slope
+sigma <- 5
+dropout_bias <- -10  # MNAR: lower future Y -> more dropout
+
+# Simulate full data (Y1, Y2, Y3)
+Y <- matrix(NA, nrow = n, ncol = 3)
+for (i in 1:3) {
+    Y[, i] <- beta[1] + beta[2] * time[i] + rnorm(n, 0, sigma)
+}
+
+# Dropout mechanism: higher chance to drop if Y3 is low
+prob_dropout <- plogis(-0.5 + 0.2 * (dropout_bias - Y[, 3]))
+drop <- rbinom(n, 1, prob_dropout)
+
+# Define dropout time: if drop == 1, then Y3 is missing
+R <- matrix(1, nrow = n, ncol = 3)
+R[drop == 1, 3] <- 0
+
+# Observed data
+Y_obs <- Y
+Y_obs[R == 0] <- NA
+
+# Combine into a data frame
+df <-
+    data.frame(
+        id = 1:n,
+        Y1 = Y_obs[, 1],
+        Y2 = Y_obs[, 2],
+        Y3 = Y_obs[, 3],
+        R3 = R[, 3]
+    )
+
+```
+
+2.  **Fit Pattern-Mixture Model with Delta Adjustment**
+
+We model $Y_3$ as a function of $Y_1$ and $Y_2$, using the observed cases (complete cases), and create multiple imputed datasets under various shift parameters $\delta$ to represent different MNAR scenarios.
+
+```{r}
+# Base linear model for Y3 ~ Y1 + Y2
+model_cc <- lm(Y3 ~ Y1 + Y2, data = df, subset = R3 == 1)
+
+# Predict for missing Y3s
+preds <- predict(model_cc, newdata = df)
+
+# Sensitivity values for delta
+delta_seq <- c(0, -2.5, -5, -7.5, -10)  # in units of Y3
+
+# Perform delta adjustment
+imputed_dfs <- lapply(delta_seq, function(delta) {
+  df_new <- df
+  df_new$Y3_imp <- ifelse(is.na(df$Y3),
+                          preds + delta,
+                          df$Y3)
+  df_new$delta <- delta
+  return(df_new)
+})
+
+# Stack all results
+df_imp_all <- bind_rows(imputed_dfs)
+
+```
+
+3.  **Estimate Full-Data Mean and Trajectory under Each Delta**
+
+We now estimate the mean of $Y_3$ and the full outcome trajectory across delta values.
+
+```{r}
+estimates <- df_imp_all %>%
+    group_by(delta) %>%
+    summarise(
+        mu_Y1 = mean(Y1, na.rm = TRUE),
+        mu_Y2 = mean(Y2, na.rm = TRUE),
+        mu_Y3 = mean(Y3_imp),
+        .groups = "drop"
+    ) %>%
+    pivot_longer(cols = starts_with("mu"),
+                 names_to = "Time",
+                 values_to = "Mean") %>%
+    mutate(Time = factor(
+        Time,
+        levels = c("mu_Y1", "mu_Y2", "mu_Y3"),
+        labels = c("Time 1", "Time 2", "Time 3")
+    ))
+
+```
+
+4.  **Visualization: Sensitivity Analysis**
+
+Figure \@ref(fig:endog-pattern-mixture-trajectories) shows how the estimated mean trajectory $\mu_{Y_t}$ changes across different sensitivity parameters $\delta$ used to adjust the imputed values in the missing arm.
+
+```{r endog-pattern-mixture-trajectories, fig.cap="Pattern-mixture-model sensitivity analysis: estimated mean trajectory of Y across three time points for each value of the sensitivity parameter $\\delta$ used to adjust imputed missing observations."}
+ggplot(estimates, aes(
+    x = Time,
+    y = Mean,
+    color = as.factor(delta),
+    group = delta
+)) +
+    geom_line(linewidth = 1) +
+    geom_point(size = 2) +
+    scale_color_viridis_d(name = expression(delta)) +
+    labs(
+        title = "Pattern-Mixture Model Sensitivity Analysis",
+        y = "Mean of Y_t",
+        x = "Time"
+    ) +
+    causalverse::ama_theme()
+
+```
+
+5.  **Sensitivity Table for Reporting**
+
+Table \@ref(tab:y3-sensitivity-delta) quantifies the change in $\mu_{Y_3}$ across the range of $\delta$ adjustments and reports the corresponding standard deviations and observed/missing counts.
+
+```{r y3-sensitivity-delta}
+df_summary <- df_imp_all %>%
+    group_by(delta) %>%
+    summarise(
+        Mean_Y3 = mean(Y3_imp),
+        SD_Y3 = sd(Y3_imp),
+        N_Missing = sum(is.na(Y3)),
+        N_Observed = sum(!is.na(Y3))
+    )
+
+knitr::kable(df_summary, digits = 2,
+             caption = "Sensitivity of estimated mean of Y3 to delta adjustments.")
+
+```
+
+6.  **Interpretation and Discussion**
+
+-   The estimated mean of $Y_3$ decreases linearly with increasingly negative $\delta$, as expected.
+
+-   This illustrates the **non-identifiability** of the distribution of missing data without unverifiable assumptions.
+
+-   The results provide a **tipping point analysis**: at what $\delta$ does inference about the mean (or treatment effect, in a causal study) substantially change?

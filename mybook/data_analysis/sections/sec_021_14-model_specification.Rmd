@@ -1,0 +1,35 @@
+<!-- ========================================= -->
+<!-- Chapter: 14-model_specification.Rmd -->
+<!-- ========================================= -->
+
+
+# 모형 명체 검정(Model Specification Tests)
+
+모형 명체 검정(Model specification tests)은 모형의 기반이 되는 가정이 실제로 성립하는지 검증하기 위한 계량경제학 분석의 필수적인 절차입니다. 이러한 검정은 모형이 올바르게 설정되었는지 확인하여, 추정량(estimators)이 신뢰할 수 있고 효율적인지 보장하는 데 도움을 줍니다. 잘못 명체화된(mis-specified) 모형은 편향되거나(biased), 일치하지 않거나(inconsistent), 비효율적인(inefficient) 추정치를 유발하여 분석으로부터 도출된 추론의 타당성을 훼손할 수 있습니다.
+
+본 장에서는 다음을 포함한 다양한 모형 명체 검정을 다룹니다:
+
+-   [중첩 모형 검정(Nested Model Tests)]
+-   [비중첩 모형 검정(Non-Nested Model Tests)]
+-   [이분산성 검정(Heteroskedasticity Tests)]
+-   [함수 형태 검정(Functional Form Tests)]
+-   [자기상관 검정(Autocorrelation Tests)]
+-   [다중공선성 진단(Multicollinearity Diagnostics)]
+
+이러한 검정을 이해함으로써 연구자는 모형의 강건성(robustness)을 평가하고, 모형 성능을 개선하기 위해 필요한 조정을 수행할 수 있습니다.
+
+------------------------------------------------------------------------
+
+
+
+> **본 장의 전체 내용은 출간된 Springer 도서에서 확인하실 수 있습니다.**\
+> 온라인 미리보기는 출판사 정책에 따라 일부로 제한됩니다.
+
+전체 내용을 확인하시려면 Springer 도서를 참고하시기 바랍니다:
+
+| 권차 | 도서명                                     | 링크                                       |
+|---------------|---------------------------|--------------------|
+| 1    | *Foundations of Data Analysis*            | [Springer에서 구매](https://tidd.ly/4oL3N2X) |
+| 2    | *Regression Techniques for Data Analysis* | [Springer에서 구매](https://tidd.ly/47PJ7kB) |
+| 3    | *Advanced Modeling and Data Challenges*   | [Springer에서 구매](https://tidd.ly/3JrB3xm) |
+| 4    | *Experimental Design*                     | [Springer에서 구매](https://tidd.ly/4oFridQ) |

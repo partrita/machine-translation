@@ -1,0 +1,176 @@
+<!-- ========================================= -->
+<!-- Chapter: 30.06-nonparametric-did.Rmd -->
+<!-- ========================================= -->
+
+
+## 비모수 이중차분법 및 잠재 요인 모형(Nonparametric Difference-in-Differences and Latent Factor Models) {#sec-nonparametric-did}
+
+본 절의 표기법은 기초 장의 표 \@ref(tab:quasi-exp-notation) 규칙을 따릅니다.
+
+본 절에서는 강한 함수 형태 가정(functional-form assumptions)에 의존하지 않고 패널 데이터 환경에서 평균 처치효과를 식별하고 추정하는 방법을 다룹니다. 표준적인 이원고정효과(Two-Way Fixed Effects, TWFE) 모형과 선형 요인 모형(linear factor model)은 미관측 개체 고유 성분 및 시간 고유 성분에 선형성(linearity) 또는 가법성(additivity)을 부여하므로 구현이 용이하지만 제약적입니다. 여기서 소개하는 프레임워크는 잠재적 결과(potential outcomes), 잠재 개체 요인(latent unit factors), 잠재 시간 요인(latent time factors), 그리고 특이 오차(idiosyncratic shocks) 간의 완전한 비모수적(nonparametric) 관계를 허용합니다. 목표는 횡단면 및 시계열 차원 모두에서 미관측 이질성을 허용하는 패널 내에서, TWFE 회귀가 요구하는 것보다 훨씬 약한 함수 형태 가정 하에 [처치집단에 대한 평균 처치효과(Average Treatment Effect on the Treated, ATT)]를 추정하는 것입니다.
+
+이러한 접근법의 학문적 계보는 @athey2006identification 의 비선형 이중차분법 모형과 @lee2015panel 의 비모수 고정효과 패널 회귀로 이어지며, 두 연구 모두 교과서적 DiD가 부과하는 가법적 선형 구조를 완화합니다. 우리는 개체 및 시간 효과를 미지의 함수를 통해 결과 변수에 영향을 미치는 잠재 요인으로 취급함으로써 이 기초 위에서 논의를 전개합니다.
+
+### 설정 및 잠재적 결과
+
+전형적인 이원고정효과 모형은 기간 $t$에서 개체 $i$의 미처치 결과에 대해 다음과 같이 가정합니다.
+
+$$
+Y_{it}(0) \;=\; \alpha_i + \beta_t + \varepsilon_{it},
+$$
+
+여기서 $\alpha_i$는 개체 효과, $\beta_t$는 시간 효과, $\varepsilon_{it}$는 특이 오차입니다. 이러한 가법적 구조는 응용 연구에서 널리 쓰이지만, 잠재 성분들과 결과 간의 관계가 진정으로 비선형적이거나 비가법적일 때는 실패할 수 있습니다. 비모수 패널 모형은 요인 구조를 유지하면서 가법성을 완화하여, 완만한 평활성(smoothness) 및 분리성(separability) 조건만을 만족하는 유연한 미지의 함수를 통해 잠재 성분들이 유입되도록 합니다.
+
+$T$개 기간($t \in \{1, \ldots, T\}$) 동안 관측된 $N$개 개체(개인, 기업 또는 지역)의 패널을 고려해 보겠습니다. $W_{it} \in \{0,1\}$을 처치 상태라 합니다. 두 가지 잠재적 결과는 미처치 시의 결과인 $Y_{it}(0)$과 처치 시의 결과인 $Y_{it}(1)$이며, 실현된 관측 결과는 다음과 같습니다.
+
+$$
+Y_{it} =
+\begin{cases}
+Y_{it}(0), & W_{it} = 0, \\
+Y_{it}(1), & W_{it} = 1.
+\end{cases}
+$$
+
+목표 대상 모수는 처치집단에 대한 평균 처치효과(ATT)입니다.
+
+$$
+\tau \;=\; \mathrm{ATT} \;=\;
+\frac{\sum_{i,t} W_{it}\,\bigl[Y_{it}(1) - Y_{it}(0)\bigr]}{\sum_{i,t} W_{it}},
+$$
+
+이는 처치된 셀 쌍 $(i,t)$에 대한 평균 효과입니다. 처치된 셀에 대해 $Y_{it}(0)$은 관측되지 않으므로, $\tau$를 식별하는 것은 결측 데이터(missing-data) 문제입니다.
+
+고전적인 DiD 설계는 2기간 2집단을 상정하고 미처치 잠재적 결과에 대해 평행 추세를 적용하며, 이는 선형 TWFE 모형의 다기간 대응물입니다. 결과 변수가 잠재 요인에 비선형적으로 의존하거나 개체별로 비가법적으로 달라지는 시간 효과로 인해 평행 추세가 성립하지 않는 순간, 표준 DiD와 TWFE는 편향을 갖게 됩니다. 비모수 요인 프레임워크는 선형성이나 평행 추세 가정에 의존하지 않는 자연스러운 일반화입니다.
+
+### 비모수 요인 모형
+
+미처치 잠재적 결과가 세 가지 인수를 갖는 미지의 함수 $g(\cdot)$로부터 생성된다고 가정합니다.
+
+$$
+Y_{it}(0) \;=\; g\bigl(\alpha_i,\; \beta_t,\; \varepsilon_{it}\bigr),
+$$
+
+여기서 $\alpha_i \in \mathcal{A} \subseteq \mathbb{R}^{d_\alpha}$는 개체 $i$에 고유한 확률 벡터이고, $\beta_t \in \mathcal{B} \subseteq \mathbb{R}^{d_\beta}$는 기간 $t$에 고유한 확률 벡터이며, $\varepsilon_{it}$는 개체 내에서는 시간 경과에 따라 상관될 수 있지만 개체 간에는 독립인 특이 오차입니다. 우리는 $g$에 선형성, 가법성, 모수적 형태를 일체 부과하지 않습니다. 대신 다음 세 가지 조건을 요구합니다.
+
+첫째, 평활성(smoothness): $g(\alpha, \beta, \varepsilon)$는 연속 미분 가능하거나 적어도 균일하게 유계인 1차 도함수를 갖는 Holder 연속(Hölder continuous)입니다. 둘째, 잠재적 독립성(latent independence): 집합 $\{\alpha_i\}$, $\{\beta_t\}$, $\{\varepsilon_{it}\}$는 상호 독립이며, $\alpha_i$는 개체 간에 독립동일분포(i.i.d.)를 따릅니다. 시간 요인 $\beta_t$는 주변분포가 정상(stationary)인 한 자기상관될 수 있으며, 오차항도 마찬가지입니다. 셋째, 점근적 체계에서 $N$과 $T$가 모두 무한히 커지며, 이는 시계열 및 공간 계량경제학에서 익숙한 인필 점근성(infill asymptotics)의 취지에 따라 추가 관측치가 행렬을 확장하기보다 조밀하게 채우도록 합니다 [@zhang2005towards].
+
+요인-분리 가능(factor-separable) 구조의 한 가지 이론적 배경은 무작위 행렬 이론의 행-열 교환가능성(row-and-column exchangeability)으로, 이는 $g(\alpha_i, \beta_t, \varepsilon_{it})$ 형태의 표현을 보장합니다. 우리는 단순히 그러한 표현이 존재한다고 가정하고 식별을 위해 그 요인 구조를 활용합니다. 두 가지 익숙한 모형이 특수한 경우로 포함됩니다. 이원고정효과는 $g(\alpha_i, \beta_t, \varepsilon_{it}) = \alpha_i + \beta_t + \varepsilon_{it}$에 해당하고, 선형 요인 모형은 $g(\alpha_i, \beta_t, \varepsilon_{it}) = \alpha_i^\top \beta_t + \varepsilon_{it}$에 해당하며, 후자는 일반화 합성 통제(generalized synthetic control) 방법 [@xu2017generalized]과 동적 상호작용 효과 추정량 [@moon2017dynamic]의 기반이 되는 상호작용 고정효과(interactive fixed effects) 구조입니다. 비모수 모형은 $g$가 선형이거나 가법적이거나 심지어 저계수(low rank)일 것을 요구하지 않으며, 단지 개체 고유 요인, 시간 고유 요인, 그리고 특이 오차에 의존하기만을 요구합니다.
+
+개체가 $(i,t)$에서 처치를 받을 때 잠재적 결과는 다음과 같습니다.
+
+$$
+Y_{it}(1) \;=\; g\bigl(\alpha_i, \beta_t, \varepsilon_{it}\bigr) + \delta(\alpha_i, \beta_t),
+$$
+
+여기서 $\delta(\alpha, \beta)$는 구조적 처치 증가분(treatment increment)이며, 이 자체도 잠재 요인들에 의존할 수 있습니다. 개별 효과는 $Y_{it}(1) - Y_{it}(0) = \delta(\alpha_i, \beta_t)$가 되며, 다음이 성립합니다.
+
+$$
+\tau \;=\; \frac{\sum_{i,t} W_{it}\, \delta(\alpha_i, \beta_t)}{\sum_{i,t} W_{it}}.
+$$
+
+$\alpha_i$와 $\beta_t$는 관측되지 않으므로 이에 직접 조건화할 수 없으며, 이것이 핵심 식별 과제입니다.
+
+### 식별 가정
+
+처치된 셀에 대한 반사실 $Y_{it}(0)$을 대체(impute)하기 위해서는 처치 할당 방식에 대한 설계상의 제약이 필요합니다. 횡단면 관측 연구에서 조건부 독립성(unconfoundedness)은 관측된 공변량 $X_i$에 조건부로 $W_i \perp Y_i(0)$을 요구합니다. 여기서는 관련 교란요인이 잠재 요인이므로 잠재 요인 무시가능성(latent-factor ignorability)을 부과합니다.
+
+첫 번째 구성 요소는 잠재 요인 조건부 독립성입니다.
+
+$$
+\{W_{it}\} \;\perp\; Y_{it}(0) \;\bigm|\; (\alpha_i, \beta_t),
+$$
+
+이는 잠재 개체 요인과 잠재 시간 요인에 조건부로 해당 셀에 대한 처치 할당이 무작위 할당만큼 양호하다는 것을 의미합니다. 두 번째 구성 요소는 중첩(overlap) 가정입니다. 모든 잠재 요인 값에 대해 다음을 만족하는 상수 $c > 0$가 존재합니다.
+
+$$
+0 < c \;\le\; \Pr\bigl(W_{it} = 1 \mid \alpha_i, \beta_t\bigr) \;\le\; 1 - c < 1
+$$
+
+따라서 주어진 요인 하에서 모든 셀은 처치를 받거나 받지 않을 유의미한 확률을 가집니다. 세 번째는 상호간섭이나 숨겨진 형태의 처치를 배제하는 안정적 개체 처치값 가정(SUTVA)입니다.
+
+$\alpha_i$와 $\beta_t$가 관측된다면 이 조건들은 일반적인 조건부 독립성으로 단순화될 것입니다. 핵심은 이들이 관측되지 않으며 오직 $(Y_{it}, W_{it})$만을 본다는 점입니다. 요인 구조는 동일하거나 유사한 $\alpha$ 값을 공유하는 두 개체의 미처치 결과가 모든 시점에 걸쳐 유사하게 행동하도록 보장하며, 시간 요인에 대해서도 대칭적으로 성립합니다. 잠재 요인은 결코 관측되지 않으므로 이러한 가정들을 직접 검정할 수는 없으며 연구 설계나 도메인 지식에 근거하여 옹호해야 합니다.
+
+이러한 조건 하에서 식별은 미처치 결과의 조건부 기댓값을 학습하는 문제로 축소됩니다.
+
+$$
+\mu(\alpha, \beta) \;=\; E\bigl[g(\alpha, \beta, \varepsilon) \mid \alpha, \beta\bigr].
+$$
+
+각 처치된 셀에 대해 $\mu(\alpha_i, \beta_t)$를 복원할 수 있다면 $Y_{it}(0)$을 대체할 수 있으며, 처치된 셀 전체에 걸쳐 $Y_{it}(1) - \mu(\alpha_i, \beta_t)$를 평균하여 ATT를 구할 수 있습니다. $\alpha_i$와 $\beta_t$ 자체를 식별하거나 전체 함수 $g$를 복원할 필요는 없으며, 단지 관련 요인 값에서의 기대 미처치 결과만 필요합니다.
+
+### 공분산 기반 매칭을 통한 식별
+
+걸림돌은 $\alpha_i$와 $\beta_t$가 잠재되어 있어 이에 조건화할 수 없다는 점입니다. 핵심 통찰은 $\beta$ 전체에 걸쳐 유사한 함수 $\mu(\alpha_i, \cdot)$를 갖는 개체들이 서로의 매칭 대상(match) 역할을 할 수 있으며, 이러한 유사성은 시간에 따른 동조화(co-movement)를 통해 데이터로부터 탐지할 수 있다는 점입니다. 두 개체 $i$와 $j$가 유사한 전체 함수 $\mu(\alpha_i, \cdot)$ 및 $\mu(\alpha_j, \cdot)$를 갖는다면, 제3의 개체 $k$에 대해 $t$에 걸친 $(Y_{it}, Y_{kt})$와 $(Y_{jt}, Y_{kt})$의 공분산 패턴은 서로 매우 가까울 것입니다.
+
+이를 모집단 수준에서 엄밀히 정의하기 위해, 임의의 개체 유형 쌍 $\alpha, \alpha'$에 대해 불일치도(discrepancy)를 다음과 같이 정의합니다.
+
+$$
+\Gamma(\alpha, \alpha') \;=\; E_\beta\Bigl[\bigl(\mu(\alpha, \beta) - \mu(\alpha', \beta)\bigr)^2\Bigr].
+$$
+
+$\Gamma(\alpha, \alpha') = 0$일 때 함수 $\mu(\alpha, \cdot)$와 $\mu(\alpha', \cdot)$는 거의 모든 $\beta$에서 일치하므로, $\alpha$와 $\alpha'$는 미처치 잠재적 결과에 대해 동등한 개체 유형이 됩니다. $\alpha_i$는 관측되지 않지만, 불일치도는 교차 공분산 항으로 전개할 수 있습니다.
+
+$$
+\Gamma(\alpha, \alpha') \;=\;
+E_\beta\Bigl[\bigl(\mu(\alpha, \beta) - \mu(\alpha', \beta)\bigr)\,\mu(\alpha, \beta)\Bigr]
+-
+E_\beta\Bigl[\bigl(\mu(\alpha, \beta) - \mu(\alpha', \beta)\bigr)\,\mu(\alpha', \beta)\Bigr],
+$$
+
+따라서 $\Gamma(\alpha, \alpha') = 0$임을 검증하는 것은 모든 유형 $\alpha''$에 대해 차이 $\mu(\alpha, \beta) - \mu(\alpha', \beta)$가 $\mu(\alpha'', \beta)$와 비상관(uncorrelated)임을 확인하는 것과 같습니다. $N$이 크면 관측된 개체들이 조밀한 탐침 유형(probe types) $\alpha''$의 집합을 제공하며, $T$가 크면 표본 공분산이 모집단 공분산으로 수렴합니다.
+
+이는 실행 가능한 경험적 매칭 집합을 동기부여합니다. 각 개체 $i$와 허용오차 $\nu > 0$에 대해 다음을 정의합니다.
+
+$$
+\mathcal{J}_\nu(i) \;=\;
+\Bigl\{ j \ne i :
+\max_{k \ne i,j}
+\bigl|\,\widehat{\mathrm{Cov}}_t\bigl(Y_{it} - Y_{jt},\, Y_{kt}\bigr)\,\bigr|
+\;\le\; \nu \Bigr\},
+$$
+
+여기서 $\widehat{\mathrm{Cov}}_t(X_t, Z_t) = \tfrac{1}{T}\sum_{t}(X_t - \bar{X})(Z_t - \bar{Z})$입니다. 이 집합은 $i$에 대한 차분된 시간 프로파일이 다른 모든 개체의 프로파일과 거의 상관되지 않는 개체 $j$들을 모은 것으로, 이는 $\beta$ 전체에 걸쳐 $\mu(\alpha_i, \beta) \approx \mu(\alpha_j, \beta)$임을 강하게 시사합니다. $\nu \to 0$에 따라 집합은 진정으로 유사한 개체들로 축소되며, $N, T \to \infty$일 때 $g$에 대한 립시츠(Lipschitz) 조건과 표본 공분산의 균일 수렴 하에서 각 개체는 최소 하나의 매칭을 획득하면서 상한 노름(sup norm)에서 $\mu(\alpha_i, \cdot) \approx \mu(\alpha_j, \cdot)$가 성립합니다. 표본 크기에 따라 $\nu$가 천천히 줄어들도록 선택하면 이러한 힘의 균형을 맞출 수 있습니다. TWFE 환경에서 충분했던 일반적인 매칭은 이 더 일반적인 모형에서는 실패하며, 이것이 바로 공분산 기반 구성이 필요한 이유입니다.
+
+### ATT 추정
+
+$\mathcal{J}_\nu(i)$가 주어지면, 시점 $t$에서 통제 상태에 있는 매칭 대상들로 제한하여 $\mathcal{J}_\nu(i,t) = \{ j \in \mathcal{J}_\nu(i) : W_{jt} = 0 \}$를 구성하고, 이들의 평균을 통해 미처치 결과를 대체합니다.
+
+$$
+\hat{Y}_{it}(0) \;=\;
+\frac{1}{|\mathcal{J}_\nu(i,t)|} \sum_{j \in \mathcal{J}_\nu(i,t)} Y_{jt}.
+$$
+
+중첩 가정에 의해 확률 1로 수렴하면서 일부 매칭 대상은 시점 $t$에서 미처치 상태로 남아 있으므로, 집합은 공집합이 아니며 $\hat{Y}_{it}(0)$은 $\mu(\alpha_i, \beta_t)$를 근사합니다. 각 처치된 셀에 대해 개별 효과는 $\hat{\delta}_{it} = Y_{it} - \hat{Y}_{it}(0)$으로 추정되며, 처치된 셀 전체를 집계하면 다음을 얻습니다.
+
+$$
+\hat{\tau} \;=\;
+\frac{\sum_{(i,t):\,W_{it}=1}\bigl[Y_{it} - \hat{Y}_{it}(0)\bigr]}{\sum_{i,t} W_{it}}.
+$$
+
+위의 정칙성 조건 하에서 $\hat{\tau}$는 ATT로 확률수렴합니다. 이 추정량은 $\mu(\alpha_i, \beta_t)$에 대한 모수적 형태나 평행 추세 제약을 결코 부과하지 않으며, 대신 매칭을 통해 복원된 잠재 요인 하에서의 조건부 무시가능성에 의존합니다.
+
+### 다른 모형과의 관계
+
+$g(\alpha_i, \beta_t, \varepsilon_{it}) = \alpha_i + \beta_t + \varepsilon_{it}$일 때 조건부 평균은 가법적($\mu(\alpha_i, \beta_t) = \alpha_i + \beta_t$)이 됩니다. 공분산 기반 매칭은 동일한 $\alpha$ 값을 가진 개체를 선택하게 되는데, 가법적 환경에서는 개체 유형의 차이가 시간 요인의 움직임과 무관하게 수준 차이로만 나타나기 때문입니다. $\alpha_i$나 $\beta_t$를 차분하여 소거하는 것이 가능하며, 절차는 일반적인 DiD나 TWFE 회귀로 귀결됩니다. 그러나 $\mu$가 비가법적인 순간 차분 논리는 무너지며, 매칭 접근법이 올바른 일반화가 됩니다.
+
+선형 요인 모형 $g(\alpha_i, \beta_t, \varepsilon_{it}) = \alpha_i^\top \beta_t + \varepsilon_{it}$은 또 다른 대표적인 특수 사례입니다. @moon2017dynamic 의 상호작용 고정효과 접근법, @xu2017generalized 의 일반화 합성 통제법, @li2023statistical 의 요인 모형 인과 추정량과 같은 전통의 추정량들은 오차 과정에 대한 가정 하에 $\alpha_i$와 $\beta_t$를 복원합니다. 비모수 모형은 요인들을 직접 추정하지 않고, 이들을 잠재 확률 변수로 취급하며 매칭을 통해 우회합니다.
+
+### 실무적 고려사항 및 확장
+
+대규모 패널에서 모든 쌍에 대해 $\max_{k \ne i,j} |\widehat{\mathrm{Cov}}(\cdots)|$를 탐색하는 것은 $N^3 T$ 수준의 연산 비용이 듭니다. 흔히 쓰이는 해결책은 특이값 분해(SVD)를 통해 복원된 근사 요인 구조나 $\alpha_i$가 유한한 수의 값을 갖는다고 가정하는 집단 이질성(grouped-heterogeneity) 장치를 통해 개체들을 먼저 클러스터링한 다음, 클러스터 내에서 미세 매칭을 수행하는 것입니다. 대역폭을 부과하거나 충분한 수의 매칭을 찾으면 탐색을 중단하는 정규화 방식도 정확한 공분산 매칭 탐색 비용을 덜어줍니다.
+
+시차 적용 시에는 주의가 필요합니다. 각 처치된 셀에 대해 해당 시점에 미처치 상태로 남아 있는 매칭 대상이 충분히 존재해야 하므로 중첩성이 시점별로 성립해야 합니다. 특정 시점까지 거의 모든 개체가 처치된다면, 해당 기간에서는 이 접근법이 기반을 잃게 됩니다.
+
+추론의 경우 $\hat{\tau}$는 매칭 추정량처럼 행동하며, 요인 의존성으로 인해 통상적인 분산 공식이 복잡해집니다. 개체 시계열 전체 또는 시점 전체를 재표본추출하는 블록 붓스트랩(block bootstrap)은 횡단면 및 시계열 의존성을 보존합니다. 각 표본 추출물 내에서 매칭 집합과 추정량을 재계산하고 $\hat{\tau}$의 표본분포를 읽어냅니다. 큰 $N$, 큰 $T$ 정칙성 조건 하에서 붓스트랩은 올바른 극한 분포를 복원합니다.
+
+동일한 요인 매칭 체계는 인과추론을 넘어 분해(decomposition) 분석으로도 확장됩니다. 집단 간 격차에 대한 오악사-블라인더 분해(Oaxaca-Blinder decomposition) [@oaxaca1973male; @blinder1973wage]에서 $W_{it} = 1$을 한 집단의 소속 지시자로, $W_{it} = 0$을 다른 집단으로 설정해 보겠습니다. 평균 결과 격차는 집단 간 잠재 요인 분포의 차이로 설명되는 구성 요소(설명된 부분)와 조건부 평균 함수 $\mu$ 자체의 차이로 설명되는 구성 요소(설명되지 않은 부분)로 분해됩니다.
+
+$$
+\underbrace{E\bigl[\mu_1(\alpha^1, \beta^1)\bigr] - E\bigl[\mu_0(\alpha^0, \beta^0)\bigr]}_{\text{격차}}
+=
+\underbrace{E\bigl[\mu_1(\alpha^1, \beta^1)\bigr] - E\bigl[\mu_0(\alpha^1, \beta^1)\bigr]}_{\text{설명되지 않은 부분}}
++
+\underbrace{E\bigl[\mu_0(\alpha^1, \beta^1)\bigr] - E\bigl[\mu_0(\alpha^0, \beta^0)\bigr]}_{\text{설명된 부분}}.
+$$
+
+요인들이 관측되지 않더라도, 각 집단의 요인 구조가 집단 내에서 안정적이라면 동일한 매칭 논리를 통해 "한 집단이 다른 집단의 잠재 요인 분포를 가졌다면 어떠했을까"라는 반사실을 대체할 수 있습니다. 처치효과를 식별하는 논리가 집단 소속 분해 또한 식별하는 것입니다.

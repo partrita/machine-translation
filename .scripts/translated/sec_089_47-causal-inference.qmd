@@ -1,0 +1,793 @@
+<!-- ====== Section from: 47-causal-inference.qmd ====== -->
+
+
+
+# 인과추론과 현장실험 {#sec-causal-inference}
+
+마케팅 의사결정은 본질적으로 변장된 인과적 주장이다. "검색 광고에 1달러를 더 지출하면 3달러의 수익을 얻을 것이다"라는 진술은 실제로 일어나지 않은 반사실적(counterfactual) 세계, 즉 기업이 그 1달러를 지출하지 *않았더라면* 달성했을 매출에 관한 진술이다. 광고와 매출 사이의 상관관계는 아무리 정밀하게 추정되더라도 이러한 진술을 정당화하지 못한다. 왜냐하면 기업은 스스로 광고비를 얼마나 지출할지 결정했으며, 더 많이 팔릴 것으로 예상되는 시점과 장소에 더 정밀하게 광고를 집행하기로 선택했기 때문이다. *우리가 측정하는 것*(관찰 데이터의 연관성)과 *우리가 알고자 하는 것*(우리가 통제하는 개입의 효과) 사이의 간극은 이 장, 나아가 실증 마케팅 전반의 핵심적인 문제다.
+
+본 장에서는 이 간극을 좁히기 위한 현대적 도구상자를 개발한다. 어떤 추정량을 선택하기 전에 인과효과를 정의하는 언어인 **잠재적 결과 프레임워크(potential-outcomes framework)**로 시작하여, 처리군과 미처리군의 순진한 비교가 왜 **선택(selection)**에 의해 편향되는지 보여준다. 이어서 선택 편향을 설계 자체로 해결하는 기준점으로서 무작위실험과 온라인 **A/B 테스트**를 다루고, 무작위 배정이 불가능할 때 인과효과를 복원하기 위한 네 가지 대표적인 **준실험(quasi-experimental)** 설계인 **이중차분법(DiD)**, **도구변수(IV)**, **회귀불연속설계(RD)**, **합성통제법(SCM)**을 살펴본다. 각 방법론은 직관을 먼저 제시한 후 추정량, 식별 가정, 그리고 가장 중요한 *무엇이 식별을 무너뜨리는지*와 독자가 이를 어떻게 판별할 수 있는지를 동일한 구조로 제시한다. 전체를 관통하는 주요 적용 분야는 인과추론이 마케팅 실무를 재편한 두 영역인 **광고 효과 측정**과 **가격 책정**이다.
+
+이 문제의 중요성은 단순한 학술적 호기심에 그치지 않는다. 지난 10년간 대규모 현장실험을 통해 드러난 바에 따르면, 광고 수익률에 대한 관찰 연구 및 준실험적 추정치는 단순히 몇 퍼센트 차이 나는 수준이 아니라 자릿수(order of magnitude) 단위로 틀릴 수 있으며, 때로는 부호 자체가 반대로 나타나기도 한다 [@Lewis_2015; @gordon2019]. 신뢰할 수 있는 인과적 추정치와 신뢰할 수 없는 추정치를 구분하지 못하는 마케팅 과학자는 기업에 위험 요소가 된다. 이 장을 마치고 나면 독자는 추정대상(estimand)을 명시하고, 설계를 선택하며, 그 가정을 방어하고, R로 추정량을 구현하며, 가장 흔히 발생하는 실패 요인을 진단할 수 있게 될 것이다.
+
+## 학기 구성 {#sec-causal-semester-arc}
+
+이 장은 광고 효과 측정, 가격 책정, 프로모션, 디지털/플랫폼 실험 등 계량 마케팅 응용에 맞추어 구성된 인과추론 및 현장실험 분야의 14주 박사과정 세미나 형태로 구성되어 있다. 그 흐름은 최고 수준의 경영학 박사 프로그램(MIT, Chicago Booth, Stanford GSB, Berkeley, Wharton, Columbia, Kellogg, NYU Stern 및 마케팅 전공생들이 교차 수강하는 경제학 및 통계학 학과)의 실증 연구 트랙에서 이 주제를 가르치는 방식과 일치한다. 세미나를 관통하는 단 하나의 핵심 질문은 다음과 같다: *우리가 관찰한 것과 연구를 어떻게 설계했는지를 조건으로 할 때, 처치를 무작위 배정에 준하는 상태(as-good-as-randomly assigned)로 만드는 것은 무엇인가?*
+
+**전반부 3분의 1**에서는 기초 프레임워크(잠재적 결과와 할당 메커니즘), 표준 기준점(무작위실험과 대규모 A/B 테스트), 그리고 무작위 배정이 불가능한 현실적 상황(관측 가능한 변수에 의한 선택 및 회귀분석이 마법이 아닌 이유)을 확립한다. 이러한 순서는 의도적인 것이다. 학생들은 관찰 데이터 기반의 설계가 실험적 이상향에서 얼마나 벗어나는지 평가하기 전에 먼저 실험의 이상적인 표준을 내재화하게 된다. **중반부 3분의 1**에서는 도구변수, 이중차분법, 회귀불연속, 합성통제, 패널/사건연구 방법, 매칭/가중치 부여 등 무작위성에 준하는 다양한 변량의 원천에 기반한 준실험 설계를 훑어본다. 여기서 반복되는 핵심 주제는 지난 10년 동안 *기존의 핵심 방법론들이 재검토되었다*는 점이다. 특히 오랫동안 기본으로 사용되었던 이원 고정효과(TWFE) DiD 추정량이 시차를 둔 도입(staggered adoption)과 이질적 효과 하에서 심각하게 편향된다는 사실이 밝혀진 것은 가장 극적인 사례다. 본 세미나에서는 이 사건을 학계의 중심적인 방법론적 경고 사례로 다룬다. 즉, 표준적이고 수천 번 논문에 실린 방법이라 하더라도 여전히 틀릴 수 있다는 것이다. **후반부 3분의 1**에서는 기계학습과 마케팅 플랫폼의 최전선을 다룬다. 이질적 처리효과를 위한 ML, 매출 변동성에 비해 효과가 미미할 때의 광고 측정, 플랫폼이 실제로 사용하는 실험 설계(고스트 애드, PSA 통제집단, 지역 실험), 증분성(incrementality), 가격 책정 및 타겟팅 정책 평가, 그리고 양면 시장과 소셜 네트워크에서 SUTVA를 위반하는 간섭/파급효과 문제를 다룬다. 세미나는 모든 마케팅 학위 논문이 답해야 하는 질문으로 마무리된다: *효과가 실제 존재하지만 크기가 작고 플랫폼이 비정상성(non-stationary)을 띨 때, 신뢰할 수 있는 연구 설계는 무엇이며 그것이 확장(scale) 가능한가?*
+
+전체 과정을 관통하는 기본 교재는 Imbens와 Rubin의 *Causal Inference for Statistics, Social, and Biomedical Sciences* (Cambridge, 2015, 잠재적 결과의 뼈대), Angrist와 Pischke의 *Mostly Harmless Econometrics* (Princeton, 2009, 응용 준실험 연구의 핵심 참고서), Cunningham의 *Causal Inference: The Mixtape* (Yale, 2021, 코드 중심의 현대적 종합서), 그리고 Wooldridge의 *Econometric Analysis of Cross Section and Panel Data*, 2nd ed. (MIT, 2010, 패널/고정효과 참고서)이다. 아래의 각 주차별 모듈은 **주제(Topic)**, **세부 주제(Subtopics)**, **방법론(Methods)**, **핵심 문헌(Key readings)**(DOI 링크와 한 줄 설명 포함; 기초 문헌은 **[F]**, 최전선 문헌은 **[R]**로 표시), 그리고 **핵심 논쟁(Debate)**을 명시한다. 주차별 강의 계획 뒤에 이어지는 상세한 수식 유도, R 시뮬레이션, 실전 마케팅 예시(잠재적 결과 대수, A/B 검정력 시뮬레이션, DiD/IV/RD/SCM 코드, 설계 비교표)는 세미나의 실습 세션에 해당하며, 온전한 형태로 유지되고 해당 주차에서 상호 참조된다.
+
+### 제1주 — 잠재적 결과와 할당 메커니즘 {#sec-causal-week01}
+
+**주제.** [F] 어떤 추정량을 선택하기 전에 인과효과를 정의하는 언어로서의 네이만-루빈 잠재적 결과 모형(Neyman–Rubin potential-outcomes model).
+
+**세부 주제.** 인과추론의 근본적 문제; SUTVA; 추정대상(ATE, ATT, CATE); 핵심 대상으로서의 할당 메커니즘; "조작 없이는 인과도 없다(no causation without manipulation)"; 인과적 질문 대 예측적 질문.
+
+**방법론.** 추정대상을 정밀하게 정의하기; 추정대상 / 식별 / 추정 / 추론의 구분; 어떤 질문이 인과적인지 기술적인지 판별하기. 아래 @sec-causal-potential-outcomes 의 수식 전개 실습.
+
+**핵심 문헌.**
+
+- Rubin, D. B. (1974). "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies." *Journal of Educational Psychology* 66(5), 688–701. [doi:10.1037/h0037350](https://doi.org/10.1037/h0037350) — **[F]** 잠재적 결과 프레임워크를 정립한 창시적 논문.
+- Holland, P. W. (1986). "Statistics and Causal Inference." *Journal of the American Statistical Association* 81(396), 945–960. [doi:10.1080/01621459.1986.10478354](https://doi.org/10.1080/01621459.1986.10478354) — **[F]** 프레임워크와 "조작 없이는 인과도 없다"는 원칙을 공식화함; 분야의 개념적 시금석.
+- Imbens, G. W. & Rubin, D. B. (2015). *Causal Inference for Statistics, Social, and Biomedical Sciences*, Part I. Cambridge University Press *(book)* — **[F]** 잠재적 결과와 할당 메커니즘을 다룬 완전한 단행본.
+
+**핵심 논쟁.** 인과성을 위해 "조작"이 필수적인가(불변의 특성은 어떻게 볼 것인가)? ATE 대 ATT 대 정책 관련 추정대상; 설계 기반 추론 대 모형 기반 추론.
+
+### 제2주 — 무작위실험과 대규모 A/B 테스트 {#sec-causal-week02}
+
+**주제.** [F]→[R] ATE를 식별하는 할당 메커니즘으로서의 무작위화 및 이를 산업 규모의 웹 실험으로 확장한 방법론.
+
+**세부 주제.** 피셔(Fisher)의 엄밀한 귀무가설과 순열 추론 대 네이만(Neyman)의 반복 표집 추론; 공변량 균형, 층화, 블록화; CUPED 스타일의 분산 감소 기법; 웹 실험 엔지니어링, 표본 비율 불일치(SRM), 엿보기(peeking)/임의 중단(optional stopping), 조직적 인프라로서의 실험 플랫폼.
+
+**방법론.** 피셔 순열 검정 실행; 네이만 분산 계산; 층화/군집 배정 설계; 분산 감소 기법 적용; 표본 비율 불일치 진단. 실습: 아래 @sec-causal-rct 의 A/B 검정력 시뮬레이션(@fig-ab-power).
+
+**핵심 문헌.**
+
+- Kohavi, R., Longbotham, R., Sommerfield, D. & Henne, R. M. (2009). "Controlled Experiments on the Web: Survey and Practical Guide." *Data Mining and Knowledge Discovery* 18(1), 140–181. [doi:10.1007/s10618-008-0114-1](https://doi.org/10.1007/s10618-008-0114-1) — **[R]** 산업 규모 A/B 테스트의 실무 지침서; 실무에서 실제로 마주하게 되는 함정들을 정리함.
+- Bojinov, I. & Shephard, N. (2019). "Time Series Experiments and Causal Estimands: Exact Randomization Tests and Trading." *Journal of the American Statistical Association* 114(528), 1665–1682. [doi:10.1080/01621459.2018.1527225](https://doi.org/10.1080/01621459.2018.1527225) — **[R]** 설계 기반 무작위화 추론을 단일 단위 스위치백(switchback) 스타일의 시계열 실험으로 확장함(단일 시장 가격/광고 테스트에 직접 적용 가능).
+- Imbens, G. W. & Rubin, D. B. (2015). *Causal Inference...*, Part II. Cambridge University Press *(book)* — **[F]** 고전적 무작위실험; 피셔 및 네이만 추론.
+
+**핵심 논쟁.** 피셔 대 네이만 추론; 고정 기간 검정 대 순차적/상시 유효(always-valid) 검정; 비정상성과 짧은 실험 기간을 고려할 때 웹 A/B 테스트가 실제로 얼마나 학습할 수 있는가?
+
+### 제3주 — 회귀와 관측 가능한 변수에 의한 선택 {#sec-causal-week03}
+
+**주제.** [F] 조건부 독립(무혼란성, unconfoundedness) 가정 및 이 가정 하에서 회귀분석이 실제로 추정하는 것.
+
+**세부 주제.** 가중치 부여/비교 추정량으로서의 회귀분석 및 이질성 하에서 회귀분석이 추정하는 대상; "나쁜 통제 변수(bad controls)"와 합류점 편향(collider bias); 공통 지지/중첩(overlap) 조건; 누락 변수 편향(OVB) 및 민감도 분석.
+
+**방법론.** 신뢰할 수 있는 조건부 변수 집합 정의; 인과 DAG를 그려 나쁜 통제 변수 및 합류점 판별; 공통 지지 확인; OVB 민감도 한계 계산. 아래 @sec-causal-naive-comparison 에서 선택 편향 분해 유도.
+
+**핵심 문헌.**
+
+- Athey, S. & Imbens, G. W. (2017). "The State of Applied Econometrics: Causality and Policy Evaluation." *Journal of Economic Perspectives* 31(2), 3–32. [doi:10.1257/jep.31.2.3](https://doi.org/10.1257/jep.31.2.3) — **[R]** 식별 전략의 현대적 지도 및 관측치 기반 선택이 차지하는 위치; 코스의 전략적 개관으로 배정됨.
+- Angrist, J. D. & Pischke, J.-S. (2009). *Mostly Harmless Econometrics*, ch. 3. Princeton University Press *(book)* — **[F]** 회귀분석과 조건부 독립 가정; "나쁜 통제 변수" 문제.
+- Imbens, G. W. & Rubin, D. B. (2015). *Causal Inference...*, Part III. Cambridge University Press *(book)* — **[F]** 무혼란성과 회귀분석.
+
+**핵심 논쟁.** "모든 변수를 통제하는 것"이 언제 역효과를 낳는가? 설계 없이 관측치 기반 선택에 얼마나 신뢰를 둘 수 있는가?
+
+### 제4주 — 도구변수 {#sec-causal-week04}
+
+**주제.** [F] 내생적 처치를 이동시키는 외생적 충격을 활용한 인과효과 복원.
+
+**세부 주제.** IV/2SLS 추정량; LATE 정리와 단조성/배제 제약/관련성 가정; 순응자(compliers)와 LATE가 *누구를 위한* 효과인지; 약한 도구변수; 판사/심사관 배정 및 교대 공유(shift-share) 설계; 마케팅에서의 IV(가격 내생성, 수요 추정).
+
+**방법론.** 2SLS 및 LATE 해석; 1단계 *F* 통계량 / 약한 IV 진단; 실제 응용에서 배제 제약과 단조성 논증하기. 실습: 아래 @sec-causal-iv 의 수요 추정 IV 시뮬레이션.
+
+**핵심 문헌.**
+
+- Imbens, G. W. & Angrist, J. D. (1994). "Identification and Estimation of Local Average Treatment Effects." *Econometrica* 62(2), 467–475. [doi:10.2307/2951620](https://doi.org/10.2307/2951620) — **[F]** LATE 정리; 이질성 하에서 IV가 식별하는 대상을 재정의함.
+- Angrist, J. D., Imbens, G. W. & Rubin, D. B. (1996). "Identification of Causal Effects Using Instrumental Variables." *Journal of the American Statistical Association* 91(434), 444–455. [doi:10.1080/01621459.1996.10476902](https://doi.org/10.1080/01621459.1996.10476902) — **[F]** IV를 잠재적 결과 모형에 편입함; 순응자/배반자에 대한 표준적 설명.
+- Angrist, J. D. & Pischke, J.-S. (2009). *Mostly Harmless Econometrics*, ch. 4. Princeton University Press *(book)* — **[F]** 응용 IV 및 약한 도구변수 진단.
+
+**핵심 논쟁.** LATE는 "정책적으로 유의미한" 추정대상인가 아니면 도구변수의 인위적 산물인가? 대부분의 도구변수가 주장하는 배제 제약은 방어 가능한가?
+
+### 제5주 — 이중차분 I: 기초와 2×2 {#sec-causal-week05}
+
+**주제.** [F] 정형화된 2×2 DiD와 평행 추세 가정.
+
+**세부 주제.** 사건연구/사전 추세 그래프; 군집 및 계열 상관 표준오차; 플라시보 및 사전 추세 검정; 마케팅 신제품 출시, 시장 진입, 정책/규제 충격을 위한 DiD.
+
+**방법론.** 사건연구 그래프 작성; 사전 평행 추세 검정; 군집화 및 와일드 클러스터 부트스트랩(wild-cluster bootstrap); 플라시보 검정. 실습: 아래 @sec-causal-did 의 DiD 패널 시뮬레이션.
+
+**핵심 문헌.**
+
+- Bertrand, M., Duflo, E. & Mullainathan, S. (2004). "How Much Should We Trust Differences-in-Differences Estimates?" *The Quarterly Journal of Economics* 119(1), 249–275. [doi:10.1162/003355304772839588](https://doi.org/10.1162/003355304772839588) — **[F]** DiD 표준오차에서 계열 상관으로 인한 과소추정 문제를 폭로함; 통계적 추론의 대표적 경고 사례.
+- Card, D. & Krueger, A. B. (2000). "Minimum Wages and Employment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania: Reply." *American Economic Review* 90(5), 1397–1420. [doi:10.1257/aer.90.5.1397](https://doi.org/10.1257/aer.90.5.1397) — **[F]** 대표적인 최저임금 DiD 연구의 검증 기록; DiD를 기본 도구로 정착시킨 연구 설계. (원 Card & Krueger 1994 *AER* 논문은 *(DOI 검증 필요)*.)
+- Angrist, J. D. & Pischke, J.-S. (2009). *Mostly Harmless Econometrics*, ch. 5. Princeton University Press *(book)* — **[F]** DiD와 고정효과에 대한 고전적 해설.
+
+**핵심 논쟁.** 평행 추세는 검정 가능한가, 아니면 사전 기간에 대해서만 반증 가능한가? 점추정치가 아니라 추론(표준오차 등)이 DiD의 신뢰성을 얼마나 좌우하는가?
+
+### 제6주 — 이중차분 II: 시차 도입과 TWFE 비판 {#sec-causal-week06}
+
+**주제.** [R] 최근 계량경제학의 핵심 방법론적 사건: 이원 고정효과(TWFE) DiD가 시차를 둔 도입과 이질적 효과 하에서 왜 편향되는지, 그리고 이를 대체한 로버스트 추정량 군.
+
+**세부 주제.** "금지된 비교(forbidden comparisons)"와 음의 가중치; 분해 진단; 새로운 로버스트 추정량(집단-시점별 ATT, 상호작용 가중치 사건연구, 대체법/임퓨테이션); 추정량 간의 선택; 정직한 사전 추세(honest pre-trends).
+
+**방법론.** Goodman-Bacon 분해 실행; Callaway–Sant'Anna, Sun–Abraham, Borusyak–Jaravel–Spiess 추정량 계산 및 결과 비교; 정직한 사전 추세(HonestDiD 스타일) 민감도 분석. TWFE의 실패는 @sec-causal-did 의 DiD 논의에서 소개됨.
+
+**핵심 문헌.**
+
+- Goodman-Bacon, A. (2021). "Difference-in-Differences with Variation in Treatment Timing." *Journal of Econometrics* 225(2), 254–277. [doi:10.1016/j.jeconom.2021.03.014](https://doi.org/10.1016/j.jeconom.2021.03.014) — **[R]** TWFE가 이미 처치된 집단과의 "금지된" 비교를 포함하여 모든 2×2 DiD의 가중평균임을 밝힌 분해 정리.
+- de Chaisemartin, C. & d'Haultfœuille, X. (2020). "Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects." *American Economic Review* 110(9), 2964–2996. [doi:10.1257/aer.20181169](https://doi.org/10.1257/aer.20181169) — **[R]** TWFE가 처리효과에 음의 가중치를 부여할 수 있음을 증명하고 로버스트 대안을 제시함.
+- Callaway, B. & Sant'Anna, P. H. C. (2021). "Difference-in-Differences with Multiple Time Periods." *Journal of Econometrics* 225(2), 200–230. [doi:10.1016/j.jeconom.2020.12.001](https://doi.org/10.1016/j.jeconom.2020.12.001) — **[R]** 현재 로버스트 DiD의 기본 표준이 된 집단-시점별 ATT 추정량.
+- Sun, L. & Abraham, S. (2021). "Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects." *Journal of Econometrics* 225(2), 175–199. [doi:10.1016/j.jeconom.2020.09.006](https://doi.org/10.1016/j.jeconom.2020.09.006) — **[R]** 사건연구 계수의 오염 문제를 해결한 상호작용 가중치 추정량.
+- Borusyak, K., Jaravel, X. & Spiess, J. (2024). "Revisiting Event-Study Designs: Robust and Efficient Estimation." *Review of Economic Studies* 92(5), 3253–3285. [doi:10.1093/restud/rdae007](https://doi.org/10.1093/restud/rdae007) — **[R]** 대체법(효율적 추정량) 및 사건연구 설계의 통합적 관점.
+- Roth, J., Sant'Anna, P. H. C., Bilinski, A. & Poe, J. (2023). "What's Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature." *Journal of Econometrics* 235(2), 2218–2244. [doi:10.1016/j.jeconom.2023.03.008](https://doi.org/10.1016/j.jeconom.2023.03.008) — **[R]** 해당 주차의 중심 종합 가이드로 배정된 문헌 종합 및 의사결정 가이드.
+
+**핵심 논쟁.** 어떤 상황에서 어떤 로버스트 추정량을 사용해야 하는가? 효율적인 대체법 추정량의 더 강한 모형화 가정을 감수할 가치가 있는가? 기존에 출판된 DiD 연구 중 얼마나 많은 연구가 재검토 대상인가?
+
+### 제7주 — 회귀불연속설계 {#sec-causal-week07}
+
+**주제.** [F]→[R] 알려진 배정 기준점에서 국소적 처리효과를 식별하고 현대적인 로버스트 추론을 적용하는 방법.
+
+**세부 주제.** 단절적(sharp) 및 퍼지(fuzzy) RDD; 연속성 기반 관점 대 국소 무작위화 관점; 대역폭(bandwidth)/커널 선택과 편향-분산 트레이드오프; 조작/선별 검정(밀도 불연속성 검정); 마케팅에서의 RDD(충성도 등급 기준, 광고 경매 유보가격, 자격 부여 절단점).
+
+**방법론.** 국소 다항 회귀 추정; MSE 최적 및 CER 최적 대역폭 산정; 밀도(McCrary 스타일) 조작 검정; 플라시보 절단점 검정. 실습: 아래 @sec-causal-rd 의 충성도 등급 RD 시뮬레이션(@fig-rd).
+
+**핵심 문헌.**
+
+- Imbens, G. W. & Lemieux, T. (2008). "Regression Discontinuity Designs: A Guide to Practice." *Journal of Econometrics* 142(2), 615–635. [doi:10.1016/j.jeconom.2007.05.001](https://doi.org/10.1016/j.jeconom.2007.05.001) — **[F]** RDD 실무를 표준화한 실무 가이드.
+- Calonico, S., Cattaneo, M. D. & Titiunik, R. (2014). "Robust Nonparametric Confidence Intervals for Regression-Discontinuity Designs." *Econometrica* 82(6), 2295–2326. [doi:10.3982/ecta11757](https://doi.org/10.3982/ecta11757) — **[R]** 편향 수정된 로버스트 신뢰구간 및 데이터 기반 대역폭 산정법; 현대적 기본 표준.
+
+**핵심 논쟁.** 연속성 관점 대 국소 무작위화 프레임워크; "국소적(local)" 효과는 얼마나 국소적인가, 그리고 기준점에서의 외적 타당성 문제; 대역폭 선택에 대한 민감도.
+
+### 제8주 — 합성통제 {#sec-causal-week08}
+
+**주제.** [F]→[R] 기여자(donor) 단위들의 가중평균을 통해 단일 처리 단위의 반사실을 구축하는 방법.
+
+**세부 주제.** 데이터 기반 가중 비교로서의 합성통제 추정량; 플라시보/순열 추론; 사전 적합도 및 기여자 집단 선정; 확장 모형—일반화된 합성통제(상호작용 고정효과), 합성 DiD, 베이즈 구조적 시계열 "CausalImpact"(지역/광고 응용).
+
+**방법론.** 기여자 집단 및 가중치 구성; 순열/플라시보 추론; 마케팅 사례에 맞게 SC / 합성 DiD / gsynth / CausalImpact 중 적절한 방법 선택. 실습: 아래 @sec-causal-scm 의 단일 시장 SCM 시뮬레이션(@fig-scm).
+
+**핵심 문헌.**
+
+- Abadie, A., Diamond, A. & Hainmueller, J. (2010). "Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program." *Journal of the American Statistical Association* 105(490), 493–505. [doi:10.1198/jasa.2009.ap08746](https://doi.org/10.1198/jasa.2009.ap08746) — **[F]** 표준적 합성통제법과 플라시보 추론.
+- Abadie, A. (2021). "Using Synthetic Controls: Feasibility, Data Requirements, and Methodological Aspects." *Journal of Economic Literature* 59(2), 391–425. [doi:10.1257/jel.20191450](https://doi.org/10.1257/jel.20191450) — **[F]** 실행 가능성 및 방법론적 유의점을 다룬 권위 있는 리뷰 논문.
+- Arkhangelsky, D., Athey, S., Hirshberg, D. A., Imbens, G. W. & Wager, S. (2021). "Synthetic Difference-in-Differences." *American Economic Review* 111(12), 4088–4118. [doi:10.1257/aer.20190159](https://doi.org/10.1257/aer.20190159) — **[R]** SC와 DiD를 통합한 패널 비교의 최전선 추정량.
+- Xu, Y. (2017). "Generalized Synthetic Control Method: Causal Inference with Interactive Fixed Effects Models." *Political Analysis* 25(1), 57–76. [doi:10.1017/pan.2016.2](https://doi.org/10.1017/pan.2016.2) — **[R]** 다중 처리 단위를 위한 SC와 요인 모형(factor model)의 연결고리.
+- Brodersen, K. H., Gallusser, F., Koehler, J., Remy, N. & Scott, S. L. (2015). "Inferring Causal Impact Using Bayesian Structural Time-Series Models." *The Annals of Applied Statistics* 9(1), 247–274. [doi:10.1214/14-aoas788](https://doi.org/10.1214/14-aoas788) — **[R]** 플랫폼 기업에서 광고/지역 효과 측정에 널리 활용되는 "CausalImpact" 접근법.
+
+**핵심 논쟁.** 단위 수가 매우 적을 때 플라시보 추론이 유효한가? 볼록 가중치 제약 대 회귀 기반 패널 방법; 사전 적합도의 과적합 문제.
+
+### 제9주 — 패널 및 사건연구 방법 {#sec-causal-week09}
+
+**주제.** [F]→[R] 고정효과 및 사건연구 패널 추정량의 인과적 의미와 패널 실험의 설계 기반 관점.
+
+**세부 주제.** 고정효과 및 1계 차분 추정량과 그 인과적 의미; 사건연구 명세 및 동적 처리효과; 패널/스위치백 실험에 대한 유한 모집단 설계 기반 관점; 행렬 완성(matrix-completion) / 요인 접근법; 계열 상관에 강건한 추론.
+
+**방법론.** 동적 사건연구의 올바른 명세(제6주 참조); 설계 기반 대 모형 기반 패널 추론; 행렬 완성 추정. 아래 @sec-causal-did 의 TWFE 명세와 연결됨.
+
+**핵심 문헌.**
+
+- Bojinov, I., Rambachan, A. & Shephard, N. (2021). "Panel Experiments and Dynamic Causal Effects: A Finite Population Perspective." *Quantitative Economics* 12(4), 1171–1196. [doi:10.3982/qe1744](https://doi.org/10.3982/qe1744) — **[R]** 패널/스위치백 실험을 위한 설계 기반 추정대상; 실험을 사건연구와 연결함(플랫폼 기능 출시에 직접 적용 가능).
+- Athey, S. & Imbens, G. W. (2017). "The State of Applied Econometrics: Causality and Policy Evaluation." *Journal of Economic Perspectives* 31(2), 3–32. [doi:10.1257/jep.31.2.3](https://doi.org/10.1257/jep.31.2.3) — **[R]** 더 넓은 도구상자 속에서 패널/행렬 완성 접근법의 위치를 조망함(패널 섹션을 위해 재학습; 제3주에서 이어짐).
+- Wooldridge, J. M. (2010). *Econometric Analysis of Cross Section and Panel Data*, 2nd ed., 패널 챕터. MIT Press *(book)* — **[F]** FE/FD에 대한 표준적 참조 교재.
+
+**핵심 논쟁.** 언제 고정효과가 인과효과를 식별하고 언제 인위적 결과물을 낳는가? 설계 기반 대 모형 기반 패널 추론; 시차 DiD 문헌과의 중첩 영역.
+
+### 제10주 — 매칭과 가중치 부여 {#sec-causal-week10}
+
+**주제.** [F]→[R] 성향점수를 활용한 관측 변수의 균형화 및 고차원 균형화 기법.
+
+**세부 주제.** 성향점수와 균형화 속성; 매칭, 소집단 분류(subclassification), 역확률 가중치(IPW); 이중 로버스트(doubly-robust) / AIPW 추정; 고차원 공변량 균형화 및 엔트로피/근사 잔차 균형화; 관찰 데이터 기반 광고 효과 추정과 그 실패 양상.
+
+**방법론.** 성향점수 추정 및 진단; 공통 지지 및 균형도 평가; AIPW/이중 로버스트 추정; 균형화 가중치 산정. 아래 @sec-causal-ad-measurement 의 관찰 대 실험 광고 효과 증거에서 동기 부여.
+
+**핵심 문헌.**
+
+- Rosenbaum, P. R. & Rubin, D. B. (1983). "The Central Role of the Propensity Score in Observational Studies for Causal Effects." *Biometrika* 70(1), 41–55. [doi:10.1093/biomet/70.1.41](https://doi.org/10.1093/biomet/70.1.41) — **[F]** 성향점수 정의 및 균형화 정리를 제시함.
+- Hirano, K., Imbens, G. W. & Ridder, G. (2003). "Efficient Estimation of Average Treatment Effects Using the Estimated Propensity Score." *Econometrica* 71(4), 1161–1189. [doi:10.1111/1468-0262.00442](https://doi.org/10.1111/1468-0262.00442) — **[F]** 효율적 IPW; *추정된* 성향점수가 효율성을 높이는 이유.
+- Abadie, A. & Imbens, G. W. (2016). "Matching on the Estimated Propensity Score." *Econometrica* 84(2), 781–807. [doi:10.3982/ecta11293](https://doi.org/10.3982/ecta11293) — **[R]** 성향점수 매칭을 위한 올바른 추론(오랫동안 지속되었던 오류를 수정).
+- Athey, S., Imbens, G. W. & Wager, S. (2018). "Approximate Residual Balancing: Debiased Inference of Average Treatment Effects in High Dimensions." *Journal of the Royal Statistical Society Series B* 80(4), 597–623. [doi:10.1111/rssb.12268](https://doi.org/10.1111/rssb.12268) — **[R]** 다수의 공변량을 위한 최전선 균형화 기법; 기계학습으로의 가교(제11주).
+
+**핵심 논쟁.** 매칭 대 가중치 부여 대 이중 로버스트 추정; 균형화가 연구 설계를 대체할 수 있는가? "성향점수의 역설"(과도한 트리밍 문제).
+
+### 제11주 — 이질적 처리효과를 위한 기계학습 {#sec-causal-week11}
+
+**주제.** [R] 현대적 ML을 활용한 CATE 추정 및 타겟팅 정책 학습.
+
+**세부 주제.** CATE 및 정책 학습; 인과 의사결정나무/인과 포레스트 및 정직한 분할(honest splitting); 이중/탈편향 기계학습(DML, 네이만 직교 모멘트, 교차 적합); 일반화 랜덤 포레스트(GRF); 타겟팅 및 이질성의 최적 선형 투영(best-linear-projection) 요약.
+
+**방법론.** 교차 적합을 활용한 인과 포레스트 / DML 적합; CATE 및 CATE의 최적 선형 투영 추정; 타겟팅 정책 구축 및 검증. CATE 추정대상은 @sec-causal-potential-outcomes 에서 정의됨.
+
+**핵심 문헌.**
+
+- Athey, S. & Imbens, G. (2016). "Recursive Partitioning for Heterogeneous Causal Effects." *Proceedings of the National Academy of Sciences* 113(27), 7353–7360. [doi:10.1073/pnas.1510489113](https://doi.org/10.1073/pnas.1510489113) — **[F]** 정직한 추정을 적용한 "인과 의사결정나무"; ML 기반 HTE 연구 프로그램의 기초.
+- Wager, S. & Athey, S. (2018). "Estimation and Inference of Heterogeneous Treatment Effects Using Random Forests." *Journal of the American Statistical Association* 113(523), 1228–1242. [doi:10.1080/01621459.2017.1319839](https://doi.org/10.1080/01621459.2017.1319839) — **[R]** 유효한 점별 신뢰구간을 제공하는 인과 포레스트.
+- Athey, S., Tibshirani, J. & Wager, S. (2019). "Generalized Random Forests." *The Annals of Statistics* 47(2), 1148–1178. [doi:10.1214/18-aos1709](https://doi.org/10.1214/18-aos1709) — **[R]** `grf` 패키지의 기반이 되는 국소 추정량으로서의 일반화 포레스트 프레임워크.
+- Chernozhukov, V., Chetverikov, D., Demirer, M., Duflo, E., Hansen, C., Newey, W. & Robins, J. (2018). "Double/Debiased Machine Learning for Treatment and Structural Parameters." *The Econometrics Journal* 21(1), C1–C68. [doi:10.1111/ectj.12097](https://doi.org/10.1111/ectj.12097) — **[R]** 직교화와 교차 적합; 인과추론용 ML의 지배적인 표준 기법.
+- Athey, S. & Imbens, G. W. (2019). "Machine Learning Methods That Economists Should Know About." *Annual Review of Economics* 11, 685–725. [doi:10.1146/annurev-economics-080217-053433](https://doi.org/10.1146/annurev-economics-080217-053433) — **[R]** 예측에서 인과적 ML로 넘어가는 가교로 배정된 서베이 논문.
+
+**핵심 논쟁.** 모형 선택 후의 추론 문제; 유연한 HTE 추정치가 재현되는가? 이질성 발견 대 확증적 검정; 직교성 대 플러그인 편향(plug-in bias).
+
+### 제12주 — 플랫폼과 마케팅 I: 광고 효과 측정 {#sec-causal-week12}
+
+**주제.** [R] 마케팅 고유의 핵심 과제: 매출 분산에 비해 효과가 매우 미미할 때의 광고 효과 측정.
+
+**세부 주제.** 광고 효과 측정의 "불리한 경제성(unfavorable economics)"; 의도-처리(ITT) 설계, PSA/홀드아웃 통제집단, 고스트 애드(ghost ads); 광고 노출의 선택 편향/내생성; 광고 ROI 측정을 위한 실험 대 관찰 방법; 실험적으로 측정된 신호로서의 광고(advertising-as-signal).
+
+**방법론.** 광고 실험의 검정력 및 최소 탐지 가능 효과(MDE) 계산; ITT 효과 대 실제 노출 효과 및 고스트 애드/PSA의 논리; 관찰 추정량을 RCT 벤치마크와 비교 검증하기. 아래 @sec-causal-ad-measurement 에 제시된 동기 부여 참조.
+
+**핵심 문헌.**
+
+- Lewis, R. A. & Rao, J. M. (2015). "The Unfavorable Economics of Measuring the Returns to Advertising." *The Quarterly Journal of Economics* 130(4), 1941–1973. [doi:10.1093/qje/qjv023](https://doi.org/10.1093/qje/qjv023) — **[F]** 대규모 실험조차 광고 효과를 탐지하는 데 어려움을 겪음을 보여줌; 통계적 검정력에 대한 학계의 의제를 정립함 [@Lewis_2015].
+- Johnson, G. A., Lewis, R. A. & Nubbemeyer, E. I. (2017). "Ghost Ads: Improving the Economics of Measuring Online Ad Effectiveness." *Journal of Marketing Research* 54(6), 867–884. [doi:10.1509/jmr.15.0297](https://doi.org/10.1509/jmr.15.0297) — **[R]** 고스트 애드 설계: 노출 대상 사용자에게 깔끔하고 비용 효율적인 반사실을 제공함 [@johnson2017].
+- Gordon, B. R., Zettelmeyer, F., Bhargava, N. & Chapsky, D. (2019). "A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook." *Marketing Science* 38(2), 193–225. [doi:10.1287/mksc.2018.1135](https://doi.org/10.1287/mksc.2018.1135) — **[R]** 관찰 연구 방법론이 RCT 벤치마크 대비 광고 리프트를 심각하게 오측정함을 입증함 [@gordon2019].
+- Gordon, B. R., Moakler, R. & Zettelmeyer, F. (2023). "Close Enough? A Large-Scale Exploration of Non-Experimental Approaches to Advertising Measurement." *Marketing Science* 42(4), 768–793. [doi:10.1287/mksc.2022.1413](https://doi.org/10.1287/mksc.2022.1413) — **[R]** 비실험적 광고 측정이 (드물게) "충분히 근접"하는 조건을 탐구함.
+- Sahni, N. S., Zou, D. & Chintagunta, P. K. (2017). "Do Targeted Discount Offers Serve as Advertising? Evidence from 70 Field Experiments." *Management Science* 63(8), 2688–2705. [doi:10.1287/mnsc.2016.2450](https://doi.org/10.1287/mnsc.2016.2450) — **[R]** 할인 프로모션이 쿠폰 사용을 넘어 광고와 유사한 정보 전달 효과를 가짐을 증명함; 제13주와의 가교.
+
+**핵심 논쟁.** 광고 ROI를 경영 의사결정에 활용할 수 있을 만큼 정밀하게 측정하는 것이 가능한가? 플랫폼이 수행하는 실험은 신뢰할 수 있고 재현 가능한가? 리프트(Lift) 대 기여(Attribution).
+
+### 제13주 — 플랫폼과 마케팅 II: 증분효과, 지역, 가격 실험 {#sec-causal-week13}
+
+**주제.** [R] 실험을 통한 증분 리프트(incremental lift) 측정 및 타겟팅과 가격 정책 평가.
+
+**세부 주제.** 증분성(Incrementality) 대 마지막 상호작용 기여(last-touch attribution); 지역 실험 및 매칭 시장/합성통제 설계; 가격 현장실험 및 가격 끝자리 효과(price-ending effects); 쿠폰/프로모션 실험; 밴딧 "탐색 및 활용(learning-and-earning)" 가격 책정; 실험을 통한 타겟팅 정책 *평가*.
+
+**방법론.** 지역/매칭 시장 실험 및 CausalImpact 스타일의 성과 분석 설계(제8주 참조); 증분성 테스트 설계; 오프-폴리시(off-policy)/타겟팅 정책 평가; 가격/프로모션 테스트를 위한 검정력 산정.
+
+**핵심 문헌.**
+
+- Blake, T., Nosko, C. & Tadelis, S. (2015). "Consumer Heterogeneity and Paid Search Effectiveness: A Large-Scale Field Experiment." *Econometrica* 83(1), 155–174. [doi:10.3982/ecta12423](https://doi.org/10.3982/ecta12423) — **[R]** eBay의 브랜드 키워드 실험: 검색 광고가 기존 고객에게는 대체로 증분 효과가 없음을 규명함; 증분성에 관한 대표적 경고 사례 [@blake2015].
+- Anderson, E. T. & Simester, D. I. (2003). "Effects of $9 Price Endings on Retail Sales: Evidence from Field Experiments." *Quantitative Marketing and Economics* 1(1), 93–110. [doi:10.1023/a:1023581927405](https://doi.org/10.1023/a:1023581927405) — **[F]** 행동경제학적 가격 끝자리 효과를 분리해 낸 깔끔한 가격 현장실험.
+- Simester, D., Timoshenko, A. & Zoumpoulis, S. I. (2020). "Efficiently Evaluating Targeting Policies: Improving on Champion vs. Challenger Experiments." *Management Science* 66(8), 3412–3424. [doi:10.1287/mnsc.2019.3379](https://doi.org/10.1287/mnsc.2019.3379) — **[R]** 단일 실험에서 수많은 타겟팅 정책을 효율적으로 평가하는 방법.
+- Simester, D., Timoshenko, A. & Zoumpoulis, S. I. (2020). "Targeting Prospective Customers: Robustness of Machine-Learning Methods to Typical Data Challenges." *Management Science* 66(6), 2495–2522. [doi:10.1287/mnsc.2019.3308](https://doi.org/10.1287/mnsc.2019.3308) — **[R]** 실험 데이터로부터 학습된 ML 타겟팅이 실제 데이터 결함 하에서 어떻게 유지되는지 검증함.
+
+**핵심 논쟁.** 지역 실험(소수의 큰 단위, 상호 간섭) 대 사용자 단위 무작위화; 산업 실무에서의 기여도 분석 대 증분성; 동일한 데이터에서 타겟팅 정책을 학습하고 동시에 검증할 수 있는가?
+
+### 제14주 — 간섭, 파급효과, SUTVA 위반 {#sec-causal-week14}
+
+**주제.** [R] 종합 및 연구의 실제 기법: 한 단위의 처치가 다른 단위에 영향을 미칠 때의 인과추론.
+
+**세부 주제.** 양면 시장과 소셜 네트워크에서의 SUTVA 위반; 부분 간섭(partial-interference) 및 노출 매핑(exposure-mapping) 추정대상; 편향을 통제하기 위한 군집/그래프-군집 무작위 배정; 반사 문제(reflection problem) 및 동료/사회적 효과의 식별; 양면 시장 균형 효과(처치군이 통제군을 "잠식"하는 현상); 연구의 실전 기법—간섭 하에서의 실행 가능한 연구 설계, 사전 분석 계획서(pre-analysis plans), 논문 심사(refereeing).
+
+**방법론.** 노출 매핑 명세; 군집/그래프-군집 무작위화 설계; 부분 간섭 추정대상 정의; 심사 보고서 및 사전 분석 계획서 작성. SUTVA는 @sec-causal-potential-outcomes 에서 소개되고 @sec-causal-threats 에서 다시 다룸.
+
+**핵심 문헌.**
+
+- Aronow, P. M. & Samii, C. (2017). "Estimating Average Causal Effects Under General Interference, with Application to a Social Network Experiment." *The Annals of Applied Statistics* 11(4), 1912–1947. [doi:10.1214/16-aoas1005](https://doi.org/10.1214/16-aoas1005) — **[R]** 노출 매핑을 활용한 일반적 간섭 하에서의 설계 기반 추정.
+- Sävje, F., Aronow, P. M. & Hudgens, M. G. (2021). "Average Treatment Effects in the Presence of Unknown Interference." *The Annals of Statistics* 49(2), 673–701. [doi:10.1214/20-aos1973](https://doi.org/10.1214/20-aos1973) — **[R]** 간섭이 존재하지만 모형화되지 않았을 때 실험이 여전히 무엇을 추정하는지 규명함.
+- Eckles, D., Karrer, B. & Ugander, J. (2017). "Design and Analysis of Experiments in Networks: Reducing Bias from Interference." *Journal of Causal Inference* 5(1), 20150021. [doi:10.1515/jci-2015-0021](https://doi.org/10.1515/jci-2015-0021) — **[R]** 소셜/광고 실험에서 간섭 편향을 줄이기 위한 그래프-군집 무작위 배정.
+- Blake, T. & Coey, D. (2014). "Why Marketplace Experimentation Is Harder Than It Seems: The Role of Test-Control Interference." *Proceedings of the Fifteenth ACM Conference on Economics and Computation (EC '14)*, 567–582. [doi:10.1145/2600057.2602837](https://doi.org/10.1145/2600057.2602837) — **[R]** 양면 시장에서의 간섭이 순진한 A/B 테스트를 편향시키는 메커니즘(eBay); 응용 연구의 동기 부여.
+- Manski, C. F. (1993). "Identification of Endogenous Social Effects: The Reflection Problem." *The Review of Economic Studies* 60(3), 531–542. [doi:10.2307/2298123](https://doi.org/10.2307/2298123) — **[F]** 내생적 동료 효과와 환경적(contextual) 동료 효과를 분리할 수 없음을 보인 기초적인 식별 불가능성 결과.
+
+**핵심 논쟁.** 언제 간섭 편향이 주도적인 문제가 되며, 군집 무작위 배정이 검정력 손실을 감수할 가치가 있는가? 동료 효과가 점식별(point-identified)될 수 있는가? 마케팅 학계는 재현 불가능한 플랫폼 실험 논문을 어떻게 심사해야 하는가?
+
+## 잠재적 결과 프레임워크 {#sec-causal-potential-outcomes}
+
+현대 인과추론의 가장 근본적인 출발점은 효과를 어떻게 추정할지 고민하기 전에 *각 단위별로* 처치의 효과를 정의하는 것이다. 네이만-루빈 잠재적 결과 모형을 따라, 단위 $i$(소비자, 매장, 지리적 시장, 지정 시장 권역)가 처치(광고 캠페인, 가격 인하, 신규 기능 등)를 받는지 여부를 $D_i \in \{0,1\}$로 나타내자. 각 단위마다 두 개의 **잠재적 결과(potential outcomes)**를 부여한다: 처치를 받았을 때 발생할 잠재적 결과 $Y_i(1)$, 그리고 대조군에 머물렀을 때 발생할 잠재적 결과 $Y_i(0)$이다. **단위 수준 처리효과(unit-level treatment effect)**는 이 둘의 차이로 정의된다:
+
+$$
+\tau_i = Y_i(1) - Y_i(0).
+$$ {#eq-unit-effect}
+
+인과추론의 결정적인 어려움—즉 *인과추론의 근본적 문제(fundamental problem of causal inference)*—은 어떤 단위에 대해서도 오직 하나의 잠재적 결과만을 관찰할 수 있다는 점이다. 실제로 관측되는 실현된 결과(realized outcome)는 다음과 같다:
+
+$$
+Y_i = D_i\,Y_i(1) + (1 - D_i)\,Y_i(0).
+$$ {#eq-switching}
+
+따라서 관측되지 않은 나머지 잠재적 결과는 정의상 결측된 **반사실(counterfactual)**이 된다. 우리는 어떤 단일 단위에 대해서도 $\tau_i$를 결코 직접 볼 수 없다. 그러므로 인과추론은 본질적으로 **결측 데이터 문제(missing-data problem)**이며, 인과추론의 발전은 단위 수준 효과 자체보다는 모집단에 걸친 $\tau_i$의 *평균*을 추정하는 것으로부터 이루어진다.
+
+> 인과효과는 처치 조건만 서로 다른 두 가지 세상 상태의 비교다: 즉 한 단위가 실제로 받은 처치 하에서 관찰되는 결과와, 동일한 단위가 받지 않은 처치 하에서 실현되었을 결과의 비교다. 이 둘 중 오직 하나만이 관측되기 때문에, 모든 인과적 추정치는 결측된 결과를 관측 데이터로부터 복원할 수 있게 해주는 식별 가정을 필요로 한다.
+
+가장 핵심적인 추정대상은 **평균 처리효과(average treatment effect, ATE)**인 $\tau_{\text{ATE}} = \mathbb{E}[Y_i(1) - Y_i(0)]$로, 무작위로 선택된 단위를 통제군에서 처리군으로 이동시켰을 때 기대되는 효과다. 실무에서는 두 가지 관련 추정대상이 중요하게 다루어진다. **처치군 평균 처리효과(average treatment effect on the treated, ATT)**인 $\tau_{\text{ATT}} = \mathbb{E}[Y_i(1) - Y_i(0) \mid D_i = 1]$는 실제로 처치를 받은 단위들에 대한 효과로, *이미 집행된* 캠페인이 성과를 거두었는지 평가할 때 적합한 수치다. **조건부 평균 처리효과(conditional average treatment effect, CATE)**인 $\tau(\mathbf{x}) = \mathbb{E}[Y_i(1) - Y_i(0) \mid \mathbf{X}_i = \mathbf{x}]$는 공변량 $\mathbf{x}$를 가진 하위 집단에 대한 효과로, 현대적인 이질적 처리효과 분석 및 타겟팅 방법론의 목표 대상이다.[^estimand-first]
+
+[^estimand-first]: 본 장에서 강조하는 엄격한 규율: 방법론을 선택하기 *전에* 추정대상을 먼저 명시해야 한다. 응용 마케팅 연구에서 발생하는 많은 혼란은 하나의 추정치(예: 자발적으로 도입을 선택한 집단에서의 ATT)를 추정하고서 이를 다른 대상(기업이 모든 대상을 처치했을 때 얻게 될 ATE)으로 해석하는 데서 비롯된다. 이 두 추정대상은 효과가 모든 단위에서 일정(constant effects)할 때에만 일치한다.
+
+### 순진한 비교가 실패하는 이유 {#sec-causal-naive-comparison}
+
+처리효과에 대한 직관적인 추정량은 처리군과 미처리군의 평균 결과 차이인 $\hat\Delta = \bar Y_{D=1} - \bar Y_{D=0}$이다. 이 추정량의 확률 극한을 분해해 보면 왜 이것이 편향되는지 명확히 드러난다. $\mathbb{E}[Y_i(0) \mid D_i = 1]$를 더하고 빼면 다음을 얻는다:
+
+$$
+\underbrace{\mathbb{E}[Y_i \mid D_i = 1] - \mathbb{E}[Y_i \mid D_i = 0]}_{\text{순진한 차이 (naive difference)}}
+= \underbrace{\tau_{\text{ATT}}}_{\text{인과효과 (causal effect)}}
++ \underbrace{\mathbb{E}[Y_i(0) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0]}_{\text{선택 편향 (selection bias)}}.
+$$ {#eq-selection-bias}
+
+두 번째 항이 바로 **선택 편향(selection bias)**이다: 처치를 받은 집단과 받지 않은 집단 간의 *기저(미처치 상태)* 결과 차이를 의미한다. 이 항은 오직 처치를 받지 않았더라도 두 집단이 동일했을 경우에만 0이 된다. 그러나 마케팅 환경에서 두 집단이 동일한 경우는 거의 없다. 기업은 이미 구매 성향이 높은 소비자에게 광고를 타겟팅하고, 수요가 이미 둔화되고 있는 제품의 가격을 인하하며, 충성 고객은 리워드 프로그램에 자발적으로 가입한다. 이 모든 경우에 $\mathbb{E}[Y_i(0) \mid D_i = 1] \neq \mathbb{E}[Y_i(0) \mid D_i = 0]$가 성립하며, 순진한 평균 차이는 처치의 효과와 해당 단위가 처치를 받게 된 이유를 혼동하게 만든다. 이 장의 나머지 부분은 무작위화를 통하거나, 미처리 집단이 처리 집단의 유효한 반사실적 대리 집단이 될 수 있도록 하는 가정을 도입함으로써 이 선택 편향 항을 0으로 만드는 다양한 설계들의 모음이다.
+
+별도의 언급이 없는 한 두 가지 가정이 기본적으로 유지된다. **SUTVA**(안정적 단위 처리 가치 가정, stable-unit-treatment-value assumption)는 한 단위의 잠재적 결과가 다른 단위의 처치 배정 상태에 영향을 받지 않아야 하며(간섭 없음), 처치에 단 하나의 버전만 존재해야 함을 요구한다. SUTVA는 파급효과—예를 들어 한 매장의 가격 프로모션이 인근 매장의 매출을 잠식하거나, 한 가구에 노출된 광고가 입소문을 통해 다른 가구에 영향을 미치는 현상—에 의해 쉽게 위반되며, 이것이 마케팅 실험에서 실험 단위로 개별 소비자가 아닌 *지리적 권역*을 자주 사용하는 이유다. **공통 지지(overlap / positivity)**는 모든 공변량 값에 대해 $0 < \Pr(D_i = 1 \mid \mathbf{X}_i) < 1$이 성립해야 함을 요구하며, 이를 통해 모든 $\mathbf{x}$에서 비교 가능한 처리군과 대조군이 항상 존재하도록 보장한다.
+
+@fig-ladder 는 본 장에서 다루는 설계들을 가장 강력한 식별(가정이 설계상 성립하는 무작위화)부터 점진적으로 더 강하고 검정 불가능한 가정을 통해 식별을 확보하는 설계에 이르기까지 스펙트럼 형태로 정리하여 보여준다.
+
+```{mermaid}
+%%| label: fig-ladder
+%%| fig-cap: "인과적 연구 설계의 계층 구조. 사다리 아래로 내려갈수록 무작위 배정의 필요조건은 완화되지만, 점차 더 강하고 대부분 검증 불가능한 식별 가정으로 대체된다. 각 설계가 목표로 하는 추정대상(estimand)은 대괄호 안에 명시되어 있다."
+flowchart TD
+    A["<b>무작위실험 / A-B 테스트</b><br/>배정이 잠재적 결과와 독립<br/>[설계상 ATE 달성]"]
+    B["<b>회귀불연속</b><br/>알려진 기준점에서 처치가 도약<br/>[기준점에서의 국소 ATE]"]
+    C["<b>도구변수</b><br/>처치를 이동시키는 외생적 충격<br/>[LATE: 순응자에 대한 효과]"]
+    D["<b>이중차분법</b><br/>처치가 없었을 경우의 평행 추세<br/>[ATT]"]
+    E["<b>합성통제</b><br/>가중된 기여자 집단이 반사실을 재현<br/>[단일 처리 단위에 대한 ATT]"]
+    A --> B --> C --> D --> E
+    style A fill:#1b7837,color:#fff
+    style B fill:#5aae61,color:#fff
+    style C fill:#a6dba0,color:#000
+    style D fill:#d9f0d3,color:#000
+    style E fill:#f7f7f7,color:#000
+```
+
+## 무작위실험과 A/B 테스트 {#sec-causal-rct}
+
+무작위화가 최고의 기준(골드 스탠다드)인 이유는 가정이 아니라 *설계 자체*에 의해 선택 편향을 제거하기 때문이다. 처치 $D_i$가 잠재적 결과와 독립적으로 배정된다면—즉 $\{Y_i(0), Y_i(1)\} \perp D_i$라면—미처리 집단은 기댓값 측면에서 처리 집단의 유효한 반사실이 된다: $\mathbb{E}[Y_i(0) \mid D_i = 1] = \mathbb{E}[Y_i(0) \mid D_i = 0]$. @eq-selection-bias 의 선택 편향 항은 사라지며, 표본 평균의 단순 차이는 ATE의 불편추정량이 된다:
+
+$$
+\hat\tau_{\text{ATE}} = \bar Y_{D=1} - \bar Y_{D=0}.
+$$ {#eq-rct-estimator}
+
+식별 가정—배정과 잠재적 결과의 독립성—이 성립하는 이유는 단위 자체가 아니라 실험자가 $D_i$를 통제하기 때문이다. 이것이 본 장에서 가장 중요한 통찰이다: 무작위화는 처리 집단과 대조군을 *동일하게(identical)* 만드는 것이 아니라, *기댓값에서 교환 가능하게(exchangeable in expectation)* 만들며, 이는 @eq-rct-estimator 가 요구하는 전부다.
+
+디지털 경제에서 이 논리는 **A/B 테스트**(온라인 통제 실험)라는 이름으로 방대한 규모로 실행된다: 웹사이트에 유입된 사용자는 기존 경험을 보는 대조군과 새로운 변형을 보는 하나 이상의 처리군으로 무작위 배정되며, 전환율, 세션당 매출, 리텐션 등의 지표가 군 간에 비교된다. 메커니즘은 단순하지만, 엄밀함은 실험 설계에 달려 있다. 실무에서는 세 가지 문제가 지배적이다.
+
+**검정력과 최소 탐지 가능 효과.** 의미 있는 효과 크기를 탐지할 수 없는 실험은 차라리 실험을 하지 않는 것보다 못하다. 귀무가설을 채택해버리는 오류를 범하기 쉽기 때문이다. 동일 배정 비율을 가진 2개 집단 평균 검정에서, 유의수준 $\alpha$와 검정력 $1-\beta$로 실제 차이 $\delta$를 탐지하기 위해 집단당 필요한 표본 크기는 근사적으로 다음과 같다:
+
+$$
+n \;\approx\; \frac{2\,(z_{1-\alpha/2} + z_{1-\beta})^2\,\sigma^2}{\delta^2},
+$$ {#eq-power}
+
+여기서 $\sigma^2$는 결과 변수의 분산이고 $z_p$는 표준정규분포의 분위수다. $\delta$에 대한 2차 역비례 관계는 광고 효과 측정의 핵심 난제다: 매출 변동성은 광고 효과에 비해 매우 크기 때문에, 필요한 표본 크기는 종종 대기업조차 감당하기 어려울 정도로 커진다. 이에 대해서는 아래에서 자세히 설명한다.
+
+**무작위화 단위와 간섭.** 한 사용자를 처치하는 것이 다른 사용자에게 영향을 미칠 때—소셜 파급효과, 동일한 재고를 둘러싼 시장 경쟁, 공급 제약 등—사용자 단위의 무작위 배정은 SUTVA를 위반하고 추정치를 편향시킨다. 간섭이 발생하는 수준(지역 시장, 권역, 소셜 클러스터)에서 군집 무작위화(cluster-randomization)를 수행하면 유효 표본 크기를 희생하는 대신 타당성을 회복할 수 있다.
+
+**엿보기와 중단 규칙의 타당성.** 진행 중인 실험을 반복적으로 검정하면서 처음으로 $p < 0.05$가 되는 순간 실험을 조기 종료하는 행위(peeking)는 위양성률(false-positive rate)을 명목 유의수준보다 훨씬 높게 부풀린다. 사전에 표본 크기를 고정하거나, 지속적인 모니터링 하에서도 오류율이 보장되는 순차적 절차(상시 유효 $p$-값, 집단 순차 경계)를 채택해야 한다.
+
+다음 시뮬레이션은 편향과 그 해결 논리를 구체적으로 보여준다: 먼저 혼란된 관찰 데이터 기반 비교가 잘못된 효과를 추정함을 보이고, 무작위화가 참값을 복원함을 보여준다. @fig-ci-selection 은 시뮬레이션에서 대비하는 두 가지 배정 메커니즘을 도식화한 것이다.
+
+```{mermaid}
+%%| label: fig-ci-selection
+%%| fig-cap: "선택 편향 대 무작위 배정. 관찰 데이터 배정(왼쪽)에서는 잠재적 성향이 처치 참여와 기저 결과 모두에 영향을 미치므로, 순진한 비교는 인과효과와 선택 편향을 혼합한다. 무작위 배정(오른쪽)은 처치로 향하는 경로를 차단하여 순수한 인과적 경로만 남긴다."
+flowchart LR
+  subgraph OB["관찰 데이터 배정"]
+    PR1["잠재적 성향<br/>(구매 의향)"]
+    D1["처치 D"]
+    Y1["결과 Y"]
+    PR1 -.-> D1
+    PR1 -.-> Y1
+    D1 --> Y1
+  end
+  subgraph RC["무작위 배정"]
+    RA["무작위 배정"]
+    PR2["잠재적 성향<br/>(구매 의향)"]
+    D2["처치 D"]
+    Y2["결과 Y"]
+    RA --> D2
+    PR2 -.-> Y2
+    D2 --> Y2
+  end
+```
+
+```{r ab-test-sim}
+#| echo: true
+#| message: false
+#| warning: false
+#| label: fig-ab-power
+#| fig-cap: "각 집단당 1,000명의 사용자와 실제 리프트 0.20을 가진 2,000회의 무작위실험에 대한 평균차이 추정량의 표집분포. 추정량은 참값(점선)을 중심으로 분포한다. 동일한 데이터 생성 과정에서 얻은 순진한 관찰 추정량은 상향 편향되어 있다."
+set.seed(47)
+
+# 데이터 생성 과정: 잠재적 '성향(propensity)'이 처치 자가선택(관찰적)과
+# 기저 결과 모두에 영향을 미침 -> 혼란(confounding) 발생.
+make_population <- function(n, true_tau = 0.20) {
+  propensity <- rnorm(n)                       # 잠재적 구매 의향
+  Y0 <- 0.50 + 0.40 * propensity + rnorm(n)    # 미처리 잠재적 결과
+  Y1 <- Y0 + true_tau                          # 일정한 처리효과
+  data.frame(propensity, Y0, Y1)
+}
+
+# (1) 관찰 데이터: 고성향 사용자가 처치에 자가선택함.
+n <- 4000
+pop <- make_population(n)
+D_obs <- as.integer(pop$propensity + rnorm(n) > 0)   # 성향에 기반한 선택
+Y_obs <- ifelse(D_obs == 1, pop$Y1, pop$Y0)
+naive <- mean(Y_obs[D_obs == 1]) - mean(Y_obs[D_obs == 0])
+
+# (2) 무작위실험: 배정이 잠재적 결과와 독립임.
+rct_estimate <- function(n_per_arm = 1000, true_tau = 0.20) {
+  p <- make_population(2 * n_per_arm, true_tau)
+  D <- rep(0:1, each = n_per_arm)
+  D <- sample(D)                               # 무작위 배정
+  Y <- ifelse(D == 1, p$Y1, p$Y0)
+  mean(Y[D == 1]) - mean(Y[D == 0])
+}
+rct_draws <- replicate(2000, rct_estimate())
+
+cat(sprintf("실제 효과 (ATE):                  %.3f\n", 0.20))
+cat(sprintf("순진한 관찰 데이터 추정치:        %.3f  (편향됨)\n", naive))
+cat(sprintf("무작위실험 추정치들의 평균:       %.3f  (불편추정치)\n", mean(rct_draws)))
+
+hist(rct_draws, breaks = 40, col = "grey80", border = "white",
+     main = "", xlab = "추정된 처리효과")
+abline(v = 0.20, lwd = 2, lty = 2)
+abline(v = naive, lwd = 2, col = "firebrick")
+legend("topright", bty = "n",
+       legend = c("실제 효과 (0.20)", "순진한 관찰 추정치"),
+       lwd = 2, lty = c(2, 1), col = c("black", "firebrick"))
+```
+
+### 광고 효과 측정: 실험이 어려운 경우 {#sec-causal-ad-measurement}
+
+광고는 실험이 필수적이면서도 동시에 매우 어려운 대표적인 환경이다. 그 어려움은 통계적인 것이며, @eq-power 가 이를 설명해준다. 일반적인 온라인 디스플레이 광고 캠페인이 구매 확률에 미치는 효과는 절대적인 크기에서 매우 작지만, 개별 소비자의 구매 변동성은 극도로 크다. 현실적인 수치를 @eq-power 에 대입해 보면, 광고의 실제 투자수익률(ROI)을 확신을 갖고 탐지하기 위해서는 수백만 명의 무작위 배정된 사용자가 필요할 수 있으며, 이는 많은 캠페인이 실제로 도달하는 전체 규모보다도 큰 수치다 [@Lewis_2015]. Lewis와 Rao는 충분한 검정력을 확보했다고 여겨지는 대규모 실험조차 ROI에 대한 신뢰구간이 너무 넓어 기업이 수익성 있는 캠페인과 손실을 내는 캠페인을 구분하지 못하며, 기업들이 통상적으로 실행하는 관찰 회귀분석의 결과는 훨씬 더 심각하게 왜곡됨을 보였다.
+
+얼마나 왜곡되는지는 대규모 비교 연구를 통해 명확히 입증되었다. 대규모 디지털 광고 실험 전반에 걸쳐, 관찰 연구 방법론(매칭, 회귀 조정, 성향점수 등)은 실험 벤치마크와 크게 차이 나는 추정치를 지속적으로 도출했으며, 효과를 몇 배씩 과대평가하거나 부호 자체가 뒤바뀌는 현상도 빈번히 발생했다. 이는 어떠한 관측 공변량 집합도 플랫폼이 왜 특정 사용자에게 특정 광고를 노출했는지를 완전히 통제하지 못하기 때문이다 [@gordon2019]. 이 결과가 주는 교훈은 관찰 연구 방법이 무용하다는 것이 아니라, 광고 영역에서는 @eq-selection-bias 의 선택 편향 항이 효과 자체의 크기에 비해 너무 크기 때문에, 조건부 독립 가정의 사소한 위배조차 신호 전체를 완전히 덮어버린다는 점이다. 자주 나타나는 주된 원인은 **활동성 편향(activity bias)**이다: 온라인에서 활발하게 활동하는 사용자는 광고를 서빙받고 볼 가능성도 높고, 동시에 광고와 무관한 이유로 구매 전환을 일으킬 가능성도 높다. 이는 인위적인 상관관계를 만들어내며, 의도-처리(intention-to-treat) 실험 설계만이 이를 피할 수 있다 [@lewis2011].
+
+이러한 발견들은 실무자의 과제를 재정의한다. 핵심 질문은 "ROI의 점추정치가 얼마인가?"가 아니라 "내 실험이 당면한 의사결정에 답할 수 있을 만큼 충분한 검정력을 가지고 있는가?"이며, 이에 대한 솔직한 해답은 검정력이 부족한 관찰 수치를 신뢰하는 것이 아니라 테스트를 재설계(표본 확대, 지역 기반 실험, 또는 중간 지표 측정)하는 것이다.
+
+## 이중차분 {#sec-causal-did}
+
+경쟁업체가 시장에 진입하거나, 규제 당국이 개인정보 보호 규정을 변경하거나, 기업이 특정 지역에만 먼저 가격을 인하하는 등 무작위화가 불가능한 상황에서 분석가는 *시점(timing)*을 활용한다. **이중차분법(difference-in-differences)**은 개입 전후 처리군의 결과 변화를 동일 기간 동안 처치를 받지 않은 대조군의 결과 변화와 비교한다. 시간 차분을 통해 두 집단 간의 고정된 고유 차이를 제거하고, 집단 간 차분을 통해 공통의 시간 추세를 제거한다. 하나의 핵심 가정 하에서 남는 것은 바로 처리효과다. @fig-ci-did-logic 은 두 차례의 차분 과정을 보여준다.
+
+```{mermaid}
+%%| label: fig-ci-did-logic
+%%| fig-cap: "이중차분법의 논리. 각 집단 내 시간에 따른 변화는 해당 집단의 고유한 고정 수준을 제거하고, 두 변화의 차이는 공통 시간 추세를 제거한다. 미처리 추세가 평행하다면 남는 것은 ATT다."
+flowchart LR
+  subgraph TG["처리군"]
+    TP["사전 기간<br/>평균 결과"] --> TQ["사후 기간<br/>평균 결과"]
+  end
+  subgraph CG["대조군"]
+    CP["사전 기간<br/>평균 결과"] --> CQ["사후 기간<br/>평균 결과"]
+  end
+  TP --> DT["처리군 1차 차분:<br/>고정된 집단 간 차이 제거"]
+  TQ --> DT
+  CP --> DC["대조군 1차 차분:<br/>고정된 집단 간 차이 제거"]
+  CQ --> DC
+  DT --> DD["차분의 차분 (이중차분):<br/>공통 시간 추세 제거;<br/>평행 추세 하에서 ATT와 일치"]
+  DC --> DD
+```
+
+수식으로 표현하면, 2개 기간(사전 pre, 사후 post)과 2개 집단(처리군 $T$, 대조군 $C$)이 주어졌을 때 DiD 추정량은 집단 평균의 차분의 차분이다:
+
+$$
+\hat\tau_{\text{DiD}}
+= \big(\bar Y_{T,\text{post}} - \bar Y_{T,\text{pre}}\big)
+- \big(\bar Y_{C,\text{post}} - \bar Y_{C,\text{pre}}\big).
+$$ {#eq-47-did}
+
+단위 고정효과 $\alpha_i$, 시간 고정효과 $\gamma_t$, 그리고 사후 기간의 처리 대상 단위에 대해 1을 갖는 처치 지시변수 $D_{it}$를 포함한 패널 회귀분석 형태로 나타내면 다음과 같다:
+
+$$
+Y_{it} = \alpha_i + \gamma_t + \tau\,D_{it} + \varepsilon_{it},
+$$ {#eq-twfe}
+
+여기서 $\hat\tau$가 바로 ATT의 DiD(이원 고정효과, TWFE) 추정량이다.
+
+**식별 가정: 평행 추세.** DiD가 ATT에 대해 불편성을 가지려면, *처치가 없었을 경우* 처리군과 대조군이 동일한 경로를 따랐을 것이라는 가정이 성립해야 한다:
+
+$$
+\mathbb{E}[Y_{i,\text{post}}(0) - Y_{i,\text{pre}}(0) \mid T]
+= \mathbb{E}[Y_{i,\text{post}}(0) - Y_{i,\text{pre}}(0) \mid C].
+$$ {#eq-parallel-trends}
+
+두 집단은 *수준(level)*에서는 차이가 있을 수 있지만(차분을 통해 제거됨), 처치가 없을 때의 *추세(trend)*는 반드시 일치해야 한다. 이 가정은 근본적으로 검증 불가능하다. 왜냐하면 처리군의 사후 미처치 추세는 결측된 반사실이기 때문이다. *검증 가능한* 것은 이 가정의 관찰 가능한 함의다: 만약 처치 후 추세가 평행하다면, 처치 전에도 대체로 평행했을 것이다. **사전 추세(pre-trends)**(사건연구) 점검은 처치의 선행(lead) 및 후행(lag) 항을 추정하고 사전 선행 계수들이 결합하여 0인지 검정한다.
+
+**식별을 무너뜨리는 요인.** 해당 기간 동안 처치 이외의 요인이 두 집단에 서로 다른 영향을 미칠 때 평행 추세 가정은 실패한다—국지적 수요 충격, 최근 성과가 유독 저조했던 단위에 처치가 배정될 때 발생하는 평균 회귀(Ashenfelter의 dip), 또는 사전 기대 효과(anticipation effects) 등이 이에 해당한다. 더욱 미묘한 위험은 단위마다 서로 다른 시점에 처치를 받는 **시차 도입(staggered adoption)**에서 나타난다: @eq-twfe 의 표준 이원 고정효과 추정량은 이미 처치를 받은 단위를 나중에 처치를 받는 단위의 대조군으로 암묵적으로 사용하며, 효과가 시간에 따라 변할 때 이 "금지된 비교"는 *음의 가중치*를 갖는 가중평균을 생성하여 편향되거나 심지어 부호가 반대인 추정치를 만들어낼 수 있다. 현대의 이질성 로버스트 추정량들은 이 문제를 해결하며, 신중한 연구자라면 이원 고정효과 수치와 로버스트 대안을 함께 보고해야 한다.
+
+```{r did-sim}
+#| echo: true
+#| message: false
+#| warning: false
+set.seed(47)
+
+# 패널: 60개 시장 x 12개월. 처치(가격 인하)는 7개월 차에 시장의 절반에 적용됨.
+# 대조군은 평행 추세를 만족하도록 생성됨.
+n_markets <- 60; n_months <- 12; treat_month <- 7; true_att <- 1.5
+markets <- 1:n_markets
+treated <- markets %in% sample(markets, n_markets / 2)
+
+panel <- expand.grid(market = markets, month = 1:n_months)
+panel$treated <- treated[panel$market]
+market_fe <- rnorm(n_markets, 10, 2)[panel$market]   # 수준 차이 (허용됨)
+time_fe   <- 0.20 * panel$month                       # 공통 추세 (허용됨)
+post      <- panel$month >= treat_month
+panel$D   <- as.integer(panel$treated & post)
+panel$sales <- market_fe + time_fe + true_att * panel$D +
+               rnorm(nrow(panel), 0, 0.8)
+
+# 이원 고정효과(단위 + 시간 더미)를 통한 DiD.
+fit <- lm(sales ~ factor(market) + factor(month) + D, data = panel)
+att_hat <- coef(fit)["D"]
+ci <- confint(fit)["D", ]
+cat(sprintf("실제 ATT:         %.3f\n", true_att))
+cat(sprintf("DiD 추정치:       %.3f  [%.3f, %.3f]\n", att_hat, ci[1], ci[2]))
+```
+
+DiD는 마케팅에서 *광고 파급효과* 및 *가격 책정* 연구의 핵심 도구로 쓰인다. 기업들이 지리적으로, 그리고 시차를 두고 변화를 적용하는 경우가 매우 흔하기 때문이며, 이는 DiD가 활용하는 바로 그 구조인 동시에 앞서 설명한 이질성 로버스트 기법이 요구되는 구조이기도 하다.
+
+## 도구변수 {#sec-causal-iv}
+
+때로는 처치가 내생적이고 평행 추세를 만족하는 대조군도 존재하지 않지만, 결과 변수와는 직접적인 관련이 없는 이유로 처치를 변화시키는 제3의 변수가 존재할 수 있다. **도구변수(instrumental variables)**는 이러한 변수를 활용하여 "무작위 배정에 준하는" 처치의 변량만을 분리해낸다. 마케팅에서 대표적인 동기 부여 사례는 단순 수요 추정을 무력화하는 가격의 내생성이다: 관찰된 가격과 수량은 수요와 공급에 의해 동시에 결정되므로, 수량을 가격에 단순 회귀분석하더라도 수요 곡선이나 인과적 가격 탄력성을 복원할 수 없다. 수요 곡선을 직접 이동시키지 않으면서 *공급*(따라서 가격)을 이동시키는 도구변수는 수요 곡선을 온전히 도출해낼 수 있게 해준다.
+
+관심 대상인 구조적("2단계") 방정식을 다음과 같이 나타내자:
+
+$$
+Y_i = \beta_0 + \beta_1 D_i + \mathbf{x}_i^{\top}\boldsymbol{\gamma} + u_i,
+$$ {#eq-iv-structural}
+
+여기서 $D_i$(예: 가격)는 오차항 $u_i$와 상관되어 있어($\mathbb{E}[D_i u_i] \neq 0$) OLS 추정이 편향된다. 도구변수 $Z_i$는 다음 세 가지 조건을 만족할 때 $\beta_1$을 식별한다:
+
+1. **관련성(Relevance):** $Z_i$가 처치를 유의하게 변화시킴, $\operatorname{Cov}(Z_i, D_i) \neq 0$. 이는 1단계 회귀분석을 통해 검정 가능하다.
+2. **배제 제약(Exclusion restriction):** $Z_i$가 $Y_i$에 오직 $D_i$를 통해서만 영향을 미치며 직접 영향을 미치지 않음, $\operatorname{Cov}(Z_i, u_i) = 0$. 이는 데이터로 검정할 수 없으며 제도적 지식을 바탕으로 논증해야 한다.
+3. **외생성(독립성, Exogeneity):** $Z_i$가 $Y_i$를 움직이는 관측되지 않은 요인들과 독립적이어서 무작위 배정에 준함.
+
+@fig-ci-iv-dag 는 이를 유발하는 수요 추정 환경에서의 구조를 보여준다.
+
+```{mermaid}
+%%| label: fig-ci-iv-dag
+%%| fig-cap: "도구변수의 구조. 관측되지 않은 수요 충격 u가 가격과 수량을 동시에 움직이므로(점선 경로) OLS는 편향된다. 공급 측면의 비용 충격 Z는 u와 무관한 이유로 가격을 움직인다. 배제 제약은 Z에서 Y로 가는 직접적인 경로가 없음을 의미한다."
+flowchart LR
+  Z["도구변수 Z<br/>(공급 측면 비용 충격)"] -->|"관련성:<br/>1단계 회귀"| D["내생적 처치 D<br/>(가격)"]
+  D -->|"인과효과 β₁"| Y["결과 Y<br/>(수요량)"]
+  U["관측되지 않은 u<br/>(수요 충격)"] -.-> D
+  U -.-> Y
+```
+
+추정 방법은 **2단계 최소제곱법(2SLS)**이다: $D_i$를 $Z_i$ 및 공변량에 회귀하여 적합값 $\hat D_i$(처치 변량 중 외생적인 부분)를 얻은 후, $Y_i$를 $\hat D_i$에 회귀한다. 단일 도구변수이고 공변량이 없는 경우 이는 왈드 비율(Wald ratio)로 단순화된다:
+
+$$
+\hat\beta_1^{\text{IV}}
+= \frac{\operatorname{Cov}(Y_i, Z_i)}{\operatorname{Cov}(D_i, Z_i)}
+= \frac{\widehat{\text{축약형}}}{\widehat{\text{1단계}}}.
+$$ {#eq-wald}
+
+**IV가 식별하는 대상.** 이질적 효과가 존재하고 이항 도구변수를 사용하는 경우, 2SLS는 ATE가 아니라 **국소 평균 처리효과(local average treatment effect, LATE)**를 추정한다: 즉 단조성(monotonicity) 조건(도구변수가 어떤 단위도 반대 방향으로 움직이지 않음) 하에서 도구변수에 의해 처치 상태가 바뀌는 **순응자(compliers)** 집단 내의 평균 효과를 식별한다. 항상처치자(always-takers)와 미처치자(never-takers)에 대한 효과는 식별되지 않는다. 이는 숨겨야 할 결함이 아니라 명확히 해석해야 할 특징이다: LATE는 "이 도구변수를 매개로 작동하는 정책이 실제로 움직이게 될 대상들에게 미치는 효과는 무엇인가?"라는 질문에 답을 제공한다.
+
+**식별을 무너뜨리는 요인.** 두 가지 주된 실패 요인이 존재한다. **약한 도구변수(weak instrument)**(1단계 상관관계가 낮음)는 분산을 부풀리고, 더 심각하게는 2SLS를 해결하고자 했던 원래의 OLS 추정치 방향으로 편향시킨다. 전통적인 진단 기준은 1단계 $F$-통계량이 경험 법칙인 10보다 훨씬 커야 한다는 것이지만, 오늘날에는 이 기준조차 다소 낙관적인 것으로 알려져 있다. **배제 제약 위반(exclusion-restriction violation)**—도구변수가 처치를 거치지 않고 다른 경로를 통해 결과에 영향을 미치는 경우—은 데이터로부터 *탐지할 수 없는* 크기로 추정치를 왜곡하므로 반드시 논리적 논증을 통해 방어되어야 한다. 수요 추정에서 전통적인 도구변수는 비용 충격 변수 및 차별화 상품 전통에 따라 특정 상품의 마진율을 움직이되 수요에 직접 진입하지 않는 경쟁 상품의 특성 변수들이다 [@berry1995]. 모든 IV 연구의 신뢰성은 배제 제약에 대한 논리에 전적으로 달려 있다.
+
+```{r iv-sim}
+#| echo: true
+#| message: false
+#| warning: false
+set.seed(47)
+
+# 가격 내생성이 존재하는 수요 추정. 수요 충격 'xi'가 수량과 가격을
+# 동시에 상승시킴(기업의 가격 책정을 통해) -> OLS 탄력성은 0 방향으로 편향됨.
+# 비용 충격 'Z'가 가격에 대한 도구변수로 사용됨.
+n <- 5000
+xi   <- rnorm(n)                              # 관측되지 않은 수요 충격
+Z    <- rnorm(n)                              # 비용 충격 (도구변수)
+price <- 2.0 - 0.8 * Z + 1.0 * xi + rnorm(n) # 수요 충격에 따라 가격 상승
+true_elasticity <- -1.2
+logq <- 5 + true_elasticity * price + 1.5 * xi + rnorm(n)  # xi가 수요에 진입
+
+ols <- coef(lm(logq ~ price))["price"]
+
+# 수작업 2SLS: 1단계 회귀 후, 적합된 가격으로 2단계 회귀.
+first  <- lm(price ~ Z)
+phat   <- fitted(first)
+iv     <- coef(lm(logq ~ phat))["phat"]
+F_stat <- summary(first)$fstatistic["value"]
+
+cat(sprintf("실제 가격 탄력성:        %.3f\n", true_elasticity))
+cat(sprintf("OLS (편향됨):           %.3f\n", ols))
+cat(sprintf("2SLS (IV):              %.3f\n", iv))
+cat(sprintf("1단계 F 통계량:         %.1f\n", F_stat))
+```
+
+## 회귀불연속 {#sec-causal-rd}
+
+**회귀불연속설계(regression discontinuity)**는 연속형 **실행 변수(running variable)**가 알려진 **기준점(cutoff)**을 넘어서는지 여부에 따라 처치를 배정하는 규칙을 활용한다. 예를 들어 고객이 로열티 포인트 1,000점에 도달하면 "골드 등급" 회원이 되거나, 장바구니 금액이 50달러 이상이면 무료 배송을 받거나, 중위소득 기준점 이상의 우편번호 지역에만 광고 캠페인을 타겟팅하는 경우다. 기준점 바로 아래와 바로 위에 위치한 단위들은 처치 여부를 제외하고는 모든 면에서 거의 동일하다. 이들의 처치 배정은 무작위 배정에 준하는 실행 변수의 미세한 차이에 의해 결정되기 때문이다. 따라서 기준점 바로 위와 바로 아래의 결과를 비교함으로써 *기준점에서의* 처리효과를 식별할 수 있다.
+
+실행 변수를 $X_i$, 기준점을 $c$라 하고, **단절적(sharp)** 설계에서의 처치를 $D_i = \mathbf{1}\{X_i \geq c\}$라고 하자. 추정대상은 기준점에서 결과 변수의 조건부 기댓값이 나타내는 도약(jump)의 크기다:
+
+$$
+\tau_{\text{RD}}
+= \lim_{x \downarrow c} \mathbb{E}[Y_i \mid X_i = x]
+- \lim_{x \uparrow c} \mathbb{E}[Y_i \mid X_i = x].
+$$ {#eq-47-rd}
+
+실무에서 $\tau_{\text{RD}}$는 유연한 회귀분석—통상 기준점 $c$ 주변의 대역폭 $h$ 내에서 좌우 각각 적합하는 **국소 선형(local linear)** 회귀분석—을 통해 추정되며, $c$에서의 간극을 측정한다. **퍼지(fuzzy)** 설계에서는 기준점을 넘어서는 것이 처치 자체가 아니라 처치 *확률*을 변화시킨다. 이때 결과의 도약 크기를 처치 확률의 도약 크기로 나누어 스케일링하며, 퍼지 RD는 기준점 통과를 도구변수로 사용하는 국소적 IV가 된다.
+
+**식별 가정: 연속성.** 잠재적 결과 $\mathbb{E}[Y_i(0) \mid X_i = x]$와 $\mathbb{E}[Y_i(1) \mid X_i = x]$가 $c$에서 $x$에 대해 **연속(continuous)**일 때, 즉 처치 *이외의* 어떤 것도 기준점에서 도약하지 않을 때 RD는 기준점에서의 효과를 식별한다. 이 경우 관측된 결과 변수의 불연속성은 반드시 처치에 의해 발생한 것이어야 한다.
+
+**식별을 무너뜨리는 요인.** 치명적인 위협은 실행 변수의 **조작(manipulation)**이다: 만약 단위들이 자신이 기준점의 어느 쪽에 위치할지 정밀하게 제어할 수 있다면—소비자가 장바구니 금액을 정확히 50달러에 맞추거나, 영업사원이 실적 할당량을 채우기 위해 매출 인식 시점을 조정하는 등—기준점 바로 위에 위치한 집단은 바로 아래 집단과 체계적으로 달라지며 연속성 가정이 깨진다. 표준적인 진단법은 **McCrary 밀도 검정(McCrary density test)**이다: $c$에서 $X$의 *확률밀도*에 불연속성이 존재한다면 조작의 신호다. 타당성을 보호하기 위한 두 가지 추가적인 실무 절차는 다음과 같다: 사전에 결정된 공변량들이 기준점에서 도약하지 *않음*을 확인하고(기저 특성에 대한 플라시보 RD), 대역폭 선택에 대해 추정치가 로버스트함을 보여주는 것이다. RD는 대역폭 크기에 따라 편향(넓은 대역폭, 과도한 외삽)과 분산(좁은 대역폭, 적은 관측치) 사이의 트레이드오프를 갖기 때문이다. 또한 추정대상은 본질적으로 **국소적(local)**이다: RD는 오직 $c$에서의 효과만을 복원하며, 기준점에서 멀리 떨어진 단위들로 일반화될 필요는 없다.
+
+```{r rd-sim}
+#| echo: true
+#| message: false
+#| warning: false
+#| label: fig-rd
+#| fig-cap: "단절적 회귀불연속설계. 처치(로열티 등급 승급)는 1,000점 기준점에서 시작된다. 양측의 국소 선형 적합선은 기준점에서의 지출액 도약을 식별한다. 가독성을 위해 점들은 10% 표본만 표시했다."
+set.seed(47)
+
+# 실행 변수: 로열티 포인트. 1000점 이상에서 처치 배정.
+# 포인트와 지출 사이의 매끄러운 기저 관계 + 기준점에서 8만큼의 실제 도약.
+n <- 4000; cutoff <- 1000; true_jump <- 8
+points  <- runif(n, 600, 1400)
+D       <- as.integer(points >= cutoff)
+spend   <- 20 + 0.03 * (points - cutoff) + true_jump * D + rnorm(n, 0, 4)
+
+# 대역폭 내 국소 선형 RD, 양측 별도 기울기 적합.
+h <- 150
+inb <- abs(points - cutoff) <= h
+rd_fit <- lm(spend ~ D + I(points - cutoff) + D:I(points - cutoff),
+             data = data.frame(spend, D, points), subset = inb)
+jump_hat <- coef(rd_fit)["D"]
+cat(sprintf("기준점에서의 실제 도약: %.3f\n", true_jump))
+cat(sprintf("RD 추정치:              %.3f\n", jump_hat))
+
+s <- sample(n, 400)
+plot(points[s], spend[s], pch = 16, col = "grey70", cex = 0.6,
+     xlab = "로열티 포인트 (실행 변수)", ylab = "지출액")
+abline(v = cutoff, lty = 3)
+gl <- seq(cutoff - h, cutoff, length.out = 50)
+gr <- seq(cutoff, cutoff + h, length.out = 50)
+predl <- predict(rd_fit, data.frame(D = 0, points = gl))
+predr <- predict(rd_fit, data.frame(D = 1, points = gr))
+lines(gl, predl, lwd = 3); lines(gr, predr, lwd = 3)
+```
+
+## 합성통제 {#sec-causal-scm}
+
+이중차분법은 미처리 상태의 추세가 처리군의 추세와 일치하는 대조군을 필요로 한다. 처리 대상 단위가 신제품을 출시한 *단 하나의* 국가, 개인정보 보호법을 개정한 단 하나의 주, 플래그십 스토어를 개설한 단 하나의 지역 시장처럼 단일 대형 개체인 경우, 완벽하게 매칭되는 단일 대조군을 찾기 어렵다. **합성통제법(synthetic control method)**은 처치를 받지 않은 "기여자(donor)" 단위들의 *가중평균*으로 반사실을 구성하며, 합성 단위가 처리 단위의 사전 개입 결과 경로(및 예측 변수들)를 재현하도록 가중치를 선택한다. 처리효과는 개입 이후 처리 단위와 합성 쌍둥이 단위 간의 격차로 측정된다.
+
+단위 $1$이 시점 $T_0$에 처치를 받고, 단위 $2,\dots,J+1$이 기여자 집단을 구성한다고 하자. 사전 기간의 불일치를 최소화하도록 비음수 가중치 $\mathbf{w} = (w_2,\dots,w_{J+1})$($\sum_j w_j = 1$)를 선택한다:
+
+$$
+\mathbf{w}^{\star} = \arg\min_{\mathbf{w}}
+\sum_{t < T_0}\Big(Y_{1t} - \sum_{j=2}^{J+1} w_j\,Y_{jt}\Big)^2,
+\quad w_j \geq 0,\ \textstyle\sum_j w_j = 1.
+$$ {#eq-scm-weights}
+
+사후 각 시점에서의 추정 효과는 처리 단위와 가중된 기여자 집단 간의 격차다:
+
+$$
+\hat\tau_{1t} = Y_{1t} - \sum_{j=2}^{J+1} w_j^{\star}\,Y_{jt},
+\qquad t \geq T_0.
+$$ {#eq-scm-effect}
+
+**식별 가정.** SCM이 처리 단위의 ATT를 식별하기 위해서는 (i) 가중된 기여자 집단이 처리 단위의 *사전* 결과를 밀접하게 재현해야 하고(우수한 사전 적합도), (ii) 기여자 단위들 자체가 처치를 받지 않았고 처치로부터의 파급효과가 없어야 하며, (iii) 개입 전에 합성통제 단위가 처리 단위를 추적할 수 있게 해 준 관계가 처치가 없었을 경우 사후에도 *지속되어야 한다*. 이는 평행 추세 가정의 합성통제 버전이지만, 단일 추세선이 아니라 사전 기간 전체 경로에 걸쳐 적용된다. 볼록 결합 제약($w_j \geq 0$, 합이 1)은 기여자 지지 영역 밖으로의 외삽을 방지하고 가중치의 해석 가능성을 부여한다.
+
+**식별을 무너뜨리는 요인.** 저조한 사전 적합도는 치명적이다: 만약 합성 단위가 개입 *전*의 처리 단위를 제대로 추적하지 못한다면 사후 격차를 인과적 효과로 신뢰할 수 없다. 기여자들이 처리 단위와 너무 다를 때 **보간 편향(interpolation bias)**이 발생하며, 사전 기간이 짧을 때 잡음에 대한 **과적합(overfitting)**으로 겉보기 효과가 부풀려질 수 있다. 처리 단위가 단 하나뿐이므로 추론은 대표본 점근 이론이 아니라 **플라시보(순열) 검정(placebo / permutation tests)**에 의존한다: 각 기여자 단위에 처치를 가상으로 부여하여 플라시보 격차를 계산한 뒤, 실제 처리 단위의 사후/사전 격차 비율이 플라시보 분포에 비해 극단적인지 검정한다.
+
+```{r scm-sim}
+#| echo: true
+#| message: false
+#| warning: false
+#| label: fig-scm
+#| fig-cap: "단일 처리 시장을 위한 합성통제. 기여자 가중치는 개입 전 처리 시장의 매출(출시 시점의 수직선)과 일치하도록 선택된다. 사후 기간에 처리 시장과 합성 쌍둥이 간의 격차가 처리효과를 추정한다."
+set.seed(47)
+
+# 1개의 처리 시장 + 20개의 기여자 시장, 총 30개 기간; 브랜드 캠페인이 t=21에
+# 시작되어 처리 시장의 매출을 점진적으로 증가시킴.
+Tn <- 30; T0 <- 20; J <- 20; true_post_effect <- 6
+common <- cumsum(rnorm(Tn, 0.2, 0.4))                 # 공통 잠재 추세
+donors <- sapply(1:J, function(j)
+  3 + runif(1, 0.5, 1.5) * common + rnorm(Tn, 0, 0.6))
+# 처리 시장은 사전 기간에 3개 기여자의 볼록 결합임.
+truew <- numeric(J); truew[c(2, 5, 11)] <- c(0.5, 0.3, 0.2)
+treated <- as.numeric(donors %*% truew) + rnorm(Tn, 0, 0.4)
+treated[(T0 + 1):Tn] <- treated[(T0 + 1):Tn] +
+  true_post_effect * seq_len(Tn - T0) / (Tn - T0)
+
+# 간단한 투영 최적화(이차 손실, 심플렉스 제약)를 통해
+# 사전(PRE) 기간에 합이 1이 되는 비음수 가중치를 구함.
+pre <- 1:T0
+loss <- function(w) sum((treated[pre] - donors[pre, ] %*% w)^2)
+ui <- rbind(diag(J), rep(-1, J)); ci <- c(rep(0, J), -1)  # w>=0, sum(w)<=1
+w0 <- rep(0.9 / J, J)   # 내부 시작점: sum < 1로 constrOptim의 엄격한 실행가능성 검사 통과
+opt <- constrOptim(w0, loss, grad = NULL, ui = ui, ci = ci)
+w <- opt$par / sum(opt$par)
+
+synth <- as.numeric(donors %*% w)
+gap_post <- mean(treated[(T0 + 1):Tn] - synth[(T0 + 1):Tn])
+cat(sprintf("사후 평균 효과 (참값 ~%.2f): %.3f\n",
+            true_post_effect / 2, gap_post))
+
+plot(1:Tn, treated, type = "l", lwd = 2, xlab = "기간", ylab = "매출",
+     ylim = range(c(treated, synth)))
+lines(1:Tn, synth, lwd = 2, lty = 2, col = "firebrick")
+abline(v = T0 + 0.5, lty = 3)
+legend("topleft", bty = "n", lwd = 2, lty = c(1, 2),
+       col = c("black", "firebrick"),
+       legend = c("처리 시장", "합성통제"))
+```
+
+## 설계 선택
+
+모든 면에서 우월한 단 하나의 설계는 존재하지 않는다. 각 설계는 서로 다른 가정을 대가로 식별을 확보하며, 올바른 선택은 현실(또는 기업)이 어떤 변량을 제공하는지에 달려 있다. 아래의 비교표는 각 설계 간의 트레이드오프를 요약한다.
+
+```{r design-table}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: tbl-designs
+#| tbl-cap: "인과 설계의 비교: 각 설계가 목표로 하는 추정대상, 식별을 가능하게 하는 핵심 가정, 이를 검증하는 진단법, 식별을 무너뜨리는 실패 요인."
+designs <- data.frame(
+  설계 = c("무작위실험 / A-B 테스트", "이중차분법",
+             "도구변수", "회귀불연속",
+             "합성통제"),
+  추정대상 = c("ATE", "ATT", "LATE (순응자)",
+               "기준점에서의 국소 효과", "ATT (단일 단위)"),
+  `핵심 가정` = c("무작위 배정",
+                        "평행 추세",
+                        "배제 제약 + 관련성",
+                        "기준점에서의 연속성",
+                        "기여자가 사전 추세 재현"),
+  진단법 = c("균형도 / 검정력 점검",
+                  "사전 추세 (사건연구)",
+                  "1단계 F 통계량; 과식별 검정",
+                  "McCrary 밀도 검정; 공변량 도약",
+                  "사전 적합도; 플라시보 순열 검정"),
+  `실패 요인` = c("간섭; 엿보기(peeking)",
+                        "이질적 충격; 시차 도입",
+                        "약한 / 무효한 도구변수",
+                        "실행 변수 조작",
+                        "저조한 사전 적합도; 파급효과"),
+  check.names = FALSE
+)
+knitr::kable(designs, align = "lllll")
+```
+
+마케팅 실무에서 설계를 선택할 때 세 가지 원칙이 지침이 된다. 첫째, **실행 비용을 감당할 수 있다면 실험을 우선하라**. 광고와 가격 책정에서 기업들이 관찰 대안들의 신뢰성이 너무 낮다는 이유로 지리적 권역을 통제하거나 사용자 수준에서 무작위화를 적극적으로 수행하는 추세다 [@gordon2019]. 둘째, 실험이 불가능할 경우 **외생적 변량의 원천에 맞추어 설계를 선택하라**: 명확한 자격 부여 규칙이 존재하면 RD를, 시차를 둔 도입이 있다면 DiD를, 단일 대형 처리 개체라면 SCM을, 신뢰할 수 있는 공급 측면 충격이 있다면 IV를 적용한다. 셋째, **다각화(삼각측량, triangulate)하라**: 서로 다른 가정에 기반한 두 가지 설계가 동일한 결론을 가리킬 때, 그 인과적 주장은 단일 추정치보다 훨씬 더 신뢰할 수 있다. 두 설계의 가정이 실패하는 원인이 서로 독립적이기 때문이다. @fig-ci-design-choice 는 이러한 원칙들을 분석가가 거치는 의사결정 순서도로 정리한 것이다.
+
+```{mermaid}
+%%| label: fig-ci-design-choice
+%%| fig-cap: "인과 설계 선택 순서도. 비용을 감당할 수 있다면 실험을 우선하고, 그렇지 않다면 현실이 제공하는 무작위성에 준하는 변량의 원천에 맞추어 설계를 매칭하며, 가정이 서로 다른 이유로 실패하는 여러 설계를 다각도로 교차 검증한다."
+flowchart TD
+  Q1{"기업이 감당 가능한 비용으로<br/>실험을 수행할 수 있는가?"}
+  Q1 -->|"예"| EX["실험 실행:<br/>사용자 수준 A-B 테스트 또는 지역 홀드아웃<br/>(설계상 ATE 달성)"]
+  Q1 -->|"아니오"| Q2{"현실이 제공하는 무작위성에 준하는<br/>변량은 무엇인가?"}
+  Q2 -->|"명확한 자격 부여 규칙"| RD["회귀불연속설계<br/>(기준점에서의 국소 효과)"]
+  Q2 -->|"시차를 둔 도입"| DD["이중차분법<br/>(평행 추세 하의 ATT)"]
+  Q2 -->|"단일 대형 처리 개체"| SC["합성통제법<br/>(단일 처리 단위에 대한 ATT)"]
+  Q2 -->|"신뢰할 수 있는 공급 충격"| IV["도구변수<br/>(순응자에 대한 LATE)"]
+  RD --> TRI["다각적 교차 검증: 서로 다른 이유로<br/>가정이 실패하는 설계 간의 일치성은<br/>인과적 주장을 더욱 강화함"]
+  DD --> TRI
+  SC --> TRI
+  IV --> TRI
+```
+
+## 모든 설계에 공통적인 위협 {#sec-causal-threats}
+
+개별 설계 고유의 실패 요인 외에도 반복적으로 발생하여 상시 체크리스트로 관리해야 할 공통 위협들이 있다. **파급효과 및 일반균형(Spillovers and general equilibrium)**: 한 단위의 처치가 다른 단위의 행동을 변화시킬 수 있으며(SUTVA 위배), 소규모 실험에서 수익성이 있었던 가격 정책이라도 경쟁업체와 공급망이 반응하는 전사적 롤아웃 단계에서는 지속되지 않을 수 있다. **이탈 및 생존 편향(Attrition and survivorship)**: 집단 간 비대칭적인 이탈은 무작위 설계조차 다시 선택 편향에 노출시킨다. **성과 측정 기간과 동적 효과(Outcome windows and dynamics)**: 광고 및 브랜드 효과는 시간에 따라 누적되고 감쇠하므로, 지나치게 짧은 기간 동안 측정된 효과는 실제 수익률을 과소평가하게 된다. 이월 효과(@sec-advertising 의 Koyck/adstock 구조)는 무시할 것이 아니라 명시적으로 모형화해야 한다. **다중 비교(Multiple comparisons)**: 수많은 지표, 세그먼트, 변형을 동시에 검정하면 위양성률이 급증하므로 주요 결과 지표의 사전 등록이나 명시적인 다중 검정 보정이 필요하다. **외적 타당성(External validity)**: 여기서 다루는 모든 추정대상은 특정 모집단, 특정 기간, 특정 처치 강도 수준에 국한된 국소적 성격을 띤다. 순응자에 대한 LATE, 기준점에서의 RD 효과, 단일 시장에 대한 SCM 효과는 기업의 더 넓은 의사결정으로 확장되지 않을 수 있다. 이 장의 서두에서 강조한 추정대상 명시 규율이 이에 대한 해답이다. 분석가로 하여금 어떤 개입 하에서 정확히 누구에 대한 효과가 추정되었는지를 명확히 서술하도록 강제하기 때문이다.
+
+## 기초 연구와 최전선 연구의 개괄 {#sec-causal-foundational-frontier}
+
+본 세미나에서는 모든 방법론을 기초 연구(자격시험 필수 출제 범위, 왼쪽 열)와 최전선 연구(학위 논문이 작성되는 최신 연구 영역, 오른쪽 열)로 구분한다. 일반적인 계량경제학 과목과 비교할 때 마케팅 전공에 특화된 추가 가치는 제12주~제14주(광고 효과 측정, 증분/지역/가격 실험, 플랫폼 양면 시장 간섭)에 집중되어 있으며, 미미한 효과 크기, 비정상성을 띄는 플랫폼, 그리고 타겟팅 의사결정을 중심으로 모든 방법론을 재구성하는 데 있다.
+
+| 블록 | 기초 핵심 연구 [F] | 최전선 확장 연구 [R] |
+|---|---|---|
+| 프레임워크 (제1주) | Rubin 1974; Holland 1986; Imbens–Rubin | 설계 기반 추론 대 모형 기반 추론 |
+| 실험 / A/B (제2주) | Fisher/Neyman 추론; Kohavi | 시계열/스위치백; 상시 유효 추론 |
+| 관측 변수에 의한 선택 (제3주) | CIA, 나쁜 통제 변수, 공통 지지 (Angrist–Pischke) | 민감도 분석; Athey–Imbens 개관 |
+| IV (제4주) | Imbens–Angrist LATE; Angrist–Imbens–Rubin | 약한 IV; 심사관/교대 공유 설계 |
+| DiD I (제5주) | Card–Krueger; Bertrand–Duflo–Mullainathan | 와일드 클러스터 추론 |
+| DiD II — 시차 도입 (제6주) | *비판 그 자체*가 이제 기초 지식이 됨 | Goodman-Bacon; CS; dCDH; Sun–Abraham; BJS; Roth et al. |
+| RDD (제7주) | Imbens–Lemieux 실무 가이드 | Calonico–Cattaneo–Titiunik 로버스트 추론 |
+| 합성통제 (제8주) | Abadie–Diamond–Hainmueller; Abadie JEL | 합성 DiD; gsynth; CausalImpact |
+| 패널/사건연구 (제9주) | FE/FD (Wooldridge) | 설계 기반 패널 실험; 행렬 완성 |
+| 매칭/가중치 부여 (제10주) | Rosenbaum–Rubin; Hirano–Imbens–Ridder | 근사 잔차 균형화; PS 매칭 추론 |
+| HTE를 위한 ML (제11주) | Athey–Imbens 인과 의사결정나무 | 인과 포레스트; GRF; 이중/탈편향 ML |
+| 광고 효과 측정 (제12주) | Lewis–Rao 불리한 경제성 | 고스트 애드; 실험 대 관찰 연구 비교 (Gordon et al.) |
+| 증분효과/지역/가격 (제13주) | Blake–Nosko–Tadelis; Anderson–Simester | 타겟팅 정책 평가; 밴딧 가격 책정 |
+| 간섭 (제14주) | Manski 반사 문제 | Aronow–Samii; Sävje et al.; 그래프-군집 설계 |
+
+제6주는 *비판* 자체가 기초 필수 지식으로 정착한 드문 사례다: 오늘날 어떤 연구자도 이원 고정효과 추정량의 시차 도입 실패 문제를 이해하지 않고서는 DiD를 사용할 수 없다. 논문이 최전선에서 기초 핵심 문헌으로 승격되는 것은 자격시험의 필수 표준이 되었을 때뿐이며, 시차 DiD 비판은 현재 이러한 전환의 한가운데에 있는 대표적인 예다.
+
+## 이 장의 확장 방향 {#sec-causal-expansion}
+
+본 장은 지속적으로 진화하는 강의 계획서(living syllabus)다. 향후 개정에서는 (1) 이 표준적 구성을 실제 박사과정 강의 계획서(MIT 응용 계량경제학, 시카고 부스의 인과추론 및 계량 마케팅 과정, 스탠퍼드 GSB/경제학과의 인과 ML 과정, 버클리의 디지털 실험 과정, 와튼/컬럼비아/켈로그의 마케팅 방법론 세미나)의 주차별 실제 읽기 목록과 대조하여 프로그램 및 URL을 인용해 정합성을 보완하고; (2) 가장 빠르게 발전하는 제6주의 로버스트 DiD 문헌의 통합 추세(연속형 처치, 비흡수형 처치, 삼중차분, 설계 기반 DiD)를 추적하며; (3) 제12주~제14주의 마케팅 플랫폼 핵심 내용을 DOI가 부여된 확정 논문(현재는 많은 내용이 워킹 페이퍼 및 플랫폼 기술 보고서에 머물러 있음)과 마켓플레이스 및 추천 시스템의 간섭 하 실험 문헌으로 심화하고; (4) 미미한 리프트의 광고 실험을 위한 MDE/검정력, 분산 감소(CUPED), 군집 무작위화의 검정력 손실, 순차 검정을 다루는 검정력/설계 부록을 추가하며; (5) 표준 패키지(`grf`, `DoubleML`/`econml`, `did`, `fixest`/`sunab`, `rdrobust`, `Synth`/`synthdid`/`gsynth`, `CausalImpact`)와 방법론을 매핑하는 소프트웨어/재현성 부록을 추가하고; (6) 핵심적인 교육적 장치로서 기초/최전선 표시 체계를 유지하도록 한다.
+
+## 핵심 요점
+
+- 인과효과는 잠재적 결과들의 비교로 정의되며(@eq-unit-effect), 각 단위마다 오직 하나의 잠재적 결과만 관측되므로(@eq-switching) 모든 인과적 추정은 결측된 반사실을 복원하는 식별 가정에 의존한다.
+- 순진한 처리군과 미처리군의 차이는 선택 편향에 의해 왜곡되며(@eq-selection-bias), 무작위화는 설계 자체로 이 편향을 제거하므로 현장실험과 A/B 테스트가 골드 스탠다드가 된다.
+- 광고 영역에서는 매출 변동성에 비해 효과 크기가 매우 작으므로, 결론을 도출하기 위해서는 매우 큰 표본의 실험이 요구되며 관찰 대안들은 크기나 부호 면에서 심각한 오류를 범할 수 있다 [@Lewis_2015; @gordon2019].
+- 각 준실험 설계는 *특정한* 가정 하에서 *특정한* 추정대상을 목표로 하며—평행 추세 하의 DiD/ATT, 배제 제약 하의 IV/LATE, 연속성 하의 RD, 기여자 사전 적합도 하의 SCM/ATT—각각 고유한 진단법과 고유한 실패 요인을 갖는다(@tbl-designs).
+- 방법론을 선택하기 전에 추정대상을 먼저 명시하고, 진단법을 통해 식별 가정을 엄밀히 검증하며, 서로 다른 이유로 가정이 실패하는 여러 설계들을 다각도로 교차 검증해야 한다.
+
+## 추가 읽을거리
+
+본 장에서 다룬 잠재적 결과 프레임워크와 추정량들은 대학원 수준의 표준 계량경제학 교재 [@cameron2005microeconometrics; @greene2003econometric] 및 프로그램 평가에 관한 계량경제학 문헌들 [@heckman2007econometric; @abbring2007econometric3]에 상세히 설명되어 있다. 내생적 가격과 경쟁 상품의 특성으로 구축된 도구변수를 활용한 수요 추정에 대해서는 차별화 상품 문헌이 기본 진입점이다 [@berry1995]. 관찰 추론 대신 실험을 선택해야 하는 강력한 근거를 제공하는 광고 효과 측정 실증 증거는 앞서 인용된 대규모 실험 비교 연구들을 통해 직접 확인할 수 있으며 [@lewis2011; @Lewis_2015; @gordon2019], 단일 기간 추정을 복잡하게 만드는 광고 반응의 동적 구조는 @sec-advertising 에서 다룬다.
+
+<!-- CITE-NEEDED: Neyman-Rubin / Rubin causal model foundational potential-outcomes references -->
+<!-- CITE-NEEDED: Angrist-Imbens LATE / compliers identification -->
+<!-- CITE-NEEDED: Card-Krueger or Bertrand-Duflo-Mullainathan difference-in-differences inference -->
+<!-- CITE-NEEDED: Goodman-Bacon / Callaway-Sant'Anna staggered DiD with heterogeneous effects -->
+<!-- CITE-NEEDED: staiger-stock / stock-yogo weak instruments F-statistic -->
+<!-- CITE-NEEDED: Imbens-Lemieux / Lee-Lemieux regression discontinuity practical guide -->
+<!-- CITE-NEEDED: McCrary density manipulation test for RD -->
+<!-- CITE-NEEDED: Abadie-Diamond-Hainmueller synthetic control method -->
+<!-- CITE-NEEDED: marketing pricing field experiment exemplar (e.g., online price experimentation) -->
+<!-- CITE-NEEDED: sequential testing / always-valid p-values for online experiments (peeking) -->
+

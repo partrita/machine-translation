@@ -1,10 +1,9 @@
 ---
-title: "101 Linux Commands"
+title: "기초 리눅스 명령어"
 author: "Bobby Iliev"
 ---
 
 ![101 Linux Commands cover](images/cover.jpg)
-
 
 이 전자책은 누구나 알아 두어야 할 Linux 명령어 101가지를 다루는 오픈 소스 전자책입니다. DevOps/SysOps 엔지니어, 개발자 또는 단순한 Linux 애호가인지와 관계없이, 경력 중 언젠가는 터미널을 사용하게 될 가능성이 높습니다.
 

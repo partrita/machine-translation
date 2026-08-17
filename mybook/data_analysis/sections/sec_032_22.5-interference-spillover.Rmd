@@ -1,0 +1,398 @@
+<!-- ========================================= -->
+<!-- Chapter: 22.5-interference-spillover.Rmd -->
+<!-- ========================================= -->
+
+
+# 간섭과 파급효과 (Interference and Spillover Effects) {#sec-interference-spillover}
+
+본서에서 다루는 인과추론 기법의 대부분은 한 단위의 처치가 다른 단위의 결과에 영향을 미치지 않는다는 가정에 암묵적으로 의존하고 있습니다. 그러나 이 가정은 편리할 뿐 실제로는 위반되는 경우가 매우 흔합니다. 백신 접종을 받은 사람이 백신을 맞지 않은 이웃의 감염 위험을 낮추는 경우, 한 고객에 대한 가격 할인 프로모션이 친구의 구매를 잠식(Cannibalization)하는 경우, 한 학교의 구충제 보급 프로그램이 인근 학교의 감염 전파를 줄이는 경우, 또는 한 은행에 대한 규제 충격이 은행 간 상호 익스포저를 통해 전파되는 경우처럼, 한 단위의 결과는 다른 단위들의 처치 상태에 의존하게 됩니다. 이러한 현상은 통계학과 계량경제학에서 밀접하게 관련된 두 가지 용어로 불립니다. 통계학자들은 이를 **간섭(Interference)**, 즉 안정적 단위 처치 값 가정(SUTVA)의 '간섭 부재' 조건 위반이라고 부릅니다. 경제학자와 실증 연구자들은 흔히 **파급효과(Spillover Effect)**, **동료 효과(Peer Effect)**, **외부효과(Externality)**, 또는 **전염(Contagion)**이라고 부릅니다. 사용하는 어휘는 다르지만 구조적 문제는 동일합니다. 본 장의 목적은 이 문제를 엄밀하게 정형화하고, 간섭을 인정했을 때 무엇이 식별되고 무엇이 식별되지 않는지 밝히며, 실험 이론을 본서의 다른 곳에서 다루는 준실험 및 관찰 연구 설계와 연결하는 것입니다.
+
+본 장은 분석가가 직접 제어하는 실험 설계에서 출발하여 관찰 데이터로 나아갑니다. 먼저 간섭과 이것이 위반하는 SUTVA 가정을 정의하고, 노출 매핑(Exposure Mappings)을 중심으로 잠재적 결과 프레임워크를 재구축하며, 알려진 무작위 배정을 활용하는 설계 기반 호비츠-톰슨(Horvitz-Thompson) 추정량 [@aronow2017estimating]과 노출 매핑이 미지이거나 잘못 명시되었을 때 무엇을 추정할 수 있는지에 대한 현대 이론 [@savje2021average; @leung2022causal], 그리고 간섭 하에서도 정확성을 유지하는 무작위화 검정(Randomization Tests) [@athey2018exact; @basse2019randomization]을 다룹니다. 이어서 파급효과 추정을 정형화한 부분 간섭(Partial Interference) 설계를 다룹니다: 직접, 간접, 총, 전체 효과를 정의한 @hudgens2008toward 의 2단계 무작위 설계, `inferference` 패키지 [@saul2017recipe]를 활용한 역확률 가중(IPW) 추정, @nickerson2008voting 의 가구 내 투표 동원 실험 재현, 경제학자들이 구축 효과(Displacement)와 일반균형 파급효과를 측정하기 위해 사용하는 무작위 포화 실험(Randomized Saturation Experiments) [@crepon2013labor; @egger2022general]을 살펴봅니다. 관찰 연구 영역에서는 @manski1993identification 의 동료 효과 회귀분석에서의 반사 문제(Reflection Problem), 관측된 네트워크에서의 인과추론, 이분형(Bipartite) 및 군집형 간섭, 플랫폼 및 시간적 간섭, 실증 금융에서 사용되는 연계성(Connectedness) 지표를 다룹니다. 마지막으로 파급효과가 이중차분법(DiD)의 통제군을 오염시키고, 도구변수(IV) 설계의 배제 제약을 위협하며, 매칭(Matching)의 비교 논리를 훼손하는 준실험 설계에서의 간섭 위협을 다룹니다. 본 장은 이중차분법의 현대적 이슈(제\@ref(sec-modern-concerns-in-did) 절) 및 준실험 기초(제\@ref(sec-quasi-experimental) 절)와 상호 참조되며, 그곳에서 전제된 간섭 부재 가정을 정면으로 검토하는 장입니다.
+
+## SUTVA와 간섭 부재의 의미 {#sec-sutva-no-interference}
+
+@rubin1980randomization 에서 공식화되고 @imbens2015causal 에서 심도 있게 다루어진 안정적 단위 처치 값 가정(SUTVA)은 두 가지 요구사항을 포함합니다. 첫째는 **간섭 부재(No interference)**로, 한 단위의 잠재적 결과는 오직 자신의 처치 배정에만 의존하며 다른 단위들의 배정에는 영향을 받지 않는다는 것입니다. 둘째는 **처치의 숨겨진 변형 부재(No hidden variation in treatment)**로, 각 처치 수준의 정의가 명확하고 일관되어 "처치됨"이 모든 단위에 대해 동일한 의미를 갖는다는 것입니다. 두 조건 모두 실질적이며 사회과학에서 일상적으로 위반되지만, 본 장에서는 첫 번째 조건에 집중합니다.
+
+간섭 부재가 보장하는 이점을 정확히 이해하기 위해, $N$개 단위로 구성된 모집단의 처치 배정 벡터를 $\mathbf{D} = (D_1, \dots, D_N)$ ($D_i \in \{0,1\}$)으로 표기합니다. 일반적인 환경에서 단위 $i$의 결과는 전체 벡터의 함수입니다:
+$$
+Y_i = Y_i(\mathbf{D}) = Y_i(D_1, D_2, \dots, D_N).
+$$
+$N$개의 이진 처치가 있을 때 $2^N$개의 가능한 배정 벡터가 존재하므로 단위당 최대 $2^N$개의 잠재적 결과가 발생합니다. 이것이 바로 간섭을 어렵게 만드는 조합적 폭발(Combinatorial Explosion)입니다. 적당한 크기의 표본에서도 잠재적 결과의 수가 관측치 수를 압도적으로 초과하므로 추가적인 구조적 가정 없이는 아무것도 식별할 수 없습니다.
+
+간섭 부재 가정은 이러한 의존성을 해당 단위 자신의 처치로 축소시킵니다:
+$$
+Y_i(\mathbf{D}) = Y_i(D_i).
+$$
+이를 통해 친숙한 쌍 $Y_i(1), Y_i(0)$과 단위 수준 효과 $Y_i(1) - Y_i(0)$가 회복됩니다. 관측된 결과는 $Y_i = Y_i(D_i)$를 만족하며, 평균 처치 효과 $E[Y_i(1) - Y_i(0)]$는 완전 무작위 배정이 단순 평균 차이를 통해 식별하는 추정대상이 됩니다. 실험 및 준실험 장의 모든 논의는 이러한 축소를 상속받습니다. 이 가정이 위반되면 축소 역시 무너지며, 우리는 다른 단위들의 배정에 반응하는 잠재적 결과를 다루어야 합니다.
+
+문헌에서 다루는 세 가지 체제를 구분하는 것이 유용합니다. **간섭 부재(No interference)** 하에서는 자신의 처치로의 축소가 정확히 성립합니다. **임의의(일반적) 간섭(Arbitrary/General interference)** 하에서는 $Y_i$가 아무런 제약 없이 전체 벡터 $\mathbf{D}$에 의존할 수 있으며, 이는 가장 솔직한 가정이지만 반복(Replication)을 제공하는 설계 없이는 식별이 가장 어렵습니다. 이 둘 사이에 @sobel2006randomized 및 @hudgens2008toward 가 도입한 **부분 간섭(Partial interference)**이 위치합니다. 부분 간섭 하에서는 모집단이 여러 그룹(가구, 학급, 마을, 시장)으로 분할되어 그룹 내에서는 간섭이 자유롭게 작용하지만 그룹 간에는 간섭이 발생하지 않는다고 가정합니다. 부분 간섭은 각 그룹 내에서 파급효과를 추정하는 데 필요한 독립적인 반복을 제공하므로 이 분야의 핵심 작업 가정이 되며, 아래의 설계 이론 대부분은 이를 전제합니다.
+
+## 간섭 하에서의 잠재적 결과와 노출 매핑 {#sec-exposure-mappings}
+
+$Y_i$가 다른 단위들의 배정에 의존한다는 점을 인정하고 나면, 의미 있는 효과 유형들을 정의하기 위한 언어가 필요합니다. @hudgens2008toward 의 형식적 전개를 따라 단위 $i$를 제외한 모든 단위의 배정을 $\mathbf{D}_{-i}$로 표기하면 $Y_i = Y_i(D_i, \mathbf{D}_{-i})$가 됩니다. 여기서 개념적으로 구별되는 두 가지 대비가 도출됩니다.
+
+**직접효과(Direct effect)**는 다른 단위들의 처치 상태를 특정 구성 $\mathbf{d}$로 고정한 상태에서 단위 $i$ 자신의 처치만을 전환합니다:
+$$
+\tau^{\text{direct}}_i(\mathbf{d}) = Y_i(D_i = 1, \mathbf{D}_{-i} = \mathbf{d}) - Y_i(D_i = 0, \mathbf{D}_{-i} = \mathbf{d}).
+$$
+이는 고전적 처치 효과와 가장 유사한 개념으로, 다른 단위들의 특정 처치 패턴이 주어졌을 때 $i$ 자신의 처치로 인해 발생하는 결과의 변화입니다.
+
+**파급(간접)효과(Spillover/Indirect effect)**는 $i$ 자신의 처치는 고정하고 주변 다른 단위들의 구성을 변경합니다:
+$$
+\tau^{\text{spill}}_i(d; \mathbf{d}, \mathbf{d}') = Y_i(D_i = d, \mathbf{D}_{-i} = \mathbf{d}) - Y_i(D_i = d, \mathbf{D}_{-i} = \mathbf{d}').
+$$
+이는 $i$ 자신의 상태는 유지한 채 주변 패턴이 $\mathbf{d}$에서 $\mathbf{d}'$로 이동할 때 $i$의 결과가 얼마나 변하는지를 포착합니다. **총효과(Total effect)**는 이 둘을 결합하여 처치된 환경에서 자신이 처치받는 것과 처치되지 않은 환경에서 자신이 처치받지 않는 것을 비교합니다.
+
+실무적 난점은 $\mathbf{d}$와 $\mathbf{d}'$가 천문학적으로 거대한 공간에 걸쳐 있어 이러한 대비를 직접 사용할 수 없다는 점입니다. 이를 해결하는 핵심 단순화 도구는 @aronow2017estimating 이 엄밀하게 개발한 **노출 매핑(Exposure Mapping)**입니다. 노출 매핑은 고차원 배정 벡터와 네트워크 내 위치와 같은 단위별 속성 $\theta_i$를 저차원 노출 값으로 축소하는 함수 $f(\mathbf{D}, \theta_i)$입니다. 실질적인 가정은 잠재적 결과가 오직 이 노출 값을 통해서만 $\mathbf{D}$에 의존한다는 것입니다. 즉, 두 배정 벡터가 단위 $i$에 대해 동일한 노출을 유도한다면 동일한 잠재적 결과를 유도합니다. 흔히 사용되는 선택으로는 네트워크 이웃 중 하나라도 처치되었는지 여부를 나타내는 지시변수, 처치된 이웃의 수나 비율, 또는 고전적 설정을 복원하는 단순 "처치 대 비처치" 노출이 있습니다. @aronow2017estimating 은 올바르게 명시된 노출 매핑과 알려진 무작위 배정이 주어졌을 때 각 노출 수준에서의 평균 잠재적 결과에 대한 호비츠-톰슨(Horvitz-Thompson) 및 하예크(Hajek) 추정량을 구성할 수 있음을 보였습니다. 이 접근법의 솔직함은 노출 매핑이 숨겨진 가정이 아니라 명시적이고 반증 가능한 모델링 가정이라는 점에 있으며, 이를 잘못 명시하면(예: 2차 이웃 효과가 존재함에도 1차 이웃 효과만 가정) 편향이 재발생하게 됩니다.
+
+@ugander2013graph 의 그래프-클러스터 무작위 배정(Graph-Cluster Randomization)은 동일한 문제에 대한 보완적 엔지니어링 대응입니다. 개인이 아닌 거친 네트워크 클러스터에 처치를 배정함으로써 한 단위와 그 모든 이웃이 동일한 처치 상태를 공유할 확률을 높여 "완전 처치된 이웃" 노출이 추정 가능할 만큼 충분히 자주 발생하도록 만듭니다. @eckles2017design 은 이 설계 논리를 더욱 발전시켜 클러스터 무작위 배정과 노출 기반 분석의 결합이 표준 추정량에서 간섭으로 인한 편향을 실질적으로 줄인다는 것을 이론과 실제 소셜 네트워크 실험을 통해 입증했습니다. 일반적인 교훈은 간섭 하에서는 설계와 추정대상을 함께 선택해야 한다는 것입니다. 무작위 배정 체계가 어떤 노출 대비를 추정할 수 있는지를 근본적으로 결정하기 때문입니다.
+
+### 알려진 노출 확률을 이용한 설계 기반 추정 {#sec-design-based-interference}
+
+노출 매핑이 채택되면 추정은 설계 기반 표본추출과 정확히 동일하게 진행되며 무작위 배정 자체가 확률을 제공합니다. 매핑이 각 단위에 유한한 노출 수준 집합 $k$ 중 하나를 부여한다고 가정하고, 일반화된 노출 확률을 다음과 같이 정의합니다:
+$$
+\pi_i(k) = \Pr[f(\mathbf{D}, \theta_i) = k].
+$$
+배정 메커니즘을 알고 있으므로 이 확률은 최소한 시뮬레이션을 통해 계산 가능합니다. 구체적인 예로 처치가 확률 $p$인 베르누이 독립 시행으로 배정되고 노출이 자신의 처치 여부 및 적어도 하나의 네트워크 이웃이 처치되었는지 여부의 조합으로 정의된다고 가정합니다. 차수(Degree)가 $d_i$인 단위는 다음 확률을 갖습니다:
+$$
+\begin{aligned}
+\pi_i(11) &= p\,\{1 - (1-p)^{d_i}\}, &\qquad \pi_i(10) &= p\,(1-p)^{d_i},\\
+\pi_i(01) &= (1-p)\,\{1 - (1-p)^{d_i}\}, &\qquad \pi_i(00) &= (1-p)^{\,d_i + 1},
+\end{aligned}
+$$
+여기서 첫 번째 숫자는 자신의 처치 여부, 두 번째 숫자는 이웃 처치 지시변수입니다. 노출 $k$ 하에서의 평균 잠재적 결과를 $\mu(k) = N^{-1} \sum_i Y_i(k)$로 표기할 때, @aronow2017estimating 의 호비츠-톰슨 추정량은 다음과 같습니다:
+$$
+\hat{\mu}_{HT}(k) = \frac{1}{N} \sum_{i=1}^{N} \frac{\mathbf{1}\{f(\mathbf{D}, \theta_i) = k\}\, Y_i}{\pi_i(k)}.
+$$
+이는 모든 단위가 $\pi_i(k) > 0$을 만족하고(양수성 조건, Positivity) 노출 매핑이 올바르게 명시되었을 때 항상 불편성을 가집니다. 하예크(Hajek) 변형은 $N$ 대신 역확률 가중치의 합으로 정규화하며, 점근적으로만 불편성을 갖지만 가중치의 편차가 클 때 일반적으로 분산이 훨씬 작습니다. 인과적 대비는 차이 $\tau(k, k') = \mu(k) - \mu(k')$이며, 단위 쌍의 결합 노출 확률로부터 보수적인 분산 추정량을 도출할 수 있습니다. 정밀도는 설계에 의해 지배됩니다: 베르누이 배정 하에서 "처치되었으나 처치된 이웃이 없음"과 같은 노출은 고차수 단위에게 극히 드물게 발생하여 가중치가 폭발하므로, 클러스터 무작위 배정은 추정대상이 필요로 하는 극단적 노출의 확률을 높이기 위한 장치로 이해할 수 있습니다.
+
+### 단순 대비가 추정하는 것과 놓치는 것
+
+랜덤 네트워크에서의 간단한 시뮬레이션을 통해 설계 기반 메커니즘을 구체화하고 단순 평균 차이의 미묘한 문제를 살펴봅니다. 결과변수는 자신의 처치로 인해 1만큼 증가하고 적어도 하나의 이웃이 처치되었을 때 1.5만큼 추가로 증가하므로, 전원 처치 대 전원 미처치의 글로벌 정책 대비는 2.5입니다.
+
+```{r interference-ht-network, message=FALSE, warning=FALSE}
+set.seed(2026)
+library(igraph)
+
+n <- 4000
+g <- sample_gnp(n, p = 6 / (n - 1))
+# 추정대상에 포함된 모든 단위가 모든 노출 수준에서 양의 확률을 갖도록
+# 적어도 하나의 이웃을 가진 단위만 유지 (양수성 조건 만족)
+g <- induced_subgraph(g, which(degree(g) > 0))
+n <- vcount(g)
+A <- as_adjacency_matrix(g, sparse = TRUE)
+deg <- degree(g)
+
+p_treat <- 0.5
+
+# iid 베르누이(p) 배정 하에서의 닫힌 형태 노출 확률
+pi_c11 <- p_treat * (1 - (1 - p_treat)^deg)
+pi_c10 <- p_treat * (1 - p_treat)^deg
+pi_c01 <- (1 - p_treat) * (1 - (1 - p_treat)^deg)
+pi_c00 <- (1 - p_treat)^(deg + 1)
+
+one_draw <- function() {
+  D <- rbinom(n, 1, p_treat)
+  S <- as.numeric(as.numeric(A %*% D) > 0)   # 처치된 이웃 존재 여부
+  Y <- 0.5 + 1.0 * D + 1.5 * S + rnorm(n)
+
+  exposure <- ifelse(D == 1 & S == 1, "c11",
+              ifelse(D == 1 & S == 0, "c10",
+              ifelse(D == 0 & S == 1, "c01", "c00")))
+  pi_i <- cbind(c11 = pi_c11, c10 = pi_c10, c01 = pi_c01, c00 = pi_c00)
+
+  ht <- sapply(c("c11", "c10", "c01", "c00"), function(k) {
+    ind <- as.numeric(exposure == k)
+    sum(ind * Y / pi_i[, k]) / n
+  })
+  hajek <- sapply(c("c11", "c10", "c01", "c00"), function(k) {
+    ind <- as.numeric(exposure == k)
+    sum(ind * Y / pi_i[, k]) / sum(ind / pi_i[, k])
+  })
+  c(naive        = mean(Y[D == 1]) - mean(Y[D == 0]),
+    ht_global    = unname(ht["c11"] - ht["c00"]),
+    hajek_global = unname(hajek["c11"] - hajek["c00"]),
+    hajek_direct = unname(hajek["c10"] - hajek["c00"]),
+    hajek_spill  = unname(hajek["c01"] - hajek["c00"]))
+}
+
+reps <- replicate(300, one_draw())
+round(cbind(mean = rowMeans(reps), sd = apply(reps, 1, sd)), 3)
+```
+
+이 표에서 세 가지 교훈을 얻을 수 있습니다. 첫째, 단순 평균 차이는 정책 대비인 2.5가 아니라 직접효과인 1 근처에 위치합니다. 베르누이 배정 하에서 자신의 처치는 이웃 노출과 독립이므로 파급효과 항이 비교 과정에서 완전히 상쇄되며, 평균 차이를 "전체 롤아웃의 효과"로 해석하는 분석가는 효과를 60%나 과소평가하게 됩니다. 이는 추정량의 편향이라기보다는 추정량과 정책 질문 간의 불일치입니다. 둘째, 노출 매핑에 기반한 호비츠-톰슨 및 하예크 추정량은 글로벌 대비, 직접효과, 파급효과를 개별적으로 정확하게 복원합니다. 셋째, 글로벌 대비에 대한 하예크 추정량의 표준편차는 호비츠-톰슨 추정량의 절반 수준으로, 정규화되지 않은 역확률 가중치의 실무적 대가를 보여줍니다.
+
+## 미지의 또는 오명세된 노출 매핑 하에서의 추정 {#sec-unknown-exposure-mappings}
+
+위의 설계 기반 결과는 노출 매핑을 올바르게 알고 있다는 조건에 의존하지만, 실제로는 2차 이웃이 영향을 미치거나, 측정된 네트워크에서 일부 엣지가 누락되거나, 인접 행렬에 기록되지 않은 채널을 통해 파급효과가 전파되는 등 완벽한 매핑을 알기 어렵습니다. 최근 연구들은 간섭 구조를 알 수 없거나 잘못 명시되었거나 근사적으로만 국소적일 때 표준 추정량이 무엇을 추정하는지 규명하고 있습니다.
+
+@savje2021average 는 기대 평균 처치 효과(Expected Average Treatment Effect)를 연구합니다:
+$$
+\tau_{EATE} = \frac{1}{N} \sum_{i=1}^{N} \Big( E[\,Y_i \mid D_i = 1\,] - E[\,Y_i \mid D_i = 0\,] \Big),
+$$
+여기서 기댓값은 단위 $i$ 자신의 배정을 고정한 채 설계 하에서 다른 모든 단위의 실현된 배정에 대해 취해집니다. 이는 간섭 환경으로 확장된 자연스러운 평균 처치 효과로, 실험이 실제로 생성하는 처치 환경에서 단위 자신의 처치가 미치는 평균 효과입니다. 이들의 핵심 결과는 특정 단위의 결과에 실질적으로 영향을 미치는 평균 단위 수가 $N$에 비해 작은 한, 일반적인 평균 차이와 하예크 추정량이 본질적으로 알 수 없는 간섭 하에서도 $\tau_{EATE}$에 대해 일치성을 갖는다는 것입니다. 간섭 구조에 대한 지식이 전혀 필요하지 않지만, 추정대상이 설계에 의존하게 되고 수렴 속도가 저하되는 대가를 치릅니다. @savje2024misspecified 는 노출 매핑의 정의적 역할과 모델링 가정을 분리하여 오명세된 매핑으로 정의된 추정대상 역시 일관된 설계 평균으로 해석될 수 있음을 보였습니다. @hu2022average 는 베르누이 및 완전 무작위 설계 하에서 평균 차이 추정량이 수렴하는 대상을 단위 수준 직접효과와 설계 가중 파급효과 항의 합으로 분해하여 제시합니다.
+
+간섭이 근사적으로 국소적인 환경을 위해 @leung2022causal 은 근사 이웃 간섭(Approximate Neighborhood Interference)을 도입합니다. 이는 네트워크에서 먼 단위의 배정이 미치는 영향이 특정 반경에서 갑자기 사라지는 것이 아니라 그래프 거리에 따라 감쇠한다는 가정입니다. 이 조건 하에서 1차 이웃 노출로 구축된 추정량은 일치성과 점근 정규성을 유지하며, 시계열의 HAC 분산 추정량에 대응하는 네트워크 HAC 분산 추정량을 통해 유효한 표준오차를 얻을 수 있습니다 [@leung2020treatment; @li2022random]. 이러한 결과들은 실무에서 1차 이웃 노출 매핑을 사용하는 관행을 정당화하면서도, 더 강한 노출 가정 없이는 글로벌 반사실을 복원할 수 없음을 명확히 합니다.
+
+## 간섭 하에서의 무작위화 검정 {#sec-interference-randomization-tests}
+
+추정과 함께 또 다른 강력한 경로는 검정(Testing)입니다. 피셔의 무작위화 검정(Fisherian Randomization Tests)은 점근 이론이나 분산 공식 없이 알려진 배정 메커니즘만을 필요로 하므로 간섭 환경에서 매우 유용합니다. 그러나 "파급효과가 없다"는 귀무가설은 자신의 처치 효과를 제한하지 않으므로, 단위를 재무작위 배정하면 결과가 알 수 없게 변하여 단순 순열 검정이 무효화되는 문제가 발생합니다.
+
+@athey2018exact 는 초점 단위(Focal units)를 중심으로 인위적 실험(Artificial experiments)을 구축하여 이를 해결합니다. 배정과 독립적으로 초점 단위 부분집합을 선택하고, 초점 단위 자신의 배정은 고정한 채 비초점 단위의 배정만을 설계에 따라 재무작위화합니다. 비초점 단위의 배정이 초점 단위의 결과에 영향을 미치지 않는다는 귀무가설 하에서 초점 단위의 결과는 변하지 않으므로 검정통계량의 정확한 분포를 얻을 수 있습니다. @basse2019randomization 은 이를 조건부 무작위화 검정 이론으로 일반화하여 비-예리한(Non-sharp) 귀무가설을 조건부 집합 내에서 예리하게 만드는 방법을 제시했습니다 [@liu2014large].
+
+다음 시뮬레이션은 동일한 랜덤 네트워크에서 파급효과 부재 귀무가설에 대한 초점 단위 검정을 구현합니다. 배정 전에 절반의 단위를 초점 단위로 지정하고, 미처치 초점 단위들 사이에서 결과변수와 처치된 이웃 비율 간의 절대 상관계수를 통계량으로 사용하며, 비초점 단위의 배정만을 재무작위화합니다.
+
+```{r interference-focal-test, message=FALSE, warning=FALSE}
+set.seed(2027)
+n2 <- 800
+g2 <- sample_gnp(n2, p = 8 / (n2 - 1))
+A2 <- as_adjacency_matrix(g2, sparse = TRUE)
+deg2 <- degree(g2)
+
+focal <- sample(c(TRUE, FALSE), n2, replace = TRUE)  # 배정 전에 고정
+
+focal_test <- function(tau_spill, n_perm = 500) {
+  D <- rbinom(n2, 1, 0.5)
+  frac_trt <- as.numeric(A2 %*% D) / pmax(deg2, 1)
+  Y <- 0.5 + 1.0 * D + tau_spill * frac_trt + rnorm(n2)
+
+  keep <- focal & D == 0 & deg2 > 0        # 미처치 초점 단위
+  t_obs <- abs(cor(Y[keep], frac_trt[keep]))
+
+  t_perm <- replicate(n_perm, {
+    D_new <- D
+    D_new[!focal] <- rbinom(sum(!focal), 1, 0.5)  # 비초점 단위만 재무작위화
+    frac_new <- as.numeric(A2 %*% D_new) / pmax(deg2, 1)
+    abs(cor(Y[keep], frac_new[keep]))      # 귀무가설 하에서 초점 결과는 고정
+  })
+  mean(t_perm >= t_obs)
+}
+
+c(p_with_spillover = focal_test(tau_spill = 1.5),
+  p_without       = focal_test(tau_spill = 0))
+```
+
+실제 파급효과가 있을 때는 검정이 결정적으로 기각되고, 파급효과가 없을 때는 유의하지 않은 p-값을 생성합니다. 이 검정은 파급효과의 추정치나 분산 공식, 점근적 근사 없이 순수하게 설계만을 활용합니다.
+
+## 부분 간섭과 2단계 무작위 설계 {#sec-two-stage-designs}
+
+가장 정교하게 발전된 식별 결과는 부분 간섭과 위계적 2단계 무작위 배정을 가정합니다. 표준 프레임워크는 @hudgens2008toward 로, 표준이 된 4가지 인과 추정대상을 정의하였으며 @tchetgen2012causal 및 @vanderweele2012components 에 의해 확장되었습니다.
+
+이 설계는 2단계로 구성됩니다. 1단계에서는 그룹(클러스터)을 여러 배정 전략 중 하나에 배정하며, 각 전략은 그룹 내 개인이 처치받을 확률을 명시합니다. 2단계에서는 각 그룹 내의 개인에게 해당 그룹의 전략에 따라 처치를 배정합니다. 예를 들어 대다수가 처치받는 고포화(High-coverage) 전략과 소수만 처치받는 저포화(Low-coverage) 전략을 비교할 수 있습니다. 이 중첩된 무작위화는 단위 자신의 상태를 무작위화하면서도 환경의 처치 강도를 변화시키므로 직접효과와 이웃 효과를 분리하는 데 필요한 변동을 제공합니다.
+
+이 설계 내에서 특정 배정 전략 하의 평균 잠재적 결과를 정의하고 4가지 효과를 다음과 같이 도출합니다:
+
+-   **직접효과(Direct effect)**: 그룹의 배정 전략을 고정한 상태에서 처치된 개인과 미처치된 개인을 비교합니다.
+-   **간접(파급)효과(Indirect/Spillover effect)**: 고포화 전략 하의 미처치 개인과 저포화 전략 하의 미처치 개인을 비교합니다.
+-   **총효과(Total effect)**: 고포화 전략 하의 처치된 개인과 저포화 전략 하의 미처치 개인을 비교합니다.
+-   **전체 효과(Overall effect)**: 고포화 전략 하의 그룹 전체 평균 결과와 저포화 전략 하의 그룹 전체 평균 결과를 비교합니다.
+
+이 4가지 추정대상은 실무적 선택 기준을 제시합니다. 직접효과에만 관심이 있다면 개인 수준 완전 무작위 배정으로 충분합니다. 총효과가 목표라면 클러스터 전체를 배정하는 클러스터 무작위 설계가 이를 식별합니다. 오직 자신의 처치를 고정한 상태에서의 파급효과(간접효과) 자체가 연구 대상일 때 2단계 설계가 필수적입니다 [@baird2018optimal; @sobel2006randomized].
+
+시뮬레이션을 통해 파급효과 무시로 인한 편향을 살펴봅니다.
+
+```{r interference-sim, eval=TRUE}
+set.seed(2026)
+
+n_clusters <- 200
+cluster_size <- 10
+n <- n_clusters * cluster_size
+
+cluster <- rep(seq_len(n_clusters), each = cluster_size)
+
+# 참 구조 모수
+tau_direct <- 1.0   # 직접효과
+tau_spill  <- 2.0   # 클러스터 내 처치 비율의 파급효과
+
+# 각 클러스터 내 무작위 배정 (클러스터별 포화도 무작위 결정)
+saturation <- rep(runif(n_clusters, 0.1, 0.9), each = cluster_size)
+D <- rbinom(n, size = 1, prob = saturation)
+
+# 클러스터 내 다른 구성원들의 처치 비율 (Leave-one-out)
+treated_in_cluster <- ave(D, cluster, FUN = sum)
+peer_frac <- (treated_in_cluster - D) / (cluster_size - 1)
+
+# 직접효과와 파급효과를 포함하는 결과변수
+Y <- 0.5 + tau_direct * D + tau_spill * peer_frac + rnorm(n, sd = 1)
+
+# 단순 추정량: 자신의 처치만 포함
+naive <- coef(lm(Y ~ D))["D"]
+
+# 간섭 고려 추정량: 자신의 처치 및 동료 노출 포함
+aware <- coef(lm(Y ~ D + peer_frac))[c("D", "peer_frac")]
+
+round(c(naive_direct = unname(naive),
+        aware_direct = unname(aware["D"]),
+        aware_spill  = unname(aware["peer_frac"])), 3)
+```
+
+단순 회귀 계수는 편향을 보이는 반면, 동료 노출을 조건부로 포함한 모델은 직접효과(1)와 파급효과(2)를 모두 정확히 복원합니다.
+
+### 설계에서 추정으로: 역확률 가중치 (IPW) {#sec-ipw-two-stage}
+
+@hudgens2008toward 의 추정대상은 반사실적 배정 프로그램에 대해 정의됩니다. @tchetgen2012causal 은 관측 데이터를 임의의 관심 배정으로 재가중하는 일반적인 역확률 가중(IPW) 추정량을 제공합니다:
+$$
+\hat{\bar{Y}}_g(d; \alpha)
+= \frac{1}{n_g} \sum_{j=1}^{n_g}
+\frac{\mathbf{1}\{A_{gj} = d\}\; \pi(\mathbf{A}_{g,-j};\, \alpha)}
+     {\hat{f}(\mathbf{A}_g \mid \mathbf{X}_g)}\; Y_{gj},
+\qquad
+\pi(\mathbf{a}; \alpha) = \prod_{j} \alpha^{a_j} (1 - \alpha)^{1 - a_j}.
+$$
+대표본 이론은 성향 점수 파라미터와 가중 평균을 적층 M-추정 문제로 처리하여 샌드위치 분산 추정량을 제공합니다 [@perez2014assessing; @liu2014large].
+
+### 소프트웨어 및 백신 응용: inferference 패키지 {#sec-inferference-package}
+
+이 추정량은 `inferference` 패키지 [@saul2017recipe]에 구현되어 있습니다. 방글라데시 마틀랍의 콜레라 백신 시험 데이터를 모방한 `vaccinesim` 데이터를 활용하여 20%부터 80% 포화도에 걸친 전체 효과 표면을 추정합니다.
+
+```{r interference-ipw-vaccine, message=FALSE, warning=FALSE}
+library(inferference)
+
+vaccine_ipw <- interference(
+  formula = Y | A | B ~ X1 + X2 + (1 | group) | group,
+  allocations = c(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+  data = vaccinesim,
+  randomization = 2 / 3,
+  method = "simple"
+)
+
+rbind(
+  direct   = direct_effect(vaccine_ipw, 0.3)[, c("estimate", "conf.low", "conf.high")],
+  indirect = ie(vaccine_ipw, 0.3, 0.6)[, c("estimate", "conf.low", "conf.high")],
+  total    = te(vaccine_ipw, 0.3, 0.6)[, c("estimate", "conf.low", "conf.high")],
+  overall  = oe(vaccine_ipw, 0.3, 0.6)[, c("estimate", "conf.low", "conf.high")]
+)
+```
+
+추정 결과는 집단 면역(Herd immunity)의 의미를 명확히 보여줍니다. 30% 포화도에서의 직접효과는 약 0.16이며, 30%에서 60%로 포화도가 증가할 때 비접종자의 위험이 감소하는 간접효과 역시 약 0.16입니다. 포화도 전체에 걸친 직접효과를 시각화하면 포화도가 높아질수록 직접효과가 감소하는 집단 면역의 특징이 나타납니다.
+
+```{r interference-vaccine-deff, fig.cap="각 반사실적 배정 수준에서의 백신 접종 직접효과 추정치(95% 점별 신뢰대 포함). 포화도가 증가함에 따라 비접종자가 주변 접종자들에 의해 보호받으므로 직접효과가 감소합니다.", fig.width=6, fig.height=4.5}
+deff <- direct_effect(vaccine_ipw)
+x <- deff$alpha1
+y <- as.numeric(deff$estimate)
+u <- as.numeric(deff$conf.high)
+l <- as.numeric(deff$conf.low)
+plot(range(x), c(0, 0.25), type = "n", bty = "l",
+     xlab = "배정 포화도 (Coverage)", ylab = "직접효과 (Direct Effect)")
+polygon(c(x, rev(x)), c(u, rev(l)), col = "skyblue", border = NA)
+lines(x, y, lwd = 2)
+```
+
+### 재현 연구: 가구 내 투표 전염 효과 {#sec-voting-contagion-replication}
+
+@nickerson2008voting 은 2002년 예비선거 전 2인 유권자 가구를 대상으로 방문 투표 독려 실험을 수행했습니다. 가구원 중 한 명만 대화에 참여하도록 설계하여 직접 접촉 효과와 접촉하지 않은 동거인에 대한 전염 효과를 분리했습니다. `inferference` 패키지의 `voters` 데이터를 활용하여 이를 재현합니다.
+
+```{r interference-nickerson, message=FALSE, warning=FALSE}
+data(voters)
+
+voters <- within(voters, {
+  treated <- (treatment == 1 & reached == 1) * 1
+  c_age   <- (age - mean(age)) / 10
+})
+# 정확히 한 명의 구성원만 문을 연 가구만 유지
+reach_cnt <- tapply(voters$reached, voters$family, sum)
+voters <- voters[!(voters$family %in% names(reach_cnt[reach_cnt > 1])), ]
+voters <- voters[voters$hsecontact == 1, ]
+
+# 응답 구성원의 접촉 성향 점수
+voters1 <- do.call(rbind, by(voters, voters[, "family"], function(x) x[1, ]))
+coef.voters <- coef(glm(reached ~ c_age, data = voters1,
+                         family = binomial(link = "logit")))
+
+# 오라클 성향 함수 정의
+household_propensity <- function(b, X, A, parameters,
+                                 group.randomization = .5) {
+  if (!is.matrix(X)) X <- as.matrix(X)
+  if (sum(A) == 0) {
+    pr <- group.randomization
+  } else {
+    X.1 <- X[1, ]; A.1 <- A[1]
+    h  <- plogis(X.1 %*% parameters)
+    pr <- group.randomization * dbinom(A.1, 1, h)
+  }
+  pr * dnorm(b)
+}
+
+contagion <- interference(
+  formula = voted02p | treated | reached ~ c_age | family,
+  propensity_integrand = "household_propensity",
+  data = voters,
+  model_method = "oracle",
+  model_options = list(fixed.effects = coef.voters, random.effects = NULL),
+  allocations = c(0, .5),
+  integrate_allocation = FALSE,
+  causal_estimation_options = list(variance_estimation = "robust"),
+  conf.level = .9
+)
+
+ie(contagion, .5, 0)[, c("estimate", "std.error", "conf.low", "conf.high")]
+```
+
+추정된 간접효과는 약 3.2%포인트(90% 신뢰구간: 0.2%p ~ 6.1%p)로, 직접 접촉하지 않은 동거인의 투표율이 유의하게 상승함을 보여줍니다. 투표 행동은 가구 내에서 강하게 전염됩니다.
+
+비순응이 존재하는 현실의 2단계 설계는 @basse2018analyzing 및 @imai2021causal 을 통해 보완될 수 있습니다.
+
+## 경제학에서의 무작위 포화 설계 (Randomized Saturation Designs) {#sec-randomized-saturation}
+
+경제학에서는 동일한 2단계 논리가 **무작위 포화(Randomized Saturation)**라는 이름으로 발전하였으며, 구축 효과(Displacement), 시장 수준 효과, 일반균형 파급효과를 측정하는 주요 도구로 자리잡았습니다.
+
+-   **보건 외부효과**: @miguel2004worms 는 케냐 초등학교 구충제 보급 사업에서 학교 간 외부효과를 발견하여, SUTVA를 가정한 평가가 사업의 편익을 심각하게 과소평가함을 입증했습니다.
+-   **정보 확산**: @duflo2003role 은 소수 직원에게 제공된 인센티브가 부서 내 동료들의 퇴직연금 가입으로 확산됨을 보였습니다.
+-   **노동시장 구축 효과**: @crepon2013labor 는 프랑스 청년 구직 지원 프로그램에서 포화도가 높은 시장일수록 미지원 구직자의 취업이 지연되는 구축 효과를 확인했습니다.
+-   **일반균형 재정 승수**: @egger2022general 은 케냐 농촌의 현금 지급 실험에서 비수혜 가구의 소비와 자산도 증가하여 약 2.5의 지역 재정 승수가 발생함을 보였습니다. @muralidharan2023general 역시 인도 고용보장제도에서 시장 임금 상승이라는 일반균형 효과를 규명했습니다.
+
+## 동료 효과와 반사 문제 (The Reflection Problem) {#sec-reflection-problem}
+
+관찰 데이터에서 파급효과를 인과적 동료 효과로 식별하는 것은 @manski1993identification 이 명명한 **반사 문제(Reflection Problem)**로 인해 훨씬 어렵습니다. Manski는 참조 집단의 평균 결과와 개인 결과가 함께 움직이는 세 가지 이유를 구분합니다:
+
+1.  **내생적 효과 (Endogenous effects)**: 개인의 행동이 집단의 행동에 반응하는 진정한 동료 효과.
+2.  **맥락적(외생적) 효과 (Contextual/Exogenous effects)**: 개인의 행동이 집단의 고정된 배경 특성에 반응하는 효과.
+3.  **상관된 효과 (Correlated effects)**: 공통 환경이나 집단으로의 자기선택(Sorting)으로 인해 유사하게 행동하는 현상.
+
+선형 평균 모델(Linear-in-means model)에서는 거울 속의 상처럼 평균 결과와 평균 특성이 공선적으로 움직이므로 내생적 효과와 맥락적 효과를 분리할 수 없습니다.
+
+이를 해결하기 위해 @moffitt2001policy 는 부분 포화 개입을 제안하였으며, @bramoulle2009identification 은 소셜 네트워크의 비이행성(Intransitivity, 친구의 친구이지만 나의 친구는 아닌 관계)을 도구변수로 활용하는 방안을 제시했습니다 [@lee2007identification; @goldsmith2013social]. 그러나 내생적 소팅과 네트워크 측정 오차는 여전히 주의해야 할 주요 한계입니다.
+
+## 네트워크 관찰 연구에서의 간섭 {#sec-observational-network-interference}
+
+네트워크가 관측된 관찰 연구에서는 자신과 이웃의 처치 쌍 $(D_i, G_i)$에 대해 조건부 비교란성(Unconfoundedness)을 가정합니다:
+$$
+Y_i(d, g) \perp (D_i, G_i) \mid X_i, X_i^{\mathcal{N}}.
+$$
+@forastiere2021identification 은 결합 성향 점수(Joint Propensity Score)를 정의하고 이를 통한 가중 추정 및 편향 공식을 도출했습니다. @tchetgen2021auto 는 단일 연결 네트워크를 위한 auto-g-computation을 개발하였고, @ogburn2024causal 은 네트워크 TMLE 준모수 추정을 제안했습니다. 기저의 인과 다이어그램은 @ogburn2014causal 에 의해 체계화되었습니다.
+
+## 이분형 및 군집형 간섭 (Bipartite and Clustered Interference) {#sec-bipartite-interference}
+
+**이분형 간섭(Bipartite Interference)**은 발전소 배출 규제와 지역사회 오염 노출, 병원 수준 개입과 환자 결과, 플랫폼 알고리즘 변경과 유저 결과처럼 처치 단위와 결과 단위가 구조적으로 다를 때 발생합니다 [@zigler2021bipartite; @papadogeorgou2019causal].
+
+## 플랫폼 및 시간적 간섭 {#sec-platform-temporal-interference}
+
+디지털 플랫폼에서는 공유 재고와 가격 경쟁으로 인해 A/B 테스트의 간섭이 심각합니다. @johari2022experimental 은 공급측과 수요측 양면 무작위 설계를 제안하였고, @wager2021experimenting 은 국소 정책 섭동을 통한 한계 균형 효과 추정을 제시했습니다.
+
+시간에 따른 간섭에 대해서는 시스템 전체가 시간 블록별로 처치와 통제를 교대하는 **스위치백(Switchback)** 설계가 사용됩니다 [@bojinov2019time; @bojinov2023design].
+
+## 네트워크 및 연계성 지표 {#sec-connectedness}
+
+실증 금융에서는 Diebold & Yilmaz의 연계성(Connectedness) 프레임워크 [@diebold2009measuring; @diebold2012better; @diebold2014network]를 통해 VAR의 예측오차 분산분해(Forecast-Error Variance Decomposition)로부터 파급효과와 총·방향성·순 연계성을 측정합니다.
+
+## 준실험 및 관찰 연구 환경에서의 간섭 {#sec-interference-quasi-observational}
+
+### 이중차분법 통제군 오염 {#sec-spillover-did}
+
+처치가 인근 통제군으로 파급될 때 평행 추세 가정이 무너집니다. 지리적 거리별 동심원(Ring) 지시변수를 회귀에 포함하여 파급효과의 감쇠를 모형화하고 오염되지 않은 원거리 단위를 기준 비교군으로 삼아야 합니다 [@berg2021spillover; @huber2021framework].
+
+### 도구변수 배제 제약 위협 {#sec-spillover-iv}
+
+한 단위의 도구변수가 다른 단위의 처치나 결과에 영향을 미치면 배제 제약이 위반됩니다.
+
+### 매칭 방법론 위협 {#sec-spillover-matching}
+
+매칭된 통제군이 처치군 인근에 위치하여 파급을 받는 경우 비교가 왜곡됩니다. 개인 공변량뿐만 아니라 이웃의 노출 특성이나 이웃 성향 점수를 함께 매칭해야 합니다 [@forastiere2021identification].
+
+### 일반적 원칙 {#sec-interference-general-stance}
+
+간섭 부재는 평행 추세나 외생성과 대등한 식별 가정입니다. 오염되지 않은 통제군을 선택하거나, 파급효과를 명시적으로 모형화하거나, 간섭을 고려한 추정대상으로 재정의하는 적극적인 대응이 필요합니다 [@miguel2004worms; @elenev2024staggered; @roche2024proximate].
+
+## 요약 {#sec-interference-summary}
+
+간섭은 사회과학과 비즈니스 환경에서 예외가 아닌 일반적인 규칙입니다. SUTVA의 간섭 부재 가정을 완화하면 잠재적 결과는 전체 배정 벡터에 의존하며, 노출 매핑과 설계 기반 추정량(HT, Hajek)을 통해 글로벌 정책 대비를 올바르게 복원할 수 있습니다. 2단계 무작위 설계와 역확률 가중치는 직접, 간접, 총, 전체 효과를 명확히 분리하여 백신 집단 면역, 투표 전염, 노동시장 구축 효과, 일반균형 승수와 같은 중대한 정책적 통찰을 제공합니다. 관찰 연구와 준실험 환경에서도 간섭을 단순 무시하기보다 명시적으로 모형화하고 대처하는 것이 타당한 인과추론의 필수 요건입니다.

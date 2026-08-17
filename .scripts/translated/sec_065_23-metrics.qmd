@@ -1,0 +1,1035 @@
+<!-- ====== Section from: 23-metrics.qmd ====== -->
+
+
+
+# 측정 지표 {#sec-metrics}
+
+마케팅 연구의 성패는 측정에 달려 있다. 재현 가능한 수치로 조작화(operationalize)할 수 없는 구성개념은 회귀분석에 포함될 수 없고, 주식 시장에서 가격이 매겨질 수 없으며, 회의적인 심사위원이나 최고재무책임자(CFO)를 설득할 수도 없다. 본 장은 계량 마케팅 학자들이 실제로 계산하는 지표들에 관한 실무적 카탈로그이다. 즉, 마케팅 활동을 기업 가치와 연결하는 재무 지표, 회계 데이터에서 추출한 기업 수준의 통제변수, 그리고 머신러닝을 통해 대규모로 측정이 가능해진 텍스트 및 이미지 기반의 마케팅 구성개념들을 다룬다. 또한 본 장은 방법론 장이기도 하다. 특히 마케팅 역량과 같이 도출하기 까다로운 구성개념에 대해서는 추정량, 식별 가정, 그리고 원시 Compustat 및 특허 데이터로부터 지표를 재구성하는 실행 가능한 코드를 함께 제시한다.
+
+기본적인 조직화 기준은 **결과 변수(outcomes)**와 **결과에 대한 투입 요인(inputs to outcomes)** 간의 구분이다. 마케팅투자수익률(ROMI)과 같은 지표는 기업이 극대화하고자 하는 결과 변수이다. 반면 기업 규모, 레버리지, 수익성과 같은 지표는 마케팅과 성과 간의 관계를 혼재시키거나 조절하는 공변량(covariates)으로서 반드시 통제되어야 한다. 세 번째 범주인 역량(capability) 지표는 직접 관찰되지도 않고 단순한 회계 항목의 비율도 아니다. 이는 계량경제학적 프런티어(frontier) 추정을 통해 도출되는 **잠재적 효율성(latent efficiencies)**이며, 가장 세심한 주의를 요한다. 우리는 이 세 가지 범주를 순서대로 다루며, 각 지표가 포착하고자 하는 직관적 의미를 먼저 설명한 후 공식적 정의, 데이터 출처, 식별 가정을 즉시 제시한다.
+
+본 장 전반에서 실무적 기반이 되는 데이터는 와튼 연구 데이터 서비스(Wharton Research Data Services, WRDS) 생태계이다. 즉, 시장 데이터는 증권가격연구센터(CRSP), 회계 기초 데이터는 Compustat, 기관투자자 지분율은 Thomson Financial 13F 공시 자료, 혁신 산출물은 WRDS 미국 특허 데이터베이스를 활용한다. 제공된 코드를 따라 실습한 독자는 @sec-marketing-finance 의 모든 마케팅-재무 모형을 추정할 수 있는 기업-연도 패널 데이터를 구축하게 될 것이다.
+
+## 재무 지표 {#sec-metrics-finance}
+
+재무 지표는 마케팅 개입(marketing intervention)을 자본 시장과 이사회가 사용하는 언어로 변환한다. 이는 세 가지 계열로 나뉜다. 이익을 이를 창출하기 위해 투입된 자본으로 조정한 **수익률(return)** 척도, 기업이 자본비용을 초과하여 수익을 올렸는지를 평가하는 **가치 창출(value-creation)** 척도, 그리고 통제변수로 사용하기 위해 기업의 규모, 위험, 수익성을 특성화하는 **공변량(covariate)** 척도이다.
+
+### 투자수익률과 마케팅투자수익률 {#sec-roi}
+
+가장 기본적인 수익률 지표는 순이익을 이를 창출한 자본으로 나눈 값이다. **투자수익률(return on investment, ROI)**은 다음과 같다:
+
+$$
+\text{ROI} = \frac{\text{Net Profit}}{\text{Investment}},
+$$ {#eq-roi}
+
+이는 투입된 1달러당 창출된 이익으로 해석할 수 있는 무차원(unitless) 비율이다. ROI는 단위가 없기 때문에 규모가 서로 다른 프로젝트 간에도 비교가 가능하다는 점에서 매력적이지만, 바로 그 장점이 핵심적인 한계가 되기도 한다. 즉, 투자의 절대적 규모를 사상(discard)하기 때문에, 극도로 높은 백분율 수익률을 보이는 소규모 프로젝트가 훨씬 더 많은 절대적 가치를 창출하는 대규모 프로젝트보다 우수한 것으로 평가될 수 있다. 따라서 ROI는 순위 매김(ranking)을 위한 도구일 뿐, 가치 극대화 목표 함수는 아니다.
+
+마케팅 분야에서는 마케팅 비용 1달러의 **한계적(incremental)** 효과를 분리해 내는 유사 지표를 사용한다. **마케팅투자수익률(return on marketing investment, ROMI)**(때로는 ROIM으로 표기됨)은 다음과 같이 정의된다:
+
+$$
+\text{ROMI} = \frac{\text{IRAM} - \text{CM}}{\text{MS}},
+$$ {#eq-romi}
+
+여기서 IRAM은 마케팅에 기인한 한계 매출(incremental revenue attributable to marketing), CM은 마케팅 투자의 공헌 비용(contribution cost), MS는 마케팅 지출액(marketing spending)이다. 양(+)의 ROMI는 마케팅 프로그램이 한계적으로 비용 이상의 수익을 냈음을 나타낸다. 겉보기에 단순해 보이는 분자 속에는 이 분야의 모든 식별 문제가 숨어 있다. **한계** 매출은 마케팅이 없었더라면 발생하지 않았을 매출이라는 반사실적(counterfactual) 수량이며, 이를 도출하기 위해서는 실험이나 마케팅 부재 시의 기준선(baseline)에 대한 신뢰할 수 있는 모형이 필요하다. 캠페인 이후 발생한 모든 매출을 순진하게 마케팅 성과로 귀속시키는 행위(수요와 지출 간의 내생성)는 ROMI를 무한정 부풀리게 된다. 이것이 바로 ROMI를 단순한 회계적 비율이 아니라 인과적 추정의 대상으로 이해해야 하는 이유이다.
+
+::: {.callout-note}
+
+ROI와 ROMI는 인과 효과의 **요약** 통계량일 뿐, 효과 그 자체는 아니다. 관리자들에게 매력적인 단일 비교 백분율이라는 특성은 분모를 조작(실제 비용 기준을 과소 계상)하거나 자연 발생적 유기적(organic) 수요를 캠페인 성과로 귀속시킴으로써 쉽게 왜곡될 수 있는 취약점이 된다. 따라서 이 지표들은 항상 한계 분자를 도출해 낸 식별 전략과 함께 보고되어야 한다.
+
+:::
+
+### 경제적 부가가치 {#sec-eva}
+
+ROI는 이익을 자본과 비교하지만, 그 이익이 자본**비용**을 넘어섰는지에 대해서는 답하지 못한다. **경제적 부가가치(economic value added, EVA)**(경제적 이익이라고도 함)는 이러한 간극을 메운다. 이는 기업이 사용하는 모든 자본(타인자본뿐만 아니라 자기자본 포함)에 대한 비용을 차감한 후 세후 기준으로 창출되는 잔여 부(residual wealth)를 측정한다:
+
+$$
+\text{EVA} = \text{NOPAT} - (\text{Invested Capital} \times \text{WACC}).
+$$ {#eq-eva}
+
+여기서 **세후 순영업이익(net operating profit after taxes, NOPAT)**은 영업이익에 $(1 - \text{세율})$을 곱한 값이며, **투하자본(invested capital)**은 부채, 금융리스, 자기자본의 합(동일하게 기초 시점의 자기자본에 장기부채를 더한 값)이다. WACC는 **가중평균자본비용(weighted average cost of capital)**으로, 기업이 자본 제공자들에게 지급해야 하는 혼합 수익률이다. 곱 $\text{WACC} \times \text{Invested Capital}$은 **금융비용(finance charge)**, 즉 사업에 묶여 있는 자금의 기회비용이다. EVA는 영업 성과가 이 금융비용을 초과할 때에만 양(+)의 값을 가지며, 양의 EVA가 기업이 단순한 이익 창출을 넘어 진정한 가치를 창출했음을 의미하는 정확한 이유가 여기에 있다.
+
+자본비용 자체는 기업의 자본구조에 대한 가중평균이다:
+
+$$
+\text{WACC} = \frac{K_e \, E}{E + D} + \frac{K_d \,(1 - t)\, D}{E + D},
+$$ {#eq-wacc}
+
+여기서 $E$와 $D$는 자기자본과 타인자본의 시장가치, $K_e$는 자기자본요구수익률, $K_d(1-t)$는 세후 타인자본비용, $t$는 한계세율이다. 타인자본에 대한 세후 조정은 이자비용의 세금 감면 효과(tax deductibility)를 반영한다.
+
+투하자본은 총자산에서 유동부채를 차감한 것으로도 표현할 수 있으므로, @eq-eva 의 일반적인 재무상태표 기준 산식은 다음과 같다:
+
+$$
+\text{EVA} = \text{NOPAT} - (\text{총자산} - \text{유동부채}) \times \text{WACC}.
+$$ {#eq-eva-bs}
+
+EVA는 투하자본의 장부가치에 크게 의존하므로, 재무상태표가 투입 자원의 대부분을 포착하는 **자산 집약적(asset-rich)** 기업에 가장 유용하다. 반면 가치가 소프트웨어, 브랜드, 데이터, 조직 자본과 같은 무형자산에 주로 존재하는 기업의 경우, 장부상 투하자본은 진정한 자본 기반을 과소평가하게 되며, 따라서 EVA는 가치 창출을 과대평가하게 된다. 이러한 무형자산 문제는 단순한 사소한 주의점이 아니다. 이는 마케팅 학자들이 기술 기업이나 소비자 브랜드 기업에 대해 EVA보다 시장 기반 지표를 점점 더 선호하는 이유이다.
+
+### 시장가치 부가액 {#sec-mva}
+
+EVA가 매 기간 측정되는 유량(flow) 개념인 반면, **시장가치 부가액(market value added, MVA)**은 이에 대응하는 저량(stock) 개념이다. 즉, 설립 이래 기업이 자본 제공자들을 위해 창출한 누적 부를 나타낸다. 이는 시장이 평가하는 기업 청구권의 가치와 투자자들이 최초에 납입한 자본 간의 격차이다:
+
+$$
+\text{MVA} = \text{주식의 시장가치(또는 기업가치)} - \text{자기자본의 장부가치}.
+$$ {#eq-mva}
+
+지속적으로 양(+)의 EVA를 기록하는 기업은 양의 MVA를 축적한다. 잔여소득 항등식(residual-income identity)에 따르면, MVA는 기대되는 모든 미래 EVA의 현재가치와 같다. 따라서 MVA는 EVA가 요구하는 기간별 WACC 추정 과정을 우회할 수 있지만, 시장 기대치의 모든 노이즈를 그대로 이어받는 대가를 치른다. 즉, MVA는 기업이 입증 가능하게 창출한 가치가 아니라 시장이 창출했다고 **믿는** 가치를 보여준다.
+
+### 회계 데이터에서 도출한 기업 수준 공변량 {#sec-covariates}
+
+대부분의 마케팅-재무 연구는 관찰 연구이므로, 추정된 마케팅 효과의 신뢰성은 마케팅 의사결정과 재무적 성과를 동시에 견인하는 기업 특성들을 얼마나 잘 통제하느냐에 달려 있다. 관련 문헌은 표준적인 일련의 회계 기반 통제변수들로 수렴하였으며, 각각 정형화된 조작화 방식을 가지고 있다. 여기서는 정의, 실증적 계보, 그리고 Compustat의 원천 데이터 항목과 함께 이들을 정리한다.
+
+**수익성(Profitability)**은 통상 감가상각전 영업이익을 총자산으로 나눈 값으로 측정되며, 이는 순이익을 오염시키는 자금조달 및 감가상각 방식의 선택 효과를 제거한 총자산이익률(ROA) 변형이다 [@Grewal_2008; @McAlister_2016]:
+
+$$
+\text{수익성} = \frac{\text{감가상각전 영업이익}}{\text{총자산}}.
+$$ {#eq-profitability}
+
+**기업 규모(Firm size)**는 총자산의 자연로그로 투입된다. 로그 변환은 기업 규모 분포의 극단적인 우측 꼬리 왜도(skewness)를 완화하고 계수를 탄력성으로 해석할 수 있게 해준다 [@Grewal_2010; @McAlister_2016; @Nezami_2018]:
+
+$$
+\text{기업 규모} = \log(\text{총자산}).
+$$ {#eq-firm-size}
+
+**매출 성장률(Sales growth)**은 총매출액의 백분율 변화로, 기업의 수요 측면 모멘텀과 성장 기회를 대리한다 [@Grewal_2010; @Nezami_2018; @Rao_2004]. 백만 달러 단위 영업현금흐름의 로그로 측정되는 **현금흐름(Cash flow)**은 내부 자금조달 능력을 포착하며 마케팅과 기업 위험을 연결하는 연구의 표준 통제변수이다 [@Chakravarty_2011; @Malshe_2015].
+
+**재무 레버리지(Financial leverage)**는 장기부채를 자산의 장부가치로 나눈 값으로, 기업의 부채 금융 의존도와 재무적 곤경에 대한 노출도를 지수화한다 [@Kashmiri_2017; @Chakravarty_2011]:
+
+$$
+\text{재무 레버리지} = \frac{\text{장기부채}}{\text{자산의 장부가치}}.
+$$ {#eq-leverage}
+
+**비정상 주식수익률(Abnormal stock return)**은 종종 이분화(dichotomized)된다. 기업의 주식수익률이 산업 평균 수익률을 초과할 때 1의 값을 갖는 더미변수는 원시 수익률의 두터운 꼬리(heavy tails)에 강건한 방식으로 초과 성과 기업을 식별한다 [@Markovitch_2005; @Chakravarty_2011; @Chakravarty_2016].
+
+이러한 핵심 통제변수 외에도 특화된 연구들은 맞춤형 재무 구성개념을 구축한다. **규모 조정 비기대 광고투자(unexpected size-adjusted advertising investment)**—기업 규모를 조건으로 한 기대 광고비 모형의 잔차—는 시장에 아직 반영되지 않은 마케팅 지출의 서프라이즈 성분을 분리한다 [@Chakravarty_2016; @Kim_2011; @Liu_2017]. RiskMetrics 지배구조 데이터베이스에서 추출한 **주주 제안/불만(shareholder complaints)**은 투자자 불만 및 지배구조 마찰을 대리한다 [@Wies_2019].
+
+### 장부자본 {#sec-book-equity}
+
+자기자본의 장부가치(Book Equity, BE)는 데이터 가용성에 따라 "올바른" 측정 방식이 달라지므로 겉보기보다 복잡한 구성개념이며, 학계의 관행은 Fama-French 데이터 라이브러리에서 유래한다. 정형화된 정의는 전문을 인용할 가치가 있다:
+
+> "BE는 주주지분의 장부가치에 재무상태표상 이연법인세 및 투자세액공제(가능한 경우)를 더하고, 우선주의 장부가치를 차감한 것이다. 가용성에 따라 상환가액(redemption), 청산가액(liquidation), 액면가액(par value) 순서로 우선주의 장부가치를 추정한다. 주주지분은 Moody's 또는 Compustat에 보고된 값을 우선 사용한다. 해당 값이 없는 경우 보통주 지분의 장부가치에 우선주 액면가액을 더한 값, 또는 총자산에서 총부채를 차감한 값 순으로 측정한다." [@davis2000]
+
+대체 순위의 위계가 핵심이다. 우선주는 상환가액, 청산가액, 액면가액 순으로 평가되며, 주주지분은 가장 신뢰할 수 있는 출처에서 가져오고 불가피한 경우에만 재구성한다. Compustat 구현 코드는 우선순위에 따라 우선주 항목들을 병합(coalesce)하고 이연법인세를 더한다:
+
+```{r}
+#| eval: false
+library(tidyverse)
+# 우선주 장부가치: 상환가액(pstkrv), 청산가액(pstkl), 액면가액(pstk) 순;
+# 이연법인세 및 투자세액공제(txdtc)를 가산.
+book_equity <- seq - coalesce(pstkrv, pstkl, pstk, 0) + coalesce(txdtc, 0)
+```
+
+### 순공헌 {#sec-net-contribution}
+
+마케팅 지출을 이익과 연결하는 가교는 **순공헌(net contribution)** 함수이며, 이는 광고 예산 책정 및 반응 모형 문헌의 기초를 이룬다. 순공헌은 매출액에 매출총이익률을 곱한 값에서 해당 매출을 창출한 마케팅 비용을 차감한 것이다:
+
+$$
+\text{NC} = m \times S(a) - k a,
+$$ {#eq-net-contribution}
+
+여기서 $m$은 매출총이익률(gross margin), $S(a)$는 마케팅 노력 $a$를 매출로 매핑하는 매출 반응 함수, $k$는 노력의 단위비용이다. 1계 조건 $m \, S'(a^*) = k$는 최적 노력 $a^*$를 특성화한다. 즉, 추가적인 노력 1단위에서 발생하는 한계 매출총이익이 한계비용과 같아질 때까지 지출해야 한다. $S(\cdot)$의 형태(오목형, S자형 또는 포화형)는 내부 최적점(interior optimum)의 존재 여부를 결정하며, 이는 광고 반응 문헌의 지속적인 실질적 관심사이다.
+
+### Compustat 항목 참조표 {#sec-compustat-map}
+
+위의 지표들은 모두 상대적으로 작은 수의 WRDS 데이터 항목 조합으로 환원된다. 특정 지표를 재현하려면 정확한 항목 약어(mnemonic)와 원천 파일을 알아야 하므로, @tbl-compustat-core 에 핵심 매핑을 정리하였다. CRSP 주석이 없는 모든 항목은 Compustat Fundamentals Annual에서 가져온 것이며, 약어는 WRDS 데이터 항목 참조 문서를 따른다.[^wrds-ref]
+
+[^wrds-ref]: 항목 정의는 WRDS 데이터 항목 문서(`wrds_data_items`)를 따른다. CRSP/Compustat Merged에서 접두사가 붙은 항목(예: `PRCC_C`, `CSHO`)은 병합된 펀더멘털 파일에서 추출되며, 시가총액 계산에 사용되는 시장 가격 및 발행주식수 항목은 CRSP에서 가져온다.
+
+```{r}
+#| label: tbl-compustat-core
+#| tbl-cap: "핵심 기업 수준 지표 및 해당 Compustat/CRSP 데이터 항목."
+#| echo: false
+#| message: false
+#| warning: false
+library(knitr)
+core_items <- tibble::tribble(
+  ~Metric,                          ~`Data item`,                 ~`Source file`,
+  "Book value of equity",           "PRCC_C x CSHO",              "CRSP/Compustat Merged",
+  "Capital intensity",              "CAPX / AT",                  "Cash flow; balance sheet",
+  "Cash flow",                      "(IBC + DP) / AT",            "Cash flow; income statement",
+  "Cash holdings",                  "CHE / AT",                   "Balance sheet",
+  "Cost of capital (proxy)",        "XINT / DLC",                 "Income statement; balance sheet",
+  "Earnings per share",             "NI / CSHO",                  "Income statement; misc.",
+  "Firm size",                      "log(AT)",                    "Balance sheet",
+  "Leverage",                       "(DLTT + DLC) / SEQ",         "Balance sheet",
+  "Market-to-book ratio",           "MKVALT / BKVLPS",            "Supplemental; balance sheet",
+  "Market value",                   "MKVALT or CSHO x PRCC_F",    "Supplemental; misc.",
+  "Payout ratio",                   "(DVP + DVC + PRSTKC) / IB",  "Income statement; cash flow",
+  "R&D intensity",                  "XRD / AT",                   "Income statement; balance sheet",
+  "Return on assets (ROA)",         "NI / AT",                    "Income statement; balance sheet",
+  "Return on equity (ROE)",         "NI / (CSHO x PRCC_F)",       "Income statement; supplemental",
+  "Return on investment (ROI)",     "NI / ICAPT",                 "Income statement; balance sheet",
+  "Tangibility",                    "PPENT / AT",                 "Balance sheet",
+  "Tobin's Q",                      "(AT + CSHO x PRCC_F - CEQ) / AT", "Balance sheet; supplemental",
+  "Total equity",                   "PSTKC + CSHO",               "Balance sheet; misc."
+)
+core_items_kr <- tibble::tribble(
+  ~`지표`,                          ~`데이터 항목`,               ~`출처 파일`,
+  "자기자본 장부가치",              "PRCC_C x CSHO",              "CRSP/Compustat Merged",
+  "자본집약도",                     "CAPX / AT",                  "현금흐름표; 재무상태표",
+  "현금흐름",                       "(IBC + DP) / AT",            "현금흐름표; 손익계산서",
+  "보유 현금",                      "CHE / AT",                   "재무상태표",
+  "자본비용 (대리변수)",            "XINT / DLC",                 "손익계산서; 재무상태표",
+  "주당순이익 (EPS)",               "NI / CSHO",                  "손익계산서; 기타",
+  "기업 규모",                      "log(AT)",                    "재무상태표",
+  "레버리지",                       "(DLTT + DLC) / SEQ",         "재무상태표",
+  "주가순자산비율 (M/B)",           "MKVALT / BKVLPS",            "보충자료; 재무상태표",
+  "시장가치 (시가총액)",            "MKVALT 또는 CSHO x PRCC_F",  "보충자료; 기타",
+  "배당성향 (총지급률)",            "(DVP + DVC + PRSTKC) / IB",  "손익계산서; 현금흐름표",
+  "R&D 집약도",                     "XRD / AT",                   "손익계산서; 재무상태표",
+  "총자산이익률 (ROA)",             "NI / AT",                    "손익계산서; 재무상태표",
+  "자기자본이익률 (ROE)",           "NI / (CSHO x PRCC_F)",       "손익계산서; 보충자료",
+  "투자수익률 (ROI)",               "NI / ICAPT",                 "손익계산서; 재무상태표",
+  "유형자산비율",                   "PPENT / AT",                 "재무상태표",
+  "토빈의 Q",                       "(AT + CSHO x PRCC_F - CEQ) / AT", "재무상태표; 보충자료",
+  "총자본",                         "PSTKC + CSHO",               "재무상태표; 기타"
+)
+kable(core_items_kr, booktabs = TRUE)
+```
+
+기업의 투자, 자금조달, 주주환원 정책 연구에서 활용되는 두 번째 재무 중심 지표군은 @kahle2017 이 정리한 관행을 따른다. @tbl-kahle 는 그 구성 규칙을 보여주며, 이는 @tbl-compustat-core 와 비교할 때 기계적인 동시점 상관관계를 방지하기 위해 분모에 **시차 자산(lagged assets)**을 주로 사용한다는 점과 결측된 R&D를 0으로 명시적 처리한다는 점에서 주로 차이가 난다.
+
+```{r}
+#| label: tbl-kahle
+#| tbl-cap: "@kahle2017 을 따른 기업가치평가, 투자, 자금조달 및 주주환원 지표."
+#| echo: false
+kahle_items_kr <- tibble::tribble(
+  ~`범주`,         ~`지표`,                       ~`구성 방법`,
+  "가치평가",      "토빈의 Q",                   "(AT + CSHO x PRCC_F - CEQ) / AT",
+  "가치평가",      "시가총액",                   "prc x shrout (CRSP)",
+  "가치평가",      "매출 허핀달 지수",           "3자리 NAICS x 연도 내 revt_i^2 / sum(revt)",
+  "투자",          "자본지출 / 자산",            "capx / lag(at)",
+  "투자",          "R&D / 자산",                 "xrd / lag(at); 결측된 R&D는 0으로 처리",
+  "투자",          "유형고정자산 / 자산",        "ppent / at",
+  "투자",          "현금 / 자산",                "che / at",
+  "수익성",        "영업현금흐름 / 자산",        "(oibdp - xint - txt) / lag(at)",
+  "수익성",        "ROA",                         "ib / at",
+  "자금조달",      "장부 레버리지",              "(dltt + dlc) / at",
+  "자금조달",      "시장 레버리지",              "(dltt + dlc) / (at - ceq + che x prcc_f)",
+  "자금조달",      "순 레버리지",                "(dltt + dlc - che) / at",
+  "자금조달",      "순 주식 발행",               "(sstk - prstkc) / lag(at)",
+  "소유구조",      "기관투자자 지분율",          "기관 보유 주식 비율 (%)(13F)",
+  "소유구조",      "대량보유자 (블록홀더)",      "10% 이상 주식을 보유한 기관 (13F)",
+  "주주환원",      "배당금 / 자산",              "dvc / lag(at)",
+  "주주환원",      "자사주 매입 / 자산",         "(prstkc - pstk) / lag(at)",
+  "주주환원",      "총 주주환원 / 자산",         "(dvc + prstkc) / lag(at)"
+)
+kable(kahle_items_kr, booktabs = TRUE)
+```
+
+기관투자자 지분율 및 대량보유자 변수는 Thomson Financial 13F 공시에서 추출하며, 시가총액/GDP 비율의 거시경제 분모는 미국 경제분석국(BEA)의 GDPA 시리즈를 사용한다.
+
+### 산업 집중도와 다양성 {#sec-diversity}
+
+위의 몇몇 지표는 산업 집중도 지수를 필요로 하며, 문헌에서는 허핀달(Herfindahl) 형태를 채택해 왔다. 산업 내 매출액 점유율 $s_i$에 대해 허핀달-허쉬만 지수(HHI)는 $\sum_i s_i^2$이다. @tbl-kahle 의 매출 허핀달 지수는 각 3자리 NAICS 산업 및 연도별로 이를 계산한다. 부문별 시장 점유율에 적용된 이 동일한 수량은 생태학에서 친숙한 **심슨 다양성 지수(Simpson diversity index)**와 대수적으로 동일하며, 두 지수 모두 무작위로 추출된 두 단위가 동일한 범주에 속할 확률과 같다. 높은 허핀달 지수(낮은 심슨 다양성)는 집중된 산업을 나타내며, 따라서 이 지수는 경쟁 통제변수이자 기업 또는 시장 활동이 여러 부문에 걸쳐 얼마나 다변화되어 있는지를 나타내는 지표로서 이중 역할을 수행한다.
+
+## 마케팅 지표 {#sec-metrics-marketing}
+
+위의 재무 지표들은 구조화된 회계 데이터로부터 계산된다. 본 절의 마케팅 구성개념들은 성격이 완전히 다르다. 신뢰, 감성, 지불의사, 구매의도, 브랜드 평판 등은 전통적으로 측정을 위해 설문조사가 필요했던 **심리학적** 상태들이지만, 현재는 머신러닝을 통해 비구조화된 텍스트와 이미지로부터 점차 추출되고 있다. 여기서 방법론적 프론티어는 사전학습된 언어 및 시각 모형을 활용하여 소셜 미디어 콘텐츠를 설문조사로는 도달할 수 없는 대규모의 검증된 마케팅 측정치로 변환하는 것이다.
+
+### 신뢰 {#sec-trust}
+
+신뢰는 신뢰감을 갖고 있는 거래 상대방에게 기꺼이 의존하려는 태도이며, 오랫동안 다문항 태도 척도를 통해 측정되어 왔다. 최신 연구들은 자기보고를 소셜 미디어 데이터의 행동적 및 관계적 신호로 대체하고 있다. @roy2017 은 소비자의 소셜 미디어 상호작용 구조와 내용으로부터 브랜드 신뢰에 대한 알고리즘 측정치를 개발하여, 누구에게도 설문조사를 하지 않고도 신뢰가 계산적으로 추출 가능한 흔적을 남긴다는 점을 입증하였다.
+
+### 감성 {#sec-23-sentiment}
+
+표현된 정서의 극성인 감성(sentiment)은 인간 커뮤니케이션의 핵심이며, 소셜 미디어, 뉴스, 고객 피드백, 기업 공시 등에 적용되는 마케팅 분야에서 가장 수요가 높은 텍스트 분석 측정치이다. 실무적인 핵심 질문은 **어떠한** 방법을 사용할 것인가이다. 단어를 극성 점수에 매핑하는 단순한 어휘집(lexicon)부터 훨씬 더 정확하지만 더 많은 계산을 요구하는 전이학습 언어 모형에 이르기까지 선택의 폭이 넓기 때문이다.
+
+@hartmann2023more 는 272개 데이터셋과 약 1,200만 건의 감성 라벨링된 문서를 아우르는 메타분석을 통해 이 질문을 실증적으로 해결하였다. 이들의 주요 발견은 감성에 맞게 미세조정(fine-tuning)된 사전학습 트랜스포머인 전이학습 모형이 최고의 성능을 제공하며, 평균적으로 어휘집 대비 정확도가 20% 이상 우수하다는 점이다. 이 우위는 균일하지 않으며, 감성 클래스의 수가 많을수록 격차가 벌어지고 텍스트 길이에 의해 조절되며, 리더보드 1위 벤치마크 모형이 특정 연구 환경에 항상 최선의 선택인 것은 아니다. 재현성 측면에서 중요한 점은 저자들이 사전학습 모형(SiEBERT)과 오픈소스 스크립트를 제공하여 최첨단 감성 분석 적용의 장벽을 낮추었다는 것이다. 실무적인 교훈은 편리하다는 이유로 무조건 어휘집을 사용하는 것이 아니라, 연구 질문, 데이터 특성, 가용 컴퓨팅 자원을 신중히 고려하여 방법론을 선택해야 한다는 점이다.
+
+### 지불의사 {#sec-wtp}
+
+소비자가 제품에 대해 수용할 의사가 있는 최대 가격인 지불의사(willingness to pay, WTP)는 가격 책정 및 후생 분석의 기초가 되는 수요 측면의 기본 요소이다. 도출 실험(elicitation experiments) 대신 자연 발생적인 텍스트에서 이를 도출해 내는 것은 활발한 연구 프론티어이다. @he2023express 는 소비자가 표현한 언어에서 WTP 신호를 추출하여 이러한 방향의 최근 연구를 보여준다.
+
+### 구매의도 {#sec-purchase-intention}
+
+구매의도(구매할 가능성에 대한 자기보고)는 행동의 선행 지표이자 대표적인 종속변수이다. @hartmann2021power 는 구매의도가 텍스트뿐만 아니라 **이미지**에서도 추론될 수 있음을 보여주었으며, 이를 통해 소셜 미디어 지표에 대한 통념을 뒤집었다. 스마트폰은 소비자가 브랜드 이미지를 공유하는 것을 매우 쉽게 만들었으며, 저자들은 합성곱 신경망(CNN)을 사용하여 해당 이미지를 세 가지 유형으로 분류하였다. 즉, **단독 제품 샷(packshots)**(제품만 표시됨), **소비자 셀카(consumer selfies)**(브랜드와 함께 소비자의 얼굴이 표시됨), **브랜드 셀카(brand selfies)**(소비자의 얼굴 없이 소비자의 시각적 관점에서 손에 쥔 제품이 표시됨)이다. 트위터와 인스타그램의 185개 브랜드로부터 수집한 25만 개 이상의 브랜드 이미지 게시물에 대한 반응에 언어 모형을 적용한 결과, 놀라운 분리 현상이 발견되었다. 소비자 셀카는 더 많은 좋아요와 댓글을 생성하지만, 브랜드 셀카는 더 높은 **구매의도**를 유발하였다. 참여도 지표와 구매의도가 서로 다른 방향을 가리킨 것이다.
+
+이러한 분리는 경영학적으로 중요한 의미를 갖는다. 디스플레이 광고 현장 테스트에서 브랜드 셀카는 소비자 셀카보다 더 높은 클릭률(CTR)을 기록하였고, 실험실 연구에서는 그 메커니즘이 자기참조(self-reference)에 있음을 밝혔다. 즉, 브랜드 셀카의 1인칭 시점은 보는 이로 하여금 자신이 제품을 직접 쥐고 있는 모습을 상상하도록 유도한다. 더 넓은 방법론적 시사점은 머신러닝이 멀티미디어 콘텐츠로부터 마케팅 관련 구성개념을 해독할 수 있으며, 전통적인 참여도 수치(좋아요, 댓글)는 관리자가 실제로 관심을 갖는 구성개념에 대해 **오도할** 수 있다는 점이다. 구매의도 분류기는 미세조정된 RoBERTa 모형으로 공개 배포되었다.[^purchase-model]
+
+[^purchase-model]: 미세조정된 구매의도 모형은 대규모 RoBERTa 체크포인트로 공개 배포되어, 연구자들이 재학습 없이도 새로운 영어 텍스트의 표출된 구매의도를 점수화할 수 있다.
+
+### 브랜드 평판 {#sec-brand-reputation}
+
+브랜드가 받는 총체적 존중인 브랜드 평판은 설문 추적 조사에서 실시간 소셜 리스닝으로 전환되었다. @rust2021 은 트위터 데이터로부터 브랜드 평판을 직접 측정하여, 역사적으로 주기적이고 값비싼 설문조사로 포착되던 구성개념이 대중의 대화로부터 지속적으로 추정될 수 있음을 보였다. 이는 적시성(timeliness)의 이점을 제공하지만, 플랫폼 고유의 선택 편향(platform-specific selection)이라는 위험을 수반한다.
+
+## 마케팅 역량 {#sec-capability}
+
+역량은 본 장에서 가장 까다로운 지표이자 정밀한 추정이 가장 큰 보상을 주는 지표이다. 역량은 전혀 직접 관찰되지 않기 때문이다. 즉, 기업이 달성한 성과와 유사한 투입물을 가진 최우수 기업들이 달성한 성과 간의 격차로부터 추론되어야 하는 **잠재적 효율성(latent efficiency)**이다. 이 구성개념은 기업의 역량을 "원하는 목표(산출물)를 달성하기 위해 가용한 자원(투입물)을 배분하는 능력"으로 정의한 @dutta1999 에서 출발한다. 기업의 기능적 역량이 높을수록 투입물을 관련 기능 산출물로 더 효율적으로 전환한다. 동일하게 기업의 기능적 **비효율성**이 낮을수록 그 역량은 높아진다. 이러한 투입-산출 프레이밍은 확률적 프런티어 분석(stochastic frontier analysis, SFA)을 자연스러운 추정 도구로 만든다.
+
+### 실질적 논거 {#sec-capability-theory}
+
+@dutta1999 의 핵심 통찰은 첨단 기술 시장에서 단순한 기술력만으로는 충분하지 않다는 점이다. 기업이 뛰어난 연구개발(R&D) 역량을 보유하여 고품질 혁신을 지속적으로 창출할지라도, 이러한 혁신을 소비자가 가치 있게 여기고 구매하는 제품으로 전환할 수 있는 **마케팅** 역량이 부족하다면 상업적으로 실패할 수 있다. 마케팅 역량이 품질 조정 혁신 산출물에 미치는 영향은 탄탄한 기술적 기반을 갖춘 기업일수록 가장 크게 나타난다. 즉, 뛰어난 마케팅 역량으로부터 가장 큰 혜택을 받는 기업은 이미 강력한 R&D 기반을 갖춘 기업들인데, 이는 상업화할 만한 혁신을 오직 이들만이 보유하고 있기 때문이다. 따라서 마케팅 역량과 R&D 역량의 상호작용은 기업 성과를 결정짓는 가장 중요한 요인이다. 첨단 기술 기업은 지속적으로 혁신을 창출할 수 있어야 할 뿐만 아니라 이를 상업화할 수 있어야 한다.
+
+이 논리는 추정 전략을 규정한다. 세 가지 역량이 상호작용하므로 다음과 같이 결합 추정된다. **마케팅 역량**은 기업의 기술 기반, 광고 스톡, 마케팅 스톡, 고객 관계 및 설치 기반(installed base)으로부터 매출을 견인한다. **R&D 역량**은 품질 조정 기술 산출물을 견인하며, **운영 역량**은 제조원가를 결정한다. @dutta1999 가 제시하는 함수 관계는 도식적으로 다음과 같다:
+
+$$
+\text{매출} = f(\text{기술 기반},\ \text{광고 스톡},\ \text{마케팅 스톡},\ \text{고객 관계},\ \text{설치 기반}),
+$$
+
+$$
+\text{품질 조정 산출물} = f(\text{기술 기반},\ \text{누적 R\&D},\ \text{마케팅 역량}),
+$$
+
+$$
+\text{제조원가} = f(\text{산출물},\ \text{자본비용},\ \text{인건비},\ \text{기술 기반},\ \text{마케팅 역량}).
+$$
+
+R&D 및 운영 방정식 내에 마케팅 역량이 등장하는 것은 역량들이 서로 분리된 것이 아니라 상호의존적이라는 실질적 주장을 공식적으로 표현한 것이다.
+
+@fig-capability-flow 는 이러한 재귀적 구조를 명시적으로 보여준다.
+
+```{mermaid}
+%%| label: fig-capability-flow
+%%| fig-cap: "@dutta1999 의 상호의존적 역량 체계. 마케팅, 광고 및 R&D 투자 스톡이 세 개의 확률적 프런티어로 투입되며, 추정된 마케팅 효율성이 R&D 및 운영 프런티어로 투입되어 역량 간 상호의존성을 포착한다."
+flowchart TD
+    A[광고 스톡] --> M[마케팅 프런티어:<br/>로그 매출]
+    MK[마케팅 스톡] --> M
+    TB[기술 기반] --> M
+    REC[매출채권 / CRM] --> M
+    IB[설치 기반] --> M
+    M --> ME[마케팅 효율성]
+    ME --> R[R&D 프런티어:<br/>로그 기술 산출]
+    RD[R&D 스톡] --> R
+    TB --> R
+    R --> RE[R&D 효율성]
+    ME --> O[운영 프런티어:<br/>로그 매출원가]
+    LC[인건비] --> O
+    CC[자본비용] --> O
+    TB --> O
+    O --> OE[운영 효율성]
+```
+
+### 스톡 변수와 Koyck 변환 {#sec-koyck}
+
+마케팅 및 혁신 투자는 지출이 발생한 당해 연도의 매출에만 영향을 미치는 것이 아니며, 그 효과는 시간에 따라 기하급수적으로 감쇠(decay)한다. 지출의 유량(flow)을 **스톡(stock)**으로 변환하는 표준 도구는 Koyck 기하학적 시차(geometric-lag) 변환이다 [@koyck1954distributed]. 지출 유량 $x_t$와 잔존율 $\lambda \in (0,1)$에 대해 스톡은 다음과 같다:
+
+$$
+\text{Stock}_t = \sum_{j=0}^{t-1} \lambda^{j} \, x_{t-j},
+$$ {#eq-koyck}
+
+따라서 과거의 각 1달러는 $j$년 후 원래 영향력의 $\lambda^j$만큼 기여한다. 광고 스톡 문헌은 실증적으로 $\lambda$를 고정한다. 광고 스톡의 경우 0.4 [@peles1971] 및 0.5 [@wang2017]의 가중치가 표준적이며, @dutta2005 는 마케팅 지출에 0.5, R&D 지출에 0.4의 가중치를 사용한다(p. 281). $\lambda$의 선택은 중요한 의미를 갖는다. 지나치게 높은 잔존율은 너무 오래전 지출을 과도하게 평가하게 되므로, 관성적으로 정하기보다 해당 산업 범주에서 추정된 이월 효과(carryover)를 바탕으로 정당화되어야 한다.
+
+### R&D 산출 측정: 혁신성과 적용 범위 {#sec-rd-output}
+
+단순 특허 건수는 특허 간 품질 편차가 극심하기 때문에 기술 산출물의 열등한 측정치이다. @dutta1999 는 이를 의도적으로 피하고 인용에 기반한 두 가지 품질 조정 지표를 사용한다. 첫 번째인 **혁신성(innovativeness)**은 @trajtenberg1990 및 @trajtenberg1990a 의 인용 가중치 전통을 따른다. 자주 인용되는 특허가 더 가치 있으므로, 특허는 피인용 수가 산업 표준을 얼마나 초과하는지에 따라 가중치가 부여된다. 두 번째인 **적용 범위(width of applicability)**는 @jaffe1993 을 따른다. **다른** 산업의 기업들로부터 인용된 특허는 더 넓은 적용 가능성을 가지므로, 특허는 초점 산업 외부에서 발생한 인용의 비율에 따라 가중치가 부여된다.
+
+구체적으로 **혁신성 조정** 산출물은 세 단계로 구축된다. 첫째, 산업 내—1, 2, 3, 4자리 SIC 세분성으로 정의되며, 원 논문은 모든 기업과 연도에 걸쳐 단일 평균을 사용함—표본 특허들이 받은 평균 인용 횟수를 계산한다. 둘째, 각 기업의 특허에 해당 산업 표본 평균으로 나눈 인용 횟수를 곱하여 가중치를 부여한다. 셋째, 기업-연도 내에서 인용 가중 특허 수를 합산한다. **적용 범위 조정** 산출물도 유사하게 구축된다. 각 특허에 대해 초점 SIC 코드 외부에서 발생한 인용의 비율을 계산하고, 해당 산업 평균 비율로 나눈 값으로 가중치를 부여한 후, 기업-연도 내에서 가중 특허를 합산한다.
+
+### 확률적 프런티어 추정량 {#sec-sfa}
+
+세 가지 역량은 **확률적 프런티어 분석(SFA)**을 통해 도출되며, 역량이 모범 프런티어 대비 효율성으로 정의되기 때문에 SFA는 정확히 적합한 도구이다. 산출물 $y_{it}$와 투입물 $\mathbf{x}_{it}$를 갖는 $t$년도 기업 $i$에 대해 생산 프런티어는 다음과 같다:
+
+$$
+\log y_{it} = \mathbf{x}_{it}' \boldsymbol{\beta} + v_{it} - u_{it},
+$$ {#eq-sfa}
+
+여기서 복합 오차(composed error)는 대칭적 노이즈 항 $v_{it} \sim \mathcal{N}(0, \sigma_v^2)$과 단측(one-sided) 비효율성 항 $u_{it} \ge 0$으로 분해된다. 프런티어 $\mathbf{x}_{it}'\boldsymbol{\beta} + v_{it}$는 달성 가능한 최대 산출물이며, 기업은 $u_{it}$만큼 이에 미치지 못한다. 역량은 기술적 효율성(technical efficiency)으로 정의된다:
+
+$$
+\text{TE}_{it} = \exp(-u_{it}) \in (0, 1],
+$$ {#eq-efficiency}
+
+이는 Jondrow 등의 방식을 따라 조건부 기대값 $\mathbb{E}[\exp(-u_{it}) \mid v_{it} - u_{it}]$로 도출된다. **생산** 프런티어의 경우 비효율성이 산출물을 **감소**시키므로 $u_{it}$의 부호는 음(-)이다(아래 코드에서 `ineffDecrease = TRUE`). 반면 **최소화**되어야 할 매출원가가 산출물인 운영 역량에 사용되는 **비용** 프런티어의 경우, 비효율성은 비용을 **증가**시키므로 부호가 반전된다(`ineffDecrease = FALSE`).
+
+식별 가정들은 SFA를 강력하게 만드는 동시에 취약하게 만드는 요인이기도 하다. 첫째, 비효율성 항은 반드시 단측이어야 하며 특정 분포(반정규, 절단정규 또는 지수분포)를 따라야 한다. 효율성 추정치는 이러한 분포의 중대한 오지정에 강건하지 않다. 둘째, 투입물 $\mathbf{x}_{it}$는 $u_{it}$에 대해 외생적이어야 한다. 잠재 역량이 높은 기업이 체계적으로 더 많이 투자한다면 프런티어는 편향되고 도출된 효율성은 내생성을 흡수하게 된다. 셋째, 로그 사양은 엄격하게 양(+)의 투입물과 산출물을 요구하며, 아래의 데이터 파이프라인에서 0이나 결측된 스톡을 작은 양의 상수로 대체하는 이유가 여기에 있다. 이 가정들 중 어느 하나도 사소하지 않으며, 도출된 효율성을 "역량"으로 해석하는 타당성은 프런티어가 올바르게 지정되었는지 여부에 전적으로 의존한다.
+
+### 데이터 구축 {#sec-capability-data}
+
+이제 WRDS로부터 기업-연도 패널을 구축한다. 파이프라인은 WRDS PostgreSQL 서버에 연결하여 Total Q(개선된 토빈의 Q), 투입 스톡에 필요한 Compustat 펀더멘털 데이터, 그리고 R&D 산출물 측정에 필요한 특허 데이터를 가져와 단일 패널로 결합한다. 재현 실습은 WRDS 미국 특허 커버리지(인용 파일의 경우 2011~2019년)에 의해 제약되므로 2010년 이후 기간이 추정에 사용된다. 원래의 1985~1994년 연구 기간을 재현하려면 원시 USPTO 대량 데이터에 대한 기업명 매칭 알고리즘을 구축해야 한다.
+
+```{r}
+#| eval: false
+library(RPostgres)
+library(tidyverse)
+
+# WRDS 연결. 환경 변수를 통해 인증 정보를 제공해야 하며,
+# 재현 가능한 스크립트에 비밀번호를 하드코딩해서는 안 된다.
+wrds <- dbConnect(
+  Postgres(),
+  host = "wrds-pgdata.wharton.upenn.edu",
+  port = 9737,
+  dbname = "wrds",
+  sslmode = "require",
+  user = Sys.getenv("wrds_user"),
+  pass = Sys.getenv("wrds_pass")
+)
+```
+
+Total Q는 아래의 일부 재현에서 사용되는 가치평가 결과 변수를 제공한다.
+
+```{r}
+#| eval: false
+#| collapse: true
+res <- dbSendQuery(wrds, "SELECT DISTINCT gvkey, fyear, q_tot
+                          FROM totalq_all.total_q
+                          WHERE fyear >= 2000 AND
+                                gvkey IS NOT NULL AND
+                                q_tot IS NOT NULL")
+totalq <- dbFetch(res, n = -1)
+dbClearResult(res)
+totalq |> write_rds(file.path("data", "totalq.rds"))
+```
+
+```{r}
+#| message: false
+library(tidyverse)
+totalq <- read_rds(file.path("data", "totalq.rds")) |>
+  rename(year = fyear)
+```
+
+펀더멘털 쿼리는 투입 스톡을 구축하는 데 필요한 손익계산서 및 재무상태표 항목을 가져오고, 산업 분류를 결합하며, 결측된 기업-연도를 보간(interpolate)한다. 선형 보간 대신 스플라인(spline) 보간을 사용하는데, 기초 시계열(광고, R&D, 매출)이 매끄럽고 추세를 가지므로 선형 보간은 프런티어가 비효율성으로 오인할 수 있는 꺾임(kinks)을 유발하기 때문이다.
+
+```{r}
+#| eval: false
+#| collapse: true
+res <- dbSendQuery(
+  wrds,
+  "SELECT DISTINCT gvkey, fyear, conm, curcd, cogs, rect, revt, sale,
+                   xad, xrd, xsga, ppegt, emp, act, xopr, xint, dlc,
+                   xlr, uxintd, invfg
+   FROM comp_na_daily_all.funda
+   WHERE fyear >= 2000 AND gvkey IS NOT NULL AND
+         sale IS NOT NULL AND sale > 0 AND revt IS NOT NULL"
+)
+capability <- dbFetch(res, n = -1)
+dbClearResult(res)
+
+# 산업 분류.
+res <- dbSendQuery(wrds,
+  "SELECT gvkey, gind, gsubind, naics, sic
+   FROM comp_na_daily_all.names")
+ind <- dbFetch(res, n = -1)
+dbClearResult(res)
+
+capability <- capability |>
+  left_join(ind, by = join_by(gvkey)) |>
+  rename(year = fyear) |>
+  unique() |>
+  arrange(gvkey, year) |>
+  group_by(gvkey, year) |>
+  slice(1) |>           # 기업-연도당 1개 레코드 유지
+  ungroup()
+
+# 각 시계열의 비결측 구간에 대한 스플라인 보간.
+spline_interpolate <- function(x) {
+  nz <- which(!is.na(x))
+  if (length(nz) == 0) return(x)
+  first_non_na <- nz[1]
+  last_non_na  <- nz[length(nz)]
+  x[first_non_na:last_non_na] <-
+    zoo::na.spline(x[first_non_na:last_non_na], na.rm = TRUE)
+  x
+}
+library(zoo)
+
+capability <- capability |>
+  group_by(gvkey) |>
+  arrange(year, .by_group = TRUE) |>
+  fill(conm, curcd, gind, gsubind, naics, sic, .direction = "downup") |>
+  ungroup() |>
+  group_by(gvkey) |>
+  complete(year = min(year):max(year)) |>     # 기업 내 결측 연도 채우기
+  arrange(year, .by_group = TRUE) |>
+  fill(conm, curcd, gind, gsubind, naics, sic, .direction = "downup") |>
+  mutate(across(
+    c(xrd, xsga, xad, emp, ppegt, xint, act, invfg, xlr,
+      cogs, rect, revt, sale, xopr, dlc),
+    spline_interpolate
+  )) |>
+  ungroup() |>
+  arrange(gvkey, year)
+
+capability |> write_rds(file.path("data", "capability", "capability.rds"))
+```
+
+```{r}
+capability <- read_rds(file.path("data", "capability", "capability.rds"))
+```
+
+특허-기업 연결은 특허를 `gvkey`에 매핑하며, 각 특허에 대해 WRDS 신뢰도 점수가 가장 높은 매칭을 유지하고 동점은 결정론적으로 처리한다. 이어서 기업별 연간 특허 수를 계산한다.
+
+```{r}
+#| eval: false
+#| collapse: true
+res <- dbSendQuery(wrds,
+  "SELECT gvkey, link_bdate, patnum, wrds_score
+   FROM wrdsapps_patents.uspatents_gvkey_linking
+   WHERE gvkey IS NOT NULL")
+wrdsapps_patents_link <- dbFetch(res, n = -1) |>
+  group_by(patnum) |> slice_max(order_by = wrds_score, n = 1) |> ungroup() |>
+  group_by(patnum) |> slice(1) |> ungroup()
+dbClearResult(res)
+
+res <- dbSendQuery(wrds,
+  "SELECT DISTINCT patnum, grantdate, cited_patnum, cited_pat_gdate, cite_type
+   FROM wrdsapps_patents.uspatents_citations")
+wrdsapps_patents_citations <- dbFetch(res, n = -1)
+dbClearResult(res)
+
+patent_output <- wrdsapps_patents_link |>
+  mutate(year = year(link_bdate)) |>
+  group_by(gvkey, year) |>
+  summarise(pat_count = n(), .groups = "drop") |>
+  complete(gvkey, year = range(year)) |>
+  mutate(across(-c(gvkey, year), ~ replace_na(., 0)))
+
+patent_output |> write_rds(file.path("data", "capability", "patent_output.rds"))
+```
+
+```{r}
+patent_output <- read_rds(file.path("data", "capability", "patent_output.rds"))
+```
+
+#### 혁신성 조정 산출 {#sec-tech-innv}
+
+3단계 혁신성 지표를 구현하려면 각 SIC 세분성 수준에서의 산업별 인용 평균이 필요하다. 다음 코드는 특허당 연간 인용 수, 1~4자리 SIC 산업 평균, 특허별 가중치, 그리고 최종 기업-연도별 합계를 계산한다.
+
+```{r}
+#| eval: false
+# 기업 및 산업 정보가 결합된 특허당 연간 피인용 수.
+df_cite_patent_year <- wrdsapps_patents_citations |>
+  group_by(year = year(grantdate), patnum = cited_patnum) |>
+  summarise(cite_count = n(), .groups = "drop") |>
+  inner_join(wrdsapps_patents_link, by = join_by(patnum)) |>
+  filter(year(link_bdate) <= year) |>     # 특허가 인용 연도 이전에 등록됨
+  inner_join(ind |> select(gvkey, sic) |> na.omit() |> unique(),
+             by = "gvkey") |>
+  select(-c(link_bdate, wrds_score)) |>
+  unique()
+
+# 각 SIC 세분성 수준에서의 산업-연도 평균 인용 수.
+ind_avg_patent_sic <- df_cite_patent_year |>
+  group_by(year, sic) |>
+  summarize(ind_avg_year_patent_sic = mean(cite_count, na.rm = TRUE),
+            .groups = "drop")
+ind_avg_patent_sic3 <- df_cite_patent_year |>
+  mutate(sic3 = substr(sic, 1, 3)) |>
+  group_by(year, sic3) |>
+  summarize(ind_avg_year_patent_sic3 = mean(cite_count, na.rm = TRUE),
+            .groups = "drop")
+ind_avg_patent_sic2 <- df_cite_patent_year |>
+  mutate(sic2 = substr(sic, 1, 2)) |>
+  group_by(year, sic2) |>
+  summarize(ind_avg_year_patent_sic2 = mean(cite_count, na.rm = TRUE),
+            .groups = "drop")
+ind_avg_patent_sic1 <- df_cite_patent_year |>
+  mutate(sic1 = substr(sic, 1, 1)) |>
+  group_by(year, sic1) |>
+  summarize(ind_avg_year_patent_sic1 = mean(cite_count, na.rm = TRUE),
+            .groups = "drop")
+
+# 특허별 가중치 = 인용 수 / 산업 평균; 기업-연도 내에서 합산.
+tech_innv <- df_cite_patent_year |>
+  mutate(sic1 = substr(sic, 1, 1),
+         sic2 = substr(sic, 1, 2),
+         sic3 = substr(sic, 1, 3)) |>
+  inner_join(ind_avg_patent_sic,  by = join_by(year, sic)) |>
+  inner_join(ind_avg_patent_sic3, by = join_by(year, sic3)) |>
+  inner_join(ind_avg_patent_sic2, by = join_by(year, sic2)) |>
+  inner_join(ind_avg_patent_sic1, by = join_by(year, sic1)) |>
+  mutate(
+    weight_year_patent_sic  = cite_count / ind_avg_year_patent_sic,
+    weight_year_patent_sic3 = cite_count / ind_avg_year_patent_sic3,
+    weight_year_patent_sic2 = cite_count / ind_avg_year_patent_sic2,
+    weight_year_patent_sic1 = cite_count / ind_avg_year_patent_sic1
+  ) |>
+  group_by(gvkey, year) |>
+  summarise(
+    tech_inv_patent      = sum(weight_year_patent_sic,  na.rm = TRUE),
+    tech_inv_patent_sic3 = sum(weight_year_patent_sic3, na.rm = TRUE),
+    tech_inv_patent_sic2 = sum(weight_year_patent_sic2, na.rm = TRUE),
+    tech_inv_patent_sic1 = sum(weight_year_patent_sic1, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+tech_innv |> write_rds(file.path("data", "capability", "tech_innv.rds"))
+```
+
+```{r}
+tech_innv <- read_rds(file.path("data", "capability", "tech_innv.rds"))
+# 당해 연도 특허가 없는 기업에 대해 로그 프런티어가 정의될 수 있도록
+# 작은 양의 값을 부여한다.
+tech_innv <- tech_innv |>
+  complete(gvkey, year = min(tech_innv$year):max(tech_innv$year)) |>
+  mutate(across(-c(gvkey, year), ~ replace_na(., 0.1)))
+```
+
+#### 적용 범위 조정 산출 {#sec-tech-width}
+
+적용 범위 지표는 각 특허에 대해 **상이한** SIC 코드를 가진 기업으로부터 받은 인용의 비율을 계산한 다음, 산업 평균 비율 대비 해당 비율로 가중치를 부여한다.
+
+```{r}
+#| eval: false
+tech_width_all <- wrdsapps_patents_citations |>
+  inner_join(
+    wrdsapps_patents_link |> select(-wrds_score) |> rename(gvkey_cite = gvkey),
+    by = join_by(patnum)) |>
+  select(-link_bdate) |>
+  inner_join(
+    wrdsapps_patents_link |> select(-wrds_score) |> rename(gvkey_cited = gvkey),
+    by = join_by(cited_patnum == patnum)) |>
+  filter(year(cited_pat_gdate) >= year(link_bdate)) |>
+  select(-link_bdate) |>
+  inner_join(ind |> select(gvkey, sic) |> rename(sic_cite = sic),
+             by = join_by(gvkey_cite == gvkey)) |>
+  inner_join(ind |> select(gvkey, sic) |> rename(sic_cited = sic),
+             by = join_by(gvkey_cited == gvkey)) |>
+  mutate(outside = if_else(sic_cite == sic_cited, 0, 1)) |>
+  unique()
+
+df_cite_patent_year_outside <- tech_width_all |>
+  filter(outside == 1) |>
+  group_by(patnum = cited_patnum, year = year(grantdate),
+           gvkey = gvkey_cited, sic = sic_cited) |>
+  summarise(outside_cite_count = n(), .groups = "drop") |>
+  unique()
+
+tech_width <- df_cite_patent_year_outside |>
+  inner_join(df_cite_patent_year, by = join_by(patnum, year, gvkey, sic)) |>
+  unique() |>
+  mutate(prop = outside_cite_count / cite_count) |>
+  mutate(mean_prop = mean(prop)) |>
+  mutate(weight = prop / mean_prop, weighted_patent = weight * cite_count) |>
+  group_by(gvkey, year) |>
+  summarize(tech_width = sum(weighted_patent), .groups = "drop")
+
+tech_width |> write_rds(file.path("data", "capability", "tech_width.rds"))
+```
+
+```{r}
+tech_width <- read_rds(file.path("data", "capability", "tech_width.rds"))
+min_year <- min(tech_width$year); max_year <- max(tech_width$year)
+tech_width <- tech_width |>
+  complete(gvkey, year = min_year:max_year) |>
+  mutate(across(-c(gvkey, year), ~ replace_na(., 0.1)))
+rm(min_year, max_year)
+```
+
+#### 과거 특허 산출 {#sec-patent-hist}
+
+커버리지를 과거로 확장하기 위해 NBER/Searle 동적 양수인 데이터에서 추출한 과거 특허 파일(1981~2012년)로 WRDS 수치를 보완한다.[^hist-data] 두 출처는 단일 특허 건수 시계열로 통합되며, 둘 다 존재하는 경우 과거 데이터를 우선 적용한다.
+
+[^hist-data]: 두 개의 대용량 입력 파일(`dynass_nber_searle.dta` 및 `patents_conveyance.dta`)은 용량이 커서 여기에 직접 재배포할 수 없으나 공개 보관소에서 이용 가능하다. 본 코드는 이 파일들로부터 기업-연도 특허 건수를 재구성한다.
+
+```{r}
+#| eval: false
+patent_output_hist <-
+  rio::import(file.path("data", "capability", "patents_conveyance.dta")) |>
+  select(h_assignee_code, grant_date, patentid) |>
+  na.omit() |>
+  inner_join(
+    rio::import(file.path("data", "capability", "dynass_nber_searle.dta")) |>
+      select(gvkey1, h_assignee_code) |> na.omit(),
+    by = join_by(h_assignee_code)) |>
+  mutate(year = year(grant_date)) |>
+  rename(gvkey = gvkey1) |>
+  group_by(gvkey, year) |>
+  summarise(patent_count = n(), .groups = "drop") |>
+  complete(gvkey, year = range(year)) |>
+  mutate(across(-c(gvkey, year), ~ replace_na(., 0)))
+
+patent_output_hist |>
+  write_rds(file.path("data", "capability", "patent_output_hist.rds"))
+```
+
+```{r}
+patent_output_hist <-
+  read_rds(file.path("data", "capability", "patent_output_hist.rds"))
+
+patent_output_total <- patent_output |>
+  full_join(patent_output_hist, by = join_by(gvkey, year)) |>
+  mutate(pat_count = case_when(
+    !is.na(patent_count) ~ patent_count,
+    !is.na(pat_count)    ~ pat_count,
+    TRUE                 ~ 0
+  )) |>
+  select(-patent_count) |>
+  arrange(gvkey, year) |>
+  filter(year >= 2000)
+```
+
+#### 투입 스톡 구축 {#sec-build-stocks}
+
+최종 구축 단계는 각 투자 유량에 @eq-koyck 의 Koyck 변환($\lambda = 0.4$)을 적용하여 특허, 기술, 마케팅, 광고, 설치 기반 및 R&D 스톡을 생성하고, 기업 수준 값이 결측된 경우 산업-연도 평균으로 자본비용 및 인건비 투입물을 대체(impute)한다. 자본비용은 유동부채 대비 이자비용($\text{xint}/\text{dlc}$)으로 대리되고, 인건비는 직원 1인당 인건비 지출($\text{xlr}/\text{emp}$)로 대리된다. 두 항목 모두 4자리에서 1자리 SIC 산업 평균 순으로 위계적으로 채워져 단 하나의 투입물 결측으로 인해 기업-연도 데이터가 탈락하지 않도록 한다.
+
+```{r}
+#| eval: false
+lambda <- 0.4
+
+df_cap <- capability |>
+  mutate(sic1 = substr(sic, 1, 1),
+         sic2 = substr(sic, 1, 2),
+         sic3 = substr(sic, 1, 3)) |>
+  filter(xad >= 0, xrd >= 0) |>
+  left_join(tech_innv,           by = join_by(gvkey, year)) |>
+  left_join(tech_width,          by = join_by(gvkey, year)) |>
+  left_join(patent_output_total, by = join_by(gvkey, year)) |>
+  mutate(
+    pat_count     = if_else(is.na(pat_count), 0, pat_count),
+    dlc           = if_else(dlc == 0, NA, dlc),
+    costofcapital = xint / dlc,            # 이자비용 / 유동부채
+    emp           = if_else(emp == 0, NA, emp),
+    xlr           = if_else(xlr <= 0, NA, xlr),
+    laborcost     = xlr / emp
+  )
+
+# 자본비용 및 인건비의 위계적 산업-연도 대체.
+impute_grp <- function(df, ...) {
+  df |>
+    group_by(...) |>
+    mutate(
+      costofcapital = ifelse(is.na(costofcapital),
+                             mean(costofcapital, na.rm = TRUE), costofcapital),
+      laborcost     = ifelse(is.na(laborcost),
+                             mean(laborcost, na.rm = TRUE), laborcost)
+    ) |>
+    ungroup()
+}
+df_cap <- df_cap |>
+  impute_grp(sic, year)  |> impute_grp(sic3, year) |>
+  impute_grp(sic2, year) |> impute_grp(sic1, year)
+
+# 각 투자 유량에 대한 Koyck 기하학적 시차 스톡(@eq-koyck).
+koyck_stock <- function(x, lambda) {
+  map_dbl(seq_along(x), ~ {
+    if (all(is.na(x[1:.x]))) NA_real_
+    else sum(x[1:.x] * lambda ^ (.x - seq_along(x[1:.x])), na.rm = TRUE)
+  })
+}
+df_cap <- df_cap |>
+  group_by(gvkey) |>
+  arrange(year, .by_group = TRUE) |>
+  mutate(
+    pat_stock     = koyck_stock(pat_count,      lambda),
+    techbase_innv = koyck_stock(tech_inv_patent, lambda),
+    techbase_width= koyck_stock(tech_width,     lambda),
+    marstock      = koyck_stock(xsga,           lambda),
+    adstock       = koyck_stock(xad,            lambda),
+    installedbase = koyck_stock(sale,           lambda),
+    rdstock       = koyck_stock(xrd,            lambda)
+  ) |>
+  ungroup()
+
+df_cap |> write_rds(file.path("data", "capability", "df_cap.rds"))
+```
+
+### 프런티어 추정: @dutta1999 재현 {#sec-dutta-replication}
+
+패널이 구축되었으므로 `frontier` 패키지를 사용하여 @eq-sfa 의 세 가지 프런티어를 추정한다. 각 역량은 두 번 추정되는데, 한 번은 혁신성 조정 기술 지표를 사용하고 다른 한 번은 적용 범위 조정 지표를 사용하여 산출물 품질 정의에 대한 도출된 효율성의 강건성을 평가할 수 있도록 한다. 마케팅 프런티어는 생산 프런티어(매출 극대화), 운영 프런티어는 비용 프런티어(매출원가 최소화)이며, 도출된 마케팅 효율성은 R&D 및 운영 프런티어로 전달되어 역량 간 상호의존성을 조작화한다.
+
+```{r}
+#| message: false
+#| warning: false
+library(plm)
+library(tidyverse)
+df_cap <- read_rds(file.path("data", "capability", "df_cap.rds"))
+
+df_cap_panel_dutta <- df_cap |>
+  filter(year > 2010) |>
+  pdata.frame(c("gvkey", "year"))
+```
+
+```{r}
+#| eval: false
+#| message: false
+#| warning: false
+# 고비용 연산: 6개의 확률적 프런티어 MLE 적합(수십 분 소요)이 필요하므로,
+# 본 장의 다른 모든 프런티어 블록과 마찬가지로 사전 계산되어 아래의
+# df_cap_panel_dutta.rds에 저장된 후 분석 청크에서 다시 읽어들인다.
+# 처음부터 재추정하려면 eval: true로 설정하라.
+library(frontier)
+
+# 마케팅 역량: 로그 매출에 대한 생산 프런티어.
+cap_mar_innv <- frontier::sfa(
+  log(sale) ~ log(adstock) + log(marstock) + log(techbase_innv) +
+    log(rect) + log(installedbase) + sic1 + factor(year),
+  ineffDecrease = TRUE,   # 극대화: 비효율성이 산출물을 낮춤
+  timeEffect = TRUE,
+  data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$mar_eff_innv <-
+  frontier::efficiencies(cap_mar_innv, asInData = TRUE)
+
+cap_mar_width <- frontier::sfa(
+  log(sale) ~ log(adstock) + log(marstock) + log(techbase_width) +
+    log(rect) + log(installedbase) | sic1 + factor(year),
+  ineffDecrease = TRUE, timeEffect = TRUE, data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$mar_eff_width <-
+  frontier::efficiencies(cap_mar_width, asInData = TRUE)
+
+# R&D 역량: 마케팅 효율성이 투입물로 진입 (상호의존성).
+cap_rd_innv <- sfa(
+  log(tech_inv_patent) ~ log(techbase_innv) + log(rdstock) +
+    log(mar_eff_innv) + log(mar_eff_innv) * log(rdstock) |
+    sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = TRUE, data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$rd_eff_innv <-
+  frontier::efficiencies(cap_rd_innv, asInData = TRUE)
+
+cap_rd_width <- sfa(
+  log(tech_width) ~ log(techbase_width) + log(rdstock) +
+    log(mar_eff_width) + log(mar_eff_width) * log(rdstock) |
+    sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = TRUE, data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$rd_eff_width <-
+  frontier::efficiencies(cap_rd_width, asInData = TRUE)
+
+# 운영 역량: 로그 매출원가(COGS)에 대한 비용 프런티어 (최소화).
+cap_op_innv <- sfa(
+  log(cogs) ~ log(invfg) + log(laborcost) + log(costofcapital) +
+    log(techbase_innv) + log(mar_eff_innv) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = FALSE,  # 최소화: 비효율성이 비용을 높임
+  data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$op_eff_innv <-
+  frontier::efficiencies(cap_op_innv, asInData = TRUE)
+
+cap_op_width <- sfa(
+  log(cogs) ~ log(invfg) + log(laborcost) + log(costofcapital) +
+    log(techbase_width) + log(mar_eff_width) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = FALSE, data = df_cap_panel_dutta
+)
+df_cap_panel_dutta$op_eff_width <-
+  frontier::efficiencies(cap_op_width, asInData = TRUE)
+
+df_cap_panel_dutta |>
+  write_rds(file.path("data", "capability", "df_cap_panel_dutta.rds"))
+```
+
+도출된 효율성들은 상호 간 및 매출액과의 상관관계를 계산하여 역량 지표로서 기대되는 특성을 보이는지 확인할 수 있다. 즉, 성과와 양(+)의 상관관계를 가지며 상호 간에는 완만한 수준의 상관관계만을 가져야 한다(마케팅에 강한 기업이 반드시 R&D에도 강할 필요는 없기 때문임).
+
+```{r}
+#| eval: false
+df_cap_panel_dutta |> select(contains("eff")) |> na.omit() |> cor()
+```
+
+대안적 구현은 `frontier` 대신 `sfa` 패키지를 사용하며, 두 패키지의 결과는 수치적 허용 오차 범위 내에서 일치한다.
+
+```{r}
+#| eval: false
+library(sfa)
+```
+
+### 대안적 역량 모형 {#sec-capability-alt}
+
+Dutta 프런티어는 밀접하게 관련된 여러 사양 중 하나이며, 위에서 구축된 패널은 투입물 세트의 약간의 수정만으로 다른 사양들도 지원한다. 여기서는 산출물 측정 방식과 프런티어에 포함되는 스톡 변수 구성이 서로 다른 세 가지 기출판 변형 모형을 제시한다. 실질적인 수확은 도출된 역량 효율성들이 여러 사양에 걸쳐 안심할 수 있을 만큼 서로 상관되어 있어 구성개념의 수렴 타당성(convergent validity)을 뒷받침한다는 점이다.
+
+#### @saboo2017assessing {#sec-saboo}
+
+이 사양은 설치 기반의 대리변수로 시차 매출(lagged sales)을 사용하고, R&D 프런티어에는 (인용 가중 산출물 대신) 단순 특허 건수를 사용한다. 운영 프런티어는 영업비용에 대한 표준 비용 프런티어이다. 시차 구조로 인해 계산 비용이 다소 높다.
+
+```{r}
+#| eval: false
+library(frontier)
+df_cap_panel_saboo <- df_cap |>
+  group_by(gvkey) |> arrange(year) |>
+  mutate(sale_t_1 = dplyr::lag(sale, n = 1)) |>
+  ungroup() |>
+  pdata.frame(c("gvkey", "year"))
+
+cap_mar <- sfa(
+  log(sale) ~ log(xsga) + log(rect) + log(sale_t_1) | sic1 + factor(year),
+  ineffDecrease = TRUE, timeEffect = TRUE, data = df_cap_panel_saboo
+)
+df_cap_panel_saboo$mar_eff <- efficiencies(cap_mar, asInData = TRUE)
+
+cap_rd <- sfa(
+  log(pat_count) ~ log(rdstock) + log(pat_stock) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = TRUE, data = df_cap_panel_saboo
+)
+df_cap_panel_saboo$rd_eff <- efficiencies(cap_rd, asInData = TRUE)
+
+cap_op <- sfa(
+  log(xopr) ~ log(act) + log(ppegt) + log(emp) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = FALSE, data = df_cap_panel_saboo
+)
+df_cap_panel_saboo$op_eff <- efficiencies(cap_op, asInData = TRUE)
+```
+
+#### @elhelaly2023collaborating {#sec-elhelaly}
+
+이 변형(Koyck 가중치 0.5)은 각 프런티어를 3개년 누적 스톡으로 보강한다. 마케팅 프런티어에는 광고비와 그 스톡, 마케팅 비용과 그 스톡, 당기 및 3개년 매출채권이 모두 추가된다. R&D 프런티어는 3개년 특허 및 R&D 누적치를 사용하며, 운영 프런티어는 비용 프런티어이다:
+
+$$
+\begin{aligned}
+\log(\text{sales}) &= \log(\text{xad}) + \log(\text{adstock}) + \log(\text{xsga}) + \log(\text{marstock}) \\
+&\quad + \log(\text{rect}) + \log(\text{rec}) + \log(\text{installedbase}),
+\end{aligned}
+$$ {#eq-elhelaly-mar}
+
+여기서 $\text{rec}$는 과거 3개년간 합산된 매출채권이다;
+
+$$
+\log(\text{patent}) = \log(\text{patstock}) + \log(\text{xrd}) + \log(\text{accumrd}),
+$$ {#eq-elhelaly-rd}
+
+여기서 $\text{patstock}$은 3개년 특허 총계, $\text{xrd}$는 총 R&D 비용, $\text{accumrd}$는 3개년 R&D 총계이다; 그리고
+
+$$
+\log(\text{cogs}) = \log(\text{output}) + \log(\text{laborcost}) + \log(\text{costofcapital}),
+$$ {#eq-elhelaly-op}
+
+여기서 $\text{output}$은 산출물의 금액 가치, $\text{laborcost}$는 직원 1인당 임금 및 복리후생비, $\text{costofcapital}$은 평균 장기 이자율이다.
+
+```{r}
+#| eval: false
+df_cap_panel_elhelaly <- df_cap |>
+  select(gvkey, year, contains("sic"), sale, xad, adstock, invfg, xsga,
+         marstock, rect, installedbase, pat_count, pat_stock, xrd, cogs,
+         laborcost, costofcapital) |>
+  group_by(gvkey) |> arrange(gvkey, year) |>
+  mutate(
+    rec      = dplyr::lag(rect, 1) + dplyr::lag(rect, 2) + dplyr::lag(rect, 3),
+    patstock = dplyr::lag(pat_count, 1) + dplyr::lag(pat_count, 2) + dplyr::lag(pat_count, 3),
+    accumrd  = dplyr::lag(xrd, 1) + dplyr::lag(xrd, 2) + dplyr::lag(xrd, 3)
+  ) |>
+  pdata.frame(c("gvkey", "year"))
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| eval: false
+library(frontier)
+
+cap_mar <- frontier::sfa(
+  log(sale) ~ log(xad) + log(adstock) + log(xsga) + log(marstock) +
+    log(rect) + log(rec) + log(installedbase) | sic1 + factor(year),
+  ineffDecrease = TRUE, timeEffect = TRUE, data = df_cap_panel_elhelaly
+)
+df_cap_panel_elhelaly$mar_eff <-
+  frontier::efficiencies(cap_mar, asInData = TRUE)
+
+cap_rd <- sfa(
+  log(pat_count) ~ log(patstock) + log(xrd) + log(accumrd) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = TRUE, data = df_cap_panel_elhelaly
+)
+df_cap_panel_elhelaly$rd_eff <-
+  frontier::efficiencies(cap_rd, asInData = TRUE)
+
+cap_op <- sfa(
+  log(cogs) ~ log(invfg) + log(laborcost) + log(costofcapital) | sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = FALSE, data = df_cap_panel_elhelaly
+)
+df_cap_panel_elhelaly$op_eff <-
+  frontier::efficiencies(cap_op, asInData = TRUE)
+
+df_cap_panel_elhelaly |>
+  write_rds(file.path("data", "capability", "df_cap_panel_elhelaly.rds"))
+```
+
+```{r}
+df_cap_panel_elhelaly <-
+  read_rds(file.path("data", "capability", "df_cap_panel_elhelaly.rds"))
+df_cap_panel_elhelaly |> select(contains("eff")) |> na.omit() |> cor()
+```
+
+#### @cao2023marketing {#sec-cao}
+
+이 사양은 마케팅 프런티어에 가치평가 결과 변수(토빈의 Q 대신 Total Q)를 사용하고, R&D 프런티어에는 시차 R&D 및 시차 특허 스톡 구조를 사용한다:
+
+$$
+\log(\text{Total } Q_t) = \log(\text{xsga}_t) + \log(\text{xsga}_{t-1}) + \log(\text{xad}) + \log(\text{pat}),
+$$ {#eq-cao-mar}
+
+$$
+\log(\text{pat}) = \log(\text{xrd}_t) + \log(\text{xrd}_{t-1}) + \log(\text{patstock}_{t-1}),
+$$ {#eq-cao-rd}
+
+여기서 $\text{pat}$은 특허 건수이다.
+
+```{r}
+#| eval: false
+df_cap_panel_cao <- df_cap |>
+  left_join(totalq, by = join_by(gvkey, year)) |>
+  select(gvkey, year, contains("sic"), q_tot, xsga, xad,
+         pat_count, xrd, pat_stock) |>
+  group_by(gvkey) |> arrange(gvkey, year) |>
+  mutate(
+    xsga_t_1      = dplyr::lag(xsga, n = 1),
+    xrd_t_1       = dplyr::lag(xrd, n = 1),
+    pat_stock_t_1 = dplyr::lag(pat_stock, n = 1)
+  ) |>
+  pdata.frame(c("gvkey", "year"))
+```
+
+```{r}
+#| eval: false
+library(frontier)
+
+cap_mar <- frontier::sfa(
+  log(q_tot) ~ log(xsga) + log(xsga_t_1) + log(xad) + log(pat_count) |
+    sic1 + factor(year),
+  ineffDecrease = TRUE, timeEffect = TRUE, data = df_cap_panel_cao
+)
+df_cap_panel_cao$mar_eff <-
+  frontier::efficiencies(cap_mar, asInData = TRUE)
+
+cap_rd <- sfa(
+  log(pat_count) ~ log(xrd) + log(xrd_t_1) + log(pat_stock_t_1) |
+    sic1 + factor(year),
+  timeEffect = TRUE, ineffDecrease = TRUE, data = df_cap_panel_cao
+)
+df_cap_panel_cao$rd_eff <-
+  frontier::efficiencies(cap_rd, asInData = TRUE)
+
+df_cap_panel_cao |>
+  write_rds(file.path("data", "capability", "df_cap_panel_cao.rds"))
+```
+
+```{r}
+df_cap_panel_cao <-
+  read_rds(file.path("data", "capability", "df_cap_panel_cao.rds"))
+df_cap_panel_cao |> select(contains("eff")) |> na.omit() |> cor()
+```
+
+### 마케팅 역량에 관한 광범위한 문헌 {#sec-marketing-cap-lit}
+
+위의 프런티어 추정 전통은 마케팅 역량을 기능적 하위 역량들로 분해하고 각각을 성과와 연결하는 훨씬 더 방대한 문헌의 한 갈래이다. 위의 스톡 변수 구축에 사용된 기초 투입 가중치(마케팅 지출 0.5, R&D 0.4)는 @dutta2005 에서 유래하며, 브랜드/광고 스톡 가중치는 @peles1971 및 @wang2017 에 기초한다. 이러한 기초 위에서 학자들은 특화된 역량들을 분리해 냈다. 광의의 마케팅 역량 [@bahadir2008; @xiong2013; @wiles2012; @mishra2016; @dinner2018], 마케팅 **제휴(alliance)** 역량 [@swaminathan2009a], 디지털 판매 역량 [@johnson2005], 빅데이터 역량 [@johnson2017], 소셜 CRM 역량 [@trainor2014], 그리고 고객관계 역량 [@wang2017] 등이 이에 해당한다.
+
+가장 영향력 있는 세분화 연구는 세 가지 핵심 마케팅 역량을 **이익 성장(profit growth)**과 연결하여 거친 분석에서는 보이지 않던 긴장 관계를 밝혀낸 @morgan2009linking 이다. 이익 성장은 주가의 주요 동인이지만, 마케팅 역량이 이를 견인하는 메커니즘은 잘 이해되지 않았었다. 114개 기업의 다산업 표본을 사용하여 @morgan2009linking 은 마케팅 역량을 **시장 감지(market sensing)**, **브랜드 관리(brand management)**, **고객관계관리(CRM)**로 분해하고, 이익 성장을 **매출 성장(revenue growth)**과 **마진 성장(margin growth)**으로 분해하였다. 역량들은 두 성장 구성요소에 직접적 및 시너지 효과를 모두 미치지만, 결정적으로 브랜드 관리 역량과 CRM 역량은 구성요소 간에 서로 **상쇄(counteract)**할 수 있다. 즉, 매출 성장을 높이는 역량이 동시에 마진 성장을 억제할 수 있으며 그 반대도 성립한다. 집계된 총이익 성장만을 살펴보는 표면적 분석은 이러한 상쇄 효과를 놓치고 역량과 성과 간의 진정한 관계를 오판하게 된다. 방법론적 교훈은 본 장의 주제를 다시금 강화한다. 즉, 지표가 정의되는 집계 수준이 지표가 밝혀낼 수 있는 관계를 결정한다는 점이다.
+
+`sub_market` 그룹화로 매개변수화된 일반적인 프런티어 구현은 여러 갈래를 하나로 묶어준다. 패널 구조를 이용할 수 없는 경우 `sfaR` 패키지가 횡단면적 대안을 제공한다.
+
+```{r}
+#| eval: false
+library(frontier)
+mar_cap <- sfa(
+  log(sales) ~ sub_market +
+    log(adstock) + log(marketingstock) + log(techbase) +
+    log(receivable) + log(installedbase),
+  data = capability,
+  ineffDecrease = TRUE,  # 생산 프런티어
+  timeEffect = TRUE      # 시간에 따라 변하는 오차 성분 프런티어
+)
+efficiencies(mar_cap)
+```
+
+```{r}
+#| eval: false
+library(sfaR)
+mar_cap <- sfacross(
+  log(sales) ~ sub_market +
+    log(adstock) + log(marketingstock) + log(techbase) +
+    log(receivable) + log(installedbase),
+  data = capability
+)
+efficiencies(mar_cap)
+```
+
+#### 디지털, 소셜 미디어 및 조직 역량 {#sec-digital-cap}
+
+역량 관점은 디지털 영역으로도 확장되었다. **디지털 마케팅 역량**에 관한 설문 기반 연구들 [@wang2020; @homburg2022]과 종합적 개관 [@herhausen2020]은 기업이 디지털 자산을 성과로 전환하는 조직적 루틴을 매핑하였으며, @nguyen2015a 는 **소셜 미디어 전략적 역량**을 별도의 역량으로 다루었다.
+
+보완적인 연구 흐름은 기능적 역량에서 조직 내 역량의 **내재성(embeddedness)**으로 일반화한다. @grewal2007embeddedness 는 관리자가 지속 가능한 역량을 구축하기 위해 희소한 자원을 배분해야 하며, 기저의 프로세스를 간과하면 역량이 경쟁 우위로 전환되는 방식을 제대로 파악할 수 없다고 주장한다. 이들의 핵심 구성개념은 **역량 내재성(capability embeddedness)**으로, 이는 조직 내에 역량이 얼마나 깊이 뿌리내리고 있는지를 나타내며 그 자체로 경영진의 자원 배분 결정의 결과이다. 방법론적으로 이들은 횡단면 및 패널 데이터 모두에 적용 가능한 위계적 복합 오차(hierarchical composed-error) 프레임워크(확률적 프런티어의 다수준 일반화)를 도입하였고, 소매업 적용 실습을 통해 역량 내재성이 유형 및 무형 자원을 통제한 후에도 성과를 직접적으로 향상시킴을 입증하였다. 이 프레임워크의 실무적 수확은 진단적 기능에 있다. 서로 다른 역량들의 목표가 **수렴적(convergent)**인지 **발산적(divergent)**인지를 인식함으로써 관리자는 내재성을 심화시키는 것이 기업 성과를 증폭시킬지 아니면 약화시킬지를 판단할 수 있다(이는 @morgan2009linking 의 매출/마진 간 긴장 관계의 조직적 반영이다).
+
+## 경영 지표 {#sec-management}
+
+지표의 마지막 작은 계열은 마케팅 투자가 성과로 전환되는 방식을 조절하는 기업의 전략 및 리더십 특성을 나타낸다. 두 가지 구성개념이 아카이브 데이터로부터 특히 측정 가능한 것으로 입증되었다. **창업 전략(Founding strategy)**, 특히 기업이 창업 시 채택하는 **시장 차별화(market differentiation)**의 정도는 초기 커뮤니케이션 및 제품 포지셔닝 언어로부터 추출될 수 있다. @guzman2023measuring 은 이러한 창업 차별화에 대한 확장 가능한 지표를 개발하였다. 혁신과 투자에 영향을 미치는 행동적 특성인 **CEO 과신(CEO overconfidence)**은 @galasso2011ceo 가 혁신 연구에 적용한 옵션 기반 접근법을 따라 임원들이 내가격(in-the-money) 주식매수선택권 행사를 미루는 표출된 성향으로부터 측정된다. 두 사례 모두 본 장의 반복되는 방법론을 잘 보여준다. 즉, 한때 설문조사나 내부 접근이 필요하다고 여겨졌던 심리학적 또는 전략적 구성개념이 기업이 아카이브 및 시장 데이터에 남긴 흔적으로부터 대규모로 복원되는 것이다.
+
+## 핵심 요점 {#sec-metrics-takeaways}
+
+지표는 하나의 정의와 하나의 식별 논증의 결합이다. @sec-metrics-finance 의 재무 척도들은 계산하기는 쉽지만 인과적으로 해석하기는 어렵다. ROI와 ROMI는 그 자체가 추론의 대상인 한계 분자를 요약하는 지표이며, EVA와 MVA는 투하자본과 시장 기대치가 정확히 측정되는 만큼만 가치 창출의 가격을 매긴다. 회계 공변량들은 구성 방식이 대체로 확립되어 있지만(@tbl-compustat-core 및 @tbl-kahle 에 관행 정리), 그 역할은 혼재 요인을 **중화(neutralize)**하는 것이며 연구 대상인 마케팅 의사결정에 부합하도록 선택될 때에만 그 역할을 수행한다. @sec-metrics-marketing 의 마케팅 구성개념들은 이 분야의 방법론적 프론티어를 잘 보여준다. 한때 설문조사의 영역이었던 감성, 구매의도, 신뢰, 평판 등은 이제 정확도와 편향을 검증해야 하는 사전학습 모형을 통해 텍스트와 이미지로부터 추출된다. @sec-capability 의 주제인 역량은 가장 까다로운 사례이자 다른 지표들의 모범이 된다. 명시적인 분포 및 외생성 가정 하에서만 식별되는 잠재적 효율성으로서, 그 신뢰성은 투입 스톡 구축과 프런티어 사양 지정에 기울인 세심한 주의에 전적으로 의존한다. 세 가지 계열 모두에서 얻는 교훈은 동일하다. 즉, 지표를 보고하되, 그 지표가 주장하는 바를 의미하도록 만들어 주는 가정들을 반드시 함께 보고해야 한다.

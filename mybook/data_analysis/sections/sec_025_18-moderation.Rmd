@@ -1,0 +1,24 @@
+<!-- ========================================= -->
+<!-- Chapter: 18-moderation.Rmd -->
+<!-- ========================================= -->
+
+
+# 조절효과 분석(Moderation)
+
+조절효과 분석(Moderation analysis)은 두 변수 간의 관계가 제3의 변수 값에 따라 달라지는 상호작용 효과(interaction effects)를 이해하는 데 필수적입니다. 본 장에서는 실제 사례를 통해 이 개념을 소개합니다. 일반적인 조절의 유형(이진형, 연속형, 위계형)을 개괄한 후, 조절변수(moderators), 초점 예측변수(focal predictors), 조건부 효과(conditional effects)를 포함한 핵심 용어를 살펴봅니다. 또한 고전적인 조절 모형을 다루고 회귀분석에서의 상호작용항을 소개합니다. 이후 절에서는 이원 상호작용(two-way interactions) 및 삼원 상호작용(three-way interactions)을 심도 있게 다루며 명체화(specification), 추정(estimation), 해석(interpretation)에 대한 상세한 가이드를 제공합니다. 상호작용 도표(interaction plots)와 한계효과 시각화를 활용하여 상호작용 효과를 탐색하는 시각적 방법을 강조합니다. 본 장을 통해 독자는 상호작용 효과를 올바르게 모형화할 뿐만 아니라 비전문가 이해관계자에게도 이를 명확하게 전달할 수 있는 역량을 갖추게 됩니다.
+
+------------------------------------------------------------------------
+
+
+
+> **본 장의 전체 내용은 출간된 Springer 도서에서 확인하실 수 있습니다.**\
+> 온라인 미리보기는 출판사 정책에 따라 일부로 제한됩니다.
+
+전체 내용을 확인하시려면 Springer 도서를 참고하시기 바랍니다:
+
+| 권차 | 도서명                                     | 링크                                       |
+|---------------|---------------------------|--------------------|
+| 1    | *Foundations of Data Analysis*            | [Springer에서 구매](https://tidd.ly/4oL3N2X) |
+| 2    | *Regression Techniques for Data Analysis* | [Springer에서 구매](https://tidd.ly/47PJ7kB) |
+| 3    | *Advanced Modeling and Data Challenges*   | [Springer에서 구매](https://tidd.ly/3JrB3xm) |
+| 4    | *Experimental Design*                     | [Springer에서 구매](https://tidd.ly/4oFridQ) |

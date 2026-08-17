@@ -1,0 +1,2497 @@
+<!-- ========================================= -->
+<!-- Chapter: 27-regression-discontinuity.Rmd -->
+<!-- ========================================= -->
+
+
+# 회귀 불연속 {#sec-regression-discontinuity}
+
+무작위 실험을 시행하기 어렵거나 비윤리적이거나 비용이 지나치게 많이 드는 경우, 인과 추론에는 창의적인 접근이 필요하다. 이런 상황에서 연구자들은 특정 가정하에 무작위 실험의 구조를 모방하는 준실험 설계를 활용한다. 그중 가장 설득력 있고 엄밀한 방법의 하나가 **회귀 불연속(Regression Discontinuity, RD) 설계**다. 이는 겉보기에는 임의적인 정책 규칙을 인과효과를 추정할 기회로 바꾸는 방법이다.
+
+가구소득이 특정 기준값보다 낮은 학생에게만 재정 지원을 제공하거나, 신용점수가 일정 값보다 높은 고객만을 대상으로 마케팅 캠페인을 진행하는 정책을 생각해 보자. 이러한 기준값은 하나의 연속형 변수(예: 소득 또는 신용점수)가 고정된 경계를 넘는지에 따라 처치 배정이 결정되는 상황을 만든다. 이 경계, 즉 **기준값(cutoff)**은 매끄럽게 변하는 기저 점수에 따라 처치 확률이 불연속적으로 변하게 한다. 이것이 RD의 핵심 통찰이다. 기준값 바로 위와 바로 아래의 개인들이 다른 측면에서는 유사하다면, 이들의 결과를 비교하여 [국소 평균 처치효과](#sec-local-average-treatment-effects)를 파악할 수 있다.
+
+RD 설계는 처치 배정이 급격히 변하는 "경계"(기준값 주변 영역)에 초점을 맞춰 이 구조를 활용한다. 기준값에서 멀리 떨어진 단위들은 체계적으로 다를 수 있지만, 기준값에 가까운 단위들은 처치군 또는 통제군에 무작위로 배정된 것처럼 비교 가능하다고 가정한다. 따라서 RD는 중요한 장점을 갖는다. 비교적 온건한 가정만으로도, 특히 [무작위 대조시험](#sec-experimental-design)(RCT)을 시행하기 어려운 상황에서 **신뢰할 수 있는 인과효과 추정치**를 제공할 수 있다.
+
+RD는 @thistlethwaite1960이 성적 기반 장학금과 그 학업 성과에 대한 영향을 평가하면서 처음 소개했으며, 이후 교육, 보건의료, 마케팅, 정치학, 금융 등 다양한 분야에서 널리 사용되는 계량경제학 도구로 발전했다. @imbens2008regression과 @lee2010regression은 현대 연구에서 RD의 가정과 추정 전략을 형식화하여 이론적 토대를 크게 정교화하고 확장했다.
+
+RD 설계에는 두 가지 기본 유형이 있다.
+
+-   [**Sharp RD**](#sec-sharp-regression-discontinuity-design): 실행변수가 기준값을 초과하는지에 따라 처치 배정이 완벽하게 결정되는 경우.
+
+-   [**Fuzzy RD**](#sec-fuzzy-regression-discontinuity-design): 기준값에서 처치 확률은 불연속적으로 변하지만 처치가 결정론적으로 배정되지는 않는 경우.
+
+어느 경우든 핵심 특징은 연속형 점수에 기반한 **처치 배정 규칙의 불연속**이다. 이 점수는 흔히 **실행변수(running variable)**, **강제변수(forcing variable)** 또는 **배정변수(assignment variable)**라고 부른다.
+
+회귀 불연속은 특히 처치 배정 규칙이 엄격하고 알려져 있을 때, 강력하면서도 직관적인 인과 추론 방법을 제공한다. 다음 절에서는 RD 설계의 형식적 틀을 전개하고, 타당성을 뒷받침하는 핵심 가정을 살펴보며, 이 방법을 실제 비즈니스 및 정책 문제에 적용한다.
+
+------------------------------------------------------------------------
+
+## 개념적 틀
+
+RD 설계의 논리를 제대로 이해하려면 관측자료를 사용하되 실험 연구자처럼 사고해야 한다. RD는 결정론적 규칙(예: 정책 기준값)을 **준무작위 배정**의 기회로 바꾼다. 본질적으로 이는 연속형 실행변수의 기준값에서 수행하는 **국소 실험**이다.
+
+RD 틀의 핵심에는 겉보기에는 단순하지만 중요한 아이디어가 있다. 기준값 바로 위와 바로 아래의 개인들은 기준값에 대한 위치로 인해 달라지는 처치 상태를 제외하면 모든 측면에서 사실상 동일하다는 것이다. 이 직관 덕분에 RD 설계는 무작위 배정이 없어도 **높은 내적 타당성**으로 인과효과를 추정할 수 있다.
+
+RD의 강점은 기준값 주변의 **좁은 구간**에 초점을 맞추는 데 있다. 이 구간을 흔히 **대역폭(bandwidth)**이라고 하며, 여기서 [교환가능성 가정](#sec-conditional-ignorability-assumption)이 가장 그럴듯하다. 이 좁은 범위에서는 배정 메커니즘이 무작위 실험에 가까워진다.
+
+-   [내적 타당성](#sec-internal-validity): 기준값 근처에서 매우 강하다. 관측치가 기준값에 가까울수록 다른 측면에서 비교 가능하다는 가정이 더 신뢰할 만해진다.
+-   [외적 타당성](#sec-external-validity): 더 제한적이다. 추정치는 기준값에 국소적이며 기준값에서 멀리 떨어진 단위에는 일반화되지 않을 수 있다. 정밀성과 일반화 가능성 사이의 이러한 상충관계는 RD의 특징이다.
+
+RD를 검증하는 가장 설득력 있는 근거 중 하나는 무작위 대조시험(RCT)과의 실증적 비교에서 나온다. @chaplin2018internal과 @gleason2018rd 같은 연구의 증거는 RD와 RCT가 종종 **놀라울 정도로 유사한 처치효과 추정치**를 산출한다는 것을 보여 주며, RD의 가정이 충족될 때 그 신뢰성을 뒷받침한다. RD가 무작위화의 대체물은 아니지만, 실제로는 무작위화에 놀라울 만큼 가까운 결과를 낼 수 있다.
+
+RD는 고립된 방법이 아니다. 다른 여러 인과 추론 틀과 개념적·방법론적 연관성을 공유한다. 이러한 연결을 이해하면 RD가 언제 적절한지, 그리고 대안적 접근법을 어떻게 보완하는지 명확해진다.
+
+-   [무작위 실험](#sec-the-gold-standard-randomized-controlled-trials): RD는 **국소 무작위화 설계**로 볼 수 있다(기준값 근처에서 처치가 "무작위로 배정된 것처럼" 이루어진다).
+-   [도구변수](#sec-instrumental-variables): RD는 구조적 IV 모형 [@angrist1999using]의 특수한 경우로 구성할 수 있다. 이때 실행변수는 기준값에서 처치에 외생적 변이를 유발한다.
+-   [매칭 방법](#sec-matching-methods): RD는 매우 표적화된 매칭 형태(단일 기준값의 바로 위·아래 단위들을 매칭)와 유사하다 [@heckman1999economics].
+-   [중단 시계열](#sec-interrupted-time-series)(ITS): 실행변수가 정밀하게 측정된 연속형 변수라면 RD가 ITS보다 우수하다. 그러나 자료가 매우 이산적이거나 시간적으로 집계된 경우(예: 분기별 매출 또는 연간 범죄율)에는 ITS가 더 적합할 수 있다. 반면 자료가 조밀하거나 사실상 연속적이라면 RD가 더 정밀하고 방어 가능한 설계를 제공한다.
+
+------------------------------------------------------------------------
+
+## 회귀 불연속 설계의 유형
+
+RD는 모든 상황에 그대로 적용할 수 있는 만능 방법이 아니다. 전형적인 설정은 기준값을 넘는 규칙으로 결정되는 이진 처치를 포함하지만, 연구 맥락에 맞춘 다양한 확장과 변형이 존재한다. 적절한 설계를 선택하고 결과를 올바르게 해석하려면 이러한 변형을 이해해야 한다.
+
+이러한 변형을 정리하는 출발점은 배정 규칙 자체다. Sharp 설계는 기준값을 결정론적으로 다루고, Fuzzy 설계는 불완전한 순응을 허용하며, Kink 설계는 처치 수준의 점프에서 처치 함수 기울기의 변화로 관심을 옮긴다. 시간 기반 설계는 실행변수를 달력 날짜로 재해석한다. 아래의 네 가지 대표 유형은 가장 단순한 Sharp 규칙에서 기준값이 스칼라가 아니라 시간인 설정까지의 발전을 보여 준다. 규칙이 약해질수록 가정의 부담은 커진다. Sharp RD에는 잠재적 결과의 연속성만 필요하지만, Fuzzy 및 시간 기반 변형에는 도구변수의 관련성, 단조성, 그리고 (RDiT에서는) 신중한 추세 모형화가 추가로 필요하다.
+
+1.  [Sharp RD](#sec-sharp-regression-discontinuity-design): RD의 가장 단순하고 직관적인 형태:
+    -   정의: 기준값에서 처치 배정이 0에서 1로 **결정론적으로** 뛰어오른다.
+    -   함의: 기준값 미만의 개인은 절대 처치받지 않고, 기준값 이상의 개인은 항상 처치받는다.
+    -   식별: 처치효과는 기준값에서 결과의 점프로 식별된다.
+    -   예: 시험 점수가 85점 이상인 학생에게만 엄격히 지급되는 장학금.
+2.  [Fuzzy RD](#sec-fuzzy-regression-discontinuity-design): Sharp 설계의 일반화:
+    -   정의: 기준값에서 처치 확률이 **불연속적으로** 증가하지만 0에서 1로 뛰지는 않는다.
+    -   함의: 기준값 미만의 일부 개인은 처치받을 수 있고, 기준값 이상의 일부 개인은 처치받지 않을 수 있다.
+    -   식별: 순응자에 대한 [국소 평균 처치효과](#sec-local-average-treatment-effects)(LATE)를 추정하려면 도구변수 방법이 필요하다.
+    -   예: 특정 소득 수준 이상의 환자가 받을 가능성은 높지만 수급이 보장되지는 않는 의료 보조금.
+3.  [Kink RD](#sec-regression-kink-design): 기울기 변화에 기반한 보다 미묘한 변형:
+    -   정의: 결과의 수준이 아니라 결과의 **1차 도함수**(기울기)가 기준값에서 변한다.
+    -   식별: 처치효과는 실행변수의 **한계효과** 불연속에서 식별된다.
+    -   예: 특정 소득 기준에서 한계 편익이 변하는 세금 인센티브.
+    -   참고문헌: 이론적 토대는 [@card2015inference], 실증 적용은 [@bockerman2018kink; @nielsen2010estimating]을 참조하라.
+4.  [시간의 회귀 불연속(Regression Discontinuity in Time, RDiT)](#sec-regression-discontinuity-in-time): [중단 시계열](#sec-interrupted-time-series)의 특수한 경우:
+    -   정의: 실행변수는 **시간**이며 기준값은 정책 시행일 또는 사건에 해당한다.
+    -   적용: 알려진 시점에 시작되는 개입의 즉각적인 영향을 평가한다.
+    -   주의: 시간 추세는 다른 사건과 교란되는 경우가 많으므로 개입 전후 추세를 신중하게 모형화해야 한다.
+
+> **주의**: RDiT는 연속성 가정이 위반될 가능성 때문에, 특히 시간이 분기별·연도별처럼 성긴 간격으로 측정될 때 전통적인 RD보다 신뢰성이 낮은 경우가 많다.
+
+------------------------------------------------------------------------
+
+이 대표 유형을 넘어, 응용 연구에서는 원래의 틀이 예상하지 못한 설정에도 RD를 적용해 왔다. 하위집단별 기준값을 갖는 정책, 여러 점수로 공동 결정되는 처치, 지리적 경계, 시간이 지나며 효과가 나타나는 처치, 그리고 실행변수에 따라 지시변수 상태가 아니라 강도가 달라지는 용량-반응 설정이 그 예다. 다음 목록은 이러한 확장을 자주 접하는 순서로 살펴본다. 각 확장은 불연속 근처 단위들을 비교한다는 RD의 핵심 논리를 유지하지만, 기준값 통합, 2차원 점수 공간에서의 경계 정의, 지연효과 모형화 같은 설계 선택을 도입하므로 분석가가 이를 명시적으로 정당화해야 한다. 기본적인 Sharp-Fuzzy 선택을 마친 뒤 아래 항목을 선택지 목록으로 활용하라.
+
+-   [다중 기준값](#sec-multi-cutoff-regression-discontinuity-design):
+    -   적용 사례: 하위집단(예: 연령대, 지역)마다 서로 다른 처치 기준값이 적용된다.
+    -   과제: 비교 가능성을 유지하려면 신중한 통합과 층화가 필요하다.
+-   [다중 점수](#sec-multi-score-regression-discontinuity-design)(다중 실행변수):
+    -   적용 사례: 처치가 둘 이상의 점수(예: 소득과 연령)에 의존한다.
+    -   접근법: 다변량 기준값 규칙 또는 상호작용 효과를 사용한다.
+-   지리적 RD(공간 RD):
+    -   정의: 행정 경계나 정책 경계처럼 기준값이 공간상에서 정의된다.
+    -   예: 특정 관할구역 안의 사업체에만 적용되는 세금 정책.
+-   동적 처치:
+    -   정의: 최초 개입 이후 처치효과가 **시간에 따라 변화할** 수 있다.
+    -   고려사항: 종단자료와 지연효과를 적절히 모형화하는 방법이 필요하다.
+-   [연속적 처치 강도(용량-반응 RD)](#sec-dose-response-rd):
+    -   정의: 이진 처치 대신 단위가 실행변수에 따라 서로 다른 처치 강도를 받고, 관심 대상은 기준값에서의 단일 대비가 아니라 용량-반응 곡선이다.
+    -   예: 고객 참여도 점수에 따라 점진적으로 증가하는 광고 노출, 가구의 소득이 자격 기준보다 얼마나 낮은지에 따라 금액이 조정되는 소득심사형 이전급여.
+
+------------------------------------------------------------------------
+
+### RD 타당성 가정 {#sec-assumptions-for-rd-validity}
+
+분석가가 어떤 변형을 선택하든 RD 식별은 국소 무작위화 해석을 정당화하는 몇 가지 조건에 의존한다. 다음 네 가정은 하나의 일관된 이야기로 읽는 것이 좋다. 배정은 실행변수에만 의존해야 하고, 잠재적 결과의 조건부 기댓값은 처치와 무관한 이유로 기준값에서 점프해서는 안 되며, 기준값 자체는 단위에 대해 외생적이어야 하고, 결과의 다른 결정요인들은 경계를 가로질러 매끄러워야 한다. 이 조건 중 하나라도 실패하면 기준값의 불연속은 처치효과와 그곳에서 변하는 다른 요인을 뒤섞게 되고, 신뢰할 수 있는 추론은 무너진다.
+
+1.  **독립적 배정:** 처치는 오로지 실행변수에 근거하여 배정된다.
+
+2.  **조건부 기댓값의 연속성:** 처치가 없을 때의 기대 결과는 기준값에서 연속이다.
+
+    $$
+     E[Y(0)|X=x] \text{ 및 } E[Y(1)|X=x] \text{는 } x = c \text{에서 연속이다.}
+     $$
+
+3.  **기준값의 외생성:** 기준값을 조작할 수 없어야 한다. 기준값에서 교란을 일으키는 개입도 없어야 한다.
+
+4.  **교란변수의 불연속 부재:** 다른 공변량은 기준값에서 매끄러워야 한다. 흔히 처치와 무관한 공변량에 점프가 있는지 확인한다.
+
+가능한 위반의 예는 표 \@ref(tab:rd-threat-validity)를 참조하라.
+
+| **문제**                             | **설명**                                                                                                 | **해결책**                                                                                |
+|----------------|-------------------------------|-------------------------|
+| 공변량 연속성 위반 | 처치 이외의 다른 변수가 기준값에서 불연속을 보이면 추정효과가 편향될 수 있다. | 처치 전 공변량에 대해 균형 검정을 실시한다. |
+| 다중 불연속 | 여러 기준값 효과가 존재하면 식별이 더 어려워진다. | 대안적 모형 설정으로 강건성 검토를 수행한다. |
+| 실행변수 조작 | 연구 대상자가 처치를 받기 위해 $X_i$를 조작할 수 있다(예: 시험 점수에서의 전략적 행동). | $X_i$ 분포의 불연속을 확인하기 위해 McCrary 밀도 검정을 실시한다. |
+
+표: (\#tab:rd-threat-validity) RD 타당성에 대한 위협.
+
+------------------------------------------------------------------------
+
+## 모형 추정 전략
+
+회귀 불연속 틀에서 연구자는 **모수** 모형과 [비모수](#sec-nonparametric-regression) 모형 중 선택할 수 있다. 선택은 함수형에 대한 가정, 자료 가용성, 유연성과 해석 가능성 사이의 상충관계에 달려 있다.
+
+### 모수 모형: 다항 회귀
+
+선형 회귀 같은 모수 모형은 종속변수와 예측변수의 관계에 특정 함수형을 가정한다. 엄격한 선형성 가정을 완화하는 한 가지 방법은 강제변수의 **다항 함수**를 포함하는 것이다 [@lee2010regression]. 다항식 차수는 자료의 특성에 따라 결정해야 한다.
+
+그러나 고차 다항식을 사용하면 여러 문제가 생긴다. @gelman2019high는 전역 고차 다항식과 관련된 세 가지 핵심 문제를 지적한다.
+
+1.  잡음으로 인한 부정확한 추정치: 고차 다항식은 과적합되어 의미 있는 패턴이 아니라 잡음을 포착할 수 있다.
+2.  다항식 차수에 대한 민감성: 선택한 차수에 따라 추정치가 크게 달라질 수 있어 모형의 안정성이 떨어진다.
+3.  부적절한 신뢰구간 포함: 고차 다항식을 사용하면 신뢰구간이 오해를 일으키기 쉬워 잘못된 추론으로 이어진다.
+
+이러한 이유로 연구자들은 전역 고차 다항식을 피하고 대안적 접근법(즉, [비모수](#sec-nonparametric-regression) 버전)을 사용하도록 권고받는다.
+
+#### 모수 모형 설정
+
+이러한 개념을 구체화하기 위해 가장 단순한 Sharp RD 모형을 생각해 보자.
+
+$$
+Y = \alpha + \rho D_x + \gamma X + \epsilon
+$$
+
+여기서 $Y$는 결과, $X$는 실행변수, $D_x$는 처치 더미, $\rho$는 기준값에서의 처치효과다.
+
+**(비선형 추세만)** 이차항은 실행변수의 매끄러운 곡률을 흡수한다.
+
+$$
+Y = \alpha + \rho D_x + \gamma_1 X + \gamma_2 X^2 + \epsilon
+$$
+
+더 높은 차수의 다항식 항을 추가할 수 있지만, 결과가 함수형에 의해 좌우되지 않는지 확인하려면 다항식 차수별 민감도 분석이 필요하다.
+
+**(기준값에서의 기울기 변화만)** 기준값 양쪽에서 실행변수의 기울기가 달라질 수 있도록 $D_x$와 기준값 $X_0$를 중심으로 변환한 실행변수를 상호작용시킨다.
+
+$$
+Y = \alpha + \rho D_x + \gamma (X - X_0) + \delta (X - X_0) D_x + \epsilon
+$$
+
+$X_0$를 중심화하면 $\rho$가 기준값에서의 평균 처치효과라는 해석을 유지한다. 기준값에서 멀어지면 처치효과는 $\rho + \delta(X - X_0)$이지만, 그 영역의 외적 타당성은 의문스럽다.
+
+**(비선형 추세와 기울기 변화)** 가장 유연한 모수적 설정은 곡률과 기울기 변화를 모두 허용한다.
+
+$$
+\begin{aligned}
+Y &= \alpha + \rho D_x + \gamma_1 (X - X_0) + \gamma_2 (X - X_0)^2 \\
+  &+ \delta_1 (X - X_0) D_x + \delta_2 (X - X_0)^2 D_x + \epsilon
+\end{aligned}
+$$
+
+기준값에서 떨어진 곳의 처치효과는 $\rho + \delta_1(X - X_0) + \delta_2(X - X_0)^2$다. 다시 말해 기준값에서 멀리 떨어진 영역의 외적 타당성은 취약하며, 모형화할 비선형성의 정도는 항상 민감도 분석이 필요한 판단의 문제다.
+
+### 비모수 모형: 국소 회귀
+
+[비모수 모형](#sec-nonparametric-regression)(예: 국소 다항 회귀)은 함수형에 대한 강한 가정을 피하여 더 큰 유연성을 제공한다. 전체 자료에 하나의 방정식을 적합하는 대신, 이러한 방법은 각 자료점 주변에서 선형 또는 이차 다항식을 사용해 관계를 **국소적으로** 추정한다.
+
+-   기준값 근처의 관측치에 가중치를 부여한다.
+-   전역 다항 회귀보다 유연하다.
+
+국소 선형 회귀와 같은 국소 회귀 방법은 다음과 같은 방식으로 전역 고차 다항식의 단점을 보완한다.
+
+-   과도한 복잡성 없이 국소 패턴에 적응하여 **과적합을 줄인다**.
+-   다항식 차수의 임의적 선택에 덜 민감하므로 **안정적인 추정치를 제공한다**.
+-   더 신뢰할 수 있는 신뢰구간을 보장하여 **추론을 개선한다**.
+
+유연성과 강건성의 균형을 이루기 때문에 응용 연구에서는 국소 회귀 기법을 전역 다항 모형보다 선호하는 경우가 많다.
+
+국소 회귀 추정량은 **커널 함수**를 사용하여 기준값으로부터의 거리에 따라 관측치에 가중치를 부여한다. 커널 선택은 거리가 멀어질 때 관측치의 영향력이 얼마나 빠르게 감소하는지에 영향을 준다. RD 분석에서 흔히 사용하는 커널은 다음과 같다.
+
+1.  **균등 커널**: 대역폭 안의 모든 관측치에 동일한 가중치를 부여한다. 단순하지만 기준값에서 먼 단위의 가중치를 낮추지 않는다.
+2.  **삼각 커널**: 기준값과의 거리에 따라 가중치가 선형으로 감소한다. 기준값에 가장 가까운 관측치에 최대 가중치를 부여하므로 RD에서 자주 선호된다.
+3.  **Epanechnikov 커널**: 커널 추정량 중 평균 적분 제곱오차를 최소화하는 포물선형(이차) 가중 함수로, 이론적으로 최적이다.
+4.  **4차(Biweight) 커널**: Epanechnikov보다 더 부드럽게 감소하는 고차 포물선형 커널이다.
+5.  **Triweight 커널**: 경계 민감성이 약간 커지는 대신 더욱 부드러운 추정치를 제공하는 3차 가중 함수다.
+6.  **가우시안 커널**: 가중치에 정규분포를 사용하므로 모든 관측치가 양의 가중치(빠르게 감소하기는 함)를 받는다. 매끄러운 추정치를 제공하지만 지지집합이 유계가 아니다.
+
+실무에서 삼각 커널은 국소 선형 회귀에 대해 경계에서 최적이므로 현대 RD 소프트웨어(예: `rdrobust`)의 기본 선택이다. 다른 커널 중 무엇을 선택해도 결과가 크게 바뀌는 경우는 드물지만, 커널별 민감도는 여전히 표준적인 강건성 검토다.
+
+**모범 사례:** 여러 모형 설정을 사용하여 결과의 일관성을 확인하라.
+
+### 비선형성과 불연속의 구분 {#sec-rd-nonlinearity-vs-discontinuity}
+
+RD 설계에서 가장 중요한 추론 위험은 매끄러운 비선형 추세를 인과적 점프로 착각하는 것이다. 기준값 양쪽에 선형 적합을 강제한 회귀는 기준값에서 실제로 아무 일도 일어나지 않더라도 참된 관계가 휘어 있으면 불연속을 보고한다. 그림 \@ref(fig:rd-nonlinearity-vs-discontinuity)는 세 경우를 대비한다. 처음 두 경우는 진정한 불연속을 보이며, 하나는 선형 추세이고 다른 하나는 비선형 추세로 양쪽을 실제 점프가 나눈다. 세 번째는 점프가 전혀 없는 하나의 매끄러운 3차 관계를 보이지만, 양쪽에 순진한 선형 적합을 적용하면(점선 구간) 곡률만으로 겉보기 간격이 만들어진다.
+
+```{r rd-nonlinearity-vs-discontinuity, fig.cap="실행변수의 세 가지 상황. 사례 1과 2는 기준값에서 실제로 불연속이 나타나는 경우이고, 사례 3은 점프가 없는 매끄러운 3차 추세이지만 구간별 선형 적합(점선)이 잘못된 불연속을 암시하는 경우다."}
+library(ggplot2)
+library(dplyr)
+
+set.seed(123)
+
+make_rd_case <- function(case_number) {
+    n <- 1000
+    x <- runif(n, -1, 1)
+    if (case_number == 1) {
+        y <- ifelse(x < 0, 2 * x + 3, 2 * x + 5) + rnorm(n, sd = 0.5)
+        label <- "Case 1: Linear trend, true jump"
+        fit <- "lm"
+    } else if (case_number == 2) {
+        y <- ifelse(x < 0, 2 * x^2 + 3, 2 * x^2 + 5) + rnorm(n, sd = 0.5)
+        label <- "Case 2: Nonlinear trend, true jump"
+        fit <- "loess"
+    } else {
+        y <- 2 * x^3 + rnorm(n, sd = 0.5)
+        label <- "Case 3: Smooth cubic, no jump"
+        fit <- "spurious"
+    }
+    tibble(x = x, y = y, case = label, fit = fit)
+}
+
+rd_cases <- bind_rows(lapply(1:3, make_rd_case))
+
+ggplot(rd_cases, aes(x, y)) +
+    geom_point(alpha = 0.3, size = 0.6) +
+    # honest fit on each side for the two true-jump cases
+    geom_smooth(
+        data = filter(rd_cases, fit != "spurious"),
+        aes(group = interaction(case, x >= 0), method = NULL),
+        method = "loess", se = FALSE, color = "#1b9e77", formula = y ~ x
+    ) +
+    # spurious piecewise-linear fit that fakes a jump from curvature
+    geom_smooth(
+        data = filter(rd_cases, fit == "spurious"),
+        aes(group = x >= 0),
+        method = "lm", se = FALSE, linetype = "dashed",
+        color = "#d95f02", formula = y ~ x
+    ) +
+    geom_vline(xintercept = 0, linetype = "dashed", color = "grey40") +
+    facet_wrap(~case, scales = "free_y") +
+    labs(x = "Running variable", y = "Outcome") +
+    causalverse::ama_theme()
+```
+
+이 실수를 막는 방법은 두 가지다. 첫째, 곡률을 흡수할 만큼 유연한 다항 회귀나 국소 회귀를 적합하여 비선형성을 직접 모형화하되, 선택한 차수는 판단의 문제이므로 민감도 분석을 수행해야 한다 [@gelman2019high]. 둘째, 어떤 매끄러운 함수든 근사적으로 선형이 되는 기준값 근처의 관측치로 구간을 좁혀, 국소 선형 적합이 곡률을 점프와 혼동할 가능성을 낮추는 것이다. 두 전략은 서로를 보강한다. 유연한 전역 적합과 좁은 국소 적합 모두에서 살아남는 결과가 특정 함수형에 의존하는 결과보다 훨씬 신뢰할 만하다.
+
+------------------------------------------------------------------------
+
+## 형식적 정의
+
+직관을 살펴보았으므로, 이제 이 장 전체에서 사용할 표기법을 명확히 하자. 기억해야 할 대상은 간단하다. 처치를 결정하는 연속형 점수, 고정된 기준값, 그리고 단위가 처치를 받았는지를 나타내는 지시변수다.
+
+$X_i$를 실행변수, $c$를 기준값, $D_i$를 처치 지시변수라고 하자.
+
+$$ D_i = 1_{X_i > c} $$
+
+또는 다음과 같이 동치로 쓸 수 있다.
+
+$$ D_i =  \begin{cases} 1, & X_i > c \\ 0, & X_i < c \end{cases} $$
+
+여기서:
+
+-   $D_i$: 처치 배정
+
+-   $X_i$: 실행변수(연속형)
+
+-   $c$: 기준값
+
+### 식별 가정
+
+#### 연속성 기반 식별
+
+RD는 기준값에서의 [국소 평균 처치효과]를 추정한다.
+
+$$ \begin{aligned} \alpha_{SRDD} &= E[Y_{1i} - Y_{0i} | X_i = c] \\ &= E[Y_{1i}|X_i = c] - E[Y_{0i}|X_i = c] \\ &= \lim_{x \to c^+} E[Y_{1i}|X_i = x] - \lim_{x \to c^-} E[Y_{0i}|X_i = x] \end{aligned} $$
+
+이는 처치가 없을 때 잠재적 결과의 조건부 기댓값이 기준값 $c$에서 **연속적**이라는 가정에 의존한다.
+
+#### 국소 무작위화 기반 식별
+
+또는 작은 대역폭 $W$(즉, 기준값 주변의 이웃 구간) 안에서 국소 무작위화를 이용해 식별할 수 있다. 이 경우 [국소 평균 처치효과]는 다음과 같다.
+
+$$ \begin{aligned} \alpha_{LR} &= E[Y_{1i} - Y_{0i}|X_i \in W] \\ &= \frac{1}{N_1} \sum_{X_i \in W, D_i = 1} Y_i - \frac{1}{N_0} \sum_{X_i \in W, D_i = 0} Y_i \end{aligned} $$
+
+RD 추정치는 국소적이므로 전체 모집단에 일반화되지 않을 수 있다. 그러나 많은 응용에서는 [외적 타당성](#sec-external-validity)보다 [내적 타당성](#sec-internal-validity)이 주된 관심사다.
+
+------------------------------------------------------------------------
+
+## 추정과 추론
+
+### 국소 무작위화 기반 접근법
+
+국소 무작위화 접근법은 선택한 구간 $W = [c - w, c + w]$ 안에서 처치 배정이 **무작위 배정만큼 양호하다**고 추가로 가정한다. 이를 위해서는 다음이 필요하다.
+
+1.  $W$ 안의 실행변수 값에 대한 결합확률분포를 알고 있어야 한다.
+2.  $W$ 안에서 잠재적 결과가 실행변수와 독립이어야 한다.
+
+이는 [연속성 기반 식별](#sec-continuity-based-approach)보다 강한 가정이다. 회귀 함수가 $c$에서 매끄럽고 $W$ 안에서 $X_i$의 영향을 받지 않아야 하기 때문이다.
+
+연구자가 무작위 배정이 그럴듯하게 성립하는 구간 $W$를 **선택**할 수 있으므로 표본 크기가 작을 때가 많다.
+
+구간 $W$의 선택은 다음에 근거할 수 있다.
+
+1.  **처치 전 공변량 균형:** 기준값 양쪽의 공변량이 유사한지 확인한다.
+2.  **독립성 검정:** 결과와 실행변수의 독립성을 확인한다.
+3.  **영역 지식:** 구간 선택을 이론적 또는 실증적으로 정당화한다.
+
+추론에는 다음 방법을 사용할 수 있다.
+
+-   **(Fisher) 무작위화 추론**
+-   **(Neyman) 설계 기반 방법**
+
+------------------------------------------------------------------------
+
+### 연속성 기반 접근법 {#sec-continuity-based-approach}
+
+국소 다항 회귀 방법이라고도 하는 이 접근법은 기준값 주변에 다항 모형을 국소적으로 적합하여 처치효과를 추정한다. 전역 다항 회귀는 다음과 같은 문제 때문에 권장되지 않는다.
+
+-   **낮은 강건성**
+-   **과적합**
+-   **Runge 현상**(경계에서의 진동 행태)
+
+#### 국소 다항 추정 절차
+
+1.  다항식 차수와 가중 방식 선택
+2.  최적 대역폭 선택(MSE 또는 포함 오차 최소화)
+3.  관심 모수 추정
+4.  강건한 편향 보정 추론 수행
+
+이 방법은 추정을 국소적으로 유지하여 기준값에서의 처치효과를 정확히 포착한다.
+
+------------------------------------------------------------------------
+
+## 모형 설정 검토
+
+RD 설계의 성패는 자료에서 가정이 실제로 성립하는지에 달려 있으므로, 신뢰할 수 있는 적용에서는 여러 설정 검토를 수행해야 한다. 가장 중요한 것은 조작·정렬 검토다. 단위가 스스로 기준값을 넘나들 수 있다면 설계는 무너지고, 대역폭을 아무리 조정해도 이를 구할 수 없다. 다음은 균형 검토다. 기초 공변량의 불연속은 정책 이외의 무언가가 기준값에서 변한다는 뜻이기 때문이다. 그 밖의 검토인 가짜 기준값에서의 위약 검정, 대역폭 선택에 대한 강건성, 조작을 배제할 수 없을 때의 부분식별 구간은 관문이라기보다 확인적 증거로 해석하는 것이 적절하다.
+
+1.  [균형 검토](#sec-balance-checks)
+2.  [정렬, 뭉침 및 조작](#sec-sorting-bunching-and-manipulation)
+3.  [위약 검정]
+4.  [대역폭 선택에 대한 민감도]
+5.  [조작에 강건한 회귀 불연속 구간]
+
+------------------------------------------------------------------------
+
+### 균형 검토 {#sec-balance-checks}
+
+**평균 공변량의 불연속 검토**라고도 하는 이 검정은 처치의 영향을 받지 않아야 하는 공변량이 기준값에서 불연속을 보이는지 살펴본다.
+
+-   귀무가설($H_0$): 의사 결과(즉, 처치의 영향을 받지 않아야 하는 결과)에 대한 공변량의 평균 효과가 0이다.
+-   기각되면 RD 설계에 심각한 의문이 제기되므로 강력한 정당화가 필요하다.
+
+------------------------------------------------------------------------
+
+### 정렬, 뭉침 및 조작 {#sec-sorting-bunching-and-manipulation}
+
+**강제변수 분포의 불연속 검토**라고도 하는 이 검정은 연구 대상자가 처치에 들어가거나 빠지기 위해 실행변수를 조작하는지 탐지한다.
+
+개인이 실행변수를 조작할 수 있고 특히 기준값을 미리 알고 있다면, 이는 뭉침 행태(즉, 기준값 바로 위나 아래에 군집하는 행태)로 이어질 수 있다.
+
+-   처치가 바람직하다면 개인은 처치에 들어가려 하므로 기준값 바로 아래에 공백이 생긴다.
+-   처치가 바람직하지 않다면 개인은 처치를 피하려 하므로 기준값 바로 위에 공백이 생긴다.
+
+RD에서는 실행변수에 조작이 없다고 가정한다. 그러나 기업이나 개인이 자신의 위치를 전략적으로 조작하는 뭉침 행태는 이 가정을 위반한다.
+
+-   이 문제를 다루기 위해 뭉침 접근법은 반사실적 분포, 즉 조작이 없었다면 개인의 밀도가 어떻게 되었을지를 추정한다.
+
+-   그런 다음 관측 분포를 이 반사실적 분포와 비교하여 조작에 참여한 개인의 비율을 계산한다.
+
+-   표준 RD 틀에서는 관측 분포와 반사실적(조작이 없는) 분포가 같다고 가정하여 조작이 없음을 전제하므로 이 단계가 불필요하다.
+
+#### McCrary 정렬 검정 {#sec-mccrary-sorting-test}
+
+널리 사용되는 형식적 검정은 McCrary 밀도 검정[@mccrary2008manipulation]이며, 이후 @cattaneo2019practical이 이를 개선했다.
+
+-   귀무가설($H_0$): 실행변수의 밀도는 기준값에서 연속이다.
+-   대립가설($H_a$): 기준값에서 밀도 함수에 불연속(점프)이 있으며, 이는 조작을 시사한다.
+-   해석:
+    -   유의한 불연속은 조작을 시사하며 RD 가정을 위반한다.
+    -   $H_0$를 기각하지 못했다고 해서 타당성이 반드시 확인되는 것은 아니다. 일부 조작 형태는 탐지되지 않을 수 있기 때문이다.
+    -   양방향 조작이 있으면 이 검정은 이를 탐지하지 못한다.
+
+#### 조작 평가 지침
+
+-   @zhang2003estimation, @lee2009training, @aronow2019note는 조작 위험을 평가하는 기준을 제시한다.
+-   가능한 조작 시도를 예측하려면 **연구 설계를 속속들이 이해하는 것**이 중요하다.
+-   조작은 흔히 **단방향**으로 일어난다. 즉 연구 대상자가 기준값을 기준으로 한 방향으로만 이동한다. 드물게 양방향 조작이 발생할 수 있지만 대개 서로 상쇄된다.
+-   현실에서는 부분적 조작도 관찰할 수 있다(예: 연구 대상자가 불완전하게만 조작할 수 있는 경우). 그러나 이를 보통 Fuzzy RD처럼 다루므로 식별 문제는 발생하지 않는다. 반대로 완전한 조작은 심각한 식별 문제를 일으킨다.
+
+#### 뭉침 방법론
+
+-   뭉침은 개인이 실행변수의 특정 값(예: 정책 기준값)을 스스로 선택할 때 발생한다. 검토는 @kleven2016bunching을 참조하라.
+-   이 방법은 반사실적 분포(조작이 없었다면 나타났을 밀도)를 추정하는 데 도움을 준다.
+-   관측 밀도와 반사실적 밀도를 비교하면 조작한 개인의 비율을 추정할 수 있다.
+
+실행변수와 결과가 **동시에 결정된다면**, 일관된 추정을 위해 수정된 RD 추정량을 사용할 수 있다 [@bajari2011regression].
+
+1.  단방향 조작: 개인이 기준값을 기준으로 **한 방향**으로만 이동한다(도구변수의 단조성 가정과 유사하다).
+2.  유계 조작(규칙성 가정): 기준값에서 먼 개인의 밀도는 영향을 받지 않는다 [@blomquist2021bunching; @bertanha2021better].
+
+#### 뭉침 분석 절차
+
+1.  뭉침이 발생하는 구간을 식별한다(@bosch2020data에 근거). 조작 구간을 바꾸어 강건성 검토를 수행한다.
+2.  조작이 없는 반사실적 분포를 추정한다.
+3.  추론을 위한 표준오차를 계산할 수 있다(@chetty2016effects를 따름). 이때 잔차의 부트스트랩 재표본추출을 사용하여 구간별 개인 수를 추정한다. 다만 자료가 큰 경우 이 단계는 불필요할 수 있다.
+
+뭉침 검정에서 조작이 탐지되지 않으면 [위약 검정]으로 진행한다.
+
+------------------------------------------------------------------------
+
+#### McCrary 밀도 검정(강제변수의 불연속)
+
+```{r}
+library(rdd)
+
+set.seed(1)
+```
+
+그림 \@ref(fig:rd-local-polynomial-reg-wo-dis)는 불연속이 없는 시뮬레이션 자료를 보여 준다.
+
+```{r rd-local-polynomial-reg-wo-dis, fig.cap='Local polynomial regression without discontinuity at cutoff.', fig.alt='Scatter plot with data points and two smooth fitted curves, one on each side of the vertical cutoff at zero. Solid lines indicate the fitted regression curves, while dashed lines show confidence bands.'}
+# Simulated data without discontinuity
+x <- runif(100, -1, 1)
+DCdensity(x, 0)  # No discontinuity
+```
+
+그림 \@ref(fig:rd-local-polynomial-reg-w-dis)는 불연속이 있는 시뮬레이션 자료를 보여 준다.
+
+```{r rd-local-polynomial-reg-w-dis, fig.cap='Local polynomial regression with discontinuity at cutoff.', fig.alt='Scatter plot with data points and two smooth fitted curves, one on each side of the vertical cutoff at zero. Solid lines indicate the fitted regression curves, while dashed lines show confidence bands.'}
+# Simulated data with discontinuity
+x <- runif(1000, -1, 1)
+x <- x + 2 * (runif(1000, -1, 1) > 0 & x < 0)
+DCdensity(x, 0)  # Discontinuity detected
+```
+
+#### Cattaneo 밀도 검정(개선 버전)
+
+```{r}
+library(rddensity)
+
+# Simulated continuous density
+set.seed(1)
+x   <- rnorm(100, mean = -0.5)
+rdd <- rddensity(X = x, vce = "jackknife")
+summary(rdd)
+
+# Plot requires customization (refer to package documentation)
+# rdplotdensity(rdd, x, 
+#               xlabel = "Running Variable",
+#               ylabel = "Density")
+```
+
+### 위약 검정
+
+**위조 검토**라고도 하는 위약 검정은 처치 기준값 이외의 지점에서 불연속이 나타나는지 평가한다. 이를 통해 관측된 효과가 방법이나 자료의 산물이 아니라 인과적인 것인지 확인할 수 있다.
+
+-   기준값 이외의 값($X_i < c$ 또는 $X_i \geq c$)에서 결과의 점프가 없어야 한다.
+-   동일한 대역폭을 사용하면서 실행변수상의 기준값을 이동하여 결과 조건부 평균의 불연속을 검토한다.
+-   이 접근법은 실험 설계의 [균형 검토](#sec-balance-checks)와 유사하며, 사전 차이가 없음을 확인한다. 관측 가능한 변수만 검정할 수 있고 관측 불가능한 변수는 검정할 수 없다는 점을 기억하라.
+
+타당한 RD 설계에서는 [매칭 방법](#sec-matching-methods)이 불필요하다. [무작위 실험](#sec-the-gold-standard-randomized-controlled-trials)과 마찬가지로 기준값 양쪽에서 자연스럽게 균형이 이루어져야 한다. 조정이 필요하다면 **RD 가정이 타당하지 않을 수 있음**을 뜻한다.
+
+#### 위약 검정의 적용
+
+1.  **사전 결정 공변량의 불연속 부재 검정:** 처치의 영향을 받지 않아야 하는 공변량은 기준값에서 점프를 보여서는 안 된다.
+2.  **다른 불연속 검정:** 실행변수상의 다른 임의의 지점에서 불연속이 있는지 확인한다.
+3.  **위약 결과 사용:** 처치의 영향을 받지 않아야 하는 결과변수에서 유의한 불연속이 나타나면 RD의 타당성에 우려가 제기된다.
+4.  **공변량에 대한 민감도 평가:** 공변량을 포함하거나 제외해도 RD 추정치가 크게 달라져서는 안 된다.
+
+#### 수학적 설정
+
+기준값 양쪽에서 관측 가능한 특성의 균형은 다음 식으로 검정할 수 있다.
+
+$$
+Z_i = \alpha_0 + \alpha_1 f(X_i) + I(X_i \geq c) \alpha_2 + [f(X_i) \times I(X_i \geq c)]\alpha_3 + u_i
+$$
+
+여기서:
+
+-   $X_i$ = 실행변수
+
+-   $Z_i$ = 사전 결정 특성(예: 연령, 교육 수준 등)
+
+-   $Z_i$가 처치의 영향을 받지 않는다면 $\alpha_2$는 0이어야 한다.
+
+여러 공변량 $Z_i$를 동시에 검정할 때는 **결합분포**를 시뮬레이션하여 다중 비교로 인한 위양성을 피할 수 있다. 공변량이 **독립적**이라면 이 단계가 불필요하지만, 실제로 그런 독립성은 드물다.
+
+------------------------------------------------------------------------
+
+### 대역폭 선택에 대한 민감도
+
+대역폭 선택은 RD 추정에서 매우 중요하다. 대역폭을 선택하는 방법에는 다음과 같은 것들이 있다.
+
+1.  **임의적 또는 실질적 판단 기반:** 이론적 또는 실증적 추론에 근거한다.
+2.  **자료 기반 선택(교차검증):** 예측 오차를 최소화하도록 대역폭을 최적화한다.
+3.  **보수적 접근법:** 강건한 최적 대역폭 선택 방법을 사용한다(예: [@calonico2020optimal]).
+
+목표는 추정된 처치효과와 실제 처치효과 사이의 **평균제곱오차(MSE)를 최소화**하는 것이다.
+
+### 민감도 평가
+
+-   합리적인 대역폭을 선택했을 때 결과가 **일관적**이어야 한다.
+-   처치효과 추정에 최적인 대역폭은 공변량 검정에 최적인 대역폭과 **다를** 수 있지만, 두 값은 상당히 가까워야 한다.
+
+```{r}
+# Load required package
+library(rdd)
+
+# Simulate some data
+set.seed(123)
+n <- 100  # Sample size
+
+# Running variable centered around 0
+running_var <- runif(n, -1, 1)  
+
+# Treatment assigned at cutpoint 0
+treatment   <- ifelse(running_var >= 0, 1, 0)  
+
+# Outcome variable
+outcome_var <- 2 * running_var + treatment * 1.5 + rnorm(n)  
+
+# Compute the optimal Imbens-Kalyanaraman bandwidth
+bandwidth <-
+    IKbandwidth(running_var,
+                outcome_var,
+                cutpoint = 0,
+                kernel = "triangular")
+
+# Print the bandwidth
+print(bandwidth)
+```
+
+------------------------------------------------------------------------
+
+#### `rdrobust`를 이용한 현대적 대역폭 선택과 강건한 추론
+
+`rdd` 패키지는 2016년 이후 CRAN에서 사실상 유지보수되지 않고 있다. Sharp 및 Fuzzy RD 설계에서 대역폭 선택과 점추정 모두에 대한 사실상의 현대적 표준은 `rdrobust` 패키지 [@calonico2014robust; @calonico2020optimal]이며, 다음을 구현한다.
+
+- **Sharp, Fuzzy 및 Kink RD 설계를 위한 MSE·CER 최적 대역폭 선택기**(`rdbwselect()`).
+- 최적 대역폭으로 인해 발생하는 편향을 명시적으로 반영하는 **강건한 신뢰구간**과 **편향 보정 점추정치**(`rdrobust()`).
+
+위의 `rdd` 예제는 이전 방식에 대한 참고와 교육적 연속성을 위해 남겨 두었다. 새로운 응용 연구에서는 아래의 절차를 권장한다.
+
+```{r, eval=FALSE}
+# install.packages("rdrobust")
+library(rdrobust)
+
+# Use the same simulated data: outcome_var, running_var, cutpoint = 0
+# Step 1: CCT (Calonico-Cattaneo-Titiunik) optimal bandwidth selection
+bw_cct <- rdbwselect(
+    y         = outcome_var,
+    x         = running_var,
+    c         = 0,
+    bwselect  = "mserd",   # MSE-optimal common bandwidth
+    kernel    = "triangular"
+)
+summary(bw_cct)
+
+# Step 2: Bias-corrected point estimate with robust CIs
+rd_fit <- rdrobust(
+    y      = outcome_var,
+    x      = running_var,
+    c      = 0,
+    kernel = "triangular"
+)
+summary(rd_fit)
+```
+
+`summary(rd_fit)` 출력에는 세 행이 보고된다. **통상적** 추정치(편향 보정 없음), **편향 보정** 추정치, 그리고 추론에 권장되는 신뢰구간을 제공하는 **강건** 추정치다. 양측 MSE 최적 대역폭 또는 포함오차율(CER) 최적 선택기를 사용하는 다른 설계에서는 `bwselect`를 `"msetwo"` 또는 `"cerrd"`로 바꾼다. Fuzzy 설계에서는 `fuzzy` 인자로 처치 지시변수를 제공한다.
+
+> **실무 참고:** `rdrobust`가 사실상의 현대적 표준이다. `rdd` 패키지는 이전 방식에 대한 참고로 남겨 두었지만, 새로운 연구에서는 대역폭 선택과 추론 모두에 `rdrobust`를 사용해야 한다.
+
+------------------------------------------------------------------------
+
+### 조작에 강건한 회귀 불연속 구간
+
+회귀 불연속 설계는 연구 대상 행위자가 실행변수 $X_i$를 조작할 수 없다는 가정에 의존한다. 그러나 @mccrary2008manipulation은 기준값에서 $X_i$ 밀도의 불연속이 조작을 나타낼 수 있으며, 이 경우 RD 추정치가 타당하지 않을 수 있음을 보였다. 조작이 탐지되었을 때의 일반적인 대응은 다음과 같다.
+
+-   조작이 탐지되지 않으면 RD 분석을 진행한다.
+-   조작이 탐지되면 "도넛홀" 방법(즉, 기준값 근처 관측치 제외)을 사용하지만, 이는 RD 원칙과 모순된다(표 \@ref(tab:rd-doughnut-hole)).
+
+그러나 이 규칙을 엄격히 따를 경우 두 가지 문제가 생길 수 있다.
+
+1.  위음성: 표본 크기가 작으면 조작을 탐지하지 못할 수 있으며, 조작이 여전히 실행변수에 영향을 준다면 편향된 추정치가 나온다.
+2.  정보성 자료의 손실: 조작이 탐지되더라도 자료에는 인과 추론에 유용한 정보가 남아 있을 수 있다.
+
+이러한 문제를 해결하기 위해 @gerard2020bounds는 조작된 관측치를 버리지 않고 반영하는 틀을 제시했다. 이 접근법은 다음을 수행한다.
+
+-   조작의 정도를 식별한다.
+-   처치효과의 최악의 경우 구간을 계산한다.
+-   RD 분석의 신뢰성을 유지하면서 조작된 관측치를 체계적으로 반영하는 방법을 제공한다.
+
+조작이 일어날 가능성이 낮다고 판단된다면 다음과 같은 민감도 분석을 대안으로 수행할 수 있다.
+
+-   서로 다른 가상의 $\tau$ 값이 구간에 미치는 영향을 검정한다.
+
+-   다양한 $\tau$ 가정에서 결과를 비교하여 강건성을 평가한다.
+
+------------------------------------------------------------------------
+
+독립 관측치 $(X_i, Y_i, D_i)$를 생각하자.
+
+-   $X_i$: 실행변수.
+-   $Y_i$: 결과변수.
+-   $D_i$: 처치 지시변수($X_i \geq c$이면 $D_i = 1$, 그 외에는 $D_i = 0$).
+
+**Sharp RD 설계**에서는 $D_i = I(X_i \geq c)$가 성립하는 반면, **Fuzzy RD 설계**에서는 처치가 확률적으로 배정된다.
+
+모집단은 두 유형의 단위로 구성된다.
+
+1.  **잠재적 배정 단위**($M_i = 0$): 표준 RD 틀을 따른다. 잠재적 결과 $Y_i(d)$와 잠재적 처치 상태 $D_i(x)$를 갖는다.
+2.  **항상 배정 단위**($M_i = 1$): 항상 기준값의 한쪽에 나타나며 잠재적 결과가 필요하지 않다.
+
+항상 배정 단위가 존재하지 않으면(어떤 단위에도 $M_i = 1$이 아니면) 표준 RD 모형이 성립한다.
+
+------------------------------------------------------------------------
+
+#### 핵심 가정
+
+조작에 강건한 틀은 정렬이 없다는 표준 RD 가정을 단방향 조작을 명시적으로 허용하는 더 약한 조건으로 대체한다. 실행변수의 밀도가 기준값에서 연속이어야 한다고 요구하는 대신 불연속을 허용하되 그 원천을 제한한다. 즉, "항상 배정된" 단위만 기준값 한쪽에 뭉칠 수 있고 매끄러운 하위 모집단은 통상적인 연속성 요건을 계속 만족한다. 아래 조건은 이러한 구분을 형식화한다. 구간 식별이 매끄러운 단위의 국소 독립성, 주변 밀도의 매끄러움, 조작된 단위가 도달할 수 있는 위치에 대한 단방향 제약에 동시에 의존하므로, 이 조건은 처음 보이는 것보다 강하다.
+
+1.  국소 독립성과 연속성:
+    -   잠재적 배정 단위 사이에서 처치 확률은 $c$에서 점프한다: $$
+        P(D = 1|X = c^+, M = 0) > P(D = 1|X = c^-, M = 0).
+        $$
+    -   반항자는 없다: $P(D^+ \geq D^- | X = c, M = 0) = 1$.
+    -   잠재적 결과와 처치 상태는 $c$에서 연속이다.
+    -   잠재적 배정 단위의 실행변수 밀도 $F_{X|M=0}(x)$는 $c$에서 미분 가능하다.
+2.  **잠재적 배정 단위에서 실행변수의 매끄러움**:
+    -   $F_{X|M=0}(x)$의 도함수는 $c$에서 연속이다.
+3.  **항상 배정된 단위에 대한 제약**:
+    -   항상 배정된 단위는 $P(X \geq c|M = 1) = 1$을 만족한다.
+    -   항상 배정된 단위의 실행변수 밀도 $F_{X|M=1}(x)$는 $c$에서 우미분 가능하다.
+    -   이 단방향 조작 가정으로 항상 배정된 단위의 비율을 식별할 수 있다.
+
+항상 배정된 단위가 존재하면 RD 설계는 사실상 **Fuzzy**가 된다. 잠재적 배정 단위 중 일부는 처치받고 일부는 처치받지 않으며, 항상 배정된 단위는 항상 처치받거나 항상 처치받지 않기 때문이다.
+
+#### 처치효과 추정
+
+잠재적 배정 단위에서 **관심 있는 인과효과**는 다음과 같다.
+
+$$
+\Gamma = E[Y(1) - Y(0) | X = c, D^+ > D^-, M = 0].
+$$
+
+이 모수는 잠재적 배정 순응자, 즉 실행변수가 기준값을 넘음에 따라 처치 상태가 영향을 받는 단위의 [국소 평균 처치효과](#sec-local-average-treatment-effects)를 나타낸다.
+
+#### 처치효과 구간화
+
+점식별이 실패하면 조작에 강건한 전략은 구간 식별로 물러선다. 하나의 인과 추정치를 복원하는 대신, 분석가는 자료와 완화된 가정에 부합하는 가장 좁은 구간을 구성한다. 첫 단계는 밀도 불연속에서 조작의 규모를 정량화하고, 두 번째 단계는 관측되지 않은 항상 배정 단위와 잠재적 배정 단위의 혼합에 대해 최악의 경우를 가정하여 방어 가능한 처치효과 범위를 제시한다.
+
+1.  **항상 배정 단위의 비율 추정**:
+    -   $c$에서 $X$의 밀도 불연속을 측정한다.
+    -   불연속이 클수록 항상 배정 단위의 비율이 높다.
+2.  **처치효과의 최악의 경우 구간 계산**:
+    -   조작이 존재하면 극단적 상황을 가정하여 처치효과를 추론해야 한다.
+    -   [Sharp RD 설계](#sec-sharp-regression-discontinuity-design)에서는 기준값 근처의 극단적 결과를 절사하여 구간을 추정한다.
+    -   [Fuzzy RD 설계](#sec-fuzzy-regression-discontinuity-design)에서는 항상 배정 단위의 존재를 고려하기 위한 추가 조정이 필요하다.
+
+이 접근법의 확장에서는 공변량과 경제적 행동 가정을 사용하여 구간을 더 정교하게 만든다.
+
+| **조작에 강건한 RD**                        | **도넛홀 RD**                         |
+|--------------------------------------|----------------------------------|
+| 기준값의 실제 관측자료를 사용한다.          | 기준값 근처의 관측치를 제외한다.       |
+| 인과효과를 직접 추정한다.     | 다른 영역에서 외삽한다.  |
+| 조작을 명시적으로 고려한다.             | 가상의 반사실적 세계를 가정한다. |
+| 조작에 대한 가정에 덜 민감하다. | 편향에 대한 강한 가정이 필요하다.      |
+
+표: (\#tab:rd-doughnut-hole) 조작에 강건한 RD 설계와 도넛홀 RD 설계의 비교.
+
+#### 식별 과제
+
+조작에 강건한 RD 설계의 핵심 과제는 **항상 배정된** 단위와 **잠재적 배정** 단위를 직접 구분할 수 없다는 점이다. 따라서 [LATE](#sec-local-average-treatment-effects) $\Gamma$는 점식별되지 않는다. 대신 $\Gamma$의 날카로운 구간을 설정한다.
+
+이 구간은 관측 분포에 대한 잠재적 결과 누적분포함수의 확률적 우위를 활용한다. 따라서 강한 모수적 가정 없이 처치효과를 추론할 수 있다.
+
+모집단 구조를 형식화하기 위해 단위를 다섯 유형으로 정의한다.
+
+-   **잠재적 배정 단위**:
+    -   $C_0$(순응자): $X \geq c$일 때 그리고 그때에만 처치받는다.
+    -   $A_0$(항상 수급자): $X$와 관계없이 항상 처치받는다.
+    -   $N_0$(절대 수급자): $X$와 관계없이 절대 처치받지 않는다.
+-   **항상 배정된 단위**:
+    -   $T_1$(처치받은 항상 배정 단위): 항상 기준값 이상에 나타나며 처치받는다.
+    -   $U_1$(처치받지 않은 항상 배정 단위): 항상 기준값 미만에 나타나며 처치받지 않는다.
+
+기준값 근처의 항상 배정 단위 비율을 나타내는 측도 $\tau$는 $c$에서 실행변수 밀도 $f_X$의 불연속을 사용하여 점식별된다.
+
+##### Sharp RD의 식별
+
+Sharp RD 설계에서는 다음과 같다.
+
+-   기준값 왼쪽의 단위는 잠재적 배정 단위다.
+-   이 단위들의 관측된 비처치 결과 분포 $Y(0)$는 기준값에서 잠재적 배정 순응자($C_0$)의 결과에 해당한다.
+-   $\Gamma$의 날카로운 구간을 추정하려면 순응자의 처치 결과($Y(1)$) 분포를 평가해야 한다.
+
+그러나 기준값에서 처치 결과($Y(1)$)에 관한 정보는 다음을 포함하는 처치 하위 모집단에서만 얻을 수 있다.
+
+-   잠재적 배정 순응자($C_0$)
+
+-   처치받은 항상 배정 단위($T_1$)
+
+그러므로 $\tau$가 점식별되면 $T_1$의 존재를 조정하여 $\Gamma$의 날카로운 구간을 구성할 수 있다.
+
+##### Fuzzy RD의 식별
+
+Fuzzy RD에서는 처치 배정이 결정론적이지 않다.
+
+<!-- The subpopulations observed in each treatment-status group at the cutoff are: -->
+
+<!-- | **Subpopulation** | **Unit Types Present** | -->
+
+<!-- |-------------------|------------------------| -->
+
+<!-- | $X = c^+, D = 1$  | $C_0, A_0, T_1$        | -->
+
+<!-- | $X = c^-, D = 1$  | $A_0$                  | -->
+
+<!-- | $X= c^+, D = 0$   | $N_0, U_1$             | -->
+
+<!-- | $X = c^-, D = 0$  | $C_0, N_0$             | -->
+
+<!-- *Source: Table on page 848 of @gerard2020bounds* -->
+
+<!-- Key Takeaways: -->
+
+-   **단위 유형과 조합**: 분석과 관련된 단위 유형은 다섯 가지이고 처치 배정 및 의사결정 조합은 네 가지다. 이러한 구분은 잠재적 결과를 분석하고 구간화하는 방식에 영향을 주므로 중요하다.
+-   **결과 분포**: 기준값에서 잠재적 배정 순응자의 잠재적 결과(처치 및 비처치 모두) 분포를 추정한다.
+-   목표는 기준값에서 잠재적 배정 순응자의 잠재적 결과 분포를 추정하는 것이다.
+
+#### 처치효과 구간화의 3단계 절차
+
+$\Gamma$의 날카로운 구간을 얻는 방법은 세 단계로 이루어진다.
+
+1.  처치 상태의 잠재적 결과 구간화:
+    -   관측된 처치 결과를 사용하여 $F_{Y(1)}(y | X = c, M = 0)$의 상한과 하한을 추정한다.
+2.  비처치 상태의 잠재적 결과 구간화:
+    -   관측된 비처치 결과를 사용하여 $F_{Y(0)}(y | X = c, M = 0)$의 상한과 하한을 추정한다.
+3.  $\Gamma$의 구간 도출:
+    -   1단계와 2단계의 구간을 사용하여 [국소 평균 처치효과](#sec-local-average-treatment-effects)의 날카로운 상한과 하한을 계산한다.
+
+##### 극단값 고려
+
+-   이 구간은 잠재적 결과 분포에 대한 극단적 가정을 고려하여 최악의 경우를 반영한다.
+-   이 구간은 날카롭지만(즉, 추가 가정 없이는 더 좁힐 수 없지만) 경험적으로 의미가 있다.
+
+#### 확장
+
+1.  **분위수 처치효과(QTE)**
+
+평균 처치효과의 대안인 분위수 처치효과(QTE)는 결과 분포의 서로 다른 백분위수에 초점을 둔다. QTE 구간의 장점은 다음과 같다.
+
+-   극단값에 대한 민감성이 낮다: ATE 구간과 달리 결과 분포의 이상치에 덜 영향을 받는다.
+-   정책 분석에 더 유용하다: 효과가 모집단의 특정 부분에 집중되는지 확인하는 데 도움을 준다.
+
+조작이 있을 때의 QTE와 ATE:
+
+-   **ATE 추론은 조작에 매우 민감**하여 조작을 크게 가정할수록 신뢰구간이 크게 넓어진다.
+-   **QTE 추론은 상당한 조작이 있어도 의미를 유지한다**.
+
+2.  **이산 결과로의 확장**: 이 틀은 연속형 결과뿐 아니라 **이산형** 결과변수에도 적용된다.
+3.  **행동 가정의 역할**
+
+-   항상 배정 단위의 높은 처치 가능성에 대한 행동 가정은 구간을 정교화할 수 있다.
+-   예를 들어 대부분의 항상 배정 단위가 처치받는다고 가정하면 처치효과 구간을 더 좁힐 수 있다.
+
+4.  **공변량의 포함**
+
+-   처치 전 공변량을 포함하면 처치효과 구간을 정교화할 수 있다.
+-   공변량은 다음에 도움을 준다.
+    -   잠재적 배정 단위와 항상 배정 단위를 구분한다.
+    -   처치효과 이질성에 대한 추론을 개선한다.
+    -   관측 특성에 근거하여 단위 유형을 식별함으로써 정책 대상을 정하는 데 도움을 준다.
+
+```{r, eval = FALSE}
+devtools::install_github("francoisgerard/rdbounds/R")
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(formattable)
+library(data.table)
+library(rdbounds)
+set.seed(123)
+df <- rdbounds_sampledata(1000, covs = FALSE)
+head(df)
+
+rdbounds_est <-
+    rdbounds(
+        y = df$y,
+        x = df$x,
+        # covs = as.factor(df$cov),
+        treatment = df$treatment,
+        c = 0,
+        discrete_x = FALSE,
+        discrete_y = FALSE,
+        bwsx = c(.2, .5),
+        bwy = 1,
+        
+        # for median effect use 
+        # type = "qte", 
+        # percentiles = .5, 
+        
+        kernel = "epanechnikov",
+        orders = 1,
+        evaluation_ys = seq(from = 0, to = 15, by = 1),
+        refinement_A = TRUE,
+        refinement_B = TRUE,
+        right_effects = TRUE,
+        yextremes = c(0, 15),
+        num_bootstraps = 5
+    )
+
+```
+
+```{r}
+rdbounds_summary(rdbounds_est, title_prefix = "Sample Data Results")
+```
+
+```{r, message=FALSE, warning=FALSE}
+rdbounds_est_tau <-
+    rdbounds(
+        y = df$y,
+        x = df$x,
+        # covs = as.factor(df$cov),
+        treatment = df$treatment,
+        c = 0,
+        discrete_x = FALSE,
+        discrete_y = FALSE,
+        bwsx = c(.2, .5),
+        bwy = 1,
+        kernel = "epanechnikov",
+        orders = 1,
+        evaluation_ys = seq(from = 0, to = 15, by = 1),
+        refinement_A = TRUE,
+        refinement_B = TRUE,
+        right_effects = TRUE,
+        potential_taus = c(.025, .05, .1, .2),
+        yextremes = c(0, 15),
+        num_bootstraps = 5
+    )
+```
+
+그림 \@ref(fig:rd-ate-share-always-assigned)은 항상 배정 단위의 비율별 평균 처치효과를 보여 준다.
+
+```{r rd-ate-share-always-assigned, fig.cap='Robustness of average treatment effect to share of always-assigned units.', fig.alt='Line chart showing ATE estimates plotted against the share of always-assigned units. Two solid lines with dots indicate upper and lower bounds of the estimated ATE as the share increases from 0 to 0.2. Dotted lines represent confidence intervals, and a red horizontal line marks zero.'}
+causalverse::plot_rd_aa_share(rdbounds_est_tau) # For SRD (default)
+# causalverse::plot_rd_aa_share(rdbounds_est_tau, rd_type = "FRD")  # For FRD
+```
+
+## Fuzzy 회귀 불연속 설계 {#sec-fuzzy-regression-discontinuity-design}
+
+Fuzzy 회귀 불연속 설계는 기준값의 배정 규칙이 처치 상태를 완벽히 결정하지 않고 처치 확률에 불연속을 일으킬 때 사용한다. 기준값을 넘는 것이 처치를 완전히 결정하는 Sharp RD 설계와 달리, Fuzzy RD에서는 기준값 양쪽의 일부 개인이 처치받을 수도 있고 받지 않을 수도 있다.
+
+처치가 기준값에서 엄격히 배정되지 않으면 결정론적 배정을 가정하는 통상적인 RD 추정량은 **타당하지 않다**. 대신 기준값을 **도구변수**로 사용하여 **순응자**(즉 기준값을 넘는지에 따라 처치 상태가 달라지는 개인)의 처치효과를 추정한다.
+
+개인이 기준값 이상인지 미만인지를 나타내는 지시변수 $Z_i$(즉 처치 배정의 도구변수)를 정의하자.
+
+$$
+Z_i =
+\begin{cases}
+1 & \text{if } X_i \geq c \\
+0 & \text{if } X_i < c
+\end{cases}
+$$
+
+이 변수 $Z_i$가 처치변수 $D_i$의 도구변수로 기능하는 이유는 다음과 같다.
+
+-   처치($D_i$)와 강하게 상관된다.
+
+-   외생적이다. 즉 처치에 미치는 효과를 통해서만 결과에 영향을 준다.
+
+### 순응 유형
+
+처치 배정이 기준값 규칙에서 벗어날 수 있게 하면 모집단은 기준값을 넘을 때 각 단위의 처치 상태가 어떻게 변하는지에 따라 행동적으로 구분되는 집단으로 나뉜다. [도구변수](#sec-instrumental-variables) 문헌에서 가져온 이 분류 때문에 Fuzzy RD는 순수 회귀 기반 추정량이 아니라 IV 추정량이 된다. 아래 네 유형은 기준값에 대한 반사실적 반응으로 모집단을 나누며, 이 중 불연속으로 실제 식별되는 유형은 순응자뿐이다. 항상 수급자와 절대 수급자에 대해서는 도구변수에 따라 처치 상태가 변하지 않으므로 추정량이 아무것도 말해 주지 않으며, 단조성 가정으로 반항자는 배제된다.
+
+1.  순응자($C_0$): $X_i \geq c$일 때 그리고 그때에만 처치받는 개인.
+2.  항상 수급자($A_0$): $X_i \geq c$인지와 관계없이 항상 처치받는 개인.
+3.  절대 수급자($N_0$): $X_i \geq c$여도 절대 처치받지 않는 개인.
+4.  반항자(단조성 위반으로 0이라고 가정): $X_i < c$일 때 처치받지만 $X_i \geq c$일 때는 처치받지 않는 개인.
+
+**Fuzzy RD 추정량**은 처치 상태가 $Z_i$에 의존하므로 **순응자에 대해서만** 처치효과를 식별한다.
+
+### 국소 평균 처치효과 추정
+
+우리는 **불연속의 비율**을 사용하여 [LATE](#sec-local-average-treatment-effects)를 추정한다.
+
+$$
+\text{LATE} = \frac{\lim\limits_{x \downarrow c}E[Y|X = x] - \lim\limits_{x \uparrow c}E[Y|X = x]}{\lim\limits_{x \downarrow c } E[D |X = x] - \lim\limits_{x \uparrow c}E[D |X=x]}
+$$
+
+직관적으로 이 식은 다음을 나타낸다.
+
+$$
+\text{LATE} = \frac{\text{Discontinuity in } E[Y|X]}{\text{Discontinuity in } E[D|X]}
+$$
+
+여기서:
+
+-   분자는 기준값에서 기대 결과의 점프를 포착한다.
+
+-   분모는 기준값에서 처치 확률의 점프를 포착한다.
+
+이 비율은 몇 가지 핵심 가정하에서 타당하다. 각 가정은 IV 식별에서 익숙한 조건을 반영하지만 여기서는 기준값에 국소적으로 부과된다. 연속성은 기준값에서 결과를 점프시키는 다른 결정요인을 배제하고, 단조성은 반항자를 배제하여 LATE가 일관된 해석을 갖도록 하며, 1단계 관련성은 비율의 분모가 0에서 충분히 떨어져 있도록 하여 추정량을 잘 정의한다. 이 조건들이 함께 분자와 분모의 기술적 점프를 순응자 하위 모집단의 인과적 양으로 바꾼다.
+
+1.  **잠재적 결과의 연속성:** $d \in \{0,1\}$ 모두에 대해 $E[Y(d)|X]$가 $X = c$에서 연속이다.
+2.  **단조성:** 반항자가 없다($P(D^+ \geq D^- | X = c) = 1$).
+3.  **1단계 관련성:** $X = c$에서 $P(D = 1 | X)$에 불연속이 있다.
+
+이 조건들이 성립하면 Fuzzy RD 추정량은 순응자에 대한 처치의 인과효과를 타당하게 추정한다.
+
+### 기댓값을 이용한 동등한 표현
+
+We can also define [LATE](#sec-local-average-treatment-effects) in terms of **conditional expectations of treatment and outcome**:
+
+$$
+\lim_{\epsilon \to 0} \frac{E[Y |Z = 1] - E[Y |Z=0]}{E[D|Z = 1] - E[D|Z = 0]}
+$$
+
+where $Z$ is the instrument (indicator for being above the cutoff). This approach highlights the IV nature of fuzzy RD.
+
+### 추정 전략
+
+There are two equivalent ways to estimate the [LATE](#sec-local-average-treatment-effects) in practice:
+
+#### 접근법 1: 2단계 추정
+
+1.  **Estimate Sharp RD for the Outcome** $Y$:
+    -   Regress $Y$ on $X$ using a local linear regression on either side of $c$.
+    -   Estimate the discontinuity in $E[Y|X]$ at $c$.
+2.  **Estimate Sharp RD for the Treatment** $D$:
+    -   Regress $D$ on $X$ using a local linear regression on either side of $c$.
+    -   Estimate the discontinuity in $E[D|X]$ at $c$.
+3.  **Compute the Ratio**:
+    -   Divide the estimated discontinuity in $E[Y|X]$ by the estimated discontinuity in $E[D|X]$.
+
+Mathematically:
+
+$$
+\widehat{\text{LATE}} = \frac{\widehat{E[Y \mid X = c^+]} - \widehat{E[Y \mid X = c^-]}}{\widehat{E[D \mid X = c^+]} - \widehat{E[D \mid X = c^-]}}
+$$
+#### 접근법 2: 도구변수 회귀
+
+-   Subset the data to observations close to $c$.
+
+-   Use $Z_i$ (above/below cutoff indicator) as an instrument for $D_i$ in a two-stage least squares regression:
+
+    1.  **First-stage regression (predicting treatment using the cutoff indicator):**
+
+        $$
+        D_i = \alpha + \beta Z_i + \gamma X_i + \epsilon_i
+        $$
+
+        -   This captures the effect of the cutoff on treatment assignment.
+
+    2.  **Second-stage regression (estimating treatment effect using predicted** $D_i$):
+
+        $$
+        Y_i = \delta + \tau \widehat{D}_i + \lambda X_i + \nu_i
+        $$
+
+        -   The coefficient $\tau$ gives the [LATE estimate](#sec-local-average-treatment-effects).
+
+### 실무적 고려사항
+
+-   **Bandwidth Selection**: Only observations near the cutoff should be used. Methods like **cross-validation** or @calonico2020optimal optimal bandwidth selection can help.
+-   **Polynomial Order**: A local linear model is typically preferred, but higher-order polynomials may be used cautiously.
+-   **Robust Inference**: Standard errors should be computed using heteroskedasticity-robust and clustered standard errors if necessary.
+-   **Strong first-stage** (e.g., $F$-stat $\ge$ 16); no exclusion restriction violations; same model for both outcome and treatment take-up.
+
+### Fuzzy RD 절차
+
+A complete fuzzy RD analysis proceeds through three connected stages: visual diagnosis, two-stage estimation, and a battery of robustness checks. Treating these as a sequence rather than a checklist matters, because each stage informs the next. The visual stage builds intuition about whether a discontinuity exists in the outcome and whether the cutoff actually shifts the probability of treatment, the estimation stage formalizes that intuition through two-stage least squares, and the robustness stage stress-tests the resulting estimate against the most common threats to RD validity. Skipping the visualization stage in particular tends to mask cases where the first stage is too weak for IV inference to be credible.
+
+#### 시각화
+
+1.  Graph the Outcome Variable:
+    -   Compute the average outcome within bins of the running variable $X_i$.
+    -   Choose bins large enough to display smooth trends but small enough to reveal discontinuities at the cutoff.
+    -   Overlay a smoothed regression line on either side of the cutoff to visualize any jumps.
+2.  Graph the Probability of Treatment:
+    -   Compute the average treatment probability within the same bins.
+    -   Plot $E[D|X]$ to check for a discontinuity at $X = c$, confirming the first-stage relevance of the instrument.
+
+#### 처치효과 추정
+
+Use Two-Stage Least Squares to estimate the [Local Average Treatment Effect](#sec-local-average-treatment-effects):
+
+1.  First Stage (Predict Treatment Using Cutoff Indicator $Z_i$): $$
+    D_i = \alpha + \beta Z_i + \gamma X_i + \epsilon_i
+    $$
+    -   This regression captures how treatment probability changes at the cutoff.
+    -   The coefficient $\beta$ measures the **jump in treatment probability** at $X = c$.
+2.  Second Stage (Estimate Outcome Using Predicted Treatment): $$
+    Y_i = \delta + \tau \widehat{D}_i + \lambda X_i + \nu_i
+    $$
+    -   The coefficient $\tau$ gives the [LATE](#sec-local-average-treatment-effects), which estimates the treatment effect for compliers.
+
+#### 강건성 검토
+
+The robustness battery serves a different purpose from the point estimation above: it probes whether the assumptions underlying that estimate are credible in the data at hand. Each check below targets a specific failure mode. Covariate jumps speak to the no-confounding-discontinuity assumption, the McCrary density test addresses manipulation of the running variable (see \@ref(sec-mccrary-sorting-test)), placebo cutoffs guard against spurious patterns that look like discontinuities, and bandwidth sensitivity exposes overreliance on a particular window. A fuzzy RD estimate that survives all of these checks is far more defensible than one that simply emerges from a single specification.
+
+1.  Assess Possible Jumps in Other Covariates:
+    -   Check whether other pre-determined covariates (e.g., age, income) exhibit discontinuities at the cutoff.
+    -   If covariates jump, this may indicate endogenous sorting or omitted variable bias.
+2.  Hypothesis Testing for Bunching (McCrary Test):
+    -   Test for manipulation of the running variable by examining whether the density of $X_i$ changes discontinuously at $c$.
+    -   A significant density jump suggests sorting behavior, which could invalidate RD assumptions.
+3.  Placebo Tests:
+    -   Repeat the analysis at fake cutoffs (values of $X$ where no intervention occurs).
+    -   If a treatment effect appears at a placebo cutoff, this suggests a spurious RD effect.
+4.  Varying Bandwidth Sensitivity:
+    -   Re-run the analysis using different bandwidths around the cutoff.
+    -   Check whether estimates remain stable as the window narrows or expands.
+
+------------------------------------------------------------------------
+
+## Sharp 회귀 불연속 설계 {#sec-sharp-regression-discontinuity-design}
+
+A Sharp Regression Discontinuity Design occurs when treatment assignment follows a strict rule at a known cutoff. That is, units receive treatment **if and only if** their running variable $X_i$ crosses a threshold $c$:
+
+$$
+D_i =
+\begin{cases}
+1 & \text{if } X_i \geq c \\
+0 & \text{if } X_i < c
+\end{cases}
+$$
+
+Unlike [Fuzzy RD](#sec-fuzzy-regression-discontinuity-design), where treatment probability changes discontinuously but is not deterministic, [Sharp RD](#sec-sharp-regression-discontinuity-design) ensures perfect compliance with the cutoff rule.
+
+The key idea is that **units just below and just above the cutoff are nearly identical in expectation**, except for their treatment status. This mimics [randomized experiments](#sec-the-gold-standard-randomized-controlled-trials) in a local neighborhood around $X = c$.
+
+### 식별 가정
+
+For a valid Sharp RD design, we assume:
+
+1.  **Continuity of the Conditional Expectation of Potential Outcomes**
+    -   The expected outcome given $X$ is **smooth at** $c$ in the absence of treatment: $$
+        \lim_{x \uparrow c} E[Y(0) | X = x] = \lim_{x \downarrow c} E[Y(0) | X = x].
+        $$
+    -   This ensures that any observed discontinuity in $E[Y | X]$ at $X = c$ is due to treatment, not pre-existing differences.
+2.  **No Manipulation of the Running Variable**
+    -   Agents cannot perfectly sort themselves around the cutoff (e.g., students manipulating test scores to qualify for a scholarship).
+    -   This is typically checked using the McCrary density test to detect discontinuities in the density of $X$ at $c$.
+3.  **Local Randomization**
+    -   Near the cutoff, individuals are **as good as randomly assigned** to treatment or control.
+
+If these conditions hold, the Sharp RD estimator provides an unbiased estimate of the causal effect of treatment.
+
+### Estimating the Local Average Treatment Effect
+
+The treatment effect at the cutoff is given by:
+
+$$
+\tau = \lim_{x \downarrow c}E[Y | X = x] - \lim_{x \uparrow c} E[Y | X = x].
+$$
+
+This represents the jump in the expected outcome at the cutoff.
+
+### 추정 방법
+
+1.  Local Linear Regression
+
+A common approach is to estimate separate linear regressions on **each side of the cutoff**:
+
+For observations **below** the cutoff $(X < c)$:
+
+$$
+Y_i = \alpha + \beta (X_i - c) + \epsilon_i.
+$$
+
+For observations **above** the cutoff $(X \geq c)$:
+
+$$
+Y_i = \gamma + \delta (X_i - c) + \tau D_i + \nu_i.
+$$
+
+Here, the coefficient $\tau$ captures the **treatment effect at** $X = c$.
+
+In practice, we estimate:
+
+$$
+\hat{\tau} = \hat{E}[Y | X = c^+] - \hat{E}[Y | X = c^-].
+$$
+
+This can be implemented using [Weighted Least Squares] with observations near the cutoff receiving higher weights.
+
+2.  **Global Polynomial Regression**
+
+An alternative approach is to use a polynomial regression:
+
+$$
+Y_i = \alpha + \sum_{k=1}^{K} \beta_k (X_i - c)^k + \tau D_i + \epsilon_i.
+$$
+
+where:
+
+-   Higher-order terms $(X_i - c)^k$ capture nonlinear relationships.
+
+-   Typical choices for $K$ are 2 or 3, but higher orders may lead to overfitting.
+
+3.  **Nonparametric Local Regression**
+
+Instead of assuming a linear or polynomial relationship, a local regression (kernel-based) method estimates:
+
+$$
+E[Y | X = x] = \sum_{i=1}^{n} K_h (X_i - x) Y_i.
+$$
+
+where $K_h$ is a kernel function (e.g., Epanechnikov), and $h$ is the bandwidth.
+
+-   A smaller $h$ captures local variation but increases variance.
+-   A larger $h$ smooths noise but risks bias.
+
+### Sharp RD 절차
+
+#### Visualization
+
+-   Graph the outcome variable: 
+    -   Compute binned averages of $Y_i$ over intervals of $X$.
+    -   Choose bin sizes that balance smoothness and clarity.
+    -   Overlay a smoothed regression line on each side of $c$.
+-   Graph the running variable's density: 
+    -   Use histograms to check for manipulation.
+    -   Conduct a McCrary density test to detect discontinuities.
+
+#### 처치효과 추정
+
+-   Run local linear regression separately on both sides of the cutoff.
+-   Use [nonparametric methods](#sec-nonparametric-regression) (e.g., kernel regression) for robustness.
+-   Estimate treatment effect using: $$
+    \hat{\tau} = \hat{E}[Y | X = c^+] - \hat{E}[Y | X = c^-].
+    $$
+
+#### Robustness Checks
+
+1.  Check for Jumps in Other Covariates
+
+-   If any pre-determined covariate jumps at the cutoff, it suggests sorting or omitted variable bias.
+
+-   Run RD regressions for each covariate:
+
+    $$
+    W_i = \alpha + \beta (X_i - c) + \gamma D_i + \epsilon_i.
+    $$
+
+-   A significant $\gamma$ suggests a violation of continuity assumptions.
+
+2.  McCrary Density Test (Checking for Manipulation)
+
+-   Run the McCrary test to examine whether the density of $X_i$ exhibits a discontinuity at $c$.
+-   A significant jump indicates sorting behavior, which can invalidate the RD design.
+
+3.  Placebo Tests
+
+-   Perform fake cutoff tests by estimating RD effects at arbitrary points $c^*$.
+-   If significant effects appear at non-cutoff points, the RD design may be picking up spurious trends.
+
+4.  Varying Bandwidth
+
+-   Re-run RD analysis using different bandwidths $h$.
+-   If results change dramatically, treatment effects may be highly sensitive to bandwidth choice.
+-   Use data-driven bandwidth selection methods (e.g., @imbens2012optimal).
+
+------------------------------------------------------------------------
+
+## 회귀 킨크 설계 {#sec-regression-kink-design}
+
+The Regression Kink Design (RKD) extends the logic of RD by exploiting **changes in the slope** of the treatment intensity function at a known threshold rather than a discontinuous jump in treatment assignment.
+
+Instead of an RD jump in treatment probability at $X = c$, the treatment function $b(X)$ exhibits a **kink** at the cutoff:
+
+-   In [Sharp RKD](#sec-identification-in-sharp-regression-kink-design), the kink is deterministic, meaning the treatment function $b(X)$ changes its slope exactly at $X = c$.
+-   In [Fuzzy RKD](#sec-identification-in-fuzzy-regression-kink-design), treatment assignment remains probabilistic, requiring an **instrumental variable approach** similar to Fuzzy RD.
+
+Example: Unemployment Benefits
+
+Consider an unemployment insurance program where benefits increase at a diminishing rate as prior earnings increase. The function governing benefits, $b(X)$, exhibits a kink at a threshold $X = c$. The RKD framework allows us to estimate the marginal causal effect of additional benefits on employment duration.
+
+### Identification in Sharp Regression Kink Design {#sec-identification-in-sharp-regression-kink-design}
+
+In a Sharp RKD, the treatment intensity function $b(X)$ exhibits a known change in slope at $X = c$, formally:
+
+$$
+D_i = b(X_i), \quad \text{where } b(X) \text{ has a kink at } X = c.
+$$
+
+The key identification assumption is that the potential outcome function $E[Y(d) | X]$ is smooth in $X$. Thus, any observed change in the slope of $E[Y | X]$ at $X = c$ can be attributed to the change in $b(X)$.
+
+The causal effect of interest is:
+
+$$
+\alpha_{KRD} = \frac{\lim\limits_{x \downarrow c} \frac{d}{dx}E[Y |X = x]- \lim\limits_{x \uparrow c} \frac{d}{dx}E[Y |X = x]}{\lim\limits_{x \downarrow c} \frac{d}{dx}b(x) - \lim\limits_{x \uparrow c} \frac{d}{dx}b(x)}.
+$$
+
+where:
+
+-   $b(X)$ is a known function determining treatment intensity.
+
+-   The numerator captures the discontinuous change in the slope of the expected outcome at $X = c$.
+
+-   The denominator captures the change in the slope of the treatment function at $X = c$.
+
+If $b(X)$ is known and deterministic, the denominator is non-random, allowing for precise estimation of $\alpha_{KRD}$.
+
+#### Assumptions for Identification
+
+1.  **Continuity of Potential Outcomes**
+    -   The expected potential outcomes $E[Y(d)|X]$ are smooth in $X$ (no jumps).
+2.  **No Manipulation of the Running Variable**
+    -   The density of $X$ is continuous at $X = c$, implying that agents cannot sort themselves based on the kink.
+3.  **First-Stage Validity**
+    -   The slope of $b(X)$ must change at $X = c$ (i.e., the kink must exist).
+
+If these assumptions hold, $\alpha_{KRD}$ represents the marginal causal effect of treatment intensity on the outcome.
+
+### Identification in Fuzzy Regression Kink Design {#sec-identification-in-fuzzy-regression-kink-design}
+
+In Fuzzy RKD, the treatment function $D_i$ does not directly follow a deterministic function $b(X)$ but instead exhibits a kink in its probability distribution:
+
+$$
+E[D | X] \text{ has a kink at } X = c.
+$$
+
+The treatment intensity function is unknown, requiring an instrumental variable (IV) strategy, analogous to Fuzzy RD.
+
+The causal effect is given by:
+
+$$
+\alpha_{KRD} = \frac{\lim\limits_{x \downarrow c} \frac{d}{dx}E[Y |X = x]- \lim\limits_{x \uparrow c} \frac{d}{dx}E[Y |X = x]}{\lim\limits_{x \downarrow c} \frac{d}{dx}E[D |X = x]- \lim\limits_{x \uparrow c} \frac{d}{dx}E[D |X = x]}.
+$$
+
+where:
+
+-   The numerator measures the kink in the expected outcome.
+
+-   The denominator measures the kink in the probability of treatment.
+
+-   The ratio provides a local instrumental variable estimate of the causal effect for compliers.
+
+#### Identification Assumptions
+
+In addition to the Sharp RKD assumptions, Fuzzy RKD requires:
+
+1.  **Monotonicity**
+    -   No individuals decrease their treatment intensity while others increase at the kink (analogous to Fuzzy RD monotonicity).
+2.  **Relevance of the Kink**
+    -   There must be a statistically significant slope change in $E[D | X]$ at $X = c$.
+
+If these assumptions hold, the Fuzzy RKD estimator identifies a local treatment effect.
+
+### Estimation of RKD Effects
+
+RKD estimation involves three main steps:
+
+#### Step 1: Estimating the Kink in the Outcome Function
+
+Estimate the left- and right-hand derivatives of $E[Y | X]$:
+
+$$
+\frac{d}{dx}E[Y | X] = \lim_{h \to 0} \frac{E[Y | X = c + h] - E[Y | X = c - h]}{h}.
+$$
+
+This can be done using:
+
+-   Local linear regression on either side of the kink.
+
+-   Higher-order polynomial regression for improved flexibility.
+
+#### Step 2: Estimating the Kink in the Treatment Function
+
+For [Sharp RKD](#sec-identification-in-sharp-regression-kink-design), the kink in $b(X)$ is known.
+
+For [Fuzzy RKD](#sec-identification-in-fuzzy-regression-kink-design), estimate the kink in $E[D | X]$:
+
+$$
+\frac{d}{dx}E[D | X] = \lim_{h \to 0} \frac{E[D | X = c + h] - E[D | X = c - h]}{h}.
+$$
+
+Use local regression or piecewise polynomials to estimate this slope.
+
+#### Step 3: Compute RKD Estimator
+
+For [Sharp RKD](#sec-identification-in-sharp-regression-kink-design):
+
+$$
+\hat{\alpha}_{KRD} = \frac{\hat{\tau}_Y}{\tau_b},
+$$
+
+where:
+
+-   $\hat{\tau}_Y$ is the estimated kink in $E[Y | X]$.
+
+-   $\tau_b$ is the known slope change in $b(X)$.
+
+For [Fuzzy RKD](#sec-identification-in-fuzzy-regression-kink-design):
+
+$$
+\hat{\alpha}_{KRD} = \frac{\hat{\tau}_Y}{\hat{\tau}_D}.
+$$
+
+where:
+
+-   $\hat{\tau}_D$ is the estimated kink in $E[D | X]$.
+
+### Robustness Checks
+
+1.  **Assess Covariate Smoothness**
+    -   Verify that pre-determined covariates (e.g., age, education) do not exhibit kinks at $X = c$.
+2.  **Check for Manipulation of the Running Variable**
+    -   Perform a McCrary test to ensure the density of $X$ is continuous at $X = c$.
+3.  **Placebo Kinks**
+    -   Test for spurious kinks at other arbitrary values of $X$.
+4.  **Bandwidth Sensitivity**
+    -   Estimate RKD effects with varying bandwidths to check for consistency.
+
+------------------------------------------------------------------------
+
+## Multi-Cutoff Regression Discontinuity Design {#sec-multi-cutoff-regression-discontinuity-design}
+
+The Multi-Cutoff Regression Discontinuity Design extends the standard RD framework by allowing for **multiple cutoff points** across different groups or geographic regions. Instead of a single threshold $c$, different subgroups are assigned different cutoffs $C_i$. This framework allows for a **heterogeneous treatment effect** function:
+
+$$
+\tau (x,c)= E[Y_{1i} - Y_{0i}|X_i = x, C_i = c].
+$$
+
+### Motivation for Multi-Cutoff RD
+
+-   **Policy Variation**: Policies often implement different cutoffs across regions or institutions (e.g., different states setting different minimum test scores for scholarship eligibility).
+-   **Generalizability**: Allows estimation of treatment effects across multiple populations instead of relying on a single threshold.
+-   **Improved Precision**: Leveraging multiple thresholds can enhance statistical power compared to a single-cutoff RD.
+
+The multi-cutoff RD framework provides several advantages:
+
+1.  **Estimation of Local Heterogeneous Effects**
+    -   Unlike standard RD, which estimates a single treatment effect, multi-cutoff RD allows heterogeneity in effects across groups.
+2.  **Improved Precision**
+    -   More observations across different thresholds can increase statistical power.
+3.  **Policy Implications**
+    -   Useful in settings where policy thresholds vary (e.g., different states setting different income eligibility limits for welfare programs).
+
+### Identification
+
+Under the potential outcomes framework, each unit $i$ has:
+
+-   A running variable $X_i$.
+
+-   A cutoff specific to their group $C_i$.
+
+-   A binary treatment indicator:
+
+$$
+D_i = I(X_i \geq C_i).
+$$
+
+The observed outcome is:
+
+$$
+Y_i = D_i Y_{1i} + (1 - D_i) Y_{0i}.
+$$
+
+The treatment effect is the expected difference in potential outcomes:
+
+$$
+\tau(x, c) = E[Y_{1i} - Y_{0i} | X_i = x, C_i = c].
+$$
+
+### Key Assumptions
+
+To ensure causal identification, we extend the standard RD assumptions:
+
+1.  **Continuity of Potential Outcomes**
+    -   The expected potential outcomes $E[Y(0)|X]$ and $E[Y(1)|X]$ are smooth functions of $X$ at each cutoff $C_i$.
+    -   Formally: $$
+        \lim_{x \uparrow C_i} E[Y(0)|X=x, C_i=c] = \lim_{x \downarrow C_i} E[Y(0)|X=x, C_i=c].
+        $$
+2.  **No Manipulation of the Running Variable**
+    -   The density of $X_i$ must be continuous at each $C_i$, ensuring that individuals cannot selectively sort above or below their assigned cutoff.
+3.  **Local Randomization**
+    -   Near each cutoff, units are **as-good-as-randomly assigned** to treatment or control.
+4.  **Independence Across Cutoffs**
+    -   The cutoff assignment rule should be exogenous and not correlated with unobserved determinants of $Y$.
+
+If these assumptions hold, each cutoff provides a valid local treatment effect estimate.
+
+### Estimation Approaches
+
+#### Pooling Cutoffs with Fixed Effects
+
+A straightforward way to estimate multi-cutoff RD is to include **cutoff fixed effects**:
+
+$$
+Y_i = \alpha + \beta (X_i - C_i) + \tau D_i + \gamma C_i + \epsilon_i.
+$$
+
+where:
+
+-   $\tau$ captures the **average treatment effect across all cutoffs**.
+
+-   $C_i$ is included as a **fixed effect** to account for different intercepts across groups.
+
+#### Separate RD Estimation for Each Cutoff
+
+Instead of pooling, we can estimate **separate RD effects for each** $C_i$:
+
+$$
+\tau_c = \lim_{x \downarrow C_i}E[Y|X = x, C_i = c] - \lim_{x \uparrow C_i} E[Y|X = x, C_i = c].
+$$
+
+This approach allows for **heterogeneous treatment effects**.
+
+#### Interaction Model for Heterogeneous Effects
+
+To estimate how treatment effects vary with $C_i$, we interact $D_i$ with $C_i$:
+
+$$
+Y_i = \alpha + \beta (X_i - C_i) + \tau D_i + \lambda D_i C_i + \epsilon_i.
+$$
+
+where:
+
+-   $\lambda$ captures how the treatment effect varies with the cutoff.
+
+-   A significant $\lambda$ implies that $\tau(x, c)$ is not constant across cutoffs.
+
+#### Nonparametric Local Estimation
+
+A fully flexible approach estimates $\tau(x, c)$ separately at each cutoff using kernel-based methods:
+
+$$
+\hat{\tau}(c) = \frac{\sum_{i=1}^{n} K_h (X_i - C_i) D_i Y_i}{\sum_{i=1}^{n} K_h (X_i - C_i) D_i} - \frac{\sum_{i=1}^{n} K_h (X_i - C_i) (1 - D_i) Y_i}{\sum_{i=1}^{n} K_h (X_i - C_i) (1 - D_i)}.
+$$
+
+where:
+
+-   $K_h(\cdot)$ is a kernel function (e.g., Epanechnikov).
+
+-   $h$ is the bandwidth, chosen via cross-validation.
+
+### Robustness Checks
+
+1.  **Covariate Balance at Each Cutoff**
+
+-   Test whether pre-treatment covariates show jumps at each $C_i$.
+
+-   Run placebo RD regressions on covariates:
+
+    $$
+    W_i = \alpha + \beta (X_i - C_i) + \gamma D_i + \epsilon_i.
+    $$
+
+-   A significant $\gamma$ suggests that RD assumptions are violated.
+
+2.  **McCrary Density Test**
+
+-   Perform a McCrary test separately at each cutoff to check for manipulation:
+
+    $$
+    f(X) \text{ should be continuous at } X = C_i.
+    $$
+
+-   If discontinuities exist, individuals may be sorting around cutoffs.
+
+3.  **Placebo Cutoffs**
+
+-   Implement fake cutoffs and re-estimate $\tau(x, c)$.
+-   If significant effects appear, the RD estimates may be biased.
+
+4.  **Varying Bandwidths**
+
+-   Re-estimate treatment effects using different bandwidths.
+-   If $\hat{\tau}(x,c)$ changes drastically, it suggests sensitivity to bandwidth choice.
+
+------------------------------------------------------------------------
+
+## Multi-Score Regression Discontinuity Design {#sec-multi-score-regression-discontinuity-design}
+
+The **Multi-Score Regression Discontinuity Design** extends the **standard single-score RD** and [the multi-cutoff RD](#sec-multi-cutoff-regression-discontinuity-design) by introducing multiple running variables that simultaneously determine treatment eligibility. Instead of relying on a single threshold for assignment, treatment now depends on a **combination of multiple continuous scores** crossing predetermined cutoffs.
+
+Multi-score RD is relevant when policy eligibility is based on multiple criteria, such as:
+
+-   Education: Honors program admission based on both math and English scores.
+
+-   Healthcare: Medical trial eligibility based on both BMI and blood pressure levels.
+
+-   Taxation: Tax incentives based on income level and household size.
+
+### General Framework
+
+Each individual $i$ has:
+
+-   Two running variables, $X_{1i}$ and $X_{2i}$.
+
+-   Two predetermined cutoffs, $C_1$ and $C_2$.
+
+-   A binary treatment indicator $D_i$, assigned based on whether the individual's scores exceed both thresholds.
+
+The treatment effect is defined as:
+
+$$
+\tau (x_1, x_2) = E[Y_{1i} - Y_{0i} | X_{1i} = x_1, X_{2i} = x_2].
+$$
+
+This represents the [local average treatment effect](#sec-local-average-treatment-effects) in a two-dimensional RD setting.
+
+### Identification
+
+Under the potential outcomes framework, for each individual $i$, we define:
+
+-   $Y_{1i}$: Potential outcome under treatment.
+
+-   $Y_{0i}$: Potential outcome under control.
+
+-   $D_i$: Treatment assignment rule.
+
+The observed outcome is:
+
+$$
+Y_i = D_i Y_{1i} + (1 - D_i) Y_{0i}.
+$$
+
+The treatment assignment mechanism follows:
+
+$$
+D_i =
+\begin{cases}
+1 & \text{if } X_{1i} \geq C_1 \text{ and } X_{2i} \geq C_2, \\
+0 & \text{otherwise}.
+\end{cases}
+$$
+
+### Key Assumptions
+
+To ensure valid causal inference, the multi-score RD framework extends the standard RD assumptions:
+
+1.  **Continuity of Potential Outcomes in Both Running Variables**
+    -   The expected potential outcomes $E[Y(0) | X_1, X_2]$ and $E[Y(1) | X_1, X_2]$ are smooth in both $X_1$ and $X_2$.
+    -   Formally: $$
+        \begin{aligned}
+\lim_{(x_1, x_2) \to (C_1, C_2)^-} E[Y(0) | X_1 = x_1, X_2 = x_2] = \\
+\lim_{(x_1, x_2) \to (C_1, C_2)^+} E[Y(0) | X_1 = x_1, X_2 = x_2].
+\end{aligned}
+        $$
+    -   Ensures that any observed discontinuity in $E[Y | X_1, X_2]$ is attributable to treatment.
+2.  **No Manipulation of Running Variables**
+    -   The density of $(X_1, X_2)$ must be continuous at $(C_1, C_2)$.
+    -   No agents should be able to precisely manipulate both scores to cross the threshold.
+3.  **Local Randomization**
+    -   Near $(C_1, C_2)$, units are **as good as randomly assigned** to treatment or control.
+4.  **No Interaction Effects in Running Variables** (optional)
+    -   In some models, we assume that the effect of crossing $C_1$ does not depend on $C_2$ and vice versa.
+
+If these assumptions hold, the treatment effect is identified as the discontinuity in $E[Y | X_1, X_2]$ at $(C_1, C_2)$.
+
+
+### Estimation Approaches
+
+#### Local Linear Regression in Two Dimensions
+
+The simplest approach is to estimate separate regressions **on each side of the cutoff in both dimensions**:
+
+For observations **below the threshold** $(C_1, C_2)$:
+
+$$
+Y_i = \alpha + \beta_1 (X_{1i} - C_1) + \beta_2 (X_{2i} - C_2) + \epsilon_i.
+$$
+
+For observations **above the threshold** $(C_1, C_2)$:
+
+$$
+Y_i = \gamma + \delta_1 (X_{1i} - C_1) + \delta_2 (X_{2i} - C_2) + \tau D_i + \nu_i.
+$$
+
+The treatment effect $\tau$ is estimated as:
+
+$$
+\hat{\tau} = \hat{E}[Y | X_1 = C_1^+, X_2 = C_2^+] - \hat{E}[Y | X_1 = C_1^-, X_2 = C_2^-].
+$$
+
+This approach assumes **local linearity**, but higher-order polynomials can be used:
+
+$$
+Y_i = \alpha + \sum_{k=1}^{K} \beta_k (X_{1i} - C_1)^k + \sum_{k=1}^{K} \gamma_k (X_{2i} - C_2)^k + \tau D_i + \epsilon_i.
+$$
+
+#### Kernel-Weighted Estimation
+
+A more flexible approach estimates $\tau(x_1, x_2)$ using nonparametric local regression:
+
+$$
+\hat{\tau}(x_1, x_2) = \frac{\sum_{i=1}^{n} K_h (X_{1i} - x_1) K_h (X_{2i} - x_2) D_i Y_i}{\sum_{i=1}^{n} K_h (X_{1i} - x_1) K_h (X_{2i} - x_2) D_i}
+- \frac{\sum_{i=1}^{n} K_h (X_{1i} - x_1) K_h (X_{2i} - x_2) (1 - D_i) Y_i}{\sum_{i=1}^{n} K_h (X_{1i} - x_1) K_h (X_{2i} - x_2) (1 - D_i)}.
+$$
+
+where:
+
+-   $K_h(\cdot)$ is a kernel function (e.g., Epanechnikov).
+
+-   $h$ is the bandwidth, selected via cross-validation.
+
+#### Interaction Model for Heterogeneous Effects
+
+To assess **interaction effects between running variables**, estimate:
+
+$$
+Y_i = \alpha + \beta_1 (X_{1i} - C_1) + \beta_2 (X_{2i} - C_2) + \tau D_i + \lambda D_i (X_{1i} - C_1)(X_{2i} - C_2) + \epsilon_i.
+$$
+
+-   $\lambda$ captures whether the treatment effect depends on both $X_1$ and $X_2$.
+
+### Robustness Checks
+
+1.  **Covariate Balance in Both Dimensions**
+    -   Test whether pre-treatment covariates jump at $(C_1, C_2)$.
+2.  **McCrary Density Test in Two Dimensions**
+    -   Verify that density of $(X_1, X_2)$ is smooth at $(C_1, C_2)$.
+3.  **Placebo Cutoffs**
+    -   Implement fake cutoffs and re-estimate $\tau(x_1, x_2)$.
+4.  **Varying Bandwidths**
+    -   Re-estimate using different bandwidths for robustness.
+
+## Free Discontinuity Regression {#sec-free-discontinuity-regression}
+
+Classical regression discontinuity, including [Multi-Cutoff RD](#sec-multi-cutoff-regression-discontinuity-design) and [Multi-Score RD](#sec-multi-score-regression-discontinuity-design), requires the analyst to specify the discontinuity locations in advance. The cutoff $c$ in [Sharp RD](#sec-sharp-regression-discontinuity-design), the cutoff vector $\{C_1, C_2, \ldots\}$ in Multi-Cutoff RD, and the boundary $\{x : X_1 = C_1 \text{ or } X_2 = C_2\}$ in Multi-Score RD are all treated as known. The identification step exploits a discontinuity at a predetermined location.
+
+In some applications the analyst does not know where the jumps in the conditional expectation surface occur, or how many there are. The treatment may be triggered by a rule that is not transparent, the policy region may have an irregular boundary in covariate space, or the data may be a spatial map on which abrupt changes are visible but not pre-specified. For these settings, @gunsilius2023free develop Free Discontinuity Regression (FDR), a nonparametric estimator that simultaneously smooths the regression surface, segments it into disjoint pieces, and recovers the locations and sizes of jumps without prior knowledge of the discontinuity set.
+
+### Setup and Estimand
+
+Let $Y_i$ be a scalar outcome observed at a vector of covariates $X_i \in \mathbb{R}^d$ for $i = 1, \ldots, n$. The conditional expectation $m(x) = \mathbb{E}[Y_i \mid X_i = x]$ is assumed to be piecewise smooth: $m$ is smooth on each of an unknown number of disjoint regions $\Omega_1, \ldots, \Omega_K \subset \mathbb{R}^d$ and jumps across the unknown $(d-1)$-dimensional boundaries that separate them, collected into a jump set $S = \bigcup_k \partial \Omega_k$. The estimand consists of three objects, all unknown: the regions $\{\Omega_k\}$ with their boundaries, the smooth pieces $\{m_k\}$ that describe the regression surface inside each region, and the jump sizes $\jmath(x) = m(x^+) - m(x^-)$ across each point of the boundary, where $x^+$ and $x^-$ denote limits from the two sides.
+
+FDR estimates these jointly by minimizing a Mumford-Shah-type functional adapted to regression:
+
+$$
+(\hat m, \hat S) \;=\; \arg\min_{m, S} \;\; \sum_{i=1}^n (Y_i - m(X_i))^2 \;+\; \alpha \int_{\mathbb{R}^d \setminus S} \|\nabla m(x)\|^2 \, dx \;+\; \beta \, \mathcal{H}^{d-1}(S),
+(\#eq:fdr-mumford-shah)
+$$
+
+where $\mathcal{H}^{d-1}(S)$ is the $(d-1)$-dimensional Hausdorff measure of $S$ (arc length when $d=2$, surface area when $d=3$), $\alpha > 0$ penalizes wiggliness within each region, and $\beta > 0$ penalizes the total size of the jump set. The three terms balance data fidelity, within-region smoothness, and parsimony of the segmentation.
+
+### Identification Assumptions
+
+Consistent recovery of $(m, S)$ under (\@ref(eq:fdr-mumford-shah)) requires the data-generating process and the penalty schedule to satisfy a set of regularity conditions [@gunsilius2023free].
+
+1.  *Compactness*. The support of $X_i$ is compact, $X_i \in \mathcal{X} \subset \mathbb{R}^d$.
+2.  *Piecewise smoothness*. There exists a finite partition $\{\Omega_1, \ldots, \Omega_K\}$ of $\mathcal{X}$ such that the restriction of $m$ to each $\Omega_k$ extends to a function in a Sobolev space $W^{1,2}$. The number of regions $K$ is finite but unknown.
+3.  *Rectifiable boundary*. The jump set $S$ is closed and $(d-1)$-rectifiable: it is locally the image of a Lipschitz map from $\mathbb{R}^{d-1}$, with finite $\mathcal{H}^{d-1}$-measure. This rules out fractal boundaries.
+4.  *Jump separation*. $\inf_{x \in S} |\jmath(x)| \ge \jmath_{\min} > 0$. Boundaries are detectable only above a noise-dependent threshold; arbitrarily small jumps cannot be separated from regression error in finite samples.
+5.  *Bounded noise*. The conditional noise $\varepsilon_i = Y_i - m(X_i)$ has $\mathbb{E}[\varepsilon_i \mid X_i] = 0$ and $\mathbb{E}[\varepsilon_i^2 \mid X_i] \le \sigma^2 < \infty$, with sub-Gaussian tails sufficing for the rate results.
+6.  *Penalty schedule*. The penalties scale as $\alpha_n = c_\alpha n^{-2/(2+d)}$ and $\beta_n = c_\beta n^{-1/(2+d)}$ as $n \to \infty$. These rates trade variance and bias optimally for $W^{1,2}$ regression with $(d-1)$-rectifiable jump sets; in finite samples both are chosen by cross-validation.
+
+Under conditions 1 through 6, @gunsilius2023free establish that $\hat S \to S$ in the Hausdorff distance and $\hat m \to m$ uniformly on compact subsets of $\mathcal{X} \setminus S$. The pointwise jump estimator $\hat\jmath(x_0) = \hat m(x_0^+) - \hat m(x_0^-)$ at an interior point $x_0 \in S$ is consistent and asymptotically normal after centering and scaling by an estimator-specific rate.
+
+### Estimation in Practice
+
+Direct minimization of (\@ref(eq:fdr-mumford-shah)) is intractable because $S$ is a free geometric object. Two standard relaxations make the problem solvable.
+
+*Ambrosio-Tortorelli relaxation*. Replace the jump set $S$ with a continuous edge field $v : \mathcal{X} \to [0, 1]$ that approaches $0$ near jumps and $1$ in smooth regions. The relaxed functional is
+
+$$
+\sum_{i=1}^n (Y_i - m(X_i))^2 \;+\; \alpha \int_{\mathcal{X}} v(x)^2 \, \|\nabla m(x)\|^2 \, dx \;+\; \beta \int_{\mathcal{X}} \left( \epsilon \|\nabla v(x)\|^2 + \tfrac{1}{4\epsilon} (1 - v(x))^2 \right) dx.
+$$
+
+@ambrosio1992approximation prove $\Gamma$-convergence to (\@ref(eq:fdr-mumford-shah)) as $\epsilon \to 0$. In code one fixes a small $\epsilon$ and alternates two convex sub-problems: solve for $m$ with $v$ fixed (a weighted ridge regression), then solve for $v$ with $m$ fixed (a quadratic problem in $v$).
+
+*Graph-cut discretization*. Discretize $\mathcal{X}$ on a regular grid of nodes connected by edges. Replace $\int \|\nabla m\|^2$ with $\sum_{(i,j) \in E} w_{ij} (m_i - m_j)^2$ and $\mathcal{H}^{d-1}(S)$ with the total weight of cut edges where $m$ jumps. The resulting problem is a graph-cut problem that admits convex relaxation and is solved with ADMM or alternating-direction proximal splitting. Computational cost scales as $O(n \cdot |\text{grid}| \cdot \text{iterations})$; in $d = 2$ on a $200 \times 200$ grid this is a matter of minutes.
+
+A 1D analog of the FDR objective is the *fused lasso* (also called 1D total-variation denoising), which replaces $\mathcal{H}^{d-1}(S)$ with the $\ell_1$ norm of consecutive differences. The fused lasso is fully convex, has well-developed solvers in the `genlasso` package, and produces the same qualitative output that FDR produces in higher dimensions: a piecewise-constant fit whose jump locations are recovered from the data. The following demonstration uses the 1D problem to make the FDR pipeline concrete.
+
+```{r fdr-1d-demo, message=FALSE, warning=FALSE}
+suppressPackageStartupMessages({
+  library(genlasso)   # CRAN: fused lasso / trend filtering
+  library(ggplot2)
+})
+
+set.seed(20240515)
+
+# Stylized 1D data with three unknown jumps and a noisy signal in between.
+# True jump locations: x = -1.0, 0.3, 1.4. Jump sizes: +2, -3, +1.5.
+n <- 500
+x <- sort(runif(n, -2, 2))
+true_m <- function(x) {
+  m <- 0.0 + 0.4 * x
+  m <- m + 2.0 * (x > -1.0)
+  m <- m - 3.0 * (x >  0.3)
+  m <- m + 1.5 * (x >  1.4)
+  m
+}
+m_x <- true_m(x)
+y   <- m_x + rnorm(n, sd = 0.4)
+
+# Fused lasso (the 1D analog of the FDR objective):
+#   min_m  sum (y - m)^2 + beta * sum |m_{i+1} - m_i|.
+# genlasso::fusedlasso1d returns the full solution path over beta.
+fit  <- fusedlasso1d(y)
+# Pick beta by 5-fold cross-validation.
+cv   <- cv.trendfilter(fit, k = 5)
+m_hat <- coef(fit, lambda = cv$lambda.1se)$beta[, 1]
+
+# Recover the jump set: locations where consecutive m_hat differ
+# by more than a noise-driven threshold. The threshold is calibrated
+# at twice the residual SD divided by sqrt of the local window size.
+resid_sd  <- sd(y - m_hat)
+threshold <- 2 * resid_sd / sqrt(5)
+diffs     <- diff(m_hat)
+raw_idx   <- which(abs(diffs) > threshold)
+
+# Merge runs of adjacent indices into a single jump.
+# This avoids splitting one true jump across consecutive grid points.
+if (length(raw_idx) > 0) {
+  group_id  <- cumsum(c(1, diff(raw_idx) > 1))
+  merged <- tapply(raw_idx, group_id, function(idx) {
+    i_lo <- min(idx); i_hi <- max(idx)
+    list(loc  = mean(x[i_lo:(i_hi + 1)]),
+         size = sum(diffs[idx]))
+  })
+  jump_locs  <- sapply(merged, `[[`, "loc")
+  jump_sizes <- sapply(merged, `[[`, "size")
+} else {
+  jump_locs <- numeric(0); jump_sizes <- numeric(0)
+}
+
+data.frame(jump_location = round(jump_locs, 3),
+           jump_size     = round(jump_sizes, 2))
+```
+
+The recovered jump locations cluster near the three true locations ($-1.0, 0.3, 1.4$), and the recovered jump sizes approximate the true sizes ($+2, -3, +1.5$). A graphical check confirms the segmentation:
+
+```{r fdr-1d-plot, message=FALSE, warning=FALSE}
+plot_df <- data.frame(x = x, y = y, m_true = m_x, m_hat = m_hat)
+
+ggplot(plot_df, aes(x = x)) +
+  geom_point(aes(y = y), alpha = 0.3, size = 0.7) +
+  geom_line(aes(y = m_true), linetype = 2, color = "red") +
+  geom_line(aes(y = m_hat), linewidth = 0.9) +
+  geom_vline(xintercept = jump_locs, linetype = 3, color = "blue") +
+  labs(x = "X", y = "Y",
+       title = "Free Discontinuity Regression (1D analog via fused lasso)",
+       subtitle = "Dashed red: true m(x). Solid black: estimated m(x). Dotted blue: recovered jumps.") +
+  theme_minimal()
+```
+
+In two dimensions the same pipeline applies with a 2D grid and a graph-cut solver. The estimated jump set $\hat S$ is then a curve (in $d=2$) or a surface (in $d=3$) rather than a finite list of points. The 2D pipeline is the one used by @gunsilius2023free to recover the geographic boundary of internet shutdowns in Africa from nighttime-light data, where the running covariates are latitude and longitude, the outcome is light intensity, and the estimated boundary $\hat S$ traces the spatial extent of the shutdown without being given as an input.
+
+### Inference
+
+Two inferential objects are typically reported. The first is a confidence set for the jump set $\hat S$, expressed as a tube of radius $r$ in the Hausdorff distance such that $\mathbb{P}(d_H(\hat S, S) \le r) \ge 1 - \alpha_\text{level}$. The second is a confidence interval for the jump size $\jmath(x_0)$ at a fixed point $x_0$ on the recovered boundary.
+
+@gunsilius2023free develop randomization-based inference for both. The procedure resamples residuals around the recovered surface, refits FDR on each resample to obtain $\hat S^{(b)}, \hat m^{(b)}$, and constructs percentile-type intervals from the bootstrap distribution of $\hat\jmath^{(b)}(x_0)$. The randomization step accounts for the data-driven choice of $S$, so the intervals are valid after selection. A practical caution: the randomization-based CIs are computationally expensive (each bootstrap replicate requires a full FDR refit) and conservative when the jump-separation condition is close to binding.
+
+For the 1D fused-lasso analog used above, post-selection inference can be done with the methods in @tibshirani2016exact (R: `selectiveInference`), which give exact conditional CIs for the jump sizes after the lasso path selects the breakpoints.
+
+### Robustness Checks {#sec-fdr-robustness-checks}
+
+A credible FDR analysis reports four diagnostics.
+
+1.  *Sensitivity to $\alpha$ and $\beta$*. Refit on a grid of penalties and tabulate $\hat S$, the number of recovered regions, and the jump sizes at a few salient locations. Stable conclusions across a one-decade window in each penalty indicate that the segmentation is data-driven rather than penalty-driven.
+2.  *Subsample stability*. Refit on bootstrap subsamples of size $0.8n$ and overlay the recovered jump sets. Boundary segments that appear in most subsamples are reliable; segments that appear in only a few are spurious low-amplitude features.
+3.  *Comparison with known boundaries*. If institutional knowledge suggests candidate boundaries (administrative borders, eligibility thresholds, policy regions), overlay $\hat S$ on those. Partial alignment is a credibility marker; complete misalignment is a warning that FDR is fitting noise.
+4.  *Classical RD where applicable*. On any boundary segment that aligns with a known cutoff, also run a [sharp](#sec-sharp-regression-discontinuity-design) or [fuzzy RD](#sec-fuzzy-regression-discontinuity-design) and compare the local jump estimate. Order-of-magnitude agreement supports both analyses; large divergence flags that the FDR surface is over- or under-smoothed locally.
+
+### When FDR Is the Right Tool
+
+FDR is most useful when the location of the discontinuity is itself the object of interest, or when the assignment mechanism is opaque enough that no specific cutoff can be defended a priori. Typical applications include:
+
+-   Spatial regression where abrupt changes in an outcome (nighttime light, prices, internet penetration) trace the boundary of an administrative region, policy zone, or shock that the analyst cannot fully observe.
+-   Multidimensional eligibility rules where the analyst sees the running covariates but not the underlying rule.
+-   Image-segmentation-style problems applied to economic data, including remote-sensing outcomes and digital trace data.
+
+When a credible cutoff is known, classical [Sharp](#sec-sharp-regression-discontinuity-design) or [Fuzzy RD](#sec-fuzzy-regression-discontinuity-design) is preferred: it imposes fewer assumptions on the global shape of $m$ and yields sharper inference at the known boundary. When the cutoff is ambiguous or has to be discovered, FDR offers a principled alternative that respects the discontinuity structure while letting the data locate it. In practice the two are complements: the recovered $\hat S$ from FDR can suggest candidate boundaries that are then re-examined with classical RD on the appropriate subsample.
+
+### Implementation Notes
+
+A reference implementation of FDR accompanies @gunsilius2023free as a research codebase rather than a CRAN or PyPI package. For routine 1D work, the fused-lasso analog via `genlasso` is fully convex, fast, and well-supported. For 2D applications, the image-processing literature provides Mumford-Shah solvers (e.g. the Chambolle-Pock primal-dual algorithm) that translate directly to FDR with minor modifications.
+
+Practical pointers for a credible FDR analysis:
+
+1.  Center and scale all coordinates of $X$ before fitting. The penalty $\beta \mathcal{H}^{d-1}(S)$ is scale-dependent and unscaled coordinates produce unstable boundaries.
+2.  Choose $\alpha$ and $\beta$ by cross-validation. Use separate folds within each recovered region rather than uniform-random folds, which mix regions and degrade the smoothness penalty.
+3.  Report both the segmentation and the jump-size estimates. The segmentation alone is descriptive; the jump-size estimates with valid confidence intervals are the inferentially interpretable output.
+4.  Visualize $\hat S$ alongside institutional knowledge. A credible FDR analysis usually shows partial alignment with known boundaries plus additional features that the data identify but the analyst did not pre-specify.
+5.  Pair FDR with [Robustness Checks](#sec-fdr-robustness-checks) above before any substantive claim about jump locations.
+
+## Evaluation of a Regression Discontinuity Design
+
+After estimating an RD model, it is crucial to evaluate whether the assumptions hold and whether the results are robust to different specifications. The key aspects of RD evaluation include:
+
+1.  **Graphical and formal evidence** for a discontinuity in treatment and outcome variables.
+2.  **Validation of RD assumptions**, including:
+    -   The absence of discontinuities in pre-treatment covariates.
+    -   No manipulation of the assignment variable.
+3.  **Robustness checks** for functional form and bandwidth choice.
+4.  **External validity**: assessing whether results generalize beyond the cutoff.
+
+A well-implemented RD should demonstrate a clear treatment effect at the cutoff while ensuring that no other discontinuous changes confound the effect.
+
+### Graphical and Formal Evidence
+
+#### Visual Inspection of the RD Effect
+
+A fundamental step in RD analysis is to plot the outcome variable against the running variable:
+
+-   Compute binned averages of $Y_i$ for small intervals of $X_i$.
+-   Overlay a smoothed polynomial regression separately for $X < c$ and $X \geq c$.
+-   A visible jump at $X = c$ provides initial evidence of a treatment effect.
+
+Additionally, plotting treatment probability $P(D = 1 | X)$ ensures that assignment follows the expected RD rule.
+
+#### No Discontinuity in Pre-Treatment Covariates
+
+To rule out omitted variable bias, we check whether other covariates (age, education, prior test scores, etc.) exhibit jumps at the cutoff.
+
+For each covariate $W_i$, estimate:
+
+$$
+W_i = \alpha + f(X_i) \beta + \tau D_i + \epsilon_i.
+$$
+
+-   If $\tau$ is statistically significant, it suggests a violation of RD assumptions.
+-   Covariate jumps imply that factors other than treatment may be driving the observed outcome change.
+
+#### Manipulation Test (McCrary Density Test)
+
+A critical assumption in RD is that units cannot precisely manipulate their values of $X_i$. If individuals can selectively sort around $c$ (e.g., students altering test scores to qualify for a scholarship), RD estimates become invalid.
+
+To test for manipulation, we estimate the density function of $X$ and test for a discontinuity at $c$:
+
+$$
+\hat{f}(X) = \lim_{x \uparrow c} f(X) - \lim_{x \downarrow c} f(X).
+$$
+
+A significant difference suggests sorting behavior, which violates RD assumptions.
+
+### Functional Form of the Running Variable
+
+#### General RD Model
+
+The most flexible RD specification includes:
+
+-   A functional form $f(X_i)$ to account for trends.
+
+-   An indicator for treatment $D_i$. - An interaction term $D_i f(X_i)$ allowing for different slopes on each side.
+
+$$
+Y_i = \alpha_0 + f(X_i) \alpha_1 + I(X_i \geq c) \alpha_2 + f(X_i) I(X_i \geq c) \alpha_3 + u_i.
+$$
+
+where:
+
+-   $\alpha_2$ captures the treatment effect at $X = c$.
+
+-   $\alpha_3$ tests for differences in slopes across the threshold.
+
+#### Simple Case: Linear RD
+
+If $f(X_i)$ is a linear function, we estimate:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + I(X_i \geq c) \beta_2 + \epsilon_i.
+$$
+
+Figure \@ref(fig:rd-simple-constant-slope) shows how to visualize the coefficients.
+
+```{r rd-simple-constant-slope, fig.cap='Regression discontinuity design with constant slope.', fig.alt='Line graph illustrating a sharp regression discontinuity', echo=FALSE}
+knitr::include_graphics('images/rd1.PNG')
+```
+
+RD gives you $\beta_2$ (causal effect) of $X$ on $Y$ at the cutoff point
+
+In practice, everyone does
+
+$$ Y_i = \alpha_0 + f(x) \alpha _1 + [I(x_i \ge c)]\alpha_2 + [f(x_i)\times [I(x_i \ge c)]\alpha_3 + u_i $$
+
+Figure \@ref(fig:rd-simple-dynamic-slope) shows how to visualize the coefficients when one uses dynamic slope.
+
+```{r rd-simple-dynamic-slope, fig.cap='Regression discontinuity design with dynamic slope.', fig.alt='Line graph illustrating a sharp regression discontinuity', echo=FALSE}
+knitr::include_graphics('images/rd2.PNG')
+```
+
+where we estimate different slope on different sides of the line. And if you estimate $\alpha_3$ to be no different from 0 then we return to the simple case.
+
+#### Higher-Order Polynomials
+
+A more flexible specification allows for nonlinear relationships:
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \beta_3 X_i^3 + \tau D_i + \epsilon_i.
+$$
+
+-   Higher-order polynomials reduce bias but increase variance.
+-   Overfitting is a risk, especially with limited data near $c$.
+
+#### Nonparametric Estimation
+
+When polynomial models are too restrictive, we use nonparametric local linear regression:
+
+$$
+\hat{E}[Y | X] = \sum_{i=1}^{n} K_h(X_i - c) Y_i.
+$$
+
+where:
+
+-   $K_h(X)$ is a kernel function (e.g., Epanechnikov).
+
+-   $h$ is the bandwidth, chosen to optimize bias-variance tradeoff.
+
+### Bandwidth Selection
+
+#### Tradeoff Between Bias and Efficiency
+
+Choosing an appropriate bandwidth $h$ is crucial:
+
+-   Narrow $h$ (close to $c$): Lower bias, but high variance.
+
+-   Wider $h$: More efficient estimates but potential bias.
+
+#### Optimal Bandwidth Selection
+
+Several methods exist for selecting $h$:
+
+1.  **Cross-validation**: Minimizing mean squared error (MSE).
+2.  @imbens2012optimal bandwidth selection:
+    -   Balances bias-variance tradeoff.
+    -   Often reported in RD studies.
+3.  @cattaneo2019practical robust bandwidth selection:
+    -   Focuses on valid inference, not just point estimation.
+
+#### Bandwidth Sensitivity Analysis
+
+A standard robustness check is estimating $\tau$ for different $h$ values:
+
+-   If results change drastically, estimates may be sensitive to bandwidth choice.
+-   If estimates remain stable, findings are more credible.
+
+### Addressing Potential Confounders
+
+#### Multiple Running Variables
+
+If multiple forcing variables influence treatment (e.g., both math and English scores for honors eligibility), failing to account for them may introduce confounding.
+
+A solution is to extend RD to a [multi-score framework](#sec-multi-score-regression-discontinuity-design):
+
+$$
+Y_i = \alpha_0 + f(X_{1i}, X_{2i}) \alpha_1 + I(X_{1i} \geq c_1, X_{2i} \geq c_2) \alpha_2 + \epsilon_i.
+$$
+
+-   Controls for both scores simultaneously.
+-   Allows for interactions between assignment variables.
+
+#### Bundling of Institutions
+
+In cases where policies change at institutional levels (e.g., different states implementing varying minimum wages), treatment effects may reflect **institutional bundling** rather than individual cutoff effects.
+
+One solution is to include **institution fixed effects**:
+
+$$
+Y_i = \alpha + f(X_i) \beta + \tau D_i + \gamma C_j + \epsilon_i.
+$$
+
+where $C_j$ is a categorical variable for institution $j$.
+
+### External Validity in RD
+
+While RD provides strong internal validity, its generalizability is often limited:
+
+1.  **Local Nature of RD Estimates**
+    -   RD estimates apply only at the cutoff.
+    -   Effects may not extrapolate to other values of $X$.
+2.  **Heterogeneous Treatment Effects**
+    -   If $\tau$ varies across subgroups, RD estimates may not generalize.
+3.  **Spillover Effects**
+    -   If treatment effects extend beyond the threshold (e.g., peer effects), RD assumptions may be violated.
+
+------------------------------------------------------------------------
+
+## Applications of RD Designs
+
+Regression Discontinuity (RD) designs have widespread applications in empirical research across economics, political science, marketing, and public policy. These applications leverage threshold-based decision rules to identify causal effects in real-world settings where randomized experiments are infeasible.
+
+Key applications include:
+
+-   **Marketing**: Estimating the causal effects of promotions and advertising intensity.
+
+-   **Education**: Evaluating the impact of financial aid or merit scholarships.
+
+-   **Healthcare**: Assessing the effect of medical interventions assigned based on eligibility thresholds.
+
+-   **Labor Economics**: Studying unemployment benefits and wage policies.
+
+### Applications in Marketing
+
+RD has been widely applied in marketing research to estimate causal effects of pricing, advertising, and product positioning.
+
+1.  **Position Effects in Advertising**
+
+[@narayanan2015position] uses an RD approach to estimate the causal impact of advertisement placement in search engines. Since ad placement follows an auction-based system, a discontinuity occurs where the top-ranked ad receives disproportionately more clicks than lower-ranked ads.
+
+Key insights:
+
+-   Higher-ranked ads generate more click-throughs, but this does not always translate into higher conversion rates.
+
+-   The RD framework helps distinguish correlation from causation by leveraging the rank cutoff.
+
+2.  **Identifying Causal Marketing Mix Effects**
+
+[@hartmann2011identifying] presents a nonparametric RD estimation approach to identify causal effects of marketing mix variables, such as:
+
+-   Advertising budgets
+
+-   Price changes
+
+-   Promotional campaigns
+
+By comparing firms just above and below an expenditure threshold, the RD framework isolates the true causal impact of marketing spending on consumer behavior.
+
+<!--# Application in Finance: "Balancing External vs. Internal Validity: An Application of Causal Forest in Finance"  -->
+
+### R Packages for RD Estimation
+
+Table \@ref(tab:rd-packages-in-r) shows key RD [Packages](https://rdpackages.github.io/) in R
+
+| **Feature**             | **rdd**                 | **rdrobust**                                                     | **rddtools**                                  |
+|---------------|---------------|-------------------------|------------------|
+| **Estimator**           | Local linear regression | Local polynomial regression                                      | Local polynomial regression                   |
+| **Bandwidth Selection** | [@imbens2012optimal]    | [@calonico2014robust; @imbens2012optimal ; @calonico2020optimal] | [@imbens2012optimal]                          |
+| **Kernel Functions**    | Epanechnikov, Gaussian  | Epanechnikov                                                     | Gaussian                                      |
+| **Bias Correction**     | No                      | Yes                                                              | No                                            |
+| **Covariate Inclusion** | Yes                     | Yes                                                              | Yes                                           |
+| **Assumption Testing**  | McCrary Sorting Test    | No                                                               | McCrary Sorting, Covariate Distribution Tests |
+
+Table: (\#tab:rd-packages-in-r) Packages in R for RD estimation.
+
+For a detailed comparison, see @thoemmes2017analysis (Table 1, p. 347).
+
+#### Specialized RD Packages
+
+-   `rddensity`: Tests for discontinuities in the density of the running variable (useful for manipulation/bunching detection).
+-   `rdlocrand`: Implements randomization-based inference for RD.
+-   `rdmulti`: Extends RD to multiple cutoffs and multiple scores.
+-   `rdpower`: Conducts power calculations and sample selection for RD designs.
+
+#### Strengths of `rdrobust`
+
+-   Implements local polynomial regression, providing bias correction and robust standard errors.
+-   Uses state-of-the-art bandwidth selection methods.
+-   Produces automatic RD plots for visualization.
+
+### Example of Regression Discontinuity in Education
+
+We illustrate a Sharp RD using a simulated example of college GPA and future career success.
+
+Setup:
+
+-   Students qualify for a prestigious internship if their GPA ≥ 3.5.
+
+-   The outcome variable is future career success (e.g., salary).
+
+-   RD estimates the causal impact of the internship program on earnings.
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 W_i + u_i
+$$
+
+$$
+X_i = 
+\begin{cases}
+1, W_i \ge c \\
+0, W_i < c
+\end{cases}
+$$
+
+We simulate 100 observations, where GPA is the forcing variable and career success depends on GPA and the treatment effect.
+
+```{r, message=FALSE}
+# Set seed for reproducibility
+set.seed(42)
+
+n = 100
+
+# Simulate GPA scores (0-4 scale)
+GPA <- runif(n, 0, 4)
+
+# Generate future success with treatment effect at GPA >= 3.5
+future_success <- 10 + 2 * GPA + 10 * (GPA >= 3.5) + rnorm(n)
+
+# Load RD package
+library(rddtools)
+
+# Format data for RD analysis
+data <- rdd_data(future_success, GPA, cutpoint = 3.5)
+```
+
+Figure \@ref(fig:rd-plot-gpa-future-success) shows the scatter plot of GPA and Future Success.
+
+```{r rd-plot-gpa-future-success, fig.cap='Binned scatter plot of GPA and future success with threshold at 3.5.', fig.alt='Scatter plot with GPA on the x-axis and future success on the y-axis. Red dots show average outcomes in GPA bins. A vertical dashed line at GPA = 3.5 marks a potential threshold. The data trend appears to rise steadily, with a sharp increase in future success for GPAs just above the cutoff.'}
+# Plot RD scatterplot
+plot(data, col = "red", cex = 0.5, xlab = "GPA", ylab = "Future Success")
+```
+
+We estimate the Sharp RD treatment effect using local linear regression:
+
+```{r}
+# Estimate the sharp RDD model
+rdd_mod <- rdd_reg_lm(rdd_object = data, slope = "same")
+
+# Display results
+summary(rdd_mod)
+```
+
+Figure \@ref(fig:rd-binned-rd-plot-gpa-future-success) plots the RD regression line with binned observations:
+
+```{r rd-binned-rd-plot-gpa-future-success, fig.cap='Coarse binned regression discontinuity plot of GPA and future success.', fig.alt='Line plot of GPA versus future success with four coarse bins. A dashed vertical line at GPA = 3.5 marks the cutoff. A sharp jump in the fitted line is visible at the cutoff, indicating a possible treatment effect. The x-axis spans 0 to 4 GPA, and the y-axis ranges from 14 to 28 in future success.'}
+# Plot RD regression
+plot(rdd_mod, cex = 0.5, col = "red", xlab = "GPA", ylab = "Future Success")
+```
+
+We verify whether results hold under different bandwidths and functional forms:
+
+##### Varying the Bandwidth
+
+```{r}
+# Using rdrobust for robust estimation
+library(rdrobust)
+
+# Estimate RD with optimal bandwidth
+rd_out <- rdrobust(y = future_success, x = GPA, c = 3.5)
+summary(rd_out)
+
+```
+
+##### McCrary Test for Manipulation
+
+```{r}
+library(rddensity)
+
+# Check for discontinuities in GPA distribution
+rddensity(GPA, c = 3.5)
+```
+
+##### Polynomial Functional Forms
+
+We compare linear and quadratic specifications:
+
+```{r}
+# Estimate RD with a quadratic polynomial
+rdd_mod_quad <- rdd_reg_lm(rdd_object = data, slope = "separate", order = 2)
+summary(rdd_mod_quad)
+```
+
+### Example of Occupational Licensing and Market Efficiency
+
+Occupational licensing is a form of labor market regulation that requires workers to obtain licenses or certifications before being allowed to work in specific professions. The debate around occupational licensing revolves around two competing effects:
+
+1.  **Efficiency-enhancing effect**:
+    -   Licensing ensures that workers meet minimum quality standards, reducing information asymmetries between firms and consumers.
+    -   Higher-quality service providers are selected into the labor market.
+2.  **Barrier-to-entry effect**:
+    -   Licensing requirements impose costs on potential entrants, reducing labor supply.
+    -   This creates frictions in the market, potentially leading to inefficiencies.
+
+@bowblis2021occupational investigates this tradeoff using a [Fuzzy RD](#sec-fuzzy-regression-discontinuity-design) based on a threshold rule:
+
+-   Nursing homes with 120 or more beds are required to hire a certain fraction of licensed/certified workers.
+
+-   The study examines whether this policy improves quality of care or merely restricts labor market competition.
+
+------------------------------------------------------------------------
+
+#### OLS Estimation: Naïve Approach and Its Bias
+
+A simple ordinary least squares regression can be used to estimate the effect of licensed workers on quality of service:
+
+$$
+Y_i = \alpha_0 + X_i \alpha_1 + LW_i \alpha_2 + \epsilon_i
+$$
+
+where:
+
+-   $Y_i$ = Quality of service at facility $i$.
+
+-   $LW_i$ = Proportion of licensed workers at facility $i$.
+
+-   $X_i$ = Facility characteristics (e.g., size, staffing levels).
+
+#### Potential Bias in $\alpha_2$
+
+1.  Mitigation-Based Bias:
+    -   Facilities with poor quality outcomes may hire more licensed workers in response to bad performance.
+    -   This induces a negative correlation between $LW_i$ and $Y_i$, biasing $\alpha_2$ downward.
+2.  Preference-Based Bias:
+    -   Higher-quality facilities may have greater incentives to hire certified workers.
+    -   This induces a positive correlation between $LW_i$ and $Y_i$, biasing $\alpha_2$ upward.
+
+#### Fuzzy RD Framework
+
+The OLS model is endogenous, so we implement a [Fuzzy RD Design](#sec-fuzzy-regression-discontinuity-design) that exploits a discontinuity in licensing requirements at 120 beds.
+
+$$
+\begin{aligned}Y_{ist} = \beta_0 &+ \beta_1 \mathbb{1}(\text{Bed}_{ist} \geq 121) + \beta_2 f(\text{Size}_{ist}) \\&+ \beta_3 f(\text{Size}_{ist}) \times \mathbb{1}(\text{Bed}_{ist} \geq 121) \\&+ X_{it}'\delta + \gamma_s + \theta_t + \epsilon_{ist}\end{aligned}
+$$
+
+where:
+
+-   $I(Bed \geq 121)$ = Indicator for treatment eligibility (having at least 120 beds).
+
+-   $f(Size_{ist})$ = Flexible functional form of facility size.
+
+-   $X_{it}$ = Other control variables.
+
+-   $\gamma_s$ = State fixed effects (accounts for state-level regulations).
+
+-   $\theta_t$ = Time fixed effects (accounts for temporal shocks).
+
+-   $\beta_1$ = Intent-to-treat (ITT) effect.
+
+This model estimates discontinuities in quality outcomes at the 120-bed threshold.
+
+------------------------------------------------------------------------
+
+#### Why This RD is Fuzzy
+
+Unlike a [Sharp RD](#sec-sharp-regression-discontinuity-design), treatment is not fully determined at the cutoff:
+
+-   Some facilities with fewer than 120 beds voluntarily hire licensed workers.
+
+-   Some facilities with more than 120 beds may not comply fully.
+
+Thus, the RD framework must be modified:
+
+1.  Fixed-Effect Considerations:
+    -   If states sort differently near the threshold, state fixed effects ($\gamma_s$) may be needed.
+    -   However, if sorting is non-random, the RD assumption fails.
+
+<!-- -->
+
+2.  Panel Data Implications:
+    -   Fixed-effects models are not preferred in RD, as they are lower in the causal inference hierarchy.
+    -   RD typically excludes pre-treatment periods, whereas fixed-effects require before-and-after comparisons.
+3.  Variation in Facility Size:
+    -   Hospitals rarely change bed capacity, so including hospital-specific fixed effects removes variation necessary for RD estimation.
+
+------------------------------------------------------------------------
+
+#### Instrumental Variable Approach
+
+To correct for endogeneity, we use a two-stage least squares IV approach, where the running variable serves as an instrument for treatment intensity.
+
+##### Stage 1: First-Stage Regression
+
+Estimate the probability of hiring licensed workers based on the 120-bed threshold:
+
+$$
+\begin{aligned}\text{QSW}_{ist} = \alpha_0 &+ \alpha_1 \mathbb{1}(\text{Bed}_{ist} \geq 121) + \alpha_2 f(\text{Size}_{ist}) \\&+ \alpha_3 f(\text{Size}_{ist}) \times \mathbb{1}(\text{Bed}_{ist} \geq 121) \\&+ X_{it}'\delta + \gamma_s + \theta_t + \epsilon_{ist}\end{aligned}
+$$
+
+where:
+
+-   $QSW_{ist}$ = Predicted proportion of licensed workers at facility $i$ in state $s$ at time $t$.
+
+##### Stage 2: Second-Stage Regression
+
+Estimate the causal effect of hiring licensed workers on quality of service:
+
+$$
+\begin{aligned}Y_{ist} = \gamma_0 &+ \gamma_1 \widehat{\text{QSW}}_{ist} + \delta_2 f(\text{Size}_{ist}) \\&+ \delta_3 f(\text{Size}_{ist}) \times \mathbb{1}(\text{Bed}_{ist} \geq 121) \\&+ X_{it}'\lambda + \eta_s + \tau_t + u_{ist}\end{aligned}
+$$
+
+where:
+
+-   $\hat{QWS}_{ist}$ = Instrumented proportion of licensed workers.
+
+-   $\gamma_1$ = Causal effect of certified staffing on quality outcomes.
+
+##### Key Observations
+
+-   The larger the discontinuity at 120 beds, the closer $\gamma_1 \approx \beta_1$.
+-   The ITT effect ($\beta_1$) will always be weaker than the [local average treatment effect](#sec-local-average-treatment-effects) ($\gamma_1$).
+
+------------------------------------------------------------------------
+
+#### Empirical Challenges
+
+1.  **Bunching at Round Numbers**:
+    -   Density plots typically show facilities clustering at every 5-bed increment.
+    -   If manipulation occurs, we expect underrepresentation at 130 beds.
+2.  **Clustering Standard Errors**:
+    -   Due to limited unique mass points (facilities at specific sizes), errors should be clustered by mass point instead of individual facilities.
+3.  **Noncompliance and Selection Bias**:
+    -   Fuzzy RD requires that we do not drop non-compliers (as it would introduce selection bias).
+    -   However, we can drop manipulators if there is clear evidence of behavioral bias (e.g., preference for round numbers).
+
+<!-- ### Replicating [@carpenter2009effect] -->
+
+<!-- A well-known RD study by [@carpenter2009effect] investigates the causal effect of legal drinking age on mortality rates. -->
+
+<!-- Replication available at: [Philipp Leppert](https://rpubs.com/phle/r_tutorial_regression_discontinuity_design). -->
+
+<!-- Data available at: [OpenICPSR](https://www.openicpsr.org/openicpsr/project/113550/version/V1/view?flag=follow&pageSize=100&sortOrder=(?title)&sortAsc=true). -->
+
+------------------------------------------------------------------------
+
+<!-- ### Additional RD Applications -->
+
+<!-- For a comprehensive empirical RD application, see @thoemmes2017analysis, where: -->
+
+<!-- -   Multiple RD packages (`rdd`, `rdrobust`, `rddtools`) are tested. -->
+
+<!-- -   Robustness checks are performed across bandwidth selection and polynomial orders. -->
+
+------------------------------------------------------------------------
+
+## Dose-Response and Multivalued-Treatment RD {#sec-dose-response-rd}
+
+The canonical [sharp RD design](#sec-sharp-regression-discontinuity-design) compares treated and untreated units at the cutoff. In many policy settings the cutoff does not switch treatment from off to on but rather changes the *intensity* of an ongoing treatment. A means-tested transfer whose amount scales with how far below the eligibility threshold a household lies, a graduated tax credit whose rate steps up at successive income brackets, a graduate-fellowship offer whose stipend depends on a continuous score above a qualifying mark: all are settings in which the substantive question is the shape of a dose-response, not the average effect of treated vs. untreated. This section develops the RD machinery for those settings.
+
+The framework subsumes two related but distinct designs. In the **dose-response RD**, the treatment intensity $D$ is a deterministic continuous function of the running variable $X$ on one or both sides of the cutoff, and the estimand of interest is the marginal effect of intensity at the cutoff. In the **multivalued-treatment RD**, the running variable determines which of several discrete treatment levels a unit receives, and the estimand is the set of dose-specific level effects. Both are instances of the same broader idea: when the cutoff is not a binary switch, the RD estimand becomes a function rather than a scalar, and the analyst's job is to recover that function rather than collapse it.
+
+### Identifying Strategies
+
+The two leading identification frameworks in this space come from @dong2015identifying and @caetano2023regression, and they make different but complementary assumptions.
+
+@dong2015identifying study the case in which the policy threshold itself changes (for instance, an eligibility cutoff moves from one income level to another) and the parameter of interest is the marginal effect of moving the threshold. The identifying argument is that, even though the new cutoff is not a discontinuity in any single dataset, the *change* in the cutoff acts like a continuous-treatment intervention whose effect can be recovered by comparing the level effects estimated at the old and new thresholds. The estimand is informative for policy questions in which the analyst wants to know "how much would the program effect change if we relaxed the eligibility rule," a counterfactual that the classical sharp-RD estimand cannot answer.
+
+@caetano2023regression develop a more general framework that handles multivalued treatments determined by the running variable, including the dose-response special case. The identifying assumption replaces continuity of the conditional expectation of the potential outcomes at the cutoff with continuity of an entire family of conditional expectations indexed by the treatment level. Under this assumption the estimand is a dose-specific local average treatment effect, and the estimator is a local-polynomial regression that interacts the running variable with the treatment level. The framework recovers the classical sharp-RD estimand as a special case (when the treatment is binary) and the fuzzy-RD estimand as another (when the treatment is binary and partially compliant), while also accommodating the multivalued case directly.
+
+The @cattaneo2016interpreting and @cattaneo2021extrapolating multi-cutoff machinery, developed in Section \@ref(sec-multi-cutoff-regression-discontinuity-design), is the third leg of the design space. When the dose is discrete and the policy rule is implemented through several cutoffs (one per dose level), the multi-cutoff estimator pools across cutoffs to recover the dose-response curve. The pooling assumption is non-trivial: it requires that the local treatment effect at each cutoff identifies the same underlying causal parameter, which fails if the marginal compliers at different cutoffs are systematically different units.
+
+### Estimands
+
+In the dose-response setting with continuous treatment intensity, the natural estimand is the **marginal dose-response at the cutoff**:
+
+$$
+\theta(c) = \lim_{x \downarrow c} \frac{\partial}{\partial d} \mathbb{E}[Y \mid X = x, D = d(x)],
+$$
+
+where $d(x)$ is the deterministic dose function of the running variable. The estimand captures how the average outcome would change if every unit at the cutoff received a marginally higher dose. The classical sharp-RD estimand is the special case where $d(x)$ jumps from zero to one at the cutoff.
+
+In the multivalued-treatment setting, the natural estimand is the set of **dose-specific level effects**:
+
+$$
+\tau(d) = \mathbb{E}[Y(d) - Y(0) \mid X = c, D = d],
+$$
+
+evaluated for each dose level $d$ in the support of the treatment. Reported together, these form a dose-response curve analogous to the one delivered by the [continuous-treatment matching analysis](#sec-gps-continuous) or the [continuous-treatment DiD](#sec-continuous-did), with the substantive difference that the RD version conditions on the running variable being at the cutoff and therefore has a strictly local interpretation.
+
+### Estimation in Practice
+
+We work through the estimation in two passes. The first pass implements the multi-cutoff dose-response by hand using only base R, so that the per-cutoff local-linear logic is visible. The second pass calls the published `rdmulti` and `rdrobust` packages on the same data.
+
+##### Demonstration: dose-specific local-linear RD from scratch
+
+```{r rd-multi-sim, message=FALSE}
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+})
+
+set.seed(20240515)
+
+# Two cutoffs (0 and 10) define three dose levels.
+# Dose 0 for X < 0, dose 1 for X in [0, 10), dose 2 for X >= 10.
+# True dose-response is concave: tau(1) = 0.6, tau(2) = 0.9.
+n <- 5000
+X <- runif(n, -20, 30)
+D <- as.integer(X >= 0) + as.integer(X >= 10)
+Y <- 0.05 * X + 0.6 * (D == 1) + 0.9 * (D == 2) + rnorm(n, sd = 0.5)
+dat <- data.frame(X, Y, D)
+
+# Estimate the level jump at each cutoff by a local-linear regression
+# inside a fixed bandwidth. We use a 5-unit bandwidth on each side and
+# a triangular kernel weight, matching the rdrobust default kernel.
+local_linear_jump <- function(data, cutoff, h = 5) {
+  d <- data %>%
+    filter(X >= cutoff - h, X <= cutoff + h) %>%
+    mutate(
+      side   = as.integer(X >= cutoff),
+      Xc     = X - cutoff,
+      kweight = pmax(1 - abs(Xc) / h, 0)   # triangular kernel
+    )
+  fit <- lm(Y ~ side + Xc + side:Xc, data = d, weights = kweight)
+  est <- coef(fit)["side"]
+  se  <- sqrt(diag(vcov(fit)))["side"]
+  c(est = unname(est), se = unname(se),
+    ci_lo = unname(est) - 1.96 * unname(se),
+    ci_hi = unname(est) + 1.96 * unname(se))
+}
+
+jump_at_0  <- local_linear_jump(dat, cutoff = 0)
+jump_at_10 <- local_linear_jump(dat, cutoff = 10)
+
+rd_table <- data.frame(
+  cutoff   = c(0, 10),
+  est      = c(jump_at_0["est"], jump_at_10["est"]),
+  se       = c(jump_at_0["se"],  jump_at_10["se"]),
+  ci_lo    = c(jump_at_0["ci_lo"], jump_at_10["ci_lo"]),
+  ci_hi    = c(jump_at_0["ci_hi"], jump_at_10["ci_hi"]),
+  true_jump = c(0.6, 0.3)   # tau(1) - tau(0) = 0.6, tau(2) - tau(1) = 0.3
+)
+rd_table
+```
+
+The table reports the estimated jump at each cutoff. The jump at $X = 0$ identifies the marginal effect of moving from dose 0 to dose 1; the jump at $X = 10$ identifies the marginal effect of moving from dose 1 to dose 2. Comparing the `est` column to `true_jump` checks the estimator against the simulated truth; the recovered dose-response is concave (the marginal effect at the higher cutoff is smaller), which mirrors the diminishing-returns pattern built into the simulation.
+
+The dose-specific level effects can be plotted directly:
+
+```{r rd-multi-plot, fig.cap="Multi-cutoff RD: estimated jumps at each cutoff. The first cutoff identifies the marginal effect of dose 1 over dose 0; the second cutoff identifies the marginal effect of dose 2 over dose 1. The dose-response is concave (diminishing marginal returns), which the per-cutoff estimates recover.", fig.width=6, fig.height=4}
+ggplot(rd_table, aes(x = factor(cutoff), y = est)) +
+  geom_pointrange(aes(ymin = ci_lo, ymax = ci_hi)) +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  labs(x = "Cutoff (and dose transition)",
+       y = "Local marginal effect at the cutoff",
+       title = "Dose-response by cutoff, from-scratch local-linear RD",
+       subtitle = "Cutoff 0 = dose 1 vs 0; cutoff 10 = dose 2 vs 1") +
+  theme_minimal()
+```
+
+Figure \@ref(fig:rd-multi-plot) shows two point estimates with their 95% confidence intervals. A reviewer reads off (a) whether each per-cutoff effect is statistically distinguishable from zero, (b) whether the dose-response is monotone, and (c) whether the spacing of the estimates is consistent with linearity (it is not, in this simulation, because the effects are concave). The same plot scaled up to many cutoffs is the discrete-dose analogue of the continuous-DiD dose-response figure in Section \@ref(sec-continuous-did).
+
+##### Production: `rdmulti` and `rdrobust`
+
+For production work the published `rdmulti` package by Cattaneo, Titiunik, and Vazquez-Bare implements both cutoff-specific and pooled estimators, with proper bias-corrected robust standard errors via the underlying `rdrobust` engine [@calonico2014robust]. The user passes the data, the running variable, the cutoffs, and the cutoff assignment, and the package handles bandwidth selection (using the @cattaneo2016interpreting multi-cutoff conventions), kernel weighting, and inference.
+
+```{r rdmulti-pipeline, eval=FALSE}
+# install.packages(c("rdmulti", "rdrobust"))
+# CRAN, Cattaneo-Titiunik-Vazquez-Bare
+library(rdmulti)
+library(rdrobust)
+
+# Cutoff-specific RD: estimate the level jump at each cutoff separately.
+res_each <- rdmc(
+  Y       = Y,
+  X       = X,
+  C       = ifelse(X < 10, 0, 10),  # which cutoff each unit faces
+  cvar    = c(0, 10)
+)
+summary(res_each)
+
+# Pooled estimate of the dose-response across cutoffs.
+res_pool <- rdms(
+  Y       = Y,
+  X       = X,
+  C       = ifelse(X < 10, 0, 10),
+  cvar    = c(0, 10),
+  pooled_opt = "uniform"
+)
+summary(res_pool)
+```
+
+The `summary(res_each)` output is a table with one row per cutoff, reporting the cutoff-specific RD coefficient, robust standard error, bias-corrected 95% confidence interval, and the optimal bandwidth chosen by the @calonico2014robust MSE-minimizing rule. The right way to read it is the same as for the from-scratch table above: scan for cutoffs where the effect is statistically distinguishable from zero, look for the dose-response shape, and compare the bandwidth used at each cutoff (large differences in bandwidth signal that the running-variable density is uneven across the dose range).
+
+The `summary(res_pool)` output is a single pooled estimate that aggregates the cutoff-specific effects under a uniform-pooling assumption (each cutoff carries the same weight). The pooled object is the right summary when the analyst believes the per-cutoff local effects identify the same underlying parameter; the disaggregated `res_each` object is the right summary when they do not. The placebo diagnostic recommended by @cattaneo2021extrapolating is to drop one cutoff at a time and re-pool: instability in the pooled estimate is evidence that the per-cutoff effects are heterogeneous and should be reported separately.
+
+For the continuous-dose case in which the policy threshold itself shifts, the @dong2015identifying estimator can be implemented directly by running two `rdrobust` estimations (one at the old cutoff, one at the new cutoff in a separate dataset or sub-period) and reporting their difference as the marginal-threshold effect.
+
+For the multivalued-treatment case under the @caetano2023regression framework, no canonical CRAN package implements the estimator at the time of writing; the authors' replication code and supplementary materials provide reference implementations.
+
+### Diagnostics
+
+The diagnostics from the [Assumptions for RD Validity](#sec-assumptions-for-rd-validity) section all carry over and gain an additional requirement: continuity must hold for the conditional expectation of the potential outcome at *each dose level*, not only on average across doses. The natural diagnostic is to plot the running variable against the outcome separately for each dose level and inspect the smoothness of each curve at the cutoff. A jump in one dose-specific curve but not in another is a red flag that the multivalued-treatment identifying assumption is being violated.
+
+The @mccrary2008manipulation density test should be re-run with attention to the dose distribution: a continuous-dose function $d(x)$ in which units near the cutoff systematically misreport their running variable to qualify for a more generous dose breaks the design in the same way that manipulation breaks classical sharp RD, only the symptom is asymmetric piling at specific dose-eligibility thresholds rather than at a single binary cutoff.
+
+A pooling-validity placebo, recommended by @cattaneo2021extrapolating, is to estimate the dose-response curve on the full sample and again on subsamples that exclude one cutoff at a time. A pooled estimate that is unstable to dropping individual cutoffs is evidence that the local treatment effects at different cutoffs are not identifying the same underlying parameter, in which case the dose-specific estimates should be reported instead of the pooled curve.
+
+------------------------------------------------------------------------
+
+## RD가 작동하는 경우와 실패하는 경우
+
+이 책에서 다룬 준실험 설계 가운데 RD는 분석가에게 요구하는 것이 적다는 점에서 두드러진다. 연속형 실행변수에 대해 기관이 강제하는 명확한 기준값이 주어지면 국소 무작위화가 사실상 자연스럽게 성립하며, 검토자는 해당 맥락을 잘 알지 못해도 설계를 평가할 수 있다. 이러한 투명성이 RD의 매력 중 하나다.
+
+반대로 RD는 분석이 작성된 뒤에는 발견하기 어려운 방식으로 잘못 적용하기 쉽다. 특히 실행변수, 기준값, 그리고 그 주변 구간을 세심하게 살펴야 한다.
+
+실행변수는 실제로 연속적이어야 하며 기준값 양쪽에서 유사한 밀도로 측정되어야 한다. $c$ 바로 아래나 바로 위에 관측치가 몰리는 것은 대상자가 한쪽에 들어가도록 점수를 조작하고 있다는 전형적인 신호다. 예를 들어 장학금 기준을 넘기 위한 성적 부풀리기, 혜택을 받기 위한 소득 조정, 프로그램 시작일을 둘러싼 전략적 시점 선택이 이에 해당한다. 조작이 있으면 연속성 가정이 성립하지 않고 모든 RD 추정치가 선택의 영향을 받는다. 첫 번째 진단은 밀도 검정(McCrary 또는 Cattaneo-Jansson-Ma)이고, 두 번째는 사전 결정 공변량에 대한 위약 분석이다.
+
+기준값은 분석가가 선택한 것이 아니라 제도적으로 정해진 것이어야 한다. 결과를 살펴본 뒤 기준값을 선택했다면 설계는 설정 탐색으로 전락한다.
+
+대부분의 논쟁은 이웃 구간, 즉 대역폭 $h$에서 발생한다. 매우 좁은 구간은 정밀한 국소 식별을 제공하지만 추정치가 잡음에 민감하다. 넓은 구간은 기준값에서 먼 단위의 이질성을 끌어들인다. 여러 대역폭(자료 기반 최적값과 더 좁거나 넓은 구간), 여러 다항식 차수, 그리고 @calonico2014robust의 편향 보정 표준오차를 보고하라. 이러한 선택 전반에서 안정적인 계수가 구간을 넓힐 때 부호가 바뀌는 계수보다 훨씬 신뢰할 만하다.
+
+두 가지 경고를 덧붙인다. 첫째, RD의 추정 대상은 기준값 *에서의* LATE다. $c$에서 먼 단위로 외삽하려면 추가 가정(일정한 처치효과)이나, RD가 피하고자 했던 모형 의존성을 다시 도입하는 모수 설정이 필요하다. 둘째, Fuzzy RD는 [도구변수 장](#sec-instrumental-variables)의 모든 약한 도구변수 문제를 물려받는다. 기준값에서 처치 확률의 점프가 작으면 축약형이 아무리 정밀해 보여도 비율 추정량은 불안정해진다.
+
+RD가 응용 맥락에 잘 맞는다면 이용 가능한 설계 중 가장 신뢰할 만한 경우가 많다. 기준값이 모호하거나 조작 가능하거나 처치를 약하게만 예측한다면, 가정을 더 엄격하게 요구하는 설계를 선택하라. 패널 구조가 있다면 [DiD](#sec-difference-in-differences)를, 풍부한 공변량이 핵심 자산이라면 [매칭](#sec-matching-methods)을 고려할 수 있다.
