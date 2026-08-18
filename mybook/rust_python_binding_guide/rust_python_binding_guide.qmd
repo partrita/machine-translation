@@ -24,7 +24,7 @@ Rust의 메모리 안전성 및 고성능 연산 능력과 Python의 풍부한 �
 | **`quiver-pdb`** | 파일 파싱 & CLI 패키징 | 대용량 생물정보학 PDB 데이터 파서, 클래스(`#[pyclass]`) 및 Click CLI 결합 |
 | **`polodb-python`** | 임베디드 NoSQL DB 바인딩 | Rust 엔진(`polodb_core`), BSON-Python 타입 변환기, CRUD 인터페이스 |
 
----
+***
 
 # Maturin & PyO3 빌드 시스템
 
@@ -76,7 +76,7 @@ features = ["pyo3/extension-module"]
 # python-source = "python"
 ```
 
----
+***
 
 # 프로젝트별 코드 심층 분석
 
@@ -141,7 +141,7 @@ fn func() -> String {
 3. **`wrap_pyfunction!`**: `#[pyfunction]`으로 정의된 Rust 함수를 Python 모듈 객체에 등록하기 위한 래퍼 매크로입니다.
 4. **서브모듈 등록 (`PyModule::new` & `add_submodule`)**: `parent_module.child_module.func()` 형태로 Python 계층형 네임스페이스를 Rust 단에서 구성할 수 있습니다.
 
----
+***
 
 ## 2. `fibonacci` - 연산 성능 가속 비교 {.unnumbered}
 
@@ -211,7 +211,7 @@ assert python_result == rust_result, "계산 결과가 일치하지 않습니다
 - **컴파일 최적화 효과**: Rust의 `u64` 레지스터 직접 연산 및 루프 언롤링 최적화 덕분에 반복 연산에서 Python 대비 수십~수백 배 빠른 성능을 발휘합니다.
 - **타입 자동 변환**: Python의 정수형(`int`)은 Rust의 `u64`로 자동 역직렬화(Unmarshaling)되고, 반환 시 다시 Python 객체로 래핑됩니다.
 
----
+***
 
 ## 3. `guessing-game` - 표준 입출력 및 외부 크레이트 연동 {.unnumbered}
 
@@ -271,7 +271,7 @@ fn guessing_game(m: &Bound<'_, PyModule>) -> PyResult<()> {
 - **I/O 스트림 공유**: Rust 함수 내부에서 `println!`과 `io::stdin()`을 호출하면 Python 인터프리터가 점유한 표준 입출력 파일 디스크립터(stdout/stdin)를 그대로 공유하여 즉시 콘솔과 상호작용합니다.
 - **Cargo 의존성 연동**: `Cargo.toml`에 명시된 `rand` 의존성이 바인딩 바이너리에 정적 링크되어 추가적인 C/C++ 런타임 종속성 없이 Python에서 사용할 수 있습니다.
 
----
+***
 
 ## 4. `gil` - GIL(Global Interpreter Lock) 릴리즈와 멀티스레딩 {.unnumbered}
 
@@ -367,7 +367,7 @@ print(f"Rust 결과: {result[1]}")
 - **`py.allow_threads`**: 호출 블록 동안 CPython 인터프리터 잠금을 해제합니다. 이 구간에서는 다른 Python 스레드가 CPU를 양보받아 동작할 수 있습니다.
 - **`Python::with_gil`**: GIL이 해제된 상태의 네이티브 스레드에서 Python 객체(`PyList`, `PyDict` 등)를 생성하거나 수정할 때 다시 Lock을 획득합니다.
 
----
+***
 
 ## 5. `quiver-pdb` - 대용량 단백질 데이터 파서 & Python CLI {.unnumbered}
 
@@ -515,7 +515,7 @@ if __name__ == "__main__":
 - **스트리밍 I/O 성능**: 수 GB 크기의 바이오 데이터셋을 처리할 때 Python 반복문 대신 Rust의 `BufReader`와 바이트 단위 쓰기를 사용하여 메모리 점유율을 낮추고 I/O 처리량을 극대화합니다.
 - **Python CLI 생태계 활용**: Rust의 성능으로 파싱하고, Python의 `click` 라이브러리로 사용자 친화적 터미널 UI를 구축합니다.
 
----
+***
 
 ## 6. `polodb-python` - 임베디드 NoSQL 데이터베이스 바인딩 {.unnumbered}
 
@@ -729,7 +729,7 @@ class Collection:
         return self.__rust_collection.count_documents()
 ```
 
----
+***
 
 # PyO3 개발 모범 사례 (Best Practices)
 
@@ -743,7 +743,7 @@ class Collection:
 ## 3. 명확한 예외 매핑 {.unnumbered}
 - Rust의 `Result<T, E>`는 PyO3의 `PyResult<T>`로 변환하고, 상황에 맞는 표준 Python 예외(`PyValueError`, `PyTypeError`, `PyIOError`, `PyRuntimeError`)를 적절히 매핑해야 Python 사용자가 직관적인 에러 핸들링(`try-except`)을 구현할 수 있습니다.
 
----
+***
 
 # 요약 (Summary)
 

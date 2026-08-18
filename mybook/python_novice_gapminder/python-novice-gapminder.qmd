@@ -628,7 +628,7 @@ flabadab = 42
 age = 42
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -787,7 +787,7 @@ print('half is', 1 / 2.0)
 print('three squared is', 3.0 ** 2)
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -988,7 +988,7 @@ age = 53
 # remaining = 100 - aege  # 오타로 인한 NameError 발생
 ```
 
----
+***
 
 ## 코딩 문제 해결을 위한 도움 받기
 
@@ -1012,7 +1012,7 @@ age = 53
 2. 직접 오류를 수정하며 쌓은 기초 지식은 나중에 AI가 생성한 코드가 안전하고 정확한지 판단할 수 있는 중요한 기준이 됩니다.
 3. 스스로 고민하고 해결하는 과정 자체가 프로그래밍 실력을 향상시키는 가장 확실한 방법입니다.
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -1146,7 +1146,7 @@ print('cos(pi) is', m.cos(m.pi))
 
 - `matplotlib.pyplot`을 `plt`로, `pandas`를 `pd`로 부르는 것처럼 커뮤니티에서 통용되는 관습적인 별칭을 사용하는 것이 좋습니다.
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -1304,7 +1304,7 @@ print(data_oceania_country.T)
 print(data_oceania_country.describe())
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -1437,7 +1437,7 @@ wealth_score = mask_higher.aggregate('sum', axis=1) / len(data.columns)
 print(data.groupby(wealth_score).sum())
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -1867,7 +1867,7 @@ print(element[0])
 # print(element[99])  # IndexError 발생
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -2054,7 +2054,7 @@ for number in range(10):
 print(total)
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 
@@ -2643,7 +2643,7 @@ result = print_date(1871, 3, 19)
 print('반환값:', result)
 ```
 
----
+***
 
 :::: {.callout-important title="연습 문제"}
 

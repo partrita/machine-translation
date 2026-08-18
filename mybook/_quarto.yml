@@ -58,7 +58,7 @@ book:
       chapters:
         - the_simple_guide_to_minimalist/The_simple_guide_to_minimalist.qmd
         - marketing_research_complete/marketing_research_complete.qmd
-        - my_but_better/me_but_better.qmd
+        - me_but_better/me_but_better.qmd
         - bible/bible.qmd
 
 engine: markdown

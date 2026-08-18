@@ -7168,7 +7168,7 @@ lang 팀 및 기타 관련 팀들이 안정화 안건을 검토하고 제기된 
 
 구분선 이하의 모든 내용을 복사하여 마크다운으로 편집해 사용하세요. 각 *TODO* 항목을 답변 내용으로 교체합니다.
 
----
+***
 
 ### 안정화 리포트 (Stabilization report)
 
@@ -10269,7 +10269,7 @@ pub fn provide(providers: &mut rustc_middle::util::Providers) {
 [providers_struct]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/queries/struct.Providers.html
 [extern_providers_struct]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/queries/struct.ExternProviders.html
 
----
+***
 
 ### 신규 쿼리 추가하기 (Adding a new query)
 
@@ -11470,7 +11470,7 @@ impl<'tcx, D: TyDecoder<'tcx>> Decodable<D> for MyStruct<'tcx> {
 아래 섹션들은 정보 보존을 위해 남겨두었으나 다소 이전 정보에 해당합니다.
 </div>
 
----
+***
 
 [codegen]: #backend-codegen
 
@@ -17805,7 +17805,7 @@ fn bar(foo: Foo<u32, f32>) {
 [`EarlyBinder`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.EarlyBinder.html
 [`EarlyBinder::instantiate`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.EarlyBinder.html#method.instantiate
 
----
+***
 
 앞서 언급했듯이 항목 _외부_에 있을 때는 내부 값에 접근하기 전에 제네릭 인수로 `EarlyBinder`를 인스턴스화하는 것이 중요하지만, 개념적으로 이미 바인더 내부 구역에 있을 때는 설정이 약간 다릅니다.
 
@@ -19196,7 +19196,7 @@ fn foo<T: Iterator, U: Iterator>() {
 마지막으로 별칭은 단순히 미정규화 상태일 수 있습니다.
 `<Vec<u32> as IntoIterator>::Iter`는 이미 `std::vec::IntoIter<u32>`로 정규화될 수 있지만 아직 처리되지 않았을 뿐이므로 미정규화 별칭입니다.
 
----
+***
 
 자유(Free) 별칭 및 자체(Inherent) 별칭은 이를 명명하는 것 자체가 별칭의 기저 타입을 지정하는 별칭 정의를 확인했음을 의미하므로 강체나 모호함이 될 수 없다는 점에 유의할 가치가 있습니다.
 
@@ -19439,7 +19439,7 @@ HIR Typeck 내부에는 관련 정규화 메서드인 [`fcx.structurally_resolve
 [`PredicateKind::AliasRelate`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.PredicateKind.html#variant.AliasRelate
 [writeback]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir_typeck/writeback/index.html
 
----
+***
 
 신형 솔버에서 방식을 변경하게 만든 구형 솔버의 정규화 접근 방식의 주요 문제점은 다음과 같습니다:
 
@@ -19540,7 +19540,7 @@ struct Bar<T: ?Sized = <u8 as Trait>::Diverges<u8>>(Box<T>);
 대부분의 경우 `ParamEnv`는 전달된 항목의 where 절에서 파생된 `ParamEnv`를 반환하는 [`param_env` 쿼리][query]를 통해 초기에 생성됩니다.
 또한 impl의 where 절과 트레이트 정의 함수의 where 절로 구성된 하이브리드 `ParamEnv`를 생성하는 [`compare_method_predicate_entailment`][method_pred_entailment]와 같이 특정 항목에서 파생되지 않은 임의의 한정자 세트로 `ParamEnv`를 생성할 수도 있습니다.
 
----
+***
 
 다음과 같은 함수가 있는 경우:
 ```rust
@@ -22529,7 +22529,7 @@ Rust 컴파일러에는 잘 구성됨 검사의 두 가지 다른 형태가 있�
 
 ```rust,ignore
 <terms or items>
----
+***
 <obligations>
 ```
 
@@ -22537,7 +22537,7 @@ Rust 컴파일러에는 잘 구성됨 검사의 두 가지 다른 형태가 있�
 
 ```rust,ignore
 Vec<String>
----
+***
 // Obligations to fulfill
 Vec<T> where T: Sized
 // Trait solver says `String: Sized` is true, so this is well-formed.
@@ -22551,7 +22551,7 @@ Vec<String> where String: Sized
 
 ```rust,ignore
 Vec<str>
----
+***
 // Obligations to fulfill
 Vec<T> where T: Sized
 // Trait solver says `str: Sized` is not true, so this is not well-formed.
@@ -22586,7 +22586,7 @@ const 제네릭의 다음 사용을 살펴보겠습니다:
 fn use_const_generics<const U: usize>() { /* ... */ }
 // call site
 use_const_generics::<6>();
----
+***
 // call site wfck obligations
 const 6: usize
 ```
@@ -22605,7 +22605,7 @@ fn foo(_: Vec<str>) {
     // The `Vec<[u8]>` is not handled by item wfck as it's not in the signature
     let _: Vec<[u8]>
 }
----
+***
 Vec<str>: Sized // Generated
 Vec<[u8]>: Sized // Not done at item-wfck. Done elsewhere.
 ```
@@ -22630,7 +22630,7 @@ Item-wfck는 이러한 바운드를 찾고 검사하는 역할을 합니다.
 
 ```rust,ignore
 fn apartment_complex<T>(block: T, name: String) where String: Clone { /* ... */ }
----
+***
 String: Clone // Trivial & Global bound! There's no aliases to resolve.
 // There could be bligations on T but we don't care about them here.
 ```
@@ -22643,7 +22643,7 @@ String: Clone // Trivial & Global bound! There's no aliases to resolve.
 
 ```rust,ignore
 fn apartment_simple<T>(block: T, name: String) where String: Copy { /* ... */ }
----
+***
 String: Copy // Trivial bound again, but this one is false!
 ```
 
@@ -22684,7 +22684,7 @@ where
     for<'a> [u8]: Sized {}
 
 fn foo(_: &dyn Trait) {}
----
+***
 // This doesn't end up being generated, because it happens within a trait object.
 [u8]: Sized
 ```
@@ -22716,7 +22716,7 @@ fn main() {
 ```rust,ignore
 trait Trait<const N: usize> {}
 fn foo<const B: bool>(_: &dyn Trait<B>) {}
----
+***
 const N: usize
 const B: bool
 N = B // Substitution
@@ -22732,7 +22732,7 @@ const 제네릭 인수와 관련해서는 여기서 _일부_ 잘 구성됨 검�
 
 ```rust,ignore
 let _: for<'a> fn(Vec<[&'a ()]>);
----
+***
 // This doesn't end up being generated, because it happens within a HRB
 [&'a ()]: Sized // slices aren't sized, this would fail!
 ```
@@ -22760,7 +22760,7 @@ for<'a, 'b> fn(&'a &'b ())
 
 ```rust,ignore
 type WorksButShouldNot = Vec<str>;
----
+***
 // This should fail! But we skip the RHS of free type aliases
 str: Sized // Not generated
 ```
@@ -22777,7 +22777,7 @@ const 제네릭에 대해서는 자유 타입 별칭의 정의 위치에서 여�
 ```rust,ignore
 pub struct Consty<const A: bool>;
 type Alias = Consty<42>;
----
+***
 // This *is* generated as an obligation, so this (correctly) fails.
 42: bool // This is generated!
 ```

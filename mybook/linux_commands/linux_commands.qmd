@@ -9955,7 +9955,7 @@ banner 101LinuxCommands
 
 > banner의 기본 용량이 10이므로 101LinuxCo만 배너로 출력됩니다.
 
----
+***
 
 # `alias` 명령
 
@@ -10672,7 +10672,7 @@ aplay --help
 
    > 버전 정보를 출력합니다 (예: `aplay: version 1.1.0`).
 
----
+***
 
 # `spd-say` 명령어
 

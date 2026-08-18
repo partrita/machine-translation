@@ -70,7 +70,7 @@ date: "2026-02-21"
 *   [부록 2: Swift 연습 문제 (Exercises)](#부록-2-swift-연습-문제-exercises)
 *   [부록 3: Swift 연습 문제 풀이 및 정답 (Solutions)](#부록-3-swift-연습-문제-풀이-및-정답-solutions)
 
----
+***
 
 ## 1. 소개 {.unnumbered}
 
@@ -1970,9 +1970,9 @@ unit4A = nil
 - **패키지 관리:** Swift Package Manager (SPM).
 
 
----
+***
 
----
+***
 
 ## 12. 제네릭 (Generics) {.unnumbered}
 
@@ -2066,7 +2066,7 @@ let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 `Equatable`이라는 프로토콜 제약을 주면, 비교 연산자(`==`)를 안전하게 사용할 수 있습니다.
 
 
----
+***
 
 
 ## 13. 동시성 (Concurrency) {.unnumbered}
@@ -2156,7 +2156,7 @@ Task {
 ```
 
 
----
+***
 
 
 ## 14. JSON 파싱과 네트워킹 {.unnumbered}
@@ -2268,7 +2268,7 @@ Task {
 Swift의 `URLSession`은 `requests`만큼 코드가 짤막하지는 않지만, 강타입 시스템을 통해 안전성을 보장하고 기본적으로 비동기 환경에 완전히 어우러집니다.
 
 
----
+***
 
 
 ## 15. 프로퍼티 래퍼 (Property Wrappers) {.unnumbered}
@@ -2344,7 +2344,7 @@ print(hero.health) // 0 (최솟값으로 제한됨)
 프로퍼티 래퍼는 로컬 변수는 물론 SwiftUI 같은 프레임워크에서도 `@State`, `@Binding`, `@Environment` 등으로 상태 관리에 폭넓게 사용되어 코드의 보일러플레이트를 줄여줍니다.
 
 
----
+***
 
 
 ## 16. 불투명 타입 (Opaque Types)과 Any {.unnumbered}
@@ -2400,7 +2400,7 @@ printShapes(myShapes)
 파이썬이라면 단순히 리스트에 담긴 객체의 메서드를 호출하겠지만, `any`는 런타임에 타입 박싱 비용을 갖게 된다는 점을 Swift는 명확히 합니다 (성능 관점에서 `some` 사용이 권장됨).
 
 
----
+***
 
 
 ## 17. 결과 빌더 (Result Builders) {.unnumbered}
@@ -2459,7 +2459,7 @@ print(document)
 `@resultBuilder`는 리스트, 텍스트 뿐만 아니라 UI, 정규표현식(Regex Builder) 등 다양한 분야에서 가독성을 획기적으로 향상시킵니다.
 
 
----
+***
 
 
 ## 18. Swift 패키지 매니저 (SwiftPM) {.unnumbered}
@@ -2504,7 +2504,7 @@ let package = Package(
 가장 중요한 차이는 SwiftPM은 C, C++, Objective-C 코드의 직접적인 컴파일도 지원하여 네이티브 패키지 배포가 매우 일원화되어 있다는 점입니다.
 
 
----
+***
 
 
 ## 19. 명령줄 도구 만들기 (CLI Tools) {.unnumbered}
@@ -2552,7 +2552,7 @@ Greet.main()
 Swift의 방식은 구조체의 프로퍼티(`name`, `count`)에 기반하여 코드가 자체 문서화(Self-Documenting)되는 매우 선언적인 방식을 채택하고 있습니다. 빌드된 산출물은 단일 바이너리(Single Binary)이므로, 명령을 복사해서 배포하기도 수월합니다.
 
 
----
+***
 
 
 ## 20. 테스트 주도 개발 (Test-Driven Development) {.unnumbered}
@@ -2620,7 +2620,7 @@ func addMultipleNumbers(a: Int, b: Int, expected: Int) {
 파이썬의 인자화된 테스트(`@pytest.mark.parametrize`)가 Swift의 매크로 기반 시스템(`@Test(arguments:)`)으로 구현되어 매우 유사한 사용 경험을 제공합니다.
 
 
----
+***
 
 
 ## 21. Python과 Swift 연결하기 (PythonKit) {.unnumbered}
@@ -2669,9 +2669,9 @@ print(array * 2) // [2, 4, 6]
 Swift 개발 과정 중 파이썬 생태계에 대한 접근이 불가피하더라도 걱정할 필요가 없습니다. PythonKit은 이 두 언어가 가진 각각의 장점을 완벽히 함께 쓸 수 있도록 돕는 아주 훌륭한 다리입니다.
 
 
----
+***
 
----
+***
 
 ## 부록 1: Swift 코드 예제 모음 (Examples)
 
@@ -5726,7 +5726,7 @@ paragraph = nil
 
 
 
----
+***
 
 ## 부록 2: Swift 연습 문제 (Exercises)
 
@@ -6060,7 +6060,7 @@ paragraph = nil
 
 
 
----
+***
 
 ## 부록 3: Swift 연습 문제 풀이 및 정답 (Solutions)
 
