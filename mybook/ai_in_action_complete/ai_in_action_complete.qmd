@@ -1,4 +1,5 @@
 ---
+engine: markdown
 title: "AI의 실제 적용"
 author: "Mike Nguyen"
 date: "2026-08-15"
