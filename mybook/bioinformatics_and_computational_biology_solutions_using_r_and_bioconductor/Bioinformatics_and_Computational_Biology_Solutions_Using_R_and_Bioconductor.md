@@ -1,5 +1,5 @@
 ---
-title: "생물학 및 보건 통계학'
+title: "생물학 및 보건 통계학"
 author: "Robert Gentleman Wolfgang Huber Vincent J. Carey Rafael A. Irizarry Sandrine Dudoit"
 ---
 

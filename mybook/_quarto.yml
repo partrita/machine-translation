@@ -24,6 +24,7 @@ book:
         - sequence_analysis_with_biopython/Sequence_Analysis_with_Biopython.qmd
         - large_language_models_in_protein_bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
         - practical_bioinformatics/practical_bioinformatics.qmd
+        - practical_guide_to_protein_engineering/practical_guide_to_protein_engineering.qmd
     - part: "머신러닝 및 인공지능"
       chapters:
         - deep_learning_for_biology_harness_ai_to_solve_real_world_biology_problems/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
@@ -57,6 +58,8 @@ book:
       chapters:
         - the_simple_guide_to_minimalist/The_simple_guide_to_minimalist.qmd
         - marketing_research_complete/marketing_research_complete.qmd
+        - my_but_better/me_but_better.qmd
+        - bible/bible.qmd
 
 engine: markdown
 
