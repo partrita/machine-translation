@@ -8,10 +8,6 @@ name: Quarto Publish
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    env:
-      # Run JavaScript-based GitHub Actions on the Node.js 24 runtime.
-      # This is the supported migration path while action releases move off Node.js 20.
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     permissions:
       contents: write
     steps:
