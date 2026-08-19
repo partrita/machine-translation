@@ -589,10 +589,10 @@ cargo +stage1 build --target wasm32-wasip1
 rust-analyzer 전용 별도 빌드 디렉터리(예: `build-rust-analyzer`)를 함께 운용할 경우 디스크 사용량은 더욱 늘어납니다. 디스크 할당 용량이 제한된 개발용 데스크톱 환경뿐만 아니라 로컬 개발 환경에서도 쉽게 직면할 수 있는 상황입니다. 디스크 공간이 부족해지면 다음 조치를 취해 보세요.
 
 - `build/` 디렉터리 삭제
-- `build-rust-analyzer/` 디렉터리 삭제 (별도 사용 중인 경우)
+- `build-rust-analyzer/` 디렉터리 삭제 (별도 사용 중인 경우)[^ra-disk]
 - `cargo-bisect-rustc` 사용 시 불필요한 오래된 툴체인 삭제 (`rustup toolchain list`로 확인 가능)
 
-[^1]: issue[#1707](https://github.com/rust-lang/rustc-dev-guide/issues/1707)
+[^ra-disk]: issue[#1707](https://github.com/rust-lang/rustc-dev-guide/issues/1707)
 
 
 ### 빠른 시작 (Quickstart) {#building-quickstart}
@@ -1376,27 +1376,6 @@ src/ci/docker/run.sh --dev <image-name>
 
 컨테이너 내부에 들어가면 `../x test tests/ui`와 같은 개별 테스트 명령을 원하는 대로 자유롭게 실행해 볼 수 있습니다.
 
-#### CI 기반 테스트 검증 {#tests-ci}
-
-우리 CI 시스템의 최우선 목표는 `rust-lang/rust` 저장소의 `main` 브랜치가 항상 모든 테스트를 통과하는 안정적인 상태를 유지하도록 관리하는 것입니다.
-
-PR 제출 시 일어나는 과정:
-- PR 커밋 푸시마다 빠른 [일부 테스트 세트](#pull-request-builds)가 구동되어 기본적인 오류를 걸러냅니다.
-- PR 승인 시 [bors] 봇이 PR을 [병합 큐(merge queue)]에 등록합니다.
-- 순번이 되면 bors가 머지 커밋을 생성하고 [전체 테스트 수트](#auto-builds)를 구동합니다.
-- 전체 테스트 통과 시 비로소 `main` 브랜치로 실제 푸시(병합)됩니다.
-
-##### CI 워크플로 구조
-
-CI는 기본적으로 [GitHub Actions] 기반으로 실행되며 [`.github/workflows/ci.yml`] 파일 하나로 통합 정의되어 있습니다.
-커밋 푸시 시 [`src/ci/citool`] 크레이트가 실행되어 [`jobs.yml`] 선언형 설정을 기반으로 동적 CI 작업을 생성해 실행합니다.
-
-CI 작업은 크게 `dist` 작업과 non-`dist` 작업으로 구분됩니다.
-- **Dist 작업**: 특정 플랫폼을 위한 컴파일러 및 rustup 제공 도구 전체 바이너리 릴리즈를 빌드합니다.
-- **Non-dist 작업**: 해당 플랫폼 상에서 전체 테스트 수트 및 도구 테스트를 구동해 검증합니다.
-` — 단위 및 통합 테스트만 구동합니다.
-
-[tidy-unit-tests]: https://github.com/rust-lang/rust/blob/HEAD/src/tools/tidy/src/unit_tests.rs
 
 #### Tidy 코드 스타일 검사
 
@@ -3384,7 +3363,6 @@ Asked in
 [`rustdoc-html`][rustdoc-html-tests], [`rustdoc-js`/`rustdoc-js-std`][rustdoc-js-tests], [`rustdoc-json`][rustdoc-json-tests] 테스트 수트는 compiletest 지시어 구문과 유사하지만 독립적인 외부 도구를 통해 해석 및 검증되는 추가 지시어 세트를 제공합니다. 자세한 내용은 위 링크의 해당 챕터를 참조하세요.
 
 [rustdoc-html-tests]: #rustdoc-internals-rustdoc-html-test-suite
-[rustdoc-js-tests]: ../rustdoc-internals/search.html#testing-the-search-engine
 [rustdoc-json-tests]: #rustdoc-internals-rustdoc-json-test-suite
 
 ###### 프리티 프린팅 (Pretty printing)
@@ -5358,7 +5336,6 @@ PR이 원활히 진행되도록 하기 위해 트라이아지 작업 그룹(Tria
 
 [r?]: https://github.com/rust-lang/rust/pull/78133#issuecomment-712692371
 [#t-release/triage]: https://rust-lang.zulipchat.com/#narrow/stream/242269-t-release.2Ftriage
-[Crater]: #tests-crater
 
 #### 지속적 통합 (CI)
 
@@ -5439,7 +5416,7 @@ GitHub은 [키워드를 통한 이슈 자동 닫기][closing-keywords] 기능을
 종결 댓글에는 연관된 모든 PR을 명시해야 합니다.
 이슈를 닫을 권한이 없는 경우, 원본 PR에 담당 리뷰어에게 이슈 종결을 요청하는 댓글을 남겨주세요.
 
-[labeling]: #issue-relabeling
+[issue-relabeling]: #issue-relabeling
 [closing-keywords]: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
 
 #### PR 되돌리기 (Reverting a PR)
@@ -6510,7 +6487,6 @@ There are a couple of things that may happen for some PRs during the review proc
 - PR diff 용량이 크거나 리뷰어가 바쁜 경우, 먼저 머지된 다른 PR들로 인해 머지 충돌이 발생할 수 있습니다.
   표준 Git 절차에 따라 이 머지 충돌들을 해결해야 합니다.
 
-[crater]: ./tests/crater.html
 
 신규 기능이 아닌 단순 버그 수정과 같은 작업이라면 이것으로 절차가 완료됩니다!
 기여에 감사드립니다 :)
@@ -6608,7 +6584,7 @@ FCP가 제안되면 팀의 모든 멤버가 FCP에 서명(sign off)해야 합니
 이를 방지하기 위해 모든 신규 기능은 기능 게이트(feature gate) 뒤에 배치됩니다 - 기능 게이트(`#[feature(foo)]`)를 명시적으로 선언하지 않는 한 해당 기능을 사용할 수 없으며, 안정판(stable)/베타(beta) 컴파일러에서는 기능 게이트 선언이 차단됩니다.
 기술적 세부사항은 [코드에서의 안정성] 섹션을 참조하세요.
 
-실증 경험을 충분히 축적하고 필요한 수정을 거쳐 만족스러운 단계가 되면, [여기]에 설명된 안정화 프로세스를 통해 해당 기능을 대외에 공식 개방합니다.
+실증 경험을 충분히 축적하고 필요한 수정을 거쳐 만족스러운 단계가 되면, [안정화 프로세스](#stabilization-guide)에 설명된 과정을 통해 해당 기능을 대외에 공식 개방합니다.
 그전까지 기능 명세는 절대 확정된 것이 아닙니다: 모든 요소가 수정될 수 있고 전체 코드가 재작성되거나 삭제될 수 있습니다.
 미확정 상태로 오랜 기간 방치되었다고 해서 해당 기능이 종신 권리를 얻는 것은 아닙니다.
 
@@ -6714,7 +6690,6 @@ FCP가 제안되면 팀의 모든 멤버가 FCP에 서명(sign off)해야 합니
 [`rustc_ast_passes::feature_gate::check_crate`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_ast_passes/feature_gate/fn.check_crate.html
 [value the stability of Rust]: https://github.com/rust-lang/rfcs/blob/master/text/1122-language-semver.md
 [코드에서의 안정성]: #stability-in-code
-[여기]: #stabilization-guide
 [트래킹 이슈]: #tracking-issues
 [add-feature-gate]: #adding-a-feature-gate
 [컴파일러 플래그 지침]: https://forge.rust-lang.org/compiler/proposals-and-stabilization.html?highlight=unstable%20flag#compiler-flags
@@ -6783,10 +6758,10 @@ PR을 개설하기 전 `./x test tidy` 명령 및 신규 플래그를 실행하�
 
 기능 라이프사이클의 최종 단계는 모든 Rust 사용자에게 해당 기능이 공식 개방되는 [안정화(stabilization)][stab] 단계입니다.
 이 시점부터는 하위 호환성을 파괴하는 비호환 변경이 원칙적으로 허용되지 않습니다 (상세 내용은 언어 팀의 [semver 정책 정의](https://rust-lang.github.io/rfcs/1122-language-semver.html) 참조).
-안정화에 대한 세부 가이드는 [안정화 가이드][stab]를 참조하세요.
+안정화에 대한 세부 가이드는 [안정화 가이드][stabilization-guide]를 참조하세요.
 
 
-[stab]: #stabilization-guide
+[stabilization-guide]: #stabilization-guide
 [rust-blog]: https://github.com/rust-lang/blog.rust-lang.org/
 [twir]: https://github.com/rust-lang/this-week-in-rust
 [twir-cft]: https://this-week-in-rust.org/blog/2025/01/22/this-week-in-rust-583/#calls-for-testing
@@ -7007,13 +6982,13 @@ unstable 기능은 이름이 변경되거나 제거될 수 있습니다.
 
 문서화 업데이트가 필요할 수 있는 위치는 다음과 같습니다:
 
-- [The Reference]: 상세한 내용으로 완전히 업데이트되어야 하며, 안정화가 머지되기 전에 lang-docs 팀원이 해당 PR을 검토하고 승인해야 합니다.
-- [The Book]: 필요에 따라 업데이트됩니다.
+- [The Reference][]: 상세한 내용으로 완전히 업데이트되어야 하며, 안정화가 머지되기 전에 lang-docs 팀원이 해당 PR을 검토하고 승인해야 합니다.
+- [The Book][]: 필요에 따라 업데이트됩니다.
   잘 모르겠는 경우, 해당 저장소에 이슈를 개설하여 논의할 수 있습니다.
 - 표준 라이브러리 문서: 필요에 따라 업데이트됩니다.
   언어 기능은 이를 필요로 하지 않는 경우가 많으나, `?`가 언어에 추가되었을 때와 같이 관용적인 예제 작성 방식을 변경하는 기능인 경우 표준 라이브러리 문서의 해당 내용을 업데이트하는 것이 중요합니다.
   언어 변경에 따라 업데이트가 필요한 경우가 있으므로 표준 라이브러리의 키워드 문서 및 ABI 문서도 검토하세요.
-- [Rust by Example]: 필요에 따라 업데이트됩니다.
+- [Rust by Example][]: 필요에 따라 업데이트됩니다.
 
 위에 언급된 저장소들을 대상으로 신규 기능을 다루는 문서화 업데이트 PR을 준비하세요.
 해당 저장소들의 메인테이너는 전체 안정화 프로세스가 완료될 때까지 이러한 PR들을 열린 상태로 유지할 것입니다.
@@ -7795,7 +7770,6 @@ cx.emit_span_lint(
 [Crater]는 모든 crates.io 크레이트들과 수많은
 변경된 내용이 반영된 컴파일러로 GitHub의 공개 저장소들을 테스트합니다. 이후 기여자의 변경사항으로 인해 컴파일이 실패하거나 반대로 성공하게 된 크레이트 목록 리포트가 리포팅됩니다. Crater 테스트 실행에는 며칠 정도의 시간이 소요될 수 있습니다.
 
-[Crater]: #tests-crater
 
 파급력을 정확히 평가하기 위해 항상 crater run을 수행해야 합니다. 파괴적 변경에 영향을 받는 크레이트 작성자에게 문제를 미리 통지해 주는 것이 상호 예의이자 배려입니다. 문제를 해결하는 PR까지 직접 작성해 제출할 수 있다면 더욱 좋습니다.
 
@@ -9637,7 +9611,7 @@ lexer는 작은 인터페이스를 가지며 `rustc` 내부의 진단 인프라�
 
 #### `AST` 로어링 (AST lowering)
 
-다음으로 `AST`는 `AST`보다 컴파일러 친화적인 표현 방식인 [고수준 중간 표현(`HIR`)][hir]으로 전환됩니다.
+다음으로 `AST`는 `AST`보다 컴파일러 친화적인 표현 방식인 [고수준 중간 표현(`HIR`)][hir-docs]으로 전환됩니다.
 이 프로세스는 "로어링(lowering)"이라 불리며 루프(loop)나 `async fn`과 같은 구문들에 대한 수많은 디슈가링(desugaring, 축약되거나 압축된 구문 구조를 원래 표준 구문으로 확장 정식화하는 과정)을 포함합니다.
 
 이후 `HIR`을 활용해 [*타입 추론(type inference)*](표현식의 타입을 자동 포착하는 과정), [*트레이트 해소(trait solving)*](각 `trait` 참조와 실제 impl을 짝짓는 과정), 그리고 [*타입 검사(type checking)*]를 수행합니다.
@@ -9682,7 +9656,7 @@ lexer는 작은 인터페이스를 가지며 `rustc` 내부의 진단 인프라�
 [`Parser`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_parse/parser/struct.Parser.html
 [`Pat`]: https://doc.rust-lang.org/beta/nightly-rustc/rustc_ast/ast/struct.Pat.html
 [`rustc_ast::ast`]: https://doc.rust-lang.org/beta/nightly-rustc/rustc_ast/index.html
-[`rustc_driver`]: #rustc-driver-intro
+[`rustc_driver_intro`]: #rustc-driver-intro
 [`rustc_interface::Config`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_interface/interface/struct.Config.html
 [`rustc_lexer`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_lexer/index.html
 [`rustc_parse::lexer`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_parse/lexer/index.html
@@ -9692,7 +9666,7 @@ lexer는 작은 인터페이스를 가지며 `rustc` 내부의 진단 인프라�
 [`Ty<'tcx>`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.Ty.html
 [대여 검사]: #borrow-check
 [codegen]: #backend-codegen
-[hir]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir/index.html
+[hir-docs]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir/index.html
 [lex]: #the-parser
 [mir-opt]: #mir-optimizations
 [mir]: #mir-index
@@ -10081,7 +10055,6 @@ cargo tree --package rustc_driver
 [^incr-comp-detail]: [증분 컴파일 세부사항] 챕터는 쿼리가 무엇이며 어떻게 동작하는지 더 상세한 설명을 제공합니다. 본인의 커스텀 쿼리를 직접 작성하려 한다면 일독을 권장합니다.
 
 [증분 컴파일 세부사항]: #queries-incremental-compilation-in-detail
-[MIR]: #mir-index
 
 ### 쿼리 호출하기
 
@@ -11271,7 +11244,7 @@ fn main() {
 
 타입 외에도 본 모듈에서 확인할 수 있는 아레나 할당 데이터 구조들이 다수 존재합니다. 몇 가지 예시:
 
-- [`GenericArgs`]: [`mk_args`]를 통해 할당됨 – 제네릭 인자(generic args)에 대입될 치환 타입 슬라이스를 인터닝합니다 (예: `HashMap<i32, u32>`는 `&'tcx [tcx.types.i32, tcx.types.u32]` 슬라이스로 표현됨).
+- [`GenericArgs`][]: [`mk_args`]를 통해 할당됨 – 제네릭 인자(generic args)에 대입될 치환 타입 슬라이스를 인터닝합니다 (예: `HashMap<i32, u32>`는 `&'tcx [tcx.types.i32, tcx.types.u32]` 슬라이스로 표현됨).
 - [`TraitRef`]: 주로 값으로 전달됨 – **트레이트 참조(trait reference)**는 `i32: Display`와 같이 트레이트 참조 및 다양한 타입 파라미터(`Self` 포함)들로 구성됩니다 (여기서 def-id는 `Display` 트레이트를 가리키며 args는 `i32`를 포함함). `def-id`는 [`AdtDef 및 DefId`][adtdefid] 섹션에서 상세히 서술됩니다.
 - [`Predicate`]: 트레이트 시스템이 증명해야 할 조건을 정의합니다 ([traits] 모듈 참조).
 
@@ -11280,7 +11253,6 @@ fn main() {
 [`TraitRef`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.TraitRef.html
 [`AdtDef` 및 `DefId`]: #adts-representation
 [`def-id`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir/def_id/struct.DefId.html
-[`GenericArgs`]: ./generic_arguments.html#GenericArgs
 [`mk_args`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/context/struct.TyCtxt.html#method.mk_args
 [adtdefid]: #adtdef-and-defid
 [`Predicate`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.Predicate.html
@@ -11303,7 +11275,7 @@ tcx: TyCtxt<'tcx>
 
 #### 수명에 대한 유의사항 (Notes on lifetimes)
 
-Rust 컴파일러는 거대한 데이터 구조들([추상 구문 트리(AST)][ast], [고수준 중간 표현(`HIR`)][hir], 타입 시스템 등)을 다수 포함하는 상당히 거대한 프로그램이며, 불필요한 메모리 소모를 최소화하기 위해 아레나와 참조에 막대하게 의존합니다. 이는 외부 사용자가 컴파일러에 연동되는 방식([드라이버](#rustc-driver-intro))에도 영향을 주어 Rust다운 "풀(pull)" 스타일(`Iterator` 트레이트 생각) 대신 "푸시(push)" 스타일의 API(콜백)를 선호하도록 만듭니다.
+Rust 컴파일러는 거대한 데이터 구조들([추상 구문 트리(AST)][ast], [고수준 중간 표현(`HIR`)][hir-docs], 타입 시스템 등)을 다수 포함하는 상당히 거대한 프로그램이며, 불필요한 메모리 소모를 최소화하기 위해 아레나와 참조에 막대하게 의존합니다. 이는 외부 사용자가 컴파일러에 연동되는 방식([드라이버](#rustc-driver-intro))에도 영향을 주어 Rust다운 "풀(pull)" 스타일(`Iterator` 트레이트 생각) 대신 "푸시(push)" 스타일의 API(콜백)를 선호하도록 만듭니다.
 
 스레드 로컬 저장소(Thread-local storage)와 인터닝은 중복을 줄이는 동시에 만연한 수명(lifetime) 문제로 인한 수많은 인체공학적(ergonomic) 불편을 방지하기 위해 컴파일러 전반에서 널리 사용됩니다. [`rustc_middle::ty::tls`][tls] 모듈은 이러한 스레드 로컬에 접근하는 데 사용되나, 이를 직접 다뤄야 할 일은 거의 없습니다.
 
@@ -11624,7 +11596,7 @@ fn clean_lifetime<'tcx>(lifetime: &hir::Lifetime, cx: &mut DocContext<'tcx>) -> 
 ```
 
 또한 `clean/mod.rs`는 나중에 문서 페이지를 렌더링하는 데 사용되는 "정리된(cleaned)" [추상 구문 트리(`AST`)][ast]의 타입을 정의합니다.
-각각은 보통 `rustc`에서 일부 [`AST`][ast] 또는 [고수준 중간 표현(`HIR`)][hir] 타입을 가져와 적절한 "정리된" 타입으로 변환하는 `clean_*` 함수를 동반합니다.
+각각은 보통 `rustc`에서 일부 [`AST`][ast] 또는 [고수준 중간 표현(`HIR`)][hir-docs] 타입을 가져와 적절한 "정리된" 타입으로 변환하는 `clean_*` 함수를 동반합니다.
 모듈이나 연관 아이템 같은 "거대한" 아이템은 `clean` 함수에서 몇 가지 추가 처리를 거칠 수 있지만, 대부분의 경우 이러한 `impl`은 직관적인 변환입니다.
 이 모듈의 "진입점"은 [`clean::utils::krate`][ck0]이며, 이는 [`run_global_ctxt`]에 의해 호출됩니다.
 
@@ -11657,7 +11629,6 @@ fn clean_lifetime<'tcx>(lifetime: &hir::Lifetime, cx: &mut DocContext<'tcx>) -> 
 [`rustdoc::core::run_global_ctxt`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustdoc/core/fn.run_global_ctxt.html
 [`visit_ast::Module`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustdoc/visit_ast/struct.Module.html
 [`visit_ast::RustdocVisitor`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustdoc/visit_ast/struct.RustdocVisitor.html
-[ast]: #ast-validation
 [ck0]: https://doc.rust-lang.org/nightly/nightly-rustc/rustdoc/clean/utils/fn.krate.html#
 [ck1]: https://doc.rust-lang.org/nightly/nightly-rustc/src/rustdoc/clean/utils.rs.html#31-77
 [수명을 변환하는 이 함수]: https://doc.rust-lang.org/nightly/nightly-rustc/src/rustdoc/clean/mod.rs.html#256-267
@@ -12317,7 +12288,7 @@ compiletest 지시어와 유사하게 공백 외에도 콜론 `:`을 사용하�
 
 > 사용법 2: `//@ has PATH XPATH PATTERN`
 
-`PATH`로 지정된 공백 정규화된[^1] 파일에서 `XPATH`에 의해 선택된 각 요소/속성/텍스트의 텍스트가 (역시 공백 정규화된) 문자열 `PATTERN`과 일치하는지 확인합니다.
+`PATH`로 지정된 공백 정규화된[^htmldoc-ws] 파일에서 `XPATH`에 의해 선택된 각 요소/속성/텍스트의 텍스트가 (역시 공백 정규화된) 문자열 `PATTERN`과 일치하는지 확인합니다.
 
 **팁**: 공백 정규화를 피하고 싶거나 정규식과 일치시키려면 대신 `matches`를 사용하세요.
 
@@ -12325,7 +12296,7 @@ compiletest 지시어와 유사하게 공백 외에도 콜론 `:`을 사용하�
 
 > 사용법: `//@ hasraw PATH PATTERN`
 
-`PATH`로 지정된 공백 정규화된[^1] 파일의 내용이 (역시 공백 정규화된) 문자열 `PATTERN`과 일치하는지 확인합니다.
+`PATH`로 지정된 공백 정규화된[^htmldoc-ws] 파일의 내용이 (역시 공백 정규화된) 문자열 `PATTERN`과 일치하는지 확인합니다.
 
 **팁**: 공백 정규화를 피하고 싶거나 정규식과 일치시키려면 대신 `matchesraw`를 사용하세요.
 
@@ -12333,13 +12304,13 @@ compiletest 지시어와 유사하게 공백 외에도 콜론 `:`을 사용하�
 
 > 사용법: `//@ matches PATH XPATH PATTERN`
 
-`PATH`로 지정된 파일에서 `XPATH`에 의해 선택된 각 요소/속성/텍스트의 텍스트가 Python 스타일[^2] 정규식 `PATTERN`과 일치하는지 확인합니다.
+`PATH`로 지정된 파일에서 `XPATH`에 의해 선택된 각 요소/속성/텍스트의 텍스트가 Python 스타일[^htmldoc-re] 정규식 `PATTERN`과 일치하는지 확인합니다.
 
 ##### `matchesraw`
 
 > 사용법: `//@ matchesraw PATH PATTERN`
 
-`PATH`로 지정된 파일의 내용이 Python 스타일[^2] 정규식 `PATTERN`과 일치하는지 확인합니다.
+`PATH`로 지정된 파일의 내용이 Python 스타일[^htmldoc-re] 정규식 `PATTERN`과 일치하는지 확인합니다.
 
 ##### `count`
 
@@ -12372,8 +12343,8 @@ compiletest 지시어와 유사하게 공백 외에도 콜론 `:`을 사용하�
 
 **예시**: `//@ files "foo/bar" '["index.html", "sidebar-items.js"]'`
 
-[^1]: 공백 정규화는 연속된 공백의 모든 범위가 단일 공백으로 대체됨을 의미합니다.
-[^2]: 유니코드를 인식하고(플래그 `UNICODE`가 설정됨), 대소문자를 구분하며 단일 행 모드에서 일치합니다.
+[^htmldoc-ws]: 공백 정규화는 연속된 공백의 모든 범위가 단일 공백으로 대체됨을 의미합니다.
+[^htmldoc-re]: 유니코드를 인식하고(플래그 `UNICODE`가 설정됨), 대소문자를 구분하며 단일 행 모드에서 일치합니다.
 
 #### Compiletest 지시어 (간략) (Compiletest Directives (Brief))
 
@@ -13360,15 +13331,15 @@ TypeTree(vec![
 ## 구문 및 AST (Syntax and the AST) {#syntax-intro}
 
 소스 코드를 직접 다루는 것은 매우 불편하고 에러가 발생하기 쉽습니다.
-따라서 다른 작업을 수행하기 전에 원시 소스 코드를 [추상 구문 트리(AST)][AST]로 변환합니다.
-이 작업을 수행하려면 [어휘 분석, 구문 분석], [매크로 확장], [이름 분해], 조건부 컴파일, [피처 게이트 검사], [AST]의 [검증] 등 막대한 작업이 수반되는 것으로 밝혀졌습니다.
+따라서 다른 작업을 수행하기 전에 원시 소스 코드를 [추상 구문 트리(AST)][ast-parse-docs]로 변환합니다.
+이 작업을 수행하려면 [어휘 분석, 구문 분석], [매크로 확장], [이름 분해], 조건부 컴파일, [피처 게이트 검사], [AST][ast-parse-docs]의 [검증] 등 막대한 작업이 수반되는 것으로 밝혀졌습니다.
 이 챕터에서는 이러한 모든 단계를 살펴봅니다.
 
 특히 이들 작업 사이에 항상 깔끔한 순서가 존재하는 것은 아닙니다.
 예를 들어 매크로 확장은 매크로 및 임포트의 이름을 분해하기 위해 이름 분해에 의존합니다.
 그리고 구문 분석에는 매크로 확장이 필요하며, 이는 다시 매크로의 출력을 구문 분석해야 할 수 있습니다.
 
-[AST]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_parse/index.html
+[ast-parse-docs]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_parse/index.html
 [macro expansion]: #macro-expansion
 [feature-gate checking]: #feature-gate-check
 [lexing, parsing]: #the-parser
@@ -13421,7 +13392,6 @@ AST의 모든 노드는 구조체와 같은 최상위 아이템뿐만 아니라 
 [`ParseSess`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_session/parse/struct.ParseSess.html
 [`SourceMap`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_span/source_map/struct.SourceMap.html
 [ast module]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_ast/ast/index.html
-[ast]: #ast-validation
 [rustc_ast]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_ast/index.html
 [rustc_errors]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_errors/index.html
 [rustc_parse]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_parse/index.html
@@ -13435,7 +13405,6 @@ Rust는 매우 강력한 매크로 시스템을 가지고 있습니다.
 이전 챕터에서 파서가 (임시 [플레이스홀더]를 사용하여) 확장할 매크로를 어떻게 제쳐두는지 보았습니다.
 이 챕터는 확장되지 않은 매크로가 없는(또는 컴파일 에러가 발생할 때까지) 크레이트의 완전한 [*추상 구문 트리*(AST)][ast]를 가질 때까지 이러한 매크로를 반복적으로 확장하는 프로세스에 관한 것입니다.
 
-[ast]: #ast-validation
 [placeholders]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_expand/placeholders/index.html
 
 먼저 매크로 출력을 확장하고 AST에 통합하는 알고리즘을 논의합니다.
@@ -13911,7 +13880,6 @@ Rust ABI는 현재 불안정하므로 이 변환에는 C ABI를 사용합니다.
 또한 이를 위해 임포트(import)와 매크로 이름을 분해(resolve)하는 이름 분해 작업이 일부 필요하다는 것도 보았습니다.
 이 장에서는 이것이 실제로 어떻게 수행되는지 그 이상을 보여줍니다.
 
-[ast]: #ast-validation
 
 사실, 매크로 확장 중에는 완전한 이름 분해를 수행하지 않고 이 시점에는 임포트와 매크로만 분해합니다.
 이것은 무엇을 확장해야 할지조차 알기 위해 필수적입니다.
@@ -14239,7 +14207,6 @@ $ rustc my_mod.rs -Z unpretty=hir
 
 [`macro`]: #macro-expansion
 [`TestDesc`]: https://doc.rust-lang.org/test/struct.TestDesc.html
-[ast]: #ast-validation
 [Ident]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_span/symbol/struct.Ident.html
 [Symbol]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_span/symbol/struct.Symbol.html
 [test]: https://doc.rust-lang.org/test/index.html
@@ -14954,7 +14921,7 @@ THIR ("타입 지정 고수준 중간 표현, Typed High-Level Intermediate Repr
 [exhaustiveness checking]: #pat-exhaustive-checking
 [unsafety checking]: #unsafety-checking
 
-이름에서 알 수 있듯이 THIR은 타입 검사가 완료된 후 모든 타입이 채워진 [HIR]의 하향 변환 버전입니다.
+이름에서 알 수 있듯이 THIR은 타입 검사가 완료된 후 모든 타입이 채워진 [HIR](#hir)의 하향 변환 버전입니다.
 하지만 HIR과 구별되는 몇 가지 다른 흥미로운 특징이 있습니다:
 
 - MIR과 마찬가지로 THIR은 본문(body), 즉 "실행 가능한 코드"만 나타냅니다. 여기에는 함수 본문뿐만 아니라 `const` 이니셜라이저 등도 포함됩니다.
@@ -14970,7 +14937,6 @@ THIR ("타입 지정 고수준 중간 표현, Typed High-Level Intermediate Repr
 - 문(Statement), 표현식(Expression), 매치 암(match arm), 블록, 매개변수가 별도로 저장됩니다.
   예를 들어 `stmts` 배열의 문은 `exprs` 배열의 인덱스([`ExprId`]로 표현됨)로 표현식을 참조합니다.
 
-[HIR]: #hir
 [`ExprId`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/thir/struct.ExprId.html
 [body owners]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir/hir/enum.BodyOwnerKind.html
 
@@ -15180,7 +15146,7 @@ MIR의 주요 특징은 다음과 같습니다:
 - 중첩된 표현식이 없습니다.
 - MIR의 모든 타입은 완전히 명시적(explicit)입니다.
 
-[cfg]: ../appendix/background.html#cfg
+[cfg-bg]: #cfg
 
 ### 주요 MIR 용어 (Key MIR vocabulary)
 
@@ -15409,7 +15375,7 @@ valtree에서 MIR 상수 값으로 다시 변환할 때에는 실제 간접 참�
 const-eval 워킹 그룹의 [승격에 관한 문서](https://github.com/rust-lang/const-eval/blob/master/promotion.md)를 참조하세요.
 
 
-[mir]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/index.html
+[mir-middle]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/index.html
 [mirmanip_build]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_build/index.html
 [mirmanip_transform]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_transform/index.html
 [mirmanip_dataflow]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_dataflow/index.html
@@ -15433,7 +15399,7 @@ const-eval 워킹 그룹의 [승격에 관한 문서](https://github.com/rust-la
 
 ### MIR 구축 (MIR construction) {#mir-construction}
 
-[HIR]에서 [MIR]로의 하향 변환은 다음 아이템 목록(아마도 불완전함)에 대해 발생합니다:
+[HIR](#hir)에서 [MIR](#mir-index)로의 하향 변환은 다음 아이템 목록(아마도 불완전함)에 대해 발생합니다:
 
 * 함수 및 클로저 본문
 * `static` 및 `const` 아이템의 이니셜라이저
@@ -15537,9 +15503,7 @@ let v = match self.generate_more_mir(..) {
 모든 필드는 `Operator`로 하향 변환됩니다.
 이는 본질적으로 집합체 필드당 하나의 할당문과 `enum`의 경우 판별자로의 할당문이 결합된 것과 동일합니다.
 
-[MIR]: ./index.html
-[HIR]: ../hir.html
-[THIR]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_build/thir/index.html
+[THIR-doc]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_build/thir/index.html
 
 [`rustc_mir_build::thir::cx::expr`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_build/thir/cx/expr/index.html
 [`mir_built`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_transform/fn.mir_built.html
@@ -16156,7 +16120,7 @@ error: the identifier `foo.bar` is invalid
   사용자는 빌림 검사기를 침묵시키기 위해 이러한 진단의 단계를 조정할 수 없습니다.
 - 사코드(Dead code): 린트입니다.
   사용자가 크레이트에 사코드가 포함되는 것을 원치 않더라도, 이를 하드 에러(hard error)로 만들면 리팩토링과 개발 과정이 매우 고통스러워집니다.
-- [future-incompatible lints]: 무시할 수 있는 린트입니다.
+- [future-incompatible lints][]: 무시할 수 있는 린트입니다.
   이를 고정 에러로 만들면 너무 많은 파손(breakage)이 발생할 것이라고 판단되어 대신 경고가 출력되며, 최종적으로는 고정(하드) 에러로 전환될 예정입니다.
 
 일반적인 코드에서는 하드코딩된 경고(`span_warn`과 같은 메서드를 사용하는 경고)를 피하고 대신 린트를 사용하는 것이 좋습니다.
@@ -17651,8 +17615,8 @@ Clippy에서 진단 항목을 사용할 때 해당 문서도 참조하세요.
 
 주제를 심도 있게 파헤치고자 하는 분들에게 흥미로울 것입니다 :)
 
-* [rust#60966]: 진단 항목을 도입한 Rust PR
-* [rust-clippy#5393]: 하드코딩된 경로에서 진단 항목으로 이동하기 위한 Clippy의 추적 이슈
+* [rust#60966][]: 진단 항목을 도입한 Rust PR
+* [rust-clippy#5393][]: 하드코딩된 경로에서 진단 항목으로 이동하기 위한 Clippy의 추적 이슈
 
 <!-- Links -->
 
@@ -18827,7 +18791,7 @@ Adt(&'tcx AdtDef, GenericArgs<'tcx>)
   제네릭과 치환에 대해서는 잠시 후에 더 자세히 알아보겠습니다.
 
 [adtdef]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.AdtDef.html
-[`GenericArgs`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.GenericArgs.html
+[`GenericArgs-doc`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.GenericArgs.html
 
 ##### **`AdtDef` 및 `DefId`**
 
@@ -19131,7 +19095,6 @@ impl TypeFoldable for MyFoldable {
 [`TypeFolder`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/trait.TypeFolder.html
 [`fold_ty`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/trait.TypeFolder.html#method.fold_ty
 [`ArgFolder`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_type_ir/binder/struct.ArgFolder.html
-[여기]: https://github.com/rust-lang/rust/blob/HEAD/compiler/rustc_macros/src/type_foldable.rs
 [실제 folder]: https://github.com/rust-lang/rust/blob/75ff3110ac6d8a0259023b83fd20d7ab295f8dd6/src/librustc_middle/ty/subst.rs#L440-L451
 [fold_ty]: https://github.com/rust-lang/rust/blob/75ff3110ac6d8a0259023b83fd20d7ab295f8dd6/src/librustc_middle/ty/subst.rs#L512-L536
 [ty_for_param]: https://github.com/rust-lang/rust/blob/75ff3110ac6d8a0259023b83fd20d7ab295f8dd6/src/librustc_middle/ty/subst.rs#L552-L587
@@ -19430,7 +19393,7 @@ HIR Typeck 내부에는 관련 정규화 메서드인 [`fcx.structurally_resolve
 
 모든 타입이 모호하거나 미정규화된 별칭을 포함할 수 있을 것으로 기대됩니다.
 별칭의 정규화가 필요한 연산이 수행될 때마다 해당 별칭을 정규화하는 것은 해당 로직의 책임입니다.
-이는 `ty.kind()`에 대해 매칭할 때 거의 항상 구조적 정규화를 먼저 거쳐야 함을 의미합니다.
+이는 `ty.kind()`에 대해 매칭할 때 거의 항상 구조적 정규화를 먼저 거쳐야 함을 의미합니다.[^solver-implicit]
 
 구체적인 예로, 별칭의 동등성은 동등 비교되는 모든 별칭 타입이 강체라고 가정하는 대신 별칭 자체의 정규화를 처리할 수 있도록 커스텀 목표 종류([`PredicateKind::AliasRelate`])에 의해 구현됩니다.
 
@@ -19464,19 +19427,19 @@ HIR Typeck 내부에는 관련 정규화 메서드인 [`fcx.structurally_resolve
 이는 신형 솔버가 일관성(coherence) 검사에서 안정화되기 전에 건전성 버그(soundness bug)였습니다:
 [relating projection substs is unsound during coherence](https://github.com/rust-lang/rust/issues/102048).
 
-궁극적으로 이는 값 내부의 모든 별칭이 강체임을 항상 보장할 수는 없음을 의미합니다.
+궁극적으로 이는 값 내부의 모든 별칭이 강체임을 항상 보장할 수는 없음을 의미합니다.[^solver-binder]
 
 [universe]: #what-is-a-universee]
 [deeply_normalize]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_trait_selection/traits/normalize/trait.NormalizeExt.html#tymethod.deeply_normalize
 
 ### 발산하는 별칭의 사용 처리
 
-발산하는 별칭은 모호한 별칭과 마찬가지로 추론 변수로 정규화됩니다.
+발산하는 별칭은 모호한 별칭과 마찬가지로 추론 변수로 정규화됩니다.[^solver-infer]
 발산하는 별칭을 정규화하면 트레이트 솔버 순환이 발생하므로, 구형 솔버에서는 항상 에러가 발생합니다.
 신형 솔버에서는 현재 컨텍스트에서 모든 목표가 성립하도록 요구하는 상황이 될 때만 에러가 발생합니다.
 예를 들어 HIR typeck 동안 발산하는 별칭을 정규화하면 두 솔버 모두에서 에러가 발생합니다.
 
-별칭의 잘 형성됨(well-formedness)은 별칭이 발산하지 않을 것을 요구하지 않습니다[^4].
+별칭의 잘 형성됨(well-formedness)은 별칭이 발산하지 않을 것을 요구하지 않습니다[^solver-eval].
 이는 별칭이 잘 형성되었는지 검사하는 것만으로는 발산하는 별칭에 대해 에러를 발출시키기에 충분하지 않으며, 실제로 별칭 정규화를 시도하는 과정이 필요함을 의미합니다.
 
 발산하는 별칭에 대해 에러를 발생하는 것이 정규화의 부작용으로 이루어진다는 것은 우리가 실제로 에러를 발출하는지 여부가 매우 *임의적(arbitrary)*임을 의미하며, 또한 더 적은 위치에서 정규화를 수행함에 따라 구형 솔버와 신형 솔버 간에도 차이가 발생합니다.
@@ -19500,17 +19463,17 @@ struct Bar<T: ?Sized = <u8 as Trait>::Diverges<u8>>(Box<T>);
 
 상수 별칭은 여기서 타입 별칭과 약간 다릅니다. 상수 별칭의 잘 형성됨은 그것이 성공적으로 평가될 수 있을 것을 요구합니다([`ConstEvaluatable`] 목표를 통함).
 이는 상수 인수의 잘 형성됨을 검사하는 것만으로도 평가에 실패할 경우 에러를 발생시키기에 충분함을 의미합니다.
-타입 별칭에 대해서도 이 방식을 채택하는 것이 의미가 있을지, 아니면 상수 별칭이 잘 형성됨을 위해 이를 요구하는 것을 중단해야 할지는 다소 불분명합니다[^5].
+타입 별칭에 대해서도 이 방식을 채택하는 것이 의미가 있을지, 아니면 상수 별칭이 잘 형성됨을 위해 이를 요구하는 것을 중단해야 할지는 다소 불분명합니다[^solver-const].
 
-[^1]: 신형 솔버에서는 이것이 암묵적으로 수행됩니다.
+[^solver-implicit]: 신형 솔버에서는 이것이 암묵적으로 수행됩니다.
 
-[^2]: 구형 솔버와 신형 솔버 간에 바인더 내 모호한 별칭이 처리되는 방식에 미묘한 차이가 있습니다. 구형 솔버에서는 고차 타입 내부의 일부 모호한 별칭에 대해 에러를 발생시키지 못하는 반면 신형 솔버는 올바르게 에러를 발생시킵니다.
+[^solver-binder]: 구형 솔버와 신형 솔버 간에 바인더 내 모호한 별칭이 처리되는 방식에 미묘한 차이가 있습니다. 구형 솔버에서는 고차 타입 내부의 일부 모호한 별칭에 대해 에러를 발생시키지 못하는 반면 신형 솔버는 올바르게 에러를 발생시킵니다.
 
-[^3]: 바인더 내부의 모호한 별칭은 추론 변수로 정규화될 수 없으며, 이에 대해서는 나중에 더 다룰 예정입니다.
+[^solver-infer]: 바인더 내부의 모호한 별칭은 추론 변수로 정규화될 수 없으며, 이에 대해서는 나중에 더 다룰 예정입니다.
 
-[^4]: 별칭이 발산하지 않는지 검사하는 것은 별칭이 완전히 구체화될 때까지 수행될 수 없으므로, 이는 코드 생성/const 평가 전에 별칭의 잘 형성됨을 검사할 수 없거나 모노모피제이션(monomorphization) 후에 별칭이 잘 형성됨에서 잘 형성되지 않음으로 변경됨을 의미합니다.
+[^solver-eval]: 별칭이 발산하지 않는지 검사하는 것은 별칭이 완전히 구체화될 때까지 수행될 수 없으므로, 이는 코드 생성/const 평가 전에 별칭의 잘 형성됨을 검사할 수 없거나 모노모피제이션(monomorphization) 후에 별칭이 잘 형성됨에서 잘 형성되지 않음으로 변경됨을 의미합니다.
 
-[^5]: 이 작업을 중단하더라도 상수 별칭이 타입 별칭보다 건전성(soundness)이 *떨어지지는* 않을 것입니다.
+[^solver-const]: 이 작업을 중단하더라도 상수 별칭이 타입 별칭보다 건전성(soundness)이 *떨어지지는* 않을 것입니다.
 
 [`ConstEvaluatable`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/type.ClauseKind.html#variant.ConstEvaluatable
 [WG-trait-system-refactor label]: https://github.com/rust-lang/rust/labels/WG-trait-system-refactor
@@ -19537,7 +19500,7 @@ struct Bar<T: ?Sized = <u8 as Trait>::Diverges<u8>>(Box<T>);
 [`ParamEnv`][penv]는 스코프 내 where-절의 목록으로, 일반적으로 특정 항목의 where 절에 대응됩니다.
 일부 한정자(clause)는 명시적으로 작성되지 않고 [`predicates_of`][predicates_of] 쿼리에서 암묵적으로 추가됩니다(예: `ConstArgHasType` 또는 (일부) 암묵적 바운드).
 
-대부분의 경우 `ParamEnv`는 전달된 항목의 where 절에서 파생된 `ParamEnv`를 반환하는 [`param_env` 쿼리][query]를 통해 초기에 생성됩니다.
+대부분의 경우 `ParamEnv`는 전달된 항목의 where 절에서 파생된 `ParamEnv`를 반환하는 [`param_env` 쿼리][query-param-env]를 통해 초기에 생성됩니다.
 또한 impl의 where 절과 트레이트 정의 함수의 where 절로 구성된 하이브리드 `ParamEnv`를 생성하는 [`compare_method_predicate_entailment`][method_pred_entailment]와 같이 특정 항목에서 파생되지 않은 임의의 한정자 세트로 `ParamEnv`를 생성할 수도 있습니다.
 
 ***
@@ -19588,7 +19551,7 @@ fn foo2<T>(a: T) {
 
 [predicates_of]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir_analysis/collect/predicates_of/fn.predicates_of.html
 [method_pred_entailment]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir_analysis/check/compare_impl_item/fn.compare_method_predicate_entailment.html
-[query]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/context/struct.TyCtxt.html#method.param_env
+[query-param-env]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/context/struct.TyCtxt.html#method.param_env
 [normalization]: #normalization
 
 #### `ParamEnv` 구하기
@@ -20147,7 +20110,7 @@ impl Foo<isize> for usize { ... } // Impl #22
 
 그런 다음 캐시에 `usize : Foo<$0> => ImplCandidate(22)`를 기록합니다. 다음으로 `ImplCandidate(22)`를 [확정][confirm]하며, 이는 (부작용으로) `$t`와 `isize`를 단일화합니다.
 
-[confirm]: ./resolution.html#confirmation
+[confirm-res]: #confirmation
 
 이제 나중에 다시 와서 `usize : Foo<$u>`를 마주칠 수 있습니다. 이를 플레이스홀더로 대체하면 이전과 마찬가지로 `usize : Foo<$0>`을 산출하므로 캐시 조회가 성공하여 `ImplCandidate(22)`를 반환합니다. `ImplCandidate(22)`를 확정하면 (부작용으로) `$u`와 `isize`가 단일화됩니다.
 
@@ -20157,7 +20120,7 @@ impl Foo<isize> for usize { ... } // Impl #22
 
 **TODO**: `pick_candidate_cache`가 더 이상 존재하지 않는 것으로 보입니다. 전반적으로 이 섹션이 여전히 유효한가요?
 
-[`ParamEnv`]: ../typing-parameter-envs.html
+[`ParamEnv-intro`]: #typing-parameter-envs
 [`tcx`]: ../ty.html
 [#18290]: https://github.com/rust-lang/rust/issues/18290
 [#22019]: https://github.com/rust-lang/rust/issues/22019
@@ -21937,7 +21900,7 @@ impl Trait for () {
 
 **경고: 이는 미묘하며 틀릴 수 있습니다**
 
-트레이트 목표와 달리 `normalizes_to`는 *생산적(productive)*이어야 합니다[^1]. 프로젝션이 고정(rigid) 타입 생성자로 정규화되면 `normalizes_to` 목표는 생산적입니다. 따라서 `Vec<<() as Trait>::Assoc>`로 정규화되는 `<() as Trait>::Assoc`은 생산적일 것입니다.
+트레이트 목표와 달리 `normalizes_to`는 *생산적(productive)*이어야 합니다[^coq-coinductive]. 프로젝션이 고정(rigid) 타입 생성자로 정규화되면 `normalizes_to` 목표는 생산적입니다. 따라서 `Vec<<() as Trait>::Assoc>`로 정규화되는 `<() as Trait>::Assoc`은 생산적일 것입니다.
 
 `normalizes_to` 목표에는 두 가지 종류의 중첩 목표가 있습니다. 프로젝션을 실제로 정규화하는 데 필요한 중첩 요구 사항과, 정규화된 프로젝션과 예상 타입 간의 동등성입니다. 동등성만이 생산적이어야 합니다. 증명 트리의 가지(branch)는 유한하거나 별칭이 고정 타입 생성자로 해소되는 최소 하나의 `normalizes_to`를 포함하는 경우 생산적입니다.
 
@@ -21950,7 +21913,7 @@ impl Trait for () {
 - 순환은 eq를 수행하는 동안 정규화 후 좌변에 고정 타임을 최소 한 번 가질 때만 괜찮음
 - `normalizes_to`의 재귀적 `eq` 호출 외부의 순환은 항상 괜찮음
 
-[^1]: 관련 항목: <https://coq.inria.fr/refman/language/core/coinductive.html#top-level-definitions-of-corecursive-functions>
+[^coq-coinductive]: 관련 항목: <https://coq.inria.fr/refman/language/core/coinductive.html#top-level-definitions-of-corecursive-functions>
 
 [perfect derive]: https://smallcultfollowing.com/babysteps/blog/2022/04/12/implied-bounds-and-perfect-derive
 [ex1]: https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=0a9c3830b93a2380e6978d6328df8f72
@@ -21975,7 +21938,7 @@ impl Trait for () {
 
 우리는 캐시 엔트리에 더 많은 정보를 저장함으로써 이를 수행합니다. 평가가 재귀 제한에 도달하지 않은 목표의 경우 도달한 깊이를 단순히 저장합니다: [소스][req-depth]. 이러한 결과는 현재 `available_depth`가 `reached_depth`보다 높은 한 자유롭게 사용될 수 있습니다: [소스][req-depth-ck]. 그런 다음 현재 목표의 도달 깊이를 업데이트하여 전역 캐시 엔트리를 사용했는지 여부를 관찰할 수 없도록 합니다: [소스][update-depth].
 
-재귀 제한에 도달하는 목표의 경우 현재 사용 가능한 깊이가 엔트리의 깊이와 *정확히 일치하는* 경우에만 캐시된 결과를 사용합니다. 따라서 각 목표에 대한 캐시 엔트리는 남아있는 각 깊이에 대한 별도의 결과를 포함합니다: [소스][rem-depth].[^1]
+재귀 제한에 도달하는 목표의 경우 현재 사용 가능한 깊이가 엔트리의 깊이와 *정확히 일치하는* 경우에만 캐시된 결과를 사용합니다. 따라서 각 목표에 대한 캐시 엔트리는 남아있는 각 깊이에 대한 별도의 결과를 포함합니다: [소스][rem-depth].[^cache-depth]
 
 ##### 순환(Cycles) 처리
 
@@ -21996,7 +21959,7 @@ graph TB
 ###### 순환 루트만 캐싱
 
 순환 루트의 평가를 마칠 때까지 순환 참여자의 결과를 전역 캐시로 이동할 수 없습니다. 그러나 순환을 완전히 평가한 후에도 루트 자체를 제외한 모든 참여자의 결과를 어쩔 수 없이 버려야 합니다.
-우리는 모든 전역 캐시 엔트리의 쿼리 의존성을 추적합니다. 이로 인해 순환 참여자의 캐싱은 사소하지 않은 작업이 됩니다. 단순히 순환 루트의 `DepNode`를 재사용할 수는 없습니다.[^2] `A -> B -> A` 순환이 있는 경우 `A`의 `DepNode`는 `A -> B`의 의존성을 포함합니다. 소스가 변경되면 `B`에 대해 이 엔트리를 재사용하는 것이 깨질 수 있습니다. `B -> A` 간선이 더 이상 존재하지 않을 수 있고 `A`가 완전히 제거되었을 수도 있습니다. 이는 쉽게 ICE로 이어질 수 있습니다.
+우리는 모든 전역 캐시 엔트리의 쿼리 의존성을 추적합니다. 이로 인해 순환 참여자의 캐싱은 사소하지 않은 작업이 됩니다. 단순히 순환 루트의 `DepNode`를 재사용할 수는 없습니다.[^cache-cycle] `A -> B -> A` 순환이 있는 경우 `A`의 `DepNode`는 `A -> B`의 의존성을 포함합니다. 소스가 변경되면 `B`에 대해 이 엔트리를 재사용하는 것이 깨질 수 있습니다. `B -> A` 간선이 더 이상 존재하지 않을 수 있고 `A`가 완전히 제거되었을 수도 있습니다. 이는 쉽게 ICE로 이어질 수 있습니다.
 
 그러나 어떤 목표가 루트인지에 따라 순환의 결과가 달라질 수 있어 더욱 악화됩니다: [예시][unstable-result-ex]. 이는 캐싱을 더욱 약화시키도록 강제합니다. 해당 루트가 포함된 순환의 참여자였던 스택 엔트리가 존재한다면 순환 루트의 캐시 엔트리를 사용해서는 안 됩니다. 지정된 루트의 모든 순환 참여자를 전역 캐시 엔트리에 저장하고 이것이 스택의 요소를 포함하지 않는지 확인함으로써 이를 처리합니다: [소스][cycle-participants].
 
@@ -22015,13 +21978,13 @@ TODO: 작성 예정 :3
 [req-depth-ck]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_middle/src/traits/solve/cache.rs#L76-L86
 [update-depth]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_trait_selection/src/solve/search_graph.rs#L308
 [rem-depth]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_middle/src/traits/solve/cache.rs#L124
-[^1]: 이는 지나치게 제한적입니다. 중첩된 모든 목표가 일부 사용 가능한 깊이 `n`으로 오버플로 응답을 반환하는 경우, `n`보다 작은 모든 깊이에 대해 해당 결과는 동일해야 합니다. 향후에 이 최적화를 구현할 수 있습니다.
+[^cache-depth]: 이는 지나치게 제한적입니다. 중첩된 모든 목표가 일부 사용 가능한 깊이 `n`으로 오버플로 응답을 반환하는 경우, `n`보다 작은 모든 깊이에 대해 해당 결과는 동일해야 합니다. 향후에 이 최적화를 구현할 수 있습니다.
 
 [chapter on coinduction]: #solve-coinduction
 [`provisional_result`]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_trait_selection/src/solve/search_graph.rs#L57
 [initial-prov-result]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_trait_selection/src/solve/search_graph.rs#L366-L370
 [fixpoint]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/compiler/rustc_trait_selection/src/solve/search_graph.rs#L425-L446
-[^2]: 관련 [Zulip 스레드] 요약
+[^cache-cycle]: 관련 [Zulip 스레드] 요약
 
 [zulip thread]: https://rust-lang.zulipchat.com/#narrow/stream/364551-t-types.2Ftrait-system-refactor/topic/global.20cache
 [unstable-result-ex]: https://github.com/rust-lang/rust/blob/7606c13961ddc1174b70638e934df0439b7dc515/tests/ui/traits/next-solver/cycles/coinduction/incompleteness-unstable-result.rs#L4-L16
@@ -22112,9 +22075,9 @@ fn foo() -> impl Copy {
 
 정의 스코프 내부에서는 불투명 타입의 타입 및 상수 인수가 모두 플레이스홀더인지 확인하는 것부터 시작합니다: [소스][placeholder-ck]. 이 검사가 모호하면 모호함을 반환하고, 실패하면 `Err(NoSolution)`을 반환합니다. 이 검사는 borrowck의 끝에서만 검사되는 리전을 무시합니다. 성립하면 계속 진행합니다.
 
-그런 다음 불투명 타입의 제네릭 인수를 불투명 타입 저장소에 이미 있는 임의의 불투명 타입 인수와 *의미론적으로* 통일할 수 있는지 검사합니다. 그렇다면 이전에 저장된 타입을 이 `normalizes-to` 호출의 예상 타입과 통일합니다: [소스][eq-prev][^1].
+그런 다음 불투명 타입의 제네릭 인수를 불투명 타입 저장소에 이미 있는 임의의 불투명 타입 인수와 *의미론적으로* 통일할 수 있는지 검사합니다. 그렇다면 이전에 저장된 타입을 이 `normalizes-to` 호출의 예상 타입과 통일합니다: [소스][eq-prev][^norm-opaque-eq].
 
-그렇지 않다면 예상 타입을 불투명 타입 저장소에 삽입합니다: [소스][insert-storage][^2]. 마지막으로 불투명 타입의 아이템 바운드가 예상 타입에 대해 성립하는지 확인합니다: [소스][item-bounds-ck].
+그렇지 않다면 예상 타입을 불투명 타입 저장소에 삽입합니다: [소스][insert-storage][^norm-opaque-rigid]. 마지막으로 불투명 타입의 아이템 바운드가 예상 타입에 대해 성립하는지 확인합니다: [소스][item-bounds-ck].
 
 [norm]: https://github.com/rust-lang/rust/blob/384d26fc7e3bdd7687cc17b2662b091f6017ec2a/compiler/rustc_trait_selection/src/solve/normalizes_to/opaque_types.rs#L13
 [coherence-example]: https://github.com/rust-lang/rust/blob/HEAD/tests/ui/type-alias-impl-trait/coherence/coherence_different_hidden_ty.rs
@@ -22124,8 +22087,8 @@ fn foo() -> impl Copy {
 [insert-storage]: https://github.com/rust-lang/rust/blob/384d26fc7e3bdd7687cc17b2662b091f6017ec2a/compiler/rustc_trait_selection/src/solve/normalizes_to/opaque_types.rs#L68
 [item-bounds-ck]: https://github.com/rust-lang/rust/blob/384d26fc7e3bdd7687cc17b2662b091f6017ec2a/compiler/rustc_trait_selection/src/solve/normalizes_to/opaque_types.rs#L69-L74
 
-[^1]: FIXME: 인수가 플레이스홀더여야 하고 리전이 항상 추론 변수라는 점을 고려하면 이상적으로는 고유한 후보만 나와야 함
-[^2]: FIXME: 이를 위해 예상되는 타입이 고정(rigid) 상태인지 검사하는 이유는 무엇인가.
+[^norm-opaque-eq]: FIXME: 인수가 플레이스홀더여야 하고 리전이 항상 추론 변수라는 점을 고려하면 이상적으로는 고유한 후보만 나와야 함
+[^norm-opaque-rigid]: FIXME: 이를 위해 예상되는 타입이 고정(rigid) 상태인지 검사하는 이유는 무엇인가.
 
 ###### 정규화 가능한 별칭의 alias-bound 사용
 
@@ -22404,7 +22367,7 @@ rust-analyzer는 안정적인 툴체인으로 빌드되므로, 나이틀리 전�
 #### 원시 크기 결정 해제(Primitive unsizing) 구현들
 
 내장 구현은 다음과 같이 제공됩니다:
-* `T: Trait`일 때 (그리고 `T: Sized + 'a`이고 `Trait`이 dyn-compatible[^2]일 때) `T` -> `dyn Trait + 'a`.
+* `T: Trait`일 때 (그리고 `T: Sized + 'a`이고 `Trait`이 dyn-compatible[^dyn-compatible]일 때) `T` -> `dyn Trait + 'a`.
 * `[T; N]` -> `[T]`
 
 #### 구조적(Structural) 구현들
@@ -22421,7 +22384,7 @@ rust-analyzer는 안정적인 툴체인으로 빌드되므로, 나이틀리 전�
 
 컴파일러 내부적으로 두 가지가 "업캐스팅"으로 불립니다:
 1. 진정한 업캐스팅 `dyn SubTrait` -> `dyn SuperTrait` (아래와 같이 자동 트레이트 삭제 및 수명 조정을 허용함).
-2. *주요 트레이트(principal)[^1]를 변경하지 않고* dyn 트레이트의 자동 트레이트를 삭제하고 수명을 조정함:
+2. *주요 트레이트(principal)[^principal-trait]를 변경하지 않고* dyn 트레이트의 자동 트레이트를 삭제하고 수명을 조정함:
    `AutoTraits` ⊇ `NewAutoTraits`이고 `'a: 'b`일 때
    `dyn Trait + AutoTraits... + 'a` -> `dyn Trait + NewAutoTraits... + 'b`.
 
@@ -22438,8 +22401,8 @@ rust-analyzer는 안정적인 툴체인으로 빌드되므로, 나이틀리 전�
 
 특히 (3.)은 명확할 때는 추론을 안내할 수 있지만, 프로젝션 바운드의 선택이 불필요하게 추론을 안내하는 것을 방지합니다.
 
-[^1]: principal은 `dyn Trait`의 하나의 비-자동 트레이트입니다.
-[^2]: 이전에는 "객체 안전(object safe)"으로 알려졌습니다.
+[^principal-trait]: principal은 `dyn Trait`의 하나의 비-자동 트레이트입니다.
+[^dyn-compatible]: 이전에는 "객체 안전(object safe)"으로 알려졌습니다.
 
 
 ### 분리된 `Trait` 및 `Projection` 바운드 가지기 {#traits-separate-projection-bounds}
@@ -24182,9 +24145,9 @@ RPITIT에 대한 AST 하위 변환은 RPIT를 하위 변환하는 것과 거의 
 
 ###### 여담: 불투명 수명 중복
 
-*모든 불투명 타입*(RPITIT뿐만 아니라)은 캡처된 수명을 불투명 타입 로컬의 새로운 수명 파라미터로 중복 정의하게 됩니다. 이렇게 하는 주된 이유는 RPIT가 캡처된 늦은 바인딩(late-bound) 인자를 "구체화(reify)"[^1]하거나 조기 바인딩(early-bound) 인자로 변환할 수 있어야 하기 때문입니다. 이는 해당 인자들이 불투명 타입의 제네릭 인자로 사용되고, 나중에 숨겨진 타입을 인스턴스화하는 데 사용될 수 있도록 하기 위함입니다. AST 하위 변환 중에는 어떤 수명이 조기 바인딩인지 늦은 바인딩인지 알 수 없으므로, 모든 수명에 대해 이를 적용합니다.
+*모든 불투명 타입*(RPITIT뿐만 아니라)은 캡처된 수명을 불투명 타입 로컬의 새로운 수명 파라미터로 중복 정의하게 됩니다. 이렇게 하는 주된 이유는 RPIT가 캡처된 늦은 바인딩(late-bound) 인자를 "구체화(reify)"[^rpitit-reify]하거나 조기 바인딩(early-bound) 인자로 변환할 수 있어야 하기 때문입니다. 이는 해당 인자들이 불투명 타입의 제네릭 인자로 사용되고, 나중에 숨겨진 타입을 인스턴스화하는 데 사용될 수 있도록 하기 위함입니다. AST 하위 변환 중에는 어떤 수명이 조기 바인딩인지 늦은 바인딩인지 알 수 없으므로, 모든 수명에 대해 이를 적용합니다.
 
-[^1]: 이는 compiler-errors팀의 용어이며, 정확하다고 주장하는 것은 아닙니다 :^)
+[^rpitit-reify]: 이는 compiler-errors팀의 용어이며, 정확하다고 주장하는 것은 아닙니다 :^)
 
 RPITIT의 주요 추가 사항은 하위 변환 중에 캡처된 수명과 대응되는 중복 수명 간의 관계를 추가 필드인
 [`OpaqueTy::lifetime_mapping`](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_hir/hir/struct.OpaqueTy.html#structfield.lifetime_mapping)에 추적한다는 것입니다.
@@ -25075,7 +25038,6 @@ unsafe 유니온(Union) 필드 접근을 찾는 것은 다소 더 복잡합니�
 검사기(checker)는 할당 표현식의 좌변을 방문 중일 때를 추적하여 유니온 필드가 거기에 직접 나타나는 것을 허용하고, 그 외의 모든 경우에는 에러를 발생시킵니다.
 유니온 필드 접근은 패턴에서도 일어날 수 있으므로 해당 패턴들 역시 순회해야 합니다.
 
-[THIR]: #thir
 [`check_unsafety`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_build/check_unsafety/index.html
 
 ### unused_unsafe 린트
@@ -25861,12 +25823,12 @@ fn foo<'a, 'b>(x: &'a /* '#1 */ usize) -> &'b /* '#3 */ usize {
 
 다음은 구조체의 일부 필드입니다:
 
-- [`constraints`]: 모든 존속 제약 조건을 포함합니다.
-- [`liveness_constraints`]: 모든 라이브 상태 제약 조건을 포함합니다.
+- [`constraints`][]: 모든 존속 제약 조건을 포함합니다.
+- [`liveness_constraints`][]: 모든 라이브 상태 제약 조건을 포함합니다.
 - [`universal_regions`]: [`replace_regions_in_mir`]에 의해 반환된 `UniversalRegions`를 포함합니다.
-- [`universal_region_relations`]: 보편적 영역에 대해 참으로 알려진 관계들을 포함합니다. 예를 들어 `'a: 'b`라는 where 절이 있다면 해당 관계는 구현을 빌림 검사하는 동안 참으로 가정되므로(호출자에서 검사됨) `universal_region_relations`에 `'a: 'b`가 포함될 것입니다.
-- [`type_tests`]: 추론 후 검사해야 하는 타입에 대한 일부 제약 조건(예: `T: 'a`)을 포함합니다.
-- [`closure_bounds_mapping`]: 클로저로부터의 영역 제약 조건을 클로저 생성자에게 다시 전파하는 데 사용됩니다.
+- [`universal_region_relations`][]: 보편적 영역에 대해 참으로 알려진 관계들을 포함합니다. 예를 들어 `'a: 'b`라는 where 절이 있다면 해당 관계는 구현을 빌림 검사하는 동안 참으로 가정되므로(호출자에서 검사됨) `universal_region_relations`에 `'a: 'b`가 포함될 것입니다.
+- [`type_tests`][]: 추론 후 검사해야 하는 타입에 대한 일부 제약 조건(예: `T: 'a`)을 포함합니다.
+- [`closure_bounds_mapping`][]: 클로저로부터의 영역 제약 조건을 클로저 생성자에게 다시 전파하는 데 사용됩니다.
 
 [`constraints`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_borrowck/region_infer/struct.RegionInferenceContext.html#structfield.constraints
 [`liveness_constraints`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_borrowck/region_infer/struct.RegionInferenceContext.html#structfield.liveness_constraints
@@ -26691,7 +26653,6 @@ fn main() {
 > rustc +stage1 immut.rs -Z dump-mir=all
 ```
 
-[mir]: #mir-index
 [dump-mir]: #mir-passes
 이 명령을 실행한 후 현재 작업 디렉토리에 `mir_dump`라는 새로 생성된 디렉토리가 표시되고 여기에 여러 파일이 포함되어 있습니다.
 `rustc.main.-------.mir_map.0.mir` 파일을 살펴보면 다른 항목들과 함께 다음 행도 포함되어 있음을 알 수 있습니다.
@@ -27171,7 +27132,6 @@ let c = async || {
 또한 컴파일러가 타입이나 수명 오류 같은 것들을 감지하기 위해 코드상에서 다양한 분석을 수행하는 방법도 보여주었습니다.
 이제 드디어 MIR을 가지고 실행 가능한 기계 코드를 생성합니다.
 
-[MIR]: #mir-index
 
 > NOTE: 컴파일러의 이 부분을 흔히 _백엔드(backend)_라고 부릅니다.
 > 컴파일러 소스에서 이 용어는 보통 "코드 생성 백엔드(codegen backend)"(즉 LLVM, Cranelift 또는 GCC)를 가리키기 때문에 다소 중복되어 사용됩니다.
@@ -27210,7 +27170,6 @@ MIR 최적화는 코드 생성 전에 더 나은 MIR을 생성하기 위해 [MIR
 이는 두 가지 이유에서 중요합니다: 첫째, 최종 생성된 실행 가능 코드를 더 좋게 만들며, 둘째, LLVM이 해야 할 작업이 줄어들어 컴파일이 더 빨라집니다.
 MIR은 제네릭(아직 [단일화]되지 않음)하므로 이러한 최적화가 특히 효과적입니다. 제네릭 버전을 최적화할 수 있으므로 모든 단일화 결과물이 더 저렴해집니다!
 
-[mir]: #mir-index
 [monomorphized]: #mono
 
 MIR 최적화는 대여 검사 후에 실행됩니다.
@@ -27221,7 +27180,6 @@ MIR을 개선하기 위해 MIR 상에서 일련의 최적화 패스를 실행합
 이 쿼리는 대여 검사기가 실행되었고 일정 검증이 수행되었는지 확인합니다.
 그런 다음 MIR을 [훔쳐와(steals)], 최적화하고, 개선된 MIR을 반환합니다.
 [`optimized_mir`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_mir_transform/fn.optimized_mir.html
-[query]: #query
 [`defid`]: #def-id
 [steals]: #stealing
 
@@ -28600,23 +28558,23 @@ MSVC의 표현식 파서의 한계로 인해 PDB 디버그 정보에 대해 다�
 | Rust 이름 | MSVC 이름 |
 | --- | --- |
 | `&str`/`&mut str` | `ref$<str$>`/`ref_mut$<str$>` |
-| `&[T]`/`&mut [T]` | `ref$<slice$<T> >`/`ref_mut$<slice$<T> >`[^1] |
+| `&[T]`/`&mut [T]` | `ref$<slice$<T> >`/`ref_mut$<slice$<T> >`[^msvc-shift] |
 | `[T; N]` | `array$<T, N>` |
 | `RustEnum` | `enum2$<RustEnum>` |
 | `(T1, T2)` | `tuple$<T1, T2>`|
 | `*const T` | `ptr_const$<T>` |
 | `*mut T` | `ptr_mut$<T>` |
-| `usize` | `size_t`[^2] |
-| `isize` | `ptrdiff_t`[^2] |
-| `uN` | `unsigned __intN`[^2] |
-| `iN` | `__intN`[^2] |
-| `f32` | `float`[^2] |
-| `f64` | `double`[^2] |
-| `f128` | `fp128`[^2] |
+| `usize` | `size_t`[^msvc-typedef] |
+| `isize` | `ptrdiff_t`[^msvc-typedef] |
+| `uN` | `unsigned __intN`[^msvc-typedef] |
+| `iN` | `__intN`[^msvc-typedef] |
+| `f32` | `float`[^msvc-typedef] |
+| `f64` | `double`[^msvc-typedef] |
+| `f128` | `fp128`[^msvc-typedef] |
 
-[^1]: MSVC의 표현식 파서는 `>>`를 우측 시프트로 취급합니다. 타입 이름에서 연속된 `>` 사이에 공백(`> >`)을 두어야 합니다.
+[^msvc-shift]: MSVC의 표현식 파서는 `>>`를 우측 시프트로 취급합니다. 타입 이름에서 연속된 `>` 사이에 공백(`> >`)을 두어야 합니다.
 
-[^2]: 이러한 타입 이름은 디버그 정보 노드의 일부로 생성되지만(그런 다음 Rust 이름을 가진 typedef 노드로 래핑됨), LLVM-IR 노드가 CodeView 노드로 변환되면 타입 이름 정보가 손실됩니다.
+[^msvc-typedef]: 이러한 타입 이름은 디버그 정보 노드의 일부로 생성되지만(그런 다음 Rust 이름을 가진 typedef 노드로 래핑됨), LLVM-IR 노드가 CodeView 노드로 변환되면 타입 이름 정보가 손실됩니다.
 이는 CodeView가 기본(primitive) 타입에 대해 특별한 약식 노드를 가지고 있고, 해당 약식 노드에는 "name" 필드가 없기 때문입니다.
 
 ##### 제네릭
@@ -29993,7 +29951,6 @@ LLDB는 Clang을 사용하여 코드를 JIT로 컴파일하고 GDB는 GCC로 동
 
 [`CrateRoot`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/rmeta/struct.CrateRoot.html
 [`rustc_metadata`]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_metadata/index.html
-[MIR]: #mir-index
 
 #### 엄격한 버전 해시 (Strict Version Hash)
 
@@ -30932,3 +30889,5 @@ Rust 설계에 직간접적으로 영향을 미친 연구와 Rust 관련 출판�
 - [대신 그들의 이름 "ferris"를 사용해보기 (try using their name "ferris" instead)](https://github.com/rust-lang/rust/pull/91476)
 - [피자에 파인애플 금지하기 (Forbid pineapple on pizza)](https://github.com/rust-lang/rust/pull/70645)
 
+
+[Crater]: #tests-crater

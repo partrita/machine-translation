@@ -8797,9 +8797,9 @@ GNU `sed` 홈페이지: [http://www.gnu.org/software/sed/](http://www.gnu.org/so
 
 Vim 텍스트 편집기는 [Bram Moolenaar](https://en.wikipedia.org/wiki/Bram_Moolenaar)가 개발했습니다. 대부분의 파일 형식을 지원하며, Vim 편집기는 프로그래머를 위한 편집기로도 알려져 있습니다. 주로 메뉴나 마우스를 사용하지 않고 키보드만으로 모든 작업을 수행할 수 있기 때문입니다.
 
-```{.callout-note}
+::: {.callout-note}
 `vim`과 `vi`를 혼동하지 마세요. “Visual”을 의미하는 `vi`는 [Bill Joy](https://en.wikipedia.org/wiki/Bill_Joy)가 1976년에 개발한 텍스트 편집기입니다. `vim`은 “Vi Improved”의 약자로, `vi` 편집기를 개선한 클론입니다. 
-```
+:::
 
 ### `vim`에 관해 가장 많이 검색되는 질문
 
@@ -10638,9 +10638,9 @@ $ aplay [flags] [filename [filename]] ...
 -D, –device=NAME : Select PCM by name.
 ```
 
-```{.callout-note}
+::: {.callout-note}
 이 명령어에는 일반적으로 필요하지 않은 다양한 옵션도 포함되어 있습니다. 더 자세한 내용을 알고 싶다면 터미널에서 다음 명령어를 실행하면 됩니다.
-```
+:::
 
 ```
 aplay --help

@@ -1,4 +1,5 @@
 ---
+engine: markdown
 title: "Gapminder 데이터를 이용한 파이썬 초급 실습"
 author: "Allen Lee, Carpentry Instructors"
 date: "2026-08-15"
