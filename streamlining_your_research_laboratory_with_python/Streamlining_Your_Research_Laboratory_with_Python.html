@@ -233,11 +233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical_bioinformatics/practical_bioinformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Practical Bioinformatics: A Laboratory Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../practical_guide_to_protein_engineering/practical_guide_to_protein_engineering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 공학 실전 가이드</span></a>
   </div>
 </li>
@@ -490,8 +485,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#튜플" id="toc-튜플" class="nav-link" data-scroll-target="#튜플">3.2 튜플</a></li>
   <li><a href="#딕셔너리" id="toc-딕셔너리" class="nav-link" data-scroll-target="#딕셔너리">3.3 딕셔너리</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">3</a></li>
-  <li><a href="#데이터-구조-1" id="toc-데이터-구조-1" class="nav-link" data-scroll-target="#데이터-구조-1">데이터 구조</a></li>
   <li><a href="#리스트-1" id="toc-리스트-1" class="nav-link" data-scroll-target="#리스트-1">3.1 리스트</a></li>
   <li><a href="#리스트-소개-1" id="toc-리스트-소개-1" class="nav-link" data-scroll-target="#리스트-소개-1">3.1.1 리스트 소개</a></li>
   <li><a href="#리스트를-다루는-전역-함수" id="toc-리스트를-다루는-전역-함수" class="nav-link" data-scroll-target="#리스트를-다루는-전역-함수">3.1.2 리스트를 다루는 전역 함수</a></li>
@@ -641,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="파이썬-구현체" class="level1 unnumbered">
 <h1 class="unnumbered">1.1 파이썬 구현체</h1>
 <p>파이썬은 C나 자바스크립트처럼 공식적인 표준 문서가 따로 정해져 있지는 않습니다. 대신 ’파이썬 언어 레퍼런스[1]’와 C 언어로 만든 참조 구현체인 CPython을 통해 그 문법과 규칙이 정의됩니다. CPython은 우리가 흔히 쓰는 거의 모든 운영체제에서 사용할 수 있으며, 자세한 기술 문서와 설치 파일은 파이썬 공식 웹사이트(https://www.python.org [2])에서 찾아볼 수 있습니다.</p>
-<p>파이썬은 누구나 원하는 플랫폼에 맞춰 직접 구현할 수 있도록 개방되어 있습니다. 이런 개방성 덕분에 파이썬은 엄청난 인기를 얻었고, 이제는 거의 모든 컴퓨팅 환경에서 파이썬을 만날 수 있습니다. 윈도우나 리눅스용 CPython뿐만 아니라, .Net 기반의 IronPython<a href="#section">3</a>, 자바 가상 머신(JVM)에서 돌아가는 Jython[4], 그리고 마이크로컨트롤러용인 MicroPython[5]과 CircuitPython[6]까지 종류도 다양합니다. 심지어 파이썬 언어 자체로 파이썬을 구현한 PyPy[7]라는 버전도 있습니다.</p>
+<p>파이썬은 누구나 원하는 플랫폼에 맞춰 직접 구현할 수 있도록 개방되어 있습니다. 이런 개방성 덕분에 파이썬은 엄청난 인기를 얻었고, 이제는 거의 모든 컴퓨팅 환경에서 파이썬을 만날 수 있습니다. 윈도우나 리눅스용 CPython뿐만 아니라, .Net 기반의 IronPython[3], 자바 가상 머신(JVM)에서 돌아가는 Jython[4], 그리고 마이크로컨트롤러용인 MicroPython[5]과 CircuitPython[6]까지 종류도 다양합니다. 심지어 파이썬 언어 자체로 파이썬을 구현한 PyPy[7]라는 버전도 있습니다.</p>
 <p>최근에는 CPython과 주요 패키지들을 웹어셈블리(WebAssembly)[8]로 컴파일하려는 시도도 성공했습니다. 웹어셈블리는 웹 브라우저 안에서 독립적으로 실행되는 가상 머신인데, 이를 파이썬으로 포팅한 프로젝트를 Pyodide[9]라고 부릅니다. Pyodide를 활용하면 별도의 설치 과정 없이 브라우저에서 곧바로 파이썬을 실행할 수 있습니다. 이는 연구자들에게 무척 반가운 소식입니다. 보통 연구실 컴퓨터는 보안 때문에 소프트웨어 설치 권한이 엄격히 제한되는 경우가 많기 때문입니다. 장비 제어나 데이터 처리가 주 목적인 연구실 환경에서 IT 부서에 일일이 허가를 받는 일은 꽤 번거로운 작업입니다. 하지만 Pyodide를 쓰면 브라우저에 환경 전체를 로드할 수 있어, 복잡한 절차 없이도 파이썬의 강력한 기능을 마음껏 활용할 수 있습니다.</p>
 <p>어떤 버전을 선택하든, 파이썬을 다루는 기술은 여러분의 연구실 업무 효율을 높이는 데 핵심적인 무기가 될 것입니다.</p>
 </section>
@@ -1033,12 +1026,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> readings <span class="op">=</span> {<span class="st">'A1'</span>: <span class="fl">1.23</span>, <span class="st">'B1'</span>: <span class="fl">2.95</span>}</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> readings[<span class="st">'A1'</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1.23</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section" class="level1">
-<h1>3</h1>
-</section>
-<section id="데이터-구조-1" class="level1">
-<h1>데이터 구조</h1>
 <p>관리해야 할 데이터 값이 늘어나면 각 값을 별도의 변수에 할당하는 방식은 금세 감당하기 힘들어집니다. 이 문제의 해결책이 바로 ‘데이터 구조’입니다. 데이터 구조는 값을 모아놓은 하나의 소프트웨어 구성 요소로, 개별 값을 저장하고 접근하며 업데이트할 수 있습니다. 파이썬의 내장 선형 데이터 구조에는 리스트(list), 딕셔너리(dictionary), 튜플(tuple), 세트(set)가 있습니다. 데이터 구조를 하나의 변수에 할당하고 인덱스나 키를 통해 값에 접근함으로써 ’너무 많은 변수’ 문제를 해결할 수 있습니다.</p>
 <p>파이썬은 기본적으로 여러 데이터 구조를 제공하며, 각 구조는 서로 다른 상황에서 탁월한 성능을 발휘하도록 고유한 기능을 갖추고 있습니다. 이 내장 데이터 구조들을 종합해 보면 가장 흔한 데이터 저장 및 관리 요구사항을 대부분 처리할 수 있는 폭넓은 기능을 갖추게 됩니다. 내장 구조만으로 부족할 때는 수많은 확장 라이브러리를 불러와 필요를 충족할 수 있습니다.</p>
 <p>이 장에서는 내장 파이썬 데이터 구조를 생성하고, 요소에 접근 및 수정하며, 내용을 슬라이싱하는 방법 등을 깊이 있게 살펴봅니다. 9장에서는 n차원 배열이나 ’데이터프레임(DataFrame)’이라 불리는 표 형식 구조 등 파이썬에 흔히 추가해서 사용하는 다른 데이터 구조들도 탐구해 볼 것입니다.</p>
