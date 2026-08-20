@@ -23,7 +23,6 @@ book:
       chapters:
         - sequence_analysis_with_biopython/Sequence_Analysis_with_Biopython.qmd
         - large_language_models_in_protein_bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
-        - practical_bioinformatics/practical_bioinformatics.qmd
         - practical_guide_to_protein_engineering/practical_guide_to_protein_engineering.qmd
     - part: "머신러닝 및 인공지능"
       chapters:

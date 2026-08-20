@@ -7,7 +7,7 @@ version = "0.1.0"
 
 [tasks]
 preview = "quarto preview mybook"
-build = "quarto build mybook"
+test = "quarto render mybook"
 
 [dependencies]
 quarto = ">=1.8.27,<2"

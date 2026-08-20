@@ -65,7 +65,7 @@ JupyterLab은 그 밖에도 다음과 같은 유용한 기능들을 갖추고 �
 
 JupyterLab은 [Project Jupyter][jupyter]에서 만든 웹 사용자 인터페이스를 갖춘 애플리케이션 서버로, 여러 문서와 활동(Jupyter 노트북, 텍스트 편집기, 터미널, 심지어 커스텀 컴포넌트까지)을 유연하고 통합된, 확장 가능한 방식으로 다룰 수 있게 해줍니다. JupyterLab은 비교적 최신 브라우저(이상적으로는 Chrome, Safari, 또는 Firefox의 최신 버전)가 필요합니다. Internet Explorer 9 이하 버전을 비롯한 예전 브라우저는 지원하지 *않습니다*.
 
-JupyterLab은 Anaconda 파이썬 배포판의 일부로 포함되어 있습니다. Anaconda 배포판을 아직 설치하지 않았다면, 설치 지침을 위해 [설정 안내](../learners/setup.md)를 참고하세요.
+JupyterLab은 Anaconda 파이썬 배포판의 일부로 포함되어 있습니다. Anaconda 배포판을 아직 설치하지 않았다면, 설치 지침을 위해 [설정 안내](https://swcarpentry.github.io/python-novice-gapminder/setup.html)를 참고하세요.
 
 이번 학습에서는 JupyterLab 서버를 로컬 기기에서 직접 실행할 것이므로, Anaconda와 JupyterLab을 다운로드하고 설치하기 위한 최초 연결을 제외하고는 인터넷 연결이 필요하지 않습니다.
 
