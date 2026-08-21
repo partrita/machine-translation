@@ -1,11 +1,23 @@
 ---
-engine: markdown
 title: "R을 이용한 인과 추론"
 author:
   - "Malcolm Barrett"
   - "Lucy D'Agostino McGowan"
   - "Travis Gerke"
 date: "2026-08-15"
+engine: knitr
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+execute:
+  echo: true
+  eval: true
+  warning: false
+  message: false
+  error: true
 ---
 
 ```{r}
