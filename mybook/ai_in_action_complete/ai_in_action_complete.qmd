@@ -2476,7 +2476,9 @@ MLOps는 DevOps 원칙, 자동화, 지속적 통합 및 지속적 배포(CI/CD),
 
 ***
 
-# 프로젝트 관리 {#sec-uv}## Introduction
+# 프로젝트 관리 {#sec-uv}
+
+## 소개
 
 Python 프로젝트 관리는 지난 수년간 크게 진화해 왔으며, `pip`, `virtualenv`, `conda`, `poetry` 같은 도구들이 의존성 관리와 환경 격차의 다양한 측면을 해결하기 위해 각각 노력해 왔습니다. 2024년, `ruff`를 만든 팀인 Astral에서 속도와 단순성에 초점을 맞춘 Python 패키지 관리를 통합하고자 하는 도구인 `uv`를 출시했습니다. Rust로 작성된 `uv`는 기존에 분리되어 있던 여러 도구의 기능을 단일하고 응집력 있는 경험으로 결합합니다.
 
@@ -5684,7 +5686,6 @@ dependencies = [
 
 README에 다음과 같이 작성합니다.
 
-```         
 ## Requirements
 
 - CUDA 12.1 or later
@@ -5699,7 +5700,6 @@ nvidia-smi
 
 # Install dependencies
 uv sync --all-extras
-```
 ```
 
 ### 혼합 정밀도 훈련 (Mixed Precision Training)
@@ -19275,7 +19275,6 @@ $$
 경사 하강법과 뉴턴 방법을 비교하는 간단한 1D 예시는 다음과 같습니다.
 
 ```python
-```python
 def f_scalar(theta: float) -> float:
     """Simple convex function f(theta) = (theta - 3)^2 + 1."""
     return (theta - 3.0) ** 2 + 1.0
@@ -19518,7 +19517,6 @@ $$
 
 간단한 구현은 다음과 같습니다.
 
-```python
 ```python
 def backtracking_line_search(
     f: Callable[[np.ndarray], float],
@@ -20919,7 +20917,6 @@ KKT 이론과의 연결은 매우 깊습니다. 투영 경사하강법 반복의
 ### Python
 
 ```python
-```python
 import numpy as np
 from scipy.optimize import minimize
 import matplotlib.pyplot as plt
@@ -21281,7 +21278,6 @@ Robbins와 Monro에서 현대 딥러닝에 이르는 여정은 하나의 대체�
 위의 이론은 구체적인 예측을 제시합니다. 상수 스텝 사이즈에서 노이즈 플로어는 $a\sigma^2/B$로 스케일링되므로, 더 큰 배치는 최적점을 더 촘촘하게 특정하는 반면, Robbins-Monro 감소 스케줄은 서브옵티멀리티(suboptimality)를 임의의 고정된 플로어 아래로 떨어뜨립니다. 다음 실험은 정규 방정식을 통해 해를 폐쇄형(closed form)으로 알 수 있어 실제 서브옵티멀리티 $F(\theta_n) - F(\theta^\star)$를 플롯할 수 있는 강볼록 최소제곱 문제에서 이러한 예측들을 직접 테스트합니다.
 
 ```python
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -21563,7 +21559,6 @@ $$
 이 항등식은 임의의 실수 $c$에 대해 항상 성립하며, 이를 활용하는 것이 핵심입니다. 구체적인 트릭은 $c = \max_i x_i$로 선택하는 것입니다. 이렇게 시프트하고 나면 가장 큰 지수 값이 정확히 0이 되므로, 합산할 때 가장 큰 항은 $e^0 = 1$이 되어 오버플로가 발생할 수 없습니다. 나머지 모든 항은 $(0, 1]$ 사이에 위치하게 되며, 언더플로되어 0이 되는 항들은 실제로 최댓값에 비해 무시할 수 있는 수준의 미미한 값들이므로 결과에 영향을 주지 않습니다. 수치적으로 안정적인 계산 방식은 다음과 같습니다.
 
 ```{python}
-```c = max(x)
 lse = c + log(sum(exp(xi - c) for xi in x))
 ```
 
@@ -21920,10 +21915,7 @@ fn main() {
 
 $\ell_p$ 노름 패밀리는 시각적으로 머릿속에 그려둘 만한 가치가 있습니다. 어떤 $p$ 값을 선택하느냐에 따라 규제화의 기하학적 특성이 달라지기 때문입니다. $\lVert \mathbf{x} \rVert_p \le 1$을 만족하는 점들의 집합인 단위구(unit ball)의 형태는 페널티 함수가 선호하는 해의 유형을 결정합니다.
 
-```mermai
-d
-`````mermai
-d
+```mermaid
 flowchart LR
   P0["p = 0 quasinorm, counts nonzeros, sparsest"]
   P1["p = 1 diamond ball, promotes sparsity, convex"]
@@ -22100,7 +22092,6 @@ $$
 중심 양들 간의 관계는 미리 다음과 같이 요약할 수 있습니다.
 
 ```{mermaid}
-```markdown
 flowchart TD
     A["World and data-generating process"] --> B["Training sample D"]
     B --> C["Hypothesis space H"]
@@ -22675,7 +22666,6 @@ $$
 
   # of the space the model would otherwise censor
 
-```
 
 ### 4.4 구체적 예시: 검검(Censored)된 대출 영역
 
@@ -22972,7 +22962,6 @@ $$
 이 방식은 동기화된 집단의 재시도 시점을 전체 구간에 걸쳐 분산시키고 상호 연관성을 없앱니다. 풀 지터는 고정 지수 백오프와 비교하여 최초 성공까지의 기대 시간을 단축하고 복구 중인 서버의 피크 순간 부하를 줄여주며, 이 효과는 backoff와 jitter에 대한 Amazon Web Services 분석(참조 11)에 자세히 기록되어 있습니다. 응답에 명시적인 `Retry-After`가 포함된 경우 해당 값이 계산된 일정을 재정의합니다. 이는 서버가 직접 선호하는 대기 시간을 나타낸 것이기 때문입니다.
 
 ```python
-```python
 def fetch_with_backoff(session, url, max_retries=5):
     delay = 1.0
     for attempt in range(max_retries):
@@ -23132,7 +23121,7 @@ $$
 
 대부분의 데이터 API는 HTTP를 기반으로 작동합니다. 요청은 메서드(데이터 조회를 위한 GET, 생성을 위한 POST, 업데이트를 위한 PUT 또는 PATCH, 삭제를 위한 DELETE), URL, 헤더, 선택적인 본문(body)을 포함합니다. 응답은 상태 코드, 헤더, 그리고 대개 JSON 형식인 본문을 포함합니다. 코드에서 가장 먼저 검사해야 할 것은 상태 코드입니다. 200번대 코드는 성공을 의미하고, 400번대 코드는 사용자 측의 실수를 의미하며, 500번대 코드는 서버 측의 실패를 의미합니다. 성공하지 않은 모든 응답을 동일하게 처리하는 것은 초보자가 가장 많이 범하는 실수이며 가장 고통스러운 데이터 버그의 원인입니다.
 
-`````
+```
 GET /v2/customers?status=active HTTP/1.1
 Host: api.example.com
 Authorization: Bearer <token>
@@ -23226,7 +23215,6 @@ query {
 가장 단순한 스키마는 헤더에 전달되는 긴 비밀 문자열인 정적 API 키입니다. 호출자가 누구인지 식별하지만 세부적인 스코프 제어가 불가능하며 수동으로 교체(rotate)하지 않는 한 만료되지 않습니다. 두 서버를 모두 제어할 수 있는 서버 간 통신 작업에서는 키를 사용하는 것이 허용되지만, 클라이언트 측 코드나 버전 관리 시스템에 노출되어서는 안 됩니다. 환경 변수나 비밀 관리자(secrets manager)에 저장하고 런타임에 로드하여 사용하십시오.
 
 ```python
-```python
 api_key = os.environ["EXAMPLE_API_KEY"]   # never hard code this
 ```
 
@@ -23295,7 +23283,6 @@ while True:
 
 지터는 이와 다른 문제를 해결합니다. 공유 종속성에 일시적인 문제가 생겨 $m$개의 클라이언트가 동시에 실패했고, 모두 동일한 결정론적 대기 시간만큼 쉬었다고 가정해 보겠습니다. 이들은 동일한 시점에 재시도를 보내 다시 병목을 만들고 실패를 유발합니다. 무작위성을 추가하면 재시도 시점이 분산됩니다. 각 클라이언트가 $[0, d_n]$ 범위에서 균등 무작위 시간 동안 대기하는 *전체 지터(full jitter)* 방식을 사용하면, $m$개 클라이언트의 재시도 시점이 전체 구간에 골고루 분산됩니다. 시도당 기대 대기 시간은 $d_n/2$로 유지되면서 동기화 상태는 깨집니다. 대규모 서비스를 운영하는 엔지니어들이 권장하는 방식이자 Brooker의 백오프 및 지터 분석으로도 잘 알려진 모범 사례가 바로 이 전체 지터(full jitter) 방식입니다. 클라이언트를 확실히 분산시키면서 평균 대기 시간도 적절하게 유지하기 때문입니다. 서버가 제공하는 명시적인 `Retry-After`는 클라이언트의 계산 값보다 항상 우선해야 합니다. 서버는 제한이 해제되는 시점을 정확히 알고 있지만 클라이언트는 추측할 뿐이기 때문입니다.
 
-```python
 ```python
 for attempt in range(6):
     resp = call_api()
@@ -23380,7 +23367,6 @@ with requests.get(url, stream=True, timeout=None) as r:
 아래 다이어그램은 이기종 소스로부터 하나의 신뢰할 수 있는 테이블로 데이터가 흘러가는 과정을 보여주며, 각각의 횡단 관심사(cross-cutting concern)가 결합되는 위치를 나타냅니다.
 
 ```{mermaid}
-`````mermai
 d
 flowchart TD
     REST["REST source with cursor paging"] --> RAW["Raw landing zone, persisted unchanged"]
@@ -23437,7 +23423,6 @@ flowchart TD
 이 장에서 다루는 평가 루프는 아래와 같이 고정된 형태를 가집니다. 각 단계는 다음 단계가 소비하는 산출물(artifact)을 생성하며, 감지된 결함을 정제된 규칙으로 피드백함으로써 루프가 닫힙니다.
 
 ```{mermaid}
-```mermaid
 flowchart LR
     A["Profile the data"] --> B["Score the dimensions"]
     B --> C["Design metrics and thresholds"]
@@ -23554,7 +23539,6 @@ $\tau$를 높이면 재현율을 희생하는 대신 정밀도가 높아지고, 
 
 프로파일은 일반적으로 새로운 소스를 파악하기 위해 최초에 한 번 생성된 후, 드리프트(drift)를 탐지하기 위해 주기적으로 다시 실행됩니다. 최소한의 단일 열 프로파일은 다음과 같은 형태를 띱니다.
 
-```text
 ```text
 column: customer_age
   type:            integer
@@ -23759,8 +23743,6 @@ $$
 고전적인 추정치 역시 가려짐 문제로 고통받는데, $\boldsymbol{\mu}$와 $\boldsymbol{\Sigma}$가 우리가 찾고자 하는 바로 그 아웃라이어들에 의해 오염되기 때문입니다. 최소 공분산 결정인자(MCD, Minimum Covariance Determinant) 추정량은 표본 공분산 행렬의 행렬식(determinant)이 가장 작은 $n$개 중 $h$개 포인트의 서브셋을 찾은 다음, 해당 청정 핵심부에서 평균과 공분산을 계산하여 이 문제를 해결합니다. 행렬식은 타원의 일반화된 분산의 스칼라 측정이므로, 이를 최소화하면 부피를 팽창시키는 아웃라이어를 설계상 배제하여 데이터의 가장 조밀하고 집중된 절반을 찾게 됩니다. $h$의 선택은 견고성과 효율성 사이에서 타협을 이룹니다. $h \approx n/2$로 설정하면 약 $50\%$의 최대 붕괴점을 얻는 반면, $0.75\,n$에 가까운 더 큰 $h$는 더 많은 데이터를 유지하고 오염이 적을 때 정밀도를 향상시킵니다. 정확한 조합 탐색은 불가능하므로, Rousseeuw와 Van Driessen의 표준 FastMCD 알고리즘은 집중 단계(concentration steps)를 사용하여 행렬식이 더 이상 감소하지 않을 때까지 현재 거리가 가장 작은 $h$개 포인트에 대해 반복적으로 재적합시킵니다. 결과로 얻어지는 견고한 거리는 고전적인 마할라노비스 거리가 숨기는 아웃라이어를 드러내 줍니다.
 
 ```{python}
-```# Minimum Covariance Determinant를 통한 강건한 마할라노비스 거리
-```{python}
 from sklearn.covariance import MinCovDet
 import numpy as np
 
@@ -23850,7 +23832,6 @@ One-Class SVM은 복잡한 비선형 경계를 포착하는 데 강력하지만,
 ### 4.3 결정 휴리스틱 (A Decision Heuristic)
 
 ```{mermaid}
-```mermaid
 flowchart TD
     A["Flag point with a robust detector"] --> B["Investigate cause"]
     B --> C["Data error"]
@@ -24253,7 +24234,6 @@ test["income"]  = test["income"].fillna(fill)
 Pandera를 사용하면 pandas, Polars, 또는 PySpark 프레임 상에 스키마를 코드로 표현할 수 있습니다. `DataFrameSchema`는 타입과 제약 조건을 가진 열을 선언하며, 검증 과정에서 유효한 프레임을 반환하거나 정확히 어떤 행과 검증 항목이 실패했는지 설명하는 `SchemaError`를 발생시킵니다.
 
 ```python
-```python
 import pandera as pa
 from pandera import Column, Check
 
@@ -24366,7 +24346,6 @@ KL 발산과 달리 JSD는 대칭적이며, 항상 유한하고(평균값 $M$은
 
 실무적인 관점에서 기억해야 할 점은 이러한 메트릭들이 조금씩 다른 질문에 답한다는 것입니다. KS와 카이제곱은 가설 검정과 $p$-value를 제공하므로 드리프트를 이분법적인 유의성 결정으로 취급하려는 유혹에 빠지기 쉽습니다. 하지만 대규모 샘플에서는 사소하고 무해한 변화조차 통계적으로 유의미해지므로, 정제되지 않은 $p$-value는 운영 환경의 게이트로 삼기에 부적절합니다. 반면 PSI와 JSD는 고정된 스케일로 효과 크기(effect size)를 보고하므로 모니터링 대시보드에 실제로 필요한 정보를 제공합니다.
 
-```python
 ```python
 from scipy.stats import ks_2samp
 
@@ -24483,7 +24462,6 @@ Great Expectations는 의사소통에 뛰어납니다. 검증 실행 결과를 �
 널리 쓰이는 아키텍처 중 하나는 흔히 금속 이름을 딴 품질 영역(quality zone)을 통해 데이터를 라우팅하는 방식입니다. 정제되지 않은 데이터는 최소한의 검증만 거친 뒤 브론즈(bronze) 영역에 적재됩니다. 정제되고 형식이 통일된 데이터는 스키마 및 제약 조건 검증을 통과한 후 실버(silver) 영역으로 이동합니다. 비즈니스 수준의 집계 데이터는 통계적 검증을 거쳐 합리적인 수준으로 판단된 이후에야 골드(gold) 영역에 도달합니다. 각 영역 사이의 승격은 검증 게이트 역할을 하며, 게이트를 통과하지 못한 레코드는 자동으로 다음 단계로 승격되지 않고 다른 곳으로 격리(divert)됩니다.
 
 ```{mermaid}
-```mermaid
 flowchart LR
     SRC["External source"] --> G1{"Schema gate"}
     G1 -->|"pass"| BRONZE["Bronze zone raw"]
@@ -24600,7 +24578,6 @@ $$
 
 EDA는 루프 형태로 진행됩니다. 질문을 던지고, 질문에 답할 수 있는 뷰를 생성하며, 그 답변을 바탕으로 다음 질문을 이끌어냅니다. Wickham, Cetinkaya-Rundel, Grolemund는 이를 데이터에 대한 이해를 돕기 위해 변환, 시각화, 모델링을 반복하는 순환 과정으로 설명합니다. 이 루프는 시각화할 플롯이 고갈되었을 때가 아니라, 질문을 던져도 더 이상 새로운 사실이 발견되지 않을 때 종료됩니다. 시각화를 하기 전에 질문을 미리 적어두는 습관이 좋습니다. 기록해 두지 않은 질문은 시각화 결과에 맞춰 사후에 끼워 맞추기 쉽기 때문입니다.
 
-```{mermaid}
 ```{mermaid}
 %%| label: fig-eda-loop
 %%| fig-cap: "The exploratory loop. Each answer either raises a sharper question or, once surprises run out, hardens into a documented hypothesis."
@@ -24954,7 +24931,6 @@ Chart selection follows from two inputs: the analytical question and the measure
 Cross this intent with whether each variable is quantitative, ordinal, or nominal, and a small set of appropriate geometries emerges. The following diagram traces the path from intent to geometry.
 
 ```{mermaid}
-```mermai
 d
 flowchart TD
     Q["What is the question"] --> CMP["Compare categories"]
@@ -25142,7 +25118,6 @@ Q-Q(quantile-quantile) 플롯은 데이터의 분위수와 기준 분포(가장 
 종종 U자나 역U자 모양으로 나타나는 곡선 추세는 모델이 비선형성을 놓쳐 함수 형태가 잘못되었음을 의미합니다. 예측값에 따라 퍼짐 정도가 커지는 부채꼴 모양은 이분산성(heteroskedasticity)을 의미하므로, 오차 분산이 예측값에 의존하고 일반적인 신뢰구간이 잘못 보정될 것임을 나타냅니다. 특정 영역에서 잔차 띠가 0보다 위나 아래에 위치하면 국소적 편향(bias)을 의미합니다. 명확한 가로 줄무늬는 타겟 변수가 이산적이거나 절단(censored)되어 있음을 나타낼 수 있습니다. 이 플롯은 각 증상을 원인에 매핑해 주기 때문에, 회귀 분석의 청진기와도 같습니다.
 
 ```text
-```text
 residual = actual minus predicted
 plot residual (y axis) vs predicted (x axis)
 ideal: flat random band around zero
@@ -25246,7 +25221,6 @@ $$\mathrm{ECE} = \sum_{b=1}^{B} \frac{n_b}{n} \,\bigl| \mathrm{acc}(b) - \mathrm
 3. confusion + PR/ROC -> classifier behavior by class
 4. calibration     -> are the probabilities trustworthy
 5. learning curves -> convergence and overfitting
-```
 
 동일한 워크플로우를 각 진단 질문을 그에 답하는 시각화로 안내하는 의사결정나무(decision tree)로 읽을 수 있습니다.
 
@@ -25721,7 +25695,6 @@ flowchart TD
 학습-테스트 오염(train test contamination)은 평가 세트의 정보가 학습에 영향을 미칠 때 발생합니다. 전형적인 버전은 분할하기 전에 전체 데이터 세트에서 전처리 단계를 피팅하는 것입니다. 전체 데이터 세트를 사용하여 표준화 평균 $\mu$와 표준 편차 $\sigma$를 계산하거나, 결측치 대체 모델을 피팅하거나, 피처를 선택하면 테스트 세트가 학습 파이프라인에 암묵적으로 관여하게 된 것입니다. 해결책은 엄격합니다. $\phi$의 모든 매개변수는 오직 학습 데이터에서만 추정되어야 하며, 그 후에 검증 및 테스트 데이터에 적용되어야 합니다.
 
 ```python
-```text
 # Wrong: scaler sees the whole dataset, leaking test statistics
 scaler.fit(X_all); X_train, X_test = split(scaler.transform(X_all))
 
@@ -26039,7 +26012,6 @@ $$
 This lets a linear model fit curved response surfaces while remaining linear in its parameters, so it is still solved by ordinary least squares or its regularized variants. The danger is combinatorial explosion: for $p$ inputs, a degree $d$ expansion generates on the order of $\binom{p + d}{d}$ terms, which grows rapidly and invites overfitting and multicollinearity. Polynomial features are best used at low degree, on a curated subset of inputs, and almost always paired with regularization to control the inflated parameter space.
 
 ```{python}
-```{python}
 # Degree-2 interaction-only features keep the count manageable
 poly = PolynomialFeatures(degree=2, interaction_only=True,
                           include_bias=False)
@@ -26113,7 +26085,6 @@ Huber 손실은 작은 잔차에 대해서는 2차 함수로 동작하고 큰 �
 일관성 있는 수치형 특성 파이프라인은 이러한 단계들을 합리적인 순서로 구성합니다. 각 특성의 분포와 선택한 모델의 귀납적 편향(inductive bias)을 진단합니다. 왜곡된 입력을 대칭화하기 위해 Yeo-Johnson과 같은 분포 변환을 적용합니다. 남은 꼬리 동작에 적절한 표준 또는 robust scaler로 결과를 스케일링합니다. 도메인 지식이나 진단 결과가 조건부 또는 곡선 효과를 시사하는 경우 상호작용 및 낮은 차수의 다항식 항을 구성합니다. 선형 모델이 비단조 구조를 표현해야 할 때 선택적으로 구간화(binning)를 적용합니다. 클리핑, 변환 또는 robust 손실을 통해 이상치를 명시적으로 처리합니다. 결정적으로, 추정된 모든 매개변수를 파이프라인 내에 캡슐화하여 훈련 폴드에서만 적합되도록 함으로써 누설을 방지하고 교차 검증이 진정한 일반화를 반영하도록 보장합니다.
 
 ```python
-```
 pipe = make_pipeline(
     PowerTransformer(method="yeo-johnson"),  # symmetrize, fit on train
     RobustScaler(),                          # scale, resist residual tails
@@ -26121,7 +26092,6 @@ pipe = make_pipeline(
     Ridge(alpha=1.0),                        # regularize the expansion
 )
 ```
-
 수치형 데이터를 위한 특성 공학(Feature engineering)은 단순한 기계적 전처리 작업이 아니라 그 자체로 하나의 모델링 의사결정입니다. 이 장에서 다루는 변환들은 데이터 구조에 대한 가설을 인코딩합니다. 즉, 효과가 곱하기 구조를 갖는지, 데이터의 꼬리(tail) 부분이 신호가 아니라 노이즈인지, 혹은 두 특성이 상호작용하는지 등에 대한 가설입니다. 이러한 변환을 잘 선택하고 정직하게 검증한다면, 학습 알고리즘을 바꾸는 것보다 더 큰 성능 향상을 가져다주는 경우가 많습니다.
 
 ## References
@@ -26164,7 +26134,6 @@ pipe = make_pipeline(
 아래 다이어그램은 이 장의 나머지 부분에서 자세히 다룰 의사결정 과정을 요약합니다.
 
 ```{mermaid}
-```markdown
 flowchart TD
     A["Categorical variable"] --> B{"Genuine order?"}
     B -->|"Yes"| C["Integer or contrast encoding"]
@@ -26270,7 +26239,6 @@ $$
 
 근본적인 해결책은 특정 행의 인코딩이 다른 행들로부터만 추정되도록 보장하는 것입니다. 교차 피팅(cross-fitting)이라고도 불리는 아웃오브폴드(out of fold) `target encoding`이 이를 수행합니다. 학습 데이터를 $K$개의 폴드로 분할합니다. 각 폴드에 대해, 나머지 $K-1$개의 폴드만을 사용하여 범주 통계량을 계산하고 이를 보류된(held out) 폴드에 적용합니다. 이로써 모든 학습 행은 자체 타겟을 전혀 보지 않은 인코딩을 전달받습니다. 추론 시점과 검증 및 테스트 세트의 경우, 해당 행들은 인코딩되는 데이터와 분리되어 있으므로 전체 학습 세트에서 학습된 통계량을 사용하여 인코딩합니다.
 
-```{python}
 ```{python}
 # out-of-fold target encoding, schematic
 for train_idx, oof_idx in kfold.split(X):
@@ -26383,7 +26351,6 @@ This chapter develops the classical text feature pipeline from first principles:
 The pipeline is best understood as a sequence of maps from one representation to the next, each adding structure or shedding cost.
 
 ```{mermaid}
-```mermai
 d
 flowchart LR
     A["Raw text string"] --> B["Tokens"]
@@ -26537,7 +26504,6 @@ $$
 TF-IDF 가중치 벡터를 로지스틱 회귀나 선형 서포트 벡터 머신 같은 선형 분류기에 주입하는 방식은 응용 자연어 처리 분야에서 가장 신뢰할 수 있는 베이스라인 중 하나입니다. 이 가중치 방식은 매개변수가 없고, 모델이 볼록(convex)하여 수백만 개의 문서에 대해서도 몇 초 만에 학습이 완료되며, 학습된 계수를 직접 확인할 수 있습니다. 트랜스포머 모델을 고려하기 전에 개발자는 반드시 이 베이스라인을 구축해야 합니다. 왜냐하면 훨씬 더 비싼 모델들과 비교했을 때 놀라울 정도로 불과 1~2퍼센트 포인트 차이밖에 나지 않는 경우가 많기 때문이며, 더 고성능을 지향하는 모든 기법들이 반드시 넘어야 할 기준점이 바로 이 베이스라인입니다.
 
 ```python
-```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 vec = TfidfVectorizer(ngram_range=(1,2), min_df=5, sublinear_tf=True)
@@ -26647,7 +26613,6 @@ AI 텍스트의 문체적 특징(과용되는 단어, 특징적인 문장 부호
 6만 개의 긴 소설 전체에 대해 서사적 결정을 수동으로 주석(annotation) 처리하는 것은 불가능하므로, 서사 구조에 대한 10차원의 NarraBench 분류 체계(행위자, 사회적 네트워크, 사건, 플롯, 구조, 배경, 시간, 폭로, 관점, 스타일)에 기반하여 LLM을 통해 피처 공간 자체를 유도합니다 [@hamilton2025narrabench].
 
 ```{mermaid}
-```mermaid
 flowchart LR
     A["61,608 stories from six sources"] --> B["Structured templates, GPT-5.1"]
     B --> C["Cross-source comparison on a 600-story pool"]
@@ -26884,7 +26849,6 @@ for s in SOURCES[1:]:
     k = codes[s]
     j = int(np.argmax(imp_six[k]))
     print(f"  {s:<9} -> {X.columns[j]:<28} {imp_six[k, j]:.3f}")
-```
 
 이 축소판 모델은 257개가 아닌 약 24개의 피처만 사용하면서도 논문의 정성적 구조를 그대로 재현합니다. 이진 탐지는 쉬운 편이며 논문의 30개 피처 핵심 대역(core band)에 가깝게 도달합니다. 6개 클래스 분류(six-way attribution)는 논문에서와 마찬가지로 훨씬 더 어려우며, 우리가 정의한 8개의 지문 스타일(fingerprint-style) 피처가 논문의 75개 피처 중 극히 일부만 커버하기 때문에 무작위 선택 확률(0.167)과 핵심 피처만 사용한 결과 사이에 위치합니다. 출처별 분석 결과에서도 논문과 동일한 순서가 나타납니다. 인간 클래스가 가장 분류하기 쉽고, Claude가 가장 명확히 구분되는 AI 출처이며(단조로운 고조 및 에필로그 습성이 두드러짐), 구조상 구별되는 여백(marginal)이 없는 Kimi가 가장 분류하기 어렵습니다. 이는 Kimi가 지문이 가장 적은 모델로 나타난 논문의 결과와 일치합니다. 이진 SHAP 순위는 여백의 차이가 가장 큰 피처(`embodied emotion`, `thematic explicitness`)를 표면화하고, 다중 클래스 SHAP는 각 AI 출처의 중요도를 심어 놓은 해당 지문에 정확히 집중시킵니다. Kimi처럼 중요도가 분산되고 약할 때, 그 부재 자체도 하나의 발견이 됩니다.
 
@@ -27003,7 +26967,6 @@ $$
 
 $y_{t-k}$는 $t$보다 $k$ 단계 전에 관측된 것이므로, $y_{t-k}$가 실제 시간 $t$ 전에 알려졌다는 전제하에 $k \geq 1$인 모든 시차 피처는 현재 시점 기준으로 안전합니다. 시차 피처는 자기상관성을 데이터의 열로 변환합니다. 오늘의 수요가 어제의 수요 및 7일 전의 수요와 강한 상관관계를 가진다면, 시차 1과 시차 7 피처를 제공함으로써 트리 기반 모델이 이러한 관계를 직접적으로 활용할 수 있게 됩니다.
 
-```python
 ```python
 # pandas-style pseudocode, not executed
 df["lag_1"]  = df["y"].shift(1)
@@ -27243,7 +27206,6 @@ flowchart LR
 이러한 단계들은 일관된 파이프라인으로 연결됩니다. 아래 다이어그램은 원시 좌표에서 모델에 즉시 사용 가능한 피처를 생성하고 정밀한 평가를 수행하기까지의 전형적인 흐름을 보여줍니다.
 
 ```{mermaid}
-```markdown
 flowchart TD
     A["Raw lat lon in WGS84 EPSG 4326"] --> B["Reproject to local metric CRS"]
     B --> C["Distance and area features"]
@@ -27361,7 +27323,6 @@ $$
 각각의 명명된 조건자는 이 행렬에 대한 패턴입니다. 예를 들어, $A$ `within` $B$는 내부가 교차하고 ($\dim(I_A \cap I_B) \ge 0$) $A$의 어떤 부분도 $B$의 외부에 있지 않을 것 ($I_A \cap E_B$와 $\partial A \cap E_B$가 모두 비어 있음)을 요구합니다. 조건자를 패턴으로 이해하면 왜 이들이 모두 상호 배타적이지 않은지, 그리고 왜 `intersects`가 가장 허용 범위가 넓은지(내부 또는 경계 교집합 중 어느 하나라도 비어 있지 않으면 성립함) 설명이 됩니다. 정형적인 특성 공학 용도는 다각형 내부 점(point in polygon) 할당입니다. 즉, GPS 핑(ping) 집합과 행정 다각형 집합이 주어졌을 때, 각 핑에 그것을 포함하는 동네, 인구 조사 구역 또는 판매 지역을 첨부하는 것입니다.
 
 ```{python}
-```{python}
 joined = gpd.sjoin(points, polygons, predicate="within", how="left")
 ```
 
@@ -27474,7 +27435,6 @@ $$
 
 여기서 가중치 행렬은 행 표준화(row-standardized)하여 시차가 적절한 평균이 되도록 합니다. 타겟 변수나 공변량(covariate)의 공간 시차를 특징으로 추가하면 포인트 수준의 속성이 제공할 수 없는 이웃 맥락을 주입할 수 있으며, 공간 모델에서 가장 예측력이 높은 특징 중 하나가 되는 경우가 많습니다.
 
-```python
 ```python
 from libpysal.weights import KNN
 from esda.moran import Moran
@@ -27639,7 +27599,6 @@ $$
 전진 선택법은 빈 집합에서 시작하여 피처를 한 번에 하나씩 추가합니다. 각 단계에서 아직 선택되지 않은 각 피처를 임시로 추가하고, 교차 검증을 통해 결과 모델을 평가한 후, 가장 큰 개선을 보이는 단일 피처를 영구적으로 추가합니다. 추가를 해도 검증 점수가 허용 오차 이상으로 개선되지 않거나 목표 서브셋 크기에 도달하면 탐색을 중단합니다.
 
 ```text
-```text
 selected = {}
 repeat:
     best = argmax over j not in selected of CV_score(selected + {j})
@@ -27733,7 +27692,6 @@ $$
 큰 양수 값은 모델이 피처 $j$에 크게 의존했음을 의미하는데, 이를 파괴했을 때 성능이 손상되었기 때문입니다. 0에 가까운 값은 해당 피처가 사용되지 않았거나 중복되었음을 의미합니다.
 
 ```text
-```
 baseline = score(model, X_val, y_val)
 for each feature j:
     drops = []
@@ -27742,7 +27700,6 @@ for each feature j:
         drops.append(baseline - score(model, X_perm, y_val))
     importance[j] = mean(drops)
 ```
-
 ### 5.2 장점 {.unnumbered}
 
 순열 중요도(Permutation importance)는 모델을 블랙박스로 취급하고 오직 predict 함수만 필요로 하기 때문에, 선형 회귀부터 딥러닝 네트워크에 이르기까지 이미 학습된 모든 모델에 적용할 수 있습니다. 검증 데이터(held out data)를 기준으로 계산되므로 훈련 데이터에 대한 적합도가 아닌 일반화 성능을 반영하며, 이 덕분에 MDI의 과적합 편향을 피할 수 있습니다. 또한 분할 구조를 전혀 들여다보지 않으므로 불순도(impurity) 기반 중요도의 카디널리티 편향도 상속받지 않습니다.
@@ -27896,7 +27853,6 @@ $\mathbf{X}^\top \mathbf{X}$를 직접 형성하면 문제의 조건수(conditio
 
 우리는 센터링된 데이터의 SVD로부터 PCA를 직접 계산하고 우특이 벡터들이 로딩을 재현하는지 확인할 수 있으며, 이때 투영된 좌표는 $\mathbf{U}\mathbf{\Sigma}$로 유도됩니다. 표준화된 붓꽃(iris) 데이터셋을 구체적인 예시로 활용하여 설명하며, 설명된 분산(explained variance)을 scikit-learn 결과와 교차 검증합니다.
 
-```python
 ```python
 import numpy as np
 from sklearn.datasets import load_iris
@@ -28119,7 +28075,6 @@ $$
      Student-t 커널로 저차원 affinities $q_{ij}$ 계산
      KL 그래디언트 계산, 모멘텀으로 $y_i$ 업데이트
      처음 ~250 단계 동안 early exaggeration 적용
-```
 
 ## 3. UMAP 작동 방식 {.unnumbered}
 
@@ -28221,7 +28176,6 @@ t-SNE는 국소 밀도에 맞춰 대역폭(bandwidth)을 조정하므로, 조밀
 
 ### Python
 
-```python
 ```python
 import numpy as np
 from sklearn.datasets import make_blobs
@@ -28370,7 +28324,6 @@ t-SNE와 UMAP은 고차원 데이터를 시각화하는 강력한 도구이며, 
 전체 흐름을 관통하는 생각은 하나입니다. 데이터 증강은 작업에 대해 우리가 이미 가지고 있는 믿음(즉, 입력의 특정 변화가 라벨을 바꾸지 않아야 한다는 믿음)을 기술하고, 그 믿음을 학습 신호로 전환하는 방법이라는 점입니다. 이렇게 본다면 변환 기법의 선택은 단순한 튜닝의 디테일이 아니라, 아키텍처나 손실 함수의 선택만큼이나 중요한 모델링 의사결정입니다. 이 장은 이러한 의사결정을 명시적으로 드러내고, 데이터 증강이 주는 모든 이점의 근간이 되는 구체적인 가정(변환 패밀리 하에서의 라벨 보존)을 규명할 수 있도록 구성되었습니다.
 
 ```{mermaid}
-```markdown
 flowchart TD
     A["Task symmetries we believe in"] --> B["Transformation family T"]
     B --> C["Augmentation distribution q(theta)"]
@@ -28470,7 +28423,6 @@ $$
 다음 개요는 널리 사용되는 변환을 양상(modality)과 그것이 인코딩하는 불변성에 따라 정리한 것입니다.
 
 ```{text}
-```Visio
 n
   geometric:   flip, rotate, crop, scale, translate, shear
   photometric: brightness, contrast, hue, saturation, blur, noise
@@ -28687,7 +28639,6 @@ patch = sample_crop(image,
                     area_fraction in [0.08, 1.0],
                     aspect_ratio in [3/4, 4/3])
 image = resize(patch, target_size)
-```
 
 ### 4.2 플립과 학습-테스트 간극 (Flips and the train test gap)
 
@@ -28760,7 +28711,6 @@ if rand() < p_mix:
 랜덤어그멘트(RandAugment)는 탐색 과정을 거의 완전히 제거합니다. 이 기법은 거대한 학습된 정책이 고정된 $K$개 연산 집합에서 균등하게 무작위로 선택하는 것으로 근사화될 수 있음을 보여주며, 단 두 개의 정수로 제어됩니다. 즉, 이미지당 시퀀스로 적용되는 연산의 개수인 $N$과, 모든 연산이 공유하는 단일 글로벌 강도 $M$입니다. 증강 공간은 수십억 개의 정책에서 $14 \times 30$ 그리드(연산 수와 강도 수준의 곱)로 축소되며, 이는 대상 데이터셋과 모델에서 일반적인 그리드 탐색으로 튜닝하기에 충분히 작습니다.
 
 ```text
-```python
 def rand_augment(image, N, M):
     ops = sample(OPERATIONS, k=N)   # uniform, with replacement
     for op in ops:
@@ -28860,7 +28810,6 @@ $$
 유의어 대체는 문장 속의 단어를 유사한 의미를 가진 단어로 교체하는 기법입니다. 가장 전형적인 구현은 인지적 유의어들의 집합인 synset으로 단어들을 그룹화해 둔 WordNet과 같은 어휘 데이터베이스에서 유의어를 추출하는 방식입니다. 이 절차는 대개 불용어(stop words)를 제외하고 적격한 단어 몇 개를 선택한 뒤, 후보 유의어를 조회하고 선택된 단어를 해당 synset에서 무작위로 선택한 단어로 대체합니다.
 
 ```{text}
-```Original
 :  The film was absolutely fantastic and moving.
 Augmented: The film was absolutely marvelous and poignant.
 ```
@@ -28945,7 +28894,6 @@ $$
 ### Python
 
 ```python
-```
 from aiinaction.ch071_eda import (
     Lcg,
     synonym_replacement,
@@ -28963,7 +28911,6 @@ print("RD:", random_deletion(sentence.split(), 0.3, Lcg(4)))
 for s in eda(sentence, seed=123, num_aug=4):
     print(s)
 ```
-
 ### Julia
 
 ```{julia}
@@ -29114,7 +29061,6 @@ BERT top candidates: long, dense, confusing, technical, dull
 아래에서 살펴볼 생성 모델군들은 $p_g$를 획득하는 방식에서 차이를 보입니다. 시뮬레이터는 도메인 지식을 바탕으로 규칙을 수작업으로 설계하고 인코딩합니다. 생성형 모델은 $p_{\text{data}}$의 실제 샘플 데이터를 바탕으로 분포를 학습합니다. 대규모 언어 모델은 사전 학습 단계에서 이미 학습한 분포를 재사용하며, 프롬프트를 통해 이 분포의 흐름을 조절합니다. 아래 다이어그램은 이 전체적인 구도를 보여줍니다.
 
 ```{mermaid}
-`````mermai
 d
 flowchart TD
   A["Synthetic data generation"] --> B["Simulation, knowledge encoded by hand"]
@@ -29193,7 +29139,6 @@ $$\mathcal{L} = \mathbb{E}_{x_0, \epsilon, t}\left[\,\|\epsilon - \epsilon_\thet
 
 이 목적 함수는 위에서 언급한 닫힌 형식의 샘플을 네트워크에 입력하는 것과 일치하며, 이것이 확산 모델의 학습이 매우 안정적인 이유입니다. 적대적인 경쟁 상대 없이 알려진 노이즈를 향한 회귀 분석만 수행하기 때문입니다. 샘플링은 노이즈 상태에서 시작하여 학습된 역방향 단계를 반복적으로 밟아 나갑니다. 텍스트 프롬프트 같은 조건부 입력(conditioning)은 네트워크의 입력값으로 주어지며, classifier free guidance 기법은 샘플링 시 조건부 예측과 무조건부 예측 사이를 외삽(extrapolating)함으로써 조건에 대한 순응도를 강화합니다. 확산 모델은 GAN의 적대적 불안정성을 회피하고 모드를 훨씬 더 잘 커버하지만, 여러 단계에 걸친 느린 샘플링이 단점입니다. 비록 증류(distillation) 기법과 적은 단계만 사용하는 솔버들이 그 격차를 줄이고 있기는 합니다. 이 모델들은 현재 대부분의 텍스트-이미지 변환 시스템을 구동하고 있으며 오디오, 비디오, 분자 구조, 정형 데이터 분야로 영역을 넓혀가고 있습니다. 아래 스케치는 상위 수준에서의 학습 루프를 보여줍니다.
 
-```{python}
 ```{python}
 # Diffusion training step (schematic, not runnable as-is)
 x0 = sample_batch(data)
@@ -29365,7 +29310,6 @@ $$
 콘텐츠 주소 지정(Content addressing)이란 객체를 위치나 사람이 부여한 이름 대신 객체 콘텐츠의 암호화 해시값을 통해 식별하는 것을 의미합니다. 공식적으로, 임의의 바이트 문자열을 $n$ 비트의 고정 길이 다이제스트(digest)로 매핑하는 암호화 해시 함수를 $H : \{0,1\}^* \to \{0,1\}^n$이라 합시다. 바이트 $x$를 갖는 객체의 주소는 간단히 $H(x)$가 됩니다. SHA-256의 경우 $n = 256$입니다. 함수 $H$는 결정론적이어야 하고, 계산 속도가 빨라야 하며, 단방향성(preimage resistance, 주어진 다이제스트를 생성하는 $x$를 찾는 것이 사실상 불가능함)과 충돌 저항성(collision resistance, $H(x) = H(y)$를 만족하는 서로 다른 $x \ne y$를 찾는 것이 사실상 불가능함)을 가져야 합니다. 이러한 특성들 덕분에 다이제스트를 신뢰할 수 있는 식별자로 사용할 수 있습니다. $x$의 단 1비트만 변경되어도 산사태 효과(avalanche property)에 의해 출력 비트의 약 절반이 뒤집히므로, 해당 주소는 실질적으로 그 특정 바이트에 대해서만 유일한 주소가 됩니다.
 
 ```text
-```
 content = bytes of the file
 address = SHA256(content)  ->  e3b0c44298fc1c149afbf4c8996fb924...
 ```
@@ -29636,7 +29580,6 @@ Gebru와 동료들(2021)이 제안한 '데이터셋을 위한 데이터시트'�
 이 일곱 가지 섹션은 데이터셋이 기획 단계부터 폐기 단계까지 거치는 경로를 추적합니다. 이들을 순서대로 읽으면 아티팩트를 형성한 의사결정 과정을 재구성할 수 있습니다.
 
 ```{mermaid}
-`````mermai
 d
 flowchart LR
     A["Motivation"] --> B["Composition"]
@@ -29850,7 +29793,6 @@ $$
 아래 다이어그램은 데이터 생애주기를 보여주며, 각 단계에서 핵심이 되는 윤리적 질문과 거버넌스 아티팩트를 연결하여 보여줍니다. 왼쪽에서 오른쪽으로 읽어보면 그 연속성을 구체적으로 파악할 수 있습니다. 수집 단계에서 승인된 약속(동의 철회권 보장 등)은 여러 단계를 거친 후 최종 삭제 단계에서도 반드시 이행되어야 합니다.
 
 ```{mermaid}
-`````
 
 flowchart LR
   A["Collection: consent, lawful basis"] --> B["Labeling: annotator welfare, category validity"]
@@ -30068,7 +30010,6 @@ drawn independently and identically distributed (i.i.d.) from $\mathcal{D}$. i.i
 이 장에서 공식화하는 전체 파이프라인은 단 하나의 다이어그램으로 파악할 수 있습니다. 세상은 알 수 없는 분포를 제공하고, 우리는 유한한 i.i.d. 표본만을 관찰하며, 알고리즘은 제한된 가설 클래스 내에서 가장 낮은 경험적 위험(및 규제화된 위험)을 갖는 예측기를 검색하고, 우리는 동일한 분포에서 새로 추출한 표본에 대한 실제 위험(true risk)을 바탕으로 그 결과를 평가합니다.
 
 ```{mermaid}
-```mermaid
 flowchart LR
     D["Unknown distribution D over X times Y"] -->|"i.i.d. sample"| S["Training set S of n examples"]
     S --> A["Learning algorithm: ERM over hypothesis class H"]
@@ -30225,7 +30166,6 @@ $$
 
 이론은 경계의 형태를 알려주지만, 상수가 너무 느슨해서 실제 값으로 직접 쓰기 어려운 경우가 많습니다. 따라서 실제로는 일반화 성능을 경험적으로 추정합니다. 훈련 중에는 전혀 손대지 않는 테스트 세트를 따로 보관해 두고, 하이퍼파라미터를 선택하기 위해 별도의 검증 세트나 교차 검증을 사용합니다. 모델 선택 과정에 테스트 정보가 유출되는 것은 가장 치명적인 실수입니다. 이 유출은 자신도 모르게 모델의 용량 사용량을 부풀려 일반화 보장을 깨뜨립니다. 데이터가 부족할 때 데이터를 여러 개의 훈련 및 검증 폴드(folds)로 반복해서 나누는 교차 검증을 사용하면 실제 위험에 대해 더 낮은 분산의 추정치를 얻을 수 있습니다.
 
-```python
 ```python
 
 # k-fold cross validation: estimate true risk without
@@ -30596,7 +30536,6 @@ error
               interpolation
                 threshold
 
-```
 
 ### 5.2 이중 하강(second descent)이 발생하는 이유 {.unnumbered}
 
@@ -30731,7 +30670,6 @@ $$\operatorname{Var}_{\text{strat}} = \frac{1}{m} \sum_{g} \pi_g \, \sigma_{L,g}
 가장 직접적인 형태는 분할 간의 중복입니다. 동일한 예시나 거의 동일한 복제본이 훈련 세트와 테스트 세트 모두에 나타나면 테스트 추정치는 낙관적으로 편향됩니다. 이는 생각보다 자주 발생합니다. 웹 스크래핑으로 수집한 데이터셋에는 중복 문서가 포함되어 있습니다. 이미지는 크기가 조정되어 다시 업로드됩니다. 의료 데이터셋에는 동일한 환자의 여러 스캔본이 포함됩니다. 독립성의 실제 단위가 환자, 사용자 또는 문서군임에도 불구하고 행(row) 단위로 분할하면 누수가 발생합니다. 해결책은 그룹 변수를 따라 분할하는 것입니다. 한 환자가 여러 기록을 기여했다면, 해당 환자의 모든 기록은 분할의 동일한 쪽에 속해야 합니다. 이를 위한 scikit-learn의 관용구는 그룹 인지 분할(group aware splitting)입니다.
 
 ```python
-```python
 from sklearn.model_selection import GroupShuffleSplit
 
 splitter = GroupShuffleSplit(test_size=0.2, n_splits=1, random_state=0)
@@ -30794,7 +30732,6 @@ pipe.score(X_test, y_test)   # train statistics applied to test
 
 층화 추출은 각 분할이 전체 데이터셋과 대략 동일한 비율의 클래스 분포를 갖도록 보장합니다. 양성 비율이 $\pi$인 이진 분류 문제의 경우, 모든 분할이 $\pi$에 가까운 양성 비율을 유지합니다. 이는 성능 추정치의 분산을 줄이고 희소 클래스가 모든 분할에 고르게 나타나도록 보장합니다.
 
-```python
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -30877,7 +30814,6 @@ flowchart LR
 
 ### Python
 
-```python
 ```python
 import numpy as np
 import pandas as pd
@@ -31320,7 +31256,6 @@ generalization_estimate = mean(outer_scores)
 낙관적 편향은 데이터를 나누기 전에 수행되는 전처리 과정에서도 스며듭니다. 전체 데이터셋에 대해 scaler, imputer, feature selector 또는 차원 축소 모델을 학습(fit)시킨 다음 교차 검증을 수행하면, 테스트 폴드의 정보가 학습 과정으로 누출됩니다. 이러한 변환 과정에서 제외되어 있어야 할 테스트 행들을 이미 보았기 때문입니다. 해결책은 데이터에 의존하는 모든 변환 과정을 교차 검증 루프 내부에 배치하여, 각 학습 폴드에 대해서만 학습(fit)하고 이를 해당하는 테스트 폴드에 적용하는 것입니다. 변환 프로세스와 모델을 단일 pipeline 객체로 묶으면 이 과정이 자동으로 처리되며, 이는 보이지 않는 누수를 방지하는 가장 효과적인 단일 방어책입니다.
 
 ```text
-```python
 pipeline = make_pipeline(StandardScaler(), SelectKBest(k=20), Classifier())
 # Whole pipeline is refit inside every fold, so the scaler and the
 # feature selector never observe held-out rows.
@@ -32218,7 +32153,6 @@ $w_i \propto 1/\operatorname{Var}(\varepsilon_i)$일 때 WLS는 BLUE이며, 주�
 측정 과정에서 분산이 이미 알려진 경우는 드뭅니다. 예컨대 각 $y_i$ 자체가 $m_i$번 반복 측정된 값들의 평균인 경우 $w_i = m_i$로 설정할 수 있습니다. 보다 흔하게는 분산 구조를 추정하여 사용합니다. 일반적인 방법은 알려진 함수 $g$에 대해 $\operatorname{Var}(\varepsilon_i) = \sigma^2 g(x_i)$와 같은 분산 모델을 가정한 후, $w_i = 1/g(x_i)$로 설정하는 것입니다. $g$ 자체를 모르는 경우, 실행 가능 일반화 최소제곱법(3.3절)을 통해 평균 추정과 잔차 제곱을 통한 분산 추정을 반복적으로 수행합니다.
 
 ```text
-```python
 # Conceptual WLS via reweighting
 W   = diag(weights)               # weights ~ 1 / estimated variance
 XtW = X.T @ W
@@ -32680,7 +32614,6 @@ The running example places five points exactly on the parabola $y = 1 + 2x - x^2
 ### Python
 
 ```{python}
-```{python}
 from aiinaction.ch083_basis_regression import (
     polynomial_design, fit_ridge, predict, effective_dof, BasisRegression,
 )
@@ -32983,7 +32916,6 @@ $$
 
 다음 셀은 8개의 강한 다중공선성 예측 변수를 갖는 합성 회귀 데이터셋을 생성하고, 이를 표준화한 뒤 $\lambda$ 값을 6차수에 걸쳐 훑어봅니다. 이 코드는 OLS 테스트 오차, 교차 검증으로 구한 최적 $\lambda$, 특이값으로부터 계산된 유효 자유도, 계수 노름의 수축 정도를 출력합니다. 재현 가능하도록 시드(seed)는 고정되어 있습니다.
 
-```{python}
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33496,7 +33428,6 @@ $\rho \to 1$이 됨에 따라 우변이 0으로 수렴하므로, $\hat{\beta}_i 
 코드를 직접 실행하지 않고도 코드 내에서 이러한 직관을 쉽게 파악할 수 있습니다.
 
 ```python
-```python
 import numpy as np
 from sklearn.linear_model import Lasso, ElasticNet
 
@@ -33619,7 +33550,6 @@ Elastic Net은 두 개의 하이퍼파라미터를 갖습니다. 표준적인 �
 
 전형적인 $\alpha$ 격자는 $\{0.1, 0.3, 0.5, 0.7, 0.9, 0.95, 1\}$과 같이 구성될 수 있습니다. 1에 가까운 값을 포함하면 Lasso가 가장 적합할 때 탐색이 Lasso 방향으로 수렴할 수 있게 해주는 한편, 더 작은 값들은 Ridge 성분에 무게를 실어줍니다. 웜 스타트 덕분에 $\lambda$ 경로를 계산하는 비용은 저렴하므로, 지배적인 계산 비용은 (교차 검증 폴드 수) $\times$ ($\alpha$ 값의 개수)가 됩니다.
 
-```python
 ```python
 from sklearn.linear_model import ElasticNetCV
 
@@ -33796,7 +33726,6 @@ $$
 표기법을 간소화하기 위해 모든 $\mathbf{x}$에 상수 특성인 $1$을 추가하여 편향을 가중치 벡터에 흡수시킵니다. 이에 따라 $w_0 = b$ 및 $x_0 = 1$이라는 관례에 의해 $z = \mathbf{w}^{\top}\mathbf{x}$가 됩니다. 이제부터는 $\mathbf{w} \in \mathbb{R}^{d+1}$입니다.
 
 ```python
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -33925,7 +33854,6 @@ $$
 $J$는 립시츠 연속(Lipschitz continuous)인 그래디언트를 가지는 볼록 함수이므로, 경사하강법은 충분히 작은 고정 학습률에 대해 전역 최적해로 수렴합니다. 실제로는 모든 방향의 곡률이 유사해지도록 특성들을 표준화(standardization)해야 단일 학습률로도 효율적으로 학습할 수 있습니다. 확률적(stochastic) 경사하강법 및 미니 배치(mini-batch) 변형 기법들은 전체 데이터의 합을 일부 샘플들의 추정치로 대체하여, 그래디언트의 정확도를 희생하는 대신 더 저렴하고 빈번한 업데이트를 수행하며, 이는 대규모 데이터셋에서 필수적입니다.
 
 ```{python}
-```# Two Gaussian blobs, one per class, with a bias column appended to X.
 rng = np.random.default_rng(0)
 n = 200
 X0 = rng.normal([-1.5, -1.0], 1.0, size=(n // 2, 2))
@@ -34102,7 +34030,6 @@ $$
 \hat{y}(x) = \arg\max_{k} \, \sigma_k(x).
 $$
 
-```python
 ```python
 # conceptual one-vs-rest
 for k in range(K):
@@ -34518,7 +34445,6 @@ $$
 After subtraction the largest exponent is $e^{0} = 1$, so no term overflows, and the denominator is at least one, so no division by an underflowed sum occurs. Terms that underflow to zero are the genuinely negligible ones and do no harm.
 
 ```{python}
-```{python}
 def softmax(z):
     m = z.max(axis=-1, keepdims=True)
     e = exp(z - m)
@@ -34610,7 +34536,6 @@ $z_k / T$는 단지 크기가 조정된 로짓이므로, 섹션 3의 경사 분�
 
 ### Python
 
-```python
 ```python
 # Stable softmax and the fused cross-entropy from logits.
 print("softmax([1, 2, 3])    =", [round(p, 4) for p in softmax([1.0, 2.0, 3.0])])
@@ -34917,7 +34842,6 @@ $$
 
 ### Python
 
-```python
 ```python
 import numpy as np
 import statsmodels.api as sm
@@ -35229,7 +35153,6 @@ $$
 이 로그 합은 수치적으로 안정적일 뿐만 아니라 덧셈이 곱셈보다 연산 비용이 적기 때문에 더 빠릅니다. 모든 실용적인 구현체는 점수를 이런 방식으로 계산합니다.
 
 ```{python}
-```# Scoring a single example under a trained multinomial model.
 # log_prior[y] and log_likelihood[y][w] are precomputed during training.
 def predict(features, classes, log_prior, log_likelihood):
     best_class, best_score = None, float("-inf")
@@ -35306,7 +35229,6 @@ $\alpha = 1$로 설정하면 원래의 라플라스 규칙이 되며, 이는 데
 
 가상 빈도 $\alpha$는 하이퍼파라미터이며, 그 값은 두 가지 실패 모드 사이에서 균형을 맞춥니다. 값이 너무 작으면 드물지만 정보력이 있는 특성이 여전히 지배적이거나 노이즈를 유발할 수 있습니다. 값이 너무 크면 추정치가 균등 분포로 끌려가 특성이 가진 신호를 희석하고 편향을 증가시킵니다. 실제로는 교차 검증을 통해 $\alpha$를 선택하며, 보통 $\alpha = 1$이 합리적인 기본값이고, 가산된 질량 $\alpha V$가 적당한 빈도 수의 효과를 압도할 수 있는 대규모 어휘집에서는 더 작은 값을 선호하는 경우가 많습니다.
 
-```python
 ```python
 # Smoothed multinomial training: counts -> log likelihoods.
 import math
@@ -35636,7 +35558,6 @@ $$
 본 장에서 다루는 네 가지 변형 모델은 1.2절의 결정 규칙을 공유하지만, $P(x_j \mid y)$의 가정된 형태에서 차이를 보입니다. 모델의 선택은 데이터 유형에 따라 결정되며, 텍스트 데이터의 경우 문서의 길이와 클래스 불균형에 따라서 달라집니다.
 
 ```{mermaid}
-```mermaid
 flowchart TD
     A{"What is the feature type"} -->|Continuous numeric| B["Gaussian NB"]
     A -->|Counts or indicators from text| C{"Document representation"}
@@ -36374,7 +36295,6 @@ flowchart TD
 아래의 실행 가능한 셀은 시드를 고정하고 두 분류기를 적합한 후, 세 개의 그림(LDA 영역, QDA 영역, 피셔 투영)을 생성하고, 결과 DataFrame을 출력하며, 공유 공분산 하에서 LDA 경계가 선형임을 확인하는 SymPy 검증을 수행합니다.
 
 ```{python}
-```{python}
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -36513,7 +36433,6 @@ diff_q = sp.expand(
 )[0]
 num_q = sp.together(diff_q).as_numer_denom()[0]
 print("  QDA boundary degree in x1:", sp.Poly(num_q, x1).degree(), "(quadratic expected)")
-```
 
 ### Julia
 
@@ -36671,7 +36590,6 @@ $k = 3$일 때 가장 가까운 이웃은 $(1,0)$, $(0,1)$, $(1.5,1)$이며 각�
 ### 1.5 의사코드 {.unnumbered}
 
 ```text
-```text
 predict(x, D, k, dist):
     compute dist(x, x_i) for all i
     select indices of k smallest distances -> N
@@ -36808,7 +36726,6 @@ KD-트리는 축에 정렬된 초평면(hyperplane)으로 $\mathbb{R}^d$ 공간�
 선택은 차원 수와 정확도 요구사항에 따라 달라집니다. 정확한 결과가 필요한 저차원 데이터의 경우 KD-트리나 볼 트리가 적합합니다. 고차원 데이터의 경우 정확한 인덱스는 강점을 잃고 무차별 대입이나 ANN이 현실적인 대안이 됩니다. 참조 데이터셋이 방대하고 근사치만으로 충분한 상황에서는 HNSW나 IVF-PQ가 표준적인 선택이며, 재현율, 지연 시간(latency), 메모리 간의 균형을 맞추도록 튜닝하여 사용합니다.
 
 ```{mermaid}
-`````mermai
 d
 flowchart TD
     A[Choose a search index] --> B{Exact result required?}
@@ -37212,7 +37129,6 @@ $$p(y \mid x) = \lambda \, p_{\text{kNN}}(y \mid x) + (1 - \lambda) \, p_{\text{
 Eager 거리 척도와 lazy 검색이 결합된 통합 패턴은 클래식 시스템과 현대 시스템이 공유하는 단일 파이프라인으로 그릴 수 있습니다.
 
 ```{mermaid}
-```mermaid
 flowchart LR
     subgraph Eager["Eager component trained once"]
         E1["Encoder or learned metric"]
@@ -37658,7 +37574,6 @@ CART의 핵심 결과 중 하나는 $\alpha$가 0에서부터 증가함에 따�
 예측은 트리 순회 과정입니다. 루트 노드에서 시작하여 $x_j \le t$ 테스트를 평가하고, 일치하는 분기를 따라 자식 노드로 이동하며, 리프 노드에 도달할 때까지 이 과정을 반복합니다. 리프 노드는 예측값을 담고 있습니다. 회귀의 경우 평균 타깃값, 분류의 경우 다수결 클래스입니다. 확률적 분류의 경우, 리프 노드는 클래스 비율 $\hat{p}_{mk}$를 예측 클래스 확률로 반환합니다.
 
 ```{python}
-```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
@@ -38025,7 +37940,6 @@ $$
 다이어그램은 탐욕적 빌드 루프를 추적합니다. 모든 후보 분할을 평가하고, 가장 큰 불순도 감소량을 취하며, 분할이 도움이 되지 않거나 사전 가지치기 제한이 작동하면 멈추고, 그렇지 않으면 두 자식 노드로 재귀합니다.
 
 ```{mermaid}
-```mermaid
 flowchart TD
     A[표본 집합 S를 가진 노드] --> B{정지 규칙을 충족하는가?}
     B -->|최대 깊이, 최소 표본 수, 순수 노드| C[리프 노드 생성, 평균 또는 다수결 예측]
@@ -69829,8 +69743,8 @@ $\mathcal{X}$은 입력 공간(예: 네트워크의 모든 사용자, 제품 또
 
 | 기능 | 공식 | 범위 | 사용 사례 |
 |------------------|------------------|------------------|------------------|
-| 유클리드 거리 | $d(\mathbf{u}, \mathbf{v}) = \ | \mathbf{u} - \mathbf{v}\ |_2$ | $[0, \infty)$ | 규모가 중요한 경우 |
-| 코사인 유사성 | $\text{sim}(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\ | \mathbf{u}\ | \ | \mathbf{v}\ |}$ | $[-1, 1]$ | 방향만 비교 |
+| 유클리드 거리 | $d(\mathbf{u}, \mathbf{v}) = \| \mathbf{u} - \mathbf{v}\|_2$ | $[0, \infty)$ | 규모가 중요한 경우 |
+| 코사인 유사성 | $\text{sim}(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\| \mathbf{u}\| \| \mathbf{v}\|}$ | $[-1, 1]$ | 방향만 비교 |
 | 내적 | $\mathbf{u} \cdot \mathbf{v} = \sum_i u_i v_i$ | $(-\infty, \infty)$ | 방향과 크기가 모두 중요한 경우 |
 
 : 거리 측정법 {#tbl-embedding-eval-distance-metrics}
@@ -83084,7 +82998,6 @@ For GitHub-based namespaces (e.g., `io.github.datacore/*`), authenticate via Git
 # 게시(먼저 시험 실행)
 ./mcp-publisher 게시 --dry-run
 ./mcp-publisher 게시
-```
 
 ### 6.4 GitHub Actions Integration {.unnumbered}
 
@@ -83735,7 +83648,6 @@ api.save_results(결과, "/tmp/active_customers.json")
 
 '''
 
-```         
 
 ## 8. 테스트 및 디버깅
 
@@ -98072,7 +97984,6 @@ rle = seg_mask.to_rle(height=300, width=300)
 print(f"Mask shape: {binary_mask.shape}")
 print(f"Mask area: {seg_mask.area()}")
 print(f"RLE counts (first 10): {rle['counts'][:10]}")
-```
 
 ## 비디오 어노테이션(Video Annotation) {#sec-video}
 

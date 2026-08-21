@@ -507,8 +507,7 @@ ChatGPT의 기반이 되는 것과 같은 대규모 언어 모델조차도 예�
 [\@sec-diag]에서는 인과적 질문의 구조를 논의할 것입니다.
 [\@sec-counterfactuals]장에서는 질문을 날카롭게 다듬는 철학적, 실무적 방법에 대해 논의할 것입니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 인과 추론과 설명 (explanation)
 
 일부 저자들은 "인과 추론"과 "설명"이라는 문구를 혼용하여 사용합니다.
@@ -984,8 +983,7 @@ DAG에서 각 점은 변수를 나타내고, 각 화살표는 원인을 나타�
 우리의 가정을 적나라하게 드러냄으로써 분석의 과학적 신뢰성을 투명하게 평가할 수 있기 때문입니다.
 DAG를 사용하는 또 다른 이점은 그 기저에 깔린 수학 덕분에, 우리가 이 DAG가 옳다고 가정할 때 고려해야 할 변수의 하위 집합을 정확하게 결정할 수 있다는 점입니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## DAG 구성하기
 
 이 연습에서는 데이터가 어떻게 생성되었는지에 대한 지식을 바탕으로 합리적인 DAG를 제공하고 있습니다.
@@ -1100,8 +1098,7 @@ DAG 용어로 말하자면, 우리가 추구하는 인과 추정치를 왜곡하
 
 ### 함수 형태 모델링하기
 
-::: callout-tip
-
+::: {.callout-tip}
 일반적으로 성향 점수 모델을 적합시킬 때는 도메인 전문 지식과 좋은 모델링 관행에 의존하고 싶을 것입니다.
 예를 들어, 연속형 교란 요인이 스플라인(splines)을 사용하여 비선형이 되도록 허용하거나, 교란 요인들 사이의 필수적인 상호작용을 추가하고 싶을 수 있습니다.
 이 데이터는 시뮬레이션된 것이기 때문에 이러한 추가 파라미터가 필요하지 않음을 알고 있지만(그래서 건너뛸 것입니다), 실제로는 필요한 경우가 많습니다.
@@ -1219,8 +1216,7 @@ if (requireNamespace("halfmoon", quietly = TRUE)) {
 
 이 예시에서 가중치를 적용하지 않은 분포도 아주 나쁘지는 않습니다. 모양이 어느 정도 비슷하고 상당히 많이 겹치기 때문입니다. 하지만 \@fig-mirror-histogram-net-data-weighted 의 가중 분포가 훨씬 더 비슷합니다.
 
-::: callout-caution
-
+::: {.callout-caution}
 ## 측정되지 않은 교란 (Unmeasured confounding)
 
 성향 점수 가중치 부여 및 대부분의 다른 인과 추론 기술은 오직 *관찰된* 교란 요인들 — 우리가 모델에 올바르게 반영한 것들 — 에 대해서만 도움을 줍니다.
@@ -1742,8 +1738,7 @@ data_observed |>
 이러한 가정들은 한 가지 목표를 가지고 있습니다: 관찰된 데이터를 사용하여 관찰 불가능한 반사실을 표현할 수 있게 하는 것입니다.
 우리가 이를 수행하기 위해 필요한 것은 무엇일까요?
 
-::: callout-note
-
+::: {.callout-note}
 ## 사과 대 사과 (Apples-to-apples)
 
 인과 추론을 위해 우리가 해야 하는 대부분의 가정은 "사과 대 사과" 비교를 하기 위한 것입니다: 우리는 서로의 반사실에 대해 합리적인 대리인 역할을 할 수 있는 유사한 개인들을 비교하고 싶어 합니다.
@@ -1769,8 +1764,7 @@ data_observed |>
 
 [^03-po-counterfactuals-2]: 이러한 *인과적* 가정은 우리가 사용하는 추정량이 요구하는 분포 가정과 같은 *통계적* 가정에 추가되는 것입니다.
 
-::: callout-note
-
+::: {.callout-note}
 이러한 가정들은 인과 추정치를 식별하기 위해 필요하기 때문에 때때로 **식별 조건(identifiability conditions)**이라고 불리기도 합니다.
 마찬가지로, 특정 인과 효과가 "식별 가능한지(identifiable)" 여부를 논의하는 것을 가끔 볼 수 있을 것입니다.
 
@@ -1953,8 +1947,7 @@ ggplot(plot_data, aes(happiness, y_id, color = observed, shape = observed)) +
   po_theme
 ```
 
-::: callout-note
-
+::: {.callout-note}
 교환 가능성은 때때로 "교란 없음(no confounding)" 또는 "비교란(unconfoundedness)" 가정이라고 불리기도 합니다.
 또한 때때로 "무시 가능성(ignorability)"이라고 불리기도 합니다.
 
@@ -2153,8 +2146,7 @@ data_observed_exch |>
   scale_x_continuous(breaks = seq(0, 12, by = 2.5), limits = c(-2, 12)) 
 ```
 
-::: callout-warning
-
+::: {.callout-warning}
 \@fig-po-cond-exch 에서 우리는 이미 차원의 저주를 만나기 시작했습니다: 표본 크기가 너무 작아서 노출과 선호도의 조합에 대한 값이 매우 적습니다.
 표본 크기가 커질수록 더 나은 교환 가능성을 달성하겠지만, 좋은 통계 모델 없이는 이것이 금세 어려워집니다.
 
@@ -2171,8 +2163,7 @@ data_observed_exch |>
 아이스크림 예시에서 모든 사람은 동일한 확률을 가졌습니다: 초콜릿을 받을 확률 50%, 바닐라를 받을 확률 50%입니다.
 이러한 가능성들이 두 그룹 모두에 대해 두 잠재적 결과를 모두 정의합니다.
 
-::: callout-note
-
+::: {.callout-note}
 때때로 긍정성은 **확률론적 가정(probabilistic assumption)**이라고 불리기도 합니다.
 
 :::
@@ -2397,8 +2388,7 @@ ggplot(
 -   **잘못 정의된 노출 (Poorly-defined exposure)**: 각 노출 값에 대해, 그 노출을 전달할 때 대상자들 사이에 차이가 있습니다. 달리 말하면, 여러 버전의 처치가 존재합니다. 대신, 우리는 **잘 정의된 노출 (well-defined exposure)**이 필요합니다.
 -   **간섭 (Interference)**: 특정 대상자의 결과(관찰 여부와 관계없이 엄밀히 말하면 모든 잠재적 결과)가 다른 대상자의 노출에 의존합니다. 대신, 우리는 **간섭이 없음 (no interference)**이 필요합니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 일관성은 때때로 **안정적 단위 처치값 가정(stable-unit-treatment-value assumption)** 또는 **SUTVA**라고 불리기도 합니다 [@imbens2015causal].
 그러나 인과적 일관성은 통계적 일관성(표본 크기가 커짐에 따라 추정량이 참값에 가까워지는 속성)과는 별개의 개념입니다.
 
@@ -3000,8 +2990,7 @@ partners_observed |>
   summarise(avg_outcome = mean(observed_outcome))
 ```
 
-::: callout-note
-
+::: {.callout-note}
 여러 버전의 처치나 간섭이 있는 상황에서 효과를 식별하기 위한 방법들도 존재하지만, 이는 기술적이며 일관성 위배 상황에서 더 제한적입니다 [@Tchetgen2012; @VanderWeele2013].
 
 :::
@@ -3010,8 +2999,7 @@ partners_observed |>
 또 다른 옵션은 간섭 효과가 없도록 파트너를 제외하는 것입니다.
 핵심은 무엇을 추정하고 싶은지 생각하고, 해당 질문에 대한 잠재적 결과를 가능한 한 정확하게 표현하려고 노력하는 것입니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 모기장 사례, 재검토
 
 \@sec-whole-game 에서 우리는 모기장이 말라리아 위험에 미치는 인과 효과를 추정했습니다.
@@ -3041,8 +3029,7 @@ partners_observed |>
 예를 들어, 일부 사람들에게 전염병 백신을 접종하도록 무작위 배정한다면, 그들이 백신을 접종받는 것이 주변 사람들이 병에 걸릴 확률을 낮출 수 있습니다. 노출 확률을 변화시키기 때문입니다.
 이는 위의 예시들처럼 클러스터 무작위 배정이나 단위 분리 등 시험 설계에서 추가적인 고려 사항을 필요로 합니다.
 
-::: callout-note
-
+::: {.callout-note}
 우리는 노출이 무작위로 배정되는 분석을 *무작위 시험*이라고 부릅니다.
 때때로 이러한 유형의 무작위 설계는 "어느 것이 더 나은가, A인가 B인가?"라는 의미에서 A/B 테스트라고 불리기도 합니다.
 A/B 테스트는 산업계에서 흔히 쓰이며, 예를 들어 두 가지 다른 웹사이트 UI 디자인을 테스트하는 경우 등이 있습니다.
@@ -3310,8 +3297,7 @@ dag_flows |>
 ```
 
 
-::: callout-tip
-
+::: {.callout-tip}
 ## DAG는 SEM인가요?
 
 심리학 및 기타 사회과학 분야에서 흔히 사용되는 모델링 기법인 **구조 방정식 모델(structural equation models, SEM)**에 익숙하다면, SEM과 DAG 사이의 몇 가지 유사점을 발견할 수 있을 것입니다.
@@ -3346,8 +3332,7 @@ DAG의 큰 장점 중 하나는 편향의 원인을 식별하는 데 도움이 �
 그 공통된 인과 관계가 `x`와 `y`를 통계적으로 연관되게 만듭니다.
 `q`를 조정하면 교란으로 인한 편향을 **차단(block)**하고 `x`와 `y` 사이의 진정한 관계를 얻을 수 있습니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 조정 (Adjustment)
 
 우리는 변수를 고려하기 위해 다양한 기술을 사용할 수 있습니다.
@@ -3550,8 +3535,7 @@ collider_t |>
 따라서 `q`에 대해 아는 것은 `x`를 통해 `y`에 대한 정보를 제공합니다.
 이 예시는 극단적이지만, 때때로 **콜라이더 층화 편향(collider-stratification bias)** 또는 **선택 편향(selection bias)**이라고 불리는 이 유형의 편향이 어떻게 발생하는지를 보여줍니다: `q`에 대한 조건부화(conditioning)는 `x`와 `y`에 대한 통계적 정보를 제공하고 그들의 관계를 왜곡합니다 [@Banack2023].
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 교환 가능성 재고 (Exchangeability revisited)
 
 우리는 흔히 교환 가능성을 교란이 없다는 가정으로 언급합니다.
@@ -3572,8 +3556,7 @@ collider_t |>
 우리가 조정해야 할 변수들의 집합을 **조정 집합(adjustment set)**이라고 부릅니다.
 DAG는 복잡한 설정에서도 조정 집합을 식별하는 데 도움을 줄 수 있습니다 [@vanderzander2019].
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 상호작용은 어떤가요?
 
 DAG는 추론의 중요한 부분임에도 불구하고 상호작용(interaction)이나 효과 추정치 수정(effect estimate modification)에 대해 직접적으로 언급하지 않습니다.
@@ -3686,8 +3669,7 @@ ggdag(podcast_dag, use_labels = TRUE, use_text = FALSE) +
   theme_dag()
 ```
 
-::: callout-note
-
+::: {.callout-note}
 이 장의 나머지 부분에서는 DAG를 위해 고안된 ggdag의 ggplot 테마인 `theme_dag()`를 사용할 것입니다.
 
 ```{r}
@@ -3703,8 +3685,7 @@ theme_set(
 
 :::
 
-::: callout-tip
-
+::: {.callout-tip}
 ## DAG 좌표 (DAG coordinates)
 
 `ggdag`에서 좌표를 꼭 지정할 필요는 없습니다.
@@ -3775,8 +3756,7 @@ podcast_dag |>
   ggdag_paths(shadow = TRUE, use_text = FALSE, use_labels = TRUE)
 ```
 
-::: callout-tip
-
+::: {.callout-tip}
 `dagify()`는 `dagitty()` 객체를 반환하지만, 내부적으로 `ggdag`는 `dagitty` 객체를 **tidy DAG**로 변환합니다. 이는 `dagitty` 객체와 DAG에 대한 `dataframe`을 모두 보유하는 구조입니다.
 이는 여러분이 프로그램 방식으로 DAG를 조작하고 싶을 때 유용합니다.
 
@@ -3833,8 +3813,7 @@ ggdag_adjustment_set(
 이 집합은 타당해 보입니다. 노출과 결과를 제외하고 백도어 경로 상에 있는 변수는 이 두 가지뿐이기 때문입니다.
 따라서 유효한 추정치를 얻으려면 최소한 이 두 가지를 모두 고려해야 합니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 `ggdag()`와 그 일족들은 대개 `tidy_dagitty()`와 `dag_*()` 또는 `node_*()` 함수들을 사용하여 기저의 데이터 프레임을 변경합니다.
 마찬가지로, 빠른 그래프 함수들은 ggdag의 geom들을 사용하여 결과 DAG(들)를 시각화합니다.
 즉, 여러분이 매일 사용하는 것과 동일한 데이터 조작 및 시각화 전략을 ggdag와 함께 직접 사용할 수 있습니다.
@@ -3892,8 +3871,7 @@ ggdag_adjustment_set(
 표준 조정 집합은 조금 더 복잡합니다: 이들은 노출과 결과의 모든 가능한 조상(ancestors)에서 가능성 있는 후손들을 제외한 것입니다.
 완전히 포화된 DAG(모든 노드가 시간상 뒤에 나오는 모든 것에 영향을 미치는 DAG)에서 표준 조정 집합은 최소 조정 집합과 동일합니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ggdag의 대부분의 함수는 내부적으로 dagitty를 사용합니다.
 dagitty 함수들을 직접 호출하는 것이 도움이 될 때가 많습니다.
 
@@ -4181,8 +4159,7 @@ m_bias() |>
   ggdag()
 ```
 
-::: callout-tip
-
+::: {.callout-tip}
 `ggdag`에는 `confounder_triangle()`, `collider_triangle()`, `m_bias()`, `butterfly_bias()` 등 기본적인 인과 구조를 보여주기 위한 몇 가지 '빠른 DAG(quick-DAGs)' 함수들이 있습니다.
 
 :::
@@ -4392,8 +4369,7 @@ DAG를 사용한 논문의 약 절반만이 사용된 조정 집합을 보고했
 다시 말해, 연구자들은 연구 질문에 대한 자신들의 가정을 제시했지만, 모델링 단계를 어떻게 처리해야 하는지에 대한 함의나 유효한 조정 집합을 사용했는지 여부는 제시하지 않았습니다.
 마찬가지로, 대다수의 연구가 관심 있는 추정 대상(estimand)을 보고하지 않았습니다.
 
-::: callout-note
-
+::: {.callout-note}
 추정 대상은 우리가 무엇을 추정하려고 하는지에 대한 목표이며, [Chapter -\@sec-whole-game] 에서 간략히 논의되었습니다.
 우리는 [Chapter -\@sec-estimands] 에서 추정 대상에 대해 자세히 다룰 것입니다.
 
@@ -4622,8 +4598,7 @@ dagify(
 <!-- -   healthy worker bias -->
 
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 환자-대조군 연구는 어떤가요?
 
 역학에서 표준적인 연구 설계 중 하나는 환자-대조군 연구(case-control study)입니다.
@@ -5012,8 +4987,7 @@ gt::gt(effects) |>
   )
 ```
 
-::: callout-warning
-
+::: {.callout-warning}
 ## 10% 규칙
 
 10% 규칙은 역학(epidemiology) 및 기타 분야에서 변수가 교란 요인인지 결정하기 위해 흔히 사용되는 기술입니다.
@@ -5068,8 +5042,7 @@ causal_quartet |>
   facet_wrap(~dataset)
 ```
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 왜 계수를 표준화했나요?
 
 `scale()`에 구현된 것처럼 숫자형 변수를 평균이 0이고 표준 편차가 1이 되도록 표준화하는 것은 통계학에서 흔히 쓰이는 기술입니다.
@@ -5331,8 +5304,7 @@ d_coll |>
   scale_color_discrete(breaks = "공변량\n(기준점)", na.value = "grey70")
 ```
 
-::: callout-warning
-
+::: {.callout-warning}
 시간 순서 휴리스틱은 간단한 규칙에 의존합니다: 미래를 조정하지 마십시오.
 
 :::
@@ -5378,8 +5350,7 @@ causal_quartet_time |>
 따라서 그것이 명확하게 M-편향이라면 해당 변수를 조정하지 마십시오.
 명확하지 않다면 조정하십시오.
 
-::: callout-tip
-
+::: {.callout-tip}
 콜라이더 편향 또한 하나의 열린 경로일 뿐이므로, 특정 상황에서는 콜라이더를 조정함으로써 유발된 편향을 차단하는 것이 가능하다는 점을 기억하십시오.
 만약 우리에게 `u1`과 `u2`가 있다면, 우리는 잠재적인 콜라이더 편향을 차단하면서 `covariate`를 통제할 수 있습니다.
 즉, 때때로 우리가 경로를 열었을 때, 그것을 다시 닫을 수도 있습니다.
@@ -6196,8 +6167,7 @@ satisfaction4_strat |>
 한계화(Marginalization)는 데이터에 있는 공변량 분포의 평균 효과를 알려줍니다.
 물론 우리는 고객 유형별로 인과 효과를 추정하고 싶을 수도 있습니다. 상호작용 효과는 [\@sec-interaction]장에서 자세히 다룰 것입니다.
 
-::: callout-note
-
+::: {.callout-note}
 조건부 효과는 로지스틱 및 콕스(Cox) 회귀 모델에서 훨씬 더 복잡합니다. \@sec-non-collapse 에서 보겠지만, 이러한 모델의 조건부 계수는 모델의 변수에 따라 완전히 다른 질문에 대한 답을 추정하게 됩니다.
 
 :::
@@ -6631,8 +6601,7 @@ seven_dwarfs_train |>
   sort()
 ```
 
-::: callout-note
-
+::: {.callout-note}
 이러한 종류의 데이터 확인을 수행하는 것은 데이터의 한계와 잠재적인 문제를 이해하는 데 필수적입니다.
 R에는 `skimr::skim()`이나 `pointblank::scan_data()`와 같이 데이터셋을 빠르게 요약할 수 있는 훌륭한 도구들이 많이 있습니다.
 또한 `{pointblank}`와 같은 데이터 검증 도구를 사용하여 데이터에 대한 기대를 기록하고 테스트할 것을 권장합니다.
@@ -6718,8 +6687,7 @@ parks_metadata <- parks_metadata_raw |>
   filter(year(park_date) == 2018)
 ```
 
-::: callout-tip
-
+::: {.callout-tip}
 우리는 변수 이름이 깔끔한 관례를 따르는 것을 선호합니다; 이를 위한 한 가지 방법은 Emily Riederer의 "계약으로서의 열 이름(Column Names as Contracts)" 형식을 따르는 것입니다 [@Riederer_2020].
 기본 아이디어는 정보를 인덱싱하기 위해 정밀한 의미를 가진 단어, 문구 또는 스텁(stubs) 세트를 미리 정의하고, 변수 이름을 지을 때 이를 일관되게 사용하는 것입니다.
 예를 들어, 이 데이터에서 특정 대기 시간과 관련된 변수들은 `wait`라는 용어로 시작하고(예: `wait_datetime`, `wait_minutes_actual`), 공원 메타데이터에서 가져온 특정 날짜의 공원 관련 변수들은 `park`라는 용어로 시작합니다(예: `park_date`, `park_temperature_high`).
@@ -6830,8 +6798,7 @@ parks_metadata |>
 이제 교란 요인 및 노출 데이터(`parks_metadata`)를 결과 데이터(`seven_dwarfs_9`)와 결합하여 하나의 분석용 데이터셋을 만들어 봅시다.
 이 경우에는 간단한 1:1 매칭이며 `seven_dwarfs_9`에 `parks_metadata`를 붙이려고 하므로, 왼쪽 조인(left join)을 사용할 수 있습니다.
 
-::: callout-note
-
+::: {.callout-note}
 조인(Joining)은 미묘한 데이터 조작 주제이지만, 분석용 데이터셋을 만드는 데 필수적인 경우가 많습니다.
 조인에 대한 자세한 논의는 *R for Data Science*를 추천합니다.
 
@@ -8144,8 +8111,7 @@ scale_color_manual(
 자연 스플라인(natural spline)을 사용하여 성향 점수 모델을 다시 적합시켜 봅시다.
 이를 위해 `splines::ns` 함수를 사용할 수 있습니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 자연 큐빅 스플라인 (Natural Cubic Splines)
 
 자연 큐빅 스플라인(natural cubic splines)은 변수 사이의 복잡한 비선형 관계를 모델링하기 위해 사용되는 도구입니다. 전체 범위를 "매듭(knots)"이라고 불리는 여러 구간으로 나누고, 각 구간 내에서 3차 다항식(cubic polynomial)을 적합시킵니다. "자연(natural)"이라는 수식어는 데이터의 양 끝단 밖에서 관계가 선형이 되도록 제약을 가한다는 것을 의미하며, 이는 이상치에 대한 모델의 안정성을 높여줍니다.
@@ -8208,8 +8174,7 @@ scale_color_manual(
 이 관계를 잘못 명시하면 잔차 교란(residual confounding)이 발생할 수 있습니다: 해당 교란 요인을 부분적으로만 통제하게 되어 추정치에 약간의 편향이 남게 될 수 있습니다.
 예측 중심의 지표들을 사용하여 다양한 함수 형태를 테스트하는 것은 모델의 정확도를 높이는 데 도움이 될 수 있으며, 잠재적으로 더 나은 통제를 가능하게 합니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 인과 모델을 과적합(overfit)시킬 수 있나요?
 
 예측 모델링에서 데이터 과학자들은 종종 모델이 데이터의 우연한 패턴에 과적합되는 것을 방지해야 합니다.
@@ -8568,8 +8533,7 @@ ggplot(seven_dwarfs_wts, aes(x = w_ate)) +
 우리는 [\@sec-ps]에서 이러한 가중치들이 추정치의 분산을 불안정하게 만들 수 있으며, 이는 안정화를 통해 개선될 수 있음을 보았습니다.
 그러나 ATE 가중치는 유한 표본 편향의 문제도 겪고 있으며, 이는 안정화로 해결할 수 없습니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 ## 유한 표본 편향 (Finite sample bias)
 
 우리는 교란 요인을 고려하지 않는 것이 인과 추정치를 편향시킬 수 있다는 것을 알고 있지만, 모든 교란 요인을 고려한 후에도 유한 표본에서는 여전히 편향된 추정치를 얻을 수 있습니다.
@@ -9261,8 +9225,7 @@ ggplot(seven_dwarfs_wts, aes(w_ato)) +
 
 ATM 가중치와 마찬가지로, ATO 가중치는 0과 1 사이로 제한되어 있어 노출군과 비노출군 사이의 불균형에 관계없이 ATE, ATT, ATU보다 더 안정적입니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 ## 유한 표본 편향의 재검토 (Finite sample bias, revisited)
 
 유한 표본 편향 시뮬레이션을 다시 살펴보면서, ATO 가중치를 추가하여 이러한 편향 가능성이 가중치에 어떤 영향을 미치는지 알아봅시다.
@@ -9397,8 +9360,7 @@ seven_dwarfs_wts |>
   geom_love()
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 절단 및 절삭의 재검토 (Trimming and truncation, revisited)
 
 \@sec-weighting 에서 보았듯이, 절단(trimming)이나 절삭(truncation)은 긍정성 및 중첩 문제를 다루기 위한 흔한 기술입니다.
@@ -9526,8 +9488,7 @@ p_atu
 p_atm
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 매칭을 이용한 가중 표 (Weighted tables with matching)
 
 매칭을 사용하면, 우리는 매칭되는 짝이 있는 인구 집단으로 부분 집합을 만듭니다.
@@ -9716,8 +9677,7 @@ lm(
 가중치 부여를 사용하여, 엑스트라 매직 아워가 있는 날들 중에서 엑스트라 매직 아워가 오전 9시에서 10시 사이의 평균 게시 대기 시간에 미치는 기대 영향이 6.2분이라고 추정합니다.
 이 접근 방식은 점 추정치(point estimate)에 대해서는 원하는 값을 얻게 해주지만, 불확실성(표준 오차 및 신뢰 구간)에 대한 `lm` 함수의 기본 출력값은 정확하지 않습니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## `group_by()`와 `summarize()`를 이용한 인과 추론, 다시 보기
 
 이 간단한 예시에서 가중 결과 모델은 가중 평균의 차이를 구하는 것과 동일합니다.
@@ -9927,8 +9887,7 @@ results |>
 -   **위험 차이 (Risk difference)**: `p_treated - p_untreated`
 -   **위험비 (Risk ratio)**: `p_treated / p_untreated`
 
-::: callout-note
-
+::: {.callout-note}
 여기서 "위험(risk)"은 결과의 발생 위험을 의미합니다.
 이는 질병 발생과 같이 결과가 부정적인 상황을 가정한 용어입니다.
 때때로 이를 "반응비(response ratio)" 또는 "반응 차이(response difference)"라고 부르기도 합니다.
@@ -9955,8 +9914,7 @@ results |>
 서열 결과(ordinal outcomes)의 경우, `MASS::polr()`와 같은 서열 로지스틱 회귀는 결과의 각 이전 값과 비교하는 일련의 로그 오즈비들을 계산합니다.
 로지스틱 회귀와 마찬가지로, 이러한 확장 모델에서도 오즈비에만 국한되지 않으며, 각 범주의 예측 확률을 사용하여 관심 있는 효과를 계산할 수 있습니다.
 
-::: callout-note
-
+::: {.callout-note}
 환자-대조군 연구(Case-control studies)는 역학에서 전형적인 설계 방식으로, 참가자들을 결과 상태(outcome status)에 따라 샘플링합니다 [@schlesselman1982case].
 결과가 발생한 '사례(cases)'를 모집하고, 그 사례들이 나온 인구 집단으로부터 '대조군(controls)'을 샘플링합니다.
 이러한 유형의 연구는 결과가 희귀할 때 사용됩니다.
@@ -9993,8 +9951,7 @@ results |>
 위험의 절대적 변화 때문에, 폐암으로 사망하는 사람보다 흡연 관련 심장병으로 사망하는 사람이 더 많습니다.
 절대적 관점과 상대적 관점 모두 타당합니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 처치 필요 환자 수 (The number needed to treat)
 
 확률 차이에 대한 또 다른 관점은 처치 필요 환자 수(number needed to treat, NNT) 지표입니다.
@@ -10117,8 +10074,7 @@ table(exposure, outcome, covariate)
 
 오즈비와 위험비, 그리고 상대적 척도와 절대적 척도 사이의 논의는 활발히 이루어져 왔습니다. 우리는 이진 결과에서 오즈비, 위험비, 위험 차이라는 세 가지 측정치를 기준 확률과 함께 모두 제시하기를 제안합니다. 각각은 인과 효과에 대해 서로 다른 관점을 제공합니다. 추정치에 포함된 처치 그룹을 고려하여 이를 해석하도록 주의하십시오. 예를 들어 ATT 가중치로 구한 평균 위험 차이는 처치군에서의 평균 위험 차이를 뜻합니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 선형 확률 모델 (The linear probability model)
 
 선형 확률 모델(linear probability model)은 이진 결과에서 처치 효과를 추정하는 흔한 방법 중 하나입니다. 선형 확률 모델은 계량경제학 등 여러 분야에서 표준으로 사용됩니다. 기본적으로 OLS와 같지만 잔차의 분산에 이질성(heterogeneity)이 있어 보통 로버스트 표준 오차를 함께 활용합니다. 결과는 가산적 측정치인 위험 차이로 나타납니다.
@@ -10257,8 +10213,7 @@ lm(
 노출의 한계 분포(marginal distribution)를 써서 이를 안정화할 수 있습니다.
 성향 점수의 한계 분포를 계산하는 일반적인 방법은 예측 변수가 없는 회귀 모델을 사용하는 것입니다.
 
-::: callout-caution
-
+::: {.callout-caution}
 극단적인 가중치는 추정치를 불안정하게 만들어 신뢰 구간을 넓게 만듭니다.
 극단적인 가중치는 경계가 없는 모든 유형의 가중치(이진 노출 및 기타 유형 포함)에서 문제가 될 수 있습니다.
 하지만 ATO(0과 1 사이로 제한됨)와 같은 경계가 있는 가중치는 이러한 문제를 겪지 않으며, 이는 많은 장점 중 하나입니다.
@@ -10631,8 +10586,7 @@ tidy(outcome_categorical, conf.int = TRUE)
 
 `park_ticket_seasonregular`와 `park_ticket_seasonpeak` 계수는 기준 범주(`value`)에 비해 각 시즌이 평균 게시 대기 시간에 미치는 추정 효과입니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 범주형 노출 vs. 이진 노출
 
 범주형 노출에서는 여러 개의 비교(pairwise comparisons)가 가능합니다.
@@ -10674,8 +10628,7 @@ status("wip")
 
 4.  각 노출 그룹에서 시뮬레이션된 결과에 기반하여 관심 있는 인과적 대비(causal contrast)를 계산합니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 몬테카를로 시뮬레이션 (Monte Carlo simulations)
 
 몬테카를로 시뮬레이션은 무작위 프로세스에 대한 결과 표본을 생성하는 계산적 접근 방식입니다.
@@ -11191,8 +11144,7 @@ DAG에서는 두 노출 변수 모두 결과로 향하는 화살표를 가진 �
 공동 원인 그 자체는 상호작용이 아닙니다. 두 변수의 효과가 단순히 합산될 수 있기 때문입니다.
 상호작용은 한 변수의 *효과 크기*가 다른 변수에 의해 *수정(modified)*될 때 일어납니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 상호작용 vs. 교란 (Interaction vs. Confounding)
 
 상호작용과 교란을 혼동하지 않도록 주의하세요.
@@ -11256,8 +11208,7 @@ tidy(fit_interaction, conf.int = TRUE)
 공중보건학에서는 가산적 상호작용이 특히 중요합니다.
 가산적 상호작용이 없다는 가정은 모든 하위 집단에서 개입 효과의 절대적 크기가 같음을 뜻하기 때문입니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 상호작용 해석 시 주의 사항
 
 상호작용 계수는 해석하기 까다로운 편입니다.
@@ -11342,8 +11293,7 @@ library(tidyverse)
 이 가정은 사실이 아닐 때가 많습니다.
 측정 오차와 누락이 미치는 영향을 이해하려 인과 다이어그램을 활용한 몇 가지 시나리오를 살펴보겠습니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 `x`는 부분적으로 누락되었으나 `y`는 완전하다면, `x`의 평균을 구할 때보다 더 큰 표본으로 `y`의 평균을 측정할 수 있습니다.
 그러나 회귀 계수 같은 결합 파라미터(joint parameters)는 `x`와 `y`가 모두 완전한 관측치일 때만 계산할 수 있습니다.
 R 도구(예: `lm()`)는 대개 필요한 변수가 빠진 행을 자동으로 삭제합니다.
@@ -11553,8 +11503,7 @@ u_actual -> actual_star
 
 이를 *독립적, 비차별적(independent, non-differential)* 측정 오차라고도 합니다. 편향이 구조적 비교환 가능성이 아니라 실제값과 관찰값의 차이에서 비롯되기 때문입니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 상관관계가 0에 가까워질수록 측정값은 연구 중인 관계에서 무작위성을 갖게 됩니다.
 변수가 독립적인 측정 오차를 포함하면, 실제값 사이에 화살표가 있더라도 측정값 사이의 관계는 무효(null)에 가까워집니다.
 여기서 `x`의 계수는 약 1이어야 하지만, 무작위 측정이 부정확할수록 계수는 0에 수렴합니다.
@@ -12012,8 +11961,7 @@ dag_stats |>
 측정 오차와 마찬가지로 인과 모델의 교란 요인이 실제 대기 시간의 결측 원인이 될 수 있습니다. 예를 들어 시즌이나 기온에 따라 TouringPlans가 측정 인원을 보낼지 결정할 수도 있습니다.
 이 데이터의 교란 요인은 모두 관찰되지만, 교란 요인이 결측되면 잔차 교란과 완전 사례(complete case) 층화에 따른 선택 편향이 모두 발생할 수 있습니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 통계학계의 유구한 작명 전통에 따라, 결측은 흔히 *완전 무작위 결측*, *무작위 결측*, 그리고 *비무작위 결측*이라는 용어로 논의됩니다.
 
 인과 모델에서는 결측의 인과 구조와 해당 구조와 관련된 변수 및 값의 가용성으로 이를 설명할 수 있습니다.
@@ -12135,8 +12083,7 @@ effect_reg_impute <- fit_ipw_effect(
 
 이 모델을 IPW 추정량으로 적합시키면 효과는 `r effect_reg_impute`분이 됩니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 회귀 교정 모델을 쓰면 교정된 변수의 추정치에 불확실성이 생깁니다.
 따라서 회귀 교정이나 대치를 수행할 때 정확한 표준 오차를 구하려면 부트스트랩 과정에 모델 적합 단계를 반드시 포함해야 합니다.
 
@@ -12295,8 +12242,7 @@ effect_mi_all |>
 
 
 
-::: callout-tip
-
+::: {.callout-tip}
 결측치가 결과에 미치는 영향이나 완전 사례 분석 및 다중 대치의 효과는 매우 비직관적일 수 있습니다.
 여기에 측정 오차와 여러 편향까지 더해지면 머릿속으로만 계산하기는 거의 불가능에 가깝습니다.
 이 문제를 해결하는 한 가지 방법은 추론의 일부를 뇌 대신 컴퓨터에 맡기는 것입니다.
@@ -13409,8 +13355,7 @@ tidy(outcome_model_direct, conf.int = TRUE)
 결과 모델에서 `park_extra_magic_morning`의 계수가 직접 효과의 추정치입니다.
 이는 매개변수(오전 8시 대기 시간)를 고정시킨 상태에서 엑스트라 매직 아워가 오전 9시 대기 시간에 미치는 효과를 나타냅니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 ## 매개 분석의 가정
 
 인과 매개 분석을 유효하게 수행하려면 네 가지 형태의 교란이 없어야 합니다:
@@ -13543,8 +13488,7 @@ tidy(outcome_with_interaction, conf.int = TRUE)
 상호작용이 존재할 때 자연 직접 효과와 간접 효과는 반사실적 시뮬레이션을 사용하여 계산할 수 있습니다.
 이 경우 G-공식(\@sec-g-comp) 방식이 자연스럽게 확장됩니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## `{mediation}` 패키지
 
 R의 `{mediation}` 패키지는 상호작용이 있는 경우를 포함하여 다양한 인과 매개 분석 방법을 지원합니다.
@@ -13893,8 +13837,7 @@ msm_fit <- lm(
 tidy(msm_fit, conf.int = TRUE)
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 한계 구조 모델의 중요성
 
 한계 구조 모델의 핵심은 결과 모델(**MSM**)에서 시간 가변적 교란 요인(`L_t`)을 포함하지 않는다는 점입니다.
@@ -14188,8 +14131,7 @@ cat("12개월 생존율과 처치 효과의 95% 신뢰 구간:\n")
 print(ci_result)
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 풀링된 로지스틱 회귀 vs. 콕스 회귀
 
 전통적인 생존 분석에서는 콕스 비례 위험 모델(Cox proportional hazards model)이 많이 사용됩니다.
@@ -14321,8 +14263,7 @@ cat("  IPTW (성향 점수만):", round(iptw_estimate, 2), "분\n")
 cat("  G-공식 (결과 모델만):", round(gcomp_estimate, 2), "분\n")
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 이중 로버스티(Double Robustness)란?
 
 이중 로버스트 추정량은 두 모델 중 하나만 잘못 명시되어도 편향되지 않습니다:
@@ -14474,8 +14415,7 @@ ggplot(methods_comparison, aes(x = reorder(방법, 방법_순서), y = ATE,
   )
 ```
 
-::: callout-tip
-
+::: {.callout-tip}
 ## 어떤 방법을 선택해야 할까요?
 
 실무에서는 다음을 고려하세요:
@@ -14580,8 +14520,7 @@ seven_dwarfs_9 |>
 복잡한 모델은 예측 성능이 더 좋을 수 있지만, 성향 점수가 0 또는 1에 근접한 극단적인 값을 가질 위험이 있습니다.
 이는 IPTW 가중치를 매우 불안정하게 만들고, 결국 인과 추정치의 분산을 크게 증가시킵니다.
 
-::: callout-warning
-
+::: {.callout-warning}
 ## 머신러닝의 정규화 vs. 인과 추론
 
 머신러닝에서 **정규화(regularization)**는 과적합을 방지하는 데 도움이 됩니다.
@@ -14778,8 +14717,7 @@ dml_fit <- lm(y_resid ~ x_resid - 1, data = dml_residuals)
 tidy(dml_fit, conf.int = TRUE)
 ```
 
-::: callout-note
-
+::: {.callout-note}
 ## 언제 머신러닝을 인과 추론에 사용해야 할까요?
 
 머신러닝을 인과 추론에 사용하면 유리한 상황:
@@ -15014,8 +14952,7 @@ tidy(rdd_fit, conf.int = TRUE)
 
 `treatment` 계수가 임계값에서의 처치 효과 추정치입니다 — 이것이 RDD가 추정하는 것입니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 ## `{rdrobust}` 패키지
 
 R에서 RDD를 위한 최적 대역폭 선택과 강건한 신뢰 구간을 계산하는 `{rdrobust}` 패키지를 사용하는 것을 권장합니다:
@@ -15112,8 +15049,7 @@ tidy(did_fit, conf.int = TRUE)
 
 `treated` 계수가 DiD 추정치입니다. 이는 처치그룹이 처치 후 시점에서 보인 변화에서 대조군의 시간적 추세를 뺀 차이입니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## 이중 차분법의 DiD 추정치 수식
 
 $$\hat{\tau}_{DiD} = (\bar{Y}_{T,post} - \bar{Y}_{T,pre}) - (\bar{Y}_{C,post} - \bar{Y}_{C,pre})$$
@@ -15448,8 +15384,7 @@ ggplot(synth_plot_data, aes(x = time, y = outcome,
 합성 대조군 방법의 처치 효과는 처치 후 실제 결과와 합성 대조군의 차이로 계산합니다.
 추론에는 **치환 검정(permutation tests)** 또는 **플라세보 검정(placebo tests)**을 사용합니다.
 
-::: callout-note
-
+::: {.callout-note}
 ## DiD vs. 합성 대조군
 
 | 특성 | DiD | 합성 대조군 |
@@ -16301,8 +16236,7 @@ coverage <- between(
 여기서 "정확도"란 부트스트랩 시뮬레이션 자체로 인한 분산을 최소화하는 것을 의미합니다.
 이에 대한 실무적인 테스트 방법은 `R`번의 재표본 추출을 여러 번 시도해보고, 결과의 안정성 정도에 만족할 때까지 `R`을 늘려보는 것입니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 각 부트스트랩 계산은 서로 독립적이므로, 재표본 횟수가 많을 경우 병렬 처리(parallel processing)를 사용하는 것이 좋습니다.
 우리가 보여준 `rsample` 방식에서는 `map()` 대신 병렬화된 대체 함수로 `furrr` 패키지를 사용할 수 있습니다.
 `furrr`는 `future` 프레임워크에 대한 `purrr` 스타일의 API입니다.
@@ -16366,8 +16300,7 @@ BCa 구간과 부트스트랩 t-통계량 구간은 비대칭 데이터에서 �
 조건부 평균인 회귀 모델의 계수들에 대해서도 흔히 이와 같은 현상이 나타납니다.
 중심 극한 정리가 효과를 발휘했다면, 백분위수 및 다른 유형의 신뢰 구간들도 아마 좋은 커버리지를 가질 것입니다.
 
-::: callout-tip
-
+::: {.callout-tip}
 평균이 정규 분포를 따르는 것과 같이 부트스트랩 분포가 특정한 모양을 가져야 한다고 믿을 만한 이유가 있는 결과가 있다면, 이는 여러분의 분석에 대한 잠재적인 진단 도구를 제공합니다. 예를 들어, 인과 추론에서 계수가 비대칭이거나 예상치 못한 다른 분포를 보인다면, 이는 긍정성 가정(positivity assumption)이 위배되었다는 신호일 수 있습니다(\@sec-counterfactuals 를 참조하십시오). 부트스트랩 재표본 사이의 예상치 못한 불안정성을 주의 깊게 살펴보십시오.
 
 :::

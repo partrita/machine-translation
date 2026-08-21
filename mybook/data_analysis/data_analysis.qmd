@@ -13307,7 +13307,7 @@ This weaker assumption only requires that $x_t$ is uncorrelated with the error i
 
 | Exogeneity Type            | Requirement                              | Allows Dynamic Models? |
 |----------------------|-------------------------------|-------------------|
-| Strict Exogeneity          | $E(\epsilon_t | x_1, x_2, ..., x_T) = 0$ | **No**                 |
+| Strict Exogeneity          | $E(\epsilon_t \mid x_1, x_2, \ldots, x_T) = 0$ | **No**                 |
 | Contemporaneous Exogeneity | $E(\mathbf{x}_t' \epsilon_t) = 0$        | **Yes**                |
 
 : Key Differences from Strict Exogeneity
@@ -38191,8 +38191,7 @@ $$ \text{통제 기간} = \{t - k\}, k \in \mathbb{N} $$
 
 # 합성 이중차분법 {#sec-synthetic-difference-in-differences}
 
-::: {.rmdnote}
-
+::: {.callout-note}
 본 도서에서 패널 데이터 장들의 순서를 개발 연대가 아닌 설계의 신뢰도(design credibility) 순으로 구성하였기 때문에, 이중차분법(DiD) 및 합성 통제법(Synthetic Control)보다 합성 이중차분법(SDID)이 먼저 등장합니다. SDID는 [이중차분법(Difference-in-Differences)](#sec-difference-in-differences)과 [합성 통제법(Synthetic Control)](#sec-synthetic-control)을 결합(hybridize)한 방법론으로, 개체(단위)와 시점 모두에 가중치를 재부여하여 평행 추세 가정(DiD에 필요) 또는 처치 전 볼록 결합(convex-hull) 매칭(SC에 필요) 중 하나만 성립해도 추정량이 양호하게 작동하도록 합니다. 실무적으로 이는 SDID가 두 모체 방법론 중 어느 하나보다 더 넓은 신뢰 영역을 갖게 함을 의미합니다. DiD나 SC가 생소한 독자라면 먼저 [이중차분법](#sec-difference-in-differences) 및 [합성 통제법](#sec-synthetic-control) 장을 훑어보며 각각의 직관을 파악한 후 본 장으로 돌아오는 것을 권장합니다.
 
 :::
@@ -38966,8 +38965,8 @@ Consider a simple setting in Table \@ref(tab:did-potential-outcomes-simple) with
 
 |                     | **After Treatment (**$T = 1$**)** | **Before Treatment (**$T = 0$**)** |
 |---------------------|-----------------------------------|------------------------------------|
-| Treated ($D_i = 1$) | $E[Y_{1i}(1)|D_i = 1]$            | $E[Y_{0i}(0)|D_i = 1]$             |
-| Control ($D_i = 0$) | $E[Y_{0i}(1)|D_i = 0]$            | $E[Y_{0i}(0)|D_i = 0]$             |
+| Treated ($D_i = 1$) | $E[Y_{1i}(1) \mid D_i = 1]$            | $E[Y_{0i}(0) \mid D_i = 1]$             |
+| Control ($D_i = 0$) | $E[Y_{0i}(1) \mid D_i = 0]$            | $E[Y_{0i}(0) \mid D_i = 0]$             |
 
 Table: (\#tab:did-potential-outcomes-simple) Potential outcomes by treatment status and time.
 
@@ -38984,8 +38983,7 @@ E[Y_1(1) - Y_0(1) | D = 1] &= \{E[Y(1)|D = 1] - E[Y(1)|D = 0] \} \\
 \end{aligned}
 $$
 
-::: rmdnote
-
+::: {.callout-note}
 What parallel trends really says. The identifying assumption is a statement about the *untreated potential outcome* of the treated group, an object we never observe post-treatment:
 
 $$
@@ -40608,8 +40606,7 @@ install_github("tye27/idid")
 
 이 절의 표기법은 기초 편의 표 \@ref(tab:quasi-exp-notation) 관례를 따른다.
 
-::: {.rmdcaution}
-
+::: {.callout-caution}
 현대적 추정량이 필요한 이유: 처치가 서로 다른 단위에 서로 다른 시점에 도입될 때(시차적 도입, staggered adoption), 전통적인 이원 고정효과(TWFE) 모형
 
 $$
@@ -45929,8 +45926,7 @@ $\hat g_t$를 시점 $t$에서의 사건 연구 계수라 하자($t=-1$에서 0�
 
 이 장의 나머지 부분에서는 CiC와 관련 방법들을 상세히 살펴본다. 분위수 수준의 해석을 정당화하는 기본 정의와 가정에서 시작하여 추정량 자체를 단계별로 살펴보고, 분위수 DiD(QDiD) 및 표준 DiD와 대비한 후 응용 사례와 실무 지침으로 마무리한다.
 
-::: {.rmdnote}
-
+::: {.callout-note}
 **참고 문헌 안내**: CiC의 원 논문은 횡단면 및 단기 패널 설정에서 추정량과 그 식별 가정을 유도한 @athey2006identification 이다. @frolich2013unconditional 은 프레임워크를 도구변수 설정으로 확장하며, 기저 처치가 내생적일 때 유용한 동반 논문이다([도구변수](#sec-instrumental-variables) 장 참조). @callaway2019quantile 은 장기 패널 및 시간 가변 공변량을 포함하여 패널 데이터 설정을 일반화한다. @huber2022direct 는 유용한 종합과 실무자 중심의 프레이밍을 제공한다. Stata 코드 예제는 <https://sites.google.com/site/blaisemelly/home/computer-programs/cic_stata>에서 유지 관리된다.
 
 :::
@@ -46999,8 +46995,7 @@ plot_microsynth(sea2)
 
 사건 연구 방법론은 특정 사건이 주가에 미치는 영향을 측정하기 위해 금융, 마케팅, 경영 분야에서 널리 사용된다. 이 방법론의 토대는 @fama1970efficient 가 제시한 **효율적 시장 가설(Efficient Markets Hypothesis; EMH)**로, 자산 가격이 이용 가능한 모든 정보를 반영한다고 주장한다. 이 가정에 따르면 주가는 새롭고 예상하지 못한 정보에 즉시 반응해야 하므로, [사건 연구](#sec-event-studies)는 기업이 주도한 활동과 기업 외부에서 발생한 활동의 경제적 영향을 평가하는 유용한 도구가 된다.
 
-::: {.rmdnote}
-
+::: {.callout-note}
 기술적 해석과 인과적 해석의 차이에 관한 주의사항. 고전적인 금융 분야의 사건 연구는 *비정상 수익률(abnormal returns)*의 시계열을 산출한다. 이는 관측 수익률과 시장(또는 요인) 모형이 예측한 수익률의 차이다. 비정상 수익률은 기술적(descriptive) 대상이다. 즉, 사건 기간을 전후해 가격이 통계적 기준선에 비해 어떻게 움직였는지를 보여준다.
 
 이를 사건이 기업 가치에 미친 인과적 효과로 해석하려면 다음과 같은 추가적인 설계 수준의 가정이 필요하다.
@@ -48378,8 +48373,7 @@ $$ \mathbb{E}[\varepsilon \mid X] = 0. $$
 
 이 조건들은 $Z$가 $X$에 외생적 변동을 제공하여 $X$가 $Y$에 미치는 인과효과를 추정할 수 있게 한다. $Z$의 [무작위 배정](#sec-the-gold-standard-randomized-controlled-trials)은 외생성을 확보하는 데 도움이 되지만, 배제제약을 만족하려면 $Z$가 $X$를 *통해서만* $Y$에 영향을 미치는지도 확인해야 한다.
 
-::: {.rmdcaution}
-
+::: {.callout-caution}
 더 나아가기 전에 약한 도구변수에 대해 한 가지 짚고 넘어가자. 관련성은 이분법적 조건이 아니라 정량적 요건이다. 1단계가 통계적으로 유의하다는 사실만으로 도구가 충분히 강하다고 볼 수는 없다. 약간만 약한 도구변수라도 OLS 쪽으로 심하게 편향된 2SLS 추정치를 만들 수 있으며, 유한표본에서 신뢰구간의 포함확률이 크게 낮아질 수 있다.
 
 이 장의 뒤에서 살펴볼 전통적인 경험칙은 다음과 같다.
@@ -49401,7 +49395,7 @@ $$
 | 도구변수 외생성 | $\mathbb{E}[Z'u] = 0$ | 도구변수 타당성 |
 | 도구변수 관련성 | $\mathrm{rank}(\mathbb{E}[Z'X]) = k$ | 모형 식별 |
 | 무작위 표본추출 | IID (또는 정상성 및 믹싱) | LLN 및 CLT 적용성 |
-| 유한 2차 적률 | $\mathbb{E}[||Z||^2] < \infty$ 등 | LLN 및 CLT 적용성 |
+| 유한 2차 적률 | $\mathbb{E}[\lVert Z \rVert^2] < \infty$ 등 | LLN 및 CLT 적용성 |
 | 동분산성 (선택사항) | $\mathbb{E}[u u' \mid Z] = \sigma^2 I$ | 분산 공식 단순화 |
 | 최적 가중 | GMM에서 $W = \Omega^{-1}$ | 점근적 효율성 |
 
@@ -49441,7 +49435,7 @@ $$
 
 | **시나리오** | **조건** | **추론 품질** |
 |---|---|---|
-| **최악의 경우** | $\pi = 0$, $|\rho| = 1$ | $\hat{\beta} \pm 1.96 \times SE$ 실패; 1종 오류율 100% |
+| **최악의 경우** | $\pi = 0$, $\lvert\rho\rvert = 1$ | $\hat{\beta} \pm 1.96 \times SE$ 실패; 1종 오류율 100% |
 | **최선의 경우** | $\rho = 0$ (내생성 부재) 또는 매우 큰 $\hat{f}$ | 표준 추론 유효; 올바른 신뢰구간 포함확률 |
 | **중간 경우** | 적건한 $\pi$, $\rho$, $F$ | 표준 추론 위험; 포함확률과 오류율이 중간에 위치 |
 
@@ -50878,11 +50872,11 @@ $$
 +----------------------------+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | **마할라노비스 거리**   | $D_{ij} = (X_i - X_j)' \Sigma^{-1}(X_i - X_j)$     | $\Sigma$는 ATT가 관심 대상이면 통제집단에서, ATE가 관심 대상이면 통합 표본에서 구한 $X$의 분산-공분산 행렬이며 차원에 민감함 |
 +----------------------------+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| **성향점수**       | $D_{ij} = |e_i - e_j|$                             | $e_k$는 단위 $k$의 추정 성향점수 $P(T=1 \mid X_k)$다.                                                            |
+| **성향점수**       | $D_{ij} = \lvert e_i - e_j \rvert$                             | $e_k$는 단위 $k$의 추정 성향점수 $P(T=1 \mid X_k)$다.                                                            |
 |                            |                                                    |                                                                                                                                          |
-|                            |                                                    | 고급 방법: **예후점수(Prognostic scores)** [@hansen2008prognostic]는 $E[Y(0)|X]$를 모형화해야 하므로 결과 모형에 의존한다.               |
+|                            |                                                    | 고급 방법: **예후점수(Prognostic scores)** [@hansen2008prognostic]는 $E[Y(0) \mid X]$를 모형화해야 하므로 결과 모형에 의존한다.               |
 +----------------------------+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| **로짓 성향점수** | $D_{ij} = |\text{logit}(e_i) - \text{logit}(e_j)|$ | 분포의 꼬리에서 더 안정적                                                                                                     |
+| **로짓 성향점수** | $D_{ij} = \lvert \text{logit}(e_i) - \text{logit}(e_j) \rvert$ | 분포의 꼬리에서 더 안정적                                                                                                     |
 +----------------------------+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 > 팁: 고차원에서는 정확 매칭과 마할라노비스 매칭의 성능이 낮다. 마할라노비스 거리와 성향점수 캘리퍼를 결합하면 강건성을 높일 수 있다 [@rubin2000combining].
@@ -61437,7 +61431,7 @@ summary(specs_diamonds)
 
 그림 \@ref(fig:diamonds-specr-specification-curve)는 `specr`을 통해 생성된 사양 곡선 도표를 보여준다.
 
-```{r diamonds-specr-specification-curve, fig.cap="`specr`을 활용한 다이아몬드 가격 효과 사양 곡선 분석."}
+```{r diamonds-specr-specification-curve, fig.cap="'specr'을 활용한 다이아몬드 가격 효과 사양 곡선 분석."}
 plot(specs_diamonds)
 ```
 

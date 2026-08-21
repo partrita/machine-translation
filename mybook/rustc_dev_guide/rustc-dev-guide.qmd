@@ -843,7 +843,6 @@ Neovim 0.11+ 이상 버전에서는 [nvim-lspconfig](https://github.com/neovim/n
 })
 
 vim.lsp.enable("rust_analyzer")
-```
 
 위에서 설명한 빌드 태스크(build task)를 사용하고 싶다면 설정에 자신만의 명령어를 직접 만들거나, [VSCode의 `task.json` 파일을 읽을 수 있는](https://github.com/stevearc/overseer.nvim/blob/master/doc/guides.md#vs-code-tasks) [overseer.nvim](https://github.com/stevearc/overseer.nvim) 같은 플러그인을 설치한 후 위의 지침을 따르면 됩니다.
 
@@ -2867,7 +2866,6 @@ fn main() {
 }
 //~^^^^ ERROR `_x @` is not allowed in a tuple struct
 //~| ERROR this pattern has 1 field, but the corresponding tuple struct has 3 fields [E0023]
-```
 
 ###### 에러 라인 위에 작성
 
@@ -10979,7 +10977,6 @@ fn foo() { }
 
 #[rustc_then_this_would_need(TypeckTables)] //~ ERROR OK
 fn bar() { foo(); }
-```
 
 이는 다음과 같이 해석되어야 합니다:
 > 만약 이것(`foo`)이 변경되면, 이것(즉, `bar`)의 TypeckTables도 변경되어야 함을 의미합니다.

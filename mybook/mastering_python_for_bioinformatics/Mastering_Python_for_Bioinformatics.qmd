@@ -2245,7 +2245,6 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-```
 
 1 파일과 시퀀스를 위한 카운터를 초기화합니다.
 ② 파일 핸들들을 순회합니다.
@@ -7516,7 +7515,6 @@ Done, see output in "fasta".
 
 B5ZC00
 P07204_TRBM_HUMAN 
-```
 
 P20840_SAG1_YEAST 
 완료, 출력을 "fasta"에서 확인하세요.

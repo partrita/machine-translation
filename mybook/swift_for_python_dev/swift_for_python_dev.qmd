@@ -3002,7 +3002,6 @@ typealias StringDictionary = [String: String]
 var userPreferences: StringDictionary = ["theme": "dark", "language": "ko"] // 문자열 리터럴 번역
 print("사용자 테마: \(userPreferences["theme"] ?? "default")") // 문자열 리터럴 번역
 ```
-```
 
 ## 예제: 03_operators.swift
 
@@ -3268,7 +3267,6 @@ let sqrtValue = √25.0
 print("25의 사용자 정의 제곱근: \(sqrtValue)") // 문자열 리터럴 번역
 
 // 코드 가독성을 유지하기 위해 일반적으로 사용자 정의 연산자를 드물게 사용하는 것이 좋습니다.
-```
 ```
 
 ## 예제: 04_control_flow.swift
@@ -3559,7 +3557,6 @@ if #available(iOS 10, macOS 10.12, *) {
 // `*`는 필수이며, 다른 모든 플랫폼에서 if 본문이
 // 프로젝트에서 지정한 최소 배포 대상에서 실행됨을 나타냅니다.
 ```
-```
 
 ## 예제: 05_functions.swift
 
@@ -3785,7 +3782,6 @@ print("0! (중첩됨)") // 문자열 리터럴 번역
 
 // 클로저는 함수와 관련된 더 고급 주제이므로 별도의 예제에서 다룹니다.
 ```
-```
 
 ## 예제: 06_closures.swift
 
@@ -4007,7 +4003,6 @@ for provider in customerProviders {
     serve(customer: provider()) // 저장된 자동 클로저 호출
 }
 print("남은 고객: \(customersInLine)") // 배리, 다니엘라 (문자열 리터럴 번역)
-```
 ```
 
 ## 예제: 07_oop_classes_structs.swift
@@ -4310,7 +4305,6 @@ print(SomeClass.overrideableComputedTypeProperty) // 42
 // 메서드(인스턴스 메서드 및 타입 메서드)는 별도의 예제에서 자세히 다루지만,
 // 위의 `description()` 및 `accelerate()`는 인스턴스 메서드입니다.
 // 타입 메서드(정적 메서드)도 `static` 또는 `class` 키워드로 호출됩니다.
-```
 ```
 
 ## 예제: 08_oop_methods_initialization.swift
@@ -4737,7 +4731,6 @@ print("playerTwo를 nil로 설정 중...") // 문자열 리터럴 번역
 playerTwo = nil // 밥의 Player 인스턴스를 소멸화합니다.
 // 출력: 플레이어 밥 소멸화됨. 50 코인을 은행에 반환. 현재 은행 보유 코인: 10000.
 ```
-```
 
 ## 예제: 09_oop_inheritance_protocols_extensions.swift
 
@@ -5070,7 +5063,6 @@ print("'\(charB)'는 \(charB.kind)입니다.") // consonant (문자열 리터럴
 print("'\(charNum)'는 \(charNum.kind)입니다.") // other (문자열 리터럴 번역)
 print("'\(charKorVowel)'는 \(charKorVowel.kind)입니다.") // vowel (문자열 리터럴 번역)
 ```
-```
 
 ## 예제: 10_error_handling.swift
 
@@ -5375,7 +5367,6 @@ do {
 } catch {
     print("performOperation(failingTask)에서 오류 포착: \(error)") // 문자열 리터럴 번역
 }
-```
 ```
 
 ## 예제: 11_memory_management_arc.swift
@@ -5722,7 +5713,6 @@ paragraph = nil
 // 이 예제 파일에서는 문제를 보여주기 위해 의도적으로 순환을 남겨둡니다.
 // 플레이그라운드에서 이를 실행하면 위의 `paragraph = nil`에 대해 "HTMLElement p 소멸화됨."이 출력되지 않습니다.
 ```
-```
 
 
 
@@ -5795,7 +5785,6 @@ paragraph = nil
 //      타입 불일치를 보여주는 간단한 코드 예제(주석 처리하지 않으면 컴파일 시간 오류 발생)를 제공하세요.
 
 ```
-```
 
 ## 연습 문제: exercise_02_collections_optionals.swift
 
@@ -5851,7 +5840,6 @@ paragraph = nil
 //    c. 다른 `User` 인스턴스를 만들고, 이번에는 `Address` 인스턴스도 만들되 `streetName`은 `nil`로 두세요. 도로명을 출력하세요.
 //    d. 세 번째 `User` 인스턴스를 만들고, `Address`와 `streetName`을 제공하세요. 도로명을 출력하세요.
 
-```
 ```
 
 ## 연습 문제: exercise_03_control_flow_functions.swift
@@ -5955,7 +5943,6 @@ paragraph = nil
 //     d. 두 연산 함수 모두로 `processStrings`를 테스트하세요.
 
 ```
-```
 
 ## 연습 문제: exercise_04_oop_closures_error.swift
 
@@ -6055,7 +6042,6 @@ paragraph = nil
 //    b. 오류를 발생시킬 수 있는 경우에 대해 `performCalculation`을 호출하되, `try?`를 사용하여 옵셔널 결과를 얻으세요.
 //       결과 또는 `nil`인 경우 메시지를 출력하세요.
 
-```
 ```
 
 
@@ -6193,7 +6179,6 @@ print("8. Int \(largeNumber)를 String으로: \(numberString)") // 문자열 리
 var myAge: Int = 30
 // myAge = "서른" // 이 줄은 컴파일 시간 오류를 발생시킵니다:
                    // "Cannot assign value of type 'String' to type 'Int'" (String 타입의 값을 Int 타입에 할당할 수 없습니다)
-```
 ```
 
 ## 해답: solution_02_collections_optionals.swift
@@ -6385,7 +6370,6 @@ if let street = user3.address?.streetName {
 // 또는 표시를 위해 nil-병합과 함께 더 직접적으로:
 let user3Street = user3.address?.streetName ?? "도로명이 지정되지 않음" // 문자열 리터럴 번역
 print("d. 사용자3 도로 (?? 직접 사용): \(user3Street)") // 문자열 리터럴 번역
-```
 ```
 
 ## 해답: solution_03_control_flow_functions.swift
@@ -6590,7 +6574,6 @@ print("연결됨: \(concatenated)") // 문자열 리터럴 번역
 
 let longerString = processStrings(s1: string1, s2: string2, using: compareAndReturnLonger)
 print("더 긴 문자열: \(longerString)") // 문자열 리터럴 번역
-```
 ```
 
 ## 해답: solution_04_oop_closures_error.swift
@@ -7021,5 +7004,4 @@ if let result = successfulResultTryOptional {
 // 명령줄에서 실행 중이고 DispatchQueue에 비해 너무 빨리 종료되는 경우:
 // RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.5)) // 잠시 동안 활성 상태 유지
 // 그러나 자동화된 테스트나 간단한 스크립트 실행의 경우 직접 호출이 더 쉽습니다.
-```
 ```

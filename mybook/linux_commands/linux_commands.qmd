@@ -3107,7 +3107,7 @@ history -c && history -w
 
 # `login` 명령어
 
-`login` 명령어 initiates a user session.
+`login` 명령어는 사용자 세션을 시작합니다.
 
 ## 구문(Syntax)
 
@@ -5337,15 +5337,15 @@ iostat -p sda 2 6
 
 | **짧은 플래그**                  | **설명**                                            |
 | :------------------------------ | :--------------------------------------------------------- |
-| `-x`                            | Show more details statistics information.                  |
-| `-c`                            | Show only the cpu statistic.                               |
-| `-d`                            | Display only the device report                             |
-| `-xd                            | Show extended I/O statistic for device only.               |
-| `-k`                            | Capture the statistics in kilobytes or megabytes.          |
-| `-k23`                          | Display cpu and device statistics with delay.              |
-| `-j ID mmcbkl0 sda6 -x -m 2 2`  | Display persistent device name statistics.                 |
-| `-p `                           | Display statistics for block devices.                      |
-| `-N `                           |  Display lvm2 statistic information.                       |
+| `-x`                            | 더 자세한 통계 정보를 표시합니다.                  |
+| `-c`                            | CPU 통계만 표시합니다.                               |
+| `-d`                            | 장치 보고서만 표시합니다                             |
+| `-xd                            | 장치에 대한 확장 I/O 통계만 표시합니다.               |
+| `-k`                            | 통계를 킬로바이트 또는 메가바이트 단위로 수집합니다.          |
+| `-k23`                          | 지연 간격을 두고 CPU 및 장치 통계를 표시합니다.              |
+| `-j ID mmcbkl0 sda6 -x -m 2 2`  | 영속적인 장치 이름 통계를 표시합니다.                 |
+| `-p `                           | 블록 장치에 대한 통계를 표시합니다.                      |
+| `-N `                           | LVM2 통계 정보를 표시합니다.                       |
 # `sudo` 명령어
 
 `sudo`(“substitute user do” 또는 “super user do”) 명령어는 적절한 권한을 가진 사용자가 슈퍼유저와 같은 다른 사용자의 권한으로 명령어를 실행할 수 있도록 합니다.
@@ -6571,7 +6571,9 @@ sudo iptables -P OUTPUT ACCEPT
 sudo iptables -P FORWARD ACCEPT
 ```
 
-## Security Best Practices### 1. 기본 거부 정책
+## 보안 모범 사례
+
+### 1. 기본 거부 정책
 
 ```bash
 # Always start with deny-all policy
@@ -7257,7 +7259,7 @@ sleep NUMBER[SUFFIX]...
 
 # `split` 명령어
 
-`split` 명령어 in Linux is used to split a file into smaller files.
+`split` 명령어는 Linux에서 파일을 더 작은 파일들로 분할하는 데 사용됩니다.
 
 ### 예제
 
@@ -7688,11 +7690,11 @@ du [OPTION]... --files0-from=F
 
 |**단축 플래그**|**긴 플래그**|**설명**|
 |:---|:---|:---|
-|`-a`|`--all`|Includes information for both files and directories|
-|`-c`|`--total`|Provides a grand total at the end of the list of files/directories|
-|`-d`|`--max-depth=N`|Provides information up to `N` levels from the directory where the command was executed|
-|`-h`|`--human-readable`|Displays file size in human-readable units, not in bytes|
-|`-s`|`--summarize`|Display only the total filesize instead of a list of files/directories|
+|`-a`|`--all`|파일과 디렉터리 모두에 대한 정보를 포함합니다|
+|`-c`|`--total`|파일/디렉터리 목록 끝에 총합을 표시합니다|
+|`-d`|`--max-depth=N`|명령을 실행한 디렉터리에서 `N` 단계까지의 정보를 제공합니다|
+|`-h`|`--human-readable`|파일 크기를 바이트가 아닌 사람이 읽기 쉬운 단위로 표시합니다|
+|`-s`|`--summarize`|파일/디렉터리 목록 대신 총 파일 크기만 표시합니다|
 
 # `ping` 명령어
 
@@ -10794,7 +10796,7 @@ sudo parted disk print
 
 디스크 장치명의 예: `/dev/sda`, `/dev/sdb`
 
-3. Create a new disk label of `label-type` for a specific disk
+3. 특정 디스크에 `label-type` 유형의 새 디스크 레이블 생성
 
 ```
 sudo parted mklabel disk label-type
@@ -10866,13 +10868,13 @@ nl [ -b Type ] [ -f Type ] [ -h Type ] [ -l Number ] [ -d Delimiter ] [ -i Numbe
 
 ## Examples:
 
-1. To number all lines:
+1. 모든 줄에 번호 붙이기:
 
 ```
 nl  -ba  chap1
 ```
 
-2. Displays all the text lines:
+2. 모든 텍스트 줄을 표시합니다:
 
 ```
 [server@ssh ~]$ nl states
@@ -10886,7 +10888,7 @@ nl  -ba  chap1
 8 Delaware
 ```
 
-3. Specify a different line number format
+3. 다른 줄 번호 형식 지정
 
 ```
 nl  -i10  -nrz  -s::  -v10  -w4  chap1
@@ -11105,7 +11107,7 @@ line-2
 shuf -e A B C D E
 ```
 
-It will take `A, B, C, D, E` as input lines, and will shuffle them to display the output.
+`A, B, C, D, E`를 입력 줄로 받아 섞은 후 그 결과를 출력합니다.
 
 ```
 A
@@ -11176,19 +11178,19 @@ less [options] file_path
 
 ## Few Examples:
 
-1. Open a Text File
+1. 텍스트 파일 열기
 
 ```
 less /etc/updatedb.conf
 ```
 
-2. Show Line Numbers
+2. 줄 번호 표시
 
 ```
 less -N /etc/init/mysql.conf
 ```
 
-3. Open File with Pattern Search
+3. 패턴 검색으로 파일 열기
 
 ```
 less -pERROR /etc/init/mysql.conf
@@ -11594,7 +11596,7 @@ man ln
 
 # `systemctl` 명령어
 
-`systemctl` 명령어 is used to control and manage systemd services and the systemd system and service manager in Linux. It's the primary tool for managing services in modern Linux distributions.
+`systemctl` 명령어는 Linux에서 systemd 서비스와 systemd 시스템 및 서비스 관리자를 제어하고 관리하는 데 사용됩니다. 최신 Linux 배포판에서 서비스를 관리하는 기본 도구입니다.
 
 ## 구문(Syntax)
 
@@ -12190,19 +12192,19 @@ jobs [options] [job_spec]
 
 ## 예시
 
-1. List all current jobs
+1. 현재 모든 작업 나열
 
 ```bash
 jobs
 ```
 
-2. List jobs with process IDs
+2. 프로세스 ID와 함께 작업 나열
 
 ```bash
 jobs -l
 ```
 
-3. List only process IDs
+3. 프로세스 ID만 나열
 
 ```bash
 jobs -p
@@ -12228,13 +12230,13 @@ jobs %1
 
 ## Job Control Examples
 
-1. Start a background job
+1. 백그라운드 작업 시작
 
 ```bash
 sleep 100 &
 ```
 
-2. Start multiple background jobs
+2. 여러 백그라운드 작업 시작
 
 ```bash
 find / -name "*.log" > /tmp/logs.txt 2>/dev/null &
@@ -12318,7 +12320,7 @@ kill %2
 jobs
 ```
 
-2. Working with stopped jobs
+2. 중지된 작업 다루기
 
 ```bash
 # Start a text editor
@@ -12369,19 +12371,19 @@ long_running_script.sh &
 disown %1
 ```
 
-2. Check for completed jobs
+2. 완료된 작업 확인
 
 ```bash
 jobs -n
 ```
 
-3. Kill all jobs
+3. 모든 작업 종료
 
 ```bash
 kill $(jobs -p)
 ```
 
-`jobs` 명령어 is essential for managing multiple processes and implementing effective workflow management in the shell.
+`jobs` 명령어는 셸에서 여러 프로세스를 관리하고 효과적인 작업 흐름 관리를 구현하는 데 필수적입니다.
 
 더 자세한 내용은 `man jobs` 또는 `help jobs`를 참조하세요.
 
@@ -12409,19 +12411,19 @@ bg [job_spec]
 
 ## 예시
 
-1. Put the current stopped job in background
+1. 현재 중지된 작업을 백그라운드로 보내기
 
 ```bash
 bg
 ```
 
-2. Put specific job in background
+2. 특정 작업을 백그라운드로 보내기
 
 ```bash
 bg %1
 ```
 
-3. Put multiple jobs in background
+3. 여러 작업을 백그라운드로 보내기
 
 ```bash
 bg %1 %2 %3
@@ -12438,7 +12440,7 @@ bg %1 %2 %3
 find / -name "*.log" > /tmp/findlogs.txt 2>/dev/null
 ```
 
-2. Stop the job with Ctrl+Z
+2. Ctrl+Z로 작업 중지
 
 ```
 ^Z
@@ -12483,7 +12485,7 @@ Output:
 
 ## 실무 활용 예제
 
-1. Working with a text editor
+1. 텍스트 편집기 사용하기
 
 ```bash
 # Start editing a file
@@ -12500,7 +12502,7 @@ ls -la
 fg %1
 ```
 
-2. Managing multiple background tasks
+2. 여러 백그라운드 작업 관리하기
 
 ```bash
 # Start several tasks and stop them
@@ -12523,7 +12525,7 @@ bg %3
 bg %ping    # Job starting with "ping"
 ```
 
-3. Starting command directly in background vs using bg
+3. 명령어를 백그라운드에서 바로 시작 vs bg 사용
 
 ```bash
 # Method 1: Start directly in background
@@ -12537,51 +12539,51 @@ bg
 
 ## Related Commands
 
-- `fg` - Bring job to foreground
-- `jobs` - List active jobs
-- `kill` - Terminate job
-- `nohup` - Run command immune to hangups
-- `disown` - Remove job from job table
+- `fg` - 작업을 포그라운드로 가져옵니다
+- `jobs` - 활성 작업 목록을 표시합니다
+- `kill` - 작업을 종료합니다
+- `nohup` - 접속 끊김(hangup)에 영향을 받지 않고 명령을 실행합니다
+- `disown` - 작업 테이블에서 작업을 제거합니다
 
 ## Use Cases
 
-- **Multitasking**: Run multiple tasks simultaneously
-- **Long processes**: Let time-consuming tasks run while working on other things
-- **Interactive programs**: Temporarily background editors or interactive tools
-- **Development**: Background compilation while coding
-- **System administration**: Background monitoring while performing other tasks
+- **멀티태스킹**: 여러 작업을 동시에 실행
+- **장시간 실행 프로세스**: 시간이 오래 걸리는 작업을 실행해 두고 다른 작업을 진행
+- **대화형 프로그램**: 편집기나 대화형 도구를 일시적으로 백그라운드로 전환
+- **개발**: 코딩하는 동안 컴파일을 백그라운드에서 실행
+- **시스템 관리**: 다른 작업을 수행하는 동안 모니터링을 백그라운드에서 실행
 
 ## 중요 참고 사항
 
-- Jobs put in background with `bg` are still attached to the terminal
-- If you close the terminal, background jobs may be terminated
-- Use `nohup` or `disown` for persistent background processes
-- Background jobs cannot read from stdin (keyboard input)
-- You can use `fg` to bring background jobs back to foreground
-- Background jobs continue to write to stdout/stderr unless redirected
+- `bg`로 백그라운드에 넣은 작업은 여전히 터미널에 연결되어 있습니다
+- 터미널을 닫으면 백그라운드 작업이 종료될 수 있습니다
+- 지속적인 백그라운드 프로세스에는 `nohup`이나 `disown`을 사용하세요
+- 백그라운드 작업은 stdin(키보드 입력)을 읽을 수 없습니다
+- `fg`를 사용하면 백그라운드 작업을 다시 포그라운드로 가져올 수 있습니다
+- 리다이렉트하지 않는 한 백그라운드 작업은 계속 stdout/stderr에 출력합니다
 
 ## Error Handling
 
 `bg` 실행 실패 시 주요 원인:
 
-- Job doesn't exist
-- Job is already running
-- Job cannot be put in background (some interactive programs)
+- 작업이 존재하지 않음
+- 작업이 이미 실행 중임
+- 작업을 백그라운드로 보낼 수 없음(일부 대화형 프로그램)
 
 ## Tips
 
-- Always check job status with `jobs` before and after using `bg`
-- Redirect output for background jobs to avoid cluttering the terminal
-- Use job control responsibly to avoid system resource issues
-- Consider using terminal multiplexers like `screen` or `tmux` for persistent sessions
+- `bg`를 사용하기 전후로 항상 `jobs`로 작업 상태를 확인하세요
+- 터미널이 어수선해지지 않도록 백그라운드 작업의 출력을 리다이렉트하세요
+- 시스템 자원 문제를 피하기 위해 작업 제어를 신중하게 사용하세요
+- 지속적인 세션에는 `screen`이나 `tmux` 같은 터미널 멀티플렉서 사용을 고려하세요
 
-`bg` 명령어 is essential for effective multitasking and job management in the shell environment.
+`bg` 명령어는 셸 환경에서 효과적인 멀티태스킹과 작업 관리에 필수적입니다.
 
 더 자세한 내용은 `help bg` 매뉴얼을 참조하세요.
 
 # `fg` 명령어
 
-`fg` 명령어 is used to bring background or stopped jobs to the foreground, making them the active process in your terminal. It's an essential part of job control in Unix-like shells.
+`fg` 명령어는 백그라운드 또는 중단된 작업을 포그라운드로 가져와 터미널의 활성 프로세스로 만드는 데 사용됩니다. Unix 계열 셸에서 작업 제어의 필수적인 부분입니다.
 
 ## 구문(Syntax)
 
@@ -12595,27 +12597,27 @@ fg [job_spec]
 
 작업(Job)을 지정할 때 다음과 같은 형식을 사용할 수 있습니다.
 
-- `%1` - Job number 1
-- `%+` or `%%` - Current job (most recent)
-- `%-` - Previous job
-- `%string` - Job whose command line starts with string
-- `%?string` - Job whose command line contains string
+- `%1` - 1번 작업
+- `%+` 또는 `%%` - 현재 작업(가장 최근)
+- `%-` - 이전 작업
+- `%string` - 명령줄이 string으로 시작하는 작업
+- `%?string` - 명령줄에 string이 포함된 작업
 
 ## 예시
 
-1. Bring the current job to foreground
+1. 현재 작업을 포그라운드로 가져오기
 
 ```bash
 fg
 ```
 
-2. Bring specific job to foreground
+2. 특정 작업을 포그라운드로 가져오기
 
 ```bash
 fg %1
 ```
 
-3. Bring job by partial command name
+3. 부분 명령어 이름으로 작업 가져오기
 
 ```bash
 fg %vim
@@ -12631,20 +12633,20 @@ fg %?backup
 
 `fg` 명령어를 활용하는 전형적인 작업 흐름:
 
-1. Start a background job
+1. 백그라운드 작업 시작
 
 ```bash
 ping google.com > /tmp/ping.txt &
 ```
 
-2. Start another job and stop it
+2. 다른 작업 시작 후 중지하기
 
 ```bash
 vim myfile.txt
 # Press Ctrl+Z to stop
 ```
 
-3. Check current jobs
+3. 현재 작업 확인
 
 ```bash
 jobs
@@ -12663,7 +12665,7 @@ Output:
 fg %2
 ```
 
-5. Work in vim, then stop again (Ctrl+Z) and bring ping to foreground
+5. vim에서 작업하다가 다시 중지(Ctrl+Z)하고 ping을 포그라운드로 가져오기
 
 ```bash
 fg %1
@@ -12671,7 +12673,7 @@ fg %1
 
 ## 실무 활용 예제
 
-1. Working with editors
+1. 편집기 사용하기
 
 ```bash
 # Start editing
@@ -12683,7 +12685,7 @@ ls -la
 fg
 ```
 
-2. Managing multiple development tasks
+2. 여러 개발 작업 관리하기
 
 ```bash
 # Start compilation in background
@@ -12701,7 +12703,7 @@ fg %make
 fg %vim
 ```
 
-3. Interactive debugging session
+3. 대화형 디버깅 세션
 
 ```bash
 # Start debugger
@@ -12731,7 +12733,7 @@ fg %ssh
 
 ## 고급 사용법
 
-1. Switching between multiple stopped jobs
+1. 여러 중지된 작업 간 전환
 
 ```bash
 # Start several editors
@@ -12753,7 +12755,7 @@ fg %2    # vim file2.txt
 fg %3    # nano file3.txt
 ```
 
-2. Using with job control in scripts
+2. 스크립트에서 작업 제어와 함께 사용하기
 
 ```bash
 #!/bin/bash
@@ -12773,44 +12775,44 @@ kill $MONITOR_PID
 
 ## Related Commands
 
-- `bg` - Put job in background
-- `jobs` - List active jobs
-- `kill` - Terminate job
-- `Ctrl+Z` - Stop (suspend) current job
-- `Ctrl+C` - Terminate current job
+- `bg` - 작업을 백그라운드로 보냅니다
+- `jobs` - 활성 작업 목록을 표시합니다
+- `kill` - 작업을 종료합니다
+- `Ctrl+Z` - 현재 작업을 중지(일시 중단)합니다
+- `Ctrl+C` - 현재 작업을 종료합니다
 
 ## Use Cases
 
-- **Code editing**: Switch between multiple open editors
-- **Development**: Alternate between compilation and editing
-- **System monitoring**: Switch between monitoring tools
-- **Remote sessions**: Resume SSH or other remote connections
-- **Interactive programs**: Return to paused interactive applications
-- **Debugging**: Resume debugger sessions
+- **코드 편집**: 열어 둔 여러 편집기 사이를 전환
+- **개발**: 컴파일과 편집을 번갈아 수행
+- **시스템 모니터링**: 모니터링 도구 사이를 전환
+- **원격 세션**: SSH 등 원격 연결 재개
+- **대화형 프로그램**: 일시 중지한 대화형 애플리케이션으로 돌아가기
+- **디버깅**: 디버거 세션 재개
 
 ## 중요 참고 사항
 
-- When a job is brought to foreground, it becomes the active process
-- You can only have one foreground job at a time
-- Foreground jobs can receive keyboard input
-- Use Ctrl+Z to stop (suspend) a foreground job
-- Use Ctrl+C to terminate a foreground job
-- Background jobs continue running even when not in foreground
+- 작업을 포그라운드로 가져오면 활성 프로세스가 됩니다
+- 한 번에 하나의 포그라운드 작업만 가질 수 있습니다
+- 포그라운드 작업은 키보드 입력을 받을 수 있습니다
+- Ctrl+Z로 포그라운드 작업을 중지(일시 중단)할 수 있습니다
+- Ctrl+C로 포그라운드 작업을 종료할 수 있습니다
+- 백그라운드 작업은 포그라운드에 없어도 계속 실행됩니다
 
 ## Error Handling
 
 `fg` 사용 시 자주 발생하는 문제:
 
-- Job doesn't exist: `fg: %3: no such job`
-- No jobs available: `fg: no current job`
-- Job already in foreground
+- 작업이 존재하지 않음: `fg: %3: no such job`
+- 사용 가능한 작업 없음: `fg: no current job`
+- 작업이 이미 포그라운드에 있음
 
 ## Tips for Effective 사용법
 
-1. **Use job numbers**: More reliable than partial names
-2. **Check jobs first**: Always run `jobs` to see current status
-3. **Consistent workflow**: Develop a routine for job switching
-4. **Redirect output**: Background jobs should redirect output to avoid interference
+1. **작업 번호 사용**: 부분 이름보다 더 안정적입니다
+2. **먼저 jobs 확인**: 현재 상태를 보려면 항상 `jobs`를 실행하세요
+3. **일관된 워크플로**: 작업 전환 루틴을 만들어 두세요
+4. **출력 리다이렉트**: 간섭을 피하도록 백그라운드 작업의 출력을 리다이렉트하세요
 
 ```bash
 # Good practice
@@ -12826,18 +12828,18 @@ fg %vim   # Continue editing
 
 `fg` 명령어는 다음과 함께 유용하게 쓰입니다.
 
-- **Terminal multiplexers**: `screen`, `tmux`
-- **Development environments**: IDEs, editors
-- **System monitoring**: `top`, `htop`, `tail`
-- **Network tools**: `ssh`, `ping`, `netstat`
+- **터미널 멀티플렉서**: `screen`, `tmux`
+- **개발 환경**: IDE, 편집기
+- **시스템 모니터링**: `top`, `htop`, `tail`
+- **네트워크 도구**: `ssh`, `ping`, `netstat`
 
-`fg` 명령어 is crucial for efficient terminal multitasking and provides seamless switching between different tasks.
+`fg` 명령어는 터미널에서 효율적인 멀티태스킹에 매우 중요하며, 여러 작업 간 원활한 전환을 가능하게 합니다.
 
 더 자세한 내용은 `help fg` 매뉴얼을 참조하세요.
 
 # `time` 명령어
 
-`time` 명령어 is used to measure the execution time of programs and commands. It provides detailed information about how long a command takes to run, including user time, system time, and real (wall-clock) time.
+`time` 명령어는 프로그램과 명령의 실행 시간을 측정하는 데 사용됩니다. 사용자 시간, 시스템 시간, 실제(real, wall-clock) 시간 등 명령 실행에 걸리는 시간에 대한 상세 정보를 제공합니다.
 
 ## 구문(Syntax)
 
@@ -12849,18 +12851,18 @@ time [options] command [arguments]
 
 ### Real Time (Wall-clock time)
 
-- Total elapsed time from start to finish
-- Includes time spent waiting for I/O, other processes, etc.
+- 시작부터 끝까지의 총 경과 시간
+- I/O나 다른 프로세스 대기 등에 소요된 시간 포함
 
 ### User Time
 
-- Time spent executing user-level code
-- CPU time used by the process itself
+- 사용자 수준 코드를 실행하는 데 소요된 시간
+- 프로세스 자체가 사용한 CPU 시간
 
 ### System Time
 
-- Time spent in kernel mode
-- CPU time used for system calls
+- 커널 모드에서 소요된 시간
+- 시스템 콜에 사용된 CPU 시간
 
 ## Output Format
 
@@ -12886,13 +12888,13 @@ sys     0m0.567s
 
 ## 예시
 
-1. Time a simple command
+1. 간단한 명령어 실행 시간 측정
 
 ```bash
 time ls -la
 ```
 
-2. Time a script execution
+2. 스크립트 실행 시간 측정
 
 ```bash
 time ./my_script.sh
@@ -12924,13 +12926,13 @@ time -v python large_calculation.py
 
 ## 고급 사용법
 
-1. Time multiple commands
+1. 여러 명령어 실행 시간 측정
 
 ```bash
 time (command1 && command2 && command3)
 ```
 
-2. Time with custom format
+2. 사용자 지정 형식으로 시간 측정
 
 ```bash
 /usr/bin/time -f "Time: %E, Memory: %M KB" ./memory_intensive_program
@@ -12962,10 +12964,10 @@ GNU 버전의 `time`(`/usr/bin/time`)은 더욱 상세한 실행 통계를 제�
 
 다음과 같은 추가 통계가 함께 표시됩니다.
 
-- Maximum resident set size (memory usage)
-- Page faults
-- Context switches
-- File system inputs/outputs
+- 최대 상주 집합 크기(메모리 사용량)
+- 페이지 폴트(page fault)
+- 컨텍스트 스위치(context switch)
+- 파일 시스템 입출력
 
 ## Format Specifiers for GNU time
 
@@ -12985,7 +12987,7 @@ GNU 버전의 `time`(`/usr/bin/time`)은 더욱 상세한 실행 통계를 제�
 
 ## 실무 활용 예제
 
-1. Profile a Python script
+1. Python 스크립트 프로파일링
 
 ```bash
 time python -c "
@@ -12995,7 +12997,7 @@ for i in range(1000000):
 "
 ```
 
-2. Compare different algorithms
+2. 서로 다른 알고리즘 비교
 
 ```bash
 echo "Bubble sort:"
@@ -14270,7 +14272,7 @@ traceroute -w 15 google.com
 - Modern networks may use ECMP (Equal Cost Multi-Path) routing
 - VPN과 프록시는 겉으로 보이는 경로를 변경합니다.
 
-`traceroute` 명령 is essential for network diagnostics, helping identify routing issues, network performance problems, and understanding network topology.
+`traceroute` 명령은 네트워크 진단에 필수적이며, 라우팅 문제와 네트워크 성능 문제를 파악하고 네트워크 토폴로지를 이해하는 데 도움이 됩니다.
 
 자세한 내용은 `man traceroute` 매뉴얼을 참조하세요.
 
@@ -14361,7 +14363,7 @@ nmcli radio wifi on
 nmcli radio wifi off
 ```
 
-, respectively.
+각각.
 
 6. Bluetooth 켜기/끄기
 
@@ -14369,8 +14371,6 @@ nmcli radio wifi off
 nmcli radio bluetooth on
 nmcli radio bluetooth off
 ```
-
-, respectively.
 
 7. 모든 연결 표시
 
@@ -14824,15 +14824,15 @@ sudo smartctl -a /dev/sdb
 
 ## 중요 참고 사항
 
-- Read tests are safe and non-destructive
-- Write tests destroy all data on the device
-- Always unmount devices before testing
-- Test results should be interpreted with other health indicators
-- Regular testing helps prevent data loss
-- Consider drive replacement if many bad blocks are found
-- Modern drives have spare sectors for bad block management
+- 읽기 테스트는 안전하며 데이터를 손상시키지 않습니다
+- 쓰기 테스트는 장치의 모든 데이터를 파괴합니다
+- 테스트 전에 반드시 장치를 언마운트하세요
+- 테스트 결과는 다른 상태 지표와 함께 해석해야 합니다
+- 정기적인 테스트는 데이터 손실 예방에 도움이 됩니다
+- 불량 블록이 많이 발견되면 드라이브 교체를 고려하세요
+- 최신 드라이브는 불량 블록 관리를 위한 예비 섹터를 갖추고 있습니다
 
-`badblocks` 명령 is an essential tool for maintaining storage device health and preventing data loss.
+`badblocks` 명령은 저장 장치의 건강 상태를 유지하고 데이터 손실을 방지하는 데 필수적인 도구입니다.
 
 자세한 내용은 `man badblocks` 매뉴얼을 참조하세요.
 
@@ -14848,11 +14848,11 @@ fsck [options] [filesystem...]
 
 ## 주요 기능
 
-- **여러 파일 시스템 지원**: Works with ext2, ext3, ext4, XFS, and more
-- **자동 감지**: Can auto-detect file system type
-- **대화형 복구**: Prompts for confirmation before fixes
-- **배치 모드**: Can run automatically without user interaction
-- **읽기 전용 모드**: Check without making changes
+- **여러 파일 시스템 지원**: ext2, ext3, ext4, XFS 등과 함께 작동
+- **자동 감지**: 파일 시스템 유형을 자동으로 감지할 수 있음
+- **대화형 복구**: 수정 전에 확인을 요청
+- **배치 모드**: 사용자 상호작용 없이 자동 실행 가능
+- **읽기 전용 모드**: 변경 없이 검사
 
 ## 기본 사용법
 
@@ -16315,10 +16315,10 @@ lsb_release [options]
 
 ## 주요 기능
 
-- **배포판 정보**: Name, version, codename
-- **LSB 호환성**: Shows LSB version support
-- **표준 형식**: Consistent output across distributions
-- **스크립팅에 적합**: Easy to parse output
+- **배포판 정보**: 이름, 버전, 코드명
+- **LSB 호환성**: LSB 버전 지원 여부 표시
+- **표준 형식**: 배포판 전반에서 일관된 출력
+- **스크립팅에 적합**: 출력을 쉽게 파싱할 수 있음
 
 ## 기본 사용법
 
@@ -18117,11 +18117,11 @@ create_asset_report() {
  
  ## 주요 기능
  
- - **Kernel Messages**: Shows kernel ring buffer contents
- - **Boot Information**: Hardware detection and driver loading
- - **Real-time Monitoring**: Can follow new messages
- - **Filtering Options**: Filter by facility, level, or time
- - **Multiple Formats**: Human-readable and raw formats
+ - **커널 메시지**: 커널 링 버퍼 내용 표시
+ - **부팅 정보**: 하드웨어 감지 및 드라이버 로딩
+ - **실시간 모니터링**: 새 메시지를 실시간으로 추적할 수 있음
+ - **필터링 옵션**: facility, level, 시간별로 필터링
+ - **다양한 형식**: 사람이 읽기 쉬운 형식과 raw 형식
  
  ## 기본 사용법
  
@@ -18673,7 +18673,7 @@ create_asset_report() {
  systemctl status systemd-journald
  ```
  
- ## Performance Considerations
+ ## 성능 고려 사항
 ### 1. 대용량 버퍼 처리 {.unnumbered}
 
 ```bash
