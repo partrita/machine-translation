@@ -515,6 +515,7 @@ window.Quarto = {
   <li><a href="#테스트-스위트-사용하기" id="toc-테스트-스위트-사용하기" class="nav-link" data-scroll-target="#테스트-스위트-사용하기">테스트 스위트 사용하기</a></li>
   <li><a href="#솔루션" id="toc-솔루션" class="nav-link" data-scroll-target="#솔루션">솔루션</a></li>
   <li><a href="#솔루션-1-str.replace-사용" id="toc-솔루션-1-str.replace-사용" class="nav-link" data-scroll-target="#솔루션-1-str.replace-사용">솔루션 1: str.replace() 사용</a></li>
+  <li><a href="#솔루션-2-re.sub-사용" id="toc-솔루션-2-re.sub-사용" class="nav-link" data-scroll-target="#솔루션-2-re.sub-사용">솔루션 2: re.sub() 사용</a></li>
   <li><a href="#벤치마킹" id="toc-벤치마킹" class="nav-link" data-scroll-target="#벤치마킹">벤치마킹</a></li>
   <li><a href="#더-나아가기-1" id="toc-더-나아가기-1" class="nav-link" data-scroll-target="#더-나아가기-1">더 나아가기</a></li>
   <li><a href="#검토-1" id="toc-검토-1" class="nav-link" data-scroll-target="#검토-1">검토</a></li>
@@ -600,6 +601,7 @@ window.Quarto = {
   <li><a href="#단백질-모티프-찾기-데이터-가져오기-및-정규-표현식-사용" id="toc-단백질-모티프-찾기-데이터-가져오기-및-정규-표현식-사용" class="nav-link" data-scroll-target="#단백질-모티프-찾기-데이터-가져오기-및-정규-표현식-사용">단백질 모티프 찾기: 데이터 가져오기 및 정규 표현식 사용</a></li>
   <li><a href="#시작하기-10" id="toc-시작하기-10" class="nav-link" data-scroll-target="#시작하기-10">시작하기</a></li>
   <li><a href="#명령줄에서-시퀀스-파일-다운로드하기" id="toc-명령줄에서-시퀀스-파일-다운로드하기" class="nav-link" data-scroll-target="#명령줄에서-시퀀스-파일-다운로드하기">명령줄에서 시퀀스 파일 다운로드하기</a></li>
+  <li><a href="#파이썬으로-시퀀스-파일-다운로드하기" id="toc-파이썬으로-시퀀스-파일-다운로드하기" class="nav-link" data-scroll-target="#파이썬으로-시퀀스-파일-다운로드하기">파이썬으로 시퀀스 파일 다운로드하기</a></li>
   <li><a href="#모티프를-찾기-위한-정규-표현식-작성하기" id="toc-모티프를-찾기-위한-정규-표현식-작성하기" class="nav-link" data-scroll-target="#모티프를-찾기-위한-정규-표현식-작성하기">모티프를 찾기 위한 정규 표현식 작성하기</a></li>
   <li><a href="#솔루션-7" id="toc-솔루션-7" class="nav-link" data-scroll-target="#솔루션-7">솔루션</a></li>
   <li><a href="#솔루션-1-정규-표현식-사용하기" id="toc-솔루션-1-정규-표현식-사용하기" class="nav-link" data-scroll-target="#솔루션-1-정규-표현식-사용하기">솔루션 1: 정규 표현식 사용하기</a></li>
@@ -2201,25 +2203,13 @@ print(f'Done, wrote {num_seqs} sequence{"s" if num_seqs != 1 else ""} '
       f'in {num_files} file{"s" if num_files != 1 else ""} '
       f'to directory "{args.out_dir}".') # 9</code></pre>
 <p>if <strong>name</strong> == ‘<strong>main</strong>’: main()</p>
-<pre><code>
-1 파일과 시퀀스를 위한 카운터를 초기화합니다.
-② 파일 핸들들을 순회합니다.
-3 파일 카운터를 증가시킵니다.
-4 이 입력 파일에 대한 출력 파일을 엽니다.
-5 입력 파일의 시퀀스들을 순회합니다.
-6 시퀀스 카운터를 증가시킵니다.
-7 전사된 시퀀스를 출력 파일에 씁니다.
-8 출력 파일 핸들을 닫습니다.
-9 상태를 출력합니다. 하나의 출력 문자열을 만들기 위해 인접한 문자열들을 암시적으로 결합하는 파이썬의 기능에 의존하고 있음에 주목하십시오.
-
-# 솔루션 2: re.sub() 사용
-
-앞서 이 문제를 해결하기 위해 정규 표현식을 사용하는 방법을 탐구해 볼 수도 있다고 제안했습니다. 정규 표현식(Regex)은 텍스트 패턴을 기술하기 위한 언어입니다. 정규 표현식은 파이썬이 발명되기 훨씬 전인 수십 년 전부터 존재해 왔습니다. 처음에는 다소 벅차 보일 수 있지만, 정규 표현식은 배울 가치가 충분합니다.
-
-파이썬에서 정규 표현식을 사용하려면 re 모듈을 임포트해야 합니다.
-
-```python
-&gt;&gt;&gt; import re</code></pre>
+<p>1 파일과 시퀀스를 위한 카운터를 초기화합니다. ② 파일 핸들들을 순회합니다. 3 파일 카운터를 증가시킵니다. 4 이 입력 파일에 대한 출력 파일을 엽니다. 5 입력 파일의 시퀀스들을 순회합니다. 6 시퀀스 카운터를 증가시킵니다. 7 전사된 시퀀스를 출력 파일에 씁니다. 8 출력 파일 핸들을 닫습니다. 9 상태를 출력합니다. 하나의 출력 문자열을 만들기 위해 인접한 문자열들을 암시적으로 결합하는 파이썬의 기능에 의존하고 있음에 주목하십시오.</p>
+</section>
+<section id="솔루션-2-re.sub-사용" class="level1">
+<h1>솔루션 2: re.sub() 사용</h1>
+<p>앞서 이 문제를 해결하기 위해 정규 표현식을 사용하는 방법을 탐구해 볼 수도 있다고 제안했습니다. 정규 표현식(Regex)은 텍스트 패턴을 기술하기 위한 언어입니다. 정규 표현식은 파이썬이 발명되기 훨씬 전인 수십 년 전부터 존재해 왔습니다. 처음에는 다소 벅차 보일 수 있지만, 정규 표현식은 배울 가치가 충분합니다.</p>
+<p>파이썬에서 정규 표현식을 사용하려면 re 모듈을 임포트해야 합니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> re</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이전에 저는 다른 문자열 내부에서 텍스트 패턴을 찾기 위해 re.search() 함수를 사용했습니다. 이 프로그램의 경우, 제가 찾고 있는 패턴은 글자 ’T’이며, 이를 리터럴 문자열로 작성할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> re.search(<span class="st">'T'</span>, <span class="st">'ACGT'</span>) <span class="co"># 1</span></span>
 <span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>re.Match <span class="bu">object</span><span class="op">;</span> span<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>), match<span class="op">=</span><span class="st">'T'</span><span class="op">&gt;</span> <span class="co"># 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -5543,24 +5533,17 @@ P07204_TRBM_HUMAN
 P20840_SAG1_YEAST
 Done, see output in "fasta". </code></pre>
 <p>B5ZC00 P07204_TRBM_HUMAN</p>
-<pre><code>
-P20840_SAG1_YEAST 
-완료, 출력을 "fasta"에서 확인하세요.
-
-이제 네 개의 FASTA 파일을 포함하는 `fasta` 디렉토리가 있을 것입니다. `mprt.py` 프로그램을 작성하는 한 가지 방법은 이와 같은 유틸리티를 사용하여 모든 입력 파일을 먼저 가져온 다음 FASTA 파일들을 인자로 제공하는 것입니다. 이는 생명정보학에서 매우 흔한 패턴이며, 이와 같은 쉘 스크립트를 작성하는 것은 분석을 위해 데이터를 어떻게 가져왔는지 정확하게 기록하는 좋은 방법입니다. 이러한 프로그램들을 항상 소스 저장소에 커밋하고, 다음과 같이 왼쪽에 정렬된 이름 뒤에 콜론이 오고 다음 줄에 탭 문자로 들여쓰기된 명령이 오는 `fasta`라는 이름의 Makefile 타겟을 추가하는 것을 고려해 보십시오.
-
-fasta: ./fetch_fasta.sh tests/inputs/1.txt
-
-이제 `make fasta`를 실행하여 데이터 수집 과정을 자동화할 수 있습니다. 입력 파일을 하드코딩하는 대신 인자로 받도록 프로그램을 작성함으로써, 이 프로그램과 여러 Makefile 타겟을 사용하여 다양한 데이터셋을 다운로드하는 과정을 자동화할 수 있습니다. 재현성을 위한 승리입니다.
-
-# 파이썬으로 시퀀스 파일 다운로드하기
-
-이제 배시 유틸리티를 파이썬으로 옮겨보겠습니다. 앞선 프로그램에서 보셨듯이, 각 시퀀스 파일을 가져오는 데는 여러 단계가 포함됩니다. 저는 이 코드가 `main()`의 일부가 되어 프로그램을 복잡하게 만드는 것을 원하지 않으므로, 이를 위한 함수를 작성하겠습니다.
-
-```python
-def fetch_fasta(fh: TextIO, fasta_dir: str) -&gt; List[str]: # 1
-    ''' FASTA 파일들을 다운로드 디렉토리로 가져오기 ''' 
-    return [] # 2 </code></pre>
+<p>P20840_SAG1_YEAST 완료, 출력을 “fasta”에서 확인하세요.</p>
+<p>이제 네 개의 FASTA 파일을 포함하는 <code>fasta</code> 디렉토리가 있을 것입니다. <code>mprt.py</code> 프로그램을 작성하는 한 가지 방법은 이와 같은 유틸리티를 사용하여 모든 입력 파일을 먼저 가져온 다음 FASTA 파일들을 인자로 제공하는 것입니다. 이는 생명정보학에서 매우 흔한 패턴이며, 이와 같은 쉘 스크립트를 작성하는 것은 분석을 위해 데이터를 어떻게 가져왔는지 정확하게 기록하는 좋은 방법입니다. 이러한 프로그램들을 항상 소스 저장소에 커밋하고, 다음과 같이 왼쪽에 정렬된 이름 뒤에 콜론이 오고 다음 줄에 탭 문자로 들여쓰기된 명령이 오는 <code>fasta</code>라는 이름의 Makefile 타겟을 추가하는 것을 고려해 보십시오.</p>
+<p>fasta: ./fetch_fasta.sh tests/inputs/1.txt</p>
+<p>이제 <code>make fasta</code>를 실행하여 데이터 수집 과정을 자동화할 수 있습니다. 입력 파일을 하드코딩하는 대신 인자로 받도록 프로그램을 작성함으로써, 이 프로그램과 여러 Makefile 타겟을 사용하여 다양한 데이터셋을 다운로드하는 과정을 자동화할 수 있습니다. 재현성을 위한 승리입니다.</p>
+</section>
+<section id="파이썬으로-시퀀스-파일-다운로드하기" class="level1">
+<h1>파이썬으로 시퀀스 파일 다운로드하기</h1>
+<p>이제 배시 유틸리티를 파이썬으로 옮겨보겠습니다. 앞선 프로그램에서 보셨듯이, 각 시퀀스 파일을 가져오는 데는 여러 단계가 포함됩니다. 저는 이 코드가 <code>main()</code>의 일부가 되어 프로그램을 복잡하게 만드는 것을 원하지 않으므로, 이를 위한 함수를 작성하겠습니다.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb525"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb525-1"><a href="#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_fasta(fh: TextIO, fasta_dir: <span class="bu">str</span>) <span class="op">-&gt;</span> List[<span class="bu">str</span>]: <span class="co"># 1</span></span>
+<span id="cb525-2"><a href="#cb525-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">''' FASTA 파일들을 다운로드 디렉토리로 가져오기 '''</span> </span>
+<span id="cb525-3"><a href="#cb525-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [] <span class="co"># 2 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>1 이 함수는 단백질 ID를 위한 파일 핸들과 다운로드 디렉토리 이름을 인자로 받고, 다운로드되었거나 이미 존재하는 파일들의 리스트를 반환할 것입니다. 임포트문에 <code>typing.List</code>를 추가하는 것을 잊지 마십시오. 2 지금은 빈 리스트를 반환합니다.</p>
 <p>다음과 같이 호출하고 싶습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb526"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb526-1"><a href="#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:  </span>

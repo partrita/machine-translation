@@ -1663,13 +1663,13 @@ At line:1 char:1
 <h5 class="anchored" data-anchor-id="neovim">Neovim</h5>
 <p>Neovim 사용자의 경우 다음 옵션들을 선택할 수 있습니다.</p>
 <ol type="1">
-<li>가장 간편한 방식은 <a href="#neoconf.nvim">neoconf.nvim</a>을 이용하는 것이지만 neovim 0.11+ 버전에서는 경고가 출력될 수 있습니다.</li>
+<li>가장 간편한 방식은 <a href="https://github.com/folke/neoconf.nvim/">neoconf.nvim</a>을 이용하는 것이지만 neovim 0.11+ 버전에서는 경고가 출력될 수 있습니다.</li>
 <li><code>coc.nvim</code>을 활용하는 방법도 있으나 Node.js 설치가 필요합니다.</li>
 <li>커스텀 스크립트를 작성하여 rust-analyzer 설정을 로드하는 방식이 있습니다.</li>
 </ol>
 <section id="neoconf.nvim" class="level6">
 <h6 class="anchored" data-anchor-id="neoconf.nvim">neoconf.nvim</h6>
-<p><a href="#neoconf.nvim">neoconf.nvim</a>을 사용하면 네이티브 LSP 환경에서 프로젝트 로컬 설정 파일을 운용할 수 있습니다. 미리 Neovim에 rust-analyzer가 설정되어 있어야 합니다 ([안내 링크 참고][r-a nvim lsp]).</p>
+<p><a href="https://github.com/folke/neoconf.nvim/">neoconf.nvim</a>을 사용하면 네이티브 LSP 환경에서 프로젝트 로컬 설정 파일을 운용할 수 있습니다. 미리 Neovim에 rust-analyzer가 설정되어 있어야 합니다 (<a href="https://rust-analyzer.github.io/book/other_editors.html#nvim-lsp">안내 링크 참고</a>).</p>
 <ol type="1">
 <li>플러그인을 설치합니다.</li>
 <li><code>./x setup editor</code>를 실행하고 <code>vscode</code>를 선택해 <code>.vscode/settings.json</code>을 생성합니다. <code>neoconf</code>가 이 설정 파일을 감지하여 프로젝트 오픈 시 rust-analyzer 설정을 자동 업데이트해 줍니다.</li>
@@ -1683,64 +1683,39 @@ At line:1 char:1
 <h6 class="anchored" data-anchor-id="커스텀-lsp-설정">커스텀 LSP 설정</h6>
 <p>Neovim 0.11+ 이상 버전에서는 <a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a>와 간단한 커스텀 스크립트만으로 rust-analyzer를 손쉽게 구성할 수 있습니다.</p>
 <ol type="1">
-<li>[rust-analyzer LSP][r-a nvim lsp]가 설정되어 있는지 확인합니다.</li>
+<li><a href="https://rust-analyzer.github.io/book/other_editors.html#nvim-lsp">rust-analyzer LSP</a>가 설정되어 있는지 확인합니다.</li>
 <li><code>$HOME/.config/nvim/after/plugged/rust_analyzer.lua</code> 경로에 커스텀 Lua 스크립트를 작성하여 연동합니다. filetypes = { “rust” }, – To support rust-lang/rust, we need to detect when we’re in the rust repo and use the git root – instead of cargo project root. root_dir = function(bufnr, on_dir) local git_root = vim.fs.root(bufnr, { “.git” }) if git_root then if vim.uv.fs_stat(vim.fs.joinpath(git_root, “src/etc/rust_analyzer_zed.json”)) then on_dir(git_root) return end end – For anything that doesn’t match rust-lang/rust, fallback to default root_dir default_root_dir(bufnr, on_dir) end, before_init = function(init_params, config) – When inside rust-lang/rust, we need to use the special rust-analyzer settings. local settings = vim.fs.joinpath(config.root_dir, “src/etc/rust_analyzer_zed.json”) if vim.uv.fs_stat(settings) then local file = io.open(settings) – nvim 0.12+ supports comments otherwise you’ll need content:gsub(“//[^\n]<em>”, ””). local json = vim.json.decode(file:read(”</em>a”), { skip_comments = true }) file:close() config.settings[“rust-analyzer”] = vim.tbl_deep_extend( “force”, – Overwrite with the special settings when there is a conflict. config.settings[“rust-analyzer”] or {}, json.lsp[“rust-analyzer”].initialization_options ) end default_before_init(init_params, config) end, })</li>
 </ol>
 <p>vim.lsp.enable(“rust_analyzer”)</p>
-<pre><code>
-위에서 설명한 빌드 태스크(build task)를 사용하고 싶다면 설정에 자신만의 명령어를 직접 만들거나, [VSCode의 `task.json` 파일을 읽을 수 있는](https://github.com/stevearc/overseer.nvim/blob/master/doc/guides.md#vs-code-tasks) [overseer.nvim](https://github.com/stevearc/overseer.nvim) 같은 플러그인을 설치한 후 위의 지침을 따르면 됩니다.
-
-[neoconf.nvim]: https://github.com/folke/neoconf.nvim/
-[r-a nvim lsp]: https://rust-analyzer.github.io/book/other_editors.html#nvim-lsp
-
-##### Emacs
-
-Emacs는 [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/)을 통해 프로젝트 로컬 설정으로 rust-analyzer를 지원합니다.
-Eglot과 rust-analyzer 연동 설정 단계는 [여기](https://rust-analyzer.github.io/manual.html#eglot)에서 확인하실 수 있습니다.
-Rust 개발을 위해 Emacs와 Eglot 설정을 마친 후, `./x setup editor`를 실행하고 `emacs`를 선택하면 Eglot용 권장 설정이 포함된 `.dir-locals.el` 파일 생성을 안내합니다.
-권장 설정은 [`src/etc/rust_analyzer_eglot.el`]에 있습니다.
-프로젝트별 Eglot 설정에 대한 자세한 정보는 [매뉴얼](https://www.gnu.org/software/emacs/manual/html_node/eglot/Project_002dspecific-configuration.html)을 참고하세요.
-
-##### Helix
-
-Helix는 LSP 및 rust-analyzer 지원이 내장되어 있습니다.
-[여기](https://docs.helix-editor.com/languages.html)에 설명된 대로 `languages.toml`을 통해 설정할 수 있습니다.
-`./x setup editor`를 실행하고 `helix`를 선택하면 Helix용 권장 설정이 담긴 `languages.toml` 생성을 안내합니다.
-권장 설정은 [`src/etc/rust_analyzer_helix.toml`]에 위치해 있습니다.
-
-##### Zed
-
-Zed는 LSP 및 rust-analyzer 지원이 내장되어 있습니다.
-[여기](https://zed.dev/docs/configuring-languages)에 설명된 대로 `.zed/settings.json`을 통해 설정할 수 있습니다.
-`./x setup editor`에서 `zed`를 선택하면 Zed용 권장 설정으로 구성된 `.zed/settings.json` 파일 생성을 안내합니다.
-권장 `rust-analyzer` 설정은 [`src/etc/rust_analyzer_zed.json`]에 위치해 있습니다.
-
-#### 검사하고, 또 검사하기
-
-단순한 리팩터링을 진행할 때는 지속적으로 `./x check`를 실행하는 것이 유용합니다.
-앞서 설명한 대로 `rust-analyzer`를 설정했다면 파일을 저장할 때마다 자동으로 실행됩니다.
-이 단계에서는 컴파일러가 **빌드** 가능한지만 검사하지만, 메서드 이름 변경 등 단순 작업 시에는 그것만으로 충분할 때가 많습니다.
-실제 테스트 구동이 필요할 때 `./x build`를 실행하면 됩니다.
-
-사실 코드가 동작할지 100% 확신이 들지 않더라도 일단 테스트를 뒤로 미루는 것이 유용할 때가 있습니다.
-리팩터링 커밋들을 차곡차곡 쌓아 올린 후 나중에 한 번에 테스트를 구동할 수 있습니다.
-그런 다음 `git bisect`를 사용하여 어떤 커밋이 문제를 일으켰는지 **정확히** 찾아낼 수 있습니다.
-이러한 작업 스타일의 좋은 부수 효과는, 결과적으로 빌드가 성공하고 테스트를 통과하는 잘게 분할된 정돈된 커밋 세트를 얻을 수 있다는 점입니다.
-이는 코드 리뷰에도 큰 도움이 됩니다.
-
-#### 나이틀리를 사용하도록 `rustup` 설정하기
-
-부트스트랩 프로세스의 일부 단계에서는 rustfmt와 같은 도구의 고정된(pinned) 나이틀리 버전을 사용합니다.
-저장소에서 `cargo fmt` 등이 올바르게 작동하도록 하려면 rustup으로 [나이틀리 툴체인을 설치][install a nightly toolchain]한 후 다음 명령어를 실행하세요:
-
-```console
-cd &lt;rustc 저장소 경로&gt;
+<p>위에서 설명한 빌드 태스크(build task)를 사용하고 싶다면 설정에 자신만의 명령어를 직접 만들거나, <a href="https://github.com/stevearc/overseer.nvim/blob/master/doc/guides.md#vs-code-tasks">VSCode의 <code>task.json</code> 파일을 읽을 수 있는</a> <a href="https://github.com/stevearc/overseer.nvim">overseer.nvim</a> 같은 플러그인을 설치한 후 위의 지침을 따르면 됩니다.</p>
+</section>
+</section>
+<section id="emacs" class="level5">
+<h5 class="anchored" data-anchor-id="emacs">Emacs</h5>
+<p>Emacs는 <a href="https://www.gnu.org/software/emacs/manual/html_node/eglot/">Eglot</a>을 통해 프로젝트 로컬 설정으로 rust-analyzer를 지원합니다. Eglot과 rust-analyzer 연동 설정 단계는 <a href="https://rust-analyzer.github.io/manual.html#eglot">여기</a>에서 확인하실 수 있습니다. Rust 개발을 위해 Emacs와 Eglot 설정을 마친 후, <code>./x setup editor</code>를 실행하고 <code>emacs</code>를 선택하면 Eglot용 권장 설정이 포함된 <code>.dir-locals.el</code> 파일 생성을 안내합니다. 권장 설정은 [<code>src/etc/rust_analyzer_eglot.el</code>]에 있습니다. 프로젝트별 Eglot 설정에 대한 자세한 정보는 <a href="https://www.gnu.org/software/emacs/manual/html_node/eglot/Project_002dspecific-configuration.html">매뉴얼</a>을 참고하세요.</p>
+</section>
+<section id="helix" class="level5">
+<h5 class="anchored" data-anchor-id="helix">Helix</h5>
+<p>Helix는 LSP 및 rust-analyzer 지원이 내장되어 있습니다. <a href="https://docs.helix-editor.com/languages.html">여기</a>에 설명된 대로 <code>languages.toml</code>을 통해 설정할 수 있습니다. <code>./x setup editor</code>를 실행하고 <code>helix</code>를 선택하면 Helix용 권장 설정이 담긴 <code>languages.toml</code> 생성을 안내합니다. 권장 설정은 [<code>src/etc/rust_analyzer_helix.toml</code>]에 위치해 있습니다.</p>
+</section>
+<section id="zed" class="level5">
+<h5 class="anchored" data-anchor-id="zed">Zed</h5>
+<p>Zed는 LSP 및 rust-analyzer 지원이 내장되어 있습니다. <a href="https://zed.dev/docs/configuring-languages">여기</a>에 설명된 대로 <code>.zed/settings.json</code>을 통해 설정할 수 있습니다. <code>./x setup editor</code>에서 <code>zed</code>를 선택하면 Zed용 권장 설정으로 구성된 <code>.zed/settings.json</code> 파일 생성을 안내합니다. 권장 <code>rust-analyzer</code> 설정은 [<code>src/etc/rust_analyzer_zed.json</code>]에 위치해 있습니다.</p>
+</section>
+</section>
+<section id="검사하고-또-검사하기" class="level4">
+<h4 class="anchored" data-anchor-id="검사하고-또-검사하기">검사하고, 또 검사하기</h4>
+<p>단순한 리팩터링을 진행할 때는 지속적으로 <code>./x check</code>를 실행하는 것이 유용합니다. 앞서 설명한 대로 <code>rust-analyzer</code>를 설정했다면 파일을 저장할 때마다 자동으로 실행됩니다. 이 단계에서는 컴파일러가 <strong>빌드</strong> 가능한지만 검사하지만, 메서드 이름 변경 등 단순 작업 시에는 그것만으로 충분할 때가 많습니다. 실제 테스트 구동이 필요할 때 <code>./x build</code>를 실행하면 됩니다.</p>
+<p>사실 코드가 동작할지 100% 확신이 들지 않더라도 일단 테스트를 뒤로 미루는 것이 유용할 때가 있습니다. 리팩터링 커밋들을 차곡차곡 쌓아 올린 후 나중에 한 번에 테스트를 구동할 수 있습니다. 그런 다음 <code>git bisect</code>를 사용하여 어떤 커밋이 문제를 일으켰는지 <strong>정확히</strong> 찾아낼 수 있습니다. 이러한 작업 스타일의 좋은 부수 효과는, 결과적으로 빌드가 성공하고 테스트를 통과하는 잘게 분할된 정돈된 커밋 세트를 얻을 수 있다는 점입니다. 이는 코드 리뷰에도 큰 도움이 됩니다.</p>
+</section>
+<section id="나이틀리를-사용하도록-rustup-설정하기" class="level4">
+<h4 class="anchored" data-anchor-id="나이틀리를-사용하도록-rustup-설정하기">나이틀리를 사용하도록 <code>rustup</code> 설정하기</h4>
+<p>부트스트랩 프로세스의 일부 단계에서는 rustfmt와 같은 도구의 고정된(pinned) 나이틀리 버전을 사용합니다. 저장소에서 <code>cargo fmt</code> 등이 올바르게 작동하도록 하려면 rustup으로 <a href="https://rust-lang.github.io/rustup/concepts/channels.html?highlight=nightl#working-with-nightly-rust">나이틀리 툴체인을 설치</a>한 후 다음 명령어를 실행하세요:</p>
+<pre class="console"><code>cd &lt;rustc 저장소 경로&gt;
 rustup override set nightly</code></pre>
 <p><a href="#working-on-multiple-branches-at-the-same-time">작업 트리를 설정한</a> 모든 디렉터리에 대해 이 작업을 수행하는 것을 잊지 마세요. <code>src/stage0</code>에 고정된 나이틀리 버전을 사용해야 할 수도 있지만, 대부분 일반적인 <code>nightly</code> 채널로도 정상 동작합니다.</p>
 <p><strong>참고</strong> <code>x</code>가 사용하는 실제 rustfmt로 VS Code를 설정하는 방법은 <a href="#configuring-rust-analyzer-for-rustc">vscode 관련 섹션</a>을, 부트스트랩된 컴파일러용 <code>rustup</code> 툴체인을 구성하는 방법은 <a href="how-to-build-and-run.md?highlight=rustup#creating-a-rustup-toolchain">rustup 관련 섹션</a>을 참고하세요.</p>
 <p><strong>참고</strong> 그렇다고 해서 cargo로 <code>rustc</code>를 직접 빌드할 수 있게 되는 것은 아닙니다. 컴파일러나 표준 라이브러리 작업을 할 때는 여전히 <code>x</code>를 사용해야 하며, 이 설정은 단지 <code>cargo fmt</code>를 사용할 수 있게 해 줄 뿐입니다.</p>
-</section>
-</section>
 </section>
 <section id="ci-rustc를-활용한-빠른-빌드" class="level4">
 <h4 class="anchored" data-anchor-id="ci-rustc를-활용한-빠른-빌드">CI-rustc를 활용한 빠른 빌드</h4>
@@ -3142,13 +3117,11 @@ fn main() {
         _ =&gt; {}
     }</code></pre>
 <p>} //~<sup></sup> ERROR <code>_x @</code> is not allowed in a tuple struct //~| ERROR this pattern has 1 field, but the corresponding tuple struct has 3 fields [E0023]</p>
-<pre><code>
-###### 에러 라인 위에 작성
-
-`v` 개수만큼 아래 라인을 가리키는 `//~v` 구문을 사용합니다. 주로 파일 끝(EOF)에서 닫히지 않은 구분자/리터럴 에러가 발생하는 렉서(lexer)나 파서(parser) 테스트에서 활용됩니다.
-
-```rust,ignore
-// ignore-tidy-trailing-newlines
+</section>
+<section id="에러-라인-위에-작성" class="level6">
+<h6 class="anchored" data-anchor-id="에러-라인-위에-작성">에러 라인 위에 작성</h6>
+<p><code>v</code> 개수만큼 아래 라인을 가리키는 <code>//~v</code> 구문을 사용합니다. 주로 파일 끝(EOF)에서 닫히지 않은 구분자/리터럴 에러가 발생하는 렉서(lexer)나 파서(parser) 테스트에서 활용됩니다.</p>
+<pre class="rust,ignore"><code>// ignore-tidy-trailing-newlines
 //~v ERROR this file contains an unclosed delimiter
 fn main((ؼ</code></pre>
 </section>
@@ -8890,16 +8863,10 @@ Build completed successfully in 0:00:00</code></pre>
 <p>의존성 그래프에 대한 테스트를 작성하는 다양한 방법이 존재합니다. 가장 단순한 메커니즘은 <code>#[rustc_if_this_changed]</code> 및 <code>#[rustc_then_this_would_need]</code> 주석(annotation) 속성을 활용하는 것입니다. 이들은 의존성 그래프 내에 예상되는 경로 집합이 정상 존재하는지 검증하기 위해 <a href="tests/ui.html">ui</a> 테스트에서 활용됩니다.</p>
 <p>예시로 <a href="https://github.com/rust-lang/rust/blob/HEAD/tests/ui/dep-graph/dep-graph-caller-callee.rs"><code>tests/ui/dep-graph/dep-graph-caller-callee.rs</code></a> 파일 또는 아래의 테스트 코드를 참조하세요. #[rustc_if_this_changed] fn foo() { }</p>
 <p>#[rustc_then_this_would_need(TypeckTables)] //~ ERROR OK fn bar() { foo(); }</p>
-<pre><code>
-이는 다음과 같이 해석되어야 합니다:
-&gt; 만약 이것(`foo`)이 변경되면, 이것(즉, `bar`)의 TypeckTables도 변경되어야 함을 의미합니다.
-
-엄밀히 말해 발생 구동되는 현상은 해당 라인과 연관되어 테스트가 표준 에러(stderr)로 "OK" 문자열을 출력할 것으로 기대된다는 점입니다.
-
-다음 라인들을 추가할 수도 있습니다:
-
-```rust,ignore
-#[rustc_then_this_would_need(TypeckTables)] //~ ERROR no path
+<p>이는 다음과 같이 해석되어야 합니다: &gt; 만약 이것(<code>foo</code>)이 변경되면, 이것(즉, <code>bar</code>)의 TypeckTables도 변경되어야 함을 의미합니다.</p>
+<p>엄밀히 말해 발생 구동되는 현상은 해당 라인과 연관되어 테스트가 표준 에러(stderr)로 “OK” 문자열을 출력할 것으로 기대된다는 점입니다.</p>
+<p>다음 라인들을 추가할 수도 있습니다:</p>
+<pre class="rust,ignore"><code>#[rustc_then_this_would_need(TypeckTables)] //~ ERROR no path
 fn baz() { }</code></pre>
 <p>이의 의미는 다음과 같습니다: &gt; 만약 <code>foo</code>가 변경되어도 <code>baz</code>의 TypeckTables는 변경될 필요가 없음을 의미합니다. &gt; 해당 매크로는 에러를 발생시켜야 하며, 에러 메시지에는 “no path”가 포함되어야 합니다.</p>
 <p><code>//~ ERROR OK</code>는 우리가 테스트하는 Rust 코드 관점에서는 주석이지만, 테스트 자체의 관점에서는 의미가 있다는 점을 상기하세요.</p>
