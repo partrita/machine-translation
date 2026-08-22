@@ -7,667 +7,554 @@ author:
 
 # 1장 · 문헌 검색
 
-사례 연구 1에서 문헌 검색에 활용할 수 있는 잠재적 키워드(노란색으로 강조됨).
+지도교수가 토양의 섬유소 분해 세균인 *Thermobifida fusca*를 발견했고, 이 세균에서 유래한 효소들을 조합하여 셀룰로오스 분해용 효소 칵테일을 준비하되, 필요하다면 단백질 공학 접근법으로 효소 성능까지 끌어올려 달라고 요청했다고 가정해 보자.
 
-당신의 프로젝트 지도교수가 토양 섬유소 분해 세균인 Thermobifida fusca를
-발견했으며, 이 세균에서 유래한 효소들을 이용해 셀룰로오스 분해를 위한 효소 칵테일을 준비하기를
-원한다고 가정해 보자. 필요하다면 단백질 공학 접근법을 사용하여 효소 성능을 향상시킬 것이다.
+연구 주제가 낯설다면 먼저 포괄적인 리뷰 논문 몇 편부터 읽는 것이 도움이 된다. 리뷰 논문은 특정 주제에 관한 연구를 폭넓게 요약하고 해당 분야의 현황과 흐름, 앞으로의 전망을 제공하므로 주제에 빨리 익숙해지는 지름길이다. 리뷰 논문을 찾는 방법은 두 가지가 있다.
 
-연구 주제에 익숙하지 않을 때는 먼저 포괄적인 리뷰 논문 몇 편을 읽는 것이 종종 도움이 된다. 리뷰 논문은 특정 주제에 대한 연구를 광범위하게 요약하고,
-해당 분야의 현황과 나아가는 방향, 미래 전망을 제공한다. 주제에 익숙해지는 가장 빠른 방법이다. 리뷰 논문을 검색하는 데에는 두 가지 접근법이 있다.
+1. 키워드에 'review'를 조합하여 빠르게 검색한다. *Thermobifida fusca*와 review로 PubMed를 검색하면 단 세 편만 나온다(2020년 4월 20일 기준). 이 가운데 Critical Reviews in Microbiology에 실린 'The cellulolytic system of *Thermobifida fusca*'는 바로 우리가 찾던 논문이다.
+2. PubMed 왼쪽 사이드바의 필터 기능을 이용한다. *Thermobifida fusca*로 검색하면 303편이 나오는데(2020년 4월 20일 기준), 'Article Type' 아래의 '리뷰'를 체크하면 첫 번째 방법으로 얻은 것과 같은 세 편만 남는다.
 
-1. 키워드와 'review' 단어를 조합하여 빠른 문헌 검색을 수행할 수 있다. Thermobifida fusca와 review로 PubMed
-검색을 수행하면 단 3편의 논문만 검색된다(2020년 4월 20일 기준). 이 3편 중 하나는 'The cellulolytic system of
-Thermobifida fusca'라는 주제로 Critical Reviews in Microbiology에 게재된 리뷰 논문인데,1 이는 정확히
-우리가 찾고 있는 것이다. 2. 또는 PubMed 왼쪽 사이드바에 있는 필터 기능을 사용할 수 있다. Thermobifida fusca로
-PubMed 검색을 수행하면 303편의 논문 목록이 나온다(2020년 4월 20일 기준). 'Article Type' 아래의 '리뷰'
-상자를 체크하면 첫 번째 접근법으로 얻은 것과 동일한 3편의 논문(2020년 4월 20일 기준)만 남는다.
+검색에 익숙해지면 고급 검색 기능으로 결과를 더 다듬을 수 있다. https://pubmed.ncbi.nlm.nih.gov/ 검색 상자 아래의 'Advanced'를 클릭하거나 https://pubmed.ncbi.nlm.nih.gov/advanced/로 바로 들어가면 된다. 고급 검색에서는 검색 조건을 더 정확하게 정의할 수 있다. 위 예시와 똑같이 T. fusca 리뷰 논문만 모으려면 검색 상자에 다음 두 검색어를 넣고 검색하면 된다:
 
-PubMed 검색에 익숙해지면 검색을 더욱 정제하기 위해 고급 검색 기능을 사용해 볼 수 있다. 그러려면
-https://pubmed.ncbi.nlm.nih.gov/의 검색 상자 아래에 있는 '고급 검색(Advanced)' 단어를 클릭하거나
-https://pubmed.ncbi.nlm.nih.gov/advanced/로 직접 이동하면 된다. 고급 검색을 사용하면 검색 기준을 더 정확하게
-정의할 수 있다. 위 예시와 동일하게 T. fusca에 관한 리뷰 논문을 수집하려면 검색 상자에 다음 두 검색어를 추가하고 검색을 클릭하면 된다:
-Thermobifida fusca[Title/Abstract] 리뷰[Publication Type]
+> Thermobifida fusca[Title/Abstract] review[Publication Type]
 
-첫 번째 검색어 Thermobifida fusca[Title/Abstract]는 Thermobifida fusca라는 단어가 제목이나 초록에 반드시 나타나야
-함을 의미한다. 두 번째 검색어 리뷰[Publication Type]는 논문 유형을 리뷰로 지정한다. 지금까지 '2020년 4월 20일 기준'이라는
-문구를 계속 강조하고 있음을 눈치챘을 것이다. 이는 문헌량이 매일 팽창하고 있기 때문이다. 따라서 검색 결과는 문헌 검색을 수행한 시기에 따라 달라질 것이다.
-이 책을 읽을 때쯤이면 그 수가 두 배, 세 배, 네 배, 혹은 그 이상이 되었을지도 모른다.
+첫 번째 검색어는 *thermobifida fusca*라는 단어가 제목이나 초록에 반드시 나타나야 함을 뜻하고, 두 번째 검색어는 논문 유형을 리뷰로 한정한다. '2020년 4월 20일 기준'이라는 말을 굳이 계속 붙인 데에는 이유가 있다. 문헌은 매일 늘어나므로 검색 결과는 언제 검색했는지에 따라 달라진다. 이 책을 읽는 시점에는 그 수가 두 배, 세 배, 네 배가 되어 있을지도 모른다.
 
-Gomez del Pulgar, E.M. 외, (2014). The cellulolytic system of Thermobifida
-fusca. Critical Reviews in Microbiology. 40(3), 236-47. DOI:
-https://doi.org/10.3109/1040841X.2013.776512에서 이용 가능.
+> Gomez del Pulgar EM 등 (2014) The cellulolytic system of *Thermobifida fusca*. Critical Reviews in Microbiology 40(3):236-247.DOI: https://doi.org/10.3109/1040841X.2013.776512
 
 ## 1.3 중요 정보
 
-관심 있는 논문을 확인했다면, 다음 단계는 그 논문에서 유용한 정보를 추출하는 것이다. Critical Reviews in Microbiology에 게재된
-리뷰 논문 'The cellulolytic system of Thermobifida fusca'를 예로 들어 얻을 수 있는 정보의 유형을
-설명해 보자(표 1.2). 보고서 작성은 학생들에게 흔한 과제이며, 참고문헌 표기는 설득력 있는 보고서의 필수 요소이다표 1.2에서
-별표(*)로 표시된 정보는 논문을 인용할 때 흔히 사용된다. DOI나 PMID 같은 다른 정보도 EndNote와 같은 참고문헌 관리 소프트웨어를 사용하여
-논문을 검색하는 데 유용하다. 흥미롭게도, 인용에서 가장 흔히 발견되는 오류는 저자 이름에서 비롯된다. 이름은 일반적으로 이름(주어진 이름), 중간 이름,
-성(가족 이름 또는 성씨)으로 구성된다. 표 1.3에서는 저자 이름 보고에서 우리가 보아온 일반적인 오류 일부를 정리했다. 리뷰 논문 몇 편을 읽고
-나면, 구체적인 연구 작업과 그 연구 방법론을 이해하기 위해 원본 연구 논문으로 나아가게 될 것이다. 'Quantitative iTRAQ secretome
-analysis of cellulolytic Thermobi-'라는 논문을 예로 들어 보자.
+논문을 찾았으면 다음 단계는 그 논문에서 쓸모 있는 정보를 뽑아내는 일이다. Critical Reviews in Microbiology에 실린 리뷰 논문 'The cellulolytic system of *Thermobifida fusca*'를 예로 들어 어떤 정보를 얻을 수 있는지 살펴보자(표 1.2). 보고서 작성은 학생들에게 흔한 과제인데, 참고문헌 표기는 설득력 있는 보고서의 필수 요소이다. 표 1.2에서 별표(*)를 붙인 항목이 인용에 흔히 쓰이는 정보이며, DOI나 PMID 같은 정보는 EndNote 같은 참고문헌 관리 소프트웨어로 논문을 찾을 때도 유용하다. 흥미롭게도 인용에서 가장 흔한 오류는 저자 이름에서 비롯된다. 이름은 보통 이름(주어진 이름), 중간 이름, 성(가족 이름 또는 성씨)으로 이루어진다. 표 1.3에 저자 이름 표기에서 자주 보아온 오류를 정리했다.
 
-**Table 1.2**
+**표 1.2** 문헌 검색에서 얻은 주요 정보
 
-문헌 검색에서 얻은 주요 정보
-
-번호 정보 유형
-
-사용된 예시에 특이적인 정보
-
-## 이 정보가 당신에게 어떻게 유용한가?
-
-논문 유형
-
-Review
-
-| 2* | 저널 | Critical Reviews in Microbiology, Crit Rev Microbiol로 약기 | 이 저널은 이 논문이 원래 게재된 학술 저널이다. |
+| 번호 | 정보 유형 | 예시(해당 논문) | 이 정보가 주는 이점 |
 | --- | --- | --- | --- |
-| 3 | 출판 일자 | 2014년 8월 | 이 정보는 논문이 출판된 시점을 알려주며, 현재 최첨단 기술 대비 정보가 얼마나 최신인지 가늠하게 한다. |
-| 4* | 권 (호) | 40권, 3호 | 이들은 이 논문이 게재된 저널의 권호와 호수이다. |
-| 5* | 페이지 번호 | 236쪽부터 247쪽까지, 흔히 236-47 또는 236-247과 같은 번호 범위로 표기 | 이들은 이 논문이 게재된 호의 페이지 범위이다. |
-| 6 | 디지털 객체 식별자 (DOI) | https://doi.org/ 10.3109/1040841X. 2013.776512 | 이 고유한 영숫자 문자열은 저널 논문이나 전자책과 같은 온라인 문서에 할당된다. DOI는 유사한ar way to a URL, but it is more permanent and reliable. DOI is usually written in two formats: 5 DOI: xxx (e.g., DOI: 10.3109/1040841X.2013.776512) 5 https://doi.org/xxx (e.g., https://doi.org/10.3109/10408 41X.2013.776512) |
-| 7* | 제목 | The Cellulolytic System of Thermobifida fusca | 이것이 논문의 제목이다. |
-| 8* | 제1저자 | Eva Maria Gomez del Pulgar, Gomez del Pulgar EM으로 약기 | 이 저자의 연구 작업을 추적하거나 이 저자가 쓴 논문을 찾아보는 것이 즐겁다면, 다른 논문을 검색할 수 있다.om the same author, e. g., using the search term Gomez del Pulgar EM[Author]. |
-| 9* | last author → 마지막 저자 | Anas Saadeddin, Saadeddin A로 약기 | 위와 동일. |
+| 1* | 논문 유형 | Review | 읽게 될 논문의 유형을 알려 준다. 리뷰 논문은 주제를 폭넓게 요약한다. |
+| 2* | 저널 | Critical Reviews in Microbiology (약칭 Crit Rev Microbiol) | 논문이 원래 실린 학술 저널이다. |
+| 3 | 출판 일자 | 2014년 8월 | 논문이 나온 시점을 알려 주어 최신성을 가늠하게 한다. |
+| 4* | 권(호) | 40권 3호 | 게재 저널의 권과 호이다. |
+| 5* | 페이지 | 236-247쪽 (236-47 또는 236-247로 표기) | 게재 호 안에서의 페이지 범위이다. |
+| 6 | DOI | https://doi.org/10.3109/1040841X.2013.776512 | 온라인 문서에 부여되는 고유 식별자로 URL보다 영구적이고 안정적이다. 'DOI: xxx' 또는 'https://doi.org/xxx' 형식으로 쓴다. |
+| 7* | 제목 | The Cellulolytic System of *Thermobifida fusca* | 논문의 제목이다. |
+| 8* | 제1저자 | Eva Maria Gomez del Pulgar (Gomez del Pulgar EM) | 같은 저자의 다른 논문을 찾을 때는 'Gomez del Pulgar EM[Author]' 같은 검색어를 쓸 수 있다. |
+| 9* | 마지막 저자 | Anas Saadeddin (Saadeddin A) | 위와 동일하다. |
+| 10 | 소속 | Abengoa Research, Campus Palmas Altas, Seville, 스페인 | 저자에게 연락하고 싶을 때 유용한 근무 주소이다. |
+| 11 | PMID | 23537325 | PubMed 데이터베이스에서 논문을 찾게 해 주는 고유 번호이다. |
+| 12 | 초록 | 바이오에탄올 ...... 인공 셀룰로솜 과정 | 제목보다 구체적으로 내용과 핵심 결과를 요약하여, 읽을 가치를 판단하게 해 준다. |
+| 13 | 전문 링크 | '전문 보기' 아이콘 (Taylor & Francis) | 오픈 액세스 논문은 누구나 읽고 PDF를 내려받을 수 있다. 그렇지 않은 저널은 구독이 필요하며, 소속 기관이 구독 중이라면 이용할 수 있다. |
+| 14 | 공유 | Twitter, Facebook, 퍼머링크 아이콘 | 논문을 공유할 때 쓴다. |
+| 15 | 유사 논문 | 초록 아래의 논문 목록 | 관련 논문에 빠르게 접근하게 해 준다. |
 
-당신이 읽게 될 논문의 유형을 보여준다.
+\* 논문 인용에 흔히 쓰이는 정보.
 
+리뷰 논문 몇 편을 읽고 나면 이제 구체적인 연구 내용과 방법을 파악하기 위해 원본 연구 논문으로 나아가게 된다. Journal of Proteome Research에 실린 'Quantitative iTRAQ secretome analysis of cellulolytic *Thermobifida fusca*'를 예로 삼아, 원본 연구 논문의 구조와 구성 요소를 설명해 보자(표 1.4).
 
-번호 정보 유형
+**표 1.3** 저자 이름 표기에서 흔히 발생하는 오류
 
-| 10 | 소속 | Abengoa Research, Abengoa, Campus Palmas Altas, Seville, 스페인 | 이 저자들의 근무 주소는 그들에게 연락하고자 할 때 유용하다. |
-| --- | --- | --- | --- |
-| 11 | PubMed 식별자 (PMID) | 23537325 | 이 고유한 식별자 번호는 PubMed 데이터베이스에서 이 논문을 검색한다. |
-| 12 | 초록 | 바이오에탄올 ...... 인공 셀룰로솜 과정. | 초록은 논문의 내용과 핵심 findings를 요약한다. 적합성을 평가하는 데 유용하다.nd quality beyond the broad information derived from the title. |
-| 13 | 전문 링크 | 'Taylor &amp; Francis' 아이콘에 '전문 보기' 문구 포함 | 오픈 액세스 논문의 경우, 전문을 읽거나 이 논문의 PDF를 다운로드할 수 있다. 일부 저널은 요구한다.uire subscription. If your academic or research institution subscribes to these journals, you can also read or download articles from these journals. |
-| 14 | 공유 | Twitter 아이콘, Facebook 아이콘, 퍼머링크 아이콘 | |
-| 15 | 유사 논문 | 초록 아래에 있는 논문 목록 | 이 목록을 통해 관련 논문에 빠르게 접근할 수 있다. |
+| 이름 유형 | 예시 | 잘못된 표기 | 올바른 표기 | 설명 |
+| --- | --- | --- | --- | --- |
+| 움라우트 | Johannes Müller | Johannes Muller | Müller J | 알파벳 26자 외에 독일어에는 a, o, u 위에 두 점을 찍어 ä, ö, ü를 만드는 움라우트(umlaut) 발음 구별 기호가 있다. |
+| 전치사 | Vincent van Gogh | Gogh VV | van Gogh V | 'van'(소문자)처럼 분사, 접두사, 전치사를 포함한 성씨가 있다. |
+| 이중 성씨 | Andrew Lloyd Webber | Webber AL | Lloyd Webber A | 두 가문의 성씨가 이어진 이름이 있다. |
+| 아랍어 이름 | Mahathir bin Mohamad | Mohamad MB | bin Mohamad M | 아랍어 이름에서 'ibn'과 'bin'은 모두 '~의 아들'이라는 뜻이다. |
+| 세 글자 중국 이름 | Lee Kuan Yew | LK Yew | KY Lee | 중국 이름을 한자(李光耀)로 쓸 때는 성(李)이 맨 앞에 온다. 세 단어 이름에서 'Kuan Yew'가 이름이고 'Lee'가 성이다. |
 
-*논문 인용에 사용되는 일반 정보.
+**표 1.4** 과학 논문의 구성과 각 섹션에서 얻을 수 있는 정보
 
-'The cellulolytic system of Thermobifida fusca'2가 Journal of Proteome Research에 게재된 것을 예로
-들어 원본 연구 논문의 구조와 그 구성 요소를 설명해 보자.
-
-'The cellulolytic system of Thermobifida fusca'2가 Journal of Proteome
-Research에 게재된 것을 예로 들어 원본 연구 논문의 구조와 그 구성 요소를 설명해 보자.
-
-**Table 1.3**
-
-저자 이름 보고에서 흔히 발생하는 오류
-
-| 흔한 오류 올바른 표기 | 설명 |
-| --- | --- |
-| 오류 | |
-| 움라우트 요하네스 뮐러 요하네스 | 알파벳 26자 외에도, |
-| Müller(뮐러) | 독일어는 또한 다음과 같은 특징이 있다 |
-
-| 전치사 | Vincent van Gogh는 'Gogh VV'로 약기 | van Gogh V | 'van'(소문자로 표기)과 같은 분사, 접두사, 전치사를 사용하는 성씨가 있다. |
-| --- | --- | --- | --- |
-| 이중 성씨 | Andrew Lloyd Webber는 'Webber AL'로 약기 | Lloyd Web- ber A | 이름은 두 가문의 두 성씨를 가질 수 있다. |
-| 아랍어 이름 | Mahathir bin Mohamad는 'Mohamad MB'로 약기 | bin Moha- mad M | 아랍어 이름에서 'ibn'과 'bin'은 모두 '~의 아들'로 번역된다. |
-| 세 글자로 된 중국 이름 | Lee Kuan Yew는 'LK Yew'로 약기 | KY Lee | 중국 이름이 한자(李光耀)로 표기될 때, 성(李)이 항상 먼저 나온다. 일부 중국 이름은 세 단어로 구성된다(예: 'Lee Kuan Yew'). 이 예에서 'Kuan Yew'는 이름이고 'Lee'는 성이다. |
-| | an | | |
-| Section | Type of found | that can be | Examples |
-| Introduction | • Background of • Objectives of the • Unique study | research study of this | • Background on lignocellulosic biomass degradation • The objective of this study was to identify and quantify the predominant secretary proteins involved in cellulose and lignin hydrolysis |
-| Materials &amp; Methods | • Details of the the experiments duced by an researcher | that allow be repro- | • Chemicals used, their suppliers, and product numbers • Media/buffer composition • Cultivation conditions of T. fusca • Secretome extraction procedures • Proteomics procedure and data analysis • Enzymatic assay for cellulose hydrolysis |
-
-움라우트(umlaut), 즉 'a', 'o', 'u' 위에 두 개의 점을 찍어 'ä',
-'ö', 'ü'를 형성하는 발음 구별 기호 때문에 발생한다.
-
-
-## 섹션
-
-| 결과 | • 실험 데이터는 일반적으로 그림(그래프, 사진 등)과 표 형식으로 제시된다. | • Proteins secreted by T. fusca (e.g., cel- lulases, hemicellulases, other glycoside hydrolases, proteolytic enzymes, etc) under different culture conditions (e.g., in the presence of cellulose, lignin, and cellulose + lignin) |
+| 섹션 | 담고 있는 정보 | 예시 |
 | --- | --- | --- |
-| 토론 | • 결과의 중요성. 이 섹션은 때때로 '결과' 섹션과 통합되기도 한다. | • Discussion on various protein classes secreted by T. fusca • Molecular mechanism of protein secre- tion by T. fusca • Biotechnological applications of enzymes secreted by T. fusca |
-| 결론 | • 연구의 결론 • 일부 저자는 향후 연구를 간략히 기술할 수 있다. | • This study reported the comprehensive systematic quantification and regulation of T. fusca secretome constituent includ- ing cellulases, hemicellulases, other gly- coside hydrolases, proteases, and others |
-| 감사의 글 | • 연구 중 도움을 준 사람들의 목록(예: 샘플 제공, 언어 도움, 작성 지원 또는 논문 교정 등) • 재정 지원을 제공한 기관의 목록(예: 펀딩 기관, 장학금 제공자 등) | • Funding agencies and grant codes |
-| 이용 가능한 보충 자료 | • Materials &amp; Methods에 대한 추가 정보 • 추가 그림 및 표 • DNA 또는 단백질 서열 • 원시 데이터 | • 단백질체학 데이터에 대한 추가 표가 보충 자료로 제공된다. |
-| 참고문헌 | • 논문에서 인용된 참고문헌 목록 | • 논문에서 총 37개의 참고문헌이 인용되었다. |
-| 1. A research 2. A research technical 3. PubMed of | search is a fundamentally search helps the researchers project, build background knowledge and experimental is one of the most commonly engineering. | aspect of executing a successful understand the significance of the on the research topic, expand and hone technical writing. academic search engines in the field |
+| 서론 (Introduction) | 연구 배경, 연구 목적, 연구의 독창성 | • 리그노셀룰로오스 바이오매스 분해에 대한 배경 • 이 연구의 목적은 셀룰로오스·리그닌 가수분해에 관여하는 주요 분비 단백질을 규명하고 정량하는 것이었다 |
+| 재료와 방법 (Materials & Methods) | 다른 연구자가 실험을 재현할 수 있게 하는 세부 정보 | • 사용한 시약, 공급사, 제품 번호 • 배지·완충액 조성 • T. fusca 배양 조건 • 분비 단백질체 추출 절차 • 프로테오믹스 절차와 데이터 분석 • 셀룰로오스 가수분해 효소 분석 |
+| 결과 (Results) | 실험 데이터(보통 그림과 표로 제시) | • 서로 다른 배양 조건(셀룰로오스, 리그닌, 셀룰로오스+리그닌)에서 T. fusca가 분비한 단백질(셀룰레이스, 헤미셀룰레이스, 기타 글리코사이드 하이드롤레이즈, 단백질 분해 효소 등) |
+| 토론 (Discussion) | 결과의 의미(때때로 결과 섹션과 통합됨) | • T. fusca가 분비하는 단백질군에 대한 논의 • 단백질 분비의 분자 메커니즘 • 분비 효소의 생물공학적 활용 |
+| 결론 (Conclusion) | 연구 결론(일부 저자는 향후 연구도 제시) | • 셀룰레이스, 헤미셀룰레이스, 기타 글리코사이드 하이드롤레이즈, 프로테아제 등을 포함한 T. fusca 분비 단백질체 구성과 조절에 대한 체계적 정량 보고 |
+| 감사의 글 (Acknowledgements) | 도움을 준 사람과 지원 기관 목록 | • 연구비를 지원한 기관과 과제 번호 |
+| 보충 자료 (Supplementary material) | 방법에 대한 추가 정보, 추가 그림·표, DNA/단백질 서열, 원시 데이터 | • 단백질체학 데이터 추가 표가 보충 자료로 제공된다. |
+| 참고문헌 (References) | 인용된 문헌 목록 | • 이 논문에는 총 37개의 참고문헌이 인용되었다. |
 
-발견할 수 있는 정보의 유형
+## 핵심 메시지
 
-## 예시
+1. 문헌 검색은 연구 수행의 가장 기본적인 출발점이다.
+2. 기술 문헌 검색은 연구자가 과제의 중요성을 이해하고, 주제에 대한 배경 지식을 쌓으며, 실험·논술 역량을 다지는 데 도움이 된다.
+3. PubMed는 이 분야에서 가장 널리 쓰이는 학술 검색 엔진 가운데 하나이다.
+4. 검색의 질은 검색 엔진과 함께 쓰는 키워드가 좌우한다.
+5. 저자 이름 오류는 참고문헌 작성과 학술 소통에서 흔한 문제이다.
+6. 초록은 모든 연구 논문의 필수 부분으로, 연구를 간결하게 요약하고 더 읽게 이끌어야 한다.
+7. 대부분의 과학 논문은 공통 형식을 공유하며, 섹션마다 담는 정보 유형이 정해져 있다.
+8. 과학 논문은 서론, Materials & Methods, 결과, 토론, 결론, 감사의 글, 보충 자료, 참고문헌으로 구성된다.
 
-| 4. 문헌 검색의 검색 품질은 학술 검색에 의해 결정된다 |
-| --- |
-| 엔진과 검색에 적용된 키워드에 의해. |
-| 5. 저자 이름의 오류는 참고문헌 작성과 과학 커뮤니케이션에서 흔한 문제이다. |
-| 커뮤니케이션. |
-| 6. 초록은 모든 연구 논문의 필수 부분이다. 간결한 |
-| 연구 요약을 제공하고 독자가 더 읽도록 장려해야 한다. |
-| 7. 대부분의 과학 논문은 공통 형식을 공유한다. 구분된 |
-| 섹션으로 나뉘며 각 섹션은 특정 유형의 정보를 포함한다. |
-| 8. 과학 논문은 다음과 같은 부분으로 구성된다: 서론, Materials &amp; Meth- |
-| ods, 결과, 토론, 결론, 감사의 글, Supporting Informa- |
-| tion Available 및 References. |
-| 연습문제 |
-| 교토 공업대학의 과학자들은 Ideonella라는 세균을 분리했다. |
-| sakaiensis 201-F6를 일본 |
-| 사카이(Sakai)의 PET 병 재활용 시설에서. 이 세균은 PET 플라스틱을 주요 탄소 및 에너지원으로 사용한다. |
-| 원천(Science 2016, DOI: https://doi.org/10.1126/science.aad6359). 두 가지 |
-| 이 세균에는 PET를 단량체로 분해하는 역할을 하는 두 가지 효소가 있다. |
-| 즉, 테레프탈산과 에틸렌 글리콜. 지도교수는 당신이 |
-| 향상된 플라스틱 분해를 위해 폴리에스테라아제를 개량하기를 원한다. |
-| (a) 효소적 플라스틱 분해에 대한 PubMed 검색에 사용할 수 있는 잠재적 키워드를 나열하라. |
-| 효소적 플라스틱 분해. |
-| 이 논문의 제목은 무엇인가? (2016년 Science) |
-| 이 연구의 제1저자는 누구인가? |
-| (d) PET를 그 단량체인 |
-| 테레프탈산과 에틸렌 글리콜로 전환하는 두 가지 효소는 무엇인가? |
-| 더 읽어보기 |
+## 연습문제
 
-Ecker ED, Skelly AC (2010) Conducting a winning literature search. Evid Based Spine Care J 1(1):9-14. Falagas ME, Pitsouni EI, Issioui T, Chochlakis D, Poulakkakis M, Stavrovski L (2005) Reference managers: a comparative analysis of products and features. Health Info Libr J 22(3):227-38. Higgins JPT, Green S (editors) (2011) Cochrane Handbook for Systematic Reviews of Interventions. Chichester: Wiley-Blackwell. 이용 가능: https://training.cochrane.org/handbook
+교토공업대학의 과학자들이 일본 사카이의 PET 병 재활용 시설에서 *Ideonella sakaiensis* 201-F6를 분리했다. 이 세균은 PET 플라스틱을 주된 탄소원이자 에너지원으로 쓴다(Science 2016, DOI: https://doi.org/10.1126/science.aad6359). 이 세균은 PET를 단위체인 테레프탈산과 에틸렌 글리콜로 분해하는 두 효소를 지니고 있다. 지도교수는 플라스틱 분해 성능이 더 좋은 폴리에스터레이스를 개량해 달라고 한다.
+
+(a) 효소적 PET 분해를 PubMed에서 찾는 데 쓸 수 있는 잠재적 키워드를 나열하라.
+(b) (a)의 검색으로 찾은 2016년 Science 논문의 제목은 무엇인가?
+(c) 이 연구의 제1저자는 누구인가?
+(d) PET를 테레프탈산과 에틸렌 글리콜로 전환하는 두 효소의 이름은 무엇인가?
+
+## 더 읽어보기
+
+- Ecker ED, Skelly AC (2010) Conducting a winning literature search. Evid Based Spine Care J 1(1):9-14
+- Falagas ME, Pitsouni EI, Issioui T, Chochlakis D, Poulakkakis M, Stavrovski L (2005) Reference managers: a comparative analysis of products and features. Health Info Libr J 22(3):227-38
+- Higgins JPT, Green S 편 (2011) Cochrane Handbook for Systematic Reviews of Interventions. Chichester: Wiley-Blackwell. https://training.cochrane.org/handbook 에서 이용 가능
 
 # 2장 · 서열 분석
 
 ## 이 장에서 배울 내용
 
-이 장에서는 다음을 배운다: 셀룰로오스의 화학적 구조 설명하기, 셀룰로오스 분해에 관여하는
-주요 효소 특정하기, 셀룰로오스 분해 효소를 암호화하는 유전자 식별하기, 뉴클레오타이드 및
-단백질 서열 검색하기, 유전자 서열 추출 및 비교하기.
+이 장에서는 다음을 배운다:
 
-사례 연구 1의 과제를 상기해 보자. 효소 유전자를 기반으로 셀룰로오스 분해를 위한 효소 칵테일을 만드는 과제를 받았다. 이러한 효소를 암호화하는 유전자를
-어디에서 찾을 수 있을까?
+- 셀룰로오스의 화학적 구조를 설명한다
+- 셀룰로오스 분해에 관여하는 주요 효소를 짚는다
+- 셀룰로오스 분해 효소를 암호화하는 유전자를 찾는다
+- 뉴클레오타이드 및 단백질 서열을 얻는다
+- 유전자 서열을 추출하고 비교한다
+
+1장의 사례를 상기해 보자. 효소 유전자를 바탕으로 셀룰로오스 분해용 효소 칵테일을 만드는 과제를 받았는데, 이 효소들을 암호화하는 유전자는 어디서 찾을 수 있을까?
 
 ## 2.1 유전자 정보
 
-이 시점에서 당신은 다음과 같이 물을 수 있다: 이러한 효소를 암호화하는 유전자를 어디에서 찾을 수 있을까? T.
-fusca 게놈에는 몇 개의 endo-β-1,4-glucanase 암호화 유전자가 있을까?
+이런 질문이 자연스럽게 따라온다. 이 효소들을 암호화하는 유전자는 어디에 있을까? T. fusca 게놈에는 endo-β-1,4-glucanase 유전자가 몇 개일까? exoglucanase 유전자는? β-1,4-glucosidase 유전자는?
 
-**표 2.1**
+**표 2.1** 셀룰로오스 분해에 관여하는 주요 효소
 
-셀룰로오스 분해에 관여하는 주요 효소
-
-| 주요 효소 | Enzyme Commission (EC) 번호 | 효소 작용 | 동의어 |
+| 주요 효소 | EC 번호 | 효소 작용 | 동의어 |
 | --- | --- | --- | --- |
-| Endo-β-1,4- 글루카나아제 | 3.2.1.4 | 셀룰로오스의 내부 글리코시드 결합을 가수분해 | 엔도글루카나아제(EG) / 셀룰라아제(일부 문헌에서) |
-| 엑소글루카나아제 | 3.2.1.91 | 비환원성 또는 환원성 사슬 끝에서 셀룰로오스를 가수분해하여 셀로비오스를 방출 | Cellulose 1,4-β-셀로바이오시데이스 / 셀로바이오하이드롤라아제(CBH) |
-| β-1,4- 글루코시데이스 | 3.2.1.21 | 셀로비오스를 가수분해하여 글루코스를 방출 | β-글루코사이드 글루코하이드롤라아제 / β-글루코시데이스(BGL) |
+| Endo-β-1,4-글루카나아제 | 3.2.1.4 | 셀룰로오스의 내부 글리코시드 결합을 가수분해 | 엔도글루카나아제(EG) / 셀룰레이스(일부 문헌) |
+| 엑소글루카나아제 | 3.2.1.91 | 비환원성 또는 환원성 사슬 끝에서 셀룰로오스를 가수분해하여 셀로비오스를 방출 | 셀룰로오스 1,4-β-셀로바이오시데이스 / 셀로비오스하이드롤레이스(CBH) |
+| β-1,4-글루코시데이스 | 3.2.1.21 | 셀로비오스를 가수분해하여 글루코스를 방출 | β-글루코사이데이스 / 글루코하이드롤레이스(BGL) |
 
+유전자를 찾는 방법은 세 가지(KEGG, NCBI, SnapGene)를 소개한다. 어느 방법이든 절차는 같다:
 
-T. fusca 게놈에는 몇 개의 exoglucanase 암호화 유전자가 있을까? 몇 개의 β-1,4-glucosidase
-암호화 유전자가 있을까?
+1. T. fusca 게놈을 확보한다
+2. 관심 효소(예: endo-β-1,4-glucanase)를 암호화하는 유전자를 찾는다
+3. 해당 유전자 서열을 추출한다
 
-이제 유전자 검색의 세 가지 다른 방법(KEGG, NCBI, SnapGene)을 보여 주겠다. 각 방법에 대해 다음 단계를 수행한다:
+## 2.1.1 Kyoto Encyclopedia of Genes and Genomes (KEGG, 유전자와 유전체 교토 백과사전)
 
-1. T. fusca의 게놈 얻기
+KEGG는 세포, 생물, 생태계의 고차 기능과 유용성을 이해하기 위한 데이터베이스 자원으로, 유전자 경로 지도(pathway maps)의 모음과 표현을 통해 게놈 서열과 기타 고분자가 만들어 내는 정보를 체계화한다.
 
-2. 관심 효소(예: endo-β-1,4-glucanase)를 암호화하는 유전자 검색하기
+1. **T. fusca 게놈 얻기**: KEGG 웹사이트에서 T. fusca YX 게놈 페이지로 이동한다.
+2. **엔도글루카나아제 유전자 검색**: 'Annotation' 아래에서 'Show organism'을 클릭한 뒤, 'Search gene' 검색 상자에 Tfu_0901을 입력하고 Enter 키를 누른다.
+3. **유전자 서열 추출**: 자세한 내용을 보려면 'Tfu_0901'을 클릭한다. 오른쪽에서 'Generate FASTA'를 누르면 FASTA 서열을 얻을 수 있다.
 
-3. 해당 유전자 서열 추출하기
+KEGG는 방대한 정보를 제공하는 훌륭한 데이터베이스이며, 단백질 공학을 공부하는 학생에게도 중요한 자원이 될 수 있다. KEGG로 유전자를 찾고 경로 지도를 둘러보면 세포 안의 분자 상호작용과 반응, 특히 관심 단백질이 걸려 있는 대사 경로를 깊이 이해할 수 있다.
 
-## 2.1.1 Kyoto Encyclopedia of Genes and Genomes (KEGG, 유전자 및 유전체 교토 백과사전)
+## 2.1.2 National Center for Biotechnology Information (NCBI, 미국 국립생물공학정보센터)
 
-KEGG는 세포, 유기체, 생태계에 관련된 고등 기능 및 유용성을 이해하기 위한 데이터베이스 자원으로, 유전자 경로 지도(pathway maps)의
-수집과 표현을 통해 게놈 서열 및 기타 고분자에 의해 생산된 정보를 체계화한다.
+1장에서 PubMed를 운영하는 NCBI를 잠깐 소개했다. NCBI는 게놈학, 유전학, 생화학 문헌 정보에 접근할 수 있는 훌륭한 자원이기도 하다. NCBI 웹사이트(https://www.ncbi.nlm.nih.gov/)에서 'Database'를 클릭하면 이용 가능한 데이터베이스 목록을 볼 수 있고, 특정 데이터베이스(예: Nucleotide, Protein, Structure)를 클릭하면 설명과 검색 기능을 쓸 수 있다.
 
-1. T. fusca의 게놈 얻기
+게놈 DNA(genomic DNA, gDNA)는 생물이 지닌 유전 물질 전부를 가리킨다.
 
-2. 엔도글루카나제 암호화 유전자 검색하기: 'Annotation' 항목 아래에서 'Show organism'을 클릭한다. 'Search gene' 쿼리 상자에 Tfu_0901을 입력하고 'Enter' 키를 누른다.
+1. **T. fusca 게놈 얻기**: Nucleotide 데이터베이스에서 T. fusca YX 완전 게놈(CP000088.1)을 찾아 연다.
+2. **엔도글루카나아제 유전자 검색**: ⌘+F(윈도우는 Ctrl+F)로 페이지 안에서 endoglucanase를 찾는다. 검색 창에 유전자 이름이나 주석을 입력하면 된다.
+3. **유전자 서열 추출**: 해당 유전자 영역을 확인하고 서열을 FASTA로 저장한다.
 
-3. 해당 엔도글루카나제 유전자 서열 추출하기: 유전자 Tfu_0901에 대해 더 알아보려면 'Tfu_0901'을 클릭한다. 오른쪽에서 'Generate FASTA'를 클릭하여 FASTA 서열을 얻는다.
-
-KEGG는 방대한 양의 정보를 제공하는 훌륭한 데이터베이스이다. 단백질 공학에 관심 있는 학생들에게 KEGG는 중요한 자원이 될 수 있다.
-KEGG를 사용하여 유전자를 검색하고 유전자 경로 지도를 탐색함으로써 세포 내 분자 상호작용과 반응, 특히 관심 단백질이 관여하는 대사 경로에
-대한 깊은 이해를 얻을 수 있다.
-
-## 2.1.2 National Center for Biotechnology Information (NCBI, 미국 국립 생물공학 정보센터)
-
-7장 1장에서 PubMed가 호스팅되는 NCBI를 간략히 소개했다. NCBI는 게놈학, 유전학, 생화학 문헌 정보에 접근할 수 있는 훌륭한
-자원이다. NCBI 웹사이트(https://www.ncbi.nlm.nih.gov/)에 접속하여 'Database'를 클릭하면 이용 가능한
-다양한 데이터베이스를 확인할 수 있다. 특정 데이터베이스(예: Nucleotide, Protein, Structure)를 클릭하면 해당
-데이터베이스에 대한 설명과 검색 기능에 접근할 수 있다.
-
-게놈 DNA(genomic DNA, gDNA)는 생물체의 전체 유전 물질을 의미한다.
-
-2. 엔도글루카나제 암호화 유전자 검색하기 5 ⌘+F를 눌러 검색한다 5 검색 창에서
-
-3. 해당 엔도글루카나제 유전자 서열 추출하기 5 유전자에 대해 더 알아보려면
-
-당신은 Endoglucanase와 Cellulase라는 두 용어가
-used for t
-
+참고로 문헌에서는 endoglucanase와 cellulase라는 두 용어가 섞여 쓰인다. 셀룰레이스(cellulase)는 셀룰로오스를 분해하는 효소 전반을 아우르는 넓은 표현이라는 점을 표 2.1의 동의어에서 확인할 수 있다.
 
 ## 2.1.3 SnapGene
 
-다음으로 소개할 방법은 먼저 무료 소프트웨어를 다운로드해야 한다
+다음 방법은 무료 소프트웨어를 먼저 내려받아야 한다.
 
-1. T. fusca의 게놈 얻기 5 SnapGene Viewer로 이동한다 5 'Import'를 클릭하고 선택한다
+1. **T. fusca 게놈 얻기**: SnapGene Viewer를 실행하고, NCBI에서 내려받은 T. fusca YX 게놈 GenBank 파일을 연다('Import').
+2. **엔도글루카나아제 유전자 검색**: 하단 도구 모음에서 'Features'를 클릭하면 유전자 주석을 살펴볼 수 있다.
+3. **유전자 서열 추출**: 해당 유전자를 선택하여 서열을 복사하거나 FASTA로 내보낸다.
 
-2. 엔도글루카나제 암호화 유전자 검색하기 5 하단 도구 표시줄에서 'Features'를 클릭한다
-
-3. 해당 엔도글루카나제 유전자 서열 추출하기 5 더 알아보려면
-
-T. fusca YX 게놈을 자주 다룰 생각이라면, 우리는
-would strongly
+T. fusca YX 게놈을 자주 다루게 될 것이라면 SnapGene 사용을 권한다.
 
 ## 2.1.4 기타 단백질 서열 데이터베이스
 
-UniProt은 단백질 서열과 기능 정보에 무료로 접근할 수 있는 데이터베이스이다
+UniProt은 단백질 서열과 기능 정보를 무료로 제공하는 데이터베이스다.
 
 - UniProt 웹페이지(https://www.uniprot.org/)로 이동한다
-org/) 5 'UniProtKB'에서
+- 'UniProtKB' 검색 상자에 Tfu_0901을 입력하고 검색한다
+- 레코드(UniProt accession: Q47RH8)에서 FASTA 서열을 내려받는다
 
-UniProt은 단백질 서열의 요약도 제공하는데, 여기에는
-some ver
+UniProt은 서열 요약도 제공하는데, 실험으로 검증된(verified) 기능 정보와 서열 버전 이력 등이 포함된다. NCBI Protein 데이터베이스에서 accession 번호 Q47RH8로 직접 검색할 수도 있다.
 
-특정 단백질 서열을 찾는 또 다른 빠르고 쉬운 방법은
-서열을 활용하는 방법은
+이쯤에서 'FASTA란 무엇인가?'라고 물을 수 있다. FASTA는 서열을 텍스트로 표현하는 형식이다:
 
-이 시점에서 'FASTA란 무엇인가?'라고 물을 수 있다. FASTA 형식은 텍스트 기반 형식이다
+```
+>CP000088.1:1062716-1064116 Thermobifida fusca YX, complete genome
+TCAGGACTGGAGC...
+```
 
-GenBank 위치
-accession 이 안에
-number genome
+- '>'로 시작하는 첫 행(defline)에는 accession 번호(CP000088.1), 게놈 안에서의 위치(1062716-1064116), 설명이 들어간다.
+- 그 아래 행에는 DNA 서열이 이어진다.
 
-설명
-
-설명
-line (defline)
-
-DNA 서열
-
->CP000088.1:1062716-1064116 Thermobifida fusca YX, 완전 게놈
-TCAGGACTGGAGC
-
-가닥은 이 유전자 서열의 역상보(reverse complement)가 될 것이다(2.절
+가져온 서열이 코딩 가닥이 아니라면 코딩 가닥은 이 유전자 서열의 역상보(reverse complement)가 될 것이다(2.2.2.1절).
 
 ## 2.2 유전자 분석
 
-이제 유전자 서열을 검색하는 방법을 알았으니, 분석해 보자
-sequence. I
+서열을 손에 넣었으니 분석해 보자. 표 2.2의 도구 대부분은 Swiss Institute of Bioinformatics(SIB)가 운영하는 ExPASy 포털(https://www.expasy.org/)과 EMBL 유럽생물정보학연구소(EMBL-EBI, https://www.ebi.ac.uk/)에서 무료로 이용할 수 있다. 두 기관은 생물정보학 데이터베이스와 소프트웨어를 개발·제공하는 대표적인 기관이다.
 
-(https://www.ebi.ac.uk/)
+**표 2.2** 단백질 서열 및 DNA 서열 분석을 위한 생물정보학 도구
 
-ExPASy는 과학 데이터베이스와 소프트웨어에 무료로 접근할 수 있게 해준다
-tools in di
-
-Swiss Institute of Bioinformatics (SIB)와 유사하게, EMBL-EBI
-데이터베이스를 개발하며,
-
-**Table 2.2**
-
-단백질 서열 및 DNA 서열 분석을 위한 생물정보학 도구
-
-| 분석 유형 | 도구 | URL | 이 도구를 언제 사용해야 하는가? |
+| 분석 유형 | 도구 | URL | 이 도구를 언제 쓰는가? |
 | --- | --- | --- | --- |
-| 단백질 서열 분석 | ProtParam | https://web. expasy. org/ protparam/ | 단백질 서열에 대한 다양한 물리적 및 화학적 파라미터를 계산 |
-| | SignalP | http://www. cbs. dtu. dk/ services/SignalP/ | 단백질 서열에서 신호 펩타이드의 존재와 절단 부위의 위치를 예측 |
-| | BLAST | https://blast. ncbi. nlm. nih. gov/Blast. cgi | 생물학적 서열 (단백질 또는 염기 서열) 간 유사성 영역을 찾음 |
-| | Clustal Omega | https://www. ebi. ac. uk/ Tools/msa/clustalo/ | 다중 서열을 정렬(단백질 또는 염기 서열) |
-| | Pfam | https://pfam. xfam. org/ | 단백질 패밀리, 도메인 및 기능적 부위를 식별 |
-| | PROSITE | https://prosite. expasy. org/ | Identifies protein family, domain(s) and functional site(s) |
-| | SMART | http://smart. embl- heidelberg. de/ | 도메인 구조 분석 |
-| | InterPro | http://www. ebi. ac. uk/ interpro/search/sequence/ | Identifies protein family, domain(s) and functional site(s) |
-| DNA sequence analysis | Reverse Com- plement | https://www. bioinformatics. org/sms/ rev_comp. html | DNA 서열을 그 역상보, 상보, 또는 역상보 대응물로 변환 |
-| | DNA Stats | https://www. bioinformatics. org/sms2/ dna_stats. html | DNA 서열에서 각 염기의 출현 횟수를 반환 |
-| | Translate | https://web. expasy. org/ translate/ | 염기 (DNA/RNA) 서열을 단백질 서열로 번역 |
-| | Codon Usage | https://www. bioinformatics. org/sms2/ codon_usage. html | DNA 서열에서 각 코돈 유형의 개수와 빈도를 반환 |
-| | Reverse Translate | https://www. bioinformatics. org/sms2/rev_trans. html | 단백질 서열을 염기 서열로 역번역 |
+| 단백질 서열 분석 | ProtParam | https://web.expasy.org/protparam/ | 단백질 서열의 다양한 물리·화학적 파라미터를 계산한다 |
+|  | SignalP | http://www.cbs.dtu.dk/services/SignalP/ | 단백질 서열에서 신호 펩타이드의 존재와 절단 위치를 예측한다 |
+|  | BLAST | https://blast.ncbi.nlm.nih.gov/Blast.cgi | 생물 서열(단백질 또는 염기) 사이의 유사 영역을 찾는다 |
+|  | Clustal Omega | https://www.ebi.ac.uk/Tools/msa/clustalo/ | 여러 서열을 정렬한다(단백질 또는 염기) |
+|  | Pfam | https://pfam.xfam.org/ | 단백질 패밀리, 도메인, 기능 부위를 찾는다 |
+|  | PROSITE | https://prosite.expasy.org/ | 단백질 패밀리, 도메인, 기능 부위를 찾는다 |
+|  | SMART | http://smart.embl-heidelberg.de/ | 도메인 구조를 분석한다 |
+|  | InterPro | https://www.ebi.ac.uk/interpro/search/sequence/ | 단백질 패밀리, 도메인, 기능 부위를 찾는다 |
+| DNA 서열 분석 | Reverse Complement | https://www.bioinformatics.org/sms/rev_comp.html | DNA 서열을 역상보로 바꾼다 |
+|  | DNA Stats | https://www.bioinformatics.org/sms2/dna_stats.html | DNA 서열에서 각 염기의 출현 횟수를 센다 |
+|  | Translate | https://web.expasy.org/translate/ | 염기(DNA/RNA) 서열을 단백질 서열로 번역한다 |
+|  | Codon Usage | https://www.bioinformatics.org/sms2/codon_usage.html | DNA 서열에서 코돈별 개수와 빈도를 센다 |
+|  | Reverse Translate | https://www.bioinformatics.org/sms2/rev_trans.html | 단백질 서열을 염기 서열로 역번역한다 |
 
-고처리량 스크리닝(HTS)은 많은 수의 시료를 동시에 빠르게 분석할 수 있는 방법이다.
-
-FASTA 형식으로 제시된 Tfu_0901의 단백질 서열표 2.2의 많은 도구들은 매우 널리 사용되어 당신은
-그것들을 찾을 수 있다
+표 2.2의 도구들은 매우 널리 쓰이므로 문헌에서도 쉽게 만날 수 있다.
 
 ## 2.2.1 단백질 서열 분석
 
-단백질 서열 분석부터 시작해 보자. 각 도구를 차례로 살펴볼 것이다
-**표 2.2에 나열된 순서대로, 관련된 단계와 핵심 정보를 보여준다.**
-각 분석에서 얻을 수 있는 정보.
+단백질 서열 분석부터 시작하자. 표 2.2에 나열한 순서대로 각 도구를 살펴보며 분석 절차와 얻을 수 있는 핵심 정보를 짚겠다.
 
-2.2.1.1 ProtParam
+### 2.2.1.1 ProtParam
 
-주요 단계: 5 ProtParam 웹페이지(https://web.expasy.org/protparam/)로 이동한다
-https://web. expasy. org/protparam/)
+주요 단계:
 
-표준 편차(SD)는 데이터의 변동성(variability)을 측정하는 지표이다.
+- ProtParam 웹페이지(https://web.expasy.org/protparam/)로 이동한다
+- Tfu_0901의 단백질 서열(MAK ...... LQS)을 붙여넣거나 UniProt accession(Q47RH8)을 입력한 뒤 실행한다
 
-- pI 값은 5.21이다. → 단백질의 pH를 결정하는 데 유용하다
-purificat
+이 분석에서 얻은 중요한 정보:
 
-A280 =
+- 분자량, 이론적 pI, 아미노산 조성, 소광 계수(ε) 등이 계산된다
+- pI 값은 5.21이다 → 정제와 보관에 쓸 완충액의 pH를 고를 때 유용하다
+- 소광 계수 ε을 알면 A280 흡광도 측정값으로 단백질 농도를 구할 수 있다 ($C = A_{280}/(\varepsilon \times l)$)
 
-- e
+### 2.2.1.2 SignalP
 
-1. SignalP
+주요 단계:
 
-주요 단계: 5 SignalP 웹페이지(http://www.cbs.dtu.dk/services/SignalP/)로 이동한다
-SignalP 웹페이지(7 5 다음에
-단백질 서열을 FASTA 형식으로
+- SignalP 웹페이지(http://www.cbs.dtu.dk/services/SignalP/)로 이동한다
+- 단백질 서열을 FASTA 형식으로 쿼리 상자에 붙여넣거나 올리고 실행한다
 
-http://www.cbs.dtu.dk/services/SignalP/) 쿼리 상자에 형식을 입력하거나 업로드한다
+이 분석에서 얻은 중요한 정보:
 
-T. fusca는 그람 양성(Gram-positive)
+- 신호 펩타이드(signal peptide)가 존재한다(잔기 1-36)
+- T. fusca는 그람 양성 세균이며 Tfu_0901은 분비 효소다. 대장균에서 발현할 때는 보통 신호 펩타이드 구간을 뺀 성숙 단백질(잔기 37-466)을 대상으로 한다(5.1.3절).
 
-이 분석에서 얻은 중요한 정보: 5 신호 펩타이드(signal peptide)
-펩타이드(1-36)가 존재
+### 2.2.1.3 BLAST
 
-2.2.1.3 BLAST
+주요 단계:
 
-주요 단계: 5 BLAST 웹페이지(https://blast.ncbi.nlm.nih.gov/Blast.cgi)로 이동한다
-웹페이지(7 5 'Web BLAST'에서 클릭하여
-'Protein BLAS
+- BLAST 웹페이지(https://blast.ncbi.nlm.nih.gov/Blast.cgi)로 이동한다
+- 'Web BLAST'에서 'Protein BLAST'를 선택한다
+- 단백질 서열(MAK ...... LQS)을 쿼리 상자에 붙여넣고 실행한다
 
-https://blast.ncbi.nlm.nih.gov/Blast.cgi)
+이 분석에서 얻은 중요한 정보:
 
-...... LQS를 쿼리 상자에 입력하거나
+- Tfu_0901은 *Thermobifida cellulosilytica*의 셀룰레이스와 가장 유사하다(identity 80.6%). 그다음으로 *T. halotolerans*의 셀룰레이스와도 유사하다(78.90%, 76.39%).
+- 정렬 결과를 보려면 'cellulase family glycosylhydrolase [*Thermobifida cellulosilytica*]' 링크를 클릭한다. 정렬에서 별표(*)는 동일한 아미노산, 콜론(:)은 강하게 유사한 아미노산, 마침표(.)는 약하게 유사한 아미노산을 가리킨다.
+- identity(%)는 쿼리와 대상 서열 사이에서 동일 아미노산이 차지하는 비율이다(갭은 제외).
+- 이번 시연에서는 'Non-redundant protein sequences (nr)' 데이터베이스를 대상으로 BLAST했지만, 다른 데이터베이스를 고를 수도 있다.
 
-이 분석에서 얻은 중요한 정보: Tfu_0901은 Thermobifida cellulosilytica의 셀룰라아제와 유사하며(percentage identity = 80.6%), Thermobifida halotolerans의 셀룰라아제와도 유사하다(78.90%). 만약 ~을 보고 싶다면
+### 2.2.1.4 Clustal Omega
 
-(78.90%), 그리고 Thermobifida halotolerans의 셀룰라아제(76.39%)와도 유사하다. 만약
+ProtParam, SignalP, BLAST가 서열 하나를 입력으로 받는 것과 달리 Clustal Omega는 여러 서열을 한꺼번에 정렬한다. 예로 다음 세 서열을 정렬해 보자:
 
-Tfu_0901과 T. cellulosilytica의 셀룰라아제 간 서열 정렬을 보고 싶다면, 'cellulase family glycosylhydrolase [Thermobifida cellulosilytica]' 링크를 클릭할 수 있다.
+```
+>AAZ54939.1 Cellulase, glycosyl hydrolase family 5 [Thermobifida fusca YX]
+MAKSPAARKGGPPVAVAVTAALALLIALLSPGVAQAAGLTATVTKESSWDNGYSASVTVRNDTSSTVSQWEVVL...
 
-쿼리 = Tfu_0901
+>WP_068752955.1 cellulase family glycosylhydrolase [Thermobifida cellulosilytica]
+MTRSPTALRGASPTAAALTAVLALVLALLSPGTARAAGLTATFAKDSSWDGGYTATVTVRNDTGSAVN...
 
-대상 = T. cellulosilytica의 셀룰라아제
+>BBA57842.1 endo-1,4-beta glucanase E5 [Thermobifida alba]
+MTRPPTALRGATPAAVALTAALALLLALLSPGVARAAGLTATFTKESTWDGGYTASVTVHNDTGGTVSHWQVVLTLPNGTTVNQAWNAQH...
+```
 
-동일성 백분율
+주요 단계:
 
-동일 아미노산 유사 아미노산 갭
+- Clustal Omega 웹페이지(https://www.ebi.ac.uk/Tools/msa/clustalo/)로 이동한다
+- 세 서열을 붙여넣고 실행한다
+- 'Download Alignment File' 버튼으로 정렬 파일을 저장할 수 있다
 
-Tfu_0901과 Thermobifida cellulosilytica의 셀룰라아제 간 서열 정렬.
+이 분석에서 얻은 중요한 정보: 세 서열은 길이가 비슷하다(466-474 아미노산).
 
-강조할 점은, 이번 시연에서 Tfu_0901을 'Nonredundant protein sequences (nr)' 데이터베이스에 대해 BLAST했다는 것이다. 당신은 또한 BLAST할 수 있다
+### 2.2.1.5 Pfam
 
-2.2.1.4 Clustal Omega
+주요 단계:
 
-ProtParam, SignalP, BLAST가 단일 단백질 서열 입력에 대해 작동하는 것과 달리, Clustal Omega는 다중 서열 정렬을 수행한다. 예시로서
+- Pfam 웹페이지(https://pfam.xfam.org/)로 이동한다
+- 왼쪽 사이드바에서 'SEQUENCE SEARCH'를 클릭한다
+- Tfu_0901의 단백질 서열을 붙여넣고 검색한다
 
->AAZ54939.1 Cellulase. Glycosyl Hydrolase family 5 [Thermobifida fusca YX] MAKSPAARKGGPPVAVAVTAALALLIALLSPGVAQAAGLTATVTKESSWDNGYSASVTVRNDTSSTVSQW EVVL
+이 분석에서 얻은 중요한 정보:
 
->WP_068752955.1 cellulase family glycosylhydrolase [Thermobifida cellulosilytica] MTRSPTALRGASPTAAALTAVLALVLALLSPGTARAAGLTATFAKDSSWDGGYTATVTVRNDTGSAVN
+- Pfam은 Tfu_0901 안에서 두 도메인을 찾아낸다: 글리코실 하이드롤레이즈 패밀리 5(GH5) 셀룰레이스 촉매 도메인과 탄수화물 결합 모듈(CBM)이다.
 
->BBA57842.1 endo-1,4-beta glucanase E5 [Thermobifida alba] MTRPPTALRGATPAAVALTAALALLLALLSPGVARAAGLTATFTKESTWDGGYTASVTVHNDTGGTVSHW QVVLTLPNGTTVNQAWNAQH
+### 2.2.1.6 PROSITE
 
-Clustal Omega를 사용한 서열 정렬.
+주요 단계:
 
-이 분석에서 얻은 중요한 정보: 이 3개의 단백질 서열은 유사한 길이를 가진다(466-474 아미노산). 5 Res
+- PROSITE 웹페이지(https://prosite.expasy.org/)로 이동한다
+- Tfu_0901의 단백질 서열(MAK ...... LQS)을 붙여넣거나 UniProt accession을 입력한다
 
-Clustal Omega는 정렬된 서열 위의 툴바에 있는 'Download Alignment File' 버튼을 클릭하여 정렬 파일을 저장할 수 있게 한다. 당신은 또한
+이 분석에서 얻은 중요한 정보:
 
-2.2.1.5 Pfam
+- PROSITE는 Tfu_0901 안에서 탄수화물 결합 타입-2 도메인(잔기 32-139)을 찾아낸다.
 
-주요 단계: 5 Pfam 웹페이지(https://pfam.xfam.org/)로 이동한다 5 왼쪽 사이드바에서 'SEQUENCE SEARCH'를 클릭한다 5 Tfu_090
+### 2.2.1.7 SMART
 
-이 분석에서 얻은 중요한 정보: 5 Pfam은 Tfu_0901의 단백질 서열 내에서 두 개의 도메인을 식별한다: a cellulase (glycosyl hydrola
+주요 단계:
 
-콜론(:)은 유사한 아미노산을 나타낸다
+- SMART 웹페이지(http://smart.embl-heidelberg.de/)로 이동한다
+- UniProt accession(Q47RH8)을 입력하거나 단백질 서열을 붙여넣는다
 
-별표(*)는 동일한 아미노산을 나타낸다
+이 분석에서 얻은 중요한 정보:
 
-마침표(.)는 약하게 유사한 아미노산을 나타낸다
+- SMART는 막관통 영역(잔기 13-35)과 탄수화물 결합 도메인을 찾아낸다.
 
-Clustal Omega를 사용한 BBA57842.1. 가변 영역은 파란색 상자로 표시된다.
+### 2.2.1.8 InterPro
 
-2.2.1.6 PROSITE
+주요 단계:
 
-주요 단계: 5 PROSITE 웹페이지(https://prosite.expasy.org/)로 이동한다 5 Tfu_0901의 단백질 서열 MAK ...... LQS를 붙여넣거나 UniProt a
+- InterPro 웹페이지(https://www.ebi.ac.uk/interpro/search/sequence/)로 이동한다
+- Tfu_0901의 단백질 서열(MAK ...... LQS)을 붙여넣는다
 
-이 분석에서 얻은 중요한 정보: 5 PROSITE는 Tfu_0901의 단백질 서열 내에서 탄수화물 결합 타입-2 도메인(잔기 32-139)을 식별한다
+이 분석에서 얻은 중요한 정보:
 
-2.2.1.7 SMART
-
-주요 단계: 5 SMART 웹페이지(http://smart.embl-heidelberg.de/)로 이동한다 5 UniProt accession number Q47RH8을 입력하거나 단백질 서열 o
-
-이 분석에서 얻은 중요한 정보: 5 SMART는 막관통 영역(잔기 13-35)과 탄수화물 결합 도메인(잔기
-
-2.2.1.8 InterPro
-
-주요 단계: 5 InterPro 웹페이지(http://www.ebi.ac.uk/interpro/search/sequence/)로 이동한다 5 Tfu_0901의 단백질 서열 MAK ...... LQS를 붙여넣
-
-이 분석에서 얻은 중요한 정보: 5 Pfam(2.2.1.5절) 결과와 일관되게, InterPro는 단백질
+- Pfam(2.2.1.5절) 결과와 일관되게, InterPro도 두 도메인을 확인해 준다.
 
 ## 2.2.2 DNA 서열 분석
 
-이제까지 많은 단백질 서열 분석 도구를 다루었다. 이제 DNA 서열 분석으로 관심을 돌려보자표 2.2에서 당신은
+단백질 서열 분석 도구를 충분히 살펴보았으니 이제 DNA 서열 분석으로 눈을 돌리자. 표 2.2에 정리한 도구들을 순서대로 써 보겠다.
 
-2.2.2.1 역상보(reverse complement)
+### 2.2.2.1 역상보 (Reverse Complement)
 
-NCBI 단백질 데이터베이스. 코딩 가닥(coding strand), 즉 안티센스 가닥의 역상보(reverse complement)인 뉴클레오타이드 서열을 갖는 것이 종종 유용하다
+NCBI에서 유전자 서열을 가져올 때 코딩 가닥(coding strand), 즉 센스 가닥의 역상보인 뉴클레오타이드 서열을 확보해 두면 편리하다.
 
-이 분석에서 얻은 중요한 정보: 5 Tfu_0901의 코딩 가닥이 (5'→3') 형식으로 표시된다
+주요 단계:
 
-2.2.2.2 DNA 통계
+- 역상보 도구 웹페이지(https://www.bioinformatics.org/sms/rev_comp.html)로 이동한다
+- Tfu_0901 유전자 서열을 붙여넣고 실행한다
 
-주요 단계: 5 DNA Stats 웹페이지(http://www.bioinformatics.org/sms2/dna_stats.html)로 이동한다 5 Tfu_0901의 코딩 가닥 서열 ATG ...... 을 붙여넣는다 5 'Submit' 버튼을 클릭한다
+이 분석에서 얻은 중요한 정보:
 
-https://www. bioinformatics. org/sms2/dna_
+- Tfu_0901의 코딩 가닥이 5'→3' 방향으로 표시된다.
 
-TGA를 쿼리 상자에 입력한다
+### 2.2.2.2 DNA Stats
 
-이 분석에서 얻은 중요한 정보: 5 유전자의 길이는 1401 bp이다. 이는 3으로 나누어떨어지는 수여야 한다. 왜냐하면 466개의 아미노산이
+주요 단계:
 
-2.2.2.3 번역(Translate)
+- DNA Stats 웹페이지(http://www.bioinformatics.org/sms2/dna_stats.html)로 이동한다
+- Tfu_0901의 코딩 가닥 서열(ATG ...... TGA)을 붙여넣고 'Submit'을 클릭한다
 
-TGA를 쿼리 상자에 입력한다
+이 분석에서 얻은 중요한 정보:
 
-이 분석에서 얻은 중요한 정보: 5 뉴클레오타이드 서열이 단백질 서열로 번역된다.
+- 유전자 길이는 1401 bp이다. 1401은 3으로 나누어떨어지며, 종결 코돈을 포함해 467개 코돈, 즉 466개 아미노산을 암호화한다.
 
-2.2.2.4 코돈 사용(Codon Usage)
+### 2.2.2.3 번역 (Translate)
 
-TGA를 쿼리 상자에 입력한다
+주요 단계:
 
-이 분석에서 얻은 중요한 정보: 5 각 코돈의 빈도. 예를 들어, 알라닌에 대한 4개의 코돈(GCG, GCA, GCT, GC
+- Translate 웹페이지(https://web.expasy.org/translate/)로 이동한다
+- 코딩 가닥 서열(ATG ...... TGA)을 쿼리 상자에 입력한다
 
-2.2.2.5 역번역(Reverse Translate)
+이 분석에서 얻은 중요한 정보:
 
-주요 단계: 5 역번역 웹페이지(https://www.bioinformatics.org/sms2/rev_trans.html)로 이동한다 5 Tfu_0901의 단백질 서열을 붙여넣
+- 뉴클레오타이드 서열이 단백질 서열로 번역된다.
 
-이 분석에서 얻은 중요한 정보: 5 대장균에서 이종 단백질 발현을 위해 코돈 최적화된 유전자
+### 2.2.2.4 코돈 사용 (Codon Usage)
 
-기본 코돈 사용 표는 대장균(E. coli)이지만, 이 도구는 관심 있는 어떤 코돈 사용 표도 입력할 수 있다. 코돈 사용 표를 찾는 가장 빠른 방법은
+주요 단계:
 
-- Codon Usage Database 웹페이지(http://www.kazusa.or.jp/codon/)로 이동한다 5 쿼리 상자에 Bacillus subtilis를 입력한다 5 'Submit' 버튼을 클릭한다 5
+- Codon Usage 웹페이지(https://www.bioinformatics.org/sms2/codon_usage.html)로 이동한다
+- 코딩 가닥 서열을 쿼리 상자에 입력한다
 
-대부분의 유전자 합성 회사(예: Eurofins, Integrated DNA Technologies, GenScript, GeneWiz 등)는 합성 유전자 설계 시 코돈 사용을 최적화해 준다.
+이 분석에서 얻은 중요한 정보:
+
+- 각 코돈의 빈도를 알 수 있다. 예컨대 알라닌에는 네 코돈(GCG, GCA, GCT, GCC)이 대응하며, 각 코돈이 몇 번 쓰였는지 센다.
+
+### 2.2.2.5 역번역 (Reverse Translate)
+
+주요 단계:
+
+- 역번역 웹페이지(https://www.bioinformatics.org/sms2/rev_trans.html)로 이동한다
+- Tfu_0901의 단백질 서열을 붙여넣는다
+
+이 분석에서 얻은 중요한 정보:
+
+- 대장균에서 이종 단백질 발현에 맞춘 코돈 최적화 유전자 서열을 얻을 수 있다. 기본 코돈 사용 표는 대장균(E. coli)이지만 다른 생물의 표도 입력할 수 있다. 코돈 사용 표를 가장 빨리 찾는 방법은 Codon Usage Database(http://www.kazusa.or.jp/codon/)를 이용하는 것이다: 웹페이지로 이동하여 쿼리 상자에 예컨대 Bacillus subtilis를 입력하고 'Submit'을 클릭한다.
+- 대부분의 유전자 합성 회사(Eurofins, Integrated DNA Technologies, GenScript, GeneWiz 등)는 합성 유전자를 설계할 때 코돈 사용을 최적화해 준다.
 
 ## 2.2.3 Perl
 
-| 간단히 말해, 단백질이나 DNA 서열은 단순한 문자 문자열일 뿐이다. 만약 |
-| --- |
-| Perl 프로그래밍(https://www.perl.org/)에 익숙하다면, 직접 스크립트를 작성하고 싶을 수 있다. |
-| 간단한 서열 분석이나 routine하게 수행하는 분석을 위한 스크립트. Perl |
-| 은 텍스트 처리 능력으로 가장 잘 알려져 있다 - 파일, 문자열, 그리고 |
-| 정규표현식. 중요한 점은, BioPerl 프로젝트(https://bioperl.org/)가 |
-| Perl 사용자와 개발자가 작성한 생물정보학, 유전체학, 생명과학을 위한 많은 도구를 포함하고 있다는 것이다. |
-| 그리고 개발자들. |
-| 핵심 메시지 |
-| 1. 셀룰로오스는 D-글루코스 단위가 반복되는 선형 다당류 사슬이다. |
-| β(1→4) 글리코시드 결합으로 연결되어 있다. |
-| 2. 셀룰로오스의 완전한 가수분해를 통해 글루코스를 얻기 위해서는 세 가지 유형의 효소가 필요하다. |
-| 엔도-β-1,4-글루카나아제, 엑소글루카나아제, β-1,4-글루코시데이스가 이에 포함된다. |
-| 3. Kyoto Encyclopedia of Genes and Genomes (KEGG)와 National |
-| Center for Biotechnology Information (NCBI)는 두 가지 우수한 |
-| 유전자 정보 출처이다. |
-| 4. SnapGene Viewer는 단백질 공학자에게 유용한 도구이다. 시각화, |
-| 주석 및 서열 공유. |
-| 5. SIB Bioinformatics Resource Portal (ExPASy)와 European Bioinfor- |
-| matics Institute of EMBL (EMBL-EBI) 웹페이지는 수많은 생물정보학 |
-| ics 도구를 DNA 서열 및 단백질 서열 분석을 위해 제공한다. |
-| 6. FASTA 형식은 염기 서열 또는 |
-| 단백질 서열을 단일 문자 코드로 표현하는 텍스트 기반 형식이다. FASTA 형식의 서열은 |
-| 단일 행 설명(defline)으로 시작하여 서열 데이터 행이 뒤따른다. |
-| 7. Perl은 생물정보학 도구 개발을 위한 우수한 프로그래밍 언어이다. |
+단백질이나 DNA 서열은 결국 문자열이다. Perl 프로그래밍(https://www.perl.org/)에 익숙하다면 간단한 서열 분석이나 반복 작업을 스크립트로 직접 처리할 수 있다. Perl은 파일, 문자열, 정규표현식 같은 텍스트 처리 능력으로 잘 알려져 있다. BioPerl 프로젝트(https://bioperl.org/)에는 Perl 사용자와 개발자들이 만든 생물정보학·유전체학·생명과학용 도구가 많이 모여 있다.
 
-더 읽어보기
+## 핵심 메시지
+
+1. 셀룰로오스는 D-글루코스 단위가 β(1→4) 글리코시드 결합으로 이어진 선형 다당류 사슬이다.
+2. 셀룰로오스를 완전히 가수분해해 글루코스를 얻으려면 세 부류의 효소가 필요하다: 엔도-β-1,4-글루카나아제, 엑소글루카나아제, β-1,4-글루코시데이스이다.
+3. KEGG와 NCBI는 우수한 유전자 정보 출처이다.
+4. SnapGene Viewer는 서열 시각화, 주석, 공유에 유용한 도구이다.
+5. SIB의 ExPASy 포털과 EMBL-EBI 웹사이트는 DNA 및 단백질 서열 분석에 쓸 수 있는 수많은 생물정보학 도구를 제공한다.
+6. FASTA 형식은 염기 서열 또는 단백질 서열을 단일 문자 코드로 적는 텍스트 형식이다. FASTA 서열은 한 줄짜리 설명(defline)으로 시작하고 그 뒤에 서열 데이터가 이어진다.
+7. Perl은 생물정보학 도구를 만들기에 좋은 프로그래밍 언어이다.
 
 ## 연습문제
 
-(a) Thermobifida fusca YX 게놈에서 β-1,4-glucosidase로 주석된 유전자는 몇 개인가? (b) Tfu_0937은 어떤 효소를 암호화하는가? (c) 어떤 반응을
+(a) T. fusca YX 게놈에서 β-1,4-glucosidase로 주석된 유전자는 몇 개인가?
+(b) Tfu_0937은 어떤 효소를 암호화하는가?
 
 ## 더 읽어보기
 
-Artimo P, Jonnalagedda M, Arnold K, Baratin D, Csardi G, de Castro E, Duvaud S, Flegel V, Fortier A, Gasteiger E, Grosdidier A, Hernandez C, Ioannidis
+- Artimo P, Jonnalagedda M, Arnold K, Baratin D, Csardi G, de Castro E, Duvaud S, Flegel V, Fortier A, Gasteiger E, Grosdidier A, Hernandez C, Ioannidis V, Kuznetsov D, Liechti R, Moretti S, Mostaguir K, Redaschi N, Rossier G, Xenarios I, Stockinger H (2012) ExPASy: SIB bioinformatics resource portal. Nucleic Acids Res 40(W1):W597-W603
 
 # 3장 · 구조 분석
 
 ## 이 장에서 배울 내용
 
-이 장에서는 다음을 배운다: 5 Protein Data Bank를 사용하고 관련 단백질 구조를 찾아 다운로드하기 5 단백질 이차 구조를 예측하기 5 gen
+이 장에서는 다음을 배운다:
 
-단백질은 나노미터 규모의 복잡하고 매혹적인 분자 장치로, 이곳에서 생물학적 기능이 발휘된다. 단백질 구조 정보는
+- Protein Data Bank에서 관심 단백질의 구조를 찾고 내려받는다
+- 단백질 이차 구조를 예측한다
+- 템플릿 기반 모델링과 템플릿 없는 모델링으로 단백질 삼차 구조를 예측한다
+- 단백질 구조 시각화 도구를 활용한다
 
-(예: DNA, RNA, 지질 등)와 복합체를 형성한다.
-
-- 일부 단백질은 단단한 반면, 다른 단백질은 제한된 유연성을 보인다. 일부 단백질은 심지어 내재적 비정렬 영역(내재적 비정렬 영역)을 포함하기도 한다.
-
-7장 2장의 서열 분석을 기반으로, 7장 3장은 단백질 구조 분석에 전념할 것이다.
+단백질은 나노미터 스케일의 복잡하고 매혹적인 분자 장치로, 생물학적 기능은 바로 이 구조 위에서 발휘된다. 단백질 구조 정보는 기능을 이해하는 데 핵심적이며, 어떤 단백질은 리간드나 DNA, RNA, 지질 등과 이룬 복합체 형태로 구조가 밝혀지기도 한다. 단백질마다 성질이 달라 어떤 것은 견고한 반면 어떤 것은 상당한 유연성을 보이며, 내재적 무질서 영역(intrinsically disordered region)을 지닌 경우도 있다. 2장의 서열 분석에 이어 이 장에서는 단백질 구조 분석을 다룬다.
 
 ## 3.1 단백질 구조 데이터베이스
 
-Tfu_0901의 단백질 서열 분석(2.1.1절과 2.1.4절)으로부터, 우리는 그 구조 정보가 이용 가능하다는 것을 알게 되었다(PDB 코드 o
+Tfu_0901의 단백질 서열 분석(2.1.1절, 2.1.4절)에서 우리는 이 단백질의 구조 정보가 공개되어 있음을 확인했다(PDB 코드 2CKS, 2CKR).
 
 ## 3.1.1 Protein Data Bank (PDB)
 
-1971년 이래로 PDB는 단백질, 핵산, 복합체의 3D 구조에 대한 정보의 단일 저장소로 기능해 왔다. 검색하려면
+1971년 이래 PDB는 단백질, 핵산, 복합체 3D 구조 정보의 단일 저장소 역할을 해 왔다. 검색 절차는 다음과 같다:
 
+- PDB 웹페이지(https://www.rcsb.org/)로 이동한다
+- 쿼리 상자에 2CKS를 입력한다(2CKR도 이용 가능)
+- 'Search' 버튼을 클릭하고 결과에서 구조 페이지를 연다
 
-- PDB 웹페이지(https://www.rcsb.org/)로 이동한다 5 쿼리 상자에 2CKS를 입력한다(2CKR도 사용 가능) 5 '검색' 버튼을 클릭한다 5 오른쪽 상단에서
+구조 정보 외에도 PDB는 단백질 공학자에게 유용한 다양한 정보를 제공한다. 예를 들어 구조 페이지(https://www.rcsb.org/structure/2CKS)에서는 다음 정보를 볼 수 있다:
 
-구조 정보 외에도 PDB는 단백질 공학자에게 유용한 다양한 정보를 제공한다. 예를 들어, 결과를 스크롤하면
+- 이 엔도글루카나아제는 B. subtilis를 이용해 재조합 발현하여 구조를 결정했다
+- 이 구조와 관련된 저널 논문 정보
 
-(https://www.rcsb.org/structure/2CKS), 다음과 같은 정보가 제공된다:
+PDB 코드를 알 때는 PDB 이용이 쉽지만, 모든 단백질에 구조 정보가 있는 것은 아니다. 구조 정보가 있는지는 어떻게 알까? 유전자 Tfu_1074를 예로 세 가지 방법을 소개한다.
 
-- 이 엔도글루카나제는 B. subtilis를 사용하여 재조합 발현될 수 있다. 5 이 구조와 관련된 저널 출판물이 있다면, 그것은
+1. **KEGG에서 찾기(2.1.1절)**: KEGG 웹페이지(https://www.genome.jp/kegg/)로 이동하여 쿼리 상자에 Tfu_1074를 입력하고, 레코드에 PDB 링크가 있는지 확인한다.
+2. **UniProt에서 찾기(2.1.4절)**: UniProt 웹페이지(https://www.uniprot.org/)로 이동하여 'UniProtKB' 쿼리 상자에 Tfu_1074를 입력하고, Structure 항목을 확인한다.
+3. **BLAST로 찾기(2.2.1.3절)**: 단백질 BLAST를 실행하여 결과에 PDB 등록 hit가 있는지 확인한다.
 
-PDB 코드를 알고 있을 때 PDB를 사용하는 것은 쉽지만, 모든 단백질에 구조 정보가 있는 것은 아니다. 구조 정보가 있는지 어떻게 알 수 있을까?
+구조가 있음을 확인했다면 PDB 코드로 rcsb.org에서 구조 파일을 내려받으면 된다.
 
-1. KEGG에서 유전자 Tfu_1074 찾기(2.1.1절): 5 KEGG 웹페이지(https://www.genome.jp/kegg/)로 이동한다 5 'KEGG' 쿼리 상자에 Tfu_1
-
-2. UniProt에서 유전자 Tfu_1074 찾기(2.1.4절): 5 UniProt 웹페이지(https://www.uniprot.org/)로 이동한다 5 'UniProtKB' 쿼리 상자에
-
-3. BLAST 도구 사용하기(2.2.1.3절): 5 BLAST 웹페이지(https://blast.ncbi.nlm.nih.gov/Blast.cgi)로 이동한다 5 'Web BLAST'에서 'Protei
-
-- PDB 웹페이지(https://www.rcsb.org/)로 이동한다 5 쿼리 상자에 2CKS를 입력한다(2CKR도 사용 가능) 5 'Search' 버튼을 클릭한다 5 오른쪽 상단에서
-
-왜 일부 단백질은 둘 이상의 PDB 코드를가지는지 궁금할 수 있다. 저장소에 예치된 각 구조는 고유한 PDB 코드를 가진다. 차이는
+하나의 단백질이 둘 이상의 PDB 코드를 가지는 경우도 있다. 저장소에 예치된 각 구조마다 고유한 PDB 코드가 부여되기 때문인데, 차이는 결정 조건, 결정 방법, 리간드 결합 여부, 변이체 등에서 온다.
 
 ## 3.1.2 Biological Magnetic Resonance Data Bank (BMRB)
 
-BMRB는 단백질, 펩타이드, 핵산, 기타 생체분자에 대한 NMR 분광학 데이터의 저장소이다. 예치 건수 측면에서, 이
-
-이러한 검색 결과가 T. fusca의 엔도글루카나제에 특이적인 것은 아니지만, 이들은 셀룰로오스 결합 도메인과 c
+BMRB는 단백질, 펩타이드, 핵산 등 생체분자에 대한 NMR 분광학 데이터의 저장소이다. BMRB에서 검색한 결과가 T. fusca 엔도글루카나아제에 국한되지는 않지만, 셀룰로오스 결합 도메인과 촉매 도메인을 함께 다룬 사례들을 포함한다.
 
 ## 3.2 단백질 구조 예측
 
-지금까지 우리는 구조 정보가 이용 가능한 단백질만 살펴보았다. 만약 단백질 구조가 이용 불가능하다면(예: Tfu_0937,
+지금까지는 구조 정보가 공개된 단백질만 보았다. 그렇다면 구조가 알려지지 않은 단백질(예: T. fusca의 Tfu_0937)은 어떨까? 단백질 서열로부터 구조 정보를 추론할 수 있을까? 답은 '그렇다'이다. 이 절에서는 두 가지 주제를 다룬다:
 
-T. fusca의 경우), 단백질 서열로부터 구조 정보를 추론할 수 있을까? 그렇다,
-
-이 절에서는 두 가지 주제를 다룬다: 5 단백질 이차 구조 예측 5 단백질 모델링
-
+- 단백질 이차 구조 예측
+- 단백질 삼차 구조(모델링) 예측
 
 ## 3.2.1 단백질 이차 구조 예측
 
-단백질에서 가장 흔한 이차 구조 유형은 α-나선과
+단백질에서 가장 흔한 이차 구조는 α-나선과 β-시트이며, 이들은 폴리펩타이드 골격 원자들 사이의 수소 결합에서 비롯된다. 이차 구조를 예측하는 생물정보학 도구는 매우 많다. 우리의 경험상 다음 세 도구—JPred, PSIPRED, PredictProtein—는 전용 웹서버를 두고 사용법도 쉬워 입문자에게 적합하다.
 
-β-시트이다. 이러한 이차 구조는
+### 3.2.1.1 JPred
 
-폴리펩타이드 골격의 원자들 사이의 수소 결합에서 비롯된다. 단백질의 이차 구조를 예측하는 많은 생물정보학 도구가 있다. 우리의 경험상, 이차 구조
+주요 단계:
 
-이제 사용 가능한 세 가지 도구(즉, JPred, PSIPRED, PredictProtein)에 초점을 맞추자. 이들은 전용 웹서버를 가지고 있고 사용하기 쉽다. ~사이
+- JPred 웹페이지(http://www.compbio.dundee.ac.uk/jpred/)로 이동한다
+- Tfu_0937의 단백질 서열(MTS ...... GQE)을 쿼리 상자에 붙여넣고 예측을 실행한다
 
-3.2.1.1 JPred
+이 분석에서 얻은 중요한 정보:
 
-주요 단계: 5 JPred 웹페이지(http://www.compbio.dundee.ac.uk/jpred/)로 이동한다 5 Tfu_0937의 단백질 서열 MTS ...... GQE를 쿼리 상자에 붙여넣
+- Tfu_0937 서열에서 α-나선, β-시트, 코일의 위치가 주석되어 나온다.
 
-3.2.1.2 PSIPRED
+### 3.2.1.2 PSIPRED
 
-주요 단계: 5 PSIPRED Workbench 웹페이지(http://bioinf.cs.ucl.ac.uk/psipred/)로 이동한다 5 Tfu_0937의 단백질 서열 MTS ...... GQE를 쿼리 상자에 붙여넣는다
+주요 단계:
 
-3.2.1.3 PredictProtein
+- PSIPRED Workbench 웹페이지(http://bioinf.cs.ucl.ac.uk/psipred/)로 이동한다
+- Tfu_0937의 단백질 서열(MTS ...... GQE)을 쿼리 상자에 붙여넣고 실행한다
 
-주요 단계: 5 PredictProtein 웹페이지(https://open.predictprotein.org/)로 이동한다 5 Tfu_0937의 단백질 서열 MTS ...... GQE를 쿼리 상자에 붙여넣는다
+### 3.2.1.3 PredictProtein
+
+주요 단계:
+
+- PredictProtein 웹페이지(https://open.predictprotein.org/)로 이동한다
+- Tfu_0937의 단백질 서열(MTS ...... GQE)을 쿼리 상자에 붙여넣고 실행한다
 
 ## 3.2.2 단백질 삼차 구조 예측
 
-일반적으로, 표적 단백질의 삼차 구조를 예측하는 데에는 두 가지 접근법이 있다: 5 템플릿 기반 모델링, 즉 이전에 결정된 구조를 사용하는 방법
+표적 단백질의 삼차 구조를 예측하는 방법은 크게 두 가지다:
 
+- **템플릿 기반 모델링(template-based modelling)**: 이미 결정된 구조(템플릿)를 빌려 모델을 만든다
+- **템플릿 없는 모델링(template-free modelling)**: 대규모 입체형태 샘플링과 물리 기반 에너지 함수에 의존한다
 
-템플릿 없는 모델링, 이는 대규모 입체형태 샘플링과 물리 기반 에너지 함수의 적용에 의존한다
+### 3.2.2.1 템플릿 기반 모델링 (Template-Based Modelling)
 
-3.2.2.1 템플릿 기반 모델링(Template-Based Modelling)
+표준 절차는 네 단계다: (a) 적절한 구조 템플릿 고르기, (b) 표적 서열을 템플릿에 정렬하기, (c) 모델 만들기, (d) 모델 평가하기.
 
-표준 템플릿 기반 모델링의 주요 단계는 다음과 같다: (a) 적합한 구조 템플릿 선택, (b) 표적 서열을 템플릿에 정렬, (c) 모델 구축, (d) 모델 평가
+SWISS-MODEL은 이 절차를 자동으로 수행하는 완전 자동화 상동성 모델링 서버다. Tfu_0937 모델을 만들 때 SWISS-MODEL은 *Streptomyces* sp.의 β-글루코시데이스 구조(PDB 코드 1GON)를 템플릿으로 골랐다. 표적 서열과 템플릿 서열(1GON)의 정렬은 BLAST로 확인할 수 있다.
 
-Tfu_0937의 모델을 구축하기 위해, SWISS-MODEL은 Streptomyces sp.의 β-글루코시다제 구조(PDB 코드 1GON)를 템플릿으로 선택했다
+### 3.2.2.2 템플릿 없는 모델링 (Template-Free Modelling)
 
-3.2.2.2 템플릿 없는 모델링(Template-Free Modelling)
+템플릿 없는 모델링은 다섯 단계로 이루어진다: (a) 다중 서열 정렬 구성, (b) 국소 구조 예측, (c) 잔기 접촉 예측, (d) 삼차 구조 조립, (e) 모델 평가.
 
-템플릿 없는 모델링에는 5가지 주요 단계가 있다: (a) 다중 서열 정렬 구성, (b) 국소 structure 예측, (c) 잔기 접촉 예측, (d) 삼차 구조 조립, (e) 모델 평가
+PSIPRED Workbench에서 제공하는 DMPFold로 시험해 볼 수 있다:
 
-a b
+- PSIPRED Workbench 웹페이지(http://bioinf.cs.ucl.ac.uk/psipred/)로 이동한다
+- 'Structure Modelling'에서 'DMPFold 1.0 Fast Mode'를 선택한다
+- Tfu_0937 서열을 붙여넣고 실행한다
 
-b Tfu_0901(쿼리)과 1GON(서열) 간 BLAST를 사용한 서열 정렬.
-
-- PSIPRED Workbench 웹페이지(http://bioinf.cs.ucl.ac.uk/psipred/)로 이동한다 5 'Structure Modelling'에서 'DMPFold 1.0 Fast Mode'를 선택한다 5 붙여넣는다
-
-DMPFold (청록색).
-
+DMPFold가 만든 삼차 구조 모델(청록색)을 SWISS-MODEL 모델과 비교해 보면 좋은 연습이 된다.
 
 ## 3.3 단백질 구조 시각화 도구
 
-이 시점에서, 당신은 PDB 코드를 사용하여 알려진 단백질 구조 정보를 검색하고, 구조가 알려지지 않은 단백질에 대해 구조 예측을 수행하는 데 자신감을 가져야 한다
+이쯤 되면 PDB 코드로 알려진 구조를 찾고, 구조가 없는 단백질은 예측하는 데 익숙해졌을 것이다. 구조를 화면에서 돌려 보면 서열만 볼 때는 보이지 않던 정보를 직관적으로 파악할 수 있다. 이 절에서는 배우기 쉽고 탐구하는 재미가 있는 단백질 구조 시각화 도구 몇 가지를 소개한다(표 3.1).
 
-이러한 질문에 답하기 위해, 우리는 배우기, 사용하기, 탐구하기에 매우 재미있는 몇 가지 단백질 구조 시각화 도구를 소개하고자 한다(. T
+**표 3.1** 단백질 구조 시각화 도구
 
-**표 3.1**
-
-| 단백질 구조 시각화 도구 | URL | 기타 유용한 온라인 리소스 | 시스템 호환성 |
+| 도구 | URL | 기타 유용한 온라인 자료 | 시스템 호환성 |
 | --- | --- | --- | --- |
-| PyMOL | https://pymol. org/2/ | PyMOL Wiki (https:// pymolwiki. org/index. php/ Main_Page) | Windows, macOS, Linux |
-| Swiss-PdbViewer (or DeepView) | https://spdbv. vital-it. ch/ | | Windows, macOS |
-| UCSF Chimera | https://www. cgl. ucsf. edu/chimera/ | | Windows, macOS, Linux |
-
-단백질 구조 시각화 도구
+| PyMOL | https://pymol.org/2/ | PyMOL Wiki (https://pymolwiki.org/index.php/Main_Page) | Windows, macOS, Linux |
+| Swiss-PdbViewer (DeepView) | https://spdbv.vital-it.ch/ |  | Windows, macOS |
+| UCSF Chimera | https://www.cgl.ucsf.edu/chimera/ |  | Windows, macOS, Linux |
 
 ## 핵심 메시지
 
-1. 단백질 기능은 그 서열과 구조 모두에 의해 결정된다.
+1. 단백질 기능은 서열과 구조 모두에 의해 결정된다.
+2. 단백질 구조 정보는 Protein Data Bank(PDB)와 Biological Magnetic Resonance Data Bank(BMRB)에서 찾을 수 있다.
+3. PDB 파일은 .pdb 확장자를 가지며, PDB 형식은 X선 회절과 NMR 연구에서 얻은 거대분자 구조 데이터의 표준 표현이다.
+4. 가장 흔한 이차 구조는 α-나선과 β-시트이며, 이를 예측하는 다양한 생물정보학 도구가 있다.
+5. 삼차 구조 예측에는 템플릿 기반 모델링과 템플릿 없는 모델링이라는 두 접근법이 있다.
+6. SWISS-MODEL은 완전 자동화된 단백질 구조 상동성 모델링 서버이다.
+7. 다양한 단백질 구조 시각화 도구가 공개되어 있으며 서로 다른 운영체제와 호환된다.
 
-2. 단백질 구조 정보는 Protein Data Bank (PDB)와 Biological Magnetic Resonance Data Bank (BMRB)에서 검색할 수 있다.
+## 연습문제
 
-3. PDB 파일은 .pdb 확장자를 가진다. PDB 형식은 X선 회절 및 NMR 연구에서 얻은 거대분자 구조 데이터에 대한 표준 표현을 제공한다.
+코로나바이러스 SARS-CoV-2는 2019년 중국 우한에서 처음 나타난 고병원성 신종 바이러스이다. 국제적으로 빠르게 퍼지면서 전례 없는 세계적 공중보건 비상사태가 벌어졌다. 이 바이러스는 스파이크(S) 단백질의 수용체 결합 도메인(RBD)으로 사람의 안지오텐신 전환 효소 2(ACE2) 수용체를 인식한다. COVID-19 팬데믹을 막는 열쇠 가운데 하나는 감염성, 병원성, 숙주 범위를 좌우하는 이 수용체 인식 메커니즘을 이해하는 것이다. 지도교수는 곤충 세포 기반 단백질 발현 시스템으로 S 전장 단백질과 RBD를 재조합 발현해 보길 원한다.
 
-4. 단백질에서 가장 흔한 이차 구조 유형은 α-나선과 β-시트이다. 단백질 이차 구조 예측을 위한 다양한 생물정보학 도구가 이용 가능하다.
+(a) SARS-CoV-2 RBD의 단백질 서열을 찾아라.
+(b) SARS-CoV-2 RBD의 단백질 구조가 공개되어 있는가?
+(c) PDB 등록번호 6M0J는 어떤 단백질 발현 시스템으로 만들어졌는가?
+(d) SARS-CoV-2 RBD에는 이황화 결합이 몇 개인가?
+(e) SARS-CoV-2 RBD에서 이황화 결합을 이루는 시스테인 쌍을 찾아라.
 
-| 5. 단백질 삼차 구조 예측에는 두 가지 접근법이 있다: 템플릿 기반 |
-| --- |
-| 모델링과 템플릿 없는 모델링. |
-| 6. SWISS-MODEL은 완전 자동화된 단백질 구조 상동성 모델링 |
-| 서버이다. |
-| 7. 다양한 단백질 구조 시각화 도구가 공개되어 있으며, |
-| 이들은 다양한 운영체제와 호환된다. |
-| 연습문제 |
-| 코로나바이러스(SARS-CoV-2)는 2019년 중국 우한에서 출현한 새롭고 고병원성인 바이러스이다. |
-| 2019 from Wuhan, China. Its rapid international spread posed an unprecedented |
-| global public health emergency. The virus recognizes a receptor called angiotensin- |
-| converting enzyme 2 (ACE2) in human, through the receptor-binding domain (RBD) |
-| of its spike protein (S). A key to tackling the COVID-19 pandemic is to understand the |
-| receptor recognition mechanism of the virus, which regulates its infectivity, pathogen- |
-| esis and host range. Your project supervisor would like you to express the full-length S |
-| and RBD recombinantly using an insect cell-based protein expression system. |
-| (a) Find the protein sequence of SARS-CoV-2 RBD. |
-| (b) Is the protein structure of SARS-CoV-2 RBD available? |
-| (c) What protein expression system was used for the PDB entry 6M0J? |
-| (d) How many disulphide bonds are there in SARS-CoV-2 RBD? |
-| (e) Identify the cysteine pairs that form disulphide bonds in SARS-CoV-2 RBD. |
-| 추가 읽기 |
+## 더 읽어보기
 
-Berman HM, Westbrook J, Feng Z, Gilliland G, Bhat TN, Weissig H, Shindyalov IN, Bourne PE (2000) The Protein Data Bank. Nucleic Acids Res 28(1):235-244.
+- Berman HM, Westbrook J, Feng Z, Gilliland G, Bhat TN, Weissig H, Shindyalov IN, Bourne PE (2000) The Protein Data Bank. Nucleic Acids Res 28(1):235-244
 
 # 4장 · 단백질 발현 숙주와 발현 플라스미드
 
 ## 이 장에서 배울 내용
 
-이 장에서는 다음을 배운다: 5 클로닝 또는 단백질 발현 목적을 위한 대장균 균주 선택하기 5 대장균 유전자형 기술 이해하기 5 단백질 발현을 위한 적절한 숙주와 플라스미드 선택하기
+이 장에서는 다음을 배운다:
+- 클로닝 또는 단백질 발현 목적을 위한 대장균 균주 선택하기
+- 대장균 유전자형 기술 이해하기
+- 단백질 발현을 위한 적절한 숙주와 플라스미드 선택하기
 
 이전 세 장에서 우리는 습식 실험(wet lab)에 앞서 필수적인 드라이 랩 연구(예: 데이터 검색, 분석 및 모델링)에 초점을 맞추었다.
 
@@ -675,7 +562,10 @@ Berman HM, Westbrook J, Feng Z, Gilliland G, Bhat TN, Weissig H, Shindyalov IN, 
 
 대장균은 가장 인기 있는 발현 플랫폼이다. 세포 공장으로서의
 
-단백질 생산은 잘 확립되어 있다. 대장균 사용의 장점은 다음과 같다: 5 빠른 성장 속도 5 높은 세포 밀도 5 저렴한 배양 배지
+단백질 생산은 잘 확립되어 있다. 대장균 사용의 장점은 다음과 같다:
+- 빠른 성장 속도
+- 높은 세포 밀도
+- 저렴한 배양 배지
 
 **표 4.1**
 
@@ -686,7 +576,9 @@ Berman HM, Westbrook J, Feng Z, Gilliland G, Bhat TN, Weissig H, Shindyalov IN, 
 
 재조합 단백질 생산을 위한 일반적인 발현 숙주
 
-- 폭넓은 상업적 이용 가능성 5 외부 DNA로의 빠르고 쉬운 형질전환 5 축적된 방대한 문헌과 과학 데이터
+- 폭넓은 상업적 이용 가능성
+- 외부 DNA로의 빠르고 쉬운 형질전환
+- 축적된 방대한 문헌과 과학 데이터
 
 이 유기체에 대한 방대한 지식을 감안할 때, 선택할 수 있는 대장균 균주 목록이 긴 것은 놀라운 일이 아니다. 대장균 유전학 스톡 센터(CGSC, Coli Genetic Stock Center)
 
@@ -725,104 +617,62 @@ Addgene은 과학자들을 위해 플라스미드를 보관하고 배포하는 �
 | Origami™ 2(DE3) | Δ(ara-leu)7697 ΔlacX74 ΔphoA PvuII phoR araD139 ahpC galE galK rpsL F′[lac+ lacIq pro] (DE3) gor522::Tn10 trxB (StrR, TetR) | | • |
 | OverExpress C41(DE3) | F- ompT hsdSB (rB-, mB-) gal dcm (DE3) | | • |
 | OverExpress C41(DE3)pLysS | F- ompT hsdSB (rB-, mB-) gal dcm (DE3) pLysS(CamR) | | • |
-| OverExpress C43(DE3) | F- ompT hsdSB (rB-, mB-) gal dcm (DE3) | | • |
-
-
-E. coli strains
-
-## 유전자형
-
-## 응용
-
-## 클로닝 발현
-
-OverExpress F- ompT hsdSB (rB-, mB-) gal dcm (DE3) • C43(DE3)pLysS pLysS(CamR)
-
-Rosetta™ 2(DE3) F- ompT hsdSB (rB-, mB-) gal dcm (DE3) • pRARE2 (CamR)
-
+| OverExpress C43(DE3)pLysS | F- ompT hsdSB (rB-, mB-) gal dcm (DE3) pLysS(CamR) | | • |
+| Rosetta™ 2(DE3) | F- ompT hsdSB (rB-, mB-) gal dcm (DE3) pRARE2 (CamR) | | • |
 | SG13009 | NaIS StrS RifS thi lac ara+ gal+ mtl F- recA+ uvr+ lon+ | | • |
-| --- | --- | --- | --- |
 | SHuffle® T7 | F′ lac pro lacIq / Δ(ara-leu)7697 araD139 fhuA2 lacZ::T7 gene1 Δ(phoA)PvuII phoR ahpC* galE (or U) galK λatt::pNEB3-r1- cDsbC (SpecR, lacIq) ΔtrxB rpsL150(StrR) Δgor Δ(malF)3 | | • |
-| TOP10 | F- mcrA Δ(mrr-hsdRMS-mcrBC) φ80lacZΔM15 ΔlacX74 recA1 araD139 Δ(ara- leu)7697 galU galK λ- rpsL(StrR) endA1 nupG | • | • |
-| TOP10F' | F′ [lacIq, Tn10(TetR)] mcrA Δ(mrr-hsdRMS- mcrBC) φ80lacZΔM15 ΔlacX74 recA1 araD139 Δ(ara-leu)7697 galU galK rpsL(StrR) endA1 nupG | • | |
+| TOP10 | F- mcrA Δ(mrr-hsdRMS-mcrBC) φ80lacZΔM15 ΔlacX74 recA1 araD139 Δ(araleu)7697 galU galK λ- rpsL(StrR) endA1 nupG | • | • |
+| TOP10F' | F′ [lacIq, Tn10(TetR)] mcrA Δ(mrr-hsdRMS-mcrBC) φ80lacZΔM15 ΔlacX74 recA1 araD139 Δ(ara-leu)7697 galU galK rpsL(StrR) endA1 nupG | • | |
 | XL1-Blue | recA1 endA1 gyrA96 thi-1 hsdR17 supE44 relA1 lac [F′ proAB lacIqZΔM15 Tn10 (TetR)] | • | |
 | XL10-Gold | TetR Δ(mcrA)183 Δ(mcrCB-hsdSMR-mrr)173 endA1 supE44 thi-1 recA1 gyrA96 relA1 lac Hte [F′ proAB lacIqZΔM15 Tn10 (TetR) Amy CamR] | • | |
-| 마커 | 기능적 | | |
-| ara | | | |
-| CamR (클로람페니콜 내성) | 부여한다 | to | |
-| dam | in DNA adenine methylase Preparing 3'). tant when with certain | | impor- digest |
-| dcm | in DNA cytosine methylase Preparing tant when with certain | | impor- digest |
-| (DE3) λ | that encodes T7 RNA poly- Induces sion systems. | in | expres- |
 
 
-| | Marker | Description | Functional consequence |
-| --- | --- | --- | --- |
-| | endA, endA1 | Mutation in endonuclease I (nonspe- cific cleavage of dsDNA). | Improves plasmid yield. |
-| 4 | F | Host does (F′) or does not (F-) con- tain the fertility plasmid. | A low copy-number plasmid, encoding proteins required for bacterial conjuga- tion. Genes listed on F′ are wild-type unless indicated otherwise. |
-| | fhuA | Mutation in the ferric hydroxamate uptake, iron uptake receptor. | Confers T1/T5 phage resistance. |
-| | Gal | Mutation in the galactose metabolism pathway. | Galactose cannot be used as a carbon source for bacterial growth. |
-| | hsdRMS | Mutations in the methylation and restriction system genes. The genetic marker may contain the allele number (e.g., hsdR17) and phenotype [e.g., (rK-, mK+)], where r is for restriction, m for methylation, and the subscript K for the parental strain E. coli K12). | Allows cloning of DNA from non-E. coli sources, such as PCR products, without cleavage by endogenous restric- tion endonucleases. |
-| | Hte | | High transformation efficiency. |
-| | lacIq | Overproduces the lacI gene product, a repressor of the lac operon. | Inhibits transcription from the lac promoter, which can be overcome by IPTG addition. Allows controlled gene expression from promoters that carry the lac operator. |
-| | lon | Mutation in the lon (ATPase-depen- dent protease) gene. | Reduces degradation of expressed recombinant proteins. |
-| | mcrA, mcrBC | Inactivation of pathway that cleaves methylated cytosine DNA. | Allows for uptake of foreign (methyl- ated) DNA. |
-| | mrr | Inactivation of pathway that cleaves methylated adenine or cytosine DNA. | Allows for uptake of foreign (methyl- ated) DNA. |
-| | nupG | Mutation in a nucleoside transport gene. | Increases plasmid uptake. |
-| | ompT | Mutation in the ompT (outer mem- brane protease) gene. | Reduces the degradation of expressed recombinant proteins. |
-| | pLys | Plasmid that encodes T7 lysozyme. | Inhibits binding of T7 RNA poly- merase to the T7 promoter. Reduces basal expression of cloned genes driven by the T7 expression system. |
-| | recA, recA1, recA13 | Mutation in a DNA-dependent ATPase that is essential for recombi- nation and general DNA repair. | Reduces plasmid recombination, increases plasmid stability. |
-| | relA | Mutation in a regulatory gene for coupling between transcription and translation. | Allows RNA synthesis in limiting amino acid concentrations or in the absence of protein synthesis (i. e., relaxed phenotype). |
-| | TetR | | Confers resistance to tetracycline. |
+**표 4.3** 대장균 유전자 마커 가이드
+
+| 마커 | 설명 | 기능적 결과 |
+| --- | --- | --- |
+| CamR | 클로람페니콜 내성 유전자 | 클로람페니콜 내성을 부여한다. |
+| dam | DNA 아데닌 메틸화효소 | 플라스미드를 준비할 때 특정 제한효소 절단에 영향을 준다. |
+| dcm | DNA 사이토신 메틸화효소 | 플라스미드를 준비할 때 특정 제한효소 절단에 영향을 준다. |
+| (DE3) | T7 RNA 중합효소 유전자를 지닌 λ 프로파지 | T7 발현 시스템에서 발현을 유도한다. |
+| endA, endA1 | Mutation in endonuclease I (nonspecific cleavage of dsDNA). | Improves plasmid yield. |
+| F | Host does (F′) or does not (F-) contain the fertility plasmid. | A low copy-number plasmid, encoding proteins required for bacterial conjugation. Genes listed on F′ are wild-type unless indicated otherwise. |
+| fhuA | Mutation in the ferric hydroxamate uptake, iron uptake receptor. | Confers T1/T5 phage resistance. |
+| Gal | Mutation in the galactose metabolism pathway. | Galactose cannot be used as a carbon source for bacterial growth. |
+| hsdRMS | Mutations in the methylation and restriction system genes. The genetic marker may contain the allele number (e.g., hsdR17) and phenotype [e.g., (rK-, mK+)], where r is for restriction, m for methylation, and the subscript K for the parental strain E. coli K12). | Allows cloning of DNA from non-E. coli sources, such as PCR products, without cleavage by endogenous restriction endonucleases. |
+| Hte | | High transformation efficiency. |
+| lacIq | Overproduces the lacI gene product, a repressor of the lac operon. | Inhibits transcription from the lac promoter, which can be overcome by IPTG addition. Allows controlled gene expression from promoters that carry the lac operator. |
+| lon | Mutation in the lon (ATPase-dependent protease) gene. | Reduces degradation of expressed recombinant proteins. |
+| mcrA, mcrBC | Inactivation of pathway that cleaves methylated cytosine DNA. | Allows for uptake of foreign (methylated) DNA. |
+| mrr | Inactivation of pathway that cleaves methylated adenine or cytosine DNA. | Allows for uptake of foreign (methylated) DNA. |
+| nupG | Mutation in a nucleoside transport gene. | Increases plasmid uptake. |
+| ompT | Mutation in the ompT (outer membrane protease) gene. | Reduces the degradation of expressed recombinant proteins. |
+| pLys | Plasmid that encodes T7 lysozyme. | Inhibits binding of T7 RNA poly-merase to the T7 promoter. Reduces basal expression of cloned genes driven by the T7 expression system. |
+| recA, recA1, recA13 | Mutation in a DNA-dependent ATPase that is essential for recombination and general DNA repair. | Reduces plasmid recombination, increases plasmid stability. |
+| relA | Mutation in a regulatory gene for coupling between transcription and translation. | Allows RNA synthesis in limiting amino acid concentrations or in the absence of protein synthesis (i. e., relaxed phenotype). |
+| TetR | | Confers resistance to tetracycline. |
 
 
-- Addgene 웹페이지(https://www.addgene.org/)로 이동한다 5 쿼리 상자에 pUC19를 입력한다 5 'Search' 버튼을 클릭한다 5 'Catalog' 아래에서 'Pla
+- Addgene 웹페이지(https://www.addgene.org/)로 이동한다
+- 쿼리 상자에 pUC19를 입력한다
+- 'Search' 버튼을 클릭한다
+- 'Catalog' 아래에서 'Plasmids'를 클릭하여 원하는 플라스미드 페이지로 이동한다
 
 CGSC 웹페이지(4.1절)를 둘러보았다면, 플라스미드를 보유한 대장균 균주를 요청하는 것이 가능하다는 것을 알 것이다.
 
-상업 회사들은 클로닝과 발현을 위한 플라스미드 개발에 상당한 노력을 기울여 왔다. 이러한 플라스미드 시스템의 예로는
+상업 회사들은 클로닝과 발현용 플라스미드 개발에 많은 노력을 기울여 왔다. 대표적인 예가 pET 발현 시스템이다.
 
 ## 4.2.2 플라스미드 지도 읽기
 
-플라스미드 지도는 플라스미드의 그래픽 표현이다. pUC19의 플라스미드 지도는 다음과 같으며 주요 정보를
-**Table 4.4. Reading a plasmid map is important for various reasons:**
-- 어떤 플라스미드를 사용할지 결정하기 5 플라스미드가 도착했을 때 취급 방법(예: 대장균으로 형질전환할 때 어떤 항생제를 사용할지
+플라스미드 지도는 플라스미드의 그래픽 표현이다. 지도에는 이름(pUC19), 크기(2686 bp), 복제 origin(ori), 선택 마커(AmpR), MCS, 고유 제한효소 절단 부위, lacZα, lac 프로모터와 오퍼레이터, 시퀀싱 프라이머(M13/pUC) 같은 주요 정보가 담긴다(표 4.4). 플라스미드 지도를 읽을 줄 알아야 하는 이유는 다음과 같다:
+
+- 어떤 플라스미드를 사용할지 결정할 때
+- 플라스미드가 도착했을 때 취급 방법(예: 대장균으로 형질전환할 때 어떤 항생제를 쓸지)을 정할 때
 
 ## 4.2.3 플라스미드 지도 만들기
 
-The plasmid map of pUC19 in is created using SnapGene, a software that
-we have introduced in Sect. 2.1.3. All the plasmid maps in Addgene are created
-using SnapGene. We therefore strongly encourage students to familiarize yourself
-with this software.
+pUC19의 플라스미드 지도는 2.1.3절에서 소개한 SnapGene으로 그린 것이다. Addgene의 모든 플라스미드 지도도 SnapGene으로 만들어져 있으므로, 이 소프트웨어에 익숙해질 것을 권한다.
 
-pBR322ori-F (118 .. 137)
-
-pBR for Eco (1093 .. 1111)
-
-(1502 .. 1521) Amp-R
-
-L4440 (371 .. 388)
-
-M13/pUC Reverse (584 .. 606)
-lac operator 10
-M13 Reverse (603 .. 619)
-HindIII (632)
-XbaI (656)
-BamHI (662) 7
-KpnI (675)
-SacI (681)
-EcoRI (683)
-M13 Forward (689 .. 706)
-M13/pUC Forward (698 .. 720)
-
-pUC19
-2686 bp
-
-NdeI (897)
-pRS-marker (914 .. 933)
-
-pGEX3' (1033 .. 1055)
-
-Plasmid map of pUC19, created using SnapGene.
 
 SnapGene opens both the GenBank files (*.gbk) and the SnapGene files (*.dna).
 GenBank file consists of an annotation section and a sequence section.
@@ -849,7 +699,7 @@ Important information gathered from the plasmid map of pUC19
 | 1 | pUC19 | The plasmid name that always begins with a small 'p'. |
 | --- | --- | --- |
 | 2 | 2686 bp | The plasmid size. |
-| 3 | ori | Origin of plasmid replication, which determines the copy num- ber of the plasmid and its plasmid incompatibility group. |
+| 3 | ori | Origin of plasmid replication, which determines the copy number of the plasmid and its plasmid incompatibility group. |
 | 4 | AmpR | β-Lactamase gene, which confers resistance to ampicillin. |
 | 5 | AmpR promoter | The promoter of the β-lactamase gene. |
 | 6 | MCS | A multiple cloning site (or a polylinker region) is a DNA region containing multiple unique restriction enzyme cut sites for cloning a target gene. |
@@ -1151,7 +1001,7 @@ Commonly used protein tags, their sizes and applications
 | | HaloTag | 34 |
 | | Maltose-binding protein (MBP) | 42 |
 | | Polyhistidine (6×His; HHHHHH) | 1 |
-| | SBP-tag (MDEKTTGWRGGHVVEGLAGELEQLRARLEHH- PQGQREP) | 4 |
+| | SBP-tag (MDEKTTGWRGGHVVEGLAGELEQLRARLEHH-PQGQREP) | 4 |
 | | Strep-tag II (WSHPQFEK) | 1 |
 | | Twin-Strep-tag [WSHPQFEK(GGGS)2GGSAWSHPQFEK] | 3 |
 | Epitope tag | FLAG tag (DYKDDDDK) | 1 |
@@ -1212,8 +1062,6 @@ Commonly used protein tags, their sizes and applications
 
 단백질 크기를 가장 가까운 kDa로 반올림
 
-Exercise
-
 **Table 4.10**
 
 세균 플라스미드에서 흔히 발견되는 단백질 분해 절단 부위 목록
@@ -1244,81 +1092,40 @@ Scar after cleavage
 
 ## 4.3 적합한 숙주 선택
 
-이제 대장균 균주와 플라스미드에 대한 충분한 이해를 갖추었으니,
-적절한 숙주와 플라스미드를 선택하는 데 유용한 몇 가지 팁을 정리하며 이 장을 마무리하자
-host for your protein expression (표 4.12).
+이제 대장균 균주와 플라스미드를 충분히 이해했으니, 단백질 발현에 맞는 숙주를 고르는 데 유용한 지침을 정리하며 이 장을 마무리하자(표 4.12).
+
+**표 4.12** 상황별 대장균 숙주 선택 지침
+
+| 구분 | 상황 | 권장 균주 |
+| --- | --- | --- |
+| 프로모터 | T7 프로모터로 단백질 발현 | DE3 균주 |
+|  | T7 프로모터의 발현 누출(leaky) | pLysS, pLysE 또는 pLacI 플라스미드를 지닌 균주 |
+| 표적 유전자 | 희귀 코돈이 많아 발현이 저조 | CodonPlus, Rosetta 또는 pRARE/pRARE2 플라스미드 보유 균주 |
+| 표적 단백질 | 막 단백질 발현 | C41, C43 또는 Lemo21 |
+|  | 폴리히스티딘 태그 단백질의 발현·정제 | NiCo21 균주 |
+|  | 독성 단백질 발현 | BL21-AI 또는 BL21-Gold |
+|  | 세포질 내 이황화 결합 형성 촉진 | Origami, SHuffle 또는 AD494 균주 |
+| 단백질 품질 | 대장균 엔도독신 회피 | ClearColi |
+
+
 
 ## 연습문제
 
-1. What is the antibiotic selection marker in this plasmid?
+Tfu_0901(잔기 37-466)의 발현에 pCold™ TF 플라스미드를 쓰기로 했다. 이 플라스미드 지도를 참고하여 다음 물음에 답하라.
 
-2. What is the promoter used for protein expression?
-
-| 표 4.12 | the right E. coli host | |
-| --- | --- | --- |
-| Situation | | E. coli strains |
-| Promoter | Use of T7 promoter for protein | DE3 strains |
-| | expression | |
-| | Leaky T7 promoter | Strains harbouring pLysS, pLysE or |
-| | | pLacI plasmid |
-| Target gene | Target gene contains rare codons, resulting in poor protein | CodonPlus, Rosetta or strains har- bouring pRARE/pRARE2 plasmid |
-| Target protein | Expressing a membrane protein | C41, C43 or Lemo21 |
-| | Expressing and purifying a | NiCo21 strains |
-| | polyhistidine tagged protein | |
-| | Expressing a toxic protein | BL21-AI or BL21-Gold |
-| | Promote disulphide bond | Origami, SHuffle or AD494 strains |
-| | formation in cytoplasm | |
-| Protein quality | Avoid endotoxin from E. coli | ClearColi |
-
-Further Reading
-
-lac operator
-
-pCold-F (208 .. 226)
-TEE
-6xHis
-
-pCold™ TF
-5769 bp
-
-
-Factor Xa site
-NdeI (1664)
-Eco53kI (1671)
-SacI (1673)
-Acc65I (1675)
-KpnI (1679)
-AbsI - PaeR7I - PspXI - XhoI
-Bam HI (1687)
-EcoRI (1693)
-HindIII (1699)
-SalI (1705)
-PstI (1715)
-XbaI (1717)
-BfuAI - BspMI (1718)
-pCold-R (1746 .. 1765)
-
-(1681)
-
-Plasmid map of pCOLD TF, created using SnapGene.
-
-1. What is the protein sequence of the translation enhancing element (TEE) used in this plasmid?
-
-2. What is the affinity tag used for protein purification?
-
-3. What is the function of a trigger factor?
-
-4. How large is the trigger factor in kDa?
-
-5. Which protease would you use to remove the protein fusion tag?
-
-6. Would you use NdeI and SacII to clone a target gene into this vector?
-
-(i) Name an E. coli strain for protein expression from this plasmid.
+(a) 이 플라스미드의 항생제 선택 마커는 무엇인가?
+(b) 단백질 발현에 쓰이는 프로모터는 무엇인가?
+(c) 이 플라스미드가 쓰는 번역 향상 요소(TEE)의 단백질 서열은 무엇인가?
+(d) 단백질 정제에 쓰이는 친화 태그는 무엇인가?
+(e) 트리거 팩터(trigger factor)의 기능은 무엇인가?
+(f) 트리거 팩터의 크기는 몇 kDa인가?
+(g) 융합 태그를 제거할 때 어떤 프로테아제를 쓰겠는가?
+(h) 이 벡터에 표적 유전자를 클로닝하는 데 NdeI와 SacII를 쓰겠는가?
+(i) 이 플라스미드로 단백질 발현을 할 수 있는 대장균 균주 이름을 하나 말하라.
 
 ## 더 읽어보기
 
-Baneyx F (1999) Recombinant protein expression in Escherichia coli. Curr Opin Biotechnol 10(5):
+Baneyx F (1999) Recombinant protein expression in Escherichia coli. Curr Opin Biotechnol 10(5):411-421
 Esposito D, Chatterjee DK (2006) Enhancement of soluble protein expression through the use of fusion
 tags. Curr Opin Biotechnol 17(4):353-358
 Kimple ME, Brill AL, Pasker RL (2013) Overview of affinity tags for protein purification. Curr Protoc
@@ -1383,7 +1190,7 @@ Gene amplification from gDNA involves three basic steps:
 
 There are a few excellent culture collections, from which you can purchase or request for
 a strain (표 5.1). To give you a quick guide, let's order T. fusca YX from ATCC:
-- Go to the ATCC webpage (https://www. lgcstandards-atcc. org/)
+- Go to the ATCC webpage (https://www.lgcstandards-atcc.org/)
 - Type Thermobifida fusca YX in the query box
 - Click the 'Search' button
 - To order the bacterial strain, choose 'ATCC® BAA-629', enter the quantity, and
@@ -1392,7 +1199,7 @@ a strain (표 5.1). To give you a quick guide, let's order T. fusca YX from ATCC
 to Cart'
 
 Most culture collections, if not all, provide useful information about the strain. If you
-click on the link corresponding to ATCC® BAA-629 (https://www. lgcstandardsatcc. org/products/all/BAA-629. aspx), you will gather the following information:
+click on the link corresponding to ATCC® BAA-629 (https://www.lgcstandardsatcc.org/products/all/BAA-629.aspx), you will gather the following information:
 - Under the 'General Information' tab, this is a biosafety level 1 organism.
 - Under the 'Culture Method' tab, this aerobic organism grows at 50 °C. The recommended growth media include TYG medium (3 g/L tryptone, 3 g/L yeast
 extract, 3 g/L glucose, 1 g/L K2HPO4, pH 7.4) and Hagerdahl medium.
@@ -1405,20 +1212,9 @@ safety data sheet.
 
 Culture collections
 
-| Culture collection URL Fee? |
-| --- |
-| Agricultural Research Service Culture https://nrrl. ncaur. usda. gov/ No Collection (NRRL) |
-| American Type Culture Collection (ATCC) https://www. lgcstandards-atcc. org/ Yes |
-| German Collection of Microorganisms and https://www. dsmz. de/ Yes Cell Cultures GmbH (DSMZ) |
-| Japan Collection of Microorganisms (JCM) https://jcm. brc. riken. jp/en/ Yes |
-| National Collection of Industrial Food and https://www. ncimb. com/ Yes Marine Bacteria (NCIMB) |
-| Thailand Bioresource Research Center (TBRC) https://www. tbrcnetwork. org/ Yes |
-| Supplier Kit |
-| Macherey-Nagel NucleoSpin Microbial DNA Mini kit |
-| Qiagen QIAamp DNA Mini Kit Genomic-tip 20/G |
-| Thermo Fisher Scientific GeneJET Genomic DNA Purification Kit PureLink™ Genomic DNA Mini Kit |
-| Omega Bio-tek E.Z.N.A.® Bacterial DNA Kit |
-| New England Biolabs (NEB) Monarch® Genomic DNA Purification Kit |
+Culture collection URL Fee?
+Agricultural Research Service Culture https://nrrl.ncaur.usda.gov/No Collection (NRRL) American Type Culture Collection (ATCC) https://www.lgcstandards-atcc.org/Yes German Collection of Microorganisms and https://www.dsmz.de/Yes Cell Cultures GmbH (DSMZ) Japan Collection of Microorganisms (JCM) https://jcm.brc.riken.jp/en/Yes National Collection of Industrial Food and https://www.ncimb.com/Yes Marine Bacteria (NCIMB) Thailand Bioresource Research Center (TBRC) https://www.tbrcnetwork.org/Yes Supplier Kit Macherey-Nagel NucleoSpin Microbial DNA Mini kit Qiagen QIAamp DNA Mini Kit Genomic-tip 20/G Thermo Fisher Scientific GeneJET Genomic DNA Purification Kit PureLink™ Genomic DNA Mini Kit Omega Bio-tek E.Z.N.A.® Bacterial DNA Kit New England Biolabs (NEB) Monarch® Genomic DNA Purification Kit
+
 
 ## 5.1.2 세균 배양 및 유전체 DNA 추출
 
@@ -1494,7 +1290,7 @@ and the MCS sequence. Using NdeI site will ensure that the gene is in frame with
 the enterokinase site.
 - Tfu_0901 contains a signal peptide (amino acids 1-36), for the purpose of secretion by T. fusca YX. Since we are looking to express this gene in E. coli, we would
 need to exclude this stretch of sequence in our gene amplification.
-- Next, we use either SnapGene or NEBCutter (http://nc2. neb. com/NEBcutter2/)
+- Next, we use either SnapGene or NEBCutter (http://nc2.neb.com/NEBcutter2/)
 to confirm that neither NdeI nor BamHI is present in the Tfu_0901 gene.
 - Therefore, our forward primer will contain NdeI site, and the reverse primer will
 contain a stop codon and BamHI site. E. coli displays a strong bias towards the
@@ -1617,7 +1413,7 @@ We summarise four potential PCR outcomes in 표 5.8.
 | 20 μM Fwd primera | 1 | 20 μM Fwd primera | 1 | 20 μM Fwd primera | 1 |
 | 20 μM Rev primerb | 1 | 20 μM Rev primerb | 1 | 20 μM Rev primerb | 1 |
 | gDNA | X (100 ng) | gDNA | Y (100 ng) | gDNA | Z (100 ng) |
-| Platinum SuperFi II DNA polymerase | 1 | 2 U/μL Q5 high- fidelity DNA polymerase | 0.5 | PfuUltra II Fusion HS DNA polymerase | 1 |
+| Platinum SuperFi II DNA polymerase | 1 | 2 U/μL Q5 high-fidelity DNA polymerase | 0.5 | PfuUltra II Fusion HS DNA polymerase | 1 |
 | Total | 50 | Total | 50 | Total | 50 |
 
 **Table 5.6**
@@ -1629,14 +1425,14 @@ bUse the Rev primer in 표 5.4
 
 | Platinum | II Q5 PfuUltra II Fusion FS |
 | --- | --- |
-| Temper- ature [°C] | Dura- # of Temper- Dura- # of Temper- Dura- # of tion cycle ature tion cycle ature tion cycle [°C] [°C] |
+| Temperature [°C] | Dura- # of Temper-Dura- # of Temper-Dura- # of tion cycle ature tion cycle ature tion cycle [°C] [°C] |
 | 98 | 30 sec 1× 98 30 sec 1× 95 2 min 1× |
 | 98 60a 72 | 8 sec 30× 98 8 sec 30× 95 20 sec 30× 10 sec 72c 20 sec 60e 20 sec 29 secb 72 33 secd 72 20 secf |
 | 72 | 5 min 1× 72 2 min 1× 72 3 min 1× |
 | 8 | ∞ - 8 ∞ - 8 ∞ - |
-| aThe tary | temperature with Platinum™ SuperFi™ II DNA Polymerase is 60 °C. Proprie- in the reaction buffer stabilize primer-template duplexes during the annealing step, |
+| aThe tary | temperature with Platinum™ SuperFi™ II DNA Polymerase is 60 °C. Propriein the reaction buffer stabilize primer-template duplexes during the annealing step, |
 | and each | to increased specificity without the need to optimize annealing temperature for pair |
-| | using NEBTm calculator (https://tmcalculator. neb. com/#!/main) with sequences |
+| | using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with sequences |
 | | and 'GGACTGGAGCTTGCTCCGCAC' |
 | | using 1290 bp/1000 bp × 15 sec = 19.4 sec ≈ 20 sec |
 | Outcome | Product of Side bands or What next? right size by-products |
@@ -1647,7 +1443,7 @@ bUse the Rev primer in 표 5.4
 | 5.2 Gene | |
 
 Compared to gene amplification from gDNA (Sect. 5.1), gene synthesis is a more
-'hands- off' approach. Some might argue that it is too expensive. However, with the
+'handsoff' approach. Some might argue that it is too expensive. However, with the
 rapid advancement in DNA technologies, the price of a synthetic gene is now very
 competitive. Let's do a cost comparison to convince ourselves (표 5.9).
 
@@ -1787,7 +1583,7 @@ E. coli
 
 Script for expression in E. coli K12. The restriction sites NdeI and BamHI are avoided in the optimized
 sequences. The analysis is done using the Codon Usage tool discussed in Sect. 2.2.2.4. Codon usage
-of the E. coli K12 and B strains from https://www. kazusa. or. jp/codon/ are included for comparison.
+of the E. coli K12 and B strains from https://www.kazusa.or.jp/codon/ are included for comparison.
 Codon for each amino acid with the highest occurrence is coloured in green and with the second highest
 occurrence in yellow.
 
@@ -1946,7 +1742,7 @@ digestion at 37 °C. The tips below may prove useful:
 - Purify the plasmid backbone after restriction digestion by gel extraction.
 - Purify the PCR product after restriction digestion using a DNA clean-up kit or
 extract the synthetic gene fragment after restriction digestion by gel extraction.
-- Always check the compatible buffer system (http://nebcloner. neb. com/#!/redigest) and the reaction temperature.
+- Always check the compatible buffer system (http://nebcloner.neb.com/#!/redigest) and the reaction temperature.
 
 DNA ligation with T4 DNA ligase from NEB
 
@@ -2006,7 +1802,7 @@ Tfu_090137-466 from the gDNA (5.1.1절과 5.1.2절), and two primers to create
 the linear backbone using pET-19b as the DNA template. Let's design the four primers we need:
 - Carry out a virtual cloning and create a plasmid map of pET-19b-Tfu_0901, in
 which Tfu_090137-466 is 'cloned' into pET-19b between NdeI and BamHI sites.
-- Go to the NEBuilder webpage (https://nebuilder. neb. com/#!/)
+- Go to the NEBuilder webpage (https://nebuilder.neb.com/#!/)
 - Click the '+ NEW FRAGMENT' button
 - Under '1. Input source sequence', paste the full sequence of pET-19b-Tfu_0901
 - Tick the 'Circular' box
@@ -2159,9 +1955,9 @@ in blue annealing to pET-19b at the s sites
 | IntA-Tfu_0901-fwd | cgacgacgacg*acaa gcatatg*GCCGGTCT CACCGCCACAG | 41 | 72 | 69 |
 | IntB-Tfu_0901-rev | gctttgttag*cagcc ggatcc*TTAGGACTG GAGCTTGCTCCGCAC | 45 | | |
 
-aCalculated using NEBTm calculator (https://tmcalculator. neb. com/#!/main) with the
+aCalculated using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with the
 sequences coloured in magenta
-bCalculated using NEBTm calculator (https://tmcalculator. neb. com/#!/main) with the
+bCalculated using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with the
 sequences coloured in blue
 
 PCR mixtures for gene amplification and megaprimer PCR
@@ -2204,57 +2000,35 @@ bCalculated using 1290 bp/1000 bp × ((20 sec + 30 sec)/2) = 32.3 sec ≈ 33 sec
 cBased on the information from 표 5.17
 dCalculated using 5712 bp/1000 bp × ((20 sec + 30 sec)/2) = 142.8 sec ≈ 143 sec = 2 min 23 sec
 
-Exercise
-
 Most DNA sequencing service providers would have a set of standard primers that
 includes T7 and T7term.
 In situation where your target gene is long (>1 kb), you may need to design additional sequencing primers. In this case, we would recommend the online tools below:
 - Eurofins (https://www.eurofinsgenomics.eu/en/ecom/tools/sequencing-primerdesign/)
-- GenScript (https://www. genscript. com/tools/dna-sequencing-primer-design)
+- GenScript (https://www.genscript.com/tools/dna-sequencing-primer-design)
 
 ## 핵심 메시지
 
-1. NRRL, ATCC, DSMZ, JCM, NCIMB and TBRC are culture collections, from where a microorganism and/or its genomic DNA can be requested or purchased.
+1. NRRL, ATCC, DSMZ, JCM, NCIMB, TBRC는 미생물과 그 게놈 DNA를 요청하거나 구매할 수 있는 균주 보존 기관이다.
+2. 세포 용해, 단백질 제거, DNA 결합, DNA 세척, DNA 용출은 게놈 DNA 추출 프로토콜의 핵심 단계이다.
+3. DNA 순도는 A260/A280 비율과 A260/A230 비율로 판단한다.
+4. DNA 중합효소의 선택은 용도, 중합효소의 정확도(fidelity)와 신장 속도 등 여러 요인에 따라 달라진다.
+5. 유전자 합성은 유전자 설계, 코돈 최적화, 돌연변이 도입 같은 여러 장점을 경쟁력 있는 가격에 제공한다.
+6. 분자 클로닝 접근법은 다섯 부류로 나뉜다: 상보적 오버행 기반, 상동 서열 기반, 중첩 PCR 기반, 메가프라이머 기반, 그리고 브리지 연결 기반 클로닝이다.
+7. 제한효소 절단·연결(restriction and ligation)은 지금도 널리 쓰이는 고전적인 분자 클로닝 방법이다.
+8. NEBuilder® HiFi DNA Assembly와 PTO-QuickStep은 무봉합(seamless) 클로닝을 위한 고급 방법이다.
+9. DNA 시퀀싱은 유전자 클로닝 후 클론을 검증하는 직접적인 방법이다.
 
-2. Cell lysis, protein removal, DNA binding, DNA washing and DNA elution are key steps in a genomic DNA extraction protocol.
+## 연습문제
 
-3. DNA purity is determined by the A260/A280 and A260/A230 ratios.
+*Cupriavidus necator* H16(*Ralstonia eutropha* H16로도 널리 알려져 있다)은 스트레스 조건(예: 질소 결핍)에서 배양하면 세포 건조량의 상당 부분을 바이오플라스틱[폴리하이드록시알카노에이트(PHA)]으로 축적하는 그람 음성 세균이다. PHA 축적 능력은 세 가지 효소(3-케토싸이올레이스, 아세토아세틸-CoA 환원효소, PHA 신테이스)를 암호화하는 PHA 생합성 오페론(phaCAB)에서 나온다. 지도교수는 C. necator H16의 phaCAB 오페론 전체를 클로닝하고 발현시켜 PHA를 만들어 내는 대장균을 만들어 보길 원한다.
 
-4. The choice of a DNA polymerase is governed by a few factors, which include the application, the polymerase's fidelity and extension rate, among others.
+여러 상용 플라스미드를 알아본 끝에 pBAD LIC 벡터(Addgene 카탈로그 #37501)에 phaCAB 오페론을 클로닝하기로 했다.
 
-5. Gene synthesis offers numerous advantages (e.g., gene design, codon optimiza- tion, and gene mutation etc) at a competitive price.
-
-6. There are five categories of molecular cloning approaches: molecular cloning based on complementary overhangs, molecular cloning based on homologous sequences, molecular cloning based on overlapping PCR, molecular cloning based on megaprimers, and molecular cloning based on bridged ligation.
-
-7. Restriction and ligation is a classical molecular cloning method that is still widely used.
-
-8. NEBuilder® HiFi DNA Assembly and PTO-QuickStep are advanced methods for seamless cloning.
-
-9. DNA sequencing is a direct method of verifying a clone after gene cloning.
-
-| Exercise |
-| --- |
-| Cupriavidus necator H16, also commonly known as Ralstonia eutropha H16, is a Gram- |
-| negative bacterium that naturally accumulates bioplastics [polyhydroxyalkanoate |
-| (PHA)] to high percentage of dry cell mass when cultivated under stressed conditions |
-| (e.g., nitrogen limitation). The ability of PHA accumulation is endowed by the PHA |
-| biosynthesis operon (phaCAB) encoding three enzymes (3-ketothiolase, acetoacetyl- |
-| CoA reductase and PHA synthase). Your project supervisor would like you to create a |
-| PHA-producing E. coli, by cloning and expressing the entire phaCAB operon from C. |
-| necator H16. |
-
-After your research on various commercial plasmids available, you have decided to
-clone the phaCAB operon into pBAD LIC vector (Addgene catalog #37501).
-
-1. How would you obtain the C. necator H16 strain?
-
-2. How would you cultivate the C. necator H16 strain?
-
-3. Would you clone the phaCAB operon using EcoRV and BamHI sites? Justify your answer.
-
-4. Design the primers required to clone phaCAB operon using NEBuilder® HiFi DNA Assembly kit.
-
-5. Design the primers required to clone phaCAB operon using PTO- QuickStep.
+1. C. necator H16 균주는 어떻게 확보하겠는가?
+2. C. necator H16 균주는 어떻게 배양하겠는가?
+3. phaCAB 오페론을 EcoRV와 BamHI 부위로 클로닝하겠는가? 그 이유는?
+4. NEBuilder® HiFi DNA Assembly 키트로 phaCAB 오페론을 클로닝하는 데 필요한 프라이머를 설계하라.
+5. PTO-QuickStep으로 phaCAB 오페론을 클로닝하는 데 필요한 프라이머를 설계하라.
 
 ## 더 읽어보기
 
@@ -2267,9 +2041,9 @@ Biotechnol Adv 31(8):1707-1721
 
 # 6장 · 단백질 발현
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - select and prepare a protein expression medium
 - differentiate between a complex medium and an auto-induction medium
 - perform protein expression
@@ -2294,7 +2068,7 @@ C41(DE3). To reiterate, the DE3 designation means that the respective strains co
 the control of a lacUV5 promoter . IPTG is therefore required to induce
 
 T7 RNA polymerase expression in order to express the recombinant gene cloned
-downstream of a T7 or a T7lac promoter. In pET- 19b- Tfu_0901, the expression of
+downstream of a T7 or a T7lac promoter. In pET19b- Tfu_0901, the expression of
 Tfu_090137-466 gene is under the control of a T7lac promoter.
 
 Expression vector freshly transformed into an expression host
@@ -2366,10 +2140,10 @@ the same OD600 value.
 
 Regardless of the type of medium used, an antibiotic is supplemented (e.g., ampicillin in the case of pET-19b-Tfu_0901) to force the cells to keep their plasmids
 during the course of cultivation. At this point, we would like to introduce the
-Cold Spring Harbor Protocols (http://cshprotocols. cshlp. org/), which is a lab
+Cold Spring Harbor Protocols (http://cshprotocols.cshlp.org/), which is a lab
 manual containing many useful recipes and protocols (e.g., how to prepare an
 antibiotic stock solution, and how to prepare a medium etc). For many, if not
-all, of the media in 표 6.1, you can purchase as pre- mixed powder or granule from suppliers such as Formedium, Sigma-Aldrich, Thermo Fisher Scientific,
+all, of the media in 표 6.1, you can purchase as pre-mixed powder or granule from suppliers such as Formedium, Sigma-Aldrich, Thermo Fisher Scientific,
 and VWR etc. Other commercially available complex AIM include Overnight
 Express™ and MagicMedia™. For those who are interested in more advanced
 AIM optimization, we recommend reading the excellent work from Studier
@@ -2398,7 +2172,7 @@ higher temperature (e.g., 37 °C for 2-4 hours).
 
 The formation of inclusion bodies (IBs) is a common observation during the production of heterologous proteins in bacterial hosts. IBs are exclusively formed by
 misfolded or unfolded proteins, which aggregate into non-functional protein clusters. In protein engineering, IB formation can present enormous technical challenges,
-especially when high- throughput protein expression and screening are required. For
+especially when high-throughput protein expression and screening are required. For
 instance, screening normally entails assessing the activity of a protein, but that would
 not be possible for non-functional IBs. Tackling protein aggregation is challenging.
 Strategies to decrease IB formation or IB solubilization often have to be individually
@@ -2413,8 +2187,8 @@ practical if you are not dealing with a large number of protein variants.
 - Identify and mutate the aggregation-prone residues: This is a riskier approach,
 as a mutation introduced might cause a loss of function. But there are a range
 of bioinformatic tools to detect aggregation-prone regions or residues, such as:
-- Aggrescan (http://bioinf. uab. es/aggrescan/)
-- PASTA (http://protein. bio. unipd. it/pasta2/)
+- Aggrescan (http://bioinf.uab.es/aggrescan/)
+- PASTA (http://protein.bio.unipd.it/pasta2/)
 
 Inclusion body
 
@@ -2441,32 +2215,33 @@ Refolding
 
 Different solubilization methods for the recovery of protein from inclusion bodies.
 
-Take-Home Messages
+## 핵심 메시지
 
-1. Recombinant protein expression yield is affected by four factors: plasmid, host, medium and expression conditions.
+1. 재조합 단백질 발현 수율은 네 요인—플라스미드, 숙주, 배지, 발현 조건—에 좌우된다.
+2. 단백질 공학에서는 복합 배지와 이에 대응하는 자기 유도 배지(auto-induction medium)를 흔히 쓴다.
+3. 자기 유도 배지를 쓰면 600 nm에서 세포 흡광도를 모니터링할 필요도, 화학 유도물질을 첨가할 필요도 없어진다.
+4. 단백질 응집을 피하거나 줄이는 전략으로는 발현 온도를 낮추기, 유도물질 농도를 낮추기, 발현 시간을 줄이기가 있다.
+5. 포획체(inclusion body)는 잘못 접히거나 접히지 못한 단백질만이 뭉쳐 이룬, 기능 없는 단백질 덩어리이다.
+6. 일부 단백질의 포획체는 가용화한 뒤 재접힘(refolding)시킬 수 있다.
 
-2. In protein engineering, complex media and their auto-induction media counter- parts are commonly used. 3. The use of auto-induction medium avoids the need to monitor cell optical den- sity at 600 nm and to add a chemical inducer. 4. Strategies to avoid or reduce protein aggregation include reducing the expression temperature, reducing the inducer concentration and reducing the expression time. 5. Inclusion bodies are exclusively formed by misfolded or unfolded proteins, which aggregate into non-functional protein clusters. 6. For some proteins, their inclusion bodies can be solubilized and refolded.
+## 연습문제
 
-| Exercise |
-| --- |
-| Your PhD supervisor has recently come across three new bacterial expression systems: |
-| 5 Self-inducible expression (SILEX) |
-| 5 E. coli TatExpress strain |
-| 5 Plasmid system based on triclosan selection |
-| You have been tasked to investigate expressing Tfu_090137-466 using these systems and |
-| compare their performance. |
+지도교수가 최근 세 가지 새로운 세균 발현 시스템을 접했다:
 
-1. What are the advantages of using these new bacterial expression systems?
+- 자기 유도 발현(self-inducible expression, SILEX)
+- E. coli TatExpress 균주
+- 트리클로산 선택 기반 플라스미드 시스템
 
-2. How would you change your cloning strategy?
+이 시스템들로 Tfu_0901(잔기 37-466)을 발현해 성능을 비교하는 과제를 맡았다.
 
-3. How would you change your protein expression protocol?
-
-4. How would you check for protein expression?
+1. 이 새로운 발현 시스템들의 장점은 무엇인가?
+2. 클로닝 전략을 어떻게 바꾸겠는가?
+3. 단백질 발현 프로토콜을 어떻게 바꾸겠는가?
+4. 단백질 발현 여부는 어떻게 확인하겠는가?
 
 ## 더 읽어보기
 
-Baneyx F (1999) Recombinant protein expression in Escherichia coli. Curr Opin Biotechnol 10(5):
+Baneyx F (1999) Recombinant protein expression in Escherichia coli. Curr Opin Biotechnol 10(5):411-421
 Kaur J, Kumar A, Kaur J (2018) Strategies for optimization of heterologous protein expression in
 
 E. coli: roadblocks and reinforcements. Int J Biol Macromol 106:803-822
@@ -2476,9 +2251,9 @@ Purif 41(1):207-234
 
 # 7장 · 분석법
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - understand the difference between a direct enzyme assay and an indirect coupled
 enzyme assay
 - understand the difference between a continuous assay and a discontinuous or an end-point assay
@@ -2506,7 +2281,7 @@ can be used to achieve five purposes:
 5. 유도 진화 동안 돌연변이 라이브러리에서 유익한 변이체를 식별한다 (8장)
 
 Assay is the subject of many excellent books. We recommend the Assay Guidance
-Manual (https://www. ncbi. nlm. nih. gov/books/NBK53196/), which is a free and
+Manual (https://www.ncbi.nlm.nih.gov/books/NBK53196/), which is a free and
 comprehensive e-book on all aspects of assay. 7 Chapter 7 will not replicate the
 information from the Assay Guidance Manual. Instead, we will focus on the key
 aspects that are pertinent to protein engineering. As with earlier chapters in this
@@ -2520,7 +2295,7 @@ beneficial variants from a gene pool. In this section, we will describe various 
 ## 7.1.1 분석 검출 모드
 
 검출 기술과 기기의 급속한 발전으로 인해
-ated wide- ranging applications. Examples of detection modes are absorbance,
+ated wideranging applications. Examples of detection modes are absorbance,
 fluorescence intensity, fluorescence polarization, time-resolved fluorescence, time-
 
 resolved Förster resonance energy transfer, alpha detection, filtered luminescence,
@@ -2738,9 +2513,9 @@ some enzymatic assays.
 Where do we find the properties of a dye? The properties of a dye are typically
 provided by its commercial supplier. Further, there are a few excellent databases
 where you can conduct your search:
-- Fluorophores.org (http://www. fluorophores. tugraz. at/)
-- Fluorescence SpectraViewer (https://www. thermofisher. com/uk/en/home/lifescience/cell-analysis/labeling-chemistry/fluorescence-spectraviewer. html#!/)
-- Zeiss Filter Assistant (https://www. micro-shop. zeiss. com/en/uk/shop/
+- Fluorophores.org (http://www.fluorophores.tugraz.at/)
+- Fluorescence SpectraViewer (https://www.thermofisher.com/uk/en/home/lifescience/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html#!/)
+- Zeiss Filter Assistant (https://www.micro-shop.zeiss.com/en/uk/shop/
 filterAssistant/dyes/)
 
 **Table 7.3**
@@ -2879,10 +2654,8 @@ some common agar plate assays. These assays are devised based on three principle
 
 Pick colonies
 
-| Standard growth medium |
-| --- |
-| Replicate |
-| Assay plate Replicate |
+Standard growth medium Replicate Assay plate Replicate
+
 
 Add glycerol
 
@@ -3165,7 +2938,7 @@ technology
 | --- | --- | --- |
 | Methods involving cells | Yeast display Bacterial display | Saccharomyces cerevisiae offers multiple options for cell surface anchor proteins, including Agα1p, Aga2p, Cwp1p, Cwp2p, Tip1p, Flo1p, Sed1p, YCR89w, and Tir1. Fusing a protein of interest to the C- or N-terminus of an anchor protein typically results in the display of up to 100000 copies of the fusion protein on the cell surface of yeast. Outer membrane proteins (OmpA, OmpC, OmpF, and PhoE), lipoproteins and autotransporters are frequently used as carriers for Gram-negative bacteria surface display. |
 | Cell-free methods | Ribosome display mRNA display Plasmid display CIS display | The key feature of ribosome display is the generation of stable protein-ribosome-mRNA (PRM) complexes via ribosome stalling such that the nascent protein and mRNA remain associated. Two strategies which have been used are: (i) addition of antibiotics such as rifampicin and chloramphenicol (for prokaryotic ribosomes) or cycloheximide (for eukaryotic ribosomes) to halt translation at random, or (ii) deletion of the stop codon, normally recognised by release factors which trigger detachment of the nascent polypeptide, to stall the ribosome at the 3'-end of the mRNA. In mRNA display, mRNA molecules bearing a pendant 3' puromycin are translated in vitro to generate covalent mRNA-protein fusions. Plasmid display is based on formation of protein-DNA complex, by fusing a peptide or a protein to a DNA-binding domain such as the Lac repressor, NF-κB p50, Oct-1, and GAL4 DNA-binding domain. CIS display exploits the ability of a DNA replication initiator protein (RepA) to bind exclusively to the template DNA from which it has been expressed, a property called cis-activity. |
-| Methods involving man- made vesicles | Liposome display | Liposome display uses cell-sized, giant unilamellar liposomes for cell-free protein synthesis, membrane protein integration and protein function detection for screening. |
+| Methods involving manmade vesicles | Liposome display | Liposome display uses cell-sized, giant unilamellar liposomes for cell-free protein synthesis, membrane protein integration and protein function detection for screening. |
 
 Description
 
@@ -3229,9 +3002,9 @@ Final concentration
 
 As with buffer preparation, there are many excellent online tools to help with these
 calculations. Good examples include:
-- Mass Molarity Calculator: https://www. sigmaaldrich. com/chemistry/stockroomreagents/learning-center/technical-library/mass-molarity-calculator. html
-- Solution Dilution Calculator: https://www. sigmaaldrich. com/chemistry/
-stockroom- reagents/learning-center/technical-library/solution-dilutioncalculator. html
+- Mass Molarity Calculator: https://www.sigmaaldrich.com/chemistry/stockroomreagents/learning-center/technical-library/mass-molarity-calculator.html
+- Solution Dilution Calculator: https://www.sigmaaldrich.com/chemistry/
+stockroomreagents/learning-center/technical-library/solution-dilutioncalculator. html
 
 ## 7.2.2 분석 이해하기
 
@@ -3243,7 +3016,7 @@ Limit of blank (LoB), limit of detection (LoD), and lower limit of quantificatio
 (LLoQ) are terms used to describe the smallest analyte concentration that can be
 reliably measured by an assay . Here are their definitions according to
 the guidelines published by the Clinical and Laboratory Standards Institute (CLSI;
-https://clsi. org/):
+https://clsi.org/):
 - Limit of blank (LoB): The highest apparent analyte concentration expected to be
 found when replicates of a blank sample containing no analyte are tested.
 
@@ -3345,7 +3118,7 @@ ways of describing enzyme performance such as specific activity, turnover number
 and maximum velocity etc. It is thus useful to understand the meaning of these
 parameters that describe enzyme performance.
 The parameters in 표 7.9 become easier to comprehend, if you recall the
-Michaelis- Menten equation :
+Michaelis-Menten equation :
 
 VC
 v = max
@@ -3458,13 +3231,12 @@ GC etc)
 • Data output from
 individual clone
 
-Take-Home Messages
-
+## 핵심 메시지
 1. An assay is an analytical method used to measure or monitor a protein function that can either be an enzymatic activity or a protein-binding ability.
 
-2. Every assay needs to provide a read-out or a signal that is detectable and quantifi- able.
+2. Every assay needs to provide a read-out or a signal that is detectable and quantifiable.
 
-3. An assay forms an integral part of a high-throughput screening workflow to iden- tify protein variants that are superior to their parental clones.
+3. An assay forms an integral part of a high-throughput screening workflow to identify protein variants that are superior to their parental clones.
 
 4. Absorbance and fluorescence measurements are the two most common assay detection modes used in protein engineering.
 
@@ -3482,19 +3254,13 @@ Take-Home Messages
 
 11. Screening refers to the inspection of every protein variant for the desired property. It involves sampling both functional and non-functional variants.
 
-| Exercise |
-| --- |
-| Unspecific peroxygenases (UPO) (EC 1.11.2.1) are heme proteins, belonging to the |
-| oxidoreductase superfamily. They display both peroxygenase and peroxidase activity. |
-| With over 300 identified substrates, UPOs catalyse numerous oxidations including 1- |
-| or 2-electron oxygenation and selective oxyfunctionalizations, which make them highly |
-| attractive for organic syntheses and industrial biocatalysis. |
+## 연습문제
 
-1. What is the difference between a peroxygenase and a peroxidase?
+비특이적 퍼옥시게나아제(unspecific peroxygenase, UPO, EC 1.11.2.1)는 산화환원효소 슈퍼패밀리에 속하는 헴 단백질이다. 퍼옥시게나아제와 퍼옥시데이스 활성을 모두 보이며, 300개가 넘는 기질이 알려져 있고 1전자 또는 2전자 산화와 선택적 산화 기능화를 촉매한다. 덕분에 유기합성과 산업 바이오촉매 분야에서 매우 주목받는 효소이다.
 
-2. Are UPOs dependent on nicotinamide cofactors? (c) What assay and assay format would you use to monitor the activity of UPO?
-
-Further Reading
+(a) 퍼옥시게나아제와 퍼옥시데이스의 차이는 무엇인가?
+(b) UPO는 니코틴아마이드 보조인자에 의존하는가?
+(c) UPO 활성을 모니터링할 분석법과 분석 형식은 무엇을 쓰겠는가?
 
 ## 더 읽어보기
 
@@ -3508,9 +3274,9 @@ evolution. Ind Eng Chem Res 54(16):4011-4020
 
 # 8장 · 유전자 돌연변이유발
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - describe the difference between transition and transversion.
 - describe the difference between synonymous, non-synonymous and nonsense
 mutations.
@@ -3673,7 +3439,7 @@ following categories, according to the consequence of the mutation on the protei
 - Synonymous mutation: Also called a silent mutation, the mutation does not
 change the encoded amino acid.
 - Non-synonymous mutation: This mutation changes the amino acid encoded.
-Non- synonymous mutations are further sub-divided into:
+Non-synonymous mutations are further sub-divided into:
 - Conservative mutation: A mutation that changes an amino acid to another
 유사한 물리화학적 특성(예: 전하, 소수성
 bicity and size).
@@ -4004,7 +3770,7 @@ A comparison of directed evolution, rational design and semi-rational design
 | Genetic diversity creation | Random mutagenesis or DNA recombination | Focused mutagenesis | Focused mutagenesis |
 | Library size | Large | Small | Small to medium |
 | Screening | High to ultra high throughput | Low to high throughput | Low to high throughput |
-| Advantages | • No prior knowledge of the enzyme structure and mechanism is required. • Mutate the entire enzyme, and as such, it is possible to identify mutations distant to the active site that affect the enzymatic activity via allosteric interaction. | • Small library size. • Less time and effort on screening. • Particularly advantageous when there is no high- throughput screening system available. | • Library size is significantly reduced compared to directed evolution. • A larger portion of the protein sequence space is explored compared to rational design. |
+| Advantages | • No prior knowledge of the enzyme structure and mechanism is required. • Mutate the entire enzyme, and as such, it is possible to identify mutations distant to the active site that affect the enzymatic activity via allosteric interaction. | • Small library size. • Less time and effort on screening. • Particularly advantageous when there is no high-throughput screening system available. | • Library size is significantly reduced compared to directed evolution. • A larger portion of the protein sequence space is explored compared to rational design. |
 | Disadvantages | • Large library size. • Impossible to explore the full protein sequence space, even with the most powerful selection or screening method. • Time consuming to develop an assay and to screen large library. • Resource intensive. | • A priori knowledge is required. • Mutations are mainly targeted at the active site. | • A priori knowledge is required. • Mutations are mainly targeted at the active site. |
 
 ## 8.3.1 지향성 진화
@@ -4245,13 +4011,13 @@ Commercially available epPCR kits
 | GeneMorph II random mutagenesis kit | Agilent | Use of low fidelity DNA polymerase (Mutazyme II) |
 | Diversify PCR random mutagenesis kit | TaKaRa | Use of low fidelity DNA polymerase (Taq), imbalanced dNTP and addition of Mn2+ |
 | JBS error-prone kit | Jena Bioscience | Use of low fidelity DNA polymerase (Taq), imbalanced dNTP, addition of Mn2+, and higher Mg2+ concentration |
-| PickMutant error- prone PCR kit | Canvax | Use of low fidelity DNA polymerase (Taq), imbalanced dNTP and addition of Mn2+ |
+| PickMutant errorprone PCR kit | Canvax | Use of low fidelity DNA polymerase (Taq), imbalanced dNTP and addition of Mn2+ |
 
 1. · Mutagenesis
 
 
-| 8 |
-| --- |
+8
+
 
 (Ts/Tv) of 0.5. Based on the data tabulated in 표 8.7, you would notice the
 following patterns:
@@ -4334,7 +4100,7 @@ information on amino acid substitution pattern at the protein level. Mutagenesis
 Assistant Program (MAP) is designed to fill this information gap. MAP translates
 the nucleotide substitution pattern for different mutagenesis methods into the corresponding amino acid substitution pattern. This online tool is very easy to use, and
 let's use Tfu_090137-466 as an example:
-- Go to the MAP webpage (http://smap. win. biotec. rwth-aachen. de/map3d.
+- Go to the MAP webpage (http://smap.win.biotec.rwth-aachen.de/map3d.
 html)
 - Click 'Submission' in the tool bar
 - Paste the coding strand sequence of Tfu_090137-466 in the query box
@@ -4372,9 +4138,9 @@ Diversify PCR random mutagenesis kit
 | Total | 50 | Total | 50 |
 
 aUse the Fwd primer designed in Sect. 5.1.3.1. This primer has a molecular weight of 8822.8,
-calculated using OligoCalc (http://biotools. nubic. northwestern. edu/OligoCalc. html)
+calculated using OligoCalc (http://biotools.nubic.northwestern.edu/OligoCalc.html)
 bUse the Rev primer designed in Sect. 5.1.3.1. This primer has a molecular weight of 10433.8,
-calculated using OligoCalc (http://biotools. nubic. northwestern. edu/OligoCalc. html)
+calculated using OligoCalc (http://biotools.nubic.northwestern.edu/OligoCalc.html)
 cUse the construct pET-19b-Tfu_0901 described in Sect. 5.3.1
 dUse the Fwd primer designed in Sect. 5.1.3.1
 eUse the Rev primer designed in Sect. 5.1.3.1
@@ -4418,9 +4184,9 @@ aData from manufacturers' manuals
 8.4.2.1 Target Mutation
 
 In protein engineering, we avoid mutating residues that are critical for protein function (i.e., catalytic residues). The best way to identify catalytic residues is to conduct
-a quick search in Mechanism and Catalytic Site Atlas (M-CSA; https://www. ebi.
-ac. uk/thornton- srv/m-csa/):
-- Go to the M-CSA webpage (https://www. ebi. ac. uk/thornton-srv/m-csa/)
+a quick search in Mechanism and Catalytic Site Atlas (M-CSA; https://www.ebi.
+ac. uk/thorntonsrv/m-csa/):
+- Go to the M-CSA webpage (https://www.ebi.ac.uk/thornton-srv/m-csa/)
 - Click 'Search' in the toolbar
 - Type Endoglucanase in the query box
 - Click the 'Search M-CSA' button
@@ -4455,12 +4221,12 @@ tunnel
 - For enzyme stability: Residues that are highly flexible
 
 There are three easy-to-use tools for identifying these residues:
-- HotSpot Wizard (https://loschmidt. chemi. muni. cz/hotspotwizard/)
-- FireProt (http://loschmidt. chemi. muni. cz/fireprot/)
-- CAVER (https://loschmidt. chemi. muni. cz/caverweb/)
+- HotSpot Wizard (https://loschmidt.chemi.muni.cz/hotspotwizard/)
+- FireProt (http://loschmidt.chemi.muni.cz/fireprot/)
+- CAVER (https://loschmidt.chemi.muni.cz/caverweb/)
 
 Let's try HotSpot Wizard, using Tfu_0901:
-- Go to the HotSpot Wizard webpage (http://loschmidt. chemi. muni. cz/hotspotwizard/)
+- Go to the HotSpot Wizard webpage (http://loschmidt.chemi.muni.cz/hotspotwizard/)
 - Tick the 'Enter PDB code' box
 - Enter the PDB ID of Tfu_0901 2CKS in the query box
 - Click the 'Process structure' button
@@ -4534,8 +4300,8 @@ required?
 | QuikChange XL site-directed mutagenesis kit | Agilent | PfuTurbo DNA polymerase | Overlapping complementary pair | 1 | ⨯ |
 | QuikChange multi site-directed mutagenesis kit | Agilent | QuikChange multi enzyme blend | 1 mutagenic oligo per site | Up to 5 | ⨯ |
 | QuikChange lightning multi site-directed mutagenesis kit | Agilent | QuikChange lightning multi enzyme blend | 1 mutagenic oligo per site | Up to 5 | ⨯ |
-| Q5 site-directed mutagenesis kit | New England Biolabs | Q5 DNA polymerase | Non- overlapping pair | 1 | ⨯ |
-| Phusion site-directed mutagenesis kit | Thermo Fisher Scientific | Phusion hot start DNA polymerase | Non- overlapping pair | 1 | ⨯ |
+| Q5 site-directed mutagenesis kit | New England Biolabs | Q5 DNA polymerase | Non-overlapping pair | 1 | ⨯ |
+| Phusion site-directed mutagenesis kit | Thermo Fisher Scientific | Phusion hot start DNA polymerase | Non-overlapping pair | 1 | ⨯ |
 | GeneArt site-directed mutagenesis system | Thermo Fisher Scientific | AccuPrime Pfx DNA polymerase | Overlapping complementary pair | 1 | ✓ |
 | GeneArt site-directed mutagenesis plus system | Thermo Fisher Scientific | AccuPrime Pfx DNA polymerase | 1 overlapping complementary pair per site | Up to 3 | ✓ |
 
@@ -4607,7 +4373,7 @@ systems. It gives you the flexibility in choosing the type of mutagenic primers 
 design (e.g., overlapping, partially overlapping, non-overlapping), as well as the PCR
 modes (one-stage or two-stage).
 Let's us show you how OneClick can simplify your focused mutagenesis experiment by using Tfu_090137-466 as an example:
-- Go to the OneClick webpage (http://www. oneclick-mutagenesis. com/)
+- Go to the OneClick webpage (http://www.oneclick-mutagenesis.com/)
 - Paste the coding strand sequence of Tfu_090137-466 GCCGGT......TCCTAA in the
 query box
 - Click the 'Begin' button
@@ -4631,45 +4397,28 @@ dropdown menu of 'DNA polymerase'
 
 ## 핵심 메시지
 
-1. A transition (Ts) is a nucleotide substitution from a purine to a purine or from a pyrimidine to a pyrimidine. There are two pairs of transitions.
+1. 전이(transition, Ts)는 퓨린→퓨린 또는 피리미딘→피리미딘 치환이며, 두 쌍이 있다.
+2. 전환(transversion, Tv)은 퓨린→피리미딘 또는 그 반대 치환이며, 네 쌍이 있다.
+3. 암호화되는 아미노산을 바꾸지 않는 돌연변이를 동의 돌연변이(synonymous mutation), 곧 무음 돌연변이(silent mutation)라 한다.
+4. 비동의 돌연변이(non-synonymous mutation)는 암호화된 아미노산을 바꾼다. 유사한 물리화학적 특성(전하, 소수성, 크기 등)을 지닌 아미노산으로 바꾸면 보존 돌연변이(conservative mutation), 다른 특성을 지닌 아미노산으로 바꾸면 비보존 돌연변이(non-conservative mutation)이다.
+5. 넌센스 돌연변이(nonsense mutation)는 원래 아미노산을 지정하던 코돈 자리에 종결 코돈(stop codon)이 나타나게 한다.
+6. 유전 암호는 축퇴성(degenerate), 즉 중복성(redundancy)을 지니며 그 구성은 무작위가 아니다.
+7. 단백질 공학 접근법에는 유도 진화(directed evolution), 합리적 설계(rational design), 반합리적 설계(semi-rational design)의 세 가지가 있다.
+8. 유도 진화는 돌연변이유발과 스크리닝/선별의 반복 사이클로 이루어지는 다윈 진화 기반 방법으로, 효소 구조나 메커니즘에 대한 사전 지식을 요구하지 않는다.
+9. Frances H. Arnold는 유도 진화 실험이 성공하기 위한 네 가지 요건—진화시킬 수 있는 단백질 성질, 변이체 라이브러리의 질, 스크리닝/선별 시스템의 처리 능력, 유전형-표현형 연결—을 정리했다.
+10. 유전자 돌연변이유발 방법은 무작위 돌연변이유발, 집중 돌연변이유발, DNA 재조합의 세 부류로 나뉜다.
+11. 오류 유발 중합효소 연쇄반응(epPCR)은 무작위 돌연변이유발에 가장 널리 쓰인다.
+12. QuikChange 방식은 위치 특이적 및 다중 위치 특이적 돌연변이유발에 가장 널리 쓰인다.
+13. OneClick은 집중 돌연변이유발 실험 설계 전용 도구이다.
 
-2. A transversion (Tv) is a nucleotide substitution from a purine to a pyrimidine or vice versa. There are four pairs of transversions.
+## 연습문제
 
-3. The mutation that does not change the encoded amino acid is known as a syn- onymous mutation or a silent mutation.
+*T. fusca* YX의 커티나아제(Tfu_0883, UniProt Q47RJ6)와 *T. fusca* KW3의 TfCut2(UniProt E5BBQ3)는 PET(폴리에틸렌 테레프탈레이트)를 분해하는 것으로 알려져 있다. 위치 특이적 돌연변이유발 실험에서 이중 돌연변이 Q132A/T101A와 단일 돌연변이 G62A가 각각 Tfu_0883과 TfCut2의 PET 가수분해 활성을 높였다. 지도교수가 이 단백질 변이체들을 연구해 보라고 한다.
 
-4. 비동의 돌연변이(Non-synonymous mutation)는 암호화된 아미노산을 변경한다. 아미노산을 유사한 물리화학적 특성(예: 전하, 소수성, 크기)을 가진 다른 아미노산으로 바꾸는 돌연변이는 보존적 돌연변이(conservative mutation)이다. 반면, 아미노산을 다른 물리화학적 특성을 가진 아미노산으로 바꾸는 돌연변이는 비보존적 돌연변이(non-conservative mutation)이다. 5. 넌센스 돌연변이(Nonsense mutation)는 원래 아미노산을 지정하던 코돈 자리에 종결 코돈(stop codon)이 나타나게 한다. 6. 유전 암호(genetic code)는 축퇴성(degenerate) 또는 중복성(redundant)을 가진다. 그 구성은 무작위가 아니다. 7. 단백질 공학 접근법에는 유도 진화(directed evolution), 합리적 설계(rational design), 반합리적 설계(semi-rational design)의 세 가지가 있다.
-
-Further Reading
-
-8. Directed evolution is based on the Darwinian evolution process, involving itera-
-
-tive cycles of mutagenesis and screening/selection. It does not require a priori
-knowledge of the enzyme structure and mechanism.
-
-1. Frances H. Arnold outlined four key requirements for a successful directed evo- lution experiment, which cover the protein property that can be evolved, the quality of a mutant library, the capacity of a screening/selection system and the genotype- phenotype linkage.
-
-2. Gene mutagenesis methods can be classified into three categories: random muta- genesis, focused mutagenesis and DNA recombination.
-
-3. Error-prone polymerase chain reaction (epPCR) is most widely used for random mutagenesis.
-
-4. QuikChange method is most widely used for site-directed and multi site-directed mutagenesis.
-
-5. OneClick is a tool developed specifically for designing focused mutagenesis experiments.
-
-| Exercise |
-| --- |
-| Cutinases from Thermobifida fusca YX (Tfu_0883; UniProt Q47RJ6) and Thermobifida |
-| fusca KW3 (TfCut2; UniProt E5BBQ3) are known to degrade polyethylene terephthal- |
-| ate (PET). Site-directed mutagenesis experiments showed that the double mutation |
-| Q132A/T101A and single mutation G62A increased the PET-hydrolysing activities of |
-| Tfu_0883 and TfCut2, respectively. Your supervisor has asked you to investigate these |
-| protein variants. |
-
-1. Describe your cloning and protein expression strategies for Tfu_0883 and TfCut2.
-
-2. How would you introduce double mutation Q132A/T101A into Tfu_0883? (c) How would you introduce single mutation G62A into TfCut2?
-
-(d) How would you introduce random mutations into Tfu_0883?
+(a) Tfu_0883과 TfCut2에 대한 클로닝 및 단백질 발현 전략을 서술하라.
+(b) Tfu_0883에 이중 돌연변이 Q132A/T101A를 어떻게 도입하겠는가?
+(c) TfCut2에 단일 돌연변이 G62A를 어떻게 도입하겠는가?
+(d) Tfu_0883에 무작위 돌연변이를 어떻게 도입하겠는가?
 
 ## 더 읽어보기
 
@@ -4694,9 +4443,9 @@ Comb Chem High Throughput Screen 9(4):271-288
 
 # 9장 · 고처리량 스크리닝(HTS)
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - identify the main sources of errors in a high-throughput screening and propose solutions to these problems.
 - determine if a HTS system is suitable for screening a mutant library.
 - analyse and present the data from a HTS.
@@ -5066,7 +4815,7 @@ when choosing a substrate concentration.
 Controlling the reaction time is one simple way to ensure operation within the product linear detection range. To illustrate this, shows the reaction progress
 트립신 유사기질(trypsin pseudosubstrate)로부터 트립신 촉매 p-니트로아닐린(p-nitroaniline) 방출 곡선
 
-N-CBZ-Gly- Pro-Arg-p-nitroanilide, assuming the hydrolytic reaction obeys the
+N-CBZ-Gly-Pro-Arg-p-nitroanilide, assuming the hydrolytic reaction obeys the
 
 Michaelis-Menten model of
 
@@ -5415,31 +5164,18 @@ Limit for reliable measurement
 Generation
 
 
-trum of a dye and its absorption
-maximum.
+## 핵심 메시지
 
-530 nm
+1. 스크리닝(screening)은 분석법(assay)을 이용하는 선별 과정이다.
+2. 스크리닝을 고처리량으로 수행하면 병렬화와 소형화 때문에 기술적인 난관에 부딪히기 쉽다.
+3. BENNY는 세포 밖으로 분비되는 효소의 경우 세포 파쇄 단계를 없애어 작업 흐름을 단순화한다.
+4. 마이크로플레이트 스크리닝에서 내부 대조군은 부모 클론과 변이체 성능을 비교하는 기준이 된다.
+5. 마이크로플레이트의 증발은 분석에서 관찰되는 가장자리 효과(edge effect)의 원인이다.
+6. 효소 분석은 기질 전환율이 10% 미만인 조건에서 수행해야 한다.
+7. 어떤 변이체가 얻히는지는 라이브러리를 어떻게 스크리닝하는가에 크게 좌우된다(you get what you screen for).
+8. 참 변동계수(true coefficient of variation)는 HTS 시스템의 신뢰도를 가늠하는 좋은 지표이다.
+9. 단백질 변이체가 개선됨에 따라 HTS 시스템도 그에 맞게 조정해야 한다.
 
-571 nm
-
-
-| 5 Reducing the reaction time. 5 Lowering the volume of cell 5 Use another wavelength to reduce absorption spectrum of a dye is The assay is most sensitive when sitivity, one can use a wavelength | 4 00 450 5 00 Wavelength used. the sensitivity of your with an absorption at this as 530 nm. | 550 In . To | 6 00 Fig. 9.13, at 571 the |
-| --- | --- | --- | --- |
-| 1. Screening is a sifting process 2. When screening is conducted in run into technical challenges assay. 3. BENNY streamlines the involved extracellularly thereby | involves the use of an assay. a high-throughput manner, it to parallelization and evolution workflow, by the cell lysis step. | is | likely to of the enzyme |
-
-Exercise
-
-1. In a microplate screening, internal controls serve as the benchmark for compar- ing parental clones and protein variants.
-
-2. Evaporation from microplates causes the edge effect observed in a microplate assay.
-
-3. An enzymatic assay should be conducted in a condition whereby only less than 10% of the substrate is converted.
-
-4. The types of mutant obtained is highly dependent on how the mutant library is screened (i.e., you get what you screen for).
-
-5. The true coefficient of variation provides a good indication of the reliability of a high-throughput screening system.
-
-6. A high-throughput screening system must adapt as the protein variants improve.
 
 ## 연습문제
 
@@ -5469,9 +5205,9 @@ Trask OJ (2018) Guidelines for microplate selection in high content imaging. Met
 
 # 10장 · 단백질 변이체 분석 및 특성분석
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - prepare samples for DNA sequencing.
 - analyse sequencing chromatogram and identify mutation(s).
 - map mutation(s) onto 3D structure of protein.
@@ -5519,7 +5255,7 @@ DNA sequencing. The recommended sample preparation guideline is:
 - Template volume: at least 15 μL for 1-4 sequencing reactions, or 20 μL for 5-8
 reactions
 - Sequencing primer concentration: 10 pmol/μL in double distilled water or 5 mM
-Tris- HCl (if you are using your own sequencing primer)
+Tris-HCl (if you are using your own sequencing primer)
 - Primer volume: at least 15 μL, and add 5 μL for every additional sequencing reaction
 - 1.5-mL 마이크로원심분리기 튜브에 주형 DNA와 프라이머를 준비하고 모든
 tubes properly (e.g., using pre-paid sequencing labels)
@@ -5554,7 +5290,7 @@ that is characterised by defined and evenly spaced peaks with high signal-to-noi
 | Successful | | Failed | |
 | --- | --- | --- | --- |
 | Chromatogram | Why successful? | Chromatogram | Why failed? |
-| • Peaks well-formed and distinctive • Uniform peak separation • Absence of background signals | • Appropriate template and primer concentration • Good DNA purity • Optimum primer design • Good primer quality | • Absence of clearly defined peaks • Occurrence of excess dye peaks • Low signal-to- noise ratio | • Insufficient or poor quality template DNA and/or primer • Primer binding site absent, deleted or mutated |
+| • Peaks well-formed and distinctive • Uniform peak separation • Absence of background signals | • Appropriate template and primer concentration • Good DNA purity • Optimum primer design • Good primer quality | • Absence of clearly defined peaks • Occurrence of excess dye peaks • Low signal-tonoise ratio | • Insufficient or poor quality template DNA and/or primer • Primer binding site absent, deleted or mutated |
 
 Step 2: Click on a peak to check peak height
 and quality
@@ -5678,7 +5414,7 @@ aColumns from Cytiva (formerly GE Healthcare Life Sciences) are used as examples
 
 - Cytiva의 Principles & Methodology Handbooks (https://www.cytivalifesciences.
 com/en/us/support/handbooks)
-- Bio-Rad's Protein Purification Solutions (https://info. bio-rad. com/PPD-RS-
+- Bio-Rad's Protein Purification Solutions (https://info.bio-rad.com/PPD-RS-
 LP1?source_wt=proteinpurificationupdate_surl)
 - Thermo Fisher Scientific's Protein Purification Support (https://www.
 thermofisher. com/uk/en/home/technical-resources/technical-reference-library/
@@ -5731,7 +5467,7 @@ the purification of Tfu_090137-466. We have already created the construct pET-19
 Tfu_0901 in 5장 for recombinant protein expression in E. coli. The recombinant protein contains a 10×His tag and an enterokinase (EK) recognition site to
 facilitate protein purification . The first thing we ought to do is check
 the molecular weight (MW), isoelectric point (pI), extinction coefficient (ε) of the
-protein using ProtParam (Sect. 2.2.1.1), pre- and post-EK cleavage:
+protein using ProtParam (Sect. 2.2.1.1), pre-and post-EK cleavage:
 - MW: This tells us the expected protein size, which is important when we run an
 SDS-PAGE during protein purification.
 - pI: This informs our selection of a buffer system of the right pH for protein purification and protein storage.
@@ -5794,7 +5530,7 @@ Superdex 200
 (EK) recognition site in bold blue, and Tfu_090137-466 in bold black. The red triangle indicates the position of EK cleavage. Protein parameters (MW and pI) are calculated using ProtParam. Protein purification scheme is designed using columns from Cytiva (formerly GE Healthcare Life Sciences).
 
 In the proposed purification scheme, you will require His-tagged enterokinase.
-His- tagged enterokinase can be bought from commercial suppliers, but the production of recombinant enterokinase in E. coli is also well documented (PMIDs
+Histagged enterokinase can be bought from commercial suppliers, but the production of recombinant enterokinase in E. coli is also well documented (PMIDs
 24184090, 17516250, 12963350). With the knowledge and skills you have acquired so
 far, you should be able to produce recombinant enterokinase yourself.
 What buffers should we use during purification? We have provided our suggestions in 표 10.3, which are based on the following facts:
@@ -5896,7 +5632,7 @@ If we conduct a series of reactions at increasing substrate concentrations (say 
 to 1000 μM), but keeping the enzyme concentration constant (0.4 nM), we will obtain
 the set of graphs in Each line will give us one initial rate .
 But, how do we derive the enzyme kinetic parameters (Vmax and Km)? Well, simple!
-We can do a non- linear regression :
+We can do a non-linear regression :
 - Open Microsoft Excel and create a new workbook
 - Import your kinetic data, with substrate concentration (S) in column A and initial
 rate in column B
@@ -6104,9 +5840,9 @@ calculate Vmax and Km values.
 
 | Type of inhibition | Details | Reaction rate | IC50 |
 | --- | --- | --- | --- |
-| Competi- tive | Competitive inhibitor competes with the substrate at the active site, and therefore increases the Km value | V v = S ç ç æ è max 1 KiC I ö ø ÷ ÷ 1 + Km + | Ki I æ è ç1+ K S m ö ø ÷ |
-| Non- competitive | Non-competitive inhibitor binds to another location on the enzyme. As such, it decreases the Vmax value, and not the Km value. | V v = æ K S öæ øè max ÷ ç 1+ Ki I ö ø ÷ è ç1 + m | K i ç æ è 1+ K S m ö ø ÷ |
-| Uncom- petitive | Uncompetitive inhibition occurs when the inhibitor binds only to the enzyme-substrate complex and not the free enzyme. It decreases both the Vmax and the Km value. | V v = ç æ è ç1 + KiU I max ö ø ÷ ÷+ Km S | Ki |
+| Competitive | Competitive inhibitor competes with the substrate at the active site, and therefore increases the Km value | V v = S ç ç æ è max 1 KiC I ö ø ÷ ÷ 1 + Km + | Ki I æ è ç1+ K S m ö ø ÷ |
+| Non-competitive | Non-competitive inhibitor binds to another location on the enzyme. As such, it decreases the Vmax value, and not the Km value. | V v = æ K S öæ øè max ÷ ç 1+ Ki I ö ø ÷ è ç1 + m | K i ç æ è 1+ K S m ö ø ÷ |
+| Uncompetitive | Uncompetitive inhibition occurs when the inhibitor binds only to the enzyme-substrate complex and not the free enzyme. It decreases both the Vmax and the Km value. | V v = ç æ è ç1 + KiU I max ö ø ÷ ÷+ Km S | Ki |
 | Mixed | The inhibitor binds to the enzyme whether or not the enzyme has already bound the substrate. Conceptually, it can be seen as a mixture of competitive inhibition and uncompetitive inhibition. | V v = æ è ç1 + KiU I ö ø ÷ ÷+ max Km S ç ç æ è 1+ KiC I ö ø ÷÷ ç | SK + m S Km Ki¢ + Ki |
 
 ) -Calculated time
@@ -6120,15 +5856,17 @@ the type of inhibition (표 10.5). Enzyme inhibition is a topic taught in most f
 
 **Table 10.5**
 
-Enzyme inhibition
+## 핵심 메시지
 
-Exercise
-
-Take-Home Messages
-
-1. DNA sequencing is a direct way to determine the nature and the location of the mutation(s) in the gene encoding an improved protein variant.
-
-2. A successful DNA sequencing reaction gives a chromatogram that is character- ised by defined and evenly spaced peaks with high signal-to-noise ratio and a quality score of >40. 3. Two mutations are considered to be purely additive (or multiplicative), if the effect of the double mutation is the sum of the effects of the single mutations. 4. Epistasis describes the phenomenon in which the effect of one mutation is dependent on the presence or absence of the other mutation. 5. Capture, Intermediate Purification and Polishing (CIPP) are the three stages in a protein purification scheme. 6. Purified protein can be quantified using either its extinction coefficient or protein assays. 7. Bradford and bicinchoninic acid (BCA) assays are commonly used for protein quantification. 8. Enzyme kinetic parameters can be obtained in two ways: (a) via the initial rates from a series of reaction progress curves obtained at the same enzyme concen- tration but at varied substrate concentrations, and (b) directly from a reaction progress curve. 9. Excel's Solver is an excellent tool for non-linear regression.
+1. DNA 시퀀싱은 개선된 단백질 변이체를 암호화하는 유전자 안에서 돌연변이의 종류와 위치를 알아내는 직접적인 방법이다.
+2. 성공한 DNA 시퀀싱 반응의 크로마토그램은 뚜렷하고 고르게 벌어진 피크, 높은 신호 대 잡음비, 40이 넘는 품질 점수를 보인다.
+3. 두 돌연변이의 효과 합이 각각의 단일 돌연변이 효과의 합과 같으면 두 돌연변이는 순수하게 상가적(additive)이라고 한다.
+4. 상위성(epistasis)은 한 돌연변이의 효과가 다른 돌연변이의 유무에 의존하는 현상을 가리킨다.
+5. 포획(capture), 중간 정제(intermediate purification), 마무리 정제(polishing), 이른바 CIPP가 단백질 정제 설계의 세 단계이다.
+6. 정제된 단백질은 소광 계수를 이용하거나 단백질 정량 분석으로 정량할 수 있다.
+7. Bradford 분석과 비신코닌산(BCA) 분석이 단백질 정량에 널리 쓰인다.
+8. 효소 동역학 파라미터는 두 가지 방법으로 얻는다: (a) 같은 효소 농도에서 기질 농도만 바꾸어 얻은 일련의 반응 진행 곡선에서 초기 속도를 구하거나, (b) 반응 진행 곡선 하나에서 직접 구한다.
+9. Excel의 Solver는 비선형 회귀에 탁월한 도구이다.
 
 ## 연습문제
 
@@ -6142,9 +5880,9 @@ Multiple cloning site of pGEX-4T-1.
 
 2. What protease would you use to remove the GST tag?
 
-3. What are the MW and pI values, pre- and post-cleavage of GST tag?
+3. What are the MW and pI values, pre-and post-cleavage of GST tag?
 
-4. What are the molar extinction coefficients, pre- and post-cleavage of GST tag?
+4. What are the molar extinction coefficients, pre-and post-cleavage of GST tag?
 
 ## 더 읽어보기
 
@@ -6158,9 +5896,9 @@ Storz JF (2018) Compensatory mutations and epistasis for protein function. Curr 
 
 # 11장 · 단백질 변이체에서 이어가기
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this Chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - perform DNA recombination using Stemmer shuffling or StEP.
 - combine or dilute mutations using DNA recombination methods such as StEP.
 - perform saturation mutagenesis.
@@ -6241,7 +5979,7 @@ Huimin Zhao and Frances H. Arnold developed a simple method for homologous
 DNA recombination called the Staggered Extension Process (StEP), without the
 need of DNA fragmentation using DNase I. StEP consists of priming the template
 sequences, followed by repeated cycles of denaturation and extremely abbreviated
-annealing/polymerase- catalysed extension. As shown in , in each cycle, the
+annealing/polymerasecatalysed extension. As shown in , in each cycle, the
 연장 중인 단편들이 서열 상보성(sequence complementarity)에 따라 다른 주형에 어닐링된다.
 and extend further. This process is repeated until the full-length sequences are formed.
 Due to the constant template switching, most of the daughter DNA sequences will
@@ -6429,8 +6167,6 @@ but with one pair of mutagenic oligos less. MAX randomization scheme employs
 올리고뉴클레오타이드 화학 합성 시 특수화된 삼뉴클레오타이드 포스포라미다이트(trinucleotide phosphoramidites)를 사용한다.
 nucleotides, therefore it does not require mixing of mutagenic oligos.
 
-Further Reading
-
 ## 11.2.2 포화 돌연변이 유발 실험 설계
 
 Since a saturation mutagenesis experiment is similar to a site-directed mutagenesis.
@@ -6440,28 +6176,24 @@ NDT randomization schemes into its algorithm.
 
 ## 핵심 메시지
 
-1. Willem 'Pim' Stemmer invented the protein engineering technique called DNA shuffling in the early 1990s.
-
-2. Staggered Extension Process (StEP) is a simple method for homologous DNA recombination.
-
-3. DNA recombination can be used to either combine or dilute mutations found in random mutagenesis.
+1. Willem 'Pim' Stemmer는 1990년대 초 DNA 셔플링(DNA shuffling)이라는 단백질 공학 기법을 발명했다.
+2. 엇갈림 신장 과정(StEP)은 상동 DNA 재조합을 위한 간단한 방법이다.
+3. DNA 재조합은 무작위 돌연변이유발에서 찾은 돌연변이들을 합치거나 희석하는 데 쓸 수 있다.
 
 4. 포화 돌연변이유발의 주요 목적은 표적 아미노산을 나머지 19개 아미노산으로 치환하여, 모든 물리화학적 특성을 포괄하는 20개 아미노산으로부터의 표현형 효과(phenotypic effect)를 연구하는 것이다.
 
 5. 코돈을 무작위화(randomize)하는 다양한 무작위화 방식(randomization schemes)이 있다. 이들은 코돈 수, 종결 코돈 수, 암호화되는 아미노산 수, 중복성 수준, 단백질 구성원 간 농도 차이, 그리고 올리고뉴클레오타이드 합성 측면에서 차이가 있다.
 
-6. OneClick is a tool for designing focused mutagenesis experiments, including saturation mutagenesis.
+6. OneClick은 포화 돌연변이유발을 포함한 집중 돌연변이유발 실험 설계용 도구이다.
 
-| Exercise |
-| --- |
-| How are there in a when four codons |
-| saturated? |
-| (b) If we apply NNK randomization scheme for the task in (a), how many folds |
-| redundancy are we expecting? |
-| What is the maximum theoretical concentration difference if we |
-| randomization scheme for the task in |
-| (d) Repeat tasks (b) and (c) using NNB randomization scheme. |
-| Further Reading |
+## 연습문제
+
+(a) 코돈 네 개를 포화시킬 때 이론적으로 가능한 고유 단백질 서열은 몇 종인가?
+(b) (a)에 NNK 무작위화 방식을 적용하면 중복도(redundancy)는 몇 배로 예상되는가?
+(c) (a)의 과제에 NNK 무작위화 방식을 적용할 때 최대 이론 농도 차이는 얼마인가?
+(d) (b)와 (c)를 NNB 무작위화 방식으로 다시 구하라.
+
+## 더 읽어보기
 
 Acevedo-Rocha CG, Reetz MT, Nov Y (2015) Economical analysis of saturation mutagenesis experiments. Sci Rep 5:10654
 Stemmer WP (1994) Rapid evolution of a protein in vitro by DNA shuffling. Nature 370(6488):389-391
@@ -6471,9 +6203,9 @@ process (StEP) in vitro recombination. Nat Biotechnol 16(3):258-261
 
 # 12장 · 취업 역량
 
-## What You Will Learn in This Chapter
+## 이 장에서 배울 내용
 
-In this chapter, we will learn to:
+이 장에서는 다음을 배운다:
 - understand the technical expertise of a protein engineer.
 - understand the job prospects of a protein engineer.
 - understand the skill set sought after by job recruiters.
@@ -6481,7 +6213,7 @@ In this chapter, we will learn to:
 your career.
 - apply for a job through job advertising sites.
 
-Protein engineers are technically versatile, as we have a diverse and highly soughtafter technical skill set, outlined in But, being technically competent is
+Protein engineers are technically versatile, as we have a diverse and highly sought-after technical skill set. But, being technically competent is
 not sufficient to secure a good job! That's the reason why we have decided to include
 one more chapter in this book to discuss employability.
 Employability is defined as 'a set of achievements - skills, understandings and
@@ -6617,8 +6349,8 @@ study. Start planning as soon as you can by:
 
 There are plenty of useful resources for career development. Below we have cherry
 picked a few resources which we trust you will find useful:
-- TARGETjobs (https://targetjobs. co. uk/)
-- Prospects (https://www. prospects. ac. uk/)
+- TARGETjobs (https://targetjobs.co.uk/)
+- Prospects (https://www.prospects.ac.uk/)
 
 These resources offer excellent tips on writing CV and cover letter, developing online
 profiles (e.g., LinkedIn), preparing for all formats of interview (face-to-face, phone,
@@ -6629,31 +6361,27 @@ etc), assessment centres and psychometric tests.
 
 When you are ready for job hunting, opportunities can be identified from the
 resources listed below:
-- https://www. jobs. ac. uk/
-- https://www. findaphd. com/
-- https://www. nature. com/naturecareers
-- https://jobs. newscientist. com/en-gb/
-- https://www. jobsinscience. com/
-- https://www. linkedin. com/
+- https://www.jobs.ac.uk/
+- https://www.findaphd.com/
+- https://www.nature.com/naturecareers
+- https://jobs.newscientist.com/en-gb/
+- https://www.jobsinscience.com/
+- https://www.linkedin.com/
 
 To end this book, we wish you the best of luck with your protein engineering
 career!
 
-| 1. Protein engineers are technically versatile. |
-| --- |
-| 2. Protein engineering expertise is highly sought after by diverse sectors. |
-| 3. The top ten skills recruiters are looking for are commercial awareness, com- |
-| munication, teamwork, negotiation &amp; persuasion, problem solving, leadership, |
-| organization, perseverance &amp; motivation, ability to work under pressure, and |
-| confidence. |
-| 4. It takes time to build a strong curriculum vitae (CV). |
-| 5. Career planning should begin as soon as possible. |
-| 6. There are a host of online resources offering excellent tips on writing CV and |
-| cover letter, developing online profiles, preparing for all formats of interview, |
-| assessment centres and psychometric tests. |
-| 7. https://www. findaphd. com/ is a good resource for finding PhD opportunities. |
-| 8. https://www. linkedin. com/ is developing itself into a good channel for job |
-| advertising and job hunting. |
+## 핵심 메시지
+
+1. 단백질 공학자는 다방면의 기술 역량을 갖춘 전문가이다.
+2. 단백질 공학 전문 지식은 다양한 분야에서 높게 평가받는다.
+3. 채용 담당자가 찾는 열 가지 역량은 사업 감각, 의사소통, 팀워크, 협상·설득, 문제 해결, 리더십, 일 관리, 인내심·동기부여, 압박 속에서도 일하는 수행 능력, 그리고 자신감이다.
+4. 탄탄한 이력서(CV)를 만들려면 시간이 걸린다.
+5. 경력 계획은 될 수 있는 한 일찍 시작해야 한다.
+6. CV와 커버레터 작성, 온라인 프로필 만들기, 각종 면접 준비, 인적성 검사 등을 다룬 온라인 자료가 많다.
+7. https://www.findaphd.com/ 은 박사 과정 기회를 찾기 좋은 자료이다.
+8. https://www.linkedin.com/ 은 구직·채용 통로로 자리 잡아 가고 있다.
+
 
 ## 연습문제
 
