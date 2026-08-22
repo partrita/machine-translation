@@ -523,3 +523,4 @@ $RECYCLE.BIN/
 # Quarto render artifacts
 mybook/site_libs/
 mybook/data_analysis/*.html
+mybook/**/*_files/
