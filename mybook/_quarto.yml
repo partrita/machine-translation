@@ -30,11 +30,6 @@ book:
     - part: "AI 실제 적용"
       chapters:
         - ai_in_action_complete/ai_in_action_complete.qmd
-    - part: "생명정보학 실무 및 의학 응용"
-      chapters:
-        - bioinformatics_in_cancer_and_cancer_therapy/Bioinformatics_in_Cancer_and_Cancer_Therapy.md
-        - bioinformatics_and_computational_biology_solutions_using_r_and_bioconductor/Bioinformatics_and_Computational_Biology_Solutions_Using_R_and_Bioconductor.md
-        - bioinformatics_and_drug_discovery/Bioinformatics_and_Drug_Discovery.md
     - part: "데이터 시각화"
       chapters:
         - dataviz/dataviz.qmd
