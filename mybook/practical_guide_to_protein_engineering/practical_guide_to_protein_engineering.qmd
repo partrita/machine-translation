@@ -1134,244 +1134,162 @@ Young CL, Britton ZT, Robinson AS (2012) Recombinant protein expression and puri
 
 # 5장 · 유전자 클로닝
 
-## 이 챕터에서 배울 내용
+## 이 장에서 배울 내용
 
-이 챕터에서는 다음을 배운다:
-- search and order a bacterial strain or its genomic DNA from a culture collection
-- cultivate a bacterial strain and extract its genomic DNA
-- quantify DNA concentration and assess its purity
-- 올리고뉴클레오타이드 설계 및 주문
-- perform gene cloning using classical restriction and ligation method
-- perform gene cloning using NEBuilder® HiFi DNA Assembly
-- perform gene cloning using PTO-QuickStep
-- verify a clone with DNA sequencing
-- design DNA sequencing primer
+이 장에서는 다음을 배운다:
 
-Gene cloning is the starting point for protein engineering. The best way to learn gene
-cloning is to do it and this is the approach we will take in this chapter. In 2장,
-we have analysed the sequence of Tfu_0901 extensively. We will now use this endo-
+- 균주 보존 기관에서 세균 균주나 그 게놈 DNA를 찾아 주문한다
+- 세균을 배양하고 게놈 DNA를 추출한다
+- DNA 농도를 정량하고 순도를 평가한다
+- 올리고뉴클레오타이드를 설계하고 주문한다
+- 고전적인 제한효소 절단·연결 방법으로 유전자를 클로닝한다
+- NEBuilder® HiFi DNA Assembly로 유전자를 클로닝한다
+- PTO-QuickStep으로 유전자를 클로닝한다
+- DNA 시퀀싱으로 클론을 검증한다
+- DNA 시퀀싱 프라이머를 설계한다
 
-β-1,4-glucanase from T. fusca YX as our target gene [Tfu_0901 (UniProt Q47RH8,
+유전자 클로닝은 단백질 공학의 출발점이다. 클로닝을 익히는 가장 좋은 방법은 직접 해 보는 것이며, 이 장에서 바로 그 방식을 택한다. 2장에서 Tfu_0901 서열을 충분히 분석했으니, 이제 *T. fusca* YX 유래 이 endo-β-1,4-glucanase[Tfu_0901(UniProt Q47RH8, GenBank AAZ54939.1)]를 표적 유전자로 삼아 pET-19b 벡터에 클로닝해 보자. 클로닝은 두 가지 출발 물질 중 하나로 진행한다.
 
-GenBank AAZ54939.1)], and clone it into the pET-19b vector . The
-MCS of this plasmid is shown in We will clone this gene using two different starting material:
-- Amplifying the Tfu_0901 gene from T. fusca YX genomic DNA (gDNA)
-- Ordering a synthetic gene of Tfu_0901
+- T. fusca YX 게놈 DNA(gDNA)에서 Tfu_0901(37-466) 유전자를 증폭한다
+- Tfu_0901 합성 유전자를 주문한다
 
-BamHI (319)
-PaeR7I - PspXI - XhoI (324)
-MCS
-NdeI (331)
-enterokinase site
-10xHis
-NcoI (398)
-ATG
-RBS
-lac operator
-T7 promoter
+## 5.1 게놈 DNA로부터의 유전자 증폭
 
-## pET-19b
+gDNA로부터 유전자를 증폭하는 데에는 세 단계가 필요하다.
 
-5717 bp
+1. T. fusca YX 균주 또는 그 gDNA를 주문한다
+2. 세균을 배양하고 gDNA를 추출한다(1단계에서 gDNA를 곧바로 구입했다면 생략)
+3. PCR로 Tfu_0901 유전자를 증폭한다
 
-Plasmid map of pET-19b, created using SnapGene.
+## 5.1.1 세균 균주 또는 그 게놈 DNA 주문하기
 
-The multiple cloning site of pET-19b, created using SnapGene.
+훌륭한 균주 보존 기관이 여럿 있으며, 이곳에서 균주를 구매하거나 요청할 수 있다(표 5.1). 안내 겸 예제로 ATCC에서 T. fusca YX를 주문해 보자.
 
-## 5.1 유전체 DNA로부터의 유전자 증폭
+- ATCC 웹페이지(https://www.lgcstandards-atcc.org/)로 이동한다
+- 검색 상자에 Thermobifida fusca YX를 입력한다
+- 'Search' 버튼을 클릭한다
+- 균주 주문: 'ATCC® BAA-629'를 선택하고 수량을 입력한 뒤 'Add to Cart'한다(동결건조 상태로 배송된다)
+- gDNA 주문: 'ATCC® BAA-629D-5'를 선택하고 수량을 입력한 뒤 'Add to Cart'한다
 
-Gene amplification from gDNA involves three basic steps:
+거의 모든 보존 기관은 균주에 관한 유용한 정보를 제공한다. ATCC® BAA-629 링크(https://www.lgcstandards-atcc.org/products/all/BAA-629.aspx)를 열면 다음 정보를 얻을 수 있다.
 
-1. Order T. fusca YX strain or its gDNA
+- 'General Information' 탭: 생물안전 1등급(biosafety level 1) 미생물이다
+- 'Culture Method' 탭: 호기성 미생물로 50 °C에서 자란다. 권장 배지로 TYG 배지(트립톤 3 g/L, 효모 추출물 3 g/L, 글루코스 3 g/L, K2HPO4 1 g/L, pH 7.4)와 Hagerdahl 배지가 있다
+- 'History' 탭: 관련 문헌과 게놈 정보(GenBank CP000088.1)가 실려 있다
+- 'Documentation' 탭: 제품 설명서와 물질안전보건자료(MSDS)를 내려받을 수 있다
 
-2. Cultivate the bacterium and extract its gDNA (if you are purchasing gDNA directly in step 1, you can skip step 2) 3. Amplify Tfu_0901 gene in a PCR
+**표 5.1** 균주 보존 기관
 
-## 5.1.1 세균 균주 또는 그 유전체 DNA 주문하기
-
-There are a few excellent culture collections, from which you can purchase or request for
-a strain (표 5.1). To give you a quick guide, let's order T. fusca YX from ATCC:
-- Go to the ATCC webpage (https://www.lgcstandards-atcc.org/)
-- Type Thermobifida fusca YX in the query box
-- Click the 'Search' button
-- To order the bacterial strain, choose 'ATCC® BAA-629', enter the quantity, and
-'Add to Cart' (the bacterium will be delivered in a freeze-dried format)
-- To order the gDNA, choose 'ATCC® BAA-629D-5', enter the quantity, and 'Add
-to Cart'
-
-Most culture collections, if not all, provide useful information about the strain. If you
-click on the link corresponding to ATCC® BAA-629 (https://www.lgcstandardsatcc.org/products/all/BAA-629.aspx), you will gather the following information:
-- Under the 'General Information' tab, this is a biosafety level 1 organism.
-- Under the 'Culture Method' tab, this aerobic organism grows at 50 °C. The recommended growth media include TYG medium (3 g/L tryptone, 3 g/L yeast
-extract, 3 g/L glucose, 1 g/L K2HPO4, pH 7.4) and Hagerdahl medium.
-- Under the 'History' tab, relevant literatures and genome information (GenBank
-CP000088.1) are listed.
-- Under the 'Documentation' tab, you can download the product sheet and the
-safety data sheet.
-
-**Table 5.1**
-
-Culture collections
-
-Culture collection URL Fee?
-Agricultural Research Service Culture https://nrrl.ncaur.usda.gov/No Collection (NRRL) American Type Culture Collection (ATCC) https://www.lgcstandards-atcc.org/Yes German Collection of Microorganisms and https://www.dsmz.de/Yes Cell Cultures GmbH (DSMZ) Japan Collection of Microorganisms (JCM) https://jcm.brc.riken.jp/en/Yes National Collection of Industrial Food and https://www.ncimb.com/Yes Marine Bacteria (NCIMB) Thailand Bioresource Research Center (TBRC) https://www.tbrcnetwork.org/Yes Supplier Kit Macherey-Nagel NucleoSpin Microbial DNA Mini kit Qiagen QIAamp DNA Mini Kit Genomic-tip 20/G Thermo Fisher Scientific GeneJET Genomic DNA Purification Kit PureLink™ Genomic DNA Mini Kit Omega Bio-tek E.Z.N.A.® Bacterial DNA Kit New England Biolabs (NEB) Monarch® Genomic DNA Purification Kit
-
-
-## 5.1.2 세균 배양 및 유전체 DNA 추출
-
-Upon receiving the strain from ATCC, we would advise that you propagate the strain
-immediately by following the propagation procedure recommended in the product
-sheet. For long-term storage, we recommend creating a few tubes of bacterial glycerol stock:
-- Inoculate an overnight liquid culture.
-- Once you have a dense culture, mix 500 μL of the overnight culture and 500 μL of
-50% (v/v) glycerol in a 2-mL cryogenic tube.
-- Freeze the glycerol stock tube at -80 °C.
-
-Once you have prepared your glycerol stock, you can proceed to gDNA extraction. There are many commercial kits developed for this purpose, as indicated in
-**Table 5.2. In our experience, there isn't a significant difference in the performance**
-between these kits, as long as you follow the manufacturer's instructions. In fact,
-most of the kits follow the steps below:
-
-1. Preparation of cell lysate with a lysis buffer, which typically contains Triton
-X-100, Tween-20, guanidinium thiocyanate, and/or guanidine hydrochloride. In
-some cases, lysozyme/lysostaphin is added or glass beads are used to facilitate cell
-lysis. Lysis buffer is also supplemented with RNase to remove RNA.
-2. Protein digestion with a protease (typically Proteinase K).
-3. DNA binding to a silica membrane or anion-exchange resin.
-4. DNA washing with buffer containing ethanol.
-5. DNA elution in TE buffer (10 mM Tris-HCl, 0.1 mM EDTA, pH 8.0).
-
-The availability of commercial kits has simplified our experimental work tremendously. However, it remains important to understand the principles behind the protocol. Especially when using the kit for the first time, our advice is:
-- Read the accompanying manual as it usually contains ample useful information
-
-(예: 키트의 원리, 프로토콜, 버퍼 조성, 문제 해결(troubleshooting)
-
-guide etc) before you start.
-- Follow the protocol strictly the first time you use it.
-- As you become more experienced, you may adjust it as appropriate for your
-sample.
-
-Upon gDNA extraction, DNA yield is determined from the DNA concentration in the eluate, measured by absorbance at 260 nm with a NanoDrop or a
-VersaWave. Purity is determined by calculating the ratio of absorbance at 260 nm
-to absorbance at 280 nm and the ratio of absorbance at 260 nm to absorbance at
-230 nm (표 5.3). Usually, A260/A280 and A260/A230 ratios of >1.8 indicate a
-'clean' prep, suitable for most downstream applications such as PCR and DNA
-sequencing.
-
-| Parameter | Explanation | Acceptable range for pure dsDNA or RNA |
+| 기관 | URL | 유료? |
 | --- | --- | --- |
-| A260/A280 | This ratio provides an insight regarding the type of nucleic acid present (dsDNA or RNA) as well as a rough indication of purity. Typically, protein contamination can be detected by a reduction of this ratio; RNA contamination can be detected by an increase of this ratio. | • dsDNA: 1.85-1.88 • RNA: ~2.1 |
-| A260/A230 | This ratio is an indicator of contaminants that absorb at 230 nm, including chaotropic salts such as guanidine thiocyanate and guanidine hydrochloride, EDTA, non-ionic detergents like Triton X-100 and Tween® 20, and phenol. Substances like polysaccharides or free floating solid particles like silica fibres absorb at this wavelength, but will show a weaker effect. | • dsDNA: 2.30-2.40 • RNA: 2.10-2.30 |
+| Agricultural Research Service Culture Collection (NRRL) | https://nrrl.ncaur.usda.gov/ | 아니요 |
+| American Type Culture Collection (ATCC) | https://www.lgcstandards-atcc.org/ | 예 |
+| German Collection of Microorganisms and Cell Cultures GmbH (DSMZ) | https://www.dsmz.de/ | 예 |
+| Japan Collection of Microorganisms (JCM) | https://jcm.brc.riken.jp/en/ | 예 |
+| National Collection of Industrial Food and Marine Bacteria (NCIMB) | https://www.ncimb.com/ | 예 |
+| Thailand Bioresource Research Center (TBRC) | https://www.tbrcnetwork.org/ | 예 |
 
-**Table 5.3**
+**표 5.2** 게놈 DNA 추출 키트
 
-Assessing nucleic acid purity
+| 공급사 | 키트 |
+| --- | --- |
+| Macherey-Nagel | NucleoSpin Microbial DNA Mini kit |
+| Qiagen | QIAamp DNA Mini Kit, Genomic-tip 20/G |
+| Thermo Fisher Scientific | GeneJET Genomic DNA Purification Kit, PureLink™ Genomic DNA Mini Kit |
+| Omega Bio-tek | E.Z.N.A.® Bacterial DNA Kit |
+| New England Biolabs (NEB) | Monarch® Genomic DNA Purification Kit |
+
+## 5.1.2 세균 배양 및 게놈 DNA 추출
+
+ATCC에서 균주를 받으면 제품 설명서의 증식 절차대로 곧바로 계대 배양하기를 권한다. 장기 보관을 위해 세균 글리세롤 스톡 몇 관을 만들어 두자.
+
+- 하룻밤 액체 배양을 시작한다
+- 배양액이 진해지면 오버나이트 배양액 500 μL와 50% (v/v) 글리세롤 500 μL를 2 mL 크라이오튜브에 섞는다
+- -80 °C에 동결 보관한다
+
+글리세롤 스톡을 준비했다면 이제 gDNA 추출로 넘어간다. 이 용도로 개발된 상용 키트가 많다(표 5.2). 경험상 제조사 지침만 잘 따르면 키트 간 성능 차이는 크지 않다. 대부분의 키트는 아래 단계를 따른다.
+
+1. 용해 완충액으로 세포 용해액을 준비한다. 용해 완충액은 보통 Triton X-100, Tween-20, 과염소산 구아니디늄, 염산 구아니디늄 등을 포함하며, 경우에 따라 리소자임/리소스타핀을 넣거나 유리구슬을 써서 세포 파괴를 돕는다. RNA 제거를 위해 RNase도 첨가된다.
+2. 프로테아제(보통 Proteinase K)로 단백질을 소화한다.
+3. DNA를 실리카 멤브레인 또는 음이온 교환 수지에 결합시킨다.
+4. 에탄올 함유 완충액으로 DNA를 세척한다.
+5. TE 완충액(10 mM Tris-HCl, 0.1 mM EDTA, pH 8.0)으로 DNA를 용출한다.
+
+상용 키트는 실험을 한층 간편하게 해 주지만, 프로토콜 뒤에 있는 원리를 이해해 두는 일은 여전히 중요하다. 특히 처음 쓰는 키트라면 다음을 권한다.
+
+- 시작 전에 동봉된 매뉴얼을 읽는다. 키트 원리, 프로토콜, 버퍼 조성, 문제 해결(troubleshooting) 안내 등 유용한 정보가 많다
+- 첫 사용 때는 프로토콜을 그대로 따른다
+- 익숙해지면 샘플에 맞게 조정할 수 있다
+
+추출이 끝나면 용출액의 DNA 농도로 수율을 판단한다. 농도는 NanoDrop이나 VersaWave로 260 nm 흡광도를 재어 구한다. 순도는 A260/A280 비율과 A260/A230 비율로 평가한다(표 5.3). 두 비율이 모두 1.8을 넘으면 PCR이나 DNA 시퀀싱 같은 후속 실험에 쓸 만큼 깨끗한 시료로 본다.
+
+**표 5.3** 핵산 순도 평가
+
+| 파라미터 | 의미 | 순수한 dsDNA/RNA의 적정 범위 |
+| --- | --- | --- |
+| A260/A280 | 존재하는 핵산의 종류(dsDNA 또는 RNA)를 짐작하게 하고 순도의 대략적 지표가 된다. 이 비율이 낮으면 단백질 오염, 높으면 RNA 오염을 의심할 수 있다 | dsDNA: 1.85-1.88 / RNA: ~2.1 |
+| A260/A230 | 230 nm에서 흡수하는 오염물질의 지표이다. 과염소산 염(구아니디늄 계열), EDTA, Triton X-100·Tween® 20 같은 비이온성 계면활성제, 페놀 등이 여기 해당하며, 다당류나 실리카 섬유 같은 부유 고형물도 (약하게) 영향을 준다 | dsDNA: 2.30-2.40 / RNA: 2.10-2.30 |
 
 ## 5.1.3 유전자 증폭
 
-To amplify Tfu_0901 gene, you would need to follow the procedure below:
-- Have the DNA sequence of Tfu_0901 ready (Sect. 2.1)
-- Have the plasmid map ready (Sect. 4.2)
-- Decide on your cloning strategy after checking the gene sequence and the plasmid
-map
-- Design your primers accordingly
-- Order your primers
-- Conduct a PCR
-- Run a DNA gel to check your PCR product
+Tfu_0901 유전자를 증폭하려면 다음 절차를 밟는다.
 
-5.1.3.1 Primer Design and Ordering Primers
+- Tfu_0901의 DNA 서열을 확보한다(2.1절)
+- 플라스미드 지도를 확인한다(4.2절)
+- 유전자 서열과 플라스미드 지도를 살펴보고 클로닝 전략을 정한다
+- 그에 맞춰 프라이머를 설계한다
+- 프라이머를 주문한다
+- PCR을 수행한다
+- 아가로즈 젤로 PCR 산물을 확인한다
 
-Primer design is governed by your cloning strategy, which requires prior analysis on the
-target gene and careful selection of the right plasmid. Using the cloning of Tfu_0901
-into pET-19b as an example, here are our considerations before designing primers:
-- Looking at the plasmid map and the MCS of pET-19b,
-we could potentially use NdeI and BamHI sites to clone Tfu_0901. These are
-unique restriction sites, highlighted in bold in both the SnapGene plasmid map
-and the MCS sequence. Using NdeI site will ensure that the gene is in frame with
-the enterokinase site.
-- Tfu_0901 contains a signal peptide (amino acids 1-36), for the purpose of secretion by T. fusca YX. Since we are looking to express this gene in E. coli, we would
-need to exclude this stretch of sequence in our gene amplification.
-- Next, we use either SnapGene or NEBCutter (http://nc2.neb.com/NEBcutter2/)
-to confirm that neither NdeI nor BamHI is present in the Tfu_0901 gene.
-- Therefore, our forward primer will contain NdeI site, and the reverse primer will
-contain a stop codon and BamHI site. E. coli displays a strong bias towards the
-TAA stop codon, and translational termination efficiency is further improved by
-the prolonged TAAT sequence. Alternatively, two consecutive stop codons ensure
-termination.
+### 5.1.3.1 프라이머 설계와 주문
 
-프라이머 설계는 간단하다. 좋은 프라이머는 일반적으로 다음과 같은 특성을 나타낸다-
-ties:
-- Length of 18-24 bases
-- GC content of 40-60%
-- End with 1 or 2 G or C, but not more than 2
-- Melting temperature (Tm) of 50-60 °C
-- The primer pairs should have a Tm value within 5 °C of each other
-- The primers should not have complementary regions
+프라이머 설계는 클로닝 전략이 좌우하며, 여기에는 표적 유전자에 대한 사전 분석과 알맞은 플라스미드 선택이 앞선다. Tfu_0901을 pET-19b에 클로닝하는 예에서 우리가 프라이머 설계 전에 검토한 사항은 다음과 같다.
 
-Depending on the restriction sites you choose and the DNA sequence of your target
-gene, it is not always possible to satisfy all the above requirements. However, these
-이러한 권고사항은 엄격한 요구 조건이 아니며, 이를 완전히 충족하지 못하더라도 원하는 유전자를 증폭할 수 있다.
-target gene.
-Based on the cloning strategy and primer design considerations, we have designed
-the primers as shown in 표 5.4 and to amplify Tfu_090137-466. Each
+- pET-19b의 플라스미드 지도와 MCS를 보면 NdeI와 BamHI 부위로 Tfu_0901을 클로닝할 수 있다. 두 부위는 SnapGene 지도와 MCS 서열에서 굵게 표시된 고유 절단 부위다. NdeI를 쓰면 유전자가 enterokinase 인식 부위와 맞물려(in frame) 들어간다
+- Tfu_0901은 T. fusca YX의 분비를 위한 신호 펩타이드(잔기 1-36)를 지닌다. 대장균 발현이 목적이므로 증폭 시 이 구간은 빼야 한다
+- SnapGene 또는 NEBCutter(http://nc2.neb.com/NEBcutter2/)로 Tfu_0901 유전자 안에 NdeI나 BamHI 부위가 없음을 확인한다
+- 결론적으로 Fwd 프라이머에는 NdeI 부위를, Rev 프라이머에는 종결 코돈과 BamHI 부위를 넣는다. 대장균은 TAA 종결 코돈을 강하게 선호하며, 뒤따르는 TAAT 서열이 번역 종결 효율을 더 끌어올린다. 연속된 두 종결 코돈을 쓰는 것도 방법이다
 
-**Table 5.4**
+프라이머 설계 자체는 어렵지 않다. 좋은 프라이머는 대체로 다음 성질을 지닌다.
 
-| Fwd primer | | |
-| --- | --- | --- |
-| Colour | Sequence (5' 3) ' | Function |
-| | | Additional bases for more effective restrictive digestion |
-| | | NdeI site (already incorporated start codon, ATG) |
-| | | annealed to the DNA |
-| Rev primer | | |
-| Colour | Sequence (5' 3) ' | Function |
-| | | Additional bases for more effective restrictive digestion |
-| | | BamHI site |
-| | | Stop codon |
-| | | Region annealed to the template DNA |
+- 길이 18-24염기
+- GC 함량 40-60%
+- 3′ 말단이 G 또는 C 1-2개로 끝난다(3개 이상 금지)
+- 융해 온도(Tm) 50-60 °C
+- 프라이머 쌍의 Tm 차이는 5 °C 이내
+- 프라이머끼리 상보적인 영역이 없어야 한다
 
-Primers for Tfu_0901 amplification
+선택한 제한효소 부위와 표적 유전자 서열에 따라 위 조건을 모두 만족하지 못할 수도 있다. 이 권고들은 엄격한 요건이 아니므로, 다 충족하지 못해도 원하는 유전자는 증폭할 수 있다.
 
-a Fwd primer: -TATACATATGGCCGGTCTCACCGCCACAG-
+클로닝 전략과 설계 고려사항을 반영하여 표 5.4처럼 프라이머를 설계해 Tfu_0901(37-466)을 증폭한다. 프라이머는 여러 요소로 이루어지며 모두 필수적이다. 참고로 추가 염기 서열은 헤어핀 형성과 자기 상보성(self-complementarity)을 피하도록 바꿀 여지가 있다. 올리고뉴클레오타이드 특성 계산과 잠재적 자기 상보성 점검에는 OligoCalc(http://biotools.nubic.northwestern.edu/OligoCalc.html)가 유용하다. 주형 DNA에 어닐링되는 영역(파란색)의 길이를 조절하면 프라이머 Tm(GC 함량의 영향을 받는다)을 맞출 수 있다.
 
-b Rev primer: -TATAGGATCCTTAGGACTGGAGCTTGCTCCGCAC-
+**표 5.4** Tfu_0901 증폭용 프라이머
 
-Forward primer a and reverse primer b for amplification of Tfu_0901.
+| 프라이머 | 서열 (5′→3′) |
+| --- | --- |
+| Fwdᵃ | TATACATATGGCCGGTCTCACCGCCACAG |
+| Revᵇ | TATAGGATCCTTAGGACTGGAGCTTGCTCCGCAC |
 
-primer is composed of multiple elements, which are all essential. Important to note,
-you do have the flexibility in changing the sequence of the additional bases (coloured
-주황색으로 표시됨)를 수정하여 헤어핀 구조 형성과 자기 상보성(self-complementarity)을 피할 수 있다. OligoCalc (http://
-biotools. nubic. northwestern. edu/OligoCalc. html) is very useful for calculating oligo-
+ᵃ Fwd = 추가 염기(TATA, 효율적 절단용) + NdeI 부위(CATATG, 시작 코돈 ATG 포함) + 주형 어닐링 영역(GGCCGGTCTCACCGCCACAG)
+ᵇ Rev = 추가 염기(TATA) + BamHI 부위(GGATCC) + 종결 코돈(TTA) + 주형 어닐링 영역(GGACTGGAGCTTGCTCCGCAC)
 
-뉴클레오타이드 특성을 확인하고 잠재적 자기 상보성을 점검할 수 있다. 또한
-change the length of the region that anneals to the template DNA (coloured in blue)
-to adjust the primer Tm value (which is influenced by the GC content of your primer).
-이제 프라이머를 설계했으므로 주문해 보자! 올리고뉴클레오타이드
-suppliers (e.g., Eurofins and Integrated DNA Technologies). When placing an order,
-the primer sequence is always reported in 5′→3′. We also suggest the following to
-reduce cost:
-- For unmodified oligos, choose the smallest synthesis scale (0.01 μmol).
-- Go for salt-free oligos.
+그림: Tfu_0901 증폭용 Fwd 프라이머(a)와 Rev 프라이머(b)
 
-Oligos are usually delivered in a lyophilised format. We advise resuspending the
-DNA in water to a concentration of 100 μM (stock solution) and dilute to a working
-solution of 10 μM or 20 μM (again in water). For long-term storage, place the oligo
-solution in -20 °C freezer.
+프라이머를 설계했으니 주문하자! Eurofins, Integrated DNA Technologies 같은 올리고뉴클레오타이드 공급사에 주문하면 되고, 서열은 언제나 5′→3′으로 적는다. 비용을 아끼려면 다음을 권한다.
 
-5.1.3.2 Polymerase Chain Reaction (PCR) and DNA Polymerases
+- 변형이 없는 올리고뉴클레오타이드라면 최소 합성 스케일(0.01 μmol)을 고른다
+- 무염(salt-free) 제품으로 주문한다
 
-PCR is a routine method in protein engineering laboratories. Kary B. Mullis (1944-
-2019), an American biochemist, is credited with inventing the technique in 1983
-while working for Cetus Corporation in Emeryville, California. He won the 1993
-Nobel Prize in Chemistry for his invention. Over the past few decades, we have witnessed significant advancements in PCR. More DNA polymerases have been isolated
-and/or engineered. They are much faster, more accurate in replicating DNA, and
-more robust in amplifying minute amount of template DNA. They also show higher
-performance towards a broad range of amplicons (high AT or high GC content).
-**Table 5.5 provides a list of common DNA polymerases that we can use for gene**
-amplification.
+올리고뉴클레오타이드는 보통 동결건조 상태로 배송된다. 물에 현탁해 100 μM 저장액으로 만들고, 사용 직전 물로 10 μM 또는 20 μM 작업액으로 희석하기를 권한다. 장기 보관은 -20 °C 냉동고에 한다.
 
-DNA polymerases and their properties, arranged in the order of increasing fidelity
+### 5.1.3.2 중합효소 연쇄반응(PCR)과 DNA 중합효소
 
-| DNA polymerases | Extension rate | 3′→5′ exonuclease activity | Fidelity (vs Taq) |
+PCR은 단백질 공학 실험실의 일상 기술이다. 미국의 생화학자 Kary B. Mullis(1944-2019)가 1983년 캘리포니아 에머리빌의 Cetus Corporation 재직 시절 이 기법을 발명했고, 그 공으로 1993년 노벨 화학상을 받았다. 지난数십 년 동안 PCR은 크게 발전했다. 더 많은 DNA 중합효소가 분리·개량되었고, 속도는 빨라졌으며 복제 정확도는 높아졌고, 미량 주형도 잘 증폭하며 high-AT·high-GC 같은 다양한 증폭체에서도 성능이 좋아졌다. 표 5.5에 유전자 증폭에 쓸 수 있는 대표적인 DNA 중합효소를 정리했다.
+
+**표 5.5** DNA 중합효소와 그 성질(정확도 증가 순)
+
+| DNA 중합효소 | 신장 속도 | 3′→5′ 외눈클레이즈 활성 | 정확도(Taq 대비) |
 | --- | --- | --- | --- |
 | Taq | 1 min/kb | ⨯ | 1× |
 | OneTaq | 1 min/kb | ✓ | 2× |
@@ -1384,627 +1302,312 @@ DNA polymerases and their properties, arranged in the order of increasing fideli
 | Q5 | 20-30 sec/kb | ✓ | 280× |
 | Platinum SuperFi II | 15-30 sec/kb | ✓ | 300× |
 
-**Table 5.5**
+빠르고 정확한 DNA 중합효소는 실험 시간과 오류를 함께 줄여 준다. 우리는 Platinum SuperFi II, Q5, PfuUltra II Fusion HS 세 종류로 PCR 반응액 조제와 열순환 프로그램 설정을 시연한다(표 5.6과 5.7). 그 전에 세 가지 정보가 필요하다.
 
-Fast and accurate DNA polymerases reduce experimental time and errors during
-amplification. We have chosen Platinum SuperFi II, Q5 and PfuUltra II Fusion FS to
-demonstrate the design and setup of a PCR mixture and a thermocycler programme
-(표 5.6과 5.7). Before we can do that, we need three pieces of information:
-- The regions annealing to the template DNA have sequences of
-'GCCGGTCTCACCGCCACAG' and 'GGACTGGAGCTTGCTCCGCAC' → to determine
-annealing temperature.
-- The expected amplicon size is 1290 bp (excluding the first 36 amino acids) → to
-calculate the extension time.
-- The GC content of the amplicon is 67% → to decide which buffer to use.
+- 주형에 어닐링되는 영역의 서열은 'GCCGGTCTCACCGCCACAG'와 'GGACTGGAGCTTGCTCCGCAC'이다 → 어닐링 온도 결정용
+- 예상 증폭체 크기는 1290 bp(처음 36개 아미노산 제외)이다 → 신장 시간 계산용
+- 증폭체의 GC 함량은 67%이다 → 완충액 선택용
 
-Whilst preparing the PCR mixture, do follow the order presented in 표 5.6, i. e.,
-water first, buffer next, enzyme last! As you are pipetting small volumes of liquid, do
-make sure the pipette tip goes into water before dispensing. Last but not least, mix
-well before you start your PCR.
-PCR 후, 아가로즈 젤 전기영동(agarose gel electrophoresis)을 통해 DNA 산물을 분석한다.
-We summarise four potential PCR outcomes in 표 5.8.
+PCR 반응액은 표 5.6의 순서대로, 즉 물 먼저, 완충액 다음, 효소 마지막으로 조제한다. 적은 액량을 피펫팅할 때는 팁이 액체에 담긴 뒤 내보내야 하고, PCR 시작 전에는 반드시 잘 섞는다. PCR 후에는 아가로즈 젤 전기영동으로 DNA 산물을 확인하며, 네 가지 가능한 결과를 표 5.8에 정리했다.
 
-| Platinum | II | Q5 | | PfuUltra II | FS |
+**표 5.6** PCR 반응액 조제
+
+| Platinum SuperFi II | 부피 [μL] | Q5 | 부피 [μL] | PfuUltra II Fusion HS | 부피 [μL] |
 | --- | --- | --- | --- | --- | --- |
-| Component | Volume [μL] | Component | Volume [μL] | Component | Volume [μL] |
-| Water | 36 - X | Water | 26.5 - Y | Water | 41 - Z |
-| 5× SuperFi II buffer | 10 | 5× Q5 reaction buffer 5× Q5 high GC enhancer | 10 10 | 10×PfuUltra II reaction buffer | 5 |
+| 물 | 36 − X | 물 | 26.5 − Y | 물 | 41 − Z |
+| 5× SuperFi II 완충액 | 10 | 5× Q5 반응 완충액 | 10 | 10× PfuUltra II 반응 완충액 | 5 |
+|  |  | 5× Q5 high GC enhancer | 10 |  |  |
 | 10 mM dNTP | 1 | 10 mM dNTP | 1 | 10 mM dNTP | 1 |
-| 20 μM Fwd primera | 1 | 20 μM Fwd primera | 1 | 20 μM Fwd primera | 1 |
-| 20 μM Rev primerb | 1 | 20 μM Rev primerb | 1 | 20 μM Rev primerb | 1 |
+| 20 μM Fwd 프라이머ᵃ | 1 | 20 μM Fwd 프라이머ᵃ | 1 | 20 μM Fwd 프라이머ᵃ | 1 |
+| 20 μM Rev 프라이머ᵇ | 1 | 20 μM Rev 프라이머ᵇ | 1 | 20 μM Rev 프라이머ᵇ | 1 |
 | gDNA | X (100 ng) | gDNA | Y (100 ng) | gDNA | Z (100 ng) |
-| Platinum SuperFi II DNA polymerase | 1 | 2 U/μL Q5 high-fidelity DNA polymerase | 0.5 | PfuUltra II Fusion HS DNA polymerase | 1 |
-| Total | 50 | Total | 50 | Total | 50 |
+| Platinum SuperFi II DNA 중합효소 | 1 | 2 U/μL Q5 고정확도 DNA 중합효소 | 0.5 | PfuUltra II Fusion HS DNA 중합효소 | 1 |
+| 총량 | 50 | 총량 | 50 | 총량 | 50 |
 
-**Table 5.6**
+ᵃ 표 5.4의 Fwd 프라이머 사용　　ᵇ 표 5.4의 Rev 프라이머 사용
 
-Preparing PCR mixture
+**표 5.7** PCR 열순환 조건
 
-aUse the Fwd primer in 표 5.4
-bUse the Rev primer in 표 5.4
+| Platinum SuperFi II | Q5 | PfuUltra II Fusion HS |
+| --- | --- | --- |
+| 98 °C, 30 s ×1 | 98 °C, 30 s ×1 | 95 °C, 2 min ×1 |
+| (98 °C, 8 s → 60 °Cᵃ, 20 s → 72 °C, 20 s) ×30 | (98 °C, 8 s → 72 °C, 33 sᵇ) ×30 | (95 °C, 20 s → 60 °C, 20 s → 72 °C, 29 s) ×30 |
+| 72 °C, 5 min ×1 | 72 °C, 2 min ×1 | 72 °C, 3 min ×1 |
+| 8 °C, ∞ | 8 °C, ∞ | 8 °C, ∞ |
 
-| Platinum | II Q5 PfuUltra II Fusion FS |
-| --- | --- |
-| Temperature [°C] | Dura- # of Temper-Dura- # of Temper-Dura- # of tion cycle ature tion cycle ature tion cycle [°C] [°C] |
-| 98 | 30 sec 1× 98 30 sec 1× 95 2 min 1× |
-| 98 60a 72 | 8 sec 30× 98 8 sec 30× 95 20 sec 30× 10 sec 72c 20 sec 60e 20 sec 29 secb 72 33 secd 72 20 secf |
-| 72 | 5 min 1× 72 2 min 1× 72 3 min 1× |
-| 8 | ∞ - 8 ∞ - 8 ∞ - |
-| aThe tary | temperature with Platinum™ SuperFi™ II DNA Polymerase is 60 °C. Propriein the reaction buffer stabilize primer-template duplexes during the annealing step, |
-| and each | to increased specificity without the need to optimize annealing temperature for pair |
-| | using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with sequences |
-| | and 'GGACTGGAGCTTGCTCCGCAC' |
-| | using 1290 bp/1000 bp × 15 sec = 19.4 sec ≈ 20 sec |
-| Outcome | Product of Side bands or What next? right size by-products |
-| 1 | ✓ ⨯ • Add 20 U of DpnI directly into the PCR mixture, and incubate at 37 °C for 2 hours to degrade gDNA • Purify the PCR product using a DNA clean-up kit |
-| 2 | ✓ ✓ • Purify the PCR product by gel extraction |
-| 3 | ⨯ ✓ • Repeat with another DNA polymerase |
-| 4 | ⨯ ⨯ • Repeat the PCR with more care • Check that the primers are right |
-| 5.2 Gene | |
+ᵃ Platinum™ SuperFi™ II의 어닐링 온도는 60 °C이다. 전용 반응 완충액 성분이 어닐링 단계에서 프라이머-주형 이중체를 안정화해 별도의 어닐링 온도 최적화 없이도 높은 특이성을 얻는다
+ᵇ 신장 시간은 증폭체 길이로부터 계산한다(1290 bp → 약 33 s). 어닐링 온도는 필요 시 NEBTm 계산기(https://tmcalculator.neb.com/) 값으로 정한다
 
-Compared to gene amplification from gDNA (Sect. 5.1), gene synthesis is a more
-'handsoff' approach. Some might argue that it is too expensive. However, with the
-rapid advancement in DNA technologies, the price of a synthetic gene is now very
-competitive. Let's do a cost comparison to convince ourselves (표 5.9).
+**표 5.8** PCR 결과와 다음 단계
 
-
-Cost comparison between gene amplification from genomic DNA and gene synthesis
-
-**Table 5.9**
-
-## 출발 물질
-
-| Bacterial strain (Sect. 5.1) | Bacterial strain gDNA extraction kit | • 390 (for ATCC® BAA-629) • 169 [for QIAamp DNA Mini Kit (50)] | 559.00 |
+| 경우 | 올바른 크기 산물 | 사이드밴드·부산물 | 다음 단계 |
 | --- | --- | --- | --- |
-| Genomic DNA (Sect. 5.1) | Genomic DNA | • 259 (ATCC® BAA-629D-5) | 259.00 |
-| Synthetic gene (Sect. 5.2) | Synthetic gene | • 245 (£0.17 per base) | 219.30 |
+| 1 | ✓ | ⨯ | PCR 반응액에 DpnI 20 U를 넣고 37 °C에서 2시간 두어 gDNA를 분해한 뒤, DNA 정제 키트로 PCR 산물을 정제한다 |
+| 2 | ✓ | ✓ | 젤 추출로 PCR 산물을 정제한다 |
+| 3 | ⨯ | ✓ | 다른 DNA 중합효소로 다시 시도한다 |
+| 4 | ⨯ | ⨯ | PCR을 더 주의해서 다시 하고, 프라이머가 맞는지 확인한다 |
 
-## 구매 항목
+## 5.2 유전자 합성
 
-## 단가 [£]
+gDNA 증폭(5.1절)에 비해 유전자 합성은 '손이 덜 가는' 방법이다. 비용이 많이 든다고 생각할 수 있지만, DNA 기술이 급속히 발달하면서 합성 유전자 가격은 이제 매우 경쟁력 있다. 비용을 비교해 확인해 보자(표 5.9).
 
-## 총 비용 [£]
+**표 5.9** 게놈 DNA 증폭과 유전자 합성의 비용 비교
 
-## catatg (제한 효소 절단 부위)
+| 출발 물질 | 구매 항목 | 단가 [£] | 총비용 [£] |
+| --- | --- | --- | --- |
+| 세균 균주(5.1절) | 세균 균주 + gDNA 추출 키트 | • 390(ATCC® BAA-629) • 169[QIAamp DNA Mini Kit(50회)] | 559.00 |
+| 게놈 DNA(5.1절) | 게놈 DNA | • 259(ATCC® BAA-629D-5) | 259.00 |
+| 합성 유전자(5.2절) | 합성 유전자 | • 245(£0.17/염기) | 219.30 |
 
-| Nucleotide | AGLTATVTKESSWDNGYSASVTVRNDTSSTVSQWEVVLTL |
-| --- | --- |
-| sequence | PGGTTVAQVWNAQHTSSGNSHTFTGVSWNSTIPPGGTASF |
-| | GFIASGSGEPTHCTINGAPCDEGSEPGGPGGPGTPSPDPG |
-| | TQPGTGTPVERYGKVQVCGTQLCDEHGNPVQLRGMSTHGI |
-
-containing
-NdeI site
-QWFDHCLTDSSLDALAYDWKADIIRLSMYIQEDGYETNPR
-GFTDRMHQLIDMATARGLYVIVDWHILTPGDPHYNLDRAK
-Nucleotide TFFAEIAQRHASKTNVLYEIANEPNGVSWASIKSYAEEVI
-sequence PVIRQRDPDSVIIVGTRGWSSLGVSEGSGPAEIAANPVNA
-containing a SNIMYAFHFYAASHRDNYLNALREASELFPVFVTEFGTET
-stop codon YTGDGANDFQMADRYIDLMAERKIGWTKWNYSDDFRSGAV
-and BamHI FQPGTCASGGPWSGSSLKASGQWVRSKLQS
-site taa ggattc
-
-Tfu_0901 gene design for synthesis.
-
-Protein
-sequence to
-be codon
-optimised
+합성 유전자 설계에서는 단백질 서열(대문자) 앞뒤에 뉴클레오타이드 서열(소문자)을 붙인다. 앞쪽에는 NdeI 부위(catatg), 뒤쪽에는 종결 코돈(taa)과 BamHI 부위(ggattc)가 들어가며, 단백질 서열은 발현 숙주에 맞춰 코돈 최적화된다.
 
 ## 5.2.1 유전자 설계
 
-Using a synthetic gene has multiple benefits:
-- Hassle-free
-- Control over gene design (you can design the gene elements such as tag, cleavage
-site, and restriction sites etc in precisely the way you want them)
-- Codon optimization to improve protein expression yield
-- Create gene sequences that do not exist in Nature
-- Introduce desired mutation(s)
-- Remove unwanted restriction sites
-- Verified gene sequence
+합성 유전자는 여러 면에서 유리하다.
 
-The synthetic gene should be designed to match the plasmid and cloning strategy
-we want to use. To clone Tfu_090137-466 into pET-19b using NdeI and
-BamHI sites , we designed the sequence in In this design, the
-protein sequence (in capital letters) is flanked by two nucleotide sequences (in small
-letters). The flaking nucleotide sequences allow for incorporation of restriction sites
-and stop codon. The protein sequence will be codon-optimized for expression in E.
-coli (the chosen expression host).
+- 번거로운 과정 없이 주문만으로 확보한다
+- 유전자 설계를 통제할 수 있다(태그, 절단 부위, 제한효소 부위 등을 원하는 대로 정밀하게 설계)
+- 코돈 최적화로 단백질 발현 수율을 높인다
+- 자연계에 없는 유전자 서열을 만든다
+- 원하는 돌연변이를 넣는다
+- 불필요한 제한효소 부위를 없앤다
+- 검증된 서열을 받는다
+
+합성 유전자는 쓰고자 하는 플라스미드와 클로닝 전략에 맞춰 설계해야 한다. NdeI·BamHI 부위로 Tfu_0901(37-466)을 pET-19b에 클로닝할 목적이라면, 단백질 서열(대문자) 앞뒤에 뉴클레오타이드 서열(소문자)을 붙여 설계한다. 앞뒤 뉴클레오타이드 서열은 제한효소 부위와 종결 코돈을 넣는 역할을 하며, 단백질 서열은 선택한 발현 숙주(대장균)에 맞게 코돈 최적화된다.
 
 ## 5.2.2 합성 유전자 주문 및 코돈 최적화
 
-As mentioned briefly in Sect. 2.2.2.5, a host of companies offer gene synthesis service such as Eurofins, Integrated DNA Technologies, GenScript, and GeneWiz etc.
-Many of them have their in-house gene optimization algorithm. When placing your
-order online, you need to:
-- Provide the protein sequence you want to codon-optimize
-- Specify which organism you are optimizing the codons for
-- Insert 5′- and 3′-flaking sequences
-- Specify the restriction sites you would like to avoid within the optimised gene
-sequence to enable subsequent cloning
+2.2.2.5절에서 잠깐 언급했듯 Eurofins, Integrated DNA Technologies, GenScript, GeneWiz 등 많은 회사가 유전자 합성 서비스를 제공하며, 대부분 자체 유전자 최적화 알고리즘을 갖추고 있다. 온라인 주문 시에는 다음을 입력해야 한다.
 
-Let's optimize Tfu_090137-466 using algorithms from various service providers. The
-sequences optimized by Eurofins (GENEnius), GeneWiz and GenScript (GenSmart)
-show similar GC content: 54.65% (Eurofins), 59.69% (GeneWiz), and GenScript
+- 코돈 최적화할 단백질 서열
+- 최적화 대상 생물
+- 5′·3′ 측면 서열(flanking sequences)
+- 이후 클로닝을 위해 최적화 서열 안에서 피할 제한효소 부위
 
-(56.28%). compares the codon usage of the optimized sequences. It is
+여러 업체 알고리즘으로 Tfu_0901(37-466)을 최적화해 보자. Eurofins(GENEnius), GeneWiz, GenScript(GenSmart) 결과의 GC 함량은 54.65%, 59.69%, 56.28%로 비슷하다. 최적화 서열들의 코돈 사용을 비교하면 알고리즘 차이가 드러난다. Eurofins 알고리즘은 한 아미노산의 모든 코돈을 활용하면서 가장 빈용 코돈의 비중을 최대화한다. 반면 GeneWiz 알고리즘은 더 '극단적'이다. 저빈도 코돈은 버리고 아미노산별 상위 두 코돈만 쓴다. 어느 쪽이 더 낫다고 단정하기는 어렵다. 코돈 최적화가 항상 높은 발현 수율을 담보하지는 않으며, 가끔 오히려 수율이 나빠지기도 한다.
 
-1. coli
+합성 유전자는 보통 표준 벡터에 클로닝되어 배송된다.
 
-| AA | Codon | K12 B Fraction | Fraction | Fraction AA Codon | K12 | B | Fraction | Fraction | Fraction |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Ala | GCG | 0.38 0.36 0.37 | | 0.46 Pro C CG | 0.55 | 0.61 | 0.52 | 0.52 | 0.80 |
-| Ala | GCA | 0.21 0.21 0.20 | | 0 0.17 Pro C CA | | 0.18 | 0.20 | 0.48 | 0.12 |
-| Ala | GCT | 0.11 0.15 0.17 | | 0 0.26 Pro C CT | 0.17 | 0.14 | 0.16 | | 0 0.08 |
-| Ala | GCC | 0.31 0.28 0.26 | 0.51 | 0.11 Pro C CC | 0.13 | 0.06 | 0.12 | | 0 0 |
-| Cys | TGT | 0.42 0.42 0.50 | | 0.33 Gln C AG | | 0.65 | 0.63 | 0.56 | 0.56 |
-| Cys | TGC | 0.58 0.58 0.50 | | 0.67 Gln C AA | | 0.35 | 0.38 | 0.44 | 0.44 |
-| Asp | GAT | 0.65 0.66 0.64 | | 0.44 Arg A GG | 0.03 | 0.04 | 0 | | 0 0 |
-| Asp | GAC | 0.35 0.34 0.36 | | 0.56 Arg A GA | 0.02 | 0.05 | 0 | | 00.06 |
-| | | | | Arg C GG | 0.07 | 0.11 | 0.11 | | 0 0.06 |
-| Glu | GAG | 0.30 0.38 0.33 | | 0.48 Arg C GA | 0.07 | 0.05 | 0 | | 0 0 |
-| Glu | GAA | 0.70 0.62 0.67 | | 0.52 Arg C GT | | 0.35 | 0.39 | 0.22 | 0.56 |
-| | | | | Arg C GC | | 0.40 | 0.50 | 0.78 | 0.33 |
-| Phe | TTT | 0.57 0.61 0.60 | | 0.47 | | | | | |
-| Phe | TTC | 0.43 0.39 0.40 | | 0.53 Ser A GT | | 0.16 | 0.14 | 0.29 | 0.05 |
-| | | | | Ser A GC | 0.33 | 0.25 | 0.29 | 0.71 | 0.50 |
-| Gly | GGG | 0.12 0.18 0.15 | | 0 0rTCG Se | | 0.20 | 0.17 | | 0 0.10 |
-| Gly | GGA | 0.13 0.10 0.11 | | 0 0.07 Ser T CA | 0.15 | 0.11 | 0.12 | | 0.05 |
-| Gly | GGT | 0.29 0.30 0.33 | | 0.52 Ser T CT | 0.11 | 0.15 | 0.14 | | 0.14 |
-| Gly | GGC | 0.46 0.41 0.41 | | 0.41 Ser T CC | 0.11 | 0.14 | 0.14 | | 0.17 |
-| His | C AT | 0.55 0.56 0.58 | | 0.42 Thr ACG | | 0.27 | 0.25 | 0.31 | 0.19 |
-| His | C AC | 0.45 0.44 0.42 | | 0.58 Thr ACA | 0.13 | 0.11 | 0.14 | | 0.06 |
-| | | | | Thr ACT | 0.16 | 0.14 | 0.17 | | 0.17 |
-| Ile | ATA | 0.07 0.07 0 | | 0 0 Thr ACC | 0.47 | 0.47 | 0.44 | 0.69 | 0.58 |
-| Ile | ATT | 0.58 0.48 0.57 | | 0.43 | | | | | |
-| Ile | ATC | 0.35 0.44 0.43 | | 0.57 Val GTG | 0.40 | 0.43 | 0.37 | 0.37 | 0.33 |
-| | | | | Val GTA | 0.17 | 0.14 | 0.15 | | 0.11 |
-| Lys | A AG | 0.27 0.23 0.20 | | 0.40 Val GTT | 0.25 | 0.25 | 0.26 | 0.63 | 0.41 |
-| Lys | A AA | 0.73 0.77 0.80 | | 0.60 Val GTC | 0.18 | 0.18 | 0.22 | | 0.15 |
-| Leu | TTG | 0.12 0.15 0.14 | | 0 0.19 Trp TGG | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 |
-| Leu | TTA | 0.15 0.14 0.14 | | 0 0.05 | | | | | |
-| Leu | CTG | 0.46 0.45 0.52 | | 0.62 Tyr T AT | 0.53 | 0.69 | 0.60 | 0.13 | 0.47 |
-| Leu | CTA | 0.05 0.03 0 | | 00.05 Tyr T AC | 0.47 | 0.31 | 0.40 | 0.87 | 0.53 |
-| Leu | CTT | 0.12 0.11 0.10 | | 0 0.05 | | | | | |
-| Leu | CTC | 0.10 0.12 0.10 | | 0.05 End TGA | 0.36 | 0.27 | 0 | | 0 |
-| | | | | End TAG | | 00.09 | 0 | | 0 |
-| Met | ATG | 1.00 1.00 1.00 | | 1.00 End TAA | 0.64 | 0.64 | 0 | | 0 |
-| Asn | A AT | 0.47 0.57 0.47 | | 0.37 | | | | | |
-| Asn | A AC | 0.53 0.43 0.53 | | 0.63 | | | | | |
+- Eurofins: pEX-A128, pEX-A258, pEX-K168, pEX-K248
+- GeneWiz: pUC57-Kan, pUC57-Amp
+- GenScript: pUC57-, pUC18-, pUC19 기반 벡터 및 여러 발현 벡터
 
-Eurons GeneWiz GenScript
+합성 유전자를 받았다면 다음을 수행한다.
 
-1. coli
-
-E. coli
-
-Eurons GeneWiz GenScript
-
-E. coli
-
-Script for expression in E. coli K12. The restriction sites NdeI and BamHI are avoided in the optimized
-sequences. The analysis is done using the Codon Usage tool discussed in Sect. 2.2.2.4. Codon usage
-of the E. coli K12 and B strains from https://www.kazusa.or.jp/codon/ are included for comparison.
-Codon for each amino acid with the highest occurrence is coloured in green and with the second highest
-occurrence in yellow.
-
-clear from this comparison that there are differences between the algorithms. Eurofins's
-algorithm tends to utilise all the codons for an amino acid, but maximizes the occurrence of the most frequently used codons. In contrast, the GeneWiz algorithm is more
-'polarized'. It discounts the less frequently used codons and utilizes only the two most
-frequently used codons for each amino acid. Which algorithm is better? Well, we do
-not have an answer to this. Codon optimization does not always guarantee a high protein expression yield. Occasionally, it may even result in a poor protein yield.
-A synthetic gene is typically cloned into a standard vector:
-- Eurofins: pEX-A128, pEX-A258, pEX-K168 and pEX-K248
-- GeneWiz: pUC57-Kan and pUC57-Amp
-- GenScript: pUC57-, pUC18- or pUC19-based vectors and a list of expression
-vectors
-
-When you receive your synthetic gene:
-- Transform the plasmid into a cloning strain (e.g., DH5α)
-- Prepare a few tubes of bacterial glycerol stock (see Sect.
-storage
-
-## 5.1.2) 장기 보관을 위해
+- 클로닝 균주(예: DH5α)에 플라스미드를 형질전환한다
+- 장기 보관용 세균 글리세롤 스톡 몇 관을 만든다(5.1.2절 참조)
 
 ## 5.3 분자 클로닝
 
-Once the gene is amplified, it needs to be cloned into a vector. Molecular cloning
-methods can be classified into five strategies :
+유전자를 증폭했으면 벡터에 클로닝해야 한다. 분자 클로닝 방법은 다섯 전략으로 나뉜다.
 
-1. Molecular cloning based on complementary overhangs
+1. 상보적 오버행(complementary overhangs) 기반 클로닝
+2. 상동 서열(homologous sequences) 기반 클로닝
+3. 중첩 PCR(overlapping PCR) 기반 클로닝
+4. 메가프라이머(megaprimers) 기반 클로닝
+5. 브리지 연결(bridged ligation) 기반 클로닝
 
-2. Molecular cloning based on homologous sequences
+일부 전략에는 상용 키트가 나와 있다(표 5.10).
 
-## a c
+**표 5.10** 분자 클로닝용 상용 효소·키트
 
-DNA
-Ligase
-polymerase
-
-DNA
-Recombinase
-polymerase
-
-Ligase
-
-## b d
-
-## e
-
-cloning based on homologous sequences b, molecular cloning based on overlapping PCR c, molecular
-cloning based on megaprimers d, and molecular cloning based on bridged ligation e.
-
-**Table 5.10**
-
-| Cloning strategy | Enzymes/kits |
+| 클로닝 전략 | 효소/키트 |
 | --- | --- |
-| Complementary overhangs | • TA Cloning • TOPO Cloning • NEBuilder® HiFi DNA Assembly • Gibson Assembly • Golden Gate Assembly • In-Fusion Cloning • USER Cloning |
-| Homologous sequences | • Gateway Cloning • Creator Cloning • Echo Cloning |
-| Overlapping PCR | Not available |
-| Megaprimers | Not available |
-| Bridged ligation | Not available |
+| 상보적 오버행 | TA Cloning, TOPO Cloning, NEBuilder® HiFi DNA Assembly, Gibson Assembly, Golden Gate Assembly, In-Fusion Cloning, USER Cloning |
+| 상동 서열 | Gateway Cloning, Creator Cloning, Echo Cloning |
+| 중첩 PCR | 해당 없음 |
+| 메가프라이머 | 해당 없음 |
+| 브리지 연결 | 해당 없음 |
 
-Commercial enzymes and kits for molecular cloning
+모든 클로닝 방법을 다루지는 않겠다. 클로닝을 배우는 초기에는 한두 기법을 확실히 익히는 것이 더 중요하므로, Tfu_0901(37-466)을 pET-19b에 클로닝하는 세 가지 방법을 소개한다.
 
-1. Molecular cloning based on overlapping PCR
-
-2. Molecular cloning based on megaprimers
-
-3. Molecular cloning based on bridged ligation
-
-For some of these strategies, commercial kits are available, as summarised in
-**Table 5.10.**
-We are not going to cover all molecular cloning methods in this book. It is more
-important for students to master one or two techniques at the early stage of learning
-cloning. Therefore, we have picked three methods to illustrate how Tfu_090137-466 is
-cloned into pET-19b :
-- Restriction and ligation, commonly known as classical cloning
+- 제한효소 절단·연결(restriction and ligation): 흔히 '고전적 클로닝'이라 불린다
 - NEBuilder® HiFi DNA Assembly
 - PTO-QuickStep
 
-## 5.3.1 절단과 연결
+### 5.3.1 절단과 연결
 
-For cloning by restriction and ligation, two restriction enzymes (double digestion)
-are used to cut a plasmid (backbone) in order to insert a linear gene fragment (insert)
-that has been cut by the same set of restriction enzymes. The restriction digests generate complementary overhangs between the digested plasmid and the digested DNA
-fragment. T4 DNA ligase is subsequently used to covalently join the plasmid and
-상보성 부위에서 유전자 단편이 결합하여 원형
-plasmid that is ready for bacterial transformation. There are many enzyme suppliers
+절단·연결 클로닝에서는 두 제한효소(이중 절단)로 플라스미드 골격(backbone)을 자르고, 같은 효소 조합으로 잘라낸 선형 유전자 단편(insert)을 끼워 넣는다. 절단으로 만들어진 상보적 오버행이 골격과 단편을 서로 붙게 하고, 이어서 T4 DNA 리게이스가 플라스미드와 단편을 상보 부위에서 공유결합으로 이어 세균 형질전환 준비가 된 원형 플라스미드를 완성한다. 제한효소와 DNA 리게이스는 NEB, Thermo Fisher Scientific, Promega 등 여러 효소 공급사에서 구할 수 있다.
 
-(e.g., NEB, Thermo Fisher Scientific, and Promega, to name a few), from whom you
+5.1절과 5.2절에서는 제한효소 절단·연결 클로닝이 가능하도록 증폭 유전자와 합성 유전자를 설계했다. NdeI, BamHI, T4 DNA ligase를 NEB 제품으로 썼을 때 절단과 연결 반응을 어떻게 세팅하는지 표 5.11과 5.12에 보였다.
 
-can purchase your restriction enzymes and DNA ligase.
-In 5.1절과 5.2절 above, we have designed our gene amplification and synthetic
-gene in a way that enables subsequent gene cloning using restriction and ligation with
+**표 5.11** NEB 제한효소를 이용한 플라스미드·insert 절단
 
-RE
-digestion
+| 플라스미드 절단 | 부피 [μL] | insert 절단 | 부피 [μL] |
+| --- | --- | --- | --- |
+| 물 | 88 − X | 물 | 88 − Y |
+| 10× CutSmart buffer | 10 | 10× CutSmart buffer | 10 |
+| pET-19b | X (2 μg) | PCR 산물 또는 합성 유전자 플라스미드 | Y (2 μg) |
+| 20 U/μL NdeI | 1 | 20 U/μL NdeI | 1 |
+| 20 U/μL BamHI-HF | 1 | 20 U/μL BamHI-HF | 1 |
+| 총량 | 100 | 총량 | 100 |
 
-RE
-digestion
+제한효소 절단(restriction digestion) 준비는 간단하며, 보통 37 °C에서 하룻밤 절단한다. 아래 팁이 도움이 될 것이다.
 
-PCR
+- 절단 후 플라스미드 골격은 젤 추출로 정제한다
+- 절단 후 PCR 산물은 DNA 정제 키트로, 합성 유전자 단편은 젤 추출로 정제한다
+- 호환 버퍼 체계(http://nebcloner.neb.com/)와 반응 온도를 늘 확인한다
+- 가능하면 star activity를 줄이는 고정확도(HF) 제한효소를 쓴다. star activity란 비표준 반응 조건에서 일부 제한효소가 인식 서열과 비슷하지만 다른 서열까지 절단하는 현상이다
 
-PCR
+insert와 플라스미드 골격의 몰비는 보통 3:1로 맞는다. 계산이 번거로우면 NEB의 연결 계산기(Ligation Calculator, http://nebiocalculator.neb.com/ligation)를 이용하라. 연결도 보통 16 °C에서 하룻밤 진행하며, 연결 산물 5 μL는 다음 날 DH5α 같은 클로닝 균주 형질전환에 바로 쓸 수 있다.
 
-DNA
-assembly
+**표 5.12** NEB T4 DNA ligase를 이용한 DNA 연결
 
-Ligation
-
-Restriction-ligation HiFi DNA Assembly PTO-QuickStep
-a b c
-Plasmid Plasmid Plasmid
-PCR PCR
-prep prep prep
-
-Iodine
-cleavage
-
-Megaprimer
-PCR
-
-Transformation Transformation Transformation
-
-PTO-QuickStep c.
-
-**Table 5.11**
-
-Plasmid and insert digestion with restriction enzymes from NEB
-
-| Plasmid digestion | Insert digestion | |
-| --- | --- | --- |
-| Component | Volume [μL] Component | Volume [μL] |
-| Water | 88 - X Water | 88 - Y |
-| 10× CutSmart buffer | 10 10× CutSmart buffer | 10 |
-
-Y (2 μg)
-
-PCR product or plasmid carrying
-the synthetic gene of Tfu_090137-466
-20 U/μL NdeI
-20 U/μL BamHI-HF
-
-X (2 μg)
-
-pET-19b
-
-20 U/μL NdeI
-20 U/μL BamHI-HF
-
-100 Total
-
-Total
-
-NdeI, BamHI and T4 DNA ligase. In 표 5.11과 5.12, we will show you how
-the restriction digestion and ligation using enzymes obtained from NEB can be set up.
-제한 효소 절단(restrictive digestion) 준비는 간단하다. 일반적으로 하룻밤
-digestion at 37 °C. The tips below may prove useful:
-- Purify the plasmid backbone after restriction digestion by gel extraction.
-- Purify the PCR product after restriction digestion using a DNA clean-up kit or
-extract the synthetic gene fragment after restriction digestion by gel extraction.
-- Always check the compatible buffer system (http://nebcloner.neb.com/#!/redigest) and the reaction temperature.
-
-DNA ligation with T4 DNA ligase from NEB
-
-| Component | Volume [μL] |
+| 구성요소 | 부피 [μL] |
 | --- | --- |
-| Water | 17 - X - Y |
+| 물 | 17 − X − Y |
 | 10× T4 DNA ligase buffer | 2 |
-| Plasmid backbone (pET-19b) | Xa (50 ng) |
-| Insert (Tfu_090137-466) | Yb |
+| 플라스미드 골격(pET-19b) | Xᵃ (50 ng) |
+| insert(Tfu_0901(37-466)) | Yᵇ |
 | 400 U/μL T4 DNA ligase | 1 |
-| Total | 20 |
+| 총량 | 20 |
 
-**Table 5.12**
+ᵃ X = 50 ng ÷ (골격 농도 [ng/μL])
+ᵇ 계산 예: 골격 길이 = 5717 bp − 17 bp(이중 절단으로 제거) = 5700 bp; insert 길이 = 1290 bp; insert 양 = (50 ng × 3) × (1290 bp/5700 bp) = 34 ng; Y = 34 ng ÷ (insert 농도 [ng/μL])
 
-aCalculated using method below:
-Volume of plasmid backbone = 50 ng/(plasmid backbone concentration in ng/μL) = X μL
-bCalculated using method below:
-Length of plasmid backbone = 5717 bp - 17 bp (removed by double digestion) = 5700 bp
-Length of insert = 1290 bp
-Amount of insert = (50 ng × 3) × (1290 bp/5700 bp) = 34 ng
-Volume of insert = 34 ng/(insert concentration in ng/μL) = Y μL
+고전적인 절단·연결 클로닝은 여전히 널리 쓰이지만 몇 가지 태생적 한계가 있다.
 
-- Whenever possible, use the high-fidelity restriction enzymes (denoted as HF) to
-reduce star activity (Under non-standard reaction conditions, some restriction
-enzymes are capable of cleaving sequences which are similar, but not identical, to
-their defined recognition sequence.).
+- 방향성 클로닝을 위해 표적 플라스미드에 두 고유 제한효소 부위가 있어야 한다
+- 제한효소 부위가 최종 유전자 구조물에 '흉터(scar)'를 남길 수 있다. 이 불필요한 염기 서열은 때로 추가 아미노산으로 번역되기도 한다
+- 여러 번의 PCR·젤 정제 단계가 필요해 시간이 오래 걸린다
 
-The molar ratio of insert to plasmid backbone is often kept at 3:1. If you struggle
-이 계산이 번거롭다면 연결 계산기(Ligation Calculator) (http://nebiocalculator.
-neb. com/#!/ligation). Again, we usually do an overnight ligation at 16 °C, and the
-ligation product (5 μL) can be used directly for bacterial transformation into a cloning strain such as DH5α the next day.
-The classical restriction and ligation cloning method remains widely used. But
-there are some inherent drawbacks with this approach:
-- It relies on the availability of two unique restriction sites in the target plasmid for
-directional cloning.
-- Restriction site might leave a 'scar' in the final genetic construct. These undesired
-extra nucleotide sequences are sometimes translated into additional amino acids.
-- The method is time-consuming, requiring multiple PCR and/or gel purification steps.
+이어지는 절에서 더 진보한 무흉터(seamless) 클로닝 방법들을 소개한다.
 
-In the sections below, we will introduce a couple of scarless or seamless cloning
-methods, which are more advanced.
+### 5.3.2 NEBuilder® HiFi DNA Assembly
 
-## 5.3.2 NEBuilder® HiFi DNA Assembly
+NEBuilder® HiFi DNA Assembly는 여러 DNA 단편을 무봉합으로 조립하는 방법으로, 서로 다른 효소를 이용한다.
 
-NEBuilder® HiFi DNA Assembly is a method for seamless assembly of multiple
-DNA fragments. It involves the use of different enzymes:
+- 외눈클레이즈(exonuclease)가 단일가닥 3'-오버행을 만들어, 한쪽 말단에서 상보성을 공유하는 단편들의 어닐링(흔히 overlap region)을 돕는다
+- 중합효소가 어닐링된 각 단편의 틈을 메운다
+- DNA 리게이스가 조립된 DNA의 nick을 봉합한다
 
-- An exonuclease creates single-stranded 3'-overhangs to facilitate the annealing
-한쪽 말단에서 상보성을 공유하는 단편들의 어닐링(흔히
-overlap region)
-- A polymerase fills in the gaps within each annealed fragment
-- A DNA ligase seals the nicks in the assembled DNA
+이 방식으로 Tfu_0901(37-466)을 pET-19b에 클로닝하려면 두 개의 선형 DNA 단편—Tfu_0901(37-466)과 플라스미드 골격 pET-19b—을 만들기 위한 두 번의 PCR이 필요하다. 즉 프라이머 네 개가 필요하다: gDNA에서 Tfu_0901(37-466)을 증폭할 프라이머 두 개(5.1.1절, 5.1.2절)와 pET-19b를 주형으로 선형 골격을 만들 프라이머 두 개. 네 프라이머는 다음 절차로 설계한다.
 
-To clone Tfu_090137-466 into pET-19b vector using this approach, we need two
-PCRs to generate two linear DNA fragments; Tfu_090137-466 and the plasmid backbone pET-19b. This means we require four primers in total, two primers to amplify
-Tfu_090137-466 from the gDNA (5.1.1절과 5.1.2절), and two primers to create
-the linear backbone using pET-19b as the DNA template. Let's design the four primers we need:
-- Carry out a virtual cloning and create a plasmid map of pET-19b-Tfu_0901, in
-which Tfu_090137-466 is 'cloned' into pET-19b between NdeI and BamHI sites.
-- Go to the NEBuilder webpage (https://nebuilder.neb.com/#!/)
-- Click the '+ NEW FRAGMENT' button
-- Under '1. Input source sequence', paste the full sequence of pET-19b-Tfu_0901
-- Tick the 'Circular' box
-- Under '2. Name/rename fragment', type Tfu_0901
-- Under '3. Select method for production of linearized fragment', select 'PCR', and
-enter 'Start base' (5389) and 'End base' (6681).
-- Click the '✓ Add' button
-- Tfu_090137-466 증폭을 위해 두 개의 올리고뉴클레오타이드가 생성된다.
-(표 5.13)
-- Click the '+ NEW FRAGMENT' button
-- Under '1. Input source sequence', paste the full sequence of pET-19b-Tfu_0901
-- Tick the 'Circular' box
-- Under '2. Name/rename fragment', type Backbone
-- Under '3. Select method for production of linearized fragment', select 'PCR', and
-enter 'Start base' (6682) and 'End base' (5388).
-- Click the '✓ Add' button
-- pET-
-19b (표 5.13)
+- 가상 클로닝(virtual cloning)으로 pET-19b-Tfu_0901 플라스미드 지도를 만든다. Tfu_0901(37-466)을 pET-19b의 NdeI-BamHI 사이에 '클로닝'한 구조다
+- NEBuilder 웹페이지(https://nebuilder.neb.com/)로 이동한다
+- '+ NEW FRAGMENT' 버튼을 클릭한다
+- '1. Input source sequence'에 pET-19b-Tfu_0901 전체 서열을 붙여넣는다
+- 'Circular'에 체크한다
+- '2. Name/rename fragment'에 Tfu_0901이라고 입력한다
+- '3. Select method for production of linearized fragment'에서 'PCR'을 고르고 'Start base'(5389)와 'End base'(6681)를 입력한다
+- '✓ Add' 버튼을 클릭한다 → Tfu_0901(37-466) 증폭용 올리고뉴클레오타이드 두 개가 만들어진다(표 5.13)
+- 다시 '+ NEW FRAGMENT' 버튼을 클릭하고 같은 소스 서열로 'Backbone' 이름의 단편을 추가하되, 'Start base'(6682)와 'End base'(5388)를 입력한다
+- '✓ Add' 버튼을 클릭한다 → pET-19b 골격 증폭용 올리고뉴클레오타이드가 만들어진다(표 5.13)
 
-NEBuilder® HiFi DNA Assembly relies on the overlapping regions between the two
-fragments. As such, the primers for Tfu_090137-466 amplification are designed to overlap with those for the pET-19b amplification, as illustrated in
-We have described using the NEBuilder® in a way that should minimize human
-error, especially for new users. By the time you have tried this tool, you would realise
-that there are several ways of creating the linear fragments (i.e., PCR, restriction
-digest and gene synthesis). For instance, it is also possible to use the plasmid backbone fragments prepared by restriction digest. In this case, only two primers will be
-required for amplifying Tfu_090137-466.
-Once you have received your oligos (smallest scale of 0.01 μmol, desalted), you
-can proceed to creating the two DNA fragments (표 5.14과 5.15) and assembling them (표 5.16).
-The HiFi DNA Assembly mixture is incubated at 50 °C for 15 min, before transforming E. coli DH5α using 2 μL of the assembled product.
+NEBuilder® HiFi DNA Assembly는 두 단편 사이의 중첩 영역(overlap)에 의존한다. 그래서 Tfu_0901(37-466) 증폭 프라이머는 pET-19b 증폭 프라이머와 서로 겹치도록 설계된다(표 5.13). 여기서는 실수 가능성을 최소화하는 사용법을 소개했지만, 도구에 익숙해지면 선형 단편을 만드는 방법이 여러 가지(PCRs 외에 제한효소 절단, 유전자 합성)임을 알게 될 것이다. 예컨대 제한효소 절단으로 만든 골격 단편을 쓰면 프라이머는 Tfu_0901(37-466) 증폭용 두 개만 있으면 된다.
 
-**표 5.13 NEBuilder가 Tfu_090137-466 증폭을 위해 설계한 올리고뉴클레오타이드**
-and pET-19b vector. Sequences in capital letters represent regions that anneal to the template
-DNA. Sequences corresponding to Tfu_090137-466 are coloured in magenta, and those corresponding to pET-19b in blue
+올리고뉴클레오타이드(최소 스케일 0.01 μmol, 탈염)를 받으면 두 DNA 단편을 만들고(표 5.14와 5.15) 조립한다(표 5.16). HiFi DNA Assembly 혼합물은 50 °C에서 15분 반응한 뒤, 그중 2 μL로 E. coli DH5α를 형질전환한다.
 
-| Primer | Sequence (5′→3′) | Length [b] | %GC | 3′%GC | 3′Tm | 3′Ta |
+**표 5.13** NEBuilder가 설계한 Tfu_0901(37-466) 증폭용 및 pET-19b 벡터용 올리고뉴클레오타이드. 대문자는 주형 DNA에 어닐링되는 영역이다. Tfu_0901(37-466)에 해당하는 서열은 마젠타, pET-19b에 해당하는 서열은 파랑으로 표시했다
+
+| 프라이머 | 서열 (5′→3′) | 길이 [b] | %GC | 3′%GC | 3′Tm | 3′Ta |
 | --- | --- | --- | --- | --- | --- | --- |
 | Tfu_0901_fwd | caagcatatgGCCGGTCTCAC CGCCACA | 28 | 61 | 72 | 74.2 | 72.0 |
 | Tfu_0901_rev | agccggatccTTAGGACTGGA GCTTGCTCCGC | 32 | 63 | 59 | 71.8 | 72.0 |
 | Backbone_fwd | ccagtcctaaGGATCCGGCTG CTAACAAAG | 30 | 53 | 55 | 66.1 | 64.3 |
 | Backbone_rev | tgagaccggcCATATGCTTGT CGTCGTCG | 29 | 59 | 53 | 63.3 | 64.3 |
 
-## a
+Tfu_0901_fwd는 Backbone_rev와(a), Tfu_0901_rev는 Backbone_fwd와(b) 서로 겹친다.
 
-## b
+**표 5.14** Tfu_0901(37-466)과 pET-19b 선형 단편 제작용 PCR 반응액
 
-plasmid backbone pET-19b. Primer Tfu_0901_fwd overlaps with primer Backbone_rev a, and primer
-Tfu_0901_rev overlaps with primer Backbone_fwd b.
+| Tfu_0901(37-466) | 부피 [μL] | pET-19b | 부피 [μL] |
+| --- | --- | --- | --- |
+| 물 | 26.5 − X | 물 | 36.5 − Y |
+| 5× Q5 반응 완충액 | 10 | 5× Q5 반응 완충액 | 10 |
+| 5× Q5 high GC enhancer | 10 | 5× Q5 high GC enhancer | 10 |
+| 10 mM dNTP | 1 | 10 mM dNTP | 1 |
+| 20 μM Tfu_0901_fwd | 1 | 20 μM Backbone_fwd | 1 |
+| 20 μM Tfu_0901_rev | 1 | 20 μM Backbone_rev | 1 |
+| gDNA | X (100 ng) | pET-19b | Y (100 ng) |
+| 2 U/μL Q5 고정확도 DNA 중합효소 | 0.5 | 2 U/μL Q5 고정확도 DNA 중합효소 | 0.5 |
+| 총량 | 50 | 총량 | 50 |
 
-**Table 5.14**
+**표 5.15** Tfu_0901(37-466)과 pET-19b 선형 단편 제작용 열순환 조건
 
-PCR mixtures for creating linear fragments of Tfu_090137-466 and pET-19b
-
-Tfu_090137-466
-
-| Component | Volume [μL] Component Volume [μL] |
+| Tfu_0901(37-466) | pET-19b |
 | --- | --- |
-| Water | 26.5 - X Water 36.5 - Y |
-| 5× Q5 reaction buffer 5× Q5 high GC enhancer | 10 5× Q5 reaction buffer 10 10 |
-| 10 mM dNTP | 1 10 mM dNTP 1 |
-| 20 μM Tfu_0901_fwd | 1 20 μM Backbone_fwd 1 |
-| 20 μM Tfu_0901_rev | 1 20 μM Backbone_rev 1 |
-| gDNA | X (100 ng) pET-19b Y (100 ng) |
-| 2 U/μL Q5 high-fidelity DNA polymerase | 0.5 2 U/μL Q5 high-fidelity 0.5 DNA polymerase |
-| Total | 50 Total 50 |
-| 표 5.15 Thermal | conditions for linear of and |
-| pET-19b | |
-| Tfu_090137-466 | pET-19b |
-| Temperature [°C] Duration | # of cycle Temperature [°C] Duration # of cycle |
-| 98 30 sec | 1× 98 30 sec 1× |
-| 98 8 sec 72a 20 sec 72 33 secb | 30× 98 8 sec 30× 64c 20 sec 72 2 min 23 secd |
-| 72 2 min | 1× 72 2 min 1× |
-| 8 ∞ | - 8 ∞ - |
+| 98 °C, 30 s ×1 | 98 °C, 30 s ×1 |
+| (98 °C, 8 s → 72 °Cᵃ, 20 s → 72 °C, 33 sᵇ) ×30 | (98 °C, 8 s → 64 °Cᶜ, 20 s → 72 °C, 2 min 23 sᵈ) ×30 |
+| 72 °C, 2 min ×1 | 72 °C, 2 min ×1 |
+| 8 °C, ∞ | 8 °C, ∞ |
 
-pET-19b
+ᵃ,ᶜ 표 5.13의 정보 기준　　ᵇ 1290 bp/1000 bp × ((20 s + 30 s)/2) = 32.3 s ≈ 33 s　　ᵈ 5712 bp/1000 bp × ((20 s + 30 s)/2) = 142.8 s ≈ 143 s = 2 min 23 s
 
-aBased on the information from 표 5.13
-bCalculated using 1290 bp/1000 bp × ((20 sec + 30 sec)/2) = 32.3 sec ≈ 33 sec
-cBased on the information from 표 5.13
-dCalculated using 5712 bp/1000 bp × ((20 sec + 30 sec)/2) = 142.8 sec ≈ 143 sec = 2 min 23 sec
+**표 5.16** 두 단편 조립 반응 세팅
 
-## 5.3.3 PTO-QuickStep
-
-PTO-QuickStep is a seamless cloning method developed in our laboratory. It allows
-scarless point integration of a DNA sequence (e.g., a gene, a tag) at any position
-within a target plasmid using only Q5 High-Fidelity DNA Polymerase and DpnI
-endonuclease. This efficient and cost-effective method consists of two steps: a gene
-
-Setting up a reaction for two fragments assembly
-
-| Component | Volume [μL] |
+| 구성요소 | 부피 [μL] |
 | --- | --- |
-| Water | 10 - X - Y |
-| pET-19b fragment | Xa (100 ng) |
-| Tfu_090137-466 fragment | Yb |
+| 물 | 10 − X − Y |
+| pET-19b 단편 | Xᵃ (100 ng) |
+| Tfu_0901(37-466) 단편 | Yᵇ |
 | NEBuilder HiFi DNA Assembly Master Mix | 10 |
-| Total | 20 |
+| 총량 | 20 |
 
-**Table 5.16**
+ᵃ X = 100 ng ÷ (pET-19b 단편 농도 [ng/μL])
+ᵇ 계산: pET-19b 골격 = 5712 bp; Tfu_0901(37-466) = 1290 bp; Tfu_0901 양 = (100 ng × 2) × (1290 bp/5712 bp) = 45.2 ng ≈ 46 ng; Y = 46 ng ÷ (농도 [ng/μL])
 
-aCalculated using X = 100 ng/(concentration of pET-19b fragment in ng/μL)
-bCalculated using method below:
+### 5.3.3 PTO-QuickStep
 
-Length of pET-19b backbone = 5712 bp
-Length of Tfu_090137-466 = 1290 bp
-Amount of Tfu_090137-466 = (100 ng × 2) × (1290 bp/5712 bp) = 45.2 ng ≈ 46 ng
-Volume of Tfu_090137-466 = 46 ng/(Tfu_090137-466 concentration in ng/μL) = Y μL
+PTO-QuickStep은 우리 실험실이 개발한 무봉합 클로닝 방법이다. Q5 High-Fidelity DNA Polymerase와 DpnI 제한효소만으로 목표 플라스미드의 임의 위치에 DNA 서열(유전자, 태그 등)을 흉터 없이 삽입할 수 있다. 효율적이고 저렴한 이 방법은 두 단계로 이루어진다: 포스포로티오에이트(PTO) 올리고뉴클레오타이드를 쓰는 증폭 단계와, 그 뒤의 메가프라이머 기반 전(全)플라스미드 증폭 단계이다.
 
-증폭 단계(인산티오에이트(PTO) 올리고 사용) 후 메가프라이머-
-based whole-plasmid amplification.
-In and 표 5.17, we demonstrate how the two PTO-oligos required
-for the amplification of Tfu_090137-466 are designed. The amplified Tfu_090137-466
-fragment is then integrated into pET-19b using a second megaprimer PCR:
-- Both primers (IntA-Tfu_0901-fwd and IntB-Tfu_0901-rev) are composed of two
-parts. The regions in magenta bind to the target gene Tfu_090137-466, and regions
-in blue binds to the target plasmid pET-19b.
-- The asterisk signs represent PTO modification at the preceding nucleotide. Each
-oligo has two PTO modifications.
-- These PTO-oligos can be ordered in the smallest synthesis scale (0.01 μmol) and
-in salt-free format.
+그림과 표 5.17에서 Tfu_0901(37-466) 증폭에 필요한 두 PTO-올리고의 설계를 보여준다. 증폭된 Tfu_0901(37-466) 단편은 두 번째 메가프라이머 PCR로 pET-19b에 통합된다.
 
-Once you have received the PTO-oligos, proceed to gene amplification and
-megaprimer PCR using reaction mixture and PCR cycling conditions provided in
-표 5.18과 5.19, respectively.
+- 두 프라이머(IntA-Tfu_0901-fwd, IntB-Tfu_0901-rev)는 두 부분으로 이루어진다. 마젠타 영역은 표적 유전자 Tfu_0901(37-466)에, 파랑 영역은 표적 플라스미드 pET-19b에 결합한다
+- 별표(*)는 앞 염기의 PTO 변형을 뜻하며, 각 올리고에는 PTO 변형이 두 개 있다
+- 이 PTO-올리고는 최소 합성 스케일(0.01 μmol), 무염 형태로 주문하면 된다
+
+PTO-올리고를 받으면 표 5.18과 5.19의 반응액·열순환 조건으로 유전자 증폭과 메가프라이머 PCR을 수행한다.
+
+**표 5.17** PTO-QuickStep으로 Tfu_0901(37-466)을 pET-19b에 클로닝할 때의 PTO-올리고. 마젠타 서열은 표적 유전자 Tfu_0901(37-466)에, 파랑 서열은 같은 위치의 pET-19b에 어닐링된다
+
+| 프라이머 | 서열 (5′→3′) | 길이 [b] | 3′Ta for Tfu_0901ᵃ | 3′Ta for pET-19bᵇ |
+| --- | --- | --- | --- | --- |
+| IntA-Tfu_0901-fwd | cgacgacgacg*acaa gcatatg*GCCGGTCT CACCGCCACAG | 41 | 72 | 69 |
+| IntB-Tfu_0901-rev | gctttgttag*cagcc ggatcc*TTAGGACTG GAGCTTGCTCCGCAC | 45 | 72 | 69 |
+
+ᵃ 마젠타 서열로 NEBTm 계산기(https://tmcalculator.neb.com/)에서 계산
+ᵇ 파랑 서열로 NEBTm 계산기(https://tmcalculator.neb.com/)에서 계산
+
+**표 5.18** 유전자 증폭과 메가프라이머 PCR 반응액
+
+| 유전자 증폭ᵃ | 부피 [μL] | 메가프라이머 PCRᵇ | 부피 [μL] |
+| --- | --- | --- | --- |
+| 물 | 26.5 − X | 물 | 38.5 − Y − Z |
+| 5× Q5 반응 완충액 | 10 | 5× Q5 반응 완충액 | 10 |
+| 5× Q5 high GC enhancer | 10 |  |  |
+| 10 mM dNTP | 1 | 10 mM dNTP | 1 |
+| 20 μM IntA-Tfu_0901-fwd | 1 | PCR 산물 | Y (100 ng) |
+| 20 μM IntB-Tfu_0901-rev | 1 |  |  |
+| gDNA | X (100 ng) | pET-19b | Z (20 ng) |
+| 2 U/μL Q5 고정확도 DNA 중합효소 | 0.5 | 2 U/μL Q5 고정확도 DNA 중합효소 | 0.5 |
+| 총량 | 50 | 총량 | 50 |
+
+ᵃ PCR 후 0.5 M Tris-HCl 완충액(pH 9) 6.25 μL와 절대 에탄올에 녹인 100 mM 요오드 6.25 μL를 PCR 산물에 바로 넣고 피펫팅으로 가볍게 섞은 뒤, 70 °C에서 5분 반응하고 얼음에 급냉한다. 이후 DNA 정제 키트로 정제한다
+ᵇ PCR 후 DpnI 40 U를 넣고 37 °C에서 15분 처리하여 부모 플라스미드를 제거한다
+
+**표 5.19** 유전자 증폭과 메가프라이머 PCR 열순환 조건
+
+| 유전자 증폭 | 메가프라이머 PCR |
+| --- | --- |
+| 98 °C, 30 s ×1 | 98 °C, 30 s ×1 |
+| (98 °C, 8 s → 72 °Cᵃ, 20 s → 72 °C, 33 sᵇ) ×30 | (98 °C, 8 s → 69 °Cᶜ, 20 s → 72 °C, 2 min 23 sᵈ) ×25 |
+| 72 °C, 2 min ×1 | 72 °C, 2 min ×1 |
+| 8 °C, ∞ | 8 °C, ∞ |
+
+ᵃ,ᶜ 표 5.17의 정보 기준　　ᵇ 1290 bp/1000 bp × ((20 s + 30 s)/2) = 32.3 s ≈ 33 s　　ᵈ 5712 bp/1000 bp × ((20 s + 30 s)/2) = 142.8 s ≈ 143 s = 2 min 23 s
 
 ## 5.4 클론 확인
 
-We have now shown you three different methods of cloning Tfu_090137-466 into pET-
-19b. All these methods lead to the same final genetic construct. How do we verify that
-the cloned sequence is correct? The most direct way is to send the plasmid for DNA
-sequencing. If we revisit the MCS in , we can identify potential primers to
-be used for DNA sequencing. Since the gene Tfu_090137-466 is cloned between NdeI
-and BamHI sites, we can use the following two standard primers:
+지금까지 Tfu_0901(37-466)을 pET-19b에 클로닝하는 세 방법을 보였다. 세 방법 모두 같은 최종 유전자 구조물로 이어진다. 클로닝 서열이 올바른지는 어떻게 확인할까? 가장 직접적인 방법은 플라스미드를 DNA 시퀀싱에 맡기는 것이다. MCS를 다시 보면 시퀀싱에 쓸 프라이머 후보를 찾을 수 있는데, Tfu_0901(37-466)이 NdeI-BamHI 사이에 들어가므로 다음 두 표준 프라이머를 쓸 수 있다.
+
 - T7 (5'-TAATACGACTCACTATAGGG-3')
 - T7term (5'-CTAGTTATTGCTCAGCGGT-3')
 
-## a
+대부분의 DNA 시퀀싱 서비스 업체가 T7, T7term을 포함한 표준 프라이머 세트를 갖추고 있다. 표적 유전자가 길면(>1 kb) 시퀀싱 프라이머를 추가로 설계해야 할 수 있는데, 이때 다음 온라인 도구를 권한다.
 
-## b
-
-and IntB-Tfu_0901-rev b are composed of two parts. The 3'-ends of the primers bind to the target gene,
-and the 5'-ends of the primers carry the target plasmid sequences. The integration sites are indicated
-with red triangles.
-
-**Table 5.17 PTO-oligos for cloning Tfu_090137-466 into pET-19b using PTO-QuickStep.**
-Sequences in magenta are regions that anneal to the target gene Tfu_090137-466, and sequences
-in blue annealing to pET-19b at the s sites
-
-| Primer | Sequence (5′→3′) | Length [b] | 3′Ta for Tfu_0901a | 3′Ta for pET-19bb |
-| --- | --- | --- | --- | --- |
-| IntA-Tfu_0901-fwd | cgacgacgacg*acaa gcatatg*GCCGGTCT CACCGCCACAG | 41 | 72 | 69 |
-| IntB-Tfu_0901-rev | gctttgttag*cagcc ggatcc*TTAGGACTG GAGCTTGCTCCGCAC | 45 | | |
-
-aCalculated using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with the
-sequences coloured in magenta
-bCalculated using NEBTm calculator (https://tmcalculator.neb.com/#!/main) with the
-sequences coloured in blue
-
-PCR mixtures for gene amplification and megaprimer PCR
-
-| Gene amplificationa | | Megaprimer PCRb | |
-| --- | --- | --- | --- |
-| Component | Volume [μL] | Component | Volume [μL] |
-| Water | 26.5 - X | Water | 38.5 - Y - Z |
-| 5× Q5 reaction buffer | 10 | 5× Q5 reaction buffer | 10 |
-| 5× Q5 high GC enhancer | 10 | | |
-| 10 mM dNTP | 1 | 10 mM dNTP | 1 |
-| 20 μM IntA-Tfu_0901-fwd | 1 | PCR product | Y (100 ng) |
-| 20 μM IntA-Tfu_0901-fwd | 1 | | |
-| gDNA | X (100 ng) | pET-19b | Z (20 ng) |
-| 2 U/μL Q5 high-fidelity DNA polymerase | 0.5 | 2 U/μL Q5 high-fidelity DNA polymerase | 0.5 |
-| Total | 50 | Total | 50 |
-
-**Table 5.18**
-
-aAfter PCR, add 6.25 μL of 0.5 M Tris-HCl buffer (pH 9) and 6.25 μL of 100 mM iodine in
-absolute ethanol directly to the PCR product. After brief mixing by pipetting, incubate the mixture for 5 min at 70 °C then snap-cool on ice. Subsequently, the mixture is purified using a DNA
-clean-up kit
-bAfter PCR, add 40 U of DpnI to the PCR mixture and incubate at 37 °C for 15 min to remove
-the parental plasmids
-
-Thermal cycling conditions for gene amplification and megaprimer PCR
-
-| Gene amplification | | | Megaprimer PCR | | |
-| --- | --- | --- | --- | --- | --- |
-| Temperature [°C] | Duration | # of cycle | Temperature [°C] | Duration | # of cycle |
-| 98 | 30 sec | 1× | 98 | 30 sec | 1× |
-| 98 72a 72 | 8 sec 20 sec 33 secb | 30× | 98 69c 72 | 8 sec 20 sec 2 min 23 secd | 25× |
-| 72 | 2 min | 1× | 72 | 2 min | 1× |
-| 8 | ∞ | - | 8 | ∞ | - |
-
-**Table 5.19**
-
-aBased on the information from 표 5.17
-bCalculated using 1290 bp/1000 bp × ((20 sec + 30 sec)/2) = 32.3 sec ≈ 33 sec
-cBased on the information from 표 5.17
-dCalculated using 5712 bp/1000 bp × ((20 sec + 30 sec)/2) = 142.8 sec ≈ 143 sec = 2 min 23 sec
-
-Most DNA sequencing service providers would have a set of standard primers that
-includes T7 and T7term.
-In situation where your target gene is long (>1 kb), you may need to design additional sequencing primers. In this case, we would recommend the online tools below:
-- Eurofins (https://www.eurofinsgenomics.eu/en/ecom/tools/sequencing-primerdesign/)
-- GenScript (https://www.genscript.com/tools/dna-sequencing-primer-design)
+- Eurofins(https://www.eurofinsgenomics.eu/en/ecom/tools/sequencing-primer-design/)
+- GenScript(https://www.genscript.com/tools/dna-sequencing-primer-design)
 
 ## 핵심 메시지
 
@@ -2032,188 +1635,92 @@ In situation where your target gene is long (>1 kb), you may need to design addi
 
 ## 더 읽어보기
 
-Aschenbrenner J, Marx A (2017) DNA polymerases and biotechnological applications. Curr Opin
-Biotechnol 48:187-195
-Jajesniak P, Tee KL, Wong TS (2019) PTO-QuickStep: a fast and efficient method for cloning random
-mutagenesis ibraries. Int J Mol Sci 20(16)
-Tee KL, Wong TS (2013) Polishing the craft of genetic diversity creation in directed evolution.
-Biotechnol Adv 31(8):1707-1721
+- Aschenbrenner J, Marx A (2017) DNA polymerases and biotechnological applications. Curr Opin Biotechnol 48:187-195
+- Jajesniak P, Tee KL, Wong TS (2019) PTO-QuickStep: a fast and efficient method for cloning random mutagenesis libraries. Int J Mol Sci 20(16)
+- Tee KL, Wong TS (2013) Polishing the craft of genetic diversity creation in directed evolution. Biotechnol Adv 31(8):1707-1721
 
 # 6장 · 단백질 발현
 
 ## 이 장에서 배울 내용
 
 이 장에서는 다음을 배운다:
-- select and prepare a protein expression medium
-- differentiate between a complex medium and an auto-induction medium
-- perform protein expression
-- optimize protein expression
-- understand what an inclusion body is and how to avoid inclusion body formation
 
-The step following gene cloning is to determine expression of our protein of interest.
-We shall use the genetic construct prepared in 5장 (i.e., pET-19b-Tfu_0901) to
-exemplify heterologous protein production in E. coli. Typically, we follow the scheme
-outlined in Seen in this scheme, there are four key factors affecting the
-yield of protein expression:
-- Expression plasmid with the target gene cloned
-- Protein expression host
-- Protein expression medium
-- Protein expression conditions
+- 단백질 발현 배지를 고르고 준비한다
+- 복합 배지와 자기 유도 배지를 구분한다
+- 단백질 발현을 수행한다
+- 단백질 발현을 최적화한다
+- 포획체(inclusion body)가 무엇인지, 어떻게 형성을 피하는지 이해한다
 
-We have covered expression plasmid (Sect. 4.2), protein expression host (Sect.
+유전자 클로닝 다음 단계는 관심 단백질의 발현이다. 5장에서 만든 유전자 구조물(pET-19b-Tfu_0901)로 대장균에서의 이종 단백질 생산 과정을 살펴보자. 일반적인 발현 절차는 다음과 같다.
 
-4.1) and how to choose an appropriate host (Sect. 4.3) in 4장. In the case
-of pET-19b- Tfu_0901, we will begin with our favourite hosts, i. e., BL21(DE3) and
-C41(DE3). To reiterate, the DE3 designation means that the respective strains contain the λDE3 lysogen that carries the gene encoding T7 RNA polymerase under
-the control of a lacUV5 promoter . IPTG is therefore required to induce
+1. 발현 벡터를 발현 숙주에 새로 형질전환한다
+2. 콜론 하나로 오버나이트 배양한다
+3. (복합 배지 경로) 발현 배지에 접종한 뒤 37 °C에서 배양하며 OD600을 관찰하고, OD600이 0.6-0.8에 이르면 유도물질을 넣는다 / (자기 유도 배지 경로) 자기 유도 배지에 접종한다
+4. 두 경로 모두 30 °C 이하(또는 37 °C)에서 발현을 진행한다
+5. 세포 또는 배양 상징액(spent medium)을 회수한다. 유전자 구조물 설계에 따라 표적 단백질은 세포 안 또는 배양 상징액 속에 존재한다
 
-T7 RNA polymerase expression in order to express the recombinant gene cloned
-downstream of a T7 or a T7lac promoter. In pET19b- Tfu_0901, the expression of
-Tfu_090137-466 gene is under the control of a T7lac promoter.
+발현 수율에는 네 가지 핵심 요인이 작용한다: 표적 유전자가 클로닝된 발현 플라스미드, 단백질 발현 숙주, 발현 배지, 그리고 발현 조건이다.
 
-Expression vector freshly transformed into an expression host
+발현 플라스미드(4.2절), 발현 숙주(4.1절), 알맞은 숙주 고르기(4.3절)는 4장에서 다루었다. pET-19b-Tfu_0901의 경우 우리가 선호하는 BL21(DE3)와 C41(DE3)부터 시작하겠다. 다시 짚으면, DE3 표시는 해당 균주가 lacUV5 프로모터 아래에서 T7 RNA 중합효소 유전자를 지닌 λDE3 용원(lysogen)을 포함한다는 뜻이다. 따라서 T7 또는 T7lac 프로모터 하류에 클로닝된 재조합 유전자를 발현하려면 IPTG로 T7 RNA 중합효소 발현을 유도해야 한다. pET-19b-Tfu_0901에서 Tfu_0901(37-466) 유전자는 T7lac 프로모터의 제어를 받는다.
 
-T = 37°C
-Overnight culture from a single colony
-
-Inoculate expression medium
-
-T = 37°C
-Monitor OD600 value
-OD600 = 0.6 - 0.8
-Add inducer
-
-Inoculate auto-induction medium
-
-T = 30°C or lower
-
-T = 30°C or lower
-
-Cell/spent medium harvest
-
-the genetic construct, the target protein is present either in the cells or in the spent medium.
-
-
-In the next two sections, we will discuss protein expression medium (Sect. 6.1)
-and conditions (Sect. 6.2) in greater detail.
+다음 두 절에서 단백질 발현 배지(6.1절)와 발현 조건(6.2절)을 더 자세히 다룬다.
 
 ## 6.1 단백질 발현 배지
 
-For protein engineering, we recommend using the following two types of medium
-(표 6.1):
-- Complex medium: A complex medium is rich in organic nutrients and minerals. It contains water-soluble extracts of plant/animal tissue (e.g., enzymatically
+단백질 공학에서는 다음 두 부류의 배지를 권한다(표 6.1).
 
-**Table 6.1**
+- **복합 배지(complex medium)**: 식물·동물 조직의 수용성 추출물(펩톤·트립톤 같은 효소 소화 동물성 단백질)과 효모 추출물을 포함해 유기 영양소와 무기질이 풍부한 배지다. 정확한 조성을 알 수 없기 때문에 '복합'이라 부른다. 복합 배지를 쓸 때는 OD600이 0.6-0.8에 도달하면 유도물질 IPTG를 최종 농도 1 mM이 되도록 넣는다
+- **자기 유도 배지(auto-induction medium, AIM)**: IPTG 유도형 발현 균주를 위해 고안된 배지로, 처음에는 유도 없이 배양되다가 자동으로 유도가 일어나 보통 높은 세포 밀도의 포화 근처에서 표적 단백질을 생산한다. 한정된 농도의 글루코스가 초기 생육 단계에서 우선 대사되어, 로그기 중·후반에 글루코스가 고갈될 때까지 락토오스 흡수가 막힌다. 글루코스가 바닥나면 락토오스가 흡수되고 β-갈락토시데이스에 의해 유도물질인 알로락토오스로 전환된다. 알로락토오스는 DNA 위 결합 부위(lac 오퍼레이터)에서 Lac 억제단백질을 떼어 내고, 그 결과 lacUV5 프로모터로부터의 T7 RNA 중합효소 발현이 켜지며 T7lac 프로모터가 열려 T7 RNA 중합효소가 표적 단백질을 발현한다
 
-Complex media and their auto-induction counterparts for protein expression
+**표 6.1** 단백질 발현용 복합 배지와 대응 자기 유도 배지
 
-| Medium (ordered in increasing 'richness') | Complex medium | Auto-induction mediuma |
+| 배지 ('풍부함' 증가 순) | 복합 배지 | 자기 유도 배지ᵃ |
 | --- | --- | --- |
-| Luria-Bertani (LB) broth Miller | 10 g/L tryptone 5 g/L yeast extract 10 g/L NaCl | 10 g/L tryptone 5 g/L yeast extract 3.3 g/L (NH4)2SO4 6.8 g/L KH2PO4 7.1 g/L Na2HPO4 0.5 g/L glucose 2 g/L lactose 0.15 g/L MgSO4 |
-| 2×TY medium | 16 g/L tryptone 10 g/L yeast extract 5 g/L NaCl | 16 g/L tryptone 10 g/L yeast extract 3.3 g/L (NH4)2SO4 6.8 g/L KH2PO4 7.1 g/L Na2HPO4 0.5 g/L glucose 2 g/L lactose 0.15 g/L MgSO4 |
-| Terrific broth (TB) | 12 g/L tryptone 24 g/L yeast extract 4 mL/L glycerol 9.4 g/L KH2PO4 2.2 g/L K2HPO4 | 12 g/L tryptone 24 g/L yeast extract 4 mL/L glycerol 3.3 g/L (NH4)2SO4 6.8 g/L KH2PO4 7.1 g/L Na2HPO4 0.5 g/L glucose 2 g/L lactose 0.15 g/L MgSO4 |
-| Super broth | 35 g/L tryptone 20 g/L yeast extract 5 g/L NaCl | 35 g/L tryptone 20 g/L yeast extract 3.3 g/L (NH4)2SO4 6.8 g/L KH2PO4 7.1 g/L Na2HPO4 0.5 g/L glucose 2 g/L lactose 0.15 g/L MgSO4 |
+| Luria-Bertani(LB) broth Miller | 트립톤 10 g/L; 효모 추출물 5 g/L; NaCl 10 g/L | 트립톤 10 g/L; 효모 추출물 5 g/L; (NH4)2SO4 3.3 g/L; KH2PO4 6.8 g/L; Na2HPO4 7.1 g/L; 글루코스 0.5 g/L; 락토오스 2 g/L; MgSO4 0.15 g/L |
+| 2×TY 배지 | 트립톤 16 g/L; 효모 추출물 10 g/L; NaCl 5 g/L | 트립톤 16 g/L; 효모 추출물 10 g/L; (NH4)2SO4 3.3 g/L; KH2PO4 6.8 g/L; Na2HPO4 7.1 g/L; 글루코스 0.5 g/L; 락토오스 2 g/L; MgSO4 0.15 g/L |
+| Terrific broth(TB) | 트립톤 12 g/L; 효모 추출물 24 g/L; 글리세롤 4 mL/L; KH2PO4 9.4 g/L; K2HPO4 2.2 g/L | 트립톤 12 g/L; 효모 추출물 24 g/L; 글리세롤 4 mL/L; (NH4)2SO4 3.3 g/L; KH2PO4 6.8 g/L; Na2HPO4 7.1 g/L; 글루코스 0.5 g/L; 락토오스 2 g/L; MgSO4 0.15 g/L |
+| Super broth | 트립톤 35 g/L; 효모 추출물 20 g/L; NaCl 5 g/L | 트립톤 35 g/L; 효모 추출물 20 g/L; (NH4)2SO4 3.3 g/L; KH2PO4 6.8 g/L; Na2HPO4 7.1 g/L; 글루코스 0.5 g/L; 락토오스 2 g/L; MgSO4 0.15 g/L |
 
-aThe AIM compositions are obtained/adapted from Formedium AIM products
+ᵃ AIM 조성은 Formedium AIM 제품에서 가져왔거나 변형했다.
 
-digested animal proteins such as peptone and tryptone) and yeast extract. The
-medium is complex because its exact composition is unknown. When a complex
-medium is used, the inducer IPTG is added to a final concentration of 1 mM
-when the OD600 value reaches between 0.6-0.8.
-- Auto-induction medium (AIM): AIM is formulated to cultivate IPTGinducible expression strains, initially without induction, and then with induction to produce the target protein automatically, usually near saturation at
-high cell density. A limited concentration of glucose is metabolized preferentially during the initial cell growth phase, which prevents the uptake of lactose
-until glucose is depleted, usually in mid to late log phase. As the glucose is
-depleted, lactose is taken up and converted by β-galactosidase into the inducer
-allolactose. Allolactose causes the release of Lac repressor from its specific
-binding sites in the DNA (i.e., lac operator), thereby inducing the expression
-of T7 RNA polymerase from the lacUV5 promoter and unblocking the T7lac
-promoter to allow expression of the target protein by T7 RNA polymerase.
-Basically, for every complex medium, there is an AIM counterpart, as shown
-in 표 6.1. When cultivating cells in 96-well microplates, we would highly
-recommend using AIM whenever possible to simplify the process. The key
-advantages of AIM are:
-- Monitoring OD600 values to determine point of induction is not required.
-- Addition of inducer such as IPTG is not required.
-- There is less chance of contamination.
-- For the cultivation in 96-well microplates, cells in all wells are induced at about
-the same OD600 value.
+복합 배지마다 AIM 짝이 존재한다(표 6.1). 96웰 마이크로플레이트 배양이라면 과정을 단순화하기 위해 가능한 한 AIM을 쓰기를 강력히 권한다. AIM의 주요 장점은 다음과 같다.
 
-Regardless of the type of medium used, an antibiotic is supplemented (e.g., ampicillin in the case of pET-19b-Tfu_0901) to force the cells to keep their plasmids
-during the course of cultivation. At this point, we would like to introduce the
-Cold Spring Harbor Protocols (http://cshprotocols.cshlp.org/), which is a lab
-manual containing many useful recipes and protocols (e.g., how to prepare an
-antibiotic stock solution, and how to prepare a medium etc). For many, if not
-all, of the media in 표 6.1, you can purchase as pre-mixed powder or granule from suppliers such as Formedium, Sigma-Aldrich, Thermo Fisher Scientific,
-and VWR etc. Other commercially available complex AIM include Overnight
-Express™ and MagicMedia™. For those who are interested in more advanced
-AIM optimization, we recommend reading the excellent work from Studier
-(PMID 15915565).
-Although we seldom use a defined medium in protein engineering, defined
-medium (e.g., M9) and defined AIM [see Li et al. (PMID 21698378)] for E. coli are
-available.
-Depending on the nature of your target protein, additional supplements might be
-required. For example, 5-aminolevulinic acid (5-ALA, δ-ALA) is commonly added
-during the expression of heme proteins (e.g., cytochrome P450s). Further, depending
-on the application of your target protein, you may require animal-free medium (e.g.,
-Vegitone media from Sigma-Aldrich).
+- 유도 시점을 정하려고 OD600을 관찰할 필요가 없다
+- IPTG 같은 유도물질 첨가가 필요 없다
+- 오염 가능성이 낮다
+- 96웰 마이크로플레이트 배양에서 모든 웰이 비슷한 OD600에서 유도된다
 
+배지 종류와 무관하게 항생제(예: pET-19b-Tfu_0901의 경우 앰피실린)를 첨가해 배양 내내 세포가 플라스미드를 지니도록 강제한다. 참고로 Cold Spring Harbor Protocols(http://cshprotocols.cshlp.org/)는 항생제 저장액 만들기, 배지 조제법 같은 유용한 레시피와 프로토콜을 많이 담은 실험 매뉴얼이다. 표 6.1의 배지 대부분은 Formedium, Sigma-Aldrich, Thermo Fisher Scientific, VWR 등에서 미리 섞인 분말이나 입상으로 구입할 수 있다. 상용 복합 AIM으로는 Overnight Express™와 MagicMedia™도 있다. 더 깊은 AIM 최적화에 관심이 있으면 Studier의 훌륭한 연구(PMID 15915565)를 읽기를 권한다. 단백질 공학에서 잘 쓰지 않지만, 대장균용 합성 배지(예: M9)와 합성 AIM도 존재한다[Li 등, PMID 21698378].
+
+표적 단백질 성질에 따라 추가 보충제가 필요할 수 있다. 예컨대 헴 단백질(시토크롬 P450 등) 발현 때는 5-아미노레블린산(5-ALA, δ-ALA)을 흔히 넣는다. 또한 표적 단백질의 활용 목적에 따라 동물 유래 성분 없는 배지(예: Sigma-Aldrich의 Vegitone 배지)가 필요할 수도 있다.
 
 ## 6.2 단백질 발현 조건
 
-More isn't always better! The use of a strong promoter and a high inducer concentration often help to achieve high protein expression but could potentially also lead to
-protein aggregation. Potential solutions to this problem are:
-- Temperature: Lowering the expression temperature to 15-30 °C will improve the solubility of recombinantly expressed proteins. At lower temperatures, cellular processes
-such as transcription and translation are slowed down, thus leading to reduced protein aggregation. A lower temperature would also reduce protein proteolytic cleavage.
-- Inducer concentration: Although 1 mM IPTG is commonly used, a lower concentration of 0.01-0.4 mM can be used to reduce protein aggregation.
-- Time: Typically, we would do an overnight protein expression at a lower temperature (e.g., 25 °C or 30 °C for 12-18 hours). You could also use a shorter time at a
-higher temperature (e.g., 37 °C for 2-4 hours).
+많다고 늘 좋은 것은 아니다. 강한 프로모터와 높은 유도물질 농도는 높은 발현을 돕는 동시에 단백질 응집을 일으킬 수 있다. 이 문제에 대한 잠재적 해법은 다음과 같다.
+
+- **온도**: 발현 온도를 15-30 °C로 낮추면 재조합 단백질의 가용성이 좋아진다. 낮은 온도에서는 전사·번역 같은 세포 과정이 느려져 응집이 줄고, 단백질의 단백질분해 절단도 감소한다
+- **유도물질 농도**: 1 mM IPTG가 흔히 쓰이지만, 응집을 줄이려면 0.01-0.4 mM의 낮은 농도를 쓸 수 있다
+- **시간**: 보통 낮은 온도에서 하룻밤 발현한다(예: 25 °C 또는 30 °C에서 12-18시간). 더 높은 온도에서 짧게 하는 방법도 있다(예: 37 °C에서 2-4시간)
 
 ## 6.3 포획체 (inclusion body)
 
-The formation of inclusion bodies (IBs) is a common observation during the production of heterologous proteins in bacterial hosts. IBs are exclusively formed by
-misfolded or unfolded proteins, which aggregate into non-functional protein clusters. In protein engineering, IB formation can present enormous technical challenges,
-especially when high-throughput protein expression and screening are required. For
-instance, screening normally entails assessing the activity of a protein, but that would
-not be possible for non-functional IBs. Tackling protein aggregation is challenging.
-Strategies to decrease IB formation or IB solubilization often have to be individually
-tailored for the specific protein target. Here are some of our suggestions:
-- Optimize the protein expression conditions (Sect. 6.2)
-- Change the expression plasmid (Sect. 4.2) and/or the expression host
+세균 숙주에서 이종 단백질을 생산할 때 포획체(inclusion body, IB) 형성은 흔한 현상이다. IB는 전적으로 잘못 접히거나 접히지 못한 단백질이 뭉쳐 만든, 기능 없는 단백질 덩어리다. 단백질 공학에서 IB 형성은 큰 기술적 난제이며, 특히 고처리량 발현과 스크리닝이 필요할 때 그렇다. 스크리닝은 보통 단백질 활성 평가를 전제하는데, 기능 없는 IB로는 불가능하기 때문이다. 응집 문제는 해결하기 어렵고, IB 형성을 줄이거나 IB를 가용화하는 전략은 표적 단백질마다 개별적으로 세워야 할 때가 많다. 몇 가지 제안은 다음과 같다.
 
-(Sect. 4.1)
+- 단백질 발현 조건을 최적화한다(6.2절)
+- 발현 플라스미드(4.2절) 및/또는 발현 숙주(4.1절)를 바꾼다
+- **IB 가용화 후 단백질 재접힘(refolding)**: 다수의 단백질 변이체를 다루는 경우가 아니라면 실용적인 방법이다. 포획체 회수에 쓰는 가용화 방법은 세 부류이다:
 
-- Solubilization of IB and refolding of protein: This method is only
-practical if you are not dealing with a large number of protein variants.
-- Identify and mutate the aggregation-prone residues: This is a riskier approach,
-as a mutation introduced might cause a loss of function. But there are a range
-of bioinformatic tools to detect aggregation-prone regions or residues, such as:
-- Aggrescan (http://bioinf.uab.es/aggrescan/)
-- PASTA (http://protein.bio.unipd.it/pasta2/)
+**표 6.2** 포획체로부터 단백질을 회수하는 가용화 방법
 
-Inclusion body
+| 방식 | 예시 | 후속 처리 |
+| --- | --- | --- |
+| 변성형 가용화제 | 8 M 요소, 6 M GdnHCl | 재접힘(refolding) 필요 |
+| 완만한 가용화제 | pH 12 초과, 6 M n-프로판올, 6 M βME | 재접힘 필요 |
+| 비변성 가용화제 | 0.4% (w/v) 사르코실, 5% (v/v) DMSO, 5% (v/v) n-프로판올 | 재접힘 불필요 |
 
-Denaturing solubilization agents
-
- 8 M Urea
- 6 M GdnHCl
-
-Mild solubilization agents
-
- High pH (>12)
- 6 M n-Propanol
- 6 M βME
-
-Non-denaturing solubilization agents
-
--  0.4% (w/v) Sarkosyl  5% (v/v) DMSO
-
--  5% (v/v) n-Propanol
-
-Refolding
-
-Refolding
-
-Different solubilization methods for the recovery of protein from inclusion bodies.
+- **응집 경향 잔기를 찾아 돌연변이 유도**: 돌연변이가 기능 상실을 가져올 수 있는 더 위험한 접근이다. 그러나 응집 경향 영역·잔기를 찾는 생물정보학 도구가 여럿 있다:
+  - Aggrescan(http://bioinf.uab.es/aggrescan/)
+  - PASTA(http://protein.bio.unipd.it/pasta2/)
 
 ## 핵심 메시지
 
@@ -2241,13 +1748,9 @@ Different solubilization methods for the recovery of protein from inclusion bodi
 
 ## 더 읽어보기
 
-Baneyx F (1999) Recombinant protein expression in Escherichia coli. Curr Opin Biotechnol 10(5):411-421
-Kaur J, Kumar A, Kaur J (2018) Strategies for optimization of heterologous protein expression in
-
-E. coli: roadblocks and reinforcements. Int J Biol Macromol 106:803-822
-
-Studier FW (2005) Protein production by auto-induction in high density shaking cultures. Protein Expr
-Purif 41(1):207-234
+- Baneyx F (1999) Recombinant protein expression in *Escherichia coli*. Curr Opin Biotechnol 10(5):411-421
+- Kaur J, Kumar A, Kaur J (2018) Strategies for optimization of heterologous protein expression in *E. coli*: roadblocks and reinforcements. Int J Biol Macromol 106:803-822
+- Studier FW (2005) Protein production by auto-induction in high density shaking cultures. Protein Expr Purif 41(1):207-234
 
 # 7장 · 분석법
 
@@ -3296,7 +2799,7 @@ This chapter is all about introducing mutation(s) into the gene of a protein to 
 a protein variant (some people call it a mutein). We begin by describing the various
 types of mutations and their consequences on the DNA level as well as on the protein
 level. This is followed by a brief discussion on the genetic code and three different
-protein engineering approaches. Finally, we describe different gene mutagenesis techniques, together with a practical demonstration of how mutation(s) can be introduced into the endo-β-1,4- glucanase Tfu_090137-466.
+protein engineering approaches. Finally, we describe different gene mutagenesis techniques, together with a practical demonstration of how mutation(s) can be introduced into the endo-β-1,4- glucanase Tfu_0901(37-466).
 
 ## 8.1 뉴클레오타이드 치환과 아미노산 치환
 
@@ -3957,7 +3460,7 @@ What defines a good gene mutagenesis method? We have summarized what we believe
 an 'ideal' gene mutagenesis method should look like in 표 8.5. That said, we
 need to be realistic in knowing that no method is perfect! The closer the gene mutagenesis method is to the ideal method described in 표 8.5, the better it is.
 In the final two sections of this chapter, we are going to look at how mutant
-libraries of Tfu_090137-466 can be created. Since we begin with a single gene sequence,
+libraries of Tfu_0901(37-466) can be created. Since we begin with a single gene sequence,
 we will apply random mutagenesis and focused mutagenesis. DNA recombination
 must be applied to a group of homologous genes, thus we will leave it out for the
 time being.
@@ -4089,7 +3592,7 @@ mutagenesis kit (TaKaRa).
 trations of Mn2+ and dGTP. Data is obtained from the manual of Diversify PCR random mutagenesis
 kit (TaKaRa).
 
-When creating a mutant library of a gene (e.g., Tfu_090137-466), the number of
+When creating a mutant library of a gene (e.g., Tfu_0901(37-466)), the number of
 mutations per gene is a better measure of library quality compared to mutation frequency. What is the right number of mutations per gene? Unfortunately, there is no
 answer to this question. Each gene has its own mutation tolerance (also called the
 mutational robustness), and the question is best answered experimentally by screening one mutant library. From there, you can then adjust your mutation frequency by
@@ -4099,16 +3602,16 @@ mutation frequency only tell you what happens at the DNA level. They provide no
 information on amino acid substitution pattern at the protein level. Mutagenesis
 Assistant Program (MAP) is designed to fill this information gap. MAP translates
 the nucleotide substitution pattern for different mutagenesis methods into the corresponding amino acid substitution pattern. This online tool is very easy to use, and
-let's use Tfu_090137-466 as an example:
+let's use Tfu_0901(37-466) as an example:
 - Go to the MAP webpage (http://smap.win.biotec.rwth-aachen.de/map3d.
 html)
 - Click 'Submission' in the tool bar
-- Paste the coding strand sequence of Tfu_090137-466 in the query box
+- Paste the coding strand sequence of Tfu_0901(37-466) in the query box
 - Click the 'Submit' button
 
-8.4.1.2 Creating epPCR Libraries of Tfu_090137-466
+8.4.1.2 Creating epPCR Libraries of Tfu_0901(37-466)
 
-We will now demonstrate how to create epPCR libraries of Tfu_0901 using two different kits: GeneMorph II random mutagenesis kit (Agilent) and Diversify PCR random mutagenesis kit (TaKaRa). The gene length of Tfu_090137-466 (Sect. 5.1.3.2)
+We will now demonstrate how to create epPCR libraries of Tfu_0901 using two different kits: GeneMorph II random mutagenesis kit (Agilent) and Diversify PCR random mutagenesis kit (TaKaRa). The gene length of Tfu_0901(37-466) (Sect. 5.1.3.2)
 is 1290 bp. To be conservative, we will begin with a low mutation frequency표 8.8과 8.9 show the PCR mixture and the thermal cycling conditions that we are
 
 going to use, respectively. After the PCR, we can proceed to cloning the gene library
@@ -4254,7 +3757,7 @@ change from a negatively charged aspartate (D) to a positively charge lysine (K)
 is significant and potentially interesting for further investigation.
 
 In the last section of this chapter (8.4.2.3절), we will show you how to introduce
-D394K mutation into Tfu_090137-466.
+D394K mutation into Tfu_0901(37-466).
 
 8.4.2.2 Site-Directed and Multi Site-Directed Mutagenesis
 
@@ -4360,7 +3863,7 @@ reaction. Stage 1 is a short PCR run of 10 cycles.
 - Stage 2: Combine the two reactions from Stage 1, and run an additional
 20 cycles.
 
-8.4.2.3 Site-Directed Mutagenesis of Tfu_090137-466
+8.4.2.3 Site-Directed Mutagenesis of Tfu_0901(37-466)
 
 Designing and setting up a reaction for site-directed mutagenesis is very simple. We
 have developed a publicly accessible online tool called OneClick for this purpose. The
@@ -4372,9 +3875,9 @@ systems. It gives you the flexibility in choosing the type of mutagenic primers 
 
 design (e.g., overlapping, partially overlapping, non-overlapping), as well as the PCR
 modes (one-stage or two-stage).
-Let's us show you how OneClick can simplify your focused mutagenesis experiment by using Tfu_090137-466 as an example:
+Let's us show you how OneClick can simplify your focused mutagenesis experiment by using Tfu_0901(37-466) as an example:
 - Go to the OneClick webpage (http://www.oneclick-mutagenesis.com/)
-- Paste the coding strand sequence of Tfu_090137-466 GCCGGT......TCCTAA in the
+- Paste the coding strand sequence of Tfu_0901(37-466) GCCGGT......TCCTAA in the
 query box
 - Click the 'Begin' button
 - Type 394 in the 'Amino acid position to be mutated'
@@ -5463,7 +4966,7 @@ the polishing stage, impurities that exist in trace amounts are further removed.
 Importantly, the target protein is also transferred to a condition suitable for use or
 long-term storage.
 To reinforce your knowledge on protein purification, let's design a scheme for
-the purification of Tfu_090137-466. We have already created the construct pET-19b-
+the purification of Tfu_0901(37-466). We have already created the construct pET-19b-
 Tfu_0901 in 5장 for recombinant protein expression in E. coli. The recombinant protein contains a 10×His tag and an enterokinase (EK) recognition site to
 facilitate protein purification . The first thing we ought to do is check
 the molecular weight (MW), isoelectric point (pI), extinction coefficient (ε) of the
@@ -5475,12 +4978,12 @@ SDS-PAGE during protein purification.
 
 Based on the pET-19b-Tfu_0901 construct, we propose the following purification
 scheme :
-- Capture the His-tagged Tfu_090137-466 from the cell lysate using a HisTrap column.
+- Capture the His-tagged Tfu_0901(37-466) from the cell lysate using a HisTrap column.
 - Carry out a desalting step to remove imidazole from the eluate.
 - Add recombinant His-tagged enterokinase directly into the desalted sample to
 cleave the 10×His tag.
-- Reload the sample onto a HisTrap column. The cleaved 10×His tag, the Histagged enterokinase, and the uncleaved His-tagged Tfu_090137-466 will re-bind the
-HisTrap column, leaving the cleaved Tfu_090137-466 in the flow-through.
+- Reload the sample onto a HisTrap column. The cleaved 10×His tag, the Histagged enterokinase, and the uncleaved His-tagged Tfu_0901(37-466) will re-bind the
+HisTrap column, leaving the cleaved Tfu_0901(37-466) in the flow-through.
 - Polish the protein sample by a gel filtration step using Superdex 200 column.
 
 After a first attempt at this purification scheme, you would know which steps are
@@ -5527,7 +5030,7 @@ HisTrap
 
 Superdex 200
 
-(EK) recognition site in bold blue, and Tfu_090137-466 in bold black. The red triangle indicates the position of EK cleavage. Protein parameters (MW and pI) are calculated using ProtParam. Protein purification scheme is designed using columns from Cytiva (formerly GE Healthcare Life Sciences).
+(EK) recognition site in bold blue, and Tfu_0901(37-466) in bold black. The red triangle indicates the position of EK cleavage. Protein parameters (MW and pI) are calculated using ProtParam. Protein purification scheme is designed using columns from Cytiva (formerly GE Healthcare Life Sciences).
 
 In the proposed purification scheme, you will require His-tagged enterokinase.
 Histagged enterokinase can be bought from commercial suppliers, but the production of recombinant enterokinase in E. coli is also well documented (PMIDs
@@ -5564,7 +5067,7 @@ e=(nW 5500 (nY 1490) ´)+´+´()nC125
 
 **Table 10.3**
 
-Buffers for the purification of Tfu_090137-466
+Buffers for the purification of Tfu_0901(37-466)
 
 To reiterate, the protein concentration (C) is calculated using the Lambert-Beer Law,
 where A and l are absorbance at 280 nm and pathlength, respectively:
@@ -5870,7 +5373,7 @@ the type of inhibition (표 10.5). Enzyme inhibition is a topic taught in most f
 
 ## 연습문제
 
-1. If you clone Tfu_090137-466 into pGEX-4T-1 using restriction sites EcoRI and NotI , what protein purification scheme would you use?
+1. If you clone Tfu_0901(37-466) into pGEX-4T-1 using restriction sites EcoRI and NotI , what protein purification scheme would you use?
 
 2. 어떤 크로마토그래피 컬럼을 사용하겠는가?
 
@@ -5916,7 +5419,7 @@ this final technical chapter, we will look at two additional gene mutagenesis me
 Using DNA recombination, you can either combine the beneficial mutations you
 have found or dilute the mutations should you want to study the interactions between
 these mutations. With saturation mutagenesis, also known as sequential permutation, it allows you to systematically replace wildtype amino acid with all 19 non-wildtype amino acids at the position identified in your directed evolution experiment.
-As with all earlier chapters in this book, we will use Tfu_090137-466 as an example
+As with all earlier chapters in this book, we will use Tfu_0901(37-466) as an example
 to illustrate how these techniques can be applied.
 
 ## 11.1 DNA 재조합
@@ -6041,7 +5544,7 @@ Staggered Extension Process (StEP).
 Preparing a StEP mixture
 
 표 11.2과 11.3 show the PCR composition and thermo cycling conditions
-when performing StEP for Tfu_090137-466. You may be puzzled by the missing extension step during the thermal cycling. The success of StEP hinges on abbreviated
+when performing StEP for Tfu_0901(37-466). You may be puzzled by the missing extension step during the thermal cycling. The success of StEP hinges on abbreviated
 annealing/extension. As the temperature is ramping up from 55 to 94 °C, there will be
 a momentary strand extension when temperature passes the 72 °C mark (which is the
 recommended extension temperature for Taq DNA polymerase). The requirement of
