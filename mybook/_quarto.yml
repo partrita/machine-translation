@@ -10,50 +10,50 @@ book:
     - index.qmd
     - part: "기초 도구"
       chapters:
-        - linux_commands/linux_commands.qmd
-        - linear_algebra_book/linear-algebra-book.qmd
+        - linux_commands/index.qmd
+        - linear_algebra/index.qmd
     - part: "파이썬 프로그래밍 및 데이터 관리"
       chapters:
-        - python_mastery/PythonMastery.qmd
-        - mastering_python_for_bioinformatics/Mastering_Python_for_Bioinformatics.qmd
-        - python_for_biologists_a_complete_programming_course/Python_for_Biologists_A_Complete_Programming_Course.qmd
-        - managing_your_biological_data_with_python/Managing_Your_Biological_Data_with_Python.qmd
-        - streamlining_your_research_laboratory_with_python/Streamlining_Your_Research_Laboratory_with_Python.qmd
+        - python_mastery/index.qmd
+        - py_bioinformatics/index.qmd
+        - py_biologists/index.qmd
+        - manage_bio_data/index.qmd
+        - streamline_lab_py/index.qmd
     - part: "생명정보학 및 단백질 정보학"
       chapters:
-        - sequence_analysis_with_biopython/Sequence_Analysis_with_Biopython.qmd
-        - large_language_models_in_protein_bioinformatics/Large_Language_Models_in_Protein_Bioinformatics.qmd
-        - practical_guide_to_protein_engineering/practical_guide_to_protein_engineering.qmd
+        - seq_biopython/index.qmd
+        - llm_protein/index.qmd
+        - protein_engineering/index.qmd
     - part: "머신러닝 및 인공지능"
       chapters:
-        - deep_learning_for_biology_harness_ai_to_solve_real_world_biology_problems/Deep_Learning_for_Biology_Harness_AI_to_Solve_Real_World_Biology_Problems.qmd
+        - dl_biology/index.qmd
     - part: "AI 실제 적용"
       chapters:
-        - ai_in_action_complete/ai_in_action_complete.qmd
+        - ai_in_action/index.qmd
     - part: "데이터 시각화"
       chapters:
-        - dataviz/dataviz.qmd
+        - dataviz/index.qmd
     - part: "Rust 개발"
       chapters:
-        - rustc_dev_guide/rustc-dev-guide.qmd
-        - learn_rust/learn_rust.qmd
-        - rust_python_binding_guide/rust_python_binding_guide.qmd
+        - rustc_guide/index.qmd
+        - learn_rust/index.qmd
+        - rust_python/index.qmd
     - part: "Swift 프로그래밍"
       chapters:
-        - swift_for_python_dev/swift_for_python_dev.qmd
+        - swift_for_py/index.qmd
     - part: "데이터 사이언스"
       chapters:
-        - python_novice_gapminder/python-novice-gapminder.qmd
-        - data_analysis/data_analysis.qmd
+        - py_gapminder/index.qmd
+        - data_analysis/index.qmd
     - part: "R 및 인과 추론"
       chapters:
-        - causal_inference_in_r_complete/causal-inference-in-r-complete.qmd
+        - causal_inf_r/index.qmd
     - part: "기타"
       chapters:
-        - the_simple_guide_to_minimalist/The_simple_guide_to_minimalist.qmd
-        - marketing_research_complete/marketing_research_complete.qmd
-        - me_but_better/me_but_better.qmd
-        - bible/bible.qmd
+        - minimalist_guide/index.qmd
+        - marketing_research/index.qmd
+        - me_but_better/index.qmd
+        - bible/index.qmd
 
 engine: markdown
 

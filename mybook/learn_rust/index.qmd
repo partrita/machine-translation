@@ -3,33 +3,32 @@ title: "러스트 프로그래밍 완벽 가이드"
 subtitle: "파이썬에서 러스트로 이동하기"
 ---
 
-러스트(`Rust`) 및 파이썬(`Python`) 예제 코드들의 구현과 동작 원리를 완벽하게 분석하고, 각 코드가 스스로 그 원리를 설명할 수 있도록 구성된 가이드입니다.
+러스트(Rust)와 파이썬(Python) 예제 코드를 바탕으로 핵심 동작 원리를 짚어보는 실전 가이드입니다.
 
-본서는 크게 두 가지 핵심 영역으로 구분됩니다:
+본서는 크게 두 부분으로 구성됩니다.
 
 1. **Part I: 러스트 프로그래밍 기초 및 실전 프로젝트 (Rust Insight Book)**
-   - 기초 문법(`rustc`, `cargo`), 입출력 처리 및 계산 퀴즈 게임
-   - 복합 자료구조(포커 핸드 평가 알고리즘) 및 메모리 관리형 계산기
+   - 기본 문법(`rustc`, `cargo`), 콘솔 입출력과 계산 퀴즈
+   - 복합 자료구조(포커 패 판정 알고리즘)와 메모리 관리형 계산기
    - 파일 입출력과 가계부 CLI(CSV/JSON 직렬화 및 `serde`)
-   - 라이브러리/모듈/크레이트 패키징 및 배포 구조
-   - 단위 테스트(Unit Testing)와 `Result`/`Option`/커스텀 에러 처리
-   - Actix-web 및 SQLite 기반 풀스택 TODO 웹 애플리케이션
-   - 멀티스레드 병렬 처리(동기, 스레드, MPSC 채널, Rayon) 기반 대용량 이미지 썸네일 생성기
-   - 알고리즘 인터뷰 대비(배열 병합, 유효한 괄호 쌍 검증)
+   - 라이브러리·모듈·크레이트 패키징 및 배포 구조
+   - 단위 테스트(Unit Test)와 `Result`/`Option` 기반 에러 처리
+   - Actix-web과 SQLite를 활용한 TODO 웹 애플리케이션
+   - 멀티스레드 병렬 처리(MPSC 채널, Rayon)를 활용한 대용량 썸네일 생성기
+   - 알고리즘 문제 풀이(배열 병합, 괄호 쌍 검증)
 
 2. **Part II: 파이썬 개발자를 위한 러스트 전환 가이드 (From Python to Rust)**
-   - 기본 제어문과 자료형 변환 (Python vs Rust 1:1 비교)
-   - 명령줄 도구, 해시맵, 파일 파싱, 난수 및 문자열 처리
-   - 러스트의 정수: 소유권(Ownership), 대여(Borrowing), 참조(Reference) 및 라이프타임(Lifetime)
-   - 구조체 메서드, 제네릭(Generics), 트레잇(Traits) 다형성 및 RPN 계산기
-   - 이미지 조작, 사운드 합성(MML 파서, 사인/톱니/삼각파 합성, FM 신디사이저), TCP 소켓 통신(멀티유저 채팅)
-   - 고급 메모리 관리(`Box`, `Rc`, `RefCell`), 연결 리스트, PEG 문법 파서 인터프리터, WebAssembly(WASM), C FFI 연동
-   - 컴파일 에러 모음집 및 디버깅 해법
+   - 기본 제어문과 자료형 비교 (Python vs Rust 1:1 대응)
+   - CLI 도구, 해시맵, 파일 파싱, 난수 및 문자열 처리
+   - 러스트의 핵심: 소유권(Ownership), 빌림(Borrowing), 참조(Reference), 라이프타임(Lifetime)
+   - 구조체 메서드, 제네릭(Generics), 트레이트(Traits) 다형성과 RPN 계산기
+   - 이미지 조작, 사운드 합성(MML 파서, FM 신디사이저), TCP 멀티유저 채팅 서버
+   - 고급 메모리 관리(`Box`, `Rc`, `RefCell`), 연결 리스트, PEG 파서, WebAssembly(WASM), C FFI 연동
+   - 컴파일 에러 해결법 및 디버깅 가이드
 
 ***
 
 # Part I: 러스트 프로그래밍 기초 및 실전 프로젝트 (Rust Insight Book)
-
 
 ## INTRO 예제 모음
 > 해당 챕터 경로: `intro` | 포함된 소스 파일 수: 1개
@@ -38,8 +37,6 @@ subtitle: "파이썬에서 러스트로 이동하기"
 
 - **파일 위치**: `rust-insighbook/book.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [book]
@@ -53,12 +50,7 @@ src = "build_source"
 build-dir = "book"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
-
 
 ## 2장 - 러스트로 프로그램을 실행해 보자
 > 해당 챕터 경로: `chapter2` | 포함된 소스 파일 수: 3개
@@ -67,8 +59,6 @@ build-dir = "book"
 
 - **파일 위치**: `rust-insighbook/chapter2/hello_world/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -79,18 +69,12 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter2/hello_world/src/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter2/hello_world/src/main.rs`
 - **주요 주석 및 개요**: 애플리케이션의 진입점(Entry Point)이 되는 main 함수
-
-#### 전체 소스 코드
 
 ```rust
 // 애플리케이션의 진입점(Entry Point)이 되는 main 함수
@@ -104,18 +88,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `chapter2/rustc/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter2/rustc/main.rs`
 - **주요 주석 및 개요**: 애플리케이션의 진입점(Entry Point)이 되는 main 함수
-
-#### 전체 소스 코드
 
 ```rust
 // 애플리케이션의 진입점(Entry Point)이 되는 main 함수
@@ -125,12 +103,7 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
-
 
 ## 3장 - 인터랙티브 프로그램 만들기(계산 퀴즈)
 > 해당 챕터 경로: `chapter3` | 포함된 소스 파일 수: 2개
@@ -139,8 +112,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter3/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -152,19 +123,13 @@ edition = "2024"
 rand = "0.9.1"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter3/src/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter3/src/main.rs`
 - **주요 주석 및 개요**: rand 크레이트에서 난수 생성을 위한 Rng 트레이트를 가져옵니다.
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 ```rust
 // rand 크레이트에서 난수 생성을 위한 Rng 트레이트를 가져옵니다.
@@ -244,19 +209,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::Rng;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
-
 
 ## 4장 - 다양한 자료 구조 다루기(포커 게임)
 > 해당 챕터 경로: `chapter4` | 포함된 소스 파일 수: 2개
@@ -265,8 +223,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter4/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -278,10 +234,6 @@ edition = "2024"
 rand = "0.9.1"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter4/src/main.rs`
@@ -290,9 +242,7 @@ rand = "0.9.1"
 - **주요 주석 및 개요**: rand::seq::SliceRandom 트레이트를 가져옵니다. 벡터나 슬라이스를 무작위로 섞는(.shuffle()) 기능 등을 제공합니다.
 - **구조체 정의**: `Card` - 사용자 정의 데이터 타입을 구조화합니다.
 - **열거형 정의**: `Suit` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파, `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 ```rust
 // rand::seq::SliceRandom 트레이트를 가져옵니다. 벡터나 슬라이스를 무작위로 섞는(.shuffle()) 기능 등을 제공합니다.
@@ -427,20 +377,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::seq::SliceRandom;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Copy, Clone, PartialEq, Debug, Copy, Clone, PartialEq, Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
-
 
 ## 5장 - 함수와 메서드 다루기(메모리 기능이 있는 계산기)
 > 해당 챕터 경로: `chapter5` | 포함된 소스 파일 수: 8개
@@ -449,8 +391,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-2/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -461,10 +401,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter5/calculator-5-2/src/main.rs`
@@ -472,9 +408,7 @@ edition = "2024"
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-2/src/main.rs`
 - **주요 주석 및 개요**: 표준 입력을 처리하기 위한 stdin 함수를 std::io 모듈에서 가져옵니다.
 - **주요 함수**: `print_output`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, 불변 참조(`&`) 대여
 
 ```rust
 // 표준 입력을 처리하기 위한 stdin 함수를 std::io 모듈에서 가져옵니다.
@@ -523,14 +457,8 @@ fn print_output(value: f64) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::io::stdin;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -539,8 +467,6 @@ fn print_output(value: f64) {
 
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-3/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -551,10 +477,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter5/calculator-5-3/src/main.rs`
@@ -562,9 +484,7 @@ edition = "2024"
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-3/src/main.rs`
 - **주요 주석 및 개요**: 표준 입력을 처리하기 위한 stdin 함수를 std::io 모듈에서 가져옵니다.
 - **주요 함수**: `print_output, add_and_print_memory, eval_token, eval_expression`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여
 
 ```rust
 // 표준 입력을 처리하기 위한 stdin 함수를 std::io 모듈에서 가져옵니다.
@@ -655,14 +575,8 @@ fn eval_expression(left: f64, operator: &str, right: f64) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::io::stdin;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -671,8 +585,6 @@ fn eval_expression(left: f64, operator: &str, right: f64) -> f64 {
 
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-4/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -683,10 +595,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter5/calculator-5-4/src/main.rs`
@@ -695,9 +603,7 @@ edition = "2024"
 - **주요 주석 및 개요**: std 라이브러리에서 HashMap, Entry 진입점, 그리고 stdin 함수를 가져옵니다.
 - **구조체 정의**: `Memory` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `print_output, new, add, get, eval_token, eval_expression`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여
 
 ```rust
 // std 라이브러리에서 HashMap, Entry 진입점, 그리고 stdin 함수를 가져옵니다.
@@ -847,19 +753,11 @@ fn eval_expression(left: f64, operator: &str, right: f64) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -868,8 +766,6 @@ fn eval_expression(left: f64, operator: &str, right: f64) -> f64 {
 
 - **파일 위치**: `rust-insighbook/chapter5/calculator-5-5/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -880,10 +776,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter5/calculator-5-5/src/main.rs`
@@ -893,9 +785,7 @@ edition = "2024"
 - **구조체 정의**: `Memory` - 사용자 정의 데이터 타입을 구조화합니다.
 - **열거형 정의**: `Token` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `print_output, new, add, get, parse, split, eval_expression, eval_additive_expression`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여
 
 ```rust
 // std 라이브러리에서 HashMap, Entry 진입점, 그리고 stdin 함수를 가져옵니다.
@@ -1140,24 +1030,14 @@ fn eval_primary_expression(tokens: &[Token], index: usize, memory: &Memory) -> (
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Debug, PartialEq)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
-
 
 ## 6장 - 파일 입출력이 있는 명령줄 도구(가계부 프로그램)
 > 해당 챕터 경로: `chapter6` | 포함된 소스 파일 수: 4개
@@ -1166,8 +1046,6 @@ fn eval_primary_expression(tokens: &[Token], index: usize, memory: &Memory) -> (
 
 - **파일 위치**: `rust-insighbook/chapter6/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1182,10 +1060,6 @@ csv = "1.3.1"
 serde = { version = "1.0.219", features = ["derive"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter6/src/main.rs`
@@ -1194,9 +1068,7 @@ serde = { version = "1.0.219", features = ["derive"] }
 - **구조체 정의**: `App, NewArgs, DepositArgs, WithdrawArgs, ImportArgs, Record, ReportArgs` - 사용자 정의 데이터 타입을 구조화합니다.
 - **열거형 정의**: `Command` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `run, run, run, run, run`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 ```rust
 use std::{collections::HashMap, fs::OpenOptions};
@@ -1405,24 +1277,11 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{collections::HashMap, fs::OpenOptions};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use chrono::NaiveDate;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use clap::{Args, Parser, Subcommand};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use csv::{Reader, Writer, WriterBuilder};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use serde::{Deserialize, Serialize};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Parser, Subcommand, Args, Args, Args, Args, Serialize, Deserialize, Args)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
@@ -1432,8 +1291,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter7/another_bin/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1445,19 +1302,13 @@ edition = "2024"
 my_library = { version = "0.1.0", path = "../my_library" }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter7/another_bin/src/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter7/another_bin/src/main.rs`
 - **주요 주석 및 개요**: my_library 크레이트 내부의 library 모듈로부터 Book 구조체와 Bookshelf 구조체를 가져옵니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 ```rust
 // my_library 크레이트 내부의 library 모듈로부터 Book 구조체와 Bookshelf 구조체를 가져옵니다.
@@ -1483,22 +1334,14 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use my_library::library::{book::Book, bookshelf::Bookshelf};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `chapter7/my_library/Cargo.toml`
 
 - **파일 위치**: `rust-insighbook/chapter7/my_library/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1510,10 +1353,6 @@ edition = "2024"
 fuzzy-matcher = "0.3.7"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter7/my_library/src/lib.rs`
@@ -1521,16 +1360,11 @@ fuzzy-matcher = "0.3.7"
 - **파일 위치**: `rust-insighbook/chapter7/my_library/src/lib.rs`
 - **주요 주석 및 개요**: 'library' 모듈을 정의하고, 이를 외부(다른 크레이트)에서도 접근하여 사용할 수 있도록 'pub' 키워드로 공개합니다. 이 선언은 같은 디렉터리에 있는 'library.rs' 파일이나 'library/mod.rs' 파일을 모듈로 가져옵니다.
 
-#### 전체 소스 코드
-
 ```rust
 // 'library' 모듈을 정의하고, 이를 외부(다른 크레이트)에서도 접근하여 사용할 수 있도록 'pub' 키워드로 공개합니다.
 // 이 선언은 같은 디렉터리에 있는 'library.rs' 파일이나 'library/mod.rs' 파일을 모듈로 가져옵니다.
 pub mod library;
 ```
-
-#### 코드 세부 분석 및 핵심 원리 해설
-
 
 ***
 
@@ -1540,9 +1374,7 @@ pub mod library;
 - **주요 주석 및 개요**: 디버깅 목적으로 println!("{:?}", book)과 같이 구조체 내부 정보를 출력할 수 있도록 Debug 트레이트를 유도(derive)합니다. [derive(Debug)] 외부 크레이트 및 모듈에서 Book 구조체를 사용하고 인스턴스를 생성할 수 있도록 pub 구조체로 선언합니다. 또한 구조체의 각 필드(title, author)도 외부에서 직접 읽고 쓸 수 있도록 pub 키워드를 붙여줍니다.
 - **구조체 정의**: `Book` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 ```rust
 // 디버깅 목적으로 println!("{:?}", book)과 같이 구조체 내부 정보를 출력할 수 있도록 Debug 트레이트를 유도(derive)합니다.
@@ -1568,15 +1400,8 @@ impl Book {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `chapter7/my_library/src/library/bookshelf.rs`
@@ -1585,9 +1410,7 @@ impl Book {
 - **주요 주석 및 개요**: 외부 크레이트인 fuzzy_matcher에서 퍼지 매칭 인터페이스(FuzzyMatcher)와 구현체(SkimMatcherV2)를 가져옵니다. 퍼지 매칭이란 문자열의 일부만 일치하거나 오타가 있어도 유사도를 측정하여 검색해 주는 기능입니다.
 - **구조체 정의**: `Bookshelf` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `default, new, add_book, search_books, search_books_exact, search_books_partial, test_bookshelf`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 ```rust
 // 외부 크레이트인 fuzzy_matcher에서 퍼지 매칭 인터페이스(FuzzyMatcher)와 구현체(SkimMatcherV2)를 가져옵니다.
@@ -1702,29 +1525,16 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use fuzzy_matcher::{FuzzyMatcher, skim::SkimMatcherV2};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::book::Book;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::{Book, Bookshelf};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `chapter7/my_library/src/library/mod.rs`
 
 - **파일 위치**: `rust-insighbook/chapter7/my_library/src/library/mod.rs`
 - **주요 주석 및 개요**: 'library' 디렉터리 내부의 하위 파일/디렉터리 모듈들을 정의하고 외부로 공개하기 위해 pub mod로 선언합니다. 'book' 모듈(book.rs 파일)을 공개하여 외부 크레이트 등에서도 Book 구조체를 다룰 수 있게 합니다.
-
-#### 전체 소스 코드
 
 ```rust
 // 'library' 디렉터리 내부의 하위 파일/디렉터리 모듈들을 정의하고 외부로 공개하기 위해 pub mod로 선언합니다.
@@ -1736,17 +1546,12 @@ pub mod book;
 pub mod bookshelf;
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `chapter7/my_package/Cargo.toml`
 
 - **파일 위치**: `rust-insighbook/chapter7/my_package/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1757,10 +1562,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter7/my_package/src/lib.rs`
@@ -1768,9 +1569,7 @@ edition = "2024"
 - **파일 위치**: `rust-insighbook/chapter7/my_package/src/lib.rs`
 - **주요 주석 및 개요**: 외부(다른 모듈이나 바이너리 크레이트 등)에서 호출할 수 있도록 pub 키워드로 함수를 정의합니다. 매개변수로 문자열 슬라이스인 &str 타입을 받아 출력 메시지에 활용합니다.
 - **주요 함수**: `hello`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 ```rust
 // 외부(다른 모듈이나 바이너리 크레이트 등)에서 호출할 수 있도록 pub 키워드로 함수를 정의합니다.
@@ -1781,17 +1580,12 @@ pub fn hello(name: &str) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `chapter7/my_package/src/bin/bin.rs`
 
 - **파일 위치**: `rust-insighbook/chapter7/my_package/src/bin/bin.rs`
 - **주요 주석 및 개요**: my_package 크레이트의 라이브러리(lib.rs)에서 공개한 hello 함수를 가져옵니다.
-
-#### 전체 소스 코드
 
 ```rust
 // my_package 크레이트의 라이브러리(lib.rs)에서 공개한 hello 함수를 가져옵니다.
@@ -1803,10 +1597,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use my_package::hello;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -1815,8 +1605,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter7/my_package/src/bin/bin2.rs`
 - **주요 주석 및 개요**: my_package 크레이트의 라이브러리(lib.rs)에서 공개한 hello 함수를 가져옵니다.
-
-#### 전체 소스 코드
 
 ```rust
 // my_package 크레이트의 라이브러리(lib.rs)에서 공개한 hello 함수를 가져옵니다.
@@ -1828,10 +1616,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use my_package::hello;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -1840,8 +1624,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter7/use_remote_crate/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1853,19 +1635,13 @@ edition = "2024"
 my_library = {git="https://github.com/insightbook/rust", package = "my_library", branch = "main"}
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter7/use_remote_crate/src/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter7/use_remote_crate/src/main.rs`
 - **주요 주석 및 개요**: my_library 크레이트 내의 library 모듈에서 Book 구조체와 Bookshelf 구조체를 가져옵니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 ```rust
 // my_library 크레이트 내의 library 모듈에서 Book 구조체와 Bookshelf 구조체를 가져옵니다.
@@ -1891,16 +1667,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use my_library::library::{book::Book, bookshelf::Bookshelf};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
-
 
 ## 8장 - 단위 테스트 작성하기(스터디 모임 달력)
 > 해당 챕터 경로: `chapter8` | 포함된 소스 파일 수: 4개
@@ -1909,8 +1678,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter8/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -1928,10 +1695,6 @@ serde_json = "1.0.140"
 rstest = "0.25.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter8/src/main.rs`
@@ -1941,9 +1704,7 @@ rstest = "0.25.0"
 - **구조체 정의**: `Schedule, Calendar, Cli` - 사용자 정의 데이터 타입을 구조화합니다.
 - **열거형 정의**: `Commands` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `intersects, read_calendar, save_calendar, show_list, delete_schedule, test_add_schedule, test_delete_schedule`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 ```rust
 // 표준 라이브러리에서 파일 입출력 및 버퍼링 처리를 위한 모듈을 가져옵니다.
@@ -2336,25 +2097,11 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use chrono::NaiveDateTime;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use clap::{Parser, Subcommand};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use serde::{Deserialize, Serialize};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*; // 부모 모듈(상위 영역)의 정의들을 가져와서 사용할 수 있게 합니다.`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - 외 1개의 추가 모듈 임포트
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Parser, Subcommand)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
@@ -2364,8 +2111,6 @@ mod tests {
 
 - **파일 위치**: `rust-insighbook/chapter9/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -2384,10 +2129,6 @@ thiserror = "2.0.12"
 rstest = "0.25.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter9/src/main.rs`
@@ -2397,9 +2138,7 @@ rstest = "0.25.0"
 - **구조체 정의**: `Schedule, Calendar, Cli` - 사용자 정의 데이터 타입을 구조화합니다.
 - **열거형 정의**: `Commands, MyError` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `intersects, read_calendar, save_calendar, show_list, delete_schedule, test_add_schedule, test_delete_schedule, test_add_after_delete`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 ```rust
 // 표준 라이브러리에서 파일 입출력 및 버퍼링 처리를 위한 모듈을 가져옵니다.
@@ -2881,25 +2620,11 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use chrono::NaiveDateTime;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use clap::{Parser, Subcommand};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use serde::{Deserialize, Serialize};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*; // 부모 모듈(상위 영역)의 정의들을 가져와서 사용할 수 있게 합니다.`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - 외 1개의 추가 모듈 임포트
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Parser, Subcommand, thiserror::Error, Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
@@ -2909,8 +2634,6 @@ mod tests {
 
 - **파일 위치**: `rust-insighbook/chapter10/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -2925,10 +2648,6 @@ serde = { version = "1.0.219", features = ["derive"] }
 sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter10/src/main.rs`
@@ -2937,9 +2656,7 @@ sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio"] }
 - **주요 주석 및 개요**: Actix-web 웹 프레임워크에서 웹 애플리케이션 구축 및 HTTP 처리를 위해 필요한 도구들을 가져옵니다.
 - **구조체 정의**: `HelloTemplate, TodoTemplate, Task` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `hello, todo, update`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), `async/await` 비동기 논블로킹 I/O 처리
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, `Option` Null 안전성, 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), `async/await` 비동기 논블로킹 I/O 처리
 
 ```rust
 // Actix-web 웹 프레임워크에서 웹 애플리케이션 구축 및 HTTP 처리를 위해 필요한 도구들을 가져옵니다.
@@ -3108,31 +2825,17 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use actix_web::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use askama::{Error, Template};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use sqlx::{Row, SqlitePool};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Template, Template, serde::Deserialize)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `chapter11/Cargo.toml`
 
 - **파일 위치**: `rust-insighbook/chapter11/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3147,10 +2850,6 @@ serde = { version = "1.0.219", features = ["derive"] }
 sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter11/src/main.rs`
@@ -3159,9 +2858,7 @@ sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio"] }
 - **주요 주석 및 개요**: Actix-web 웹 프레임워크에서 웹 애플리케이션 구축 및 HTTP 처리를 위해 필요한 도구들을 가져옵니다.
 - **구조체 정의**: `HelloTemplate, TodoTemplate, Task` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `hello, todo, update`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), `async/await` 비동기 논블로킹 I/O 처리
-
-#### 전체 소스 코드
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파, `Option` Null 안전성, 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), `async/await` 비동기 논블로킹 I/O 처리
 
 ```rust
 // Actix-web 웹 프레임워크에서 웹 애플리케이션 구축 및 HTTP 처리를 위해 필요한 도구들을 가져옵니다.
@@ -3332,31 +3029,17 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use actix_web::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use askama::{Error, Template};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use sqlx::{Row, SqlitePool};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Template, Template, serde::Deserialize)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `chapter12/parallel-add/Cargo.toml`
 
 - **파일 위치**: `rust-insighbook/chapter12/parallel-add/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3367,19 +3050,13 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter12/parallel-add/src/main.rs`
 
 - **파일 위치**: `rust-insighbook/chapter12/parallel-add/src/main.rs`
 - **주요 주석 및 개요**: 표준 라이브러리의 동기화(sync) 및 스레드(thread) 관련 도구를 가져옵니다.
-- **적용된 러스트 핵심 패턴**: 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
-
-#### 전체 소스 코드
+- **핵심 패턴**: 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
 
 ```rust
 // 표준 라이브러리의 동기화(sync) 및 스레드(thread) 관련 도구를 가져옵니다.
@@ -3436,14 +3113,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 7. **동시성 및 병렬성 보장**:
    - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
@@ -3452,8 +3123,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(channel)/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3466,10 +3135,6 @@ clap = { version = "4.5.40", features = ["derive"] }
 image = "0.25.6"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter12/thumbnail-tool(channel)/src/main.rs`
@@ -3477,9 +3142,7 @@ image = "0.25.6"
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(channel)/src/main.rs`
 - **주요 주석 및 개요**: clap 크레이트에서 명령줄 인수 분석을 위해 Parser 매크로를 가져옵니다.
 - **구조체 정의**: `Args` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
-
-#### 전체 소스 코드
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
 
 ```rust
 // clap 크레이트에서 명령줄 인수 분석을 위해 Parser 매크로를 가져옵니다.
@@ -3585,20 +3248,10 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use clap::Parser;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Parser)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 7. **동시성 및 병렬성 보장**:
    - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
@@ -3607,8 +3260,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(rayon)/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3622,10 +3273,6 @@ image = "0.25.6"
 rayon = "1.10.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter12/thumbnail-tool(rayon)/src/main.rs`
@@ -3633,9 +3280,7 @@ rayon = "1.10.0"
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(rayon)/src/main.rs`
 - **주요 주석 및 개요**: clap 크레이트에서 명령줄 인수를 분석하기 위한 Parser 매크로를 가져옵니다.
 - **구조체 정의**: `Args` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 ```rust
 // clap 크레이트에서 명령줄 인수를 분석하기 위한 Parser 매크로를 가져옵니다.
@@ -3708,22 +3353,10 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use clap::Parser;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use rayon::iter::IntoParallelIterator;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use rayon::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Parser)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 7. **동시성 및 병렬성 보장**:
    - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
@@ -3732,8 +3365,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(sync)/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3746,10 +3377,6 @@ clap = { version = "4.5.40", features = ["derive"] }
 image = "0.25.6"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter12/thumbnail-tool(sync)/src/main.rs`
@@ -3757,9 +3384,7 @@ image = "0.25.6"
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(sync)/src/main.rs`
 - **주요 주석 및 개요**: clap 크레이트에서 명령줄 인수 파싱을 도와주는 Parser 매크로를 가져옵니다.
 - **구조체 정의**: `Args` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
-
-#### 전체 소스 코드
+- **핵심 패턴**: `Option` Null 안전성, 불변 참조(`&`) 대여
 
 ```rust
 // clap 크레이트에서 명령줄 인수 파싱을 도와주는 Parser 매크로를 가져옵니다.
@@ -3834,28 +3459,16 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use clap::Parser;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Parser)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `chapter12/thumbnail-tool(thread)/Cargo.toml`
 
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(thread)/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -3868,10 +3481,6 @@ clap = { version = "4.5.40", features = ["derive"] }
 image = "0.25.6"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter12/thumbnail-tool(thread)/src/main.rs`
@@ -3879,9 +3488,7 @@ image = "0.25.6"
 - **파일 위치**: `rust-insighbook/chapter12/thumbnail-tool(thread)/src/main.rs`
 - **주요 주석 및 개요**: clap 크레이트에서 명령줄 인수를 편리하게 파싱하기 위한 Parser 매크로를 가져옵니다.
 - **구조체 정의**: `Args` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
-
-#### 전체 소스 코드
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
 
 ```rust
 // clap 크레이트에서 명령줄 인수를 편리하게 파싱하기 위한 Parser 매크로를 가져옵니다.
@@ -3984,20 +3591,10 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use clap::Parser;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::{`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Parser)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 7. **동시성 및 병렬성 보장**:
    - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
@@ -4006,8 +3603,6 @@ fn main() {
 
 - **파일 위치**: `rust-insighbook/chapter13/merge-array/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -4018,10 +3613,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter13/merge-array/src/main.rs`
@@ -4029,8 +3620,6 @@ edition = "2024"
 - **파일 위치**: `rust-insighbook/chapter13/merge-array/src/main.rs`
 - **주요 주석 및 개요**: 학습용 테스트 코드이므로 사용하지 않는 코드나 클리피(Clippy) 경고가 발생하는 것을 무시하도록 속성(Attribute)을 부여합니다. ![allow(clippy::all, unused)]
 - **주요 함수**: `solve1, solve2, test_solve1, test_solve2`
-
-#### 전체 소스 코드
 
 ```rust
 // 학습용 테스트 코드이므로 사용하지 않는 코드나 클리피(Clippy) 경고가 발생하는 것을 무시하도록 속성(Attribute)을 부여합니다.
@@ -4150,10 +3739,6 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -4162,8 +3747,6 @@ mod tests {
 
 - **파일 위치**: `rust-insighbook/chapter13/parenthesis/Cargo.toml`
 - **패키지 및 의존성 설정**: Cargo 빌드 도구 및 외부 크레이트 종속성 정의
-
-#### 전체 소스 코드
 
 ```toml
 [package]
@@ -4174,10 +3757,6 @@ edition = "2024"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `chapter13/parenthesis/src/main.rs`
@@ -4185,8 +3764,6 @@ edition = "2024"
 - **파일 위치**: `rust-insighbook/chapter13/parenthesis/src/main.rs`
 - **주요 주석 및 개요**: 학습 목적의 파일이므로 미사용 코드 경고 등을 비활성화하는 속성을 선언합니다. ![allow(clippy::all, unused)]
 - **주요 함수**: `solve, test_solve`
-
-#### 전체 소스 코드
 
 ```rust
 // 학습 목적의 파일이므로 미사용 코드 경고 등을 비활성화하는 속성을 선언합니다.
@@ -4257,14 +3834,9 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
-
 
 # Part II: 파이썬 개발자를 위한 러스트 전환 가이드 (From Python to Rust)
 
@@ -4308,10 +3880,6 @@ dec = encrypt(enc, -3)
 print(enc, "=>", dec)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4321,7 +3889,7 @@ print(enc, "=>", dec)
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/caesar_enc.rs`
 - **주요 개요**: 암호화 함수
 - **주요 함수**: `encrypt`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -4356,10 +3924,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/caesar_enc2.py`
@@ -4385,10 +3949,6 @@ dec = encrypt(enc, -3)
 print(enc, "=>", dec)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4398,7 +3958,7 @@ print(enc, "=>", dec)
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/caesar_enc2.rs`
 - **주요 개요**: 암호화 함수
 - **주요 함수**: `encrypt`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -4419,10 +3979,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/caesar_enc2x.rs`
@@ -4430,7 +3986,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/caesar_enc2x.rs`
 - **주요 개요**: Rustでシーザー暗号に変換する関数（その2）
 - **주요 함수**: `encrypt`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -4452,10 +4008,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/calc_price.rs`
@@ -4478,16 +4030,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/check3.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/check3.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -4507,10 +4055,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/check_range.py`
@@ -4527,10 +4071,6 @@ for s in ['i8', 'i16', 'i32', 'i64', 'u8', 'u16', 'u32', 'u64']:
     print(f)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4562,10 +4102,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/cmptext.sh`
@@ -4585,10 +4121,6 @@ rustc fizzbuzz.rs && ./fizzbuzz > fb_rust.txt
 diff fb_python.txt fb_rust.txt
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **보조 파일 개요**:
-   - `cmptext.sh` 파일은 빌드 시스템 또는 실행 환경을 지원하기 위한 부가 리소스입니다.
 ***
 
 ### `ch1/coin.py`
@@ -4617,10 +4149,6 @@ for i500 in range(0, 11):
                         .format(i500,i100,i50,total))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4656,10 +4184,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/coin_type.rs`
@@ -4694,10 +4218,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/era_name.rs`
@@ -4729,10 +4249,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/fib.py`
@@ -4756,10 +4272,6 @@ for _ in range(30):
     b = tmp + b
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4788,10 +4300,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/fizzbuzz.py`
@@ -4817,10 +4325,6 @@ for i in range(1, 101):
         print(i)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4829,7 +4333,7 @@ for i in range(1, 101):
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/fizzbuzz.rs`
 - **주요 개요**: 러스트로FizzBuzz 문제 풀기
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -4852,10 +4356,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/gugu.py`
@@ -4874,10 +4374,6 @@ for y in range(1, 10):
     print("")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4901,10 +4397,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/gugu2.py`
@@ -4922,10 +4414,6 @@ for y in range(1, 10):
     print(",".join(a))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4947,10 +4435,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/hello.py`
@@ -4964,10 +4448,6 @@ fn main() {
 print("Hello, World!")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -4984,10 +4464,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/if_value.rs`
@@ -5004,10 +4480,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/let_error.rs`
@@ -5026,10 +4498,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/let_ok.rs`
@@ -5048,10 +4516,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/let_test.rs`
@@ -5068,10 +4532,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/moon.py`
@@ -5089,10 +4549,6 @@ print("달까지 자동차로 {}일".format(moon / car / 24))
 print("달까지 KTX로 {}일".format(moon / btrain / 24))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5113,10 +4569,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/multiplication.rs`
@@ -5142,10 +4594,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/prime100.py`
@@ -5179,10 +4627,6 @@ def get_primes(count):
 print(get_primes(100))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5192,7 +4636,7 @@ print(get_primes(100))
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/prime100.rs`
 - **주요 개요**: 소수인지 확인하는 함수 --- (*1)
 - **주요 함수**: `is_prime, get_primes`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -5231,10 +4675,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -5243,7 +4683,7 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/ref_test.rs`
 - **주요 함수**: `set_value`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -5265,10 +4705,6 @@ fn set_value(arg: &mut u32) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/show_price.py`
@@ -5285,10 +4721,6 @@ banana = 300
 print("바나나 가격={}원".format(banana))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5308,10 +4740,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/sum1to10.rs`
@@ -5330,10 +4758,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/sum1to10array.rs`
@@ -5353,10 +4777,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/sum1to10v2.rs`
@@ -5375,10 +4795,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/sum1to10vec.rs`
@@ -5398,10 +4814,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch1/x2_closure.rs`
@@ -5420,20 +4832,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
-
-
 
 ### `ch1/gugu.csv`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/gugu.csv`
 - **역할**: 구구단 계산 결과 CSV 데이터 파일
-
-#### 전체 소스 코드
 
 ```csv
 1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -5451,8 +4855,6 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch1/cmptext.bat`
 - **역할**: Windows 환경에서 Python 및 Rust로 생성된 결과 텍스트 파일(FC 명령어) 비교 배치 스크립트
-
-#### 전체 소스 코드
 
 ```bat
 python fizzbuzz.py > fizzbuzz_python.txt
@@ -5486,10 +4888,6 @@ for y in range(0, 5):
     print("")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5528,10 +4926,6 @@ else:
     print("3단계 비만")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5541,7 +4935,7 @@ else:
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/bmi.rs`
 - **주요 개요**: 비만도 진단 도구
 - **주요 함수**: `input`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -5576,10 +4970,6 @@ fn input(prompt: &str) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -5604,10 +4994,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/cmptext.py`
@@ -5640,10 +5026,6 @@ else:
     print("ng")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5680,14 +5062,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/counter.py`
@@ -5712,10 +5088,6 @@ for key in ["A", "B", "C"]:
     print("{}: {:2d}".format(key, c_dic[key]))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5724,7 +5096,7 @@ for key in ["A", "B", "C"]:
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/counter.rs`
 - **주요 개요**: 인기 투표 집계 HashMap을 사용하기 위한 선언 --- (*1)
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -5755,10 +5127,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -5786,14 +5154,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/dice.py`
@@ -5812,10 +5174,6 @@ for i in range(0, 5):
     print(dice)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5847,10 +5205,6 @@ with open(dicfile, "rt", encoding="utf-8") as fp:
             print(line.strip())
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5858,7 +5212,7 @@ with open(dicfile, "rt", encoding="utf-8") as fp:
 ### `ch2/dictionary.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/dictionary.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -5896,15 +5250,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs::File;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::{BufRead, BufReader};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/findfile.py`
@@ -5933,10 +5280,6 @@ for dirname, dirs, files in os.walk(target_dir):
             print(fullpath)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -5945,7 +5288,7 @@ for dirname, dirs, files in os.walk(target_dir):
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/findfile.rs`
 - **주요 함수**: `findfile`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -5990,20 +5333,14 @@ fn findfile(target: &path::PathBuf, keyword: &str) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{env, path};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/fizzbuzz_file.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/fizzbuzz_file.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6041,22 +5378,15 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs::{self, File};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::{Write, BufWriter};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/fizzbuzz_file2.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/fizzbuzz_file2.rs`
 - **주요 함수**: `get_fizzbuzz`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6091,15 +5421,8 @@ fn get_fizzbuzz(max: u32) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs::File;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::Write;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/float_type.rs`
@@ -6117,10 +5440,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/hashmap_chk.rs`
@@ -6146,10 +5465,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -6175,10 +5490,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -6186,7 +5497,7 @@ fn main() {
 ### `ch2/hashmap_match.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/hashmap_match.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -6205,14 +5516,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch2/hex_oct_bin.rs`
@@ -6230,17 +5535,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/input_height.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/input_height.rs`
 - **주요 함수**: `input_str, input_f`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -6278,20 +5579,14 @@ fn input_f(def: f64) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/int_type.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/int_type.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6311,10 +5606,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::any::type_name;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -6322,7 +5613,7 @@ fn main() {
 ### `ch2/korean_month.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/korean_month.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6346,10 +5637,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -6398,10 +5685,6 @@ for y in range(0, MAP_N):
     print("")
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -6410,7 +5693,7 @@ for y in range(0, MAP_N):
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/mytree.rs`
 - **주요 함수**: `tree`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6457,14 +5740,8 @@ fn tree(target: &path::PathBuf, level: isize) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{env, path};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/pow1234_5678.py`
@@ -6478,10 +5755,6 @@ fn tree(target: &path::PathBuf, level: isize) {
 print(1234 ** 5678)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -6501,10 +5774,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/print_args.rs`
@@ -6524,10 +5793,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::env;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -6535,7 +5800,7 @@ fn main() {
 ### `ch2/print_args_vec.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/print_args_vec.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -6547,10 +5812,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -6571,16 +5832,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/read_file.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/read_file.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6604,15 +5861,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::env; // 명령줄 인수 취득용`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::fs; // 파일 읽기용`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch2/rec_fib.rs`
@@ -6638,10 +5888,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/rec_sum1to10.rs`
@@ -6664,10 +5910,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/str_parse_f.rs`
@@ -6687,10 +5929,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -6698,7 +5936,7 @@ fn main() {
 ### `ch2/str_parse_i.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/str_parse_i.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -6715,10 +5953,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -6737,10 +5971,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -6767,10 +5997,6 @@ for i, v in enumerate(sys.argv):
 print(total)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -6778,7 +6004,7 @@ print(total)
 ### `ch2/sum_args.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/sum_args.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -6803,10 +6029,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -6837,10 +6059,6 @@ for i, v in enumerate(sys.argv):
 print(total)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -6848,7 +6066,7 @@ print(total)
 ### `ch2/sum_textfile.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/sum_textfile.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -6881,14 +6099,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{env, fs};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -6896,7 +6108,7 @@ fn main() {
 ### `ch2/vec_macro.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/vec_macro.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -6907,10 +6119,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -6918,7 +6126,7 @@ fn main() {
 ### `ch2/vec_nomacro.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/vec_nomacro.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -6932,10 +6140,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -6943,7 +6147,7 @@ fn main() {
 ### `ch2/vec_u32_str.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/vec_u32_str.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -6962,10 +6166,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/bingocard/Cargo.toml`
@@ -6985,17 +6185,13 @@ edition = "2018"
 rand = "0.8.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/bingocard/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/bingocard/src/main.rs`
 - **주요 개요**: 배열을 섞기 위한 rand 크레이트 이용 선언 --- (*1)
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -7027,10 +6223,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::seq::SliceRandom;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -7052,17 +6244,13 @@ edition = "2018"
 rand = "0.8.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/bingocard_vec/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/bingocard_vec/src/main.rs`
 - **주요 개요**: 배열을 섞기 위한 rand 크레이트 이용
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -7091,10 +6279,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::seq::SliceRandom;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -7116,10 +6300,6 @@ edition = "2018"
 rand = "0.8.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/dice/src/main.rs`
@@ -7146,10 +6326,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::Rng;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -7172,10 +6348,6 @@ edition = "2021"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/hello/src/main.rs`
@@ -7196,10 +6368,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/maze/Cargo.toml`
@@ -7219,16 +6387,12 @@ edition = "2018"
 rand = "0.8.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/maze/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/maze/src/main.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -7277,14 +6441,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use rand::Rng;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch2/pow1234_5678/Cargo.toml`
@@ -7307,10 +6465,6 @@ edition = "2021"
 num-bigint = "0.4"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/pow1234_5678/src/main.rs`
@@ -7332,10 +6486,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use num_bigint::BigInt;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -7359,10 +6509,6 @@ edition = "2021"
 num-bigint = "0.4"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/pow1234_5678_direct/src/main.rs`
@@ -7378,10 +6524,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch2/random_essay/Cargo.toml`
@@ -7401,10 +6543,6 @@ edition = "2018"
 rand = "0.8.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch2/random_essay/gen_essay.py`
@@ -7441,10 +6579,6 @@ for i in range(3):
     print("{}が{}を{}。".format(words[0], words[1], words[2]))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -7452,7 +6586,7 @@ for i in range(3):
 ### `ch2/random_essay/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/random_essay/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -7492,25 +6626,14 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use rand::Rng;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
-
-
 
 ### `ch2/nums.txt`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch2/nums.txt`
 - **역할**: 숫자 합산 및 텍스트 파일 읽기 실습을 위한 데이터 샘플 파일
-
-#### 전체 소스 코드
 
 ```text
 10
@@ -7539,16 +6662,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/array_init.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/array_init.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -7560,10 +6679,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -7572,7 +6687,7 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/array_init2.rs`
 - **주요 함수**: `print_array`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -7587,10 +6702,6 @@ fn print_array(e: &[i32;5]) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -7631,10 +6742,6 @@ for range in bmi_list:
 print("BMI = {:.1f}, 비만도 = {}".format(bmi, result))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -7645,7 +6752,7 @@ print("BMI = {:.1f}, 비만도 = {}".format(bmi, result))
 - **주요 개요**: BMI 판정용 구조체 --- (*1)
 - **구조체 정의**: `BmiRange` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `input`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -7716,14 +6823,8 @@ fn input(prompt: &str) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch3/buta.rs`
@@ -7742,17 +6843,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/globalvars.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/globalvars.rs`
 - **주요 개요**: 전역 가변 변수 선언 --- (*1)
-- **적용된 러스트 핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
+- **핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
 
 #### 소스 코드
 
@@ -7772,10 +6869,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 9. **Unsafe Rust 및 저수준 메모리 조작**:
    - 컴파일러의 정적 검사를 우회하여 하드웨어 제어, C 라이브러리 FFI 호출, 고성능 원시 포인터 연산을 수행합니다.
 ***
@@ -7785,7 +6878,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/mutarg.rs`
 - **주요 개요**: 인수의 값에 2를 곱해 반환하는 함수 --- (*1)
 - **주요 함수**: `x2`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -7802,16 +6895,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_clone.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/owner_clone.rs`
-- **적용된 러스트 핵심 패턴**: 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -7824,10 +6913,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_free.rs`
@@ -7847,10 +6932,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_free2.rs`
@@ -7877,10 +6958,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_func_err.rs`
@@ -7902,10 +6979,6 @@ fn show_message(message: String) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_func_mut.rs`
@@ -7913,7 +6986,7 @@ fn show_message(message: String) {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/owner_func_mut.rs`
 - **주요 개요**: 인수의 문자열을 변경하는 함수 --- (*1)
 - **주요 함수**: `add_quote`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -7932,17 +7005,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_func_ref.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/owner_func_ref.rs`
 - **주요 함수**: `show_message`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -7958,10 +7027,6 @@ fn show_message(message: &String) { // --- (*3)
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_func_ret.rs`
@@ -7985,10 +7050,6 @@ fn show_message(message: String) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_int.rs`
@@ -8006,10 +7067,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_lifetime_err.rs`
@@ -8017,7 +7074,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/owner_lifetime_err.rs`
 - **주요 개요**: 메시지를 생성한 뒤 그 참조자를 반환하는 함수
 - **주요 함수**: `gen_message`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8034,10 +7091,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_lifetime_fix.rs`
@@ -8060,10 +7113,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_simple.c`
@@ -8094,10 +7143,6 @@ int main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **보조 파일 개요**:
-   - `owner_simple.c` 파일은 빌드 시스템 또는 실행 환경을 지원하기 위한 부가 리소스입니다.
 ***
 
 ### `ch3/owner_simple.rs`
@@ -8114,16 +7159,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/owner_simple_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/owner_simple_err.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -8135,10 +7176,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -8162,10 +7199,6 @@ fn echo(s: String) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/println_fix.rs`
@@ -8182,16 +7215,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/println_fmt.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/println_fmt.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -8206,10 +7235,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -8230,10 +7255,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/println_pos.rs`
@@ -8253,17 +7274,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/rand_global.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/rand_global.rs`
 - **주요 함수**: `rand_global`
-- **적용된 러스트 핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
+- **핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
 
 #### 소스 코드
 
@@ -8302,14 +7319,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::time::{SystemTime, UNIX_EPOCH};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 9. **Unsafe Rust 및 저수준 메모리 조작**:
    - 컴파일러의 정적 검사를 우회하여 하드웨어 제어, C 라이브러리 FFI 호출, 고성능 원시 포인터 연산을 수행합니다.
 ***
@@ -8348,10 +7359,6 @@ for _ in range(100):
     print(rand(1, 6))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -8360,7 +7367,7 @@ for _ in range(100):
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/rand_xorshift.rs`
 - **주요 함수**: `rand_init, rand`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -8395,14 +7402,8 @@ fn rand(seed: &mut u32, start: u32, end: u32) -> u32 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::time::{SystemTime, UNIX_EPOCH};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch3/rust.rs`
@@ -8421,10 +7422,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/shadowing.rs`
@@ -8450,16 +7447,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/slice_show.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/slice_show.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8477,10 +7470,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -8488,7 +7477,7 @@ fn main() {
 ### `ch3/slice_str.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/slice_str.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8503,10 +7492,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/slice_sum.rs`
@@ -8514,7 +7499,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/slice_sum.rs`
 - **주요 개요**: 슬라이스의 각 요소를 더하는 함수 --- (*1)
 - **주요 함수**: `sum_slice`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8540,10 +7525,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -8551,7 +7532,7 @@ fn main() {
 ### `ch3/str_find.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_find.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -8572,10 +7553,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -8583,7 +7560,7 @@ fn main() {
 ### `ch3/str_find_upper.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_find_upper.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -8602,10 +7579,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -8614,7 +7587,7 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_hex.rs`
 - **주요 함수**: `hex_dump`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8645,10 +7618,6 @@ fn hex_dump(s: &str) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_index_err.rs`
@@ -8664,10 +7633,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_index_fix.rs`
@@ -8688,10 +7653,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -8699,7 +7660,7 @@ fn main() {
 ### `ch3/str_index_fix2.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_index_fix2.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8721,10 +7682,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_replace.rs`
@@ -8744,10 +7701,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_replace2.rs`
@@ -8765,16 +7718,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_slice.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_slice.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8788,16 +7737,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_slice_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_slice_err.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8809,16 +7754,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_split_telno.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_split_telno.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8858,10 +7799,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_static.rs`
@@ -8869,7 +7806,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_static.rs`
 - **주요 개요**: &'static str을 이용하는 함수 --- (*1)
 - **주요 함수**: `echo`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8889,10 +7826,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_static_err.rs`
@@ -8900,7 +7833,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_static_err.rs`
 - **주요 개요**: &'static str을 이용하는 함수 --- (*1)
 - **주요 함수**: `echo`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8920,16 +7853,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_string.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_string.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8950,16 +7879,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_substr.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_substr.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -8984,16 +7909,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_substr2.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_substr2.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9015,10 +7936,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_tobytes.rs`
@@ -9039,16 +7956,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/str_tochars.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/str_tochars.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -9072,10 +7985,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -9116,10 +8025,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
@@ -9130,7 +8035,7 @@ fn main() {
 - **주요 개요**: 키와 몸무게 데이터를 가지는 구조체 --- (*1)
 - **구조체 정의**: `Body` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `calc_bmi`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9163,10 +8068,6 @@ fn calc_bmi(body: &Body) -> f64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
@@ -9175,7 +8076,7 @@ fn calc_bmi(body: &Body) -> f64 {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/tuple_goods.rs`
 - **주요 함수**: `print_tuple`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9197,10 +8098,6 @@ fn print_tuple(item: &(&str, i64)) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch3/tuple_goods_struct.rs`
@@ -9209,7 +8106,7 @@ fn print_tuple(item: &(&str, i64)) {
 - **주요 개요**: Item구조체(튜플) 정의 --- (*1)
 - **구조체 정의**: `Item` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `print_tuple, print_and_sum_items`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9243,10 +8140,6 @@ fn print_and_sum_items(items: &Vec<Item>) -> i64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
@@ -9268,17 +8161,13 @@ edition = "2021"
 encoding_rs = "0.8.28"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch3/enc_save_load/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/enc_save_load/src/main.rs`
 - **주요 함수**: `save_euckr, load_euckr`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9316,17 +8205,8 @@ fn load_euckr(filename: &str) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use encoding_rs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::fs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::fs::File;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::Write;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch3/mytest/Cargo.toml`
@@ -9347,10 +8227,6 @@ edition = "2021"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch3/mytest/src/lib.rs`
@@ -9372,9 +8248,6 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `ch3/mytest2/Cargo.toml`
@@ -9395,10 +8268,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch3/mytest2/src/lib.rs`
@@ -9429,9 +8298,6 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `ch3/mytest_data/Cargo.toml`
@@ -9452,10 +8318,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch3/mytest_data/src/lib.rs`
@@ -9463,7 +8325,7 @@ edition = "2018"
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch3/mytest_data/src/lib.rs`
 - **주요 개요**: [cfg(test)]
 - **주요 함수**: `array_test, vec_test`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -9498,9 +8360,6 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `ch3/mytest_struct/Cargo.toml`
@@ -9521,10 +8380,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch3/mytest_struct/src/lib.rs`
@@ -9570,15 +8425,10 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use super::*; // 모듈 밖의 요소를 이용한다는 것을 선언 --- (*2)`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
    - 파생 매크로(`#[derive(Debug,PartialEq)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 ***
-
 
 ## Chapter 4: 메서드, 제네릭, 트레잇 및 모듈화
 > 해당 경로: `src/ch4` | 포함된 소스 파일 수: 43개
@@ -9604,10 +8454,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/add_generics_where.rs`
@@ -9629,10 +8475,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/add_i32.rs`
@@ -9657,10 +8499,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/bmi_checker.rs`
@@ -9669,7 +8507,7 @@ fn main() {
 - **주요 개요**: BMI 피만도 파악 --- (*1)
 - **구조체 정의**: `BmiRange, Body` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, test, new, calc_bmi, print_result`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -9750,15 +8588,8 @@ impl Body {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/counter_err.py`
@@ -9794,11 +8625,6 @@ a = None
 count(a)
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
-   - 객체 지향 프로그래밍(OOP) 스타일로 클래스와 `self` 인스턴스 바인딩을 활용합니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -9809,7 +8635,7 @@ count(a)
 - **주요 개요**: Counter 구조체를 정의 --- (*1)
 - **구조체 정의**: `Counter` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, inc, count`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -9847,15 +8673,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -9876,10 +8695,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/iter_array_string_err.rs`
@@ -9905,10 +8720,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/iter_array_string_fix.rs`
@@ -9934,10 +8745,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/iter_fib.rs`
@@ -9946,7 +8753,7 @@ fn main() {
 - **주요 개요**: 피보나치 수열을 반환하는 반복자 --- (*1)
 - **구조체 정의**: `FibIterator` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, next`
-- **적용된 러스트 핵심 패턴**: `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -9985,15 +8792,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/iter_prime.rs`
@@ -10002,7 +8802,7 @@ fn main() {
 - **주요 개요**: 소수를 반환하는 8비트 반복자
 - **구조체 정의**: `PrimeIterator` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, is_prime, next`
-- **적용된 러스트 핵심 패턴**: `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -10050,15 +8850,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/iter_range.rs`
@@ -10078,16 +8871,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/match_age.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/match_age.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -10104,10 +8893,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -10117,7 +8902,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/match_bmi.rs`
 - **주요 개요**: BMI와 비만도를 출력하는 함수 --- (*1)
 - **주요 함수**: `print_bmi`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성
 
 #### 소스 코드
 
@@ -10151,20 +8936,14 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch4/match_fizzbuzz.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/match_fizzbuzz.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -10182,10 +8961,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -10193,7 +8968,7 @@ fn main() {
 ### `ch4/match_fizzbuzz_if.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/match_fizzbuzz_if.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -10211,10 +8986,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -10222,7 +8993,7 @@ fn main() {
 ### `ch4/match_num.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/match_num.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -10238,10 +9009,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -10252,7 +9019,7 @@ fn main() {
 - **주요 개요**: 키와 몸무게 항목을 가지는 구조체 Body를 정의 --- (*1)
 - **구조체 정의**: `Body` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `calc_bmi, calc_per`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -10287,15 +9054,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/mod_path.rs`
@@ -10342,10 +9102,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/mod_random.rs`
@@ -10353,7 +9109,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/mod_random.rs`
 - **주요 개요**: random 모듈 선언 --- (*1)
 - **주요 함수**: `rand, rand`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -10399,11 +9155,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::num::Wrapping;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use random::{linear, xorshift};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -10436,10 +9187,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/random.rs`
@@ -10451,9 +9198,6 @@ fn main() {
 ```rust
 
 ```
-
-#### 코드 세부 분석 및 핵심 원리 해설
-
 
 ***
 
@@ -10491,10 +9235,6 @@ for t in tokens:
 print(stack.pop())
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -10502,7 +9242,7 @@ print(stack.pop())
 ### `ch4/rpn.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/rpn.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -10540,14 +9280,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::io;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -10558,7 +9292,7 @@ fn main() {
 - **주요 개요**: [derive(Clone)]
 - **구조체 정의**: `Person` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -10586,15 +9320,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
    - 파생 매크로(`#[derive(Clone)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
 ***
 
 ### `ch4/struct_copy_fix.rs`
@@ -10602,7 +9330,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/struct_copy_fix.rs`
 - **구조체 정의**: `Person` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -10631,14 +9359,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
 ***
 
 ### `ch4/struct_generics.rs`
@@ -10646,7 +9368,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/struct_generics.rs`
 - **주요 개요**: [derive(Debug)]
 - **구조체 정의**: `Point` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -10665,15 +9387,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
    - 파생 매크로(`#[derive(Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `ch4/struct_method_generics.rs`
@@ -10682,7 +9398,7 @@ fn main() {
 - **주요 개요**: 구조체 Point 정의 --- (*1) [derive(Debug)]
 - **구조체 정의**: `Point` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, add`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `Result`/`?` 에러 전파, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -10716,15 +9432,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
    - 파생 매크로(`#[derive(Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `ch4/struct_new.rs`
@@ -10758,14 +9468,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
 ***
 
 ### `ch4/trait_treasurebox.rs`
@@ -10775,7 +9479,7 @@ fn main() {
 - **구조체 정의**: `JewelryBox, TrapBox` - 사용자 정의 데이터 타입을 구조화합니다.
 - **트레잇 정의**: `TreasureBox` - 공통 인터페이스 및 행위(behavior)를 규정합니다.
 - **주요 함수**: `open, open, check, open, check, open_box`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -10842,15 +9546,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/trait_treasurebox_def.rs`
@@ -10860,7 +9557,7 @@ fn main() {
 - **구조체 정의**: `JewelryBox, EmptyBox` - 사용자 정의 데이터 타입을 구조화합니다.
 - **트레잇 정의**: `TreasureBox` - 공통 인터페이스 및 행위(behavior)를 규정합니다.
 - **주요 함수**: `open, check, get_key_no, check, get_key_no, check, get_key_no, open_box`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -10930,15 +9627,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 ***
 
 ### `ch4/vec_i32_char.rs`
@@ -10973,10 +9663,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/wallet.rs`
@@ -10985,7 +9671,7 @@ fn main() {
 - **주요 개요**: 화폐 종류를 나타내기 위한 열거형 --- (*1)
 - **열거형 정의**: `Currency` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `calc_price`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -11030,15 +9716,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch4/x2_generics.rs`
@@ -11060,10 +9740,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch4/rand/Cargo.toml`
@@ -11084,16 +9760,12 @@ edition = "2021"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch4/rand/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/rand/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -11109,10 +9781,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use crate::random::{linear, xorshift};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -11121,7 +9789,7 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/rand/src/random/linear.rs`
 - **주요 함수**: `rand`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -11136,10 +9804,6 @@ pub fn rand(seed: &mut u32) -> u32 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::num::Wrapping;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 ***
 
 ### `ch4/rand/src/random/mod.rs`
@@ -11153,9 +9817,6 @@ pub mod linear;
 pub mod xorshift;
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-
 ***
 
 ### `ch4/rand/src/random/xorshift.rs`
@@ -11163,7 +9824,7 @@ pub mod xorshift;
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/rand/src/random/xorshift.rs`
 - **주요 개요**: XorShift로 의사 난수 생성
 - **주요 함수**: `rand`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -11178,9 +9839,6 @@ pub fn rand(seed: &mut u32) -> u32 {
     y
 }
 ```
-
-#### 코드 세부 분석 및 핵심 원리 해설
-
 
 ***
 
@@ -11206,10 +9864,6 @@ homepage = ""
 rustdoc-args = ["--cfg", "doc_cfg"]s
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch4/rpn_calc/src/lib.rs`
@@ -11217,7 +9871,7 @@ rustdoc-args = ["--cfg", "doc_cfg"]s
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch4/rpn_calc/src/lib.rs`
 - **주요 개요**: 설명 작성 --- (*1) ! # RPN Calc ! Reverse Polish notation (RPN) Calc. ! # Example ! ``` ! let src = String::from("1 2 + 3 * "); ! let a = rpn_calc::eval(src).unwrap(); ! println!("{}", a); // →9 ! ```
 - **주요 함수**: `eval, it_works`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `match` 패턴 매칭, `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -11279,14 +9933,8 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch4/rpn_test/Cargo.toml`
@@ -11306,10 +9954,6 @@ edition = "2018"
 wikibooks_rpn_calc_test_ver = "0.1.1"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch4/rpn_test/src/main.rs`
@@ -11328,16 +9972,9 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use wikibooks_rpn_calc_test_ver as rpn_calc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
-
 
 ## Chapter 5: 응용편 - 멀티미디어, 오디오 합성, 네트워크 및 동시성
 > 해당 경로: `src/ch5` | 포함된 소스 파일 수: 44개
@@ -11346,7 +9983,7 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/calc_multi.rs`
 - **주요 함수**: `fib, show_time`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
+- **핵심 패턴**: `Result`/`?` 에러 전파, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
 
 #### 소스 코드
 
@@ -11398,28 +10035,18 @@ fn show_time(start_time: Instant) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::sync::mpsc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::thread;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::time::{Instant, Duration};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
-7. **동시성 및 병렬성 보장**:
-   - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
 
 ### `ch5/calc_single.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/calc_single.rs`
 - **주요 함수**: `fib, show_time`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -11448,21 +10075,15 @@ fn show_time(start_time: Instant) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::time::Instant;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `ch5/chat_client.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/chat_client.rs`
 - **주요 함수**: `start_thread, input`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
+- **핵심 패턴**: 가변 참조(`&mut`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
 
 #### 소스 코드
 
@@ -11517,28 +10138,17 @@ fn input(msg: &str) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::io::{stdin, Write, BufRead, BufReader};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::net::TcpStream;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::thread;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::time::Duration;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
-7. **동시성 및 병렬성 보장**:
-   - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
 
 ### `ch5/chat_server.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/chat_server.rs`
 - **주요 함수**: `start_thread, send_all`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
+- **핵심 패턴**: 가변 참조(`&mut`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
 
 #### 소스 코드
 
@@ -11609,22 +10219,10 @@ fn send_all(clients: Vec<TcpStream>, s: &str) -> Vec<TcpStream> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::io::{BufRead, BufReader, Write};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::net::{TcpListener, TcpStream};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::sync::mpsc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::thread;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::time::Duration;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
-7. **동시성 및 병렬성 보장**:
-   - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
 
 ### `ch5/for_each.rs`
@@ -11643,17 +10241,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch5/mpsctest.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/mpsctest.rs`
 - **주요 함수**: `sleep_sender`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy), 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), MPSC 채널 기반의 스레드 간 안전한 메시지 전달
 
 #### 소스 코드
 
@@ -11696,16 +10290,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::sync::mpsc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::thread;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::time::Duration;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 7. **동시성 및 병렬성 보장**:
    - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
@@ -11735,10 +10321,6 @@ plt.plot(x, y)
 plt.show()
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -11747,7 +10329,7 @@ plt.show()
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/threadtest.rs`
 - **주요 함수**: `sleep_print`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
+- **핵심 패턴**: 불변 참조(`&`) 대여, 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`)
 
 #### 소스 코드
 
@@ -11786,14 +10368,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::{thread, time};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-7. **동시성 및 병렬성 보장**:
-   - 데이터 레이스(Data Race)가 없는 스레드 안정성을 컴파일 타임에 검증(`Send`, `Sync` 트레잇 보장).
 ***
 
 ### `ch5/fm_synth/Cargo.toml`
@@ -11813,10 +10389,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/fm_synth/check.sh`
@@ -11834,10 +10406,6 @@ cargo run > wave.txt
 ../plot.py wave.txt
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **보조 파일 개요**:
-   - `check.sh` 파일은 빌드 시스템 또는 실행 환경을 지원하기 위한 부가 리소스입니다.
 ***
 
 ### `ch5/fm_synth/src/fm.rs`
@@ -11845,7 +10413,7 @@ cargo run > wave.txt
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/fm_synth/src/fm.rs`
 - **구조체 정의**: `Note` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `make_fm, calc_len, noteno_to_hz`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -11904,10 +10472,6 @@ fn noteno_to_hz(no: i32) -> f32 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::f32::consts::PI;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
@@ -11915,7 +10479,7 @@ fn noteno_to_hz(no: i32) -> f32 {
 ### `ch5/fm_synth/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/fm_synth/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -11954,14 +10518,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/image_checkerboard/Cargo.toml`
@@ -11981,16 +10539,12 @@ edition = "2021"
 image = "0.23.14"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/image_checkerboard/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/image_checkerboard/src/main.rs`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching)
+- **핵심 패턴**: `match` 패턴 매칭
 
 #### 소스 코드
 
@@ -12021,14 +10575,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use image::{Rgb, ImageBuffer};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -12050,16 +10598,12 @@ edition = "2021"
 image = "0.23.14"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/image_filter/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/image_filter/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: 불변 참조(`&`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -12103,14 +10647,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use image::{GenericImage, GenericImageView, Rgba};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/image_thumb/Cargo.toml`
@@ -12130,16 +10668,12 @@ edition = "2021"
 image = "0.23.14"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/image_thumb/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/image_thumb/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -12177,14 +10711,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use image::{self,imageops,GenericImageView};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/mml/Cargo.toml`
@@ -12204,10 +10732,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/mml/src/main.rs`
@@ -12243,17 +10767,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch5/mml/src/mml_parser.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/mml/src/mml_parser.rs`
 - **주요 함수**: `parse, parse_test`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -12314,15 +10834,8 @@ mod mml_parser_test {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use crate::wav_writer::Note; // --- (*1)`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*; // 상위 요소 이용 선언`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/mml/src/wav_writer.rs`
@@ -12330,7 +10843,7 @@ mod mml_parser_test {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/mml/src/wav_writer.rs`
 - **구조체 정의**: `Note` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `write, notes_test`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -12399,18 +10912,9 @@ mod wav_writer_test {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::f32::consts::PI;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use hound::WavWriter;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::{Write, Seek};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*; // 상위 요소 이용 선언`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
    - 파생 매크로(`#[derive(Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/noise/Cargo.toml`
@@ -12431,10 +10935,6 @@ hound = "3.4.0"
 rand = "0.8.4"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/noise/src/main.rs`
@@ -12491,15 +10991,8 @@ fn noise(range: f32, shift: f32, len: usize) -> Vec<f32> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use rand::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/pulsewave/Cargo.toml`
@@ -12519,10 +11012,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/pulsewave/src/main.rs`
@@ -12583,14 +11072,8 @@ fn pulse(no: i32, len: usize, gain: f32, duty: f32) -> Vec<f32> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/sawwave/Cargo.toml`
@@ -12610,10 +11093,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/sawwave/src/main.rs`
@@ -12672,14 +11151,8 @@ fn sawtooth_wave(noteno: i32, len: usize, gain: f32) -> Vec<f32> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/sine_melody/Cargo.toml`
@@ -12699,16 +11172,12 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/sine_melody/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/sine_melody/src/main.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -12764,16 +11233,8 @@ where W: Write + Seek {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::f32::consts::PI;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::io::{Write, Seek};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use hound::WavWriter;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/sinewave/Cargo.toml`
@@ -12793,10 +11254,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/sinewave/src/main.rs`
@@ -12832,15 +11289,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound::WavWriter;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::f32::consts::PI;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/squarewave/Cargo.toml`
@@ -12860,10 +11310,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/squarewave/src/main.rs`
@@ -12922,14 +11368,8 @@ fn square_wave(noteno: i32, len: usize, gain: f32) -> Vec<f32> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/trianglewave/Cargo.toml`
@@ -12949,10 +11389,6 @@ edition = "2021"
 hound = "3.4.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/trianglewave/src/main.rs`
@@ -13012,14 +11448,8 @@ fn tri_wave(noteno: i32, len: usize, gain: f32) -> Vec<f32> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use hound;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch5/web_bmi/Cargo.toml`
@@ -13040,10 +11470,6 @@ actix-web = "3"
 serde = "1.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/web_bmi/src/main.rs`
@@ -13051,7 +11477,7 @@ serde = "1.0"
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/web_bmi/src/main.rs`
 - **구조체 정의**: `FormBMI` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `index, calc`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -13116,17 +11542,9 @@ async fn calc(q: web::Query<FormBMI>) -> Result<HttpResponse, Error> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use actix_web::{get, web, App, Error, HttpRequest, HttpResponse, HttpServer};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use serde::Deserialize;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Deserialize, Debug)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -13148,17 +11566,13 @@ edition = "2021"
 actix-web = "3"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/web_hello/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/web_hello/src/main.rs`
 - **주요 함수**: `index`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -13192,15 +11606,9 @@ async fn index(req: HttpRequest) -> Result<HttpResponse, actix_web::Error> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use actix_web::{web, App, HttpServer, HttpRequest, HttpResponse};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
 
 ### `ch5/web_hello_tide/Cargo.toml`
@@ -13221,17 +11629,13 @@ tide = "0.16"
 async-std = {version = "1.8.0", features = ["attributes"]}
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/web_hello_tide/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/web_hello_tide/src/main.rs`
 - **주요 개요**: 서버 주소와 포트를 지정 --- (*1)
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -13253,11 +11657,6 @@ async fn main() -> tide::Result<()> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-   - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -13281,17 +11680,13 @@ async-std = {version = "1.8.0", features = ["attributes"]}
 serde = {version = "1.0", features = ["derive"]}
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch5/web_input_name/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch5/web_input_name/src/main.rs`
 - **구조체 정의**: `UserInfo` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -13336,20 +11731,12 @@ async fn main() -> tide::Result<()> {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use tide::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-   - 파생 매크로(`#[derive(Deserialize, Serialize)]`): 컴파일 타임에 `Debug`, `Clone`, `Serialize`, `Deserialize` 등의 필수 트레잇 구현을 자동 생성합니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
-
 
 ## Chapter 6: 고급편 - 스마트 포인터, PEG 파서, WASM, 매크로, FFI
 > 해당 경로: `src/ch6` | 포함된 소스 파일 수: 67개
@@ -13370,16 +11757,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch6/cstr_test.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cstr_test.rs`
-- **적용된 러스트 핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
+- **핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
 
 #### 소스 코드
 
@@ -13398,14 +11781,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::ffi::CString;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 9. **Unsafe Rust 및 저수준 메모리 조작**:
    - 컴파일러의 정적 검사를 우회하여 하드웨어 제어, C 라이브러리 FFI 호출, 고성능 원시 포인터 연산을 수행합니다.
 ***
@@ -13416,7 +11793,7 @@ fn main() {
 - **주요 개요**: 열거형으로 Node를 정의 --- (*1)
 - **열거형 정의**: `Node` - 다양한 상태 및 변형(variants)을 안전하게 모델링합니다.
 - **주요 함수**: `node`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -13451,21 +11828,15 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use Node::{Empty, Cons};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch6/list_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/list_err.rs`
 - **구조체 정의**: `Node` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Option<T>` 타입을 통한 Null 안전성 보장
+- **핵심 패턴**: `Option` Null 안전성
 
 #### 소스 코드
 
@@ -13480,10 +11851,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
@@ -13494,7 +11861,7 @@ fn main() {
 - **주요 개요**: 단방향 연결 리스트 --- (*1)
 - **구조체 정의**: `Node` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `node`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -13528,14 +11895,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -13545,7 +11906,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/list_fix2.rs`
 - **구조체 정의**: `Node` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `node`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -13578,14 +11939,8 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -13595,7 +11950,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/macro_bmi.rs`
 - **주요 개요**: 비만도 판정 매크로 --- (*1)
 - **매크로 정의**: `bmi_select`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -13634,10 +11989,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13664,10 +12015,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13700,10 +12047,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13758,10 +12101,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13804,10 +12143,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13849,10 +12184,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -13871,9 +12202,6 @@ pub extern "C" fn rust_mul(a: isize, b: isize) -> isize {
     a * b
 }
 ```
-
-#### 코드 세부 분석 및 핵심 원리 해설
-
 
 ***
 
@@ -13899,10 +12227,6 @@ int main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **보조 파일 개요**:
-   - `mycalc_test.c` 파일은 빌드 시스템 또는 실행 환경을 지원하기 위한 부가 리소스입니다.
 ***
 
 ### `ch6/mycalc_test.py`
@@ -13940,10 +12264,6 @@ print(mycalc.rust_mul(100, 8))
 print(mycalc.rust_mul(8, 9))
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -13952,7 +12272,7 @@ print(mycalc.rust_mul(8, 9))
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/node_err.rs`
 - **구조체 정의**: `Node` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `Option` Null 안전성, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -13982,22 +12302,15 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::Rc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::cell::RefCell;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 ***
 
 ### `ch6/node_fix.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/node_fix.rs`
 - **구조체 정의**: `Node` - 사용자 정의 데이터 타입을 구조화합니다.
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14036,25 +12349,16 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::{Rc,Weak};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::cell::RefCell;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch6/pointer_test.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/pointer_test.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14066,10 +12370,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -14077,7 +12377,7 @@ fn main() {
 ### `ch6/rc_mod_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/rc_mod_err.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14094,10 +12394,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::Rc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -14105,7 +12401,7 @@ fn main() {
 ### `ch6/rc_mod_fix.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/rc_mod_fix.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14124,11 +12420,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::Rc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::cell::RefCell;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -14151,16 +12442,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch6/rc_test_fix.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/rc_test_fix.rs`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14181,10 +12468,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::Rc;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
@@ -14206,17 +12489,13 @@ edition = "2018"
 tokio = { version = "1", features = ["full"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/async_longtime/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/async_longtime/src/main.rs`
 - **주요 함수**: `read_longtime`
-- **적용된 러스트 핵심 패턴**: `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -14247,10 +12526,6 @@ async fn read_longtime() -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use tokio::time;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
@@ -14273,17 +12548,13 @@ edition = "2018"
 tokio = { version = "1", features = ["full"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/async_spawn/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/async_spawn/src/main.rs`
 - **주요 함수**: `say_later`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: 불변 참조(`&`) 대여, 경량 OS 스레드 또는 비동기 태스크 생성 (`spawn`), `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -14316,10 +12587,6 @@ async fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use tokio::time;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
@@ -14342,10 +12609,6 @@ edition = "2021"
 tokio = { version = "1", features = ["full"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/async_test/src/main.rs`
@@ -14353,7 +12616,7 @@ tokio = { version = "1", features = ["full"] }
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/async_test/src/main.rs`
 - **주요 개요**: 메인 함수 --- (*1) [tokio::main]
 - **주요 함수**: `say_later`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -14377,11 +12640,6 @@ async fn say_later(msg: &'static str) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-   - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
 ***
 
 ### `ch6/cipher_browser/Cargo.toml`
@@ -14409,10 +12667,6 @@ sha2 = "0.9.8"
 getrandom = { version = "0.2", features = ["js"] }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/cipher_browser/server.py`
@@ -14437,10 +12691,6 @@ with socketserver.TCPServer(("", port), Handler) as d:
         d.server_close()
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -14449,7 +12699,7 @@ with socketserver.TCPServer(("", port), Handler) as d:
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cipher_browser/src/cipher_str.rs`
 - **주요 함수**: `encrypt, gen_iv, get_key, decrypt, enc_dec_test`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -14523,13 +12773,6 @@ mod cipher_tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use aes::Aes256;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use block_modes::{BlockMode, Cbc, block_padding::Pkcs7};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use sha2::{Sha256, Digest};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -14538,7 +12781,7 @@ mod cipher_tests {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cipher_browser/src/lib.rs`
 - **주요 함수**: `encrypt, decrypt`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14558,10 +12801,6 @@ pub fn decrypt(password: &str, data: &str) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use wasm_bindgen::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 ***
 
 ### `ch6/cipher_cmd/Cargo.toml`
@@ -14585,17 +12824,13 @@ sha2 = "0.9.8"
 getrandom = "0.2.3"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/cipher_cmd/src/cipher_str.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cipher_cmd/src/cipher_str.rs`
 - **주요 함수**: `encrypt, gen_iv, get_key, decrypt, enc_dec_test`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -14669,13 +12904,6 @@ mod cipher_tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use aes::Aes256;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use block_modes::{BlockMode, Cbc, block_padding::Pkcs7};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use sha2::{Sha256, Digest};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -14684,7 +12912,7 @@ mod cipher_tests {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cipher_cmd/src/main.rs`
 - **주요 함수**: `show_usage`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: `match` 패턴 매칭, 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -14716,14 +12944,8 @@ fn show_usage() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::env;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch6/dlist/Cargo.toml`
@@ -14744,10 +12966,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/dlist/src/dlist.rs`
@@ -14755,7 +12973,7 @@ edition = "2018"
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/dlist/src/dlist.rs`
 - **구조체 정의**: `Node, List, ListIter` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, new_node, push, unshift, iter, next`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -14850,16 +13068,8 @@ impl Iterator for ListIter {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::rc::{Rc, Weak};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::cell::RefCell;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
-   - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
 5. **제어 흐름 및 패턴 매칭**:
    - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
@@ -14888,10 +13098,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch6/ffi_mul/Cargo.toml`
@@ -14914,10 +13120,6 @@ libc = "0.2"
 cc = "1.0"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/ffi_mul/build.rs`
@@ -14938,10 +13140,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `ch6/ffi_mul/src/main.rs`
@@ -14949,7 +13147,7 @@ fn main() {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/ffi_mul/src/main.rs`
 - **주요 개요**: C 언어로 작성한 라이브러리의 이름 지정 --- (*1) [link(name="mycalc", kind="static")]
 - **주요 함수**: `mul`
-- **적용된 러스트 핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
+- **핵심 패턴**: `unsafe` 블록을 통한 로우 레벨 포인터 제어 및 C ABI FFI 연동
 
 #### 소스 코드
 
@@ -14972,10 +13170,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 9. **Unsafe Rust 및 저수준 메모리 조작**:
    - 컴파일러의 정적 검사를 우회하여 하드웨어 제어, C 라이브러리 FFI 호출, 고성능 원시 포인터 연산을 수행합니다.
 ***
@@ -14996,10 +13190,6 @@ int mul(int a, int b) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **보조 파일 개요**:
-   - `mycalc.c` 파일은 빌드 시스템 또는 실행 환경을 지원하기 위한 부가 리소스입니다.
 ***
 
 ### `ch6/macro_expand/Cargo.toml`
@@ -15018,10 +13208,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/macro_expand/src/main.rs`
@@ -15059,10 +13245,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 8. **매크로 메타프로그래밍**:
    - 컴파일 타임에 추상 구문 트리(AST)를 확장하여 반복 코드를 제거하고 도메인 특화 언어(DSL)를 구현합니다.
 ***
@@ -15084,10 +13266,6 @@ edition = "2021"
 peg = "0.8"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/peg_calc/src/main.rs`
@@ -15134,10 +13312,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -15159,10 +13333,6 @@ edition = "2021"
 peg = "0.8"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/peg_plus/src/main.rs`
@@ -15198,10 +13368,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -15223,17 +13389,13 @@ edition = "2021"
 peg = "0.8"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/peg_tomato/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/peg_tomato/src/main.rs`
 - **주요 함수**: `test_run`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -15271,15 +13433,8 @@ mod tests {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::fs;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use super::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
-6. **오류 처리 메커니즘**:
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch6/peg_tomato/src/node.rs`
@@ -15317,10 +13472,6 @@ impl Node {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
 ***
 
 ### `ch6/peg_tomato/src/parser.rs`
@@ -15413,11 +13564,6 @@ peg::parser!( pub grammar tomato() for str {
 });
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use peg;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::node::Node;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -15427,7 +13573,7 @@ peg::parser!( pub grammar tomato() for str {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/peg_tomato/src/runner.rs`
 - **구조체 정의**: `Context` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `run_node, calc_op, run_nodes, run`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -15519,16 +13665,8 @@ pub fn run(src: &str) -> i64 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::parser::tomato;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::node::Node;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -15553,17 +13691,13 @@ scraper = "0.12"
 urlencoding = "2.1"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/scraping_shodou/src/main.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/scraping_shodou/src/main.rs`
 - **주요 함수**: `download_images`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리, 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지, `async/await` 비동기 논블로킹 I/O 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파, 불변 참조(`&`) 대여, `async/await` 비동기 논블로킹 I/O 처리
 
 #### 소스 코드
 
@@ -15614,18 +13748,9 @@ async fn download_images(title: &str) {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use scraper::Selector;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use std::{fs::File, io::Write};`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use tokio::time;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 2. **진입점(`main`) 및 실행 흐름**:
    - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
    - `#[tokio::main]` 또는 `#[actix_web::main]` 어트리뷰트를 통해 비동기 런타임 위에서 실행됩니다.
-6. **오류 처리 메커니즘**:
-   - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
-   - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
 
 ### `ch6/slist/Cargo.toml`
@@ -15646,10 +13771,6 @@ edition = "2018"
 [dependencies]
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/slist/src/main.rs`
@@ -15677,10 +13798,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -15691,7 +13808,7 @@ fn main() {
 - **주요 개요**: 단방향 연결 리스트에서 사용할 한 요소의 구조체 --- (*1)
 - **구조체 정의**: `Node, List` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `new, unshift, push, get`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), `Option<T>` 타입을 통한 Null 안전성 보장, 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: `match` 패턴 매칭, `Option` Null 안전성, 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -15760,15 +13877,9 @@ impl List {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-3. **데이터 모델링 (구조체 / Enums)**:
-   - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
 4. **메서드 및 트레잇 구현 (`impl`)**:
    - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
    - `&self`(불변 참조 대여) 및 `&mut self`(가변 참조 대여)를 사용하여 인스턴스 데이터의 무결성을 유지하면서 상태를 조회 또는 변경합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
 
 ### `ch6/wasm_hello/Cargo.toml`
@@ -15791,10 +13902,6 @@ crate-type = ["cdylib", "rlib"]
 wasm-bindgen = "0.2"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/wasm_hello/server.py`
@@ -15821,10 +13928,6 @@ with socketserver.TCPServer(("", port), Handler) as d:
         d.server_close()
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -15833,7 +13936,7 @@ with socketserver.TCPServer(("", port), Handler) as d:
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/wasm_hello/src/lib.rs`
 - **주요 함수**: `alert, hello, rust_mul`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -15860,10 +13963,6 @@ pub fn rust_mul(a:i32, b:i32) -> i32 {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use wasm_bindgen::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 ***
 
 ### `ch6/wasm_tomato/Cargo.toml`
@@ -15887,10 +13986,6 @@ peg = "0.7"
 wasm-bindgen = "0.2"
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **Cargo 매니페스트 구성**:
-   - 패키지 메타데이터(이름, 버전, 에디션)와 빌드에 필요한 외부 의존성 크레이트(Crate)들을 명시합니다.
 ***
 
 ### `ch6/wasm_tomato/server.py`
@@ -15920,10 +14015,6 @@ with socketserver.TCPServer(("", port), Handler) as d:
         d.server_close()
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **파이썬 동작 원리 및 특징**:
-   - 인터프리터 언어로서 동적 타이핑(Dynamic Typing)과 가비지 컬렉션(GC)을 기반으로 실행됩니다.
 2. **러스트 버전과의 핵심 차이점**:
    - 파이썬은 런타임에 타입과 메모리가 관리되는 반면, 러스트 대응 코드는 컴파일 타임에 모든 타입과 수명주기가 엄격히 검증되어 런타임 오버헤드가 거의 없습니다.
 ***
@@ -15932,7 +14023,7 @@ with socketserver.TCPServer(("", port), Handler) as d:
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/wasm_tomato/src/lib.rs`
 - **주요 함수**: `tomato_run`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -15949,10 +14040,6 @@ pub fn tomato_run(src: &str) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use wasm_bindgen::prelude::*;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 ***
 
 ### `ch6/wasm_tomato/src/node.rs`
@@ -15990,10 +14077,6 @@ impl Node {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-4. **메서드 및 트레잇 구현 (`impl`)**:
-   - 데이터 구조체와 해당 데이터에 동작하는 함수(메서드/연관 함수)를 명확히 분리 및 결합합니다.
 ***
 
 ### `ch6/wasm_tomato/src/parser.rs`
@@ -16086,11 +14169,6 @@ peg::parser!( pub grammar tomato() for str {
 });
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use peg;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::node::Node;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 6. **오류 처리 메커니즘**:
    - `expect` 또는 `unwrap`을 통해 실패할 수 없는 불변 조건을 단언하거나 프로토타입 단계에서 신속한 오류 검출을 수행합니다.
 ***
@@ -16100,7 +14178,7 @@ peg::parser!( pub grammar tomato() for str {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/wasm_tomato/src/runner.rs`
 - **구조체 정의**: `Context` - 사용자 정의 데이터 타입을 구조화합니다.
 - **주요 함수**: `run_node, calc_op, run_nodes, run`
-- **적용된 러스트 핵심 패턴**: `match`를 통한 빈틈없는 패턴 매칭(Pattern Matching), 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
+- **핵심 패턴**: `match` 패턴 매칭, 가변 참조(`&mut`) 대여, 명시적 `.clone()`을 통한 깊은 복사(Deep Copy)
 
 #### 소스 코드
 
@@ -16201,18 +14279,9 @@ pub fn run(src: &str) -> String {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-1. **모듈 임포트 및 네임스페이스**:
-   - `use std::collections::HashMap;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::parser::tomato;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
-   - `use crate::node::Node;`: 외부 크레이트나 표준 라이브러리의 기능을 스코프로 가져옵니다.
 3. **데이터 모델링 (구조체 / Enums)**:
    - 연관된 데이터 필드를 하나의 단위로 캡슐화하여 타입 안정성(Type Safety)을 보장합니다.
-5. **제어 흐름 및 패턴 매칭**:
-   - 컴파일러가 모든 경우의 수(Exhaustiveness)를 검증하는 `match` 문 또는 `if let` 구문을 통해 런타임 예외 없이 분기를 안전하게 처리합니다.
 ***
-
 
 ## Appendix 1: 러스트 입문자를 위한 컴파일 에러와 해결책
 > 해당 경로: `src/apx1` | 포함된 소스 파일 수: 10개
@@ -16233,10 +14302,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/i64_i32_fix.rs`
@@ -16255,17 +14320,13 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/int_to_str_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/apx1/int_to_str_err.rs`
 - **주요 함수**: `int_to_str`
-- **적용된 러스트 핵심 패턴**: 불변 참조자(`&`)를 통한 데이터 공유 및 불필요한 복사 방지
+- **핵심 패턴**: 불변 참조(`&`) 대여
 
 #### 소스 코드
 
@@ -16280,10 +14341,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/int_to_str_fix.rs`
@@ -16306,16 +14363,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/ref2_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/apx1/ref2_err.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -16331,16 +14384,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/ref2_fix.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/apx1/ref2_fix.rs`
-- **적용된 러스트 핵심 패턴**: 가변 참조자(`&mut`)를 통한 소유권 대여(Borrowing) 및 안전한 수정
+- **핵심 패턴**: 가변 참조(`&mut`) 대여
 
 #### 소스 코드
 
@@ -16360,16 +14409,12 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/split_err.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/apx1/split_err.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -16381,10 +14426,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -16392,7 +14433,7 @@ fn main() {
 ### `apx1/split_fix.rs`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/apx1/split_fix.rs`
-- **적용된 러스트 핵심 패턴**: `Result<T, E>` 및 `?` 연산자를 활용한 전파식 오류 처리
+- **핵심 패턴**: `Result`/`?` 에러 전파
 
 #### 소스 코드
 
@@ -16412,10 +14453,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 6. **오류 처리 메커니즘**:
    - 물음표(`?`) 연산자를 사용하여 성공 시 값을 추출(`Ok(T)`)하고 실패 시 즉시 상위 호출자로 오류(`Err(E)`)를 조기 반환(Early Return)합니다.
 ***
@@ -16435,10 +14472,6 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
 ### `apx1/str_quote_fix.rs`
@@ -16454,22 +14487,14 @@ fn main() {
 }
 ```
 
-#### 코드 세부 분석 및 핵심 원리 해설
-
-2. **진입점(`main`) 및 실행 흐름**:
-   - 프로그램 실행 시 운영체제에 의해 가장 먼저 호출되는 진입점입니다.
 ***
 
-
 ***
-
 
 ### `ch6/wasm_hello/index.html`
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/wasm_hello/index.html`
 - **역할**: WebAssembly로 빌드된 Rust 함수를 브라우저 JavaScript에서 호출하고 결과를 DOM에 표시하는 인터페이스
-
-#### 전체 소스 코드
 
 ```html
 <!DOCTYPE html>
@@ -16498,8 +14523,6 @@ fn main() {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/wasm_tomato/index.html`
 - **역할**: 브라우저 상에서 Rust 기반 Tomato 프로그래밍 언어 인터프리터를 WebAssembly로 실행하는 웹 UI
-
-#### 전체 소스 코드
 
 ```html
 <!DOCTYPE html>
@@ -16544,8 +14567,6 @@ for i = 1 to 10 {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/cipher_browser/index.html`
 - **역할**: WebAssembly로 시저 암호화 및 복호화를 실시간 수행하는 브라우저 클라이언트 UI
 
-#### 전체 소스 코드
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -16581,8 +14602,6 @@ for i = 1 to 10 {
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/peg_tomato/fib.tomato`
 - **역할**: Tomato 스크립트 언어로 작성된 피보나치 수열 예제
 
-#### 전체 소스 코드
-
 ```tomato
 a = 1
 b = 1
@@ -16600,8 +14619,6 @@ for i = 3 to 10 {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/peg_tomato/fizzbuzz.tomato`
 - **역할**: Tomato 스크립트 언어로 작성된 FizzBuzz 구현 예제
-
-#### 전체 소스 코드
 
 ```tomato
 for i = 1 to 20 {
@@ -16621,8 +14638,6 @@ for i = 1 to 20 {
 
 - **파일 위치**: `파이썬에서 러스트로 이동하기/src/ch6/peg_tomato/sum1to10.tomato`
 - **역할**: Tomato 스크립트 언어로 작성된 1부터 10까지의 합 계산 예제
-
-#### 전체 소스 코드
 
 ```tomato
 total = 0
