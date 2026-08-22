@@ -20,11 +20,6 @@ jobs:
           cache: true
           activate-environment: default
 
-      - name: Install extra R packages
-        run: pixi run install-r-extra
-        env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
