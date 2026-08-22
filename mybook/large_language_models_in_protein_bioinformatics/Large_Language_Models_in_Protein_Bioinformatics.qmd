@@ -286,11 +286,9 @@ PLM이 문맥적 관계를 이해하는 데 있어 탁월한 능력을 보여주
 8. Zhao WX et al (2024) A survey of large language models. arXiv:2303.18223. https:// doi.org/10.48550/arXiv.2303.18223   
 9. Zhang S, Fan R, Liu Y, Chen S, Liu Q, Zeng W (2023) Applications of transformer-based language models in bioinformatics: a survey. Bioinforma Adv 3(1):vbad001. https://doi. org/10.1093/bioadv/vbad001   
 10. Hayes T et al (2024) Simulating 500 million years of evolution with a language model. bioRxiv. https://doi.org/10.1101/2024.07. 01.600583   
-11. Vaswani A et al (2017) Attention is all you need. In: Advances in Neural Information Processing Systems. Curran Associates, Inc. Accessed: Jul. 01, 2023. [Online]. Available: https://proceedings.neurips.cc/paper_files/
-
-paper/2017/hash/3f5ee243547dee91fbd0 53c1c4a845aa-Abstract.html   
+11. Vaswani A et al (2017) Attention is all you need. In: Advances in Neural Information Processing Systems. Curran Associates, Inc. Accessed: Jul. 01, 2023. Available: https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd0 53c1c4a845aa-Abstract.html   
 12. Devlin J, Chang M-W, Lee K, Toutanova K (2019) BERT: pre-training of deep bidirectional transformers for language understanding. arXiv:1810.04805. https://doi.org/10. 48550/arXiv.1810.04805   
-13. Radford A (2018) Improving language understanding by generative pre-training. Accessed: Sep. 04, 2024. [Online]. Available: h t tp s://haya te -lab.com/wp -con ten t/ uploads/2023/05/43372bfa7503400 59ad87ac8e538c53b.pdf   
+13. Radford A (2018) Improving language understanding by generative pre-training. Accessed: Sep. 04, 2024. Available: h t tp s://haya te -lab.com/wp -con ten t/ uploads/2023/05/43372bfa7503400 59ad87ac8e538c53b.pdf   
 14. Raffel C et al (2020) Exploring the limits of transfer learning with a unified text-to-text transformer. J Mach Learn Res 21(1): 5485–5551   
 15. Lin T, Wang Y, Liu X, Qiu X (2022) A survey of transformers. AI Open 3:111–132. https://doi.org/10.1016/j.aiopen.2022. 10.001   
 16. Suzek BE, Huang H, McGarvey P, Mazumder R, Wu CH (2007) UniRef: comprehensive and non-redundant UniProt reference clusters. Bioinformatics 23(10): 1282–1288. https://doi.org/10.1093/bioin formatics/btm098   
@@ -300,9 +298,7 @@ paper/2017/hash/3f5ee243547dee91fbd0 53c1c4a845aa-Abstract.html
 20. Asgari E, Mofrad MRK (2016) ProtVec: a continuous distributed representation of biological sequences. arXiv:1503.05140. https://doi.org/10.48550/arXiv.1503. 05140   
 21. Bepler T, Berger B (2019) Learning protein sequence embeddings using information from structure. arXiv:1902.08661. https://doi. org/10.48550/arXiv.1902.08661   
 22. Rao R, Meier J, Sercu T, Ovchinnikov S, Rives A (2020) Transformer protein language models are unsupervised structure learners. bioRxiv. https://doi.org/10.1101/2020.12.15. 422761   
-23. Elnaggar A et al (2021) ProtTrans: towards cracking the language of lifes code through
-
-self-supervised deep learning and high performance computing. IEEE Trans Pattern Anal MachIntell. PP. https://doi.org/10.1109/ TPAMI.2021.3095381   
+23. Elnaggar A et al (2021) ProtTrans: towards cracking the language of lifes code through self-supervised deep learning and high performance computing. IEEE Trans Pattern Anal MachIntell. PP. https://doi.org/10.1109/ TPAMI.2021.3095381   
 24. Elnaggar A et al (2023) Ankh☥: optimized protein language model unlocks generalpurpose modelling. bioRxiv:2023–2001   
 25. Lin Z et al (2022) Language models of protein sequences at the scale of evolution enable accurate structure prediction. bioRxiv. https://doi.org/10.1101/2022.07.20. 500902   
 26. Su J, Han C, Zhou Y, Shan J, Zhou X, Yuan F (2023) SaProt: protein language modeling with structure-aware vocabulary. bioRxiv. https://doi.org/10.1101/2023.10.01. 560349   
@@ -313,9 +309,7 @@ self-supervised deep learning and high performance computing. IEEE Trans Pattern
 31. Pokharel S, Barasa K, Pratyush P, Dukka KC (2024) PLM-DBPs: Enhanced DNA-Binding Protein Prediction in Plants Using Embeddings From Protein Language Models. bioRxiv:2024, 10.04.616755. https://doi.org/ 10.1101/2024.10.04.616755   
 32. Qi D, Song C, Liu T (2024) PreDBP-PLMs: Prediction of DNA-binding proteins based on pre-trained protein language models and convolutional neural networks. Anal Biochem 694:115603. https://doi.org/10.1016/j.ab. 2024.115603   
 33. Pokharel S, Pratyush P, Heinzinger M, Newman RH, Kc DB (2022) Improving protein succinylation sites prediction using embeddings from protein language model. Sci Rep 12(1):16933. https://doi.org/10.1038/ s41598-022-21366-2   
-34. Pokharel S, Pratyush P, Ismail HD, Ma J, Dukka BKC (2023) Integrating embeddings
-
-from multiple protein language models to improve protein O-GlcNAc site prediction. Int J Mol Sci 24(21). https://doi.org/10. 3390/ijms242116000   
+34. Pokharel S, Pratyush P, Ismail HD, Ma J, Dukka BKC (2023) Integrating embeddings from multiple protein language models to improve protein O-GlcNAc site prediction. Int J Mol Sci 24(21). https://doi.org/10. 3390/ijms242116000   
 35. Pakhrin SC, Pokharel S, Pratyush P, Chaudhari M, Ismail HD, Dukka BKC (2023) LMPhosSite: a deep learning-based approach for general protein phosphorylation site prediction using embeddings from the local window sequence and pretrained protein language model. J Proteome Res 22(8): 2548–2557. https://doi.org/10.1021/acs. jproteome.2c00667   
 36. Jahn LR, Marquet C, Heinzinger M, Rost B (2024) Protein embeddings predict binding residues in disordered regions. Sci Rep 14(1): 13566. https://doi.org/10.1038/s41598- 024-64211-4   
 37. Pratyush P, Bahmani S, Pokharel S, Ismail HD, KC DB (2024) LMCrot: an enhanced protein crotonylation site predictor by leveraging an interpretable window-level embedding from a transformer-based protein language model. Bioinformatics 40, no. 5: btae290. https://doi.org/10.1093/bioinfor matics/btae290   
@@ -336,9 +330,7 @@ from multiple protein language models to improve protein O-GlcNAc site predictio
 51. Teufel F et al (2023) DeepPeptide predicts cleaved peptides in proteins using conditional random fields. Bioinformatics 39(10): btad616. https://doi.org/10.1093/bioinfor matics/btad616   
 52. Kabir MWU, Hoque MT (2024) DisPredict3.0: prediction of intrinsically disordered regions/proteins using protein language model. Appl Math Comput 472:128630. https://doi.org/10.1016/j.amc.2024. 128630   
 53. Hou Z, Yang Y, Ma Z, Wong K-C, Li X (2023) Learning the protein language of proteome-wide protein-protein binding sites via explainable ensemble deep learning. Commun Biol 6:73. https://doi.org/10.1038/ s42003-023-04462-5   
-54. van Kempen M et al (2024) Fast and accurate protein structure search with Foldseek. Nat
-
-Biotechnol 42(2):243–246. https://doi. org/10.1038/s41587-023-01773-0   
+54. van Kempen M et al (2024) Fast and accurate protein structure search with Foldseek. Nat Biotechnol 42(2):243–246. https://doi. org/10.1038/s41587-023-01773-0   
 55. Li F-Z, Amini AP, Yue Y, Yang KK, Lu AX (2024) Feature reuse and scaling: understanding transfer learning with protein language models. bioRxiv. https://doi.org/10.1101/ 2024.02.05.578959   
 56. Xiong D et al (2024) A structurally informed human protein-protein interactome reveals proteome-wide perturbations caused by disease mutations. Nat Biotechnol. https://doi. org/10.1038/s41587-024-02428-4   
 57. Xiao Y, Qiu J, Li Z, Hsieh C-Y, Tang J (2021) Modeling protein using large-scale pretrain language model. ArXiv Prepr: ArXiv210807435   
@@ -349,9 +341,7 @@ Biotechnol 42(2):243–246. https://doi. org/10.1038/s41587-023-01773-0
 62. Zheng Z, Deng Y, Xue D, Zhou Y, YE F, Gu Q (2023) Structure-informed language models are protein designers. arXiv:2302.01649. https://doi.org/10.48550/arXiv.2302. 01649   
 63. Chen B et al (2024) xTrimoPGLM: unified 100B-scale pre-trained transformer for deciphering the language of protein. bioRxiv. https://doi.org/10.1101/2023.07.05. 547496   
 64. Zhang L, Liu T (2024) PDNAPred: Interpretable prediction of protein-DNA binding sites based on pre-trained protein language models. Int J Biol Macromol 281:136147. https://doi.org/10.1016/j.ijbiomac.2024. 136147   
-65. Zhu Y-H, Liu Z, Liu Y, Ji Z, Yu D-J (2024) ULDNA: integrating unsupervised multisource language models with LSTMattention network for high-accuracy protein– DNA binding site prediction. Brief Bioinform
-
-25(2):bbae040. https://doi.org/10.1093/ bib/bbae040   
+65. Zhu Y-H, Liu Z, Liu Y, Ji Z, Yu D-J (2024) ULDNA: integrating unsupervised multisource language models with LSTMattention network for high-accuracy protein– DNA binding site prediction. Brief Bioinform 25(2):bbae040. https://doi.org/10.1093/ bib/bbae040
 66. Pratyush P, Carrier C, Pokharel S, Ismail HD, Chaudhari M, Dukka BKC (2024) CaLM-PhosKAN: prediction of general phosphorylation sites in proteins via fusion of codonaware Embeddings with amino acid-aware Embeddings and wavelet-based Kolmogorov–Arnold network. bioRxiv. https://doi.org/10.1101/2024.07.30. 605530   
 67. Tan Y, Zheng J, Hong L, Zhou B (2024) ProtSolM: protein solubility prediction with multi-modal features. arXiv: arXiv:2406.19744. https://doi.org/10. 48550/arXiv.2406.19744   
 68. Jumper J et al (2021) Highly accurate protein structure prediction with AlphaFold. Nature 596(7873):583–589. https://doi.org/10. 1038/s41586-021-03819-2   
@@ -397,17 +387,13 @@ Biotechnol 42(2):243–246. https://doi. org/10.1038/s41587-023-01773-0
 105. Dauparas J et al (2022) Robust deep learning–based protein sequence design using ProteinMPNN. Science 378(6615): 49–56. https://doi.org/10.1126/science. add2187   
 106. Yang KK, Zanichelli N, Yeh H (2022) Masked inverse folding with sequence transfer for protein representation learning. bioRxiv. https:// doi.org/10.1101/2022.05.25.493516   
 107. Jeliazkov JR, del Alamo D, Karpiak JD (2023) ESMFold Hallucinates Native-Like Protein Sequences. bioRxiv. https://doi.org/10. 1101/2023.05.23.541774   
-108. Alamdari S et al (2023) Protein generation with evolutionary diffusion: sequence is all
-
-you need. bioRxiv. https://doi.org/10. 1101/2023.09.11.556673   
+108. Alamdari S et al (2023) Protein generation with evolutionary diffusion: sequence is all you need. bioRxiv. https://doi.org/10. 1101/2023.09.11.556673   
 109. Fournier Q, Vernon RM, van der Sloot A, Schulz B, Chandar S, Langmead CJ (2024) Protein language models: is scaling necessary? bioRxiv. https://doi.org/10.1101/2024.09. 23.614603   
 110. Huo M et al (2024) Multi-modal large language model enables protein function prediction. bioRxiv. https://doi.org/10.1101/ 2024.08.19.608729   
 111. Zhou Z et al (2024) Enhancing efficiency of protein language models with minimal wet-lab data through few-shot learning. Nat Commun 15(1):5566. https://doi.org/10. 1038/s41467-024-49798-6   
 112. Nambiar A, Forsyth JM, Liu S, Maslov S (2024) DR-BERT: a protein language model to annotate disordered regions. Structure 32(8):1260–1268.e3. https://doi.org/ 10.1016/j.str.2024.04.010   
 113. Shuai RW, Ruffolo JA, Gray JJ (2023) IgLM: Infilling language modeling for antibody sequence design. Cell Syst 14(11):979–989. e4. https://doi.org/10.1016/j.cels.2023. 10.001   
-114. Deutschmann N, Pelissier A, Weber A, Gao S, Bogojeska J, Martı´nez MR (2024) Do
-
-domain-specific protein language models outperform general models on immunologyrelated tasks? ImmunoInformatics 14: 100036. ht tps://doi.org/10.1016/j. immuno.2024.100036   
+114. Deutschmann N, Pelissier A, Weber A, Gao S, Bogojeska J, Martı´nez MR (2024) Do domain-specific protein language models outperform general models on immunologyrelated tasks? ImmunoInformatics 14: 100036. ht tps://doi.org/10.1016/j. immuno.2024.100036   
 115. Ieremie I, Ewing RM, Niranjan M (2024) Protein language models meet reduced amino acid alphabets. Bioinformatics 40, no. 2:btae061. https://doi.org/10.1093/bioin formatics/btae061   
 116. Ghafarollahi A, Buehler MJ (2024) ProtAgents: protein discovery via large language model multi-agent collaborations combining physics and machine learning. Digit Discov 3(7):1389–1409. https://doi.org/10.1039/ D4DD00013G   
 117. Sledzieski S, Kshirsagar M, Baek M, Dodhia R, Lavista Ferres J, Berger B (2024) Democratizing protein language models with parameter-efficient fine-tuning. Proc Natl Acad Sci 121(26):e2405840121. https:// doi.org/10.1073/pnas.2405840121   
@@ -709,37 +695,35 @@ Adapter20 S-PLM2 Finetune6 S-PLM2 Adapter12 S-PLM2-onehot
 # 참고 문헌
 
 1. Ofer D, Brandes N, Linial M (2021) The language of proteins: NLP, machine learning & protein sequences. Comput Struct Biotechnol J 19:1750–1758. https://doi.org/10.1016/j. csbj.2021.03.022
-2. Devlin J, Chang M-W, Lee K, Toutanova K (2019) BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv:1810.04805. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv. org/abs/1810.04805
+2. Devlin J, Chang M-W, Lee K, Toutanova K (2019) BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv:1810.04805. Accessed: Sep. 27, 2024. Available: http://arxiv. org/abs/1810.04805
 3. Elnaggar A et al (2022) ProtTrans: toward understanding the language of life through self-supervised learning. IEEE Trans Pattern Anal Mach Intell 44(10):7112–7127. https:// doi.org/10.1109/TPAMI.2021.3095381
 4. Lin Z et al (2023) Evolutionary-scale prediction of atomic-level protein structure with a language model. Science 379(6637): 1123–1130. https://doi.org/10.1126/sci ence.ade2574
 5. Rives A et al (2021) Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences. Proc Natl Acad Sci USA 118(15): e2016239118. https://doi.org/10.1073/ pnas.2016239118
 6. Ferruz N, Schmidt S, Ho¨cker B (2022) ProtGPT2 is a deep unsupervised language model for protein design. Nat Commun
 13(1):4348. https://doi.org/10.1038/ s41467-022-32007-7   
 7. Vu MH et al (2023) Linguistically inspired roadmap for building biologically reliable protein language models. Nat Mach Intell 5(5): 485–496. https://doi.org/10.1038/s42256- 023-00637-1   
-8. Wang B et al (2023) Pre-trained Language Models in Biomedical Domain: A Systematic Survey. arXiv:2110.05006. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv. org/abs/2110.05006   
+8. Wang B et al (2023) Pre-trained Language Models in Biomedical Domain: A Systematic Survey. arXiv:2110.05006. Accessed: Sep. 27, 2024. Available: http://arxiv. org/abs/2110.05006   
 9. Bepler T, Berger B (2021) Learning the protein language: evolution, structure, and function. Cell Systems 12(6):654–669.e3. https:// doi.org/10.1016/j.cels.2021.05.017   
 10. Jumper J et al (2021) Highly accurate protein structure prediction with AlphaFold. Nature 596(7873):583–589. https://doi.org/10. 1038/s41586-021-03819-2   
 11. Rao R et al (2021) MSA Transformer. https:// doi.org/10.1101/2021.02.12.430858   
 12. Brandes N, Ofer D, Peleg Y, Rappoport N, Linial M (2022) ProteinBERT: a universal deep-learning model of protein sequence and function. Bioinformatics 38(8):2102–2110. https://doi.org/10.1093/bioinformatics/ btac020   
-13. The Gene Ontology Consortium (2008) The Gene Ontology project. Nucleic Acids Res 36
-
-(suppl_1):D440–D444. https://doi.org/10. 1093/nar/gkm883   
+13. The Gene Ontology Consortium (2008) The Gene Ontology project. Nucleic Acids Res 36 (suppl_1):D440–D444. https://doi.org/10. 1093/nar/gkm883   
 14. Chen (Sam) C, Zhou J, Wang F, Liu X, Dou D (2023) Structure-aware protein self-supervised learning. Bioinformatics 39(4):p. btad189. https://doi.org/10.1093/bioinformatics/ btad189   
-15. Zhang Z et al (2023) A systematic study of joint representation learning on protein sequences and structures. arXiv:2303.06275. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/abs/2303.06275   
+15. Zhang Z et al (2023) A systematic study of joint representation learning on protein sequences and structures. arXiv:2303.06275. Accessed: Sep. 27, 2024. Available: http://arxiv.org/abs/2303.06275   
 16. Hu B et al (2023) Learning complete protein representation by deep coupling of sequence and structure. https://doi.org/10.1101/ 2023.07.05.547769   
 17. Wang D et al (2023) S-PLM: structure-aware protein language model via contrastive learning between sequence and structure. Aug 07. h t tps://doi.org/10.1101/2023.08.06. 552203   
-18. Xu M, Yuan X, Miret S, Tang J (2023) ProtST: multi-modality learning of protein sequences and biomedical texts. arXiv:2301.12040. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/abs/2301.12040   
+18. Xu M, Yuan X, Miret S, Tang J (2023) ProtST: multi-modality learning of protein sequences and biomedical texts. arXiv:2301.12040. Accessed: Sep. 27, 2024. Available: http://arxiv.org/abs/2301.12040   
 19. Yu T, Cui H, Li JC, Luo Y, Jiang G, Zhao H (2023) Enzyme function prediction using contrastive learning. Science 379(6639): 1358–1363. https://doi.org/10.1126/sci ence.adf2465   
-20. Houlsby N et al (2019) Parameter-efficient transfer learning for NLP. arXiv:1902.00751. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/abs/1902.00751   
-21. Hu EJ et al (2021) LoRA: low-rank adaptation of large language models. arXiv:2106.09685. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/abs/2106.09685   
+20. Houlsby N et al (2019) Parameter-efficient transfer learning for NLP. arXiv:1902.00751. Accessed: Sep. 27, 2024. Available: http://arxiv.org/abs/1902.00751   
+21. Hu EJ et al (2021) LoRA: low-rank adaptation of large language models. arXiv:2106.09685. Accessed: Sep. 27, 2024. Available: http://arxiv.org/abs/2106.09685   
 22. Sledzieski S, Kshirsagar M, Baek M, Berger B, Dodhia R, Ferres JL (2023) Democratizing protein language models with parameterefficient fine-tuning. 10. https://doi.org/10. 1101/2023.11.09.566187   
 23. Zeng S, Wang D, Jiang L, Xu D (2024) Parameter-efficient fine-tuning on large protein language models improves signal peptide prediction. Genome Res:gr.279132.124. https://doi.org/10.1101/gr.279132.124   
 24. Barrett AJ (1997) Nomenclature Committee of the International Union of Biochemistry and Molecular Biology (NC-IUBMB). Enzyme nomenclature. Recommendations 1992. Supplement 4: corrections and additions. Eur J Biochem 250:1–6. https://doi. org/10.1111/j.1432-1033.1997.001_1.x
 
 25. Liu Z et al (2021) Swin transformer: hierarchical vision transformer using shifted windows. In: 2021 IEEE/CVF international conference on computer vision (ICCV). IEEE, Montreal, QC, Canada, pp 9992–10002. https://doi.org/10.1109/ ICCV48922.2021.00986   
-26. Chen T, Kornblith S, Norouzi M, Hinton G (2020) A simple framework for contrastive learning of visual representations. arXiv:2002.05709. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/ abs/2002.05709   
-27. Radford A et al (2021, 2024) Learning transferable visual models from natural language supervision. arXiv:2103.00020. [Online]. Available: http://arxiv.org/abs/2103.00020   
-28. Jing B, Eismann S, Suriana P, Townshend RJL, Dror R (2021) Learning from protein structure with geometric vector perceptrons. arXiv:2009.01411. Accessed: Sep. 27, 2024. [Online]. Available: http://arxiv.org/abs/200 9.01411   
+26. Chen T, Kornblith S, Norouzi M, Hinton G (2020) A simple framework for contrastive learning of visual representations. arXiv:2002.05709. Accessed: Sep. 27, 2024. Available: http://arxiv.org/ abs/2002.05709   
+27. Radford A et al (2021, 2024) Learning transferable visual models from natural language supervision. arXiv:2103.00020. Available: http://arxiv.org/abs/2103.00020   
+28. Jing B, Eismann S, Suriana P, Townshend RJL, Dror R (2021) Learning from protein structure with geometric vector perceptrons. arXiv:2009.01411. Accessed: Sep. 27, 2024. Available: http://arxiv.org/abs/200 9.01411   
 29. Ingraham J, Garg V, Barzilay R, Jaakkola T. Generative models for graph-based protein design   
 30. Van Kempen M et al (2024) Fast and accurate protein structure search with Foldseek. Nat Biotechnol 42(2):243–246. https://doi.org/ 10.1038/s41587-023-01773-0   
 31. Defresne M, Barbe S, Schiex T (2023) Scalable coupling of deep learning with logical reasoning. In: Proceedings of the thirty-second international joint conference on artificial intelligence. International Joint Conferences on Artificial Intelligence Organization, Macau, SAR China, pp 3615–3623. https://doi.org/ 10.24963/ijcai.2023/402   
