@@ -14467,7 +14467,7 @@ status("wip")
 
 ## 예측과 인과 추론, 다시 보기 (Prediction and causal inference, again)
 
-[\@sec-casual-to-causal]에서 예측과 인과 추론의 차이를 처음 소개했습니다.
+[\@sec-pred-or-explain]에서 예측과 인과 추론의 차이를 처음 소개했습니다.
 여기서 이 차이를 머신러닝 맥락에서 다시 살펴봅니다.
 
 ### 예측 정확도 ≠ 인과 추론

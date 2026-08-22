@@ -5688,8 +5688,7 @@ uv sync --extra tensorflow --extra cv --extra tracking --extra dev
 
 `uv`를 사용하는 `Dockerfile`을 생성합니다.
 
-```dockerfil
-e
+```dockerfile
 FROM nvidia/cuda:12.1.0-base-ubuntu22.04
 
 # Install Python and uv
@@ -6433,8 +6432,9 @@ def main():
 
 if __name__ == '__main__':
     main()
-```src
-/classifier/data.py` 파일을 생성합니다:
+```
+
+`src/classifier/data.py` 파일을 생성합니다:
 
 ```{python}
 """Data loading and preprocessing utilities."""
@@ -22578,8 +22578,8 @@ $\rho = 0.10$에서의 대칭 노이즈는 결정 경계(decision boundary)를 �
 
 정형 데이터의 예측을 위해서는 XGBoost, LightGBM, CatBoost로 구현된 그래디언트 부스팅 결정 트리(gradient boosted decision trees)가 여전히 기본 선택지로 남아 있으며, 중간 크기의 데이터셋에서는 종종 딥러닝 네트워크보다 성능이 우수합니다. 그 이유는 구조적입니다. 트리는 혼합 타입을 자연스럽게 처리하고, 개별 특성의 단조 변환(monotone transformations)에 불변하며, 무정보 특성(uninformative features)에 강건하고, 정형 타겟이 종종 나타내는 축 정렬된 비부드러운 결정 경계(axis aligned, non smooth decision boundaries)를 잘 포착합니다. TabNet 및 다양한 트랜스포머 변형과 같은 딥러닝 정형 모델들이 그 격차를 좁혔지만, 전형적인 중간 크기의 산업용 데이터셋에 대해 이 구도를 결정적으로 뒤집지는 못했습니다.
 
-```textrow_i
-d  age  income   region   churned
+```text
+row_id  age  income   region   churned
 1       34   58000    west     0
 2       51   92000    east     1
 3       29   41000    south    0
@@ -22993,8 +22993,8 @@ PSI는 구간화된 두 분포 사이의 대칭화된 Kullback-Leibler 발산(Di
 
 위의 원칙들은 수집 계획을 확정하기 전에 자문해야 할 일련의 질문들로 요약할 수 있습니다.
 
-```text1
-. 배포 분포 $p_{dep}(x, y)$는 무엇인가?
+```text
+1. 배포 분포 $p_{dep}(x, y)$는 무엇인가?
    변화의 축과 목표 혼합 비율을 기술하라.
 2. 표집틀(sampling frame)은 무엇인가? 그것이 누락하는 하위 집단은 어디인가?
 3. 선택은 확률 표본(probability sample)인가, 편의 표본(convenience sample)인가?
@@ -23057,7 +23057,6 @@ flowchart LR
 
 HTTP는 상태가 없는(stateless) 요청 및 응답 프로토콜입니다. 클라이언트가 서버에 요청을 보내면 서버는 응답을 반환하며, 연결은 이전 교환의 메모리를 유지하지 않습니다. 요청은 메서드(method), 대상 URL, 헤더 집합, 그리고 선택적인 본문(body)으로 구성됩니다. 스크래핑에서 가장 흔히 사용하는 메서드는 리소스를 가져오는 GET과 데이터를 제출하는 POST이며, POST는 주로 검색 폼이나 로그인 흐름에 사용됩니다.
 
-```python
 응답은 상태 코드, 헤더 세트, 그리고 바디를 전달합니다. 상태 코드는 첫 번째 자릿수에 따라 그룹화됩니다. 2xx는 성공, 3xx는 리디렉션, 4xx는 404(찾을 수 없음)나 403(금지됨)과 같은 클라이언트 오류, 그리고 5xx는 서버 오류를 나타냅니다. 200이 아닌 모든 응답을 치명적인 실패로 처리하는 스크래퍼는 취약해지기 쉬우며, 상태 코드를 완전히 무시하는 스크래퍼는 에러 페이지를 실제 콘텐츠인 것처럼 조용히 파싱하게 됩니다.
 
 ### 1.2 헤더, 쿠키, 그리고 세션 
@@ -23140,6 +23139,7 @@ parser = rp.RobotFileParser()
 parser.set_url("https://example.com/robots.txt")
 parser.read()
 allowed = parser.can_fetch("ResearchBot/1.0", "https://example.com/products")
+```
 
 스크레이퍼는 실행 시작 시 도메인당 한 번 `robots.txt`를 가져와 캐시하고, 모든 요청을 보내기 전에 이를 확인해야 합니다. `robots.txt`는 재사용이 아니라 접근을 규제한다는 점에 유의하세요. 완전히 허용된 콘텐츠라도 저작권 및 라이선스 제약이 적용될 수 있습니다.
 
@@ -24213,7 +24213,6 @@ pipeline = [
 
 ```{python}
 # Deterministic survivorship: sort, then keep the best per group.
-```{python}
 def deduplicate(df):
     df = df.drop_duplicates()                  # exact
     df = (df.sort_values(["entity_id", "updated_at", "completeness"],
@@ -24340,7 +24339,6 @@ def test_dedup_properties(any_frame):
 
 ```{python}
 # Non-idempotent: appends every time it runs.
-```python
 df["phone"] = "+1" + df["phone"]
 
 # Idempotent: normalize to a canonical form regardless of input state.
@@ -24386,7 +24384,6 @@ $$
 
 ```{python}
 # Leaky: statistic computed over all rows before the split.
-```python
 fill = df["income"].mean()
 df["income"] = df["income"].fillna(fill)
 
@@ -25751,8 +25748,8 @@ $$
 
 Streamlit은 상호작용이 일어날 때마다 전체 스크립트를 위에서 아래로 다시 실행하여 일반 파이썬 스크립트를 웹 앱으로 변환합니다. 위젯 호출은 현재 값을 반환하며, 이 값을 일반 변수처럼 사용합니다. 멘탈 모델은 유쾌할 정도로 간단합니다. 콜백은 없으며, 입력을 읽고 출력을 그리는 스크립트만 존재할 뿐입니다.
 
-```pythonimpor
-t streamlit as st
+```python
+import streamlit as st
 
 threshold = st.slider("Decision threshold", 0.0, 1.0, 0.5)
 preds = (scores >= threshold).astype(int)
@@ -27246,7 +27243,6 @@ $$
 
 ```{python}
 # shift first, then roll: the window ends at t-1
-```{python}
 roll = df["y"].shift(1).rolling(window=7)
 df["roll_mean_7"] = roll.mean()
 df["roll_std_7"]  = roll.std()
@@ -28476,8 +28472,7 @@ print(f"UMAP placed {Z_new.shape[0]} new points via transform "
 
 ```{julia}
 # ] add TSne UMAP Distances Clustering
-```usin
-g TSne, UMAP, Random
+using TSne, UMAP, Random
 
 Random.seed!(0)
 # Five blobs in 50-D: stack Gaussian clusters around random centers.
@@ -28725,8 +28720,7 @@ strong_view = strong_augment(u)
 
 pseudo_label = stop_gradient( predict(weak_view) )      # treat as fixed target
 if max(pseudo_label) > tau:                             # confidence threshold
-```los
-s
+    loss = d(predict(weak_view), pseudo_label)          # consistency against the pseudo target
 ```
 
 The confidence threshold $\tau$ is essential. Without it, low confidence pseudo labels inject noise and the model can drift, reinforcing its own errors in a feedback loop. The threshold filters the unlabeled set down to examples where the weak view is already confident, which keeps the pseudo labels approximately correct early in training and lets coverage expand as the model improves.
@@ -31203,8 +31197,7 @@ x = rand(n)
 y = truef.(x) .+ sigma .* randn(n)
 
 # Vandermonde design up to a given degree, fit by least squares.
-```design
-(xv, d) = reduce(hcat, [xv .^ k for k in 0:d])
+design(xv, d) = reduce(hcat, [xv .^ k for k in 0:d])
 
 idx = shuffle(1:n)
 tr, va, te = idx[1:144], idx[145:192], idx[193:240]
@@ -31344,8 +31337,8 @@ $$
 
 여기서 $\hat{f}^{(-F_j)}$는 폴드 $j$를 제외하고 학습된 모델입니다. 모든 관측값은 자신이 모델 학습에 사용되지 않았을 때 딱 한 번씩만 평가를 거치게 됩니다.
 
-```textfold
-s = split_indices(n, k=5, shuffle=True, seed=0)
+```text
+folds = split_indices(n, k=5, shuffle=True, seed=0)
 for j in range(k):
     train = concat(folds[:j] + folds[j+1:])
     model = fit(X[train], y[train])
@@ -31543,7 +31536,6 @@ RNG = 0
 np.random.seed(RNG)
 
 # A modest, noisy dataset so that selection optimism is visible.
-```{python}
 X, y = make_classification(
     n_samples=200, n_features=20, n_informative=5, n_redundant=2,
     class_sep=0.8, flip_y=0.10, random_state=RNG,
@@ -31781,8 +31773,7 @@ $$
 
 ### 3.3 수치적 실행 
 
-$\mathbf{X}^\top \mathbf{X}$를 직접 형성하고 역행렬을 구하는 것은 수치적으로 취약합니다. 그람 행렬의 조건수(condition number)가 $\mathbf{X}$ 조건수의 제곱이기 때문입니다. 거의 공선성(collinear)을 띠는 특성의 작은 오차가 크게 증폭될 수 있습니다. 실제로는 $\mathbf{X}$를 직접 다루며 훨씬 더 안정적인 $\mathbf{X}$의 QR 분해나 특잇값 분해(singular value decomposition)를 통해 최소제곱 문제를 해결합니다. 유사역행렬 공식은 솔루션을 생각하는 올바른 방식이지만, 계산하는 올바른 방식인 경우는 드뭅니다.
-```# 명시적 역행렬보다 안정적인 솔버를 선호하라
+$\mathbf{X}^\top \mathbf{X}$를 직접 형성하고 역행렬을 구하는 것은 수치적으로 취약합니다. 그람 행렬의 조건수(condition number)가 $\mathbf{X}$ 조건수의 제곱이기 때문입니다. 거의 공선성(collinear)을 띠는 특성의 작은 오차가 크게 증폭될 수 있습니다. 실제로는 $\mathbf{X}$를 직접 다루며 훨씬 더 안정적인 $\mathbf{X}$의 QR 분해나 특잇값 분해(singular value decomposition)를 통해 최소제곱 문제를 해결합니다. 유사역행렬 공식은 솔루션을 생각하는 올바른 방식이지만, 계산하는 올바른 방식인 경우는 드뭅니다. 명시적 역행렬보다 안정적인 솔버를 선호하라.
 
 ```{python}
 import numpy as np
@@ -31829,7 +31820,6 @@ $$
 
 ```{python}
 # Batch gradient descent converging to the closed-form least squares solution
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_regression
@@ -32006,8 +31996,8 @@ $$
 
 주요 도구는 잔차 대 적합값 플롯(plot of residuals against fitted values)입니다. 올바르게 명세된 모델이라면 이 플롯은 0을 중심으로 아무런 구조를 가지지 않는 수평 띠 형태를 보여야 합니다. 체계적인 곡선 형태나 U자형, 혹은 뒤집힌 U자형 구조가 나타난다면 비선형 항이 누락되었음을 의미합니다. 각 개별 예측 변수별로 잔차 플롯을 그려보면 어떤 변수에서 곡선 형태의 왜곡이 발생하는지 위치를 특정할 수 있습니다. 성분 플러스 잔차 플롯(부분 잔차 플롯이라고도 함)은 예측 변수의 선형 기여도를 잔차에 다시 더해줌으로써, 특정 변수에서의 선형성 이탈 현상을 시각적으로 한층 더 분명하게 드러내 줍니다.
 
-```textresi
-d vs fitted:  random band      -> linearity OK
+```text
+resid vs fitted:  random band      -> linearity OK
                   smile / frown    -> missing quadratic term
                   fan shape        -> heteroscedasticity (Section 4)
 ```
@@ -32052,7 +32042,6 @@ $$
 
 ```{text}
 # conceptual: robust covariance leaves coefficients fixed
-```text
 beta_hat        = solve(X'X) X'y          # unchanged
 cov_robust(HC3) = (X'X)^-1 X' diag(e^2/(1-h)^2) X (X'X)^-1
 ```
@@ -32521,8 +32510,8 @@ $$
 
 RANSAC(Random Sample Consensus)은 로버스트성을 위해 다른 조합론적 경로를 택하며, 아웃라이어가 많을 때도 높은 붕괴점을 달성합니다. 아웃라이어의 가중치를 낮추는 대신, 모델과 일치하는 인라이어(inlier)의 가장 큰 부분 집합을 찾습니다. 이 알고리즘은 모델을 피팅하기에 충분한 최소한의 점들의 부분 집합을 반복적으로 샘플링하여 해당 부분 집합에서 피팅을 수행하고, 나머지 점들 중 피팅의 잔차 임계값 이내에 들어오는 점들의 수를 셉니다. 가장 큰 합의 집합(consensus set)을 얻은 피팅이 선택되며, 최종 추정치는 해당 인라이어 전체를 대상으로 계산됩니다.
 
-```textbes
-t = None
+```text
+best = None
 for k in range(num_iterations):
     sample = random_minimal_subset(data, size=p)
     model  = fit(sample)
@@ -32574,7 +32563,6 @@ $$
 
 ```{text}
 # Pinball loss for level tau, suitable for a gradient based solver
-```{python}
 def pinball(residual, tau):
     return max(tau * residual, (tau - 1) * residual)
 ```
@@ -33494,8 +33482,8 @@ $\ell_2$ 항은 그룹화 효과를 도입하여 상관된 예측 변수들이 �
 
 ### Python
 
-```pythonimpor
-t numpy as np
+```python
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import lasso_path
 from sklearn.preprocessing import StandardScaler
@@ -33866,8 +33854,7 @@ print("intercept:", round(intercept, 6))
 print("preds    :", [round(p, 6) for p in elastic_net_predict(X, coef, intercept)])
 
 # Limiting cases: alpha=1 is Lasso (zeroes a coefficient), alpha=0 is Ridge.
-```lasso
-, _ = elastic_net_fit(X, y, lam=1.0, alpha=1.0)
+lasso, _ = elastic_net_fit(X, y, lam=1.0, alpha=1.0)
 ridge, _ = elastic_net_fit(X, y, lam=1.0, alpha=0.0)
 print("lasso    :", [round(c, 6) for c in lasso])
 print("ridge    :", [round(c, 6) for c in ridge])
@@ -34188,8 +34175,7 @@ w_irls = train_irls(Xb, y)
 print("IRLS weights [bias, w1, w2]:", np.round(w_irls, 3))
 
 # The decision boundary is the line w0 + w1*x1 + w2*x2 = 0.
-```fig
-, ax = plt.subplots(figsize=(6, 5))
+fig, ax = plt.subplots(figsize=(6, 5))
 ax.scatter(X[y == 0, 0], X[y == 0, 1], s=15, color="C0", label="class 0")
 ax.scatter(X[y == 1, 0], X[y == 1, 1], s=15, color="C3", label="class 1")
 xx = np.linspace(X[:, 0].min() - 1, X[:, 0].max() + 1, 200)
@@ -35153,7 +35139,6 @@ y  = [rand(Poisson(m)) for m in mu]
 df = DataFrame(y = y, x1 = x1, x2 = x2)
 
 # Fit a Poisson GLM with the canonical log link
-```{julia}
 model = glm(@formula(y ~ x1 + x2), df, Poisson(), LogLink())
 
 println(coeftable(model))
@@ -35554,8 +35539,7 @@ from sklearn.model_selection import train_test_split
 rng = np.random.default_rng(42)
 
 # --- SymPy: posterior proportionality and smoothing as Dirichlet mean ---
-```Px_given_y
-, Py, Px = sp.symbols("P_x_given_y P_y P_x", positive=True)
+Px_given_y, Py, Px = sp.symbols("P_x_given_y P_y P_x", positive=True)
 print("posterior * P(x) =", sp.simplify((Px_given_y * Py / Px) * Px),
       " (= P(x|y) P(y))")
 p1, p2, p3, pri = sp.symbols("p1 p2 p3 pi_y", positive=True)
@@ -36047,7 +36031,6 @@ from sklearn.metrics import accuracy_score, f1_score
 RNG = np.random.default_rng(42)
 
 # 1. A reproducible synthetic text corpus with four topics.
-```{python}
 TOPICS = {
     "sport":   ["goal", "match", "team", "score", "coach", "league"],
     "tech":    ["chip", "code", "server", "model", "data", "cloud"],
@@ -36166,8 +36149,7 @@ for i, v in enumerate(table["accuracy"]):
 fig1.tight_layout()
 
 # 7. Figure 2: effect of smoothing alpha on multinomial accuracy.
-```alpha
-s = np.logspace(-3, 1, 12)
+alphas = np.logspace(-3, 1, 12)
 accs = []
 for a in alphas:
     mm = MultinomialNB(alpha=a).fit(Xtr, ytr)
@@ -37472,8 +37454,7 @@ xs = np.linspace(0.05, 5.95, 300)
 bandwidths = [0.10, 0.30, 0.80, 2.00]
 
 # ---- Figure 1: local linear fits at several bandwidths ----
-```fig1
-, axes = plt.subplots(2, 2, figsize=(11, 7), sharex=True, sharey=True)
+fig1, axes = plt.subplots(2, 2, figsize=(11, 7), sharex=True, sharey=True)
 rows = []
 for ax, h in zip(axes.ravel(), bandwidths):
     yhat_grid, ell_sums = lwr_predict(x, y, xs, h, degree=1)
@@ -38079,8 +38060,8 @@ $$
 
 어떤 속성이 거의 상수에 가까울 때 $SI(S, A)$는 0에 가까워지며, 이로 인해 실제 신호가 거의 없는 분할에 대해 비율이 폭발적으로 커질 수 있습니다. C4.5는 표준적인 방어책을 적용합니다. 후보 속성들의 평균 정보 이득을 계산한 후, 정보 이득이 최소한 그 평균 이상인 속성들에 대해서만 정보 이득비를 고려합니다. 이를 통해 정보 이득비로 순위를 매기기 전에 비정상적으로 작은 분모를 가지는 사례들을 필터링합니다.
 
-```textcandidate
-s = attributes with IG >= mean(IG over all attributes)
+```text
+candidates = attributes with IG >= mean(IG over all attributes)
 best       = argmax over candidates of  IG / SI
 ```
 
@@ -38276,7 +38257,7 @@ print(f"  Split info    = {SI:.4f}")
 print(f"  Gain ratio    = {GR:.4f}")
 
 # --- SymPy: derivative of binary entropy maximized at p = 1/2 ---
-```p = sp.symbols('p', positive=True)
+p = sp.symbols('p', positive=True)
 H2 = -p * sp.log(p, 2) - (1 - p) * sp.log(1 - p, 2)
 dH2 = sp.simplify(sp.diff(H2, p))
 maximizer = sp.solve(sp.Eq(dH2, 0), p)
@@ -58386,8 +58367,7 @@ $d_{\text{eff}}$가 $d_{\text{eff}}$보다 훨씬 작은 경우, 우리가 최�
 
 대비는 사진으로 보는 것이 가장 쉽습니다. 그리드 레이아웃에서는 중요한 축에 대한 투영이 몇 개의 수직선에 쌓입니다. 무작위 레이아웃에서는 모든 그리기가 중요한 매개변수의 새로운 값으로 투영됩니다.
 
-```mermai
-d
+```mermaid
 flowchart LR
   subgraph GRID["Grid search, 9 trials"]
     direction TB
