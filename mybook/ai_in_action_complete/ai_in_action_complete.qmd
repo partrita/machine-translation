@@ -57,7 +57,7 @@ $$
 \mathrm{gap}(\theta) = L(\theta) - \hat{L}(\theta),
 $$
 
-통계적 학습 이론의 핵심 메시지는 다음과 같다. 가설 클래스의 복잡도(예를 들어 Vapnik–Chervonenkis 차원이나 Rademacher 복잡도)와 표본 크기 $n$을 이용하면 이 격차를 가설 클래스 전체에 대해 균일하게 제한할 수 있으며, 그 bound는 대략 $1/\sqrt{n}$의 비율로 줄어든다 [@vapnik1998statistical; `@shalevshwartz2014understandin`g]. 이 책의 1부에서 이러한 도구를 다룬다. 여기서는 결론만 강조하자. **학습 데이터를 잘 맞추는 것은 필요하지만 결코 충분하지 않다. 우리가 실제로 관심을 두는 대상은 모집단 위험이다.**
+통계적 학습 이론의 핵심 메시지는 다음과 같다. 가설 클래스의 복잡도(예를 들어 Vapnik–Chervonenkis 차원이나 Rademacher 복잡도)와 표본 크기 $n$을 이용하면 이 격차를 가설 클래스 전체에 대해 균일하게 제한할 수 있으며, 그 bound는 대략 $1/\sqrt{n}$의 비율로 줄어든다 [@vapnik1998statistical; @shalevshwartz2014understanding]. 이 책의 1부에서 이러한 도구를 다룬다. 여기서는 결론만 강조하자. **학습 데이터를 잘 맞추는 것은 필요하지만 결코 충분하지 않다. 우리가 실제로 관심을 두는 대상은 모집단 위험이다.**
 
 ### 오차의 분해
 
@@ -1192,13 +1192,13 @@ import polars as pl
 from dataclasses import dataclass
 from typing import List, Callable, Dict, Any
 
-`@dataclass`
+@dataclass
 class Example:
     example_id: str
     prompt_base: str
     label: str
 
-`@dataclass`
+@dataclass
 class TransformedExample:
     example_id: str
     transform_name: str
@@ -2545,8 +2545,7 @@ source $HOME/.cargo/env
 
 Windows에서는 PowerShell을 사용할 수 있습니다.
 
-```powershel
-l
+```powershell
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
@@ -3038,20 +3037,20 @@ uv add "package @ git+https://github.com/user/package.git"
 특정 브랜치를 지정하는 경우:
 
 ```{bash}
-uv add "package @ git+https://github.com/user/package.git`@dev-branch`"
+uv add "package @ git+https://github.com/user/package.git@dev-branch"
 ```
 
 특정 커밋을 지정하는 경우:
 
 ```{bash}
-uv add "package @ git+https://github.com/user/package.git`@abc123`"
+uv add "package @ git+https://github.com/user/package.git@abc123"
 ```
 
 `pyproject.toml` 파일에는 다음과 같이 나타납니다.
 
 ```{toml}
 dependencies = [
-    "package @ git+https://github.com/user/package.git`@abc123`",
+    "package @ git+https://github.com/user/package.git@abc123",
 ]
 ```
 
@@ -3240,7 +3239,7 @@ description = "Deep learning image classifier using PyTorch"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    {name = "Mike", email = "mike`@email.com`"}
+    {name = "Mike", email = "mike@email.com"}
 ]
 license = {text = "MIT"}
 
@@ -3561,8 +3560,7 @@ uv run ruff check
 
 **VS Code 연동:**
 
-```jso
-n
+```json
 {
   "editor.formatOnSave": true,
   "[python]": {
@@ -4005,7 +4003,7 @@ def test_model_with_frozen_backbone():
     assert trainable_params < 10000
 
 
-`@pytest.mark.parametrize`('architecture', ['resnet18', 'resnet50', 'efficientnet_b0'])
+@pytest.mark.parametrize('architecture', ['resnet18', 'resnet50', 'efficientnet_b0'])
 def test_different_architectures(architecture):
     """Test different model architectures."""
     model = create_model(
@@ -4085,7 +4083,7 @@ import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from classifier.train import train_epoch, validate
 
-`@pytest.fixture`
+@pytest.fixture
 def dummy_model():
     """Create a simple model for testing."""
     return nn.Sequential(
@@ -4093,7 +4091,7 @@ def dummy_model():
         nn.Linear(3 * 224 * 224, 10)
     )
 
-`@pytest.fixture`
+@pytest.fixture
 def dummy_dataloader():
     """Create a dummy dataloader."""
     images = torch.randn(20, 3, 224, 224)
@@ -4737,7 +4735,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout`@v4`
+      - uses: actions/checkout@v4
       
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -4761,7 +4759,7 @@ jobs:
         run: uv run pytest --cov=classifier --cov-report=xml
       
       - name: Upload coverage
-        uses: codecov/codecov-action`@v3`
+        uses: codecov/codecov-action@v3
         with:
           file: ./coverage.xml
 ```
@@ -4826,8 +4824,7 @@ flowchart TD
 
 **ML 프로젝트를 위한 `.gitignore`:**
 
-```gitignor
-e
+```gitignore
 # Python
 __pycache__/
 *.py[cod]
@@ -5135,7 +5132,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout`@v4`
+      - uses: actions/checkout@v4
       
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -5353,8 +5350,7 @@ uv run infer --image test.jpg
 
 `.gitignore` 파일을 생성하세요:
 
-```gitignor
-e
+```gitignore
 # Python
 __pycache__/
 *.py[cod]
@@ -5865,8 +5861,7 @@ repos:
 
 `uv`를 사용하도록 VS Code를 설정합니다:
 
-```jso
-n
+```json
 {
   "python.defaultInterpreterPath": ".venv/bin/python",
   "python.terminal.activateEnvironment": false,
@@ -6060,7 +6055,7 @@ description = "Deep learning image classifier using ResNet architecture"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    {name = "Mike", email = "mike`@marshall.usc.edu`"}
+    {name = "Mike", email = "mike@marshall.usc.edu"}
 ]
 
 dependencies = [
@@ -6615,7 +6610,7 @@ def test_model_with_frozen_backbone():
     assert trainable_params < 1000000  # Arbitrary threshold
 
 
-`@pytest.mark.parametrize`('architecture', ['resnet18', 'resnet50'])
+@pytest.mark.parametrize('architecture', ['resnet18', 'resnet50'])
 def test_different_architectures(architecture):
     """Test different model architectures."""
     model = create_model(
@@ -9462,7 +9457,7 @@ def sample_dataset(
     return x, y
 
 
-`@dataclass`
+@dataclass
 class PolynomialRegressor:
     degree: int
     coeffs: np.ndarray  # shape (degree + 1,)
@@ -12785,7 +12780,7 @@ fprime(x) = cos(x)
 x0 = 1.3
 for h in (1e-1, 1e-2, 1e-3, 1e-4, 1e-5)
     central = (f(x0 + h) - f(x0 - h)) / (2h)
-    `@printf`("h=%.0e  central=%.10f  abs_error=%.2e\n",
+    @printf("h=%.0e  central=%.10f  abs_error=%.2e\n",
             h, central, abs(central - fprime(x0)))
 end
 
@@ -12793,7 +12788,7 @@ taylor_exp(x, order) = sum(x^n / factorial(n) for n in 0:order)
 
 for order in (1, 2, 3, 5)
     err = maximum(abs(taylor_exp(x, order) - exp(x)) for x in range(-2, 2; length=400))
-    `@printf`("Taylor order %d: max abs error = %.4f\n", order, err)
+    @printf("Taylor order %d: max abs error = %.4f\n", order, err)
 end
 ```
 
@@ -14071,16 +14066,16 @@ true_value = sqrt(pi) / 2 * erf(1.0)
 N = 100_000
 samples = rand(rng, N)
 estimate = mean(g.(samples))
-`@printf`("True value          : %.6f\n", true_value)
-`@printf`("MC estimate (N=%d) : %.6f\n", N, estimate)
-`@printf`("Absolute error      : %.6e\n", abs(estimate - true_value))
+@printf("True value          : %.6f\n", true_value)
+@printf("MC estimate (N=%d) : %.6f\n", N, estimate)
+@printf("Absolute error      : %.6e\n", abs(estimate - true_value))
 
 # Empirical RMSE versus sigma / sqrt(N).
 sizes = [10, 30, 100, 300, 1000, 3000, 10_000, 30_000, 100_000]
 trials = 200
 for n in sizes
     errs = [mean(g.(rand(rng, n))) - true_value for _ in 1:trials]
-    `@printf`("N=%7d  RMSE=%.6e\n", n, sqrt(mean(errs .^ 2)))
+    @printf("N=%7d  RMSE=%.6e\n", n, sqrt(mean(errs .^ 2)))
 end
 ```
 
@@ -21248,9 +21243,9 @@ println("Equality-constrained QP: x* = ", x_eq, ", nu* = ", nu)
 using JuMP, Ipopt
 p0 = [0.9, 0.8]
 model = Model(Ipopt.Optimizer)
-`@variable`(model, x[1:2] >= 0)
-`@constraint`(model, x[1] + x[2] <= 1)
-`@objective`(model, Min, 0.5 * sum((x .- p0) .^ 2))
+@variable(model, x[1:2] >= 0)
+@constraint(model, x[1] + x[2] <= 1)
+@objective(model, Min, 0.5 * sum((x .- p0) .^ 2))
 optimize!(model)
 println("Inequality-constrained QP: x* = ", value.(x))
 ```
@@ -24258,7 +24253,7 @@ def coerce_schema(df, schema):
 
 결측 데이터는 그 처리 방식이 뒤에서 다룰 누수(leakage) 문제와 밀접하게 연관되어 있으므로 별도로 다룰 가치가 있습니다. 정제 단계에서 해야 할 일은 결측 여부를 감지하고, 가능한 한 결측 메커니즘을 구분하며, 처리 정책을 결정하는 것입니다.
 
-결측 메커니즘을 분류한 루빈(Rubin)의 분류 체계를 떠올려 보면 좋습니다. 이 분류 체계는 이후에 어떤 대체(imputation) 방법이 유효한지 결정하는 기준이 됩니다 [@rubin1976inference; `@little2019statistica`l]. $X$를 완전한 데이터라 하고 $M$을 이진 결측 지시자 행렬(binary missingness indicator matrix)이라 합시다. 여기서 $M_{ij}=1$은 $ij$ 항목이 누락되었음을 의미합니다. 관측된 항목과 누락된 항목을 각각 $X_{\text{obs}}$와 $X_{\text{mis}}$로 분할합니다. 세 가지 결측 메커니즘은 결측 확률이 무엇에 의존하는지에 따라 다음과 같이 구분됩니다.
+결측 메커니즘을 분류한 루빈(Rubin)의 분류 체계를 떠올려 보면 좋습니다. 이 분류 체계는 이후에 어떤 대체(imputation) 방법이 유효한지 결정하는 기준이 됩니다 [@rubin1976inference; @little2019statistical]. $X$를 완전한 데이터라 하고 $M$을 이진 결측 지시자 행렬(binary missingness indicator matrix)이라 합시다. 여기서 $M_{ij}=1$은 $ij$ 항목이 누락되었음을 의미합니다. 관측된 항목과 누락된 항목을 각각 $X_{\text{obs}}$와 $X_{\text{mis}}$로 분할합니다. 세 가지 결측 메커니즘은 결측 확률이 무엇에 의존하는지에 따라 다음과 같이 구분됩니다.
 
 - **MCAR** (completely at random, 완전 무작위 결측): $P(M \mid X) = P(M)$. 결측이 데이터와 완전히 독립적이므로, 불완전한 행을 제거해도 편향이 발생하지 않으며 단지 데이터가 낭비될 뿐입니다.
 - **MAR** (missing at random, 무작위 결측): $P(M \mid X) = P(M \mid X_{\text{obs}})$. 결측이 관측된 값에만 의존하므로, 관측된 열을 조건으로 하는 원칙적인 대체(imputation)를 통해 편향 없는 분석을 복원할 수 있습니다.
@@ -24483,7 +24478,7 @@ from pandera import Column, Check
 schema = pa.DataFrameSchema({
     "user_id": Column(int, Check.gt(0), unique=True),
     "age": Column(int, Check.in_range(0, 120), nullable=False),
-    "email": Column(str, Check.str_matches(r".+`@.`+\..+")),
+    "email": Column(str, Check.str_matches(r".+@.+\..+")),
     "signup_country": Column(str, Check.isin(["US", "CA", "GB", "DE"])),
 })
 
@@ -25765,7 +25760,7 @@ st.plotly_chart(confusion_figure(y, preds))
 Plotly와 Flask를 기반으로 빌드된 Dash는 콜백 접근 방식을 취합니다. 각 컴포넌트에 id를 지정하여 레이아웃을 선언한 다음, 입력과 출력을 명시적으로 지정하는 콜백 함수를 작성합니다. 입력이 변경될 때 영향을 받는 컴포넌트만 다시 계산되므로, 어떤 것이 언제 업데이트되는지 정밀하게 제어할 수 있습니다.
 
 ```{python}
-`@app.callback`(
+@app.callback(
     Output("roc", "figure"),
     Input("model-dropdown", "value"),
 )
@@ -26615,7 +26610,7 @@ flowchart LR
 
 ### 1.1 The tokenization problem 
 
-학습기는 원시 바이트(raw bytes)를 의미 있게 소비할 수 없으므로, 첫 번째 단계는 문자열을 토큰(`tokens`)이라 불리는 불연속적인 단위로 분할하는 것입니다. 토큰화(tokenization)는 공백이 단어 경계와 대략 일치하는 영어에서는 사소해 보이지만, 다운스트림 정확도에 실질적인 영향을 미치는 결정들로 가득 차 있습니다. `"Don't email me at jane.doe`@acme.co`!"`라는 문자열을 생각해 봅시다. `Don't`는 하나의 토큰이어야 할까요, 두 개(`Do`와 `n't`)여야 할까요, 아니면 세 개여야 할까요? `jane.doe`@acme.c`o`는 단일한 의미 단위일까요, 아니면 다섯 개의 조각일까요? 각각의 선택에 따라 피처 공간이 달라집니다.
+학습기는 원시 바이트(raw bytes)를 의미 있게 소비할 수 없으므로, 첫 번째 단계는 문자열을 토큰(`tokens`)이라 불리는 불연속적인 단위로 분할하는 것입니다. 토큰화(tokenization)는 공백이 단어 경계와 대략 일치하는 영어에서는 사소해 보이지만, 다운스트림 정확도에 실질적인 영향을 미치는 결정들로 가득 차 있습니다. `"Don't email me at jane.doe@acme.co!"`라는 문자열을 생각해 봅시다. `Don't`는 하나의 토큰이어야 할까요, 두 개(`Do`와 `n't`)여야 할까요, 아니면 세 개여야 할까요? `jane.doe@acme.co`는 단일한 의미 단위일까요, 아니면 다섯 개의 조각일까요? 각각의 선택에 따라 피처 공간이 달라집니다.
 
 간단한 정규식 토큰화 도구(tokenizer)를 사용하면 단어와 유사한 스팬(span)을 대부분 포착할 수 있습니다.
 
@@ -29695,7 +29690,6 @@ OpenLineage는 Airflow, dbt, Spark 등의 오케스트레이터와의 통합을 
 
 ```{text}
 # pseudo lineage event emitted by a job run
-```json
 {
   "run": "train_churn_2026_06_19",
   "inputs":  [{"dataset": "features.churn", "version": "delta:v42"}],
@@ -29716,9 +29710,9 @@ OpenLineage는 Airflow, dbt, Spark 등의 오케스트레이터와의 통합을 
 ```{text}
 run_manifest:
   code_commit:   git:7f3a9c1
-  environment:   docker`@sha256`:5d41402a...
-  train_data:    delta://features.churn`@v42`
-  val_data:      dvc://splits/val`@md5`:a1b2c3
+  environment:   docker@sha256:5d41402a...
+  train_data:    delta://features.churn@v42
+  val_data:      dvc://splits/val@md5:a1b2c3
   seed:          1337
 ```
 
@@ -30306,7 +30300,7 @@ $$
 
 ```{python}
 # ERM in pseudocode: search a hypothesis class for the
-```# function with lowest average training loss.
+# function with lowest average training loss.
 def erm(hypothesis_class, S, loss):
     best, best_risk = None, float("inf")
     for h in hypothesis_class:
@@ -31110,6 +31104,7 @@ print(f"Validation selects degree {best_d}; its honest test MSE = "
       f"{test_at_best:.4f}")
 print(f"Mean optimism (test - train) over degrees 10-15 = "
       f"{curve['optimism'].iloc[9:].mean():.4f}")
+```
 
 # ---- Leakage demonstration: features are pure noise, truth = 0.50 ----
 
@@ -31202,12 +31197,12 @@ design(xv, d) = reduce(hcat, [xv .^ k for k in 0:d])
 idx = shuffle(1:n)
 tr, va, te = idx[1:144], idx[145:192], idx[193:240]
 
-`@printf`("%-7s %-10s %-10s %-10s\n", "degree", "train", "val", "test")
+@printf("%-7s %-10s %-10s %-10s\n", "degree", "train", "val", "test")
 for d in 1:15
     A = design(x[tr], d)
     beta = A \ y[tr]
     mse(s) = mean((design(x[s], d) * beta .- y[s]) .^ 2)
-    `@printf`("%-7d %-10.4f %-10.4f %-10.4f\n", d, mse(tr), mse(va), mse(te))
+    @printf("%-7d %-10.4f %-10.4f %-10.4f\n", d, mse(tr), mse(va), mse(te))
 end
 ```
 
@@ -31380,7 +31375,6 @@ $$
 
 ```{text}
 # Stratified split keeps class j proportion equal across folds
-```python
 for class_label in unique(y):
     rows = indices_where(y == class_label)
     distribute(rows, across=k_folds, round_robin=True)
@@ -31424,7 +31418,6 @@ Grouped cross-validation(때로는 group k-fold라고도 함)은 전체 그룹�
 
 ```{text}
 # Each group's rows are kept entirely within one fold
-```{text}
 assign_group_to_fold = {}
 for g in groups_sorted_by_size_desc:
     f = fold_with_fewest_rows()
@@ -34401,7 +34394,6 @@ from aiinaction.ch088_softmax_regression import (
 )
 
 # Row-wise softmax is numerically stable (subtracts the per-row max).
-```{python}
 print("softmax([[1,2,3]]) =", softmax([[1.0, 2.0, 3.0]])[0].round(4))
 
 # A tiny 3-class problem in the plane (labels are 0, 1, 2).
@@ -35649,7 +35641,7 @@ end
 
 predict(x) = classes[argmax([logscore(x, c) for c in classes])]
 acc = mean(predict(X[i, :]) == y[i] for i in 1:length(y))
-`@printf`("Gaussian NB training accuracy: %.3f\n", acc)
+@printf("Gaussian NB training accuracy: %.3f\n", acc)
 ```
 
 ### Rust
@@ -36100,8 +36092,7 @@ table = table.sort_values("accuracy", ascending=False).reset_index(drop=True)
 print("\nVariant comparison on held-out test set:")
 print(table.to_string(index=False, float_format=lambda v: f"{v:.4f}"))
 
-# 4. Worked example from Section 3.4, recomputed and checked vs scikit-learn. 
-```{python}
+# 4. Worked example from Section 3.4, recomputed and checked vs scikit-learn.
 toy_vocab = ["goal", "chip", "score"]
 toy_vec = CountVectorizer(vocabulary=toy_vocab)
 toy_train = [
@@ -36204,7 +36195,6 @@ function predict(logprior, logtheta, counts)
 end
 
 # Laplace-smoothed parameter estimate for one class.
-```julia
 smooth_theta(Ncj, Nc, d; alpha = 0.1) = (Ncj .+ alpha) ./ (Nc + alpha * d)
 
 # Example: two classes, three-word vocabulary (goal, chip, score).
@@ -36439,7 +36429,6 @@ $$
 
 ```{python}
 # LDA as a reducer, schematic
-```python
 S_W = within_class_scatter(X, y)
 S_B = between_class_scatter(X, y)
 eigvals, eigvecs = generalized_eig(S_B, S_W)   # solve S_B a = lambda S_W a
@@ -36687,7 +36676,6 @@ X = hcat([rand_mvn(m, c, nper) for (m, c) in zip(means, covs)]...)  # 2 x N
 y = vcat([fill(k, nper) for k in 0:2]...)
 
 # Multiclass LDA: solves the same generalized eigenproblem S_B a = lambda S_W a
-```{julia}
 model = fit(MulticlassLDA, X, y; outdim = 2)
 Z = predict(model, X)            # K-1 dimensional Fisher coordinates
 
@@ -37122,7 +37110,6 @@ $k = 1$일 때 경계는 들쭉날쭉하며 개별 노이즈 지점들을 둘러
 
 ```{python}
 # A from-scratch brute-force KNN classifier, no scikit-learn
-```python
 def knn_predict(Xtr, ytr, query, k=3):
     d = np.linalg.norm(Xtr - query, axis=1)
     nn = np.argsort(d)[:k]
@@ -37505,7 +37492,6 @@ fig2.tight_layout()
 print(f"\nEmpirical optimal bandwidth on fine grid: h = {h_opt:.3f}")
 
 # ---- 수치 검증: 상수 기저(차수 0) == Nadaraya-Watson 평균 ----
-```python
 h_chk = 0.5
 xq_chk = 3.0
 nw = (np.sum(gaussian_kernel(np.abs(x - xq_chk), h_chk) * y)
@@ -37569,7 +37555,7 @@ end
 xs = collect(range(0.05, 5.95, length=300))
 for h in (0.10, 0.30, 0.80, 2.00)
     yhat = lwr(x, y, xs, h)
-    `@printf`("h=%.2f  MSE vs truth = %.4f\n", h, mean((true_f.(xs) .- yhat) .^ 2))
+    @printf("h=%.2f  MSE vs truth = %.4f\n", h, mean((true_f.(xs) .- yhat) .^ 2))
 end
 ```
 
@@ -38314,7 +38300,6 @@ fig.tight_layout()
 plt.show()
 
 # --- Figure 2: decision regions of a fitted classification tree ---
-```python
 clf = DecisionTreeClassifier(max_depth=3, criterion="gini", random_state=0).fit(X, y)
 xx, yy = np.meshgrid(np.linspace(X[:, 0].min() - 0.5, X[:, 0].max() + 0.5, 300),
                      np.linspace(X[:, 1].min() - 0.5, X[:, 1].max() + 0.5, 300))
@@ -51461,7 +51446,7 @@ $\text{FPR}$이 얼마나 떨어져야 하는지 확인하는 것은 가치가 �
 
 ### 5.3 운영에 부합하는 지표 
 
-곡선을 넘어 배포 시에는 일반적으로 경보 예산이 고정된다. 분석가가 하루에 100개의 경보를 검토할 수 있다면 관련 지표는 $k$를 예산으로 설정한 상위 $k$개 점수 중 실제 이상치의 비율인 Precision`@k`이다. 고정된 FPR에서의 재현율과 고정된 경보 수량 내에서 포착된 실제 이상치 수는 모델 품질을 운영자가 소비하는 통화로 변환해 준다.
+곡선을 넘어 배포 시에는 일반적으로 경보 예산이 고정된다. 분석가가 하루에 100개의 경보를 검토할 수 있다면 관련 지표는 $k$를 예산으로 설정한 상위 $k$개 점수 중 실제 이상치의 비율인 Precision@k이다. 고정된 FPR에서의 재현율과 고정된 경보 수량 내에서 포착된 실제 이상치 수는 모델 품질을 운영자가 소비하는 통화로 변환해 준다.
 
 ### 5.4 시계열 및 구간 기반 평가 
 
@@ -55865,17 +55850,17 @@ MRR = (1.000 + 0.333 + 0.500) / 3 = 0.611
 여러 관련 항목에 대한 쿼리를 처리하려면 순위에 맞게 설정된 수량 기반이 필요합니다. 컷오프 $k$의 정밀도는 관련 상위 $k$ 항목의 비율을 계산합니다.
 
 $$
-P`@k` = \frac{1}{k} \sum_{j=1}^{k} \mathrm{rel}(i_j),
+P@k = \frac{1}{k} \sum_{j=1}^{k} \mathrm{rel}(i_j),
 $$
 
-$\mathrm{rel}(i_j) \in \{0,1\}$로. $k$에서의 리콜은 상위 $k$에 나타나는 모든 관련 항목의 비율입니다. $k$의 정밀도는 직관적이고 널리 보고되지만 상위 $k$ 내에서 주문하는 데에는 민감하지 않습니다. 첫 번째 $k$ 항목을 섞으면 $P`@k`$는 변경되지 않습니다. 또한 $k$를 임의로 선택해야 합니다.
+$\mathrm{rel}(i_j) \in \{0,1\}$로. $k$에서의 리콜은 상위 $k$에 나타나는 모든 관련 항목의 비율입니다. $k$의 정밀도는 직관적이고 널리 보고되지만 상위 $k$ 내에서 주문하는 데에는 민감하지 않습니다. 첫 번째 $k$ 항목을 섞으면 $P@k$는 변경되지 않습니다. 또한 $k$를 임의로 선택해야 합니다.
 
 ### 3.2 평균 정밀도 
 
 평균 정밀도(AP)는 관련 항목이 발생하는 각 순위에서 계산된 정밀도를 평균화하여 $k$에서 정밀도의 순서 둔감성을 복구합니다. 후보 풀에 $k$ 관련 항목이 포함된 단일 쿼리의 경우
 
 $$
-\mathrm{AP} = \frac{1}{R} \sum_{k=1}^{n} P`@k` \cdot \mathrm{rel}(i_k),
+\mathrm{AP} = \frac{1}{R} \sum_{k=1}^{n} P@k \cdot \mathrm{rel}(i_k),
 $$
 
 여기서 표시기 $\mathrm{rel}(i_k)$는 관련 항목을 보유한 위치만 기여하도록 보장합니다. 각 관련 항목은 자체 위치까지 목록의 정확성에 기여합니다. 관련 항목이 상위에 빽빽하게 들어차 있을수록 정밀도가 높기 때문에 AP는 프론트 로드 관련성 순위를 보상합니다.
@@ -55917,23 +55902,23 @@ MAP는 고전적인 정보 검색 평가의 표준 단일 숫자 요약이며 �
 컷오프 $k$에서 할인된 누적 이득은 다음을 결합합니다.
 
 $$
-\mathrm{DCG}`@k` = \sum_{j=1}^{k} \frac{2^{\mathrm{rel}(i_j)} - 1}{\log_2(j + 1)}.
+\mathrm{DCG}@k = \sum_{j=1}^{k} \frac{2^{\mathrm{rel}(i_j)} - 1}{\log_2(j + 1)}.
 $$
 
 로그 할인은 MRR의 상호 할인보다 더 완만하게 떨어지며, 이는 사용자가 아래로 스캔할 때 인내심이 줄어들지만 0이 아니라는 가정을 인코딩합니다.
 
 ### 4.2 정규화 
 
-관련성이 높은 항목이 많은 쿼리는 적은 항목이 있는 쿼리보다 더 많은 이득을 축적할 수 있기 때문에 원시 DCG는 쿼리 간에 비교할 수 없습니다. 정규화를 위해 모든 항목을 관련성 등급의 내림차순으로 정렬하여 얻은 가장 높은 순위의 DCG인 $\mathrm{IDCG}`@k`$로 표시되는 이상적인 DCG로 나눕니다. 정규화된 측정항목은 다음과 같습니다.
+관련성이 높은 항목이 많은 쿼리는 적은 항목이 있는 쿼리보다 더 많은 이득을 축적할 수 있기 때문에 원시 DCG는 쿼리 간에 비교할 수 없습니다. 정규화를 위해 모든 항목을 관련성 등급의 내림차순으로 정렬하여 얻은 가장 높은 순위의 DCG인 $\mathrm{IDCG}@k$로 표시되는 이상적인 DCG로 나눕니다. 정규화된 측정항목은 다음과 같습니다.
 
 $$
-\mathrm{NDCG}`@k` = \frac{\mathrm{DCG}`@k`}{\mathrm{IDCG}`@k`}.
+\mathrm{NDCG}@k = \frac{\mathrm{DCG}@k}{\mathrm{IDCG}@k}.
 $$
 
 NDCG 범위는 $0$부터 $1$까지입니다. 여기서 $1$는 시스템이 $0$ 위치까지 이상적으로 정렬된 목록을 생성했음을 의미합니다. 쿼리에 대한 평균을 구하면 보고된 값이 산출됩니다.
 
 $$
-\overline{\mathrm{NDCG}}`@k` = \frac{1}{|Q|} \sum_{q \in Q} \mathrm{NDCG}_q`@k.`
+\overline{\mathrm{NDCG}}@k = \frac{1}{|Q|} \sum_{q \in Q} \mathrm{NDCG}_q@k.
 $$
 
 ### 4.3 실제 사례 
@@ -56112,11 +56097,11 @@ $F_1$($\beta = 1$) 밸런스 케이스를 사용합니다. 조화 평균은 의�
 세트 기반 메트릭은 순서를 무시합니다. 이는 위치가 엄청나게 중요한 검색에 대한 잘못된 추상화입니다. 순위 인식을 향한 첫 번째 단계는 순위 목록의 접두사만 평가하는 것입니다. 검색된 최상위 $k$ 문서를 $A_k = \langle d_1, \ldots, d_k \rangle$로 설정하고 $\mathrm{rel}(d_i) \in \{0, 1\}$를 순위 $k$에 있는 문서의 이진 관련성으로 설정합니다. 그 다음에
 
 $$
-P`@k` = \frac{1}{k} \sum_{i=1}^{k} \mathrm{rel}(d_i), \qquad
-R`@k` = \frac{1}{|R_q|} \sum_{i=1}^{k} \mathrm{rel}(d_i).
+P@k = \frac{1}{k} \sum_{i=1}^{k} \mathrm{rel}(d_i), \qquad
+R@k = \frac{1}{|R_q|} \sum_{i=1}^{k} \mathrm{rel}(d_i).
 $$
 
-$P`@k`$는 관련 상위 $k$ 결과의 비율입니다. $R`@k`$는 상위 $k$ 내에 나타나는 모든 관련 문서의 비율입니다. $k$의 선택은 사용자 행동에 대한 가설을 인코딩합니다. 10개의 파란색 링크를 표시하는 웹 검색 인터페이스의 경우 $P`@10`$가 자연스럽습니다. "행운"을 느끼거나 하나의 답변을 반환하는 음성 어시스턴트의 경우 $P`@1`$가 중요합니다. 다운스트림 reranker에 공급하는 첫 번째 단계 검색기의 경우 $R`@100`$ 또는 $P`@k`$가 관심 수량입니다. 왜냐하면 reranker는 검색기가 표면에 표시하는 항목만 재정렬할 수 있기 때문입니다.
+$P@k$는 관련 상위 $k$ 결과의 비율입니다. $R@k$는 상위 $k$ 내에 나타나는 모든 관련 문서의 비율입니다. $k$의 선택은 사용자 행동에 대한 가설을 인코딩합니다. 10개의 파란색 링크를 표시하는 웹 검색 인터페이스의 경우 $P@10$가 자연스럽습니다. "행운"을 느끼거나 하나의 답변을 반환하는 음성 어시스턴트의 경우 $P@1$가 중요합니다. 다운스트림 reranker에 공급하는 첫 번째 단계 검색기의 경우 $R@100$ 또는 $P@k$가 관심 수량입니다. 왜냐하면 reranker는 검색기가 표면에 표시하는 항목만 재정렬할 수 있기 때문입니다.
 
 ```{text}
 ranks:    1   2   3   4   5
@@ -56125,7 +56110,7 @@ P@5 = (1+0+1+1+0)/5 = 0.60
 R@5 = 3 / |R_q|     (e.g. 3/4 = 0.75 if four documents are relevant)
 ```
 
-비대칭성에 주목하세요. $P`@k`$는 분모에 $k$를 사용하므로 관련 문서의 수에 관계없이 $[0,1]$에 잘 정의되고 제한됩니다. $R`@k`$ 길이가 $k$인 접두사는 $k$ 관련 문서보다 더 많이 복구할 수 없으므로 $|R_q| > k$일 때 $1$ 아래로 제한될 수 있습니다. 미묘한 변형인 $R\text{-precision}$는 각 쿼리에 대해 $P`@k`$를 설정합니다. 이때 정밀도와 재현율이 일치하여 쿼리당 단일 자체 정규화 숫자를 제공합니다.
+비대칭성에 주목하세요. $P@k$는 분모에 $k$를 사용하므로 관련 문서의 수에 관계없이 $[0,1]$에 잘 정의되고 제한됩니다. $R@k$ 길이가 $k$인 접두사는 $k$ 관련 문서보다 더 많이 복구할 수 없으므로 $|R_q| > k$일 때 $1$ 아래로 제한될 수 있습니다. 미묘한 변형인 $R\text{-precision}$는 각 쿼리에 대해 $P@k$를 설정합니다. 이때 정밀도와 재현율이 일치하여 쿼리당 단일 자체 정규화 숫자를 제공합니다.
 
 ## 4. 검색을 위한 정밀 리콜 뷰 
 
@@ -56146,15 +56131,15 @@ $$
 정밀 재현율 곡선은 유익하지만 단일 숫자로는 다루기 어렵습니다. 평균 정밀도(AP)는 관련 문서가 나타나는 순위에서 측정된 정밀도 값을 평균하여 쿼리당 하나의 스칼라로 축소합니다.
 
 $$
-\mathrm{AP}(q) = \frac{1}{|R_q|} \sum_{i=1}^{n} P`@i` \cdot \mathrm{rel}(d_i).
+\mathrm{AP}(q) = \frac{1}{|R_q|} \sum_{i=1}^{n} P@i \cdot \mathrm{rel}(d_i).
 $$
 
-각 관련 문서는 해당 순위로 끝나는 접두사의 정확성에 기여합니다. $P`@i`$는 관련 문서가 상단 근처에 클러스터될 때 크기 때문에 AP는 관련 자료의 순위를 일찍 매기는 시스템을 보상합니다. 기하학적으로 AP는 (보간되지 않은) 정밀도 재현율 곡선 아래의 영역을 근사화합니다.
+각 관련 문서는 해당 순위로 끝나는 접두사의 정확성에 기여합니다. $P@i$는 관련 문서가 상단 근처에 클러스터될 때 크기 때문에 AP는 관련 자료의 순위를 일찍 매기는 시스템을 보상합니다. 기하학적으로 AP는 (보간되지 않은) 정밀도 재현율 곡선 아래의 영역을 근사화합니다.
 
 작업된 예입니다. $|R_q| = 3$ 및 관련 문서가 $1$, $3$ 및 $|R_q| = 3$ 순위에 표시된다고 가정합니다.
 
 $$
-P`@1` = \tfrac{1}{1} = 1.00, \quad P`@3` = \tfrac{2}{3} \approx 0.667, \quad P`@6` = \tfrac{3}{6} = 0.500,
+P@1 = \tfrac{1}{1} = 1.00, \quad P`@3` = \tfrac{2}{3} \approx 0.667, \quad P`@6` = \tfrac{3}{6} = 0.500,
 $$
 $$
 \mathrm{AP} = \frac{1.00 + 0.667 + 0.500}{3} \approx 0.722.
@@ -56177,15 +56162,15 @@ NDCG는 등급별 관련성을 직접 다루며 순위 지정 및 신경 검색�
 $\mathrm{rel}_i$를 순위 $i$에 있는 문서의 등급별 관련성으로 설정합니다. 컷오프 $\mathrm{rel}_i$에서 할인된 누적 이득은 다음과 같습니다.
 
 $$
-\mathrm{DCG}`@k` = \sum_{i=1}^{k} \frac{2^{\mathrm{rel}_i} - 1}{\log_2(i + 1)}.
+\mathrm{DCG}@k = \sum_{i=1}^{k} \frac{2^{\mathrm{rel}_i} - 1}{\log_2(i + 1)}.
 $$
 
 분자 $2^{\mathrm{rel}_i} - 1$는 단순히 수용 가능한 문서에 비해 관련성이 높은 문서의 가치를 급격히 증폭시키는 지수적 이득입니다. 이전 선형 변형은 $\mathrm{rel}_i$를 직접 사용합니다. 분모 $\log_2(i + 1)$는 $1$ 순위의 $1$와 동일하고 이후 천천히 증가하는 할인이므로 목록에서 늦게 발생한 이익은 감쇄됩니다.
 
-DCG는 쿼리에 포함된 관련 문서의 수와 해당 문서의 관련 정도가 다르기 때문에 쿼리 간에 비교할 수 없습니다. 5개의 완벽한 문서가 포함된 쿼리는 시스템 품질에 관계없이 하나의 한계 문서가 포함된 쿼리보다 훨씬 더 많은 DCG를 축적할 수 있습니다. 정규화하면 이 문제가 해결됩니다. 이상적인 DCG인 $\mathrm{IDCG}`@k`$를 모든 판단된 문서를 관련성이 높은 순서대로 정렬하여 얻은 가장 높은 순위의 DCG로 설정합니다. 그 다음에
+DCG는 쿼리에 포함된 관련 문서의 수와 해당 문서의 관련 정도가 다르기 때문에 쿼리 간에 비교할 수 없습니다. 5개의 완벽한 문서가 포함된 쿼리는 시스템 품질에 관계없이 하나의 한계 문서가 포함된 쿼리보다 훨씬 더 많은 DCG를 축적할 수 있습니다. 정규화하면 이 문제가 해결됩니다. 이상적인 DCG인 $\mathrm{IDCG}@k$를 모든 판단된 문서를 관련성이 높은 순서대로 정렬하여 얻은 가장 높은 순위의 DCG로 설정합니다. 그 다음에
 
 $$
-\mathrm{NDCG}`@k` = \frac{\mathrm{DCG}`@k`}{\mathrm{IDCG}`@k`}.
+\mathrm{NDCG}@k = \frac{\mathrm{DCG}@k}{\mathrm{IDCG}@k}.
 $$
 
 NDCG는 $[0, 1]$에 있으며 이상적인 순위는 $1$와 동일하며 시스템을 요약하기 위해 쿼리에 대한 평균을 구합니다. 분자와 분모는 모두 동일한 컷오프 $k$에서 계산되므로 NDCG@$k$는 시스템의 최고 $k$가 달성 가능한 최상의 최고 $k$에 얼마나 가까운지를 측정합니다.
@@ -56213,7 +56198,7 @@ $$
 
 MRR은 사용자가 하나의 정답을 원하고 그것이 얼마나 빨리 나타나는지에만 관심을 갖는 알려진 항목 검색 및 질문 답변에 적합한 측정항목입니다. 첫 번째 관련 히트 이후의 모든 것을 무시합니다. 이는 단일 답변 작업에 적합하고 여러 관련 문서의 적용 범위가 중요한 경우에는 부적절합니다.
 
-유용한 정신 지도: $P`@k`$ 및 $P`@k`$를 사용하여 이해관계자에게 작동 지점을 전달합니다. 관련성이 이진이고 전체 순위 품질이 중요한 경우 MAP를 사용합니다. 관련성이 등급화될 때 NDCG를 사용합니다. 하나의 정답이 목표인 경우 MRR을 사용하세요.
+유용한 정신 지도: $P@k$ 및 $P@k$를 사용하여 이해관계자에게 작동 지점을 전달합니다. 관련성이 이진이고 전체 순위 품질이 중요한 경우 MAP를 사용합니다. 관련성이 등급화될 때 NDCG를 사용합니다. 하나의 정답이 목표인 경우 MRR을 사용하세요.
 
 ## 8. 참조 구현 
 
@@ -56221,10 +56206,10 @@ MRR은 사용자가 하나의 정답을 원하고 그것이 얼마나 빨리 나
 
 몇 가지 디자인 선택은 명확하게 할 가치가 있습니다. 왜냐하면 두 가지 선의의 구현이 자동으로 동의하지 않는 부분이기 때문입니다.
 
-- **컷오프 클램핑.** $k$가 목록 길이를 초과하면 $P`@k`$는 $k$ 대신 사용 가능한 길이를 분모로 사용합니다. 이는 $P`@k` \in [0, 1]$를 유지하고 "우리가 실제로 반환한 문서에 대한 정밀도"라는 자연스러운 읽기와 일치합니다.
-- **리콜의 분모.** $R`@k`$는 'num_relevant'로 별도로 제공되는 $|R_q|$로 나눕니다. 관련 문서가 반환된 접두사를 넘어 존재할 수 있으며 여전히 리콜에 계산되어야 하기 때문입니다. 구현에서는 실제로 존재하는 관련 라벨의 수보다 작은 'num_relevant'를 거부합니다. 그렇지 않으면 $1$ 이상의 리콜이 생성됩니다.
+- **컷오프 클램핑.** $k$가 목록 길이를 초과하면 $P@k$는 $k$ 대신 사용 가능한 길이를 분모로 사용합니다. 이는 $P@k \in [0, 1]$를 유지하고 "우리가 실제로 반환한 문서에 대한 정밀도"라는 자연스러운 읽기와 일치합니다.
+- **리콜의 분모.** $R@k$는 'num_relevant'로 별도로 제공되는 $|R_q|$로 나눕니다. 관련 문서가 반환된 접두사를 넘어 존재할 수 있으며 여전히 리콜에 계산되어야 하기 때문입니다. 구현에서는 실제로 존재하는 관련 라벨의 수보다 작은 'num_relevant'를 거부합니다. 그렇지 않으면 $1$ 이상의 리콜이 생성됩니다.
 - **AP 및 누락된 리콜.** 평균 정밀도는 적중 시 접두사 정밀도의 합을 $|R_q|$로 나누므로 검색되지 않은 관련 문서는 분모를 계속 부풀리는 동안 분자에 아무것도 기여하지 않습니다. 이진 순위 $\langle 1,0,1,1,0,1\rangle$ 및 $k$를 사용하면$$
-  \mathrm{AP} = \frac{P`@1` + P`@3` + P`@4` + P`@6`}{5} = \frac{1 + \tfrac{2}{3} + \tfrac{3}{4} + \tfrac{4}{6}}{5} \approx 0.6167,
+  \mathrm{AP} = \frac{P@1 + P`@3` + P`@4` + P`@6`}{5} = \frac{1 + \tfrac{2}{3} + \tfrac{3}{4} + \tfrac{4}{6}}{5} \approx 0.6167,
   $$$0.7708$보다 낮으면 제수가 발견된 4개의 안타인 경우 점수를 얻게 되며, 이는 정확히 리콜 페널티입니다.
 - **NDCG 정규화.** *판단된 풀*을 내림차순으로 정렬하여 이상적인 DCG를 계산합니다. 반환된 목록 외에 관련 문서가 있는 경우 해당 풀을 'ideal_grades'로 명시적으로 전달하여 분모에 반환된 성적이 아닌 실제 최고 순위를 반영하도록 합니다.
 
@@ -56329,7 +56314,7 @@ fn main() {
 
 ## 10. 요약 
 
-검색 평가는 집합 기반 정밀도 및 재현율에서 순위 인식 컷오프 메트릭 $P`@k`$ 및 $P`@k`$를 통해 정밀도 재현율 곡선으로 이동하고 마지막으로 이진 관련성을 위한 스칼라 요약 MAP 및 등급 관련성을 위한 NDCG로 이동하며 MRR은 단일 답변 작업을 제공합니다. 이러한 오프라인 지표는 빠른 반복을 위해 필수 불가결하지만 가정된 관련성 모델과 불완전한 판단에 의존합니다. A/B 테스트 및 인터리빙을 통한 온라인 평가는 사용자가 실제로 수행하는 작업을 측정하고 노이즈, 위치 편향 및 트래픽 요구 사항을 희생하면서 인과적인 결론을 지원합니다. 성숙한 시스템은 모델 공간을 효율적으로 검색하기 위한 오프라인 측정과 이러한 이득이 실제인지 확인하기 위한 온라인 실험을 모두 사용합니다.
+검색 평가는 집합 기반 정밀도 및 재현율에서 순위 인식 컷오프 메트릭 $P@k$ 및 $P@k$를 통해 정밀도 재현율 곡선으로 이동하고 마지막으로 이진 관련성을 위한 스칼라 요약 MAP 및 등급 관련성을 위한 NDCG로 이동하며 MRR은 단일 답변 작업을 제공합니다. 이러한 오프라인 지표는 빠른 반복을 위해 필수 불가결하지만 가정된 관련성 모델과 불완전한 판단에 의존합니다. A/B 테스트 및 인터리빙을 통한 온라인 평가는 사용자가 실제로 수행하는 작업을 측정하고 노이즈, 위치 편향 및 트래픽 요구 사항을 희생하면서 인과적인 결론을 지원합니다. 성숙한 시스템은 모델 공간을 효율적으로 검색하기 위한 오프라인 측정과 이러한 이득이 실제인지 확인하기 위한 온라인 실험을 모두 사용합니다.
 
 ## 참고자료
 
@@ -60067,6 +60052,7 @@ for name, hidden in configs.items():
     m.fit(Xc, yc)
     n_params = sum(c.size for c in m.coefs_)
     print(f"{name}: weight params = {n_params}, train acc = {m.score(Xc, yc):.3f}")
+```
 
 이러한 관점에서 다층 퍼셉트론은 누적된 아핀 맵, 인터리브된 비선형성, 학습된 숨겨진 표현, 구성으로서의 순방향 전달, 해당 구성이 할당되는 방식을 제어하는 ​​깊이 대 너비 장력 등 딥 러닝의 모든 필수 아이디어를 이미 표시하는 최소 아키텍처입니다.
 
@@ -63119,7 +63105,7 @@ y = Float64.(ytrue)
 sigmoid(z) = 1 ./ (1 .+ exp.(-z))
 function loss(w, b)
     p = sigmoid(X * w .+ b)
-    -mean(`@.` y * log(p + 1e-9) + (1 - y) * log(1 - p + 1e-9)) +
+    -mean(@. y * log(p + 1e-9) + (1 - y) * log(1 - p + 1e-9)) +
         1e-3 * sum(abs2, w)
 end
 
@@ -67928,7 +67914,7 @@ println("channel sizes: ", sizes)
 x0 = [1.0, 0.6, -0.3, 0.9]
 out, sizes_trace = dense_block_forward(x0, 3, 3, 2)
 println("final concatenated features: ", round.(out; digits=4))
-`@assert` sizes_trace == sizes
+@assert sizes_trace == sizes
 
 dense_params = dense_block_param_count(16, 12, 8, 4)
 plain_params = plain_block_param_count(16, 16 + 12 * 8, 8)
@@ -68581,7 +68567,7 @@ TensorFlow 2.x에서는 즉시 실행을 기본값으로 설정했습니다. 이
 ```{python}
 import tensorflow as tf
 
-`@tf.function`
+@tf.function
 def train_step(x, y):
     with tf.GradientTape() as tape:
         preds = model(x, training=True)
@@ -68636,7 +68622,7 @@ $n$ 큰(수백만 개의 매개변수) 스칼라 손실 $f: \mathbb{R}^n \to \ma
 `jax.jit` 변환은 함수를 jaxpr이라는 중간 표현으로 추적한 다음 XLA에 전달하여 통합되고 최적화된 커널로 컴파일합니다.
 
 ```{python}
-`@jax.jit`
+@jax.jit
 def update(params, x, y):
     grads = jax.grad(loss)(params, x, y)
     return params - 0.01 * grads
@@ -68677,7 +68663,7 @@ flowchart TD
 `jax.pmap` 변환은 여러 장치에 걸쳐 계산을 복제하고 이를 단일 프로그램 다중 데이터 방식으로 실행하여 장치 간 축소를 위해 `jax.lax.psum`과 같은 집합적 작업을 삽입합니다. 이는 GPU 또는 TPU 코어 전체의 데이터 병렬성에 자연스럽게 매핑됩니다.
 
 ```{python}
-`@jax.pmap`
+@jax.pmap
 def parallel_step(params, batch):
     grads = jax.grad(loss)(params, batch)
     grads = jax.lax.pmean(grads, axis_name="batch")
@@ -69796,7 +69782,7 @@ GPT-3의 ICL 기능을 직접 기반으로 한 결과적인 발견은 Wei 등이
 from dataclasses import dataclass
 
 
-`@dataclass`
+@dataclass
 class Example:
     question: str
     reasoning: str
@@ -71971,7 +71957,7 @@ class LinkPredictionEvaluator:
         negative_edges : np.ndarray
             Non-edges as negative samples, shape (n_neg, 2)
         k_values : List[int]
-            Cutoffs for Hits`@k` and Precision`@k` metrics
+            Cutoffs for Hits@k and Precision@k metrics
         
         Returns
         -------
@@ -72010,13 +71996,13 @@ class LinkPredictionEvaluator:
             'n_negative': len(neg_scores)
         }
         
-        # Hits`@k` and Precision`@k` at various cutoffs
+        # Hits@k and Precision@k at various cutoffs
         for k in k_values:
             if k <= len(sorted_labels):
                 top_k_labels = sorted_labels[:k]
-                # Hits`@k`: what fraction of all positives appear in top k?
+                # Hits@k: what fraction of all positives appear in top k?
                 metrics[f'hits@{k}'] = np.sum(top_k_labels) / len(pos_scores)
-                # Precision`@k`: what fraction of top k are positives?
+                # Precision@k: what fraction of top k are positives?
                 metrics[f'precision@{k}'] = np.sum(top_k_labels) / k
         
         # Mean Reciprocal Rank
@@ -72157,9 +72143,9 @@ for scoring in ['cosine', 'dot', 'euclidean']:
     print(f"  AUC-ROC:           {metrics['auc_roc']:.4f}")
     print(f"  Average Precision: {metrics['average_precision']:.4f}")
     print(f"  MRR:               {metrics['mrr']:.4f}")
-    print(f"  Hits`@10`:           {metrics['hits`@10`']:.4f}")
-    print(f"  Hits`@50`:           {metrics['hits`@50`']:.4f}")
-    print(f"  Precision`@10`:      {metrics['precision`@10`']:.4f}")
+    print(f"  Hits@10:           {metrics['hits@10']:.4f}")
+    print(f"  Hits@50:           {metrics['hits@50']:.4f}")
+    print(f"  Precision@10:      {metrics['precision@10']:.4f}")
 ```
 
 ### Interpreting the Results
@@ -72259,11 +72245,11 @@ def evaluate_link_prediction_sklearn(embeddings: np.ndarray,
         'average_precision': average_precision_score(all_labels, all_scores),
     }
     
-    # Manual ranking metrics (sklearn doesn't have MRR/Hits`@k` built-in)
+    # Manual ranking metrics (sklearn doesn't have MRR/Hits@k built-in)
     sorted_indices = np.argsort(-all_scores)
     sorted_labels = all_labels[sorted_indices]
     
-    # Hits`@k`
+    # Hits@k
     for k in [10, 50, 100]:
         if k <= len(sorted_labels):
             metrics[f'hits@{k}'] = np.sum(sorted_labels[:k]) / len(pos_scores)
@@ -72299,7 +72285,7 @@ def evaluate_link_prediction_torchmetrics(embeddings: np.ndarray,
     Returns
     -------
     dict
-        Evaluation metrics including MRR and Hits`@k` from torchmetrics
+        Evaluation metrics including MRR and Hits@k from torchmetrics
     """
     if not TORCHMETRICS_AVAILABLE:
         raise ImportError("torchmetrics required. Install with: pip install torchmetrics")
@@ -72345,9 +72331,9 @@ def evaluate_link_prediction_torchmetrics(embeddings: np.ndarray,
         'auc_roc': roc_auc_score(all_labels.numpy(), all_scores.numpy()),
         'average_precision': average_precision_score(all_labels.numpy(), all_scores.numpy()),
         'mrr': mrr_metric(all_scores, all_labels.bool(), indexes=indexes).item(),
-        'hits`@10`': hits_10(all_scores, all_labels.bool(), indexes=indexes).item(),
-        'hits`@50`': hits_50(all_scores, all_labels.bool(), indexes=indexes).item(),
-        'hits`@100`': hits_100(all_scores, all_labels.bool(), indexes=indexes).item(),
+        'hits@10': hits_10(all_scores, all_labels.bool(), indexes=indexes).item(),
+        'hits@50': hits_50(all_scores, all_labels.bool(), indexes=indexes).item(),
+        'hits@100': hits_100(all_scores, all_labels.bool(), indexes=indexes).item(),
     }
     
     return metrics
@@ -72365,7 +72351,7 @@ for scoring in ['cosine', 'dot', 'euclidean']:
     print(f"  AUC-ROC: {metrics['auc_roc']:.4f}")
     print(f"  AP:      {metrics['average_precision']:.4f}")
     print(f"  MRR:     {metrics['mrr']:.4f}")
-    print(f"  Hits`@10`: {metrics['hits`@10`']:.4f}")
+    print(f"  Hits@10: {metrics['hits@10']:.4f}")
 
 
 if TORCHMETRICS_AVAILABLE:
@@ -72380,7 +72366,7 @@ if TORCHMETRICS_AVAILABLE:
         print(f"  AUC-ROC: {metrics['auc_roc']:.4f}")
         print(f"  AP:      {metrics['average_precision']:.4f}")
         print(f"  MRR:     {metrics['mrr']:.4f}")
-        print(f"  Hits`@10`: {metrics['hits`@10`']:.4f}")
+        print(f"  Hits@10: {metrics['hits@10']:.4f}")
 ```
 
 ### Using PyKEEN for Knowledge Graph Link Prediction
@@ -72406,9 +72392,9 @@ result = pipeline(
 
 # Results include all standard metrics
 print(f"MRR:     {result.metric_results.get_metric('mrr'):.4f}")
-print(f"Hits`@1`:  {result.metric_results.get_metric('hits`@1`'):.4f}")
-print(f"Hits`@3`:  {result.metric_results.get_metric('hits`@3`'):.4f}")
-print(f"Hits`@10`: {result.metric_results.get_metric('hits`@10`'):.4f}")
+print(f"Hits@1:  {result.metric_results.get_metric('hits@1'):.4f}")
+print(f"Hits@3:  {result.metric_results.get_metric('hits@3'):.4f}")
+print(f"Hits@10: {result.metric_results.get_metric('hits@10'):.4f}")
 ```
 
 ### Package Comparison
@@ -75490,7 +75476,7 @@ print(f"Alerts: {summary['alerts']}")
 #| label: monitoring-dashboard
 #| code-summary: "Monitoring dashboard metrics"
 
-`@dataclass`
+@dataclass
 class MonitoringMetrics:
     """Container for real-time monitoring metrics."""
     timestamp: datetime
@@ -76738,7 +76724,7 @@ faq_corpus = [
     ("What payment methods are accepted?", "We accept Visa, Mastercard, PayPal, and bank transfers."),
     ("How can I track my order?", "Log in and visit Orders > Track Shipment for real-time updates."),
     ("What is your return policy?", "Items can be returned within 30 days of purchase in original condition."),
-    ("How do I contact customer support?", "Email support`@example.com` or call 1-800-555-0100 between 9am and 5pm EST."),
+    ("How do I contact customer support?", "Email support@example.com or call 1-800-555-0100 between 9am and 5pm EST."),
     ("Can I change my shipping address after ordering?", "Address changes are possible within 2 hours of placing the order via the Orders page."),
     ("Do you offer international shipping?", "We ship to over 80 countries; duties and taxes are calculated at checkout."),
     ("What are your business hours?", "Our offices are open Monday through Friday, 9am to 5pm Eastern Time."),
@@ -76748,7 +76734,7 @@ faq_corpus = [
     ("Can I use multiple discount codes?", "Only one discount code can be applied per order."),
     ("How do I update my billing information?", "Go to Account > Billing and click Update Payment Method."),
     ("What file formats can I upload?", "We support PDF, DOCX, XLSX, CSV, PNG, and JPEG up to 50MB per file."),
-    ("How do I delete my account?", "Contact support`@example.com` with subject line 'Account Deletion Request'."),
+    ("How do I delete my account?", "Contact support@example.com with subject line 'Account Deletion Request'."),
 ]
 
 questions  = [q for q, _ in faq_corpus]
@@ -76929,7 +76915,7 @@ import json
 import hashlib
 
 
-`@dataclass`
+@dataclass
 class Entity:
     """Represents an extracted entity."""
     name: str
@@ -76948,7 +76934,7 @@ class Entity:
                 self.entity_type.lower() == other.entity_type.lower())
 
 
-`@dataclass`
+@dataclass
 class Relation:
     """Represents an extracted relation between entities."""
     head: Entity
@@ -76968,7 +76954,7 @@ class Relation:
                 self.tail == other.tail)
 
 
-`@dataclass`
+@dataclass
 class ExtractionSchema:
     """Defines the schema for knowledge extraction."""
     entity_types: list[str]
@@ -77080,7 +77066,7 @@ import numpy as np
 from collections import defaultdict
 
 
-`@dataclass`
+@dataclass
 class EntityMention:
     """A mention of an entity in text."""
     text: str
@@ -77091,7 +77077,7 @@ class EntityMention:
     embedding: np.ndarray | None = None
 
 
-`@dataclass` 
+@dataclass 
 class CanonicalEntity:
     """A canonical entity in the knowledge base."""
     entity_id: str
@@ -77238,7 +77224,7 @@ import hashlib
 from collections import defaultdict
 
 
-`@dataclass`
+@dataclass
 class KnowledgeGraph:
     """A knowledge graph with entities and relations."""
     entities: dict[str, Entity] = field(default_factory=dict)
@@ -77447,7 +77433,7 @@ from dataclasses import dataclass
 import heapq
 
 
-`@dataclass`
+@dataclass
 class RetrievedEntity:
     """An entity retrieved for a query."""
     entity_id: str
@@ -77646,7 +77632,7 @@ from typing import Callable
 import numpy as np
 
 
-`@dataclass`
+@dataclass
 class TraversalPath:
     """A path through the knowledge graph."""
     nodes: list[str]  # Entity IDs
@@ -77656,11 +77642,11 @@ class TraversalPath:
     def __len__(self):
         return len(self.nodes)
     
-    `@property`
+    @property
     def head(self) -> str:
         return self.nodes[0]
     
-    `@property`
+    @property
     def tail(self) -> str:
         return self.nodes[-1]
 
@@ -78279,7 +78265,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
-`@dataclass`
+@dataclass
 class GraphContext:
     """Structured context extracted from knowledge graph."""
     community_summaries: list[str] = field(default_factory=list)
@@ -78512,7 +78498,7 @@ from typing import Any
 import json
 
 
-`@dataclass`
+@dataclass
 class DecomposedQuery:
     """A query decomposed into sub-queries."""
     original_query: str
@@ -78672,7 +78658,7 @@ from abc import ABC, abstractmethod
 import json
 
 
-`@dataclass`
+@dataclass
 class Document:
     """A document to be indexed."""
     document_id: str
@@ -78681,7 +78667,7 @@ class Document:
     timestamp: datetime = field(default_factory=datetime.now)
 
 
-`@dataclass`
+@dataclass
 class IndexingResult:
     """Result of indexing a document."""
     document_id: str
@@ -78695,15 +78681,15 @@ class IndexingResult:
 class DocumentStore(ABC):
     """Abstract document storage."""
     
-    `@abstractmethod`
+    @abstractmethod
     def store(self, document: Document) -> None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def get(self, document_id: str) -> Document | None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def list_ids(self) -> list[str]:
         pass
 
@@ -78711,19 +78697,19 @@ class DocumentStore(ABC):
 class GraphStore(ABC):
     """Abstract graph storage."""
     
-    `@abstractmethod`
+    @abstractmethod
     def add_entity(self, entity: Entity, document_id: str) -> str:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def add_relation(self, relation: Relation) -> None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def get_entity(self, entity_id: str) -> Entity | None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def get_relations(
         self, 
         entity_id: str, 
@@ -78735,7 +78721,7 @@ class GraphStore(ABC):
 class VectorStore(ABC):
     """Abstract vector storage for embeddings."""
     
-    `@abstractmethod`
+    @abstractmethod
     def add(
         self, 
         ids: list[str], 
@@ -78744,7 +78730,7 @@ class VectorStore(ABC):
     ) -> None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def search(
         self, 
         query_embedding: list[float], 
@@ -78873,15 +78859,15 @@ T = TypeVar('T')
 class Cache(ABC, Generic[T]):
     """Abstract cache interface."""
     
-    `@abstractmethod`
+    @abstractmethod
     def get(self, key: str) -> T | None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def set(self, key: str, value: T, ttl_seconds: int | None = None) -> None:
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     def delete(self, key: str) -> None:
         pass
 
@@ -78930,7 +78916,7 @@ class LRUCache(Cache[T]):
                 del self.cache[key]
 
 
-`@dataclass`
+@dataclass
 class CachedQueryResult:
     """Cached result for a query."""
     response: str
@@ -79034,7 +79020,7 @@ import numpy as np
 from collections import defaultdict
 
 
-`@dataclass`
+@dataclass
 class EvaluationExample:
     """A single evaluation example."""
     query: str
@@ -79043,7 +79029,7 @@ class EvaluationExample:
     ground_truth_paths: list[list[str]] | None = None  # Expected reasoning paths
 
 
-`@dataclass`
+@dataclass
 class RetrievalMetrics:
     """Metrics for retrieval evaluation."""
     precision: float
@@ -79053,7 +79039,7 @@ class RetrievalMetrics:
     ndcg: float  # Normalized Discounted Cumulative Gain
 
 
-`@dataclass`
+@dataclass
 class GenerationMetrics:
     """Metrics for generation evaluation."""
     answer_relevance: float  # 0-1 score from LLM judge
@@ -79061,7 +79047,7 @@ class GenerationMetrics:
     completeness: float  # 0-1 score for answer completeness
 
 
-`@dataclass` 
+@dataclass 
 class GraphRAGMetrics:
     """Combined metrics for graph RAG evaluation."""
     retrieval: RetrievalMetrics
@@ -79268,7 +79254,7 @@ import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
 
-`@dataclass`
+@dataclass
 class ServiceConfig:
     """Configuration for graph RAG service."""
     max_concurrent_requests: int = 100
@@ -79356,7 +79342,7 @@ import threading
 from contextlib import contextmanager
 
 
-`@dataclass`
+@dataclass
 class MetricPoint:
     """A single metric observation."""
     name: str
@@ -79417,7 +79403,7 @@ class MetricsCollector:
         label_str = ",".join(f"{k}={v}" for k, v in sorted(labels.items()))
         return f"{name}{{{label_str}}}"
     
-    `@contextmanager`
+    @contextmanager
     def timer(self, name: str, labels: dict[str, str] | None = None):
         """Context manager for timing operations."""
         start = time.time()
@@ -79504,7 +79490,7 @@ from datetime import datetime
 from typing import Any
 
 
-`@dataclass`
+@dataclass
 class TemporalRelation:
     """A relation with temporal scope."""
     head: Entity
@@ -79658,7 +79644,7 @@ from typing import Any
 import numpy as np
 
 
-`@dataclass`
+@dataclass
 class HybridRetrievalResult:
     """Result from hybrid retrieval."""
     entity_id: str
@@ -79921,8 +79907,7 @@ global_answer = asyncio.run(
 
 **스키마 선언.** 추론 시 모델은 사용 가능한 도구를 설명하는 JSON 스키마 개체 목록을 수신합니다. 각 스키마는 함수 이름, 자연어 설명, 인수 이름, 유형, 설명을 설명하는 'parameters' 개체를 지정합니다. 모델은 이러한 스키마를 사용하여 도구를 호출할 시기와 유효한 인수 번들을 구성하는 방법을 결정합니다.
 
-```jso
-n
+```json
 {
   "name": "get_current_weather",
   "description": "Retrieve current weather conditions for a location.",
@@ -80067,8 +80052,7 @@ $$\rho = \mathrm{corr}(E, Y), \qquad \Pr[E = 1,\, Y = 1] = \mathbb{E}[E]\,\mathb
 
 **도구 인터페이스.** 프레임워크는 단일 외부 저장소에 대한 세 가지 원자 작업으로 축소됩니다. 아래 스키마는 인터페이스가 무엇을 표현해야 하는지 보여주기 위해 작성된 섹션 2 스타일의 해당 작업에 대한 설명적 렌더링입니다. 이는 게시된 ACM API의 필사본이 아니며 [@li2026acm]의 필드 이름, 기본값 및 인수 모양이 다릅니다. 세 가지가 원자성 원칙을 충족합니다. 즉, 압축, 제거 및 검색이 분리 가능하므로 실패한 쿼리와 잘못된 압축을 구별할 수 있습니다.
 
-```jso
-n
+```json
 [
   {
     "name": "context_compress",
@@ -80259,7 +80243,7 @@ def tool(schema: dict[str, Any]) -> Callable:
         return fn
     return decorator
 
-`@tool`({
+@tool({
     "name": "calculator",
     "description": "Evaluate a mathematical expression. Returns a float.",
     "parameters": {
@@ -80278,7 +80262,7 @@ def calculator(expression: str) -> float:
     allowed["abs"] = abs
     return float(eval(expression, {"__builtins__": {}}, allowed))
 
-`@tool`({
+@tool({
     "name": "lookup_capital",
     "description": "Return the capital city of a country.",
     "parameters": {
@@ -80559,7 +80543,7 @@ def tool(name: str):
         return fn
     return decorator
 
-`@tool`("search")
+@tool("search")
 def search(query: str, **_) -> str:
     results = {
         "population of France": "67.4 million (2023 estimate)",
@@ -80571,7 +80555,7 @@ def search(query: str, **_) -> str:
             return val
     return f"[mock result for: {query}]"
 
-`@tool`("calculate")
+@tool("calculate")
 def calculate(expression: str, **_) -> str:
     allowed = set("0123456789 +-*/().,")
     sanitized = "".join(c for c in expression if c in allowed)
@@ -80581,7 +80565,7 @@ def calculate(expression: str, **_) -> str:
     except Exception as exc:
         return f"error: {exc}"
 
-`@tool`("summarize")
+@tool("summarize")
 def summarize(text: str, **_) -> str:
     sentences = re.split(r"(?<=[.!?]) +", text.strip())
     return sentences[0] if sentences else text[:80]
@@ -80882,7 +80866,7 @@ Shinnet al. (2023)은 세 가지 벤치마크에서 Reflexion을 평가했습니
 from dataclasses import dataclass, field
 from typing import Optional
 
-`@dataclass`
+@dataclass
 class EpisodicMemory:
     reflections: list[str] = field(default_factory=list)
     max_entries: int = 5
@@ -81744,13 +81728,13 @@ from dataclasses import dataclass, field
 from typing import Callable
 
 
-`@dataclass`
+@dataclass
 class Message:
     role: str
     content: str
 
 
-`@dataclass`
+@dataclass
 class Agent:
     name: str
     system_prompt: str
@@ -81861,7 +81845,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
-`@dataclass`
+@dataclass
 class SharedMessagePool:
     """Central store with typed publish-subscribe routing."""
     _store: list[dict[str, Any]] = field(default_factory=list)
@@ -81984,8 +81968,7 @@ MCP는 데이터 인코딩에 JSON을 사용하는 경량 원격 프로시저 �
 
 **요청**(양방향):
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "id": "string | number",
@@ -81996,8 +81979,7 @@ n
 
 **응답**(양방향):
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "id": "string | number",
@@ -82012,8 +81994,7 @@ n
 
 **알림**(단방향, 응답 없음):
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "method": "string",
@@ -82029,8 +82010,7 @@ MCP는 명시적인 수명주기 관리를 통해 상태 저장 세션 프로토
 
 **1단계: 클라이언트 초기화 요청**
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "id": 1,
@@ -82053,8 +82033,7 @@ n
 
 **2단계: 서버 초기화 응답**
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "id": 1,
@@ -82082,8 +82061,7 @@ n
 
 **3단계: 클라이언트 초기화 알림**
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "method": "notifications/initialized"
@@ -82098,8 +82076,7 @@ MCP 서버는 세 가지 기본 기본 유형을 노출합니다.
 
 **도구**는 LLM이 작업을 수행하거나 정보를 검색하기 위해 호출할 수 있는 실행 가능한 기능을 나타냅니다. 각 도구에는 입력 매개변수를 정의하는 이름, 설명 및 JSON 스키마가 있습니다.
 
-```jso
-n
+```json
 {
   "name": "query_customer_data",
   "description": "Retrieve customer information by ID or email",
@@ -82126,8 +82103,7 @@ n
 
 **리소스**는 LLM 컨텍스트에 포함될 수 있는 구조화된 데이터를 제공합니다. 리소스는 URI로 식별되며 정적이거나 동적으로 생성될 수 있습니다.
 
-```jso
-n
+```json
 {
   "uri": "datacore://schemas/customer",
   "name": "Customer Schema",
@@ -82138,8 +82114,7 @@ n
 
 **프롬프트**는 선택적 인수를 사용하여 재사용 가능한 상호 작용 템플릿을 정의합니다.
 
-```jso
-n
+```json
 {
   "name": "analyze_dataset",
   "description": "Generate analysis prompt for a dataset",
@@ -82164,8 +82139,7 @@ n
 
 **루트**는 클라이언트 파일 시스템에 대한 진입점을 정의하여 서버가 지정된 경계 내에서 파일을 검색하고 액세스할 수 있도록 합니다.
 
-```jso
-n
+```json
 {
   "roots": [
     {
@@ -82178,8 +82152,7 @@ n
 
 **샘플링**을 통해 서버는 클라이언트를 통해 LLM 완료를 요청할 수 있습니다. 이 기능을 사용하면 모델 추론이 필요한 정교한 서버 측 논리가 가능해집니다.
 
-```jso
-n
+```json
 {
   "method": "sampling/createMessage",
   "params": {
@@ -82286,17 +82259,17 @@ class Transport(ABC):
     onerror: Optional[Callable[[Exception], None]] = None
     onmessage: Optional[Callable[[dict], None]] = None
     
-    `@abstractmethod`
+    @abstractmethod
     async def start(self) -> None:
         """Initialize and start the transport."""
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     async def send(self, message: dict) -> None:
         """Send a JSON-RPC message."""
         pass
     
-    `@abstractmethod`
+    @abstractmethod
     async def close(self) -> None:
         """Close the transport connection."""
         pass
@@ -82350,7 +82323,7 @@ mcp = FastMCP(
 )
 
 
-`@mcp.tool`()
+@mcp.tool()
 def list_datasets() -> list[dict[str, Any]]:
     """
     List all available datasets in the DataCore catalog.
@@ -82375,7 +82348,7 @@ def list_datasets() -> list[dict[str, Any]]:
     ]
 
 
-`@mcp.tool`()
+@mcp.tool()
 def query_dataset(
     dataset_name: str,
     sql_query: str,
@@ -82410,7 +82383,7 @@ def query_dataset(
     }
 
 
-`@mcp.resource`("datacore://schemas/{schema_name}")
+@mcp.resource("datacore://schemas/{schema_name}")
 def get_schema(schema_name: str) -> str:
     """
     Retrieve JSON Schema definition for a dataset.
@@ -82429,7 +82402,7 @@ def get_schema(schema_name: str) -> str:
     return json.dumps(schemas.get(schema_name, {}), indent=2)
 
 
-`@mcp.prompt`()
+@mcp.prompt()
 def data_quality_analysis(dataset_name: str) -> str:
     """
     Generate a prompt for comprehensive data quality analysis.
@@ -82489,7 +82462,7 @@ class DataCoreServer:
     def _setup_handlers(self):
         """Register protocol handlers."""
         
-        `@self.server.list_tools`()
+        @self.server.list_tools()
         async def list_tools() -> ListToolsResult:
             return ListToolsResult(tools=[
                 Tool(
@@ -82527,7 +82500,7 @@ class DataCoreServer:
                 )
             ])
         
-        `@self.server.call_tool`()
+        @self.server.call_tool()
         async def call_tool(name: str, arguments: dict) -> CallToolResult:
             if name == "execute_pipeline":
                 result = await self._execute_pipeline(
@@ -82553,7 +82526,7 @@ class DataCoreServer:
             else:
                 raise ValueError(f"Unknown tool: {name}")
         
-        `@self.server.list_resources`()
+        @self.server.list_resources()
         async def list_resources() -> ListResourcesResult:
             return ListResourcesResult(resources=[
                 Resource(
@@ -82564,7 +82537,7 @@ class DataCoreServer:
                 )
             ])
         
-        `@self.server.read_resource`()
+        @self.server.read_resource()
         async def read_resource(uri: str) -> ReadResourceResult:
             if uri == "datacore://pipelines/catalog":
                 catalog = await self._get_pipeline_catalog()
@@ -82617,7 +82590,7 @@ class DataCoreServer:
             }
         ]
     
-    `@asynccontextmanager`
+    @asynccontextmanager
     async def lifespan(self) -> AsyncIterator[None]:
         """Manage server lifecycle resources."""
         # Initialize resources
@@ -82760,7 +82733,7 @@ oauth_config = {
 def require_scope(required_scope: str):
     """Decorator to enforce OAuth scope requirements."""
     def decorator(func):
-        `@wraps`(func)
+        @wraps(func)
         async def wrapper(*args, **kwargs):
             # Context would contain validated token claims
             ctx = kwargs.get('context', {})
@@ -82775,8 +82748,8 @@ def require_scope(required_scope: str):
     return decorator
 
 
-`@mcp.tool`()
-`@require_scope`("datacore:read")
+@mcp.tool()
+@require_scope("datacore:read")
 async def query_dataset(
     dataset_name: str,
     sql_query: str,
@@ -82791,8 +82764,8 @@ async def query_dataset(
     return execute_query(dataset_name, sql_query)
 
 
-`@mcp.tool`()
-`@require_scope`("datacore:write")
+@mcp.tool()
+@require_scope("datacore:write")
 async def execute_pipeline(
     pipeline_name: str,
     parameters: dict,
@@ -82841,7 +82814,7 @@ class QueryInput(BaseModel):
     sql_query: str = Field(..., min_length=1, max_length=10000)
     max_rows: int = Field(default=1000, ge=1, le=10000)
     
-    `@validator`('sql_query')
+    @validator('sql_query')
     def validate_sql(cls, v: str) -> str:
         """Enforce SELECT-only queries with restricted syntax."""
         normalized = ' '.join(v.split()).upper()
@@ -82876,7 +82849,7 @@ class PipelineInput(BaseModel):
     )
     parameters: dict[str, Any] = Field(default_factory=dict)
     
-    `@validator`('parameters')
+    @validator('parameters')
     def sanitize_parameters(cls, v: dict) -> dict:
         """Sanitize parameter values to prevent injection."""
         def sanitize_value(val: Any) -> Any:
@@ -83026,7 +82999,7 @@ class ApprovalLevel(Enum):
     EXPLICIT = "explicit"
 
 
-`@dataclass`
+@dataclass
 class ToolPolicy:
     """Policy defining tool execution requirements."""
     tool_name: str
@@ -83295,7 +83268,7 @@ Automate publication via CI/CD:
 
 Integrating MCP with enterprise data platforms requires careful attention to governance, performance, and security:
 
-```{파이썬}
+```{python}
 """
 enterprise_datacore_server.py
 
@@ -83303,245 +83276,245 @@ Unity 카탈로그 통합을 갖춘 엔터프라이즈급 MCP 서버,
 감사 로깅 및 거버넌스 제어.
 """
 
-mcp.server.fastmcp에서 FastMCP 가져오기
-import Any, Optional을 입력하여
-수입 로깅
-날짜/시간에서 날짜/시간 가져오기
-JSON 가져오기
+from mcp.server.fastmcp import FastMCP
+from typing import Any, Optional
+import logging
+from datetime import datetime
+import json
 
 # 구조화된 로깅 구성
-로깅.기본 구성(
-    레벨=로깅.INFO,
+logging.basicConfig(
+    level=logging.INFO,
     format='{"timestamp": "%(asctime)s", "level": "%(levelname)s", "message": %(message)s}'
 )
-로거 = 로깅.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
-mcp = FastMCP("데이터코어-엔터프라이즈")
+mcp = FastMCP("datacore-enterprise")
 
-클래스 거버넌스컨텍스트:
+class GovernanceContext:
     """거버넌스 및 규정 준수 제어에 대한 컨텍스트입니다."""
     
-    데프 __init__(
-        자기,
-        user_id: 문자열,
-        세션 ID: str,
+    def __init__(
+        self,
+        user_id: str,
+        session_id: str,
         organization_id: str,
-        역할: 목록[str],
-        데이터 분류: 목록[str]
+        roles: list[str],
+        data_classifications: list[str]
     ):
         self.user_id = user_id
-        self.session_id = 세션_id
-        self.organization_id = 조직_id
-        self.roles = 역할
-        self.data_classifications = 데이터_분류
+        self.session_id = session_id
+        self.organization_id = organization_id
+        self.roles = roles
+        self.data_classifications = data_classifications
         self.request_timestamp = datetime.utcnow()
     
-    def can_access_classification(self, 필수: str) -> bool:
-        """사용자가 특정 분류의 데이터에 접근할 수 있는지 확인하세요."""
-        분류_계층 = [
-            "공개",
-            "내부",
-            "기밀",
-            "제한된"
+    def can_access_classification(self, required: str) -> bool:
+        """사용자가 특정 분류의 데이터에 접근할 수 있는지 확인합니다."""
+        classification_hierarchy = [
+            "public",
+            "internal",
+            "confidential",
+            "restricted"
         ]
-        user_max = 최대(
-            (classification_hierarchy.index(c) 
-             self.data_classifications의 c에 대해),
-            기본값=0
+        user_max = max(
+            (classification_hierarchy.index(c)
+             for c in self.data_classifications),
+            default=0
         )
-        필수_수준=분류_계층구조.색인(필수)
-        user_max >= 필수_레벨 반환
+        required_level = classification_hierarchy.index(required)
+        return user_max >= required_level
 
-클래스 DataPlatformConnector:
-    """거버넌스를 갖춘 엔터프라이즈 데이터 플랫폼에 대한 커넥터입니다."""
+class DataPlatformConnector:
+    """거버넌스를 갖춘 엔터프라이즈 데이터 플랫폼 커넥터입니다."""
     
     def __init__(self, config: dict):
-        self.config = 구성
-        self._catalog_client = 없음
-        self._query_engine = 없음
+        self.config = config
+        self._catalog_client = None
+        self._query_engine = None
     
-    비동기 정의 초기화(자기):
+    async def initialize(self):
         """플랫폼 연결을 초기화합니다."""
         # 프로덕션에서는 실제 클라이언트를 초기화합니다.
-        통과
+        pass
     
-    비동기 def 목록_카탈로그(
-        자기,
-        ctx: 거버넌스컨텍스트
-    ) -> 목록[dict]:
+    async def list_catalogs(
+        self,
+        ctx: GovernanceContext
+    ) -> list[dict]:
         """접근 가능한 데이터 카탈로그를 나열합니다."""
         # 사용자 권한을 기준으로 필터링
         all_catalogs = [
             {
-                "이름": "생산",
-                "분류": "기밀",
-                "테이블": 150
+                "name": "production",
+                "classification": "confidential",
+                "tables": 150
             },
             {
-                "이름": "분석",
-                "분류": "내부",
-                "테이블": 45
+                "name": "analytics",
+                "classification": "internal",
+                "tables": 45
             },
             {
-                "이름": "공개_데이터세트",
-                "분류": "공개",
-                "테이블": 12
+                "name": "public_datasets",
+                "classification": "public",
+                "tables": 12
             }
         ]
         
-        반환 [
-            all_catalogs의 고양이를 위한 고양이
+        return [
+            cat for cat in all_catalogs
             if ctx.can_access_classification(cat["classification"])
         ]
     
-    비동기 def 실행_쿼리(
-        자기,
-        ctx: 거버넌스컨텍스트,
-        카탈로그: str,
-        쿼리: str,
-        max_rows: 정수
-    ) -> 받아쓰기:
+    async def execute_query(
+        self,
+        ctx: GovernanceContext,
+        catalog: str,
+        query: str,
+        max_rows: int
+    ) -> dict:
         """거버넌스 제어를 사용하여 쿼리를 실행합니다."""
         # 감사 로그
         logger.info(json.dumps({
-            "이벤트": "쿼리_실행",
+            "event": "query_executed",
             "user_id": ctx.user_id,
             "session_id": ctx.session_id,
-            "조직_ID": ctx.organization_id,
-            "카탈로그": 카탈로그,
-            "query_hash": 해시(쿼리),
-            "타임스탬프": ctx.request_timestamp.isoformat()
+            "organization_id": ctx.organization_id,
+            "catalog": catalog,
+            "query_hash": hash(query),
+            "timestamp": ctx.request_timestamp.isoformat()
         }))
         
         # 프로덕션에서는 실제 엔진에 대해 실행합니다.
-        반환 {
-            "열": ["id", "이름"],
-            "데이터": [["1", "예제"]],
-            "행_개수": 1,
-            "실행_시간_ms": 150
+        return {
+            "columns": ["id", "name"],
+            "data": [["1", "example"]],
+            "row_count": 1,
+            "execution_time_ms": 150
         }
 
 # 글로벌 커넥터 인스턴스
-커넥터 = DataPlatformConnector({})
+connector = DataPlatformConnector({})
 
-`@mcp.tool`()
-비동기 def list_data_catalogs(
-    컨텍스트: 선택사항[dict] = 없음
-) -> 목록[dict]:
+@mcp.tool()
+async def list_data_catalogs(
+    context: Optional[dict] = None
+) -> list[dict]:
     """
     현재 사용자가 액세스할 수 있는 데이터 카탈로그를 나열합니다.
     
     카탈로그 이름, 분류 및 테이블 수를 반환합니다.
     사용자 권한으로 필터링됩니다.
     """
-    gov_ctx = 거버넌스컨텍스트(
+    gov_ctx = GovernanceContext(
         user_id=context.get("user_id", "anonymous"),
-        session_id=context.get("session_id", "알 수 없음"),
+        session_id=context.get("session_id", "unknown"),
         organization_id=context.get("org_id", "default"),
-        역할=context.get("역할", []),
+        roles=context.get("roles", []),
         data_classifications=context.get("data_classifications", ["public"])
     )
     
-    반환 대기 커넥터.list_catalogs(gov_ctx)
+    return await connector.list_catalogs(gov_ctx)
 
-`@mcp.tool`()
-비동기 def query_data_catalog(
-    카탈로그 이름: str,
-    sql_query: 문자열,
-    max_rows: 정수 = 1000,
-    컨텍스트: 선택사항[dict] = 없음
-) -> 받아쓰기:
+@mcp.tool()
+async def query_data_catalog(
+    catalog_name: str,
+    sql_query: str,
+    max_rows: int = 1000,
+    context: Optional[dict] = None
+) -> dict:
     """
     데이터 카탈로그에 대해 SQL 쿼리를 실행합니다.
     
     인수:
-        Catalog_name: 대상 카탈로그 이름
+        catalog_name: 대상 카탈로그 이름
         sql_query: 실행할 SQL SELECT 쿼리
         max_rows: 반환할 최대 행(기본값 1000)
     
-    반품:
+    반환:
         열 이름과 데이터가 포함된 쿼리 결과
     """
-    gov_ctx = 거버넌스컨텍스트(
+    gov_ctx = GovernanceContext(
         user_id=context.get("user_id", "anonymous"),
-        session_id=context.get("session_id", "알 수 없음"),
+        session_id=context.get("session_id", "unknown"),
         organization_id=context.get("org_id", "default"),
-        역할=context.get("역할", []),
+        roles=context.get("roles", []),
         data_classifications=context.get("data_classifications", ["public"])
     )
     
     # 카탈로그 액세스 유효성을 검사합니다.
-    액세스 가능 = 커넥터를 기다립니다.list_catalogs(gov_ctx)
-    [c["name"](접근 가능한 c에 대해)]에 Catalog_name이 없는 경우:
-        raise PermissionError(f"카탈로그에 대한 액세스가 거부되었습니다: {catalog_name}")
+    accessible = await connector.list_catalogs(gov_ctx)
+    if catalog_name not in [c["name"] for c in accessible]:
+        raise PermissionError(f"Access denied to catalog: {catalog_name}")
     
-    반환 커넥터.execute_query(
+    return await connector.execute_query(
         gov_ctx,
-        카탈로그_이름,
-        SQL_쿼리,
-        최소(최대 행, 10000)
+        catalog_name,
+        sql_query,
+        min(max_rows, 10000)
     )
 
-`@mcp.tool`()
-비동기 def get_table_lineage(
-    카탈로그 이름: str,
-    table_name: 문자열,
-    깊이: int = 2,
-    컨텍스트: 선택사항[dict] = 없음
-) -> 받아쓰기:
+@mcp.tool()
+async def get_table_lineage(
+    catalog_name: str,
+    table_name: str,
+    depth: int = 2,
+    context: Optional[dict] = None
+) -> dict:
     """
     테이블에 대한 데이터 계보를 검색합니다.
     
     인수:
-        Catalog_name: 테이블이 포함된 카탈로그
+        catalog_name: 테이블이 포함된 카탈로그
         table_name: 대상 테이블 이름
-        깊이: 계보 순회 깊이(기본값 2)
+        depth: 계보 순회 깊이(기본값 2)
     
-    반품:
+    반환:
         업스트림 및 다운스트림 계보 그래프
     """
     # 구현은 계보 메타데이터를 쿼리합니다.
-    반환 {
-        "테이블": f"{카탈로그_이름}.{테이블_이름}",
-        "업스트림": [
+    return {
+        "table": f"{catalog_name}.{table_name}",
+        "upstream": [
             {
-                "테이블": "raw.transactions",
-                "transformation": "집계",
-                "파이프라인": "daily_aggregation"
+                "table": "raw.transactions",
+                "transformation": "aggregation",
+                "pipeline": "daily_aggregation"
             }
         ],
-        "다운스트림": [
+        "downstream": [
             {
-                "테이블": "analytics.customer_metrics",
-                "transformation": "결합하다",
-                "파이프라인": "customer_360"
+                "table": "analytics.customer_metrics",
+                "transformation": "join",
+                "pipeline": "customer_360"
             }
         ]
     }
 
-`@mcp.resource`("datacore://governance/policies")
-비동기 def get_governance_policies() -> str:
+@mcp.resource("datacore://governance/policies")
+async def get_governance_policies() -> str:
     """현재 데이터 거버넌스 정책을 검색합니다."""
-    정책 = {
-        "데이터_보존": {
-            "기본_일": 365,
+    policies = {
+        "data_retention": {
+            "default_days": 365,
             "pii_max_days": 90
         },
-        "액세스 제어": {
-            "require_mfa": 사실,
-            "session_timeout_분": 60
+        "access_control": {
+            "require_mfa": True,
+            "session_timeout_minutes": 60
         },
-        "분류_수준": [
-            "공개",
-            "내부",
-            "기밀",
-            "제한된"
+        "classification_levels": [
+            "public",
+            "internal",
+            "confidential",
+            "restricted"
         ]
     }
-    json.dumps(정책, 들여쓰기=2) 반환
+    return json.dumps(policies, indent=2)
 
-__name__ == "__main__"인 경우:
-    비동기 가져오기
+if __name__ == "__main__":
+    import asyncio
     asyncio.run(connector.initialize())
     mcp.run(transport='stdio')
 ```
@@ -83550,339 +83523,341 @@ __name__ == "__main__"인 경우:
 
 For complex workflows involving multiple MCP servers:
 
-```{파이썬}
+```{python}
 """
 multi_agent_orchestrator.py
 
-다중 서버 MCP 워크플로를 위한 Orchestrator입니다.
+다중 서버 MCP 워크플로를 위한 오케스트레이터입니다.
 """
 
-비동기 가져오기
-데이터 클래스에서 데이터 클래스 가져오기
-import Any, Callable을 입력하여
-mcp import ClientSession, StdioServerParameters에서
-mcp.client.stdio에서 stdio_client 가져오기
+import asyncio
+from dataclasses import dataclass
+from typing import Any, Callable
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
 
-`@dataclass`
-클래스 서버 구성:
+@dataclass
+class ServerConfig:
     """MCP 서버 연결을 위한 구성입니다."""
-    이름: str
-    명령: str
-    인수: 목록[str]
-    env: dict[str, str] = 없음
+    name: str
+    command: str
+    args: list[str]
+    env: dict[str, str] = None
 
-클래스 MCPOrchestrator:
+class MCPOrchestrator:
     """여러 MCP 서버 간의 상호 작용을 조정합니다."""
     
-    def __init__(self, 서버: 목록[ServerConfig]):
-        self.server_configs = {s.name: s for s in server}
+    def __init__(self, servers: list[ServerConfig]):
+        self.server_configs = {s.name: s for s in servers}
         self.sessions: dict[str, ClientSession] = {}
         self._connection_tasks: dict[str, asyncio.Task] = {}
     
     async def connect(self, server_name: str) -> ClientSession:
         """지명된 서버에 연결을 설정합니다."""
-        self.sessions의 server_name인 경우:
-            self.sessions[서버_이름] 반환
+        if server_name in self.sessions:
+            return self.sessions[server_name]
         
-        config = self.server_configs.get(서버_이름)
-        구성되지 않은 경우:
-            raise ValueError(f"알 수 없는 서버: {server_name}")
+        config = self.server_configs.get(server_name)
+        if not config:
+            raise ValueError(f"Unknown server: {server_name}")
         
         params = StdioServerParameters(
-            명령=config.command,
-            인수=config.args,
-            환경=config.env
+            command=config.command,
+            args=config.args,
+            env=config.env
         )
         
         # 지속적인 연결 생성
-        읽기, 쓰기 = stdio_client(params).__aenter__() 대기
-        세션 = ClientSession(읽기, 쓰기)
-        session.__aenter__()를 기다립니다.
-        session.initialize()를 기다립니다.
+        read, write = await stdio_client(params).__aenter__()
+        session = ClientSession(read, write)
+        await session.__aenter__()
+        await session.initialize()
         
-        self.sessions[서버_이름] = 세션
-        복귀 세션
+        self.sessions[server_name] = session
+        return session
     
-    비동기 def call_tool(
-        자기,
-        서버 이름: str,
-        도구 이름: str,
-        인수: 딕셔너리
-    ) -> 임의:
+    async def call_tool(
+        self,
+        server_name: str,
+        tool_name: str,
+        arguments: dict
+    ) -> Any:
         """특정 서버에서 도구를 호출합니다."""
-        세션 = self.connect(server_name) 대기
-        결과 = session.call_tool(tool_name, 인수)을 기다립니다.
-        결과.컨텐츠 반환
+        session = await self.connect(server_name)
+        result = await session.call_tool(tool_name, arguments)
+        return result.content
     
-    비동기 def Execute_workflow(
-        자기,
-        작업 흐름: 목록[dict]
-    ) -> 목록[모두]:
+    async def execute_workflow(
+        self,
+        workflow: list[dict]
+    ) -> list[Any]:
         """
         서버 전반에 걸쳐 다단계 워크플로를 실행합니다.
         
-        각 단계는 키가 포함된 사전입니다.
-        - 서버 : 대상 서버 이름
-        - 도구: 호출할 도구
-        - 인수: 도구 인수(이전 결과를 참조할 수 있음)
-        - 조건: 조건부 실행을 위해 선택적 호출 가능
+        각 단계는 다음 키를 가진 사전입니다.
+        - server: 대상 서버 이름
+        - tool: 호출할 도구
+        - args: 도구 인수(이전 결과를 참조할 수 있음)
+        - condition: 조건부 실행을 위한 선택적 호출 가능 객체
         """
-        결과 = []
-        컨텍스트 = {}
+        results = []
+        context = {}
         
-        나는 열거(워크플로) 단계를 수행합니다.
-            # 존재하는 경우 상태를 확인합니다.
-            단계에서 "조건"인 경우:
-                그렇지 않은 경우 단계["조건"](컨텍스트):
-                    결과.추가(없음)
-                    계속하다
+        for i, step in enumerate(workflow):
+            # 존재하는 경우 조건을 확인합니다.
+            if "condition" in step:
+                if not step["condition"](context):
+                    results.append(None)
+                    continue
             
             # 인수 참조를 해결합니다.
-            인수 = self._resolve_arguments(
-                단계["인수"],
-                맥락
+            args = self._resolve_arguments(
+                step["args"],
+                context
             )
             
-            # 실행 단계
-            결과 = self.call_tool(을 기다립니다.
-                단계["서버"],
-                단계["도구"],
-                인수
+            # 단계를 실행합니다.
+            result = await self.call_tool(
+                step["server"],
+                step["tool"],
+                args
             )
             
-            결과.추가(결과)
-            컨텍스트[f"step_{i}"] = 결과
+            results.append(result)
+            context[f"step_{i}"] = result
         
-        결과 반환
+        return results
     
     def _resolve_arguments(
-        자기,
-        인수: dict,
-        맥락: 딕셔너리
-    ) -> 받아쓰기:
+        self,
+        args: dict,
+        context: dict
+    ) -> dict:
         """이전 결과에 대한 인수 참조를 해결합니다."""
-        해결됨 = {}
-        키의 경우, 인수.items()의 값:
-            isinstance(value, str) 및 value.startswith("$")인 경우:
+        resolved = {}
+        for key, value in args.items():
+            if isinstance(value, str) and value.startswith("$"):
                 # 이전 결과에 대한 참조
-                참조 = 값[1:]
-                해결[키] = context.get(ref)
-            그 외:
-                해결됨[키] = 값
-        반품 해결됨
+                ref = value[1:]
+                resolved[key] = context.get(ref)
+            else:
+                resolved[key] = value
+        return resolved
     
-    비동기 def 닫기(자기):
+    async def close(self):
         """모든 서버 연결을 닫습니다."""
-        self.sessions.values()의 세션에 대해:
-            세션을 기다립니다.__aexit__(없음, 없음, 없음)
+        for session in self.sessions.values():
+            await session.__aexit__(None, None, None)
         self.sessions.clear()
 
 # 사용 예
-비동기 def example_workflow():
-    오케스트레이터 = MCPOrchestrator([
-        서버구성(
-            이름="데이터코어",
-            명령="uv",
+async def example_workflow():
+    orchestrator = MCPOrchestrator([
+        ServerConfig(
+            name="datacore",
+            command="uv",
             args=["run", "datacore_server.py"]
         ),
-        서버구성(
-            이름="분석",
-            명령="uv",
+        ServerConfig(
+            name="analytics",
+            command="uv",
             args=["run", "analytics_server.py"]
         )
     ])
     
-    시도해 보세요:
-        작업 흐름 = [
+    try:
+        workflow = [
             {
-                "서버": "데이터코어",
-                "도구": "list_datasets",
-                "인수": {}
+                "server": "datacore",
+                "tool": "list_datasets",
+                "args": {}
             },
             {
-                "서버": "데이터코어",
-                "도구": "query_dataset",
-                "인수": {
-                    "dataset_name": "거래",
-                    "sql_query": "SELECT * FROM 거래 LIMIT 100"
+                "server": "datacore",
+                "tool": "query_dataset",
+                "args": {
+                    "dataset_name": "transactions",
+                    "sql_query": "SELECT * FROM transactions LIMIT 100"
                 }
             },
             {
-                "서버": "분석",
-                "도구": "compute_statistics",
-                "인수": {
-                    "data": "$step_1" # 이전 결과 참조
+                "server": "analytics",
+                "tool": "compute_statistics",
+                "args": {
+                    "data": "$step_1"  # 이전 결과 참조
                 }
             }
         ]
         
-        결과 = Orchestrator.execute_workflow(workflow)를 기다립니다.
-        결과 반환
-    마지막으로:
-        Orchestrator.close()를 기다립니다.
+        results = await orchestrator.execute_workflow(workflow)
+        return results
+    finally:
+        await orchestrator.close()
 ```
 
 ### 7.3 Context Window Optimization
 
 As documented in Anthropic's engineering guidance, direct tool calling through MCP can consume excessive context tokens. The code execution pattern addresses this:
 
-```{파이썬}
+```{python}
 """
 context_optimized_server.py
 
 컨텍스트 창 효율성을 위해 최적화된 MCP 서버입니다.
 """
 
-mcp.server.fastmcp에서 FastMCP 가져오기
-import Any를 입력하여
-JSON 가져오기
+from mcp.server.fastmcp import FastMCP
+from typing import Any
+import json
+import os
 
-mcp = FastMCP("데이터코어 최적화")
+mcp = FastMCP("datacore-optimized")
 
-`@mcp.tool`()
-비동기 def get_api_module() -> str:
+@mcp.tool()
+async def get_api_module() -> str:
     """
     DataCore API와 상호작용하기 위한 Python 코드를 반환합니다.
     
     반환된 코드는 에이전트에 의해 실행되어 다음을 수행할 수 있습니다.
     중간 결과를 위해 컨텍스트를 소비하지 않고 작업을 수행합니다.
     """
-    ''' 반환
-httpx 가져오기
-JSON 가져오기
-import Any를 입력하여
+    return '''
+import httpx
+import json
+import os
+from typing import Any
 
-클래스 DataCoreAPI:
+class DataCoreAPI:
     """DataCore 플랫폼 운영을 위한 클라이언트입니다."""
     
     def __init__(self, base_url: str, api_key: str):
-        self.client = httpx.클라이언트(
+        self.client = httpx.Client(
             base_url=base_url,
-            headers={"승인": f"Bearer {api_key}"}
+            headers={"Authorization": f"Bearer {api_key}"}
         )
     
-    def list_datasets(self) -> 목록[dict]:
+    def list_datasets(self) -> list[dict]:
         """사용 가능한 데이터 세트를 나열합니다."""
         resp = self.client.get("/datasets")
         resp.raise_for_status()
-        resp.json()을 반환합니다.
+        return resp.json()
     
-    데프 쿼리(
-        자기, 
-        데이터세트: str, 
-        SQL: 문자열, 
-        max_rows: 정수 = 1000
-    ) -> 받아쓰기:
+    def query(
+        self, 
+        dataset: str, 
+        sql: str, 
+        max_rows: int = 1000
+    ) -> dict:
         """SQL 쿼리를 실행합니다."""
         resp = self.client.post(
-            f"/데이터세트/{데이터세트}/쿼리",
+            f"/datasets/{dataset}/query",
             json={"sql": sql, "max_rows": max_rows}
         )
         resp.raise_for_status()
-        resp.json()을 반환합니다.
+        return resp.json()
     
-    def save_results(self, 데이터: 모두, 경로: str):
+    def save_results(self, data: Any, path: str):
         """결과를 로컬 파일에 저장합니다."""
-        open(path, 'w')를 f로 사용:
-            json.dump(데이터, f, 들여쓰기=2)
-        f"{경로}에 저장됨"을 반환합니다.
+        with open(path, 'w') as f:
+            json.dump(data, f, indent=2)
+        return f"Saved to {path}"
 
 # 클라이언트 초기화(에이전트는 환경에서 이를 설정해야 함)
-api = 데이터코어API(
+api = DataCoreAPI(
     base_url=os.environ.get("DATACORE_URL", "http://localhost:8000"),
     api_key=os.environ.get("DATACORE_API_KEY", "")
 )
 '''
 
-`@mcp.tool`()
-비동기 def 실행_분석_스크립트(
-    스크립트: str,
+@mcp.tool()
+async def execute_analysis_script(
+    script: str,
     save_path: str = "/tmp/results.json"
-) -> 받아쓰기:
+) -> dict:
     """
     샌드박스 환경에서 Python 분석 스크립트를 실행합니다.
     
     인수:
-        스크립트: 실행할 Python 코드
+        script: 실행할 Python 코드
         save_path: 결과를 저장할 경로
     
-    반품:
-        실행상태 및 저장파일 위치
+    반환:
+        실행 상태 및 저장 파일 위치
     """
-    # 프로덕션에서는 샌드박스 하위 프로세스에서 실행합니다.
-    # 리소스 제한 및 시간 초과가 있음
-    하위 프로세스 가져오기
-    임시 파일 가져오기
+    # 프로덕션에서는 리소스 제한 및 시간 초과가 있는
+    # 샌드박스 하위 프로세스에서 실행합니다.
+    import subprocess
+    import tempfile
     
-    tempfile.NamedTemporaryFile(
-        모드='w',
-        접미사='.py',
-        삭제=거짓
-    )를 f로:
-        f.쓰기(스크립트)
-        script_path = f.이름
+    with tempfile.NamedTemporaryFile(
+        mode='w',
+        suffix='.py',
+        delete=False
+    ) as f:
+        f.write(script)
+        script_path = f.name
     
-    시도해 보세요:
-        결과 = 하위 프로세스.run(
-            ["파이썬", 스크립트_경로],
-            Capture_output=참,
-            텍스트=사실,
-            시간 초과=300, # 5분 시간 초과
-            환경={
+    try:
+        result = subprocess.run(
+            ["python", script_path],
+            capture_output=True,
+            text=True,
+            timeout=300,  # 5분 시간 초과
+            env={
                 **os.environ,
-                "RESULT_PATH": 저장_경로
+                "RESULT_PATH": save_path
             }
         )
         
-        반환 {
-            "성공": 결과.반환코드 == 0,
-            "stdout": result.stdout[-1000:], # 마지막 1000자
-            "stderr": 결과.stderr[-500:],
+        return {
+            "success": result.returncode == 0,
+            "stdout": result.stdout[-1000:],  # 마지막 1000자
+            "stderr": result.stderr[-500:],
             "result_path": save_path if result.returncode == 0 else None
         }
-    마지막으로:
+    finally:
         os.unlink(script_path)
 
-`@mcp.resource`("datacore://sdk/reference")
-비동기 def get_sdk_reference() -> str:
+@mcp.resource("datacore://sdk/reference")
+async def get_sdk_reference() -> str:
     """SDK 참조 문서를 반환합니다."""
-    ''' 반환
-# 데이터코어 SDK 참조
+    return '''
+# DataCore SDK Reference
 
-## DataCoreAPI 클래스
+## DataCoreAPI Class
 
-### 행동 양식
+### Methods
 
-#### list_datasets() -> 목록[dict]
-메타데이터와 함께 사용 가능한 데이터 세트 목록을 반환합니다.
+#### list_datasets() -> list[dict]
+Returns a list of available datasets with metadata.
 
 #### query(dataset: str, sql: str, max_rows: int = 1000) -> dict
-데이터 세트에 대해 SQL 쿼리를 실행합니다.
-- 데이터세트: 대상 데이터세트 이름
-- sql: 실행할 SELECT 쿼리
-- max_rows: 반환할 최대 행
+Executes a SQL query against a dataset.
+- dataset: target dataset name
+- sql: SELECT query to execute
+- max_rows: maximum rows to return
 
-#### save_results(데이터: 모두, 경로: str) -> str
-JSON 직렬화 가능 데이터를 파일에 저장합니다.
+#### save_results(data: Any, path: str) -> str
+Saves JSON-serializable data to a file.
 
-## 사용예
+## Example Usage
 
-# 모든 데이터 세트 나열
-데이터 세트 = api.list_datasets()
-print(f"{len(datasets)} 데이터세트를 찾았습니다")
+# List all datasets
+datasets = api.list_datasets()
+print(f"Found {len(datasets)} datasets")
 
-# 고객 데이터 쿼리
-결과 = api.query(
-    "고객",
-    "SELECT customer_id, 활성화된 고객의 이메일 = true",
+# Query customer data
+results = api.query(
+    "customers",
+    "SELECT customer_id, email FROM customers WHERE active = true",
     max_rows=500
 )
 
-# 추가 분석을 위해 저장
-api.save_results(결과, "/tmp/active_customers.json")
+# Save for further analysis
+api.save_results(results, "/tmp/active_customers.json")
+'''
 ```
 
-'''
 
 
 ## 8. 테스트 및 디버깅
@@ -83902,7 +83877,7 @@ from unittest.mock import AsyncMock, patch
 from datacore_server import mcp
 
 
-`@pytest.fixture`
+@pytest.fixture
 def mock_database():
     """Mock database connection."""
     with patch('datacore_server.execute_query') as mock:
@@ -84005,7 +83980,7 @@ class TestResourceAccess:
 class TestInputValidation:
     """Tests for input validation."""
     
-    `@pytest.mark.parametrize`("invalid_name", [
+    @pytest.mark.parametrize("invalid_name", [
         "",
         "a" * 200,
         "invalid name with spaces",
@@ -84103,7 +84078,7 @@ class MCPInspector:
             await self.process.wait()
 
 
-`@pytest.fixture`
+@pytest.fixture
 async def inspector():
     """Create and initialize MCP inspector."""
     insp = MCPInspector(["uv", "run", "datacore_server.py"])
@@ -84116,7 +84091,7 @@ async def inspector():
 class TestServerIntegration:
     """Integration tests against running server."""
     
-    `@pytest.mark.asyncio`
+    @pytest.mark.asyncio
     async def test_tool_discovery(self, inspector):
         """Verify tools are discoverable."""
         tools = await inspector.list_tools()
@@ -84125,7 +84100,7 @@ class TestServerIntegration:
         assert "list_datasets" in tool_names
         assert "query_dataset" in tool_names
     
-    `@pytest.mark.asyncio`
+    @pytest.mark.asyncio
     async def test_tool_invocation(self, inspector):
         """Verify tools can be invoked."""
         result = await inspector.call_tool(
@@ -84136,7 +84111,7 @@ class TestServerIntegration:
         assert "content" in result
         assert len(result["content"]) > 0
     
-    `@pytest.mark.asyncio`
+    @pytest.mark.asyncio
     async def test_error_handling(self, inspector):
         """Verify errors are properly returned."""
         result = await inspector.call_tool(
@@ -84214,7 +84189,7 @@ class ConnectionPool:
             except Exception as e:
                 logging.warning(f"Pool health check failed: {e}")
     
-    `@asynccontextmanager`
+    @asynccontextmanager
     async def acquire(self) -> AsyncIterator[asyncpg.Connection]:
         """Acquire connection from pool."""
         async with self._pool.acquire() as conn:
@@ -84258,7 +84233,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 
-`@dataclass`
+@dataclass
 class CacheEntry:
     """Cached value with metadata."""
     value: Any
@@ -84266,7 +84241,7 @@ class CacheEntry:
     ttl_seconds: int
     hit_count: int = 0
     
-    `@property`
+    @property
     def is_expired(self) -> bool:
         return datetime.utcnow() > self.created_at + timedelta(
             seconds=self.ttl_seconds
@@ -84458,7 +84433,7 @@ logger = StructuredLogger("datacore-mcp")
 
 def traced(func):
     """Decorator to add tracing to tool functions."""
-    `@wraps`(func)
+    @wraps(func)
     async def wrapper(*args, **kwargs):
         # Set request ID if not present
         if not request_id.get():
@@ -84532,7 +84507,7 @@ ACTIVE_SESSIONS = Gauge(
 class MetricsMiddleware:
     """Middleware to collect MCP metrics."""
     
-    `@staticmethod`
+    @staticmethod
     def instrument_tool(tool_func):
         """Decorator to instrument tool functions."""
         async def wrapper(*args, **kwargs):
@@ -84558,11 +84533,11 @@ class MetricsMiddleware:
         
         return wrapper
     
-    `@staticmethod`
+    @staticmethod
     def on_session_start():
         ACTIVE_SESSIONS.inc()
     
-    `@staticmethod`
+    @staticmethod
     def on_session_end():
         ACTIVE_SESSIONS.dec()
 
@@ -84667,8 +84642,7 @@ https://{domain}/.well-known/agent-card.json
 
 (독자는 초기 초안 및 제3자 작성에서 이전 경로 `/.well-known/agent.json`을 접하게 될 것입니다. 현재 사양은 `agent-card.json`으로 표준화되어 있습니다.) 대표적인 에이전트 카드:
 
-```jso
-n
+```json
 {
   "name": "Invoice Processing Agent",
   "description": "Extracts, validates, and reconciles invoice data.",
@@ -84783,8 +84757,7 @@ sequenceDiagram
 
 JSON-RPC 바인딩의 `message/send` 요청:
 
-```jso
-n
+```json
 {
   "jsonrpc": "2.0",
   "id": "req-1",
@@ -87359,7 +87332,7 @@ for text, label in d_hrm[len(d_prm):]:
 ### 줄리아
 
 ```{julia}
-`@enum` StepLabel Positive Negative Neutral
+@enum StepLabel Positive Negative Neutral
 
 bucket(label::StepLabel) = label == Positive ? Positive : Negative
 
@@ -88495,13 +88468,13 @@ def train_ce(model, X, y, epochs, lr=5e-3):
     return model
 
 
-`@torch.no_grad`()
+@torch.no_grad()
 def accuracy(model, X, y):
     model.eval()
     return (model(X).argmax(1) == y).float().mean().item()
 
 
-`@torch.no_grad`()
+@torch.no_grad()
 def latency_ms(model, X, repeats=50):
     model.eval()
     _ = model(X)  # warmup
@@ -90928,7 +90901,7 @@ $$
 ```{python}
 #| label: fig-706-tool-call-speculation
 #| code-fold: false
-#| fig-cap: "Expected wall-clock speedup from tool-call speculation versus the next-call hit rate, for several tool-to-generation latency ratios rho. Dotted vertical lines mark the Hit`@1` rates reported before and after joint agent-speculator RL; the black markers trace Qwen3-4B's move from 0.441 to 0.612 along the rho = 2 curve."
+#| fig-cap: "Expected wall-clock speedup from tool-call speculation versus the next-call hit rate, for several tool-to-generation latency ratios rho. Dotted vertical lines mark the Hit@1 rates reported before and after joint agent-speculator RL; the black markers trace Qwen3-4B's move from 0.441 to 0.612 along the rho = 2 curve."
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -91497,7 +91470,7 @@ class PrunerHead(nn.Module):
             nn.Linear(hidden, 1),
         )
 
-    `@staticmethod`
+    @staticmethod
     def bucket(n):
         return min(int(np.log2(max(n, 1))), 7)             # 8 length buckets
 
@@ -91710,7 +91683,7 @@ var_cort = float((A * cred_cort * s)[:, off].var())
 
 print(f"cosine(credit, ground truth)  uniform={cosine(cred_unif.mean(0), ideal):.3f}"
       f"   CoRT={cosine(cred_cort.mean(0), ideal):.3f}")
-print(f"precision`@K` (K={K} of T={T})   uniform={precision_at_k(cred_unif):.3f}"
+print(f"precision@K (K={K} of T={T})   uniform={precision_at_k(cred_unif):.3f}"
       f"   CoRT={precision_at_k(cred_cort):.3f}   (chance={K/T:.3f})")
 print(f"off-target gradient variance  uniform={var_unif:.4f}   CoRT={var_cort:.4f}"
       f"   reduction={100*(1 - var_cort/var_unif):.1f}%")
@@ -94172,12 +94145,12 @@ import torch.nn as nn
 from torch.autograd import Function
 
 class GradientReversalFunction(Function):
-    `@staticmethod`
+    @staticmethod
     def forward(ctx, x, lambda_val):
         ctx.save_for_backward(torch.tensor(lambda_val))
         return x.clone()
 
-    `@staticmethod`
+    @staticmethod
     def backward(ctx, grad_output):
         (lambda_val,) = ctx.saved_tensors
         return -lambda_val * grad_output, None
@@ -94229,12 +94202,12 @@ np.random.seed(42)
 
 
 class GradientReversalFunction(Function):
-    `@staticmethod`
+    @staticmethod
     def forward(ctx, x, lambda_val):
         ctx.save_for_backward(torch.tensor(float(lambda_val)))
         return x.clone()
 
-    `@staticmethod`
+    @staticmethod
     def backward(ctx, grad_output):
         (lam,) = ctx.saved_tensors
         return -lam * grad_output, None
@@ -95672,13 +95645,13 @@ import numpy as np
 from typing import Union
 
 def pass_at_k(n: int, c: int, k: int) -> float:
-    """Unbiased pass`@k` estimator from Chen et al. (2021).
+    """Unbiased pass@k estimator from Chen et al. (2021).
 
     Parameters
     ----------
     n : total number of samples generated per problem
     c : number of those samples that pass all unit tests
-    k : the k in pass`@k` (number of allowed attempts)
+    k : the k in pass@k (number of allowed attempts)
 
     Returns
     -------
@@ -95692,7 +95665,7 @@ def pass_at_k(n: int, c: int, k: int) -> float:
 
 
 def mean_pass_at_k(results: list[tuple[int, int]], k: int) -> float:
-    """Average pass`@k` over a set of problems.
+    """Average pass@k over a set of problems.
 
     Parameters
     ----------
@@ -95713,7 +95686,7 @@ def simulate_results(true_prob: float, n_problems: int = 164, n_samples: int = 2
         for _ in range(n_problems)
     ]
 
-print(f"{'true_prob':>10} {'pass`@1`':>10} {'pass`@10`':>10} {'pass`@100`':>10}")
+print(f"{'true_prob':>10} {'pass@1':>10} {'pass@10':>10} {'pass@100':>10}")
 for p in [0.10, 0.20, 0.30, 0.50, 0.70]:
     results = simulate_results(p)
     row = [mean_pass_at_k(results, k) for k in [1, 10, 100]]
@@ -95739,8 +95712,8 @@ for k in ks:
     ax.plot(true_probs, pass_k_vals, label=f"pass@{k}")
 
 ax.set_xlabel("Per-sample probability of correct solution")
-ax.set_ylabel("pass`@k`")
-ax.set_title("pass`@k` as a function of per-sample accuracy")
+ax.set_ylabel("pass@k")
+ax.set_title("pass@k as a function of per-sample accuracy")
 ax.legend(loc="lower right", fontsize=8)
 ax.grid(True, alpha=0.3)
 plt.tight_layout()
@@ -97847,7 +97820,7 @@ from dataclasses import dataclass
 from typing import List, Tuple
 import json
 
-`@dataclass`
+@dataclass
 class BoundingBox:
     """
     Bounding box representation
@@ -97954,7 +97927,7 @@ class BoundingBoxQualityMetrics:
     Calculate quality metrics for bounding box annotations
     """
     
-    `@staticmethod`
+    @staticmethod
     def calculate_agreement(
         annotator1_boxes: List[BoundingBox],
         annotator2_boxes: List[BoundingBox],
@@ -98006,7 +97979,7 @@ class BoundingBoxQualityMetrics:
             'total_boxes_ann2': len(annotator2_boxes)
         }
     
-    `@staticmethod`
+    @staticmethod
     def aggregate_boxes(
         boxes_list: List[List[BoundingBox]],
         iou_threshold: float = 0.5,
@@ -98090,7 +98063,7 @@ for key, value in metrics.items():
 
 **다각형 표현:**
 
-``{파이썬}
+```{python}
 #| code-fold: false
 
 import numpy as np
@@ -98220,6 +98193,7 @@ rle = seg_mask.to_rle(height=300, width=300)
 print(f"Mask shape: {binary_mask.shape}")
 print(f"Mask area: {seg_mask.area()}")
 print(f"RLE counts (first 10): {rle['counts'][:10]}")
+```
 
 ## 비디오 어노테이션(Video Annotation) {#sec-video}
 
@@ -103456,7 +103430,7 @@ $$
 
 -   환자가 중도 탈락한 후에도 상태가 영구히 동일하게 유지된다는 극단적인 가정을 전제하며, 이는 생물학적·의학적으로 성립하기 어렵습니다.
 -   단조 탈락 패턴을 갖는 MAR 환경에서도 LOCF는 일반적으로 심각한 편향을 초래합니다.
--   `@mallinckrodt2008recommendations` 및 미국 국립과학원(National Research Council) 패널 보고서(@national2011prevention)는 LOCF 사용을 전면 지양하고 원칙적인 통계 모형을 적용할 것을 공식 권고하고 있습니다.
+-   @mallinckrod2008recommendations 및 미국 국립과학원(National Research Council) 패널 보고서(@national2011prevention)는 LOCF 사용을 전면 지양하고 원칙적인 통계 모형을 적용할 것을 공식 권고하고 있습니다.
 
 기저 관측값 이월(BOCF) 및 최악 관측값 이월(WOCF)은 임상 시험의 보수적 민감도 분석용으로 제한적으로 활용될 뿐, 결코 주 분석 방법이 될 수 없습니다.
 
@@ -104471,7 +104445,7 @@ for method in ['CC', 'Mean_imp', 'IPW', 'EM']:
 
 ### 증강 역확률 가중치법 (Augmented IPW, AIPW) {#sec-missing-data-aipw}
 
-**증강 역확률 가중치법(AIPW)** 추정량 [@robins1994estimation; `@scharfstein1999adjustin`g]은 성향점수 기반의 IPW 추정량과 결과 회귀 모형(outcome regression model)을 결합한 방법입니다. 이 추정량은 **이중 강건성(double robustness)**이라는 결정적인 통계적 성질을 갖습니다: 즉, **결측 성향점수 모형**이나 **결과 회귀 모형** 중 **어느 하나라도 올바르게 명세(correctly specified)**되어 있다면(둘 다 맞을 필요 없이 최소 하나만 참이어도) 모평균 추정량이 일치성을 갖습니다.
+**증강 역확률 가중치법(AIPW)** 추정량 [@robins1994estimation; @scharfstein1999adjusting]은 성향점수 기반의 IPW 추정량과 결과 회귀 모형(outcome regression model)을 결합한 방법입니다. 이 추정량은 **이중 강건성(double robustness)**이라는 결정적인 통계적 성질을 갖습니다: 즉, **결측 성향점수 모형**이나 **결과 회귀 모형** 중 **어느 하나라도 올바르게 명세(correctly specified)**되어 있다면(둘 다 맞을 필요 없이 최소 하나만 참이어도) 모평균 추정량이 일치성을 갖습니다.
 
 모평균 $\mu = E[Y]$ 추정을 위한 AIPW 추정량:
 
@@ -105844,7 +105818,7 @@ plt.show()
 
 ### 설문 조사 표본론과의 연계 {#sec-missing-data-survey}
 
-설문 무응답은 결측 메커니즘이 무응답 메커니즘에 대응되는 전형적인 결측 데이터 문제입니다. 인과추론에서의 성향점수 매칭 방법(@rosenbaum1983central)은 설문 가중치 조정(Survey weighting)의 응답 성향 모형과 수학적으로 직접 연결됩니다 [@kalton1986treatment; `@little1986surve`y].
+설문 무응답은 결측 메커니즘이 무응답 메커니즘에 대응되는 전형적인 결측 데이터 문제입니다. 인과추론에서의 성향점수 매칭 방법(@rosenbaum1983central)은 설문 가중치 조정(Survey weighting)의 응답 성향 모형과 수학적으로 직접 연결됩니다 [@kalton1986treatment; @little1986survey].
 
 ### 측정 오차 모형과의 연계 {#sec-missing-data-measurement-error}
 
