@@ -8,26 +8,6 @@ version = "0.1.0"
 [tasks]
 preview = "quarto preview mybook"
 test = "quarto render mybook"
-# R packages that are not available on conda-forge
-# (GitHub-only r-causal packages + CRAN packages missing from the feed)
-install-r-extra = """
-Rscript -e 'options(repos = c(CRAN = "https://cloud.r-project.org"), Ncpus = 4); if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes"); remotes::install_github(c(
-  "r-causal/causalworkshop",
-  "r-causal/halfmoon",
-  "r-causal/propensity",
-  "LucyMcGowan/touringplans",
-  "hadley/emo"
-)); install.packages(c(
-  "rdrobust",
-  "datasauRus",
-  "AIPW",
-  "lmw",
-  "quartets",
-  "tipr",
-  "PSW",
-  "did"
-))'"""
-render-causal = { cmd = "quarto render mybook/causal_inference_in_r_complete/causal-inference-in-r-complete.qmd --execute", depends-on = ["install-r-extra"] }
 
 [dependencies]
 quarto = ">=1.8.27,<2"
@@ -35,65 +15,3 @@ python = ">=3.14.6,<3.15"
 jupyter = ">=1.1.1,<2"
 r-base = ">=4.4,<4.6"
 
-# knitr engine for quarto
-r-knitr = "*"
-r-rmarkdown = "*"
-r-remotes = "*"
-
-# tidyverse + data handling
-r-tidyverse = "*"
-r-broom = "*"
-r-here = "*"
-r-janitor = "*"
-r-scales = "*"
-r-readxl = "*"
-r-glue = "*"
-r-rlang = "*"
-
-# visualization
-r-ggdag = "*"
-r-ggokabeito = "*"
-r-ggraph = "*"
-r-ggtext = "*"
-r-patchwork = "*"
-r-visdat = "*"
-
-# tables / reporting
-r-gt = "*"
-r-gtsummary = "*"
-r-labelled = "*"
-r-pointblank = "*"
-r-skimr = "*"
-
-# modeling / causal inference
-r-matchit = "*"
-r-weightit = "*"
-r-survey = "*"
-r-dagitty = "*"
-r-rsample = "*"
-r-plm = "*"
-r-mice = "*"
-r-mediation = "*"
-r-ivreg = "*"
-r-tmle = "*"
-r-ranger = "*"
-r-glmnet = "*"
-r-sandwich = "*"
-r-timedate = "*"
-r-future = "*"
-r-furrr = "*"
-
-# compiled packages needed by the CRAN/GitHub installs above
-# (pre-built via conda to avoid source builds in CI)
-r-systemfonts = "*"
-r-textshaping = "*"
-r-ragg = "*"
-r-xgboost = "*"
-r-randomforest = "*"
-r-superlearner = "*"
-r-fixest = "*"
-"r-data.table" = "*"
-r-ggforce = "*"
-r-ggridges = "*"
-r-tweenr = "*"
-r-graphlayouts = "*"
