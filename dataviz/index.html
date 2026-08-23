@@ -412,6 +412,21 @@ div.csl-indent {
   <a href="../bible/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">성경</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../suttanipata/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">숫타니파타 (Sutta Nipāta)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how_we_communicate/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">우리는 어떻게 소통하는가?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ikigai/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ikigai: The Japanese Secret to a Long and Happy Life</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -6263,11 +6278,11 @@ Chart.js 기반 인터랙티브 꺾은선 차트: <a href="https://handsondatavi
 <p class="caption">
 Highcharts 기반의 주석 처리된 인터랙티브 차트: <a href="https://handsondataviz.github.io/highcharts-line-annotated/">인터랙티브 버전 보기</a>.
 </p>
-<p>다만 안타깝게도 Chart.js는 이런 주석 달기(annotations) 기능을 구현하는 면에서는 다소 약점을 보입니다. 바로 이것이 저희가 이 튜토리얼을 진행하면서 부득이 타사 라이브러리인 Highcharts로 잠깐 우회해서 외도하는 까닭이기도 합니다. 하지만 겁내지 마시길. 이어지는 전체 과정들이 앞서 맛보았던 일련의 Chart.js 구축 방식과 크게 별반 다르지 않다는 것을 느끼실 수 있을 테니까요.</p>
-<p>CSV에서 끌어낸 데이터를 가지고 우리만의 독창적인 Highcharts 기반 주석형 꺾은선 차트를 완성하려면, 이 순서대로 하십시오.</p>
+<p>다만 Chart.js는 이러한 주석(annotations) 기능을 구현하기가 다소 까다롭습니다. 따라서 이 실습에서는 Highcharts 라이브러리를 활용해 주석 달린 꺾은선 차트를 만듭니다. Highcharts 역시 앞서 살펴본 Chart.js 템플릿과 유사한 방식으로 동작하므로 쉽게 따라 할 수 있습니다.</p>
+<p>CSV 데이터를 활용해 Highcharts 기반의 주석 달린 꺾은선 차트를 만드는 과정은 다음과 같습니다.</p>
 <ol type="1">
-<li><p>우선 @fig-highcharts-demo-annotated-line 차트 원형 모델의 코드가 오롯이 담겨있는 <a href="https://github.com/HandsOnDataViz/highcharts-line-annotated">이쪽 편 GitHub 저장소</a>로 넘어가서 여러분 계정으로 서명 및 인증한 다음 거침없이 <em>이 템플릿 사용하기(Use this template)</em>를 클릭해 커스터마이징을 위한 사본을 획득하십시오.</p></li>
-<li><p>원본 데이터를 CSV 형식으로 바꾼 후 <code>data.csv</code>란 이름표를 붙여 서버상에 업로드합니다. 가장 먼저 라벨값을 좌측 첫 열로 지정하시고 이후 이어지는 모든 데이터 세트 항목 또한 각자의 단독 열로 한 자리씩 부여합니다. 최소한 3개 기초 열(라벨 1열, 데이터 값 1열, 그리고 주석 및 노트용 1열) 체계를 필수적으로 갖추어야만 이 CSV 포맷이 어그러지지 않고 정상 작동합니다. 여러분은 언제든 원하는 만큼 열을 증식해 나갈 수 있긴 하지만, 행렬 구조상 하나의 행(row)당 오직 하나의 주석(가장 마지막 열 쪽 영역)만 허용된다는 점을 상기하십시오.</p></li>
+<li><p>@fig-highcharts-demo-annotated-line 차트 코드가 포함된 <a href="https://github.com/HandsOnDataViz/highcharts-line-annotated">GitHub 저장소</a>로 이동하여 로그인한 후, <em>Use this template(이 템플릿 사용하기)</em>을 클릭해 자신의 계정으로 사본을 만듭니다.</p></li>
+<li><p>데이터를 CSV 형식(<code>data.csv</code>)으로 준비하여 업로드합니다. 첫 번째 열에는 레이블을 지정하고, 이어지는 열에는 데이터셋 값을 입력합니다. 정상적으로 작동하려면 최소 3개의 열(레이블, 데이터 값, 주석)이 필요합니다. 열은 필요한 만큼 추가할 수 있지만, 주석(마지막 열)은 각 행마다 하나씩만 지정할 수 있습니다.</p></li>
 </ol>
 <pre><code>| Year | Canada   | Australia | Note                  |
 | 1980 | 22453000 | 13648800  |                       |
@@ -6382,13 +6397,13 @@ Chart.js 기반 인터랙티브 버블 차트: <a href="https://handsondataviz.g
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> Y_AXIS <span class="op">=</span> <span class="st">'Grade, Relative to Average'</span><span class="op">;</span> <span class="co">// y-axis label, label in tooltip</span></span>
 <span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> SHOW_GRID <span class="op">=</span> <span class="kw">true</span><span class="op">;</span> <span class="co">// `true` to show the grid, `false` to hide</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>팁: 주변의 덩치 큰 이웃 원에 가려진 조그마한 점들의 존재감을 살려 시야를 확보해 주고 싶다면, RGBA 색상 체계 방식의 투명도가 들어간 불투명 색원소들을 사용해 보세요. 초기 3자리 항목은 기본 컬러 속성인 빨강, 초록, 파랑(Red, Green, Blue)에 대한 빛의 강도를 뜻하며 가장 끝쪽 알파벳인 ’a’는 0.0(완전 투명 상태)에서부터 1.0(전면 불투명) 사이에 뻗어있는 농도(투명도 수준)를 대변하는 단어 <code>alpha</code>의 첫 글자에서 딴 것입니다. 실례로 <code>rgba(160, 0, 0, 0.5)</code> 같은 코드는 투명도가 입혀진 절반쯤 흐린 붉은색 결과물을 빚어냅니다. 이를 좀 더 심층적으로 배워보고 싶다면 <a href="https://www.w3schools.com/css/css_colors_rgb.asp">W3Schools의 RGBA Color 실습장</a>에서 이런저런 색상 튜닝 등을 가지고 놀아보는 편을 권장합니다.</p>
-<p>혹시라도 만약 여러분이 3개가 넘는 변수 인자들을 버블 차트라는 한 지붕 아래 욱여넣고자 한다면, 원형 기호 외에 다른 생김새의 도형 기호(glyphs)나 다채로운 색감(color) 등을 매개체 삼아 한두 가지 제2의 특성들을 더 버무려 낼 수 있습니다. 가령 페어필드 카운티(주로 코네티컷주의 부촌들) 지역은 별도로 파란색을 부여해 띄우고 그 밖의 밋밋한 구역들은 그냥 심심한 회색조 색상으로 구분 지어 분류할 수도 있습니다. 나아가 원형(circles), 네모형(squares), 세모형(triangles) 기호들을 각각 남학생, 여학생, 그리고 제3의 성별을 배려한 표식 등으로 세밀히 쪼개 배치하는 것도 방법입니다. 여기에서 이토록 복잡한 기술까지 세세하게 떠먹여 주지는 않겠지만 그 모든 부가 기능들이 코드 몇 줄 안팎의 아주 자그마한 노력만으로도 모두 실현 가능하다는 점 하나만큼은 장담해 드릴 수 있습니다.</p>
-<p>Chart.js 세계는 커스터마이징의 깊이를 따지자면 가히 한계가 없다 할 수 있지만 너무 과도한 요소 삽입으로 사용자(독자)에게 시각적 테러 수준의 복잡함을 초래하기보다는 오로지 본인의 핵심 주제를 논증하는 데 필요한 꼭 필수 불가결한 핵심 데이터에만 온전히 집중해야 한다는 점을 잊지 마시기를 바랍니다.</p>
+<p>팁: 주변의 큰 원에 가려진 작은 점들을 명확히 보여주고 싶다면 RGBA 색상 체계를 사용해 보세요. 앞의 세 자리는 기본 색상인 빨강, 초록, 파랑(Red, Green, Blue)의 강도를 뜻하며, 마지막 ’a’는 0.0(완전 투명)부터 1.0(완전 불투명) 사이의 투명도를 나타내는 <code>alpha</code>의 약자입니다. 예를 들어 <code>rgba(160, 0, 0, 0.5)</code>는 반투명한 붉은색을 만듭니다. 자세한 내용은 <a href="https://www.w3schools.com/css/css_colors_rgb.asp">W3Schools의 RGBA Color 실습 페이지</a>를 참고하세요.</p>
+<p>버블 차트에 3개 이상의 변수를 표현하고 싶다면 원형 기호 외에 다른 형태의 기호(glyphs)나 색상을 활용해 추가 정보를 전달할 수 있습니다. 예를 들어 페어필드 카운티(주로 코네티컷주의 부유한 지역)는 파란색으로 강조하고, 그 외 지역은 회색조로 단순하게 표시할 수 있습니다. 또한 원(circles), 사각형(squares), 삼각형(triangles) 기호를 활용해 성별이나 범주별 데이터를 구분하는 것도 방법입니다. 코드 몇 줄만 수정하면 이러한 기능을 손쉽게 구현할 수 있습니다.</p>
+<p>Chart.js는 자유롭게 맞춤 설정할 수 있는 폭이 매우 넓지만, 차트에 너무 많은 요소를 넣어 독자를 혼란스럽게 만들기보다는 핵심 데이터에 집중하는 것이 좋습니다.</p>
 <section id="summary11" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="summary11">요약</h3>
-<p>본 장에서는 나만의 GitHub 계정에 호스팅하면서 웹 공간 어디라도 손쉽게 장착 및 유통할 수 있도록 하는 강력하고도 다이내믹한 인터랙티브 차트들을 창조하기 위해 Chart.js 및 Highcharts 등의 기반 템플릿들을 만나보는 여정을 가졌습니다. 여러분들은 앞으로 어떠한 인터랙티브 시각화 작업에 맞닥뜨려도 이를 든든한 뼈대(base)로 삼아 거침없는 진군을 이룩하실 수 있을 것입니다. Chart.js에 대한 깊은 사색과 커스터마이징 스킬 및 고장 난 코드들에 대한 문제 극복 사례 등은 <a href="https://www.chartjs.org/samples/latest/">Chart.js 샘플 저장고</a> 및 <a href="https://www.chartjs.org/docs/latest/">Chart.js 공식 사용 설명서 페이지</a>에서 아낌없는 영감과 통찰력을 습득하시길 권합니다. 아울러 <a href="https://www.highcharts.com/demo">Highcharts 실습 갤러리관</a>을 구경하다 보면 그대로 훔쳐 와 복제하고 싶은 충동을 불러일으키는 수많은 코드 더미와 차트 샘플들이 즐비하게 자리하고 있으며, 시각화의 정교함을 갈고닦을 만한 각종 꿀팁들은 <a href="https://api.highcharts.com/highcharts/">Highcharts API 참조 가이드라인 문서</a> 속에 수북이 꽂혀 있습니다. 다만 명심할 점은 장차 여러분이 상업적인 영리를 목적으로 한 프로젝트 등에 Highcharts를 투입하고자 한다면 반드시 합당한 절차를 밟아 그들의 <a href="https://shop.highsoft.com/">사용권(license)</a>을 취득해야 한다는 사실입니다.</p>
-<p>이후 다가올 챕터에서는 위에서 막 맛보았던 차트 템플릿과 놀라우리만치 매우 흡사한 구성과 뼈대로 짜인 Leaflet.js 기반 지도 템플릿에 대해 집중 탐구하게 될 것입니다. 뭇 대중에게 널리 추앙받는 웹 매핑 특화형 오픈 소스 자바스크립트 라이브러리계의 영웅 Leaflet은, 여러분의 GitHub 계정에 영구 박제되어 웹 세계 방방곡곡으로 언제든 신출귀몰하게 뻗어 나갈 어메이징한 수준의 인터랙티브 지도들을 창조할 강력한 무기가 되어 줄 것입니다.</p>
+<p>이 장에서는 GitHub에 코드를 호스팅하여 웹 어디에나 손쉽게 삽입할 수 있는 Chart.js 및 Highcharts 기반 인터랙티브 차트 템플릿을 살펴보았습니다. 이 템플릿을 기초로 삼으면 다양한 인터랙티브 시각화 작업을 수월하게 확장해 나갈 수 있습니다. Chart.js의 세부 설정 방법이나 문제 해결 사례는 <a href="https://www.chartjs.org/samples/latest/">Chart.js 샘플 저장소</a> 및 <a href="https://www.chartjs.org/docs/latest/">Chart.js 공식 문서</a>를 참고하세요. 또한 <a href="https://www.highcharts.com/demo">Highcharts 실습 갤러리</a>에서는 바로 활용할 수 있는 다양한 차트 예제를 제공하며, 세부 기능은 <a href="https://api.highcharts.com/highcharts/">Highcharts API 참조 문서</a>에서 확인할 수 있습니다. 단, Highcharts를 상업적 목적으로 활용할 때는 반드시 공식 <a href="https://shop.highsoft.com/">라이선스(license)</a>를 취득해야 합니다.</p>
+<p>다음 장에서는 이번 장에서 다룬 차트 템플릿과 유사한 구조로 이루어진 Leaflet.js 기반 지도 템플릿을 살펴봅니다. 널리 사용되는 오픈소스 지도 라이브러리인 Leaflet을 활용하면 GitHub를 통해 웹에 손쉽게 공유할 수 있는 완성도 높은 인터랙티브 지도를 만들 수 있습니다.</p>
 <!-- BEGIN FILE: 12-leaflet.Rmd -->
 </section>
 </section>
