@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Machine translation"
-  author: "Deepthought"
+  author: "Taeyoon Kim"
   date: "2025-11-11"
   chapters:
     - index.qmd
@@ -54,6 +54,9 @@ book:
         - marketing_research/index.qmd
         - me_but_better/index.qmd
         - bible/index.qmd
+        - suttanipata/index.qmd
+        - how_we_communicate/index.qmd
+        - ikigai/index.qmd
 
 engine: markdown
 
