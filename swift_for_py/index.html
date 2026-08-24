@@ -593,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>이 가이드는 Swift의 기초를 안내하며, 기존 파이썬 지식을 활용할 수 있도록 파이썬과의 비교를 통해 설명합니다.</p>
+<p>이 가이드는 Swift의 기초를 안내하며, 파이썬과의 비교를 곁들여 설명하므로 기존 파이썬 지식을 그대로 활용할 수 있습니다.</p>
 <section id="목차" class="level2">
 <h2 class="anchored" data-anchor-id="목차">목차</h2>
 <ol type="1">
@@ -685,15 +685,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="소개">1. 소개</h2>
 <section id="swift란" class="level3">
 <h3 class="anchored" data-anchor-id="swift란">Swift란?</h3>
-<p>Swift는 macOS, iOS, watchOS, tvOS 등을 위한 강력하고 직관적인 프로그래밍 언어입니다. Apple Inc.와 오픈 소스 커뮤니티에 의해 개발되었습니다.</p>
+<p>Swift는 macOS, iOS, watchOS, tvOS 등을 위한 강력하고 직관적인 프로그래밍 언어입니다. Apple Inc.와 오픈 소스 커뮤니티가 개발하고 있습니다.</p>
 </section>
 <section id="왜-swift인가" class="level3">
 <h3 class="anchored" data-anchor-id="왜-swift인가">왜 Swift인가?</h3>
 <ul>
-<li><strong>안전성:</strong> 일반적인 프로그래밍 오류의 전체 클래스를 제거하도록 설계되었습니다.</li>
-<li><strong>빠른 속도:</strong> C++에 필적하는 성능을 제공합니다.</li>
-<li><strong>현대적:</strong> 옵셔널, 제네릭, 클로저와 같은 기능은 표현력이 풍부하고 즐거운 프로그래밍을 가능하게 합니다.</li>
-<li><strong>상호 운용성:</strong> Objective-C 코드와 원활하게 작동합니다.</li>
+<li><strong>안전성:</strong> 흔한 프로그래밍 오류 부류를 아예 제거하도록 설계되었습니다.</li>
+<li><strong>빠른 속도:</strong> C++에 필적하는 성능을 냅니다.</li>
+<li><strong>현대적:</strong> 옵셔널, 제네릭, 클로저 같은 기능 덕분에 표현력 있고 즐거운 프로그래밍이 가능합니다.</li>
+<li><strong>상호 운용성:</strong> Objective-C 코드와 잘 어울려 작동합니다.</li>
 </ul>
 </section>
 <section id="swift-대-파이썬-주요-차이점" class="level3">
@@ -760,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="시작하기">2. 시작하기</h2>
 <section id="playgrounds" class="level3">
 <h3 class="anchored" data-anchor-id="playgrounds">Playgrounds</h3>
-<p>Xcode Playgrounds는 Swift 코드를 실험하고 결과를 즉시 확인할 수 있는 대화형 환경을 제공합니다. 이는 파이썬 인터프리터나 Jupyter Notebook을 사용하는 것과 유사합니다.</p>
+<p>Xcode Playgrounds는 Swift 코드를 실험하고 결과를 바로 확인해 볼 수 있는 대화형 환경입니다. 파이썬 인터프리터나 Jupyter Notebook을 쓰는 것과 비슷합니다.</p>
 </section>
 <section id="기본-구문" class="level3">
 <h3 class="anchored" data-anchor-id="기본-구문">기본 구문</h3>
@@ -829,7 +829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="타입-안전성" class="level3">
 <h3 class="anchored" data-anchor-id="타입-안전성">타입 안전성</h3>
-<p>Swift는 타입 안전 언어입니다. 이는 컴파일러가 컴파일 시간에 타입을 확인하고 타입 불일치를 오류로 표시한다는 것을 의미합니다. 명시적 변환 없이는 한 타입의 값을 다른 타입의 변수에 할당할 수 없습니다.</p>
+<p>Swift는 타입 안전 언어입니다. 컴파일러가 컴파일 시간에 타입을 확인하고 불일치가 있으면 오류로 표시한다는 뜻입니다. 명시적 변환 없이는 한 타입의 값을 다른 타입의 변수에 할당할 수 없습니다.</p>
 <p><strong>파이썬 (동적 타이핑):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Python"</span> <span class="co"># 허용됨, x의 타입이 변경됨</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -916,7 +916,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="컬렉션-타입">컬렉션 타입</h3>
 <section id="array-배열" class="level4">
 <h4 class="anchored" data-anchor-id="array-배열">Array (배열)</h4>
-<p>같은 타입의 값들을 순서대로 저장하는 컬렉션입니다.</p>
+<p>같은 타입의 값을 순서대로 저장하는 컬렉션입니다.</p>
 <p><strong>파이썬 (List):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>]</span>
@@ -964,7 +964,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="set-세트" class="level4">
 <h4 class="anchored" data-anchor-id="set-세트">Set (세트)</h4>
-<p>같은 타입의 고유한 값들을 순서 없이 저장하는 컬렉션입니다.</p>
+<p>같은 타입의 고유한 값을 순서 없이 저장하는 컬렉션입니다.</p>
 <p><strong>파이썬 (set):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>} <span class="co"># {1, 2, 3}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Swift (Set):</strong></p>
@@ -980,7 +980,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="튜플" class="level3">
 <h3 class="anchored" data-anchor-id="튜플">튜플</h3>
-<p>고정된 크기의, 다른 타입의 값들을 순서대로 가질 수 있는 컬렉션입니다.</p>
+<p>고정된 크기로, 서로 다른 타입의 값을 순서대로 담을 수 있는 컬렉션입니다.</p>
 <p><strong>파이썬:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">20</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>http_status <span class="op">=</span> (<span class="dv">404</span>, <span class="st">"Not Found"</span>)</span>
@@ -1004,11 +1004,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 튜플 분해</span></span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> (<span class="va">statusCode</span><span class="op">,</span> statusMessage<span class="op">)</span> <span class="op">=</span> httpStatus</span>
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span><span class="st">"상태 코드: </span><span class="er">\(</span><span class="st">statusCode)"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Swift의 튜플은 명확성을 위해 이름 있는 요소를 허용하는 등 더 강력합니다.</p>
+<p>Swift의 튜플은 이름 있는 요소를 허용할 수 있는 등 더 강력합니다.</p>
 </section>
 <section id="옵셔널" class="level3">
 <h3 class="anchored" data-anchor-id="옵셔널">옵셔널</h3>
-<p>Swift는 값의 부재를 처리하기 위해 “옵셔널” 개념을 도입합니다. 옵셔널 변수는 값을 가지거나 <code>nil</code>(파이썬의 <code>None</code>과 유사)일 수 있습니다. 이는 누락된 값의 가능성을 명시적으로 고려하게 하여 안전한 코드를 작성하기 위한 핵심 기능입니다.</p>
+<p>Swift는 값의 부재를 다루기 위해 “옵셔널”이라는 개념을 도입했습니다. 옵셔널 변수는 값을 가질 수도 있고 <code>nil</code>(파이썬의 <code>None</code>과 유사)일 수도 있습니다. 누락된 값의 가능성을 명시적으로 드러내므로 안전한 코드를 쓰는 데 큰 도움이 되는 핵심 기능입니다.</p>
 <p><strong>파이썬:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_user(user_id):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user_id <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -1056,14 +1056,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="co">// Nil-병합 연산자 (나중에 다룸)</span></span>
 <span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">currentName</span> <span class="op">=</span> optionalName <span class="op">??</span> <span class="st">"Guest"</span> <span class="co">// optionalName이 nil이면 "Guest" 사용</span></span>
 <span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span><span class="st">"현재 사용자: </span><span class="er">\(</span><span class="st">currentName)"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>옵셔널을 이해하는 것은 Swift에서 매우 중요합니다.</p>
+<p>옵셔널은 Swift를 제대로 쓰려면 꼭 이해해야 하는 개념입니다.</p>
 </section>
 </section>
 <section id="연산자" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="연산자">5. 연산자</h2>
 <section id="산술-비교-논리-연산자" class="level3">
 <h3 class="anchored" data-anchor-id="산술-비교-논리-연산자">산술, 비교, 논리 연산자</h3>
-<p>이들은 파이썬과 매우 유사합니다.</p>
+<p>연산자는 파이썬과 매우 비슷합니다.</p>
 <ul>
 <li><strong>산술:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (나머지)</li>
 <li><strong>비교:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
@@ -1092,7 +1092,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="nil-병합-연산자" class="level3">
 <h3 class="anchored" data-anchor-id="nil-병합-연산자">Nil-병합 연산자 (<code>??</code>)</h3>
-<p>옵셔널이 <code>nil</code>일 경우 기본값을 제공합니다.</p>
+<p>옵셔널이 <code>nil</code>일 경우 기본값을 대신 사용합니다.</p>
 <p><strong>파이썬 (종종 <code>or</code> 또는 <code>if</code> 문으로 처리):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> name <span class="kw">or</span> <span class="st">"Guest"</span> <span class="co"># "Guest"</span></span>
@@ -1157,7 +1157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="조건문">조건문</h3>
 <section id="if-else-if-else" class="level4">
 <h4 class="anchored" data-anchor-id="if-else-if-else"><code>if</code>, <code>else if</code>, <code>else</code></h4>
-<p>구문은 유사하지만, Swift는 단일 문장에도 중괄호 <code>{}</code>를 요구하며 조건 주위의 괄호는 선택 사항이지만 명확성을 위해 종종 사용됩니다.</p>
+<p>구문은 유사하지만 Swift는 조건이 한 문장이라도 중괄호 <code>{}</code>를 요구합니다. 조건 주위의 괄호는 선택 사항이고, 명확성을 위해 붙이는 경우도 많습니다.</p>
 <p><strong>파이썬:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>temperature <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> temperature <span class="op">&gt;</span> <span class="dv">30</span>:</span>
@@ -1178,7 +1178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="switch" class="level4">
 <h4 class="anchored" data-anchor-id="switch"><code>switch</code></h4>
-<p>Swift의 <code>switch</code> 문은 파이썬에 직접적인 <code>switch</code>가 없는 것(파이썬 3.10+에는 <code>match-case</code>가 있음)에 비해 매우 강력하고 유연합니다. - Swift의 <code>switch</code> 문은 모든 가능한 값을 다루거나 <code>default</code> 케이스를 포함해야 합니다 (철저해야 함). - 기본적으로 “fall through”하지 않습니다 (일반적으로 <code>break</code> 필요 없음). C 스타일의 fall-through를 위해서는 <code>fallthrough</code> 키워드를 사용할 수 있습니다. - 범위, 튜플, 값 바인딩 등 다양한 패턴에 대해 일치시킬 수 있습니다.</p>
+<p>Swift의 <code>switch</code> 문은 파이썬에 직접적인 <code>switch</code>가 없는 것(파이썬 3.10+에는 <code>match-case</code>가 있음)에 비해 매우 강력하고 유연합니다. - Swift의 <code>switch</code> 문은 모든 가능한 값을 다루거나 <code>default</code> 케이스를 포함해야 합니다 (철저해야 함). - 기본적으로 “fall through”하지 않습니다 (일반적으로 <code>break</code> 필요 없음). C 스타일의 fall-through를 위해서는 <code>fallthrough</code> 키워드를 사용할 수 있습니다. - 범위, 튜플, 값 바인딩 같은 다양한 패턴을 일치시킬 수 있습니다.</p>
 <p><strong>파이썬 (<code>if-elif-else</code> 또는 3.10+ <code>match-case</code> 사용):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if-elif-else 사용</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> <span class="st">"a"</span></span>
@@ -1448,7 +1448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>average<span class="op">(</span><span class="fl">1.0</span><span class="op">,</span> <span class="fl">2.0</span><span class="op">,</span> <span class="fl">3.0</span><span class="op">)</span> <span class="co">// 2.0</span></span>
 <span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>average<span class="op">()</span>              <span class="co">// 0.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>In-Out 매개변수 (참조에 의한 전달과 같이 매개변수를 직접 수정):</strong> 함수 매개변수는 기본적으로 상수입니다. 함수가 매개변수 값을 수정하고 함수 호출이 끝난 후에도 해당 변경 사항이 유지되기를 원하면 해당 매개변수를 in-out 매개변수로 정의합니다. in-out 매개변수에 인수를 전달할 때 변수 이름 바로 앞에 앰퍼샌드(<code>&amp;</code>)를 붙입니다.</p>
+<p><strong>In-Out 매개변수 (참조에 의한 전달처럼 매개변수를 직접 수정):</strong> 함수 매개변수는 기본적으로 상수입니다. 함수 안에서 매개변수 값을 고친 결과가 호출이 끝난 뒤에도 유지되길 원한다면 그 매개변수를 in-out 매개변수로 정의합니다. in-out 매개변수에 인수를 넘길 때는 변수 이름 바로 앞에 앰퍼샌드(<code>&amp;</code>)를 붙입니다.</p>
 <p><strong>파이썬 (객체는 참조로 전달되며, 가변 타입은 변경될 수 있음):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modify_list(my_list):</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    my_list.append(<span class="dv">4</span>)</span>
@@ -1507,7 +1507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="클로저" class="level3">
 <h3 class="anchored" data-anchor-id="클로저">클로저</h3>
-<p>클로저는 코드 내에서 전달되고 사용될 수 있는 자체 포함된 기능 블록입니다. 파이썬의 <code>lambda</code> 함수와 유사하지만 훨씬 더 강력하고 다재다능하며, Ruby의 블록이나 JavaScript의 익명 함수와 비슷합니다.</p>
+<p>클로저는 코드 안에서 전달되고 쓰일 수 있는 자체 포함된 기능 블록입니다. 파이썬의 <code>lambda</code>와 유사하지만 훨씬 강력해서 Ruby의 블록이나 JavaScript의 익명 함수에 가깝습니다.</p>
 <p><strong>파이썬 Lambda:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> x, numbers)) <span class="co"># [1, 4, 9, 16]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1563,7 +1563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> <span class="st">"숫자: </span><span class="er">\(</span><span class="st">number)"</span></span>
 <span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span>mappedNumbers<span class="op">)</span> <span class="co">// ["숫자: 1", "숫자: 2", "숫자: 3", "숫자: 4"]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>클로저는 Swift에서 광범위하게 사용되며, 특히 콜백, 비동기 작업 및 함수형 프로그래밍 패턴에 유용합니다.</p>
+<p>클로저는 Swift 곳곳에서 쓰입니다. 특히 콜백, 비동기 작업, 함수형 프로그래밍 패턴에서 유용합니다.</p>
 </section>
 </section>
 <section id="객체-지향-프로그래밍-oop" class="level2 unnumbered">
@@ -1571,7 +1571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="클래스와-구조체-structs" class="level3">
 <h3 class="anchored" data-anchor-id="클래스와-구조체-structs">클래스와 구조체 (<code>struct</code>s)</h3>
 <p>클래스와 구조체 모두 프로퍼티와 메서드를 정의할 수 있습니다.</p>
-<p><strong>주요 차이점:</strong> - <strong>클래스는 참조 타입입니다:</strong> 클래스 인스턴스를 할당하거나 함수에 전달할 때, 동일한 기존 인스턴스에 대한 참조로 작업합니다. 한 참조를 통해 변경된 사항은 다른 참조를 통해서도 볼 수 있습니다. (파이썬에서 대부분의 객체가 작동하는 방식과 유사합니다). - <strong>구조체는 값 타입입니다:</strong> 구조체 인스턴스를 할당하거나 함수에 전달할 때, 인스턴스의 복사본이 만들어집니다. 한 복사본의 변경 사항은 다른 복사본에 영향을 미치지 않습니다. (파이썬의 <code>int</code>, <code>str</code>과 같은 기본 타입 또는 리스트를 명시적으로 복사할 때 <code>new_list = old_list[:]</code>와 유사합니다).</p>
+<p><strong>주요 차이점:</strong> - <strong>클래스는 참조 타입입니다:</strong> 클래스 인스턴스를 할당하거나 함수에 넘길 때는 기존 인스턴스를 가리키는 참조를 다룹니다. 한 참조에서 바꾼 내용은 다른 참조에서도 그대로 보입니다. (파이썬에서 대부분의 객체가 작동하는 방식과 유사합니다). - <strong>구조체는 값 타입입니다:</strong> 구조체 인스턴스를 할당하거나 함수에 넘길 때는 인스턴스가 복사됩니다. 어느 한 복사본을 바꿔도 다른 복사본에는 영향이 없습니다. (파이썬의 <code>int</code>, <code>str</code> 같은 기본 타입, 또는 리스트를 <code>new_list = old_list[:]</code>처럼 명시적으로 복사할 때와 유사합니다).</p>
 <ul>
 <li><strong>상속:</strong> 클래스는 상속을 지원하지만 구조체는 지원하지 않습니다.</li>
 <li><strong>소멸자 (<code>deinit</code>):</strong> 클래스는 소멸자를 가질 수 있지만 구조체는 가질 수 없습니다.</li>
@@ -1694,7 +1694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="계산-프로퍼티" class="level4">
 <h4 class="anchored" data-anchor-id="계산-프로퍼티">계산 프로퍼티</h4>
-<p>실제로 값을 저장하지 않습니다. 대신, 다른 프로퍼티와 값을 간접적으로 검색하고 설정하기 위한 getter와 선택적 setter를 제공합니다.</p>
+<p>실제로 값을 저장하지 않습니다. 대신 getter와 선택적 setter를 두어 다른 프로퍼티와 값을 간접적으로 읽고 설정합니다.</p>
 <p><strong>파이썬 (<code>@property</code> 데코레이터 사용):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Square:</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, side_length):</span>
@@ -1942,7 +1942,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb74-35"><a href="#cb74-35" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">sixEggs</span> <span class="op">=</span> RecipeIngredient<span class="op">(</span>name<span class="op">:</span> <span class="st">"Eggs"</span><span class="op">,</span> quantity<span class="op">:</span> <span class="dv">6</span><span class="op">)</span></span>
 <span id="cb74-36"><a href="#cb74-36" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span>sixEggs<span class="op">.</span>name<span class="op">)</span> <span class="co">// "Eggs"</span></span>
 <span id="cb74-37"><a href="#cb74-37" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span>sixEggs<span class="op">.</span>quantity<span class="op">)</span> <span class="co">// 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>실패 가능한 초기화 구문 (<code>init?</code>, <code>init!</code>):</strong> 실패할 수 있는 ( <code>nil</code>을 반환할 수 있는) 초기화 구문입니다.</p>
+<p><strong>실패 가능한 초기화 구문 (<code>init?</code>, <code>init!</code>):</strong> 실패할 수 있는 초기화 구문, 즉 <code>nil</code>을 반환할 수 있는 초기화 구문입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Animal <span class="op">{</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="va">species</span><span class="op">:</span> String</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">init</span><span class="op">?(</span>species<span class="op">:</span> String<span class="op">)</span> <span class="op">{</span> <span class="co">// 실패 가능한 초기화 구문</span></span>
@@ -2092,7 +2092,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="프로토콜-인터페이스" class="level3">
 <h3 class="anchored" data-anchor-id="프로토콜-인터페이스">프로토콜 (인터페이스)</h3>
-<p>프로토콜은 특정 작업이나 기능에 적합한 메서드, 프로퍼티 및 기타 요구 사항의 청사진을 정의합니다. 그런 다음 클래스, 구조체 또는 열거형이 프로토콜을 <em>준수</em>할 수 있습니다. 이는 Java/C#의 인터페이스 또는 파이썬의 추상 기본 클래스(ABC)와 유사합니다.</p>
+<p>프로토콜은 특정 작업이나 기능에 필요한 메서드, 프로퍼티 등 요구 사항의 청사진을 정의합니다. 클래스, 구조체, 열거형이 이 프로토콜을 <em>준수</em>할 수 있습니다. Java/C#의 인터페이스나 파이썬의 추상 기본 클래스(ABC)와 유사합니다.</p>
 <p><strong>파이썬 (<code>abc</code> 모듈 사용):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2222,7 +2222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="오류-처리" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="오류-처리">9. 오류 처리</h2>
-<p>Swift는 런타임에 복구 가능한 오류를 발생시키고, 잡고, 전파하고, 조작하기 위한 일급 지원을 제공합니다. 이는 값의 부재를 처리하는 옵셔널과 다릅니다. 오류 처리는 작업의 예기치 않은 결과를 다룹니다.</p>
+<p>Swift는 복구 가능한 오류를 던지고 잡고 전파하는 기능을 언어 차원에서 기본으로 갖추고 있습니다. 이는 값의 부재를 다루는 옵셔널과는 다른 문제입니다. 오류 처리는 작업이 낼 수 있는 예기치 못한 결과를 다룹니다.</p>
 <p>파이썬은 예외 처리를 위해 <code>try-except-finally</code> 블록을 사용합니다.</p>
 <section id="오류-표현-및-발생" class="level3">
 <h3 class="anchored" data-anchor-id="오류-표현-및-발생">오류 표현 및 발생</h3>
@@ -2380,7 +2380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="메모리-관리-arc" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="메모리-관리-arc">10. 메모리 관리 (ARC)</h2>
-<p>Swift는 클래스 인스턴스의 메모리를 관리하기 위해 자동 참조 계산(ARC)을 사용합니다. ARC는 해당 인스턴스가 더 이상 필요하지 않을 때 클래스 인스턴스에서 사용한 메모리를 자동으로 해제합니다. - 일반적으로 메모리 관리에 대해 직접 생각할 필요가 없습니다. - ARC는 각 클래스 인스턴스를 현재 참조하고 있는 프로퍼티, 상수 및 변수가 몇 개인지 추적하여 작동합니다. 해당 인스턴스에 대한 활성 참조가 하나 이상 존재하는 한 인스턴스를 할당 해제하지 않습니다. - <strong>강한 참조 순환:</strong> ARC는 때때로 두 클래스 인스턴스가 서로 강한 참조를 유지하여 절대 할당 해제되지 않는 상황(메모리 누수)을 유발할 수 있습니다. Swift는 이러한 순환을 해결하기 위해 <code>weak</code> 및 <code>unowned</code> 참조를 제공합니다. - <strong><code>weak</code> 참조:</strong> 약한 참조는 참조하는 인스턴스에 대한 강한 유지를 하지 않으므로 ARC가 참조된 인스턴스를 할당 해제하는 것을 막지 않습니다. 인스턴스가 할당 해제되면 참조는 <code>nil</code>이 됩니다. 따라서 약한 참조는 옵셔널 타입이어야 합니다. - <strong><code>unowned</code> 참조:</strong> 약한 참조와 마찬가지로 미소유 참조는 강한 유지를 하지 않습니다. 그러나 미소유 참조는 다른 인스턴스가 동일한 수명 또는 더 긴 수명을 가질 때 사용됩니다. 항상 값을 가질 것으로 가정됩니다. 인스턴스가 할당 해제된 후 미소유 참조에 접근하면 런타임 오류가 발생합니다.</p>
+<p>Swift는 클래스 인스턴스의 메모리를 관리하기 위해 자동 참조 계산(ARC)을 사용합니다. ARC는 해당 인스턴스가 더 이상 필요하지 않을 때 클래스 인스턴스에서 사용한 메모리를 자동으로 해제합니다. - 일반적으로 메모리 관리를 직접 신경 쓸 필요는 없습니다. - ARC는 각 클래스 인스턴스를 현재 참조하고 있는 프로퍼티, 상수 및 변수가 몇 개인지 추적하여 작동합니다. 해당 인스턴스에 대한 활성 참조가 하나 이상 존재하는 한 인스턴스를 할당 해제하지 않습니다. - <strong>강한 참조 순환:</strong> ARC는 때때로 두 클래스 인스턴스가 서로 강한 참조를 유지하여 절대 할당 해제되지 않는 상황(메모리 누수)을 유발할 수 있습니다. Swift는 이러한 순환을 해결하기 위해 <code>weak</code> 및 <code>unowned</code> 참조를 제공합니다. - <strong><code>weak</code> 참조:</strong> 약한 참조는 참조하는 인스턴스에 대한 강한 유지를 하지 않으므로 ARC가 참조된 인스턴스를 할당 해제하는 것을 막지 않습니다. 인스턴스가 할당 해제되면 참조는 <code>nil</code>이 됩니다. 따라서 약한 참조는 옵셔널 타입이어야 합니다. - <strong><code>unowned</code> 참조:</strong> 약한 참조와 마찬가지로 미소유 참조는 강한 유지를 하지 않습니다. 그러나 미소유 참조는 다른 인스턴스가 동일한 수명 또는 더 긴 수명을 가질 때 사용됩니다. 항상 값을 가질 것으로 가정됩니다. 인스턴스가 할당 해제된 후 미소유 참조에 접근하면 런타임 오류가 발생합니다.</p>
 <p><strong>파이썬 (가비지 컬렉션):</strong> 파이썬은 참조 계산과 순환 가비지 컬렉터의 조합을 사용하여 메모리를 관리합니다. 일반적으로 메모리를 수동으로 관리하지 않습니다.</p>
 <p><strong>Swift (ARC 예제 - 강한 참조 순환):</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb90"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PersonARC <span class="op">{</span></span>
@@ -2430,7 +2430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="제네릭-generics" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="제네릭-generics">12. 제네릭 (Generics)</h2>
-<p>제네릭은 코드를 유연하고 재사용 가능하게 만드는 Swift의 강력한 기능 중 하나입니다. 파이썬은 동적 타입 언어이므로 기본적으로 모든 함수가 다양한 타입을 받을 수 있지만, Swift는 정적 타입 언어이므로 제네릭을 사용하여 타입 안전성을 유지하면서 재사용성을 높여야 합니다.</p>
+<p>제네릭은 코드를 유연하고 재사용하기 쉽게 만들어 주는 Swift의 강력한 기능 중 하나입니다. 파이썬은 동적 타입 언어라 기본적으로 어떤 함수든 여러 타입을 받습니다. Swift는 정적 타입 언어이므로, 제네릭으로 타입 안전성을 지키면서 재사용성을 높여야 합니다.</p>
 <section id="제네릭-함수" class="level3">
 <h3 class="anchored" data-anchor-id="제네릭-함수">제네릭 함수</h3>
 <p>파이썬에서는 타입 힌팅 없이 함수를 작성하면 어떤 타입이든 받을 수 있습니다.</p>
@@ -2506,7 +2506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="동시성-concurrency" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="동시성-concurrency">13. 동시성 (Concurrency)</h2>
-<p>동시성은 파이썬과 Swift에서 다르게 다뤄집니다. 파이썬에서는 GIL (Global Interpreter Lock) 때문에 진정한 멀티스레딩보다는 주로 <code>asyncio</code> 모듈을 이용한 비동기 프로그래밍 방식(event loop 기반)이나 멀티프로세싱을 사용합니다. 반면 Swift는 <code>async/await</code> 문법을 지원하며, 스레드를 기본으로 한 동시성 제어가 가능합니다.</p>
+<p>동시성은 파이썬과 Swift가 서로 다른 길을 갑니다. 파이썬에서는 GIL (Global Interpreter Lock) 때문에 진정한 멀티스레딩보다 <code>asyncio</code> 모듈을 이용한 비동기 프로그래밍 방식(event loop 기반)이나 멀티프로세싱을 주로 씁니다. 반면 Swift는 <code>async/await</code> 문법을 지원하며, 스레드를 기본으로 삼는 동시성 제어가 가능합니다.</p>
 <section id="asyncawait-기본-개념" class="level3">
 <h3 class="anchored" data-anchor-id="asyncawait-기본-개념">Async/Await 기본 개념</h3>
 <p>Swift의 <code>async/await</code>은 파이썬과 유사합니다. 비동기로 작동하는 함수는 <code>async</code>로 표시하고, 그 결과가 반환될 때까지 기다릴 때는 <code>await</code>를 사용합니다.</p>
@@ -2536,8 +2536,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a>    print<span class="op">(</span>result<span class="op">)</span></span>
 <span id="cb97-12"><a href="#cb97-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Swift의 <code>func ... async</code>는 함수의 정의에 놓이며 파이썬의 <code>async def</code>와 비슷합니다.</li>
-<li><code>Task {}</code> 단위로 비동기 작업을 묶어 실행할 수 있습니다.</li>
+<li>Swift의 <code>func ... async</code>는 함수 정의에 붙이며, 파이썬의 <code>async def</code>와 비슷합니다.</li>
+<li>비동기 작업은 <code>Task {}</code> 단위로 묶어 실행할 수 있습니다.</li>
 </ul>
 </section>
 <section id="여러-작업-동시에-실행하기-task-group-let" class="level3">
@@ -2560,7 +2560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="actor-안전한-동시성-제어" class="level3">
 <h3 class="anchored" data-anchor-id="actor-안전한-동시성-제어">Actor (안전한 동시성 제어)</h3>
-<p>파이썬에서는 데이터 충돌을 피하기 위해 <code>Lock()</code> 객체 같은 동기화 기본 요소를 사용하지만, Swift 5.5부터는 <strong>Actor</strong>를 통해 여러 스레드에서 동시에 접근 가능한 상태를 안전하게 격리(Isolate)할 수 있습니다. Actor는 클래스와 유사하지만, 한 번에 하나의 태스크만 Actor의 내부 상태에 접근할 수 있습니다.</p>
+<p>파이썬에서는 데이터 충돌을 피하려고 <code>Lock()</code> 객체 같은 동기화 기본 요소를 쓰지만, Swift 5.5부터는 <strong>Actor</strong>로 여러 스레드에서 동시에 접근하는 상태를 안전하게 격리(Isolate)합니다. Actor는 클래스와 비슷하지만 한 번에 하나의 태스크만 내부 상태에 접근할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="cf">actor</span> BankAccount <span class="op">{</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">balance</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -2630,7 +2630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="urlsession으로-http-요청-가로채기" class="level3">
 <h3 class="anchored" data-anchor-id="urlsession으로-http-요청-가로채기">URLSession으로 HTTP 요청 가로채기</h3>
-<p>파이썬의 <code>requests.get()</code>과 유사한 작동을 Swift에서 기본 <code>URLSession</code>을 사용해 처리할 수 있습니다. 최근 <code>async/await</code>의 도입으로 네트워크 패치 코드가 훨씬 깔끔해졌습니다.</p>
+<p>파이썬의 <code>requests.get()</code>에 해당하는 일은 Swift에서 기본 <code>URLSession</code>으로 처리할 수 있습니다. 최근에는 <code>async/await</code>가 도입되어 네트워크 요청 코드가 한결 깔끔해졌습니다.</p>
 <p><strong>파이썬:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2668,13 +2668,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb104-27"><a href="#cb104-27" aria-hidden="true" tabindex="-1"></a>        print<span class="op">(</span>user<span class="op">.</span>login<span class="op">)</span></span>
 <span id="cb104-28"><a href="#cb104-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb104-29"><a href="#cb104-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Swift의 <code>URLSession</code>은 <code>requests</code>만큼 코드가 짤막하지는 않지만, 강타입 시스템을 통해 안전성을 보장하고 기본적으로 비동기 환경에 완전히 어우러집니다.</p>
+<p>Swift의 <code>URLSession</code>은 <code>requests</code>만큼 코드가 짧지는 않지만, 강타입 시스템 덕분에 안전하고 기본적으로 비동기 환경과 자연스럽게 맞물립니다.</p>
 <hr>
 </section>
 </section>
 <section id="프로퍼티-래퍼-property-wrappers" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="프로퍼티-래퍼-property-wrappers">15. 프로퍼티 래퍼 (Property Wrappers)</h2>
-<p>프로퍼티 래퍼는 Swift에서 파이썬의 데코레이터(Decorators)와 매우 비슷해 보이지만 약간 다른 용도로 사용되는 강력한 기능입니다. 값을 저장하고 계산하는 로직과 값을 정의하는 코드를 분리할 수 있게 해줍니다.</p>
+<p>프로퍼티 래퍼는 겉보기에 파이썬의 데코레이터(Decorators)와 매우 비슷하지만 용도는 조금 다른 강력한 기능입니다. 값을 저장하고 계산하는 로직을 값 정의 코드에서 분리해 줍니다.</p>
 <section id="파이썬에서의-데코레이터-패턴과-비교" class="level3">
 <h3 class="anchored" data-anchor-id="파이썬에서의-데코레이터-패턴과-비교">파이썬에서의 데코레이터 패턴과 비교</h3>
 <p>파이썬에서는 주로 함수의 실행 전후를 감시하거나 상태를 변경할 때 데코레이터를 사용합니다 (<code>@property</code> 또한 메서드를 프로퍼티처럼 접근 가능하게 합니다).</p>
@@ -2734,7 +2734,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb106-30"><a href="#cb106-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-31"><a href="#cb106-31" aria-hidden="true" tabindex="-1"></a>hero<span class="op">.</span>health <span class="op">=</span> <span class="op">-</span><span class="dv">20</span></span>
 <span id="cb106-32"><a href="#cb106-32" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span>hero<span class="op">.</span>health<span class="op">)</span> <span class="co">// 0 (최솟값으로 제한됨)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>프로퍼티 래퍼는 로컬 변수는 물론 SwiftUI 같은 프레임워크에서도 <code>@State</code>, <code>@Binding</code>, <code>@Environment</code> 등으로 상태 관리에 폭넓게 사용되어 코드의 보일러플레이트를 줄여줍니다.</p>
+<p>프로퍼티 래퍼는 로컬 변수는 물론 SwiftUI 같은 프레임워크의 <code>@State</code>, <code>@Binding</code>, <code>@Environment</code>처럼 상태 관리에도 널리 쓰이며 코드의 보일러플레이트를 덜어 줍니다.</p>
 <hr>
 </section>
 </section>
@@ -2765,7 +2765,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb107-19"><a href="#cb107-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-20"><a href="#cb107-20" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">shape</span> <span class="op">=</span> makeShape<span class="op">()</span></span>
 <span id="cb107-21"><a href="#cb107-21" aria-hidden="true" tabindex="-1"></a>print<span class="op">(</span>shape<span class="op">.</span>draw<span class="op">())</span> <span class="co">// "🔺"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>SwiftUI에서는 모든 뷰가 <code>some View</code>를 반환하는 데 사용되어 반환되는 UI 구조가 최적화(타입을 알 수 있으므로)될 수 있게 돕습니다.</p>
+<p>SwiftUI에서 모든 뷰가 <code>some View</code>를 반환하는 것도 같은 원리입니다. 컴파일러가 실제 타입을 알 수 있어 반환되는 UI 구조를 최적화하기 좋습니다.</p>
 </section>
 <section id="existential-types-any" class="level3">
 <h3 class="anchored" data-anchor-id="existential-types-any">Existential Types (<code>any</code>)</h3>
@@ -2800,7 +2800,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="swift의-resultbuilder" class="level3">
 <h3 class="anchored" data-anchor-id="swift의-resultbuilder">Swift의 <code>@resultBuilder</code></h3>
-<p>Swift에서는 이를 위해 파라미터 영역 내에서 조건문이나 반복문을 포함한 모든 선언문을 특정 구조체(결과)로 모아주는 능력을 제공합니다.</p>
+<p>Swift에서는 이를 위해 파라미터 영역 안의 조건문이나 반복문을 포함한 선언문들을 하나의 결과 구조체로 모아 주는 기능을 갖추고 있습니다.</p>
 <p><strong>Swift:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb110"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="at">@resultBuilder</span></span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> HTMLBuilder <span class="op">{</span></span>
@@ -2834,14 +2834,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="swift-패키지-매니저-swiftpm" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="swift-패키지-매니저-swiftpm">18. Swift 패키지 매니저 (SwiftPM)</h2>
-<p>파이썬 개발에서 모듈 의존성을 관리할 때 주로 <code>pip</code>, <code>requirements.txt</code>, 또는 <code>poetry</code> 등을 사용합니다. Swift에서는 언어 내장인 <strong>Swift Package Manager (SwiftPM)</strong> 가 표준 역할을 수행합니다.</p>
+<p>파이썬에서는 모듈 의존성을 관리할 때 주로 <code>pip</code>, <code>requirements.txt</code>, <code>poetry</code> 같은 도구를 씁니다. Swift에서는 언어에 내장된 <strong>Swift Package Manager (SwiftPM)</strong> 가 표준입니다.</p>
 <section id="pip-vs-swiftpm" class="level3">
 <h3 class="anchored" data-anchor-id="pip-vs-swiftpm">Pip vs SwiftPM</h3>
 <p><strong>파이썬 의존성 관리:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb111"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 새로운 패키지를 설치합니다 (가상 환경 사용 권장)</span></span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>그리고 이 정보를 <code>requirements.txt</code> 또는 <code>pyproject.toml</code> 등에 남깁니다.</p>
-<p><strong>Swift 의존성 관리:</strong> Swift에서는 프로젝트의 <code>Package.swift</code> 파일(매니페스트 파일)에 코드로 의존성을 관리합니다. 이 파일 자체도 Swift로 작성되어 있습니다.</p>
+<p><strong>Swift 의존성 관리:</strong> Swift에서는 프로젝트의 <code>Package.swift</code> 파일(매니페스트 파일)에 코드로 의존성을 관리합니다. 이 파일 자체가 Swift 코드입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">// swift-tools-version:5.7</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">PackageDescription</span></span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2860,14 +2860,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb112-16"><a href="#cb112-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">]),</span></span>
 <span id="cb112-17"><a href="#cb112-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">]</span></span>
 <span id="cb112-18"><a href="#cb112-18" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>swift build</code> 명령을 실행하면 이 매니페스트를 참고하여 깃허브 저장소에서 라이브러리를 가져와 빌드 캐시에 저장한 뒤, 애플리케이션을 컴파일하게 됩니다. 파이썬의 <code>pip freeze</code>나 잠금 파일(Lockfile)의 개념이 <code>Package.resolved</code>에 동일하게 반영됩니다.</p>
-<p>가장 중요한 차이는 SwiftPM은 C, C++, Objective-C 코드의 직접적인 컴파일도 지원하여 네이티브 패키지 배포가 매우 일원화되어 있다는 점입니다.</p>
+<p><code>swift build</code> 명령을 실행하면 이 매니페스트를 참고해 깃허브 저장소에서 라이브러리를 가져와 빌드 캐시에 저장한 뒤 애플리케이션을 컴파일합니다. 파이썬의 <code>pip freeze</code>나 잠금 파일(Lockfile) 개념은 <code>Package.resolved</code>에 똑같이 반영됩니다.</p>
+<p>가장 중요한 차이는 SwiftPM이 C, C++, Objective-C 코드의 직접적인 컴파일까지 지원해 네이티브 패키지 배포를 한 곳에서 해결한다는 점입니다.</p>
 <hr>
 </section>
 </section>
 <section id="명령줄-도구-만들기-cli-tools" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="명령줄-도구-만들기-cli-tools">19. 명령줄 도구 만들기 (CLI Tools)</h2>
-<p>파이썬은 간단한 파일 입출력을 처리하거나 텍스트를 파싱하는 명령줄 도구(CLI)를 개발하는 데 매우 인기 있는 언어입니다. Swift는 정적 타이핑과 빠른 실행 속도의 이점을 가지고 있어, 명령줄 유틸리티를 만드는 최신 대안으로 사랑받고 있습니다.</p>
+<p>파이썬은 간단한 파일 입출력이나 텍스트 파싱을 하는 명령줄 도구(CLI)를 만드는 데 매우 인기 있는 언어입니다. Swift는 정적 타이핑과 빠른 실행 속도 덕분에 명령줄 유틸리티를 만드는 새로운 대안으로 자리 잡고 있습니다.</p>
 <section id="argparse와-argumentparser" class="level3">
 <h3 class="anchored" data-anchor-id="argparse와-argumentparser">argparse와 ArgumentParser</h3>
 <p><strong>파이썬 (<code>argparse</code> 모듈):</strong></p>
@@ -2899,13 +2899,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a>Greet<span class="op">.</span>main<span class="op">()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Swift의 방식은 구조체의 프로퍼티(<code>name</code>, <code>count</code>)에 기반하여 코드가 자체 문서화(Self-Documenting)되는 매우 선언적인 방식을 채택하고 있습니다. 빌드된 산출물은 단일 바이너리(Single Binary)이므로, 명령을 복사해서 배포하기도 수월합니다.</p>
+<p>Swift의 방식은 구조체의 프로퍼티(<code>name</code>, <code>count</code>)를 기반으로 코드가 스스로 문서가 되는(Self-Documenting) 아주 선언적인 방식입니다. 빌드 결과물이 단일 바이너리(Single Binary)이므로 복사해서 배포하기도 수월합니다.</p>
 <hr>
 </section>
 </section>
 <section id="테스트-주도-개발-test-driven-development" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="테스트-주도-개발-test-driven-development">20. 테스트 주도 개발 (Test-Driven Development)</h2>
-<p>파이썬 개발자들은 <code>unittest</code>, <code>pytest</code>와 같은 도구를 통해 강력한 테스트 환경을 경험해 왔습니다. Swift는 애플 생태계에서 전통적으로 XCTest를 사용했지만, 최근 오픈 소스 <strong>Swift Testing</strong> 패키지가 공개되면서 테스트 작성법이 파이썬의 <code>pytest</code>처럼 놀랍도록 간결해졌습니다.</p>
+<p>파이썬 개발자들은 <code>unittest</code>, <code>pytest</code> 같은 도구로 강력한 테스트 환경을 경험해 왔습니다. Swift는 애플 생태계에서 전통적으로 XCTest를 써 왔지만, 오픈 소스 <strong>Swift Testing</strong> 패키지가 공개되면서 테스트 작성법이 파이썬의 <code>pytest</code>처럼 한결 간결해졌습니다.</p>
 <section id="unittest에서-xctest로" class="level3">
 <h3 class="anchored" data-anchor-id="unittest에서-xctest로">unittest에서 XCTest로</h3>
 <p><strong>파이썬 (<code>unittest</code>):</strong></p>
@@ -2950,16 +2950,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">addMultipleNumbers</span><span class="op">(</span><span class="va">a</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">b</span><span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> <span class="va">expected</span><span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a>    #expect<span class="op">(</span>add<span class="op">(</span>a<span class="op">,</span> b<span class="op">)</span> <span class="op">==</span> expected<span class="op">)</span></span>
 <span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>파이썬의 인자화된 테스트(<code>@pytest.mark.parametrize</code>)가 Swift의 매크로 기반 시스템(<code>@Test(arguments:)</code>)으로 구현되어 매우 유사한 사용 경험을 제공합니다.</p>
+<p>파이썬의 인자화된 테스트(<code>@pytest.mark.parametrize</code>)는 Swift의 매크로 기반 시스템(<code>@Test(arguments:)</code>)으로 구현되어 쓰는 느낌이 거의 같습니다.</p>
 <hr>
 </section>
 </section>
 <section id="python과-swift-연결하기-pythonkit" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="python과-swift-연결하기-pythonkit">21. Python과 Swift 연결하기 (PythonKit)</h2>
-<p>가장 흥미로운 부분 중 하나는 머신 러닝, 스크립팅 생태계의 대명사인 파이썬을 빠르고 안전한 <strong>Swift 안에서</strong> 있는 그대로 사용할 수 있다는 사실입니다.</p>
+<p>머신 러닝과 스크립팅 생태계의 대명사인 파이썬을 빠르고 안전한 <strong>Swift 안에서</strong> 그대로 쓸 수 있다는 점이 가장 흥미롭습니다.</p>
 <section id="pythonkit-소개" class="level3">
 <h3 class="anchored" data-anchor-id="pythonkit-소개">PythonKit 소개</h3>
-<p><code>PythonKit</code>은 Swift에서 파이썬 인터프리터의 API를 래핑하여, 파이썬 패키지를 Swift 환경으로 불러와서 마치 파이썬처럼 문법을 사용할 수 있게 해주는 마법 같은 패키지입니다.</p>
+<p><code>PythonKit</code>은 Swift에서 파이썬 인터프리터의 API를 감싸서 파이썬 패키지를 Swift 환경으로 불러오고, 마치 파이썬처럼 문법을 쓸 수 있게 해주는 마법 같은 패키지입니다.</p>
 </section>
 <section id="swift에서-python-pandas-사용하기" class="level3">
 <h3 class="anchored" data-anchor-id="swift에서-python-pandas-사용하기">Swift에서 Python Pandas 사용하기</h3>
@@ -2992,14 +2992,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="결론" class="level3">
 <h3 class="anchored" data-anchor-id="결론">결론</h3>
-<p>Swift 개발 과정 중 파이썬 생태계에 대한 접근이 불가피하더라도 걱정할 필요가 없습니다. PythonKit은 이 두 언어가 가진 각각의 장점을 완벽히 함께 쓸 수 있도록 돕는 아주 훌륭한 다리입니다.</p>
+<p>Swift 개발 중에 파이썬 생태계를 다뤄야 하는 상황이 와도 걱정할 필요는 없습니다. PythonKit이 두 언어의 장점을 한데 묶어 주는 다리가 되어 줍니다.</p>
 <hr>
 <hr>
 </section>
 </section>
 <section id="부록-1-swift-코드-예제-모음-examples" class="level2">
 <h2 class="anchored" data-anchor-id="부록-1-swift-코드-예제-모음-examples">부록 1: Swift 코드 예제 모음 (Examples)</h2>
-<p>이 섹션에는 Swift 핵심 문법과 개념을 실습할 수 있는 전체 예제 코드가 포함되어 있습니다.</p>
+<p>이 섹션에는 Swift 핵심 문법과 개념을 실습해 볼 수 있는 전체 예제 코드가 들어 있습니다.</p>
 </section>
 <section id="예제-01_variables_constants.swift" class="level2">
 <h2 class="anchored" data-anchor-id="예제-01_variables_constants.swift">예제: 01_variables_constants.swift</h2>
@@ -6019,7 +6019,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="부록-2-swift-연습-문제-exercises" class="level2">
 <h2 class="anchored" data-anchor-id="부록-2-swift-연습-문제-exercises">부록 2: Swift 연습 문제 (Exercises)</h2>
-<p>이 섹션에는 학습한 개념을 직접 코딩해볼 수 있는 연습 문제 코드가 포함되어 있습니다.</p>
+<p>이 섹션에는 배운 개념을 직접 코딩해 볼 수 있는 연습 문제 코드가 들어 있습니다.</p>
 </section>
 <section id="연습-문제-exercise_01_variables.swift" class="level2">
 <h2 class="anchored" data-anchor-id="연습-문제-exercise_01_variables.swift">연습 문제: exercise_01_variables.swift</h2>
@@ -6334,7 +6334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="부록-3-swift-연습-문제-풀이-및-정답-solutions" class="level2">
 <h2 class="anchored" data-anchor-id="부록-3-swift-연습-문제-풀이-및-정답-solutions">부록 3: Swift 연습 문제 풀이 및 정답 (Solutions)</h2>
-<p>이 섹션에는 연습 문제에 대한 해답과 상세한 설명 코드가 포함되어 있습니다.</p>
+<p>이 섹션에는 연습 문제 해답과 자세한 설명이 달린 코드가 들어 있습니다.</p>
 </section>
 <section id="해답-solution_01_variables.swift" class="level2">
 <h2 class="anchored" data-anchor-id="해답-solution_01_variables.swift">해답: solution_01_variables.swift</h2>

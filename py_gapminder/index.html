@@ -678,20 +678,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<p>앞으로 이 워크샵에서는 파이썬을 실행하기 위해 <a href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a>을 통한 [Jupyter Notebooks][jupyter]를 사용할 예정입니다. Jupyter 노트북은 데이터 과학 및 시각화 분야에서 흔히 쓰이며, 파이썬 코드를 대화형으로 실행하여 그 결과를 쉽게 확인하고 공유할 수 있는 편리한 환경을 제공합니다.</p>
+<p>앞으로 이 워크샵에서는 파이썬을 실행하기 위해 <a href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a> 위에서 돌아가는 [Jupyter Notebooks][jupyter]를 사용합니다. Jupyter 노트북은 데이터 과학과 시각화 분야에서 흔히 쓰이는데, 파이썬 코드를 대화형으로 실행하고 결과를 바로 확인하며 공유하기도 편리합니다.</p>
 <p>코드를 편집하고, 관리하며, 실행하는 다른 방법들도 존재합니다. 소프트웨어 개발자들은 종종 파이썬 프로그램을 만들고 편집할 때 <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>이나 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 같은 통합 개발 환경(IDE), 혹은 Vim이나 Emacs 같은 텍스트 편집기를 사용합니다. 파이썬 프로그램을 편집하고 저장한 뒤에는 IDE 내부나 커맨드 라인에서 직접 해당 프로그램을 실행할 수 있습니다. 반면, Jupyter 노트북은 노트북 안에서 파이썬 코드를 실행하고 그 결과를 즉시 볼 수 있게 해줍니다.</p>
-<p>JupyterLab은 그 밖에도 다음과 같은 유용한 기능들을 갖추고 있습니다:</p>
+<p>JupyterLab은 그 밖에도 다음과 같은 유용한 기능을 갖추고 있습니다:</p>
 <ul>
 <li>코드 블록을 쉽게 타이핑, 편집, 복사, 붙여넣기 할 수 있습니다.</li>
-<li>탭 자동 완성(Tab complete)을 통해 사용 중인 객체의 이름에 쉽게 접근하고 그에 대해 더 자세히 알아볼 수 있습니다.</li>
+<li>탭 자동 완성(Tab complete)으로 사용 중인 객체의 이름에 쉽게 접근하고 더 자세히 알아볼 수 있습니다.</li>
 <li>코드에 링크, 크기가 다른 텍스트, 글머리 기호 등을 추가하여 여러분과 협업자들이 더 쉽게 코드를 이해할 수 있도록 도와줍니다.</li>
 <li>그림을 생성하는 코드 바로 옆에 출력된 그림을 함께 보여주어, 데이터 분석의 전체 흐름을 한눈에 파악할 수 있게 해줍니다.</li>
 </ul>
-<p>각 노트북은 코드가 적힌 셀, 텍스트가 적힌 셀, 또는 이미지가 들어 있는 하나 이상의 셀들로 구성됩니다.</p>
+<p>각 노트북은 코드가 적힌 셀, 텍스트가 적힌 셀, 이미지가 들어 있는 셀 하나 이상으로 이루어집니다.</p>
 <section id="jupyterlab-시작하기" class="level2">
 <h2 class="anchored" data-anchor-id="jupyterlab-시작하기">JupyterLab 시작하기</h2>
 <p>JupyterLab은 [Project Jupyter][jupyter]에서 만든 웹 사용자 인터페이스를 갖춘 애플리케이션 서버로, 여러 문서와 활동(Jupyter 노트북, 텍스트 편집기, 터미널, 심지어 커스텀 컴포넌트까지)을 유연하고 통합된, 확장 가능한 방식으로 다룰 수 있게 해줍니다. JupyterLab은 비교적 최신 브라우저(이상적으로는 Chrome, Safari, 또는 Firefox의 최신 버전)가 필요합니다. Internet Explorer 9 이하 버전을 비롯한 예전 브라우저는 지원하지 <em>않습니다</em>.</p>
-<p>JupyterLab은 Anaconda 파이썬 배포판의 일부로 포함되어 있습니다. Anaconda 배포판을 아직 설치하지 않았다면, 설치 지침을 위해 <a href="https://swcarpentry.github.io/python-novice-gapminder/setup.html">설정 안내</a>를 참고하세요.</p>
+<p>JupyterLab은 Anaconda 파이썬 배포판의 일부로 포함되어 있습니다. Anaconda 배포판을 아직 설치하지 않았다면 <a href="https://swcarpentry.github.io/python-novice-gapminder/setup.html">설정 안내</a>의 설치 지침을 참고하세요.</p>
 <p>이번 학습에서는 JupyterLab 서버를 로컬 기기에서 직접 실행할 것이므로, Anaconda와 JupyterLab을 다운로드하고 설치하기 위한 최초 연결을 제외하고는 인터넷 연결이 필요하지 않습니다.</p>
 <ul>
 <li>여러분의 기기에서 JupyterLab 서버를 시작합니다.</li>
@@ -716,10 +716,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="jupyterlab-실행하기" class="level2">
 <h2 class="anchored" data-anchor-id="jupyterlab-실행하기">JupyterLab 실행하기</h2>
-<p>JupyterLab 서버는 커맨드 라인을 통해서, 또는 <code>Anaconda Navigator</code>라는 애플리케이션을 통해서 시작할 수 있습니다. Anaconda Navigator는 Anaconda 파이썬 배포판에 포함되어 있습니다.</p>
+<p>JupyterLab 서버는 커맨드 라인에서 시작할 수도 있고 <code>Anaconda Navigator</code>라는 애플리케이션으로도 시작할 수 있습니다. Anaconda Navigator는 Anaconda 파이썬 배포판에 포함되어 있습니다.</p>
 <section id="macos---커맨드-라인command-line" class="level3">
 <h3 class="anchored" data-anchor-id="macos---커맨드-라인command-line">macOS - 커맨드 라인(Command Line)</h3>
-<p>JupyterLab 서버를 시작하려면 터미널(Terminal)을 통해 커맨드 라인에 접근해야 합니다. Mac에서 터미널을 여는 두 가지 방법이 있습니다.</p>
+<p>JupyterLab 서버를 시작하려면 터미널(Terminal)로 커맨드 라인에 접근해야 합니다. Mac에서 터미널을 여는 두 가지 방법이 있습니다.</p>
 <ol type="1">
 <li>응용 프로그램(Applications) 폴더에서 유틸리티(Utilities)를 열고 터미널(Terminal)을 더블 클릭합니다.</li>
 <li><kbd>Command</kbd> + <kbd>spacebar</kbd>를 눌러 Spotlight를 실행합니다. <code>Terminal</code>을 입력한 다음 결과물을 더블 클릭하거나 <kbd>Enter</kbd>를 누릅니다.</li>
@@ -736,7 +736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="anaconda-navigator" class="level3">
 <h3 class="anchored" data-anchor-id="anaconda-navigator">Anaconda Navigator</h3>
-<p>Anaconda Navigator에서 JupyterLab 서버를 시작하려면 먼저 <a href="https://docs.anaconda.com/free/navigator/getting-started/#navigator-starting-navigator">Anaconda Navigator를 시작해야 합니다(macOS, Windows, 및 Linux에서의 자세한 지침 클릭)</a>. macOS에서는 Spotlight(<kbd>Command</kbd> + <kbd>spacebar</kbd>)를 통해, Windows에서는 검색 기능(<kbd>Windows 로고 키</kbd>)을 통해 Anaconda Navigator를 검색하거나, 터미널 셸을 열어 커맨드 라인에서 <code>anaconda-navigator</code> 실행 파일을 실행할 수 있습니다.</p>
+<p>Anaconda Navigator에서 JupyterLab 서버를 시작하려면 먼저 <a href="https://docs.anaconda.com/free/navigator/getting-started/#navigator-starting-navigator">Anaconda Navigator를 시작해야 합니다(macOS, Windows, 및 Linux에서의 자세한 지침 클릭)</a>. macOS에서는 Spotlight(<kbd>Command</kbd> + <kbd>spacebar</kbd>)로, Windows에서는 검색 기능(<kbd>Windows 로고 키</kbd>)으로 Anaconda Navigator를 검색하거나, 터미널 셸을 열어 커맨드 라인에서 <code>anaconda-navigator</code> 실행 파일을 실행할 수 있습니다.</p>
 <p>Anaconda Navigator를 실행한 후, JupyterLab 항목 아래에 있는 <code>Launch</code> 버튼을 클릭합니다. 해당 버튼을 찾기 위해 화면을 아래로 스크롤해야 할 수도 있습니다.</p>
 <p>다음은 macOS와 Windows에서 열렸을 때 보게 될 모습과 유사한 Anaconda Navigator 화면 스크린샷입니다.</p>
 <p align="center">
@@ -750,11 +750,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="jupyterlab-인터페이스" class="level2">
 <h2 class="anchored" data-anchor-id="jupyterlab-인터페이스">JupyterLab 인터페이스</h2>
-<p>JupyterLab은 기존 통합 개발 환경(IDE)에서 볼 수 있는 여러 기능을 제공하지만, 상호작용적이고 탐색적인 컴퓨팅(exploratory computing)에 초점을 맞춰 유연한 구성 요소를 제공하는 데 중점을 두고 있습니다.</p>
-<p><a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab 인터페이스</a>는 주요 메뉴 바(Menu Bar), 접을 수 있는 좌측 사이드 바(Left Side Bar), 그리고 문서와 활동들을 위한 탭들로 구성된 메인 작업 공간(Main Work Area)으로 이루어져 있습니다.</p>
+<p>JupyterLab에는 기존 통합 개발 환경(IDE)에서 보던 여러 기능이 있지만, 상호작용적이고 탐색적인 컴퓨팅(exploratory computing)에 맞춰 유연한 구성 요소를 조합하는 데 중점을 두고 있습니다.</p>
+<p><a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab 인터페이스</a>는 주요 메뉴 바(Menu Bar), 접을 수 있는 좌측 사이드 바(Left Side Bar), 그리고 문서와 활동을 담는 탭이 모인 메인 작업 공간(Main Work Area)으로 이루어져 있습니다.</p>
 <section id="메뉴-바-menu-bar" class="level3">
 <h3 class="anchored" data-anchor-id="메뉴-바-menu-bar">메뉴 바 (Menu Bar)</h3>
-<p>JupyterLab 맨 위쪽에 위치한 메뉴 바는 JupyterLab에서 사용 가능한 여러 동작들(그리고 적용 가능한 경우 단축키)을 제공하는 최상위 메뉴들을 볼 수 있게 해줍니다. 기본적으로 다음과 같은 메뉴가 포함되어 있습니다.</p>
+<p>화면 맨 위의 메뉴 바에는 JupyterLab에서 쓸 수 있는 동작(그리고 적용 가능한 경우 단축키)이 최상위 메뉴로 모여 있습니다. 기본적으로 다음과 같은 메뉴가 포함되어 있습니다.</p>
 <ul>
 <li><strong>File(파일):</strong> 파일 및 복사본에 관한 동작들 (예: <em>New(새로 만들기)</em>, <em>Open(열기)</em>, <em>Close(닫기)</em>, <em>Save(저장)</em> 등). <em>File</em> 메뉴에는 JupyterLab 서버를 정지시키기 위한 <em>Shut Down(종료)</em> 동작도 포함되어 있습니다.</li>
 <li><strong>Edit(편집):</strong> 문서 편집 및 기타 작업에 관한 동작들 (예: <em>Undo(실행 취소)</em>, <em>Cut(잘라내기)</em>, <em>Copy(복사)</em>, <em>Paste(붙여넣기)</em> 등).</li>
@@ -762,7 +762,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Run(실행):</strong> 노트북이나 코드 콘솔과 같은 다양한 활동 구역 안에서 코드를 실행하기 위한 동작들.</li>
 <li><strong>Kernel(커널):</strong> 커널을 관리하기 위한 동작들. Jupyter 커널에 대해서는 아래에서 자세히 설명할 예정입니다.</li>
 <li><strong>Tabs(탭):</strong> 메인 작업 공간에 열려있는 문서와 활동들의 목록.</li>
-<li><strong>Settings(설정):</strong> 이 메뉴를 통해 일반적인 JupyterLab 설정을 조정할 수 있습니다. 드롭다운 메뉴에 있는 <em>Advanced Settings Editor(고급 설정 편집기)</em> 옵션을 사용하면 JupyterLab 설정 및 구성 옵션들을 더 정교하게 제어할 수 있습니다.</li>
+<li><strong>Settings(설정):</strong> 이 메뉴에서 일반적인 JupyterLab 설정을 조정합니다. 드롭다운 메뉴의 <em>Advanced Settings Editor(고급 설정 편집기)</em> 옵션으로 설정과 구성 옵션을 더 정교하게 제어할 수 있습니다.</li>
 <li><strong>Help(도움말):</strong> JupyterLab과 커널에 대한 여러 도움말 링크 모음집.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled">
@@ -776,7 +776,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>JupyterLab <a href="https://jupyterlab.readthedocs.io/en/stable/user/documents_kernels.html">공식 문서</a>는 커널을 “서버가 코드를 다른 프로그래밍 언어 및 환경에서 실행하기 위해 별도로 시작한 프로세스”로 정의합니다. Jupyter 노트북을 열면, 코드를 실행할 일종의 프로세스인 커널이 시작됩니다. 이번 학습에서는 인터랙티브하게 Python 3 코드를 실행할 수 있도록 하는 Jupyter의 ipython 커널을 사용할 것입니다.</p>
-<p>다른 <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter용 기타 프로그래밍 언어 커널</a>들을 사용하면 R, Java, Julia, Ruby, JavaScript, Fortran 등과 같이 서로 다른 프로그래밍 언어로 작성된 코드도 동일한 JupyterLab 인터페이스 내에서 작성하고 실행할 수 있습니다.</p>
+<p><a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter용 프로그래밍 언어 커널</a>을 사용하면 R, Java, Julia, Ruby, JavaScript, Fortran 같은 다른 프로그래밍 언어로 작성된 코드도 똑같은 JupyterLab 인터페이스에서 작성하고 실행할 수 있습니다.</p>
 </div>
 </div>
 <p>아래는 기본 상태의 메뉴 바 스크린샷입니다.</p>
@@ -786,7 +786,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="좌측-사이드바-left-sidebar" class="level3">
 <h3 class="anchored" data-anchor-id="좌측-사이드바-left-sidebar">좌측 사이드바 (Left Sidebar)</h3>
-<p>좌측 사이드바에는 파일 브라우저(JupyterLab 서버가 실행된 디렉토리의 내용을 보여줌), 현재 실행 중인 커널 및 터미널의 목록, 명령어 팔레트 탭(Command palette) 및 메인 작업 공간에 열려있는 탭 목록과 같이 일반적으로 사용되는 다양한 기능들이 포함되어 있습니다. 아래는 기본 좌측 사이드바 구조를 보여주는 스크린샷입니다.</p>
+<p>좌측 사이드바에는 파일 브라우저(JupyterLab 서버가 실행된 디렉토리의 내용을 보여줌), 현재 실행 중인 커널과 터미널 목록, 명령어 팔레트 탭(Command palette), 메인 작업 공간에 열려 있는 탭 목록처럼 자주 쓰는 기능이 모여 있습니다. 아래는 기본 좌측 사이드바 구조를 보여주는 스크린샷입니다.</p>
 <p align="center">
 <img alt="JupyterLab Left Side Bar" src="images/0_jupyterlab_left_side_bar.png" width="250">
 </p>
@@ -794,12 +794,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="메인-작업-영역-main-work-area" class="level3">
 <h3 class="anchored" data-anchor-id="메인-작업-영역-main-work-area">메인 작업 영역 (Main Work Area)</h3>
-<p>JupyterLab의 메인 작업 영역을 활용하면 문서(노트북, 텍스트 파일 등)와 다양한 활동(터미널, 코드 콘솔 등)을 크기 조절이나 공간 분할이 가능한 여러 패널 탭들로 정렬해둘 수 있습니다. 기본 메인 작업 영역의 모습은 아래 이미지와 같습니다.</p>
+<p>메인 작업 영역에서는 문서(노트북, 텍스트 파일 등)와 여러 활동(터미널, 코드 콘솔 등)을 크기를 조절하거나 공간을 나눌 수 있는 패널 탭으로 배치합니다. 기본 메인 작업 영역의 모습은 아래 이미지와 같습니다.</p>
 <p>(만약 Launcher 탭이 보이지 않는다면, “File”과 “Edit” 메뉴 아래에 위치한 파란색 십자 기호(+)를 클릭하면 창이 나타납니다.)</p>
 <p align="center">
 <img alt="JupyterLab Main Work Area" src="images/0_jupyterlab_main_work_area.png" width="750">
 </p>
-<p>탭 하나를 끌어다 탭 패널의 중앙 위치로 드래그하면 해당 탭을 해당 패널 내부로 이동시킵니다. 혹은 패널의 왼쪽, 오른쪽, 위, 아래 부분으로 드래그하면 탭 패널을 여러 화면으로 분할해 보여줍니다. 메인 작업 영역은 현재 활성화된 단일 활동(Current activity)을 가지고 있으며, 이 현재 활동 탭의 경우 위쪽 테두리에 색상이 표시되어(기본설정은 파란색) 찾기 쉽게 만들어져 있습니다.</p>
+<p>탭을 끌어다 패널 가운데로 놓으면 그 패널 안으로 옮겨지고, 패널의 왼쪽·오른쪽·위·아래 가장자리로 드래그하면 탭 패널이 여러 화면으로 나뉩니다. 메인 작업 영역에는 지금 활성화된 단일 활동(Current activity)이 있으며, 이 탭의 위쪽 테두리에는 색이 표시되어(기본값은 파란색) 찾기 쉽습니다.</p>
 </section>
 </section>
 <section id="파이썬-스크립트-만들기" class="level2">
@@ -809,9 +809,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>메뉴 바의 <em>File</em> 메뉴에서 <em>New -&gt; Text File</em>을 선택해서 평범한 기존 포맷 없는 텍스트 파일(Plain text file)을 만들 수도 있습니다.</li>
 </ul></li>
-<li>이렇게 만들어진 텍스트 파일을 파이썬 프로그램용 텍스트 파일로 전환시키려면, 메뉴 바의 <em>File</em> 메뉴 안에서 <em>Save File As…</em>를 선택한 뒤 파일명의 맨 뒷부분 확장자가 <code>.py</code>로 끝나도록 새 파일명을 짓습니다.
+<li>이렇게 만든 텍스트 파일을 파이썬 프로그램용으로 바꾸려면 메뉴 바의 <em>File</em> 메뉴에서 <em>Save File As…</em>를 선택하고, 파일명 끝의 확장자가 <code>.py</code>로 끝나도록 새 이름을 짓습니다.
 <ul>
-<li><code>.py</code> 확장자는 이렇게 만들어진 텍스트 파일이 파이썬 스크립트 파일이라는 것을 운영체제를 포함한 모두에게 명확하게 알려주는 역할을 합니다.</li>
+<li><code>.py</code> 확장자는 이 파일이 파이썬 스크립트임을 운영체제를 포함한 모두에게 명확히 알려줍니다.</li>
 <li>이것만으로 엄격한 제한 규약이 생긴다기보다 단순한 관습적 역할입니다.</li>
 </ul></li>
 </ul>
@@ -821,10 +821,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>새 노트북을 열려면 메인 탭 구역 안에 등장하는 Launcher 탭에서 <em>Notebook</em> 헤더 아래 위치한 Python 3 아이콘을 클릭합니다. 이 역시 메뉴 바의 <em>File</em> 메뉴에서 <em>New -&gt; Notebook</em>을 선택해 새 노트북을 만들 수도 있습니다.</p>
 <p>Jupyter 노트북에 대한 추가 노트:</p>
 <ul>
-<li>파이썬 프로그래밍 용 텍스트 파일 파일들과 명확하게 구분하기 위해, 노트북 파일은 그 끝에 <code>.ipynb</code>라는 특수 확장자가 따라붙습니다.</li>
-<li>노트북 파일은 나중에 커맨드 라인을 통해 곧바로 실행 가능하도록 설정된 파이썬 스크립트 포맷(<code>.py</code>) 형태로 추출/다운로드(Export)될 수도 있습니다.</li>
+<li>파이썬 프로그래밍용 <code>.py</code> 텍스트 파일과 명확하게 구분하도록 노트북 파일 끝에는 <code>.ipynb</code>라는 특수 확장자가 붙습니다.</li>
+<li>노트북 파일은 나중에 커맨드 라인에서 곧바로 실행할 수 있는 파이썬 스크립트 포맷(<code>.py</code>)으로 내보내기(Export)할 수도 있습니다.</li>
 </ul>
-<p>JupyterLab 내에서 별도 탭으로 실행되고 있는 Jupyter 노트북 화면 예시입니다. 해당 내용과 관련된 추가적인 상세 정보나 특수 기능을 확인하고 싶다면 <a href="https://jupyterlab.readthedocs.io/en/stable/user/notebook.html">공식 노트북 문서(Notebook Document)</a>를 참조하시기 바랍니다.</p>
+<p>JupyterLab에서 별도 탭으로 열린 Jupyter 노트북 화면 예시입니다. 더 자세한 정보나 특수 기능이 궁금하다면 <a href="https://jupyterlab.readthedocs.io/en/stable/user/notebook.html">공식 노트북 문서(Notebook Document)</a>를 참고하세요.</p>
 <p align="center">
 <img alt="Example Jupyter Notebook" src="images/0_jupyterlab_notebook_screenshot.png" width="750">
 </p>
@@ -839,9 +839,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>노트북 파일의 실제 저장 형식은 JSON이라는 파일 형식(Format) 방식을 따르고 있습니다.</li>
-<li>일반적인 웹페이지처럼 여러분의 브라우저에서 보는 화면과 그 이면에 저장되는 내부 내용의 생김새는 완전히 다릅니다.</li>
-<li>그러나 이러한 특성 덕분에 Jupyter는 내부적인 소스코드, 평문 텍스트, 그림 이미지들을 전부 하나의 단일 파일 안에 섞어서 안전하게 혼합 저장할 수 있습니다.</li>
+<li>노트북 파일은 실제로 JSON이라는 형식(Format)으로 저장됩니다.</li>
+<li>브라우저에서 보이는 화면과 그 이면에 저장된 내부 내용은 생김새가 완전히 다릅니다.</li>
+<li>덕분에 Jupyter는 소스코드와 평문 텍스트, 그림 이미지를 한 파일 안에 함께 담을 수 있습니다.</li>
 </ul>
 </div>
 </div>
@@ -860,7 +860,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p align="center">
 <img alt="Multi-panel JupyterLab" src="images/0_multipanel_jupyterlab_screenshot.png" width="750">
 </p>
-<p>이번에는 텍스트 파일, 파이썬 콘솔, 그리고 터미널 창을 각각 연 다음 메인 작업 공간에 나란히 세 개의 패널로 정렬해 보세요. 그 다음에는 노트북, 터미널, 텍스트 파일을 각각 하나씩 열어 동일하게 세 패널로 나란히 배치해 보세요. 마지막으로 여러분만의 패널 구조를 구성해 보세요. 원활한 작업을 위해서는 어떤 작업 환경과 패널 구조가 가장 편리할 것 같나요?</p>
+<p>이번에는 텍스트 파일, 파이썬 콘솔, 그리고 터미널 창을 각각 연 다음 메인 작업 공간에 나란히 세 개의 패널로 정렬해 보세요. 그 다음에는 노트북, 터미널, 텍스트 파일을 각각 하나씩 열어 동일하게 세 패널로 나란히 배치해 보세요. 마지막으로 여러분만의 패널 구조를 만들어 보세요. 어떤 작업 환경과 패널 구조가 가장 편리할 것 같나요?</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="해답">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -907,7 +907,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><kbd>x</kbd> 키를 누르면 현재 선택된 셀을 삭제할 수 있습니다.</li>
 <li><kbd>z</kbd> 키를 누르면 최근의 셀 조작 작업(삭제, 복사, 생성 등)을 실행 취소(되돌리기)합니다.</li>
 </ul></li>
-<li>물론 상단 메뉴를 통해서도 모든 작업을 마우스로 할 수 있지만, 단축키를 활용하면 작업 환경을 훨씬 빠르고 편리하게 만들 수 있습니다.</li>
+<li>물론 상단 메뉴에서 모든 작업을 마우스로 할 수 있지만, 단축키를 쓰면 훨씬 빠르고 편합니다.</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled" title="범례">
 <div class="callout-header d-flex align-content-center">
@@ -920,7 +920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="명령-모드와-편집-모드-사용해보기" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="명령-모드와-편집-모드-사용해보기">명령 모드와 편집 모드 사용해보기</h2>
-<p>현재 여러분의 노트북 창에서 커서가 깜빡이는 파란색 테두리의 편집(Edit) 모드인지, 아니면 회색 테두리의 명령(Command) 모드인지 확인해 보세요. 단축키를 활용하여 다음 동작들을 직접 실행해 보세요. 1) 두 모드를 번갈아 가며 전환해 봅니다. 2) 단축키를 사용하여 빈 셀을 새롭게 생성해 봅니다. 3) 단축키를 사용하여 방금 만든 셀을 바로 삭제해 봅니다. 4) 방금 했던 삭제 작업을 실행 취소하여 셀을 되살려 봅니다.</p>
+<p>현재 여러분의 노트북 창에서 커서가 깜빡이는 파란색 테두리의 편집(Edit) 모드인지, 아니면 회색 테두리의 명령(Command) 모드인지 확인해 보세요. 단축키로 다음 동작을 직접 실행해 보세요. 1) 두 모드를 번갈아 가며 전환해 봅니다. 2) 단축키를 사용하여 빈 셀을 새롭게 생성해 봅니다. 3) 단축키를 사용하여 방금 만든 셀을 바로 삭제해 봅니다. 4) 방금 했던 삭제 작업을 실행 취소하여 셀을 되살려 봅니다.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="해답">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -952,9 +952,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="markdown을-형식화된pretty-printed-문서로-렌더링하기" class="level3">
 <h3 class="anchored" data-anchor-id="markdown을-형식화된pretty-printed-문서로-렌더링하기">Markdown을 형식화된(Pretty-printed) 문서로 렌더링하기</h3>
 <ul>
-<li>노트북은 파이썬 연산뿐만 아니라, <a href="https://en.wikipedia.org/wiki/Markdown">마크다운(Markdown)</a> 포맷을 통해 웹페이지나 문서처럼 잘 짜여진 텍스트를 작성할 수 있게 지원합니다!
+<li>노트북은 파이썬 연산뿐만 아니라, <a href="https://en.wikipedia.org/wiki/Markdown">마크다운(Markdown)</a> 포맷으로 웹페이지나 문서처럼 잘 짜여진 텍스트를 작성할 수 있게 지원합니다!
 <ul>
-<li>이를 통해 목록 구성을 비롯하여 하이퍼링크, 볼드체, 이탤릭체 등 다양한 서식을 적용할 수 있습니다.</li>
+<li>목록 구성은 물론 하이퍼링크, 볼드체, 이탤릭체 등 다양한 서식도 적용할 수 있습니다.</li>
 </ul></li>
 <li>명령 모드(회색 테두리 상태)에서 <kbd>m</kbd> 키를 누르면 선택된 코드 셀이 파이썬 코드가 아닌 마크다운(Markdown) 문서 렌더링 모드로 전환됩니다.</li>
 <li>전환되면 셀 왼쪽에 있던 <code>In [ ]:</code> 기호가 사라지므로, 해당 셀이 코드를 실행하기 위한 목적이 아니라 문서 작성을 위한 마크다운 셀임을 쉽게 인지할 수 있습니다.</li>
@@ -1077,7 +1077,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <section id="해답-2" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="해답-2">해답</h2>
-<p>이번 과제는 순서가 있는 리스트(Numbered list)와 중첩된 불릿 목록(bullet list) 스타일이 결합된 형태입니다. 중간에 끼여 들어간 불릿 목록들은 ‘2개의 스페이스’ 띄어쓰기를 통해 들여쓰기되어, 상위 번호와 나란히 맞추어진 구조로 구성되어야 합니다.</p>
+<p>이번 과제는 순서가 있는 리스트(Numbered list)와 중첩된 불릿 목록(bullet list) 스타일이 결합된 형태입니다. 중간에 낀 불릿 목록은 ’2개의 스페이스’로 들여써서 상위 번호와 나란히 맞춘 구조로 만들어야 합니다.</p>
 <pre><code>1.  펀딩(기금) 예산 확보.
 2.  본격 작업 진행하기.
     *   실험 디자인 스케치.
@@ -1101,7 +1101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="수학-공식-표현식-추가해보기" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="수학-공식-표현식-추가해보기">수학 공식 표현식 추가해보기</h2>
-<p>하나의 파이썬 셀 칸 안에 다양한 수학 연산 명령어들이 함께 나열된 상황 속에서 그것들을 한 번에 실행 처리하게 된다면 화면 어떻게 출력될까요? 아래의 파이썬 코드를 실행할 경우 어떻게 뜰까요?</p>
+<p>하나의 파이썬 셀에 여러 연산 명령어를 나열하고 한 번에 실행하면 화면에는 무엇이 출력될까요? 아래의 파이썬 코드를 실행할 경우 어떻게 뜰까요?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">*</span> <span class="dv">3</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-caution callout-titled" title="해답">
@@ -1117,7 +1117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <section id="해답-3" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="해답-3">해답</h2>
-<p>파이썬 노트북 환경의 특징으로, 한 셀 내에서 수많은 연산들이 실행되더라도 코드 상에 별도로 출력 명령이 없었다면 제일 밑의 수식(맨 마지막 줄 계산식)의 결과값만 화면에 출력 결과로 반환 표시됩니다.</p>
+<p>노트북 환경의 특징 중 하나는, 셀 안에서 여러 연산을 실행해도 코드에 별도의 출력 명령이 없으면 맨 마지막 계산식의 결과값만 화면에 표시된다는 점입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </div>
@@ -1135,10 +1135,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="코드code용-셀을-마크다운markdown-형식으로-변경해보기" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="코드code용-셀을-마크다운markdown-형식으로-변경해보기">코드(Code)용 셀을 마크다운(Markdown) 형식으로 변경해보기</h2>
-<p>파이썬 코드 셀에 코드를 입력하다가 중간에 셀 유형을 마크다운 형식으로 변경하면 과연 무슨 일이 일어날까요? 먼저 새로운 전용 코드 입력 셀 구역 안에 아래의 파이썬 코드를 직접 입력해 봅니다:</p>
+<p>파이썬 코드 셀에 코드를 입력하다가 중간에 셀 유형을 마크다운 형식으로 변경하면 과연 무슨 일이 일어날까요? 먼저 새 코드 셀에 아래 파이썬 코드를 직접 입력해 보세요:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> <span class="dv">7</span> <span class="op">+</span> <span class="dv">12</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>입력 후 <kbd>Shift</kbd> + <kbd>Return(엔터)</kbd>를 사용하여 그 구간이 코드로 올바르게 작동하는지 결과를 확인합니다. 그다음 해당 셀 영역 바깥 테두리를 선택한 뒤, <kbd>Esc</kbd> 로 명령 모드 진입 후 <kbd>m</kbd> 단축키를 눌러 셀 유형을 ’마크다운 텍스트 영역’으로 변경시켜준 뒤 다시 <kbd>Shift</kbd> + <kbd>Return(엔터)</kbd> 키를 눌러 렌더링 해보세요. 어떤 현상이 발생하나요? 또한 왜 이런 셀 단위 성격 변경 기능이 실사용에 있어 유용할 수 있을까요?</p>
+<p>입력 후 <kbd>Shift</kbd> + <kbd>Return(엔터)</kbd>를 사용하여 그 구간이 코드로 올바르게 작동하는지 결과를 확인합니다. 그다음 셀 바깥 테두리를 선택하고 <kbd>Esc</kbd>로 명령 모드에 들어간 뒤 <kbd>m</kbd> 키를 눌러 셀 유형을 ’마크다운 텍스트 영역’으로 바꾸고, 다시 <kbd>Shift</kbd> + <kbd>Return(엔터)</kbd> 키로 렌더링해 보세요. 무슨 일이 일어났나요? 또한 셀 유형을 이렇게 바꾸는 기능이 실제로는 왜 유용할까요?</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="해답">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1152,7 +1152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <section id="해답-4" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="해답-4">해답</h2>
-<p>기존 파이썬 코드는 단순한 평문 마크다운 텍스트로서 처리되어 전환됩니다. 줄바꿈 처리가 특별히 적용되지 않았기 때문에 기존 코드 부분은 하나의 연속된 문단으로 길게 연결되어 렌더링되어 나타날 것입니다. 이 방식은 노트북 환경 내부를 다양하게 활용하면서 다목적 코드를 작성해 볼 때, 해당 코드 부분을 전부 지우지 않으면서 일시적으로 실행이 되지 않게 막아두는(주석 처리처럼 온오프 끄듯 멈추게 만드는) 기능으로써 매우 유용할 수 있습니다.</p>
+<p>기존 파이썬 코드는 그대로 평문 마크다운 텍스트로 취급됩니다. 줄바꿈이 적용되지 않으므로 코드 전체가 하나의 문단으로 이어져 길게 렌더링될 것입니다. 이 방법은 노트북 안에서 다목적으로 코드를 작성할 때, 코드를 지우지 않으면서 일단 실행되지 않도록 막아 두는(주석 처리처럼 껐다 켤 수 있는) 용도로 매우 유용합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> <span class="dv">7</span> <span class="op">+</span> <span class="dv">12</span> <span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </div>
@@ -1170,9 +1170,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="각종-수학-수식-공식equations-표현" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="각종-수학-수식-공식equations-표현">각종 수학 수식 공식(Equations) 표현</h2>
-<p>기본 마크다운 문법 구성만으로는 복잡한 수학 방정식(Equations) 수식을 책처럼 예쁘게 표시(Render)하는 것이 어렵지만, 특수한 형태의 표현식을 통해 노트북 환경 내에서는 이러한 수식 뷰를 지원하고 있습니다. 신규 마크다운 셀을 하나 생성하고 다음 내용을 입력하거나 복사 후 붙여넣어 보세요:</p>
+<p>기본 마크다운 문법만으로는 복잡한 수학 방정식(Equations)을 책처럼 예쁘게 표시(Render)하기 어렵지만, 특수한 형태의 표현식으로 노트북 환경에서는 이런 수식 표시를 지원합니다. 신규 마크다운 셀을 하나 생성하고 다음 내용을 입력하거나 복사 후 붙여넣어 보세요:</p>
 <pre><code>$\sum_{i=1}^{N} 2^{-i} \approx 1$</code></pre>
-<p>화면에 어떻게 표시되나요? 밑줄(<code>_</code>) 기호나, 해시 꺽쇠 기호(<code>^</code>), 그리고 달러 마크 기호(<code>$</code>)가 노트북 렌더링 엔진 시스템에서 어떤 역할을 수행하고 있을지 고민해 보세요.</p>
+<p>화면에 어떻게 표시되나요? 밑줄(<code>_</code>) 기호, 해시 꺽쇠 기호(<code>^</code>), 달러 마크 기호(<code>$</code>)가 렌더링 엔진에서 각각 어떤 역할을 하는지 고민해 보세요.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="해답">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1186,7 +1186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <section id="해답-5" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="해답-5">해답</h2>
-<p>이 특정 노트북 브라우저는 입력된 공식을 LaTeX(라텍스) 수식 방정식 표시 규칙에 맞게 렌더링하여 표시합니다. 시작과 끝에 들어간 달러(<code>$</code>) 기호는 이 마크다운 구역 안에 담긴 기호들이 일반 텍스트 문자가 아니라 LaTeX 형식의 특수 수식이라는 점을 시스템 엔진에 알려주는 역할을 합니다. LaTeX 기호 문법에 낯선 분들이라면 참고하십시오: 밑줄(<code>_</code>) 기호는 하단 아래 첨자(subscripts) 용도로 기능하고, 해시 기호(<code>^</code>) 부분은 위로 솟은 제곱수나 윗 첨자 형태(superscripts)를 표기하는 용도로 동작합니다. 또한 여기에 중첩되어 쓰인 중괄호 <code>{</code> 와 <code>}</code>는 묶음 처리 용도로 기능하여, 안쪽에 묶은 서술 문장(<code>i=1</code>)을 통째로 하나의 묶음 취급하게끔 처리합니다. 그 덕에 아랫부분 전체가 하단 첨자로 들어가게 되고 우측의 문자 <code>N</code> 구역과 분리되어 보입니다. 달리 보면 우측의 <code>{-i}</code> 구간 방식도 중괄호를 통해 분리, 숫자 기호 <code>2</code> 위쪽에 함께 놓이는 윗 첨자 표현으로 기능합니다. 마지막으로, <code>\sum</code> 이나 <code>\approx</code> 같은 문구들은 그 자체로 라텍스 구문 언어 내부 전용 특수 표기로 약속된 명령어들입니다. 이로써 합산을 의미하는 커다란 수학 기호 “시그마(sum over)”나, “대략 근사하는 약(approximate)” 이란 의미를 지닌 특수 기호 형태로 화면에 예쁘게 인쇄시켜 표현합니다!</p>
+<p>이 노트북은 입력된 공식을 LaTeX(라텍스) 수식 규칙에 맞춰 렌더링합니다. 앞뒤에 붙은 달러(<code>$</code>) 기호는 이 구역의 기호들이 일반 텍스트가 아니라 LaTeX 형식의 특수 수식임을 시스템 엔진에 알려줍니다. LaTeX 기호 문법에 낯선 분들은 참고하세요: 밑줄(<code>_</code>) 기호는 아래 첨자(subscripts)로 기능하고, 해시 기호(<code>^</code>)는 위로 솟은 제곱수나 윗 첨자 형태(superscripts)를 표기합니다. 중괄호 <code>{</code> 와 <code>}</code>는 묶음 용도로 쓰여, 안쪽의 <code>i=1</code>을 통째로 하나로 묶습니다. 덕분에 밑부분 전체가 아래 첨자로 들어가고 오른쪽 문자 <code>N</code>과 분리되어 보입니다. 오른쪽의 <code>{-i}</code> 부분도 중괄호로 분리되어 숫자 <code>2</code> 위에 놓이는 윗 첨자로 기능합니다. 마지막으로 <code>\sum</code>이나 <code>\approx</code> 같은 문구는 라텍스 언어 안에서 약속된 특수 명령어입니다. 합을 뜻하는 큰 수학 기호 “시그마(sum over)”, “대략 근사하는(approximate)” 의미의 특수 기호로 화면에 예쁘게 인쇄해 줍니다!</p>
 </section>
 </div>
 </div>
@@ -1197,8 +1197,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="jupyterlab-주피터-랩-사용-종료-방식-알아보기" class="level2">
 <h2 class="anchored" data-anchor-id="jupyterlab-주피터-랩-사용-종료-방식-알아보기">JupyterLab (주피터 랩) 사용 종료 방식 알아보기</h2>
 <ul>
-<li>JupyterLab을 종료하려면 상단의 Menu Bar(메뉴 바)를 사용하여, 왼쪽 첫 번째에 위치한 “File (파일)”을 클릭하고 제일 아래쪽의 “Shut Down (종료)” 메뉴를 클릭합니다. 사용자 보호를 위해 이 작업을 정말로 진행할지 묻는 확인 창이 뜹니다(이전에 여러분의 저장 내역들이 완전히 보존되었는지 꼭 확인하세요!). 팝업에서 “Shut Down (종료할게!)” 문구를 수락 및 클릭하면 JupyterLab 실행 서버 모드가 자체적으로 완전 셧다운되어 종료됩니다.</li>
-<li>이렇게 작업 환경 서버를 종료시킨 이후 다시 JupyterLab 환경 서버를 구동시켜 접속하셔야 한다면, 처음에 보셨던 터미널(명령 프롬프트 환경 공간) 프로그램으로 돌아가 다음의 짧고 익숙한 코드를 다시 입력하여 실행시키세요.</li>
+<li>JupyterLab을 종료하려면 상단 Menu Bar(메뉴 바)에서 맨 왼쪽의 “File (파일)”을 클릭하고 맨 아래의 “Shut Down (종료)” 메뉴를 고릅니다. 정말 종료할지 묻는 확인 창이 뜹니다(여러분의 저장 내역이 모두 보존되었는지 먼저 확인하세요!). 팝업에서 “Shut Down (종료할게!)” 문구를 클릭하면 JupyterLab 서버가 완전히 종료됩니다.</li>
+<li>서버를 종료한 뒤 다시 JupyterLab에 접속하려면 처음에 쓰던 터미널(명령 프롬프트) 프로그램으로 돌아가 아래의 익숙한 명령을 다시 입력해 실행하세요.</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> jupyter lab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled" title="범례">
@@ -1212,7 +1212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="jupyterlab-껐다-켜기-종료-시키고-다시-구동해보기-연습" class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="jupyterlab-껐다-켜기-종료-시키고-다시-구동해보기-연습">JupyterLab 껐다 켜기 (종료 시키고 다시 구동해보기 연습)</h2>
-<p>여러분의 환경에서 JupyterLab 서버를 닫아보신 후 터미널 콘솔 명령어를 통해 다시 한번 깨워 재 구동시켜 보는 실습을 진행하십시오!</p>
+<p>여러분 환경에서 JupyterLab 서버를 닫은 후 터미널 명령으로 다시 구동해 보세요!</p>
 </section>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="핵심 요약">
@@ -1229,9 +1229,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파이썬 스크립트는 단순한 일반 텍스트 파일(plain text files)입니다.</li>
 <li>파이썬 코드를 편집하고 실행할 수 있는 여러 도구 중에서 우리는 Jupyter Notebook을 사용합니다.</li>
 <li>Notebook 환경에는 전체 셀 구조 조작을 담당하는 ’Command(명령) 모드’와 셀 안의 내용물을 편집하는 ’Edit(편집) 모드’의 두 가지 조작 방식이 있습니다.</li>
-<li>키보드 및 마우스 입력을 활용하여 구역 내의 셀들을 다채롭게 클릭 및 선택하고 작업을 이어 나갈 수 있습니다.</li>
-<li>Notebook 내부의 마크다운(Markdown) 영역을 화려하게 시각화(pretty-printed)된 설명 글 문서 형태로 변환시켜줄 수 있습니다.</li>
-<li>이러한 마크다운 구역 내부에서는 기존 HTML 언어 포맷 구역이 수행할 수 있는 시각적 표기 대부분을 지원하고 있습니다.</li>
+<li>키보드와 마우스로 셀을 클릭하고 선택하며 작업을 이어 나갈 수 있습니다.</li>
+<li>Notebook 안의 마크다운(Markdown) 영역은 보기 좋게 꾸며진(pretty-printed) 설명 문서 형태로 변환할 수 있습니다.</li>
+<li>마크다운 구역에서는 HTML 포맷으로 표현할 수 있는 시각적 요소 대부분을 지원합니다.</li>
 </ul>
 </div>
 </div>
@@ -1486,7 +1486,7 @@ initial = 'right'</code></pre>
 <ul>
 <li>변수를 사용하여 데이터를 저장하고 이름을 붙입니다.</li>
 <li><code>print()</code> 함수로 데이터를 출력하고 <code>len()</code>으로 길이를 확인합니다.</li>
-<li>인덱싱과 슬라이싱을 통해 문자열의 일부를 추출할 수 있습니다.</li>
+<li>인덱싱과 슬라이싱으로 문자열의 일부를 추출할 수 있습니다.</li>
 <li>변수 이름은 대소문자를 구분하며, 의미 있는 이름을 사용하는 것이 권장됩니다.</li>
 </ul>
 </div>
@@ -1856,7 +1856,7 @@ print(my_string.swapcase())     # 메서드 호출</code></pre>
 </section>
 <section id="코딩-문제-해결을-위한-도움-받기" class="level2">
 <h2 class="anchored" data-anchor-id="코딩-문제-해결을-위한-도움-받기">코딩 문제 해결을 위한 도움 받기</h2>
-<p>코딩 중에 오류가 발생하거나 막막할 때는 다음과 같은 방법을 활용할 수 있습니다.</p>
+<p>코딩 중에 오류가 발생하거나 막막할 때는 다음과 같은 방법을 쓸 수 있습니다.</p>
 <ol type="1">
 <li><strong>검색 엔진 활용</strong>: 에러 메시지의 마지막 줄을 복사하여 검색해 보세요. <a href="https://stackoverflow.com/">Stack Overflow</a>와 같은 커뮤니티에서 많은 도움을 얻을 수 있습니다. 단, 해결책을 이해하지 못한 채 복사하여 붙여넣는 것은 피해야 합니다.</li>
 <li><strong>동료에게 질문하기</strong>: 문제를 명확히 정리하여 주변에 조언을 구하세요.</li>
@@ -1957,10 +1957,10 @@ print(max(len(rich), len(poor)))</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>주석을 사용하여 코드에 대한 설명을 남길 수 있습니다.</li>
-<li>함수는 인수를 전달받아 작업을 수행하고 결과를 반환합니다.</li>
+<li>함수는 인수를 전달받아 필요한 일을 처리하고 결과를 반환합니다.</li>
 <li><code>max</code>, <code>min</code>, <code>round</code> 등 다양한 내장 함수가 제공됩니다.</li>
-<li>도움말 기능을 통해 함수의 상세 사용법을 확인할 수 있습니다.</li>
-<li>구문 오류(Syntax Error)와 실행 오류(Runtime Error)의 차이를 이해하고 메시지를 통해 문제를 해결합니다.</li>
+<li>도움말 기능으로 함수의 상세 사용법을 확인할 수 있습니다.</li>
+<li>구문 오류(Syntax Error)와 실행 오류(Runtime Error)의 차이를 이해하고 메시지를 보고 문제를 해결합니다.</li>
 </ul>
 </div>
 </div>
@@ -1971,7 +1971,7 @@ print(max(len(rich), len(poor)))</code></pre>
 <h1>제5장: 쉬는 시간</h1>
 <section id="생각해-보기" class="level2">
 <h2 class="anchored" data-anchor-id="생각해-보기">생각해 보기</h2>
-<p>커피를 마시며 다음 질문들에 대해 자유롭게 이야기해 보세요.</p>
+<p>커피를 마시며 다음 질문을 놓고 자유롭게 이야기해 보세요.</p>
 <ul>
 <li>지금까지 배운 내용 중 파이썬에서 발생하는 에러에는 어떤 종류가 있었나요?</li>
 <li>작성한 코드가 예상과 다르게 동작한 적이 있었나요? 원인이 무엇이었나요?</li>
@@ -1994,7 +1994,7 @@ print(max(len(rich), len(poor)))</code></pre>
 <ul>
 <li>소프트웨어 라이브러리의 개념과 필요성을 이해합니다.</li>
 <li>파이썬 표준 라이브러리의 모듈을 임포트(import)하여 사용하는 프로그램을 작성합니다.</li>
-<li>대화형 인터프리터나 온라인 문서를 통해 라이브러리 사용법을 확인합니다.</li>
+<li>대화형 인터프리터나 온라인 문서로 라이브러리 사용법을 확인합니다.</li>
 </ul>
 </div>
 </div>
@@ -2017,7 +2017,7 @@ print(max(len(rich), len(poor)))</code></pre>
 <section id="라이브러리의-중요성" class="level2">
 <h2 class="anchored" data-anchor-id="라이브러리의-중요성">라이브러리의 중요성</h2>
 <ul>
-<li><strong>라이브러리(library)</strong>란 다른 프로그램에서 재사용할 수 있도록 미리 작성된 함수와 값들의 모음(모듈)입니다.</li>
+<li><strong>라이브러리(library)</strong>란 다른 프로그램에서 재사용할 수 있도록 미리 작성된 함수와 값의 모음(모듈)입니다.</li>
 <li>파이썬 설치 시 기본으로 제공되는 <strong>표준 라이브러리(standard library)</strong> 외에도, PyPI(Python Package Index)를 통해 수많은 외부 라이브러리를 설치하여 사용할 수 있습니다.</li>
 </ul>
 </section>
@@ -2092,7 +2092,7 @@ print('cos(pi) is', m.cos(m.pi))</code></pre>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><code>math.pow(x, 0.5)</code>를 사용하면 동일한 결과를 얻을 수 있습니다.</li>
-<li><code>sqrt(x)</code>가 수식의 의도를 더 직관적으로 보여주며 가독성이 높기 때문입니다. 또한 파이썬이 기반을 둔 C 언어 표준 라이브러리의 구성을 따랐기 때문이기도 합니다.</li>
+<li><code>sqrt(x)</code>가 수식의 의도를 더 직관적으로 드러내고 가독성이 높아서입니다. 파이썬의 기반이 된 C 언어 표준 라이브러리의 구성을 따른 까닭이기도 합니다.</li>
 </ol>
 </div>
 </div>
@@ -2205,8 +2205,8 @@ print(random.choice(bases))</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>라이브러리는 프로그램 개발 효율을 높여주는 미리 작성된 코드 묶음입니다.</li>
-<li><code>import</code>를 통해 모듈을 불러오며, <code>from</code>이나 <code>as</code> 키워드로 사용 방식을 조정할 수 있습니다.</li>
-<li><code>help()</code>를 통해 라이브러리 사용법을 수시로 확인하는 습관을 들이세요.</li>
+<li><code>import</code>로 모듈을 불러오며, <code>from</code>이나 <code>as</code> 키워드로 사용 방식을 조정할 수 있습니다.</li>
+<li><code>help()</code>로 라이브러리 사용법을 수시로 확인하는 습관을 들이세요.</li>
 </ul>
 </div>
 </div>
@@ -2226,7 +2226,7 @@ print(random.choice(bases))</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>Pandas 라이브러리를 임포트(import)합니다.</li>
-<li>Pandas를 사용하여 CSV 데이터 파일을 불러옵니다.</li>
+<li>Pandas로 CSV 데이터 파일을 불러옵니다.</li>
 <li>Pandas 데이터프레임의 기본 구조와 정보를 파악합니다.</li>
 </ul>
 </div>
@@ -2309,7 +2309,7 @@ print(data_oceania_country)</code></pre>
 <section id="요약-통계-확인-describe" class="level2">
 <h2 class="anchored" data-anchor-id="요약-통계-확인-describe">요약 통계 확인: <code>describe()</code></h2>
 <ul>
-<li><code>describe()</code> 메서드는 숫자형 데이터를 가진 열에 대해 개수, 평균, 표준편차, 최솟값, 최댓값 등의 요약 통계를 제공합니다.</li>
+<li><code>describe()</code> 메서드는 숫자형 데이터를 가진 열마다 개수, 평균, 표준편차, 최솟값, 최댓값 같은 요약 통계를 알려줍니다.</li>
 </ul>
 <pre class="{python}"><code>print(data_oceania_country.describe())</code></pre>
 <hr>
@@ -2417,7 +2417,7 @@ print(data_americas.describe())</code></pre>
 <ul>
 <li>Pandas 데이터프레임에서 특정 위치나 레이블을 사용하여 값을 선택할 수 있습니다.</li>
 <li>데이터프레임의 행과 열을 슬라이싱하여 부분집합(subset)을 추출할 수 있습니다.</li>
-<li>불리언(Boolean) 조건을 활용하여 특정 조건에 맞는 데이터를 필터링할 수 있습니다.</li>
+<li>불리언(Boolean) 조건으로 특정 조건에 맞는 데이터를 필터링할 수 있습니다.</li>
 </ul>
 </div>
 </div>
@@ -2441,7 +2441,7 @@ print(data_americas.describe())</code></pre>
 <ul>
 <li><strong>데이터프레임(DataFrame)</strong>은 Pandas에서 표(table) 형태의 데이터를 다루는 기본 구조입니다.</li>
 <li><strong>시리즈(Series)</strong>는 데이터프레임의 각 열(column)을 나타내는 1차원 데이터 구조입니다.</li>
-<li>Pandas는 Numpy 라이브러리를 기반으로 구축되어 강력한 수치 계산 능력을 제공하며, 인덱싱, 누락된 데이터 처리, 데이터 병합 등 데이터 분석에 최적화된 기능을 제공합니다.</li>
+<li>Pandas는 Numpy 라이브러리를 기반으로 하여 강력한 수치 계산 능력을 갖추었고, 인덱싱, 누락된 데이터 처리, 데이터 병합 등 데이터 분석에 최적화된 기능을 제공합니다.</li>
 </ul>
 </section>
 <section id="데이터-선택하기" class="level2">
@@ -2490,7 +2490,7 @@ print(mask)</code></pre>
 </section>
 <section id="그룹화group-by" class="level2">
 <h2 class="anchored" data-anchor-id="그룹화group-by">그룹화(Group By)</h2>
-<p><code>groupby</code>를 사용하면 특정 기준에 따라 데이터를 나누고, 각 그룹에 대해 통계량을 계산한 뒤 다시 결합하는 분석을 수행할 수 있습니다.</p>
+<p><code>groupby</code>를 사용하면 특정 기준에 따라 데이터를 나누고, 그룹별로 통계량을 계산한 뒤 다시 결합하는 분석을 할 수 있습니다.</p>
 <pre class="{python}"><code># 전체 평균보다 높은지 여부를 기준으로 그룹화하여 합계 계산
 mask_higher = data &gt; data.mean()
 wealth_score = mask_higher.aggregate('sum', axis=1) / len(data.columns)
@@ -2649,7 +2649,7 @@ fourth.to_csv('result.csv')</code></pre>
 <li><code>:</code>를 사용하여 전체 범위를 지정하거나 슬라이싱을 수행할 수 있습니다.</li>
 <li>불리언 마스크를 사용하여 특정 조건에 맞는 데이터만 필터링할 수 있습니다.</li>
 <li><code>NaN</code>은 데이터가 없음을 나타내며, 통계 연산 시 자동으로 제외되는 경우가 많습니다.</li>
-<li><code>groupby</code>를 활용하면 데이터를 그룹별로 나누어 분석할 수 있습니다.</li>
+<li><code>groupby</code>로 데이터를 그룹별로 나누어 분석할 수 있습니다.</li>
 </ul>
 </div>
 </div>
@@ -2796,7 +2796,7 @@ plt.ylabel('GDP per capita ($)')</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>여러 데이터를 겹쳐 그릴 때는 각 선이 무엇을 의미하는지 범례를 통해 설명하는 것이 좋습니다.</p>
+<p>여러 데이터를 겹쳐 그릴 때는 각 선이 무엇을 의미하는지 범례로 설명하는 것이 좋습니다.</p>
 <ol type="1">
 <li>그래프를 그릴 때 <code>label</code> 인자로 이름을 지정합니다.</li>
 <li><code>plt.legend()</code>를 호출하여 범례를 표시합니다.</li>
@@ -2926,9 +2926,9 @@ fig.savefig('my_figure.png')</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>파이썬의 대표적인 시각화 라이브러리는 <code>matplotlib</code>입니다.</li>
-<li>Pandas 데이터프레임에서 직접 그래프를 그릴 수 있는 메서드를 제공합니다.</li>
+<li>Pandas 데이터프레임에는 직접 그래프를 그리는 메서드가 있습니다.</li>
 <li>데이터 정제 후 시각화하는 과정이 일반적입니다.</li>
-<li><code>savefig</code>를 통해 그래프를 다양한 형식의 파일로 저장할 수 있습니다.</li>
+<li><code>savefig</code>로 그래프를 다양한 형식의 파일로 저장할 수 있습니다.</li>
 <li>여러 데이터를 하나의 그래프에 겹쳐 그리거나 범례를 추가하여 정보를 명확히 전달할 수 있습니다.</li>
 </ul>
 </div>
@@ -2937,7 +2937,7 @@ fig.savefig('my_figure.png')</code></pre>
 </section>
 <section id="제10장-점심-시간" class="level1">
 <h1>제10장: 점심 시간</h1>
-<p>식사를 하며 다음 주제들에 대해 가볍게 의견을 나누어 보세요.</p>
+<p>식사를 하며 다음 주제를 놓고 가볍게 의견을 나누어 보세요.</p>
 <ul>
 <li>여러분의 업무나 연구에서 어떤 파이썬 패키지를 활용하고 싶으신가요?</li>
 <li>Pandas 데이터프레임으로 데이터를 분석하려면 어떤 준비가 필요할까요?</li>
@@ -2958,7 +2958,7 @@ fig.savefig('my_figure.png')</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>여러 데이터를 하나의 묶음(collections)으로 관리해야 하는 이유를 이해합니다.</li>
-<li>리스트를 생성하고, 인덱싱과 슬라이싱을 통해 데이터에 접근하며, 메서드를 사용하여 리스트를 조작하는 방법을 익힙니다.</li>
+<li>리스트를 생성하고, 인덱싱과 슬라이싱으로 데이터에 접근하며, 메서드로 리스트를 조작하는 방법을 익힙니다.</li>
 </ul>
 </div>
 </div>
@@ -2981,7 +2981,7 @@ fig.savefig('my_figure.png')</code></pre>
 <h2 class="anchored" data-anchor-id="리스트list를-사용한-데이터-저장">리스트(List)를 사용한 데이터 저장</h2>
 <ul>
 <li>수백 개의 데이터를 다루기 위해 매번 새로운 변수를 만드는 것은 매우 비효율적입니다.</li>
-<li>연관된 데이터들을 하나의 단위로 묶어서 관리하려면 <strong>리스트(list)</strong>를 사용합니다.
+<li>연관된 데이터를 하나의 단위로 묶어서 관리하려면 <strong>리스트(list)</strong>를 사용합니다.
 <ul>
 <li>리스트는 대괄호 <code>[...]</code> 안에 요소들을 쉼표(<code>,</code>)로 구분하여 작성합니다.</li>
 </ul></li>
@@ -3045,7 +3045,7 @@ print(primes)</code></pre>
 <section id="문자열의-인덱싱과-불변성immutability" class="level2">
 <h2 class="anchored" data-anchor-id="문자열의-인덱싱과-불변성immutability">문자열의 인덱싱과 불변성(Immutability)</h2>
 <ul>
-<li>문자열도 리스트처럼 인덱스를 통해 개별 문자에 접근할 수 있습니다.</li>
+<li>문자열도 리스트처럼 인덱스로 개별 문자에 접근할 수 있습니다.</li>
 <li>하지만 문자열은 <strong>불변(immutable)</strong> 속성을 가지므로, 특정 인덱스의 문자를 직접 수정할 수는 없습니다. 수정을 원한다면 새로운 문자열을 만들어야 합니다.</li>
 </ul>
 <pre class="{python}"><code>element = 'carbon'
@@ -3269,7 +3269,7 @@ print(5)</code></pre>
 <h2 class="anchored" data-anchor-id="문법-콜론과-들여쓰기">문법: 콜론과 들여쓰기</h2>
 <ul>
 <li>루프의 첫 번째 줄은 반드시 콜론(<code>:</code>)으로 끝나야 합니다.</li>
-<li>반복 실행될 본문 코드는 반드시 <strong>들여쓰기</strong>를 해야 합니다. 파이썬은 들여쓰기를 통해 어디까지가 루프의 본문인지를 구분합니다.</li>
+<li>반복 실행될 본문 코드는 반드시 <strong>들여쓰기</strong>를 해야 합니다. 파이썬은 들여쓰기로 어디까지가 루프의 본문인지 구분합니다.</li>
 <li>일반적으로 스페이스 4칸을 사용하며, 일관성을 유지하는 것이 중요합니다.</li>
 </ul>
 <pre class="{python}"><code># 들여쓰기 오류 예시 (IndentationError 발생)
@@ -3542,7 +3542,7 @@ for m in masses:
 <h2 class="anchored" data-anchor-id="조건문의-실행-순서">조건문의 실행 순서</h2>
 <ul>
 <li>파이썬은 조건문을 위에서 아래로 순서대로(in order) 검사합니다.</li>
-<li>따라서 조건문들을 배치하는 순서에 따라 결과가 달라질 수 있으므로 주의해야 합니다.</li>
+<li>따라서 조건문을 배치하는 순서에 따라 결과가 달라질 수 있으므로 주의해야 합니다.</li>
 </ul>
 <pre class="{python}"><code>grade = 85
 if grade &gt;= 90:
@@ -3806,7 +3806,7 @@ for filename in ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']
 <li><code>*</code> : 0개 이상의 임의의 문자와 일치하는 와일드카드.</li>
 <li><code>?</code> : 정확히 하나의 문자와 일치하는 기호.</li>
 </ul></li>
-<li>파이썬의 표준 라이브러리인 <a href="https://docs.python.org/3/library/glob.html"><code>glob</code></a> 모듈은 이러한 파일 패턴 매칭 기능을 제공합니다.</li>
+<li>파이썬의 표준 라이브러리인 <a href="https://docs.python.org/3/library/glob.html"><code>glob</code></a> 모듈은 이런 파일 패턴 매칭 기능을 제공합니다.</li>
 <li><code>glob.glob('*.txt')</code>와 같이 실행하면 현재 디렉터리에서 확장자가 <code>.txt</code>인 모든 파일의 목록을 리스트 형태로 반환합니다. 만약 일치하는 파일이 없다면 빈 리스트를 반환합니다.</li>
 </ul>
 <pre class="{python}"><code>import glob
@@ -3816,7 +3816,7 @@ print('data 디렉터리 안의 모든 csv 파일:', glob.glob('data/*.csv'))</c
 <section id="glob과-for-루프를-결합하여-여러-파일을-일괄batch-처리합니다." class="level2">
 <h2 class="anchored" data-anchor-id="glob과-for-루프를-결합하여-여러-파일을-일괄batch-처리합니다."><code>glob</code>과 <code>for</code> 루프를 결합하여 여러 파일을 일괄(batch) 처리합니다.</h2>
 <ul>
-<li>파일들이 일관된 규칙에 따라 이름 지어져 있다면, 간단한 패턴만으로 원하는 파일들을 쉽게 찾아내어 처리할 수 있습니다.</li>
+<li>파일들이 일관된 규칙에 따라 이름 지어져 있다면, 간단한 패턴만으로 원하는 파일을 쉽게 찾아내어 처리할 수 있습니다.</li>
 </ul>
 <pre class="{python}"><code>for filename in glob.glob('data/gapminder_*.csv'):
     data = pd.read_csv(filename)
@@ -3968,7 +3968,7 @@ plt.show()</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>파이썬의 <a href="https://docs.python.org/3/library/pathlib.html"><code>pathlib</code> 모듈</a>을 사용하면 파일 경로, 확장자 분리 등 파일 시스템 조작을 더 쉽고 직관적으로 수행할 수 있습니다.</p>
+<p>파이썬의 <a href="https://docs.python.org/3/library/pathlib.html"><code>pathlib</code> 모듈</a>을 사용하면 파일 경로, 확장자 분리 등 파일 시스템 조작을 더 쉽고 직관적으로 할 수 있습니다.</p>
 <pre class="{python}"><code>from pathlib import Path
 
 p = Path("data/gapminder_gdp_africa.csv")
@@ -4000,7 +4000,7 @@ print(p.suffix)  # 확장자</code></pre>
 <h1>제15장: 쉬는 시간</h1>
 <section id="생각해-보기-1" class="level2">
 <h2 class="anchored" data-anchor-id="생각해-보기-1">생각해 보기</h2>
-<p>휴식을 취하며 다음 내용들에 대해 이야기해 보세요.</p>
+<p>휴식을 취하며 다음 내용을 놓고 이야기해 보세요.</p>
 <ul>
 <li>“반복하지 마라(DRY)” 원칙을 지키는 것이 왜 중요할까요? 오늘 배운 함수가 어떻게 반복을 줄여주나요?</li>
 <li>전역 변수와 지역 변수를 각각 언제 사용하는 것이 좋을까요?</li>
@@ -4045,13 +4045,13 @@ print(p.suffix)  # 확장자</code></pre>
 <h2 class="anchored" data-anchor-id="함수를-사용한-코드-모듈화">함수를 사용한 코드 모듈화</h2>
 <ul>
 <li>인간의 기억력에는 한계가 있어 한 번에 너무 많은 정보를 처리하기 어렵습니다.</li>
-<li>따라서 복잡한 아이디어를 이해하기 위해서는 세부 사항들을 결합하여 더 큰 단위로 구조화해야 합니다.
+<li>따라서 복잡한 아이디어를 이해하려면 세부 사항을 결합하여 더 큰 단위로 구조화해야 합니다.
 <ul>
 <li>이는 거대한 기계 장치의 부품들이나 수학 증명의 보조정리와 같은 역할을 합니다.</li>
 </ul></li>
-<li>프로그래밍에서 함수(functions)는 바로 이러한 목적을 위해 존재합니다.
+<li>프로그래밍에서 함수(functions)는 바로 이런 목적을 위해 존재합니다.
 <ul>
-<li><strong>캡슐화(Encapsulation)</strong>를 통해 복잡한 과정을 하나의 단위로 묶어 관리할 수 있게 해줍니다.</li>
+<li><strong>캡슐화(Encapsulation)</strong>로 복잡한 과정을 하나의 단위로 묶어 관리할 수 있습니다.</li>
 </ul></li>
 <li>함수는 한 번 작성해 두면 필요할 때마다 여러 번 재사용할 수 있다는 장점이 있습니다.</li>
 </ul>
@@ -4337,7 +4337,7 @@ print(iterate(0.5, 10, 1.0))</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>복잡한 코드는 함수를 사용하여 작고 관리하기 쉬운 단위로 쪼개는 것이 좋습니다.</li>
-<li><code>def</code> 키워드를 사용하여 함수를 정의하고, 이름을 통해 호출합니다.</li>
+<li><code>def</code> 키워드를 사용하여 함수를 정의하고, 이름으로 호출합니다.</li>
 <li>함수 정의 시 매개변수를 지정하고, 호출 시 인수를 전달합니다.</li>
 <li><code>return</code> 문을 사용하여 함수의 실행 결과를 반환할 수 있습니다. 반환값이 없으면 <code>None</code>이 반환됩니다.</li>
 </ul>
@@ -4455,7 +4455,7 @@ print(clip(120))
 <div class="callout-body-container callout-body">
 <ul>
 <li>함수 내부의 변수는 외부에서 접근할 수 없는 지역 범위를 가집니다.</li>
-<li>오류 메시지를 통해 발생 위치와 원인을 파악하는 습관을 기르세요.</li>
+<li>오류 메시지로 발생 위치와 원인을 파악하는 습관을 기르세요.</li>
 </ul>
 </div>
 </div>
@@ -4527,7 +4527,7 @@ print(clip(120))
 </section>
 <section id="독스트링docstrings을-사용하여-함수-설명을-작성하세요." class="level2">
 <h2 class="anchored" data-anchor-id="독스트링docstrings을-사용하여-함수-설명을-작성하세요.">독스트링(docstrings)을 사용하여 함수 설명을 작성하세요.</h2>
-<p>함수 정의 바로 아래에 문자열을 작성하면 파이썬은 이를 해당 함수의 내장 설명서로 인식합니다. 이를 통해 <code>help()</code> 함수로 함수의 사용법을 즉시 확인할 수 있습니다. 이러한 문자열을 <strong>독스트링(docstring, 문서화 문자열)</strong>이라고 부릅니다.</p>
+<p>함수 정의 바로 아래에 문자열을 작성하면 파이썬은 이를 해당 함수의 내장 설명서로 인식합니다. 덕분에 <code>help()</code> 함수로 함수의 사용법을 즉시 확인할 수 있습니다. 이런 문자열을 <strong>독스트링(docstring, 문서화 문자열)</strong>이라고 부릅니다.</p>
 <pre class="{python}"><code>def average(values):
     "입력값들의 평균을 반환합니다. 빈 리스트가 주어지면 None을 반환합니다."
 
@@ -4751,7 +4751,7 @@ transform_string('et cetera', 10)</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>소프트웨어, 워크샵, 도움말을 찾기 위한 과학 목적 파이썬 커뮤니티 사이트들의 이름과 위치를 파악합니다.</li>
+<li>소프트웨어, 워크샵, 도움말을 찾기 위한 과학 목적 파이썬 커뮤니티 사이트의 이름과 위치를 파악합니다.</li>
 </ul>
 </div>
 </div>
