@@ -5,4 +5,4 @@ title: "기계 번역(Machine translation)"
 
 # 환영합니다 {.unnumbered}
 
-《Machine Translation》에 오신 것을 환영합니다. 이 사이트는 여러 영문 책들을 한국어로 기계 번역하여 제공하는 사이트입니다.
+《Machine Translation》에 오신 것을 환영합니다. 여기에서는 여러 영문 책을 한국어로 기계 번역하여 제공합니다.
