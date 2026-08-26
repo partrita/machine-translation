@@ -524,3 +524,5 @@ $RECYCLE.BIN/
 mybook/site_libs/
 mybook/data_analysis/*.html
 mybook/**/*_files/
+
+converted/
