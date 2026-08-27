@@ -1249,7 +1249,7 @@ impl ReportArgs {
             // 각 행을 돌며 Record로 변환하여 월별 금액 누적을 진행합니다.
             for result in reader.deserialize() {
                 let record: Record = result.unwrap();
-                // 날짜를 "YYYY-MM" 형식으로 포맷팅하여 해시맵의 키로 사용하며,
+                // 날짜를 "YYYY-MM" 형식으로 포맷팅하여 해시맵의 키로 사용하며
                 // 키가 없으면 기본값인 0을 삽입한 뒤, 참조를 얻어 해당 키에 해당하는 금액을 더해줍니다.
                 let sum = map
                     .entry(record.날짜.format("%Y-%m").to_string())
@@ -1392,7 +1392,7 @@ impl Book {
     pub fn new(title: &str, author: &str) -> Self {
         // 구조체 리터럴을 통해 필드 값을 대입하고 인스턴스를 반환합니다.
         Self {
-            // 복사 비용이 발생하지만, 소유권이 있는 String 타입으로 변환하기 위해 to_string()을 호출합니다.
+            // 복사 비용이 발생하지만 소유권이 있는 String 타입으로 변환하기 위해 to_string()을 호출합니다.
             title: title.to_string(),
             author: author.to_string(),
         }
@@ -1421,7 +1421,7 @@ use fuzzy_matcher::{FuzzyMatcher, skim::SkimMatcherV2};
 use super::book::Book;
 
 // 책들을 저장할 책장 구조체입니다. 외부(다른 크레이트)에서 인스턴스화하여 사용할 수 있도록 pub로 선언합니다.
-// 구조체 자체는 공개(pub)되지만, 내부 필드(books, matcher)는 pub 키워드가 없으므로
+// 구조체 자체는 공개(pub)되지만 내부 필드(books, matcher)는 pub 키워드가 없으므로
 // 구조체가 속한 모듈 외부에서는 직접 필드에 접근하여 수정하거나 읽을 수 없습니다(캡슐화).
 pub struct Bookshelf {
     books: Vec<Book>,       // Book 구조체 객체들을 저장하는 동적 배열(Vector) 컬렉션
@@ -2721,7 +2721,7 @@ struct TodoTemplate {
 #[get("/")]
 async fn todo(pool: web::Data<SqlitePool>) -> HttpResponse {
     // SQL 쿼리를 비동기적으로 실행하여 tasks 테이블의 모든 task를 조회합니다.
-    // pool.as_ref()를 통해 풀에 대한 참조를 sqlx 쿼리에 전달하며, 비동기이므로 .await로 결과를 기다린 후 unwrap()합니다.
+    // pool.as_ref()를 통해 풀에 대한 참조를 sqlx 쿼리에 전달하며 비동기이므로 .await로 결과를 기다린 후 unwrap()합니다.
     let rows = sqlx::query("SELECT task FROM tasks;")
         .fetch_all(pool.as_ref())
         .await
@@ -2923,7 +2923,7 @@ struct TodoTemplate {
 #[get("/")]
 async fn todo(pool: web::Data<SqlitePool>) -> HttpResponse {
     // SQL 쿼리를 비동기적으로 실행하여 tasks 테이블의 모든 task를 조회합니다.
-    // pool.as_ref()를 통해 풀에 대한 참조를 sqlx 쿼리에 전달하며, 비동기이므로 .await로 결과를 기다린 후 unwrap()합니다.
+    // pool.as_ref()를 통해 풀에 대한 참조를 sqlx 쿼리에 전달하며 비동기이므로 .await로 결과를 기다린 후 unwrap()합니다.
     let rows = sqlx::query("SELECT task FROM tasks;")
         .fetch_all(pool.as_ref())
         .await
@@ -3019,7 +3019,7 @@ async fn main() -> std::io::Result<()> {
             // 모든 핸들러에서 안전하게 데이터베이스 풀을 얻어 쓸 수 있도록 애플리케이션 데이터(app_data)에 등록합니다.
             .app_data(web::Data::new(pool.clone()))
     })
-    // 0.0.0.0은 모든 네트워크 인터페이스를 의미하며, 클라우드 환경(예: Render, Heroku)이나
+    // 0.0.0.0은 모든 네트워크 인터페이스를 의미하며 클라우드 환경(예: Render, Heroku)이나
     // 도커 컨테이너 내부에서 실행할 때 외부 클라이언트로부터 접속할 수 있게 바인드합니다.
     // 포트 번호는 배포 서비스 표준에 맞춰 10000번 포트로 설정합니다.
     .bind(("0.0.0.0", 10000))?
@@ -3078,7 +3078,7 @@ fn main() {
     // 4개의 스레드를 생성하기 위한 루프를 돌립니다.
     for _ in 0..4 {
         // Arc의 참조 카운트를 증가시켜 새로운 스레드가 counter에 접근할 수 있도록 포인터를 복제(Clone)합니다.
-        // 실제 데이터인 Mutex(0)은 하나만 존재하고 복제되지 않으며, 단지 이를 가리키는 포인터만 복제됩니다.
+        // 실제 데이터인 Mutex(0)은 하나만 존재하고 복제되지 않으며 단지 이를 가리키는 포인터만 복제됩니다.
         let counter = counter.clone();
 
         // thread::spawn을 사용하여 새 스레드를 생성하고 실행합니다.
@@ -3313,7 +3313,7 @@ fn main() {
     create_dir_all(&args.output).unwrap();
 
     // 입력 디렉터리 내의 모든 항목을 읽어서 Vec 구조에 모읍니다(collect).
-    // read_dir()이 성공하면 Result에서 ReadDir 반복자를 가져오며, collect()를 통해 Vec<Result<DirEntry, Error>> 타입으로 변환됩니다.
+    // read_dir()이 성공하면 Result에서 ReadDir 반복자를 가져오며 collect()를 통해 Vec<Result<DirEntry, Error>> 타입으로 변환됩니다.
     let items: Vec<_> = read_dir(&args.input).unwrap().collect();
 
     // items 벡터를 rayon의 병렬 반복자(Parallel Iterator)인 ParallelIterator 형태로 변환합니다.
@@ -3411,7 +3411,7 @@ fn main() {
     let args = Args::parse();
 
     // 썸네일을 저장할 출력 대상 폴더를 생성합니다.
-    // 중간 경로에 없는 폴더들도 한 번에 생성(mkdir -p)하며, 실패 시 unwrap()으로 패닉을 발생시킵니다.
+    // 중간 경로에 없는 폴더들도 한 번에 생성(mkdir -p)하며 실패 시 unwrap()으로 패닉을 발생시킵니다.
     create_dir_all(&args.output).unwrap();
 
     // 처리된 이미지 개수를 세기 위한 카운터 변수를 초기화합니다.
@@ -3432,7 +3432,7 @@ fn main() {
         }
 
         // image 크레이트를 사용하여 지정된 경로의 이미지 파일을 읽어옵니다.
-        // 이 작업은 동기(Synchronous) 방식으로 작동하며, 파일 로딩 및 디코딩을 수행합니다.
+        // 이 작업은 동기(Synchronous) 방식으로 작동하며 파일 로딩 및 디코딩을 수행합니다.
         let img = image::open(&input_path);
 
         // 이미지 읽기에 성공하여 Result가 Ok(DynamicImage) 형태인 경우에만 블록을 실행합니다.
