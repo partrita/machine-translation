@@ -12,14 +12,12 @@ book:
       chapters:
         - linux_commands/index.qmd
         - advanced-algorithms-ds/index.qmd
-        - math-through-technology/index.qmd
         - essential-math-data-science/index.qmd
         - linear_algebra/index.qmd
         - hamming-science-engineering/index.qmd
     - part: "프로그래밍 언어 및 소프트웨어 엔지니어링"
       chapters:
         - python_mastery/index.qmd
-        - beyond-basic-python/index.qmd
         - rustc_guide/index.qmd
         - learn_rust/index.qmd
         - rust_python/index.qmd
@@ -44,7 +42,6 @@ book:
         - data-analytics-dummies/index.qmd
         - py_gapminder/index.qmd
         - intro-modern-statistics-book/index.qmd
-        - prob-stats-data-science/index.qmd
         - becoming-a-data-head/index.qmd
         - financial-data-engineering/index.qmd
         - data-engineering-best-practices/index.qmd

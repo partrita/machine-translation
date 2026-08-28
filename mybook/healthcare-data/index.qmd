@@ -2343,7 +2343,7 @@ node2vec을 다룰 때, 입출 매개변수를 논의하면서 등장하는 두 
 [^4]: Aditya Grover and Jure Leskovec, “node2vec: Scalable Feature Learning for Networks”, in Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, July 3, 2016, Cornell University arXiv.
 [^5]: MemGraph에서 p와 q에 대한 훌륭한 설명을 제공합니다.
 
----
+***
 
 q의 관점에서 보면, 여러분도 짐작할 수 있듯이 동종성은 높은 q 값의 함수이며, 특정 시작 노드에 가깝게 머물도록 순회를 유도합니다. 반면에 q를 낮추어 순회가 더 먼 노드를 탐색하도록 유도하면 구조적 동등성을 중심으로 한 유사성을 보게 됩니다. 이는 주변 노드와의 연결 관계를 고려할 때 그래프에서 유사한 역할을 수행하는 노드를 나타냅니다.
 
@@ -2359,7 +2359,7 @@ NLP에서 보았듯이 이는 여전히 활발한 연구와 혁신이 이루어�
 [^7]: Bryan Perrozi et al., “DeepWalk: Online Learning of Social Representations”, Cornell University arXiv, June 27, 2014.
 [^8]: Jian Tang et al., “LINE: Large-Scale Information Network Embedding”, Cornell University arXiv, March 12, 2015.
 
----
+***
 
 > **오프라벨 사용과 이상반응**
 > 
@@ -2379,7 +2379,7 @@ cui2vec 접근 방식은 UMLS 내의 구조화된 개념을 활용하면서도 R
 
 [^9]: Youngduck Choi et al., “Learning Low-Dimensional Representations of Medical Concepts”, Proceedings—AMIA Joint Summits on Translational Science (2016): 41–50.
 
----
+***
 
 따라서 여러 다양한 유형의 데이터를 고려하는 포괄적인 임베딩 모델을 구축하는 것이 매력적으로 보일 수 있지만, 항상 여러분의 구체적인 사용 사례의 미묘한 특성에 맞추어 접근 방식을 테스트하는 것이 중요합니다.
 
@@ -2403,7 +2403,7 @@ med2vec은 한 방문에서 다음 방문으로의 시간적 차이를 추적할
 
 RWD를 통합하는 접근 방식은 이전에 알려지지 않았던 맥락과 개념 간의 관계를 포착하는 데 뛰어나지만, 우리가 수년에 걸쳐 축적해 온 모든 지식을 잊어버리기도 합니다. 다소 과장이 섞여 있긴 하지만, 필자는 새로운 학생들에게 맥락에 대한 이해 없이 데이터만 본다면 그들이 훈련한 모델은 입원 환자의 사망률이 높기 때문에 사람들은 절대 병원에 가지 말아야 한다는 결론을 내릴 것이라고 말하곤 했습니다.
 
----
+***
 
 다시 말해, 데이터에 대한 해석을 이끌기 위해 생물의학과 의료 제공(delivery of healthcare)에 대한 우리의 지식을 여전히 활용하는 것이 중요합니다. 그러한 지식의 한 원천이 바로 SNOMED입니다(3장에서 간략히 논의했습니다).
 
@@ -2419,7 +2419,7 @@ snomed2vec 프로젝트는 SNOMED CT 개념에 적용된 여러 다양한 임베
 
 [^10]: Quihao Lu et al., “Learning Electronic Health Records through Hyperbolic Embedding of Medical Ontologies”, BCB ’19: Proceedings of the 10th ACM International Conference on Bioinformatics, Computational Biology and Health Informatics, September 2019, pp. 338–46.
 
----
+***
 
 ### 임베딩에 대한 몇 가지 최종 고찰
 
@@ -2463,7 +2463,7 @@ snomed2vec 프로젝트는 SNOMED CT 개념에 적용된 여러 다양한 임베
 
 딥러닝은 실제 임상 데이터(RWD) 전반을 보든 그래프를 집중적으로 보든 우리 앞에 놓인 흥미로운 수많은 주제 중 하나일 뿐이다. 다음 장에서는 연합 학습과 같이 헬스케어 분석에서 새롭게 떠오르는 트렌드 몇 가지를 살펴본다.
 
----
+***
 
 # 제7장 헬스케어 분석의 트렌드 (CHAPTER 7 Trends in Healthcare Analytics)
 
@@ -2739,7 +2739,7 @@ Yan 등이 2022년 초에 발표한 기존 연구에 대한 최신 체계적 문
 
 이제 임상 NLP에 대한 기본적인 이해와 몇 가지 구체적인 예제를 살펴보았으니, 사용할 수 있는 몇 가지 임상 NLP 도구를 살펴보겠습니다. 먼저 오픈소스 또는 공개적으로 사용 가능한 도구들을 살펴보겠습니다. 그 후에는 수년에 걸쳐 접했던 몇 가지 상용 도구를 나열하겠지만, 세부적인 내용까지 깊이 다루지는 않겠습니다.
 
----
+***
 
 ### 임상 NLP 도구
 
@@ -2747,7 +2747,7 @@ Yan 등이 2022년 초에 발표한 기존 연구에 대한 최신 체계적 문
 
 *Natural Language Processing | 191*
 
----
+***
 
 ### NCBO BioPortal Annotator
 
@@ -2770,14 +2770,14 @@ Annotator에서 이를 직접 시도해 보면, 여러 다양한 온톨로지에
 
 *192 | Chapter 7: Trends in Healthcare Analytics*
 
----
+***
 
 *그림 7-3. BioPortal Annotator 입력 예시*
 *그림 7-4. BioPortal Annotator 결과*
 
 *Natural Language Processing | 193*
 
----
+***
 
 #### 가장 긴 일치만 선택 (Match Longest Only)
 이는 BioPortal뿐만 아니라 대부분의 임상 NLP 도구에 포함된 기능입니다. 가능한 가장 긴 문자열을 매칭함으로써 문자열의 각 부분과 일치하는 수많은 개념 대신 가능한 한 가장 구체적인 개념을 얻을 수 있습니다. 예를 들어, "prostate cancer(전립선암)"라는 문자열은 189개의 결과를 반환하며, 전립선암 자체뿐만 아니라 `prostate`와 `cancer` 각각에 대한 개념도 매칭합니다. "Match longest only"를 체크하면 전립선암에 관한 결과만 46개 나타납니다. 추가 검색 매개변수를 지정함으로써 본질적으로 프로세스에 추가 컨텍스트를 통합하여 추출되는 개념의 품질을 향상시킬 수 있습니다.
@@ -2793,11 +2793,11 @@ BioPortal에는 이제 Annotator+라는 새로운 베타 버전의 Annotator가 
 
 *194 | Chapter 7: Trends in Healthcare Analytics*
 
----
+***
 
 *그림 7-5. 가장 긴 일치만 선택 (Match longest only)*
 
----
+***
 
 Annotator의 웹 인터페이스는 소량의 텍스트를 처리하거나 가장 적절한 매개변수를 결정하는 데 유용한 도구이지만, BioPortal과 자동화된 상호작용을 수행할 수 있는 REST API도 제공됩니다. Annotator API는 더 광범위한 BioPortal API의 일부이므로 일반적인 BioPortal과의 상호작용과 동일한 규칙을 따릅니다. 여기에는 API 키 사용 및 JSON(및 JSON-LD)과 XML 지원이 포함됩니다.
 
@@ -2811,7 +2811,7 @@ Apache cTAKES는 임상 텍스트 분석 및 지식 추출 시스템(Clinical Te
 
 *Natural Language Processing | 195*
 
----
+***
 
 *그림 7-6. UIMA CAS 개요*
 
@@ -2827,7 +2827,7 @@ cTAKES의 주된 난점은 학습 곡선이 상당히 가파르고 신규 사용
 
 *196 | Chapter 7: Trends in Healthcare Analytics*
 
----
+***
 
 ### MedSpaCy
 
@@ -2837,7 +2837,7 @@ cTAKES와 유사하게 모듈식 구조이며 객체 지향 접근 방식을 기
 
 지금까지 몇 가지 FOSS(무료 오픈소스) 임상 NLP 프로젝트를 살펴보았습니다. 다른 모든 FOSS 접근 방식과 마찬가지로, 특히 특정 문제를 단순히 해결하고자 하고 NLP 파이프라인 배포의 세부적인 부분까지 신경 쓰고 싶지 않다면 상당한 숨은 비용이 발생할 수 있습니다. 다음으로는 논의를 마무리하기 위해 몇 가지 상용 임상 NLP 솔루션을 살펴보겠습니다.
 
----
+***
 
 ### 상용 임상 NLP 솔루션
 
@@ -2850,7 +2850,7 @@ cTAKES와 유사하게 모듈식 구조이며 객체 지향 접근 방식을 기
 
 *Natural Language Processing | 197*
 
----
+***
 
 - **IQVIA NLP**: IQVIA는 광범위한 헬스케어 산업에 분석 및 기술 솔루션, 임상 연구 서비스, 데이터 자산을 제공합니다. 솔루션의 일부로 NLP 플랫폼도 제공합니다.
 - **Linguamatics**: 또 다른 헬스케어 전문 기업인 Linguamatics는 병원 및 의료 시스템부터 제약 회사에 이르기까지 업계 전반의 모든 수준을 위한 NLP 솔루션을 제공해 왔습니다. 2019년에 IQVIA에 인수되었으므로 더 광범위한 IQVIA 솔루션 제품군에 통합되고 있을 것으로 보입니다.
@@ -2858,7 +2858,7 @@ cTAKES와 유사하게 모듈식 구조이며 객체 지향 접근 방식을 기
 
 오픈소스 도구를 평가하든 상용 도구를 평가하든, 어떤 도구가 임상 텍스트를 중심으로 특별히 구축되었는지 고려하는 것이 중요합니다. 다음으로 논의하겠지만 임상 NLP와 "일반" NLP 사이에는 몇 가지 중요한 차이점이 있습니다.
 
----
+***
 
 ### 임상 NLP와 다른 NLP 응용 분야 간의 주요 차이점
 
@@ -2892,7 +2892,7 @@ cTAKES와 유사하게 모듈식 구조이며 객체 지향 접근 방식을 기
 
 따라서 그래프는 데이터 조화에서 계속해서 중요한 역할을 담당하고 있습니다. 그러나 서로 다른 코딩 시스템이나 용어 체계 간에 개념을 매핑하는 방식을 개선하는 것 외에도, 그래프는 모델 개발 프로세스에 점점 더 많이 통합되고 있습니다. NLP 사용 사례에 통합하든 의사 결정 지원(decision support) 사용 사례에 통합하든, 그래프에 담긴 정보와 지식은 딥러닝 알고리즘의 핵심 특징(feature)이 되고 있습니다. 그래프 영역으로의 임베딩 확장은 단어 임베딩이 데이터 과학 툴박스의 핵심 요소로 자리 잡은 NLP 세계의 수많은 주요 학습 내용과 기법들을 활용할 수 있게 해 줍니다.
 
----
+***
 
 # CHAPTER 8 그래프, 조화, 그리고 몇 가지 마무리 생각
 
@@ -3022,13 +3022,13 @@ RWD 프로젝트를 다룰 때는 특히 역할이 더 명확히 나뉘어 있�
 **IT 팀:** 네, RedShift에 이미 ICD-10 코드가 로드되어 있습니다.  
 
 
----
+***
 
 <sup>1</sup> 용어상의 난제에 대해 덧붙이자면, 정보학 전문가를 가리킬 때 informaticist를 쓸지 informatician을 쓸지에 대해 여전히 합의된 바가 없습니다.  
 Data Normalization and Harmonization | 207  
 208 | Chapter 8: Graphs, Harmonization, and Some Final Thoughts
 
----
+***
 
 여러분 중 일부는 이 대화의 요점이 무엇인지 의아해할 수도 있습니다. 어떤 분들은 헛웃음을 짓고 계실 테고, 어떤 분들은 눈물을 흘리고 계실지도 모릅니다. 안타깝게도 이런 유형의 대화는 너무나 빈번하게 일어나며, 데이터/비즈니스 팀과 IT 팀 간의 주요한 단절을 잘 보여줍니다.
 

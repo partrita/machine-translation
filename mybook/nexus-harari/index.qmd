@@ -1,6 +1,6 @@
 ---
-title: "Nexus"
-author: "Yuval Noah Harari"
+title: "넥서스"
+author: "유발 하바리"
 ---
 
 # Prologue

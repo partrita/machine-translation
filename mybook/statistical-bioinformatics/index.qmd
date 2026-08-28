@@ -496,7 +496,7 @@ scRNA-seq 데이터의 동일 세포 유형에서 식별된 유전자 서명(gen
 119. Brooks ME et al (2017) glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J 9(2):378–400
 120. Kropski JA et al (2018) Extensive phenotyping of individuals at risk for familial interstitial pneumonia reveals clues to the pathogenesis of interstitial pneumonia. Am J Respir Crit Care Med 197(4):492–500
 
----
+***
 
 # 전처리, 차원 축소, 클러스터링: 단일세포 RNA-seq 데이터를 위한 방법
 
@@ -675,7 +675,7 @@ Scanpy 패키지는 Leiden[77] 알고리즘과 Louvain[78] 알고리즘, 두 가
 89. Sastry KS et al. (2019) SCENIC: single-cell regulatory network inference and clustering. Nat Methods 14(11):1081–1083
 90. Young MD et al. (2018) SCENIC: single-cell regulatory network inference and clustering. Nat Commun 8:1–12
 
----
+***
 
 # 다중오믹스 데이터 통합을 위한 방법
 
@@ -928,7 +928,7 @@ scAI와 유사하게 JSNMF도 비음행렬 분해를 기반으로 한다. JSNMF�
 39. Zeng W et al. (2021) Joint single-cell multi-omic analysis of chromatin accessibility and gene expression using JSNMF. bioRxiv
 40. Stuart T, Satija R (2019) Integrated analysis of single-cell RNA-seq data. bioRxiv
 
----
+***
 
 # 단일세포 RNA 시퀀싱 데이터에서 마커 유전자를 식별하는 접근법
 
@@ -1052,7 +1052,7 @@ RankCorr은 더 큰 수의 마커 유전자 패널을 생성하는 데 제한이
 29. Medvedovic M, Sivaganesan S (2002) Infinite associative clustering model for unsupervised learning of transcription factor binding site motifs. Bioinformatics 18(11):1468–1475
 30. Qin LS et al. (2019) clustering of single-cell multi-omics data with a model-based approach. Nat Commun
 
----
+***
 
 # 단일세포 오믹스 데이터의 모델 기반 클러스터링
 
@@ -1242,7 +1242,7 @@ BREM-SC 방법은 BREMSC R 패키지에 통합되었다. DIMM-SC와 유사하게
 49. Ma S et al. (2020) Chromatin potential identified by shared single-cell profiling of RNA and chromatin. Cell 183(4):1103–1116.e20
 50. Zheng GX et al. (2017) Massively parallel digital transcriptional profiling of single cells. Nat Commun 8:14049
 
----
+***
 
 # 단일세포 오믹스 데이터를 위한 심층 학습 방법
 
@@ -1495,7 +1495,7 @@ SpaGCN[38]은 공간 전사체학 데이터를 위해, 인접 세포가 잠재 �
 33. Zhou Z et al. (2020) Surface protein imputation from single cell transcriptomes by deep neural networks. Nat Commun 11(1):1–10
 34. Li G-W et al. (2021) Scapture: a deep learning-embedded pipeline that captures polyadenylation information from 3' tag-based RNA-seq of single cells. Genome Biol 22(1):1–24
 
----
+***
 
 # Part II 네트워크 분석
 
@@ -1819,7 +1819,7 @@ DREAM 4 챌린지 데이터셋에 적용하여 성능을 평가한다. APCO가 �
 36. Yuan M, Lin Y (2007) Model selection and estimation in the Gaussian graphical model. Biometrika 94(1):19–35
 37. Zou H (2006) The adaptive lasso and its oracle properties. J Am Stat Assoc 101:1418–1429
 
----
+***
 
 # 블리안 네트워크와 베이지안 네트워크의 통합
 
@@ -1893,7 +1893,7 @@ Saccharomyces Genome Database(SGD)[24]와 Yeast Transcriptional Regulatory Pathw
 7. ER, et al. (2005) Systematic determination of genetic network architecture. Nat Genet 37 Suppl:S18–24
 8. Friedman N (2004) Inferring cellular networks using probabilistic graphical models. Science 303(5659):799–805
 
----
+***
 
 # 마이크로RNA-유전자 조절 모듈을 식별하기 위한 계산 방법
 
@@ -2175,7 +2175,7 @@ Fig. 3에서는 lncRNA H19가 매개하는 lncRNA-마이크roRNA-mRNA 트리플�
 87. Xiao Q, Luo J, Liang C, Cai J, Li G, Cao B (2019) CeModule: an integrative framework for discovering regulatory patterns from genomic data in cancer. BMC Bioinformatics 20:1–13
 88. Huang Y-A, Chan KC, You Z-H (2018) Constructing prediction models from expression profiles for large scale lncRNA–miRNA interaction profiling. Bioinformatics 34:812–819
 
----
+***
 
 # 생물통계학에서의 인과 추론
 
@@ -2747,7 +2747,7 @@ Wenjie Hu와 Peng Wu에게 RCT와 관찰 데이터의 결합에 대한 유용한
 81. Yang S, Ding P (2019) Asymptotic inference for causal effects in a principal stratification framework. arXiv preprint arXiv:1903.08263
 82. Parsons JA, Groeneveld PW, Van Why SK (2008) PSAgraphics: propensity score analysis graphics. R package version 1.1
 
----
+***
 
 # 미생물 연구에서의 베이즈 균형 매개 분석
 
@@ -2901,7 +2901,7 @@ $$P_i = m_0 \oplus a^{T_i} \oplus U_i$$
 18. Sobel ME (1982) Asymptotic confidence intervals for indirect effects in structural equation models. Sociol Methodol 13:290–312
 19. Sohn MB, Li H (2019) Compositional mediation analysis for microbiome studies. Ann Appl Stat 13(1):67–86
 
----
+***
 
 ## 그림 2 설명
 
@@ -2986,11 +2986,11 @@ $b_z = 1$일 때, 대부분의 반복 실험에서 $z$를 올바르게 복원할
 24. Li H (2015) Microbiome and inflammation. In: Microbiome and inflammation. Springer, pp 111–128
 25. Mazel F, Davies TJ, Gallien L, Zimmer F, Wilkinson CL, Scharff HB, Stegen J (2016) Visibility predicts community turnover along environmental gradients. Nat Microbiol 1(10):16060
 
----
+***
 
 # Part III 시스템 생물학
 
----
+***
 
 # 유전자 변이체와 복잡한 형질 변이성 관련 유전자 좌표 식별
 
@@ -3162,7 +3162,7 @@ Johnson 등은 UK Biobank 참여자에서 vPGS와 교육 개혁 사이의 유의
 50. Hannon E et al (2016) Methylation QTLs in the developing brain and their enrichment for schizophrenia risk loci. Nat Neurosci 19(1):48–54
 51. Young MD et al (2018) Single-cell transcriptomic analysis of the developing mouse brain. Nat Neurosci
 
----
+***
 
 # 고처리량 데이터를 위한 세포 유형별 분석
 
@@ -3329,7 +3329,7 @@ head(res_table, 3)
 19. Zheng SC, Beck S, Jaffe AE, Koestler DC, Hansen KD, Houseman AE, Irizarry RA, Teschendorff AE (2017) Correcting for cell-type heterogeneity in epigenome-wide association studies: revisiting previous analyses. Nat Methods 14(3):216
 20. Zou J, Lippert C, Heckerman D, Aryee M, Listgarten J (2014) Epigenome-wide association studies without the need for cell-type composition. Nat Methods 11(3):309–311
 
----
+***
 
 # 후성유전체학 분야의 계산 방법 최근 발전
 
@@ -3606,7 +3606,7 @@ head(res_table, 3)
 18. Westra HJ, Arends D, Esko T, Peters MJ, Schurmann C, Schramm K, Kettunen J, Yaghootkar H, Fairfax BP, Andiappan AK et al. (2015) Cell specific eQTL analysis without sorting cells. PLoS Genet 11(5):e1005223
 19. Zou J, Lippert C, Heckerman D, Aryee M, Listgarten J (2014) Epigenome-wide association studies without the need for cell-type composition. Nat Methods 11(3):309–311
 
----
+***
 
 # 후성전사체학(epitranscriptomics) 분야의 계산 방법 발전
 
@@ -4390,7 +4390,7 @@ TME 추정 정확도에 영향을 미치는 다른 요소도 있다. 세포 가�
 85. Mohammadi S et al (2017) A critical survey of deconvolution methods for separating cell types in complex tissues. Proc IEEE 105(2):340–366
 86. Regev A et al (2017) The human cell atlas. bioRxiv:121202
 
----
+***
 
 # 교차 결합 질량 분석 데이터 분석
 

@@ -1,5 +1,6 @@
 ---
-title: "인생은 짧고 이 책도 짧다: 인생을 최대한 살아내기 위한 짧은 생각들(*Life is Short And So Is This Book*)"
+title: "인생은 짧고 이 책도 짧다"
+subtitle: "인생을 최대한 살아내기 위한 짧은 생각들"
 author: "피터 앳킨스(Peter Atkins)"
 date: "2011-03-08"
 ---
