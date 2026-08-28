@@ -1,5 +1,5 @@
 ---
-title: "생물학자를 위한 고급 파이썬 (*Advanced Python for Biologists*)"
+title: "생물학자를 위한 고급 파이썬"
 author: "Dr. Martin Jones"
 date: 2026-08-24
 ---
@@ -5423,4 +5423,4 @@ except InvalidCharacterError:
 
 # 맺음말
 
-『Advanced Python for Biologists』의 끝입니다. 책을 즐기셨고 유용하게 활용하셨기를 바랍니다. 책에 대한 어떤 의견이든(칭찬이든 비판이든) 듣고 싶습니다. martin@pythonforbiologists.com으로 이메일 주세요.
+『Advanced Python for Biologists』의 끝입니다. 책을 즐기셨고 유용하게 활용하셨기를 바랍니다.

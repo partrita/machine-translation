@@ -94,7 +94,7 @@ book:
         - little-guide-unprocrastination/index.qmd
         - live-more-with-less/index.qmd
         - llm-privacy-security/index.qmd
-        - meditations-aurelius-pdf/index.qmd
+        - meditations-aurelius/index.qmd
         - model-to-meaning/index.qmd
         - now-habit/index.qmd
         - one-minute-manager/index.qmd
@@ -106,10 +106,14 @@ book:
         - siddhartha/index.qmd
         - single-on-purpose/index.qmd
         - software-architecture-decisions/index.qmd
+        - stop-worrying-start-living/index.qmd
+        - stoic-six-pack/index.qmd
+        - storytelling-user-experience/index.qmd
         - storytelling-with-data/index.qmd
         - talk-like-ted/index.qmd
         - think-again-argue/index.qmd
-        - tom-bombadil/index.qmd
+        - think-like-cto/index.qmd
+        - time-management-dummies/index.qmd
         - truth-about-everything/index.qmd
         - twelve-monotasks/index.qmd
         - why-machines-learn/index.qmd
@@ -118,6 +122,51 @@ book:
         - writing-for-developers/index.qmd
         - writing-to-learn/index.qmd
         - you-are-badass/index.qmd
+        - statistical-bioinformatics/index.qmd
+        - research-lab-python/index.qmd
+        - prompt-engineering-genai/index.qmd
+        - personal-mba/index.qmd
+        - nexus-harari/index.qmd
+        - mindfulness-dummies/index.qmd
+        - meditations-hammond/index.qmd
+        - math-through-technology/index.qmd
+        - mastering-shiny/index.qmd
+        - making-futures-work/index.qmd
+        - love-to-learn/index.qmd
+        - letters-from-a-stoic/index.qmd
+        - intro-modern-statistics-book/index.qmd
+        - healthcare-data/index.qmd
+        - hamming-science-engineering/index.qmd
+        - guide-drug-development/index.qmd
+        - genai-fastapi/index.qmd
+        - five-types-of-wealth/index.qmd
+        - financial-data-engineering/index.qmd
+        - essential-math-data-science/index.qmd
+        - epictetus-discourses/index.qmd
+        - deep-work/index.qmd
+        - david-and-goliath/index.qmd
+        - data-engineering-best-practices/index.qmd
+        - data-and-goliath/index.qmd
+        - data-analytics-dummies/index.qmd
+        - craft-of-research/index.qmd
+        - clinical-trials-brody/index.qmd
+        - clinical-immunology/index.qmd
+        - causal-inference-what-if/index.qmd
+        - causal-inference-python/index.qmd
+        - cancer-biomarkers/index.qmd
+        - biostatistics-dummies/index.qmd
+        - biomarkers-immunotherapy/index.qmd
+        - biologics-safety/index.qmd
+        - beyond-basic-python/index.qmd
+        - basic-pharmacokinetics/index.qmd
+        - basic-immunology/index.qmd
+        - bad-pharma/index.qmd
+        - antibody-therapeutics-dev/index.qmd
+        - antibody-engineering/index.qmd
+        - ai-drug-discovery/index.qmd
+        - advances-bioinformatics/index.qmd
+        - advanced-algorithms-ds/index.qmd
+        - adc-methods/index.qmd
 
 engine: markdown
 

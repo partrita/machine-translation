@@ -1,5 +1,5 @@
 ---
-title: "라이프 해크"
+title: "라이프핵"
 subtitle: "생산성을 극대화하는 기발한 생활의 지혜"
 author: "라파엘 구르코프스키(Rafael Gurkovsky), 클레어 스트란버그(Claire Stranberg)"
 date: "2015-11-02"

@@ -5,39 +5,6 @@ author: "Jeffrey V. Ravetch, Falk Nimmerjahn"
 date: 2026-08-24
 ---
 
-## 서문 (Preface)
-
-암, 자가면역/만성 염증 질환, 감염을 겨냥한 신약 목록을 훑어보면, 그 목록에 가장(혹은 거의 가장) 자주 등장하는 분자는 면역글로불린 G(IgG) 아이소타입(isotype) 항체일 것이다. 실제로 암 면역요법에서 널리 찬양받는 돌파구는 완전항체나 항체 단편, 예컨대 이중특이성 T세포 유인 항체(bispecific T cell engaging antibodies, BiTEs)와 T세포에서 발현되는 항체 단편인 키메라 항원수용체(chimeric antigen receptors, CAR)에 기반을 두고 있다. 따라서 항체는 면역요법 분야의 새로운 동시에 오래된 존재이며 앞으로도 오랫동안 새로운 치료 접근법의 초점이 될 것이 확실하다. 그러므로 항체가 어떻게 활성을 매개하는지에 대한 깊이 있는 이해는 매우 중요하다.
-
-지난 30년간 여러 연구그룹의 연구는 IgG가 세포 표면의 Fc 수용체(receptor)에 결합하는 것이 생체 내 항체 활성에 필수적이라는 명확한 증거를 제공했으며 이는 항체 불변영역(constant region)이 가변영역을 담는 골격 이상의 것임을 강조한다. 즉 불변영역은 IgG 이펙터 기능(effector function)을 유발하는 본질적인그리고 실제로 그렇게 "불변"하지도 않은연결고리이다.
-
-자가면역에서 IgG 항체는 몇 가지 중요한 역할을 한다. 첫째, 자가항체(autoantibody)로서 자가면역 염증의 주동자이다. 역시 Fc 수용체가 자가항체의 염증 유발 효과를 촉발하는 중심 주역으로 규명되었다. 둘째, IgG 항체는 핵심 염증성 사이토카인이나 자기반응성 면역세포를 표적으로 하는 단클론항체(monoclonal antibody, mAb) 형태로 사용된다. 마지막으로 수천 명의 공여자로부터 풀링한 다클론 혈청 IgG 제제의 주입, 이른바 정맥내 IgG 요법(intravenous IgG therapy, IVIg)은 다양한 만성·급성 자가면역 질환을 효과적으로 억제할 수 있어, 여러 그룹이 그 작용 기전을 규명하고 IVIg 활성의 미스터리를 풀고자 노력해왔다. 지난 수년간 IVIg의 잠재적 작용 기전이 많이 제안되었지만 전혀 예상치 못한 발견 중 하나는 IgG Fc 도메인에 부착된 당 부분이 이들 폴리클론성(polyclonal) IgG 제제의 항염증 활성에 결정적 역할을 하는 것으로 보였다는 점이다. 심층 연구들은 특히 말단 실리알산(sialic acid) 잔기를 지닌 IgG 글리코형(glycoform)이 항염증 활성을 담당하며 II형 Fc 수용체 계열이 이 항염증 경로에 관여함을 설득력 있게 보여주었다.
-
-이러한 관찰의 부산물로 많은 그룹이 당화(glycosylation)가 면역글로불린 활성에 미치는 영향을 더 폭넓게 재검토하게 되었다. 그 결과 IgG뿐 아니라 IgE 항체 활성조차 당화를 통해 조절된다는 예상 밖의 발견으로 이어졌다. 특히 IgE에 부착된 수많은 당 부분 가운데 하나가 IgE가 자신의 Fc 수용체에 효과적으로 결합하는 데 결정적으로 중요하다는 것이 입증되었다.
-
-IgG와 감염으로 논의를 옮기면, IgG 항체는 숙주를 감염이나 세균 독소의 유해 활성으로부터 보호하는 데 필수적이다. 마찬가지로 Fc 수용체는 중화항체(neutralizing antibody)의 활성에도 중요한 것으로 입증되었는데, 중화항체는 이전에는 Fc 수용체와 무관하게 활성을 매개하는 것으로 여겨졌다. 그러나 항체가 감염 상황에서만 유익한 것은 분명히 아니다. 최근 연구들은 퓨코스(fucose) 잔기를 결여한 바이러스 특이적 IgG 항체의 글리코변종이 숙주에서 뎅기 바이러스 감염과 병리를 증강하는 원인이 될 수 있음을이른바 항체의존性 감염 증강(antibody-dependent enhancement)강조했다. 퓨코스 결핍 IgG 글리코변종이 인간의 FcγRIIIa와 마우스의 FcγRIV에 대한 IgG 결합을 조절하기 때문에, 이 과정에서 Fc 수용체의 중요한 역할이 다시 한 번 지목된다.
-
-마지막으로, 세균에 대한 항생제 활성이 약화되는 세계에서 더 성공적인 백신 전략은 매우 중요할 것이다. 미생물에 대해 가장 효과적인 항체 반응을 유도하여 숙주를 무장시키는 것이 이 지구적 위협에 대처하는 열쇠다. 항체를 항원과 함께 사용(즉, 면역복합체[immune complex])하여 면역 반응을 증폭시키는 것은 매우 효율적이며 실제로 가장 자연스러운 면역 강화 방식이다. 여기서도 수지상세포(dendritic cell)에 존재하는 Fc 수용체가 이러한 새로운 백신 전략의 핵심 역할을 한다.
-
-이 책에서 우리는 항체 및 Fc 수용체 연구의 이러한 모든 핵심 주제를 아우르는 이 분야의 뛰어난 전문가들을 한자리에 모을 수 있었다. Stylianos Bournazos는 진화적 관점에서 Fc 수용체를 살펴보고, Graziano와 Engelhardt는 암 면역요법에서 Fc 수용체의 역할을 논의한다. Beneduce 등, Wang, Shade 등의 장들은 IgG 당화가 IgG와 IgE의 염증 유발 및 항염증 활성에 갖는 중요성을 다룬다. 마지막으로 Wen과 Shi, Wieland와 Ahmed의 두 장은 Fc 수용체가 백신 접종과 감염에 어떤 영향을 미치는지에 초점을 맞춘다. 물론 위에서 언급한 예들은 현재 진행 중인 항체 및 Fc 수용체 분야 연구의 일부에 불과하지만 항체의 Fc 매개 활성에 관한 연구가 미칠 수 있는 파장이 얼마나 넓은지를 분명히 보여준다.
-
-이 권에 기여한 모든 저자들에게 다시 한번 훌륭한 집필에 감사드리며 이 흥미로운 면역학 분야에서 새로운 연구 아이디어가 촉발되기를 바란다.
-
-뉴욕, 미국 Jeffrey V. Ravetch
-얼랑겐, 독일 Falk Nimmerjahn
-
-## 목차
-
-1. **IgG Fc 수용체: 진화론적 고찰** (*IgG Fc Receptors: Evolutionary Considerations*) Stylianos Bournazos
-2. **항체 기반 암 치료에서 FcγR의 역할** (*Role of FcγRs in Antibody-Based Cancer Therapy*) Robert F. Graziano and John J. Engelhardt
-3. **IgG-Fc의 항염증 활성** (*Anti-inflammatory Activity of IgG-Fc*) Christopher Beneduce, Elma Kurtagic and Carlos J. Bosques
-4. **인간 면역에서의 IgG Fc 당화** (*IgG Fc Glycosylation in Human Immunity*) Taia T. Wang
-5. **건강과 질병에서의 IgE 당화** (*IgE Glycosylation in Health and Disease*) Kai-Ting Shade, Michelle E. Conroy and Robert M. Anthony
-6. **면역복합체 백신** (*Immune Complex Vaccination*) Yu-mei Wen and Yan Shi
-7. **항미생물 방어에서의 Fc 수용체** (*Fc Receptors in Antimicrobial Protection*) Andreas Wieland and Rafi Ahmed
-
-***
-
 # 제1장 IgG Fc 수용체: 진화론적 고찰
 
 **Stylianos Bournazos**

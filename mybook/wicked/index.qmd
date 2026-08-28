@@ -1,18 +1,8 @@
 ---
-title: "위키드: 서쪽 마녀의 삶과 시대"
-subtitle: "Wicked: The Life and Times of the Wicked Witch of the West"
+title: "위키드:"
+subtitle: "서쪽 마녀의 시간"
 author: "그레고리 맥과이어 (Gregory Maguire)"
 ---
-
-**도서명:** 위키드: 서쪽의 사악한 마녀의 생애와 시대
-**저자:** 그레고리 맥과이어
-**언어:** ko
-**출판사:** HarperCollins
-**날짜:** 2004-02-18T16:44:15.401000+00:00
-
-# 위키드: 서쪽의 사악한 마녀의 생애와 시대
-
-그레고리 맥과이어 지음
 
 ## 프롤로그
 

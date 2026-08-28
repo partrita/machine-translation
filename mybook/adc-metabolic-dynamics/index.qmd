@@ -1,10 +1,8 @@
 ---
 title: "ADC 대사 동역학"
-subtitle: "Metabolic Dynamics of Antibody-Drug Conjugates"
+authors: "Shuqing Chen, Jinbiao Zhan"
 ---
 
-**Title:** Antibody-Drug Conjugates and Cellular Metabolic Dynamics
-**Authors:** Shuqing Chen, Jinbiao Zhan
 
 암은 전 세계적으로 이환율과 사망의 주요 원인이다. 세계보건기구(WHO)의 통계에 따르면 2015년 전 세계에서 발생한 사망자 5천640만 명 가운데 암으로 인한 사망자는 880만 명으로, 전체 사망자의 약 6분의 1에 이른다. 선진국에서는 국민의 생활 수준이 상대적으로 높고 위생 상태가 양호하며 의료 기술이 발달해 있어 다른 질병으로 사망하는 인구가 해마다 줄어들고 있다. 그런데 이런 흐름 속에서도 암 발생률과 사망률은 두드러지게 증가하고 있다. 이는 인간의 수명에 영향을 미치는 많은 질병 가운데 암이 가장 난치하며 현대 의학에 남겨진 과제임을 보여준다.
 
