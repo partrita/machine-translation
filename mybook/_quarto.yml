@@ -12,7 +12,6 @@ book:
       chapters:
         - linux_commands/index.qmd
         - advanced-algorithms-ds/index.qmd
-        - essential-math-data-science/index.qmd
         - linear_algebra/index.qmd
         - hamming-science-engineering/index.qmd
     - part: "프로그래밍 언어 및 소프트웨어 엔지니어링"
@@ -31,7 +30,6 @@ book:
       chapters:
         - why-machines-learn/index.qmd
         - ai_in_action/index.qmd
-        - prompt-engineering-genai/index.qmd
         - genai-fastapi/index.qmd
         - building-ai-products/index.qmd
         - llm-privacy-security/index.qmd
@@ -39,20 +37,16 @@ book:
     - part: "데이터 사이언스, 통계 및 시각화"
       chapters:
         - data_analysis/index.qmd
-        - data-analytics-dummies/index.qmd
         - py_gapminder/index.qmd
-        - intro-modern-statistics-book/index.qmd
         - becoming-a-data-head/index.qmd
         - financial-data-engineering/index.qmd
         - data-engineering-best-practices/index.qmd
         - data-and-goliath/index.qmd
         - dataviz/index.qmd
         - storytelling-with-data/index.qmd
-        - mastering-shiny/index.qmd
     - part: "인과추론 및 통계 모델링"
       chapters:
         - causal_inf_r/index.qmd
-        - causal-inference-python/index.qmd
         - causal-inference-what-if/index.qmd
         - causal-inference-statistics/index.qmd
         - model-to-meaning/index.qmd
@@ -68,14 +62,12 @@ book:
         - research-lab-python/index.qmd
         - dl_biology/index.qmd
         - practical-bioinformatics-lab/index.qmd
-        - advances-bioinformatics/index.qmd
         - statistical-bioinformatics/index.qmd
         - cancer-bioinformatics/index.qmd
     - part: "단백질 공학, 면역학 및 항체 치료제"
       chapters:
         - llm_protein/index.qmd
         - protein_engineering/index.qmd
-        - basic-immunology/index.qmd
         - clinical-immunology/index.qmd
         - cancer-immunotherapy-methods/index.qmd
         - antibody-engineering/index.qmd
@@ -91,7 +83,6 @@ book:
         - ai-drug-discovery/index.qmd
         - guide-drug-development/index.qmd
         - drug-development-academia/index.qmd
-        - basic-pharmacokinetics/index.qmd
         - pkpd-integrated-textbook/index.qmd
         - clinical-trials-brody/index.qmd
         - biologics-safety/index.qmd
