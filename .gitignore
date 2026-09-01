@@ -526,3 +526,6 @@ mybook/data_analysis/*.html
 mybook/**/*_files/
 
 converted/
+.agents/
+.claude/
+skills-lock.json
