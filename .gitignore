@@ -529,3 +529,4 @@ converted/
 .agents/
 .claude/
 skills-lock.json
+.aider*

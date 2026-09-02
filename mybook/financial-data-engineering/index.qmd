@@ -52,6 +52,8 @@ Despite the extensive use of the term *finance*, there could be a lot of confusi
 
 ### Figure 1-1. Main areas of finance
 
+![Figure 1-1. Main areas of finance](images/fden_0101.png)
+
 ### Finance as an economic function
 
 In economic theory, finance is an institution that mediates between agents who are in *deficit* (who need more money than they have) and those in *surplus* (who have more money than they spend). To secure funds, agents in deficit offer to borrow money from agents with a surplus in exchange for an interest payment.
@@ -195,6 +197,8 @@ Given such domain-driven particularities, financial data engineering deserves to
 
 ### Figure 1-3. Financial data engineering and related fields
 
+![Figure 1-3. Financial data engineering and related fields](images/fden_0103.png)
+
 ### Note
 
 Don’t confuse financial data engineering with financial engineering. Financial engineering is an interdisciplinary applied field that uses mathematics, statistics, econometrics, financial theory, and computer science to develop financial investment strategies, financial products, and financial processes.4
@@ -336,6 +340,8 @@ Machine learning (ML) stands out as one of the most promising investments for sh
 
 ### Figure 1-4. An outline of artificial intelligence fields
 
+![Figure 1-4. An outline of artificial intelligence fields](images/fden_0104.png)
+
 Machine learning stands out as a highly popular and significant subfield within AI. It focuses on building systems that can discover patterns from data, learn from their mistakes, and make predictions. The key word in machine learning is *learning*, which the computer scientist Tom Mitchell eloquently illustrates as follows:7
 
 > A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.
@@ -347,6 +353,8 @@ Machine learning scientists and practitioners often develop models based on thre
 Supervised learning describes a learning approach that relies on an annotated (labeled) dataset comprised of a set of explanatory variables (called *features*) and a response variable (called a *label*). In a supervised setting, the model is trained to identify patterns using explanatory variables. The training process involves showing the model the actual value (label) it should have predicted, hence the term “supervised,” and allowing it to learn from its mistakes (as illustrated in [Figure 1-5](#ch01_figure_5_1724776823880102)).
 
 ### Figure 1-5. Supervised learning process
+
+![Figure 1-5. Supervised learning process](images/fden_0105.png)
 
 When building a supervised system, modelers start by fitting one or more models on training data, where features and labels are known, via a selected optimization process such as *gradient descent*. Successively, the fit model(s) is tested on a second chunk of the data, called the validation dataset. The goal of the validation dataset is to allow the machine learning expert to fine-tune the so-called model *hyperparameters* via a process called *regularization*. Regularization is a technique used to achieve a balance between *bias* (how well a model learns the training data) and *variance* (how good the model is at generalizing to new instances unseen during training). Finally, a test dataset is used to evaluate the performance of the model that did best on the validation dataset. Performance metrics include accuracy, precision, root mean square error (RMSE), and mean square error (MSE), to name a few.8
 
@@ -360,6 +368,8 @@ Unsupervised learning is used to extract patterns and relationships within data 
 
 ### Figure 1-6. Unsupervised learning process
 
+![Figure 1-6. Unsupervised learning process](images/fden_0106.png)
+
 There are two main types of unsupervised learning: *clustering*, where a model is trained to learn and find groups (clusters) in the data, and *density estimation*, which tries to summarize the distribution of the data. Examples of clustering techniques include k-means, k-nearest neighbor, principal component analysis, and hierarchical clustering, while the kernel density estimator is perhaps the most common example of density estimation techniques.9
 
 Unsupervised learning applications in finance are still in their early stages, but the future trend is promising. For example, clustering can be used to group similar financial time series, cluster stocks into groups based on sector or risk profile, analyze customer and market segmentation, and find similar firms or customers to assign similar scores or ratings.
@@ -369,6 +379,8 @@ Unsupervised learning applications in finance are still in their early stages, b
 In reinforcement learning, an artificial agent is placed in an environment where it can perform a sequence of actions over a state space and learn to make better decisions via a feedback mechanism. The key difference between this technique and supervised learning is that the feedback from the teacher is not about providing the right answer (true label); instead, the agent is given a reward (positive or negative) in order to encourage certain behaviors (actions) and punish others (see [Figure 1-7](#ch01_figure_7_1724776823880136)).
 
 ### Figure 1-7. Reinforcement learning process
+
+![Figure 1-7. Reinforcement learning process](images/fden_0107.png)
 
 As many financial activities entail decision-making by agents, there has been a considerable interest among financial practitioners and researchers in reinforcement learning, which centers on optimal decision-making. Financial applications of reinforcement learning include portfolio selection and optimization, optimal trade execution, and market-making.10
 
@@ -399,6 +411,8 @@ The term FinTech has emerged as a market portmanteau to describe both innovative
 The main distinguishing features of FinTech services are *specialization* and *personalization*. As small firms, FinTechs tend to focus on penetrating only specific and niche areas of the financial system. [Figure 1-8](#ch01_figure_8_1724776823880154) illustrates the different areas of specialization of FinTech firms. As the figure illustrates, the FinTech landscape spans all segments of the financial sector, from fundamental functions such as payments and investment to more specialized areas such as regulatory compliance (often called *regtech*) and analytics.
 
 ### Figure 1-8. A breakdown of the main FinTech investment areas
+
+![Figure 1-8. A breakdown of the main FinTech investment areas](images/fden_0108.png)
 
 Moreover, the FinTech business model has demonstrated competitiveness through its customizable and personalized offerings. For example, digital wealth management platforms like Betterment and Wealthfront provide clients with detailed surveys to assess their financial goals and risk preferences, enabling them to offer investment plans tailored to each investor’s unique objectives and expectations.
 
@@ -1062,6 +1076,8 @@ Edge list:   A simple array that stores all edges of a graph. An item of an edge
 
 ### Figure 2-1. Different representations of graph data
 
+![Figure 2-1. Different representations of graph data](images/fden_0201.png)
+
 Financial markets rely on a range of graph data types and representations. In the upcoming sections, I will discuss six pertinent graph structures: simple, directed, weighted, temporal, multipartite, and multiplex.
 
 ### Simple graphs
@@ -1082,6 +1098,8 @@ The adjacency matrix of a directed network will have a value of 1 at position (i
 
 ### Figure 2-4. Directed graph representations
 
+![Figure 2-4. Directed graph representations](images/fden_0204.png)
+
 Directed graphs can represent a variety of financial activities, such as cross-holding among banks, transfers, transactions, and interbank lending.
 
 ### Weighted graphs
@@ -1090,6 +1108,8 @@ In weighted graphs, links are assigned a numerical value to indicate the relatio
 
 ### Figure 2-5. Weighted graph representations
 
+![Figure 2-5. Weighted graph representations](images/fden_0205.png)
+
 Most types of graphs can be weighted (including simple and directed graphs). In finance, weights can represent the value of the assets one bank holds at another in a cross-holding network, the amount of money transferred in a transaction, or the number of securities sold in a market trade.
 
 ### Multipartite graphs
@@ -1097,6 +1117,8 @@ Most types of graphs can be weighted (including simple and directed graphs). In 
 A graph representation is called *multipartite* when it includes more than one type of node and only allows links between different types of nodes. Graphs with two types of nodes are referred to as *bipartite*, those with three types of nodes as *tripartite*, and the generalized case with *k* types is called *k-partite*. A *k-partite projection*, often applied to bipartite graphs, is a common operation that builds a graph that contains one type of the *k* available node types, and edges exist based on whether two nodes share a common link to another type of node in the original network. [Figure 2-6](#ch02_figure_6_1724776825532376) presents a bipartite graph along with its projected graph and adjacency matrix.
 
 ### Figure 2-6. Bipartite graph representations
+
+![Figure 2-6. Bipartite graph representations](images/fden_0206.png)
 
 The leftmost graph in [Figure 2-6](#ch02_figure_6_1724776825532376) has two types of nodes, shaded and white, and links exist only between a shaded and a white node. The middle graph illustrates a bipartite projection on one type of node (the shaded nodes in the leftmost graph). The projected graph shows that nodes A and C have a link because in the bipartite graph on the left, both A and C share a connection to K. The same goes for C and B, which share a connection to M. The adjacency matrix in [Figure 2-6](#ch02_figure_6_1724776825532376) has a block structure, where links between the same type of nodes will be absent and represented with zeros (shaded blocks) whereas links between different types of nodes exist in the white blocks.
 
@@ -1118,6 +1140,8 @@ In a temporal graph, links have a temporal dimension indicating the time at whic
 
 ### Figure 2-7. Temporal graph representations
 
+![Figure 2-7. Temporal graph representations](images/fden_0207.png)
+
 Many financial relationships are temporal in nature, such as interbank lending, trading, payments, transactions, and many more.
 
 ### Multilayer graphs
@@ -1127,6 +1151,8 @@ A multilayer graph is a complex structure used to represent relationships betwee
 Multilayer network representations are very useful in finance. They can reveal potential cascading mechanisms that might amplify a local shock, help understand power structures spanning multiple areas, and enhance fraud detection (e.g., when the same individual operates in different systems using the same connection patterns). An illustration of multiplex graph representation is provided in [Figure 2-8](#ch02_figure_8_1724776825532410).
 
 ### Figure 2-8. Multiplex graph representation
+
+![Figure 2-8. Multiplex graph representation](images/fden_0208.png)
 
 # What Are the Sources of Financial Graph Data?
 
@@ -1473,6 +1499,8 @@ From our discussion so far, you’ve seen how financial data is produced in larg
 
 ### Figure 3-1. Unidentified dataset versus identified dataset
 
+![Figure 3-1. Unidentified dataset versus identified dataset](images/fden_0301.png)
+
 In this book, I define a financial identifier and financial identification system as follows:
 
 > A financial identifier is a character sequence associated with a particular financial entity (e.g., company, individual, transaction, asset, document, sector group, event, etc.), enabling accurate identification of said entity across one or more financial datasets or information systems. A financial identifier can be any combination of numeric digits (0-9), alphabet letters (a-z, A-Z), and symbols. A financial identification system creates principles and procedures for generating, interpreting, storing, assigning, and maintaining financial identifiers.
@@ -1547,6 +1575,8 @@ Uniqueness refers to the quality of being one of a kind. For instance, fingerpri
 
 ### Figure 3-2. Unique versus nonunique identification systems
 
+![Figure 3-2. Unique versus nonunique identification systems](images/fden_0302.png)
+
 Crucially, the concept of a unique identifier can become ambiguous when applied to financial markets. To illustrate how, let’s consider the following scenarios:
 
 * A company is listed on two stock exchanges, A and B. Should the listed stock have two identifiers, one for each market, or a single identifier for both?
@@ -1583,6 +1613,8 @@ These dynamics, among others, have contributed to a significant increase in the 
 [Figure 3-3](#ch03_figure_3_1724776826858041) illustrates a straightforward example showcasing the concept of globality. The system on the top is global, as it expands its coverage to new areas that emerge from market expansion. The system on the bottom is nonglobal, as it covers only three areas and can’t expand further.
 
 ### Figure 3-3. Global versus nonglobal identification systems
+
+![Figure 3-3. Global versus nonglobal identification systems](images/fden_0303.png)
 
 Several identifiers, in particular vendor-specific identifiers, are limited to certain markets (e.g., stocks, bonds), exchanges (e.g., NYSE trades and quotes), or jurisdictions (e.g., US stocks, UK stocks). However, some identifiers have been developed to cover a broader range of market entities. The best example is perhaps Bloomberg’s Financial Instrument Global Identifier (FIGI), which we will discuss in more detail later in this chapter.
 
@@ -1661,6 +1693,8 @@ A financial identification system is *granular* if it can scale to provide diffe
 
 ### Figure 3-4. Granular versus nongranular financial identification systems
 
+![Figure 3-4. Granular versus nongranular financial identification systems](images/fden_0304.png)
+
 ## Permanence
 
 A reliable financial identification system must ensure that identifiers and their associated data are permanent and durable. This is essential for guaranteeing market trust and confidence and allowing the tracking and referencing of financial instruments and transactions over time. For example, a bank client should be able to go to the bank at any time and ask for a statement about their past transactions. If the customer closes their accounts with the bank, their identification data should not disappear from the system.
@@ -1668,6 +1702,8 @@ A reliable financial identification system must ensure that identifiers and thei
 In some cases, a financial identifier can be interrupted; for example, a commercial data vendor might stop maintaining an identifier as they develop a new identification system or switch to using an industry-wide system. Additionally, an identification system might be replaced with a new one if it fails to meet certain desired properties, such as uniqueness, globality, and granularity. The concept of permanent versus nonpermanent identifiers is shown in [Figure 3-5](#ch03_figure_5_1724776826858078). The identification system on the left is permanent as it could return the associated data at time t and time t+n. In contrast, the system on the right is nonpermanent as it returns data at time t but returns none at time t+n.
 
 ### Figure 3-5. Permanent versus nonpermanent identification systems
+
+![Figure 3-5. Permanent versus nonpermanent identification systems](images/fden_0305.png)
 
 ## Immutability
 
@@ -1702,6 +1738,8 @@ The current landscape of financial identification systems is extensive, comprisi
 
 ### Figure 3-6. Financial identification systems in use globally
 
+![Figure 3-6. Financial identification systems in use globally](images/fden_0306.png)
+
 In the following sections, I will discuss some of the most important financial identification systems used by markets, along with their key characteristics and challenges.
 
 ## International Securities Identification Number
@@ -1715,6 +1753,8 @@ ISIN codes are issued and maintained by each country’s National Numbering Agen
 The 12 characters of an ISIN can be divided into three parts: the first two characters are the [ISO 3166-1 alpha-2 code](https://oreil.ly/K-_mq) of the issuing country. The middle nine alphanumeric characters represent the security identifier. This nine-digit alphanumeric code is often called the National Securities Identifying Number (NSIN). Examples of NSINs include CUSIP in the USA, SEDOL in the UK, and WKN (“Wertpapierkennnummer”) in Germany.5 The last character is a check digit computed using the modulus 10 double-add-double or Luhn algorithm. [Figure 3-7](#ch03_figure_7_1724776826858117) offers a visual breakdown of the ISIN.
 
 ### Figure 3-7. Structural breakdown of the ISIN code
+
+![Figure 3-7. Structural breakdown of the ISIN code](images/fden_0307.png)
 
 One potential drawback of the ISIN is its international scope, which means it does not specify the trading location or currency. If a given stock trades on multiple different exchanges, the associated ISIN will be the same. For instance, IBM’s common stock is listed on almost 25 trading platforms and exchanges around the world. In this case, some identifiers for IBM stock would vary depending on where it is traded (e.g., the ticker). However, IBM stock will have only one ISIN for each security.6 To overcome this limitation, the *Market Identifier Code* (MIC), defined in [ISO 10383](https://oreil.ly/oLO28), is commonly used alongside the ISIN to specify exchanges, trading venues, and both regulated and nonregulated markets.
 
@@ -1759,6 +1799,8 @@ In a CFI code, the first letter indicates the instrument category, the second de
 
 ### Figure 3-8. Structural breakdown of the CFI code
 
+![Figure 3-8. Structural breakdown of the CFI code](images/fden_0308.png)
+
 ## Financial Instrument Short Name
 
 The *Financial Instrument Short Name* (FISN), defined in [ISO 18774](https://oreil.ly/OGcgl), is a human-readable code used to provide a consistent, uniform, and global description of financial instruments. Since July 1, 2017, the FISN has been globally assigned alongside the ISIN and CFI at the time of issuance of a new financial instrument.
@@ -1768,6 +1810,8 @@ Unlike ISINs, which are primarily used for clearing and settlement, FISNs are ut
 The FISN code has a maximum length of 35 alphanumeric characters. Of these, 15 are reserved for the issuer name, and 19 for the description of the instrument, with the character “/” as the separator between the issuer name and description. [Figure 3-9](#ch03_figure_9_1724776826858152) illustrates the structure of the FISN code.
 
 ### Figure 3-9. Structural breakdown of the FISN code
+
+![Figure 3-9. Structural breakdown of the FISN code](images/fden_0309.png)
 
 ## Committee on Uniform Security Identification Procedures
 
@@ -1798,6 +1842,8 @@ The *Legal Entity Identifier* (LEI), defined in [ISO 17442](https://oreil.ly/UKF
 As illustrated in [Figure 3-11](#ch03_figure_11_1724776826858188), the first four characters of the LEI form a prefix that identifies the Local Operating Unit (LOU) that issued the LEI. Characters 5 to 18 constitute the entity identifier assigned by the LOU. Finally, characters 19 and 20 are two check digits.
 
 ### Figure 3-11. Structural breakdown of the LEI identifier
+
+![Figure 3-11. Structural breakdown of the LEI identifier](images/fden_0311.png)
 
 ISO 17442 [classifies](https://oreil.ly/VSXaQ) the following as legal entities:
 
@@ -1836,6 +1882,8 @@ The format of these transaction identifiers is generally similar. ISO 23897 spec
 
 ### Figure 3-12. ISDA-based Unique Trade Identifier structure
 
+![Figure 3-12. ISDA-based Unique Trade Identifier structure](images/fden_0312.png)
+
 ## Stock Exchange Daily Official List
 
 The *Stock Exchange Daily Official List* (SEDOL) is a seven-character alphanumeric code mainly used to identify securities traded on the London Stock Exchange (LSE) and other smaller exchanges in the UK. The LSE (the National Numbering Agency of the UK) assigns SEDOL codes upon request from the security issuer.12
@@ -1847,6 +1895,8 @@ For UK securities, SEDOLs are embedded within the UK ISIN codes by adding the co
 SEDOL codes issued prior to March 2004 were exclusively numeric. Afterward, the SEDOL system moved to an alphanumeric format that starts with an alphabetic character, followed by five alphanumeric characters and a trailing numeric check digit. [Figure 3-13](#ch03_figure_13_1724776826858225) illustrates the structure of SEDOL.
 
 ### Figure 3-13. The structural breakdown of the SEDOL identifier
+
+![Figure 3-13. The structural breakdown of the SEDOL identifier](images/fden_0313.png)
 
 To check if a SEDOL is valid, the check digit is chosen to make the weighted sum of all SEDOL characters a multiple of 10. The steps to validate a SEDOL are as follows:
 
@@ -1875,6 +1925,8 @@ Importantly, tickers are not guaranteed to remain unique, as they can be reassig
 
 ### Figure 3-14. NYSE tickers for Intrawest and Snowflake
 
+![Figure 3-14. NYSE tickers for Intrawest and Snowflake](images/fden_0314.png)
+
 ## Derivative Identifiers
 
 Derivatives are among the most exchanged financial securities in financial markets. As a quick reminder, a derivative is a contract that derives its value from an underlying financial asset or variable such as stocks, commodities, foreign exchange, interest rates, indexes, and many more.
@@ -1894,6 +1946,8 @@ The structure of the OSI option symbol is illustrated in detail in [Figure 3-15
 
 ### Figure 3-15. The structural breakdown of the OSI option symbol
 
+![Figure 3-15. The structural breakdown of the OSI option symbol](images/fden_0315.png)
+
 ### CFI, UPI, and OTC ISIN
 
 To identify OTC derivatives, a combined identification scheme has been put in place that relies on three identifiers:
@@ -1911,6 +1965,8 @@ The three identifiers are combined to provide different levels of detail. Malavi
 The *Alternative Instrument Identifier* (AII) has been adopted within the European Union for reporting purposes to identify derivatives traded on regulated markets without an ISIN assigned to them. Rather than being a code, the AII is a concatenation of descriptive fields that identify the instrument. The fields include the exchange code, exchange product code, derivative type, put/call identifier, expiry/delivery/prompt date, and strike price, as illustrated in [Figure 3-16](#ch03_figure_16_1724776826858281).
 
 ### Figure 3-16. The structural breakdown of the AII identifier
+
+![Figure 3-16. The structural breakdown of the AII identifier](images/fden_0316.png)
 
 ## Financial Instrument Global Identifier
 
@@ -1934,6 +1990,8 @@ For example, Amazon trades on multiple stock exchanges in the US. When Amazon co
 
 ### Figure 3-17. Hierarchical representations of FIGI
 
+![Figure 3-17. Hierarchical representations of FIGI](images/fden_0317.png)
+
 All three levels of FIGI identifiers have the same structure and limitations. The identifier may contain only letters in [B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z], and zero to nine digits.
 
 The structure of FIGI codes is as follows:
@@ -1946,6 +2004,8 @@ The structure of FIGI codes is as follows:
 [Figure 3-18](#ch03_figure_18_1724776826858316) illustrates this structure visually.
 
 ### Figure 3-18. The structural breakdown of FIGI
+
+![Figure 3-18. The structural breakdown of FIGI](images/fden_0318.png)
 
 The check digit procedure is based on the Luhn algorithm, following five steps:
 
@@ -2011,6 +2071,8 @@ As illustrated in [Figure 3-19](#ch03_figure_19_1724776826858334), the official
 
 ### Figure 3-19. The structural breakdown of the SIC code
 
+![Figure 3-19. The structural breakdown of the SIC code](images/fden_0319.png)
+
 The SIC system had several shortcomings. First, it produced ambiguous, mismatched, and overlapping classifications generated by SIC. Second, the four-digit system restricted the addition of new, emerging business sectors and industries. To overcome these issues, the SIC system was replaced in 1997 by the North American Industrial Classification System (NAICS), which introduced a more flexible six-character numeric code.
 
 As shown in [Figure 3-20](#ch03_figure_20_1724776826858352), the first two digits of an NAICS code indicate the major sector of the business. The third digit indicates the subsector, and the fourth digit designates the industry group. The fifth digit indicates the specific industry of operation, while the sixth code specifies the national industry. For example, [NAICS code 522110](https://oreil.ly/0V87L) is used to identify commercial banks. The first two digits, 52, define the sector (Finance and Insurance), the first three digits (522) identify the subsector (Credit Inter mediation and Related Activities), the first four digits (5221) define the industry group (Depository Credit Inter mediation), and the last two digits identify the industry (Commercial Banking).
@@ -2039,6 +2101,8 @@ Branch code:   An optional three-character alphanumeric code representing a spec
 
 ### Figure 3-21. The structural breakdown of the BIC code
 
+![Figure 3-21. The structural breakdown of the BIC code](images/fden_0321.png)
+
 The use of the BIC code to identify financial institutions is quite common, especially when identifying financial institutions in international transactions. Nevertheless, certain countries employ their own local bank or branch identification codes. For instance, Australia uses the *Bank State Branch* (BSB), a six-digit code, to identify branches of Australian financial institutions. Similarly, in the United States, financial institutions involved in various payment operations are identified using the *ABA Routing Number*, consisting of nine digits.
 
 Another well-known bank identifier is the *International Bank Account Number* (IBAN). It is defined in [ISO 13616](https://oreil.ly/PXeiy) and serves as an international system of unique codes used to identify bank accounts when conducting money transfers. The IBAN system was originally developed for use within the EU, but it was later adopted by regions such as the Caribbean and Middle East.
@@ -2052,6 +2116,8 @@ An IBAN code is composed of three main parts (see [Figure 3-22](#ch03_figure_22
 * *Basic Bank Account Number* (BBAN)—up to 30 alphanumeric characters that include the bank code, branch identifier, and account number. The length of BBAN may vary across countries.
 
 ### Figure 3-22. The structural breakdown of the IBAN number for Luxembourg
+
+![Figure 3-22. The structural breakdown of the IBAN number for Luxembourg](images/fden_0322.png)
 
 An IBAN code is validated through a mod-97 algorithm (as described by [ISO 7064](https://oreil.ly/OESpA)) that works as follows:
 
@@ -2067,6 +2133,8 @@ Last but not least, an important bank identifier is the payment card number or *
 The PAN is a numeric code with variable length ranging from 8 to 19 digits. The first six to eight digits represent the *Issuer Identification Number* (IIN), which identifies the card issuer. The first digit in the IIN is the *Major Industry Identifier* (MII), which identifies the industry/sector of the card issuer (for example, 4 and 5 are commonly used to identify financial institutions). The remaining characters are the individual account numbers used to identify the cardholder’s account. The last digit is a check digit, which can be validated using the Luhn algorithm.17 [Figure 3-23](#ch03_figure_23_1724776826858409) illustrates the structure of the PAN.
 
 ### Figure 3-23. The structural breakdown of a 16-digit PAN Identifier
+
+![Figure 3-23. The structural breakdown of a 16-digit PAN Identifier](images/fden_0323.png)
 
 # Summary
 
@@ -2194,6 +2262,8 @@ The main idea behind NER is to take an annotated text such as…
 
 ### Figure 4-1. An illustration of the outcome of NER
 
+![Figure 4-1. An illustration of the outcome of NER](images/fden_0401.png)
+
 For the sake of illustration, let’s walk through a practical example. A well-known financial dataset is [LSEG Loan Pricing Corporation DealScan](https://oreil.ly/vyDek), which offers comprehensive coverage of the syndicated loans market. A syndicated loan (also known as a syndicated facility) is a special type of loan where a group of lenders (the syndicate) jointly provide a large loan to a company or an organization. Within the syndicate, different agents assume various roles (e.g., participating bank, lead arranger, documentation agent, security agent, etc.). LSEG and similar data providers collect information about syndicated loans from multiple sources, with SEC filings such as 8-Ks as the primary source.
 
 Let’s consider a scenario where your team is tasked with creating a dataset on syndicated loans using a collection of SEC filings. Your first step involves extracting data from the text, identifying various elements that characterize a syndicated facility, and then organizing this information into a structured format. Let’s take the following example of an SEC filing for a syndicated facility agreement given to an Australian company (the text below is quoted and highlighted from the [SEC filing](https://oreil.ly/Bq5ER)):
@@ -2263,6 +2333,8 @@ As you can see, the text includes details regarding the borrower, lenders, and t
 
 ### Figure 4-2. Entity Relationship Model of the syndicated loan database
 
+![Figure 4-2. Entity Relationship Model of the syndicated loan database](images/fden_0402.png)
+
 The result of a successful NER-based entity extraction would look like the data present in Tables [4-1](#ch04_table_1_1724776828463752), [4-2](#ch04_table_2_1724776828463812), and [4-3](#ch04_table_3_1724776828463853).
 
 Table 4-1. Facility table
@@ -2292,6 +2364,8 @@ Many books treat NED as a separate problem from NER and dedicate a separate sect
 
 ### Figure 4-3. Named entity recognition and disambiguation
 
+![Figure 4-3. Named entity recognition and disambiguation](images/fden_0403.png)
+
 In NED, entities identified in the text are mapped to their unique real-world counterparts using a *knowledge base*. A knowledge base is a central repository that contains information about a vast array of subjects. These can be general-purpose or specialized and may be public or private. For example, Wikipedia is a well-known public, general-purpose knowledge base, while Investopedia serves a similar role but focuses specifically on finance. Other notable examples include GeoNames, Wikidata, DBpedia, and YAGO. Financial institutions and data vendors may also create proprietary knowledge bases tailored to their specific needs using their own data​.
 
 ## How Does Named Entity Recognition Work?
@@ -2301,6 +2375,8 @@ In this section, we will explore the various steps involved in building an NER s
 Note that NER is an iterative process. Once the model is evaluated, the modeler can determine if improvements in data preprocessing, model selection, or training techniques are necessary to enhance the NER system’s performance.
 
 ### Figure 4-4. Named entity extraction and disambiguation process
+
+![Figure 4-4. Named entity extraction and disambiguation process](images/fden_0404.png)
 
 ### Data preprocessing
 
@@ -2391,6 +2467,8 @@ True negative (TN):   An instance correctly identified as a nonentity, consisten
 These four values are often represented in a special tabular format known as a *confusion matrix*, as illustrated in [Figure 4-5](#ch04_figure_5_1724776828398439).
 
 ### Figure 4-5. Confusion matrix of NER
+
+![Figure 4-5. Confusion matrix of NER](images/fden_0405.png)
 
 ### Note
 
@@ -2502,6 +2580,8 @@ Wikification is an entity disambiguation technique that links recognized named e
 
 ### Figure 4-6. Wikification process
 
+![Figure 4-6. Wikification process](images/fden_0406.png)
+
 Several wikification techniques have been proposed, the majority of which utilize similarity metrics to determine which Wikipedia page is most similar to the recognized entity. One prominent implementation was first presented in [Silviu Cucerzan’s groundbreaking work](https://oreil.ly/BIhsI). Cucerzan proposed a knowledge base that incorporates the following elements:
 
 Article entity/concept:   Most Wikipedia articles have an entity/concept associated with them.
@@ -2523,6 +2603,8 @@ An entity is disambiguated by first identifying its surface form. Subsequently, 
 Knowledge graphs have become an essential technique in internet-based information search and have been widely applied in entity disambiguation. There isn’t yet a clear [definition of what a knowledge graph is](https://oreil.ly/xHyFe). Still, it basically involves gathering different types of facts, knowledge, and content from many sources, organizing them into a network of nodes and links, and using it to provide more information to users upon submitting a search query. In other words, a knowledge graph can be thought of as a network of real-world entities—i.e., persons, locations, materials, events, and organizations—related together via labeled directed edges. [Figure 4-7](#ch04_figure_7_1724776828398536) presents a simple illustrative example of a knowledge graph around the company Dell Technologies. The graph illustrates Dell Technologies and several related entities, such as its CEO, Michael Dell, and its supplier, Intel Corporation.
 
 ### Figure 4-7. Illustrative example of a knowledge graph
+
+![Figure 4-7. Illustrative example of a knowledge graph](images/fden_0407.png)
 
 The power of knowledge graphs stems from their extreme flexibility, which allows them to encompass a wide range of elements and interactions. This, in turn, can improve search results and reveal hidden data links that might otherwise go undetected using more traditional approaches.
 
@@ -2578,6 +2660,8 @@ As you learned in Chapter 3, financial markets rely on a large number of data i
 
 ### Figure 4-8. Entity resolution in the presence of two different identifiers
 
+![Figure 4-8. Entity resolution in the presence of two different identifiers](images/fden_0408.png)
+
 Keep in mind that if the datasets you want to merge use the same data identifier, then the task becomes a simple database join operation, and there would be no need to develop an ER system.
 
 ### Missing identifiers
@@ -2585,6 +2669,8 @@ Keep in mind that if the datasets you want to merge use the same data identifier
 In some cases, a financial dataset may lack a proper identifier or may have an arbitrary identifier that does not match the specific one you need. For instance, data generated from nonregulated or decentralized markets, such as OTC, may not include appropriate data identifiers. A stock prices dataset might use the stock ticker as an identifier, while you may require the ISIN. Another common scenario involves agents engaged in financial activities who may intentionally obscure their identities to commit fraud. In such cases, an ER system is essential to identify entities based on the available data attributes. [Figure 4-9](#ch04_figure_9_1724776828398640) illustrates the process of ER where identifiers are assigned to an unidentified dataset. The table on the right displays multiple features without entity identifiers. Using ER, records are mapped to their corresponding identifiers, as indicated by the arrows.
 
 ### Figure 4-9. Entity resolution with unidentified data
+
+![Figure 4-9. Entity resolution with unidentified data](images/fden_0409.png)
 
 # Entity Resolution for Fraud Detection and Identify Verification
 
@@ -2602,6 +2688,8 @@ To facilitate data integration, an ER system would be needed to match data acros
 
 ### Figure 4-10. Entity resolution for data aggregation
 
+![Figure 4-10. Entity resolution for data aggregation](images/fden_0410.png)
+
 ### Data deduplication
 
 A frequent problem with financial data is the presence of duplicates, i.e., multiple records that convey the same information about an entity. Duplicate records are often encountered when using nonstandard identifiers such as person or company names, which can be recorded with multiple variations. Chapter 5 will have a dedicated section detailing the problem of financial data duplicates.
@@ -2610,11 +2698,15 @@ The process of identifying and removing data duplicates is called data deduplica
 
 ### Figure 4-11. Entity resolution for data deduplication
 
+![Figure 4-11. Entity resolution for data deduplication](images/fden_0411.png)
+
 ## How Does Entity Resolution Work?
 
 A typical ER process involves five iterative steps, which I illustrate in [Figure 4-12](#ch04_figure_12_1724776828398793). In the first step, *preprocessing* is applied to the input datasets to ensure their high quality for the task. The second step, *blocking*, is often required to reduce computational complexity when matching large datasets. In the third step, candidate pair records are *generated* and *compared* using a selected methodology. Successively, comparisons are *classified* into matches, non-matches, or possible matches. Finally, in the fifth step, the goodness of the matching process is *evaluated*. In the next few sections, we will explore each of these five steps in detail.
 
 ### Figure 4-12. Entity resolution process
+
+![Figure 4-12. Entity resolution process](images/fden_0412.png)
 
 ### Data preprocessing
 
@@ -2659,6 +2751,8 @@ Blocking presents a few challenges. First, it is highly sensitive to data qualit
 [Figure 4-13](#ch04_figure_13_1724776828398849) illustrates a simple blocking process. In this example, we have two datasets, A and B, that contain company information such as the market capitalization, the headquarters’ country, and the exchange market on which the company is listed. If we were to perform all pair-wise comparisons, we would need to do 6 × 6 = 36 comparisons. However, using blocking criteria that group records in blocks based on the headquarters’ country and exchange market, we reduce the number of pair comparisons to five.
 
 ### Figure 4-13. A simple blocking process
+
+![Figure 4-13. A simple blocking process](images/fden_0413.png)
 
 In addition to blocking, a number of other indexing techniques have been [developed](https://oreil.ly/iV2wo). Examples include Sorted Neighborhood Indexing, Q-Gram-Based Indexing, Suffix Array-Based Indexing, Canopy Clustering, and String-Map-Based Indexing.
 
@@ -2716,6 +2810,8 @@ To evaluate the quality of the matching results of an ER system, a common practi
 
 ### Figure 4-14. Confusion matrix of ER
 
+![Figure 4-14. Confusion matrix of ER](images/fden_0414.png)
+
 Based on these four metrics, a variety of quality measures can be [calculated](https://oreil.ly/CxnpK). For example, accuracy detects the ability of the system to make a correct classification (match vs. non-match). Precision measures the ability of the system to correctly classify true matches (i.e., how good the system is at avoiding false positives). Recall is another metric that measures the ability of the system to detect all true matches (i.e., how good the system is at avoiding false negatives). The F1 score is a harmonic mean of precision and recall and is used to find a balance between recall and precision.
 
 Let’s use our [Table 4-8](#ch04_table_8_1724776828464085) example to compute these four metrics. As illustrated in [Table 4-9](#ch04_table_9_1724776828464131), the final predictions are available in the column called “Predicted class after human review,” while the ground truth values are available in the column “Ground truth class.”
@@ -2765,6 +2861,8 @@ A link table contains a mapping between two or more data identifiers. If two dat
 For financial applications, link tables need to be built with a *point-in-time* feature to keep track of the possibility that identifiers might change, get reassigned, or become inactive. To this end, a good financial link table would include additional information such as the start and end date of the link, the link status, and any additional comments. For example, [Table 4-11](#ch04_table_11_1724776828464213) illustrates a link table that contains three links, where only one link (a1, b55) is active and has no end date, while link (a4, a20) ended in 31-12-2007 as the stock got delisted, and link (199, b44) ended in 20-01-1995 because the company merged with another one.
 
 ### Figure 4-15. An ER process using a link table
+
+![Figure 4-15. An ER process using a link table](images/fden_0415.png)
 
 Table 4-11. Example of a link table
 
@@ -3721,6 +3819,8 @@ Following is the storage layer, where the focus is on selecting and optimizing d
 
 ### Figure 6-1. Layers of the financial data engineering lifecycle
 
+![Figure 6-1. Layers of the financial data engineering lifecycle](images/fden_0601.png)
+
 Next is the transformation and delivery layer, which performs a number of business-defined transformations and computations that produce high-quality data that is ready for consumption by its intended data consumers. In Chapter 9, I will thoroughly explore this layer, examining the key types of transformations applicable to financial data, the computational demands of different transformation processes, and the various mechanisms for data delivery.
 
 Finally, the monitoring layer is there to make sure that issues related to data processing, data quality, performance, costs, bugs, and analytical errors are all monitored and tracked to allow efficient and timely fixes. Chapter 10 will be dedicated to this layer.
@@ -4152,6 +4252,8 @@ Various communication protocols and standards are employed throughout the data t
 The most popular internet protocol model is the seven-layer *Open Systems Interconnection* (OSI) model, defined in standard [ISO/IEC 7498](https://oreil.ly/H4hHw), and the four-layer internet protocol suite known as the *TCP/IP*, developed by the Department of Defense (DoD). Both models are illustrated in [Figure 7-1](#ch07_figure_1_1724776832717088).
 
 ### Figure 7-1. Seven-layer OSI model versus four-layer TCP/IP model
+
+![Figure 7-1. Seven-layer OSI model versus four-layer TCP/IP model](images/fden_0701.png)
 
 ### Note
 
@@ -4639,6 +4741,8 @@ SWIFT messages are categorized using the [convention MT (message type/text)](htt
 Consider a scenario where Corporation A wants to send $500,000 to Corporation B. Corporation A initiates the transaction by submitting payment instructions to its bank (Bank 1) using an MT101 message (or ISO 20022 pain.001). Upon receiving the message, Bank 1 issues a credit transfer request to Corporation B’s bank (Bank 2) using an MT103 message (or ISO 20022 pacs.008). [Figure 7-3](#ch07_figure_3_1724776832717137) illustrates the flow.
 
 ### Figure 7-3. A SWIFT transfer
+
+![Figure 7-3. A SWIFT transfer](images/fden_0703.png)
 
 In this example, it was assumed that Bank 1 and Bank 2 have a corresponding banking relationship, which allows them to directly exchange messages such as MT101 and MT103. However, if they do not have a corresponding banking [relationship](https://oreil.ly/UJ8wM), the payment process would involve one or more intermediary or correspondent banks. Recently, SWIFT launched SWIFT GPI (Global Payments Innovation) to enhance the cross-border payment experience, addressing the industry’s demands for greater speed, traceability, and transparency.
 
@@ -5227,6 +5331,8 @@ Thanks to ISO/IEC 9075, the SQL language has evolved along a path of continuous 
 
 ### Figure 8-2. Overview of SQL standards
 
+![Figure 8-2. Overview of SQL standards](images/fden_0802.png)
+
 ## ACID transactions
 
 By design, relational databases offer the strongest ACID transactional guarantee among all DSSs.
@@ -5284,13 +5390,19 @@ First normal form (1NF):   This form ensures that all columns are single valued.
 
     ###### Figure 8-3. First normal form conversion
 
+![Figure 8-3. First normal form conversion](images/fden_0803.png)
+
 Second normal form (2NF):   This form eliminates *partial dependency*. If a table has a composite primary key with two or more columns, then all the columns (not included in the primary key) must depend on the entire composite primary key and not on a part of it. A table exhibits partial dependency when a nonprimary key column depends on only a portion of the primary key. [Figure 8-4](#ch08_figure_4_1724776834148562) shows an example. The right table has a composite primary key including account\_id and account\_type\_id. In this case, the column account\_type\_description depends only on account\_type\_id, hence generating a partial dependency. To normalize in 2NF, the account\_type\_id should be stored in a separate table, as illustrated on the right side of the figure.
 
     ###### Figure 8-4. Second normal form conversion
 
+![Figure 8-4. Second normal form conversion](images/fden_0804.png)
+
 Third normal form (3NF):   This form eliminates *transitive dependency*. All columns should only depend on the primary key, not on any nonprimary key columns. If a nonprimary key column depends on another nonprimary key column, the table is said to have a transitive dependency. See [Figure 8-5](#ch08_figure_5_1724776834148580) for an example. The table on the left side of the figure has a single-column primary key defined for transaction\_id. Both account\_id and amount depend on transaction\_id, but max\_transaction\_limit depends on account\_id, which is not a primary key. This generates transitive dependency. To normalize in 3NF, we need to create a separate table that stores the max\_transaction\_limit, as illustrated on the right side of the figure.
 
     ###### Figure 8-5. Third normal form conversion
+
+![Figure 8-5. Third normal form conversion](images/fden_0805.png)
 
 Relational database systems often prioritize normalization as their main modeling strategy. By eliminating redundancy, normalization ensures data integrity by minimizing the number of places that store the same piece of data and establishing reliable relationships between the tables. Think of this from a compliance perspective. For example, if a client of a financial institution requests that their personal data be updated or erased, the institution will only need to check one or a few tables (e.g., a client table) to find all of the individual’s information. If data was not normalized, the same personal information may be duplicated in many places, making it difficult to find, aggregate, update, or delete.
 
@@ -5546,6 +5658,8 @@ A DSM that follows the producer-consumer pattern is called a message broker DSM,
 
 ### Figure 8-6. The message broker model
 
+![Figure 8-6. The message broker model](images/fden_0806.png)
+
 ### Why message brokers?
 
 Message brokers are widely used in developing data-intensive systems, particularly in event-driven, distributed, and streaming architectures. In these contexts, data is generated and consumed by various applications following different patterns and scales. To meet such requirements, message brokers offer the ideal features in terms of simplicity, speed, and scalability. Importantly, a message broker is not to be used as a primary or persistent DSS but rather as an intermediary that facilitates the exchange of messages between applications.
@@ -5660,6 +5774,8 @@ In link modeling, the focus shifts to defining the relationships or connections 
 
 ### Figure 8-7. An example graph data model
 
+![Figure 8-7. An example graph data model](images/fden_0807.png)
+
 Keep in mind that the graph DSM does not enforce a rigid schema, as is the case with the SQL model. New types of nodes and links can be easily added by defining their label and attributes, and existing nodes and links can be adapted to reflect new business requirements.
 
 To enhance performance, graph data modeling may include the definition of indexes on nodes and links. These indexes are typically based on attributes associated with nodes or links.
@@ -5687,6 +5803,8 @@ Graph databases have been applied to solve a variety of problems in the financia
 The best way to detect such complex patterns is by designing a framework that combines network analysis with a graph database to build a [fraud graph](https://oreil.ly/WCTUL). Such a graph records the connections between the actors, transactions, and other pertinent data to help experts capture anomalous trends in the data and create applications that can identify fraudulent activity. [Figure 8-8](#ch08_figure_8_1724776834148635) naively illustrates the concept. In this example, the real account holder is associated with a unique set of information such as address, email, phone number, SSN, etc. A fraudster, however, might use a variety of addresses, phone numbers, and other pieces of information and combine them in complex ways to hide their activities. When represented as a graph, such hidden relationships can be detected more easily. This task can be represented as an entity resolution problem where the goal is to match nodes that represent the same entity.
 
 ### Figure 8-8. Graph-based fraud detection
+
+![Figure 8-8. Graph-based fraud detection](images/fden_0808.png)
 
 Graph databases also find applications in financial risk analysis. For instance, financial assets can be structured hierarchically, bundled into new assets, segmented into tranches, and distributed across complex networks of ownership and transactions. This complicates the task of risk management and reduces regulatory oversight. One approach to address this challenge involves constructing a [financial assets graph](https://oreil.ly/Vp-Lk). This graph models and stores the relationships among different types of financial assets, enabling financial institutions to track their assets and account for dependencies in their pricing models. Additionally, graph databases are useful for simulating various shocks and scenarios to test the stability of correlated asset portfolios, interbank networks, and various types of systemic risks.28
 
@@ -5717,6 +5835,8 @@ One of the most common business needs in data-driven organizations is an enterpr
 I will use the term *warehouse DSM* to describe a system that periodically gathers, consolidates, and structures data from various sources within a company into a central repository intended for various analytical purposes. A DSS system used to implement the warehouse DSM is called a warehouse DSS or data warehouse. [Figure 8-9](#ch08_figure_9_1724776834148654) illustrates a typical data warehouse architecture. As the figure shows, data from heterogeneous sources (left side) get organized into a central data warehouse (middle) which then serves a variety of analytical data needs (right side).
 
 ### Figure 8-9. A data warehouse architecture
+
+![Figure 8-9. A data warehouse architecture](images/fden_0809.png)
 
 ### Why data warehouses?
 
@@ -5750,13 +5870,19 @@ The Kimball approach takes a different perspective. Instead of isolating the dat
 
 ### Figure 8-10. Inmon data warehouse architecture
 
+![Figure 8-10. Inmon data warehouse architecture](images/fden_0810.png)
+
 ### Figure 8-11. Kimball data warehouse architecture
+
+![Figure 8-11. Kimball data warehouse architecture](images/fden_0811.png)
 
 The definition of data marts is done via a technique called *dimensional modeling*. Its main idea is to divide data into *fact* and *dimension* tables. A fact table contains data on quantifiable business entities or events, while a dimension table stores data related to the context of the events. Examples of facts include financial payments, monetary transfers, and online sales. Dimensions may be information such as product, user, and country details. Facts and dimensions may be used to categorize data into data mart–specific tables based on various business processes such as revenues, products, sales, employees, suppliers, and branches.
 
 In dimensional modeling, two primary types of data warehouse schemas are prevalent: the star schema and the snowflake schema. The star schema features a central fact table connected directly to multiple dimension tables, resembling a star-shaped architecture. On the other hand, the snowflake schema is a normalized version of the star schema that has a single fact table and several direct and indirect dimension tables. [Figure 8-12](#ch08_figure_12_1724776834148709) illustrates the difference.
 
 ### Figure 8-12. Star schema versus snowflake schema
+
+![Figure 8-12. Star schema versus snowflake schema](images/fden_0812.png)
 
 Star schemas are generally easier to understand and simpler to query because they involve fewer table JOIN operations. Snowflake schemas, on the other hand, can be more effective at ensuring data integrity and consistency as they remove redundancy through data normalization.30
 
@@ -5803,6 +5929,8 @@ At the most basic level, a blockchain is a data structure that stores data as a 
 A blockchain data ledger performs a similar function and guarantees data immutability, but following different design principles. To illustrate the idea, let’s represent a blockchain as a linked list of information blocks, as illustrated in [Figure 8-13](#ch08_figure_13_1724776834148729). The first block in a blockchain is called the *genesis block*. Each subsequent block contains its own data (e.g., transaction records) as well as a *hash pointer* that stores both a pointer to the previous block and a hash of that older block. A hashing function, H(), is used to create a cryptographic hash of each block’s data. A block hash serves as a unique identifier of each block.
 
 ### Figure 8-13. Blockchain as a linked list
+
+![Figure 8-13. Blockchain as a linked list](images/fden_0813.png)
 
 To illustrate why this structure is tamper resistant, consider an adversary attempting to manipulate the blockchain by altering data entries in block 2. This will automatically update the block’s hash. As a result, the hash pointer in block 3 will no longer correspond to the updated hash of block 2. To conduct a successful attack, the adversary must alter all hash pointers up to the most recent block in the list (i.e., the head).
 
@@ -6130,6 +6258,8 @@ When performing complex queries that involve joins and aggregations, make sure t
 
 ### Figure 9-1. An inefficient versus efficient data processing approach
 
+![Figure 9-1. An inefficient versus efficient data processing approach](images/fden_0901.png)
+
 Based on your institution’s requirements and the needs of data consumers, you, as a financial data engineer, should be able to anticipate and assess additional scenarios and use cases. I recommend consistently striving to understand and discover ways to improve the efficiency of your queries. Use the EXPLAIN command to analyze the query optimizer plans, try to learn about database internals and optimization strategies, and pick up some advanced SQL knowledge.4
 
 # Data Transformation
@@ -6151,6 +6281,8 @@ I’ll provide a general overview in the following sections, outlining some of t
 The first transformation applied to financial data typically involves format conversion. It consists of converting the data from its source format into another format that is easier to work with. For example, you might convert data in CSV format to SQL tables, or convert data in JSON format into a collection in a document database. Once the data is converted into the desired format, subsequent transformations become easier. [Figure 9-2](#ch09_figure_2_1724776835082682) illustrates a common format conversion scenario in the financial industry, where raw data arriving in CSV or XLSX (Excel) formats is transformed into a tabular format within a relational database.
 
 ### Figure 9-2. An example of format conversion
+
+![Figure 9-2. An example of format conversion](images/fden_0902.png)
 
 ### Data cleaning
 
@@ -6316,11 +6448,15 @@ In certain scenarios, data arrival may occur in real time or be event driven, ye
 
 ### Figure 9-3. Standard batch and streaming transformation patterns
 
+![Figure 9-3. Standard batch and streaming transformation patterns](images/fden_0903.png)
+
 ### Memory-based versus disk-based transformations
 
 A given data transformation, whether batch or streaming, can be processed either completely in memory or involving intermediary disk persistence steps. The best way to show the difference is with an illustrative example, as shown in [Figure 9-4](#ch09_figure_4_1724776835082722). A basic disk-based transformation is illustrated in the figure’s upper part. In this setting, files are first ingested into a data lake. Subsequently, the transformation layer applies two transformation iterations on the files (e.g., cleaning + feature engineering) and saves the final results in a data warehouse. Note, however, that between the two iterations, the transformation layer had to store intermediary results back to the data lake and read it again for the second iteration. In the lower part of the figure, a memory-based transformation does the same thing, but instead of saving intermediary results to the data lake, it keeps it in memory and passes it as such to the next interaction.
 
 ### Figure 9-4. Disk-based versus memory-based data transformations
+
+![Figure 9-4. Disk-based versus memory-based data transformations](images/fden_0904.png)
 
 You might be wondering by now why this is necessary. The answer lies in the significant difference in data access speed between RAM and disk (random disk access, to be precise). This is the reason why in-memory software solutions for data storage and processing are quite popular.12
 
@@ -6650,6 +6786,8 @@ While there’s no one-size-fits-all approach, there are several DQM techniques 
 Once DQMs have been defined, a corresponding monitoring process must be implemented. A well-known approach in this regard is *data profiling*. This involves parsing and checking a given dataset to understand its content, formatting, structure, and the relationships between its records. By performing data profiling, potential data quality issues within the dataset can be identified. Profiling can be performed column-wise, where each column is examined separately, or row-wise, where all columns and their relationships are analyzed. At the end of a data profiling check, a short report can be generated to summarize the main features and issues of the input dataset and provide recommendations for addressing such issues. [Figure 10-1](#ch10_figure_1_1724776835691982) illustrates some of the elements a typical data profile report might contain.
 
 ### Figure 10-1. A simple example of a data profile report
+
+![Figure 10-1. A simple example of a data profile report](images/fden_1001.png)
 
 Data profiling is a comprehensive procedure that scans the whole dataset to understand its data quality attributes. However, a complete data profile report may not always be required. Alternatively, a simpler approach could be to define and test data quality rules against one or more data records. A rule could state, for example, that the error ratio should not exceed 1%.
 
@@ -6983,6 +7121,8 @@ Frequently, computational DAGs are more complex than the linear case. For exampl
 
 ### Figure 11-2. Complex DAG
 
+![Figure 11-2. Complex DAG](images/fden_1102.png)
+
 When defining a computational DAG, a fundamental question arises: “What constitutes a task?” While there isn’t a universal answer to this question, several best practices have been suggested. For example, a task needs to be an atomic unit of execution, meaning that it either succeeds or fails as a whole. Furthermore, it is considered a best practice to ensure that tasks are idempotent, meaning that running the same task multiple times will yield the same result as running it once, without causing any unexpected or undesirable side effects. This can be useful since it can allow you to add task checkpoint features to your DAG, allowing you to resume DAG execution from the failed step rather than execute it all over again.
 
 Another consideration is the size of tasks within a computational DAG. They should strike a balance: they need to be small enough to facilitate debugging and traceability, but not so small that they introduce unnecessary overhead and degrade DAG performance. Conversely, overly large tasks simplify the DAG structure but can constrain debuggability and lead to costly retry operations.
@@ -7005,11 +7145,15 @@ With IaC, users can programmatically define workflow and task specifications suc
 
 ### Figure 11-3. A workflow and task definition template
 
+![Figure 11-3. A workflow and task definition template](images/fden_1103.png)
+
 ## Dependency Management
 
 WMSs vary in how they manage and configure dependencies between tasks and workflows. In simple WMSs, users are only able to define static and linear workflows. However, more advanced WMSs may allow for parallel workflow/task execution, dynamic and conditional task creation, and information passing between tasks. To illustrate, (a) in [Figure 11-4](#ch11_figure_4_1724776836317905) displays a workflow where tasks 3 and 4 are conditionally executed after task 2, depending on whether a specific condition is satisfied; if not, task 5 follows task 2. In contrast, (b) in [Figure 11-4](#ch11_figure_4_1724776836317905) illustrates a workflow that dynamically generates a variable number of tasks (N) at runtime, based on the input received from task 1.
 
 ### Figure 11-4. Workflow with conditional tasks, and workflow with dynamic tasks
+
+![Figure 11-4. Workflow with conditional tasks, and workflow with dynamic tasks](images/fden_1104.png)
 
 ## Coordination Patterns
 
@@ -7020,6 +7164,8 @@ The SBP involves one component calling another and waiting for a response, which
 Conversely, the Asynchronous Non-Blocking Pattern operates in a fire-and-forget mode, where a component sends a request or message to another component without waiting for a response or confirming its processing. In a WMS, this pattern can be implemented by running each workflow task independently on separate processes or machines and having a dedicated task queue that gathers incoming messages for execution. [Figure 11-5](#ch11_figure_5_1724776836317924) provides a visual representation of this concept.
 
 ### Figure 11-5. Synchronous Blocking Pattern versus Asynchronous Non-Blocking Pattern
+
+![Figure 11-5. Synchronous Blocking Pattern versus Asynchronous Non-Blocking Pattern](images/fden_1105.png)
 
 ## Scalability
 
@@ -7045,6 +7191,8 @@ In a typical ETL workflow, raw data files are initially extracted and stored in 
 
 ### Figure 11-6. Illustration of the ETL workflow
 
+![Figure 11-6. Illustration of the ETL workflow](images/fden_1106.png)
+
 ETL workflows may vary in terms of complexity and requirements. Traditional ETL workflows are often built as linear DAGs that process data in batches with a predefined schedule (e.g., daily or weekly). However, challenges can arise when new business problems create additional scalability and performance requirements. For example, you might need to implement parallel processing in your workflow to accommodate larger data volumes. This can involve, for example, splitting a large file into small chunks and transforming each into a separate dynamic task. Another major problem occurs when new types of data arrival processes must be handled. Nowadays, it is common to have data arriving in regular batches, as well as single data entries generated through event-based mechanisms.2
 
 A large variety of ETL WMSs are available. These include commercial enterprise tools (e.g., IBM DataStage, Oracle Data Integrator, Talend, Informatica), open source tools (e.g., Apache Airflow, Prefect, Mage, Apache Spark), cloud-based tools (e.g., AWS Glue, Google Dataprep), and custom tools. These tools vary in terms of the features that we illustrated previously in [“Workflow Management Systems”](#ch11_workflow_management_systems_1724776836341040).
@@ -7069,6 +7217,8 @@ A stream processing workflow consists of a sequence of data processing steps whe
 
 ### Figure 11-7. Illustration of a basic stream processing workflow
 
+![Figure 11-7. Illustration of a basic stream processing workflow](images/fden_1107.png)
+
 Stream workflow management solutions prioritize scalability for large data streams, fast transformations, in-memory computing, event-driven capabilities, and asynchronous non-blocking data processing.
 
 A typical streaming architecture consists of four main components:
@@ -7085,6 +7235,8 @@ Data storage system:   Persists the data for further consumption. Examples inclu
 
 ### Figure 11-8. Example of a typical stream processing architecture
 
+![Figure 11-8. Example of a typical stream processing architecture](images/fden_1108.png)
+
 More complex stream workflow architectures can be built. One common pattern is the *lambda architecture*, which typically consists of three layers:
 
 Speed layer:   Handles real-time stream processing and creates real-time views for instant insights.
@@ -7097,9 +7249,13 @@ The three layers can be implemented in various ways, but a basic illustration is
 
 ### Figure 11-9. Illustration of a lambda architecture
 
+![Figure 11-9. Illustration of a lambda architecture](images/fden_1109.png)
+
 Lambda architectures are often criticized for their complexity and the maintenance overhead they entail. A simpler alternative, known as the *kappa architecture*, integrates batch and real-time processing into a unified workflow that treats all data as a continuous stream. This approach leverages a single high-performance stream processing engine, simplifying both implementation and management.3 [Figure 11-10](#ch11_figure_10_1724776836318010) provides an example. Initially, data is received by AWS ELB and then ingested into a Kafka topic. Once the data enters Kafka, it is consumed by the stream processing layer, which utilizes an Apache Flink engine to process these events in real time, performing various transformations. The processed data is subsequently stored in a Cassandra database, allowing for efficient querying and further analysis.
 
 ### Figure 11-10. A kappa architecture
+
+![Figure 11-10. A kappa architecture](images/fden_1110.png)
 
 Stream processing finds numerous applications within the financial sector, with one prominent use case being real-time fraud detection and analytics. Financial institutions face significant threats from payment and credit card fraud, as highlighted by the [2023 Association for Financial Professionals Payments Fraud and Control Survey report](https://oreil.ly/5HSVR), underwritten by JPMorgan, which revealed that 65% of participants experienced payment fraud attacks or attempts in 2022. Effective fraud detection systems necessitate automation to reduce manual workload, high accuracy to minimize false positives and maintain customer satisfaction, scalability to handle large transaction volumes, and speed for real-time assessment and transaction execution.
 
@@ -7115,6 +7271,8 @@ Prior to designing a microservice workflow, it’s crucial to assess several fac
 
 ### Figure 11-11. Coupling versus cohesion
 
+![Figure 11-11. Coupling versus cohesion](images/fden_1111.png)
+
 From a business standpoint, a significant challenge involves deciding how to formalize and integrate business logic across multiple microservices. Various approaches exist for this purpose, including object-oriented principles such as the Single Responsibility Principle (SRP), procedural patterns like the transaction script pattern, and comprehensive frameworks such as Domain-Driven Design (DDD).
 
 DDD is quite elegant and provides a reliable approach for designing business logic in a microservice architecture. In DDD, developers design the so-called *domain models* to capture and represent the business requirements and unique components of a domain, establishing a conceptual basis for building software applications. A business model includes the entities, relationships, rules, and logic that define a specific domain or problem space within an application.
@@ -7127,6 +7285,8 @@ After you have defined and created your microservices, the next step is to organ
 
 ### Figure 11-12. Microservice-oriented online store order processing system
 
+![Figure 11-12. Microservice-oriented online store order processing system](images/fden_1112.png)
+
 In real-world scenarios, microservice workflows frequently exhibit greater complexity than the linear structure depicted in [Figure 11-12](#ch11_figure_12_1724776836318044). This happens when microservices are deployed in a distributed system. Here, establishing reliable communication mechanisms becomes critical for coordinating microservices and maintaining workflow consistency. Traditional application designs typically rely on ACID database transactions for this purpose. However, in distributed microservice systems, it is technically cumbersome to implement distributed ACID transactions.
 
 As a reliable alternative, microservice engineers often rely on a popular design pattern known as the [*saga pattern*](https://oreil.ly/1Ln0E). A saga organizes a microservice workflow into a sequence of local transactions, where each transaction executes its logic and communicates with the next via update messages or events. Two primary approaches exist for coordinating a saga: choreography and orchestration.
@@ -7138,6 +7298,8 @@ On the other hand, orchestration-based sagas introduce a central orchestrator to
 Let’s look at the two saga patterns. Part (a) in [Figure 11-13](#ch11_figure_13_1724776836318061) represents a choreography-based saga. In this instance, services interact directly with each other using specific topics. For example, Services A and B communicate with Service E via Topic E, while Services E and F use Topic B to interact with Service B, and Service C communicates with Service G through Topic G. In contrast, (b) in [Figure 11-13](#ch11_figure_13_1724776836318061) illustrates an orchestration-based saga, where all service communication is mediated by a central orchestrator. Each service receives instructions from the orchestrator via its designated topic and communicates back to the orchestrator through the same topic.
 
 ### Figure 11-13. Choreography-based saga, and orchestration-based saga
+
+![Figure 11-13. Choreography-based saga, and orchestration-based saga](images/fden_1113.png)
 
 In terms of technological implementation, a microservice workflow management system can be designed in various ways. If we consider the more prevalent orchestration-based approach, a fundamental setup typically includes three components:
 
@@ -7198,6 +7360,8 @@ Finally, ensuring the stability, automation, and quality of an ML workflow’s d
 [Figure 11-14](#ch11_figure_14_1724776836318076) illustrates the several stages involved in a typical machine learning pipeline as well as the undercurrents that underpin a reliable ML workflow management system.
 
 ### Figure 11-14. ML workflow lifecycle
+
+![Figure 11-14. ML workflow lifecycle](images/fden_1114.png)
 
 Designers of ML workflows may need to integrate various domain-specific requirements. For instance, financial institutions must adhere to regulations and guidelines concerning fairness, transparency, and accountability in algorithmic decision-making. An example is the US Equal Credit Opportunity Act of 1974, which mandates creditors to provide applicants with specific reasons for credit denials or altered terms upon request. To comply, an ML workflow must include features to track, retrieve, and explain data, model mechanics, assumptions, and predictions.
 
@@ -7324,6 +7488,8 @@ To implement this, we need to create the *Entity Relationship Diagram* (ERD) for
 
 ### Figure 12-1. Entity Relationship Diagram of our example bank account management system
 
+![Figure 12-1. Entity Relationship Diagram of our example bank account management system](images/fden_1201.png)
+
 With the ERD design complete, let’s move on to the next step: selecting the database technology and translating our ERD into database queries.
 
 ## Physical Model: Data Definition and Manipulation Language
@@ -7367,6 +7533,8 @@ These are the values that you set in the project’s environmental variables fil
 
 ### Figure 12-2. Creating a new server in pgAdmin
 
+![Figure 12-2. Creating a new server in pgAdmin](images/fden_1202.png)
+
 After that, from the left sidebar, follow these steps (as shown in [Figure 12-3](#ch12_figure_3_1724776837381906)):
 
 1. Navigate to Servers → Bank Account → Databases → bank\_account → Schemas → public → Tables.
@@ -7376,7 +7544,11 @@ Now, we are ready to create our tables. In SQL, using the term *Data Definition 
 
 ### Figure 12-3. Opening the Query Tool editor
 
+![Figure 12-3. Opening the Query Tool editor](images/fden_1203.png)
+
 ### Figure 12-4. Creation and visualization of the tables
+
+![Figure 12-4. Creation and visualization of the tables](images/fden_1204.png)
 
 ### Note
 
@@ -7420,6 +7592,8 @@ INSERT INTO Customer (
 The full script of the insert queries is available in this GitHub [file](https://oreil.ly/Hrgjp). Copy all the insert queries, paste them into the Query Tool, and run the operation again. To see the data, right-click on a table name → View/Edit Data → All Rows. See [Figure 12-5](#ch12_figure_5_1724776837381941) for an illustration.
 
 ### Figure 12-5. Visualization of table rows
+
+![Figure 12-5. Visualization of table rows](images/fden_1205.png)
 
 Interestingly, some insert queries consist of multiple statements. For example, a payment transaction needs to be recorded in the transactions table and requires a concurrent update of the account balance in the account table. To this end, both statements need to be wrapped with an explicit SQL transaction. It is called explicit because PostgreSQL executes any statement by default within an implicit transaction. Here is an example where a transaction of 40 USD is recorded for the account with ID = 1:
 
@@ -7523,6 +7697,8 @@ In our database, we will need two tables: one to store the raw intraday data ret
 
 ### Figure 12-6. ERD of the API stock data
 
+![Figure 12-6. ERD of the API stock data](images/fden_1206.png)
+
 Let’s move ahead to test our workflow in action.
 
 ## Project 2: Local Testing
@@ -7556,9 +7732,13 @@ Once the tables are created, it’s time to move on to build our ETL workflow. O
 
 ### Figure 12-7. Mage overview page
 
+![Figure 12-7. Mage overview page](images/fden_1207.png)
+
 After creating your pipeline, you will be redirected to the pipeline edit page, as shown in [Figure 12-8](#ch12_figure_8_1724776837381989).
 
 ### Figure 12-8. Pipeline edit page
+
+![Figure 12-8. Pipeline edit page](images/fden_1208.png)
 
 From the left sidebar, open the file called *io\_config.yaml*, delete all its content, and add the content of the [*io\_config.yaml* file](https://oreil.ly/6O8RI) to it. Once done, from the top menu, click File → “Save file” and then close the file editor. The [*io\_config* file](https://oreil.ly/7gBzq) is used by Mage to store and access credentials required to connect to databases and various storage systems.
 
@@ -7601,6 +7781,8 @@ Once these steps are done, your workflow is complete and ready to be executed. I
 
 ### Figure 12-9. Overview of the full financial data pipeline
 
+![Figure 12-9. Overview of the full financial data pipeline](images/fden_1209.png)
+
 To perform a workflow execution test, navigate to the Pipelines section using Mage’s left sidebar. Locate your pipeline named adjusted\_stock\_data. Click on the pipeline name, then select Run@once from the top menu, and confirm by clicking “Run now.” A new execution line with a random name will appear in the table. Click on the name displayed, then patiently observe the execution progress as it advances through the seven steps.
 
 Once completed with success, navigate to the pgAdmin tab in your browser and check the data in the database. You should see that both tables are populated with the data produced by your pipeline.
@@ -7642,6 +7824,8 @@ As a next step, we need to define the dependency structure among our services. T
 
 ### Figure 12-10. OMS workflow structure
 
+![Figure 12-10. OMS workflow structure](images/fden_1210.png)
+
 ## Project 3: Database Design
 
 A reliable database system is required to store and manage order-related data. In line with the other projects in this chapter, PostgreSQL stands out as our database solution of choice. Different database design patterns exist for microservices. While some advocate for a dedicated database per service, others favor a unified database shared across all microservices. To simplify our microservice structure, let’s proceed with the latter approach—the single shared database pattern.
@@ -7658,6 +7842,8 @@ In our database, we will have five tables:
 [Figure 12-11](#ch12_figure_11_1724776837382037) illustrates the ERD of our OMS database.
 
 ### Figure 12-11. OMS database ERD
+
+![Figure 12-11. OMS database ERD](images/fden_1211.png)
 
 Next, let’s move on to see our microservice system in action.
 
@@ -7686,6 +7872,8 @@ Once completed, you will have three services running that we will be interacting
 Open three browser tabs and paste the three localhost URLs into each. We will be interacting mostly with JupyterLab, so navigate first to the tab for *http://localhost:8888/*. Once it’s ready, open a terminal from the Launcher tab. Consult [Figure 12-12](#ch12_figure_12_1724776837382053) for an illustration.
 
 ### Figure 12-12. JupyterLab main overview page
+
+![Figure 12-12. JupyterLab main overview page](images/fden_1212.png)
 
 In the terminal, type the following command and hit Enter:
 
@@ -7724,6 +7912,8 @@ You should see a log message saying that the workflow has been successfully regi
 
 ### Figure 12-13. Order Workflow definition details page in Conductor
 
+![Figure 12-13. Order Workflow definition details page in Conductor](images/fden_1213.png)
+
 On the left side of [Figure 12-13](#ch12_figure_13_1724776837382071), you will see a lot of workflow definition parameters, many of which can be configured. To avoid extra complexity, we won’t be setting any custom variables in this project. On the right side, you will see a visual representation of our OMS workflow. As you can see, it’s a linear flow where tasks run in a sequence.
 
 Now that we have our workflow registered, let’s execute it. To do so, we need to run the file called *execute\_order\_workflow.py,* which you can find in the *workflow* folder. If you open this file, you will see that I already prepared a dummy workflow input with customer\_id, products, payment amount, and delivery address. You can change these input values if you wish, but you need to make sure that the customer and products you add to the order exist in the database.
@@ -7742,6 +7932,8 @@ Now that you have executed the workflow, you can check the results in the databa
 Finally, you can review the details of your workflow execution via the Conductor UI. Simply visit *http://localhost:5000/* and click on Executions from the top toolbar. In the table displayed on that page, you’ll find a record corresponding to your workflow execution. Click on the ID listed under the workflowid column to access the details of this particular workflow execution. You should see a page similar to [Figure 12-14](#ch12_figure_14_1724776837382088).
 
 ### Figure 12-14. Order Workflow execution details page in Conductor
+
+![Figure 12-14. Order Workflow execution details page in Conductor](images/fden_1214.png)
 
 As shown in [Figure 12-14](#ch12_figure_14_1724776837382088), our workflow execution has completed successfully. By clicking on a specific task in the diagram on the left side, you can view its execution details, including the input it received, the output it produced, its logs, and its task definition details.
 
@@ -7787,6 +7979,8 @@ The only prerequisite for this project is to obtain a PermID API token. To do so
 4. Once signed in, from the top menu, click on APIs → Display my API Token (see [Figure 12-15](#ch12_figure_15_1724776837382104) for an illustration).
 
 ### Figure 12-15. Finding your API token on PermID.org
+
+![Figure 12-15. Finding your API token on PermID.org](images/fden_1215.png)
 
 In the following section, you’ll use this token to communicate with the PermID API.
 
@@ -7939,4 +8133,3 @@ You now possess a deeper understanding of the financial data landscape and the a
 
 Your journey, like Tamer’s and mine, will be one of continuous learning, adaptation, and exploration. The world of financial data is vast, and the challenges it presents are complex—but the rewards for those who embrace these challenges are profound. This book is just the beginning of what promises to be an exciting and fruitful career as a financial data engineer. Take with you the inspiration, creativity, and innovation that define this field, and know that every discovery you make brings you closer to designing the art and mastering the science of financial data engineering.
 
-Brian Buzzelli

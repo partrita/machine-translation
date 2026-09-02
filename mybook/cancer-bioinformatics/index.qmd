@@ -1,12 +1,7 @@
 ---
 title: "암 바이오인포매틱스"
-subtitle: "Cancer Bioinformatics"
 author: "알렉산더 크라스니츠(Alexander Krasnitz)"
 ---
-
-# 암 생물정보학(Cancer Bioinformatics)
-
-Alexander Krasnitz
 
 # 제1장
 
