@@ -8,7 +8,7 @@
 
 <meta name="author" content="사라 로젠바움 (Sara Rosenbaum)">
 
-<title>기초 약동학 및 약력학: 통합적 접근 – Machine translation</title>
+<title>기초 약동학 및 약력학 – Machine translation</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -42,10 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,7 +119,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ai-drug-discovery/index.html">신약 개발, 약동학 및 헬스케어</a></li><li class="breadcrumb-item"><a href="../pkpd-integrated-textbook/index.html"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ai-drug-discovery/index.html">신약 개발, 약동학 및 헬스케어</a></li><li class="breadcrumb-item"><a href="../pkpd-integrated-textbook/index.html"><span class="chapter-title">기초 약동학 및 약력학</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,7 +146,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -187,7 +191,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -197,12 +201,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -212,7 +216,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -258,7 +262,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -273,7 +277,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -294,7 +298,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -309,12 +313,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -345,17 +349,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -371,12 +370,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -401,12 +400,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -416,7 +415,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -442,7 +441,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -462,12 +461,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -482,7 +481,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -492,12 +491,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -518,17 +517,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -877,7 +871,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1841,9 +1835,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ai-drug-discovery/index.html">신약 개발, 약동학 및 헬스케어</a></li><li class="breadcrumb-item"><a href="../pkpd-integrated-textbook/index.html"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ai-drug-discovery/index.html">신약 개발, 약동학 및 헬스케어</a></li><li class="breadcrumb-item"><a href="../pkpd-integrated-textbook/index.html"><span class="chapter-title">기초 약동학 및 약력학</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></h1>
+<h1 class="title"><span class="chapter-title">기초 약동학 및 약력학</span></h1>
 <p class="subtitle lead">Basic Pharmacokinetics and Pharmacodynamics: An Integrated Approach</p>
 </div>
 
@@ -1963,7 +1957,7 @@ window.Quarto = {
 <section id="약물의-혈장-농도-plasma-concentration-of-drugs" class="level3">
 <h3 class="anchored" data-anchor-id="약물의-혈장-농도-plasma-concentration-of-drugs">1.3.1 약물의 혈장 농도 (Plasma Concentration of Drugs)</h3>
 <p>앞서 언급했듯이 약동학은 약물에 대한 신체의 노출 및 약물 농도가 시간에 따라 어떻게 변하는지에 관심을 둔다. 대부분의 경우 혈장 내 약물 농도가 약동학의 초점이다. 그 이유는 두 가지이다. 첫째, 혈액은 투여 후 정해진 시간에 약물 농도를 측정하기 위해 반복적으로 채취하고 분석할 수 있는 몇 안 되는 체액 중 하나이다. 전혈(whole blood) 내 약물 농도는 약동학에서 흔히 사용되지 않는데, 혈액은 혈장수에 적혈구, 백혈구, 혈소판이 부유해 있는 복잡한 물리적 계이기 때문이다. 원심분리(혈장, plasma) 또는 응고(혈청, serum)를 통해 세포 성분을 제거한 혈액이 선호된다. 혈장을 채취하려면 헤파린(heparin)과 같은 항응고제를 사용해야 한다. 그러나 헤파린은 일부 약물의 분석을 방해할 수 있다. 이러한 경우(예: 디곡신 농도 측정) 혈장 대신 혈청이 기준 체액으로 사용된다. 이 책에서는 혈장과 혈청을 구분하지 않으며, ’혈장 농도’라는 용어를 거의 보편적으로 사용할 것이다.</p>
-<pre><code>[정제 내 약물] 
+<pre><code>[정제 내 약물]
      | (위장관 막을 통한 흡수)
      v
    [간]  ---&gt; (대사)
@@ -2071,9 +2065,7 @@ window.Quarto = {
 <p>이 도표는 약물의 치료 범위를 추정하는 데 사용된다. MEC와 MTC는 일반적으로 각각 높은 비율의 환자가 치료 효과를 경험하는 농도와 낮은 비율의 환자가 독성을 경험하는 농도로 선택된다. MEC와 MTC로 선택되는 구체적인 농도는 안전역(margin of safety)과 특정 적응증에 허용 가능한 유익성-위해성 비율(risk–benefit ratio)에 따라 달라진다. 예를 들어 일반의약품(OTC) 진통제나 비스테로이드성 소염진통제의 MTC는 암과 같이 생명을 위협하는 질환을 치료하는 데 사용되는 약물의 MTC보다 훨씬 독성이 적은 농도에서 선택될 것이다. 그림 1.11에서 MEC는 인구의 70%가 치료적 유익을 경험한 농도로 선택되었고, MTC는 인구의 10%가 일부 유해 반응을 경험한 농도로 선택되었다.</p>
 <p>치료 범위는 임상적으로 매우 유용했으며, 특히 좁은 치료 범위와 환자 간 용량 요구량의 큰 변동성을 모두 지닌 약물의 최적 용량을 임상의가 결정하는 데 큰 도움이 되었다. 이러한 약물의 예는 표 1.3에 나타나 있다. 한 환자에게 최적의 용량(즉, 치료 범위 내의 혈장 농도를 제공하는 용량)이 두 번째 환자에서는 MEC 미만의 농도를 생성할 수 있고 세 번째 환자에서는 MTC를 초과하는 농도를 생성할 수 있다. 그 결과 일반적인 용량으로 도달한 혈장 농도를 측정한 다음 약동학 원리를 적용하여 치료 범위 내의 농도를 제공할 수 있는 용량을 계산함으로써 투여 용량을 개별화(individualize)하는 경우가 빈번하다.</p>
 <p>표 1.3 주요 예시 약물의 치료 범위 [1] | 약물 (Drug) | 치료 범위 (Therapeutic Range) | | :— | :— | | 사이클로스포린 (Cyclosporine) | 100–400<span class="math inline">\(^a\)</span> <span class="math inline">\(\mu\text{g/L}\)</span>, 전혈 HPLC<span class="math inline">\(^b\)</span> 분석 | | 디곡신 (Digoxin) | 0.5–2<span class="math inline">\(^c\)</span> <span class="math inline">\(\mu\text{g/L}\)</span> | | 리튬 (Lithium) | 0.6–1.5 <span class="math inline">\(\text{mEq/L}\)</span> | | 페니토인 (Phenytoin) | 10–20 <span class="math inline">\(\text{mg/L}\)</span> | | 타크로리무스 (Tacrolimus) | 5–20<span class="math inline">\(^a\)</span> <span class="math inline">\(\mu\text{g/L}\)</span>, 전혈 | | 테오필린 (Theophylline) | 5–15 <span class="math inline">\(\text{mg/L}\)</span> |</p>
-<p><span class="math inline">\(^a\)</span>이식 후 경과 시간, 이식 유형 및 해당 센터의 선호도에 따라 달라짐.<br>
-<span class="math inline">\(^b\)</span>고성능 액체 크로마토그래피(High-performance liquid chromatography).<br>
-<span class="math inline">\(^c\)</span>적응증에 따라 달라짐.</p>
+<p><span class="math inline">\(^a\)</span>이식 후 경과 시간, 이식 유형 및 해당 센터의 선호도에 따라 달라짐. <span class="math inline">\(^b\)</span>고성능 액체 크로마토그래피(High-performance liquid chromatography). <span class="math inline">\(^c\)</span>적응증에 따라 달라짐.</p>
 <p>그러나 치료 범위에는 다음과 같은 한계가 있음을 인식하는 것이 중요하다:</p>
 <ol type="1">
 <li>대부분의 사람들에게 최적인 농도 범위를 나타낸다. 그러나 특정 환자는 MEC 미만의 농도에서도 치료 효과를 경험하며, 다른 환자는 MTC 미만에서도 독성을 경험한다. 일부 환자는 MTC를 훨씬 초과하는 농도에서도 결코 치료적으로 반응하지 않는다.</li>
@@ -2770,8 +2762,7 @@ window.Quarto = {
 <li>약물의 용해</li>
 <li>위장관막을 가로지르는 약물의 확산</li>
 <li><ol type="a">
-<li>위장관막을 통한 약물의 능동적 유입<br>
-</li>
+<li>위장관막을 통한 약물의 능동적 유입</li>
 <li>장세포에서 내강으로의 약물의 능동적 유출</li>
 </ol></li>
 <li>장세포 내에서의 약물 대사</li>
@@ -2779,11 +2770,11 @@ window.Quarto = {
 </ol>
 <p>이미 분산된 상태(현탁액 제형)이거나 용액 상태(시럽과 같은 용액 제형)인 약물은 정제와 같은 고체 제형보다 흡수 사슬에서 더 앞선 단계에 있게 된다. 결과적으로 현탁액 및 특히 용액으로 조제된 약물은 고체 제형에 비해 더 빠르고/또는 더 완전한 흡수를 나타내는 경우가 많다. 예를 들어 용해 특성이 불량한 이트라코나졸(itraconazole)의 흡수는 정제보다 용액 제형에서 더 우수하다.</p>
 <pre><code>[그림 3.3 경구용 정제로 투여된 약물 용량의 경구 흡수에 관여하는 단계들]
-복용 후 정제는 약물이 용해될 수 있도록 위장관액에서 붕해되어야 한다. 
-용액 상태가 되면 약물은 장막을 통과할 기회를 갖는다. 막을 통과하는 투여량의 분율은 Fa이다. 
-막에서 약물은 유입 및 유출 수송체의 영향을 받을 수 있다. 
-장세포 내에서 약물은 대사될 수 있다. 대사를 회피하는 장세포 내 약물의 분율은 Fg이다. 
-약물이 모세혈관으로 들어가면 간으로 운반되어 대사를 겪을 수 있다. 
+복용 후 정제는 약물이 용해될 수 있도록 위장관액에서 붕해되어야 한다.
+용액 상태가 되면 약물은 장막을 통과할 기회를 갖는다. 막을 통과하는 투여량의 분율은 Fa이다.
+막에서 약물은 유입 및 유출 수송체의 영향을 받을 수 있다.
+장세포 내에서 약물은 대사될 수 있다. 대사를 회피하는 장세포 내 약물의 분율은 Fg이다.
+약물이 모세혈관으로 들어가면 간으로 운반되어 대사를 겪을 수 있다.
 Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 전신 순환계 내의 유효 용량 = Fa · Fg · Fh · D</code></pre>
 <hr>
@@ -2837,9 +2828,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <h4 class="anchored" data-anchor-id="예제-3.1">예제 3.1</h4>
 <p>다음과 같은 특성을 가진 약물을 고려해보자: - 투여된 약물 용량의 20%가 위산에 의해 파괴된다. - 나머지 약물은 정점막을 완전히 통과한다. - 점막을 통과하는 약물의 10%가 장세포에서 대사된다. - 간으로 들어가는 약물의 40%가 대사된다.</p>
 <p>100 mg을 투여했을 때 유효 용량을 구하시오.</p>
-<p><strong>풀이:</strong> 위산 파괴 후 정점막을 통과하는 분율 <span class="math inline">\(F_a = 1.0 - 0.20 = 0.8\)</span><br>
-장 대사를 회피하는 분율 <span class="math inline">\(F_g = 1.0 - 0.10 = 0.9\)</span><br>
-간 대사를 회피하는 분율 <span class="math inline">\(F_h = 1.0 - 0.40 = 0.6\)</span></p>
+<p><strong>풀이:</strong> 위산 파괴 후 정점막을 통과하는 분율 <span class="math inline">\(F_a = 1.0 - 0.20 = 0.8\)</span> 장 대사를 회피하는 분율 <span class="math inline">\(F_g = 1.0 - 0.10 = 0.9\)</span> 간 대사를 회피하는 분율 <span class="math inline">\(F_h = 1.0 - 0.40 = 0.6\)</span></p>
 <p><span class="math display">\[F = F_a \cdot F_g \cdot F_h = 0.8 \times 0.9 \times 0.6 = 0.432\]</span></p>
 <p>100 mg을 투여한 경우 유효 용량은 다음과 같다: <span class="math display">\[\text{유효 용량} = F \cdot D = 0.432 \times 100\text{ mg} = 43.2\text{ mg}\]</span></p>
 <hr>
@@ -3036,7 +3025,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <p><strong>장간 순환(enterohepatic recirculation)</strong>으로 알려진 이 과정은 종종 약물의 혈장 농도-시간 프로파일에서 2차 피크(secondary peak)가 나타나는 결과를 낳는다(그림 3.9).</p>
 <pre><code>[그림 3.9 장간 순환의 개요]
 (a) 장간 순환의 모식도.
-(b) 약물의 글루쿠론산 포합체(D-G)가 장내 세균총에 의해 가수분해되어 약물(D)로 유리된다. 
+(b) 약물의 글루쿠론산 포합체(D-G)가 장내 세균총에 의해 가수분해되어 약물(D)로 유리된다.
 약물의 재흡수로 인해 혈장 농도-시간 곡선에서 두 번째 농도 피크가 나타난다.</code></pre>
 <p>…신체에서 이미 제거(배설)된 약물의 재흡수를 초래한다. 따라서 이론적으로 장간순환(enterohepatic recirculation)은 어떤 약물의 생체이용률 인자(bioavailability factor)가 1보다 커지는 결과를 낳을 수 있다. 퀴놀론계(quinolones)와 같은 광범위 항생제(broad-spectrum antibiotics)를 병용 투여하면 장내 세균총(gut flora) 군집이 감소할 수 있으며, 이는 결과적으로 장간순환 감소와 신체의 약물 노출(exposure) 감소로 이어질 수 있다. 경구 피임약의 한 성분인 에티닐에스트라디올(ethinyl estradiol)의 장간순환은 항생제 병용에 의해 감소될 수 있으며, 이는 해당 약물의 유효성을 저하시킬 수 있다. 일반적으로 이는 이미 에티닐에스트라디올의 생체이용률이 낮아지기 쉬운 환자나 항생제 리팜핀(rifampin)을 사용할 때 주로 문제가 되는 것으로 여겨진다. 장내 세균총을 감소시키는 것 외에도 리팜핀은 간 효소를 유도하여 에스트라디올의 대사를 증가시킴으로써 신체의 에스트라디올 노출을 더욱 감소시킬 수 있다.</p>
 </section>
@@ -3238,8 +3227,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 </tr>
 </tbody>
 </table>
-<p><em>ᵃ 0.24 정도로 낮게 보고되기도 하였다.</em><br>
-<em>ᵇ 정맥 및 경구 데이터로부터 추정됨[43].</em></p>
+<p><em>ᵃ 0.24 정도로 낮게 보고되기도 하였다.</em> <em>ᵇ 정맥 및 경구 데이터로부터 추정됨[43].</em></p>
 <p>유의한 장 추출을 겪는 약물은 임상적으로 중요한 약물 상호작용에 특히 취약하다. 예를 들어 이론적으로 타크로리무스의 장 추출이 완전히 억제된다면 그 생체이용률은 약 0.14에서 거의 1로 증가할 것이며, 이는 유효 용량이 7배(1/0.14) 증가하는 것과 같다. 표 3.4는 심바스타틴과 같이 장 추출률이 높은 약물이 아토르바스타틴과 같이 장 추출률이 낮은 약물보다 장 추출의 변화에 훨씬 더 민감하다는 것을 보여준다. 장 추출이 10% 감소할 때 생체이용률에 미치는 영향이 제시되어 있다. 낮은 추출 약물의 유효 용량에는 거의 변화가 없음을 알 수 있다. 대조적으로, 높은 추출 약물의 추출이 10% 감소하면 유효 용량이 본질적으로 2배가 된다. 억제제가 존재할 때 부스피론, 타크로리무스, 시롤리무스(sirolimus), 로바스타틴 및 심바스타틴의 생체이용률이 크게 증가(어떤 경우에는 10배 이상)하는 것이 관찰되었다. 감소된 P-gp 활성뿐만 아니라 감소된 간 CYP3A4 활성도 이러한 효과에 기여할 수 있다.</p>
 <p><strong>표 3.4</strong> 고추출 약물 및 저추출 약물의 경구 유효 용량에 대한 장 추출률 10% 감소의 영향</p>
 <table class="caption-top table">
@@ -3307,8 +3295,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <section id="전신순환-전-간-대사-또는-추출-presystemic-hepatic-metabolism-or-extraction" class="level2">
 <h2 class="anchored" data-anchor-id="전신순환-전-간-대사-또는-추출-presystemic-hepatic-metabolism-or-extraction">3.5.10 전신순환 전 간 대사 또는 추출 (Presystemic Hepatic Metabolism or Extraction)</h2>
 <p>약물이 장막의 기저외측을 통과한 후에는 소장을 둘러싼 장간막 혈관으로 유입된다. 이 혈관들은 간문맥계(hepatic portal system)로 이어져 약물을 간으로 직접 운반한다. 간은 약물 제거(배설)를 위한 주요 장기이며 약물 대사효소의 전체 구성을 모두 갖추고 있는데(제5장 참조), 이 효소들은 신체 어느 곳보다도 높은 농도로 존재한다. 그 결과 경구 투여량의 일부는 간을 처음 통과하는 동안(초회 통과) 전신순환에 도달하기 전에 손실될 수 있다. 전신순환 전 간 추출(초회 통과 효과, first-pass effect)의 정도는 특정 약물을 대사하는 간 효소의 능력에 달려 있다. 이는 약물의 간 추출비(hepatic extraction ratio, <span class="math inline">\(E\)</span>)를 사용하여 표현되며, 간 추출비는 간을 한 번 통과하는 동안 대사되는 유입 약물의 분율로 정의된다. 분율로서 <span class="math inline">\(E\)</span>는 0과 1 사이의 값을 가질 수 있으며 정상적인 조건에서 특정 약물에 대해 일정한 상수이다. 간 효소가 특정 약물을 대사하는 능력이 크다면 추출비가 클 것이며, 유입된 약물의 큰 분율이 간을 처음 통과하는 동안 손실될 것이다. 약물의 간 생체이용률(<span class="math inline">\(F_h\)</span>)은 간으로 들어가는 투여량 중 추출을 피하고 빠져나오는 분율로 정의된다는 점을 상기하자. 따라서 <span class="math inline">\(F_h\)</span>는 <span class="math inline">\(1 - E\)</span>와 같으며, 높은 수준의 추출은 작은 간 생체이용률과 연관된다.</p>
-<p>예를 들어 <span class="math inline">\(E = 0.8\)</span>일 때, 간으로 유입되는 약물의 80%가 초회 통과 중에 대사에 의해 제거된다.<br>
-<span class="math inline">\(F_h\)</span>는 간으로 들어오는 약물 중 대사를 피하는 분율이다: <span class="math display">\[F_h = 1 - E = 1 - 0.8 = 0.2\]</span> 간으로 들어온 약물의 20%가 대사를 피하여 전신순환에 도달한다.</p>
+<p>예를 들어 <span class="math inline">\(E = 0.8\)</span>일 때, 간으로 유입되는 약물의 80%가 초회 통과 중에 대사에 의해 제거된다. <span class="math inline">\(F_h\)</span>는 간으로 들어오는 약물 중 대사를 피하는 분율이다: <span class="math display">\[F_h = 1 - E = 1 - 0.8 = 0.2\]</span> 간으로 들어온 약물의 20%가 대사를 피하여 전신순환에 도달한다.</p>
 <p>광범위한 초회 통과 추출로 인한 불량한 경구 생체이용률은 일부 약물에서 경구 투여 경로를 배제시키는 요인이 될 수 있다. 광범위한 초회 통과 추출을 겪어 경구로 투여할 수 없는 약물의 예로는 리도카인(lidocaine), 니트로글리세린(nitroglycerin), 날록손(naloxone)이 있다. 이 세 약물의 대체 경로는 비경구, 구강점막, 비강내, 경피 경로를 포함한다.</p>
 <p>흥미롭게도 아편유사제 길항제인 날록손을 함유한 경구 제제도 존재한다. 이 약물은 탈윈(Talwin) 정제에서 아편유사제인 펜타조신(pentazocine)과의 복합제로 들어있다. 이 정제는 헤로인 대체물을 만들기 위해 펜타조신을 오남용하는 것을 방지하기 위해 특별히 개발되었다. 탈윈 정제를 경구로 복용하면 날록손은 간에서의 광범위한 초회 통과 추출로 인해 비활성 상태가 된다. 그러나 이 제제를 정맥주사나 피하주사로 투여하려 시도할 경우 날록손이 완전히 생체이용되어 펜타조신의 작용을 차단하게 된다.</p>
 <p>광범위한 초회 통과 대사에도 불구하고 프로프라놀롤(propranolol), 메페리딘(meperidine), 베라파밀을 포함한 많은 다른 약물들은 여전히 경구로 투여된다. 이들 약물의 경구 용량은 정맥 투여 용량을 크게 상회한다.</p>
@@ -3480,10 +3467,8 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <h2 class="anchored" data-anchor-id="연습문제-problems">연습문제 (PROBLEMS)</h2>
 <p><strong>3.1</strong> 어떤 약물의 <span class="math inline">\(\log D_{6.0}\)</span> 값은 3.7이며 수용성 매질에서 난용성이다. 경구 투여 시 불완전한 용출로 인해 투여량의 약 30%가 손실된다. 흡수 과정 중에는 더 이상의 문제가 발생하지 않지만, 이 약물은 CYP3A4의 기질이어서 막을 통과하는 약물의 약 25%가 장 대사를 겪는다. 간을 처음 통과하는 동안 대사로 인해 약물의 약 70%가 손실된다.</p>
 <ol type="a">
-<li>이 약물의 <span class="math inline">\(F_a\)</span>, <span class="math inline">\(F_g\)</span>, <span class="math inline">\(F_h\)</span>, 그리고 <span class="math inline">\(F\)</span>를 계산하시오.<br>
-</li>
-<li>50 mg을 경구 투여했을 때 유효 용량(effective dose)을 구하시오.<br>
-</li>
+<li>이 약물의 <span class="math inline">\(F_a\)</span>, <span class="math inline">\(F_g\)</span>, <span class="math inline">\(F_h\)</span>, 그리고 <span class="math inline">\(F\)</span>를 계산하시오.</li>
+<li>50 mg을 경구 투여했을 때 유효 용량(effective dose)을 구하시오.</li>
 <li>100 mg 경구 용량과 동등한 정맥 투여 용량의 값을 구하시오.</li>
 </ol>
 <p><strong>3.2</strong> 본서 전반에 걸쳐 리포아미드(lipoamide), 노솔라톨(nosolatol), 디솔브프라졸(disolvprazole)이라는 세 가지 가상 약물이 예시로 사용된다. 이 약물들에 대한 세부 정보는 부록 E에 제공되어 있다. 리포아미드는 새로운 해열제이고, 노솔라톨은 심장 선택성 <span class="math inline">\(\beta_1\)</span>-아드레날린 수용체 차단제(cardioselective <span class="math inline">\(\beta_1\)</span>-adrenergic antagonist)이며, 디솔브프라졸은 프로톤 펌프 억제제(proton pump inhibitor)이다. 표 P3.2는 세 약물의 물리화학적 특성을 나타낸다.</p>
@@ -3577,10 +3562,8 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 </tbody>
 </table>
 <ol type="a">
-<li>이 정보를 활용하여 세 약물의 경구 투여 가능성을 논의하시오. 이 정보가 약물이 장막(intestinal membrane)을 투과하는 방식, 예상되는 흡수 정도, 그리고 생물약제학적 분류체계(BCS) 또는 생물약제학적 약물 처분 분류체계(BDDCS)에 따라 어떻게 분류될 수 있는지에 대해 어떤 통찰을 제공하는지 상세히 다루시오.<br>
-</li>
-<li>음식물이 각 약물의 흡수에 어떤 영향을 미칠 것으로 예측되는지 논의하시오.<br>
-</li>
+<li>이 정보를 활용하여 세 약물의 경구 투여 가능성을 논의하시오. 이 정보가 약물이 장막(intestinal membrane)을 투과하는 방식, 예상되는 흡수 정도, 그리고 생물약제학적 분류체계(BCS) 또는 생물약제학적 약물 처분 분류체계(BDDCS)에 따라 어떻게 분류될 수 있는지에 대해 어떤 통찰을 제공하는지 상세히 다루시오.</li>
+<li>음식물이 각 약물의 흡수에 어떤 영향을 미칠 것으로 예측되는지 논의하시오.</li>
 <li>각 약물에 대해 보고된 생체이용률 수치에 대한 가능한 설명들을 제시하시오.</li>
 </ol>
 <hr>
@@ -3768,7 +3751,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <p>전반적으로 약물 분포는 주로 혈장과 조직 내 비결합 약물에 의해 형성된 농도 기울기를 따라 일어나는 약물의 수동 확산에 의해 유도됩니다. 전반적인 약물 분포 양상은 약물이 접근할 수 있는 생리학적 용적과 이러한 공간 내에서의 약물 결합 및 분배에 의한 농축 효과에 의해 결정됩니다. 분포가 완료되면 약물이 존재하는 생리학적 용적 전반에 걸쳐 비결합 약물 농도는 동일해야 합니다. 유입 및 유출 수송체 또한 약물 분포에 관여할 수 있으며, 각각 수동 확산만으로 예측된 것 이상으로 약물의 분포를 촉진하거나 제한할 수 있습니다.</p>
 <pre><code>(a) 혈장/조직 모두 결합 없음        (b) 혈장 단백질에 결합             (c) 조직에 결합
     (No binding)                 (Binding to plasma proteins)     (Binding in tissues)
-    
+
 [혈장]     [조직]                 [혈장]     [조직]                 [혈장]     [조직]
 |       |  |       |              |-------|  |       |              |       |  |-------| &lt;- 결합형(Bound)
 |       |  |       |              | 결합형 |  |       |              |       |  | 결합형 |
@@ -3894,7 +3877,7 @@ Fh는 간으로 들어가는 약물 중 대사를 회피하는 분율이다.
 <p>그림 4.5는 용량제한적 과정의 생성물(이 경우 결합 약물 농도 Cpb)과 그 과정을 유도하는 농도(유리 약물 농도 Cpu) 사이의 전형적인 관계를 보여줍니다. 낮은 농도에서는 유리 약물의 증가에 정비례하여 결합이 증가합니다(Cpu가 증가해도 fu는 일정하게 유지됨). 유리 약물 농도가 더 증가하면 단백질의 일부 포화가 일어나고, 비례적으로 더 적은 약물이 결합할 수 있습니다(Cpu가 증가함에 따라 fu가 증가함). 결국 높은 약물 농도에서는 단백질의 모든 결합 부위가 점유되어 결합이 더 이상 증가할 수 없습니다.</p>
 <pre><code>Cpb (결합 약물 농도)
   ^
-  |                  단백질의 모든 결합 부위가 점유됨. 
+  |                  단백질의 모든 결합 부위가 점유됨.
 Cpb,max ------------- 결합은 더 이상 증가할 수 없음.
   |                 /
   |                /  이 영역에서는 Cpb가 Cpu 증가에
@@ -4142,7 +4125,7 @@ Cpb,max/2 ------- /   정비례하여 증가하며 fu는 일정하게 유지됨.
 <p>중추신경계(CNS)로의 약물 분포는 뇌혈관장벽(혈뇌장벽, BBB)과 혈액-뇌척수액(CSF) 장벽에 의해 제한된다. 뇌로의 약물 접근을 차단하는 이 두 가지 문지기는 암, 신경계 질환, 기분 장애 및 감염과 같은 CNS 질환 치료제의 개발을 심각하게 저해한다. 그 결과, 비-CNS 질환에 비해 CNS 질환 치료에 사용할 수 있는 약물의 수가 훨씬 적다. 새롭게 개발되는 중추 작용 약물의 약 98%가 BBB 및 혈액-뇌척수액 장벽을 통과하지 못해 개발 과정에서 실패하는 것으로 추정된다[3]. 따라서 많은 연구가 CNS로의 약물 전달을 증가시키는 데 집중되고 있다.</p>
 <p>파킨슨병(Parkinson’s disease) 치료를 위한 레보도파(levodopa)와 카르비도파(carbidopa)의 병용 요법은 BBB를 우회할 뿐만 아니라 치료적 이점으로 활용하는 방식을 보여주는 고전적이면서도 창의적인 예시이다(그림 4.7).</p>
 <pre><code>[말초 순환계 Peripheral circulation]        [중추신경계 Central nervous system]
-                
+
 카르비도파 (CARBIDOPA) ─────────(BBB 통과 불가)─────────&gt; (효과 없음)
        │ (억제: -)
        ▼
@@ -4406,12 +4389,7 @@ Cpb,max/2 ------- /   정비례하여 증가하며 fu는 일정하게 유지됨.
 </tbody>
 </table>
 <hr>
-<p>100 약물 제거 및 청소율<br>
-5.4.7.5 간청소율 시뮬레이션 모델<br>
-5.4.7.6 청소율과 미카엘리스-멘텐 매개변수 간의 관계<br>
-5.4.7.7 혈액 간청소율과 혈장 간청소율 간의 관계<br>
-연습문제<br>
-참고문헌</p>
+<p>100 약물 제거 및 청소율 5.4.7.5 간청소율 시뮬레이션 모델 5.4.7.6 청소율과 미카엘리스-멘텐 매개변수 간의 관계 5.4.7.7 혈액 간청소율과 혈장 간청소율 간의 관계 연습문제 참고문헌</p>
 <section id="학습-목표" class="level4">
 <h4 class="anchored" data-anchor-id="학습-목표">학습 목표</h4>
 <p>이 장의 내용을 통해 독자는 다음을 수행할 수 있게 됩니다. 1. 약물 제거의 주요 경로를 규명할 수 있다. 2. 약물 제거에 1차 속도론(first-order kinetics)을 적용할 수 있다. 3. 청소율(clearance)이 약물 제거를 나타내는 데 어떻게 사용되는지 이해할 수 있다. 4. 청소율, 분포용적, 약물 제거 속도 간의 상호 관계를 이해할 수 있다. 5. 신청소율을 제어하는 요인인 사구체 여과, 세뇨관 분비, 세뇨관 재흡수를 이해할 수 있다. 6. 약물 대사에 관여하는 주요 효소들을 파악할 수 있다. 7. 대사 기반 약물-약물 상호작용의 특징을 설명할 수 있다. 8. 간청소율에서 주요 약물 수송체의 역할을 이해할 수 있다. 9. 간청소율을 결정하는 요인들을 이해할 수 있다. 10. 제한적 간청소율(restrictive clearance)과 비제한적 간청소율(nonrestrictive clearance)을 이해할 수 있다. 11. 약물 대사 조절 인자가 비제한적 및 제한적으로 청소되는 약물의 약동학에 미치는 영향을 구별할 수 있다. 12. 임상 자료로부터 전신청소율 및 신청소율을 산출할 수 있다.</p>
@@ -4591,7 +4569,7 @@ Cpb,max/2 ------- /   정비례하여 증가하며 fu는 일정하게 유지됨.
 <hr>
 <p>청소율 107</p>
 <pre><code> Cp (혈장 농도)
-  | 
+  |
   | *
   |   *
   |     *
@@ -4668,7 +4646,7 @@ Cl_{GF} &amp;= fu \cdot \text{GFR} \\
 <p>약물 제거는 주로 근위세뇨관 세포막에 위치한 다양한 수송체에 의해 일어나는 세뇨관 분비(tubular secretion)를 통해 더욱 증대될 수 있습니다. 신장으로 청소되는 약물의 최소 92%가 어느 정도의 분비를 겪는 것으로 추정되므로, 신장 분비는 신청소율의 중요한 부분을 차지합니다[2]. 신장 배설에서 수송체의 역할에 관한 몇 가지 종설 논문을 문헌에서 찾을 수 있습니다[2, 4–8].</p>
 <p>유입 수송체(uptake transporter: OAT1, OAT3, OCT2)는 주로 기저측막(basolateral membrane)에 위치하며, 유출 수송체(efflux transporter: P-gp, MRP2, MRP4, MATE)는 정단막(apical membrane)에 위치합니다. 이러한 위치에서 두 수송체 시스템은 모두 기질의 요중 배설을 촉진하는 역할을 합니다(그림 5.5).</p>
 <p>일부 약물 기질의 경우, 두 수송체 시스템이 함께 작용하여 먼저 세뇨관 세포 내로의 흡수를 일으킨 다음 세뇨관 내로의 연속적인 유출을 조율합니다.</p>
-<pre><code> [혈액 (BLOOD)] 
+<pre><code> [혈액 (BLOOD)]
       |  (기저측막 / Basolateral side)
       v
   [OAT1, OAT3, OCT2 (유입/U)]
@@ -5138,9 +5116,7 @@ Cl_{GF} &amp;= fu \cdot \text{GFR} \\
 </tr>
 </tbody>
 </table>
-<p><em>출처: 참고문헌 [13]의 데이터.</em><br>
-<span class="math inline">\(^a\)</span>이 표는 다양한 CYP 효소의 상대적 존재량을 보여주고 유의한 유전적 다형성을 나타내는 효소를 식별합니다.<br>
-<span class="math inline">\(^b\)</span>최근 연구에서 유전적 다형성이 입증되었습니다.</p>
+<p><em>출처: 참고문헌 [13]의 데이터.</em> <span class="math inline">\(^a\)</span>이 표는 다양한 CYP 효소의 상대적 존재량을 보여주고 유의한 유전적 다형성을 나타내는 효소를 식별합니다. <span class="math inline">\(^b\)</span>최근 연구에서 유전적 다형성이 입증되었습니다.</p>
 <p>CYP 효소계는 임상적으로 사용되는 약물의 약 55%의 소실을 담당하며[11], 약물 소실에서 매우 중요한 역할을 합니다. 이 기능은 주로 CYP 슈퍼패밀리(superfamily) 내의 9가지 특정 효소 또는 동종효소(isoforms)에 의해 수행됩니다. 패밀리 및 서브패밀리의 분류 체계는 아미노산 서열의 유사성에 기초합니다. 인간 간에서 이들 효소와 그 상대적 존재량은 표 5.4에 나와 있습니다.</p>
 <p>CYP3A4가 가장 풍부하며 가장 많은 수의 약물 대사에 관여합니다. CYP3A 패밀리는 CYP 매개 대사의 약 46%를 담당합니다[11]. 많은 약물이 여러 효소에 의해 대사되므로 약물 소실 관여도에 따라 효소의 순위를 매기기는 어렵습니다. 그러나 산화적 1상 반응의 약 80%는 CYP3A4, CYP2D6, CYP2C9, CYP2C19의 네 가지 CYP 효소에 의해 매개되는 것으로 생각됩니다.</p>
 <p>약물을 대사하는 데 있어 개별 효소의 상대적 중요성이 반드시 그 상대적 존재량과 비례하지는 않는다는 점에 유의해야 합니다. CYP2D6는 전체 간 CYP의 5% 미만을 구성하지만, CYP 시스템에 의해 대사되는 약물의 약 20%의 대사를 담당합니다. 대조적으로, CYP2E1은 비교적 풍부하지만 약물 대사에는 거의 역할을 하지 않습니다. 이 효소는 에탄올과 당뇨병 환자에서 생성될 수 있는 아세톤에 의해 유도되며, 아세트아미노펜의 독성 대사체를 포함한 독성 대사체 생성에 중요한 것으로 생각됩니다.</p>
@@ -5272,8 +5248,7 @@ Cl_{GF} &amp;= fu \cdot \text{GFR} \\
 <p>미카엘리스-멘텐 식 (5.44)에 따르면 약물 농도와 과정 속도 사이의 관계는 쌍곡선 곡선(hyperbolic curve)으로 정의됩니다(그림 5.9). 이 곡선은 효소의 양이 유한하다는 사실로 설명됩니다. - <strong>낮은 약물 농도:</strong> 유리 효소 농도가 높으며 대사 속도는 약물 농도의 증가에 비례하여 증가할 수 있습니다(1차 속도론, first order)(그림 5.7). - 약물 농도가 더 증가함에 따라 어느 정도의 포화가 발생하고 대사 속도는 더 이상 약물 농도 증가에 비례하여 증가할 수 없습니다. - 결국 모든 효소가 약물에 의해 점유되면 대사 속도는 일정해지고(0차 속도론, zero order) 최대 수준에 도달합니다(그림 5.9).</p>
 <p>따라서 극단적으로 낮은 농도와 높은 농도에서 대사 속도는 각각 1차 및 0차 속도론을 따릅니다. 이를 수학적으로 표현하면 다음과 같습니다:</p>
 <ol type="1">
-<li><strong>낮은 약물 농도에서 (<span class="math inline">\(C_u^h \ll K_m\)</span>):</strong><br>
-<span class="math inline">\(K_m + C_u^h \approx K_m\)</span>이 되므로 식 (5.44)의 분모가 단순화됩니다: <span class="math display">\[V = \frac{V_{max} \cdot C_u^h}{K_m} = k \cdot C_u^h \tag{5.46}\]</span> 여기서 <span class="math inline">\(k\)</span>는 <span class="math inline">\(V_{max} / K_m\)</span>과 같은 상수입니다. 따라서 <span class="math inline">\(C_u^h \ll K_m\)</span>일 때 대사 속도는 1차 속도론을 따릅니다(그림 5.9).</li>
+<li><strong>낮은 약물 농도에서 (<span class="math inline">\(C_u^h \ll K_m\)</span>):</strong> <span class="math inline">\(K_m + C_u^h \approx K_m\)</span>이 되므로 식 (5.44)의 분모가 단순화됩니다: <span class="math display">\[V = \frac{V_{max} \cdot C_u^h}{K_m} = k \cdot C_u^h \tag{5.46}\]</span> 여기서 <span class="math inline">\(k\)</span>는 <span class="math inline">\(V_{max} / K_m\)</span>과 같은 상수입니다. 따라서 <span class="math inline">\(C_u^h \ll K_m\)</span>일 때 대사 속도는 1차 속도론을 따릅니다(그림 5.9).</li>
 </ol>
 <pre><code>대사 속도 (V)
 Vmax   |....................... (Chu &gt;&gt; Km: 효소 포화, 속도 일정 [0차])
@@ -5286,8 +5261,7 @@ Vmax/2 |...........*        .
        0    Chu   Km    Chu</code></pre>
 <p><strong>그림 5.9</strong> 간 내 비결합 약물 농도에 따른 대사 속도 그래프. 미카엘리스-멘텐 상수(<span class="math inline">\(K_m\)</span>)는 대사 속도가 최대 속도(<span class="math inline">\(V_{max}\)</span>)의 절반이 되는 농도에 해당합니다. 낮은 농도(<span class="math inline">\(C_u^h \ll K_m\)</span>)에서 속도는 1차입니다. 높은 농도(<span class="math inline">\(C_u^h \gg K_m\)</span>)에서 효소는 포화되고 과정은 일정해지며(0차) <span class="math inline">\(V_{max}\)</span>와 같습니다. 이 두 극단 사이에서 속도는 혼합 차수이며 비선형적입니다.</p>
 <ol start="2" type="1">
-<li><strong>높은 약물 농도에서 (<span class="math inline">\(C_u^h \gg K_m\)</span>):</strong><br>
-<span class="math inline">\(K_m + C_u^h \approx C_u^h\)</span>이 되므로 식 (5.44)의 분모가 단순화됩니다: <span class="math display">\[V = \frac{V_{max} \cdot C_u^h}{C_u^h} = V_{max} \tag{5.47}\]</span> 높은 농도에서 효소는 포화되고 대사 속도는 가능한 최대 속도(<span class="math inline">\(V_{max}\)</span>)로 일어나며 0차 속도론을 따릅니다(그림 5.9). 이 두 극단 사이에서 속도는 비선형적인 혼합 차수(mixed-order) 과정입니다.</li>
+<li><strong>높은 약물 농도에서 (<span class="math inline">\(C_u^h \gg K_m\)</span>):</strong> <span class="math inline">\(K_m + C_u^h \approx C_u^h\)</span>이 되므로 식 (5.44)의 분모가 단순화됩니다: <span class="math display">\[V = \frac{V_{max} \cdot C_u^h}{C_u^h} = V_{max} \tag{5.47}\]</span> 높은 농도에서 효소는 포화되고 대사 속도는 가능한 최대 속도(<span class="math inline">\(V_{max}\)</span>)로 일어나며 0차 속도론을 따릅니다(그림 5.9). 이 두 극단 사이에서 속도는 비선형적인 혼합 차수(mixed-order) 과정입니다.</li>
 </ol>
 <p>대부분의 약물의 비결합 치료 농도는 <span class="math inline">\(K_m\)</span> 값보다 훨씬 낮습니다. 그 결과 대부분의 치료 약물의 대사 속도는 1차 속도론을 따릅니다(그림 5.9). 그러나 소수의 약물은 치료 농도가 <span class="math inline">\(K_m\)</span> 값에 접근하거나 이를 초과할 수 있습니다. 여기에는 에탄올과 페니토인이 포함됩니다(15장 참조). 이로 인해 이들 약물의 약동학은 더욱 복잡하고 비선형적입니다.</p>
 <hr>
@@ -6097,7 +6071,7 @@ Vmax/2 |...........*        .
 <p><span class="math display">\[\text{소실 속도} = -\frac{dAb}{dt} = Cl \cdot Cp \tag{6.8}\]</span></p>
 <pre><code>                Vd, Cp, Ab
             [   중앙 구획   ] -----&gt; k · Ab 또는 Cl · Cp (소실)
-            
+
 초기 조건: t = 0, Ab = Ab0 = S · F · D</code></pre>
 <p><strong>그림 6.5</strong> 1-구획 모델에서의 정맥 주사 모델. 구획 내 약물의 양은 체내 약물의 양(<span class="math inline">\(Ab\)</span>)과 같고, 구획 내 약물 농도는 혈장 농도(<span class="math inline">\(Cp\)</span>)와 같으며, 구획의 부피(<span class="math inline">\(V_1\)</span>)는 약물의 분포용적(<span class="math inline">\(Vd\)</span>)과 같습니다. 소실(E)은 일차 속도 과정이며 일차 소실 속도 상수(<span class="math inline">\(k\)</span>) 또는 청소율(<span class="math inline">\(Cl\)</span>)을 사용하여 나타낼 수 있습니다. 유효 용량은 용량(<span class="math inline">\(D\)</span>), 염 계수(<span class="math inline">\(S\)</span>), 생체이용률(<span class="math inline">\(F\)</span>)의 곱입니다. 정맥 투여의 경우 <span class="math inline">\(F = 1\)</span>임에 유의하십시오.</p>
 </section>
@@ -6198,24 +6172,7 @@ Vmax/2 |...........*        .
 <section id="구획-모델에서의-정맥-볼루스-주사-약동학-pharmacokinetics-of-an-intravenous-bolus-injection-in-a-one-compartment-model" class="level1">
 <h1>7 1-구획 모델에서의 정맥 볼루스 주사 약동학 (PHARMACOKINETICS OF AN INTRAVENOUS BOLUS INJECTION IN A ONE-COMPARTMENT MODEL)</h1>
 <p><strong>Sara E. Rosenbaum</strong></p>
-<p>7.1 서론 (Introduction)<br>
-7.2 1-구획 모델 (One-Compartment Model)<br>
-7.3 약동학 방정식 (Pharmacokinetic Equations)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.3.1 기본 방정식 (Basic Equation)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.3.2 반감기 (Half-Life)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.3.3 투여 용량이 소실되는 데 걸리는 시간 (Time to Eliminate a Dose)<br>
-7.4 시뮬레이션 실습 (Simulation Exercise)<br>
-7.5 모델의 적용 (Application of the Model)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.5.1 혈장 농도 예측 (Predicting Plasma Concentrations)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.5.2 작용 지속 시간 (Duration of Action)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.5.3 목표 초기 혈장 농도를 얻기 위한 투여 용량 값 (Value of a Dose to Give a Desired Initial Plasma Concentration)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.5.4 정맥 부하 용량 (Intravenous Loading Dose)<br>
-7.6 실험적 약동학 매개변수의 결정 (Determination of Pharmacokinetic Parameters Experimentally)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.6.1 매개변수 결정을 위한 연구 설계 (Study Design for the Determination of Parameters)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;7.6.2 약동학적 분석 (Pharmacokinetic Analysis)<br>
-7.7 임상 실제에서의 약동학적 분석 (Pharmacokinetic Analysis in Clinical Practice)<br>
-연습 문제 (Problems)<br>
-추천 도서 (Suggested Reading)</p>
+<p>7.1 서론 (Introduction) 7.2 1-구획 모델 (One-Compartment Model) 7.3 약동학 방정식 (Pharmacokinetic Equations) &nbsp;&nbsp;&nbsp;&nbsp;7.3.1 기본 방정식 (Basic Equation) &nbsp;&nbsp;&nbsp;&nbsp;7.3.2 반감기 (Half-Life) &nbsp;&nbsp;&nbsp;&nbsp;7.3.3 투여 용량이 소실되는 데 걸리는 시간 (Time to Eliminate a Dose) 7.4 시뮬레이션 실습 (Simulation Exercise) 7.5 모델의 적용 (Application of the Model) &nbsp;&nbsp;&nbsp;&nbsp;7.5.1 혈장 농도 예측 (Predicting Plasma Concentrations) &nbsp;&nbsp;&nbsp;&nbsp;7.5.2 작용 지속 시간 (Duration of Action) &nbsp;&nbsp;&nbsp;&nbsp;7.5.3 목표 초기 혈장 농도를 얻기 위한 투여 용량 값 (Value of a Dose to Give a Desired Initial Plasma Concentration) &nbsp;&nbsp;&nbsp;&nbsp;7.5.4 정맥 부하 용량 (Intravenous Loading Dose) 7.6 실험적 약동학 매개변수의 결정 (Determination of Pharmacokinetic Parameters Experimentally) &nbsp;&nbsp;&nbsp;&nbsp;7.6.1 매개변수 결정을 위한 연구 설계 (Study Design for the Determination of Parameters) &nbsp;&nbsp;&nbsp;&nbsp;7.6.2 약동학적 분석 (Pharmacokinetic Analysis) 7.7 임상 실제에서의 약동학적 분석 (Pharmacokinetic Analysis in Clinical Practice) 연습 문제 (Problems) 추천 도서 (Suggested Reading)</p>
 <section id="학습-목표-objectives-4" class="level3">
 <h3 class="anchored" data-anchor-id="학습-목표-objectives-4">학습 목표 (Objectives)</h3>
 <p>이 장의 내용을 통해 독자는 다음을 수행할 수 있게 됩니다: 1. 약물의 혈장 농도가 시간에 따라 어떻게 변하는지 설명하는 일반 방정식의 유도 과정을 이해합니다. 2. 투여 후 임의의 시점에서 혈장 농도를 결정하고 특정 혈장 농도를 달성하는 데 필요한 용량을 결정하기 위해 방정식을 적용합니다. 3. 약물의 약동학적 매개변수가 혈장 농도-시간 프로파일에 어떤 영향을 미치는지 이해합니다. 4. 혈장 농도-시간 데이터를 분석하여 약물의 약동학적 매개변수를 도출합니다. 5. 모델을 임상 상황에 적용합니다.</p>
@@ -6676,8 +6633,7 @@ Cp (mg/L)                                 ln Cp
 </tr>
 </tbody>
 </table>
-<p>^a 이들 매개변수 중 하나는 다른 네 가지를 알면 계산할 수 있으므로, 이 매개변수화는 다섯 개가 아닌 네 개의 매개변수로 구성됩니다.<br>
-^b <span class="math inline">\(Vd_{ss} = V_1 + V_2\)</span>.</p>
+<p>^a 이들 매개변수 중 하나는 다른 네 가지를 알면 계산할 수 있으므로, 이 매개변수화는 다섯 개가 아닌 네 개의 매개변수로 구성됩니다. ^b <span class="math inline">\(Vd_{ss} = V_1 + V_2\)</span>.</p>
 <p>모델의 기본 매개변수(default parameters)는 용량(dose) = 1000 mg, <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(Cl = 4\text{ L/h}\)</span>, <span class="math inline">\(Cl_d = 30\text{ L/h}\)</span>, <span class="math inline">\(V_1 = 10\text{ L}\)</span>, <span class="math inline">\(V_2 = 40\text{ L}\)</span>입니다.</p>
 <ol type="1">
 <li>학습 목표와 모델 요약을 검토합니다.</li>
@@ -6752,9 +6708,7 @@ Cp (mg/L)                                 ln Cp
 <li><span class="math inline">\(C_p - C_p'\)</span>를 반로그 눈금으로 시간에 대해 플롯합니다.</li>
 </ol>
 <p>이 과정은 그림 8.8에 요약되어 있습니다.</p>
-<p><strong>그림 8.8 <span class="math inline">\(A\)</span>와 <span class="math inline">\(\alpha\)</span>를 결정하기 위한 잔여물법(잔차법, Method of residuals).</strong> 1. 시간에 따른 <span class="math inline">\(\ln C_p\)</span>를 플롯합니다. 말단 선형 부분을 확인합니다. 2. 이 직선과 외삽된 부분을 따른 <span class="math inline">\(C_p\)</span>를 <span class="math inline">\(C_p'\)</span>로 둡니다:<br>
-<span class="math inline">\(\ln C_p' = \ln B - \beta t\)</span>. 절편에서 <span class="math inline">\(\ln B = \ln C_p'\)</span> 또는 <span class="math inline">\(B = C_p'\)</span>. 기울기 <span class="math inline">\(= -\beta\)</span>. 3. 주어진 데이터 시간(<span class="math inline">\(t\)</span>)에 해당하는 <span class="math inline">\(C_p'\)</span> 값을 직선에서 읽거나 계산합니다. 4. <span class="math inline">\(C_p - C_p'\)</span> 값을 계산하고 시간에 대해 <span class="math inline">\(\ln(C_p - C_p')\)</span>를 플롯하여 새로운 직선을 만듭니다:<br>
-<span class="math inline">\(\ln(C_p - C_p') = \ln A - \alpha t\)</span>. 절편에서 <span class="math inline">\(\ln A = \ln(C_p - C_p')\)</span> 또는 <span class="math inline">\(A = (C_p - C_p')_{t=0}\)</span>. 기울기 <span class="math inline">\(= -\alpha\)</span>.</p>
+<p><strong>그림 8.8 <span class="math inline">\(A\)</span>와 <span class="math inline">\(\alpha\)</span>를 결정하기 위한 잔여물법(잔차법, Method of residuals).</strong> 1. 시간에 따른 <span class="math inline">\(\ln C_p\)</span>를 플롯합니다. 말단 선형 부분을 확인합니다. 2. 이 직선과 외삽된 부분을 따른 <span class="math inline">\(C_p\)</span>를 <span class="math inline">\(C_p'\)</span>로 둡니다: <span class="math inline">\(\ln C_p' = \ln B - \beta t\)</span>. 절편에서 <span class="math inline">\(\ln B = \ln C_p'\)</span> 또는 <span class="math inline">\(B = C_p'\)</span>. 기울기 <span class="math inline">\(= -\beta\)</span>. 3. 주어진 데이터 시간(<span class="math inline">\(t\)</span>)에 해당하는 <span class="math inline">\(C_p'\)</span> 값을 직선에서 읽거나 계산합니다. 4. <span class="math inline">\(C_p - C_p'\)</span> 값을 계산하고 시간에 대해 <span class="math inline">\(\ln(C_p - C_p')\)</span>를 플롯하여 새로운 직선을 만듭니다: <span class="math inline">\(\ln(C_p - C_p') = \ln A - \alpha t\)</span>. 절편에서 <span class="math inline">\(\ln A = \ln(C_p - C_p')\)</span> 또는 <span class="math inline">\(A = (C_p - C_p')_{t=0}\)</span>. 기울기 <span class="math inline">\(= -\alpha\)</span>.</p>
 </section>
 </section>
 <section id="미세-속도상수-k_12-k_21-및-k_10의-결정-determination-of-the-micro-rate-constants-k_12-k_21-and-k_10" class="level3">
@@ -6780,10 +6734,7 @@ Cp (mg/L)                                 ln Cp
 </ol>
 <p><strong>예제 8.1</strong> 표 E8.1의 데이터는 이구획 모델에서 100 mg 정맥내 일시주사(intravenous bolus injection)에 대해 모의실험(시뮬레이션)된 값입니다. 데이터를 분석하여 다음을 구하시오: (a) 절편 및 거시 속도상수(macro rate constants): <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> (b) 미시 속도상수(micro rate constants): <span class="math inline">\(k_{10}\)</span>, <span class="math inline">\(k_{12}\)</span>, <span class="math inline">\(k_{21}\)</span> (c) 기본 약동학 파라미터(primary pharmacokinetic parameters): <span class="math inline">\(Cl\)</span>, <span class="math inline">\(Cl_d\)</span>, <span class="math inline">\(V_1\)</span>, <span class="math inline">\(V_\beta\)</span>, <span class="math inline">\(V_{d,ss}\)</span></p>
 <p><strong>표 E8.1</strong> 100 mg 정맥내 투여 후 여러 시점에서의 혈장 농도 | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | | :— | :— | :— | :— | | 0.1 | 7.95 | 2 | 1.07 | | 0.2 | 6.38 | 3 | 0.89 | | 0.4 | 4.25 | 4 | 0.76 | | 0.7 | 8.57 | 6 | 0.56 | | 1 | 1.79 | 8 | 0.42 | | 1.5 | 1.27 | 12 | 0.23 |</p>
-<p><strong>풀이</strong><br>
-이 분석을 위해 작성된 완전한 엑셀 워크시트는 부록 C(그림 C.6)에 제시되어 있습니다. 계산 결과는 다음과 같습니다: (a) <span class="math inline">\(A = 8.47\text{ mg/L}\)</span>; <span class="math inline">\(B = 1.38\text{ mg/L}\)</span>; <span class="math inline">\(\alpha = 2.62\text{ h}^{-1}\)</span>; <span class="math inline">\(\beta = 0.149\text{ h}^{-1}\)</span><br>
-(b) <span class="math inline">\(k_{10} = 0.789\text{ h}^{-1}\)</span>; <span class="math inline">\(k_{12} = 1.49\text{ h}^{-1}\)</span>; <span class="math inline">\(k_{21} = 0.495\text{ h}^{-1}\)</span><br>
-(c) <span class="math inline">\(Cl = 8.02\text{ L/h}\)</span>; <span class="math inline">\(Cl_d = 15.1\text{ L/h}\)</span>; <span class="math inline">\(V_1 = 10.2\text{ L}\)</span>; <span class="math inline">\(V_\beta = 53.8\text{ L}\)</span>; <span class="math inline">\(V_{d,ss} = 40.7\text{ L}\)</span></p>
+<p><strong>풀이</strong> 이 분석을 위해 작성된 완전한 엑셀 워크시트는 부록 C(그림 C.6)에 제시되어 있습니다. 계산 결과는 다음과 같습니다: (a) <span class="math inline">\(A = 8.47\text{ mg/L}\)</span>; <span class="math inline">\(B = 1.38\text{ mg/L}\)</span>; <span class="math inline">\(\alpha = 2.62\text{ h}^{-1}\)</span>; <span class="math inline">\(\beta = 0.149\text{ h}^{-1}\)</span> (b) <span class="math inline">\(k_{10} = 0.789\text{ h}^{-1}\)</span>; <span class="math inline">\(k_{12} = 1.49\text{ h}^{-1}\)</span>; <span class="math inline">\(k_{21} = 0.495\text{ h}^{-1}\)</span> (c) <span class="math inline">\(Cl = 8.02\text{ L/h}\)</span>; <span class="math inline">\(Cl_d = 15.1\text{ L/h}\)</span>; <span class="math inline">\(V_1 = 10.2\text{ L}\)</span>; <span class="math inline">\(V_\beta = 53.8\text{ L}\)</span>; <span class="math inline">\(V_{d,ss} = 40.7\text{ L}\)</span></p>
 <hr>
 <section id="이구획-모델의-임상적-적용-clinical-application-of-the-two-compartment-model" class="level2">
 <h2 class="anchored" data-anchor-id="이구획-모델의-임상적-적용-clinical-application-of-the-two-compartment-model">8.8 이구획 모델의 임상적 적용 (Clinical Application of the Two-Compartment Model)</h2>
@@ -6818,8 +6769,7 @@ Cp (mg/L)                                 ln Cp
          0              [시간 (Time)]</code></pre>
 <p><strong>그림 8.10</strong> 서로 다른 부하용량에 의해 형성되는 혈장 농도. <span class="math inline">\(V_1\)</span>을 사용하여 계산된 부하용량은 목표 혈장 농도(<span class="math inline">\(Cp_{des}\)</span>)에 즉시 도달하지만 급격히 감소합니다(점선). <span class="math inline">\(V_{d,ss}\)</span> 또는 <span class="math inline">\(V_\beta\)</span>를 사용하여 계산된 부하용량에 의해 생성되는 초기 농도는 목표 농도를 초과하여 독성을 일으킬 수 있습니다(실선).</p>
 <p><strong>예제 8.2</strong> 리도카인은 심실 조기 수축(premature ventricular contractions)의 치료에 사용되는 항부정맥제입니다. 체중 70 kg인 남성 환자가 2 mg/L의 혈장 농도를 유지하기 위해 리도카인 정맥 점적주입을 받기로 하였습니다. 이 혈장 농도에 즉시 도달하기 위한 염산리도카인(<span class="math inline">\(S = 0.87\)</span>)의 부하용량을 계산하시오. 리도카인은 <span class="math inline">\(V_1 = 0.5\text{ L/kg}\)</span>, <span class="math inline">\(V_{d,ss} = 1.3\text{ L/kg}\)</span>의 분포용적을 갖습니다.</p>
-<p><strong>풀이</strong><br>
-리도카인의 작용 부위 및 독성 부위는 중앙 구획에 있으므로, 초기 부하용량은 종종 중앙 구획의 용적(<span class="math inline">\(V_1\)</span>)에 기초하여 계산됩니다: <span class="math display">\[D_L = \frac{Cp_{ss} \cdot V_1}{S \cdot F}\]</span> <span class="math display">\[D_L = \frac{2\text{ mg/L} \times 0.5\text{ L/kg} \times 70\text{ kg}}{0.87 \times 1} = 80\text{ mg}\]</span></p>
+<p><strong>풀이</strong> 리도카인의 작용 부위 및 독성 부위는 중앙 구획에 있으므로, 초기 부하용량은 종종 중앙 구획의 용적(<span class="math inline">\(V_1\)</span>)에 기초하여 계산됩니다: <span class="math display">\[D_L = \frac{Cp_{ss} \cdot V_1}{S \cdot F}\]</span> <span class="math display">\[D_L = \frac{2\text{ mg/L} \times 0.5\text{ L/kg} \times 70\text{ kg}}{0.87 \times 1} = 80\text{ mg}\]</span></p>
 <p>독성을 피하기 위해 부하용량은 약 2~3분에 걸쳐 투여됩니다. 약물이 말초 구획의 조직 전체로 분포함에 따라 혈장 농도는 급격히 감소합니다. 혈장 농도를 치료 수준으로 유지하기 위해, 종종 초기 부하용량의 약 절반에 해당하는 추가 주사를 투여해야 합니다.</p>
 <p>디곡신(digoxin)의 작용 및 독성 부위는 말초 구획에 있으므로 디곡신의 부하용량은 더 큰 <span class="math inline">\(V_{d,ss}\)</span> 또는 <span class="math inline">\(V_\beta\)</span>에 기초합니다. 그러나 디곡신은 치료역(치료 범위, therapeutic range)이 좁기 때문에 총 투여량을 여전히 더 작은 단위로 나누어 6시간 간격으로 투여합니다. 분할 투여 사이에 환자를 면밀히 모니터링하며, 필요한 경우 후속 투여를 보류합니다.</p>
 <pre><code> [약물 농도]
@@ -6851,18 +6801,9 @@ Cp (mg/L)                                 ln Cp
 <p><span class="math inline">\(t_{1/2,\beta}\)</span>를 계산하시오.</p>
 <p><strong>8.5</strong> 신장애가 약물의 소실/배설 양상(<span class="math inline">\(f_e = 0.95\)</span>)에 미치는 영향을 확인하기 위한 연구가 수행되었습니다. 정상 신기능을 가진 환자 군과 신기능이 저하된 환자 군에서 약물의 약동학 파라미터를 추정하였습니다. 표 P8.5에 그 결과가 요약되어 있습니다. 이 정보를 바탕으로 다음 질문에 답하시오:</p>
 <p><strong>표 P8.5</strong> 정상 환자 및 신장애 환자에서의 약물 약동학 파라미터 | 파라미터 | 정상 신기능 | 정상의 20% 미만 신기능 | | :— | :— | :— | | <span class="math inline">\(Cl\)</span> (L/h) | <span class="math inline">\(16.8 \pm 0.87\)</span> | <span class="math inline">\(2.2 \pm 1.2^b\)</span> | | <span class="math inline">\(V_\beta\)</span> (L) | <span class="math inline">\(46 \pm 5.6\)</span> | <span class="math inline">\(36 \pm 6.3^b\)</span> | | <span class="math inline">\(V_{d,ss}\)</span> (L) | <span class="math inline">\(37 \pm 5.5\)</span> | <span class="math inline">\(34 \pm 6.3\)</span> | | <span class="math inline">\(t_{1/2,\beta}\)</span> (h) | <span class="math inline">\(1.80 \pm 0.65\)</span> | <span class="math inline">\(9.67 \pm 2.7^b\)</span> |</p>
-<p><span class="math inline">\(^a\)</span>평균 파라미터 값 <span class="math inline">\(\pm\)</span> 표준편차.<br>
-<span class="math inline">\(^b\)</span>통계적으로 유의함.<br>
-<span class="math inline">\(Cl\)</span>은 청소율, <span class="math inline">\(V_\beta\)</span>는 분포 후 단계에서의 분포용적, <span class="math inline">\(V_{d,ss}\)</span>는 정상상태 분포용적, <span class="math inline">\(t_{1/2,\beta}\)</span>는 제거 반감기입니다.<br>
-(a) 신장애가 이 약물의 제거(elimination)에 영향을 미친다고 결론지을 수 있습니까?<br>
-(b) 신장애가 이 약물의 분포(distribution)에 영향을 미친다고 결론지을 수 있습니까?<br>
-(c) 신장애가 각 파라미터에 어떻게 영향을 미치는지 설명하시오.</p>
+<p><span class="math inline">\(^a\)</span>평균 파라미터 값 <span class="math inline">\(\pm\)</span> 표준편차. <span class="math inline">\(^b\)</span>통계적으로 유의함. <span class="math inline">\(Cl\)</span>은 청소율, <span class="math inline">\(V_\beta\)</span>는 분포 후 단계에서의 분포용적, <span class="math inline">\(V_{d,ss}\)</span>는 정상상태 분포용적, <span class="math inline">\(t_{1/2,\beta}\)</span>는 제거 반감기입니다. (a) 신장애가 이 약물의 제거(elimination)에 영향을 미친다고 결론지을 수 있습니까? (b) 신장애가 이 약물의 분포(distribution)에 영향을 미친다고 결론지을 수 있습니까? (c) 신장애가 각 파라미터에 어떻게 영향을 미치는지 설명하시오.</p>
 <p><strong>8.6</strong> 울혈성 심부전을 앓고 있는 72세 여성 환자가 수년 동안 디곡신 250 <span class="math inline">\(\mu\text{g}\)</span>을 복용해 왔습니다. 지역 보건소를 정기 방문한 자리에서 환자는 의료진과 복약 상태에 대해 상담하였습니다. 환자는 하루 한 번 복용하는 용법이고 항상 아침 8시에 아침 식사와 함께 복용하기 때문에 디곡신을 잊지 않고 쉽게 복용한다고 말했습니다. 담당 의사는 환자의 혈청 디곡신 농도를 0.5~1.5 <span class="math inline">\(\mu\text{g/L}\)</span> 범위로 유지하고자 합니다. 환자가 오전 9시 30분에 귀가하기 직전에 혈액 검체를 채취하였습니다. 다음 날 검사실에서 나온 결과에 따르면 혈청 디곡신 농도는 2.6 <span class="math inline">\(\mu\text{g/L}\)</span>였습니다. 이 환자는 디곡신 독성의 위험이 있습니까?</p>
-<p><strong>8.7</strong> 어떤 약물 100 mg을 정맥 투여하였습니다. 투여 후 여러 시점에서 혈장 검체를 채취하여 미변화체 약물을 분석하였습니다. 데이터는 표 P8.7에 나열되어 있습니다. 데이터는 약물이 이구획 약동학을 따른다는 것을 보여줍니다. 엑셀 워크시트를 작성하여 다음을 구하시오:<br>
-(a) 선형 및 반로그(semilogarithmic) 눈금에 시간에 따른 <span class="math inline">\(C_p\)</span>를 플롯하시오.<br>
-(b) 절편 및 거시 속도상수 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>를 결정하시오.<br>
-(c) 미시 속도상수 <span class="math inline">\(k_{10}\)</span>, <span class="math inline">\(k_{12}\)</span>, <span class="math inline">\(k_{21}\)</span>을 결정하시오.<br>
-(d) 기본 약동학 파라미터 <span class="math inline">\(Cl\)</span>, <span class="math inline">\(Cl_d\)</span>, <span class="math inline">\(V_1\)</span>, <span class="math inline">\(V_\beta\)</span>, <span class="math inline">\(V_{d,ss}\)</span>를 결정하시오(공식 <span class="math inline">\(V_{d,ss} = V_1(k_{12} + k_{21})/k_{21}\)</span> 사용).</p>
+<p><strong>8.7</strong> 어떤 약물 100 mg을 정맥 투여하였습니다. 투여 후 여러 시점에서 혈장 검체를 채취하여 미변화체 약물을 분석하였습니다. 데이터는 표 P8.7에 나열되어 있습니다. 데이터는 약물이 이구획 약동학을 따른다는 것을 보여줍니다. 엑셀 워크시트를 작성하여 다음을 구하시오: (a) 선형 및 반로그(semilogarithmic) 눈금에 시간에 따른 <span class="math inline">\(C_p\)</span>를 플롯하시오. (b) 절편 및 거시 속도상수 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>를 결정하시오. (c) 미시 속도상수 <span class="math inline">\(k_{10}\)</span>, <span class="math inline">\(k_{12}\)</span>, <span class="math inline">\(k_{21}\)</span>을 결정하시오. (d) 기본 약동학 파라미터 <span class="math inline">\(Cl\)</span>, <span class="math inline">\(Cl_d\)</span>, <span class="math inline">\(V_1\)</span>, <span class="math inline">\(V_\beta\)</span>, <span class="math inline">\(V_{d,ss}\)</span>를 결정하시오(공식 <span class="math inline">\(V_{d,ss} = V_1(k_{12} + k_{21})/k_{21}\)</span> 사용).</p>
 <p><strong>표 P8.7</strong> 100 mg 정맥 투여 후 여러 시점에서의 혈장 농도 | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | | :— | :— | :— | :— | | 0.1 | 7.12 | 1.5 | 0.88 | | 0.2 | 5.15 | 2 | 0.84 | | 0.4 | 2.88 | 3 | 0.8 | | 0.5 | 2.24 | 5 | 0.74 | | 0.7 | 1.51 | 7 | 0.68 | | 1 | 1.07 | 12 | 0.56 |</p>
 <section id="추천-도서-suggested-readings-1" class="level3">
 <h3 class="anchored" data-anchor-id="추천-도서-suggested-readings-1">추천 도서 (SUGGESTED READINGS)</h3>
@@ -6876,15 +6817,7 @@ Cp (mg/L)                                 ln Cp
 </section>
 <section id="제9장-혈관외-약물-투여의-약동학-pharmacokinetics-of-extravascular-drug-administration" class="level1">
 <h1>제9장 혈관외 약물 투여의 약동학 (Pharmacokinetics of Extravascular Drug Administration)</h1>
-<p>9.5 시험관내-생체내 상관관계 (In Vitro-In Vivo Correlation)<br>
-9.5.1 정의<br>
-9.5.2 가정<br>
-9.5.3 유용성<br>
-9.5.4 속방형 제제의 IVIVC<br>
-9.5.5 서방형/방출조절형 제제의 IVIVC<br>
-9.6 시뮬레이션 실습<br>
-연습문제<br>
-참고문헌</p>
+<p>9.5 시험관내-생체내 상관관계 (In Vitro-In Vivo Correlation) 9.5.1 정의 9.5.2 가정 9.5.3 유용성 9.5.4 속방형 제제의 IVIVC 9.5.5 서방형/방출조절형 제제의 IVIVC 9.6 시뮬레이션 실습 연습문제 참고문헌</p>
 <section id="학습-목표-objectives-5" class="level3">
 <h3 class="anchored" data-anchor-id="학습-목표-objectives-5">학습 목표 (Objectives)</h3>
 <p>이 장의 학습을 통해 다음을 수행할 수 있게 됩니다: 1. 약동학 모델을 적용하여 경구 투여 후 임의의 시점에서 약물의 혈장 농도를 설명하는 일반 방정식의 유도 과정을 이해합니다. 2. 흡수 파라미터들의 의미와 중요성을 이해합니다. 3. 치료 혈장 농도에 도달하는 데 걸리는 시간을 결정하는 요인들을 이해합니다. 4. 최고 혈장 농도 값을 결정하는 요인들을 이해합니다. 5. 모델을 적용하여 경구 투여 후 얻은 혈장 농도-시간 데이터로부터 주요 약동학 파라미터를 결정합니다. 6. 절대적 생체이용률과 상대적 생체이용률을 정의합니다. 7. 생체이용률이 어떻게 평가되는지 이해합니다. 8. 시험관내-생체내 상관관계(IVIVC)가 어떻게 평가되고 활용되는지 이해합니다.</p>
@@ -6985,8 +6918,7 @@ Cp (mg/L)                                 ln Cp
 <p>경구 청소율은 시간 0부터 무한대까지의 혈장 농도-시간 곡선하면적(AUC)으로부터 계산할 수도 있습니다: <span class="math display">\[\frac{Cl}{F} = \frac{S \cdot D}{AUC} \tag{9.19}\]</span> 이때 AUC는 다음과 같이 적분하여 계산할 수 있습니다: <span class="math display">\[AUC = \int_0^\infty Cp \cdot dt = \frac{S \cdot F \cdot D \cdot k_a}{V_d \cdot (k_a - k)} \cdot \left( \frac{1}{k} - \frac{1}{k_a} \right) = I \cdot \left( \frac{1}{k} - \frac{1}{k_a} \right) \tag{9.20}\]</span> 또는 사다리꼴 공식(trapezoidal rule)을 사용하여 AUC를 근사적으로 추정할 수도 있습니다.</p>
 <p><strong>예제 9.1</strong> 혈장 농도-시간 데이터로부터 파라미터 산출. 표 E9.1A의 혈장 농도-시간 데이터는 건강한 지원자에게 100 mg의 경구 투여를 실시한 후 얻은 것입니다. 부록 C에 설명된 대로 엑셀 워크시트를 작성하여 데이터를 분석하고 (a) <span class="math inline">\(k\)</span>, (b) <span class="math inline">\(k_a\)</span>, (c) <span class="math inline">\(V_d/F\)</span>, (d) <span class="math inline">\(Cl/F\)</span>를 구하시오. <span class="math inline">\(S = 1\)</span>로 가정합니다.</p>
 <p><strong>표 E9.1A</strong> 약물 100 mg 경구 투여 후 여러 시점에서의 혈장 농도 | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | 시간(h) | <span class="math inline">\(C_p\)</span> (mg/L) | | :— | :— | :— | :— | | 0 | 0 | 2 | 3.43 | | 0.6 | 2.74 | 2.6 | 3.12 | | 0.8 | 3.13 | 3 | 2.89 | | 1 | 3.37 | 4 | 2.33 | | 1.4 | 3.55 | 7 | 1.17 | | 1.8 | 3.50 | 12 | 0.37 |</p>
-<p><strong>풀이</strong><br>
-상세한 풀이와 관련 도표는 부록 C의 그림 C.8에 나와 있습니다.</p>
+<p><strong>풀이</strong> 상세한 풀이와 관련 도표는 부록 C의 그림 C.8에 나와 있습니다.</p>
 <ol type="a">
 <li>반로그 눈금에서 마지막 세 데이터 포인트를 연결한 직선으로부터:</li>
 </ol>
@@ -6994,8 +6926,7 @@ Cp (mg/L)                                 ln Cp
 <li>기울기 <span class="math inline">\(= -0.23\text{ h}^{-1}\)</span></li>
 <li><span class="math inline">\(k = 0.23\text{ h}^{-1}\)</span></li>
 <li><span class="math inline">\(\ln I = 1.77\)</span></li>
-<li><span class="math inline">\(I = 5.85\text{ mg/L}\)</span><br>
-(여기서 <span class="math inline">\(I = \frac{S \cdot F \cdot D \cdot k_a}{V_d \cdot (k_a - k)}\)</span>)</li>
+<li><span class="math inline">\(I = 5.85\text{ mg/L}\)</span> (여기서 <span class="math inline">\(I = \frac{S \cdot F \cdot D \cdot k_a}{V_d \cdot (k_a - k)}\)</span>)</li>
 </ul>
 <ol start="2" type="a">
 <li>이 말단 제거 직선의 역외삽 부분을 따라 초기 <span class="math inline">\(Cp'\)</span> 값들을 다음 식을 이용하여 계산합니다: <span class="math display">\[Cp' = I \cdot e^{-kt}\]</span> 후기 시점에서는 <span class="math inline">\(Cp = Cp'\)</span>이지만, 초기 시점에서는 <span class="math inline">\(Cp' &gt; Cp\)</span>입니다. 초기 시점들에서의 <span class="math inline">\(Cp'\)</span> 값은 표 E9.1B에 계산되어 있습니다. <span class="math inline">\(Cp' - Cp\)</span> 값을 구하고, 시간에 따른 <span class="math inline">\(\ln(Cp' - Cp)\)</span> 직선으로부터 <span class="math inline">\(k_a\)</span>와 절편을 결정합니다(그림 9.4):</li>
@@ -7121,8 +7052,7 @@ Cp (mg/L)                                 ln Cp
 </tr>
 </tbody>
 </table>
-<p>k (h−1) ka (h−1) (a) (b)<br>
-<strong>그림 9.8</strong> 최고혈중농도 도달시간(<span class="math inline">\(T_{\text{max}}\)</span>)의 (a) 소실속도상수(<span class="math inline">\(k\)</span>) 및 (b) 흡수속도상수(<span class="math inline">\(k_a\)</span>)에 대한 의존성. <span class="math inline">\(T_{\text{max}}\)</span>는 <span class="math inline">\(k_a\)</span>가 <span class="math inline">\(0.6\text{ h}^{-1}\)</span>로 고정된 상태에서 <span class="math inline">\(k\)</span> 값이 0.05에서 <span class="math inline">\(1.2\text{ h}^{-1}\)</span>일 때 계산되었다. 또한 <span class="math inline">\(T_{\text{max}}\)</span>는 <span class="math inline">\(k\)</span>가 <span class="math inline">\(0.4\text{ h}^{-1}\)</span>로 고정된 상태에서 <span class="math inline">\(k_a\)</span> 값이 0.1에서 <span class="math inline">\(1.8\text{ h}^{-1}\)</span>일 때 계산되었다.</p>
+<p>k (h−1) ka (h−1) (a) (b) <strong>그림 9.8</strong> 최고혈중농도 도달시간(<span class="math inline">\(T_{\text{max}}\)</span>)의 (a) 소실속도상수(<span class="math inline">\(k\)</span>) 및 (b) 흡수속도상수(<span class="math inline">\(k_a\)</span>)에 대한 의존성. <span class="math inline">\(T_{\text{max}}\)</span>는 <span class="math inline">\(k_a\)</span>가 <span class="math inline">\(0.6\text{ h}^{-1}\)</span>로 고정된 상태에서 <span class="math inline">\(k\)</span> 값이 0.05에서 <span class="math inline">\(1.2\text{ h}^{-1}\)</span>일 때 계산되었다. 또한 <span class="math inline">\(T_{\text{max}}\)</span>는 <span class="math inline">\(k\)</span>가 <span class="math inline">\(0.4\text{ h}^{-1}\)</span>로 고정된 상태에서 <span class="math inline">\(k_a\)</span> 값이 0.1에서 <span class="math inline">\(1.8\text{ h}^{-1}\)</span>일 때 계산되었다.</p>
 <section id="c_textmax" class="level3">
 <h3 class="anchored" data-anchor-id="c_textmax">9.2.5.2 <span class="math inline">\(C_{\text{max}}\)</span></h3>
 <p>최고혈중농도(<span class="math inline">\(C_{\text{max}}\)</span>, peak plasma concentration)는 시간 <span class="math inline">\(T_{\text{max}}\)</span>에서의 혈장 농도이다. 따라서 <span class="math inline">\(T_{\text{max}}\)</span>에 대한 식 [식 (9.24)]을 식 (9.6)에 대입하고 정리하여 <span class="math inline">\(C_{\text{max}}\)</span>에 대해 풀면 다음과 같은 식을 얻을 수 있다:</p>
@@ -7459,9 +7389,7 @@ Cp (mg/L)                                 ln Cp
 </section>
 <section id="혈관외-약물-투여의-약동학-pharmacokinetics-of-extravascular-drug-administration-4" class="level1">
 <h1>222 혈관외 약물 투여의 약동학 (PHARMACOKINETICS OF EXTRAVASCULAR DRUG ADMINISTRATION)</h1>
-<p><strong>그림 9.11</strong> 아지트로마이신의 <span class="math inline">\(\text{AUC}(0\text{--}4\text{ h})\)</span>와 생체외 방출률 간의 관계.<br>
-- 30분 시점의 생체외 방출률이 70% 미만인 폴록사머 농도에서 우수한 내약성 입증 (Acceptable tolerability demonstrated). - 30분 시점의 생체외 방출률이 최소 35% 이상인 농도에서 적절한 생체이용률 입증 (Acceptable bioavailability demonstrated).<br>
-출처: Lo et al.&nbsp;2009, pp.&nbsp;1522–1529 [7]. Taylor &amp; Francis Ltd.의 허가를 받아 전재함.</p>
+<p><strong>그림 9.11</strong> 아지트로마이신의 <span class="math inline">\(\text{AUC}(0\text{--}4\text{ h})\)</span>와 생체외 방출률 간의 관계. - 30분 시점의 생체외 방출률이 70% 미만인 폴록사머 농도에서 우수한 내약성 입증 (Acceptable tolerability demonstrated). - 30분 시점의 생체외 방출률이 최소 35% 이상인 농도에서 적절한 생체이용률 입증 (Acceptable bioavailability demonstrated). 출처: Lo et al.&nbsp;2009, pp.&nbsp;1522–1529 [7]. Taylor &amp; Francis Ltd.의 허가를 받아 전재함.</p>
 <p>30분 시점에서 생체외 아지트로마이신 방출률이 70% 미만인 폴록사머 농도에서는 제형의 내약성이 우수한 것으로 확인되었으며, 30분 시점에서 최소 35% 이상 방출된 농도에서는 수용 가능한 생체이용률이 입증되었다. 이 레벨 C IVIVC를 활용하여 제약 과학자들은 3% 수준의 폴록사머 농도가 시판 제형과 생물학적으로 동등하면서도 수용 가능한 내약성을 나타내는 의약품을 생산할 수 있을 것으로 예측했다[7].</p>
 <hr>
 <section id="시뮬레이션-실습-simulation-exercise-3" class="level2">
@@ -8528,16 +8456,14 @@ Cp (mg/L)                                 ln Cp
 <section id="예제-11.1" class="level4">
 <h4 class="anchored" data-anchor-id="예제-11.1">예제 11.1</h4>
 <p>어떤 약물(<span class="math inline">\(S = 1\)</span>, <span class="math inline">\(Cl = 2\text{ L/h}\)</span>, <span class="math inline">\(Vd = 50\text{ L}\)</span>)을 <span class="math inline">\(10\text{ mg/h}\)</span>의 속도로 정맥 점적 주입합니다. 주입 시작 4시간 후의 혈장 농도를 계산하십시오.</p>
-<p><strong>풀이</strong><br>
-<span class="math inline">\(Cl = 2\text{ L/h}\)</span>, <span class="math inline">\(Vd = 50\text{ L}\)</span>, <span class="math inline">\(k = Cl/Vd = 2/50 = 0.04\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 0.693/k = 17.3\text{ h}\)</span>.</p>
+<p><strong>풀이</strong> <span class="math inline">\(Cl = 2\text{ L/h}\)</span>, <span class="math inline">\(Vd = 50\text{ L}\)</span>, <span class="math inline">\(k = Cl/Vd = 2/50 = 0.04\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 0.693/k = 17.3\text{ h}\)</span>.</p>
 <p><span class="math display">\[Cp = \frac{S \cdot F \cdot k_0}{Cl} \cdot (1 - e^{-kt})\]</span> <span class="math display">\[Cp = \frac{10}{2} \cdot (1 - e^{-0.04 \times 4}) = 0.74\text{ mg/L}\]</span></p>
 </section>
 </section>
 <section id="시뮬레이션-실습-파트-1-simulation-exercise-part-1" class="level3">
 <h3 class="anchored" data-anchor-id="시뮬레이션-실습-파트-1-simulation-exercise-part-1">11.2.3 시뮬레이션 실습: 파트 1 (Simulation Exercise: Part 1)</h3>
 <p>http://web.uri.edu/pharmacy/research/rosenbaum/sims</p>
-<p>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model7 에 있는 모델 7, ’일정 지속 약물 투여(Constant Continuous Drug Administration)’를 엽니다.<br>
-기본 모델 매개변수는 <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(F = 1\)</span>, 주입 속도 <span class="math inline">\(= 10\text{ mg/h}\)</span>, <span class="math inline">\(Cl = 5\text{ L/h}\)</span>, <span class="math inline">\(Vd = 20\text{ L}\)</span>입니다.</p>
+<p>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model7 에 있는 모델 7, ’일정 지속 약물 투여(Constant Continuous Drug Administration)’를 엽니다. 기본 모델 매개변수는 <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(F = 1\)</span>, 주입 속도 <span class="math inline">\(= 10\text{ mg/h}\)</span>, <span class="math inline">\(Cl = 5\text{ L/h}\)</span>, <span class="math inline">\(Vd = 20\text{ L}\)</span>입니다.</p>
 <ol type="1">
 <li>학습 목표를 검토하고, 모델을 탐색하며, “Model Summary” 페이지를 확인합니다.</li>
 <li>“Cp–time Profile” 페이지로 이동합니다. 기본 투여 속도로 시뮬레이션을 수행하고 <span class="math inline">\(Cp\)</span>-시간 프로파일을 관찰합니다.
@@ -8608,17 +8534,14 @@ Cp (mg/L)                                 ln Cp
 <p>다음으로 정체상태 혈장 농도 수식의 적용을 보여주는 두 가지 예제를 살펴봅니다.</p>
 <section id="예제-11.2" class="level4">
 <h4 class="anchored" data-anchor-id="예제-11.2">예제 11.2</h4>
-<p>예제 11.1에 기술된 것과 동일한 약물을 <span class="math inline">\(10\text{ mg/h}\)</span>의 속도로 정맥 점적 주입합니다. 정체상태 혈장 농도를 계산하십시오.<br>
-<span class="math inline">\(Cl = 2\text{ L/h}\)</span>, <span class="math inline">\(Vd = 50\text{ L}\)</span>, <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(k = Cl/Vd = 2/50 = 0.04\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 0.693/k = 17.3\text{ h}\)</span>임을 상기하십시오.</p>
-<p><strong>풀이</strong><br>
-<span class="math display">\[Cp_{ss} = \frac{S \cdot F \cdot k_0}{Cl} = \frac{10}{2} = 5\text{ mg/L}\]</span></p>
+<p>예제 11.1에 기술된 것과 동일한 약물을 <span class="math inline">\(10\text{ mg/h}\)</span>의 속도로 정맥 점적 주입합니다. 정체상태 혈장 농도를 계산하십시오. <span class="math inline">\(Cl = 2\text{ L/h}\)</span>, <span class="math inline">\(Vd = 50\text{ L}\)</span>, <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(k = Cl/Vd = 2/50 = 0.04\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 0.693/k = 17.3\text{ h}\)</span>임을 상기하십시오.</p>
+<p><strong>풀이</strong> <span class="math display">\[Cp_{ss} = \frac{S \cdot F \cdot k_0}{Cl} = \frac{10}{2} = 5\text{ mg/L}\]</span></p>
 </section>
 <section id="예제-11.3" class="level4">
 <h4 class="anchored" data-anchor-id="예제-11.3">예제 11.3</h4>
 <p>어떤 약물(<span class="math inline">\(S = 0.9\)</span>, <span class="math inline">\(F = 0.94\)</span>, <span class="math inline">\(Cl = 1.44\text{ L/h}\)</span>, <span class="math inline">\(Vd = 0.65\text{ L/kg}\)</span>)의 치료 범위는 10–20 mg/L입니다. 이 약물은 <span class="math inline">\(12\text{ mg/h}\)</span>의 일정한 속도로 약물을 전달하는 경구 기본형 삼투압 펌프로 제형화되었습니다. 이 제제는 12시간마다 투여하도록 설계되었으며 250, 300, 400 mg 단위로 제공됩니다. 체중 60 kg인 여성에서 정체상태 혈장 농도 15 mg/L를 달성하기 위한 적절한 용량을 결정하십시오.</p>
 <p>243 정체상태 혈장 농도</p>
-<p><strong>풀이</strong><br>
-<span class="math display">\[Cp_{ss} = \frac{S \cdot F \cdot k_0}{Cl}\]</span> <span class="math display">\[k_0 = \frac{Cl \cdot Cp_{ss}}{S \cdot F} = \frac{1.44 \times 15}{0.9 \times 0.94} = 25.5\text{ mg/h}\]</span></p>
+<p><strong>풀이</strong> <span class="math display">\[Cp_{ss} = \frac{S \cdot F \cdot k_0}{Cl}\]</span> <span class="math display">\[k_0 = \frac{Cl \cdot Cp_{ss}}{S \cdot F} = \frac{1.44 \times 15}{0.9 \times 0.94} = 25.5\text{ mg/h}\]</span></p>
 <p>단위 제형은 12시간 동안 일정한 속도로 용량을 투여하도록 설계되었습니다. <span class="math inline">\(25.5\text{ mg/h}\)</span>의 속도가 필요한 경우, 단위 용량은 <span class="math inline">\(25.5 \times 12 = 306\text{ mg}\)</span>을 함유해야 합니다. 따라서 300 mg 단위를 1일 2회 투여해야 합니다.</p>
 </section>
 </section>
@@ -9098,8 +9021,7 @@ Cp (mg/L)                                 ln Cp
 <section id="예제-12.1" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.1">예제 12.1</h4>
 <p>신약이 개발 중이라고 가정하자. 이 약물은 매우 좁은 치료역(therapeutic range, 12–25 mg/L)을 가지고 있다. 그러나 다른 치료법이 거의 없는 심각한 생명 위협 질환을 치료하는 데 사용되고 있으므로, 이 약물의 개발이 계속 진행되고 있다. 목표는 정상상태 최고 농도와 최저 농도가 각각 20 mg/L 및 14 mg/L가 되는 투약 용법을 설계하는 것이다. 이 약물의 소실속도상수(elimination rate constant)는 집단 평균값이 <span class="math inline">\(0.043\text{ h}^{-1}\)</span>이다. 원하는 정상상태 최고 및 최저 농도를 제공하기 위해 필요한 투약 간격은 얼마인가?</p>
-<p><strong>풀이</strong><br>
-정상상태 최고 농도와 최저 농도 사이의 관계는 식 (12.4)에 주어져 있다. 원하는 정상상태 최저 농도와 최고 농도를 이 식에 대입하면 다음과 같다: <span class="math display">\[14 = 20 e^{-0.043\tau}\]</span> <span class="math display">\[\ln\left(\frac{14}{20}\right) = -0.043\tau\]</span> <span class="math display">\[\tau = \frac{0.357}{0.043} = 8.3\text{ h}\]</span></p>
+<p><strong>풀이</strong> 정상상태 최고 농도와 최저 농도 사이의 관계는 식 (12.4)에 주어져 있다. 원하는 정상상태 최저 농도와 최고 농도를 이 식에 대입하면 다음과 같다: <span class="math display">\[14 = 20 e^{-0.043\tau}\]</span> <span class="math display">\[\ln\left(\frac{14}{20}\right) = -0.043\tau\]</span> <span class="math display">\[\tau = \frac{0.357}{0.043} = 8.3\text{ h}\]</span></p>
 <p>투약 간격을 계산하는 데 사용하기 위해 식 (12.4)를 보다 유용하게 정리하면 다음과 같다: <span class="math display">\[\tau = -\frac{1}{k} \ln\left(\frac{Cp_{\min, ss}}{Cp_{\max, ss}}\right) \tag{12.5}\]</span></p>
 <p>식 (12.5)의 강조는 이것이 임상적으로 자주 사용되는 중요한 공식임을 나타낸다.</p>
 <hr>
@@ -9213,10 +9135,8 @@ Cp (mg/L)                                 ln Cp
 <p>대안적으로, 최저 농도는 다음과 같이 표현될 수 있다: <span class="math display">\[Cp_{n, \min} = Cp_{n, \max} \cdot e^{-k\tau} \tag{12.9}\]</span></p>
 <section id="예제-12.2" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.2">예제 12.2</h4>
-<p>어떤 약물의 다회 정맥내 일시주사(250 mg)가 8시간마다 투여된다. 이 약물은 다음과 같은 매개변수를 갖는다: <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(V_d = 30\text{ L}\)</span>, <span class="math inline">\(k = 0.1\text{ h}^{-1}\)</span>, <span class="math inline">\(\tau = 8\text{ h}\)</span>. 다음을 계산하시오: (a) 두 번째 투여 후 3시간 시점의 혈장 농도.<br>
-(b) 이 두 번째 투약 간격 동안의 최고 및 최저 혈장 농도.</p>
-<p><strong>풀이</strong><br>
-(a) 식 (12.6)에 대입하면 다음과 같다: <span class="math display">\[Cp_n = \frac{250(1 - e^{-2 \times 0.1 \times 8})}{30(1 - e^{-0.1 \times 8})} \cdot e^{-0.1 \times 3} = 8.96\text{ mg/L}\]</span></p>
+<p>어떤 약물의 다회 정맥내 일시주사(250 mg)가 8시간마다 투여된다. 이 약물은 다음과 같은 매개변수를 갖는다: <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(V_d = 30\text{ L}\)</span>, <span class="math inline">\(k = 0.1\text{ h}^{-1}\)</span>, <span class="math inline">\(\tau = 8\text{ h}\)</span>. 다음을 계산하시오: (a) 두 번째 투여 후 3시간 시점의 혈장 농도. (b) 이 두 번째 투약 간격 동안의 최고 및 최저 혈장 농도.</p>
+<p><strong>풀이</strong> (a) 식 (12.6)에 대입하면 다음과 같다: <span class="math display">\[Cp_n = \frac{250(1 - e^{-2 \times 0.1 \times 8})}{30(1 - e^{-0.1 \times 8})} \cdot e^{-0.1 \times 3} = 8.96\text{ mg/L}\]</span></p>
 <ol start="2" type="a">
 <li><span class="math inline">\(Cp_{\max, 2}\)</span>는 <span class="math inline">\(t=0\)</span>일 때 계산할 수 있다 [식 (12.7)]: <span class="math display">\[Cp_{\max, 2} = \frac{250(1 - e^{-2 \times 0.1 \times 8})}{30(1 - e^{-0.1 \times 8})} = 12.1\text{ mg/L}\]</span></li>
 </ol>
@@ -9252,8 +9172,7 @@ Cp (mg/L)                                 ln Cp
 <h4 class="anchored" data-anchor-id="예제-12.3">예제 12.3</h4>
 <p>8시간마다 250 mg의 용량으로 정맥 투여되는 약물(<span class="math inline">\(V_d = 30\text{ L}\)</span>, <span class="math inline">\(k = 0.1\text{ h}^{-1}\)</span>)의 앞선 예제를 계속 살펴보자. 두 번째 투여 후 다음과 같았음을 상기하자: - <span class="math inline">\(Cp_{\max} = 12.1\text{ mg/L}\)</span> - <span class="math inline">\(Cp_{3\text{h}} = 8.96\text{ mg/L}\)</span> - <span class="math inline">\(Cp_{\min} = 5.4\text{ mg/L}\)</span></p>
 <p>이 용법에 의해 달성되는 최대 및 최소 정상상태 혈장 농도를 계산하시오.</p>
-<p><strong>풀이</strong><br>
-<span class="math display">\[Cp_{\max, ss} = \frac{250}{30(1 - e^{-0.1 \times 8})} = 15.1\text{ mg/L}\]</span> <span class="math display">\[Cp_{\min, ss} = \frac{250}{30(1 - e^{-0.1 \times 8})} \cdot e^{-0.1 \times 8} = 6.8\text{ mg/L}\]</span></p>
+<p><strong>풀이</strong> <span class="math display">\[Cp_{\max, ss} = \frac{250}{30(1 - e^{-0.1 \times 8})} = 15.1\text{ mg/L}\]</span> <span class="math display">\[Cp_{\min, ss} = \frac{250}{30(1 - e^{-0.1 \times 8})} \cdot e^{-0.1 \times 8} = 6.8\text{ mg/L}\]</span></p>
 <p>정상상태 최고 및 최저 농도는 각각 15.1 mg/L 및 6.8 mg/L이다.</p>
 <hr>
 <p>264 1구획 모델에서의 다회 정맥내 일시주사 (MULTIPLE INTRAVENOUS BOLUS INJECTIONS IN THE ONE-COMPARTMENT MODEL)</p>
@@ -9262,8 +9181,7 @@ Cp (mg/L)                                 ln Cp
 <section id="예제-12.4" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.4">예제 12.4</h4>
 <p>약물(<span class="math inline">\(V_d = 50\text{ L}\)</span>, <span class="math inline">\(k = 0.043\text{ h}^{-1}\)</span>)에서 정상상태 최저 및 최고 농도를 각각 14 mg/L 및 20 mg/L로 달성하기 위해 8.3시간(약 8시간)의 투약 간격이 필요하다고 앞서(예제 12.1) 결정되었음을 상기하자. 어떤 용량을 사용해야 하는가?</p>
-<p><strong>풀이</strong><br>
-<span class="math inline">\(Cp_{\max, ss}\)</span> 공식이나 <span class="math inline">\(Cp_{\min, ss}\)</span> 공식 중 어느 것을 사용해도 무방하다. 두 경우 모두 유일한 미지수는 용량(<span class="math inline">\(D\)</span>)이다:</p>
+<p><strong>풀이</strong> <span class="math inline">\(Cp_{\max, ss}\)</span> 공식이나 <span class="math inline">\(Cp_{\min, ss}\)</span> 공식 중 어느 것을 사용해도 무방하다. 두 경우 모두 유일한 미지수는 용량(<span class="math inline">\(D\)</span>)이다:</p>
 <p><span class="math display">\[Cp_{\max, ss} = \frac{S \cdot F \cdot D}{V_d \cdot (1 - e^{-k\tau})} \quad (\text{여기서 } Cp_{\max, ss} = 20\text{ mg/L})\]</span> 또는 <span class="math display">\[Cp_{\min, ss} = \frac{S \cdot F \cdot D}{V_d \cdot (1 - e^{-k\tau})} \cdot e^{-k\tau} \quad (\text{여기서 } Cp_{\min, ss} = 14\text{ mg/L})\]</span></p>
 <p><span class="math inline">\(Cp_{\max, ss} = 20\text{ mg/L}\)</span>를 사용하고 <span class="math inline">\(S = 1\)</span>, <span class="math inline">\(F = 1\)</span>로 가정하면: <span class="math display">\[20 = \frac{S \cdot F \cdot D}{50(1 - e^{-0.043 \times 8})}\]</span> <span class="math display">\[D = 290\text{ mg}\]</span></p>
 <p>이 약물 290 mg을 8시간마다 정맥 주사하면 정상상태 최고 농도 및 최저 농도가 각각 20 mg/L 및 14 mg/L가 될 것이다.</p>
@@ -9282,10 +9200,10 @@ Cp (mg/L)                                 ln Cp
  |    Cp_max, ss
  |       |\
  |-------|-\--------------------- 산술 평균: (Cp_max, ss + Cp_min, ss) / 2
- |       |  \                    
+ |       |  \
  |       |   \                   * Cp_av, ss = (∫_0^τ Cp dt) / τ = (S * F * D) / (Cl * τ)
- |       |    \   Cp_min, ss     
- |       |     \  |              
+ |       |    \   Cp_min, ss
+ |       |     \  |
  +-------+--------+-------------&gt; 시간
         투여     τ
          &lt;------&gt;
@@ -9313,15 +9231,13 @@ Cp (mg/L)                                 ln Cp
 <section id="예제-12.5" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.5">예제 12.5</h4>
 <p>디곡신은 보통 24시간마다 투여된다. 디곡신 청소율이 123 L/일(day)로 추정되는 환자에서 1 <span class="math inline">\(\mu\text{g/L}\)</span>의 농도를 달성하기 위한 적절한 디곡신 용량을 계산하시오.</p>
-<p><strong>풀이</strong><br>
-정맥 투여(<span class="math inline">\(F = 1\)</span>) 및 <span class="math inline">\(S = 1\)</span>로 가정하고 식 (12.19)에 대입하면 다음과 같다: <span class="math display">\[1\text{ }\mu\text{g/L} = \frac{R_a}{123\text{ L/day}}\]</span> <span class="math display">\[R_a = 123\text{ }\mu\text{g/day}\]</span></p>
+<p><strong>풀이</strong> 정맥 투여(<span class="math inline">\(F = 1\)</span>) 및 <span class="math inline">\(S = 1\)</span>로 가정하고 식 (12.19)에 대입하면 다음과 같다: <span class="math display">\[1\text{ }\mu\text{g/L} = \frac{R_a}{123\text{ L/day}}\]</span> <span class="math display">\[R_a = 123\text{ }\mu\text{g/day}\]</span></p>
 <p>하루 123 <span class="math inline">\(\mu\text{g}\)</span>(반올림하여 125 <span class="math inline">\(\mu\text{g}\)</span>)의 일일 투여량이 권장된다.</p>
 </section>
 <section id="예제-12.6" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.6">예제 12.6</h4>
 <p>가상의 약물 리포아미드(lipoamide)의 다회 정맥내 일시주사 투여로부터 평균 정상상태 혈장 농도 50 <span class="math inline">\(\mu\text{g/L}\)</span>가 요구된다. <span class="math inline">\(V_d = 420\text{ L}\)</span>이고 <span class="math inline">\(Cl = 62\text{ L/h}\)</span>이다. 어떤 약물 투여 속도를 사용해야 하는가?</p>
-<p><strong>풀이</strong><br>
-식 (12.19)에 대입하여 정리하면 다음과 같다: <span class="math display">\[R_a = \frac{62\text{ L/h} \times 50\text{ }\mu\text{g/L}}{1 \times 1} = 3.1\text{ mg/h}\]</span></p>
+<p><strong>풀이</strong> 식 (12.19)에 대입하여 정리하면 다음과 같다: <span class="math display">\[R_a = \frac{62\text{ L/h} \times 50\text{ }\mu\text{g/L}}{1 \times 1} = 3.1\text{ mg/h}\]</span></p>
 <p>3.1 mg/h의 투여 속도를 제공하는 용량과 <span class="math inline">\(\tau\)</span>의 모든 조합은 50 <span class="math inline">\(\mu\text{g/L}\)</span>의 평균 정상상태 혈장 농도를 달성할 것이다. 다음과 같은 용법들이 사용될 수 있다: - 3.1 mg/h — 지속 점적 주입: 변동 없음 - 매 1시간마다 3.1 mg: 적은 변동 - 매 8시간마다 24.8 mg: 더 큰 변동 - 매 12시간마다 37.2 mg: 한층 더 큰 변동 - 매 24시간마다 74.4 mg: 매우 큰 변동</p>
 <hr>
 <p>정상상태 267</p>
@@ -9347,7 +9263,7 @@ Cp (mg/L)                                 ln Cp
 Cp
  ^
  |    r = Cp_max, ss / Cp_max, 1
- |    
+ |
  |    r = Cp_(t=x, ss) / Cp_(t=x, 1)
  |
  |    r = 1 / (1 - e^(-kτ))
@@ -9369,8 +9285,7 @@ Cp
 <hr>
 <p>정상상태 269</p>
 <p>식 (12.23)과 마찬가지로 식 (12.25)는 축적이 소실 반감기와 투약 간격에 의해 조절됨을 보여준다.</p>
-<p><strong>예제.</strong> <span class="math inline">\(t_{1/2} = 12\text{ h}\)</span>, <span class="math inline">\(\tau = 12\text{ h}\)</span>라고 하자.<br>
-축적은 다음과 같이 표현될 수 있다: <span class="math display">\[\frac{Ab_{\text{av}, ss}}{S \cdot F \cdot D} = 1.44 \frac{12}{12} = 1.44\]</span></p>
+<p><strong>예제.</strong> <span class="math inline">\(t_{1/2} = 12\text{ h}\)</span>, <span class="math inline">\(\tau = 12\text{ h}\)</span>라고 하자. 축적은 다음과 같이 표현될 수 있다: <span class="math display">\[\frac{Ab_{\text{av}, ss}}{S \cdot F \cdot D} = 1.44 \frac{12}{12} = 1.44\]</span></p>
 <p>약물이 매 반감기마다 투여될 때, 정상상태에서 체내 평균 약물량은 1회 투여량의 1.44배이다.</p>
 <ul>
 <li><span class="math inline">\(\tau\)</span>가 6시간으로 변경되면 정상상태 체내 평균 약물량은 투여량의 2.88배가 된다.</li>
@@ -9479,10 +9394,8 @@ Cp
 </section>
 <section id="예제-12.7" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.7">예제 12.7</h4>
-<p>머리에 심한 충격을 받은 후 80 kg의 남성(L.K.)에게 발작이 발생하였다. 페노바르비탈 나트륨(phenobarbital sodium)에 대한 적절한 투약 용법을 추천하시오. 약물은 경구로 투여될 예정이지만 계산에는 정맥내 일시주사와 관련된 수식을 사용하시오. 부하용량을 추천하겠는가? 그렇다면 부하용량을 계산하시오.<br>
-<span class="math inline">\(\text{치료역(TR)} = 10\text{–}30\text{ mg/L}\)</span>, <span class="math inline">\(F = 0.9\)</span>, <span class="math inline">\(S = 0.9\)</span>, <span class="math inline">\(V_d = 0.7\text{ L/kg}\)</span>, <span class="math inline">\(Cl = 4.0\text{ mL/h}\cdot\text{kg}\)</span>.</p>
-<p><strong>풀이</strong><br>
-반감기는 이러한 계산에서 매우 중요한 매개변수이므로 가능한 한 빨리 계산하는 것이 중요하다: <span class="math display">\[t_{1/2} = \frac{0.693 V_d}{Cl} = \frac{0.693 \times 0.7 \times 80\text{ L}}{(4 \times 80)/1000\text{ L/h}} = 121.3\text{ h} = 5.05\text{일}\]</span></p>
+<p>머리에 심한 충격을 받은 후 80 kg의 남성(L.K.)에게 발작이 발생하였다. 페노바르비탈 나트륨(phenobarbital sodium)에 대한 적절한 투약 용법을 추천하시오. 약물은 경구로 투여될 예정이지만 계산에는 정맥내 일시주사와 관련된 수식을 사용하시오. 부하용량을 추천하겠는가? 그렇다면 부하용량을 계산하시오. <span class="math inline">\(\text{치료역(TR)} = 10\text{–}30\text{ mg/L}\)</span>, <span class="math inline">\(F = 0.9\)</span>, <span class="math inline">\(S = 0.9\)</span>, <span class="math inline">\(V_d = 0.7\text{ L/kg}\)</span>, <span class="math inline">\(Cl = 4.0\text{ mL/h}\cdot\text{kg}\)</span>.</p>
+<p><strong>풀이</strong> 반감기는 이러한 계산에서 매우 중요한 매개변수이므로 가능한 한 빨리 계산하는 것이 중요하다: <span class="math display">\[t_{1/2} = \frac{0.693 V_d}{Cl} = \frac{0.693 \times 0.7 \times 80\text{ L}}{(4 \times 80)/1000\text{ L/h}} = 121.3\text{ h} = 5.05\text{일}\]</span></p>
 <p>페노바르비탈은 5일이라는 매우 긴 반감기를 가지고 있다.</p>
 <hr>
 <p>274 1구획 모델에서의 다회 정맥내 일시주사 (MULTIPLE INTRAVENOUS BOLUS INJECTIONS IN THE ONE-COMPARTMENT MODEL)</p>
@@ -9496,8 +9409,7 @@ Cp
 <section id="예제-12.8" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.8">예제 12.8</h4>
 <p>앞서 리포아미드(<span class="math inline">\(Cl = 62\text{ L/h}\)</span>, <span class="math inline">\(V_d = 420\text{ L}\)</span>)가 원하는 혈장 농도 50 <span class="math inline">\(\mu\text{g/L}\)</span>를 달성하기 위해 3.1 mg/h의 속도로 투여되어야 함을 확인하였다. 90–25 <span class="math inline">\(\mu\text{g/L}\)</span> 범위 내의 최고 및 최저 농도를 원한다면 적절한 투약 용법을 추천하시오.</p>
-<p><strong>풀이</strong><br>
-원하는 정상상태 혈장 농도 50 <span class="math inline">\(\mu\text{g/L}\)</span>를 달성하기 위한 약물 투여 속도는 점적 주입 공식을 사용하여 이 약물에 대해 결정되었다(연습문제 11.5). 다회 투여로 50 <span class="math inline">\(\mu\text{g/L}\)</span>를 달성하기 위해서도 동일한 평균 투여 속도를 유지해야 한다.</p>
+<p><strong>풀이</strong> 원하는 정상상태 혈장 농도 50 <span class="math inline">\(\mu\text{g/L}\)</span>를 달성하기 위한 약물 투여 속도는 점적 주입 공식을 사용하여 이 약물에 대해 결정되었다(연습문제 11.5). 다회 투여로 50 <span class="math inline">\(\mu\text{g/L}\)</span>를 달성하기 위해서도 동일한 평균 투여 속도를 유지해야 한다.</p>
 <p>리포아미드의 <span class="math inline">\(t_{1/2} = 0.693 \times 420 / 62 = 4.68\text{ h}\)</span>이다. 환자 편의성 측면에서 이 약물의 <span class="math inline">\(t_{1/2}\)</span>보다 큰 투약 간격이 선호된다. 이 약물의 치료역은 50% 이상의 변동 <span class="math inline">\([(Cp_{\max, ss} - Cp_{\min, ss})/Cp_{\max, ss} \cdot 100\%]\)</span>을 허용하므로 반감기보다 긴 투약 간격을 사용하는 것이 가능하다. 이 예제에서는 투약 간격을 계산하는 공식 [식 (12.30)]이 유용할 것이다.</p>
 <p>원하는 정상상태 최고 및 최저 농도를 각각 90 및 25 <span class="math inline">\(\mu\text{g/L}\)</span>라고 하자: <span class="math display">\[\tau = -\frac{4.68}{0.693} \ln\left(\frac{25}{90}\right) = 8.65\text{ h}\]</span></p>
 <hr>
@@ -9517,8 +9429,7 @@ Cp
 <section id="예제-12.9" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.9">예제 12.9</h4>
 <p><span class="math inline">\(V_d = 17.5\text{ L}\)</span> 및 <span class="math inline">\(t_{1/2} = 2.0\text{ h}\)</span>의 약동학 매개변수를 갖는 것으로 추정되는 환자에서 정상상태 최고 및 최저 농도를 8 mg/L 및 0.5 mg/L로 달성하기 위한 젠타마이신(gentamicin)의 적절한 용량과 투약 간격을 결정하시오.</p>
-<p><strong>풀이</strong><br>
-아미노글리코사이드는 단시간 간헐적 점적 주입(short intermittent infusions)으로 투여되지만, 이 계산은 다회 일시주사 투여로 가정하여 수행된다. 결정된 용량은 임상에서 사용되는 용량과 다를 수 있다.</p>
+<p><strong>풀이</strong> 아미노글리코사이드는 단시간 간헐적 점적 주입(short intermittent infusions)으로 투여되지만, 이 계산은 다회 일시주사 투여로 가정하여 수행된다. 결정된 용량은 임상에서 사용되는 용량과 다를 수 있다.</p>
 <p>원하는 최고 및 최저 농도를 달성하기 위한 투약 간격은 식 (12.32)로부터 계산된다: <span class="math display">\[\tau = -\frac{2.0}{0.693} \ln\left(\frac{0.5}{8}\right) = 8\text{ h}\]</span></p>
 <p>용량은 정상상태 최고 또는 최저 농도 공식을 사용하여 결정할 수 있다. 정상상태 최고 농도 공식인 식 (12.12)를 사용하면 다음과 같다: <span class="math display">\[8 = \frac{1 \times 1 \times D}{17.5(1 - e^{-8 \times 0.693 / 2})}\]</span> <span class="math display">\[D = 131\text{ mg}\]</span></p>
 <p>약 130 mg의 젠타마이신을 8시간마다 투여하는 용량이 권장된다.</p>
@@ -9528,8 +9439,7 @@ Cp
 <section id="예제-12.10" class="level4">
 <h4 class="anchored" data-anchor-id="예제-12.10">예제 12.10</h4>
 <p>한 제약회사에서 새로운 항암제를 개발하고 있다. 1상 임상시험을 통해 집단 평균 약동학 매개변수(<span class="math inline">\(Cl = 15\text{ L/h}\)</span>, <span class="math inline">\(V_d = 2.3\text{ L/kg}\)</span>)가 확립되었다. 동물 연구에 따르면 최저 및 최고 농도가 각각 0.35 및 0.65 mg/L일 때 최적의 반응을 얻을 수 있는 것으로 나타났다. 평균 70 kg 환자에서의 적절한 투약 용법을 결정하시오.</p>
-<p><strong>풀이</strong><br>
-약물의 <span class="math inline">\(t_{1/2} = 0.693 \times 70 \times 2.3 / 15\text{ h} = 7.44\text{ h}\)</span>이다. 원하는 최고 및 최저 농도를 달성하기 위한 투약 간격은 식 (12.32)로부터 계산된다: <span class="math display">\[\tau = -\frac{7.44}{0.693} \ln\left(\frac{0.35}{0.65}\right) = 6.64\text{ h}\]</span></p>
+<p><strong>풀이</strong> 약물의 <span class="math inline">\(t_{1/2} = 0.693 \times 70 \times 2.3 / 15\text{ h} = 7.44\text{ h}\)</span>이다. 원하는 최고 및 최저 농도를 달성하기 위한 투약 간격은 식 (12.32)로부터 계산된다: <span class="math display">\[\tau = -\frac{7.44}{0.693} \ln\left(\frac{0.35}{0.65}\right) = 6.64\text{ h}\]</span></p>
 <p>투약 간격은 대개 6시간으로 반올림될 것이며, 용량은 정상상태 최고 또는 최저 농도 공식으로부터 계산할 수 있다. 정상상태 최고 농도 공식인 식 (12.12)를 사용하면 다음과 같다: <span class="math display">\[0.65 = \frac{1 \times 1 \times D}{70 \times 2.3(1 - e^{-6 \times 0.693 / 7.44})}\]</span> <span class="math display">\[D = 44.8 \text{ 또는 } 45.0\text{ mg}\]</span></p>
 <p>권장 용량은 6시간마다 45 mg이다.</p>
 <hr>
@@ -9719,15 +9629,7 @@ Cp
 <section id="다회-간헐적-점적-주입-multiple-intermittent-infusions" class="level1">
 <h1>13 다회 간헐적 점적 주입 (MULTIPLE INTERMITTENT INFUSIONS)</h1>
 <p><strong>Sara E. Rosenbaum</strong></p>
-<p>13.1 서론 (Introduction)<br>
-13.2 다회 간헐적 점적 주입을 위한 정상상태 방정식 (Steady-State Equations for Multiple Intermittent Infusions)<br>
-13.3 투약 간격 동안의 단일지수적 감소: 최고치, 최저치 및 소실 반감기 결정 (Monoexponential Decay During a Dosing Interval: Determination of Peaks, Troughs, and Elimination Half-Life)<br>
-13.3.1 반감기의 결정 (Determination of Half-Life)<br>
-13.3.2 최고치 및 최저치의 결정 (Determination of Peaks and Troughs)<br>
-13.4 분포용적의 결정 (Determination of the Volume of Distribution)<br>
-13.5 투약 용법의 개별화 (Individualization of Dosing Regimens)<br>
-13.6 시뮬레이션 (Simulation)<br>
-연습문제 (Problems)</p>
+<p>13.1 서론 (Introduction) 13.2 다회 간헐적 점적 주입을 위한 정상상태 방정식 (Steady-State Equations for Multiple Intermittent Infusions) 13.3 투약 간격 동안의 단일지수적 감소: 최고치, 최저치 및 소실 반감기 결정 (Monoexponential Decay During a Dosing Interval: Determination of Peaks, Troughs, and Elimination Half-Life) 13.3.1 반감기의 결정 (Determination of Half-Life) 13.3.2 최고치 및 최저치의 결정 (Determination of Peaks and Troughs) 13.4 분포용적의 결정 (Determination of the Volume of Distribution) 13.5 투약 용법의 개별화 (Individualization of Dosing Regimens) 13.6 시뮬레이션 (Simulation) 연습문제 (Problems)</p>
 <section id="학습-목표-objectives-9" class="level3">
 <h3 class="anchored" data-anchor-id="학습-목표-objectives-9">학습 목표 (Objectives)</h3>
 <p>이 장에서 제시되는 내용을 통해 독자는 다음을 수행할 수 있게 된다:</p>
@@ -10004,20 +9906,14 @@ Cp
 </section>
 <section id="연습문제-problems-8" class="level2">
 <h2 class="anchored" data-anchor-id="연습문제-problems-8">연습문제 (PROBLEMS)</h2>
-<p><strong>13.1</strong> 어떤 약물(<span class="math inline">\(Cl = 1.73\text{ L/h}\)</span>, <span class="math inline">\(V_d = 30\text{ L}\)</span>, <span class="math inline">\(S = 1\)</span>)이 다회 단시간 정맥주입으로 투여되었습니다. 40 mg 용량이 12시간마다 1시간에 걸쳐 투여되었습니다.<br>
-(a) 정상상태에 도달하는 데 얼마나 걸립니까?<br>
-(b) 정상상태 투여 간격 동안의 최고 혈장 농도를 계산하십시오.<br>
-(c) 정상상태 투여 간격 시작 후 6시간 시점의 혈장 농도를 계산하십시오.<br>
-(d) 정상상태 투여 간격 동안의 최저 혈장 농도를 계산하십시오.</p>
+<p><strong>13.1</strong> 어떤 약물(<span class="math inline">\(Cl = 1.73\text{ L/h}\)</span>, <span class="math inline">\(V_d = 30\text{ L}\)</span>, <span class="math inline">\(S = 1\)</span>)이 다회 단시간 정맥주입으로 투여되었습니다. 40 mg 용량이 12시간마다 1시간에 걸쳐 투여되었습니다. (a) 정상상태에 도달하는 데 얼마나 걸립니까? (b) 정상상태 투여 간격 동안의 최고 혈장 농도를 계산하십시오. (c) 정상상태 투여 간격 시작 후 6시간 시점의 혈장 농도를 계산하십시오. (d) 정상상태 투여 간격 동안의 최저 혈장 농도를 계산하십시오.</p>
 <p><strong>13.2</strong> 위에서 논의된 약물의 용량을 0.5시간 동안 정주한다면, 정상상태 최고 농도와 최저 농도를 계산하십시오.</p>
 <p><strong>13.3</strong> 위 약물의 용량을 2시간 동안 정주한다면, 정상상태 최고 농도와 최저 농도를 계산하십시오.</p>
 <p><strong>13.4</strong> 38세 남성 환자(75 kg)에게 젠타마이신(8시간마다 1시간에 걸쳐 120 mg 정주)이 투여되고 있습니다. 두 번째 투여 후 채취된 혈장 검체의 젠타마이신 분석 결과가 표 P13.4에 제시되어 있습니다.</p>
 <p><strong>표 P13.4 주입 시작 후 두 시점에서 측정된 젠타마이신 혈장 농도</strong> | 주입 시작 후 시간 (h) | 젠타마이신 혈장 농도 (mg/L) | | :— | :— | | 2 | 3.84 | | 7 | 1.10 |</p>
 <ol type="a">
-<li>이 환자에서 젠타마이신의 반감기는 얼마입니까?<br>
-</li>
-<li>이 투여 간격의 최고 혈장 농도는 얼마입니까?<br>
-</li>
+<li>이 환자에서 젠타마이신의 반감기는 얼마입니까?</li>
+<li>이 투여 간격의 최고 혈장 농도는 얼마입니까?</li>
 <li>이 투여 간격의 최저 혈장 농도는 얼마입니까?</li>
 </ol>
 <p><strong>13.5</strong> 토브라마이신(tobramycin, 120 mg)이 8시간마다 1시간에 걸쳐 주입되고 있습니다. 치료 3일째 정상상태에서 주입 시작 후 1시간 및 8시간 시점의 토브라마이신 농도는 각각 7.12 mg/L 및 0.75 mg/L로 확인되었습니다. 이 약물의 반감기와 분포용적을 계산하십시오. 정상상태에 도달했으므로 이전 투여 간격의 최저 농도 역시 0.75 mg/L로 가정할 수 있음에 유의하십시오.</p>
@@ -10155,9 +10051,7 @@ Cp
 <h4 class="anchored" data-anchor-id="지속적-유입-공식-vs-다회-이산적-용량-공식-continuous-input-or-multiple-discrete-dose-equations">지속적 유입 공식 vs 다회 이산적 용량 공식? (Continuous Input or Multiple Discrete Dose Equations?)</h4>
 <p>투여 간격 동안 발생하는 변동(fluctuation)의 정도가 이 두 약물 투여 방식을 구분합니다. 지속 정주에서는 변동이 없으며, 이산적 용량(discrete doses)의 펄스 형태 투여에서는 뚜렷한 변동이 존재합니다(그림 14.4).</p>
 <p>다회 경구 투여는 다음과 같은 경우에 거의 변동을 일으키지 않습니다:</p>
-<p><strong>A.</strong> 투여 간격의 전체 과정 동안 용량이 일정한 속도로 흡수되는 경우. 이 경우 지속 정주 공식을 사용할 수 있습니다. 예를 들어, 테오필린과 같은 서방형 제제(sustained-release preparations)로부터의 약물의 느린 방출 및 흡수에는 지속 정주 모델이 빈번하게 적용됩니다.<br>
-<em>또는</em><br>
-<strong>B.</strong> 약물의 반감기가 투여 간격보다 훨씬 길어서 투여 간격 동안 약물이 거의 소실되지 않는 경우, 변동이 미미하여 지속 정주 공식을 사용할 수 있습니다. 일반적으로 20%의 약물 소실 기준이 사용됩니다 [3]. 투여 간격 동안 체내 약물의 20% 미만이 소실되는 경우 지속 정주 모델을 사용할 수 있습니다. 체내 약물의 20%가 소실되는 데 걸리는 시간은 <span class="math inline">\(\frac{1}{3} t_{1/2}\)</span>에 해당한다는 점을 상기하십시오(부록 B). 따라서 투여 간격이 <span class="math inline">\(\frac{1}{3} t_{1/2}\)</span>보다 작은 경우 지속 정주 공식을 사용할 수 있습니다. 예를 들어 투여 간격(1일)이 반감기(5일)의 약 20%인 경구 디곡신에 지속 정주 모델이 자주 적용됩니다.</p>
+<p><strong>A.</strong> 투여 간격의 전체 과정 동안 용량이 일정한 속도로 흡수되는 경우. 이 경우 지속 정주 공식을 사용할 수 있습니다. 예를 들어, 테오필린과 같은 서방형 제제(sustained-release preparations)로부터의 약물의 느린 방출 및 흡수에는 지속 정주 모델이 빈번하게 적용됩니다. <em>또는</em> <strong>B.</strong> 약물의 반감기가 투여 간격보다 훨씬 길어서 투여 간격 동안 약물이 거의 소실되지 않는 경우, 변동이 미미하여 지속 정주 공식을 사용할 수 있습니다. 일반적으로 20%의 약물 소실 기준이 사용됩니다 [3]. 투여 간격 동안 체내 약물의 20% 미만이 소실되는 경우 지속 정주 모델을 사용할 수 있습니다. 체내 약물의 20%가 소실되는 데 걸리는 시간은 <span class="math inline">\(\frac{1}{3} t_{1/2}\)</span>에 해당한다는 점을 상기하십시오(부록 B). 따라서 투여 간격이 <span class="math inline">\(\frac{1}{3} t_{1/2}\)</span>보다 작은 경우 지속 정주 공식을 사용할 수 있습니다. 예를 들어 투여 간격(1일)이 반감기(5일)의 약 20%인 경구 디곡신에 지속 정주 모델이 자주 적용됩니다.</p>
 <p>따라서: - <span class="math inline">\(\tau &lt; \frac{1}{3} t_{1/2}\)</span>: 지속 정주 모델을 사용할 수 있습니다. - <span class="math inline">\(\tau &gt; \frac{1}{3} t_{1/2}\)</span>: 투여 간격 동안 많은 약물이 소실되므로 다회 이산적 용량 공식을 사용해야 합니다.</p>
 <pre><code>Cp
 [ 1. 지속 투여 vs 이산적 용량: 변동의 정도는? ]
@@ -10192,9 +10086,7 @@ Cp
 </section>
 <section id="시뮬레이션-실습-httpweb.uri.edupharmacyresearchrosenbaumsims" class="level3">
 <h3 class="anchored" data-anchor-id="시뮬레이션-실습-httpweb.uri.edupharmacyresearchrosenbaumsims">14.4 시뮬레이션 실습: http://web.uri.edu/pharmacy/research/rosenbaum/sims</h3>
-<p>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model11 에서 찾을 수 있는 모델 11(Model 11: Multiple Oral Doses, 다회 경구 투여)을 엽니다.<br>
-이 모델의 기본 설정값은 다음과 같습니다:<br>
-시간 단위는 소실 반감기(t_1/2), 용량(dose) = 200 mg, Cl = 34.7 L/t_1/2, Vd = 50 L, ka = 8 t_1/2^-1, tau = 1 t_1/2, F = 1, S = 1.</p>
+<p>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model11 에서 찾을 수 있는 모델 11(Model 11: Multiple Oral Doses, 다회 경구 투여)을 엽니다. 이 모델의 기본 설정값은 다음과 같습니다: 시간 단위는 소실 반감기(t_1/2), 용량(dose) = 200 mg, Cl = 34.7 L/t_1/2, Vd = 50 L, ka = 8 t_1/2^-1, tau = 1 t_1/2, F = 1, S = 1.</p>
 <ol type="1">
 <li>학습 목표와 “Model Summary”(모델 요약) 페이지를 검토합니다.</li>
 <li>“Cp–Time Profile”(혈장 농도-시간 프로파일) 페이지로 이동합니다. 시뮬레이션을 수행하고 다음 사항을 확인합니다:
@@ -10304,8 +10196,7 @@ Cp
 </ul>
 <hr>
 <p>따라서 약물의 생체이용률(F)은 용량 표준화 AUC로부터 평가할 수 있습니다. 혈관외 투여 용량의 절대적 생체이용률(F_PO)은 해당 제형의 용량 표준화 AUC를 정맥 투여(F_IV = 1) 후의 용량 표준화 AUC와 비교하여 결정됩니다: 3102950F_{PO} = rac{AUC_{PO} / D_{PO}}{AUC_{IV} / D_{IV}} ag{15.3}3102950</p>
-<p>어떤 약물의 두 가지 서로 다른 제형의 생체이용률을 비교하는 생물학적 동등성 연구에서는 다음과 같습니다: 3102950rac{F_T}{F_S} = rac{AUC_T D_S}{AUC_S D_T} ag{15.4}3102950 여기서 아래 첨자 T와 S는 각각 시험 제제(test)와 표준 제제(standard)를 나타냅니다.<br>
-만약 D_T = D_S라면, 상대적 생체이용률은 단순히 두 제제의 AUC 값을 비교함으로써 평가할 수 있습니다: 3102950rac{F_T}{F_S} = rac{AUC_T}{AUC_S} ag{15.5}3102950</p>
+<p>어떤 약물의 두 가지 서로 다른 제형의 생체이용률을 비교하는 생물학적 동등성 연구에서는 다음과 같습니다: 3102950rac{F_T}{F_S} = rac{AUC_T D_S}{AUC_S D_T} ag{15.4}3102950 여기서 아래 첨자 T와 S는 각각 시험 제제(test)와 표준 제제(standard)를 나타냅니다. 만약 D_T = D_S라면, 상대적 생체이용률은 단순히 두 제제의 AUC 값을 비교함으로써 평가할 수 있습니다: 3102950rac{F_T}{F_S} = rac{AUC_T}{AUC_S} ag{15.5}3102950</p>
 <p>약물의 약동학에서의 비선형성(nonlinearity)은 약물 개발, 치료적 약물 사용, 생체이용률 평가를 크게 복잡하게 만듭니다. 비선형성은 여러 다양한 원인에서 비롯될 수 있지만, 흡수, 분포, 대사, 배설(ADME) 과정 중 하나가 일차 과정에서 벗어날 때, 그리고/또는 약물의 약동학 매개변수가 용량에 따라 변할 때 발생합니다.</p>
 <hr>
 </section>
@@ -11026,7 +10917,7 @@ Ki = ki2 / ki1</code></pre>
   │              --------- k_inact
   │            /
   │           /
-k_inact/2 ── / ─ ─ ─ ─ 
+k_inact/2 ── / ─ ─ ─ ─
   │         /│         k_obs = (k_inact · [I]) / (K_I + [I])
   │       /  │
   │     /    │
@@ -11121,8 +11012,7 @@ k_inact/2 ── / ─ ─ ─ ─
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(^a\)</span>참고문헌 [4] 출처.<br>
-<span class="math inline">\(^b\)</span>참고문헌 [3] 출처.</p>
+<p><span class="math inline">\(^a\)</span>참고문헌 [4] 출처. <span class="math inline">\(^b\)</span>참고문헌 [3] 출처.</p>
 <hr>
 <section id="유도-induction" class="level3">
 <h3 class="anchored" data-anchor-id="유도-induction">17.2.3 유도 (Induction)</h3>
@@ -11238,8 +11128,7 @@ k_inact/2 ── / ─ ─ ─ ─
 <hr>
 <section id="기본-모델의-적용-예시-example-applications-of-the-basic-model" class="level4">
 <h4 class="anchored" data-anchor-id="기본-모델의-적용-예시-example-applications-of-the-basic-model">17.4.2.1 기본 모델의 적용 예시 (Example Applications of the Basic Model)</h4>
-<p><strong>예제 17.1</strong><br>
-플루코나졸(fluconazole), 네파조돈(nefazodone), 파록세틴(paroxetine)은 모두 CYP2C9의 가역적 억제제입니다. 와파린(warfarin)을 대상 약물로 한 연구에서 이들의 <span class="math inline">\(K_i\)</span> 값은 각각 5.5, 8.5, 65 μM로 보고되었습니다[12]. 억제제의 <span class="math inline">\(C_{\text{max}}\)</span> 값인 5.65, 1.39, 1.00 μM를 기준으로 이들의 예측된 억제 효과를 평가하십시오.</p>
+<p><strong>예제 17.1</strong> 플루코나졸(fluconazole), 네파조돈(nefazodone), 파록세틴(paroxetine)은 모두 CYP2C9의 가역적 억제제입니다. 와파린(warfarin)을 대상 약물로 한 연구에서 이들의 <span class="math inline">\(K_i\)</span> 값은 각각 5.5, 8.5, 65 μM로 보고되었습니다[12]. 억제제의 <span class="math inline">\(C_{\text{max}}\)</span> 값인 5.65, 1.39, 1.00 μM를 기준으로 이들의 예측된 억제 효과를 평가하십시오.</p>
 <p><span class="math display">\[R_1 = \frac{Cl_{\text{int}}}{Cl_{\text{int}}^I} = (1 + [I] / K_i)\]</span></p>
 <ul>
 <li>플루코나졸: <span class="math inline">\(R_1 = \frac{Cl_{\text{int}}}{Cl_{\text{int}}^I} = (1 + 5.65 / 5.5) \approx 2\)</span> (원문 표기: <span class="math inline">\(1 + 1.11 / 3.1 = 2\)</span>)</li>
@@ -11301,8 +11190,7 @@ k_inact/2 ── / ─ ─ ─ ─
 </tbody>
 </table>
 <hr>
-<p><strong>예제 17.2</strong><br>
-클래리스로마이신, 딜티아젬, 에리스로마이신은 모두 CYP3A4의 TDI 억제제입니다. 미다졸람을 대상 약물로 사용하여 추정된 이들의 <span class="math inline">\(K_I\)</span> 및 <span class="math inline">\(k_{\text{inact}}\)</span> 값([3] 참조)과 각 억제제의 대표적인 <span class="math inline">\(C_{\text{max}}\)</span> 농도가 <strong>표 17.4</strong>에 나와 있습니다. CYP3A4에 대한 <span class="math inline">\(k_{\text{degrad}}\)</span> 값으로 0.0192 h<span class="math inline">\(^{-1}\)</span> [3] 및 표에 제시된 억제제 농도를 사용하여 세 억제제에 대한 <span class="math inline">\(R_2\)</span> 값을 구하십시오.</p>
+<p><strong>예제 17.2</strong> 클래리스로마이신, 딜티아젬, 에리스로마이신은 모두 CYP3A4의 TDI 억제제입니다. 미다졸람을 대상 약물로 사용하여 추정된 이들의 <span class="math inline">\(K_I\)</span> 및 <span class="math inline">\(k_{\text{inact}}\)</span> 값([3] 참조)과 각 억제제의 대표적인 <span class="math inline">\(C_{\text{max}}\)</span> 농도가 <strong>표 17.4</strong>에 나와 있습니다. CYP3A4에 대한 <span class="math inline">\(k_{\text{degrad}}\)</span> 값으로 0.0192 h<span class="math inline">\(^{-1}\)</span> [3] 및 표에 제시된 억제제 농도를 사용하여 세 억제제에 대한 <span class="math inline">\(R_2\)</span> 값을 구하십시오.</p>
 <p>클래리스로마이신, 딜티아젬, 에리스로마이신의 분자량은 각각 748, 415, 734 Da입니다. 따라서 <span class="math inline">\([I]\)</span> 값은 각각 1.43, 0.0892, 0.995 μM입니다.</p>
 <ul>
 <li><strong>클래리스로마이신 <span class="math inline">\(R_2\)</span>:</strong> <span class="math display">\[R_2 = \frac{k_{\text{degrad}} + \dfrac{k_{\text{inact}} \cdot [I]}{K_I + [I]}}{k_{\text{degrad}}} = \frac{0.0192 + \dfrac{3.18 \cdot 1.43}{18.9 + 1.43}}{0.0192} = 12.6\]</span></li>
@@ -11311,8 +11199,7 @@ k_inact/2 ── / ─ ─ ─ ─
 <p>따라서 클래리스로마이신이 가장 큰 억제를 유발하고, 그 다음은 에리스로마이신, 딜티아젬 순일 것으로 예측됩니다.</p>
 <p>각 약물의 <span class="math inline">\(K_I\)</span>를 억제제 농도로 사용하여 값을 다시 계산해 보십시오. 클래리스로마이신, 딜티아젬, 에리스로마이신에 대한 <span class="math inline">\(R_2\)</span> 값은 이제 각각 83.8, 43.2, 65.1이 됩니다. 순위는 이제 <span class="math inline">\(k_{\text{inact}}\)</span>의 순위와 동일해지며, 이는 농도가 높을 때 클래리스로마이신이 가장 강력한 억제제가 될 수 있는 잠재력을 가지고 있음을 보여줍니다.</p>
 <hr>
-<p><strong>예제 17.3</strong><br>
-리팜핀과 카르바마제핀은 모두 여러 CYP 효소의 유도제입니다. 미다졸람 대사 유도에 대해 리팜핀의 <span class="math inline">\(E_{\text{max}}\)</span> 및 <span class="math inline">\(EC_{50}\)</span>은 각각 23.2배 증가 및 0.943 μM로 보고되었으며, 카르바마제핀의 경우 각각 39.1배 증가 및 14.9 μM로 보고되었습니다([13] 참조). 리팜핀과 카르바마제핀의 <span class="math inline">\(C_{\text{max}}\)</span> 값인 7.9 μM 및 21 μM를 사용하여 이들의 <span class="math inline">\(R_3\)</span> 값을 구하십시오.</p>
+<p><strong>예제 17.3</strong> 리팜핀과 카르바마제핀은 모두 여러 CYP 효소의 유도제입니다. 미다졸람 대사 유도에 대해 리팜핀의 <span class="math inline">\(E_{\text{max}}\)</span> 및 <span class="math inline">\(EC_{50}\)</span>은 각각 23.2배 증가 및 0.943 μM로 보고되었으며, 카르바마제핀의 경우 각각 39.1배 증가 및 14.9 μM로 보고되었습니다([13] 참조). 리팜핀과 카르바마제핀의 <span class="math inline">\(C_{\text{max}}\)</span> 값인 7.9 μM 및 21 μM를 사용하여 이들의 <span class="math inline">\(R_3\)</span> 값을 구하십시오.</p>
 <p><span class="math display">\[R_3 = \frac{Cl_{\text{int}}}{Cl_{\text{int}}^{\text{Ind}}} = \frac{1}{1 + \dfrac{E_{\text{max}} \cdot [I]}{EC_{50} + [I]}}\]</span></p>
 <ul>
 <li><p><strong>리팜핀:</strong> <span class="math display">\[R_3 = \frac{1}{1 + \dfrac{23.2 \cdot 7.9}{0.943 + 7.9}} = 0.046\]</span></p></li>
@@ -11348,8 +11235,7 @@ k_inact/2 ── / ─ ─ ─ ─
 <p><span class="math inline">\(R_1\)</span>에 대한 식 [식 (17.3)]을 식 (17.20)에 대입하면 가역적 억제제에 대한 AUCR은 다음과 같이 주어집니다:</p>
 <p><span class="math display">\[\text{AUCR} = \frac{1}{f_m \cdot \left( \dfrac{1}{1 + [I] / K_i} \right) + (1 - f_m)} \tag{17.21}\]</span></p>
 <hr>
-<p><strong>예제 및 시뮬레이션 (Example and Simulation):</strong><br>
-http://web.uri.edu/pharmacy/research/rosenbaum/sims</p>
+<p><strong>예제 및 시뮬레이션 (Example and Simulation):</strong> http://web.uri.edu/pharmacy/research/rosenbaum/sims</p>
 <ol type="1">
 <li>플루코나졸(<span class="math inline">\(K_i = 3.4\text{ μM}\)</span> [12])에 의한 미다졸람(<span class="math inline">\(f_m = 0.93\)</span>)의 간 대사 억제에 대해 추정된 AUCR을 계산하십시오. 400 mg 단회 투여 후 플루코나졸(MW = 306 Da)에 대한 추정 <span class="math inline">\(C_{\text{max}}\)</span>로 6.72 mg/L 또는 <span class="math inline">\((1000 \cdot 6.72 / 306 = 21.96\text{ μM})\)</span>를 사용하십시오.</li>
 </ol>
@@ -11370,8 +11256,7 @@ http://web.uri.edu/pharmacy/research/rosenbaum/sims</p>
 <h4 class="anchored" data-anchor-id="시간-의존적-억제제time-dependent-inhibitors-모델">17.4.3.3 시간-의존적 억제제(Time-Dependent Inhibitors) 모델</h4>
 <p>식 (17.20)에 <span class="math inline">\(R_2\)</span>에 대한 표현식[식 (17.4)]을 대입하면 시간-의존적 억제제(TDI)에 대한 <span class="math inline">\(\text{AUCR}\)</span>은 다음과 같이 주어집니다:</p>
 <p><span class="math display">\[\text{AUCR} = \frac{1}{fm \cdot \left(\frac{k_{\text{degrad}}}{k_{\text{degrad}} + \frac{k_{\text{inact}} \cdot [I]}{K_I + [I]}}\right) + (1 - fm)} \tag{17.22}\]</span></p>
-<p><strong>예제 및 시뮬레이션</strong>: http://web.uri.edu/pharmacy/research/rosenbaum/sims<br>
-CYP2D6의 TDI인 파록세틴(paroxetine)과 데시프라민(desipramine, <span class="math inline">\(fm_{\text{CYP2D6}} = 0.85\)</span>) 사이의 잠재적 상호작용을 조사해 봅시다. 파록세틴에 대해 비결합 <span class="math inline">\(K_I = 0.315\ \mu\text{M}\)</span>, <span class="math inline">\(k_{\text{inact}} = 10.2\text{ h}^{-1}\)</span>, 그리고 <span class="math inline">\([I] = 5\text{ nM}\)</span>의 매개변수를 사용하십시오[15]. CYP2D6의 <span class="math inline">\(k_{\text{degrad}}\)</span>로는 <span class="math inline">\(0.0136\text{ h}^{-1}\)</span>를 사용하십시오.</p>
+<p><strong>예제 및 시뮬레이션</strong>: http://web.uri.edu/pharmacy/research/rosenbaum/sims CYP2D6의 TDI인 파록세틴(paroxetine)과 데시프라민(desipramine, <span class="math inline">\(fm_{\text{CYP2D6}} = 0.85\)</span>) 사이의 잠재적 상호작용을 조사해 봅시다. 파록세틴에 대해 비결합 <span class="math inline">\(K_I = 0.315\ \mu\text{M}\)</span>, <span class="math inline">\(k_{\text{inact}} = 10.2\text{ h}^{-1}\)</span>, 그리고 <span class="math inline">\([I] = 5\text{ nM}\)</span>의 매개변수를 사용하십시오[15]. CYP2D6의 <span class="math inline">\(k_{\text{degrad}}\)</span>로는 <span class="math inline">\(0.0136\text{ h}^{-1}\)</span>를 사용하십시오.</p>
 <ol type="1">
 <li><span class="math inline">\([I]:K_I\)</span> 비와 <span class="math inline">\(k_{\text{inact}}:k_{\text{degrad}}\)</span> 비를 계산하십시오. <span class="math inline">\([I]/K_I\)</span> 비가 0.016인 것은 역가가 낮음을 나타내지만, <span class="math inline">\(k_{\text{inact}}:k_{\text{degrad}}\)</span> 비가 750인 것은 강력한 불활성화가 일어남을 나타냅니다.</li>
 <li>이 상호작용에 대해 추정된 <span class="math inline">\(\text{AUCR}\)</span>을 계산하십시오.</li>
@@ -11450,8 +11335,7 @@ CYP2D6의 TDI인 파록세틴(paroxetine)과 데시프라민(desipramine, <span 
 <li><p>간 CYP3A4 활성의 변화가 없고 장관 CYP3A4가 완전 억제(<span class="math inline">\(Fg = 1\)</span>)되었다고 가정한 상태에서 CYP3A4 경로의 경구 청소율 추정: <span class="math display">\[\left(\frac{Cl_h}{F_h}\right)_{\text{CYP3A4}} = \frac{Cl}{F_h} \cdot fm = 28.6 \cdot 0.93 = 26.6\text{ L/h}\]</span></p></li>
 <li><p>CYP3A4 경로의 전혈 경구 청소율 추정: <span class="math display">\[\left(\frac{Cl_h^b}{F_h}\right)_{\text{CYP3A4}} = \left(\frac{Cl_h}{F_h}\right)_{\text{CYP3A4}} \cdot \frac{1}{BP} = \frac{26.6}{0.653} = 40.73\text{ L/h}\]</span></p></li>
 </ol>
-<p><strong><span class="math inline">\(Fg\)</span> 계산</strong>:<br>
-<span class="math inline">\(Fa = 1\)</span>, <span class="math inline">\(F = F_h \cdot Fg\)</span>이며 자몽주스가 있을 때 <span class="math inline">\(Fg = 1\)</span>이라고 가정하면: <span class="math display">\[\left(\frac{Cl_h^b}{F_h \cdot Fg}\right)_{\text{CYP3A4}} = 71.21 \quad \text{및} \quad \left(\frac{Cl_h^b}{F_h}\right)_{\text{CYP3A4}} = 40.73\]</span> <span class="math display">\[\text{따라서} \quad \frac{40.73}{Fg} = 71.21 \implies Fg = 0.57\]</span></p></li>
+<p><strong><span class="math inline">\(Fg\)</span> 계산</strong>: <span class="math inline">\(Fa = 1\)</span>, <span class="math inline">\(F = F_h \cdot Fg\)</span>이며 자몽주스가 있을 때 <span class="math inline">\(Fg = 1\)</span>이라고 가정하면: <span class="math display">\[\left(\frac{Cl_h^b}{F_h \cdot Fg}\right)_{\text{CYP3A4}} = 71.21 \quad \text{및} \quad \left(\frac{Cl_h^b}{F_h}\right)_{\text{CYP3A4}} = 40.73\]</span> <span class="math display">\[\text{따라서} \quad \frac{40.73}{Fg} = 71.21 \implies Fg = 0.57\]</span></p></li>
 <li><p>다양한 <span class="math inline">\(fm\)</span>, <span class="math inline">\(Cl_{\text{intg}}\)</span> 및 억제제 농도 값을 탐색해 보십시오. 이는 <span class="math inline">\([I_h]\)</span>와 <span class="math inline">\([I_g]\)</span>에 동일한 변화를 가져올 것입니다.</p></li>
 <li><p>매우 높은 억제제 농도에서 얻은 프로파일을 자몽주스로 얻은 프로파일과 비교해 보십시오.</p></li>
 </ol>
@@ -11876,8 +11760,7 @@ CYP2D6의 TDI인 파록세틴(paroxetine)과 데시프라민(desipramine, <span 
 </tr>
 </tbody>
 </table>
-<p><em>출처: 참고문헌 [4]의 데이터.</em><br>
-<span class="math inline">\(^a\)</span>기타 조직의 용적은 모델에 구체적으로 포함된 조직들의 용적을 합산한 후 70 L에서 해당 총 용적을 빼서 계산했습니다. 총 심박출량은 390 L/h이고 모델에 구체적으로 포함된 조직들로 가는 혈류량의 합은 345.3 L입니다. 따라서 “기타”로 그룹화된 조직들로 가는 혈류량은 <span class="math inline">\(390 - 345.3 = 44.7\text{ L/h}\)</span>입니다.</p>
+<p><em>출처: 참고문헌 [4]의 데이터.</em> <span class="math inline">\(^a\)</span>기타 조직의 용적은 모델에 구체적으로 포함된 조직들의 용적을 합산한 후 70 L에서 해당 총 용적을 빼서 계산했습니다. 총 심박출량은 390 L/h이고 모델에 구체적으로 포함된 조직들로 가는 혈류량의 합은 345.3 L입니다. 따라서 “기타”로 그룹화된 조직들로 가는 혈류량은 <span class="math inline">\(390 - 345.3 = 44.7\text{ L/h}\)</span>입니다.</p>
 <hr>
 <p>정맥혈은 약물을 폐로 운반하며, 폐는 심박출량 전체를 공급받습니다. 그런 다음 폐를 빠져나온 동맥혈은 각 조직으로 분지되어 약물을 전달합니다. 단순화를 위해 약물의 혈액-혈장 비는 1로 설정되었으며, 모든 혈장-조직 분배계수 및 혈장 내 비결합 분율도 1로 설정되었습니다. 약물은 <span class="math inline">\(40\text{ L/h}\)</span>의 고유 청소율로 간에서 완전히 배설된다고 가정합니다.</p>
 <p>동맥혈 내 약물 농도 <span class="math inline">\(C_a\)</span>는 다음과 같이 주어집니다:</p>
@@ -12758,11 +12641,7 @@ Cvt ────────────► 정맥혈 유출</code></pre>
 <hr>
 <section id="이력현상과-효과-구획-417" class="level3">
 <h3 class="anchored" data-anchor-id="이력현상과-효과-구획-417">이력현상과 효과 구획 417</h3>
-<p><strong>(a) 반응 대 혈장 농도 (<span class="math inline">\(C_p\)</span>)</strong><br>
-<strong>(b) 시간 경과에 따른 농도 프로파일</strong> (혈장: 실선, 작용 부위: 점선)<br>
-- 영역 1: 혈장 농도와 작용 부위 농도 모두 증가 <span class="math inline">\(\rightarrow\)</span> 효과 증가<br>
-- 영역 2: 혈장 농도는 감소하지만 작용 부위 농도는 계속 증가 <span class="math inline">\(\rightarrow\)</span> 효과 지속 증가 (반시계 방향 궤적 형성)<br>
-- 영역 3: 작용 부위 농도 감소 <span class="math inline">\(\rightarrow\)</span> 효과 감소</p>
+<p><strong>(a) 반응 대 혈장 농도 (<span class="math inline">\(C_p\)</span>)</strong> <strong>(b) 시간 경과에 따른 농도 프로파일</strong> (혈장: 실선, 작용 부위: 점선) - 영역 1: 혈장 농도와 작용 부위 농도 모두 증가 <span class="math inline">\(\rightarrow\)</span> 효과 증가 - 영역 2: 혈장 농도는 감소하지만 작용 부위 농도는 계속 증가 <span class="math inline">\(\rightarrow\)</span> 효과 지속 증가 (반시계 방향 궤적 형성) - 영역 3: 작용 부위 농도 감소 <span class="math inline">\(\rightarrow\)</span> 효과 감소</p>
 <p><strong>그림 20.2</strong> 분포 지연에 기인한 이력현상. 패널 (a)는 혈장 농도의 함수로 플롯된 반응(실선)을 보여준다. <span class="math inline">\(E_{\max}\)</span> 모델에 따라 예상되는 반응-혈장 농도 관계(점선)도 함께 표시되어 있다. 패널 (b)는 투여 후 시간의 함수로서 혈장(실선) 및 작용 부위(점선)에서의 약물 농도를 보여준다. 느린 분포의 결과로, 작용 부위에서의 최고 농도는 최고 혈장 농도보다 늦게 발생한다. 반응을 유도하는 것은 혈중 농도가 아니라 작용 부위의 약물 농도라는 점을 이해하는 것이 중요하다. (b)의 영역 1에서는 혈장 농도와 작용 부위의 농도가 모두 증가함에 유의하라. 후자로 인해 효과가 증가한다. 영역 2에서는 작용 부위의 농도가 계속 증가하므로 효과는 증가하지만 혈장 농도는 감소하고 있다. 이 시점에서 <span class="math inline">\(C_p\)</span>에 대한 반응 곡선이 반시계 방향으로 움직이기 시작한다 [패널 (a)]. 결국 작용 부위의 농도가 감소함에 따라 반응도 감소한다(영역 3).</p>
 <hr>
 <p>작용 부위로의 분포 지연은 약동학 모델과 약력학 모델을 연결하는 가상의 <strong>“효과 구획(effect compartment)”</strong>을 사용하여 처리할 수 있다[4] (그림 20.3). 효과 구획은 작용 부위 또는 생체상(biophase)을 나타내며, 다구획 모델의 중앙 구획(central compartment)에 연결된다 (그림 20.4). 효과 구획으로의 약물 분포 및 구획으로부터의 재분포는 1차 속도론적 과정(first-order process)으로 모델링된다. 효과 구획 내 약물 농도의 변화율은 다음과 같이 표현될 수 있다:</p>
@@ -12800,8 +12679,7 @@ Cvt ────────────► 정맥혈 유출</code></pre>
 </section>
 <section id="모의실험-실습-simulation-exercise-1" class="level3">
 <h3 class="anchored" data-anchor-id="모의실험-실습-simulation-exercise-1">20.2.1 모의실험 실습 (Simulation Exercise)</h3>
-<p>URL: <code>http://web.uri.edu/pharmacy/research/rosenbaum/sims</code><br>
-<code>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model21</code>에 있는 <strong>모델 21(Effect Compartment)</strong>을 연다. 이 모델은 효과 구획을 통해 <span class="math inline">\(E_{\max}\)</span> 모델과 연결된 1차 흡수를 동반하는 1구획 모델이다. 기본 매개변수 설정값은 <span class="math inline">\(V_d = 20\text{ L}\)</span>, <span class="math inline">\(Cl = 4\text{ L/h}\)</span> (이에 따라 <span class="math inline">\(k = 0.2\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 3.5\text{ h}\)</span> 산출), <span class="math inline">\(F = 1\)</span>, <span class="math inline">\(k_a = 1\text{ h}^{-1}\)</span>, <span class="math inline">\(E_{\max} = 100\)</span>, <span class="math inline">\(EC_{50} = 1\text{ mg/L}\)</span>, <span class="math inline">\(k_{e0} = 0.5\text{ h}^{-1}\)</span>, 용량(dose) <span class="math inline">\(= 20\text{ mg}\)</span>이다.</p>
+<p>URL: <code>http://web.uri.edu/pharmacy/research/rosenbaum/sims</code> <code>http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model21</code>에 있는 <strong>모델 21(Effect Compartment)</strong>을 연다. 이 모델은 효과 구획을 통해 <span class="math inline">\(E_{\max}\)</span> 모델과 연결된 1차 흡수를 동반하는 1구획 모델이다. 기본 매개변수 설정값은 <span class="math inline">\(V_d = 20\text{ L}\)</span>, <span class="math inline">\(Cl = 4\text{ L/h}\)</span> (이에 따라 <span class="math inline">\(k = 0.2\text{ h}^{-1}\)</span>, <span class="math inline">\(t_{1/2} = 3.5\text{ h}\)</span> 산출), <span class="math inline">\(F = 1\)</span>, <span class="math inline">\(k_a = 1\text{ h}^{-1}\)</span>, <span class="math inline">\(E_{\max} = 100\)</span>, <span class="math inline">\(EC_{50} = 1\text{ mg/L}\)</span>, <span class="math inline">\(k_{e0} = 0.5\text{ h}^{-1}\)</span>, 용량(dose) <span class="math inline">\(= 20\text{ mg}\)</span>이다.</p>
 <ol type="1">
 <li>모델을 탐색하고 모델 요약 설명을 검토한다.</li>
 <li>비디오 영상을 시청한다.</li>
@@ -14845,15 +14723,10 @@ dR/dt = kin - R * kout - C * kirr * R</code></pre>
 <section id="a.4-지수-표현식과-로그를-이용한-계산-calculations-using-exponential-expressions-and-logarithms" class="level2">
 <h2 class="anchored" data-anchor-id="a.4-지수-표현식과-로그를-이용한-계산-calculations-using-exponential-expressions-and-logarithms">A.4 지수 표현식과 로그를 이용한 계산 (CALCULATIONS USING EXPONENTIAL EXPRESSIONS AND LOGARITHMS)</h2>
 <p><strong>예제 A.1</strong> 다음 식에서 <span class="math inline">\(x\)</span>를 구하시오: (a) <span class="math inline">\(e^x = 3\)</span>, (b) <span class="math inline">\(e^x = 23\)</span>, (c) <span class="math inline">\(e^x = 106\)</span>, (d) <span class="math inline">\(e^x = 563\)</span>.</p>
-<p><strong>풀이</strong> (a) <span class="math inline">\(e^x = 3 \implies x = \ln 3 = 1.10\)</span><br>
-(b) <span class="math inline">\(3.14\)</span><br>
-(c) <span class="math inline">\(4.66\)</span><br>
-(d) <span class="math inline">\(6.33\)</span></p>
+<p><strong>풀이</strong> (a) <span class="math inline">\(e^x = 3 \implies x = \ln 3 = 1.10\)</span> (b) <span class="math inline">\(3.14\)</span> (c) <span class="math inline">\(4.66\)</span> (d) <span class="math inline">\(6.33\)</span></p>
 <p>지수 표현식과 로그를 이용한 계산 473</p>
 <p><strong>예제 A.2</strong> 다음 식에서 <span class="math inline">\(x\)</span>를 구하시오: (a) <span class="math inline">\(\ln x = 4.3\)</span>, (b) <span class="math inline">\(\ln x = -1.4\)</span>, (c) <span class="math inline">\(\ln x = -0.3\)</span>.</p>
-<p><strong>풀이</strong> (a) <span class="math inline">\(\ln x = 4.3 \implies x = e^{4.3} \implies x = 73.7\)</span><br>
-(b) <span class="math inline">\(0.247\)</span><br>
-(c) <span class="math inline">\(0.741\)</span></p>
+<p><strong>풀이</strong> (a) <span class="math inline">\(\ln x = 4.3 \implies x = e^{4.3} \implies x = 73.7\)</span> (b) <span class="math inline">\(0.247\)</span> (c) <span class="math inline">\(0.741\)</span></p>
 <p><strong>예제 A.3</strong> <span class="math inline">\(e^{-1.3}\)</span>의 값을 구하시오.</p>
 <p><strong>풀이</strong> <span class="math display">\[e^{-1.3} = 0.273\]</span></p>
 <p><strong>예제 A.4</strong> 다음 식에서 <span class="math inline">\(k\)</span>의 값을 구하시오: <span class="math inline">\(e^{-1.3k} = 2\)</span>.</p>
@@ -14892,10 +14765,7 @@ Ln Y |
 <section id="a.7-약동학에서의-감쇠-함수-decay-function-in-pharmacokinetics" class="level2">
 <h2 class="anchored" data-anchor-id="a.7-약동학에서의-감쇠-함수-decay-function-in-pharmacokinetics">A.7 약동학에서의 감쇠 함수 (DECAY FUNCTION IN PHARMACOKINETICS)</h2>
 <p><span class="math display">\[Cp = A \cdot e^{-kt}\]</span> 이것은 약동학에서 가장 중요한 수학 방정식이다. 기초 약동학에서 이 식은 다음과 같은 형태로 나타난다:</p>
-<p>A. <span class="math inline">\(Cp = A \cdot e^{-kt}\)</span><br>
-B. <span class="math inline">\(Cp = A \cdot e^{-k_1 t} + B \cdot e^{-k_2 t}\)</span>, 여기서 <span class="math inline">\(k_1 &gt; k_2\)</span><br>
-C. <span class="math inline">\(Cp = A \cdot (1 - e^{-kt})\)</span><br>
-D. <span class="math inline">\(Cp = A \cdot (e^{-k_1 t} - e^{-k_2 t})\)</span>, 여기서 <span class="math inline">\(k_2 &gt; k_1\)</span></p>
+<p>A. <span class="math inline">\(Cp = A \cdot e^{-kt}\)</span> B. <span class="math inline">\(Cp = A \cdot e^{-k_1 t} + B \cdot e^{-k_2 t}\)</span>, 여기서 <span class="math inline">\(k_1 &gt; k_2\)</span> C. <span class="math inline">\(Cp = A \cdot (1 - e^{-kt})\)</span> D. <span class="math inline">\(Cp = A \cdot (e^{-k_1 t} - e^{-k_2 t})\)</span>, 여기서 <span class="math inline">\(k_2 &gt; k_1\)</span></p>
 <p>이 방정식들은 1-구획 모델에서의 정맥 볼루스 주사(A); 2-구획 모델에서의 정맥 볼루스 주사(B); 1-구획 모델에서의 지속적인 일정 약물 투입(C); 1-구획 모델에서의 1차 약물 흡수(D)와 관련된 약동학 방정식의 기본 형태를 나타낸다.</p>
 <p><span class="math inline">\(e^{-kt}\)</span>와 <span class="math inline">\(1 - e^{-kt}\)</span> 표현식을 이해한다면, 방정식 A부터 D까지는 모두 매우 단순해진다.</p>
 <p><strong>예제 A.9</strong> 시간 0과 무한대에서 위의 방정식 A부터 D까지 <span class="math inline">\(Cp\)</span> 값을 구하시오.</p>
@@ -14909,50 +14779,21 @@ D. <span class="math inline">\(Cp = A \cdot (e^{-k_1 t} - e^{-k_2 t})\)</span>, 
 </section>
 <section id="연습문제-problems-10" class="level2">
 <h2 class="anchored" data-anchor-id="연습문제-problems-10">연습문제 (PROBLEMS)</h2>
-<p><strong>A.1</strong> 다음 방정식 <span class="math inline">\(Cp = 100 e^{-0.347 \times t}\)</span>는 약물의 정맥 투여 후 혈장 농도의 단일 지수 감쇠를 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)의 단위는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(0.347\text{ h}^{-1}\)</span>는 1차 소실 속도 상수(first-order elimination rate constant)이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span><br>
-(b) <span class="math inline">\(t = 2\text{ h}\)</span><br>
-(c) <span class="math inline">\(t = 6\text{ h}\)</span><br>
-(d) <span class="math inline">\(t = 8\text{ h}\)</span><br>
-(e) <span class="math inline">\(t = 10\text{ h}\)</span><br>
-(f) <span class="math inline">\(t = 14\text{ h}\)</span><br>
-(g) <span class="math inline">\(t = 20\text{ h}\)</span><br>
-시간 0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가?</p>
-<p><strong>A.2</strong> 방정식 <span class="math inline">\(Cp = 100 e^{-1.386 \times t}\)</span>는 약물의 정맥 투여 후 혈장 농도의 단일 지수 감쇠를 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(1.386\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span><br>
-(b) <span class="math inline">\(t = 0.5\text{ h}\)</span><br>
-(c) <span class="math inline">\(t = 1.5\text{ h}\)</span><br>
-(d) <span class="math inline">\(t = 2\text{ h}\)</span><br>
-(e) <span class="math inline">\(t = 2.5\text{ h}\)</span><br>
-(f) <span class="math inline">\(t = 3.5\text{ h}\)</span><br>
-(g) <span class="math inline">\(t = 5\text{ h}\)</span><br>
-0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가? 이 답들을 연습문제 A.1의 답과 비교하고, 차이가 발생하는 원인은 무엇인가?</p>
-<p><strong>A.3</strong> 방정식 <span class="math inline">\(Cp = 100(1 - e^{-0.347 \times t})\)</span>는 약물이 일정한 지속 속도로 투여될 때(예: 정맥 점적 주입 중) 혈장 농도의 성장을 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(0.347\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span><br>
-(b) <span class="math inline">\(t = 2\text{ h}\)</span></p>
+<p><strong>A.1</strong> 다음 방정식 <span class="math inline">\(Cp = 100 e^{-0.347 \times t}\)</span>는 약물의 정맥 투여 후 혈장 농도의 단일 지수 감쇠를 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)의 단위는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(0.347\text{ h}^{-1}\)</span>는 1차 소실 속도 상수(first-order elimination rate constant)이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span> (b) <span class="math inline">\(t = 2\text{ h}\)</span> (c) <span class="math inline">\(t = 6\text{ h}\)</span> (d) <span class="math inline">\(t = 8\text{ h}\)</span> (e) <span class="math inline">\(t = 10\text{ h}\)</span> (f) <span class="math inline">\(t = 14\text{ h}\)</span> (g) <span class="math inline">\(t = 20\text{ h}\)</span> 시간 0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가?</p>
+<p><strong>A.2</strong> 방정식 <span class="math inline">\(Cp = 100 e^{-1.386 \times t}\)</span>는 약물의 정맥 투여 후 혈장 농도의 단일 지수 감쇠를 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(1.386\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span> (b) <span class="math inline">\(t = 0.5\text{ h}\)</span> (c) <span class="math inline">\(t = 1.5\text{ h}\)</span> (d) <span class="math inline">\(t = 2\text{ h}\)</span> (e) <span class="math inline">\(t = 2.5\text{ h}\)</span> (f) <span class="math inline">\(t = 3.5\text{ h}\)</span> (g) <span class="math inline">\(t = 5\text{ h}\)</span> 0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가? 이 답들을 연습문제 A.1의 답과 비교하고, 차이가 발생하는 원인은 무엇인가?</p>
+<p><strong>A.3</strong> 방정식 <span class="math inline">\(Cp = 100(1 - e^{-0.347 \times t})\)</span>는 약물이 일정한 지속 속도로 투여될 때(예: 정맥 점적 주입 중) 혈장 농도의 성장을 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(0.347\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span> (b) <span class="math inline">\(t = 2\text{ h}\)</span></p>
 <p>연습문제 477</p>
 <ol start="3" type="a">
-<li><span class="math inline">\(t = 6\text{ h}\)</span><br>
-</li>
-<li><span class="math inline">\(t = 8\text{ h}\)</span><br>
-</li>
-<li><span class="math inline">\(t = 10\text{ h}\)</span><br>
-</li>
-<li><span class="math inline">\(t = 14\text{ h}\)</span><br>
-</li>
-<li><span class="math inline">\(t = 20\text{ h}\)</span><br>
-0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가?</li>
+<li><span class="math inline">\(t = 6\text{ h}\)</span></li>
+<li><span class="math inline">\(t = 8\text{ h}\)</span></li>
+<li><span class="math inline">\(t = 10\text{ h}\)</span></li>
+<li><span class="math inline">\(t = 14\text{ h}\)</span></li>
+<li><span class="math inline">\(t = 20\text{ h}\)</span> 0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가?</li>
 </ol>
-<p><strong>A.4</strong> 방정식 <span class="math inline">\(Cp = 100(1 - e^{-1.386 \times t})\)</span>는 약물이 일정한 지속 속도로 투여될 때(예: 정맥 점적 주입 중) 혈장 농도의 성장을 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(1.386\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span><br>
-(b) <span class="math inline">\(t = 0.5\text{ h}\)</span><br>
-(c) <span class="math inline">\(t = 1.5\text{ h}\)</span><br>
-(d) <span class="math inline">\(t = 2\text{ h}\)</span><br>
-(e) <span class="math inline">\(t = 2.5\text{ h}\)</span><br>
-(f) <span class="math inline">\(t = 3.5\text{ h}\)</span><br>
-(g) <span class="math inline">\(t = 5\text{ h}\)</span><br>
-0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가? 이 답들을 연습문제 A.3의 답과 비교하고, 차이가 발생하는 원인은 무엇인가?</p>
-<p><strong>A.5</strong> <span class="math inline">\(Cp = 23 e^{-0.3t}\)</span>가 주어졌을 때: (a) 방정식을 로그 영역으로 변환하시오.<br>
-(b) <span class="math inline">\(t\)</span>에 대한 <span class="math inline">\(\ln Cp\)</span> 그래프에서 예상되는 형태를 그리시오.</p>
+<p><strong>A.4</strong> 방정식 <span class="math inline">\(Cp = 100(1 - e^{-1.386 \times t})\)</span>는 약물이 일정한 지속 속도로 투여될 때(예: 정맥 점적 주입 중) 혈장 농도의 성장을 나타내며, 여기서 혈장 농도(<span class="math inline">\(Cp\)</span>)는 <span class="math inline">\(\text{mg/L}\)</span>, <span class="math inline">\(t\)</span>는 시간(<span class="math inline">\(\text{h}\)</span>), <span class="math inline">\(1.386\text{ h}^{-1}\)</span>는 1차 소실 속도 상수이다. 다음 시간에서 <span class="math inline">\(Cp\)</span>를 구하시오: (a) <span class="math inline">\(t = 0\text{ h}\)</span> (b) <span class="math inline">\(t = 0.5\text{ h}\)</span> (c) <span class="math inline">\(t = 1.5\text{ h}\)</span> (d) <span class="math inline">\(t = 2\text{ h}\)</span> (e) <span class="math inline">\(t = 2.5\text{ h}\)</span> (f) <span class="math inline">\(t = 3.5\text{ h}\)</span> (g) <span class="math inline">\(t = 5\text{ h}\)</span> 0부터 무한대까지 <span class="math inline">\(Cp\)</span>의 범위는 얼마인가? 이 답들을 연습문제 A.3의 답과 비교하고, 차이가 발생하는 원인은 무엇인가?</p>
+<p><strong>A.5</strong> <span class="math inline">\(Cp = 23 e^{-0.3t}\)</span>가 주어졌을 때: (a) 방정식을 로그 영역으로 변환하시오. (b) <span class="math inline">\(t\)</span>에 대한 <span class="math inline">\(\ln Cp\)</span> 그래프에서 예상되는 형태를 그리시오.</p>
 <p><strong>A.6</strong> <span class="math inline">\([\ln 2 - \ln(0.5)] / (1 - 15) = \text{기울기}\)</span>일 때 기울기를 계산하시오.</p>
-<p><strong>A.7</strong> <span class="math inline">\(C = C_0 \cdot e^{-kt}\)</span>이며, 여기서 <span class="math inline">\(C\)</span>는 시간에 따라 변하는 변수이고, <span class="math inline">\(C_0\)</span>는 시간 <span class="math inline">\(= 0\)</span>일 때의 <span class="math inline">\(C\)</span>이며, <span class="math inline">\(k\)</span>는 상수, <span class="math inline">\(t\)</span>는 시간이다. <span class="math inline">\(t = 2\text{ h}\)</span>일 때 <span class="math inline">\(C = 22\text{ mg/L}\)</span>이고 <span class="math inline">\(t = 10\text{ h}\)</span>일 때 <span class="math inline">\(C = 5\text{ mg/L}\)</span>가 주어졌을 때: (a) <span class="math inline">\(k\)</span>를 구하시오.<br>
-(b) <span class="math inline">\(C_0\)</span>를 구하시오.</p>
+<p><strong>A.7</strong> <span class="math inline">\(C = C_0 \cdot e^{-kt}\)</span>이며, 여기서 <span class="math inline">\(C\)</span>는 시간에 따라 변하는 변수이고, <span class="math inline">\(C_0\)</span>는 시간 <span class="math inline">\(= 0\)</span>일 때의 <span class="math inline">\(C\)</span>이며, <span class="math inline">\(k\)</span>는 상수, <span class="math inline">\(t\)</span>는 시간이다. <span class="math inline">\(t = 2\text{ h}\)</span>일 때 <span class="math inline">\(C = 22\text{ mg/L}\)</span>이고 <span class="math inline">\(t = 10\text{ h}\)</span>일 때 <span class="math inline">\(C = 5\text{ mg/L}\)</span>가 주어졌을 때: (a) <span class="math inline">\(k\)</span>를 구하시오. (b) <span class="math inline">\(C_0\)</span>를 구하시오.</p>
 <hr>
 <p>480 부록 B: 과정의 속도</p>
 <p>따라서 약동학 방정식은 종속변수를 용량과 시간의 함수로 표현하며 일반적으로 다음과 같이 쓸 수 있다: <span class="math display">\[Cp = \text{용량} \ (\text{함수}) \ \text{시간}\]</span></p>
@@ -15331,8 +15172,7 @@ Cl/F (L/h)</code></pre>
 <hr>
 <p>494 약동학 분석을 위한 엑셀 워크시트 작성 (CREATION OF EXCEL WORKSHEETS FOR PHARMACOKINETIC ANALYSIS)</p>
 <p><strong>AUC 및 CL 계산 워크시트 (WORKSHEET FOR AUC AND CL)</strong></p>
-<p>주어진 데이터 (Given data)<br>
-투여량 Dose (mg): 100</p>
+<p>주어진 데이터 (Given data) 투여량 Dose (mg): 100</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -15391,10 +15231,8 @@ Cl/F (L/h)</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>시간에 따른 Cp 그래프 (Cp Versus Time)</strong><br>
-(그래프: y축 <span class="math inline">\(Cp\)</span> (mg/L) 0~0.7, x축 시간(h) 0~25)</p>
-<p><strong>AUC 및 청소율 측정 (AUC and clearance determination)</strong><br>
-투여량 Dose (mg): 100</p>
+<p><strong>시간에 따른 Cp 그래프 (Cp Versus Time)</strong> (그래프: y축 <span class="math inline">\(Cp\)</span> (mg/L) 0~0.7, x축 시간(h) 0~25)</p>
+<p><strong>AUC 및 청소율 측정 (AUC and clearance determination)</strong> 투여량 Dose (mg): 100</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
@@ -15674,8 +15512,7 @@ Cl/F (L/h)</code></pre>
 <hr>
 <p>497 정맥내 일시투여 데이터 분석 (ANALYSIS OF DATA FROM AN INTRAVENOUS BOLUS INJECTION)</p>
 <p><strong>1구획 모델 정맥내 일시투여 데이터 분석 워크시트 (WORKSHEET FOR ANALYSIS OF DATA FROM AN IV BOLUS INJECTION IN A ONE-COMPARTMENT MODEL)</strong></p>
-<p>주어진 데이터 (Given data)<br>
-투여량 Dose (mg): 50</p>
+<p>주어진 데이터 (Given data) 투여량 Dose (mg): 50</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -15735,8 +15572,7 @@ Cl/F (L/h)</code></pre>
 </tbody>
 </table>
 <p>(그래프: 시간에 따른 <span class="math inline">\(Cp\)</span>의 선형 플롯 및 시간에 따른 <span class="math inline">\(\ln Cp\)</span>의 반로그 플롯)</p>
-<p><strong>매개변수 산정 (Parameter determination)</strong><br>
-투여량 Dose (mg): 50</p>
+<p><strong>매개변수 산정 (Parameter determination)</strong> 투여량 Dose (mg): 50</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
@@ -15921,8 +15757,7 @@ Cl/F (L/h)</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>그림 C.4</strong> 1구획 모델에서 정맥내 일시투여 약동학 분석을 위한 완성된 엑셀 워크시트.<br>
-*<span class="math inline">\(t = 0.1\ \text{h}\)</span>인 첫 번째 데이터 지점까지 0부터 계산한 AUC.</p>
+<p><strong>그림 C.4</strong> 1구획 모델에서 정맥내 일시투여 약동학 분석을 위한 완성된 엑셀 워크시트. *<span class="math inline">\(t = 0.1\ \text{h}\)</span>인 첫 번째 데이터 지점까지 0부터 계산한 AUC.</p>
 <ol start="2" type="a">
 <li><span class="math inline">\(A\)</span>와 <span class="math inline">\(\alpha\)</span>로 기술되는 직선을 분리하기 위해 <span class="math inline">\(Cp - Cp'\)</span>를 계산한다: <span class="math inline">\(Cp - Cp' = A \times e^{-\alpha t}\)</span>. <span class="math inline">\(Cp'\)</span>가 <span class="math inline">\(Cp\)</span>보다 작은 값들에 대해 <span class="math inline">\(Cp - Cp'\)</span>를 계산한다. <span class="math inline">\(\ln(Cp - Cp')\)</span> 값을 입력한다. 내장 함수를 사용하여 <span class="math inline">\(\ln(Cp - Cp')\)</span> 대 시간 관계의 기울기와 절편을 구한다. <span class="math inline">\(A\)</span>와 <span class="math inline">\(\alpha\)</span>를 결정한다.</li>
 </ol>
@@ -15956,8 +15791,7 @@ Cl/F (L/h)</code></pre>
 <hr>
 <p>500 약동학 분석을 위한 엑셀 워크시트 작성 (CREATION OF EXCEL WORKSHEETS FOR PHARMACOKINETIC ANALYSIS)</p>
 <p><strong>그림 C.7</strong> 1차 흡수를 동반한 1구획 모델의 매개변수 산정을 위한 빈 엑셀 워크시트.</p>
-<p>이 작업을 수행할 때, <span class="math inline">\(Cp'\)</span> 수식을 열 전체에 복사할 때 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span> 값이 일정하게 유지되어야 하므로 이들의 절대 참조 주소를 사용하는 것이 중요하다. 예제 워크시트에서 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>는 각각 E41 셀과 E39 셀에 있다. 셀의 절대 주소는 열 문자와 행 번호 앞에 $ 기호를 붙여 지정한다. 따라서 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>의 절대 주소는 각각 <code>$E$41</code>과 <code>$E$39</code>가 된다. 첫 번째 <span class="math inline">\(Cp'\)</span> 셀에 <span class="math inline">\(Cp'\)</span>를 계산하는 수식을 입력한다: “=<strong>$E<span class="math inline">\(41** * EXP(-**\)</span>E$39</strong> * G24)”. 이 수식을 <span class="math inline">\(Cp'\)</span> 열의 나머지 셀에 복사한다(각 셀마다 시간은 변경되지만 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>는 일정하게 유지된다).<br>
-(b) <span class="math inline">\(Cp' - Cp\)</span>를 계산하고 <span class="math inline">\(k_a\)</span>로 기술되는 직선을 분리한다: <span class="math inline">\(Cp' - Cp = I \times e^{-k_a t}\)</span>. <span class="math inline">\(Cp'\)</span>가 <span class="math inline">\(Cp\)</span>보다 큰 값들에 대해 <span class="math inline">\(Cp' - Cp\)</span>를 계산한다. <span class="math inline">\(\ln(Cp' - Cp)\)</span> 값을 입력한다. 내장 함수를 사용하여 <span class="math inline">\(\ln(Cp' - Cp)\)</span> 대 시간 관계의 기울기와 절편을 구한다. <span class="math inline">\(I\)</span>와 <span class="math inline">\(k_a\)</span>를 결정한다. 7. 두 지수 함수에 해당하는 직선을 플롯한다. 가장 오른쪽 영역에 시간, <span class="math inline">\(\ln Cp'\)</span>, <span class="math inline">\(\ln(Cp' - Cp)\)</span>의 인접한 열을 만든다. 시간에 대한 <span class="math inline">\(\ln Cp'\)</span> 및 <span class="math inline">\(\ln(Cp' - Cp)\)</span>의 분산형 플롯을 그린다. 8. 반감기, 청소율, 분포용적을 결정한다. 각 매개변수에 대한 수식을 입력한다: <span class="math inline">\(V_d/F = \text{dose} \times k_a / [I \times (k_a - k)]\)</span> 및 <span class="math inline">\(Cl/F = \text{dose}/AUC\)</span>, 여기서 <span class="math inline">\(AUC = I \times (1/k - 1/k_a)\)</span>이다. 계산에 필요한 워크시트의 매개변수를 참조한다. 완성된 워크시트는 그림 C.8에 제시되어 있다.</p>
+<p>이 작업을 수행할 때, <span class="math inline">\(Cp'\)</span> 수식을 열 전체에 복사할 때 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span> 값이 일정하게 유지되어야 하므로 이들의 절대 참조 주소를 사용하는 것이 중요하다. 예제 워크시트에서 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>는 각각 E41 셀과 E39 셀에 있다. 셀의 절대 주소는 열 문자와 행 번호 앞에 $ 기호를 붙여 지정한다. 따라서 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>의 절대 주소는 각각 <code>$E$41</code>과 <code>$E$39</code>가 된다. 첫 번째 <span class="math inline">\(Cp'\)</span> 셀에 <span class="math inline">\(Cp'\)</span>를 계산하는 수식을 입력한다: “=<strong>$E<span class="math inline">\(41** * EXP(-**\)</span>E$39</strong> * G24)”. 이 수식을 <span class="math inline">\(Cp'\)</span> 열의 나머지 셀에 복사한다(각 셀마다 시간은 변경되지만 <span class="math inline">\(I\)</span>와 <span class="math inline">\(k\)</span>는 일정하게 유지된다). (b) <span class="math inline">\(Cp' - Cp\)</span>를 계산하고 <span class="math inline">\(k_a\)</span>로 기술되는 직선을 분리한다: <span class="math inline">\(Cp' - Cp = I \times e^{-k_a t}\)</span>. <span class="math inline">\(Cp'\)</span>가 <span class="math inline">\(Cp\)</span>보다 큰 값들에 대해 <span class="math inline">\(Cp' - Cp\)</span>를 계산한다. <span class="math inline">\(\ln(Cp' - Cp)\)</span> 값을 입력한다. 내장 함수를 사용하여 <span class="math inline">\(\ln(Cp' - Cp)\)</span> 대 시간 관계의 기울기와 절편을 구한다. <span class="math inline">\(I\)</span>와 <span class="math inline">\(k_a\)</span>를 결정한다. 7. 두 지수 함수에 해당하는 직선을 플롯한다. 가장 오른쪽 영역에 시간, <span class="math inline">\(\ln Cp'\)</span>, <span class="math inline">\(\ln(Cp' - Cp)\)</span>의 인접한 열을 만든다. 시간에 대한 <span class="math inline">\(\ln Cp'\)</span> 및 <span class="math inline">\(\ln(Cp' - Cp)\)</span>의 분산형 플롯을 그린다. 8. 반감기, 청소율, 분포용적을 결정한다. 각 매개변수에 대한 수식을 입력한다: <span class="math inline">\(V_d/F = \text{dose} \times k_a / [I \times (k_a - k)]\)</span> 및 <span class="math inline">\(Cl/F = \text{dose}/AUC\)</span>, 여기서 <span class="math inline">\(AUC = I \times (1/k - 1/k_a)\)</span>이다. 계산에 필요한 워크시트의 매개변수를 참조한다. 완성된 워크시트는 그림 C.8에 제시되어 있다.</p>
 <hr>
 <p>501 경구 투여 데이터의 비구획 분석 (NONCOMPARTMENTAL ANALYSIS OF ORAL DATA)</p>
 <p><strong>그림 C.8</strong> 1차 흡수를 동반한 1구획 모델의 매개변수 결정을 위한 완성된 엑셀 워크시트.</p>
@@ -16351,7 +16185,7 @@ Cl/F (L/h)</code></pre>
   | *    |
   |----------------------------&gt; [I]
          K_I
-  
+
   k_obs = (k_inact * [I]) / (K_I + [I])</code></pre>
 <p><strong>그림 E.4</strong> <span class="math inline">\(k_{\text{obs}}\)</span>와 <span class="math inline">\([I]\)</span> 간의 관계. <span class="math inline">\(k_{\text{obs}}\)</span> 값은 억제제 농도 <span class="math inline">\([I]\)</span>가 증가함에 따라 증가합니다. 높은 농도에서 <span class="math inline">\(k_{\text{obs}}\)</span>는 최대 불활성화 속도 상수인 <span class="math inline">\(k_{\text{inact}}\)</span>와 같아집니다. 불활성화가 최대치의 절반일 때 억제제 농도가 <span class="math inline">\(K_I\)</span>와 같다는 점에 주목하십시오. 따라서 <span class="math inline">\(K_I\)</span>는 절반 최대 억제를 생성하는 억제제 농도로 정의됩니다.</p>
 <pre><code>        합성 (Synthesis)              분해 (Degradation)
@@ -16428,12 +16262,9 @@ Cl/F (L/h)</code></pre>
 <h4 class="anchored" data-anchor-id="e.2.3.3-시뮬레이션을-통한-효소-유도의-이해-httpweb.uri.edupharmacyresearchrosenbaumsims">E.2.3.3 시뮬레이션을 통한 효소 유도의 이해: http://web.uri.edu/pharmacy/research/rosenbaum/sims</h4>
 <p>모델 14, 효소 유도 모델: DDI 2 Enzyme Induction(http://web.uri.edu/pharmacy/research/rosenbaum/sims/Model14)을 엽니다. 이 모델은 CYP3A의 유도를 기반으로 합니다. CYP3A4의 정상상태 효소 농도는 간당 5 <span class="math inline">\(\mu\text{mol}\)</span>로 설정됩니다(E.2.2.2절 참조). 농도의 단위는 <span class="math inline">\(\text{EC}_{50}\)</span>이며, <span class="math inline">\(E_{\max}\)</span>는 정상 대비 20배 증가로 설정되어 있는데, 이는 리팜핀(rifampin)과 같은 강력한 유도제에 대해 보고된 최대 배수 증가 부근입니다. <span class="math inline">\([I] = 1 \text{ unit of } \text{EC}_{50}\)</span>입니다.</p>
 <ol type="a">
-<li>유도가 없는 상태에서 시뮬레이션을 수행합니다. 유도제 스위치를 켜고 <span class="math inline">\([I]\)</span>를 50 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 최대 유도가 관찰되는 것을 확인하십시오(<span class="math inline">\([E]_t \approx 5 + 5 \cdot 20 = 105 \ \mu\text{M}\)</span>).<br>
-</li>
-<li><span class="math inline">\([I]\)</span>를 1 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 50%의 최대 유도가 일어남을 확인하십시오.<br>
-</li>
-<li><span class="math inline">\([I]\)</span>를 0.1 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 이 유도제를 사용하면 매우 낮은 유도제 농도에서도 효소의 양이 두 배 이상 증가함을 확인하십시오.<br>
-</li>
+<li>유도가 없는 상태에서 시뮬레이션을 수행합니다. 유도제 스위치를 켜고 <span class="math inline">\([I]\)</span>를 50 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 최대 유도가 관찰되는 것을 확인하십시오(<span class="math inline">\([E]_t \approx 5 + 5 \cdot 20 = 105 \ \mu\text{M}\)</span>).</li>
+<li><span class="math inline">\([I]\)</span>를 1 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 50%의 최대 유도가 일어남을 확인하십시오.</li>
+<li><span class="math inline">\([I]\)</span>를 0.1 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정합니다. 이 유도제를 사용하면 매우 낮은 유도제 농도에서도 효소의 양이 두 배 이상 증가함을 확인하십시오.</li>
 <li><span class="math inline">\([I]\)</span>를 다시 50 <span class="math inline">\(\text{EC}_{50}\)</span> 단위로 설정하고, 회복(Recovery) 버튼을 켠 후 시뮬레이션을 수행합니다. 유도제는 시간 = 1일 시점에 투여가 중단됩니다. 효소 시스템이 회복되는 데 약 6~7일이 걸리는 것을 확인하십시오. 위에서 TDI에 대해 언급한 바와 같이, 회복은 효소의 분해 속도 상수(이 모델에서는 0.0192 <span class="math inline">\(\text{h}^{-1}\)</span>)의 함수입니다. 95% 회복에 도달하는 데는 약 4회의 분해 반감기(<span class="math inline">\(4 \cdot 36\text{시간} = 144\text{시간} = 6\text{일}\)</span>)가 걸립니다.</li>
 </ol>
 <hr>

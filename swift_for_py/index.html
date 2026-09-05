@@ -9,7 +9,7 @@
 <meta name="author" content="Taeyoon Kim">
 <meta name="dcterms.date" content="2026-02-21">
 
-<title>파이썬 개발자를 위한 Swift 학습 가이드 – Machine translation</title>
+<title>파이썬 개발자를 위한 Swift – Machine translation</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,10 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../swift_for_py/index.html"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../swift_for_py/index.html"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -194,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -204,12 +208,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -219,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -280,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -301,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,12 +320,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -352,17 +356,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -378,12 +377,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -408,12 +407,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -423,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -449,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -469,12 +468,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -489,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -499,12 +498,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -525,17 +524,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -884,7 +878,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1082,10 +1076,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../swift_for_py/index.html"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../swift_for_py/index.html"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></h1>
-<p class="subtitle lead">Python 개발자를 위한 실전 Swift 문법, 고급 기능 및 연습 문제</p>
+<h1 class="title"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></h1>
+<p class="subtitle lead">Swift 문법, 고급 기능 및 연습 문제</p>
 </div>
 
 
@@ -2983,20 +2977,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Stack:</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items <span class="op">=</span> []</span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> push(<span class="va">self</span>, item):</span>
 <span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.items.append(item)</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pop(<span class="va">self</span>):</span>
 <span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.items.pop()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Swift:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb94"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Stack<span class="op">&lt;</span><span class="dt">Element</span><span class="op">&gt;</span> <span class="op">{</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">items</span><span class="op">:</span> <span class="op">[</span>Element<span class="op">]</span> <span class="op">=</span> <span class="op">[]</span></span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mutating</span> <span class="kw">func</span> <span class="fu">push</span><span class="op">(</span><span class="va">_</span> <span class="va">item</span><span class="op">:</span> <span class="dt">Element</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>        items<span class="op">.</span>append<span class="op">(</span>item<span class="op">)</span></span>
 <span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mutating</span> <span class="kw">func</span> <span class="fu">pop</span><span class="op">()</span> -&gt; <span class="fu">Element</span> <span class="op">{</span></span>
 <span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">return</span> items<span class="op">.</span>removeLast<span class="op">()</span></span>
 <span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -3073,7 +3067,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">downloadAll</span><span class="op">()</span> <span class="fu">async</span> <span class="op">{</span></span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="kw">let</span> <span class="va">first</span> <span class="op">=</span> fetchData<span class="op">(</span>url<span class="op">:</span> <span class="st">"https://a.com"</span><span class="op">)</span></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="kw">let</span> <span class="va">second</span> <span class="op">=</span> fetchData<span class="op">(</span>url<span class="op">:</span> <span class="st">"https://b.com"</span><span class="op">)</span></span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 두 작업이 끝날 때까지 동시 대기</span></span>
 <span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="va">results</span> <span class="op">=</span> <span class="cf">await</span> <span class="op">[</span>first<span class="op">,</span> second<span class="op">]</span></span>
 <span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a>    print<span class="op">(</span>results<span class="op">)</span></span>
@@ -3084,7 +3078,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>파이썬에서는 데이터 충돌을 피하려고 <code>Lock()</code> 객체 같은 동기화 기본 요소를 쓰지만 Swift 5.5부터는 <strong>Actor</strong>로 여러 스레드에서 동시에 접근하는 상태를 안전하게 격리(Isolate)합니다. Actor는 클래스와 비슷하지만 한 번에 하나의 태스크만 내부 상태에 접근할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode swift code-with-copy"><code class="sourceCode swift"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="cf">actor</span> BankAccount <span class="op">{</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">balance</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">func</span> <span class="fu">deposit</span><span class="op">(</span><span class="va">amount</span><span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>        balance <span class="op">+=</span> amount</span>
 <span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -3132,14 +3126,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">let</span> <span class="va">jsonData</span> <span class="op">=</span> jsonStr<span class="op">.</span>data<span class="op">(</span>using<span class="op">:</span> <span class="op">.</span>utf8<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb102-16"><a href="#cb102-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="va">decoder</span> <span class="op">=</span> JSONDecoder<span class="op">()</span></span>
-<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-18"><a href="#cb102-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// JSON 데이터를 User 구조체 인스턴스로 파싱</span></span>
 <span id="cb102-19"><a href="#cb102-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">let</span> <span class="va">user</span> <span class="op">=</span> <span class="cf">try</span><span class="op">?</span> decoder<span class="op">.</span>decode<span class="op">(</span>User<span class="op">.</span><span class="kw">self</span><span class="op">,</span> from<span class="op">:</span> jsonData<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb102-20"><a href="#cb102-20" aria-hidden="true" tabindex="-1"></a>        print<span class="op">(</span>user<span class="op">.</span>name<span class="op">)</span> <span class="co">// "Alice"</span></span>
-<span id="cb102-21"><a href="#cb102-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-21"><a href="#cb102-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-22"><a href="#cb102-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="va">encoder</span> <span class="op">=</span> JSONEncoder<span class="op">()</span></span>
 <span id="cb102-23"><a href="#cb102-23" aria-hidden="true" tabindex="-1"></a>        encoder<span class="op">.</span>outputFormatting <span class="op">=</span> <span class="op">.</span>prettyPrinted</span>
-<span id="cb102-24"><a href="#cb102-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-24"><a href="#cb102-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-25"><a href="#cb102-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 구조체를 다시 JSON으로 직렬화</span></span>
 <span id="cb102-26"><a href="#cb102-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="va">encodedData</span> <span class="op">=</span> <span class="cf">try</span><span class="op">?</span> encoder<span class="op">.</span>encode<span class="op">(</span>user<span class="op">),</span></span>
 <span id="cb102-27"><a href="#cb102-27" aria-hidden="true" tabindex="-1"></a>           <span class="kw">let</span> <span class="va">stringOutput</span> <span class="op">=</span> String<span class="op">(</span>data<span class="op">:</span> encodedData<span class="op">,</span> encoding<span class="op">:</span> <span class="op">.</span>utf8<span class="op">)</span> <span class="op">{</span></span>
@@ -3169,15 +3163,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">fetchUser</span><span class="op">()</span> <span class="fu">async</span> <span class="kw">throws</span> -&gt; <span class="fu">GitHubUser</span> <span class="op">{</span></span>
 <span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="va">url</span> <span class="op">=</span> URL<span class="op">(</span>string<span class="op">:</span> <span class="st">"https://api.github.com/users/apple"</span><span class="op">)!</span></span>
-<span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 네트워크 데이터 가져오기 (async)</span></span>
 <span id="cb104-12"><a href="#cb104-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (<span class="va">data</span><span class="op">,</span> response<span class="op">)</span> <span class="op">=</span> <span class="cf">try</span> <span class="cf">await</span> URLSession<span class="op">.</span>shared<span class="op">.</span>data<span class="op">(</span>from<span class="op">:</span> url<span class="op">)</span></span>
-<span id="cb104-13"><a href="#cb104-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb104-14"><a href="#cb104-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">guard</span> <span class="kw">let</span> <span class="va">httpResponse</span> <span class="op">=</span> response <span class="kw">as</span><span class="op">?</span> HTTPURLResponse<span class="op">,</span> </span>
+<span id="cb104-13"><a href="#cb104-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-14"><a href="#cb104-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">guard</span> <span class="kw">let</span> <span class="va">httpResponse</span> <span class="op">=</span> response <span class="kw">as</span><span class="op">?</span> HTTPURLResponse<span class="op">,</span></span>
 <span id="cb104-15"><a href="#cb104-15" aria-hidden="true" tabindex="-1"></a>          httpResponse<span class="op">.</span>statusCode <span class="op">==</span> <span class="dv">200</span> <span class="cf">else</span> <span class="op">{</span></span>
 <span id="cb104-16"><a href="#cb104-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">throw</span> URLError<span class="op">(.</span>badServerResponse<span class="op">)</span></span>
 <span id="cb104-17"><a href="#cb104-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb104-18"><a href="#cb104-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb104-18"><a href="#cb104-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-19"><a href="#cb104-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// JSON 데이터 파싱</span></span>
 <span id="cb104-20"><a href="#cb104-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="va">user</span> <span class="op">=</span> <span class="cf">try</span> JSONDecoder<span class="op">().</span>decode<span class="op">(</span>GitHubUser<span class="op">.</span><span class="kw">self</span><span class="op">,</span> from<span class="op">:</span> data<span class="op">)</span></span>
 <span id="cb104-21"><a href="#cb104-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> user</span>
@@ -3210,11 +3204,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Rectangle:</span>
 <span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, size):</span>
 <span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._size <span class="op">=</span> size</span>
-<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
 <span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> size(<span class="va">self</span>):</span>
 <span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._size</span>
-<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">@size.setter</span></span>
 <span id="cb105-17"><a href="#cb105-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> size(<span class="va">self</span>, value):</span>
 <span id="cb105-18"><a href="#cb105-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._size <span class="op">=</span> <span class="bu">max</span>(<span class="dv">0</span>, <span class="bu">min</span>(<span class="dv">100</span>, value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3228,14 +3222,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">var</span> <span class="va">value</span><span class="op">:</span> Value</span>
 <span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">let</span> <span class="va">min</span><span class="op">:</span> Value</span>
 <span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">let</span> <span class="va">max</span><span class="op">:</span> Value</span>
-<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">init</span><span class="op">(</span>wrappedValue<span class="op">:</span> Value<span class="op">,</span> min<span class="op">:</span> Value<span class="op">,</span> max<span class="op">:</span> Value<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>min <span class="op">=</span> min</span>
 <span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>max <span class="op">=</span> max</span>
 <span id="cb106-10"><a href="#cb106-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>value <span class="op">=</span> min <span class="co">// 기본값 설정</span></span>
 <span id="cb106-11"><a href="#cb106-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>wrappedValue <span class="op">=</span> wrappedValue <span class="co">// 로직을 태움</span></span>
 <span id="cb106-12"><a href="#cb106-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb106-13"><a href="#cb106-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb106-13"><a href="#cb106-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-14"><a href="#cb106-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">wrappedValue</span><span class="op">:</span> Value <span class="op">{</span></span>
 <span id="cb106-15"><a href="#cb106-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">get</span> <span class="op">{</span> <span class="kw">return</span> value <span class="op">}</span></span>
 <span id="cb106-16"><a href="#cb106-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span> <span class="op">{</span> value <span class="op">=</span> min<span class="op">...</span>max <span class="op">~=</span> newValue <span class="op">?</span> newValue <span class="op">:</span> <span class="op">(</span>newValue <span class="op">&lt;</span> min <span class="op">?</span> min <span class="op">:</span> max<span class="op">)</span> <span class="op">}</span></span>
@@ -3408,10 +3402,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Greet<span class="op">:</span> <span class="dt">ParsableCommand</span> <span class="op">{</span></span>
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Argument</span><span class="op">(</span>help<span class="op">:</span> <span class="st">"인사할 사람의 이름"</span><span class="op">)</span></span>
 <span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">name</span><span class="op">:</span> String</span>
-<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Option</span><span class="op">(</span>help<span class="op">:</span> <span class="st">"반복 횟수"</span><span class="op">)</span></span>
 <span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> <span class="va">count</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mutating</span> <span class="kw">func</span> <span class="fu">run</span><span class="op">()</span> <span class="kw">throws</span> <span class="op">{</span></span>
 <span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="cf">in</span> <span class="fl">0.</span><span class="op">.&lt;</span>count <span class="op">{</span></span>
 <span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a>            print<span class="op">(</span><span class="st">"Hello, </span><span class="er">\(</span><span class="st">name)!"</span><span class="op">)</span></span>

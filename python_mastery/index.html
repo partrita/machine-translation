@@ -8,7 +8,7 @@
 
 <meta name="author" content="David Beazley">
 
-<title>고급 파이썬 마스터리 – Machine translation</title>
+<title>python 고급 기술 – Machine translation</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -77,10 +77,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../python_mastery/index.html"><span class="chapter-title">고급 파이썬 마스터리</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../python_mastery/index.html"><span class="chapter-title">python 고급 기술</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -193,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -203,12 +207,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -218,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -264,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -300,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -315,12 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -351,17 +355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -377,12 +376,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -407,12 +406,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -422,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -448,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -468,12 +467,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -488,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -498,12 +497,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -524,17 +523,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -883,7 +877,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -938,14 +932,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#저자-소개" id="toc-저자-소개" class="nav-link active" data-scroll-target="#저자-소개">저자 소개</a></li>
-  <li><a href="#참고-도서-및-비디오" id="toc-참고-도서-및-비디오" class="nav-link" data-scroll-target="#참고-도서-및-비디오">참고 도서 및 비디오</a></li>
+  <li><a href="#참고-도서-및-비디오" id="toc-참고-도서-및-비디오" class="nav-link active" data-scroll-target="#참고-도서-및-비디오">참고 도서 및 비디오</a></li>
   <li><a href="#과정-라이선스-및-사용" id="toc-과정-라이선스-및-사용" class="nav-link" data-scroll-target="#과정-라이선스-및-사용">과정 라이선스 및 사용</a></li>
-  <li><a href="#대상-독자-및-요구-사항" id="toc-대상-독자-및-요구-사항" class="nav-link" data-scroll-target="#대상-독자-및-요구-사항">대상 독자 및 요구 사항</a>
-  <ul class="collapse">
   <li><a href="#시스템-요구-사항" id="toc-시스템-요구-사항" class="nav-link" data-scroll-target="#시스템-요구-사항">시스템 요구 사항</a></li>
   <li><a href="#선수-학습" id="toc-선수-학습" class="nav-link" data-scroll-target="#선수-학습">선수 학습</a></li>
-  </ul></li>
   <li><a href="#섹션-0-과정-설정" id="toc-섹션-0-과정-설정" class="nav-link" data-scroll-target="#섹션-0-과정-설정">섹션 0: 과정 설정</a>
   <ul class="collapse">
   <li><a href="#필요한-파일-및-리포지토리" id="toc-필요한-파일-및-리포지토리" class="nav-link" data-scroll-target="#필요한-파일-및-리포지토리">필요한 파일 및 리포지토리</a></li>
@@ -1023,9 +1013,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../python_mastery/index.html"><span class="chapter-title">고급 파이썬 마스터리</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../python_mastery/index.html"><span class="chapter-title">python 고급 기술</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">고급 파이썬 마스터리</span></h1>
+<h1 class="title"><span class="chapter-title">python 고급 기술</span></h1>
 </div>
 
 
@@ -1050,11 +1040,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>이 과정은 파이썬의 고급 기능을 소개하며 특히 대규모 애플리케이션과 프레임워크에서 이를 어떻게 활용하는지에 초점을 맞춥니다. 대상 독자는 소프트웨어 개발자, 그리고 파이썬 기술을 단순한 스크립트 작성을 넘어 훨씬 더 발전시키고자 하는 모든 분들입니다.</p>
 <p>이 과정의 주요 목표는 언어 자체의 동작을 제어하고 애플리케이션의 요구에 맞게 변형하는 방법을 이해하는 것입니다. 과정을 마칠 때쯤이면 프레임워크에서 쓰이는 마법 같은 기능, 다양한 설계 옵션과 관련 트레이드오프(tradeoff)까지 깊이 이해하게 될 것입니다. 파이썬의 힘은 그것을 사용하는 사람의 기술과 경험에 따라 커집니다. 이 과정은 단순한 튜토리얼을 넘어 “진짜” 프로그램을 작성하려는 개발자들을 위한 내용을 담고 있습니다.</p>
-<section id="저자-소개" class="level3">
-<h3 class="anchored" data-anchor-id="저자-소개">저자 소개</h3>
-<p>David Beazley는 1996년부터 파이썬을 작성해 왔으며 “Python Distilled” (Addison-Wesley), “Python Cookbook, 3rd Edition” (O’Reilly Media)의 저자이자 “Python Programming Language: LiveLessons” 비디오 시리즈 (Addison-Wesley)의 제작자입니다. 그는 정기적으로 고급 프로그래밍 및 컴퓨터 과학 과정을 강의하고 있습니다.</p>
-<p><img src="images/19c2b4ee70e9e438a50a4de11dbebb5a68c12d8eed5aa557d43ce61a7f6e7134.jpg" class="img-fluid"></p>
-</section>
 <section id="참고-도서-및-비디오" class="level3">
 <h3 class="anchored" data-anchor-id="참고-도서-및-비디오">참고 도서 및 비디오</h3>
 <ul>
@@ -1067,9 +1052,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="과정-라이선스-및-사용">과정 라이선스 및 사용</h3>
 <p>공식 과정 자료는 <a href="https://github.com/dabeaz-course/python-mastery">GitHub 리포지토리</a>에서 확인할 수 있습니다. 이 과정은 크리에이티브 커먼즈 저작자표시-동일조건변경허락 4.0 국제 (CC BY-SA 4.0) 라이선스 하에 배포됩니다. 원저작자를 명시하는 한 이 자료를 자유롭게 사용하고 수정할 수 있습니다.</p>
 </section>
-<section id="대상-독자-및-요구-사항" class="level2">
-<h2 class="anchored" data-anchor-id="대상-독자-및-요구-사항">대상 독자 및 요구 사항</h2>
-<p>이 과정은 다른 사람들이 사용할 파이썬 코드(라이브러리, 애플리케이션 프레임워크, 도메인 특정 언어 등)를 작성하는 프로그래머를 주 대상으로 합니다. 주제는 소프트웨어 개발 자체에 초점이 맞춰져 있으며 파이썬 기능의 올바른 사용, 성능 트레이드오프, 그리고 설계 옵션을 다룹니다.</p>
 <section id="시스템-요구-사항" class="level3">
 <h3 class="anchored" data-anchor-id="시스템-요구-사항">시스템 요구 사항</h3>
 <ul>
@@ -1080,7 +1062,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="선수-학습" class="level3">
 <h3 class="anchored" data-anchor-id="선수-학습">선수 학습</h3>
 <p>이 과정은 여러분이 이미 파이썬을 어느 정도 사용해 보았다고 가정합니다. 온라인 튜토리얼을 마쳤거나 입문 과정을 수강했으며 인터프리터를 실행하고 프로그램을 작성하는 기본 사항을 알고 있어야 합니다.</p>
-</section>
 </section>
 <section id="섹션-0-과정-설정" class="level2">
 <h2 class="anchored" data-anchor-id="섹션-0-과정-설정">섹션 0: 과정 설정</h2>
@@ -1102,7 +1083,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>실습은 순서대로 진행하는 것이 좋습니다.</li>
 <li>진행 중 막히는 부분이 있다면 솔루션 코드를 참고하여 다음 단계로 나아갈 수 있습니다.</li>
 </ul>
-<p><img src="images/fd15e858e3df5f35ba494d7c4b7bfa89f8621de9d14942a63eda7f2a65cf268e.jpg" class="img-fluid"></p>
 </section>
 </section>
 <section id="섹션-1-파이썬-복습-python-review" class="level2">

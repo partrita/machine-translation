@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Srinath Perera">
+<meta name="dcterms.date" content="2024-01-01">
 
 <title>소프트웨어 아키텍처 의사결정 – Machine translation</title>
 <style>
@@ -41,10 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -157,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -167,12 +173,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -182,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -228,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -243,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -264,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,12 +285,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -315,17 +321,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -341,12 +342,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -371,12 +372,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -386,7 +387,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -412,7 +413,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -432,12 +433,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -452,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -462,12 +463,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -488,17 +489,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -847,7 +843,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -902,13 +898,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#이-전자책에-관하여" id="toc-이-전자책에-관하여" class="nav-link active" data-scroll-target="#이-전자책에-관하여">이 전자책에 관하여</a></li>
-  <li><a href="#software-architecture-and-decision-making" id="toc-software-architecture-and-decision-making" class="nav-link" data-scroll-target="#software-architecture-and-decision-making">Software Architecture and Decision-Making</a></li>
-  <li><a href="#software-architecture-and-decision-making-1" id="toc-software-architecture-and-decision-making-1" class="nav-link" data-scroll-target="#software-architecture-and-decision-making-1">Software Architecture and Decision-Making</a>
+  <li><a href="#장" id="toc-장" class="nav-link active" data-scroll-target="#장">1 장</a>
   <ul class="collapse">
-  <li><a href="#pearson의-다양성형평성포용성에-대한-약속" id="toc-pearson의-다양성형평성포용성에-대한-약속" class="nav-link" data-scroll-target="#pearson의-다양성형평성포용성에-대한-약속">Pearson의 다양성·형평성·포용성에 대한 약속</a></li>
-  <li><a href="#목차" id="toc-목차" class="nav-link" data-scroll-target="#목차">목차</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
   <li><a href="#소프트웨어-리더십-입문" id="toc-소프트웨어-리더십-입문" class="nav-link" data-scroll-target="#소프트웨어-리더십-입문">소프트웨어 리더십 입문</a>
   <ul class="collapse">
   <li><a href="#판단의-역할" id="toc-판단의-역할" class="nav-link" data-scroll-target="#판단의-역할">판단의 역할</a></li>
@@ -918,7 +909,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#파트-iii-시스템-설계" id="toc-파트-iii-시스템-설계" class="nav-link" data-scroll-target="#파트-iii-시스템-설계">파트 III: 시스템 설계</a></li>
   <li><a href="#파트-iv-모든-것을-하나로" id="toc-파트-iv-모든-것을-하나로" class="nav-link" data-scroll-target="#파트-iv-모든-것을-하나로">파트 IV: 모든 것을 하나로</a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2</a></li>
   <li><a href="#시스템-설계-아키텍처-이해하기" id="toc-시스템-설계-아키텍처-이해하기" class="nav-link" data-scroll-target="#시스템-설계-아키텍처-이해하기">시스템, 설계, 아키텍처 이해하기</a>
   <ul class="collapse">
   <li><a href="#소프트웨어-아키텍처란-무엇인가" id="toc-소프트웨어-아키텍처란-무엇인가" class="nav-link" data-scroll-target="#소프트웨어-아키텍처란-무엇인가">소프트웨어 아키텍처란 무엇인가?</a></li>
@@ -929,7 +920,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#클라우드를-위한-설계" id="toc-클라우드를-위한-설계" class="nav-link" data-scroll-target="#클라우드를-위한-설계">클라우드를 위한 설계</a></li>
   <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">요약</a></li>
   </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">3</a></li>
   <li><a href="#시스템-성능을-이해하고-설명하기-위한-멘탈-모델" id="toc-시스템-성능을-이해하고-설명하기-위한-멘탈-모델" class="nav-link" data-scroll-target="#시스템-성능을-이해하고-설명하기-위한-멘탈-모델">시스템 성능을 이해하고 설명하기 위한 멘탈 모델</a>
   <ul class="collapse">
   <li><a href="#컴퓨터-시스템" id="toc-컴퓨터-시스템" class="nav-link" data-scroll-target="#컴퓨터-시스템">컴퓨터 시스템</a></li>
@@ -939,7 +930,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점" id="toc-리더십-관점" class="nav-link" data-scroll-target="#리더십-관점">리더십 관점</a></li>
   <li><a href="#요약-1" id="toc-요약-1" class="nav-link" data-scroll-target="#요약-1">요약</a></li>
   </ul></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">4</a></li>
   <li><a href="#사용자-경험ux-이해하기" id="toc-사용자-경험ux-이해하기" class="nav-link" data-scroll-target="#사용자-경험ux-이해하기">사용자 경험(UX) 이해하기</a>
   <ul class="collapse">
   <li><a href="#아키텍트를-위한-ux-기본-개념" id="toc-아키텍트를-위한-ux-기본-개념" class="nav-link" data-scroll-target="#아키텍트를-위한-ux-기본-개념">아키텍트를 위한 UX 기본 개념</a></li>
@@ -949,7 +940,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-1" id="toc-리더십-관점-1" class="nav-link" data-scroll-target="#리더십-관점-1">리더십 관점</a></li>
   <li><a href="#요약-2" id="toc-요약-2" class="nav-link" data-scroll-target="#요약-2">요약</a></li>
   </ul></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">5</a></li>
   <li><a href="#매크로-아키텍처-소개" id="toc-매크로-아키텍처-소개" class="nav-link" data-scroll-target="#매크로-아키텍처-소개">매크로 아키텍처: 소개</a>
   <ul class="collapse">
   <li><a href="#매크로-아키텍처의-역사" id="toc-매크로-아키텍처의-역사" class="nav-link" data-scroll-target="#매크로-아키텍처의-역사">매크로 아키텍처의 역사</a></li>
@@ -958,7 +949,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-2" id="toc-리더십-관점-2" class="nav-link" data-scroll-target="#리더십-관점-2">리더십 관점</a></li>
   <li><a href="#요약-3" id="toc-요약-3" class="nav-link" data-scroll-target="#요약-3">요약</a></li>
   </ul></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">6</a></li>
   <li><a href="#매크로-아키텍처-조정" id="toc-매크로-아키텍처-조정" class="nav-link" data-scroll-target="#매크로-아키텍처-조정">매크로 아키텍처: 조정</a>
   <ul class="collapse">
   <li><a href="#접근법-1-클라이언트에서-흐름을-주도" id="toc-접근법-1-클라이언트에서-흐름을-주도" class="nav-link" data-scroll-target="#접근법-1-클라이언트에서-흐름을-주도">접근법 1: 클라이언트에서 흐름을 주도</a></li>
@@ -968,7 +959,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-3" id="toc-리더십-관점-3" class="nav-link" data-scroll-target="#리더십-관점-3">리더십 관점</a></li>
   <li><a href="#요약-4" id="toc-요약-4" class="nav-link" data-scroll-target="#요약-4">요약</a></li>
   </ul></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">7</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">7</a></li>
   <li><a href="#매크로-아키텍처-상태-일관성-유지" id="toc-매크로-아키텍처-상태-일관성-유지" class="nav-link" data-scroll-target="#매크로-아키텍처-상태-일관성-유지">매크로 아키텍처: 상태 일관성 유지</a>
   <ul class="collapse">
   <li><a href="#왜-트랜잭션인가" id="toc-왜-트랜잭션인가" class="nav-link" data-scroll-target="#왜-트랜잭션인가">왜 트랜잭션인가?</a></li>
@@ -978,7 +969,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-4" id="toc-리더십-관점-4" class="nav-link" data-scroll-target="#리더십-관점-4">리더십 관점</a></li>
   <li><a href="#요약-5" id="toc-요약-5" class="nav-link" data-scroll-target="#요약-5">요약</a></li>
   </ul></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">8</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">8</a></li>
   <li><a href="#매크로-아키텍처-보안-처리" id="toc-매크로-아키텍처-보안-처리" class="nav-link" data-scroll-target="#매크로-아키텍처-보안-처리">매크로 아키텍처: 보안 처리</a>
   <ul class="collapse">
   <li><a href="#사용자-관리" id="toc-사용자-관리" class="nav-link" data-scroll-target="#사용자-관리">사용자 관리</a></li>
@@ -988,7 +979,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-5" id="toc-리더십-관점-5" class="nav-link" data-scroll-target="#리더십-관점-5">리더십 관점</a></li>
   <li><a href="#요약-6" id="toc-요약-6" class="nav-link" data-scroll-target="#요약-6">요약</a></li>
   </ul></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">9</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">9</a></li>
   <li><a href="#매크로-아키텍처-고가용성과-확장-처리" id="toc-매크로-아키텍처-고가용성과-확장-처리" class="nav-link" data-scroll-target="#매크로-아키텍처-고가용성과-확장-처리">매크로 아키텍처: 고가용성과 확장 처리</a>
   <ul class="collapse">
   <li><a href="#고가용성-추가하기" id="toc-고가용성-추가하기" class="nav-link" data-scroll-target="#고가용성-추가하기">고가용성 추가하기</a></li>
@@ -999,7 +990,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-6" id="toc-리더십-관점-6" class="nav-link" data-scroll-target="#리더십-관점-6">리더십 관점</a></li>
   <li><a href="#요약-7" id="toc-요약-7" class="nav-link" data-scroll-target="#요약-7">요약</a></li>
   </ul></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">10</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">10</a></li>
   <li><a href="#매크로-아키텍처-마이크로서비스-고려사항" id="toc-매크로-아키텍처-마이크로서비스-고려사항" class="nav-link" data-scroll-target="#매크로-아키텍처-마이크로서비스-고려사항">매크로 아키텍처: 마이크로서비스 고려사항</a>
   <ul class="collapse">
   <li><a href="#결정-1-공유-데이터베이스-처리" id="toc-결정-1-공유-데이터베이스-처리" class="nav-link" data-scroll-target="#결정-1-공유-데이터베이스-처리">결정 1: 공유 데이터베이스 처리</a></li>
@@ -1010,7 +1001,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-7" id="toc-리더십-관점-7" class="nav-link" data-scroll-target="#리더십-관점-7">리더십 관점</a></li>
   <li><a href="#요약-8" id="toc-요약-8" class="nav-link" data-scroll-target="#요약-8">요약</a></li>
   </ul></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">11</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">11</a></li>
   <li><a href="#서버-아키텍처" id="toc-서버-아키텍처" class="nav-link" data-scroll-target="#서버-아키텍처">서버 아키텍처</a>
   <ul class="collapse">
   <li><a href="#서비스-작성하기" id="toc-서비스-작성하기" class="nav-link" data-scroll-target="#서비스-작성하기">서비스 작성하기</a></li>
@@ -1020,7 +1011,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-8" id="toc-리더십-관점-8" class="nav-link" data-scroll-target="#리더십-관점-8">리더십 관점</a></li>
   <li><a href="#요약-9" id="toc-요약-9" class="nav-link" data-scroll-target="#요약-9">요약</a></li>
   </ul></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">12</a></li>
   <li><a href="#안정적인-시스템-만들기" id="toc-안정적인-시스템-만들기" class="nav-link" data-scroll-target="#안정적인-시스템-만들기">안정적인 시스템 만들기</a>
   <ul class="collapse">
   <li><a href="#시스템은-왜-실패하고-우리는-무엇을-할-수-있을까" id="toc-시스템은-왜-실패하고-우리는-무엇을-할-수-있을까" class="nav-link" data-scroll-target="#시스템은-왜-실패하고-우리는-무엇을-할-수-있을까">시스템은 왜 실패하고, 우리는 무엇을 할 수 있을까?</a></li>
@@ -1031,7 +1022,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#리더십-관점-9" id="toc-리더십-관점-9" class="nav-link" data-scroll-target="#리더십-관점-9">리더십 관점</a></li>
   <li><a href="#요약-10" id="toc-요약-10" class="nav-link" data-scroll-target="#요약-10">요약</a></li>
   </ul></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">13</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">13</a></li>
   <li><a href="#시스템-구축과-진화" id="toc-시스템-구축과-진화" class="nav-link" data-scroll-target="#시스템-구축과-진화">시스템 구축과 진화</a>
   <ul class="collapse">
   <li><a href="#직접-뛰어들기" id="toc-직접-뛰어들기" class="nav-link" data-scroll-target="#직접-뛰어들기">직접 뛰어들기</a></li>
@@ -1050,14 +1041,26 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../software-architecture-decisions/index.html"><span class="chapter-title">소프트웨어 아키텍처 의사결정</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">소프트웨어 아키텍처 의사결정</span></h1>
-<p class="subtitle lead">Software Architecture Decisions</p>
+<p class="subtitle lead">Leveraging Leadership, Technology, and Product Management to Build Great Products</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Srinath Perera </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 1, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -1067,294 +1070,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>제목:</strong> Software Architecture and Decision-Making: Leveraging Leadership, Technology, and Product Management to Build Great Products (True Epub판) <strong>저자:</strong> Srinath Perera <strong>언어:</strong> en <strong>출판사:</strong> Addison-Wesley <strong>발행일:</strong> 2024 <strong>식별자:</strong> 9780138249595</p>
-<section id="이-전자책에-관하여" class="level2">
-<h2 class="anchored" data-anchor-id="이-전자책에-관하여">이 전자책에 관하여</h2>
-<p>ePUB은 전자책을 위한 개방형 업계 표준 포맷입니다. 다만 ePUB과 그 다양한 기능에 대한 지원은 기기와 애플리케이션마다 차이가 있습니다. 기기나 앱의 설정을 활용해 원하는 방식으로 화면 표시를 바꿔 보세요. 보통 글꼴, 글자 크기, 단일/이중 단락, 가로/세로 모드, 클릭하거나 탭해서 확대할 수 있는 그림 같은 항목을 조정할 수 있습니다. 사용 중인 기기나 앱의 설정과 기능에 대한 자세한 내용은 제조사 웹 사이트를 참고하세요.</p>
-<p>많은 책에 프로그래밍 코드나 설정 예제가 실려 있습니다. 이런 요소를 잘 보려면 전자책을 단일 단락, 가로 모드로 보고 글자 크기를 가장 작게 맞추는 것이 좋습니다. 코드와 설정을 리플로우 가능한 텍스트 형식으로 제공하는 것과 별개로, 종이책에서처럼 보이도록 코드를 이미지로 넣어 두었습니다. 따라서 리플로우 형식으로는 코드 목록의 표현이 뭉개질 수 있는 곳에는 “코드 이미지 보기” 링크가 나타납니다. 링크를 누르면 인쇄본과 동일한 코드 이미지를 볼 수 있습니다. 이전에 보던 페이지로 돌아가려면 기기나 앱의 뒤로 가기 버튼을 사용하세요.</p>
-</section>
-<section id="software-architecture-and-decision-making" class="level1">
-<h1>Software Architecture and Decision-Making</h1>
-</section>
-<section id="software-architecture-and-decision-making-1" class="level1">
-<h1>Software Architecture and Decision-Making</h1>
-<p>Leveraging Leadership, Technology, and Product Management to Build Great Products</p>
-<p>Srinath Perera</p>
-<p>제조사와 판매사가 자사 제품을 구별하기 위해 사용하는 여러 명칭은 상표로 주장될 수 있습니다. 이 책에 그런 명칭이 등장할 때, 출판사가 상표권 주장을 인지한 경우에는 첫 글자를 대문자로 하거나 모두 대문자로 표기했습니다.</p>
-<p>저자와 출판사는 이 책을 준비하는 데 신경을 썼지만 명시적이든 묵시적이든 어떠한 보증도 하지 않으며 오류나 누락에 대한 책임을 지지 않습니다. 이 책에 담긴 정보나 프로그램의 사용과 관련해 발생하는 부수적 또는 결과적 손해에 대해서도 책임을 지지 않습니다.</p>
-<p>이 도서를 대량으로 구매하거나 특별 판매 기회(전자 버전, 맞춤 표지 디자인, 비즈니스·교육 목표·마케팅·브랜딩에 맞춘 콘텐츠 등이 포함될 수 있음)에 대해 문의하려면 영업팀(corpsales@pearsoned.com, (800) 382-3419)에 연락하세요.</p>
-<p>정부 기관 판매 문의: governmentsales@pearsoned.com</p>
-<p>미국 외 지역 판매 문의: intlcs@pearson.com</p>
-<p>웹 사이트: <a href="http://informit.com/aw">informit.com/aw</a></p>
-<p>Library of Congress Control Number: 2023946912</p>
-<p>Hoboken, NJ</p>
-<p>표지 이미지: wowomnom/Shutterstock; AVA AVA/Shutterstock</p>
-<p>ISBN-13: 978-0-13-824973-1</p>
-<p>ISBN-10: 0-13-824973-3</p>
-<p>$PrintCode</p>
-<section id="pearson의-다양성형평성포용성에-대한-약속" class="level2">
-<h2 class="anchored" data-anchor-id="pearson의-다양성형평성포용성에-대한-약속">Pearson의 다양성·형평성·포용성에 대한 약속</h2>
-<p>Pearson은 모든 학습자의 다양성을 반영하고 편견 없는 콘텐츠를 만드는 데 힘쓰고 있습니다. 우리는 인종, 민족, 젠더, 사회경제적 지위, 능력, 나이, 성적 지향, 종교적 또는 정치적 신념을 포함해, 그 범위가 이에 국한되지 않는 다양한 차원의 다양성을 받아들입니다.</p>
-<p>교육은 세상의 형평성과 변화를 이끄는 강력한 힘입니다. 삶을 개선하고 경제적 이동성을 가능하게 하는 기회를 제공할 잠재력을 갖고 있습니다. 저자들과 함께 모든 제품과 서비스의 콘텐츠를 만드는 과정에서, 우리는 포용성을 보여 주고 다양한 학문을 반영하여 모두가 배움을 통해 자신의 잠재력을 이루도록 해야 할 책임을 깊이 새기고 있습니다. 세계 최고의 학습 기업으로서, 변화를 이끌고 더 많은 사람이 더 나은 삶을 만들고 더 나은 세상을 만들도록 돕겠다는 우리의 사명을 다할 의무가 있습니다.</p>
-<p>우리의 지향은 다음과 같은 세상에 의미 있는 기여를 하는 것입니다.</p>
-<ul>
-<li>모든 사람이 배움을 통해 평생에 걸쳐 공평하게 성공할 기회를 갖는 세상.</li>
-<li>우리의 교육 제품과 서비스가 포용적이며 학습자의 풍부한 다양성을 대변하는 세상.</li>
-<li>우리의 교육 콘텐츠가 우리가 섬기는 학습자들의 역사와 경험을 정확히 반영하는 세상.</li>
-<li>우리의 교육 콘텐츠가 학습자들과 더 깊은 대화를 이끌어내고, 스스로 배움(그리고 세계관)을 넓히도록 독려하는 세상.</li>
-</ul>
-<p>편향 없는 콘텐츠를 만들기 위해 노력하지만 이 Pearson 제품에 대한 우려나 필요 사항이 있다면 알려 주세요. 조사하고 개선하겠습니다.</p>
-<ul>
-<li>잠재적 편향에 대한 제보는 <a href="https://www.pearson.com/report-bias.html" class="uri">https://www.pearson.com/report-bias.html</a>로 연락해 주세요.</li>
-</ul>
-<p>이 책을 내 가족인 Miyuru, Basilu, Nithika에게 바칩니다. 당신들이 있어 내 삶에 색과 목적이 생깁니다. 그리고 흔들림 없는 사랑과 신뢰로 늘 나를 놀라게 하고 일으켜 주는 부모님께도 바칩니다.</p>
-<p>또한 이 여정이 결실을 맺는 과정 내내 변함없이 지원해 준 Frank에게 진심으로 감사를 전합니다. 당신의 통찰이 이 책의 핵심 아이디어를 다듬는 데 큰 힘이 되었습니다.</p>
-</section>
-<section id="목차" class="level2">
-<h2 class="anchored" data-anchor-id="목차">목차</h2>
-<ol type="1">
-<li><p>1장 소프트웨어 리더십 입문</p>
-<ol type="1">
-<li>판단의 역할</li>
-<li>이 책의 목표</li>
-<li>파트 I: 소개</li>
-<li>파트 II: 필수 배경 지식</li>
-<li>파트 III: 시스템 설계</li>
-<li>파트 IV: 모든 것을 하나로</li>
-</ol></li>
-<li><p>2장 시스템, 설계, 아키텍처 이해하기</p>
-<ol type="1">
-<li><p>소프트웨어 아키텍처란 무엇인가?</p></li>
-<li><p>시스템을 설계하는 방법</p></li>
-<li><p>다섯 가지 질문</p>
-<ol type="1">
-<li>질문 1: 시장 진입의 최적 시점은 언제인가?</li>
-<li>질문 2: 팀의 숙련 수준은 어느 정도인가?</li>
-<li>질문 3: 우리 시스템의 성능 민감도는 얼마나 되는가?</li>
-<li>질문 4: 언제 시스템을 재작성할 수 있는가?</li>
-<li>질문 5: 어려운 문제들은 무엇인가?</li>
-</ol></li>
-<li><p>일곱 가지 원칙: 관통하는 개념들</p>
-<ol type="1">
-<li>원칙 1: 모든 것을 사용자 여정에서 끌어내라</li>
-<li>원칙 2: 반복적인 얇은 조각(thin slice) 전략을 써라</li>
-<li>원칙 3: 매 반복마다, 가장 적은 노력으로 가장 많은 가치를 더해 더 많은 사용자를 지원하라</li>
-<li>원칙 4: 결정을 내리고 위험을 흡수하라</li>
-<li>원칙 5: 바꾸기 어려운 것은 깊게 설계하되 천천히 구현하라</li>
-<li>원칙 6: 어려운 문제를 일찍, 그리고 병렬로 다루며 미지를 없애고 증거로부터 배워라</li>
-<li>원칙 7: 소프트웨어 아키텍처에서 응집성과 유연성 사이의 트레이드오프를 이해하라</li>
-</ol></li>
-<li><p>온라인 서점 설계하기</p></li>
-<li><p>클라우드를 위한 설계</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>3장 시스템 성능을 이해하고 설명하기 위한 멘탈 모델</p>
-<ol type="1">
-<li><p>컴퓨터 시스템</p></li>
-<li><p>성능을 위한 모델들</p>
-<ol type="1">
-<li>모델 1: 사용자 모드에서 커널 모드로 전환하는 비용</li>
-<li>모델 2: 연산 계층 구조</li>
-<li>모델 3: 컨텍스트 스위칭 오버헤드</li>
-<li>모델 4: 암달의 법칙(Amdahl’s Law)</li>
-<li>모델 5: 범용 확장성 법칙(Universal Scalability Law, USL)</li>
-<li>모델 6: 지연 시간과 활용도의 트레이드오프</li>
-<li>모델 7: 최대 유효 활용도(Maximal Useful Utilization, MUU) 모델로 처리량 설계하기</li>
-<li>모델 8: 지연 시간 한도 추가하기</li>
-</ol></li>
-<li><p>최적화 기법</p>
-<ol type="1">
-<li>CPU 최적화 기법</li>
-<li>I/O 최적화 기법</li>
-<li>메모리 최적화 기법</li>
-<li>지연 시간 최적화 기법</li>
-</ol></li>
-<li><p>성능에 대한 직관</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>4장 사용자 경험(UX) 이해하기</p>
-<ol type="1">
-<li><p>아키텍트를 위한 UX 기본 개념</p>
-<ol type="1">
-<li>원칙 1: 사용자를 이해하라</li>
-<li>원칙 2: 최소한만 하라</li>
-<li>원칙 3: 좋은 제품은 설명서가 필요 없다 쓰는 법이 저절로 드러난다</li>
-<li>원칙 4: 정보 교환의 관점에서 생각하라</li>
-<li>원칙 5: 간단한 것은 간단하게 만들어라</li>
-<li>원칙 6: 구현 전에 UX를 설계하라</li>
-</ol></li>
-<li><p>설정(configuration)을 위한 UX 설계</p></li>
-<li><p>API를 위한 UX 설계</p></li>
-<li><p>확장(extension)을 위한 UX 설계</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>5장 매크로 아키텍처: 소개</p>
-<ol type="1">
-<li>매크로 아키텍처의 역사</li>
-<li>현대의 아키텍처들</li>
-<li>매크로 아키텍처의 빌딩 블록</li>
-<li>리더십 관점</li>
-<li>요약</li>
-</ol></li>
-<li><p>6장 매크로 아키텍처: 조율</p>
-<ol type="1">
-<li>방식 1: 클라이언트가 흐름을 주도한다</li>
-<li>방식 2: 다른 서비스를 활용한다</li>
-<li>방식 3: 중앙화된 미들웨어를 사용한다</li>
-<li>방식 4: 코리오그래피(choreography)를 구현한다</li>
-<li>리더십 관점</li>
-<li>요약</li>
-</ol></li>
-<li><p>7장 매크로 아키텍처: 상태 일관성 유지</p>
-<ol type="1">
-<li><p>왜 트랜잭션인가?</p></li>
-<li><p>왜 트랜잭션을 넘어서야 하는가?</p></li>
-<li><p>트랜잭션 너머로 가기</p>
-<ol type="1">
-<li>방식 1: 문제를 재정의해 더 약한 보증을 요구하도록 한다</li>
-<li>방식 2: 보상(compensation)을 사용한다</li>
-</ol></li>
-<li><p>모범 사례</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>8장 매크로 아키텍처: 보안 다루기</p>
-<ol type="1">
-<li><p>사용자 관리</p></li>
-<li><p>상호작용 보안</p>
-<ol type="1">
-<li>인증 기법</li>
-<li>권한 부여 기법</li>
-<li>애플리케이션의 일반적인 상호작용 보안 시나리오</li>
-</ol></li>
-<li><p>저장소, GDPR, 그 밖의 규제</p></li>
-<li><p>보안 전략과 조언</p>
-<ol type="1">
-<li>성능과 지연 시간</li>
-<li>제로 트러스트(zero-trust) 접근</li>
-<li>사용자가 제공한 코드를 실행할 때는 조심하라</li>
-<li>블록체인 관련 주제</li>
-<li>그 밖의 주제들</li>
-</ol></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>9장 매크로 아키텍처: 고가용성과 확장성 다루기</p>
-<ol type="1">
-<li><p>고가용성 확보하기</p>
-<ol type="1">
-<li>복제</li>
-<li>빠른 복구</li>
-</ol></li>
-<li><p>확장성 이해하기</p></li>
-<li><p>현대적 아키텍처의 확장: 기본 해법</p></li>
-<li><p>확장: 핵심 도구들</p>
-<ol type="1">
-<li>확장 전술 1: 아무것도 공유하지 않기(share nothing)</li>
-<li>확장 전술 2: 분산</li>
-<li>확장 전술 3: 캐싱</li>
-<li>확장 전술 4: 비동기 처리</li>
-</ol></li>
-<li><p>확장 가능한 시스템 만들기</p>
-<ol type="1">
-<li>방식 1: 병목 지우기 방식</li>
-<li>방식 2: shared-nothing 설계</li>
-</ol></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>10장 매크로 아키텍처: 마이크로서비스 고려 사항</p>
-<ol type="1">
-<li><p>결정 1: 공유 데이터베이스 처리</p>
-<ol type="1">
-<li>해법 1: 마이크로서비스 하나가 데이터베이스를 갱신한다</li>
-<li>해법 2: 마이크로서비스 두 개가 데이터베이스를 갱신한다</li>
-</ol></li>
-<li><p>결정 2: 마이크로서비스 보안</p></li>
-<li><p>결정 3: 마이크로서비스 조율</p></li>
-<li><p>결정 4: 지옥에서 벗어나기</p>
-<ol type="1">
-<li>하위 호환성</li>
-<li>상위 호환성</li>
-<li>의존성 그래프</li>
-</ol></li>
-<li><p>마이크로서비스의 대안으로서 느슨하게 결합된 저장소 기반 팀</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>11장 서버 아키텍처</p>
-<ol type="1">
-<li><p>서비스 작성하기</p></li>
-<li><p>서비스 작성 모범 사례 이해하기</p></li>
-<li><p>고급 기법 이해하기</p>
-<ol type="1">
-<li>대체 I/O 및 스레드 모델 활용</li>
-<li>조율 오버헤드 이해</li>
-<li>로컬 상태 효율적으로 저장하기</li>
-<li>전송 시스템 선택하기</li>
-<li>지연 시간 다루기</li>
-<li>읽기와 쓰기 분리하기</li>
-<li>애플리케이션에서 락(과 시그널링) 사용하기</li>
-<li>큐와 풀 사용하기</li>
-<li>서비스 호출 다루기</li>
-</ol></li>
-<li><p>이 기법들을 실전에 적용하기</p>
-<ol type="1">
-<li>CPU 바운드 애플리케이션(CPU &gt;&gt; 메모리, I/O 없음)</li>
-<li>메모리 바운드 애플리케이션(CPU + 메모리 바운드, I/O 없음)</li>
-<li>균형 잡힌 애플리케이션(CPU + 메모리 + I/O)</li>
-<li>I/O 바운드 애플리케이션(I/O + 메모리 &gt; CPU)</li>
-<li>그 외 애플리케이션 분류</li>
-</ol></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>12장 안정적인 시스템 만들기</p>
-<ol type="1">
-<li><p>시스템은 왜 실패하는가, 그리고 우리가 할 수 있는 일은 무엇인가?</p></li>
-<li><p>알려진 오류 다루기</p>
-<ol type="1">
-<li>예상치 못한 부하 다루기</li>
-<li>자원 장애 다루기</li>
-<li>의존성 다루기</li>
-<li>사람이 가한 변경 다루기</li>
-</ol></li>
-<li><p>흔한 버그</p>
-<ol type="1">
-<li>자원 누수</li>
-<li>교착 상태와 느린 연산</li>
-</ol></li>
-<li><p>알 수 없는 오류 다루기</p>
-<ol type="1">
-<li>관측 가능성</li>
-<li>버그와 테스팅</li>
-</ol></li>
-<li><p>우아한 성능 저하(graceful degradation)</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>13장 시스템 구축과 발전</p>
-<ol type="1">
-<li><p>직접 뛰어들기</p>
-<ol type="1">
-<li>기본기를 확실히 다져라</li>
-<li>설계 과정을 이해하라</li>
-<li>결정을 내리고 위험을 흡수하라</li>
-<li>탁월함을 요구하라</li>
-</ol></li>
-<li><p>설계 전달하기</p></li>
-<li><p>시스템 발전시키기: 사용자로부터 배우고 시스템을 개선하는 방법</p></li>
-<li><p>리더십 관점</p></li>
-<li><p>요약</p></li>
-</ol></li>
-<li><p>색인</p></li>
-</ol>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">1</h2>
-</section>
+<section id="장" class="level1">
+<h1>1 장</h1>
 <section id="소프트웨어-리더십-입문" class="level2">
 <h2 class="anchored" data-anchor-id="소프트웨어-리더십-입문">소프트웨어 리더십 입문</h2>
 <p>소프트웨어 시스템을 개발할 때 우리의 목표는 품질 기준을 충족하면서 장기적으로 혹은 미리 정한 기간 안에 최고의 투자 수익률(return on investment, ROI)을 내는 시스템을 만드는 것입니다. 이것이 곧 소프트웨어 시스템을 짓기 위한 청사진인 소프트웨어 아키텍처의 목표가 됩니다.</p>
@@ -1466,8 +1183,8 @@ ul.task-list li input[type="checkbox"] {
 <p>파트 IV는 13장 하나뿐이며 모든 것이 어떻게 하나로 모이는지 다룹니다. 이 장은 빠른 피드백 순환을 만들고, 개발자가 반복(iteration)을 완료하며 피드백을 받고 배우는 데 걸림돌이 되는 모든 것을 제거하는 데 초점을 맞춥니다. 개발자가 제 일을 효율적으로 할 수 있도록 리더가 확실히 하되, 개발자를 붙잡는 문제는 직접 나서서 풀라고 권합니다.</p>
 </section>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2</h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2</h2>
 </section>
 <section id="시스템-설계-아키텍처-이해하기" class="level2">
 <h2 class="anchored" data-anchor-id="시스템-설계-아키텍처-이해하기">시스템, 설계, 아키텍처 이해하기</h2>
@@ -1737,8 +1454,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">3</h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">3</h2>
 </section>
 <section id="시스템-성능을-이해하고-설명하기-위한-멘탈-모델" class="level2">
 <h2 class="anchored" data-anchor-id="시스템-성능을-이해하고-설명하기-위한-멘탈-모델">시스템 성능을 이해하고 설명하기 위한 멘탈 모델</h2>
@@ -1997,8 +1714,8 @@ ul.task-list li input[type="checkbox"] {
 <p>성공 가능성을 극대화하는 설계 결정을 찾으려면 성능에 대한 이해와 1장의 리더십 관점을 결합해야 합니다. 이제 사용자가 우리 시스템에게 무엇을 원하는지 생각할 준비가 됐습니다. 다음 장에서 UX를 깊이 들어가 이 노력이 무엇을 수반하는지 살펴봅니다.</p>
 </section>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">4</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">4</h2>
 </section>
 <section id="사용자-경험ux-이해하기" class="level2">
 <h2 class="anchored" data-anchor-id="사용자-경험ux-이해하기">사용자 경험(UX) 이해하기</h2>
@@ -2146,8 +1863,8 @@ bookShop.buy(book[5])</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">5</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">5</h2>
 </section>
 <section id="매크로-아키텍처-소개" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-소개">매크로 아키텍처: 소개</h2>
@@ -2255,8 +1972,8 @@ bookShop.buy(book[5])</code></pre>
 <p>6~9장에서 매크로 아키텍처의 나머지 주제를 다루고, 10장에서 마이크로서비스가 아키텍처에 미치는 영향을 논합니다.</p>
 </section>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">6</h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">6</h2>
 </section>
 <section id="매크로-아키텍처-조정" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-조정">매크로 아키텍처: 조정</h2>
@@ -2354,8 +2071,8 @@ bookShop.buy(book[5])</code></pre>
 </table>
 </section>
 </section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">7</h2>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">7</h2>
 </section>
 <section id="매크로-아키텍처-상태-일관성-유지" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-상태-일관성-유지">매크로 아키텍처: 상태 일관성 유지</h2>
@@ -2538,8 +2255,8 @@ return ..</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-7" class="level2">
-<h2 class="anchored" data-anchor-id="section-7">8</h2>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">8</h2>
 </section>
 <section id="매크로-아키텍처-보안-처리" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-보안-처리">매크로 아키텍처: 보안 처리</h2>
@@ -2834,8 +2551,8 @@ return ..</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-8" class="level2">
-<h2 class="anchored" data-anchor-id="section-8">9</h2>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">9</h2>
 </section>
 <section id="매크로-아키텍처-고가용성과-확장-처리" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-고가용성과-확장-처리">매크로 아키텍처: 고가용성과 확장 처리</h2>
@@ -3036,8 +2753,8 @@ return ..</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">10</h2>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">10</h2>
 </section>
 <section id="매크로-아키텍처-마이크로서비스-고려사항" class="level2">
 <h2 class="anchored" data-anchor-id="매크로-아키텍처-마이크로서비스-고려사항">매크로 아키텍처: 마이크로서비스 고려사항</h2>
@@ -3164,8 +2881,8 @@ return ..</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-10" class="level2">
-<h2 class="anchored" data-anchor-id="section-10">11</h2>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">11</h2>
 </section>
 <section id="서버-아키텍처" class="level2">
 <h2 class="anchored" data-anchor-id="서버-아키텍처">서버 아키텍처</h2>
@@ -3437,8 +3154,8 @@ return ..</code></pre>
 </ul>
 </section>
 </section>
-<section id="section-11" class="level2">
-<h2 class="anchored" data-anchor-id="section-11">12</h2>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">12</h2>
 </section>
 <section id="안정적인-시스템-만들기" class="level2">
 <h2 class="anchored" data-anchor-id="안정적인-시스템-만들기">안정적인 시스템 만들기</h2>
@@ -3684,8 +3401,8 @@ Thread 2:
 </ul>
 </section>
 </section>
-<section id="section-12" class="level2">
-<h2 class="anchored" data-anchor-id="section-12">13</h2>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">13</h2>
 </section>
 <section id="시스템-구축과-진화" class="level2">
 <h2 class="anchored" data-anchor-id="시스템-구축과-진화">시스템 구축과 진화</h2>
@@ -4234,8 +3951,8 @@ Thread 2:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../swift_for_py/index.html" class="pagination-link" aria-label="파이썬 개발자를 위한 Swift 학습 가이드">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></span>
+      <a href="../swift_for_py/index.html" class="pagination-link" aria-label="파이썬 개발자를 위한 Swift">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

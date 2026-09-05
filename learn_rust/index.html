@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>러스트 프로그래밍 완벽 가이드 – Machine translation</title>
+<title>Python으로 Rust 배우기 – Machine translation</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -76,10 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -120,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../learn_rust/index.html"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../learn_rust/index.html"><span class="chapter-title">Python으로 Rust 배우기</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -147,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -192,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -202,12 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -217,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -263,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -278,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,12 +318,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -350,17 +354,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -376,12 +375,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -406,12 +405,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -421,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -447,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -467,12 +466,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -487,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -497,12 +496,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -523,17 +522,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -882,7 +876,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1385,10 +1379,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../learn_rust/index.html"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python_mastery/index.html">프로그래밍 언어 및 소프트웨어 엔지니어링</a></li><li class="breadcrumb-item"><a href="../learn_rust/index.html"><span class="chapter-title">Python으로 Rust 배우기</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></h1>
-<p class="subtitle lead">파이썬에서 러스트로 이동하기</p>
+<h1 class="title"><span class="chapter-title">Python으로 Rust 배우기</span></h1>
 </div>
 
 
@@ -5531,13 +5524,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"i16={}~{}"</span><span class="op">,</span> <span class="dt">i16</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i16</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"i32={}~{}"</span><span class="op">,</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"i64={}~{}"</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"--- 부호가 없는 정수 ---"</span>)<span class="op">;</span></span>
 <span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"u8={}~{}"</span><span class="op">,</span> <span class="dt">u8</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">u8</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"u16={}~{}"</span><span class="op">,</span> <span class="dt">u16</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">u16</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"u32={}~{}"</span><span class="op">,</span> <span class="dt">u32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">u32</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"u64={}~{}"</span><span class="op">,</span> <span class="dt">u64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">u64</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
-<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"--- OS 비트에 따라 달라지는 정수 --- "</span>)<span class="op">;</span></span>
 <span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"isize={}~{}"</span><span class="op">,</span> <span class="dt">isize</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">isize</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
 <span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"usize={}~{}"</span><span class="op">,</span> <span class="dt">usize</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">usize</span><span class="pp">::</span><span class="cn">MAX</span>)<span class="op">;</span></span>
@@ -5647,7 +5640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i100 <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>(count100<span class="op">+</span><span class="dv">1</span>) <span class="op">{</span></span>
 <span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i50 <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>(count50<span class="op">+</span><span class="dv">1</span>) <span class="op">{</span></span>
 <span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>                <span class="co">// 동전을 더한 금액을 계산 --- (*3)</span></span>
-<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> total<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> </span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> total<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span></span>
 <span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>                    i50 <span class="op">*</span> <span class="dv">50</span> <span class="op">+</span> i100 <span class="op">*</span> <span class="dv">100</span> <span class="op">+</span> i500 <span class="op">*</span> <span class="dv">500</span><span class="op">;</span></span>
 <span id="cb66-15"><a href="#cb66-15" aria-hidden="true" tabindex="-1"></a>                <span class="co">// 동전을 더한 금액과 거스름돈이 일치하면 출력</span></span>
 <span id="cb66-16"><a href="#cb66-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> price <span class="op">==</span> total <span class="op">{</span></span>
@@ -6088,7 +6081,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> is_prime(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">2</span><span class="op">..</span>n <span class="op">{</span></span>
 <span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">%</span> i <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span></span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">false</span> </span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">false</span></span>
 <span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">true</span></span>
@@ -6139,7 +6132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 함수를 호출 --- (*2)</span></span>
 <span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>    set_value(<span class="op">&amp;</span><span class="kw">mut</span> v)<span class="op">;</span></span>
-<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 변수 v의 값은？ --- (*3)</span></span>
 <span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"v={}"</span><span class="op">,</span> v)<span class="op">;</span></span>
 <span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
@@ -6405,7 +6398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb99-19"><a href="#cb99-19" aria-hidden="true" tabindex="-1"></a><span class="co">// 표준 입력에서 1줄씩 읽어 f64 타입으로 반환하는 함수 --- (*4)</span></span>
 <span id="cb99-20"><a href="#cb99-20" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> input(prompt<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">f64</span> <span class="op">{</span></span>
 <span id="cb99-21"><a href="#cb99-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 메시지 출력</span></span>
-<span id="cb99-22"><a href="#cb99-22" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> prompt)<span class="op">;</span> </span>
+<span id="cb99-22"><a href="#cb99-22" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> prompt)<span class="op">;</span></span>
 <span id="cb99-23"><a href="#cb99-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 입력 값을 가져옴 --- (*5)</span></span>
 <span id="cb99-24"><a href="#cb99-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>new()<span class="op">;</span></span>
 <span id="cb99-25"><a href="#cb99-25" aria-hidden="true" tabindex="-1"></a>    <span class="pp">std::io::</span>stdin()<span class="op">.</span>read_line(<span class="op">&amp;</span><span class="kw">mut</span> s)<span class="op">.</span>expect(<span class="st">"입력 에러"</span>)<span class="op">;</span></span>
@@ -6491,11 +6484,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 파일 이름 지정 --- (*2)</span></span>
 <span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> afile <span class="op">=</span> <span class="st">"./fizzbuzz_python.txt"</span><span class="op">;</span></span>
 <span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bfile <span class="op">=</span> <span class="st">"./fizzbuzz_rust.txt"</span><span class="op">;</span></span>
-<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 파일 내용을 문자열로 읽어들임 --- (*3)</span></span>
 <span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> astr <span class="op">=</span> <span class="pp">fs::</span>read_to_string(afile)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bstr <span class="op">=</span> <span class="pp">fs::</span>read_to_string(bfile)<span class="op">.</span>unwrap()<span class="op">;</span></span>
-<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 불필요한 공백 삭제</span></span>
 <span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> astr <span class="op">=</span> astr<span class="op">.</span>trim()<span class="op">;</span></span>
 <span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bstr <span class="op">=</span> bstr<span class="op">.</span>trim()<span class="op">;</span></span>
@@ -6557,7 +6550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::collections::</span>HashMap<span class="op">;</span></span>
 <span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 투표 데이터를 상수로 선언 --- (*2)</span></span>
-<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> V_DATA<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">=</span> </span>
+<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> V_DATA<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">=</span></span>
 <span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C,C,A,A,A,B,C,C,B,B,B,C,B,C,B,A,C,C,B,C,C,C"</span><span class="op">;</span></span>
 <span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
@@ -6681,10 +6674,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 사전 파일 지정 --- (*1)</span></span>
 <span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> dicfile <span class="op">=</span> <span class="st">"dict.txt"</span><span class="op">;</span></span>
-<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 명령줄 인수를 벡터에 할당 --- (*2)</span></span>
 <span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> args<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">std::env::</span>args()<span class="op">.</span>collect()<span class="op">;</span></span>
-<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 인수 확인</span></span>
 <span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args<span class="op">.</span>len() <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">{</span></span>
 <span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"[USAGE] ./dictionary word"</span>)<span class="op">;</span></span>
@@ -6692,7 +6685,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb108-15"><a href="#cb108-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 인수로 전달된 단어 --- (*3)</span></span>
 <span id="cb108-16"><a href="#cb108-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> word <span class="op">=</span> <span class="op">&amp;</span>args[<span class="dv">1</span>]<span class="op">;</span></span>
-<span id="cb108-17"><a href="#cb108-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb108-17"><a href="#cb108-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb108-18"><a href="#cb108-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 사전 파일 열기 --- (*4)</span></span>
 <span id="cb108-19"><a href="#cb108-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> fp <span class="op">=</span> <span class="pp">File::</span>open(dicfile)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb108-20"><a href="#cb108-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// BufReader로 읽어들임 --- (*5)</span></span>
@@ -6701,8 +6694,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb108-23"><a href="#cb108-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 한 줄씩 처리 --- (*6)</span></span>
 <span id="cb108-24"><a href="#cb108-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> line <span class="op">=</span> line<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb108-25"><a href="#cb108-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 지정한 단어가 포함되는 줄인지 확인 --- (*7)</span></span>
-<span id="cb108-26"><a href="#cb108-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line<span class="op">.</span>find(word) <span class="op">==</span> <span class="cn">None</span> <span class="op">{</span> </span>
-<span id="cb108-27"><a href="#cb108-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span><span class="op">;</span> </span>
+<span id="cb108-26"><a href="#cb108-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line<span class="op">.</span>find(word) <span class="op">==</span> <span class="cn">None</span> <span class="op">{</span></span>
+<span id="cb108-27"><a href="#cb108-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span><span class="op">;</span></span>
 <span id="cb108-28"><a href="#cb108-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb108-29"><a href="#cb108-29" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> line)<span class="op">;</span></span>
 <span id="cb108-30"><a href="#cb108-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -6769,7 +6762,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> target_dir <span class="op">=</span> <span class="op">&amp;</span>args[<span class="dv">1</span>]<span class="op">;</span></span>
 <span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> keyword <span class="op">=</span> <span class="op">&amp;</span>args[<span class="dv">2</span>]<span class="op">;</span></span>
 <span id="cb110-13"><a href="#cb110-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// PathBuf로 변환 --- (*3)</span></span>
-<span id="cb110-14"><a href="#cb110-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> target <span class="op">=</span> <span class="pp">path::</span><span class="dt">PathBuf</span><span class="pp">::</span>from(target_dir)<span class="op">;</span>    </span>
+<span id="cb110-14"><a href="#cb110-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> target <span class="op">=</span> <span class="pp">path::</span><span class="dt">PathBuf</span><span class="pp">::</span>from(target_dir)<span class="op">;</span></span>
 <span id="cb110-15"><a href="#cb110-15" aria-hidden="true" tabindex="-1"></a>    findfile(<span class="op">&amp;</span>target<span class="op">,</span> keyword)<span class="op">;</span></span>
 <span id="cb110-16"><a href="#cb110-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb110-17"><a href="#cb110-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -6836,7 +6829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb111-24"><a href="#cb111-24" aria-hidden="true" tabindex="-1"></a>            writer<span class="op">.</span>write(bytes)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb111-25"><a href="#cb111-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb111-26"><a href="#cb111-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="co">// ← 여기서 파일은 자동으로 닫힌다 --- (*5)</span></span>
-<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-28"><a href="#cb111-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 저장한 파일의 내용을 읽어들여 출력 --- (*6)</span></span>
 <span id="cb111-29"><a href="#cb111-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="pp">fs::</span>read_to_string(filename)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb111-30"><a href="#cb111-30" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> s)<span class="op">;</span></span>
@@ -7098,9 +7091,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb120"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::collections::</span>HashMap<span class="op">;</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 우리말 월 이름 목록 --- (*1)</span></span>
-<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> months <span class="op">=</span> [<span class="st">"해오름달"</span><span class="op">,</span> <span class="st">"시샘달"</span><span class="op">,</span> <span class="st">"꽃내음달"</span><span class="op">,</span> <span class="st">"잎새달"</span><span class="op">,</span> <span class="st">"푸른달"</span><span class="op">,</span> <span class="st">"누리달"</span><span class="op">,</span> </span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> months <span class="op">=</span> [<span class="st">"해오름달"</span><span class="op">,</span> <span class="st">"시샘달"</span><span class="op">,</span> <span class="st">"꽃내음달"</span><span class="op">,</span> <span class="st">"잎새달"</span><span class="op">,</span> <span class="st">"푸른달"</span><span class="op">,</span> <span class="st">"누리달"</span><span class="op">,</span></span>
 <span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"빗방울달"</span><span class="op">,</span> <span class="st">"타오름달"</span><span class="op">,</span> <span class="st">"거둠달"</span><span class="op">,</span> <span class="st">"온누리달"</span><span class="op">,</span> <span class="st">"눈마중달"</span><span class="op">,</span> <span class="st">"매듭달"</span>]<span class="op">;</span></span>
-<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// HashMap 초기화 --- (*2)</span></span>
 <span id="cb120-8"><a href="#cb120-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> months_map<span class="op">:</span> HashMap<span class="op">&lt;&amp;</span><span class="dt">str</span><span class="op">,</span> <span class="dt">usize</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashMap::</span>new()<span class="op">;</span></span>
 <span id="cb120-9"><a href="#cb120-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 월의 이름을 HashMap에 추가 --- (*3)</span></span>
@@ -7133,7 +7126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 전체 미로의 크기 지정</span></span>
-<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>MAP_N <span class="op">=</span> <span class="dv">25</span> </span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>MAP_N <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 미로 초기화</span></span>
 <span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>maze <span class="op">=</span> [] <span class="co"># 배열 변수 선언</span></span>
 <span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, MAP_N):</span>
@@ -7184,7 +7177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 명령줄 인수 취득 --- (*1)</span></span>
 <span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> args<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">env::</span>args()<span class="op">.</span>collect()<span class="op">;</span></span>
 <span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 경로가 없는 경우 현재 디렉토리 지정</span></span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> target_dir <span class="op">=</span> <span class="st">"."</span><span class="op">;</span> </span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> target_dir <span class="op">=</span> <span class="st">"."</span><span class="op">;</span></span>
 <span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args<span class="op">.</span>len() <span class="op">&gt;=</span> <span class="dv">2</span> <span class="op">{</span> <span class="co">// 경로를 지정하는 경우</span></span>
 <span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a>        target_dir <span class="op">=</span> <span class="op">&amp;</span>args[<span class="dv">1</span>]<span class="op">;</span></span>
 <span id="cb122-9"><a href="#cb122-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -7480,7 +7473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 명령줄 인수를 순서대로 더한다</span></span>
 <span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(sys.argv):</span>
-<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>: <span class="cf">continue</span> <span class="co"># 0번째는 명령어(프로그램) 자신이므로 무시 </span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>: <span class="cf">continue</span> <span class="co"># 0번째는 명령어(프로그램) 자신이므로 무시</span></span>
 <span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 문자열을 숫자로 변환</span></span>
 <span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>        total <span class="op">+=</span> <span class="bu">float</span>(v)</span>
@@ -7712,7 +7705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb142-9"><a href="#cb142-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 섞기 --- (*3)</span></span>
 <span id="cb142-10"><a href="#cb142-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> rng <span class="op">=</span> <span class="pp">rand::</span>thread_rng()<span class="op">;</span></span>
 <span id="cb142-11"><a href="#cb142-11" aria-hidden="true" tabindex="-1"></a>    nums<span class="op">.</span>shuffle(<span class="op">&amp;</span><span class="kw">mut</span> rng)<span class="op">;</span></span>
-<span id="cb142-12"><a href="#cb142-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb142-12"><a href="#cb142-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb142-13"><a href="#cb142-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 카드 표시 --- (*4)</span></span>
 <span id="cb142-14"><a href="#cb142-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">5</span> <span class="op">{</span></span>
 <span id="cb142-15"><a href="#cb142-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">5</span> <span class="op">{</span></span>
@@ -7761,14 +7754,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="소스-코드-88" class="level4">
 <h4 class="anchored" data-anchor-id="소스-코드-88">소스 코드</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열을 섞기 위한 rand 크레이트 이용 </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열을 섞기 위한 rand 크레이트 이용</span></span>
 <span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">rand::seq::</span>SliceRandom<span class="op">;</span></span>
 <span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 1에서 75까지의 값을 벡터에 대입 --- (*1)</span></span>
 <span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> nums <span class="op">=</span> <span class="pp">vec!</span>[]<span class="op">;</span></span>
 <span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span><span class="op">..=</span><span class="dv">75</span> <span class="op">{</span> nums<span class="op">.</span>push(i)<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb144-9"><a href="#cb144-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 섞기 --- (*2)</span></span>
 <span id="cb144-10"><a href="#cb144-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> rng <span class="op">=</span> <span class="pp">rand::</span>thread_rng()<span class="op">;</span></span>
 <span id="cb144-11"><a href="#cb144-11" aria-hidden="true" tabindex="-1"></a>    nums<span class="op">.</span>shuffle(<span class="op">&amp;</span><span class="kw">mut</span> rng)<span class="op">;</span></span>
@@ -8646,7 +8639,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb177-12"><a href="#cb177-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 메모리 해제 --- (*4)</span></span>
 <span id="cb177-13"><a href="#cb177-13" aria-hidden="true" tabindex="-1"></a>  free<span class="op">(</span>g2<span class="op">);</span></span>
 <span id="cb177-14"><a href="#cb177-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 실수로 다음을 실행하면 메모리 이중 해제</span></span>
-<span id="cb177-15"><a href="#cb177-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">// free(g1); </span></span>
+<span id="cb177-15"><a href="#cb177-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">// free(g1);</span></span>
 <span id="cb177-16"><a href="#cb177-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb177-17"><a href="#cb177-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
@@ -8718,7 +8711,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb181"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="st">"서로 사랑하면 살고 서로 싸우면 죽는다"</span><span class="op">.</span>to_string()<span class="op">;</span></span>
 <span id="cb181-3"><a href="#cb181-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> s)<span class="op">;</span> <span class="co">// 소유권이 이동하지 않는다</span></span>
-<span id="cb181-4"><a href="#cb181-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> s)<span class="op">;</span> <span class="co">// </span></span>
+<span id="cb181-4"><a href="#cb181-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> s)<span class="op">;</span> <span class="co">//</span></span>
 <span id="cb181-5"><a href="#cb181-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
@@ -8758,7 +8751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> year <span class="op">=</span> <span class="dv">2023</span><span class="op">;</span></span>
 <span id="cb183-3"><a href="#cb183-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> month <span class="op">=</span> <span class="dv">12</span><span class="op">;</span></span>
 <span id="cb183-4"><a href="#cb183-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> day <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb183-5"><a href="#cb183-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{yy}년 {mm}월 {dd}일"</span><span class="op">,</span> </span>
+<span id="cb183-5"><a href="#cb183-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{yy}년 {mm}월 {dd}일"</span><span class="op">,</span></span>
 <span id="cb183-6"><a href="#cb183-6" aria-hidden="true" tabindex="-1"></a>             dd<span class="op">=</span>day<span class="op">,</span> mm<span class="op">=</span>month<span class="op">,</span> yy<span class="op">=</span>year)<span class="op">;</span></span>
 <span id="cb183-7"><a href="#cb183-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
@@ -9194,7 +9187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb198-8"><a href="#cb198-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 첫 번째 1문자를 출력 --- (*2)</span></span>
 <span id="cb198-9"><a href="#cb198-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> ch <span class="op">=</span> <span class="op">&amp;</span>s[<span class="op">..</span><span class="dv">3</span>]<span class="op">;</span></span>
 <span id="cb198-10"><a href="#cb198-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> ch)<span class="op">;</span> <span class="co">// 안</span></span>
-<span id="cb198-11"><a href="#cb198-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb198-11"><a href="#cb198-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb198-12"><a href="#cb198-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 세 번째 1문자를 출력 --- (*3)</span></span>
 <span id="cb198-13"><a href="#cb198-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> ch <span class="op">=</span> <span class="op">&amp;</span>s[<span class="dv">6</span><span class="op">..</span><span class="dv">9</span>]<span class="op">;</span></span>
 <span id="cb198-14"><a href="#cb198-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> ch)<span class="op">;</span> <span class="co">// 하</span></span>
@@ -9281,12 +9274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb203"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 전화번호 지정</span></span>
 <span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> telno <span class="op">=</span> <span class="st">"955-3658"</span><span class="op">;</span></span>
-<span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 슬라이스로 분할 --- (*1)</span></span>
 <span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"-- 슬라이스 --"</span>)<span class="op">;</span></span>
 <span id="cb203-7"><a href="#cb203-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"국번: {}"</span><span class="op">,</span> <span class="op">&amp;</span>telno[<span class="op">..</span><span class="dv">3</span>])<span class="op">;</span></span>
 <span id="cb203-8"><a href="#cb203-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"사번: {}"</span><span class="op">,</span> <span class="op">&amp;</span>telno[<span class="dv">4</span><span class="op">..</span>])<span class="op">;</span></span>
-<span id="cb203-9"><a href="#cb203-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb203-9"><a href="#cb203-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb203-10"><a href="#cb203-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// split_at으로 분할 --- (*2)</span></span>
 <span id="cb203-11"><a href="#cb203-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"--- split_at ---"</span>)<span class="op">;</span></span>
 <span id="cb203-12"><a href="#cb203-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (telno1<span class="op">,</span> telno2) <span class="op">=</span> telno<span class="op">.</span>split_at(<span class="dv">3</span>)<span class="op">;</span></span>
@@ -9294,7 +9287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb203-14"><a href="#cb203-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"국번: {}"</span><span class="op">,</span> telno1)<span class="op">;</span></span>
 <span id="cb203-15"><a href="#cb203-15" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"구분: {}"</span><span class="op">,</span> telno2)<span class="op">;</span></span>
 <span id="cb203-16"><a href="#cb203-16" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"사번: {}"</span><span class="op">,</span> telno3)<span class="op">;</span></span>
-<span id="cb203-17"><a href="#cb203-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb203-17"><a href="#cb203-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb203-18"><a href="#cb203-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// split_off로 분할 --- (*3)</span></span>
 <span id="cb203-19"><a href="#cb203-19" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"-- split_off --"</span>)<span class="op">;</span></span>
 <span id="cb203-20"><a href="#cb203-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> telno1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(telno)<span class="op">;</span></span>
@@ -9409,7 +9402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb207-8"><a href="#cb207-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
 <span id="cb207-9"><a href="#cb207-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb207-10"><a href="#cb207-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"앞 2문자: {}"</span><span class="op">,</span> sub1)<span class="op">;</span></span>
-<span id="cb207-11"><a href="#cb207-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb207-11"><a href="#cb207-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb207-12"><a href="#cb207-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// '🥇🤣' 부분 얻기 --- (*2)</span></span>
 <span id="cb207-13"><a href="#cb207-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> sub2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>new()<span class="op">;</span></span>
 <span id="cb207-14"><a href="#cb207-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i<span class="op">,</span> c) <span class="kw">in</span> pr<span class="op">.</span>chars()<span class="op">.</span>enumerate() <span class="op">{</span></span>
@@ -9438,7 +9431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb208-8"><a href="#cb208-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// '무기'부분 문자열 얻기 --- (*2)</span></span>
 <span id="cb208-9"><a href="#cb208-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> pr_chars<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">char</span><span class="op">&gt;</span> <span class="op">=</span> pr<span class="op">.</span>chars()<span class="op">.</span>collect()<span class="op">;</span> <span class="co">// 변환</span></span>
 <span id="cb208-10"><a href="#cb208-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">//  4-5번째 문자열 얻기</span></span>
-<span id="cb208-11"><a href="#cb208-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sub_chars <span class="op">=</span> <span class="op">&amp;</span>pr_chars[<span class="dv">4</span><span class="op">..=</span><span class="dv">5</span>]<span class="op">;</span> <span class="co">// 슬라이스 </span></span>
+<span id="cb208-11"><a href="#cb208-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sub_chars <span class="op">=</span> <span class="op">&amp;</span>pr_chars[<span class="dv">4</span><span class="op">..=</span><span class="dv">5</span>]<span class="op">;</span> <span class="co">// 슬라이스</span></span>
 <span id="cb208-12"><a href="#cb208-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 슬라이스를 문자열로 변환</span></span>
 <span id="cb208-13"><a href="#cb208-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sub4<span class="op">:</span> <span class="dt">String</span> <span class="op">=</span> sub_chars<span class="op">.</span>into_iter()<span class="op">.</span>collect()<span class="op">;</span></span>
 <span id="cb208-14"><a href="#cb208-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"4-5번째 문자: {}"</span><span class="op">,</span> sub4)<span class="op">;</span></span>
@@ -9527,9 +9520,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb211-18"><a href="#cb211-18" aria-hidden="true" tabindex="-1"></a>        color<span class="op">:</span> <span class="dv">0x0000FF</span><span class="op">,</span></span>
 <span id="cb211-19"><a href="#cb211-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
 <span id="cb211-20"><a href="#cb211-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 객체의 각 필드를 출력 --- (*3)</span></span>
-<span id="cb211-21"><a href="#cb211-21" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"car1: {}, {}cc, {:06x}"</span><span class="op">,</span> </span>
+<span id="cb211-21"><a href="#cb211-21" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"car1: {}, {}cc, {:06x}"</span><span class="op">,</span></span>
 <span id="cb211-22"><a href="#cb211-22" aria-hidden="true" tabindex="-1"></a>        car1<span class="op">.</span>model<span class="op">,</span> car1<span class="op">.</span>cc<span class="op">,</span> car1<span class="op">.</span>color)<span class="op">;</span></span>
-<span id="cb211-23"><a href="#cb211-23" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"car2: {}, {}cc, {:06x}"</span><span class="op">,</span> </span>
+<span id="cb211-23"><a href="#cb211-23" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"car2: {}, {}cc, {:06x}"</span><span class="op">,</span></span>
 <span id="cb211-24"><a href="#cb211-24" aria-hidden="true" tabindex="-1"></a>        car2<span class="op">.</span>model<span class="op">,</span> car2<span class="op">.</span>cc<span class="op">,</span> car2<span class="op">.</span>color)<span class="op">;</span></span>
 <span id="cb211-25"><a href="#cb211-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
@@ -9601,7 +9594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb213-5"><a href="#cb213-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 튜플을 참조해 합계 금액 구하기 --- (*2)</span></span>
 <span id="cb213-6"><a href="#cb213-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> total <span class="op">=</span> banana<span class="op">.</span><span class="dv">1</span> <span class="op">+</span> apple<span class="op">.</span><span class="dv">1</span><span class="op">;</span></span>
 <span id="cb213-7"><a href="#cb213-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 튜플 내용 표시 --- (*3)</span></span>
-<span id="cb213-8"><a href="#cb213-8" aria-hidden="true" tabindex="-1"></a>    print_tuple(<span class="op">&amp;</span>banana)<span class="op">;</span> </span>
+<span id="cb213-8"><a href="#cb213-8" aria-hidden="true" tabindex="-1"></a>    print_tuple(<span class="op">&amp;</span>banana)<span class="op">;</span></span>
 <span id="cb213-9"><a href="#cb213-9" aria-hidden="true" tabindex="-1"></a>    print_tuple(<span class="op">&amp;</span>apple)<span class="op">;</span></span>
 <span id="cb213-10"><a href="#cb213-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"합계는 {}원 입니다."</span><span class="op">,</span> total)<span class="op">;</span></span>
 <span id="cb213-11"><a href="#cb213-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
@@ -9850,10 +9843,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb222-8"><a href="#cb222-8" aria-hidden="true" tabindex="-1"></a>        <span class="pp">assert_eq!</span>(a1<span class="op">,</span> a2)<span class="op">;</span></span>
 <span id="cb222-9"><a href="#cb222-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// String 배열 생성 및 비교 --- (*2)</span></span>
 <span id="cb222-10"><a href="#cb222-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> a3 <span class="op">=</span> [</span>
-<span id="cb222-11"><a href="#cb222-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"사과"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
+<span id="cb222-11"><a href="#cb222-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"사과"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
 <span id="cb222-12"><a href="#cb222-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"바나나"</span><span class="op">.</span>to_string()]<span class="op">;</span></span>
 <span id="cb222-13"><a href="#cb222-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> a4 <span class="op">=</span> [</span>
-<span id="cb222-14"><a href="#cb222-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">String</span><span class="pp">::</span>from(<span class="st">"사과"</span>)<span class="op">,</span> </span>
+<span id="cb222-14"><a href="#cb222-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">String</span><span class="pp">::</span>from(<span class="st">"사과"</span>)<span class="op">,</span></span>
 <span id="cb222-15"><a href="#cb222-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">String</span><span class="pp">::</span>from(<span class="st">"바나나"</span>)]<span class="op">;</span></span>
 <span id="cb222-16"><a href="#cb222-16" aria-hidden="true" tabindex="-1"></a>        <span class="pp">assert_eq!</span>(a3<span class="op">,</span> a4)<span class="op">;</span></span>
 <span id="cb222-17"><a href="#cb222-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -9922,11 +9915,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb224-20"><a href="#cb224-20" aria-hidden="true" tabindex="-1"></a>            price<span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
 <span id="cb224-21"><a href="#cb224-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">};</span></span>
 <span id="cb224-22"><a href="#cb224-22" aria-hidden="true" tabindex="-1"></a>        apple2<span class="op">.</span>price <span class="op">=</span> <span class="dv">2400</span><span class="op">;</span></span>
-<span id="cb224-23"><a href="#cb224-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb224-23"><a href="#cb224-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb224-24"><a href="#cb224-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 구조체 필드 비교 --- (*4)</span></span>
 <span id="cb224-25"><a href="#cb224-25" aria-hidden="true" tabindex="-1"></a>        <span class="pp">assert_eq!</span>(apple1<span class="op">.</span>name<span class="op">,</span> apple2<span class="op">.</span>name)<span class="op">;</span></span>
 <span id="cb224-26"><a href="#cb224-26" aria-hidden="true" tabindex="-1"></a>        <span class="pp">assert_eq!</span>(apple1<span class="op">.</span>price<span class="op">,</span> apple2<span class="op">.</span>price)<span class="op">;</span></span>
-<span id="cb224-27"><a href="#cb224-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb224-27"><a href="#cb224-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb224-28"><a href="#cb224-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 구조체 자체를 비교 --- (*5)</span></span>
 <span id="cb224-29"><a href="#cb224-29" aria-hidden="true" tabindex="-1"></a>        <span class="pp">assert_eq!</span>(apple1<span class="op">,</span> apple2)<span class="op">;</span></span>
 <span id="cb224-30"><a href="#cb224-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
@@ -10224,9 +10217,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb232"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb232-2"><a href="#cb232-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 문자열로 이루어진 배열</span></span>
 <span id="cb232-3"><a href="#cb232-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> array <span class="op">=</span> [</span>
-<span id="cb232-4"><a href="#cb232-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Apple"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
-<span id="cb232-5"><a href="#cb232-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Banana"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
-<span id="cb232-6"><a href="#cb232-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Mango"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
+<span id="cb232-4"><a href="#cb232-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Apple"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
+<span id="cb232-5"><a href="#cb232-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Banana"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
+<span id="cb232-6"><a href="#cb232-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Mango"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
 <span id="cb232-7"><a href="#cb232-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Tomato"</span><span class="op">.</span>to_string()</span>
 <span id="cb232-8"><a href="#cb232-8" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">;</span></span>
 <span id="cb232-9"><a href="#cb232-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 배열을 반복해 화면에 출력</span></span>
@@ -10248,9 +10241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb233"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb233-2"><a href="#cb233-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 문자열로 이루어진 배열</span></span>
 <span id="cb233-3"><a href="#cb233-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> array <span class="op">=</span> [</span>
-<span id="cb233-4"><a href="#cb233-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Apple"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
-<span id="cb233-5"><a href="#cb233-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Banana"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
-<span id="cb233-6"><a href="#cb233-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Mango"</span><span class="op">.</span>to_string()<span class="op">,</span> </span>
+<span id="cb233-4"><a href="#cb233-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Apple"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
+<span id="cb233-5"><a href="#cb233-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Banana"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
+<span id="cb233-6"><a href="#cb233-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Mango"</span><span class="op">.</span>to_string()<span class="op">,</span></span>
 <span id="cb233-7"><a href="#cb233-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Tomato"</span><span class="op">.</span>to_string()</span>
 <span id="cb233-8"><a href="#cb233-8" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">;</span></span>
 <span id="cb233-9"><a href="#cb233-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 배열을 반복해 화면에 출력</span></span>
@@ -11459,9 +11452,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb265-35"><a href="#cb265-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb265-36"><a href="#cb265-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 결과 반환 --- (*3)</span></span>
 <span id="cb265-37"><a href="#cb265-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stack<span class="op">.</span>len() <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span> <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">format!</span>(<span class="st">"no result"</span>))<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb265-38"><a href="#cb265-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stack<span class="op">.</span>len() <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">{</span> </span>
-<span id="cb265-39"><a href="#cb265-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">format!</span>(<span class="st">"too many value in stack"</span>))<span class="op">;</span> </span>
-<span id="cb265-40"><a href="#cb265-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> </span>
+<span id="cb265-38"><a href="#cb265-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stack<span class="op">.</span>len() <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb265-39"><a href="#cb265-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">format!</span>(<span class="st">"too many value in stack"</span>))<span class="op">;</span></span>
+<span id="cb265-40"><a href="#cb265-40" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb265-41"><a href="#cb265-41" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(stack<span class="op">.</span>pop()<span class="op">.</span>unwrap_or(<span class="dv">0.0</span>))</span>
 <span id="cb265-42"><a href="#cb265-42" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb265-43"><a href="#cb265-43" aria-hidden="true" tabindex="-1"></a></span>
@@ -11560,12 +11553,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb268-18"><a href="#cb268-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb268-19"><a href="#cb268-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 생성한 스레드의 수 구하기 --- (*3)</span></span>
 <span id="cb268-20"><a href="#cb268-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> job <span class="op">=</span> request_nums<span class="op">.</span>len()<span class="op">;</span></span>
-<span id="cb268-21"><a href="#cb268-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb268-21"><a href="#cb268-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb268-22"><a href="#cb268-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 계산 결과 얻기 --- (*4)</span></span>
 <span id="cb268-23"><a href="#cb268-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">loop</span> <span class="op">{</span></span>
 <span id="cb268-24"><a href="#cb268-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Ok</span>((arg<span class="op">,</span> answer)) <span class="op">=</span> rx<span class="op">.</span>recv() <span class="op">{</span></span>
 <span id="cb268-25"><a href="#cb268-25" aria-hidden="true" tabindex="-1"></a>            job <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb268-26"><a href="#cb268-26" aria-hidden="true" tabindex="-1"></a>            <span class="pp">println!</span>(<span class="st">"[결과] fib({} 번째 수) = {} (남은 계산={})"</span><span class="op">,</span> </span>
+<span id="cb268-26"><a href="#cb268-26" aria-hidden="true" tabindex="-1"></a>            <span class="pp">println!</span>(<span class="st">"[결과] fib({} 번째 수) = {} (남은 계산={})"</span><span class="op">,</span></span>
 <span id="cb268-27"><a href="#cb268-27" aria-hidden="true" tabindex="-1"></a>                arg<span class="op">,</span> answer<span class="op">,</span> job)<span class="op">;</span></span>
 <span id="cb268-28"><a href="#cb268-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> job <span class="op">&lt;=</span> <span class="dv">0</span> <span class="op">{</span></span>
 <span id="cb268-29"><a href="#cb268-29" aria-hidden="true" tabindex="-1"></a>                show_time(start_time)<span class="op">;</span></span>
@@ -11658,7 +11651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb270-10"><a href="#cb270-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> socket <span class="op">=</span> <span class="pp">TcpStream::</span>connect(server_addr)</span>
 <span id="cb270-11"><a href="#cb270-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>expect(<span class="st">"서버에 접속할 수 없습니다."</span>)<span class="op">;</span></span>
 <span id="cb270-12"><a href="#cb270-12" aria-hidden="true" tabindex="-1"></a>    socket<span class="op">.</span>set_nonblocking(<span class="cn">true</span>)<span class="op">.</span>expect(<span class="st">"알 수 없는 에러"</span>)<span class="op">;</span></span>
-<span id="cb270-13"><a href="#cb270-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}에 접속했습니다."</span><span class="op">,</span> server_addr)<span class="op">;</span> </span>
+<span id="cb270-13"><a href="#cb270-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}에 접속했습니다."</span><span class="op">,</span> server_addr)<span class="op">;</span></span>
 <span id="cb270-14"><a href="#cb270-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 수신용 스레드 시작 --- (*3)</span></span>
 <span id="cb270-15"><a href="#cb270-15" aria-hidden="true" tabindex="-1"></a>    start_thread(socket<span class="op">.</span>try_clone()<span class="op">.</span>unwrap())<span class="op">;</span></span>
 <span id="cb270-16"><a href="#cb270-16" aria-hidden="true" tabindex="-1"></a></span>
@@ -11835,7 +11828,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb273-16"><a href="#cb273-16" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb273-17"><a href="#cb273-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 스레드간 통신용 채널 --- (*2)</span></span>
 <span id="cb273-18"><a href="#cb273-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (tx<span class="op">,</span> rx) <span class="op">=</span> <span class="pp">mpsc::channel::</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span>()<span class="op">;</span></span>
-<span id="cb273-19"><a href="#cb273-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb273-19"><a href="#cb273-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb273-20"><a href="#cb273-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 스레드 1 생성 --- (*3)</span></span>
 <span id="cb273-21"><a href="#cb273-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sender <span class="op">=</span> tx<span class="op">.</span>clone()<span class="op">;</span></span>
 <span id="cb273-22"><a href="#cb273-22" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="op">||</span> <span class="op">{</span></span>
@@ -11919,7 +11912,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb275-12"><a href="#cb275-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 스레드를 이용하지 않는 경우 --- (*2)</span></span>
 <span id="cb275-13"><a href="#cb275-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"--- 스레드 없음 ---"</span>)<span class="op">;</span></span>
 <span id="cb275-14"><a href="#cb275-14" aria-hidden="true" tabindex="-1"></a>    sleep_print(<span class="st">"스레드 없음"</span>)<span class="op">;</span></span>
-<span id="cb275-15"><a href="#cb275-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb275-15"><a href="#cb275-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb275-16"><a href="#cb275-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 스레드를 이용하는 경우 --- (*3)</span></span>
 <span id="cb275-17"><a href="#cb275-17" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"--- 스레드 이용 ---"</span>)<span class="op">;</span></span>
 <span id="cb275-18"><a href="#cb275-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 스레드 1</span></span>
@@ -12022,7 +12015,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb278-31"><a href="#cb278-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&lt;</span> a <span class="op">{</span> <span class="cf">return</span> i <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> a <span class="kw">as</span> <span class="dt">f32</span> <span class="op">*</span> v<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb278-32"><a href="#cb278-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> v2 <span class="op">=</span> v <span class="op">*</span> s<span class="op">;</span></span>
 <span id="cb278-33"><a href="#cb278-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&lt;</span> d <span class="op">{</span></span>
-<span id="cb278-34"><a href="#cb278-34" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> dec <span class="op">=</span> (<span class="dv">1.0</span> <span class="op">-</span> (i <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> d <span class="kw">as</span> <span class="dt">f32</span>)) <span class="op">*</span> </span>
+<span id="cb278-34"><a href="#cb278-34" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> dec <span class="op">=</span> (<span class="dv">1.0</span> <span class="op">-</span> (i <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> d <span class="kw">as</span> <span class="dt">f32</span>)) <span class="op">*</span></span>
 <span id="cb278-35"><a href="#cb278-35" aria-hidden="true" tabindex="-1"></a>                (<span class="dv">1.0</span> <span class="op">-</span> s) <span class="op">*</span> v<span class="op">.</span>abs()<span class="op">;</span></span>
 <span id="cb278-36"><a href="#cb278-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cf">if</span> v2 <span class="op">&gt;</span> <span class="dv">0.0</span> <span class="op">{</span> v <span class="op">+</span> dec <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> v <span class="op">-</span> dec <span class="op">}</span></span>
 <span id="cb278-37"><a href="#cb278-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
@@ -12035,7 +12028,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb278-44"><a href="#cb278-44" aria-hidden="true" tabindex="-1"></a>    track<span class="op">.</span>extend(w)<span class="op">;</span></span>
 <span id="cb278-45"><a href="#cb278-45" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb278-46"><a href="#cb278-46" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> calc_len(bpm<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">isize</span> <span class="op">{</span></span>
-<span id="cb278-47"><a href="#cb278-47" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> </span>
+<span id="cb278-47"><a href="#cb278-47" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span></span>
 <span id="cb278-48"><a href="#cb278-48" aria-hidden="true" tabindex="-1"></a>     (<span class="dv">60.0</span> <span class="op">/</span> bpm <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> SAMPLE_RATE) <span class="kw">as</span> <span class="dt">isize</span></span>
 <span id="cb278-49"><a href="#cb278-49" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb278-50"><a href="#cb278-50" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> noteno_to_hz(no<span class="op">:</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">f32</span> <span class="op">{</span></span>
@@ -12282,10 +12275,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb285-24"><a href="#cb285-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> img2 <span class="op">=</span> <span class="pp">imageops::</span>crop(<span class="op">&amp;</span><span class="kw">mut</span> img<span class="op">,</span></span>
 <span id="cb285-25"><a href="#cb285-25" aria-hidden="true" tabindex="-1"></a>        (dim<span class="op">.</span><span class="dv">0</span><span class="op">-</span>w)<span class="op">/</span><span class="dv">2</span><span class="op">,</span> (dim<span class="op">.</span><span class="dv">1</span><span class="op">-</span>w)<span class="op">/</span><span class="dv">2</span><span class="op">,</span> w<span class="op">,</span> w)<span class="op">.</span>to_image()<span class="op">;</span></span>
 <span id="cb285-26"><a href="#cb285-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 지정한 크기로 리사이즈 --- (*6)</span></span>
-<span id="cb285-27"><a href="#cb285-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> img3 <span class="op">=</span> <span class="pp">imageops::</span>resize(<span class="op">&amp;</span><span class="kw">mut</span> img2<span class="op">,</span> size<span class="op">,</span> size<span class="op">,</span> </span>
+<span id="cb285-27"><a href="#cb285-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> img3 <span class="op">=</span> <span class="pp">imageops::</span>resize(<span class="op">&amp;</span><span class="kw">mut</span> img2<span class="op">,</span> size<span class="op">,</span> size<span class="op">,</span></span>
 <span id="cb285-28"><a href="#cb285-28" aria-hidden="true" tabindex="-1"></a>        <span class="pp">imageops::</span>Lanczos3)<span class="op">;</span></span>
-<span id="cb285-29"><a href="#cb285-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 파일로 저장 --- (*7) </span></span>
-<span id="cb285-30"><a href="#cb285-30" aria-hidden="true" tabindex="-1"></a>    img3<span class="op">.</span>save(outfile)<span class="op">.</span>unwrap()<span class="op">;</span> </span>
+<span id="cb285-29"><a href="#cb285-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 파일로 저장 --- (*7)</span></span>
+<span id="cb285-30"><a href="#cb285-30" aria-hidden="true" tabindex="-1"></a>    img3<span class="op">.</span>save(outfile)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb285-31"><a href="#cb285-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li><strong>진입점(<code>main</code>) 및 실행 흐름</strong>:
@@ -12372,7 +12365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb288-14"><a href="#cb288-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> ch <span class="op">{</span></span>
 <span id="cb288-15"><a href="#cb288-15" aria-hidden="true" tabindex="-1"></a>            <span class="ch">'a'</span><span class="op">..=</span><span class="ch">'g'</span> <span class="op">=&gt;</span> <span class="op">{</span> <span class="co">// 노트 --- (*6)</span></span>
 <span id="cb288-16"><a href="#cb288-16" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> note <span class="op">=</span> <span class="cf">match</span> ch <span class="op">{</span></span>
-<span id="cb288-17"><a href="#cb288-17" aria-hidden="true" tabindex="-1"></a>                    <span class="ch">'c'</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span> <span class="ch">'d'</span> <span class="op">=&gt;</span> <span class="dv">2</span><span class="op">,</span> <span class="ch">'e'</span> <span class="op">=&gt;</span> <span class="dv">4</span><span class="op">,</span> <span class="ch">'f'</span> <span class="op">=&gt;</span> <span class="dv">5</span><span class="op">,</span> </span>
+<span id="cb288-17"><a href="#cb288-17" aria-hidden="true" tabindex="-1"></a>                    <span class="ch">'c'</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span> <span class="ch">'d'</span> <span class="op">=&gt;</span> <span class="dv">2</span><span class="op">,</span> <span class="ch">'e'</span> <span class="op">=&gt;</span> <span class="dv">4</span><span class="op">,</span> <span class="ch">'f'</span> <span class="op">=&gt;</span> <span class="dv">5</span><span class="op">,</span></span>
 <span id="cb288-18"><a href="#cb288-18" aria-hidden="true" tabindex="-1"></a>                    <span class="ch">'g'</span> <span class="op">=&gt;</span> <span class="dv">7</span><span class="op">,</span> <span class="ch">'a'</span> <span class="op">=&gt;</span> <span class="dv">9</span><span class="op">,</span> <span class="ch">'b'</span> <span class="op">=&gt;</span> <span class="dv">11</span><span class="op">,</span> _ <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
 <span id="cb288-19"><a href="#cb288-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">};</span></span>
 <span id="cb288-20"><a href="#cb288-20" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> no <span class="op">=</span> note <span class="op">+</span> octave <span class="op">*</span> <span class="dv">12</span><span class="op">;</span></span>
@@ -12454,7 +12447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb289-24"><a href="#cb289-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 반복문을 이용해 음을 생성 --- (*3)</span></span>
 <span id="cb289-25"><a href="#cb289-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> note <span class="kw">in</span> notes<span class="op">.</span>into_iter() <span class="op">{</span></span>
 <span id="cb289-26"><a href="#cb289-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 음의 길이 계산</span></span>
-<span id="cb289-27"><a href="#cb289-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> len <span class="op">=</span> (<span class="dv">4.0</span> <span class="op">/</span> note<span class="op">.</span>len <span class="kw">as</span> <span class="dt">f32</span> <span class="op">*</span> </span>
+<span id="cb289-27"><a href="#cb289-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> len <span class="op">=</span> (<span class="dv">4.0</span> <span class="op">/</span> note<span class="op">.</span>len <span class="kw">as</span> <span class="dt">f32</span> <span class="op">*</span></span>
 <span id="cb289-28"><a href="#cb289-28" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">60.0</span> <span class="op">/</span> bpm) <span class="op">*</span> SAMPLE_RATE) <span class="kw">as</span> <span class="dt">u32</span><span class="op">;</span></span>
 <span id="cb289-29"><a href="#cb289-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 주파수 계산 --- (*4)</span></span>
 <span id="cb289-30"><a href="#cb289-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> tone <span class="op">=</span> <span class="cf">if</span> note<span class="op">.</span>no <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">{</span></span>
@@ -12465,7 +12458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb289-35"><a href="#cb289-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb289-36"><a href="#cb289-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb289-37"><a href="#cb289-37" aria-hidden="true" tabindex="-1"></a><span class="co">// 사인 파형을 파일로 저장 --- (*5)</span></span>
-<span id="cb289-38"><a href="#cb289-38" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> write_tone<span class="op">&lt;</span>W<span class="op">&gt;</span>(fw<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> WavWriter<span class="op">&lt;</span>W<span class="op">&gt;,</span> tone<span class="op">:</span> <span class="dt">f32</span><span class="op">,</span> len<span class="op">:</span> <span class="dt">u32</span>) </span>
+<span id="cb289-38"><a href="#cb289-38" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> write_tone<span class="op">&lt;</span>W<span class="op">&gt;</span>(fw<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> WavWriter<span class="op">&lt;</span>W<span class="op">&gt;,</span> tone<span class="op">:</span> <span class="dt">f32</span><span class="op">,</span> len<span class="op">:</span> <span class="dt">u32</span>)</span>
 <span id="cb289-39"><a href="#cb289-39" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> W<span class="op">:</span> <span class="bu">Write</span> <span class="op">+</span> <span class="bu">Seek</span> <span class="op">{</span></span>
 <span id="cb289-40"><a href="#cb289-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>len <span class="op">{</span></span>
 <span id="cb289-41"><a href="#cb289-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> a <span class="op">=</span> t <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> SAMPLE_RATE<span class="op">;</span></span>
@@ -12556,7 +12549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb291-28"><a href="#cb291-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb291-29"><a href="#cb291-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb291-30"><a href="#cb291-30" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> calc_len(bpm<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
-<span id="cb291-31"><a href="#cb291-31" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> </span>
+<span id="cb291-31"><a href="#cb291-31" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span></span>
 <span id="cb291-32"><a href="#cb291-32" aria-hidden="true" tabindex="-1"></a>     (<span class="dv">60.0</span> <span class="op">/</span> bpm <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> SAMPLE_RATE) <span class="kw">as</span> <span class="dt">usize</span></span>
 <span id="cb291-33"><a href="#cb291-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb291-34"><a href="#cb291-34" aria-hidden="true" tabindex="-1"></a><span class="co">// 노이즈 생성 함수 --- (*2)</span></span>
@@ -12637,7 +12630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb293-31"><a href="#cb293-31" aria-hidden="true" tabindex="-1"></a>     <span class="dv">440.0</span> <span class="op">*</span> <span class="dv">2.0f32</span><span class="op">.</span>powf((no<span class="op">-</span><span class="dv">69</span>) <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> <span class="dv">12.0</span>)</span>
 <span id="cb293-32"><a href="#cb293-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb293-33"><a href="#cb293-33" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> calc_len(bpm<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
-<span id="cb293-34"><a href="#cb293-34" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> </span>
+<span id="cb293-34"><a href="#cb293-34" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span></span>
 <span id="cb293-35"><a href="#cb293-35" aria-hidden="true" tabindex="-1"></a>     (<span class="dv">60.0</span> <span class="op">/</span> bpm <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> SAMPLE_RATE) <span class="kw">as</span> <span class="dt">usize</span></span>
 <span id="cb293-36"><a href="#cb293-36" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb293-37"><a href="#cb293-37" aria-hidden="true" tabindex="-1"></a><span class="co">// 펄스파 생성 함수 --- (*2)</span></span>
@@ -12807,7 +12800,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb297-39"><a href="#cb297-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb297-40"><a href="#cb297-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb297-41"><a href="#cb297-41" aria-hidden="true" tabindex="-1"></a><span class="co">// 지정한 음계를 지정한 길이만큼 쓴다 --- (*5)</span></span>
-<span id="cb297-42"><a href="#cb297-42" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> write_tone<span class="op">&lt;</span>W<span class="op">&gt;</span>(fw<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> WavWriter<span class="op">&lt;</span>W<span class="op">&gt;,</span> tone<span class="op">:</span> <span class="dt">f32</span><span class="op">,</span> len<span class="op">:</span> <span class="dt">u32</span>) </span>
+<span id="cb297-42"><a href="#cb297-42" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> write_tone<span class="op">&lt;</span>W<span class="op">&gt;</span>(fw<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> WavWriter<span class="op">&lt;</span>W<span class="op">&gt;,</span> tone<span class="op">:</span> <span class="dt">f32</span><span class="op">,</span> len<span class="op">:</span> <span class="dt">u32</span>)</span>
 <span id="cb297-43"><a href="#cb297-43" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> W<span class="op">:</span> <span class="bu">Write</span> <span class="op">+</span> <span class="bu">Seek</span> <span class="op">{</span></span>
 <span id="cb297-44"><a href="#cb297-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>len <span class="op">{</span></span>
 <span id="cb297-45"><a href="#cb297-45" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> a <span class="op">=</span> t <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> SAMPLE_RATE<span class="op">;</span></span>
@@ -13014,7 +13007,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb303-26"><a href="#cb303-26" aria-hidden="true" tabindex="-1"></a>     <span class="dv">440.0</span> <span class="op">*</span> <span class="dv">2.0f32</span><span class="op">.</span>powf((no<span class="op">-</span><span class="dv">69</span>) <span class="kw">as</span> <span class="dt">f32</span> <span class="op">/</span> <span class="dv">12.0</span>)</span>
 <span id="cb303-27"><a href="#cb303-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb303-28"><a href="#cb303-28" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> calc_len(bpm<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span> n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
-<span id="cb303-29"><a href="#cb303-29" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> </span>
+<span id="cb303-29"><a href="#cb303-29" aria-hidden="true" tabindex="-1"></a>    ((<span class="dv">4.0</span> <span class="op">/</span> n <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span></span>
 <span id="cb303-30"><a href="#cb303-30" aria-hidden="true" tabindex="-1"></a>     (<span class="dv">60.0</span> <span class="op">/</span> bpm <span class="kw">as</span> <span class="dt">f32</span>) <span class="op">*</span> SAMPLE_RATE) <span class="kw">as</span> <span class="dt">usize</span></span>
 <span id="cb303-31"><a href="#cb303-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb303-32"><a href="#cb303-32" aria-hidden="true" tabindex="-1"></a><span class="co">// 삼각파 생성 함수 --- (*3)</span></span>
@@ -13183,7 +13176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb307-13"><a href="#cb307-13" aria-hidden="true" tabindex="-1"></a>        <span class="pp">App::</span>new()</span>
 <span id="cb307-14"><a href="#cb307-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>route(<span class="st">"/"</span><span class="op">,</span> <span class="pp">web::</span>get()<span class="op">.</span>to(index))</span>
 <span id="cb307-15"><a href="#cb307-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)</span>
-<span id="cb307-16"><a href="#cb307-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>bind(SERVER_ADDR)<span class="op">?</span> </span>
+<span id="cb307-16"><a href="#cb307-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>bind(SERVER_ADDR)<span class="op">?</span></span>
 <span id="cb307-17"><a href="#cb307-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>run()</span>
 <span id="cb307-18"><a href="#cb307-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="kw">await</span><span class="op">?;</span></span>
 <span id="cb307-19"><a href="#cb307-19" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())</span>
@@ -13419,7 +13412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb314-16"><a href="#cb314-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> ptr<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Box</span><span class="op">&lt;</span>Node<span class="op">&gt;</span> <span class="op">=</span> <span class="op">&amp;</span>c<span class="op">;</span></span>
 <span id="cb314-17"><a href="#cb314-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">loop</span> <span class="op">{</span></span>
 <span id="cb314-18"><a href="#cb314-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// &amp;Box&lt;Node&gt;에서 Node를 꺼내와 출력 --- (*5)</span></span>
-<span id="cb314-19"><a href="#cb314-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> cur_node<span class="op">:</span> <span class="op">&amp;</span>Node <span class="op">=</span> <span class="op">&amp;**</span>ptr<span class="op">;</span> </span>
+<span id="cb314-19"><a href="#cb314-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> cur_node<span class="op">:</span> <span class="op">&amp;</span>Node <span class="op">=</span> <span class="op">&amp;**</span>ptr<span class="op">;</span></span>
 <span id="cb314-20"><a href="#cb314-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> cur_node <span class="op">{</span></span>
 <span id="cb314-21"><a href="#cb314-21" aria-hidden="true" tabindex="-1"></a>            Empty <span class="op">=&gt;</span> <span class="cf">break</span><span class="op">,</span></span>
 <span id="cb314-22"><a href="#cb314-22" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Cons</span>(v<span class="op">,</span> link) <span class="op">=&gt;</span> <span class="op">{</span></span>
@@ -13970,7 +13963,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb328-24"><a href="#cb328-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> <span class="op">&amp;</span>b<span class="op">.</span>borrow()<span class="op">.</span>prev <span class="op">{</span></span>
 <span id="cb328-25"><a href="#cb328-25" aria-hidden="true" tabindex="-1"></a>        <span class="cn">None</span> <span class="op">=&gt;</span> <span class="op">{},</span></span>
 <span id="cb328-26"><a href="#cb328-26" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Some</span>(prev) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb328-27"><a href="#cb328-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">// </span></span>
+<span id="cb328-27"><a href="#cb328-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">//</span></span>
 <span id="cb328-28"><a href="#cb328-28" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> pa <span class="op">=</span> prev<span class="op">.</span>upgrade()<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb328-29"><a href="#cb328-29" aria-hidden="true" tabindex="-1"></a>            <span class="pp">println!</span>(<span class="st">"a.data= {}"</span><span class="op">,</span> pa<span class="op">.</span>borrow()<span class="op">.</span>data)<span class="op">;</span></span>
 <span id="cb328-30"><a href="#cb328-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">},</span></span>
@@ -14503,7 +14496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb345-25"><a href="#cb345-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb345-26"><a href="#cb345-26" aria-hidden="true" tabindex="-1"></a><span class="co">// 초기화 벡터(IV)를 무작위로 생성 --- (*7)</span></span>
 <span id="cb345-27"><a href="#cb345-27" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> gen_iv() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">u8</span><span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb345-28"><a href="#cb345-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> res<span class="op">:</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">u8</span><span class="op">&gt;</span> <span class="op">=</span> </span>
+<span id="cb345-28"><a href="#cb345-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> res<span class="op">:</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">u8</span><span class="op">&gt;</span> <span class="op">=</span></span>
 <span id="cb345-29"><a href="#cb345-29" aria-hidden="true" tabindex="-1"></a>        <span class="pp">vec!</span>[<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span>]<span class="op">;</span></span>
 <span id="cb345-30"><a href="#cb345-30" aria-hidden="true" tabindex="-1"></a>    <span class="pp">getrandom::</span>getrandom(<span class="op">&amp;</span><span class="kw">mut</span> res)<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb345-31"><a href="#cb345-31" aria-hidden="true" tabindex="-1"></a>    res</span>
@@ -14654,7 +14647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb348-30"><a href="#cb348-30" aria-hidden="true" tabindex="-1"></a>            <span class="op">},</span></span>
 <span id="cb348-31"><a href="#cb348-31" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Some</span>(old_foot) <span class="op">=&gt;</span> <span class="op">{</span></span>
 <span id="cb348-32"><a href="#cb348-32" aria-hidden="true" tabindex="-1"></a>                <span class="kw">self</span><span class="op">.</span>foot <span class="op">=</span> <span class="cn">Some</span>(<span class="pp">Rc::</span>clone(<span class="op">&amp;</span>n))<span class="op">;</span></span>
-<span id="cb348-33"><a href="#cb348-33" aria-hidden="true" tabindex="-1"></a>                n<span class="op">.</span>borrow_mut()<span class="op">.</span>prev <span class="op">=</span> </span>
+<span id="cb348-33"><a href="#cb348-33" aria-hidden="true" tabindex="-1"></a>                n<span class="op">.</span>borrow_mut()<span class="op">.</span>prev <span class="op">=</span></span>
 <span id="cb348-34"><a href="#cb348-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">Some</span>(<span class="pp">Rc::</span>downgrade(<span class="op">&amp;</span>old_foot))<span class="op">;</span></span>
 <span id="cb348-35"><a href="#cb348-35" aria-hidden="true" tabindex="-1"></a>                old_foot<span class="op">.</span>borrow_mut()<span class="op">.</span>next <span class="op">=</span> <span class="cn">Some</span>(n)<span class="op">;</span></span>
 <span id="cb348-36"><a href="#cb348-36" aria-hidden="true" tabindex="-1"></a>            <span class="op">},</span></span>
@@ -14663,13 +14656,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb348-39"><a href="#cb348-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 리스트의 앞에 값을 추가 --- (*5)</span></span>
 <span id="cb348-40"><a href="#cb348-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> unshift(<span class="op">&amp;</span><span class="kw">mut</span> <span class="kw">self</span><span class="op">,</span> v<span class="op">:</span><span class="dt">isize</span>) <span class="op">{</span></span>
 <span id="cb348-41"><a href="#cb348-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> n <span class="op">=</span> <span class="pp">List::</span>new_node(v)<span class="op">;</span></span>
-<span id="cb348-42"><a href="#cb348-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="kw">self</span><span class="op">.</span>head<span class="op">.</span>take() <span class="op">{</span>       </span>
+<span id="cb348-42"><a href="#cb348-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="kw">self</span><span class="op">.</span>head<span class="op">.</span>take() <span class="op">{</span></span>
 <span id="cb348-43"><a href="#cb348-43" aria-hidden="true" tabindex="-1"></a>            <span class="cn">None</span> <span class="op">=&gt;</span> <span class="op">{</span></span>
 <span id="cb348-44"><a href="#cb348-44" aria-hidden="true" tabindex="-1"></a>                <span class="kw">self</span><span class="op">.</span>foot <span class="op">=</span> <span class="cn">Some</span>(<span class="pp">Rc::</span>clone(<span class="op">&amp;</span>n))<span class="op">;</span></span>
 <span id="cb348-45"><a href="#cb348-45" aria-hidden="true" tabindex="-1"></a>                <span class="kw">self</span><span class="op">.</span>head <span class="op">=</span> <span class="cn">Some</span>(n)<span class="op">;</span></span>
 <span id="cb348-46"><a href="#cb348-46" aria-hidden="true" tabindex="-1"></a>            <span class="op">},</span></span>
 <span id="cb348-47"><a href="#cb348-47" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Some</span>(old_head) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb348-48"><a href="#cb348-48" aria-hidden="true" tabindex="-1"></a>                old_head<span class="op">.</span>borrow_mut()<span class="op">.</span>prev <span class="op">=</span> </span>
+<span id="cb348-48"><a href="#cb348-48" aria-hidden="true" tabindex="-1"></a>                old_head<span class="op">.</span>borrow_mut()<span class="op">.</span>prev <span class="op">=</span></span>
 <span id="cb348-49"><a href="#cb348-49" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">Some</span>(<span class="pp">Rc::</span>downgrade(<span class="op">&amp;</span>n))<span class="op">;</span></span>
 <span id="cb348-50"><a href="#cb348-50" aria-hidden="true" tabindex="-1"></a>                n<span class="op">.</span>borrow_mut()<span class="op">.</span>next <span class="op">=</span> <span class="cn">Some</span>(old_head)<span class="op">;</span></span>
 <span id="cb348-51"><a href="#cb348-51" aria-hidden="true" tabindex="-1"></a>                <span class="kw">self</span><span class="op">.</span>head <span class="op">=</span> <span class="cn">Some</span>(n)<span class="op">;</span></span>
@@ -14702,7 +14695,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb348-78"><a href="#cb348-78" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> data <span class="op">=</span> cb<span class="op">.</span>data<span class="op">;</span> <span class="co">// 현재 값을 얻음</span></span>
 <span id="cb348-79"><a href="#cb348-79" aria-hidden="true" tabindex="-1"></a>                <span class="cf">match</span> <span class="op">&amp;</span>cb<span class="op">.</span>next <span class="op">{</span> <span class="co">// 커서를 다음으로 옮김</span></span>
 <span id="cb348-80"><a href="#cb348-80" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">None</span> <span class="op">=&gt;</span> <span class="kw">self</span><span class="op">.</span>cur <span class="op">=</span> <span class="cn">None</span><span class="op">,</span></span>
-<span id="cb348-81"><a href="#cb348-81" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">Some</span>(next) <span class="op">=&gt;</span> </span>
+<span id="cb348-81"><a href="#cb348-81" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">Some</span>(next) <span class="op">=&gt;</span></span>
 <span id="cb348-82"><a href="#cb348-82" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">self</span><span class="op">.</span>cur <span class="op">=</span> <span class="cn">Some</span>(<span class="pp">Rc::</span>clone(<span class="op">&amp;</span>next))<span class="op">,</span></span>
 <span id="cb348-83"><a href="#cb348-83" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
 <span id="cb348-84"><a href="#cb348-84" aria-hidden="true" tabindex="-1"></a>                <span class="cn">Some</span>(data)</span>
@@ -14922,11 +14915,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="소스-코드-300" class="level4">
 <h4 class="anchored" data-anchor-id="소스-코드-300">소스 코드</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb357"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb357-1"><a href="#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="pp">peg::parser!</span>( grammar calc() <span class="cf">for</span> <span class="dt">str</span> <span class="op">{</span></span>
-<span id="cb357-2"><a href="#cb357-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-2"><a href="#cb357-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb357-3"><a href="#cb357-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 기본이 되는 규칙 --- (*1)</span></span>
-<span id="cb357-4"><a href="#cb357-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> rule eval() <span class="op">-&gt;</span> <span class="dt">i64</span> </span>
+<span id="cb357-4"><a href="#cb357-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> rule eval() <span class="op">-&gt;</span> <span class="dt">i64</span></span>
 <span id="cb357-5"><a href="#cb357-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> expr()</span>
-<span id="cb357-6"><a href="#cb357-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb357-6"><a href="#cb357-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb357-7"><a href="#cb357-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 덧셈과 뺄셈용 규칙 추가 --- (*2)</span></span>
 <span id="cb357-8"><a href="#cb357-8" aria-hidden="true" tabindex="-1"></a>    rule expr() <span class="op">-&gt;</span> <span class="dt">i64</span></span>
 <span id="cb357-9"><a href="#cb357-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> l<span class="op">:</span>term() <span class="st">"+"</span> r<span class="op">:</span>expr()   <span class="op">{</span> l <span class="op">+</span> r <span class="op">}</span></span>
@@ -14943,10 +14936,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb357-20"><a href="#cb357-20" aria-hidden="true" tabindex="-1"></a>    rule value() <span class="op">-&gt;</span> <span class="dt">i64</span></span>
 <span id="cb357-21"><a href="#cb357-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> number()                  <span class="co">// 숫자 값</span></span>
 <span id="cb357-22"><a href="#cb357-22" aria-hidden="true" tabindex="-1"></a>        <span class="op">/</span> <span class="st">"("</span> v<span class="op">:</span>expr() <span class="st">")"</span> <span class="op">{</span> v <span class="op">}</span>   <span class="co">// (계산식)</span></span>
-<span id="cb357-23"><a href="#cb357-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb357-23"><a href="#cb357-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb357-24"><a href="#cb357-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 숫자 값을 읽는 규칙 추가 --- (*5)</span></span>
 <span id="cb357-25"><a href="#cb357-25" aria-hidden="true" tabindex="-1"></a>    rule number() <span class="op">-&gt;</span> <span class="dt">i64</span></span>
-<span id="cb357-26"><a href="#cb357-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> n<span class="op">:$</span>([<span class="ch">'0'</span><span class="op">..=</span><span class="ch">'9'</span>]<span class="op">+</span>) </span>
+<span id="cb357-26"><a href="#cb357-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> n<span class="op">:$</span>([<span class="ch">'0'</span><span class="op">..=</span><span class="ch">'9'</span>]<span class="op">+</span>)</span>
 <span id="cb357-27"><a href="#cb357-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> n<span class="op">.</span>parse()<span class="op">.</span>unwrap() <span class="op">}</span></span>
 <span id="cb357-28"><a href="#cb357-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>)<span class="op">;</span></span>
 <span id="cb357-29"><a href="#cb357-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -14954,7 +14947,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb357-31"><a href="#cb357-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 계산</span></span>
 <span id="cb357-32"><a href="#cb357-32" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> <span class="pp">calc::</span>eval(<span class="st">"1+2*3"</span>)<span class="op">.</span>unwrap())<span class="op">;</span></span>
 <span id="cb357-33"><a href="#cb357-33" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> <span class="pp">calc::</span>eval(<span class="st">"(1+2)*3"</span>)<span class="op">.</span>unwrap())<span class="op">;</span></span>
-<span id="cb357-34"><a href="#cb357-34" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> <span class="pp">calc::</span>eval(<span class="st">"100/2-1"</span>)<span class="op">.</span>unwrap())<span class="op">;</span>    </span>
+<span id="cb357-34"><a href="#cb357-34" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{}"</span><span class="op">,</span> <span class="pp">calc::</span>eval(<span class="st">"100/2-1"</span>)<span class="op">.</span>unwrap())<span class="op">;</span></span>
 <span id="cb357-35"><a href="#cb357-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="6" type="1">
 <li><strong>오류 처리 메커니즘</strong>:
@@ -15133,30 +15126,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb363"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb363-1"><a href="#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> peg<span class="op">;</span></span>
 <span id="cb363-2"><a href="#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::node::</span>Node<span class="op">;</span></span>
 <span id="cb363-3"><a href="#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 토마토 언어 문법 정의 --- (*1)</span></span>
-<span id="cb363-4"><a href="#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="pp">peg::parser!</span>( <span class="kw">pub</span> grammar tomato() <span class="cf">for</span> <span class="dt">str</span> <span class="op">{</span>    </span>
+<span id="cb363-4"><a href="#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="pp">peg::parser!</span>( <span class="kw">pub</span> grammar tomato() <span class="cf">for</span> <span class="dt">str</span> <span class="op">{</span></span>
 <span id="cb363-5"><a href="#cb363-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 기본 규칙 정의 --- (*2)</span></span>
-<span id="cb363-6"><a href="#cb363-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> rule parse() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span>Node<span class="op">&gt;</span> </span>
+<span id="cb363-6"><a href="#cb363-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> rule parse() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span>Node<span class="op">&gt;</span></span>
 <span id="cb363-7"><a href="#cb363-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> v<span class="op">:</span>sentences()</span>
 <span id="cb363-8"><a href="#cb363-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 프로그램에서 복문을 쓸 수 있도록 한다 --- (*3)</span></span>
 <span id="cb363-9"><a href="#cb363-9" aria-hidden="true" tabindex="-1"></a>    rule sentences() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span>Node<span class="op">&gt;</span></span>
-<span id="cb363-10"><a href="#cb363-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> sentence() <span class="op">**</span> end_of_line()        </span>
+<span id="cb363-10"><a href="#cb363-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> sentence() <span class="op">**</span> end_of_line()</span>
 <span id="cb363-11"><a href="#cb363-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 구문 정의 --- (*4)</span></span>
 <span id="cb363-12"><a href="#cb363-12" aria-hidden="true" tabindex="-1"></a>    rule sentence() <span class="op">-&gt;</span> Node</span>
 <span id="cb363-13"><a href="#cb363-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> print() <span class="op">/</span> <span class="cf">if</span>() <span class="op">/</span> <span class="cf">for</span>() <span class="op">/</span> <span class="kw">let</span>() <span class="op">/</span> _ <span class="op">{</span> <span class="pp">Node::</span>Nop <span class="op">}</span></span>
-<span id="cb363-14"><a href="#cb363-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb363-14"><a href="#cb363-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb363-15"><a href="#cb363-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">// print문 정의 --- (*5)</span></span>
 <span id="cb363-16"><a href="#cb363-16" aria-hidden="true" tabindex="-1"></a>    rule print() <span class="op">-&gt;</span> Node</span>
-<span id="cb363-17"><a href="#cb363-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="st">"print"</span> _ <span class="st">"</span><span class="sc">\"</span><span class="st">"</span> v<span class="op">:$</span>([<span class="op">^</span> <span class="ch">'"'</span>]<span class="op">*</span>) <span class="st">"</span><span class="sc">\"</span><span class="st">"</span> </span>
+<span id="cb363-17"><a href="#cb363-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="st">"print"</span> _ <span class="st">"</span><span class="sc">\"</span><span class="st">"</span> v<span class="op">:$</span>([<span class="op">^</span> <span class="ch">'"'</span>]<span class="op">*</span>) <span class="st">"</span><span class="sc">\"</span><span class="st">"</span></span>
 <span id="cb363-18"><a href="#cb363-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>PrintStr(v<span class="op">.</span>to_string()) <span class="op">}</span></span>
-<span id="cb363-19"><a href="#cb363-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">/</span> <span class="st">"print"</span> _ v<span class="op">:</span>calc() </span>
+<span id="cb363-19"><a href="#cb363-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">/</span> <span class="st">"print"</span> _ v<span class="op">:</span>calc()</span>
 <span id="cb363-20"><a href="#cb363-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>Print(<span class="dt">Box</span><span class="pp">::</span>new(v)) <span class="op">}</span></span>
-<span id="cb363-21"><a href="#cb363-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb363-21"><a href="#cb363-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb363-22"><a href="#cb363-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">// if문 정의 --- (*6)</span></span>
 <span id="cb363-23"><a href="#cb363-23" aria-hidden="true" tabindex="-1"></a>    rule <span class="cf">if</span>() <span class="op">-&gt;</span> Node <span class="op">=</span> <span class="st">"if"</span> _ v<span class="op">:</span>if_cond() <span class="op">{</span> v <span class="op">}</span></span>
 <span id="cb363-24"><a href="#cb363-24" aria-hidden="true" tabindex="-1"></a>    rule if_cond() <span class="op">-&gt;</span> Node</span>
 <span id="cb363-25"><a href="#cb363-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> if_elif() <span class="op">/</span> if_else() <span class="op">/</span> if_true_only()</span>
 <span id="cb363-26"><a href="#cb363-26" aria-hidden="true" tabindex="-1"></a>    rule if_elif() <span class="op">-&gt;</span> Node</span>
-<span id="cb363-27"><a href="#cb363-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> cond<span class="op">:</span>calc() t<span class="op">:</span>block() lf() <span class="st">"elif"</span> _ f<span class="op">:</span> if_cond() </span>
+<span id="cb363-27"><a href="#cb363-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> cond<span class="op">:</span>calc() t<span class="op">:</span>block() lf() <span class="st">"elif"</span> _ f<span class="op">:</span> if_cond()</span>
 <span id="cb363-28"><a href="#cb363-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>if_(cond<span class="op">,</span> t<span class="op">,</span> <span class="pp">vec!</span>[f]) <span class="op">}</span></span>
 <span id="cb363-29"><a href="#cb363-29" aria-hidden="true" tabindex="-1"></a>    rule if_else() <span class="op">-&gt;</span> Node</span>
 <span id="cb363-30"><a href="#cb363-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> cond<span class="op">:</span>calc() t<span class="op">:</span>block() lf() <span class="st">"else"</span> _ f<span class="op">:</span>block()</span>
@@ -15164,18 +15157,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb363-32"><a href="#cb363-32" aria-hidden="true" tabindex="-1"></a>    rule if_true_only() <span class="op">-&gt;</span> Node</span>
 <span id="cb363-33"><a href="#cb363-33" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> cond<span class="op">:</span>calc() t<span class="op">:</span>block()</span>
 <span id="cb363-34"><a href="#cb363-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>if_(cond<span class="op">,</span> t<span class="op">,</span> <span class="pp">vec!</span>[]) <span class="op">}</span></span>
-<span id="cb363-35"><a href="#cb363-35" aria-hidden="true" tabindex="-1"></a>    rule block() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span>Node<span class="op">&gt;</span> </span>
+<span id="cb363-35"><a href="#cb363-35" aria-hidden="true" tabindex="-1"></a>    rule block() <span class="op">-&gt;</span> <span class="dt">Vec</span><span class="op">&lt;</span>Node<span class="op">&gt;</span></span>
 <span id="cb363-36"><a href="#cb363-36" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="st">"{"</span> _ v<span class="op">:</span>sentences() _ <span class="st">"}"</span> _ <span class="op">{</span> v <span class="op">}</span></span>
-<span id="cb363-37"><a href="#cb363-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb363-37"><a href="#cb363-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb363-38"><a href="#cb363-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">// for문 정의 --- (*7)</span></span>
 <span id="cb363-39"><a href="#cb363-39" aria-hidden="true" tabindex="-1"></a>    rule <span class="cf">for</span>() <span class="op">-&gt;</span> Node</span>
-<span id="cb363-40"><a href="#cb363-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="st">"for"</span> _ w<span class="op">:</span>word() _ <span class="st">"="</span> _ start<span class="op">:</span>number() _ </span>
+<span id="cb363-40"><a href="#cb363-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> <span class="st">"for"</span> _ w<span class="op">:</span>word() _ <span class="st">"="</span> _ start<span class="op">:</span>number() _</span>
 <span id="cb363-41"><a href="#cb363-41" aria-hidden="true" tabindex="-1"></a>          <span class="st">"to"</span> _ end<span class="op">:</span>number() _ body<span class="op">:</span>block()</span>
 <span id="cb363-42"><a href="#cb363-42" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>For(w<span class="op">,</span> start<span class="op">,</span> end<span class="op">,</span> <span class="dt">Box</span><span class="pp">::</span>new(body)) <span class="op">}</span></span>
-<span id="cb363-43"><a href="#cb363-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb363-43"><a href="#cb363-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb363-44"><a href="#cb363-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 변수 대입 정의 --- (*8)</span></span>
 <span id="cb363-45"><a href="#cb363-45" aria-hidden="true" tabindex="-1"></a>    rule <span class="kw">let</span>() <span class="op">-&gt;</span> Node</span>
-<span id="cb363-46"><a href="#cb363-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> w<span class="op">:</span>word() _ <span class="st">"="</span> _ v<span class="op">:</span>calc() </span>
+<span id="cb363-46"><a href="#cb363-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">=</span> w<span class="op">:</span>word() _ <span class="st">"="</span> _ v<span class="op">:</span>calc()</span>
 <span id="cb363-47"><a href="#cb363-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span> <span class="pp">Node::</span>SetVar(w<span class="op">,</span> <span class="dt">Box</span><span class="pp">::</span>new(v))<span class="op">}</span></span>
 <span id="cb363-48"><a href="#cb363-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb363-49"><a href="#cb363-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 계산 처리 --- (*9)</span></span>
@@ -15888,7 +15881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb378-43"><a href="#cb378-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">},</span></span>
 <span id="cb378-44"><a href="#cb378-44" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Node::</span>PrintStr(v) <span class="op">=&gt;</span> <span class="op">{</span></span>
 <span id="cb378-45"><a href="#cb378-45" aria-hidden="true" tabindex="-1"></a>            ctx<span class="op">.</span>output <span class="op">+=</span> <span class="op">&amp;</span><span class="pp">format!</span>(<span class="st">"{}</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> v)<span class="op">;</span></span>
-<span id="cb378-46"><a href="#cb378-46" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span> </span>
+<span id="cb378-46"><a href="#cb378-46" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span></span>
 <span id="cb378-47"><a href="#cb378-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">},</span></span>
 <span id="cb378-48"><a href="#cb378-48" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Node::</span>Print(node) <span class="op">=&gt;</span> <span class="op">{</span></span>
 <span id="cb378-49"><a href="#cb378-49" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> v <span class="op">=</span> run_node(ctx<span class="op">,</span> <span class="op">*</span>node)<span class="op">;</span></span>
@@ -15927,7 +15920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb378-82"><a href="#cb378-82" aria-hidden="true" tabindex="-1"></a>        <span class="cn">Err</span>(e) <span class="op">=&gt;</span> <span class="cf">return</span> e<span class="op">.</span>to_string()<span class="op">,</span></span>
 <span id="cb378-83"><a href="#cb378-83" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
 <span id="cb378-84"><a href="#cb378-84" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> ctx <span class="op">=</span> Context<span class="op">{</span></span>
-<span id="cb378-85"><a href="#cb378-85" aria-hidden="true" tabindex="-1"></a>        vars<span class="op">:</span><span class="pp">HashMap::</span>new()<span class="op">,</span> </span>
+<span id="cb378-85"><a href="#cb378-85" aria-hidden="true" tabindex="-1"></a>        vars<span class="op">:</span><span class="pp">HashMap::</span>new()<span class="op">,</span></span>
 <span id="cb378-86"><a href="#cb378-86" aria-hidden="true" tabindex="-1"></a>        output<span class="op">:</span><span class="dt">String</span><span class="pp">::</span>new()</span>
 <span id="cb378-87"><a href="#cb378-87" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
 <span id="cb378-88"><a href="#cb378-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r <span class="op">=</span> run_nodes(<span class="op">&amp;</span><span class="kw">mut</span> ctx<span class="op">,</span> <span class="op">&amp;</span>nodes)<span class="op">;</span></span>
@@ -16108,7 +16101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb386-7"><a href="#cb386-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb386-8"><a href="#cb386-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{:?}"</span><span class="op">,</span> lines)<span class="op">;</span></span>
 <span id="cb386-9"><a href="#cb386-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// map을 사용해 Vec&lt;String&gt; 으로 변환</span></span>
-<span id="cb386-10"><a href="#cb386-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> lines<span class="op">:</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">=</span> </span>
+<span id="cb386-10"><a href="#cb386-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> lines<span class="op">:</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> <span class="op">=</span></span>
 <span id="cb386-11"><a href="#cb386-11" aria-hidden="true" tabindex="-1"></a>        target<span class="op">.</span>split(<span class="st">","</span>)<span class="op">.</span>map(<span class="op">|</span>s<span class="op">|</span> s<span class="op">.</span>to_string())<span class="op">.</span>collect()<span class="op">;</span></span>
 <span id="cb386-12"><a href="#cb386-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"{:?}"</span><span class="op">,</span> lines)<span class="op">;</span></span>
 <span id="cb386-13"><a href="#cb386-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -16714,8 +16707,8 @@ print total</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../rust_python/index.html" class="pagination-link" aria-label="Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)">
-        <span class="nav-page-text"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../rust_python/index.html" class="pagination-link" aria-label="Rust-Python 바인딩">
+        <span class="nav-page-text"><span class="chapter-title">Rust-Python 바인딩</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

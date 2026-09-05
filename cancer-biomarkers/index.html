@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="아딥 셰자드 (Adeeb Shehzad)">
 
-<title>Cancer Biomarkers in Diagnosis and Therapeutics – Machine translation</title>
+<title>암 바이오마커 – Machine translation</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -41,10 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3de61ef4ef9bf8da8ea456bc7403f274.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c80fbb8768564429c0d3cd3874f132d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-35a06a1a798d082609d7fc1681e7343a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../llm_protein/index.html">단백질 공학, 면역학 및 항체 치료제</a></li><li class="breadcrumb-item"><a href="../cancer-biomarkers/index.html"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../llm_protein/index.html">단백질 공학, 면역학 및 항체 치료제</a></li><li class="breadcrumb-item"><a href="../cancer-biomarkers/index.html"><span class="chapter-title">암 바이오마커</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역(Machine translation)</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기계 번역 모음</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -157,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 마스터리</span></a>
+  <a href="../python_mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">python 고급 기술</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -167,12 +172,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러스트 프로그래밍 완벽 가이드</span></a>
+  <a href="../learn_rust/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python으로 Rust 배우기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩 종합 가이드 (PyO3 &amp; Maturin)</span></a>
+  <a href="../rust_python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rust-Python 바인딩</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -182,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift 학습 가이드</span></a>
+  <a href="../swift_for_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬 개발자를 위한 Swift</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -228,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 생성형 AI 서비스 구축하기</span></a>
+  <a href="../genai-fastapi/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">FastAPI로 AI 서비스 구축</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -243,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스 <em>Nexus: A Brief History of Information Networks from the Stone Age to AI</em></span></a>
+  <a href="../nexus-harari/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">넥서스</span></a>
   </div>
 </li>
       </ul>
@@ -264,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gapminder 데이터를 이용한 파이썬 초급 실습</span></a>
+  <a href="../py_gapminder/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python gapminder 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,12 +284,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Engineering Best Practices</span></a>
+  <a href="../data-engineering-best-practices/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터 엔지니어링 실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Goliath</span></a>
+  <a href="../data-and-goliath/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">데이터와 골리앗</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -315,17 +320,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론</span></a>
+  <a href="../causal-inference-what-if/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">인과추론 개론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../causal-inference-statistics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">통계학에서의 인과추론</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../model-to-meaning/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">모델에서 의미로</span></a>
   </div>
 </li>
       </ul>
@@ -341,12 +341,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">파이썬으로 마스터하는 생명정보학</span></a>
+  <a href="../py_bioinformatics/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(중급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">초보자를 위한 생명정보학 프로그래밍</span></a>
+  <a href="../py_biologists/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 프로그래밍(초급)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -371,12 +371,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구 실험실 업무 효율화하기</span></a>
+  <a href="../streamline_lab_py/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Streamlining Your Research Laboratory with Python</span></a>
+  <a href="../research-lab-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python 으로 연구실 효율화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -386,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">실용 바이오인포매틱스 실험 매뉴얼</span></a>
+  <a href="../practical-bioinformatics-lab/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생명정보학 실용 매뉴얼</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -412,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생물정보학의 거대 언어 모델 (LLM)</span></a>
+  <a href="../llm_protein/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">단백질 생명정보학의 LLM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -432,12 +432,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Methods in Molecular Biology</span></a>
+  <a href="../antibody-engineering/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 공학: 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Development of Antibody-Based Therapeutics Translational Considerations &amp; Challenges</span></a>
+  <a href="../antibody-therapeutics-dev/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">항체 치료제 개발</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -452,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Antibody-Drug Conjugates Methods and Protocols</span></a>
+  <a href="../adc-methods/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ADC 방법 및 프로토콜</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -462,12 +462,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></a>
+  <a href="../biomarkers-immunotherapy/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a>
+  <a href="../cancer-biomarkers/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">암 바이오마커</span></a>
   </div>
 </li>
       </ul>
@@ -488,17 +488,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guide-drug-development/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">의약품 개발 가이드: 종합적 검토와 평가</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../drug-development-academia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">학술 환경에서의 신약 개발 실무 안내서</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학: 통합적 접근</span></a>
+  <a href="../pkpd-integrated-textbook/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">기초 약동학 및 약력학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -847,7 +842,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나(Me, But Better)</span></a>
+  <a href="../me_but_better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">더 나아진 나</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -902,14 +897,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#암-진단-및-치료에서의-암-바이오마커-cancer-biomarkers-in-diagnosis-and-therapeutics" id="toc-암-진단-및-치료에서의-암-바이오마커-cancer-biomarkers-in-diagnosis-and-therapeutics" class="nav-link active" data-scroll-target="#암-진단-및-치료에서의-암-바이오마커-cancer-biomarkers-in-diagnosis-and-therapeutics">암 진단 및 치료에서의 암 바이오마커 (Cancer Biomarkers in Diagnosis and Therapeutics)</a></li>
-  <li><a href="#머리말-preface" id="toc-머리말-preface" class="nav-link" data-scroll-target="#머리말-preface">머리말 (Preface)</a></li>
-  <li><a href="#제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers" id="toc-제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers" class="nav-link" data-scroll-target="#제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers">제1장: 암 바이오마커 개론 (Introduction to Cancer Biomarkers)</a>
+  <li><a href="#제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers" id="toc-제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers" class="nav-link active" data-scroll-target="#제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers">제1장: 암 바이오마커 개론 (Introduction to Cancer Biomarkers)</a>
   <ul class="collapse">
   <li><a href="#초록-abstract" id="toc-초록-abstract" class="nav-link" data-scroll-target="#초록-abstract">초록 (Abstract)</a></li>
-  </ul></li>
-  <li><a href="#장-암-생체지표-개론-introduction-to-cancer-biomarkers" id="toc-장-암-생체지표-개론-introduction-to-cancer-biomarkers" class="nav-link" data-scroll-target="#장-암-생체지표-개론-introduction-to-cancer-biomarkers">1장 암 생체지표 개론 (Introduction to Cancer Biomarkers)</a>
-  <ul class="collapse">
   <li><a href="#서론-introduction" id="toc-서론-introduction" class="nav-link" data-scroll-target="#서론-introduction">1.1 서론 (Introduction)</a>
   <ul class="collapse">
   <li><a href="#암의-임상병리학과-생체지표-clinical-pathology-of-cancer-and-biomarkers" id="toc-암의-임상병리학과-생체지표-clinical-pathology-of-cancer-and-biomarkers" class="nav-link" data-scroll-target="#암의-임상병리학과-생체지표-clinical-pathology-of-cancer-and-biomarkers">1.1.1 암의 임상병리학과 생체지표 (Clinical Pathology of Cancer and Biomarkers)</a></li>
@@ -1302,15 +1292,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../llm_protein/index.html">단백질 공학, 면역학 및 항체 치료제</a></li><li class="breadcrumb-item"><a href="../cancer-biomarkers/index.html"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../llm_protein/index.html">단백질 공학, 면역학 및 항체 치료제</a></li><li class="breadcrumb-item"><a href="../cancer-biomarkers/index.html"><span class="chapter-title">암 바이오마커</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Cancer Biomarkers in Diagnosis and Therapeutics</span></h1>
+<h1 class="title"><span class="chapter-title">암 바이오마커</span></h1>
+<p class="subtitle lead">암 진단 및 치료</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>아딥 셰자드 (Adeeb Shehzad) </p>
+          </div>
+  </div>
     
   
     
@@ -1321,43 +1318,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="암-진단-및-치료에서의-암-바이오마커-cancer-biomarkers-in-diagnosis-and-therapeutics" class="level1">
-<h1>암 진단 및 치료에서의 암 바이오마커 (Cancer Biomarkers in Diagnosis and Therapeutics)</h1>
-<p>아딥 셰자드 (Adeeb Shehzad)</p>
-</section>
-<section id="머리말-preface" class="level1">
-<h1>머리말 (Preface)</h1>
-<p>최근 암 발생률의 감소에도 불구하고, 장기 사망률은 여전히 변함이 없다. 암 환자의 생존율을 높이는 가장 중요한 요인 중 하나는 초기 단계에서의 조기 발견이다. 분자적 특징(molecular signature) 또는 바이오마커(biomarker)를 활용하여 암의 초기 변화를 감지하는 임상 검사는 암의 진행을 막고 개입할 수 있는 기회를 제공한다. 암의 조기 발견과 위험도 평가에 도움을 주는 세포 표현형의 분자적 특징은 선별검사(screening)와 조기 진단에서 중요한 역할을 할 것으로 기대된다. 새로운 정보와 기술이 바이오마커 발굴을 이끄는 명백한 원동력이지만, 이러한 새로운 발견을 임상 적용으로 전환하는 일은 여전히 커다란 과제로 남아 있다.</p>
-<p>종양의 발생은 수많은 단백질, 신호전달 경로(signaling pathway), 다양한 세포 유형 간의 조화로운 상호작용을 필요로 하는 복잡한 과정이다. 암의 분자적 발병 기전(molecular pathogenesis)에 대한 광범위한 연구 결과, 몇 가지 새로운 조절 경로와 네트워크가 규명되었다. 이러한 경로의 단계들은 형태학적·조직학적 변화와 유전자 및 단백질의 발현 변화로 특징지어지는 세포 내 수많은 고유한 사건들을 밝혀냈다. 정상 세포가 암세포로 형질전환(transformation)되는 동안 세포의 분자적 특징은 변화하며, 이러한 변화는 암세포의 존재와 고유한 특성을 나타내는 독특한 신호가 된다. 이러한 신호를 정확하게 판독함으로써 개별 암의 조기 발견과 진단을 개선할 수 있다.</p>
-<p>암의 근본적인 세포 및 분자 메커니즘을 밝혀내기 위해 수십 년간 기초 연구를 수행한 끝에, 과학계는 암 조기 발견을 위한 새로운 후보 표적들을 발견하였다. 종양이 발견될 즈음에는 이미 여러 분자 수준의 변화가 일어난 후이다. 바이오마커를 활용하여 이러한 변화를 감지하는 진단 검사는 조기 발견에 있어 상당한 잠재력을 지니고 있다. 이 주제로 매년 발표되는 논문 수를 기준으로 보면 암 바이오마커를 발굴하는 것은 비교적 수월한 과정이다. 그러나 이러한 발견을 유용한 임상 검사로 전환(translation)하는 것은 대단히 어렵다. 현재까지 미국 식품의약국(FDA)의 승인을 받은 암 바이오마커는 25개 미만이며, 이들 대부분은 치료 반응을 모니터링하기 위한 것이다. 바이오마커 분야에서는 많은 연구가 여전히 ’발굴 단계’에 머물러 있다. 암 바이오마커가 임상에 도입되지 못하는 이유로는 여러 설명이 제시되어 왔다. 여기에는 바이오마커가 임상적으로 유용하기 위해 요구되는 높은 성능 기준, 종양의 복잡한 생물학적 특성, 결함이 있는 발굴 프로세스, 검증의 부재 또는 번거롭고 비용이 많이 드는 검증 과정, 규제 요건, 그리고 중개 연구(translational research)에 합당한 보상을 제공하지 않는 학술 시스템 등이 포함된다.</p>
-<p>바이오마커 연구에는 연구자들이 다양한 출처와 기술 플랫폼에서 확보한 데이터를 생성, 기여, 관리, 분석할 수 있는 지식 기반 환경이 필요하다. 그 목표는 데이터가 지식으로 전환되는 속도를 가속화하는 지속적인 피드백 루프를 구축하는 것이다. 협업, 데이터 공유, 데이터 통합 및 표준화는 이 목표를 달성하는 데 필수적이다. 데이터 소스를 매끄럽게 구조화하고 통합해야만 암의 복잡하고 근본적인 원인과 결과를 밝혀낼 수 있으며, 효과적인 예방, 조기 발견 및 맞춤형 치료를 실현할 수 있다. 종양의 초기 단계에서 마커를 식별할 수 있다면 치료 성공률이 더 높아질 것이라는 점에는 전반적인 공감대가 형성되어 있다. 널리 수용되고, 경제적이며, 안전하면서도 초기 암에 대해 높은 민감도(SENSITIVITY)와 높은 특이도(SPECIFICITY)라는 결합된 요구 조건을 만족하는 선별검사 도구가 필요하다. 암의 발생과 진행에 대한 생물학적 기초 지식의 비약적인 발전은 종양의 영향을 받은 장기에서 배출되는 체액 내에서 암유전자(oncogene) 및 종양억제유전자(tumor suppressor gene)의 돌연변이를 확인할 수 있음을 보여주었다.</p>
-<p>이 책에서는 발굴부터 개발, 검증, 임상적 유용성(clinical utility) 및 임상적 활용에 이르기까지 바이오마커의 다양한 측면을 여러 장에 걸쳐 다룬다. 임상적 유용성이란 임상적 결정을 내리고 치료 결과를 개선할 수 있는 능력을 의미한다. 본서의 각 장은 바이오마커 발굴, 개발 및 검증 과정을 조명하도록 구성되었다. 또한 조기 발견에서의 임상적 요구, 질병의 자연사(natural history) 및 바이오마커 연구를 뒷받침하는 관련 근거, 바이오마커 연구의 최신 현황 개요, 이러한 바이오마커를 임상에 적용하기 위한 현재의 진전 상황, 그리고 각 장기별 바이오마커 기반 선별검사 및 조기 발견의 미래를 강조한다. 아울러 이 책은 현재의 선별검사 전략에서 나노기술의 활용을 다루고, 현행 진료 관행의 한계점을 논의하며, 바이오마커 기반 접근법을 통해 이점을 얻을 수 있는 임상적 요구들을 파악한다.</p>
-<p>독자들이 특히 질병의 발견과 선별을 위한 바이오마커 연구의 복잡성을 이해하고, 바이오마커 발굴, 개발, 검증이라는 도전적인 과제에 영감을 받거나 다른 이들에게 영감을 줄 수 있기를 기대한다. 정밀의료(precision medicine) 시대에 바이오마커는 질병 특이적인 분자 변화를 식별할 뿐만 아니라 정밀 치료를 위한 표적을 발굴하는 데 있어서도 중요한 역할을 담당한다. 조기 발견과 정밀의료는 떼려야 뗄 수 없는 상호보완적 접근법이며, 향후 질병의 임상 관리 방향을 함께 이끌어갈 것이다. 바이오마커의 활용(예: 후속 정밀 진단 검사로부터 혜택을 받을 가능성이 있는 환자와 그렇지 않은 환자를 선별·분류하는 작업)은 임상 관리에 유익할 뿐만 아니라, 사회적 비용과 의료비를 최적화하고 절감하며 개선하는 보건경제학적 측면에서도 중요한 역할을 할 것이다.</p>
-<p>파키스탄 이슬라마바드<br>
-아딥 셰자드 (Adeeb Shehzad)</p>
-</section>
 <section id="제1장-암-바이오마커-개론-introduction-to-cancer-biomarkers" class="level1">
 <h1>제1장: 암 바이오마커 개론 (Introduction to Cancer Biomarkers)</h1>
 <section id="초록-abstract" class="level2">
 <h2 class="anchored" data-anchor-id="초록-abstract">초록 (Abstract)</h2>
 <p>전 세계적인 암 발병률 및 사망률의 증가는 암의 발견, 진단, 질병 진행 파악 및 새로운 치료 요법 개발을 위해 작용 기전 및 질병 특이적인 생체지표(biomarker, 바이오마커)를 발굴할 것을 요구하고 있다. 암 생체지표는 단백질(효소 또는 수용체), 핵산(단백질 코딩 및 비코딩 RNA), 면역글로불린(immunoglobulin), 또는 짧은 사슬의 아미노산 및 펩타이드(peptide)를 포함하는 생물학적 활성 분자이다. 또한 생체지표는 정상 또는 병리적 상태에서 종양 세포나 정상 세포에 의해 일어나는 유전자 발현 또는 단백질 활성의 변화, 후성유전학적(epigenetic) 변화, 자극에 의해 유도되는 항체 생성을 탐지하는 데에도 활용될 수 있다. 이러한 생체지표는 순환 체액(전혈, 혈청, 혈장), 분비 및 배설 체액(대변, 소변, 가래, 모유), 조직 내 게놈(유전체)의 양상 및 활성, 폴리펩타이드, 후성유전학적 변형과 같은 고유하고 식별 가능한 분자 구조를 지니고 있어 암 환자의 조기 진단, 모니터링 및 적절한 약물 선택에 큰 잠재력을 제공한다. 본 장에서는 발현 양상, 분자 및 생화학적 특성 규명, 진단 및 치료적 활용, 그리고 암 환자의 치료적 중재를 위한 임상 적용(translation)과 관련된 암 생체지표의 최근 연구 결과들을 다룬다. 여러 연구에서 다양한 예후(prognostic) 및 예측(predictive) 암 생체지표가 보고되었으나 상용화된 것은 극소수에 불과하다. 따라서 암 환자 관리를 위한 맞춤 의약품으로 개발하고 암 임상 현장에 적용하기 위한 유효성과 역할을 규명하기 위해서는 대규모 다기관 검증 연구가 필요하다. 마지막으로 향후 유망한 암 생체지표의 개발 및 검증에서 나노기술이 지닌 잠재적 역할에 대해 논의한다. 본 장에서는 암 환자의 치료 결과를 개선하기 위한 임상 모니터링 정보를 제공하고 임상적 유용성을 갖춘 주요 진단 생체지표의 발굴 및 개발 과정을 요약하여 제시한다.</p>
 <p><strong>주요어 (Keywords)</strong>: 암, 생체지표(Biomarkers), 분자 표지자(Molecular markers), 예후(Prognosis), 진단(Diagnosis), 단백체학(Proteomics)</p>
-<hr>
-<p>M. Iftikhar<br>
-말레이시아 조호르 스쿠다이 소재 말레이시아공과대학교(UTM) 화학·에너지공학부 첨단막기술연구센터(AMTECH)</p>
-<p>A. Younis · A. Shehzad(*)<br>
-파키스탄 이슬라마바드 소재 국립과학기술대학교(NUST) 기계·제조공학부(SMME) 의공학·생명과학과<br>
-이메일: adeeb.shehzad@smme.nust.edu.pk</p>
-<p>Y. S. Lee<br>
-대한민국 대구 소재 경북대학교 생명과학부</p>
-<p>© The Author(s), under exclusive license to Springer Nature Singapore Pte Ltd.&nbsp;2022<br>
-A. Shehzad (ed.), <em>Cancer Biomarkers in Diagnosis and Therapeutics</em>,<br>
-https://doi.org/10.1007/978-981-16-5759-7_1</p>
-<hr>
 </section>
-</section>
-<section id="장-암-생체지표-개론-introduction-to-cancer-biomarkers" class="level1">
-<h1>1장 암 생체지표 개론 (Introduction to Cancer Biomarkers)</h1>
 <section id="서론-introduction" class="level2">
 <h2 class="anchored" data-anchor-id="서론-introduction">1.1 서론 (Introduction)</h2>
 <p>최근 몇 년 동안 암의 조기 발견, 유형 분류(typing) 및 병기 결정(staging)에 많은 노력이 기울여졌으며, 이는 결과적으로 환자 관리, 치료 기간 및 치료법 선택에 큰 영향을 미쳤다. 전통적으로 고대 중국, 아유르베다(인도 전통의학), 이집트에서는 유방암과 유선염을 식별하고 구별하기 위해, 그리고 중증 및 급성 악성 종양의 표지자로 다양한 물질을 사용해 왔다. 최초의 체액 검사 및 검경은 1847년 벤스-존스(Bence-Jones)에 의해 보고되었는데, 그는 다발골수종(multiple myeloma) 환자에서 생성되며 면역글로불린 G(IgG)의 열변성 및 응고 특성 덕분에 소변에서 검출될 수 있는 경쇄 항체 단백질인 암 관련 IgG 단백질을 규명하였다. 1986년 싱클레어(Sinclair) 등 역시 다발골수종 환자의 혈청에 벤스-존스 단백질이 존재함을 확인하였다(Dimopoulos et al.&nbsp;2007). 미국 식품의약국(FDA)은 다발골수종과 백혈병을 포함한 다양한 암의 검출 및 확진을 위해 벤스-존스 단백질의 사용을 승인하고 검증한 바 있다.</p>
@@ -1703,396 +1670,63 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="표-2.1-현재-임상-진료에서-활용-중인-fda-승인-단백질-종양-마커-목록-füzéry-et-al.-2013에서-수정-인용" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.1-현재-임상-진료에서-활용-중인-fda-승인-단백질-종양-마커-목록-füzéry-et-al.-2013에서-수정-인용">표 2.1 현재 임상 진료에서 활용 중인 FDA 승인 단백질 종양 마커 목록 (Füzéry et al.&nbsp;2013에서 수정 인용)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">암 종류 (Type of Cancer)</th>
-<th style="text-align: left;">제출 유형 (Type of Submission)</th>
-<th style="text-align: left;">분석법 (Methodology)</th>
-<th style="text-align: left;">검체 (Specimen)</th>
-<th style="text-align: left;">최초 승인 또는 허가 연도 (Year Approved or Cleared for the First Time)</th>
-<th style="text-align: left;">임상 용도 (Clinical Use)</th>
-<th style="text-align: left;">바이오마커 (Biomarker)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">위장관 기질 종양 (Gastrointestinal stromal tumors)</td>
-<td style="text-align: left;">PMA</td>
-<td style="text-align: left;">면역조직화학염색 (Immunohistochemistry)</td>
-<td style="text-align: left;">FFPE 조직</td>
-<td style="text-align: left;">2012</td>
-<td style="text-align: left;">치료 선택 지원 및 환자 치료 반응 평가</td>
-<td style="text-align: left;">c-Kit</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">대장 (Colorectal)</td>
-<td style="text-align: left;">PMA</td>
-<td style="text-align: left;">면역조직화학염색</td>
-<td style="text-align: left;">FFPE 조직</td>
-<td style="text-align: left;">1997</td>
-<td style="text-align: left;">질환의 경과 및 치료 반응 추적</td>
-<td style="text-align: left;">p53 단백질</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">췌장 (Pancreatic)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법 (Immunoassay)</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2002</td>
-<td style="text-align: left;">질환 진행 추적</td>
-<td style="text-align: left;">CA 19-9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">전립선 (Prostate)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">1997</td>
-<td style="text-align: left;">양성 질환과 암의 감별 진단 지원</td>
-<td style="text-align: left;">유리 PSA (Free PSA)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">전립선 (Prostate)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2008</td>
-<td style="text-align: left;">암 예측 및 양성 상태와의 감별</td>
-<td style="text-align: left;">[-2]proPSA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">전립선 (Prostate)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈장, 혈청</td>
-<td style="text-align: left;">2009</td>
-<td style="text-align: left;">악성 종양 검출 및 양성 질환과의 감별</td>
-<td style="text-align: left;">피브린/피브리노겐 분해 산물 (DR-70)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">난소 (Ovarian)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">1997</td>
-<td style="text-align: left;">질환의 재발 추적</td>
-<td style="text-align: left;">CA-125</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">난소 (Ovarian)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2008</td>
-<td style="text-align: left;">질환 진행 모니터링</td>
-<td style="text-align: left;">HE4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">난소 (Ovarian)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2011</td>
-<td style="text-align: left;">골반 종괴가 있는 여성의 악성 위험도 평가</td>
-<td style="text-align: left;">OVA1 (다중 단백질)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">난소 (Ovarian)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2005</td>
-<td style="text-align: left;">폐경 전후 여성의 상피성 난소암 위험도 평가</td>
-<td style="text-align: left;">ROMA (HE4 + CA-125)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">PMA</td>
-<td style="text-align: left;">면역조직화학염색</td>
-<td style="text-align: left;">FFPE 조직</td>
-<td style="text-align: left;">1999</td>
-<td style="text-align: left;">예후 판정 및 치료 반응 예측</td>
-<td style="text-align: left;">에스트로겐 수용체 (ER)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">1997</td>
-<td style="text-align: left;">치료 반응 및 질환 경과 추적</td>
-<td style="text-align: left;">CA 27.29</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역분석법</td>
-<td style="text-align: left;">혈청, 혈장</td>
-<td style="text-align: left;">1997</td>
-<td style="text-align: left;">치료 반응 및 질환 경과 추적</td>
-<td style="text-align: left;">CA 15-3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">면역자기 포획, 면역형광법</td>
-<td style="text-align: left;">전혈 (Whole blood)</td>
-<td style="text-align: left;">2005</td>
-<td style="text-align: left;">예후 판정 및 암 진행 예측</td>
-<td style="text-align: left;">순환 종양 세포 (EpCAM, CD45, 사이토케라틴 8, 18, 19+)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">PMA</td>
-<td style="text-align: left;">면역조직화학염색</td>
-<td style="text-align: left;">FFPE 조직</td>
-<td style="text-align: left;">1998</td>
-<td style="text-align: left;">치료 맥락에서의 평가</td>
-<td style="text-align: left;">HER-2/neu</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">간세포 (Hepatocellular)</td>
-<td style="text-align: left;">510(k)</td>
-<td style="text-align: left;">모세관 미세유체 전기영동, HPLC</td>
-<td style="text-align: left;">혈청</td>
-<td style="text-align: left;">2005</td>
-<td style="text-align: left;">질환 발생 위험도 평가</td>
-<td style="text-align: left;">AFP-L3%</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">암 종류 (Type of Cancer) | 제출 유형 (Type of Submission) | 분석법 (Methodology) | 검체 (Specimen) | 최초 승인 또는 허가 연도 (Year Approved or Cleared for the First Time) | 임상 용도 (Clinical Use) | 바이오마커 (Biomarker) |<br>
+:*** | :*** | :*** | :*** | :*** | :*** | :*** |<br>
+위장관 기질 종양 (Gastrointestinal stromal tumors) | PMA | 면역조직화학염색 (Immunohistochemistry) | FFPE 조직 | 2012 | 치료 선택 지원 및 환자 치료 반응 평가 | c-Kit |<br>
+대장 (Colorectal) | PMA | 면역조직화학염색 | FFPE 조직 | 1997 | 질환의 경과 및 치료 반응 추적 | p53 단백질 |<br>
+췌장 (Pancreatic) | 510(k) | 면역분석법 (Immunoassay) | 혈청 | 2002 | 질환 진행 추적 | CA 19-9 |<br>
+전립선 (Prostate) | 510(k) | 면역분석법 | 혈청 | 1997 | 양성 질환과 암의 감별 진단 지원 | 유리 PSA (Free PSA) |<br>
+전립선 (Prostate) | 510(k) | 면역분석법 | 혈청 | 2008 | 암 예측 및 양성 상태와의 감별 | [-2]proPSA |<br>
+전립선 (Prostate) | 510(k) | 면역분석법 | 혈장, 혈청 | 2009 | 악성 종양 검출 및 양성 질환과의 감별 | 피브린/피브리노겐 분해 산물 (DR-70) |<br>
+난소 (Ovarian) | 510(k) | 면역분석법 | 혈청 | 1997 | 질환의 재발 추적 | CA-125 |<br>
+난소 (Ovarian) | 510(k) | 면역분석법 | 혈청 | 2008 | 질환 진행 모니터링 | HE4 |<br>
+난소 (Ovarian) | 510(k) | 면역분석법 | 혈청 | 2011 | 골반 종괴가 있는 여성의 악성 위험도 평가 | OVA1 (다중 단백질) |<br>
+난소 (Ovarian) | 510(k) | 면역분석법 | 혈청 | 2005 | 폐경 전후 여성의 상피성 난소암 위험도 평가 | ROMA (HE4 + CA-125) |<br>
+유방 (Breast) | PMA | 면역조직화학염색 | FFPE 조직 | 1999 | 예후 판정 및 치료 반응 예측 | 에스트로겐 수용체 (ER) |<br>
+유방 (Breast) | 510(k) | 면역분석법 | 혈청 | 1997 | 치료 반응 및 질환 경과 추적 | CA 27.29 |<br>
+유방 (Breast) | 510(k) | 면역분석법 | 혈청, 혈장 | 1997 | 치료 반응 및 질환 경과 추적 | CA 15-3 |<br>
+유방 (Breast) | 510(k) | 면역자기 포획, 면역형광법 | 전혈 (Whole blood) | 2005 | 예후 판정 및 암 진행 예측 | 순환 종양 세포 (EpCAM, CD45, 사이토케라틴 8, 18, 19+) |<br>
+유방 (Breast) | PMA | 면역조직화학염색 | FFPE 조직 | 1998 | 치료 맥락에서의 평가 | HER-2/neu |<br>
+간세포 (Hepatocellular) | 510(k) | 모세관 미세유체 전기영동, HPLC | 혈청 | 2005 | 질환 발생 위험도 평가 | AFP-L3% |</div>
 <hr>
 </section>
 <section id="표-2.2-1상4상-임상시험-중인-암-바이오마커-목록-goossens-et-al.-2015에서-수정-인용" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.2-1상4상-임상시험-중인-암-바이오마커-목록-goossens-et-al.-2015에서-수정-인용">표 2.2 1상~4상 임상시험 중인 암 바이오마커 목록 (Goossens et al.&nbsp;2015에서 수정 인용)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">장기 (Organ)</th>
-<th style="text-align: left;">암 (Cancer)</th>
-<th style="text-align: left;">바이오마커 (Biomarker)</th>
-<th style="text-align: left;">관련 약물 (Associated Drug)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">유방 (Breast)</td>
-<td style="text-align: left;">유방암 (Breast)</td>
-<td style="text-align: left;">BRCA1/2</td>
-<td style="text-align: left;">올라파립 (Olaparib)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">유방</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">HER2 (종양 조직 음성이지만 순환종양세포[CTC] 양성)</td>
-<td style="text-align: left;">라파티닙 (Lapatinib)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">유방</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">TOP2A (HER2 과발현 환자 대상)</td>
-<td style="text-align: left;">안트라사이클린 기반 선행항암요법 (Anthracycline-based neoadjuvant chemotherapy)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">유방</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">HER2 양성 순환종양세포(CTCs)</td>
-<td style="text-align: left;">트라스투주맙 엠탄신 (Trastuzumab Emtansine)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">위장관 (Gastrointestinal)</td>
-<td style="text-align: left;">대장암 (Colorectal)</td>
-<td style="text-align: left;">BRAF</td>
-<td style="text-align: left;">LGX818, BYL719</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">위장관</td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">RAS (돌연변이 유형)</td>
-<td style="text-align: left;">FOLFOXIRI 및 베바시주맙 (Bevacizumab)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">위장관</td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">신규 바이오마커 (미지정)</td>
-<td style="text-align: left;">세툭시맙 (Cetuximab)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">위장관</td>
-<td style="text-align: left;">식도위암 (Esophago-gastric)</td>
-<td style="text-align: left;">HER2</td>
-<td style="text-align: left;">트라스투주맙 및 아파티닙 (Afatinib)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">혈액 (Hematological)</td>
-<td style="text-align: left;">피부 및 말초 T세포 림프종 (Cutaneous and peripheral T-cell lymphomas)</td>
-<td style="text-align: left;">GATA-3</td>
-<td style="text-align: left;">MLN9708</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">두경부 (Head and neck)</td>
-<td style="text-align: left;">편평세포암 (Squamous cell carcinoma)</td>
-<td style="text-align: left;">HER 및 KRAS</td>
-<td style="text-align: left;">HM781-36B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">폐 (Lung)</td>
-<td style="text-align: left;">비소세포폐암 (NSCLC)</td>
-<td style="text-align: left;">BRAF V600E</td>
-<td style="text-align: left;">트라메티닙 (Trametinib), 다브라페닙 (Dabrafenib)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">폐</td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">ROS1</td>
-<td style="text-align: left;">크리조티닙 (Crizotinib)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">피부 (Skin)</td>
-<td style="text-align: left;">흑색종 (Melanoma)</td>
-<td style="text-align: left;">BRAF V600E/K</td>
-<td style="text-align: left;">비니메티닙 (Binimetinib), 트라메티닙 (Trametinib)</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">장기 (Organ) | 암 (Cancer) | 바이오마커 (Biomarker) | 관련 약물 (Associated Drug) |<br>
+:*** | :*** | :*** | :*** |<br>
+유방 (Breast) | 유방암 (Breast) | BRCA1/2 | 올라파립 (Olaparib) |<br>
+유방 | 유방암 | HER2 (종양 조직 음성이지만 순환종양세포[CTC] 양성) | 라파티닙 (Lapatinib) |<br>
+유방 | 유방암 | TOP2A (HER2 과발현 환자 대상) | 안트라사이클린 기반 선행항암요법 (Anthracycline-based neoadjuvant chemotherapy) |<br>
+유방 | 유방암 | HER2 양성 순환종양세포(CTCs) | 트라스투주맙 엠탄신 (Trastuzumab Emtansine) |<br>
+위장관 (Gastrointestinal) | 대장암 (Colorectal) | BRAF | LGX818, BYL719 |<br>
+위장관 | 대장암 | RAS (돌연변이 유형) | FOLFOXIRI 및 베바시주맙 (Bevacizumab) |<br>
+위장관 | 대장암 | 신규 바이오마커 (미지정) | 세툭시맙 (Cetuximab) |<br>
+위장관 | 식도위암 (Esophago-gastric) | HER2 | 트라스투주맙 및 아파티닙 (Afatinib) |<br>
+혈액 (Hematological) | 피부 및 말초 T세포 림프종 (Cutaneous and peripheral T-cell lymphomas) | GATA-3 | MLN9708 |<br>
+두경부 (Head and neck) | 편평세포암 (Squamous cell carcinoma) | HER 및 KRAS | HM781-36B |<br>
+폐 (Lung) | 비소세포폐암 (NSCLC) | BRAF V600E | 트라메티닙 (Trametinib), 다브라페닙 (Dabrafenib) |<br>
+폐 | 비소세포폐암 | ROS1 | 크리조티닙 (Crizotinib) |<br>
+피부 (Skin) | 흑색종 (Melanoma) | BRAF V600E/K | 비니메티닙 (Binimetinib), 트라메티닙 (Trametinib) |</div>
 <hr>
 </section>
 <section id="표-2.3-암-바이오마커cbms에-대해-진행-중인-임상시험-목록-kirwan-et-al.-2015에서-수정-인용" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.3-암-바이오마커cbms에-대해-진행-중인-임상시험-목록-kirwan-et-al.-2015에서-수정-인용">표 2.3 암 바이오마커(CBMs)에 대해 진행 중인 임상시험 목록 (Kirwan et al.&nbsp;2015에서 수정 인용)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">마커 (Marker)</th>
-<th style="text-align: left;">전체 명칭 (Full Name)</th>
-<th style="text-align: left;">암 종류 (Cancer Type)</th>
-<th style="text-align: left;">검출 유형 (Detection Type)</th>
-<th style="text-align: left;">임상 적용 (Clinical Applications)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">AFP</td>
-<td style="text-align: left;">알파태아단백 (α-Fetoprotein)</td>
-<td style="text-align: left;">간암 (Liver)</td>
-<td style="text-align: left;">단백질 농도 (및 AFP-L3 코어 푸코실화율)</td>
-<td style="text-align: left;">스크리닝, 진단, 병기 구분, 치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CA 15-3</td>
-<td style="text-align: left;">암 항원 15-3 (Cancer antigen 15-3)</td>
-<td style="text-align: left;">유방암 (Breast)</td>
-<td style="text-align: left;">MUC1 단백질 수준</td>
-<td style="text-align: left;">치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CA 125</td>
-<td style="text-align: left;">암 항원 125 (Cancer antigen 125)</td>
-<td style="text-align: left;">난소암 (Ovarian)</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">스크리닝, 암과 양성 질환의 감별, 진단, 병기 구분, 치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CA 27-29</td>
-<td style="text-align: left;">암 항원 27-29 (Cancer antigen 27-29)</td>
-<td style="text-align: left;">유방암 (Breast)</td>
-<td style="text-align: left;">MUC1 상의 O-연결 시알릴화 올리고당</td>
-<td style="text-align: left;">치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CA 19-9</td>
-<td style="text-align: left;">탄수화물 항원 19-9 (Carbohydrate antigen 19-9)</td>
-<td style="text-align: left;">췌장암, 담관 및 위암, 결장암</td>
-<td style="text-align: left;">시알릴화 루이스 a 항원(sLeA) 및 강글리오사이드</td>
-<td style="text-align: left;">진단, 치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CEA</td>
-<td style="text-align: left;">암배아성 항원 (Carcinoembryonic antigen)</td>
-<td style="text-align: left;">대장암, 폐암, 유방암, 췌장암, 난소암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">병기 구분, 치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">hCG</td>
-<td style="text-align: left;">인간 융모막 성선자극호르몬 (Human chorionic gonadotropin)</td>
-<td style="text-align: left;">고환암, 난소암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">진단, 병기 구분, 치료 모니터링, 예후 판정</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">HE4</td>
-<td style="text-align: left;">인간 부고환 단백질 4 (Human epididymis protein 4)</td>
-<td style="text-align: left;">난소암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">HER2/neu</td>
-<td style="text-align: left;">인간 표피성장인자수용체 2 (Human epidermal growth factor receptor 2)</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">치료 선택(표적 치료 반응 예측), 예후 판정</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">PSA</td>
-<td style="text-align: left;">전립선 특이 항원 (Prostate-specific antigen)</td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">선별 검사, 진단, 치료 모니터링, 재발 검출</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[-2]proPSA</td>
-<td style="text-align: left;">[-2]proPSA</td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">전립선암 선별 및 위험 예측</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tg</td>
-<td style="text-align: left;">티로글로불린 (Thyroglobulin)</td>
-<td style="text-align: left;">갑상선암 (Thyroid)</td>
-<td style="text-align: left;">단백질 농도</td>
-<td style="text-align: left;">치료 후 잔류 조직 확인 및 재발 모니터링</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">OVA1 검사</td>
-<td style="text-align: left;">OVA1 test (CA125, 트랜스페린, 아포지단백 A1, 프리알부민, β2-마이크로글로불린)</td>
-<td style="text-align: left;">난소암 (골반 종괴)</td>
-<td style="text-align: left;">다중 단백질 복합 수치</td>
-<td style="text-align: left;">골반 종괴의 악성 위험도 평가 및 수술 전 감별</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ROMA 검사</td>
-<td style="text-align: left;">ROMA test (HE4 + CA125 수치 기반 알고리즘)</td>
-<td style="text-align: left;">난소암</td>
-<td style="text-align: left;">다중 단백질 복합 수치</td>
-<td style="text-align: left;">상피성 난소암 위험도 예측 및 분류</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">마커 (Marker) | 전체 명칭 (Full Name) | 암 종류 (Cancer Type) | 검출 유형 (Detection Type) | 임상 적용 (Clinical Applications) |<br>
+:*** | :*** | :*** | :*** | :*** |<br>
+AFP | 알파태아단백 (α-Fetoprotein) | 간암 (Liver) | 단백질 농도 (및 AFP-L3 코어 푸코실화율) | 스크리닝, 진단, 병기 구분, 치료 모니터링, 재발 검출 |<br>
+CA 15-3 | 암 항원 15-3 (Cancer antigen 15-3) | 유방암 (Breast) | MUC1 단백질 수준 | 치료 모니터링, 재발 검출 |<br>
+CA 125 | 암 항원 125 (Cancer antigen 125) | 난소암 (Ovarian) | 단백질 농도 | 스크리닝, 암과 양성 질환의 감별, 진단, 병기 구분, 치료 모니터링, 재발 검출 |<br>
+CA 27-29 | 암 항원 27-29 (Cancer antigen 27-29) | 유방암 (Breast) | MUC1 상의 O-연결 시알릴화 올리고당 | 치료 모니터링, 재발 검출 |<br>
+CA 19-9 | 탄수화물 항원 19-9 (Carbohydrate antigen 19-9) | 췌장암, 담관 및 위암, 결장암 | 시알릴화 루이스 a 항원(sLeA) 및 강글리오사이드 | 진단, 치료 모니터링, 재발 검출 |<br>
+CEA | 암배아성 항원 (Carcinoembryonic antigen) | 대장암, 폐암, 유방암, 췌장암, 난소암 | 단백질 농도 | 병기 구분, 치료 모니터링, 재발 검출 |<br>
+hCG | 인간 융모막 성선자극호르몬 (Human chorionic gonadotropin) | 고환암, 난소암 | 단백질 농도 | 진단, 병기 구분, 치료 모니터링, 예후 판정 |<br>
+HE4 | 인간 부고환 단백질 4 (Human epididymis protein 4) | 난소암 | 단백질 농도 | 치료 모니터링, 재발 검출 |<br>
+HER2/neu | 인간 표피성장인자수용체 2 (Human epidermal growth factor receptor 2) | 유방암 | 단백질 농도 | 치료 선택(표적 치료 반응 예측), 예후 판정 |<br>
+PSA | 전립선 특이 항원 (Prostate-specific antigen) | 전립선암 | 단백질 농도 | 선별 검사, 진단, 치료 모니터링, 재발 검출 |<br>
+[-2]proPSA | [-2]proPSA | 전립선암 | 단백질 농도 | 전립선암 선별 및 위험 예측 |<br>
+Tg | 티로글로불린 (Thyroglobulin) | 갑상선암 (Thyroid) | 단백질 농도 | 치료 후 잔류 조직 확인 및 재발 모니터링 |<br>
+OVA1 검사 | OVA1 test (CA125, 트랜스페린, 아포지단백 A1, 프리알부민, β2-마이크로글로불린) | 난소암 (골반 종괴) | 다중 단백질 복합 수치 | 골반 종괴의 악성 위험도 평가 및 수술 전 감별 |<br>
+ROMA 검사 | ROMA test (HE4 + CA125 수치 기반 알고리즘) | 난소암 | 다중 단백질 복합 수치 | 상피성 난소암 위험도 예측 및 분류 |</div>
 <hr>
 </section>
 </section>
@@ -2191,312 +1825,36 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="표-2.4-종양학-분야에서-다양한-후성유전학적-마커의-진단-예후-및-예측-역할" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.4-종양학-분야에서-다양한-후성유전학적-마커의-진단-예후-및-예측-역할">표 2.4 종양학 분야에서 다양한 후성유전학적 마커의 진단, 예후 및 예측 역할</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">후성유전 바이오마커 (Epigenetic Biomarkers)</th>
-<th style="text-align: left;">생체 시료 (Biological Material)</th>
-<th style="text-align: left;">침습성 / 비침습성 (Invasive / Non-invasive)</th>
-<th style="text-align: left;">진단 (Diagnostic)</th>
-<th style="text-align: left;">예후 (Prognostic)</th>
-<th style="text-align: left;">예측 (Predictive)</th>
-<th style="text-align: left;">대상 암종 (Target Cancer)</th>
-<th style="text-align: left;">출처</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">APC, RASSF1, GSTP1 메틸화 상태</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">Partin et al.&nbsp;2014; Stewart et al.&nbsp;2013</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">IDH1 p.R132H 돌연변이 및 MGMT</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">핍지교종 및 핍지성상세포종</td>
-<td style="text-align: left;">van den Bent et al.&nbsp;2013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">cf-뉴클레오솜 에피토프 조합</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Misek and Craig 2014; Lividini et al.&nbsp;2012</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CTC 염색질 상의 CTCF 유전자좌 메틸화 상태</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">전이성 유방암</td>
-<td style="text-align: left;">Mastoraki et al.&nbsp;2018</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">H3K4me3 및 Wdr82 발현</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Liu et al.&nbsp;2018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ARID1 (ARID1A 및 ARID1B)</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">신경모세포종</td>
-<td style="text-align: left;">Sausen et al.&nbsp;2013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">염색질 입체 구조 (Chromatin conformation)</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">Pchejetski et al.&nbsp;2018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">MGMT 과메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">교모세포종</td>
-<td style="text-align: left;">Wick et al.&nbsp;2012</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">MLH1 저메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Rahier et al.&nbsp;2017</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">RB1 과메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">망막모세포종</td>
-<td style="text-align: left;">Ohtani-Fujita et al.&nbsp;1997</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">히스톤 변형 (Histone modifications)</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">다양한 암종</td>
-<td style="text-align: left;">Shain and Pollack 2013</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">MGMT-STP27 과메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">교모세포종</td>
-<td style="text-align: left;">Roszkowski et al.&nbsp;2016</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ESR1 메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Vedeld et al.&nbsp;2018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">H3Cit</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">진행성 암</td>
-<td style="text-align: left;">Thålin et al.&nbsp;2018</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SALL1 메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Liu et al.&nbsp;2017</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SEPT9 메틸화</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Jass 2007; Weisenberger et al.&nbsp;2006</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ZNF331 메틸화</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">위암, 대장암</td>
-<td style="text-align: left;">Wang et al.&nbsp;2018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SMARCA4/BRG1</td>
-<td style="text-align: left;">동결 조직</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">Bell et al.&nbsp;2016</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-21</td>
-<td style="text-align: left;">FFPE / 혈액</td>
-<td style="text-align: left;">침습적 / 비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">다발성 암종</td>
-<td style="text-align: left;">Jansen et al.&nbsp;2005; Larrea et al.&nbsp;2016; Leopold et al.&nbsp;2007; Resnick et al.&nbsp;2009; Ryu et al.&nbsp;2011</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-30d, miR-21</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">Czubak et al.&nbsp;2015</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-31-3p</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Manceau et al.&nbsp;2014</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-7, miR-205, miR-21, miR-29b, miR-375, miR-106a, miR-125a-5p, miR-129-3p</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">Nadal et al.&nbsp;2014</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-29a, miR-92a</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Huang et al.&nbsp;2010</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-506, miR-4316</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암</td>
-<td style="text-align: left;">Krawczyk et al.&nbsp;2017</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-126, miR-145, miR-210, miR-205-5p</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">Leng et al.&nbsp;2017</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-149-3p, miR-150-5p, miR-193a-3p</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">흑색종</td>
-<td style="text-align: left;">Fogli et al.&nbsp;2017</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-200 패밀리, miR-17 패밀리</td>
-<td style="text-align: left;">혈액</td>
-<td style="text-align: left;">비침습적</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">Lin et al.&nbsp;2014</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-17, miR-155</td>
-<td style="text-align: left;">FFPE</td>
-<td style="text-align: left;">침습적</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">비소세포폐암</td>
-<td style="text-align: left;">Czubak et al.&nbsp;2015</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">후성유전 바이오마커 (Epigenetic Biomarkers) | 생체 시료 (Biological Material) | 침습성 / 비침습성 (Invasive / Non-invasive) | 진단 (Diagnostic) | 예후 (Prognostic) | 예측 (Predictive) | 대상 암종 (Target Cancer) | 출처 |<br>
+:*** | :*** | :*** | :*** | :*** | :*** | :*** | :*** |<br>
+APC, RASSF1, GSTP1 메틸화 상태 | FFPE | 침습적 | + | | | 전립선암 | Partin et al.&nbsp;2014; Stewart et al.&nbsp;2013 |<br>
+IDH1 p.R132H 돌연변이 및 MGMT | FFPE | 침습적 | + | + | + | 핍지교종 및 핍지성상세포종 | van den Bent et al.&nbsp;2013 |<br>
+cf-뉴클레오솜 에피토프 조합 | 혈액 | 비침습적 | + | | | 대장암 | Misek and Craig 2014; Lividini et al.&nbsp;2012 |<br>
+CTC 염색질 상의 CTCF 유전자좌 메틸화 상태 | 혈액 | 비침습적 | | + | | 전이성 유방암 | Mastoraki et al.&nbsp;2018 |<br>
+H3K4me3 및 Wdr82 발현 | FFPE | 침습적 | | + | | 대장암 | Liu et al.&nbsp;2018 |<br>
+ARID1 (ARID1A 및 ARID1B) | FFPE | 침습적 | + | + | | 신경모세포종 | Sausen et al.&nbsp;2013 |<br>
+염색질 입체 구조 (Chromatin conformation) | 혈액 | 비침습적 | + | | | 전립선암 | Pchejetski et al.&nbsp;2018 |<br>
+MGMT 과메틸화 | FFPE | 침습적 | | | + | 교모세포종 | Wick et al.&nbsp;2012 |<br>
+MLH1 저메틸화 | FFPE | 침습적 | + | | | 대장암 | Rahier et al.&nbsp;2017 |<br>
+RB1 과메틸화 | FFPE | 침습적 | + | | | 망막모세포종 | Ohtani-Fujita et al.&nbsp;1997 |<br>
+히스톤 변형 (Histone modifications) | FFPE | 침습적 | | + | | 다양한 암종 | Shain and Pollack 2013 |<br>
+MGMT-STP27 과메틸화 | FFPE | 침습적 | | + | | 교모세포종 | Roszkowski et al.&nbsp;2016 |<br>
+ESR1 메틸화 | FFPE | 침습적 | | + | | 대장암 | Vedeld et al.&nbsp;2018 |<br>
+H3Cit | 혈액 | 비침습적 | | + | | 진행성 암 | Thålin et al.&nbsp;2018 |<br>
+SALL1 메틸화 | FFPE | 침습적 | + | | | 대장암 | Liu et al.&nbsp;2017 |<br>
+SEPT9 메틸화 | 혈액 | 비침습적 | + | | | 대장암 | Jass 2007; Weisenberger et al.&nbsp;2006 |<br>
+ZNF331 메틸화 | FFPE | 침습적 | + | | | 위암, 대장암 | Wang et al.&nbsp;2018 |<br>
+SMARCA4/BRG1 | 동결 조직 | 침습적 | | + | | 비소세포폐암 | Bell et al.&nbsp;2016 |<br>
+miR-21 | FFPE / 혈액 | 침습적 / 비침습적 | + | + | | 다발성 암종 | Jansen et al.&nbsp;2005; Larrea et al.&nbsp;2016; Leopold et al.&nbsp;2007; Resnick et al.&nbsp;2009; Ryu et al.&nbsp;2011 |<br>
+miR-30d, miR-21 | FFPE | 침습적 | | + | | 비소세포폐암 | Czubak et al.&nbsp;2015 |<br>
+miR-31-3p | FFPE | 침습적 | | + | + | 대장암 | Manceau et al.&nbsp;2014 |<br>
+miR-7, miR-205, miR-21, miR-29b, miR-375, miR-106a, miR-125a-5p, miR-129-3p | FFPE | 침습적 | + | | | 비소세포폐암 | Nadal et al.&nbsp;2014 |<br>
+miR-29a, miR-92a | 혈액 | 비침습적 | + | | | 대장암 | Huang et al.&nbsp;2010 |<br>
+miR-506, miR-4316 | 혈액 | 비침습적 | + | | | 대장암 | Krawczyk et al.&nbsp;2017 |<br>
+miR-126, miR-145, miR-210, miR-205-5p | 혈액 | 비침습적 | + | | | 비소세포폐암 | Leng et al.&nbsp;2017 |<br>
+miR-149-3p, miR-150-5p, miR-193a-3p | 혈액 | 비침습적 | + | | | 흑색종 | Fogli et al.&nbsp;2017 |<br>
+miR-200 패밀리, miR-17 패밀리 | 혈액 | 비침습적 | + | | | 전립선암 | Lin et al.&nbsp;2014 |<br>
+miR-17, miR-155 | FFPE | 침습적 | | + | | 비소세포폐암 | Czubak et al.&nbsp;2015 |</div>
 </section>
 <section id="마이크로바이오믹스-바이오마커" class="level3">
 <h3 class="anchored" data-anchor-id="마이크로바이오믹스-바이오마커">2.4.6 마이크로바이오믹스 바이오마커</h3>
@@ -2514,102 +1872,21 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="표-2.5-발암성-미생물의-기전-설명-description-of-carcinogenic-microbes-mechanisms" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.5-발암성-미생물의-기전-설명-description-of-carcinogenic-microbes-mechanisms">표 2.5 발암성 미생물의 기전 설명 (Description of carcinogenic microbes’ mechanisms)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">암의 특징 (Hallmark)</th>
-<th style="text-align: left;">미생물 (Microbes)</th>
-<th style="text-align: left;">작용 기전 (MOA)</th>
-<th style="text-align: left;">인용 출처 (Source cited)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>종양 촉진 염증 (Tumor-promoting inflammation)</strong></td>
-<td style="text-align: left;">광범위한 그람 음성 균주 (Gram-negative strain broadly)</td>
-<td style="text-align: left;">TLR2 및 TLR4 매개 선천성 염증성 사이토카인의 과발현; IL-17/23 경로 개시</td>
-<td style="text-align: left;">Garrett (2015), Zitvogel et al.&nbsp;(2016)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">클로스트리디움 종 (Clostridium species)</td>
-<td style="text-align: left;">담즙으로부터 DCA 생성 및 IL-1β와 IL-6 유도</td>
-<td style="text-align: left;">Yoshimoto et al.&nbsp;(2013)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">독소 생성 바테로이데스 프라질리스 (Toxigenic <em>Bacteroides fragilis</em>)</td>
-<td style="text-align: left;">IL-17 사이토카인 유도 및 Th17 분화 유도</td>
-<td style="text-align: left;">Wu et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">푸소박테리움 (Fusobacterium)</td>
-<td style="text-align: left;">IL-6, IL-8, IL-18 및 NF-κB 신호전달 증가</td>
-<td style="text-align: left;">Kostic et al.&nbsp;(2013), Rubinstein et al.&nbsp;(2013)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">헬리코박터 (Helicobacter)</td>
-<td style="text-align: left;">CagA를 통한 IL-1B, IL-8 및 NF-κB 신호전달 증가</td>
-<td style="text-align: left;">Peek and Blaser (2002)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">프로피오니박테리움 아크네스 (<em>Propionibacterium acnes</em>)</td>
-<td style="text-align: left;">IL-6, IL-8 및 IFN-γ 유도</td>
-<td style="text-align: left;">Fehri et al.&nbsp;(2011)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>면역 파괴 회피 (Avoiding immune destruction)</strong></td>
-<td style="text-align: left;">헬리코박터 (Helicobacter)</td>
-<td style="text-align: left;">조절 T세포(Tregs) 유도; 상피세포 PD-L1 발현 상향조절; GGT 및 VacA를 통한 T세포 증식 억제</td>
-<td style="text-align: left;">Peek and Blaser (2002)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">푸소박테리움 (Fusobacterium)</td>
-<td style="text-align: left;">면역억제성 골수유래 억제세포(MDSC) 유도; Fap2를 통한 TIGIT 억제</td>
-<td style="text-align: left;">Gur et al.&nbsp;(2015), Kostic et al.&nbsp;(2013)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>증식 신호 지속 (Sustaining proliferative signaling)</strong></td>
-<td style="text-align: left;">푸소박테리움 뉴클레아툼 (<em>Fusobacterium nucleatum</em>)</td>
-<td style="text-align: left;">E-카드헤린(E-cadherin) 결합 및 β-카테닌(β-catenin) 신호전달 상향조절</td>
-<td style="text-align: left;">Rubinstein et al.&nbsp;(2013)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">프로피오니박테리움 아크네스 (<em>P. acnes</em>)</td>
-<td style="text-align: left;">증식 증가 및 COX-2 발현 상향조절</td>
-<td style="text-align: left;">Fehri et al.&nbsp;(2011)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">헬리코박터 (Helicobacter)</td>
-<td style="text-align: left;">상피세포 내 p27 감소, 가스트린(gastrin) 증가</td>
-<td style="text-align: left;">Peek and Blaser (2002)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>유전체 불안정성 및 돌연변이 (Genome instability and mutation)</strong></td>
-<td style="text-align: left;">대장균 (<em>Escherichia coli</em>)</td>
-<td style="text-align: left;">이중가닥 절단을 유도하는 콜리박틴(colibactin) 생성 PKS</td>
-<td style="text-align: left;">Arthur et al.&nbsp;(2012)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">헬리코박터 (Helicobacter)</td>
-<td style="text-align: left;">숙주 세포를 손상시키는 감염 반응성 활성산소종(ROS) 생성</td>
-<td style="text-align: left;">Peek and Blaser (2002)</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">암의 특징 (Hallmark) | 미생물 (Microbes) | 작용 기전 (MOA) | 인용 출처 (Source cited) |<br>
+:*** | :*** | :*** | :*** |<br>
+<strong>종양 촉진 염증 (Tumor-promoting inflammation)</strong> | 광범위한 그람 음성 균주 (Gram-negative strain broadly) | TLR2 및 TLR4 매개 선천성 염증성 사이토카인의 과발현; IL-17/23 경로 개시 | Garrett (2015), Zitvogel et al.&nbsp;(2016) |<br>
+| 클로스트리디움 종 (Clostridium species) | 담즙으로부터 DCA 생성 및 IL-1β와 IL-6 유도 | Yoshimoto et al.&nbsp;(2013) |<br>
+| 독소 생성 바테로이데스 프라질리스 (Toxigenic <em>Bacteroides fragilis</em>) | IL-17 사이토카인 유도 및 Th17 분화 유도 | Wu et al.&nbsp;(2009) |<br>
+| 푸소박테리움 (Fusobacterium) | IL-6, IL-8, IL-18 및 NF-κB 신호전달 증가 | Kostic et al.&nbsp;(2013), Rubinstein et al.&nbsp;(2013) |<br>
+| 헬리코박터 (Helicobacter) | CagA를 통한 IL-1B, IL-8 및 NF-κB 신호전달 증가 | Peek and Blaser (2002) |<br>
+| 프로피오니박테리움 아크네스 (<em>Propionibacterium acnes</em>) | IL-6, IL-8 및 IFN-γ 유도 | Fehri et al.&nbsp;(2011) |<br>
+<strong>면역 파괴 회피 (Avoiding immune destruction)</strong> | 헬리코박터 (Helicobacter) | 조절 T세포(Tregs) 유도; 상피세포 PD-L1 발현 상향조절; GGT 및 VacA를 통한 T세포 증식 억제 | Peek and Blaser (2002) |<br>
+| 푸소박테리움 (Fusobacterium) | 면역억제성 골수유래 억제세포(MDSC) 유도; Fap2를 통한 TIGIT 억제 | Gur et al.&nbsp;(2015), Kostic et al.&nbsp;(2013) |<br>
+<strong>증식 신호 지속 (Sustaining proliferative signaling)</strong> | 푸소박테리움 뉴클레아툼 (<em>Fusobacterium nucleatum</em>) | E-카드헤린(E-cadherin) 결합 및 β-카테닌(β-catenin) 신호전달 상향조절 | Rubinstein et al.&nbsp;(2013) |<br>
+| 프로피오니박테리움 아크네스 (<em>P. acnes</em>) | 증식 증가 및 COX-2 발현 상향조절 | Fehri et al.&nbsp;(2011) |<br>
+| 헬리코박터 (Helicobacter) | 상피세포 내 p27 감소, 가스트린(gastrin) 증가 | Peek and Blaser (2002) |<br>
+<strong>유전체 불안정성 및 돌연변이 (Genome instability and mutation)</strong> | 대장균 (<em>Escherichia coli</em>) | 이중가닥 절단을 유도하는 콜리박틴(colibactin) 생성 PKS | Arthur et al.&nbsp;(2012) |<br>
+| 헬리코박터 (Helicobacter) | 숙주 세포를 손상시키는 감염 반응성 활성산소종(ROS) 생성 | Peek and Blaser (2002) |</div>
 <hr>
 </section>
 <section id="암-영상-기술" class="level3">
@@ -2625,180 +1902,27 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="표-2.6-서로-다른-암-유형에-대한-새로운-영상-기술과-그-장단점-new-imaging-technologies-for-different-cancer-types-and-their-advantages-and-disadvantages" class="level3">
 <h3 class="anchored" data-anchor-id="표-2.6-서로-다른-암-유형에-대한-새로운-영상-기술과-그-장단점-new-imaging-technologies-for-different-cancer-types-and-their-advantages-and-disadvantages">표 2.6 서로 다른 암 유형에 대한 새로운 영상 기술과 그 장단점 (New imaging technologies for different cancer types and their advantages and disadvantages)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">임상 문제 (Clinical problem)</th>
-<th style="text-align: left;">분야 / 암 종 (Discipline / Cancer)</th>
-<th style="text-align: left;">신기술 (New technology)</th>
-<th style="text-align: left;">장점 (Advantage)</th>
-<th style="text-align: left;">단점 (Disadvantage)</th>
-<th style="text-align: left;">참고문헌 (Reference)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>선별검사 (Screening)</strong></td>
-<td style="text-align: left;">유방암 (Breast cancer)</td>
-<td style="text-align: left;">전용 유방 CT 스캔 (Dedicated breast CT scan)</td>
-<td style="text-align: left;">높은 해상도 및 높은 특이도</td>
-<td style="text-align: left;">이온화 방사선 사용 (2-view 유방촬영술과 동일)</td>
-<td style="text-align: left;">Boone and Lindfors (2006), Boone et al.&nbsp;(2006)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">양전자방출 유방촬영술 (PEM)</td>
-<td style="text-align: left;">높은 민감도 및 특이도</td>
-<td style="text-align: left;">저해상도, 방사성 추적자 정맥 주사 필요</td>
-<td style="text-align: left;">Weinberg (2006)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">광학 (다파장 광학 단층촬영)</td>
-<td style="text-align: left;">안전함, 저렴함, 빠름</td>
-<td style="text-align: left;">낮은~중등도 특이도, 2 mm 미만의 제한된 침투 깊이</td>
-<td style="text-align: left;">Cerussi et al.&nbsp;(2006)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">광학 (산란 분광법)</td>
-<td style="text-align: left;">안전함, 저렴함, 빠름</td>
-<td style="text-align: left;">낮은~중등도 특이도</td>
-<td style="text-align: left;">Perelman (2006)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">광학 (편광 분광법)</td>
-<td style="text-align: left;">안전함, 저렴함, 빠름</td>
-<td style="text-align: left;">낮은~중등도 특이도</td>
-<td style="text-align: left;">Hielscher et al.&nbsp;(2006)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">광학 (자가형광 분광법)</td>
-<td style="text-align: left;">안전함, 저렴함, 빠름</td>
-<td style="text-align: left;">낮은~중등도 특이도</td>
-<td style="text-align: left;">Ramanujam et al.&nbsp;(2006)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">비조영 증강 분석 DCE-MRI</td>
-<td style="text-align: left;">높은 민감도, 조영제 없음, MRI와 결합 가능</td>
-<td style="text-align: left;">모호한 특이도</td>
-<td style="text-align: left;">Dougherty et al.&nbsp;(2007)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">대장암 (Colorectal)</td>
-<td style="text-align: left;">가상 대장내시경 (Virtual colonoscopy) (CT 기반)</td>
-<td style="text-align: left;">비침습적, 비교적 빠름</td>
-<td style="text-align: left;">작은 용종에 대한 낮은 민감도, 방사선 노출</td>
-<td style="text-align: left;">Pickhardt and Kim (2007)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>병기 설정 (Staging)</strong></td>
-<td style="text-align: left;">모든 암 (All cancers)</td>
-<td style="text-align: left;">비행시간형 PET (Time-of-flight PET, 18F-FDG-PET)</td>
-<td style="text-align: left;">높은 민감도 및 특이도</td>
-<td style="text-align: left;">높은 비용, 방사선 노출, 모든 종양에 FDG가 축적되지 않음</td>
-<td style="text-align: left;">Cherry (2006)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">모든 암</td>
-<td style="text-align: left;">과분극 대사 MRI</td>
-<td style="text-align: left;">높은 민감도, 생체 내 분자 대사 추적 가능</td>
-<td style="text-align: left;">짧은 이완 시간, 제한된 장비 가용성</td>
-<td style="text-align: left;">Golman et al.&nbsp;(2006)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">모든 암</td>
-<td style="text-align: left;">신호 증폭 및 배경 억제 분자 표적 리간드 (SPECT/PET)</td>
-<td style="text-align: left;">높은 민감도 및 표적 신호대잡음비(SBR) 개선</td>
-<td style="text-align: left;">수용체 기반 영상화의 정량화 난점</td>
-<td style="text-align: left;">Humblet et al.&nbsp;(2006), Gabriel et al.&nbsp;(2007)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">광간섭 단층촬영 (OCT)</td>
-<td style="text-align: left;">고해상도, 실시간 3D 정량 분석</td>
-<td style="text-align: left;">1~2 mm의 얕은 조직 침투 깊이</td>
-<td style="text-align: left;">Bouma et al.&nbsp;(2000)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">소화기암 (Gastrointestinal)</td>
-<td style="text-align: left;">광학 (반사 및 산란 분광법)</td>
-<td style="text-align: left;">내시경 결합 가능, 비침습적</td>
-<td style="text-align: left;">표면 영상에 국한, 혈액 간섭</td>
-<td style="text-align: left;">Georgakoudi and Van Dam (2003)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">자궁경부암 (Cervical)</td>
-<td style="text-align: left;">외인성 형광 단층촬영</td>
-<td style="text-align: left;">고감도 분자 특이성</td>
-<td style="text-align: left;">형광체 전달 및 광 침투 깊이 한계</td>
-<td style="text-align: left;">Huh et al.&nbsp;(2004)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>치료 (Treatment)</strong></td>
-<td style="text-align: left;">수술 (Surgery)</td>
-<td style="text-align: left;">근적외선 형광 영상 (NIR fluorescence)</td>
-<td style="text-align: left;">실시간 유도, 높은 특이도, 이온화 방사선 없음</td>
-<td style="text-align: left;">깊은 조직 투과 한계 (수 밀리미터)</td>
-<td style="text-align: left;">Frangioni (2003), De Grand and Frangioni (2003)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">수술</td>
-<td style="text-align: left;">근적외선 반사 분광법 (NIR reflectance)</td>
-<td style="text-align: left;">비침습적, 안전함</td>
-<td style="text-align: left;">중등도 민감도, 표면 조직에 국한</td>
-<td style="text-align: left;">DaCosta et al.&nbsp;(2005)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">방사선 치료 (Radiotherapy)</td>
-<td style="text-align: left;">이온빔 유도 PET/CT</td>
-<td style="text-align: left;">실시간 선량 전달 피드백</td>
-<td style="text-align: left;">고비용의 전문화된 인프라 필요</td>
-<td style="text-align: left;">Nishio et al.&nbsp;(2006)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">화학요법 (Chemotherapy)</td>
-<td style="text-align: left;">영상 유도 광학 치료 (DCE-MRI 유도 광학 분광법)</td>
-<td style="text-align: left;">정량적 분자 정보 제공</td>
-<td style="text-align: left;">복잡한 수학적 모델링 필요</td>
-<td style="text-align: left;">Carpenter et al.&nbsp;(2007), Hsiang et al.&nbsp;(2005)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">화학요법</td>
-<td style="text-align: left;">영상 유도 치료 (99mTc-Annexin V)</td>
-<td style="text-align: left;">세포사멸(아포토시스) 실시간 모니터링</td>
-<td style="text-align: left;">정맥 주사 필요 및 동위원소 준비</td>
-<td style="text-align: left;">Kartachova et al.&nbsp;(2004), Rottey et al.&nbsp;(2006)</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">임상 문제 (Clinical problem) | 분야 / 암 종 (Discipline / Cancer) | 신기술 (New technology) | 장점 (Advantage) | 단점 (Disadvantage) | 참고문헌 (Reference) |<br>
+:*** | :*** | :*** | :*** | :*** | :*** |<br>
+<strong>선별검사 (Screening)</strong> | 유방암 (Breast cancer) | 전용 유방 CT 스캔 (Dedicated breast CT scan) | 높은 해상도 및 높은 특이도 | 이온화 방사선 사용 (2-view 유방촬영술과 동일) | Boone and Lindfors (2006), Boone et al.&nbsp;(2006) |<br>
+| 유방암 | 양전자방출 유방촬영술 (PEM) | 높은 민감도 및 특이도 | 저해상도, 방사성 추적자 정맥 주사 필요 | Weinberg (2006) |<br>
+| 유방암 | 광학 (다파장 광학 단층촬영) | 안전함, 저렴함, 빠름 | 낮은~중등도 특이도, 2 mm 미만의 제한된 침투 깊이 | Cerussi et al.&nbsp;(2006) |<br>
+| 유방암 | 광학 (산란 분광법) | 안전함, 저렴함, 빠름 | 낮은~중등도 특이도 | Perelman (2006) |<br>
+| 유방암 | 광학 (편광 분광법) | 안전함, 저렴함, 빠름 | 낮은~중등도 특이도 | Hielscher et al.&nbsp;(2006) |<br>
+| 유방암 | 광학 (자가형광 분광법) | 안전함, 저렴함, 빠름 | 낮은~중등도 특이도 | Ramanujam et al.&nbsp;(2006) |<br>
+| 유방암 | 비조영 증강 분석 DCE-MRI | 높은 민감도, 조영제 없음, MRI와 결합 가능 | 모호한 특이도 | Dougherty et al.&nbsp;(2007) |<br>
+| 대장암 (Colorectal) | 가상 대장내시경 (Virtual colonoscopy) (CT 기반) | 비침습적, 비교적 빠름 | 작은 용종에 대한 낮은 민감도, 방사선 노출 | Pickhardt and Kim (2007) |<br>
+<strong>병기 설정 (Staging)</strong> | 모든 암 (All cancers) | 비행시간형 PET (Time-of-flight PET, 18F-FDG-PET) | 높은 민감도 및 특이도 | 높은 비용, 방사선 노출, 모든 종양에 FDG가 축적되지 않음 | Cherry (2006) |<br>
+| 모든 암 | 과분극 대사 MRI | 높은 민감도, 생체 내 분자 대사 추적 가능 | 짧은 이완 시간, 제한된 장비 가용성 | Golman et al.&nbsp;(2006) |<br>
+| 모든 암 | 신호 증폭 및 배경 억제 분자 표적 리간드 (SPECT/PET) | 높은 민감도 및 표적 신호대잡음비(SBR) 개선 | 수용체 기반 영상화의 정량화 난점 | Humblet et al.&nbsp;(2006), Gabriel et al.&nbsp;(2007) |<br>
+| 유방암 | 광간섭 단층촬영 (OCT) | 고해상도, 실시간 3D 정량 분석 | 1~2 mm의 얕은 조직 침투 깊이 | Bouma et al.&nbsp;(2000) |<br>
+| 소화기암 (Gastrointestinal) | 광학 (반사 및 산란 분광법) | 내시경 결합 가능, 비침습적 | 표면 영상에 국한, 혈액 간섭 | Georgakoudi and Van Dam (2003) |<br>
+| 자궁경부암 (Cervical) | 외인성 형광 단층촬영 | 고감도 분자 특이성 | 형광체 전달 및 광 침투 깊이 한계 | Huh et al.&nbsp;(2004) |<br>
+<strong>치료 (Treatment)</strong> | 수술 (Surgery) | 근적외선 형광 영상 (NIR fluorescence) | 실시간 유도, 높은 특이도, 이온화 방사선 없음 | 깊은 조직 투과 한계 (수 밀리미터) | Frangioni (2003), De Grand and Frangioni (2003) |<br>
+| 수술 | 근적외선 반사 분광법 (NIR reflectance) | 비침습적, 안전함 | 중등도 민감도, 표면 조직에 국한 | DaCosta et al.&nbsp;(2005) |<br>
+| 방사선 치료 (Radiotherapy) | 이온빔 유도 PET/CT | 실시간 선량 전달 피드백 | 고비용의 전문화된 인프라 필요 | Nishio et al.&nbsp;(2006) |<br>
+| 화학요법 (Chemotherapy) | 영상 유도 광학 치료 (DCE-MRI 유도 광학 분광법) | 정량적 분자 정보 제공 | 복잡한 수학적 모델링 필요 | Carpenter et al.&nbsp;(2007), Hsiang et al.&nbsp;(2005) |<br>
+| 화학요법 | 영상 유도 치료 (99mTc-Annexin V) | 세포사멸(아포토시스) 실시간 모니터링 | 정맥 주사 필요 및 동위원소 준비 | Kartachova et al.&nbsp;(2004), Rottey et al.&nbsp;(2006) |</div>
 <hr>
 </section>
 <section id="최신-유망-기술-emerging-technologies" class="level3">
@@ -3830,8 +2954,7 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="제7장-암-생존-및-약물-내성-바이오마커-biomarkers-in-cancer-survival-and-drug-resistance" class="level1">
 <h1>제7장: 암 생존 및 약물 내성 바이오마커 (Biomarkers in Cancer Survival and Drug Resistance)</h1>
-<p><strong>초록 (Abstract)</strong><br>
-암 생존 및 내성 바이오마커는 신체의 다양한 조직이나 체액에 분포하는 생체 분자로서, 암세포의 성장 및 약물 내성을 가리키는 비정상적인 과정의 지표로 간주될 수 있다. 이러한 바이오마커는 원발암 선별검사, 환자 평가, 질환 위험도 추정, 양성 종양과 악성 종양의 감별, 예측, 암 진단 환자의 예후 결정, 그리고 질환의 진행을 조사하거나 치료에 대한 약물 반응을 밝혀 질환 상태를 평가하는 등 암의 모든 측면에서 큰 주목을 받아왔다. 현재 그 적용 분야와 분자적 변화를 기반으로 수많은 바이오마커가 탐색되었으며, 그중 예측 및 예후 마커로 구성된 약물 내성 및 치료 반응 바이오마커는 약물 선택과 환자의 생존율 향상에 중요한 역할을 한다. 다양한 바이오마커 중에서도 특정 마이크로RNA(microRNA, miRNA)의 높은 발현은 여러 유형의 인간 암에서 생존율 및 약물 내성을 예측하는 잠재적인 주요 바이오마커로 확인되었다. 종양은 적응력이 매우 뛰어나며, 생존 신호전달 경로의 활성화와 하위 사멸 신호전달 경로의 비활성화 또한 약물 내성과 암세포 성장을 유발할 수 있다. 마찬가지로 후성유전학적 변화와 미세환경 내 암세포의 영향 또한 약물 내성의 핵심 요인으로 인식되어 왔다. 더욱이 치료 전략의 실패는 다양한 치료 접근법에 고도의 내성을 지닌 암줄기세포(cancer stem cells)의 존재 때문으로 설명되기도 한다. 나아가 많은 종양에 존재하는 분자적 및 유전적 이질성(heterogeneity)이 점차 밝혀지고 있으며, 이는 내성과 암 생존에 실질적으로 기여하는 또 다른 주요 문제이다.</p>
+<p><strong>초록 (Abstract)</strong> 암 생존 및 내성 바이오마커는 신체의 다양한 조직이나 체액에 분포하는 생체 분자로서, 암세포의 성장 및 약물 내성을 가리키는 비정상적인 과정의 지표로 간주될 수 있다. 이러한 바이오마커는 원발암 선별검사, 환자 평가, 질환 위험도 추정, 양성 종양과 악성 종양의 감별, 예측, 암 진단 환자의 예후 결정, 그리고 질환의 진행을 조사하거나 치료에 대한 약물 반응을 밝혀 질환 상태를 평가하는 등 암의 모든 측면에서 큰 주목을 받아왔다. 현재 그 적용 분야와 분자적 변화를 기반으로 수많은 바이오마커가 탐색되었으며, 그중 예측 및 예후 마커로 구성된 약물 내성 및 치료 반응 바이오마커는 약물 선택과 환자의 생존율 향상에 중요한 역할을 한다. 다양한 바이오마커 중에서도 특정 마이크로RNA(microRNA, miRNA)의 높은 발현은 여러 유형의 인간 암에서 생존율 및 약물 내성을 예측하는 잠재적인 주요 바이오마커로 확인되었다. 종양은 적응력이 매우 뛰어나며, 생존 신호전달 경로의 활성화와 하위 사멸 신호전달 경로의 비활성화 또한 약물 내성과 암세포 성장을 유발할 수 있다. 마찬가지로 후성유전학적 변화와 미세환경 내 암세포의 영향 또한 약물 내성의 핵심 요인으로 인식되어 왔다. 더욱이 치료 전략의 실패는 다양한 치료 접근법에 고도의 내성을 지닌 암줄기세포(cancer stem cells)의 존재 때문으로 설명되기도 한다. 나아가 많은 종양에 존재하는 분자적 및 유전적 이질성(heterogeneity)이 점차 밝혀지고 있으며, 이는 내성과 암 생존에 실질적으로 기여하는 또 다른 주요 문제이다.</p>
 <p><strong>주제어 (Keywords)</strong>: 암(Cancer), 세포 생존(Cell survival), 바이오마커(Biomarkers), 약물 내성(Drug resistance), 예후(Prognosis), 마이크로RNA(MicroRNAs)</p>
 <hr>
 <section id="서론-introduction-3" class="level2">
@@ -3986,257 +3109,55 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 <p>셋째 기전은 혈관신생과 세포 침윤으로, 두 과정 모두 암에서 결정적인 역할을 하며 전립선 특이 항원(PSA)의 발현을 동반한다. 일반적으로 PSA는 전립선 상피를 통해 발현되지만, 림프관신생 및 세포 침윤으로 인한 전립선 세포 기저막의 손상 때문에 혈중 PSA 수치 증가가 일어난다.</p>
 <p>체액 내 다양한 암 바이오마커(예: 순환 단백질 표적)를 통한 암 관리는 신체 체액에서 ‘오믹스(omics)’ 암 바이오마커 발굴에 사용되는 유망한 기술의 도입과 함께 새로운 시대를 열었다. 이들은 암의 초기 단계를 검출할 수 있는 매우 민감한 진단 기술이다 (Buonaguro et al.&nbsp;2014; Duffy 2001) (표 7.1).</p>
 <p><strong>표 7.1 암 생존 및 약물 저항성의 대표적 바이오마커</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">번호</th>
-<th style="text-align: left;">바이오마커</th>
-<th style="text-align: left;">특이도 (기관/암종)</th>
-<th style="text-align: left;">용도/적용 분야</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">전립선 특이 항원 (PSA)</td>
-<td style="text-align: left;">전립선비대증(BPH) / 전립선암</td>
-<td style="text-align: left;">선별검사, 진단 및 치료 모니터링</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">탄수화물 항원 125 (CA125)</td>
-<td style="text-align: left;">난소암</td>
-<td style="text-align: left;">재발 감지 및 치료 모니터링, 진단, 예후 판정</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">암배아성 항원 (CEA)</td>
-<td style="text-align: left;">결장직장암 / 간암</td>
-<td style="text-align: left;">치료 모니터링, 예후 판정, 재발 감지, 간 전이 선별검사</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">탄수화물 항원 15-3 (CA15-3)</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">치료 모니터링</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">프로게스테론 및 에스트로겐 수용체 (PR &amp; ER)</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">내분비 요법을 위한 환자 계층화/선택</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">HER2</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">트라스투주맙 치료 모니터링</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7</td>
-<td style="text-align: left;">탄수화물 항원 27.29 (CA27.29)</td>
-<td style="text-align: left;">유방암</td>
-<td style="text-align: left;">치료 모니터링</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">인간 융모막 성선자극호르몬 β (hCG-β)</td>
-<td style="text-align: left;">고환암</td>
-<td style="text-align: left;">치료 모니터링, 재발 감지, 진단, 병기 판정</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9</td>
-<td style="text-align: left;">알파태아단백 (AFP)</td>
-<td style="text-align: left;">간세포암</td>
-<td style="text-align: left;">치료 모니터링, 재발 감지, 진단</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">칼시토닌</td>
-<td style="text-align: left;">갑상선암</td>
-<td style="text-align: left;">진단 및 치료 모니터링</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">티로그로불린</td>
-<td style="text-align: left;">갑상선암</td>
-<td style="text-align: left;">치료 모니터링</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">12</td>
-<td style="text-align: left;">CA19-9</td>
-<td style="text-align: left;">췌장암</td>
-<td style="text-align: left;">치료 모니터링</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">핵기질 단백질 22 (NMP22)</td>
-<td style="text-align: left;">방광암</td>
-<td style="text-align: left;">모니터링 및 예후 판정, 선별검사</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">전립선암 항원 3 (PCA3)</td>
-<td style="text-align: left;">전립선암</td>
-<td style="text-align: left;">예후 예측</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">번호 | 바이오마커 | 특이도 (기관/암종) | 용도/적용 분야 |<br>
+:*** | :*** | :*** | :*** |<br>
+1 | 전립선 특이 항원 (PSA) | 전립선비대증(BPH) / 전립선암 | 선별검사, 진단 및 치료 모니터링 |<br>
+2 | 탄수화물 항원 125 (CA125) | 난소암 | 재발 감지 및 치료 모니터링, 진단, 예후 판정 |<br>
+3 | 암배아성 항원 (CEA) | 결장직장암 / 간암 | 치료 모니터링, 예후 판정, 재발 감지, 간 전이 선별검사 |<br>
+4 | 탄수화물 항원 15-3 (CA15-3) | 유방암 | 치료 모니터링 |<br>
+5 | 프로게스테론 및 에스트로겐 수용체 (PR &amp; ER) | 유방암 | 내분비 요법을 위한 환자 계층화/선택 |<br>
+6 | HER2 | 유방암 | 트라스투주맙 치료 모니터링 |<br>
+7 | 탄수화물 항원 27.29 (CA27.29) | 유방암 | 치료 모니터링 |<br>
+8 | 인간 융모막 성선자극호르몬 β (hCG-β) | 고환암 | 치료 모니터링, 재발 감지, 진단, 병기 판정 |<br>
+9 | 알파태아단백 (AFP) | 간세포암 | 치료 모니터링, 재발 감지, 진단 |<br>
+10 | 칼시토닌 | 갑상선암 | 진단 및 치료 모니터링 |<br>
+11 | 티로그로불린 | 갑상선암 | 치료 모니터링 |<br>
+12 | CA19-9 | 췌장암 | 치료 모니터링 |<br>
+13 | 핵기질 단백질 22 (NMP22) | 방광암 | 모니터링 및 예후 판정, 선별검사 |<br>
+14 | 전립선암 항원 3 (PCA3) | 전립선암 | 예후 예측 |</div>
 </section>
 </section>
 <section id="잠재적-바이오마커로서의-microrna" class="level2">
 <h2 class="anchored" data-anchor-id="잠재적-바이오마커로서의-microrna">7.7 잠재적 바이오마커로서의 MicroRNA</h2>
 <p>MicroRNA(miRNA)는 보존된 미세 비코딩 RNA이자 유전자 발현의 정밀 조절자(micromanagers)로 알려진 잠재적 바이오마커이다. miRNA 내 다형성(miR-polymorphisms)은 다양한 유형의 암 진단 및 예후 예측에 활용될 수 있는 유망한 잠재력을 지닌 신흥 분야이다. 최근 miRNA 연구의 발전은 조절 장애를 겪는 miRNA 유전자가 암세포의 생존에 관여함을 강조해 왔으며, pre-miRNA의 다양한 단계 및 miRNA 결합 부위의 수많은 다형성이 여러 유형의 암과 연관되어 있음이 보고되었다. 또한 miRNA 다형성이 종양 미세환경 내 종양 특성과 환자의 암 생존율에도 영향을 미치는 것으로 보고되었다. 따라서 miRNA는 종양 발생 및 종양학에서 중요한 인자이며, 특히 다수의 miRNA를 잠재적 암 바이오마커로 확인 가능하게 해준 miRNA 마이크로어레이에서 널리 활용되고 있다 (George and Mittal 2010) (표 7.2 및 7.3).</p>
 <p><strong>표 7.2 결장직장암에서 5-FU 저항성에 관여하는 miRNA (상향 조절: ↑, 하향 조절: ↓)</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">miRNAs</th>
-<th style="text-align: left;">저항성 세포에서의 발현</th>
-<th style="text-align: left;">유전자 표적</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">miR-203</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">TYMS</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-218</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">TYMS, BIRC5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-494</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">DPYD</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-27a, miR-27b</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">DPYD</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-21</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">MSH2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-10b</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">BIM</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-23a</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">APAF-1, ABCF1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-425-5p</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">PDCD10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-139-5p</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">BCL2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-200c, miR-302, miR-369</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">MRP8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-519c</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">ABCG2, HuR</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-22</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">BTG1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-204</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">HMGA2</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">miRNAs | 저항성 세포에서의 발현 | 유전자 표적 |<br>
+:*** | :*** | :*** |<br>
+miR-203 | ↓ | TYMS |<br>
+miR-218 | ↓ | TYMS, BIRC5 |<br>
+miR-494 | ↓ | DPYD |<br>
+miR-27a, miR-27b | ↓ | DPYD |<br>
+miR-21 | ↑ | MSH2 |<br>
+miR-10b | ↑ | BIM |<br>
+miR-23a | ↑ | APAF-1, ABCF1 |<br>
+miR-425-5p | ↑ | PDCD10 |<br>
+miR-139-5p | ↓ | BCL2 |<br>
+miR-200c, miR-302, miR-369 | ↑ | MRP8 |<br>
+miR-519c | ↓ | ABCG2, HuR |<br>
+miR-22 | ↓ | BTG1 |<br>
+miR-204 | ↓ | HMGA2 |</div>
 <p><strong>표 7.3 EGFR 표적 치료 저항성 및 옥살리플라틴 저항성 결장직장암에 관여하는 miRNA</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">miRNAs</th>
-<th style="text-align: left;">치료법</th>
-<th style="text-align: left;">저항성 세포에서의 발현</th>
-<th style="text-align: left;">유전자 표적</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">miR-7</td>
-<td style="text-align: left;">EGFR 표적 치료</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">EGFR, RAF1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-20a</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">BNIP2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-133b</td>
-<td style="text-align: left;">EGFR 표적 치료</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">EGFR</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-143</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">IGF-1R</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-153</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">FOXO3a</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-203</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">ATM</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-199a-5p, miR-375</td>
-<td style="text-align: left;">EGFR 표적 치료</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">PHLPP1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">miR-409-3p</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↓</td>
-<td style="text-align: left;">Beclin-1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">miR-520g</td>
-<td style="text-align: left;">옥살리플라틴</td>
-<td style="text-align: left;">↑</td>
-<td style="text-align: left;">p21</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">miRNAs | 치료법 | 저항성 세포에서의 발현 | 유전자 표적 |<br>
+:*** | :*** | :*** | :*** |<br>
+miR-7 | EGFR 표적 치료 | ↓ | EGFR, RAF1 |<br>
+miR-20a | 옥살리플라틴 | ↑ | BNIP2 |<br>
+miR-133b | EGFR 표적 치료 | ↓ | EGFR |<br>
+miR-143 | 옥살리플라틴 | ↓ | IGF-1R |<br>
+miR-153 | 옥살리플라틴 | ↑ | FOXO3a |<br>
+miR-203 | 옥살리플라틴 | ↑ | ATM |<br>
+miR-199a-5p, miR-375 | EGFR 표적 치료 | ↑ | PHLPP1 |<br>
+miR-409-3p | 옥살리플라틴 | ↓ | Beclin-1 |<br>
+miR-520g | 옥살리플라틴 | ↑ | p21 |</div>
 </section>
 <section id="약물-저항성-및-암-생존에-기여하는-추가-요인" class="level2">
 <h2 class="anchored" data-anchor-id="약물-저항성-및-암-생존에-기여하는-추가-요인">7.8 약물 저항성 및 암 생존에 기여하는 추가 요인</h2>
@@ -4252,84 +3173,18 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 <p>본 절에서는 임상시험을 위한 바이오마커의 검증 및 적용 과정에서 발생하는 몇 가지 문제점을 논의한다. 적응 피드백(adaptive feedback) 및 상호 신호전달 루프(cross talk loop)를 갖는 복잡한 분자 경로가 관여하는 종양 반응 치료의 복잡성과 생물학적 이질성을 포함하여, 신약 개발 과정에서는 수많은 난관에 부딪히게 된다. 상기 문제 외에도 타당성 검증 과정에서 다양한 형태의 측정 오류가 관찰될 수 있다. 바이오마커 분석의 신뢰성을 보장하는 기본 결정 요인은 검체 수집, 보관 및 처리 전 과정에 표준 프로토콜을 철저히 적용하는 것이다.</p>
 <p>바이오마커 데이터 검증 과정의 또 다른 운영상 핵심 요소는 통계적 평가인데, 이는 데이터 관리, 생물통계학 및 생물정보학 방법론의 일관성 측면에서 매우 까다로운 작업이다. 통계적 접근법은 단순한 우연에 의한 상관관계와 진정한 생물학적 연관성을 명확히 구별해낼 수 있어야 한다. 아울러 약물 반응에는 오믹스적 특성(즉, 후성유전학, 유전체학, 단백질체학 등) 및/또는 환경적·생활습관 요인이 복합적으로 작용할 수 있다. 제약학의 유명한 격언인 “적합한 환자에게 적시에 적정 용량을 투여한다”는 맞춤의학의 목표를 달성하기 위해서는 생활습관 정보나 단일 오믹스 데이터(예: 연령, 식이 등)만으로 바이오마커를 식별하는 것이 매우 중요하다. 신뢰할 수 있는 바이오마커를 발굴하기 위해서는 대규모 검체 수집이 수반되는 코호트 연구가 수행된다.</p>
 <p><strong>표 7.4 다양한 바이오마커의 저항성 기전</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">치료법 (표적 치료)</th>
-<th style="text-align: left;">암종</th>
-<th style="text-align: left;">표적</th>
-<th style="text-align: left;">저항성 기전</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">베바시주맙 (Bevacizumab)</td>
-<td style="text-align: left;">결장직장암, 비소세포폐암(NSCLC), 교모세포종, 신세포암</td>
-<td style="text-align: left;">VEGF</td>
-<td style="text-align: left;">대체 신호전달 경로 활성화 (IGF1R, PDGFR, FGFR 또는 MET 등), 저산소증 유도 자가포식, 종양 휴면(tumor dormancy) 유도 또는 암줄기세포 미세환경(niche) 증가</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">보르테조밉 (Bortezomib)</td>
-<td style="text-align: left;">다발골수종 및 외투세포림프종</td>
-<td style="text-align: left;">프로테아좀 (Proteasome)</td>
-<td style="text-align: left;">보르테조밉 결합 부위의 돌연변이, 항세포사멸 기전</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">세툭시맙 (Cetuximab)</td>
-<td style="text-align: left;">두경부암 및 결장직장암</td>
-<td style="text-align: left;">EGFR</td>
-<td style="text-align: left;">KRAS 돌연변이, EGFR-S492R 돌연변이에 의한 세툭시맙 결합 저해, ERBB 패밀리 신호전달 증가</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">크리조티닙 (Crizotinib)</td>
-<td style="text-align: left;">비소세포폐암 (NSCLC)</td>
-<td style="text-align: left;">EML4-ALK</td>
-<td style="text-align: left;">2차 EML4-ALK 돌연변이 또는 재배열, COT 매개 MAPK 재활성화, CD74-ROS1 재배열</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">다사티닙 (Dasatinib)</td>
-<td style="text-align: left;">급성 림프모구 백혈병(ALL) 및 만성 골수성 백혈병(CML)</td>
-<td style="text-align: left;">BCR-ABL1</td>
-<td style="text-align: left;">ABL1의 T315I 돌연변이</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">게피티닙 (Gefitinib)</td>
-<td style="text-align: left;">비소세포폐암 (NSCLC)</td>
-<td style="text-align: left;">EGFR</td>
-<td style="text-align: left;">EGFR 키나아제 도메인 돌연변이 (예: T790M), 상피-간엽 이행(EMT), 후성유전학적 기전, ERBB 패밀리 신호전달 증가 또는 MET 증폭</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">이마티닙 (Imatinib)</td>
-<td style="text-align: left;">만성 골수성 백혈병(CML), 급성 림프모구 백혈병(ALL) 및 위장관기질종양(GIST)</td>
-<td style="text-align: left;">BCR-ABL1, KIT</td>
-<td style="text-align: left;">표적 단백질의 돌연변이 (예: ABL1의 T315I, KIT의 T670I, PDGFRα의 T674I), MDR1 발현 증가 및 PDGFRα 발현</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">닐로티닙 (Nilotinib)</td>
-<td style="text-align: left;">만성 골수성 백혈병 (CML)</td>
-<td style="text-align: left;">BCR-ABL1</td>
-<td style="text-align: left;">BCR-ABL1 상향 조절, ABL1의 T315I 돌연변이</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">트라스투주맙 (Trastuzumab)</td>
-<td style="text-align: left;">ERBB2(HER2) 양성 유방암</td>
-<td style="text-align: left;">ERBB2</td>
-<td style="text-align: left;">PTEN 소실, ERBB2 절단(truncation), PIK3CA 활성화 돌연변이, 대체 신호전달 경로 활성화 (IGF1 및 ERBB3 등)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">베무라페닙 (Vemurafenib)</td>
-<td style="text-align: left;">흑색종</td>
-<td style="text-align: left;">BRAF-V600E</td>
-<td style="text-align: left;">BRAF-V600E 발현 증가, KRAS·NRAS 또는 MEK1의 획득 돌연변이, EGFR·IGF1R 및 PDGFRβ 경로 활성화</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">치료법 (표적 치료) | 암종 | 표적 | 저항성 기전 |<br>
+:*** | :*** | :*** | :*** |<br>
+베바시주맙 (Bevacizumab) | 결장직장암, 비소세포폐암(NSCLC), 교모세포종, 신세포암 | VEGF | 대체 신호전달 경로 활성화 (IGF1R, PDGFR, FGFR 또는 MET 등), 저산소증 유도 자가포식, 종양 휴면(tumor dormancy) 유도 또는 암줄기세포 미세환경(niche) 증가 |<br>
+보르테조밉 (Bortezomib) | 다발골수종 및 외투세포림프종 | 프로테아좀 (Proteasome) | 보르테조밉 결합 부위의 돌연변이, 항세포사멸 기전 |<br>
+세툭시맙 (Cetuximab) | 두경부암 및 결장직장암 | EGFR | KRAS 돌연변이, EGFR-S492R 돌연변이에 의한 세툭시맙 결합 저해, ERBB 패밀리 신호전달 증가 |<br>
+크리조티닙 (Crizotinib) | 비소세포폐암 (NSCLC) | EML4-ALK | 2차 EML4-ALK 돌연변이 또는 재배열, COT 매개 MAPK 재활성화, CD74-ROS1 재배열 |<br>
+다사티닙 (Dasatinib) | 급성 림프모구 백혈병(ALL) 및 만성 골수성 백혈병(CML) | BCR-ABL1 | ABL1의 T315I 돌연변이 |<br>
+게피티닙 (Gefitinib) | 비소세포폐암 (NSCLC) | EGFR | EGFR 키나아제 도메인 돌연변이 (예: T790M), 상피-간엽 이행(EMT), 후성유전학적 기전, ERBB 패밀리 신호전달 증가 또는 MET 증폭 |<br>
+이마티닙 (Imatinib) | 만성 골수성 백혈병(CML), 급성 림프모구 백혈병(ALL) 및 위장관기질종양(GIST) | BCR-ABL1, KIT | 표적 단백질의 돌연변이 (예: ABL1의 T315I, KIT의 T670I, PDGFRα의 T674I), MDR1 발현 증가 및 PDGFRα 발현 |<br>
+닐로티닙 (Nilotinib) | 만성 골수성 백혈병 (CML) | BCR-ABL1 | BCR-ABL1 상향 조절, ABL1의 T315I 돌연변이 |<br>
+트라스투주맙 (Trastuzumab) | ERBB2(HER2) 양성 유방암 | ERBB2 | PTEN 소실, ERBB2 절단(truncation), PIK3CA 활성화 돌연변이, 대체 신호전달 경로 활성화 (IGF1 및 ERBB3 등) |<br>
+베무라페닙 (Vemurafenib) | 흑색종 | BRAF-V600E | BRAF-V600E 발현 증가, KRAS·NRAS 또는 MEK1의 획득 돌연변이, EGFR·IGF1R 및 PDGFRβ 경로 활성화 |</div>
 <p>유효하고 신뢰성 높은 바이오마커를 발굴하기 위해서는 대규모 검체군을 평가하는 코호트 연구가 적용되어야 한다. 이러한 관점에서 소아 환자를 대상으로 한 연구 참여자 수의 한계는 신규 바이오마커 발굴의 주된 난제이다. 검체 수집을 위한 데이터 확보 과정에 통증을 유발하거나 침습적인 시술이 수반되기 때문이다. 또한 정상 참고치를 확인하는 데 필수적인 연령 일치 대조군 검체를 확보하는 것 역시 또 다른 어려움이다. 아울러 소아 악성 종양 환자 중 소수만이 임상시험 기반 중재 연구에 선뜻 참여하기 어려운 현실도 존재한다.</p>
 </section>
 <section id="참고문헌-3" class="level2">
@@ -4415,57 +3270,8 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 <hr>
 <section id="표-8.2-암-재발-바이오마커-일부-예시" class="level4">
 <h4 class="anchored" data-anchor-id="표-8.2-암-재발-바이오마커-일부-예시">표 8.2: 암 재발 바이오마커 (일부 예시)</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 47%">
-<col style="width: 29%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>암 종류</th>
-<th>재발 바이오마커</th>
-<th>참고문헌</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>갑상선 유두암</td>
-<td>miR‑9, miR‑21</td>
-<td>Sondermann 등 (2015)</td>
-</tr>
-<tr class="even">
-<td>유방암</td>
-<td>장기 비코딩 RNA, CA15‑3, Ki‑67, ACLY</td>
-<td>Zhou 등 (2016); Keshava 등 (2007); Nishimura 등 (2010); Chen 등 (2020)</td>
-</tr>
-<tr class="odd">
-<td>대장암</td>
-<td>miRNA‑29c, 외소체 miRNA</td>
-<td>Yang 등 (2013); Matsumura 등 (2015)</td>
-</tr>
-<tr class="even">
-<td>폐소세포암</td>
-<td>miR‑34a‑5p</td>
-<td>Gao 등 (2015)</td>
-</tr>
-<tr class="odd">
-<td>폐암</td>
-<td>CEA, miRNA‑148a</td>
-<td>Tan 등 (2009); Tsai 등 (2013)</td>
-</tr>
-<tr class="even">
-<td>간암</td>
-<td>AFP, Mortalin(HSPA9)</td>
-<td>Yi 등 (2008)</td>
-</tr>
-<tr class="odd">
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">암 종류 | 재발 바이오마커 | 참고문헌 |</div>
+<p>|******–|***************-|*********-| | 갑상선 유두암 | miR‑9, miR‑21 | Sondermann 등 (2015) | | 유방암 | 장기 비코딩 RNA, CA15‑3, Ki‑67, ACLY | Zhou 등 (2016); Keshava 등 (2007); Nishimura 등 (2010); Chen 등 (2020) | | 대장암 | miRNA‑29c, 외소체 miRNA | Yang 등 (2013); Matsumura 등 (2015) | | 폐소세포암 | miR‑34a‑5p | Gao 등 (2015) | | 폐암 | CEA, miRNA‑148a | Tan 등 (2009); Tsai 등 (2013) | | 간암 | AFP, Mortalin(HSPA9) | Yi 등 (2008) | | … | … | … |</p>
 <blockquote class="blockquote">
 <p><strong>주의</strong>: 본 번역은 원문의 의미와 구조를 유지하면서 한국어로 자연스럽게 전달하도록 하였으며, 전문 용어는 필요 시 괄호 안에 영문 원형을 함께 표기하였다.</p>
 </blockquote>
@@ -4476,72 +3282,19 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 <section id="종양-재발-및-전이에서의-바이오마커" class="level1">
 <h1>8 종양 재발 및 전이에서의 바이오마커</h1>
 <p><strong>표 8.2</strong> (이어서) 암 재발 관련 바이오마커</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>암종</th>
-<th>재발 바이오마커</th>
-<th>참고문헌</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>시스타틴 B (Cystatin B)</td>
-<td>Feldman et al.&nbsp;(2009)</td>
-</tr>
-<tr class="even">
-<td>자궁경부암</td>
-<td>SCC-Ag 및 hsCRP</td>
-<td>Hoogendam et al.&nbsp;(2013)</td>
-</tr>
-<tr class="odd">
-<td>췌장암</td>
-<td>CD44</td>
-<td>Hsu et al.&nbsp;(2018)</td>
-</tr>
-<tr class="even">
-<td>위암</td>
-<td>miRNA27a</td>
-<td>Huang et al.&nbsp;(2014)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>miRNA-203</td>
-<td>Imaoka et al.&nbsp;(2016)</td>
-</tr>
-<tr class="even">
-<td>급성 골수성 백혈병</td>
-<td>miR-15a/16-1</td>
-<td>Gao et al.&nbsp;(2011)</td>
-</tr>
-<tr class="odd">
-<td>급성 림프모구 백혈병</td>
-<td>miR-135a</td>
-<td>Diaz-Beya et al.&nbsp;(2014)</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>miR-708</td>
-<td>Han et al.&nbsp;(2011)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>LINC00152</td>
-<td>Bárcenas-López et al.&nbsp;(2020)</td>
-</tr>
-<tr class="even">
-<td>다발 골수종</td>
-<td>순환 엑소좀 circMYC</td>
-<td>Luo and Gui (2020)</td>
-</tr>
-<tr class="odd">
-<td>ITD+ 백혈병</td>
-<td>IL-10, IL-1β, TNF-α</td>
-<td>Rickmann et al.&nbsp;(2013)</td>
-</tr>
-</tbody>
-</table>
+<div class="line-block">암종 | 재발 바이오마커 | 참고문헌 |<br>
+*** | *** | *** |<br>
+| 시스타틴 B (Cystatin B) | Feldman et al.&nbsp;(2009) |<br>
+자궁경부암 | SCC-Ag 및 hsCRP | Hoogendam et al.&nbsp;(2013) |<br>
+췌장암 | CD44 | Hsu et al.&nbsp;(2018) |<br>
+위암 | miRNA27a | Huang et al.&nbsp;(2014) |<br>
+| miRNA-203 | Imaoka et al.&nbsp;(2016) |<br>
+급성 골수성 백혈병 | miR-15a/16-1 | Gao et al.&nbsp;(2011) |<br>
+급성 림프모구 백혈병 | miR-135a | Diaz-Beya et al.&nbsp;(2014) |<br>
+| miR-708 | Han et al.&nbsp;(2011) |<br>
+| LINC00152 | Bárcenas-López et al.&nbsp;(2020) |<br>
+다발 골수종 | 순환 엑소좀 circMYC | Luo and Gui (2020) |<br>
+ITD+ 백혈병 | IL-10, IL-1β, TNF-α | Rickmann et al.&nbsp;(2013) |</div>
 <hr>
 <section id="유방암-breast-cancer" class="level3">
 <h3 class="anchored" data-anchor-id="유방암-breast-cancer">8.5.1 유방암 (Breast Cancer)</h3>
@@ -5115,10 +3868,7 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="저자-기여-author-contributions" class="level3">
 <h3 class="anchored" data-anchor-id="저자-기여-author-contributions">저자 기여 (Author Contributions)</h3>
-<p><strong>Y.S.L.</strong>: 개념 정립, 총괄 지도.<br>
-<strong>S.U.I.</strong> 및 <strong>H.A.</strong>: 초안 작성.<br>
-<strong>M.B.A.</strong>: 모든 그림 도안 제작.<br>
-모든 저자는 본 챕터의 출판본을 검토하고 이에 동의하였다.</p>
+<p><strong>Y.S.L.</strong>: 개념 정립, 총괄 지도. <strong>S.U.I.</strong> 및 <strong>H.A.</strong>: 초안 작성. <strong>M.B.A.</strong>: 모든 그림 도안 제작. 모든 저자는 본 챕터의 출판본을 검토하고 이에 동의하였다.</p>
 </section>
 <section id="연구비-지원-funding" class="level3">
 <h3 class="anchored" data-anchor-id="연구비-지원-funding">연구비 지원 (Funding)</h3>
@@ -5131,123 +3881,7 @@ https://doi.org/10.1007/978-981-16-5759-7_1</p>
 </section>
 <section id="참고문헌-references-4" class="level3">
 <h3 class="anchored" data-anchor-id="참고문헌-references-4">참고문헌 (References)</h3>
-<p>Adams CM, Clark-Garvey S, Porcu P, Eischen CM (2019) Targeting the Bcl-2 family in B cell lymphoma. Front Oncol 8:636<br>
-Agache I, Akdis C, Akdis M, Canonica GW, Casale T, Chivato T et al (2021) EAACI biologicals guidelines—recommendations for severe asthma. Allergy 76(1):14–44<br>
-Aitken M, Kleinrock M, Simorellis A, Nass D (2018) Global oncology trends 2018: innovation, expansion and disruption, pp 2019-12<br>
-Akanksha M, Sandhya S (2019) Role of FGFR3 in urothelial carcinoma. Iran J Pathol 14(2):148<br>
-Akkaya B, Salim O, Akkaya H, Ozcan M, Yucel OK, Erdem R et al (2016) C-MYC and BCL2 translocation frequency in diffuse large B-cell lymphomas: a study of 97 patients. Indian J Pathol Microbiol 59(1):41<br>
-Akyurek N, Uner A, Benekli M, Barista IJC (2012) Prognostic significance of MYC, BCL2, and BCL6 rearrangements in patients with diffuse large B-cell lymphoma treated with cyclophosphamide, doxorubicin, vincristine, and prednisone plus rituximab. Cancer 118(17):4173–4183<br>
-Aldakheel F, Thomas P, Bourke J, Matheson M, Dharmage S, Lowe AJ (2016) Relationships between adult asthma and oxidative stress markers and pH in exhaled breath condensate: a systematic review. Allergy 71(6):741–757<br>
-Alhunaidi O, Zlotta AR (2019) The use of intravesical BCG in urothelial carcinoma of the bladder. Ecancermedicalscience 13:905<br>
-Alkodsi A, Cervera A, Zhang K, Louhimo R, Meriranta L, Pasanen A et al (2019) Distinct subtypes of diffuse large B-cell lymphoma defined by hypermutated genes. Leukemia 33(11):2662–2672<br>
-Alving K, Diamant Z, Lucas S, Magnussen H, Pavord ID, Piancentini G et al (2020) Point-of-care biomarkers in asthma management: time to move forward. Allergy 75(4):995–997<br>
-Amado RG, Wolf M, Peeters M, Van Cutsem E, Siena S, Freeman DJ et al (2008) Wild-type KRAS is required for panitumumab efficacy in patients with metastatic colorectal cancer. J Clin Oncol 26(10):1626–1634<br>
-Amstutz U, Henricks LM, Offer SM, Barbarino J, Schellens JH, Swen JJ et al (2018) Clinical Pharmacogenetics Implementation Consortium (CPIC) guideline for dihydropyrimidine dehydrogenase genotype and fluoropyrimidine dosing: 2017 update. Clin Pharmacol Ther 103(2):210–216<br>
-Andersson G, Wennersten C, Gaber A, Boman K, Nodin B, Uhlén M et al (2014) Reduced expression of ezrin in urothelial bladder cancer signifies more advanced tumours and an impaired survival: validatory study of two independent patient cohorts. BMC Urol 14(1):1–8<br>
-Aquino G, Marra L, Curcio M, De Chiara A, Liguori G, Franco RJ (2014) Detection of myc rearranged by fluorescence in situ hybridization FISH: a diagnostic tool. WCRJ 1:e362<br>
-Arock M, Sotlar K, Akin C, Broesby-Olsen S, Hoermann G, Escribano L et al (2015) KIT mutation analysis in mast cell neoplasms: recommendations of the European Competence Network on Mastocytosis. Leukemia 29(6):1223–1232<br>
-Arrowsmith J (2011) Trial watch: phase II failures: 2008-2010. Nat Rev Drug Discov 10(5):328–329. https://doi.org/10.1038/nrd3439<br>
-Artzi N, Shazly T, Baker AB, Bon A, Edelman ER (2009) Aldehyde-amine chemistry enables modulated biosealants with tissue-specific adhesion. Adv Mater 21(32–33):3399–3403<br>
-Asadullah K, Busch A, Gottwald M, Reinke P, Landeck L (2015) Industry–academia collaborations for biomarkers. Nat Rev Drug Discov 14(12):805–806<br>
-Badic B, Hatt M, Durand S, Le Jossic-Corcos C, Simon B, Visvikis D et al (2019) Radiogenomics based cancer prognosis in colorectal cancer. Sci Rep 9(1):1–7<br>
-Banin Hirata BK, Oda JMM, Losi Guembarovski R, Ariza CB, Oliveira CEC, Watanabe MAE (2014) Molecular markers for breast cancer: prediction on tumor behavior. Dis Markers 2014:513158<br>
-Barcikowska M (2018) Guideline on the clinical investigation of medicines for the treatment of Alzheimer’s disease. Lekarz POZ 4(5):370–374<br>
-Baron BW, Anastasi J, Montag A, Huo D, Baron RM, Karrison T et al (2004) The human BCL6 transgene promotes the development of lymphomas in the mouse. Proc Natl Acad Sci USA 101(39):14198–14203<br>
-Barrans S, Crouch S, Smith A, Turner K, Owen R, Patmore R et al (2010) Rearrangement of MYC is associated with poor prognosis in patients with diffuse large B-cell lymphoma treated in the era of rituximab. J Clin Oncol 28(20):3360–3365<br>
-Basso K, Schneider C, Shen Q, Holmes AB, Setty M, Leslie C et al (2012) BCL6 positively regulates AID and germinal center gene expression via repression of miR-155. J Exp Med 209(13):2455–2465<br>
-Beachley VZ, Wolf MT, Sadtler K, Manda SS, Jacobs H, Blatchley MR et al (2015) Tissue matrix arrays for high-throughput screening and systems analysis of cell function. Nat Methods 12(12):1197–1204<br>
-Bein A, Shin W, Jalili-Firoozinezhad S, Park MH, Sontheimer-Phelps A, Tovaglieri A et al (2018) Microfluidic organ-on-a-chip models of human intestine. Cell Mol Gastroenterol Hepatol 5(4):659–668<br>
-Berggren P, Steineck G, Adolfsson J, Hansson J, Jansson O, Larsson P et al (2001) p53 mutations in urinary bladder cancer. Br J Cancer 84(11):1505–1511<br>
-Blicharz TM, Gong P, Bunner BM, Chu LL, Leonard KM, Wakefield JA et al (2018) Microneedle-based device for the one-step painless collection of capillary blood samples. Nat Biomed Eng 2(3):151–157<br>
-Camicia R, Winkler HC, Hassa PO (2015) Novel drug targets for personalized precision medicine in relapsed/refractory diffuse large B-cell lymphoma: a comprehensive review. Mol Cancer 14(1):1–62<br>
-Cattoretti G, Pasqualucci L, Ballon G, Tam W, Nandula SV, Shen Q et al (2005) Deregulated BCL6 expression recapitulates the pathogenesis of human diffuse large B cell lymphomas in mice. Cancer Cell 7(5):445–455<br>
-Cerchietti LC, Ghetu AF, Zhu X, Da Silva GF, Zhong S, Matthews M et al (2010) A small-molecule inhibitor of BCL6 kills DLBCL cells in vitro and in vivo. Cancer Cell 17(4):400–411<br>
-Chao M, Gibbs P (2009) Caution is required before recommending routine carcinoembryonic antigen and imaging follow-up for patients with early-stage colon cancer. J Clin Oncol 27(36):e279–e280; author reply e81<br>
-Chastain EC, Duncavage EJ (2015) Clinical prognostic biomarkers in chronic lymphocytic leukemia and diffuse large B-cell lymphoma. Arch Pathol Lab Med 139(5):602–607<br>
-Chawla A, Janku F, Wheler JJ, Miller VA, Ryan J, Anhorn R et al (2018) Estimated cost of anticancer therapy directed by comprehensive genomic profiling in a single-center study. JCO Precis Oncol 2:1–11<br>
-Chiappella A, Castellino A, Nicolosi M, Santambrogio E, Vitolo U (2017) Diffuse large B-cell lymphoma in the elderly: standard treatment and new perspectives. Expert Rev Hematol 10(4):289–297<br>
-Cho C-H, Lee H-J (2019) Could digital therapeutics be a game changer in psychiatry? Psychiatry Investig 16(2):97<br>
-Cohen JJS (2019) Did CRISPR help—or harm—the first-ever gene-edited babies. 21<br>
-Collins AV, Brodie DW, Gilbert RJ, Iaboni A, Manso-Sancho R, Walse B et al (2002) The interaction properties of costimulatory molecules revisited. Immunity 17(2):201–210<br>
-Comhair SA, Erzurum SC (2002) Antioxidant responses to oxidant-mediated lung diseases. Am J Physiol Lung Cell Mol Physiol 283(2):L246–L255<br>
-Comhair SA, Bhathena PR, Dweik RA, Kavuru M, Erzurum SC (2000) Rapid loss of superoxide dismutase activity during antigen-induced asthmatic response. Lancet 355(9204):624<br>
-Compagno M, Lim WK, Grunn A, Nandula SV, Brahmachary M, Shen Q et al (2009) Mutations of multiple genes cause deregulation of NF-κB in diffuse large B-cell lymphoma. Nature 459(7247):717–721<br>
-Cooper ML, Choi J, Staser K, Ritchey JK, Devenport JM, Eckardt K et al (2018) An “off-the-shelf” fratricide-resistant CAR-T for the treatment of T cell hematologic malignancies. Leukemia 32(9):1970–1983<br>
-Courbet A, Endy D, Renard E, Molina F, Bonnet J (2015) Detection of pathological biomarkers in human clinical samples via amplifying genetic switches and logic gates. Sci Transl Med 7(289):289ra83<br>
-Danino T, Prindle A, Kwong GA, Skalak M, Li H, Allen K et al (2015) Programmable probiotics for detection of cancer in urine. Sci Transl Med 7(289):289ra84<br>
-Davis RE, Brown KD, Siebenlist U, Staudt LM (2001) Constitutive nuclear factor κB activity is required for survival of activated B cell–like diffuse large B cell lymphoma cells. J Exp Med 194(12):1861–1874<br>
-Davis RE, Ngo VN, Lenz G, Tolar P, Young RM, Romesser PB et al (2010) Chronic active B-cell receptor signalling in diffuse large B-cell lymphoma. Nature 463(7277):88–92<br>
-Davis NO, Bower J, Kollins SH (2018) Proof-of-concept study of an at-home, engaging, digital intervention for pediatric ADHD. PLoS One 13(1):e0189749<br>
-Davis KD, Aghaeepour N, Ahn AH, Angst MS, Borsook D, Brenton A et al (2020) Discovery and validation of biomarkers to aid the development of safe and effective pain therapeutics: challenges and opportunities. Nat Rev Neurol 16(7):381–400<br>
-Diamant Z, Boot J, Mantzouranis E, Flohr R, Sterk P, van Wijk RG et al (2010) Biomarkers in asthma and allergic rhinitis. Pulm Pharmacol Ther 23(6):468–481<br>
-Diamant Z, Vijverberg S, Alving K, Bakirtas A, Bjermer L, Custovic A et al (2019) Toward clinically applicable biomarkers for asthma: an EAACI position paper. Allergy 74(10):1835–1851<br>
-Dinh-Le C, Chuang R, Chokshi S, Mann D (2019) Wearable health technology and electronic health record integration: scoping review and future directions. JMIR Mhealth Uhealth 7(9):e12861<br>
-Dolgin E (2018) Kite, Sangamo partner on gene-edited cell therapies. Cancer Discov 8(4):379–380<br>
-Dorsch H, Jurock AE, Schoepe S, Lessl M, Asadullah K (2015) Grants4Targets: an open innovation initiative to foster drug discovery collaborations. Nat Rev Drug Discov 14(1):74–76<br>
-Du J, Wang S-h, Yang Q, Chen Q-q, Xo Y (2016) p53 status correlates with the risk of progression in stage T1 bladder cancer: a meta-analysis. World J Surg Oncol 14(1):1–8<br>
-Food &amp; Drug Administration (2018) Biomarker qualification: evidentiary framework. Guidance for Industry and FDA Staff (Draft). https://www.fda.gov/downloads/Drugs/GuidanceComplianceRegulatoryInformation/Guidances/UCM62.8118<br>
-Food U (2014) https://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugDevelopmentToolsQualificationProgram. Drug development tools (DDT) qualification programs. 2014<br>
-Forschner A, Eigentler TK, Pflugfelder A, Leiter U, Weide B, Held L et al (2010) Melanoma staging: facts and controversies. Clin Dermatol 28(3):275–280<br>
-Frei E, Visco C, Xu-Monette Z, Dirnhofer S, Dybkær K, Orazi A et al (2013) Addition of rituximab to chemotherapy overcomes the negative prognostic impact of cyclin E expression in diffuse large B-cell lymphoma. J Clin Pathol 66(11):956–961<br>
-Gimotty PA, Van Belle P, Elder DE, Murry T, Montone KT, Xu X et al (2005) Biologic and prognostic significance of dermal Ki67 expression, mitoses, and tumorigenicity in thin invasive cutaneous melanoma. J Clin Oncol 23(31):8048–8056<br>
-Grecchi S, Mazzini G, Lisa A, Armentero M-T, Bergamaschi R, Romani A et al (2012) Search for cellular stress biomarkers in lymphocytes from patients with multiple sclerosis: a pilot study. PLoS One 7(9):e44935<br>
-Group F-NBW (2016) BEST (biomarkers, endpoints, and other tools) resource [Internet]<br>
-Guo X, Xu Y, Zhao Z (2015) In-depth genomic data analyses revealed complex transcriptional and epigenetic dysregulations of BRAFV600E in melanoma. Mol Cancer 14(1):60<br>
-Hahn NM, Bivalacqua TJ, Ross AE, Netto GJ, Baras A, Park JC et al (2017) A phase II trial of dovitinib in BCG-unresponsive urothelial carcinoma with FGFR3 mutations or overexpression: hoosier cancer research network trial HCRN12-157. Clin Cancer Res 23(12):3003–3011<br>
-Hayden MS, Ghosh S (2011) NF-κB in immunobiology. Cell Res 21(2):223–244<br>
-Hoesel B, Schmid JA (2013) The complexity of NF-κB signaling in inflammation and cancer. Mol Cancer 12(1):1–15<br>
-Holash J, Schwartz K, Lau S (2016) B-701, a selective and potent inhibitor of fibroblast growth factor receptor 3 (FGFR3), may enhance the activity of bladder cancer therapies. Eur J Cancer 69(Suppl 1):S20<br>
-Holguin F, Cardet JC, Chung KF, Diver S, Ferreira DS, Fitzpatrick A et al (2020) Management of severe asthma: a European Respiratory Society/American Thoracic Society guideline. Eur Respir J 55(1):1900588<br>
-Horvat N, Veeraraghavan H, Pelossof RA, Fernandes MC, Arora A, Khan M et al (2019) Radiogenomics of rectal adenocarcinoma in the era of precision medicine: a pilot study of associations between qualitative and quantitative MRI imaging features and genetic mutations. Eur J Radiol 113:174–181<br>
-Jiang C, Lin X (2012) Regulation of NF-κB by the CARD proteins. Immunol Rev 246(1):141–153<br>
-Jones RH, Anthoney DA, Jones RJ, Crabb SJ, Hussain SA, Birtle AJ et al (2016) FIESTA: a phase Ib and pharmacokinetic trial of AZD4547 in combination with gemcitabine and cisplatin. J Clin Oncol 34(15 Suppl)<br>
-Kamat AM, Briggman J, Urbauer DL, Svatek R, González GMN, Anderson R et al (2016) Cytokine panel for response to intravesical therapy (CyPRIT): nomogram of changes in urinary cytokine levels predicts patient response to Bacillus Calmette-Guérin. Eur Urol 69(2):197–200<br>
-Kamat AM, Li R, O’Donnell MA, Black PC, Roupret M, Catto JW et al (2018) Predicting response to intravesical Bacillus Calmette-Guérin immunotherapy: are we there yet? A systematic review. Eur Urol 73(5):738–748<br>
-Karapetis CS, Khambata-Ford S, Jonker DJ, O’Callaghan CJ, Tu D, Tebbutt NC et al (2008) K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med 359(17):1757–1765<br>
-Kates M, Matoso A, Choi W, Baras AS, Daniels MJ, Lombardo K et al (2020) Adaptive immune resistance to intravesical BCG in non–muscle invasive bladder cancer: implications for prospective BCG-unresponsive trials. Clin Cancer Res 26(4):882–891<br>
-Kawamoto K, Miyoshi H, Yoshida N, Nakamura N, Ohshima K, Sone H et al (2016) MYC translocation and/or BCL 2 protein expression are associated with poor prognosis in diffuse large B-cell lymphoma. Cancer Sci 107(6):853–861<br>
-Kee T, Weiyan C, Blasiak A, Wang P, Chong JK, Chen J et al (2019) Harnessing CURATE.AI as a digital therapeutics platform by identifying N-of-1 learning trajectory profiles. Adv Therap 2(9):1900023<br>
-Khalil DN, Smith EL, Brentjens RJ, Wolchok JD (2016) The future of cancer treatment: immunomodulation, CARs and combination immunotherapy. Nat Rev Clin Oncol 13(5):273–290<br>
-Koulis C, Yap R, Engel R, Jardé T, Wilkins S, Solon G et al (2020) Personalized medicine—current and emerging predictive and prognostic biomarkers in colorectal cancer. Cancers (Basel) 12(4):812<br>
-Kuruvilla ME, Lee FE-H, Lee GB (2019) Understanding asthma phenotypes, endotypes, and mechanisms of disease. Clin Rev Allergy Immunol 56(2):219–233<br>
-Landeck L, Kneip C, Reischl J, Asadullah K (2016) Biomarkers and personalized medicine: current status and further perspectives with special focus on dermatology. Exp Dermatol 25(5):333–339<br>
-Landis SC, Amara SG, Asadullah K, Austin CP, Blumenstein R, Bradley EW et al (2012) A call for transparent reporting to optimize the predictive value of preclinical research. Nature 490(7419):187–191<br>
-Laserna-Mendieta EJ, Casabona S, Guagnozzi D, Savarino E, Perelló A, Guardiola-Arévalo A et al (2020) Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: results from the EoE connect registry. Aliment Pharmacol Ther 52(5):798–807<br>
-Lee SS-J, Fullerton SM, Saperstein A, Shim JK (2019) Ethics of inclusion: cultivate trust in precision medicine. Science 364(6444):941–942<br>
-Lessl M, Bryans JS, Richards D, Asadullah K (2011) Crowdsourcing in drug discovery. Nat Rev Drug Discov 10(4):241–242<br>
-Li W, Gupta SK, Han W, Kundson RA, Nelson S, Knutson D et al (2019) Targeting MYC activity in double-hit lymphoma with MYC and BCL2 and/or BCL6 rearrangements with epigenetic bromodomain inhibitors. J Hematol Oncol 12(1):1–13<br>
-Lima L, Severino P, Silva M, Miranda A, Tavares A, Pereira S et al (2013) Response of high-risk of recurrence/progression bladder tumours expressing sialyl-Tn and sialyl-6-T to BCG immunotherapy. Br J Cancer 109(8):2106–2114<br>
-Lind JU, Busbee TA, Valentine AD, Pasqualini FS, Yuan H, Yadid M et al (2017) Instrumented cardiac microphysiological devices via multimaterial three-dimensional printing. Nat Mater 16(3):303–308<br>
-Logothetis CJ (2014) Prostate cancer bone metastases: not so systemic after all. Lancet Oncol 15(7):675–676<br>
-Loriot Y, Necchi A, Park SH, Garcia-Donas J, Huddart R, Burgess E et al (2019) Erdafitinib in locally advanced or metastatic urothelial carcinoma. N Engl J Med 381(4):338–348<br>
-Ma H, Wert KJ, Shvartsman D, Melton DA, Jaenisch R (2018) Establishment of human pluripotent stem cell-derived pancreatic β-like cells in the mouse pancreas. Proc Natl Acad Sci U S A 115(15):3924–3929<br>
-Mak K-K, Pichika MR (2019) Artificial intelligence in drug development: present status and future prospects. Drug Discov Today 24(3):773–780<br>
-Malats N, Bustos A, Nascimento CM, Fernandez F, Rivas M, Puente D et al (2005) P53 as a prognostic marker for bladder cancer: a meta-analysis and review. Lancet Oncol 6(9):678–686<br>
-Marandino L, Raggi D, Giannatempo P, Farè E, Necchi A (2019) Erdafitinib for the treatment of urothelial cancer. Expert Rev Anticancer Ther 19(10):835–846<br>
-Margonis GA, Spolverato G, Kim Y, Karagkounis G, Choti MA, Pawlik TM (2015) Effect of KRAS mutation on long-term outcomes of patients undergoing hepatic resection for colorectal liver metastases. Ann Surg Oncol 22(13):4158–4165<br>
-Mason KD, Vandenberg CJ, Scott CL, Wei AH, Cory S, Huang DC et al (2008) In vivo efficacy of the Bcl-2 antagonist ABT-737 against aggressive Myc-driven lymphomas. Proc Natl Acad Sci USA 105(46):17961–17966<br>
-McDowell PJ, Heaney LG (2020) Different endotypes and phenotypes drive the heterogeneity in severe asthma. Allergy 75(2):302–310<br>
-McHugh KJ, Nguyen TD, Linehan AR, Yang D, Behrens AM, Rose S et al (2017) Fabrication of fillable microparticles and other complex 3D microstructures. Science 357(6356):1138–1142<br>
-Merz V, Zecchetto C, Melisi D (2021) Pemigatinib, a potent inhibitor of FGFRs for the treatment of cholangiocarcinoma. Future Oncol 17(4):389–402<br>
-Miller DM, Thomas SD, Islam A, Muench D, Sedoris K (2012) c-Myc and cancer metabolism. Clin Cancer Res 18(20):5546–5553<br>
-Milowsky MI, Dittrich C, Durán I, Jagdev S, Millard FE, Sweeney CJ et al (2014) Phase 2 trial of dovitinib in patients with progressive FGFR3-mutated or FGFR3 wild-type advanced urothelial carcinoma. Eur J Cancer 50(18):3145–3152<br>
-de Moll EH, Fu Y, Qian Y, Perkins SH, Wieder S, Gnjatic S et al (2015) Immune biomarkers are more accurate in prediction of survival in ulcerated than in non-ulcerated primary melanomas. Cancer Immunol Immunother 64(9):1193–1203<br>
-Monjezi R, Miskey C, Gogishvili T, Schleef M, Schmeer M, Einsele H et al (2017) Enhanced CAR T-cell engineering using non-viral Sleeping Beauty transposition from minicircle vectors. Leukemia 31(1):186–194<br>
-Montero J, Letai A, Differentiation. (2018) Why do BCL-2 inhibitors work and where should we use them in the clinic? Cell Death Differ 25(1):56–64<br>
-Moss JT, Kadmon D (1991) BCG and the treatment of superficial bladder cancer. DICP 25(12):1355–1367<br>
-Mullard A (2017) FDA approves first CART therapy. Nat Rev Drug Discov 16(10):669<br>
-Nagel D, Vincendeau M, Eitelhuber A, Krappmann D (2014) Mechanisms and consequences of constitutive NF-κB activation in B-cell lymphoid malignancies. Oncogene 33(50):5655–5665<br>
-Necchi A, Mariani L, Zaffaroni N, Schwartz LH, Giannatempo P, Crippa F et al (2012) Pazopanib in advanced and platinum-resistant urothelial cancer: an open-label, single group, phase 2 trial. Lancet Oncol 13(8):810–816<br>
-Nogova L, Sequist LV, Garcia JMP, Andre F, Delord J-P, Hidalgo M et al (2017) Evaluation of BGJ398, a fibroblast growth factor receptor 1–3 kinase inhibitor, in patients with advanced solid tumors harboring genetic alterations in fibroblast growth factor receptors: results of a global phase I, dose-escalation and dose-expansion study. J Clin Oncol 35(2):157<br>
-Ogunwobi OO, Mahmood F, Akingboye A (2020) Biomarkers in colorectal cancer: current research and future prospects. Int J Mol Sci 21(15):5311<br>
-Oliva N, Carcole M, Beckerman M, Seliktar S, Hayward A, Stanley J et al (2015) Regulation of dendrimer/dextran material performance by altered tissue microenvironment in inflammation and neoplasia. Sci Transl Med 7(272):272ra11<br>
-Pages F, Flam TA, Vieillefond A, Molinie V, Abeille X, Lazar V et al (1998) p53 status does not predict initial clinical response to bacillus Calmette-Guerin intravesical therapy in T1 bladder tumors. J Urol 159(3):1079–1084<br>
-Palomaki GE, Bradley LA, Douglas MP, Kolor K, Dotson WD (2009) Can UGT1A1 genotyping reduce morbidity and mortality in patients with metastatic colorectal cancer treated with irinotecan? An evidence-based review. Genet Med 11(1):21–34<br>
-Palou J, Algaba F, Vera I, Rodriguez O, Villavicencio H, Sanchez-Carbayo M (2009) Protein expression patterns of ezrin are predictors of progression in T1G3 bladder tumours treated with nonmaintenance bacillus Calmette-Guerin. Eur Urol 56(5):829–836<br>
-Park MH, Hong JT (2016) Roles of NF-κB in cancer and inflammatory diseases and their therapeutic approaches. Cells 5(2):15<br>
-Parry RV, Chemnitz JM, Frauwirth KA, Lanfranco AR, Braunstein I, Kobayashi SV et al (2005) CTLA-4 and PD-1 receptors inhibit T-cell activation by distinct mechanisms. Mol Cell Biol 25(21):9543–9553<br>
-Pasqualucci L, Compagno M, Houldsworth J, Monti S, Grunn A, Nandula SV et al (2006) Inactivation of the PRDM1/BLIMP1 gene in diffuse large B cell lymphoma. J Exp Med 203(2):311–317<br>
-Patel JN (2014) Application of genotype-guided cancer therapy in solid tumors. Pharmacogenomics 15(1):79–93</p>
+<p>Adams CM, Clark-Garvey S, Porcu P, Eischen CM (2019) Targeting the Bcl-2 family in B cell lymphoma. Front Oncol 8:636 Agache I, Akdis C, Akdis M, Canonica GW, Casale T, Chivato T et al (2021) EAACI biologicals guidelines—recommendations for severe asthma. Allergy 76(1):14–44 Aitken M, Kleinrock M, Simorellis A, Nass D (2018) Global oncology trends 2018: innovation, expansion and disruption, pp 2019-12 Akanksha M, Sandhya S (2019) Role of FGFR3 in urothelial carcinoma. Iran J Pathol 14(2):148 Akkaya B, Salim O, Akkaya H, Ozcan M, Yucel OK, Erdem R et al (2016) C-MYC and BCL2 translocation frequency in diffuse large B-cell lymphomas: a study of 97 patients. Indian J Pathol Microbiol 59(1):41 Akyurek N, Uner A, Benekli M, Barista IJC (2012) Prognostic significance of MYC, BCL2, and BCL6 rearrangements in patients with diffuse large B-cell lymphoma treated with cyclophosphamide, doxorubicin, vincristine, and prednisone plus rituximab. Cancer 118(17):4173–4183 Aldakheel F, Thomas P, Bourke J, Matheson M, Dharmage S, Lowe AJ (2016) Relationships between adult asthma and oxidative stress markers and pH in exhaled breath condensate: a systematic review. Allergy 71(6):741–757 Alhunaidi O, Zlotta AR (2019) The use of intravesical BCG in urothelial carcinoma of the bladder. Ecancermedicalscience 13:905 Alkodsi A, Cervera A, Zhang K, Louhimo R, Meriranta L, Pasanen A et al (2019) Distinct subtypes of diffuse large B-cell lymphoma defined by hypermutated genes. Leukemia 33(11):2662–2672 Alving K, Diamant Z, Lucas S, Magnussen H, Pavord ID, Piancentini G et al (2020) Point-of-care biomarkers in asthma management: time to move forward. Allergy 75(4):995–997 Amado RG, Wolf M, Peeters M, Van Cutsem E, Siena S, Freeman DJ et al (2008) Wild-type KRAS is required for panitumumab efficacy in patients with metastatic colorectal cancer. J Clin Oncol 26(10):1626–1634 Amstutz U, Henricks LM, Offer SM, Barbarino J, Schellens JH, Swen JJ et al (2018) Clinical Pharmacogenetics Implementation Consortium (CPIC) guideline for dihydropyrimidine dehydrogenase genotype and fluoropyrimidine dosing: 2017 update. Clin Pharmacol Ther 103(2):210–216 Andersson G, Wennersten C, Gaber A, Boman K, Nodin B, Uhlén M et al (2014) Reduced expression of ezrin in urothelial bladder cancer signifies more advanced tumours and an impaired survival: validatory study of two independent patient cohorts. BMC Urol 14(1):1–8 Aquino G, Marra L, Curcio M, De Chiara A, Liguori G, Franco RJ (2014) Detection of myc rearranged by fluorescence in situ hybridization FISH: a diagnostic tool. WCRJ 1:e362 Arock M, Sotlar K, Akin C, Broesby-Olsen S, Hoermann G, Escribano L et al (2015) KIT mutation analysis in mast cell neoplasms: recommendations of the European Competence Network on Mastocytosis. Leukemia 29(6):1223–1232 Arrowsmith J (2011) Trial watch: phase II failures: 2008-2010. Nat Rev Drug Discov 10(5):328–329. https://doi.org/10.1038/nrd3439 Artzi N, Shazly T, Baker AB, Bon A, Edelman ER (2009) Aldehyde-amine chemistry enables modulated biosealants with tissue-specific adhesion. Adv Mater 21(32–33):3399–3403 Asadullah K, Busch A, Gottwald M, Reinke P, Landeck L (2015) Industry–academia collaborations for biomarkers. Nat Rev Drug Discov 14(12):805–806 Badic B, Hatt M, Durand S, Le Jossic-Corcos C, Simon B, Visvikis D et al (2019) Radiogenomics based cancer prognosis in colorectal cancer. Sci Rep 9(1):1–7 Banin Hirata BK, Oda JMM, Losi Guembarovski R, Ariza CB, Oliveira CEC, Watanabe MAE (2014) Molecular markers for breast cancer: prediction on tumor behavior. Dis Markers 2014:513158 Barcikowska M (2018) Guideline on the clinical investigation of medicines for the treatment of Alzheimer’s disease. Lekarz POZ 4(5):370–374 Baron BW, Anastasi J, Montag A, Huo D, Baron RM, Karrison T et al (2004) The human BCL6 transgene promotes the development of lymphomas in the mouse. Proc Natl Acad Sci USA 101(39):14198–14203 Barrans S, Crouch S, Smith A, Turner K, Owen R, Patmore R et al (2010) Rearrangement of MYC is associated with poor prognosis in patients with diffuse large B-cell lymphoma treated in the era of rituximab. J Clin Oncol 28(20):3360–3365 Basso K, Schneider C, Shen Q, Holmes AB, Setty M, Leslie C et al (2012) BCL6 positively regulates AID and germinal center gene expression via repression of miR-155. J Exp Med 209(13):2455–2465 Beachley VZ, Wolf MT, Sadtler K, Manda SS, Jacobs H, Blatchley MR et al (2015) Tissue matrix arrays for high-throughput screening and systems analysis of cell function. Nat Methods 12(12):1197–1204 Bein A, Shin W, Jalili-Firoozinezhad S, Park MH, Sontheimer-Phelps A, Tovaglieri A et al (2018) Microfluidic organ-on-a-chip models of human intestine. Cell Mol Gastroenterol Hepatol 5(4):659–668 Berggren P, Steineck G, Adolfsson J, Hansson J, Jansson O, Larsson P et al (2001) p53 mutations in urinary bladder cancer. Br J Cancer 84(11):1505–1511 Blicharz TM, Gong P, Bunner BM, Chu LL, Leonard KM, Wakefield JA et al (2018) Microneedle-based device for the one-step painless collection of capillary blood samples. Nat Biomed Eng 2(3):151–157 Camicia R, Winkler HC, Hassa PO (2015) Novel drug targets for personalized precision medicine in relapsed/refractory diffuse large B-cell lymphoma: a comprehensive review. Mol Cancer 14(1):1–62 Cattoretti G, Pasqualucci L, Ballon G, Tam W, Nandula SV, Shen Q et al (2005) Deregulated BCL6 expression recapitulates the pathogenesis of human diffuse large B cell lymphomas in mice. Cancer Cell 7(5):445–455 Cerchietti LC, Ghetu AF, Zhu X, Da Silva GF, Zhong S, Matthews M et al (2010) A small-molecule inhibitor of BCL6 kills DLBCL cells in vitro and in vivo. Cancer Cell 17(4):400–411 Chao M, Gibbs P (2009) Caution is required before recommending routine carcinoembryonic antigen and imaging follow-up for patients with early-stage colon cancer. J Clin Oncol 27(36):e279–e280; author reply e81 Chastain EC, Duncavage EJ (2015) Clinical prognostic biomarkers in chronic lymphocytic leukemia and diffuse large B-cell lymphoma. Arch Pathol Lab Med 139(5):602–607 Chawla A, Janku F, Wheler JJ, Miller VA, Ryan J, Anhorn R et al (2018) Estimated cost of anticancer therapy directed by comprehensive genomic profiling in a single-center study. JCO Precis Oncol 2:1–11 Chiappella A, Castellino A, Nicolosi M, Santambrogio E, Vitolo U (2017) Diffuse large B-cell lymphoma in the elderly: standard treatment and new perspectives. Expert Rev Hematol 10(4):289–297 Cho C-H, Lee H-J (2019) Could digital therapeutics be a game changer in psychiatry? Psychiatry Investig 16(2):97 Cohen JJS (2019) Did CRISPR help—or harm—the first-ever gene-edited babies. 21 Collins AV, Brodie DW, Gilbert RJ, Iaboni A, Manso-Sancho R, Walse B et al (2002) The interaction properties of costimulatory molecules revisited. Immunity 17(2):201–210 Comhair SA, Erzurum SC (2002) Antioxidant responses to oxidant-mediated lung diseases. Am J Physiol Lung Cell Mol Physiol 283(2):L246–L255 Comhair SA, Bhathena PR, Dweik RA, Kavuru M, Erzurum SC (2000) Rapid loss of superoxide dismutase activity during antigen-induced asthmatic response. Lancet 355(9204):624 Compagno M, Lim WK, Grunn A, Nandula SV, Brahmachary M, Shen Q et al (2009) Mutations of multiple genes cause deregulation of NF-κB in diffuse large B-cell lymphoma. Nature 459(7247):717–721 Cooper ML, Choi J, Staser K, Ritchey JK, Devenport JM, Eckardt K et al (2018) An “off-the-shelf” fratricide-resistant CAR-T for the treatment of T cell hematologic malignancies. Leukemia 32(9):1970–1983 Courbet A, Endy D, Renard E, Molina F, Bonnet J (2015) Detection of pathological biomarkers in human clinical samples via amplifying genetic switches and logic gates. Sci Transl Med 7(289):289ra83 Danino T, Prindle A, Kwong GA, Skalak M, Li H, Allen K et al (2015) Programmable probiotics for detection of cancer in urine. Sci Transl Med 7(289):289ra84 Davis RE, Brown KD, Siebenlist U, Staudt LM (2001) Constitutive nuclear factor κB activity is required for survival of activated B cell–like diffuse large B cell lymphoma cells. J Exp Med 194(12):1861–1874 Davis RE, Ngo VN, Lenz G, Tolar P, Young RM, Romesser PB et al (2010) Chronic active B-cell receptor signalling in diffuse large B-cell lymphoma. Nature 463(7277):88–92 Davis NO, Bower J, Kollins SH (2018) Proof-of-concept study of an at-home, engaging, digital intervention for pediatric ADHD. PLoS One 13(1):e0189749 Davis KD, Aghaeepour N, Ahn AH, Angst MS, Borsook D, Brenton A et al (2020) Discovery and validation of biomarkers to aid the development of safe and effective pain therapeutics: challenges and opportunities. Nat Rev Neurol 16(7):381–400 Diamant Z, Boot J, Mantzouranis E, Flohr R, Sterk P, van Wijk RG et al (2010) Biomarkers in asthma and allergic rhinitis. Pulm Pharmacol Ther 23(6):468–481 Diamant Z, Vijverberg S, Alving K, Bakirtas A, Bjermer L, Custovic A et al (2019) Toward clinically applicable biomarkers for asthma: an EAACI position paper. Allergy 74(10):1835–1851 Dinh-Le C, Chuang R, Chokshi S, Mann D (2019) Wearable health technology and electronic health record integration: scoping review and future directions. JMIR Mhealth Uhealth 7(9):e12861 Dolgin E (2018) Kite, Sangamo partner on gene-edited cell therapies. Cancer Discov 8(4):379–380 Dorsch H, Jurock AE, Schoepe S, Lessl M, Asadullah K (2015) Grants4Targets: an open innovation initiative to foster drug discovery collaborations. Nat Rev Drug Discov 14(1):74–76 Du J, Wang S-h, Yang Q, Chen Q-q, Xo Y (2016) p53 status correlates with the risk of progression in stage T1 bladder cancer: a meta-analysis. World J Surg Oncol 14(1):1–8 Food &amp; Drug Administration (2018) Biomarker qualification: evidentiary framework. Guidance for Industry and FDA Staff (Draft). https://www.fda.gov/downloads/Drugs/GuidanceComplianceRegulatoryInformation/Guidances/UCM62.8118 Food U (2014) https://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugDevelopmentToolsQualificationProgram. Drug development tools (DDT) qualification programs. 2014 Forschner A, Eigentler TK, Pflugfelder A, Leiter U, Weide B, Held L et al (2010) Melanoma staging: facts and controversies. Clin Dermatol 28(3):275–280 Frei E, Visco C, Xu-Monette Z, Dirnhofer S, Dybkær K, Orazi A et al (2013) Addition of rituximab to chemotherapy overcomes the negative prognostic impact of cyclin E expression in diffuse large B-cell lymphoma. J Clin Pathol 66(11):956–961 Gimotty PA, Van Belle P, Elder DE, Murry T, Montone KT, Xu X et al (2005) Biologic and prognostic significance of dermal Ki67 expression, mitoses, and tumorigenicity in thin invasive cutaneous melanoma. J Clin Oncol 23(31):8048–8056 Grecchi S, Mazzini G, Lisa A, Armentero M-T, Bergamaschi R, Romani A et al (2012) Search for cellular stress biomarkers in lymphocytes from patients with multiple sclerosis: a pilot study. PLoS One 7(9):e44935 Group F-NBW (2016) BEST (biomarkers, endpoints, and other tools) resource [Internet] Guo X, Xu Y, Zhao Z (2015) In-depth genomic data analyses revealed complex transcriptional and epigenetic dysregulations of BRAFV600E in melanoma. Mol Cancer 14(1):60 Hahn NM, Bivalacqua TJ, Ross AE, Netto GJ, Baras A, Park JC et al (2017) A phase II trial of dovitinib in BCG-unresponsive urothelial carcinoma with FGFR3 mutations or overexpression: hoosier cancer research network trial HCRN12-157. Clin Cancer Res 23(12):3003–3011 Hayden MS, Ghosh S (2011) NF-κB in immunobiology. Cell Res 21(2):223–244 Hoesel B, Schmid JA (2013) The complexity of NF-κB signaling in inflammation and cancer. Mol Cancer 12(1):1–15 Holash J, Schwartz K, Lau S (2016) B-701, a selective and potent inhibitor of fibroblast growth factor receptor 3 (FGFR3), may enhance the activity of bladder cancer therapies. Eur J Cancer 69(Suppl 1):S20 Holguin F, Cardet JC, Chung KF, Diver S, Ferreira DS, Fitzpatrick A et al (2020) Management of severe asthma: a European Respiratory Society/American Thoracic Society guideline. Eur Respir J 55(1):1900588 Horvat N, Veeraraghavan H, Pelossof RA, Fernandes MC, Arora A, Khan M et al (2019) Radiogenomics of rectal adenocarcinoma in the era of precision medicine: a pilot study of associations between qualitative and quantitative MRI imaging features and genetic mutations. Eur J Radiol 113:174–181 Jiang C, Lin X (2012) Regulation of NF-κB by the CARD proteins. Immunol Rev 246(1):141–153 Jones RH, Anthoney DA, Jones RJ, Crabb SJ, Hussain SA, Birtle AJ et al (2016) FIESTA: a phase Ib and pharmacokinetic trial of AZD4547 in combination with gemcitabine and cisplatin. J Clin Oncol 34(15 Suppl) Kamat AM, Briggman J, Urbauer DL, Svatek R, González GMN, Anderson R et al (2016) Cytokine panel for response to intravesical therapy (CyPRIT): nomogram of changes in urinary cytokine levels predicts patient response to Bacillus Calmette-Guérin. Eur Urol 69(2):197–200 Kamat AM, Li R, O’Donnell MA, Black PC, Roupret M, Catto JW et al (2018) Predicting response to intravesical Bacillus Calmette-Guérin immunotherapy: are we there yet? A systematic review. Eur Urol 73(5):738–748 Karapetis CS, Khambata-Ford S, Jonker DJ, O’Callaghan CJ, Tu D, Tebbutt NC et al (2008) K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med 359(17):1757–1765 Kates M, Matoso A, Choi W, Baras AS, Daniels MJ, Lombardo K et al (2020) Adaptive immune resistance to intravesical BCG in non–muscle invasive bladder cancer: implications for prospective BCG-unresponsive trials. Clin Cancer Res 26(4):882–891 Kawamoto K, Miyoshi H, Yoshida N, Nakamura N, Ohshima K, Sone H et al (2016) MYC translocation and/or BCL 2 protein expression are associated with poor prognosis in diffuse large B-cell lymphoma. Cancer Sci 107(6):853–861 Kee T, Weiyan C, Blasiak A, Wang P, Chong JK, Chen J et al (2019) Harnessing CURATE.AI as a digital therapeutics platform by identifying N-of-1 learning trajectory profiles. Adv Therap 2(9):1900023 Khalil DN, Smith EL, Brentjens RJ, Wolchok JD (2016) The future of cancer treatment: immunomodulation, CARs and combination immunotherapy. Nat Rev Clin Oncol 13(5):273–290 Koulis C, Yap R, Engel R, Jardé T, Wilkins S, Solon G et al (2020) Personalized medicine—current and emerging predictive and prognostic biomarkers in colorectal cancer. Cancers (Basel) 12(4):812 Kuruvilla ME, Lee FE-H, Lee GB (2019) Understanding asthma phenotypes, endotypes, and mechanisms of disease. Clin Rev Allergy Immunol 56(2):219–233 Landeck L, Kneip C, Reischl J, Asadullah K (2016) Biomarkers and personalized medicine: current status and further perspectives with special focus on dermatology. Exp Dermatol 25(5):333–339 Landis SC, Amara SG, Asadullah K, Austin CP, Blumenstein R, Bradley EW et al (2012) A call for transparent reporting to optimize the predictive value of preclinical research. Nature 490(7419):187–191 Laserna-Mendieta EJ, Casabona S, Guagnozzi D, Savarino E, Perelló A, Guardiola-Arévalo A et al (2020) Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: results from the EoE connect registry. Aliment Pharmacol Ther 52(5):798–807 Lee SS-J, Fullerton SM, Saperstein A, Shim JK (2019) Ethics of inclusion: cultivate trust in precision medicine. Science 364(6444):941–942 Lessl M, Bryans JS, Richards D, Asadullah K (2011) Crowdsourcing in drug discovery. Nat Rev Drug Discov 10(4):241–242 Li W, Gupta SK, Han W, Kundson RA, Nelson S, Knutson D et al (2019) Targeting MYC activity in double-hit lymphoma with MYC and BCL2 and/or BCL6 rearrangements with epigenetic bromodomain inhibitors. J Hematol Oncol 12(1):1–13 Lima L, Severino P, Silva M, Miranda A, Tavares A, Pereira S et al (2013) Response of high-risk of recurrence/progression bladder tumours expressing sialyl-Tn and sialyl-6-T to BCG immunotherapy. Br J Cancer 109(8):2106–2114 Lind JU, Busbee TA, Valentine AD, Pasqualini FS, Yuan H, Yadid M et al (2017) Instrumented cardiac microphysiological devices via multimaterial three-dimensional printing. Nat Mater 16(3):303–308 Logothetis CJ (2014) Prostate cancer bone metastases: not so systemic after all. Lancet Oncol 15(7):675–676 Loriot Y, Necchi A, Park SH, Garcia-Donas J, Huddart R, Burgess E et al (2019) Erdafitinib in locally advanced or metastatic urothelial carcinoma. N Engl J Med 381(4):338–348 Ma H, Wert KJ, Shvartsman D, Melton DA, Jaenisch R (2018) Establishment of human pluripotent stem cell-derived pancreatic β-like cells in the mouse pancreas. Proc Natl Acad Sci U S A 115(15):3924–3929 Mak K-K, Pichika MR (2019) Artificial intelligence in drug development: present status and future prospects. Drug Discov Today 24(3):773–780 Malats N, Bustos A, Nascimento CM, Fernandez F, Rivas M, Puente D et al (2005) P53 as a prognostic marker for bladder cancer: a meta-analysis and review. Lancet Oncol 6(9):678–686 Marandino L, Raggi D, Giannatempo P, Farè E, Necchi A (2019) Erdafitinib for the treatment of urothelial cancer. Expert Rev Anticancer Ther 19(10):835–846 Margonis GA, Spolverato G, Kim Y, Karagkounis G, Choti MA, Pawlik TM (2015) Effect of KRAS mutation on long-term outcomes of patients undergoing hepatic resection for colorectal liver metastases. Ann Surg Oncol 22(13):4158–4165 Mason KD, Vandenberg CJ, Scott CL, Wei AH, Cory S, Huang DC et al (2008) In vivo efficacy of the Bcl-2 antagonist ABT-737 against aggressive Myc-driven lymphomas. Proc Natl Acad Sci USA 105(46):17961–17966 McDowell PJ, Heaney LG (2020) Different endotypes and phenotypes drive the heterogeneity in severe asthma. Allergy 75(2):302–310 McHugh KJ, Nguyen TD, Linehan AR, Yang D, Behrens AM, Rose S et al (2017) Fabrication of fillable microparticles and other complex 3D microstructures. Science 357(6356):1138–1142 Merz V, Zecchetto C, Melisi D (2021) Pemigatinib, a potent inhibitor of FGFRs for the treatment of cholangiocarcinoma. Future Oncol 17(4):389–402 Miller DM, Thomas SD, Islam A, Muench D, Sedoris K (2012) c-Myc and cancer metabolism. Clin Cancer Res 18(20):5546–5553 Milowsky MI, Dittrich C, Durán I, Jagdev S, Millard FE, Sweeney CJ et al (2014) Phase 2 trial of dovitinib in patients with progressive FGFR3-mutated or FGFR3 wild-type advanced urothelial carcinoma. Eur J Cancer 50(18):3145–3152 de Moll EH, Fu Y, Qian Y, Perkins SH, Wieder S, Gnjatic S et al (2015) Immune biomarkers are more accurate in prediction of survival in ulcerated than in non-ulcerated primary melanomas. Cancer Immunol Immunother 64(9):1193–1203 Monjezi R, Miskey C, Gogishvili T, Schleef M, Schmeer M, Einsele H et al (2017) Enhanced CAR T-cell engineering using non-viral Sleeping Beauty transposition from minicircle vectors. Leukemia 31(1):186–194 Montero J, Letai A, Differentiation. (2018) Why do BCL-2 inhibitors work and where should we use them in the clinic? Cell Death Differ 25(1):56–64 Moss JT, Kadmon D (1991) BCG and the treatment of superficial bladder cancer. DICP 25(12):1355–1367 Mullard A (2017) FDA approves first CART therapy. Nat Rev Drug Discov 16(10):669 Nagel D, Vincendeau M, Eitelhuber A, Krappmann D (2014) Mechanisms and consequences of constitutive NF-κB activation in B-cell lymphoid malignancies. Oncogene 33(50):5655–5665 Necchi A, Mariani L, Zaffaroni N, Schwartz LH, Giannatempo P, Crippa F et al (2012) Pazopanib in advanced and platinum-resistant urothelial cancer: an open-label, single group, phase 2 trial. Lancet Oncol 13(8):810–816 Nogova L, Sequist LV, Garcia JMP, Andre F, Delord J-P, Hidalgo M et al (2017) Evaluation of BGJ398, a fibroblast growth factor receptor 1–3 kinase inhibitor, in patients with advanced solid tumors harboring genetic alterations in fibroblast growth factor receptors: results of a global phase I, dose-escalation and dose-expansion study. J Clin Oncol 35(2):157 Ogunwobi OO, Mahmood F, Akingboye A (2020) Biomarkers in colorectal cancer: current research and future prospects. Int J Mol Sci 21(15):5311 Oliva N, Carcole M, Beckerman M, Seliktar S, Hayward A, Stanley J et al (2015) Regulation of dendrimer/dextran material performance by altered tissue microenvironment in inflammation and neoplasia. Sci Transl Med 7(272):272ra11 Pages F, Flam TA, Vieillefond A, Molinie V, Abeille X, Lazar V et al (1998) p53 status does not predict initial clinical response to bacillus Calmette-Guerin intravesical therapy in T1 bladder tumors. J Urol 159(3):1079–1084 Palomaki GE, Bradley LA, Douglas MP, Kolor K, Dotson WD (2009) Can UGT1A1 genotyping reduce morbidity and mortality in patients with metastatic colorectal cancer treated with irinotecan? An evidence-based review. Genet Med 11(1):21–34 Palou J, Algaba F, Vera I, Rodriguez O, Villavicencio H, Sanchez-Carbayo M (2009) Protein expression patterns of ezrin are predictors of progression in T1G3 bladder tumours treated with nonmaintenance bacillus Calmette-Guerin. Eur Urol 56(5):829–836 Park MH, Hong JT (2016) Roles of NF-κB in cancer and inflammatory diseases and their therapeutic approaches. Cells 5(2):15 Parry RV, Chemnitz JM, Frauwirth KA, Lanfranco AR, Braunstein I, Kobayashi SV et al (2005) CTLA-4 and PD-1 receptors inhibit T-cell activation by distinct mechanisms. Mol Cell Biol 25(21):9543–9553 Pasqualucci L, Compagno M, Houldsworth J, Monti S, Grunn A, Nandula SV et al (2006) Inactivation of the PRDM1/BLIMP1 gene in diffuse large B cell lymphoma. J Exp Med 203(2):311–317 Patel JN (2014) Application of genotype-guided cancer therapy in solid tumors. Pharmacogenomics 15(1):79–93</p>
 <p>10 바이오마커의 개인 맞춤 의학에서의 역할 273 Patel JN, Fong MK, Jagosky M (2019) 대장암 바이오마커와 개인 맞춤 의학 시대. J Pers Med 9(1):3. Paul MK, Mukhopadhyay AK (2004) 티로신 키나제 – 암에서의 역할 및 중요성. Int J Med Sci 1(2):101. Pellino G, Gallo G, Pallante P, Capasso R, De Stefano A, Maretto I 등 (2018) 대장암 비침습 바이오마커: 진단 및 개인 맞춤 치료 관점에서의 역할. Gastroenterol Res Pract 2018:2397863. Peruzzotti-Jametti L, Bernstock JD, Vicario N, Costa AS, Kwok CK, Leonardi T 등 (2018) 대식세포 유래 외부 초산이 신경줄기세포를 면허하여 만성 신경염증을 억제한다. Cell Stem Cell 22(3):355–68.e13. Pietzak EJ, Bagrodia A, Cha EK, Drill EN, Iyer G, Isharwal S 등 (2017) 비근육 침습 방광암의 차세대 시퀀싱이 잠재적 바이오마커와 합리적 치료 표적을 밝혀낸다. Eur Urol 72(6):952–959. Pinho S, Marcos N T, Ferreira B, Carvalho A S, Oliveira M J, Santos-Silva F 등 (2007) 암 관련 시알릴-Tn 항원의 생물학적 의미: 위암 세포의 악성 표현형 조절. Cancer Lett 249(2):157–170. Poste G (2011) 바이오마커의 도입. Nature 469(7329):156–157. Prantil-Baun R, Novak R, Das D, Somayaji MR, Przekwas A, Ingber DE (2018) 미세유체 연동 장기-칩에 의해 가능해진 생리학 기반 약동학 및 약력학 분석. Annu Rev Pharmacol Toxicol 58:37–64. Prasad V (2018) 면역치료: Tisagenlecleucel – 최초 승인된 CAR-T 세포 치료제: 보험자 및 정책 입안자를 위한 함의. Nat Rev Clin Oncol 15(1):11–12. Prinz F, Schlange T, Asadullah K (2011) 믿거나 말거나: 잠재적 약물 표적에 대한 공개 데이터에 얼마나 의존할 수 있는가? Nat Rev Drug Discov 10(9):712. Qing J, Du X, Chen Y, Chan P, Li H, Wu … (2009) FGFR3를 표적으로 하는 항체 기반 방광암 및 (4;14)-양성 다발성 골수종 마우스 모델. J Clin Invest 119(5):1216–1229. Ratain M, Schwartz G, Oza A, Rudin C, Kaye S, DeJonge M … (2011) Brivanib (BMS-582664) in advanced solid tumors (AST): 2상 무작위 중단 시험 결과. J Clin Oncol 29(15Suppl):3079. Reddy S, Allan S, Coghlan S, Cooper P (2020) 의료 분야 AI 적용을 위한 거버넌스 모델. J Am Med Inform Assoc 27(3):491–497. Roberts ZJ, Better M, Bot A, Roberts MR, Ribas A (2018) Axicabtagene ciloleucel, 최초 클래스 CART 세포 치료제, 공격적인 NHL에 적용. Leuk Lymphoma 59(8):1785–1796. Ruella M, Kenderian SS (2017) 차세대 키메라 항원 수용체 T 세포 치료제: 오프-더-쉘프 접근법. BioDrugs 31(6):473–481. Saad FT, Hincal E, Kaymakamzade B (2017) 면역 체크포인트, 면역 시스템, 및 BCG의 동역학: 표면 방광암 치료에 대한 컴퓨팅 수학 방법. Comput Math Methods Med 2017:3573082. Sadelain M, Rivière I, Riddell S (2017) 치료용 T 세포 엔지니어링. Nature 545(7655):423–431. Sage PT, Schildberg FA, Sobel RA, Kuchroo VK, Freeman GJ, Sharpe AH (2018) 수지상 세포 PD-L1이 자가면역 및 여포 T 세포 분화와 기능을 제한한다. J Immunol 200(8):2592–2602. Salter H, Holland R (2014) 바이오마커: 진단 정교화 및 신약 개발 촉진 – 현실, 기대, 그리고 개방 혁신의 역할. J Intern Med 276(3):215–228. Saxena N, Taneja N, Shome P, Mani S (2018) 미토콘드리아 기증: 불치성 미토콘드리아 질환 치료의 축복일까 저주일까. J Hum Reprod Sci 11(1):3–9. Scannell JW, Blanckley A, Boldon H, Warrington B (2012) 제약 R&amp;D 부족의 진단. Nat Rev Drug Discov 11(3):191–200. Schukur L, Geering B, Charpin-El Hamri G, Fussenegger M (2015) AND-게이트 논리를 갖는 이식형 합성 사이토카인 변환 세포가 실험적 건선 치료에 효과적. Sci Transl Med 7(318):318ra201.</p>
 <p>274 S.U. Islam 등. Schwaederle M, Zhao M, Lee JJ, Eggermont AM, Schilsky RL, Mendelsohn J 등 (2015) 정밀 의학이 다양한 암에 미치는 영향: 2상 임상시험 메타 분석. J Clin Oncol 33(32):3817. Schwaederle M, Zhao M, Lee JJ, Lazar V, Leyland-Jones B, Schilsky R 등 (2016) 바이오마커 기반 치료 전략과 반응률 및 무진행 생존율의 연관성: 난치성 악성 종양 메타 분석. JAMA Oncol 2(11):1452–1459. Severino PF, Silva M, Carrascal M, Malagolini N, Chiricolo M, Venturi G 등 (2017) 방광암 세포에서 시알릴-Tn 당항원 발현이 BCG와 산화 손상에 대한 반응에 미치는 영향. Oncotarget 8(33):54506. Seys SF, Quirce S, Agache I, Akdis CA, Alvaro-Lozano M, Antolín-Amérigo D 등 (2019) 심각한 천식: 새로운 개념과 신흥 치료법을 다루는 4차 국제 심각 천식 포럼, 마드리드, 2018. Allergy 74(11):2244–2248. Shinagawa T, Tanaka T, Nozawa H, Emoto S, Murono K, Kaneko M 등 (2018) 일본, 미국, 유럽의 대장암 가이드라인 비교. Ann Gastroenterol Surg 2(1):6–12. Shustik J, Han G, Farinha P, Johnson NA, Neriah SB, Connors JM 등 (2010) BCL6 재배열과 확산형 큰 B세포 림프종 환자들의 치료 결과와의 상관관계. Haematologica 95(1):96. Siddiqui WA, Ahad A, Ahsan H (2015) BCL2 패밀리의 미스터리: Bcl-2 단백질과 세포 사멸. Arch Toxicol 89(3):289–317. Ślusarczyk A, Zapała P, Zapała Ł, Piecha T, Radziszewski P (2019) 비근육 침습 방광암에서 BCG 반응 예측. Int Urol Nephrol 51(7):1089–1099. Stephenson D, Sauer J-M (2014) 예측 안전성 테스트 컨소시엄과 주요 질병 연합. Nat Rev Drug Discov 13(11):793–794. Stiell IG, Clement CM, McKnight RD, Brison R, Schull MJ, Rowe B H 등 (2003) 캐나다 C-척추 규칙 대 NEXUS 저위험 기준 비교. N Engl J Med 349(26):2510–2518. Sun Y, Soh S (2015) 맞춤형 약물 방출 프로파일을 가진 정밀 의학용 정제 인쇄. Adv Mater 27(47):7847–7853. Surguladze D, Pennello A, Ren X, Mack T, Rigby A, Balderes P 등 (2019) LY3076226, 새로운 항 FGFR3 항체 약물 접합체가 FGFR3 변이 또는 융합을 가진 종양 모델에서 강력하고 지속적인 항종양 활성을 나타낸다. AACR. Sze E, Bhalla A, Nair P (2020) 비-T2 천식을 위한 메커니즘 및 치료 전략. Allergy 75(2):311–325. Thomas PS, Lowe A, Samarasinghe P, Lodge CJ, Huang Y, Abramson MJ 등 (2013) 소아 천식에서 호흡기 응축액: 새로운 진전 또는 차가운 물을 부어 뜨거운 공기를 부어넣는가? 체계적 검토. Pediatr Pulmonol 48(5):419–442. Tie J, Lipton L, Desai J, Gibbs P, Jorissen RN, Christie M 등 (2011) KRAS 변이가 절제된 대장암 환자에서 폐 전이와 연관. Clin Cancer Res 17(5):1122–1130. Tilly H, Da Silva MG, Vitolo U, Jack A, Meignan M, Lopez-Guillermo A 등 (2015) 확산형 큰 B세포 림프종( DLBCL ): 진단, 치료 및 추적 관찰을 위한 ESMO 임상 실무 지침. Ann Oncol 26:v116–vv25. Toll A, Margalef P, Masferrer E, Ferrándiz-Pulido C, Gimeno J, Pujol RM 등 (2015) 활성 핵 IKK가 피부 편평세포암에서 전이 위험과 상관. Arch Dermatol Res 307(8):721–729. Tsuchida N, Murugan AK, Grieco M (2016) Kirsten Ras 유전자: 인간 암 연구에서 그 발견의 의미. Oncotarget 7(29):46717. Vegas AJ, Veiseh O, Doloff JC, Ma M, Tam HH, Bratlie K 등 (2016a) 복합 하이드로겔 라이브러리를 통해 영장류에서 외부 물질 반응을 감소시키는 물질 식별. Nat Biotechnol 34(3):345–352. Vegas AJ, Veiseh O, Gürtler M, Millman JR, Pagliuca FW, Bader AR 등 (2016b) 면역 정상 마우스에서 폴리머 캡슐화 인간 줄기세포 유래 베타세포를 이용한 장기 혈당 조절. Nat Med 22(3):306. Venderbosch S, Nagtegaal ID, Maughan TS, Smith CG, Cheadle JP, Fisher D 등 (2014) 전이성 대장암 환자에서 불일치 복구 상태와 BRAF 변이 상태: CAIRO, CAIRO2, COIN, FOCUS 연구의 통합 분석. Clin Cancer Res 20(20):5322–5330. Vrzalikova K, Vockerodt M, Leonard S, Bell A, Wei W, Schrader A 등 (2011) EBV 온코진인 LMP-1에 의한 BLIMP1α 하향조절이 B세포 분화 프로그램을 방해하고 B세포 림프종에서 바이러스 복제를 억제한다. Blood 117(22):5907–5917. Wagner SD, Ahearne M, Ferrigno PK (2011) 림프종에서 BCL6의 역할과 치료 경로. Br J Haematol 152(1):3–12. Wang Z, Wang F, Wang C, Zhang J, Wang H, Shi L 등 (2021) 베이즈 및 의사결정 이론을 이용한 동시 바이오마커 기반 하위집단 선택 및 효능 평가 설계. Stat Biopharm Res:1–24. Wholley D (2014) 바이오마커 컨소시엄. Nat Rev Drug Discov 13(11):791–792. https://doi.org/10.1038/nrd4439 Ye BH (2000) 비호지킨 림프종에서 BCL-6의 병인. Cancer Invest 18(4):356–365. Ying CY, Dominguez-Sola D, Fabi M, Lorenz IC, Hussein S, Bansal M 등 (2013) MEF2B 변이가 확산형 큰 B세포 림프종에서 온코 유전자 BCL6의 발현을 비조절한다. Nat Immunol 14(10):1084–1092. Yokota T, Ura T, Shibata N, Takahari D, Shitara K, Nomura M 등 (2011) BRAF 변이는 진행성 및 재발성 대장암에서 강력한 예후 인자이다. Br J Cancer 104(5):856–862. Young RM, Shaffer AL III, Phelan JD, Staudt LM (2015) 확산형 큰 B세포 림프종에서 B세포 수용체 신호 전달. Semin Hematol 52(2):77–85. Zachos JC, Röhl U, Schellenberg SA, Sluijs A, Hodell D A, Kelly D C 등 (2005) 고른기-에오세인 열대 최대기 동안 해양의 급격한 산성화. Science 308(5728):1611–1615. Zhang B, Calado D P, Wang Z, Fröhler S, Köchert K, Qian Y 등 (2015) 대체 NF-κB 신호전달에서의 온코진 역할: DLBCL에서 BCL6 발현이 비조절될 때 밝혀짐. Cell Rep 11(5):715–726. Zhang M, Xu-Monette Z Y, Li L, Manyam GC, Visco C, Tzankov A 등 (2016) RelA NF-κB 서브유닛 활성화가 확산형 큰 B세포 림프종의 치료 타깃으로서의 가능성. Aging (Albany NY) 8(12):3321. Zhou K, Xu D, Cao Y, Wang J, Yang Y, Huang M 등 (2014) C-MYC 변이가 확산형 큰 B세포 림프종에서 예후 인자로 작용한다: 역학 연구 메타 분석. PLoS One 9(4):e95020. Zlotta AR, Fleshner NE, Jewett MA (2009) 비근육 침습 방광암에서 BCG 실패 관리: 최신 업데이트. Can Urol Assoc J 3(6Suppl4):S199.</p>
 </section>
@@ -6136,8 +4770,8 @@ Patel JN (2014) Application of genotype-guided cancer therapy in solid tumors. P
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../biomarkers-immunotherapy/index.html" class="pagination-link" aria-label="Biomarkers for Immunotherapy of Cancer Methods and Protocols">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Biomarkers for Immunotherapy of Cancer Methods and Protocols</span></span>
+      <a href="../biomarkers-immunotherapy/index.html" class="pagination-link" aria-label="암 면역치료를 위한 바이오마커">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">암 면역치료를 위한 바이오마커</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
