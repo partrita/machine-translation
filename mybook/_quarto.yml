@@ -81,7 +81,6 @@ book:
     - part: "신약 개발, 약동학 및 헬스케어"
       chapters:
         - ai-drug-discovery/index.qmd
-        - guide-drug-development/index.qmd
         - drug-development-academia/index.qmd
         - pkpd-integrated-textbook/index.qmd
         - clinical-trials-brody/index.qmd
@@ -172,5 +171,5 @@ format:
     number-sections: false
 
 execute:
-  freeze: auto
+  freeze: true
   eval: false

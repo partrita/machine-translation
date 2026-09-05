@@ -519,6 +519,8 @@ $RECYCLE.BIN/
 # Quarto
 /_freeze/
 **/_freeze/
+!mybook/_freeze/
+!mybook/_freeze/**
 
 # Quarto render artifacts
 mybook/site_libs/
