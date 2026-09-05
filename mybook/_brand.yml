@@ -1,0 +1,55 @@
+# Rose Pine (Dawn) brand — https://rosepinetheme.com/palette
+# Placed next to _quarto.yml; layered over cosmo via `theme: [cosmo, brand]`.
+meta:
+  name: rose-pine-dawn
+  link: https://rosepinetheme.com
+
+color:
+  palette:
+    base: "#faf4ed"
+    surface: "#fffaf3"
+    overlay: "#f2e9e1"
+    muted: "#9893a5"
+    subtle: "#797593"
+    text: "#575279"
+    love: "#b4637a"
+    gold: "#ea9d34"
+    rose: "#d7827e"
+    pine: "#286983"
+    foam: "#56949f"
+    iris: "#907aa9"
+    highlight-low: "#f4ede8"
+    highlight-med: "#dfdad9"
+    highlight-high: "#cecacd"
+  foreground: text
+  background: base
+  primary: pine
+  secondary: subtle
+  tertiary: overlay
+  success: foam
+  info: iris
+  warning: gold
+  danger: love
+  light: surface
+  dark: text
+
+typography:
+  base:
+    line-height: 1.75
+  headings:
+    color: pine
+  link:
+    color: pine
+    decoration: underline
+  monospace-inline:
+    color: love
+    background-color: highlight-low
+  monospace-block:
+    background-color: surface
+
+defaults:
+  bootstrap:
+    defaults:
+      navbar-bg: "#286983"
+      navbar-fg: "#fffaf3"
+      code-block-bg: "#fffaf3"

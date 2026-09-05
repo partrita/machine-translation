@@ -1,6 +1,5 @@
 ---
-title: "러스트 프로그래밍 완벽 가이드"
-subtitle: "파이썬에서 러스트로 이동하기"
+title: "Python으로 Rust 배우기"
 ---
 
 러스트(Rust)와 파이썬(Python) 예제 코드를 바탕으로 핵심 동작 원리를 짚어보는 실전 가이드입니다.
@@ -31,6 +30,7 @@ subtitle: "파이썬에서 러스트로 이동하기"
 # Part I: 러스트 프로그래밍 기초 및 실전 프로젝트 (Rust Insight Book)
 
 ## INTRO 예제 모음
+
 > 해당 챕터 경로: `intro` | 포함된 소스 파일 수: 1개
 
 ### `book.toml`
@@ -4088,13 +4088,13 @@ fn main() {
     println!("i16={}~{}", i16::MIN, i16::MAX);
     println!("i32={}~{}", i32::MIN, i32::MAX);
     println!("i64={}~{}", i64::MIN, i64::MAX);
-    
+
     println!("--- 부호가 없는 정수 ---");
     println!("u8={}~{}", u8::MIN, u8::MAX);
     println!("u16={}~{}", u16::MIN, u16::MAX);
     println!("u32={}~{}", u32::MIN, u32::MAX);
     println!("u64={}~{}", u64::MIN, u64::MAX);
-    
+
     println!("--- OS 비트에 따라 달라지는 정수 --- ");
     println!("isize={}~{}", isize::MIN, isize::MAX);
     println!("usize={}~{}", usize::MIN, usize::MAX);
@@ -4205,7 +4205,7 @@ fn main() {
         for i100 in 0..(count100+1) {
             for i50 in 0..(count50+1) {
                 // 동전을 더한 금액을 계산 --- (*3)
-                let total: i64 = 
+                let total: i64 =
                     i50 * 50 + i100 * 100 + i500 * 500;
                 // 동전을 더한 금액과 거스름돈이 일치하면 출력
                 if price == total {
@@ -4645,7 +4645,7 @@ print(get_primes(100))
 fn is_prime(n: usize) -> bool {
     for i in 2..n {
         if n % i == 0 {
-            return false 
+            return false
         }
     }
     return true
@@ -4694,7 +4694,7 @@ fn main() {
 
     // 함수를 호출 --- (*2)
     set_value(&mut v);
-    
+
     // 변수 v의 값은？ --- (*3)
     println!("v={}", v);
 }
@@ -4961,7 +4961,7 @@ fn main() {
 // 표준 입력에서 1줄씩 읽어 f64 타입으로 반환하는 함수 --- (*4)
 fn input(prompt: &str) -> f64 {
     // 메시지 출력
-    println!("{}", prompt); 
+    println!("{}", prompt);
     // 입력 값을 가져옴 --- (*5)
     let mut s = String::new();
     std::io::stdin().read_line(&mut s).expect("입력 에러");
@@ -5044,11 +5044,11 @@ fn main() {
     // 파일 이름 지정 --- (*2)
     let afile = "./fizzbuzz_python.txt";
     let bfile = "./fizzbuzz_rust.txt";
-    
+
     // 파일 내용을 문자열로 읽어들임 --- (*3)
     let astr = fs::read_to_string(afile).unwrap();
     let bstr = fs::read_to_string(bfile).unwrap();
-    
+
     // 불필요한 공백 삭제
     let astr = astr.trim();
     let bstr = bstr.trim();
@@ -5106,7 +5106,7 @@ for key in ["A", "B", "C"]:
 use std::collections::HashMap;
 
 // 투표 데이터를 상수로 선언 --- (*2)
-const V_DATA: &str = 
+const V_DATA: &str =
     "C,C,A,A,A,B,C,C,B,B,B,C,B,C,B,A,C,C,B,C,C,C";
 
 fn main() {
@@ -5222,10 +5222,10 @@ use std::io::{BufRead, BufReader};
 fn main() {
     // 사전 파일 지정 --- (*1)
     let dicfile = "dict.txt";
-    
+
     // 명령줄 인수를 벡터에 할당 --- (*2)
     let args: Vec<String> = std::env::args().collect();
-    
+
     // 인수 확인
     if args.len() < 2 {
         println!("[USAGE] ./dictionary word");
@@ -5233,7 +5233,7 @@ fn main() {
     }
     // 인수로 전달된 단어 --- (*3)
     let word = &args[1];
-    
+
     // 사전 파일 열기 --- (*4)
     let fp = File::open(dicfile).unwrap();
     // BufReader로 읽어들임 --- (*5)
@@ -5242,8 +5242,8 @@ fn main() {
         // 한 줄씩 처리 --- (*6)
         let line = line.unwrap();
         // 지정한 단어가 포함되는 줄인지 확인 --- (*7)
-        if line.find(word) == None { 
-            continue; 
+        if line.find(word) == None {
+            continue;
         }
         println!("{}", line);
     }
@@ -5306,7 +5306,7 @@ fn main() {
     let target_dir = &args[1];
     let keyword = &args[2];
     // PathBuf로 변환 --- (*3)
-    let target = path::PathBuf::from(target_dir);    
+    let target = path::PathBuf::from(target_dir);
     findfile(&target, keyword);
 }
 
@@ -5371,7 +5371,7 @@ fn main() {
             writer.write(bytes).unwrap();
         }
     } // ← 여기서 파일은 자동으로 닫힌다 --- (*5)
-    
+
     // 저장한 파일의 내용을 읽어들여 출력 --- (*6)
     let s = fs::read_to_string(filename).unwrap();
     println!("{}", s);
@@ -5621,9 +5621,9 @@ fn main() {
 use std::collections::HashMap;
 fn main() {
     // 우리말 월 이름 목록 --- (*1)
-    let months = ["해오름달", "시샘달", "꽃내음달", "잎새달", "푸른달", "누리달", 
+    let months = ["해오름달", "시샘달", "꽃내음달", "잎새달", "푸른달", "누리달",
         "빗방울달", "타오름달", "거둠달", "온누리달", "눈마중달", "매듭달"];
-    
+
     // HashMap 초기화 --- (*2)
     let mut months_map: HashMap<&str, usize> = HashMap::new();
     // 월의 이름을 HashMap에 추가 --- (*3)
@@ -5654,7 +5654,7 @@ fn main() {
 import random
 
 # 전체 미로의 크기 지정
-MAP_N = 25 
+MAP_N = 25
 # 미로 초기화
 maze = [] # 배열 변수 선언
 for y in range(0, MAP_N):
@@ -5703,7 +5703,7 @@ fn main() {
     // 명령줄 인수 취득 --- (*1)
     let args: Vec<String> = env::args().collect();
     // 경로가 없는 경우 현재 디렉토리 지정
-    let mut target_dir = "."; 
+    let mut target_dir = ".";
     if args.len() >= 2 { // 경로를 지정하는 경우
         target_dir = &args[1];
     }
@@ -5987,7 +5987,7 @@ import sys
 total = 0
 # 명령줄 인수를 순서대로 더한다
 for i, v in enumerate(sys.argv):
-    if i == 0: continue # 0번째는 명령어(프로그램) 자신이므로 무시 
+    if i == 0: continue # 0번째는 명령어(프로그램) 자신이므로 무시
     try:
         # 문자열을 숫자로 변환
         total += float(v)
@@ -6207,7 +6207,7 @@ fn main() {
     // 섞기 --- (*3)
     let mut rng = rand::thread_rng();
     nums.shuffle(&mut rng);
-    
+
     // 카드 표시 --- (*4)
     for y in 0..5 {
         for x in 0..5 {
@@ -6255,14 +6255,14 @@ rand = "0.8.0"
 #### 소스 코드
 
 ```rust
-// 배열을 섞기 위한 rand 크레이트 이용 
+// 배열을 섞기 위한 rand 크레이트 이용
 use rand::seq::SliceRandom;
 
 fn main() {
     // 1에서 75까지의 값을 벡터에 대입 --- (*1)
     let mut nums = vec![];
     for i in 1..=75 { nums.push(i); }
-    
+
     // 섞기 --- (*2)
     let mut rng = rand::thread_rng();
     nums.shuffle(&mut rng);
@@ -7138,7 +7138,7 @@ int main() {
   // 메모리 해제 --- (*4)
   free(g2);
   // 실수로 다음을 실행하면 메모리 이중 해제
-  // free(g1); 
+  // free(g1);
   return 0;
 }
 ```
@@ -7211,7 +7211,7 @@ fn echo(s: String) {
 fn main() {
     let s = "서로 사랑하면 살고 서로 싸우면 죽는다".to_string();
     println!("{}", s); // 소유권이 이동하지 않는다
-    println!("{}", s); // 
+    println!("{}", s); //
 }
 ```
 
@@ -7250,7 +7250,7 @@ fn main() {
     let year = 2023;
     let month = 12;
     let day = 1;
-    println!("{yy}년 {mm}월 {dd}일", 
+    println!("{yy}년 {mm}월 {dd}일",
              dd=day, mm=month, yy=year);
 }
 ```
@@ -7675,7 +7675,7 @@ fn main() {
     // 첫 번째 1문자를 출력 --- (*2)
     let ch = &s[..3];
     println!("{}", ch); // 안
-    
+
     // 세 번째 1문자를 출력 --- (*3)
     let ch = &s[6..9];
     println!("{}", ch); // 하
@@ -7767,12 +7767,12 @@ fn main() {
 fn main() {
     // 전화번호 지정
     let telno = "955-3658";
-    
+
     // 슬라이스로 분할 --- (*1)
     println!("-- 슬라이스 --");
     println!("국번: {}", &telno[..3]);
     println!("사번: {}", &telno[4..]);
-    
+
     // split_at으로 분할 --- (*2)
     println!("--- split_at ---");
     let (telno1, telno2) = telno.split_at(3);
@@ -7780,7 +7780,7 @@ fn main() {
     println!("국번: {}", telno1);
     println!("구분: {}", telno2);
     println!("사번: {}", telno3);
-    
+
     // split_off로 분할 --- (*3)
     println!("-- split_off --");
     let mut telno1 = String::from(telno);
@@ -7899,7 +7899,7 @@ fn main() {
         break;
     }
     println!("앞 2문자: {}", sub1);
-    
+
     // '🥇🤣' 부분 얻기 --- (*2)
     let mut sub2 = String::new();
     for (i, c) in pr.chars().enumerate() {
@@ -7929,7 +7929,7 @@ fn main() {
     // '무기'부분 문자열 얻기 --- (*2)
     let pr_chars: Vec<char> = pr.chars().collect(); // 변환
     //  4-5번째 문자열 얻기
-    let sub_chars = &pr_chars[4..=5]; // 슬라이스 
+    let sub_chars = &pr_chars[4..=5]; // 슬라이스
     // 슬라이스를 문자열로 변환
     let sub4: String = sub_chars.into_iter().collect();
     println!("4-5번째 문자: {}", sub4);
@@ -8018,9 +8018,9 @@ fn main() {
         color: 0x0000FF,
     };
     // 객체의 각 필드를 출력 --- (*3)
-    println!("car1: {}, {}cc, {:06x}", 
+    println!("car1: {}, {}cc, {:06x}",
         car1.model, car1.cc, car1.color);
-    println!("car2: {}, {}cc, {:06x}", 
+    println!("car2: {}, {}cc, {:06x}",
         car2.model, car2.cc, car2.color);
 }
 ```
@@ -8088,7 +8088,7 @@ fn main() {
     // 튜플을 참조해 합계 금액 구하기 --- (*2)
     let total = banana.1 + apple.1;
     // 튜플 내용 표시 --- (*3)
-    print_tuple(&banana); 
+    print_tuple(&banana);
     print_tuple(&apple);
     println!("합계는 {}원 입니다.", total);
 }
@@ -8340,10 +8340,10 @@ mod tests {
         assert_eq!(a1, a2);
         // String 배열 생성 및 비교 --- (*2)
         let a3 = [
-            "사과".to_string(), 
+            "사과".to_string(),
             "바나나".to_string()];
         let a4 = [
-            String::from("사과"), 
+            String::from("사과"),
             String::from("바나나")];
         assert_eq!(a3, a4);
     }
@@ -8414,11 +8414,11 @@ mod tests {
             price: 0,
         };
         apple2.price = 2400;
-        
+
         // 구조체 필드 비교 --- (*4)
         assert_eq!(apple1.name, apple2.name);
         assert_eq!(apple1.price, apple2.price);
-        
+
         // 구조체 자체를 비교 --- (*5)
         assert_eq!(apple1, apple2);
     }
@@ -8707,9 +8707,9 @@ fn main() {
 fn main() {
     // 문자열로 이루어진 배열
     let array = [
-        "Apple".to_string(), 
-        "Banana".to_string(), 
-        "Mango".to_string(), 
+        "Apple".to_string(),
+        "Banana".to_string(),
+        "Mango".to_string(),
         "Tomato".to_string()
     ];
     // 배열을 반복해 화면에 출력
@@ -8732,9 +8732,9 @@ fn main() {
 fn main() {
     // 문자열로 이루어진 배열
     let array = [
-        "Apple".to_string(), 
-        "Banana".to_string(), 
-        "Mango".to_string(), 
+        "Apple".to_string(),
+        "Banana".to_string(),
+        "Mango".to_string(),
         "Tomato".to_string()
     ];
     // 배열을 반복해 화면에 출력
@@ -9913,9 +9913,9 @@ pub fn eval(src: String) -> Result<f64, String> {
     }
     // 결과 반환 --- (*3)
     if stack.len() == 0 { return Err(format!("no result")); }
-    if stack.len() > 1 { 
-        return Err(format!("too many value in stack")); 
-    } 
+    if stack.len() > 1 {
+        return Err(format!("too many value in stack"));
+    }
     Ok(stack.pop().unwrap_or(0.0))
 }
 
@@ -10008,12 +10008,12 @@ fn main() {
     }
     // 생성한 스레드의 수 구하기 --- (*3)
     let mut job = request_nums.len();
-    
+
     // 계산 결과 얻기 --- (*4)
     loop {
         if let Ok((arg, answer)) = rx.recv() {
             job -= 1;
-            println!("[결과] fib({} 번째 수) = {} (남은 계산={})", 
+            println!("[결과] fib({} 번째 수) = {} (남은 계산={})",
                 arg, answer, job);
             if job <= 0 {
                 show_time(start_time);
@@ -10100,7 +10100,7 @@ fn main() {
     let mut socket = TcpStream::connect(server_addr)
         .expect("서버에 접속할 수 없습니다.");
     socket.set_nonblocking(true).expect("알 수 없는 에러");
-    println!("{}에 접속했습니다.", server_addr); 
+    println!("{}에 접속했습니다.", server_addr);
     // 수신용 스레드 시작 --- (*3)
     start_thread(socket.try_clone().unwrap());
 
@@ -10270,7 +10270,7 @@ fn sleep_sender(name: &str, sender: mpsc::Sender<String>) {
 fn main() {
     // 스레드간 통신용 채널 --- (*2)
     let (tx, rx) = mpsc::channel::<String>();
-    
+
     // 스레드 1 생성 --- (*3)
     let sender = tx.clone();
     thread::spawn(|| {
@@ -10348,7 +10348,7 @@ fn main() {
     // 스레드를 이용하지 않는 경우 --- (*2)
     println!("--- 스레드 없음 ---");
     sleep_print("스레드 없음");
-    
+
     // 스레드를 이용하는 경우 --- (*3)
     println!("--- 스레드 이용 ---");
     // 스레드 1
@@ -10451,7 +10451,7 @@ pub fn make_fm(track: &mut Vec<f32>, note: Note) {
         if i < a { return i as f32 / a as f32 * v; }
         let v2 = v * s;
         if i < d {
-            let dec = (1.0 - (i as f32 / d as f32)) * 
+            let dec = (1.0 - (i as f32 / d as f32)) *
                 (1.0 - s) * v.abs();
             return if v2 > 0.0 { v + dec } else { v - dec }
         }
@@ -10464,7 +10464,7 @@ pub fn make_fm(track: &mut Vec<f32>, note: Note) {
     track.extend(w);
 }
 pub fn calc_len(bpm: usize, n: usize) -> isize {
-    ((4.0 / n as f32) * 
+    ((4.0 / n as f32) *
      (60.0 / bpm as f32) * SAMPLE_RATE) as isize
 }
 fn noteno_to_hz(no: i32) -> f32 {
@@ -10704,10 +10704,10 @@ fn main() {
     let mut img2 = imageops::crop(&mut img,
         (dim.0-w)/2, (dim.1-w)/2, w, w).to_image();
     // 지정한 크기로 리사이즈 --- (*6)
-    let img3 = imageops::resize(&mut img2, size, size, 
+    let img3 = imageops::resize(&mut img2, size, size,
         imageops::Lanczos3);
-    // 파일로 저장 --- (*7) 
-    img3.save(outfile).unwrap(); 
+    // 파일로 저장 --- (*7)
+    img3.save(outfile).unwrap();
 }
 ```
 
@@ -10794,7 +10794,7 @@ pub fn parse(src: String) -> Vec<Note> {
         match ch {
             'a'..='g' => { // 노트 --- (*6)
                 let note = match ch {
-                    'c' => 0, 'd' => 2, 'e' => 4, 'f' => 5, 
+                    'c' => 0, 'd' => 2, 'e' => 4, 'f' => 5,
                     'g' => 7, 'a' => 9, 'b' => 11, _ => 0,
                 };
                 let no = note + octave * 12;
@@ -10874,7 +10874,7 @@ pub fn write(filename: &str, notes: Vec<Note>, bpm: f32) {
     // 반복문을 이용해 음을 생성 --- (*3)
     for note in notes.into_iter() {
         // 음의 길이 계산
-        let len = (4.0 / note.len as f32 * 
+        let len = (4.0 / note.len as f32 *
                    (60.0 / bpm) * SAMPLE_RATE) as u32;
         // 주파수 계산 --- (*4)
         let tone = if note.no >= 0 {
@@ -10885,7 +10885,7 @@ pub fn write(filename: &str, notes: Vec<Note>, bpm: f32) {
 }
 
 // 사인 파형을 파일로 저장 --- (*5)
-fn write_tone<W>(fw: &mut WavWriter<W>, tone: f32, len: u32) 
+fn write_tone<W>(fw: &mut WavWriter<W>, tone: f32, len: u32)
 where W: Write + Seek {
     for t in 0..len {
         let a = t as f32 / SAMPLE_RATE;
@@ -10975,7 +10975,7 @@ fn main() {
     }
 }
 fn calc_len(bpm: usize, n: usize) -> usize {
-    ((4.0 / n as f32) * 
+    ((4.0 / n as f32) *
      (60.0 / bpm as f32) * SAMPLE_RATE) as usize
 }
 // 노이즈 생성 함수 --- (*2)
@@ -11055,7 +11055,7 @@ fn noteno_to_hz(no: i32) -> f32 {
      440.0 * 2.0f32.powf((no-69) as f32 / 12.0)
 }
 fn calc_len(bpm: usize, n: usize) -> usize {
-    ((4.0 / n as f32) * 
+    ((4.0 / n as f32) *
      (60.0 / bpm as f32) * SAMPLE_RATE) as usize
 }
 // 펄스파 생성 함수 --- (*2)
@@ -11223,7 +11223,7 @@ fn main() {
 }
 
 // 지정한 음계를 지정한 길이만큼 쓴다 --- (*5)
-fn write_tone<W>(fw: &mut WavWriter<W>, tone: f32, len: u32) 
+fn write_tone<W>(fw: &mut WavWriter<W>, tone: f32, len: u32)
 where W: Write + Seek {
     for t in 0..len {
         let a = t as f32 / SAMPLE_RATE;
@@ -11427,7 +11427,7 @@ fn noteno_to_hz(no: i32) -> f32 {
      440.0 * 2.0f32.powf((no-69) as f32 / 12.0)
 }
 fn calc_len(bpm: usize, n: usize) -> usize {
-    ((4.0 / n as f32) * 
+    ((4.0 / n as f32) *
      (60.0 / bpm as f32) * SAMPLE_RATE) as usize
 }
 // 삼각파 생성 함수 --- (*3)
@@ -11592,7 +11592,7 @@ async fn main() -> Result<(), actix_web::Error> {
         App::new()
             .route("/", web::get().to(index))
     })
-    .bind(SERVER_ADDR)? 
+    .bind(SERVER_ADDR)?
     .run()
     .await?;
     Ok(())
@@ -11816,7 +11816,7 @@ fn main() {
     let mut ptr: &Box<Node> = &c;
     loop {
         // &Box<Node>에서 Node를 꺼내와 출력 --- (*5)
-        let cur_node: &Node = &**ptr; 
+        let cur_node: &Node = &**ptr;
         match cur_node {
             Empty => break,
             Cons(v, link) => {
@@ -12341,7 +12341,7 @@ fn main() {
     match &b.borrow().prev {
         None => {},
         Some(prev) => {
-            // 
+            //
             let pa = prev.upgrade().unwrap();
             println!("a.data= {}", pa.borrow().data);
         },
@@ -12862,7 +12862,7 @@ pub fn encrypt(password: &str, data: &str) -> String {
 
 // 초기화 벡터(IV)를 무작위로 생성 --- (*7)
 fn gen_iv() -> Vec<u8> {
-    let mut res:Vec<u8> = 
+    let mut res:Vec<u8> =
         vec![0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0];
     getrandom::getrandom(&mut res).unwrap();
     res
@@ -13010,7 +13010,7 @@ impl List {
             },
             Some(old_foot) => {
                 self.foot = Some(Rc::clone(&n));
-                n.borrow_mut().prev = 
+                n.borrow_mut().prev =
                     Some(Rc::downgrade(&old_foot));
                 old_foot.borrow_mut().next = Some(n);
             },
@@ -13019,13 +13019,13 @@ impl List {
     // 리스트의 앞에 값을 추가 --- (*5)
     pub fn unshift(&mut self, v:isize) {
         let n = List::new_node(v);
-        match self.head.take() {       
+        match self.head.take() {
             None => {
                 self.foot = Some(Rc::clone(&n));
                 self.head = Some(n);
             },
             Some(old_head) => {
-                old_head.borrow_mut().prev = 
+                old_head.borrow_mut().prev =
                     Some(Rc::downgrade(&n));
                 n.borrow_mut().next = Some(old_head);
                 self.head = Some(n);
@@ -13058,7 +13058,7 @@ impl Iterator for ListIter {
                 let data = cb.data; // 현재 값을 얻음
                 match &cb.next { // 커서를 다음으로 옮김
                     None => self.cur = None,
-                    Some(next) => 
+                    Some(next) =>
                         self.cur = Some(Rc::clone(&next)),
                 }
                 Some(data)
@@ -13276,11 +13276,11 @@ peg = "0.8"
 
 ```rust
 peg::parser!( grammar calc() for str {
-    
+
     // 기본이 되는 규칙 --- (*1)
-    pub rule eval() -> i64 
+    pub rule eval() -> i64
         = expr()
-    
+
     // 덧셈과 뺄셈용 규칙 추가 --- (*2)
     rule expr() -> i64
         = l:term() "+" r:expr()   { l + r }
@@ -13297,10 +13297,10 @@ peg::parser!( grammar calc() for str {
     rule value() -> i64
         = number()                  // 숫자 값
         / "(" v:expr() ")" { v }   // (계산식)
-        
+
     // 숫자 값을 읽는 규칙 추가 --- (*5)
     rule number() -> i64
-        = n:$(['0'..='9']+) 
+        = n:$(['0'..='9']+)
         { n.parse().unwrap() }
 });
 
@@ -13308,7 +13308,7 @@ fn main() {
     // 계산
     println!("{}", calc::eval("1+2*3").unwrap());
     println!("{}", calc::eval("(1+2)*3").unwrap());
-    println!("{}", calc::eval("100/2-1").unwrap());    
+    println!("{}", calc::eval("100/2-1").unwrap());
 }
 ```
 
@@ -13484,30 +13484,30 @@ impl Node {
 use peg;
 use crate::node::Node;
 // 토마토 언어 문법 정의 --- (*1)
-peg::parser!( pub grammar tomato() for str {    
+peg::parser!( pub grammar tomato() for str {
     // 기본 규칙 정의 --- (*2)
-    pub rule parse() -> Vec<Node> 
+    pub rule parse() -> Vec<Node>
         = v:sentences()
     // 프로그램에서 복문을 쓸 수 있도록 한다 --- (*3)
     rule sentences() -> Vec<Node>
-        = sentence() ** end_of_line()        
+        = sentence() ** end_of_line()
     // 구문 정의 --- (*4)
     rule sentence() -> Node
         = print() / if() / for() / let() / _ { Node::Nop }
-    
+
     // print문 정의 --- (*5)
     rule print() -> Node
-        = "print" _ "\"" v:$([^ '"']*) "\"" 
+        = "print" _ "\"" v:$([^ '"']*) "\""
         { Node::PrintStr(v.to_string()) }
-        / "print" _ v:calc() 
+        / "print" _ v:calc()
         { Node::Print(Box::new(v)) }
-    
+
     // if문 정의 --- (*6)
     rule if() -> Node = "if" _ v:if_cond() { v }
     rule if_cond() -> Node
         = if_elif() / if_else() / if_true_only()
     rule if_elif() -> Node
-        = cond:calc() t:block() lf() "elif" _ f: if_cond() 
+        = cond:calc() t:block() lf() "elif" _ f: if_cond()
         { Node::if_(cond, t, vec![f]) }
     rule if_else() -> Node
         = cond:calc() t:block() lf() "else" _ f:block()
@@ -13515,18 +13515,18 @@ peg::parser!( pub grammar tomato() for str {
     rule if_true_only() -> Node
         = cond:calc() t:block()
         { Node::if_(cond, t, vec![]) }
-    rule block() -> Vec<Node> 
+    rule block() -> Vec<Node>
         = "{" _ v:sentences() _ "}" _ { v }
-    
+
     // for문 정의 --- (*7)
     rule for() -> Node
-        = "for" _ w:word() _ "=" _ start:number() _ 
+        = "for" _ w:word() _ "=" _ start:number() _
           "to" _ end:number() _ body:block()
         { Node::For(w, start, end, Box::new(body)) }
-    
+
     // 변수 대입 정의 --- (*8)
     rule let() -> Node
-        = w:word() _ "=" _ v:calc() 
+        = w:word() _ "=" _ v:calc()
         { Node::SetVar(w, Box::new(v))}
 
     // 계산 처리 --- (*9)
@@ -14228,7 +14228,7 @@ fn run_node(ctx: &mut Context, node: Node) -> i32 {
         },
         Node::PrintStr(v) => {
             ctx.output += &format!("{}\n", v);
-            0 
+            0
         },
         Node::Print(node) => {
             let v = run_node(ctx, *node);
@@ -14267,7 +14267,7 @@ pub fn run(src: &str) -> String {
         Err(e) => return e.to_string(),
     };
     let mut ctx = Context{
-        vars:HashMap::new(), 
+        vars:HashMap::new(),
         output:String::new()
     };
     let r = run_nodes(&mut ctx, &nodes);
@@ -14447,7 +14447,7 @@ fn main() {
     }
     println!("{:?}", lines);
     // map을 사용해 Vec<String> 으로 변환
-    let lines:Vec<String> = 
+    let lines:Vec<String> =
         target.split(",").map(|s| s.to_string()).collect();
     println!("{:?}", lines);
 }

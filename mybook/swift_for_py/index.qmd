@@ -1,6 +1,6 @@
 ---
-title: "파이썬 개발자를 위한 Swift 학습 가이드"
-subtitle: "Python 개발자를 위한 실전 Swift 문법, 고급 기능 및 연습 문제"
+title: "파이썬 개발자를 위한 Swift"
+subtitle: "Swift 문법, 고급 기능 및 연습 문제"
 author: "Taeyoon Kim"
 date: "2026-02-21"
 ---
@@ -2018,10 +2018,10 @@ swapTwoValues(&someString, &anotherString)
 class Stack:
     def __init__(self):
         self.items = []
-    
+
     def push(self, item):
         self.items.append(item)
-        
+
     def pop(self):
         return self.items.pop()
 ```
@@ -2030,11 +2030,11 @@ class Stack:
 ```swift
 struct Stack<Element> {
     var items: [Element] = []
-    
+
     mutating func push(_ item: Element) {
         items.append(item)
     }
-    
+
     mutating func pop() -> Element {
         return items.removeLast()
     }
@@ -2128,7 +2128,7 @@ async def download_all():
 func downloadAll() async {
     async let first = fetchData(url: "https://a.com")
     async let second = fetchData(url: "https://b.com")
-    
+
     // 두 작업이 끝날 때까지 동시 대기
     let results = await [first, second]
     print(results)
@@ -2142,7 +2142,7 @@ func downloadAll() async {
 ```swift
 actor BankAccount {
     var balance: Int = 0
-    
+
     func deposit(amount: Int) {
         balance += amount
     }
@@ -2199,14 +2199,14 @@ let jsonStr = """
 
 if let jsonData = jsonStr.data(using: .utf8) {
     let decoder = JSONDecoder()
-    
+
     // JSON 데이터를 User 구조체 인스턴스로 파싱
     if let user = try? decoder.decode(User.self, from: jsonData) {
         print(user.name) // "Alice"
-        
+
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        
+
         // 구조체를 다시 JSON으로 직렬화
         if let encodedData = try? encoder.encode(user),
            let stringOutput = String(data: encodedData, encoding: .utf8) {
@@ -2243,15 +2243,15 @@ struct GitHubUser: Codable {
 
 func fetchUser() async throws -> GitHubUser {
     let url = URL(string: "https://api.github.com/users/apple")!
-    
+
     // 네트워크 데이터 가져오기 (async)
     let (data, response) = try await URLSession.shared.data(from: url)
-    
-    guard let httpResponse = response as? HTTPURLResponse, 
+
+    guard let httpResponse = response as? HTTPURLResponse,
           httpResponse.statusCode == 200 else {
         throw URLError(.badServerResponse)
     }
-    
+
     // JSON 데이터 파싱
     let user = try JSONDecoder().decode(GitHubUser.self, from: data)
     return user
@@ -2277,7 +2277,7 @@ Swift의 `URLSession`은 `requests`만큼 코드가 짧지는 않지만 강타�
 
 ### 파이썬에서의 데코레이터 패턴과 비교
 
-파이썬에서는 주로 함수의 실행 전후를 감시하거나 상태를 변경할 때 데코레이터를 사용합니다 (`@property` 또한 메서드를 프로퍼티처럼 접근 가능하게 합니다). 
+파이썬에서는 주로 함수의 실행 전후를 감시하거나 상태를 변경할 때 데코레이터를 사용합니다 (`@property` 또한 메서드를 프로퍼티처럼 접근 가능하게 합니다).
 
 **파이썬:**
 ```python
@@ -2291,11 +2291,11 @@ def clamped_property(min_val, max_val):
 class Rectangle:
     def __init__(self, size):
         self._size = size
-        
+
     @property
     def size(self):
         return self._size
-        
+
     @size.setter
     def size(self, value):
         self._size = max(0, min(100, value))
@@ -2312,14 +2312,14 @@ struct Clamped<Value: Comparable> {
     private var value: Value
     private let min: Value
     private let max: Value
-    
+
     init(wrappedValue: Value, min: Value, max: Value) {
         self.min = min
         self.max = max
         self.value = min // 기본값 설정
         self.wrappedValue = wrappedValue // 로직을 태움
     }
-    
+
     var wrappedValue: Value {
         get { return value }
         set { value = min...max ~= newValue ? newValue : (newValue < min ? min : max) }
@@ -2536,10 +2536,10 @@ import ArgumentParser
 struct Greet: ParsableCommand {
     @Argument(help: "인사할 사람의 이름")
     var name: String
-    
+
     @Option(help: "반복 횟수")
     var count: Int = 1
-    
+
     mutating func run() throws {
         for _ in 0..<count {
             print("Hello, \(name)!")
@@ -2625,11 +2625,11 @@ func addMultipleNumbers(a: Int, b: Int, expected: Int) {
 
 ## 21. Python과 Swift 연결하기 (PythonKit) {.unnumbered}
 
-머신 러닝과 스크립팅 생태계의 대명사인 파이썬을 빠르고 안전한 **Swift 안에서** 그대로 쓸 수 있다는 점이 가장 흥미롭습니다. 
+머신 러닝과 스크립팅 생태계의 대명사인 파이썬을 빠르고 안전한 **Swift 안에서** 그대로 쓸 수 있다는 점이 가장 흥미롭습니다.
 
 ### PythonKit 소개
 
-`PythonKit`은 Swift에서 파이썬 인터프리터의 API를 감싸서 파이썬 패키지를 Swift 환경으로 불러오고, 마치 파이썬처럼 문법을 쓸 수 있게 해주는 마법 같은 패키지입니다. 
+`PythonKit`은 Swift에서 파이썬 인터프리터의 API를 감싸서 파이썬 패키지를 Swift 환경으로 불러오고, 마치 파이썬처럼 문법을 쓸 수 있게 해주는 마법 같은 패키지입니다.
 
 ### Swift에서 Python Pandas 사용하기
 

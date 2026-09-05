@@ -1,13 +1,13 @@
 ---
-title: "Rust-Python 바인딩 종합 가이드 (PyO3 & Maturin)"
-subtitle: "저장소 내 6개 서브프로젝트 코드 심층 분석 및 실전 바인딩 기법"
+title: "Rust-Python 바인딩"
+subtitle: "PyO3 & Maturin 실전 바인딩 기법"
 author: "Taeyoon Kim"
 date: "2026-08-16"
 ---
 
 # 개요 (Overview)
 
-본 문서는 `rust-python-binding` 저장소에 포함된 모든 예제 프로젝트의 코드와 구조를 해설하는 한국어 가이드 문서입니다. 
+본 문서는 `rust-python-binding` 저장소에 포함된 모든 예제 프로젝트의 코드와 구조를 해설하는 한국어 가이드 문서입니다.
 
 Rust의 메모리 안전성과 고성능 연산 능력, Python의 풍부한 생태계와 빠른 프로토타이핑 장점을 결합하기 위해 **PyO3**(Rust-Python 바인딩 프레임워크)와 **Maturin**(빌드 및 패키징 도구)을 이용합니다.
 
@@ -183,7 +183,7 @@ from fibonacci import fib as rust_fib
 
 def py_fib(n: int) -> int:
     """반복문 기반의 순수 파이썬 피보나치 수열 계산"""
-    if n <= 1: 
+    if n <= 1:
         return n
     a, b = 0, 1
     for _ in range(2, n + 1):

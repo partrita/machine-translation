@@ -7,7 +7,7 @@ author: "알렉산더 크라스니츠(Alexander Krasnitz)"
 
 ## 암 관련 유전체 빅데이터 저장소 접근을 위한 입문 안내서
 
-John Torcivia-Rodriguez, Hayley Dingerdissen, Ting-Chia Chang, and Raja Mazumder 
+John Torcivia-Rodriguez, Hayley Dingerdissen, Ting-Chia Chang, and Raja Mazumder
 
 ## 초록
 
@@ -33,8 +33,7 @@ John Torcivia-Rodriguez, Hayley Dingerdissen, Ting-Chia Chang, and Raja Mazumder
 
 암 관련 데이터를 담은 데이터베이스는 매우 다양합니다. 개별 저장소의 범위는 다른 곳에서 설명된 바 있으므로[3], 이 장에서는 자주 쓰이는 암 유전체학 관련 데이터베이스 몇 가지를, 이용 가능한 데이터셋의 종류별로 나누어 간략히 소개하고자 합니다. 어떤 데이터셋은 한 가지 정보(마이크로어레이 데이터, HTS 등)만 제공하고, 어떤 곳은 여러 종류의 데이터를 저장합니다. 그림 1은 이 장에서 다루는 저장소에서 접근할 수 있는 데이터의 유형들을 보여줍니다.
 
-일반적으로 어떤 데이터 저장소든 접근하는 과정은 다음 단계로 |     | 이루어집니다: |
-| --- | --- |
+일반적으로 어떤 데이터 저장소든 접근하는 과정은 다음 단계로 이루어집니다:
 
 다음 단계를 따릅니다:
 
@@ -1725,7 +1724,7 @@ References
 
 1. Beroukhim R, Mermel CH, Porter D, Wei G, Raychaudhuri S, Donovan J, Barretina J, Boehm JS, Dobson J, Urashima M, McHenry KT, Pinchback RM, Ligon AH, Cho YJ, Haery L, Greulich H, Reich M, Riggs M, Leibu E, Esposito D, Alexander J, Winckler W, Lawrence MS, Weir BA, Tanaka KE, Chiang DY, Bass AJ, Loo A, Hoffman C, Prensner J, Liefeld T, Gao Q, Yecies D, Norton L, Hagerstrom T, Skoog L, Auer G, Signoretti S, Maher E, Kaye FJ, Sasaki H, Tep-per JE, Fletcher JA, Tabernero J, Baselga J, Tsao MS, Demichelis F, Rubin MA, Janne PA, Daly MJ, Nucera C, Levine RL, Ebert BL, Gabriel S, Rustgi AK, Antonescu CR, Ladanyi M, Letai A, Garraway LA, Loda M, Beer DG, True LD, Okamoto A, Pomero-y SL, Singer S, Golub TR, Lander ES, Sellers WR, Meyerson M (2010) The landscape of somatic copy-number alteration across human cancers. Nature 463(7283):899905. https://doi.org/10.1038/Nature08822
 
-2. Navin N, Kendall J, Troge J, Andrews P, RodgersL, McIndooJ, CookK, StepanskyA, Levy D, Esposito D, Muthuswamy L, Troge J, Grubor V, Yoon S, Wigler M, Ye K, Borresen-Dale AL, Naume B, Schlicting E, Liefeld T, Gao Q, Yecies D, ... 
+2. Navin N, Kendall J, Troge J, Andrews P, RodgersL, McIndooJ, CookK, StepanskyA, Levy D, Esposito D, Muthuswamy L, Troge J, Grubor V, Yoon S, Wigler M, Ye K, Borresen-Dale AL, Naume B, Schlicting E, Liefeld T, Gao Q, Yecies D, ...
 
 93 Natl Acad Sci U S A 109(21):82128217. https://doi.org/10.1073/pnas.1206062109
 
@@ -1781,18 +1780,12 @@ Fig. 1 WES 데이터와 RNA-seq 데이터 비교. WES 리드는 엑손 캡처(ex
 
 변이 검출을 위한 페어드 DNA-seq 샘플 분석은 매우 정제되어 있으며 광범위한 문헌이 있습니다[6, 7]. 최근에는 변이 검출 성능을 높이므로 DNA-seq와 RNA-seq 데이터의 통합 분석도 주목받고 있습니다[8]. 여기서는 unmatched 정상 샘플과 함께 RNA-seq 샘플을 사용해 발현된 돌연변이를 검출하는 것에 초점을 맞춥니다. 근거는 시간, 비용, 가용성 제약으로 인해 종양 RNA-seq 데이터만으로 분석이 제한될 수 있다는 것입니다. 우리는 matched 정상 샘플과 DNA 수준 데이터의 부재에서 생기는 한계를 다룰 것입니다.
 
-|     | A key consideration | is that | an appropriate | workflow | should |
-| --- | ------------------- | ------- | -------------- | -------- | ------ |
 
 핵심 고려사항은 적절한 워크플로가 unpaired RNA-seq 데이터에서 나오는 거짓 양성 변이(false-positive variant)의 주요 원인들을 식별하고 통제해야 한다는 것입니다. 거짓 양성 돌연변이는 대략 실제 생식세포(germline) 변이와 기술적 인공물(artifact)로 분류할 수 있으며 후자는 PCR 관련 문제, 시퀀싱 오류, 잘못된 정렬(misalignment), 배치 효과(batch effect) 등 다양한 요인 때문에 관찰됩니다.
 
 위 항목들의 직접적 통제 조치 외에 리드 깊이(read depth) 같은 지표 범위에 엄격한 임계값(threshold)을 두고 기능적 영향(functional impact)을 평가할 수 있는데, 이는 구동 돌연변이(driver mutation)에서 더 큰 경향이 있습니다.
-|     | tendstobegreaterindriver | mutations. |                     |              |     |
-| --- | ------------------------ | ---------- | ------------------- | ------------ | ----- |
 
 구동 돌연변이에서 더 큰 경향입니다.
-|     | The data analysis        | consists   | of these individual | steps, which | are |
-| --- | --- |
 
 데이터 분석은 그림 2처럼 읽기(read), 변이(variant), 유전자(gene) 수준에서 수행되는 개별 단계들로 이루어집니다:
 
@@ -4126,16 +4119,16 @@ TBEST는 현재 하나의 클래스(implements one suchclass, wherein the data m
 
 4. 관찰된 단단함 값(tightness mustbe specified) 각각(observed value oftightness mustbe specified) 유의성(significance foreach observedvalue of tightnessmustbe specified) 추정(approximate method forestimating significance for each observedvalueoftightnessmustbe specified) 근사(approximate methodforestimating significanceforeach observed value oftightness mustbe specified) 방법(method forestimating significancefor each observed value of tightness mustbe specified) 명세(specified)해야 합니다(mustbe). TBEST는 두 옵션(offers twooptions:) 제공합니다:
    (a) 순수 경험적(purely empirical) p-값(P-value, using a sample from the null distribution and applying Laplace'srule of succession:P=(N>+1)/(N+2), where N>isthenumber oftimes thesampled tightnessexceeds theobserved one andN isthesample size) 추정(estimate). 귀무분포(null distribution) 샘플(asamplefrom thenull distribution) 사용(using asample fromthenull distribution), Laplace 연속 법칙(Laplace's rule of succession:P=(N>+1)/(N+2), where N>isthe numberof timesthe sampled tightness exceedsthe observed one andN isthesample size) 적용(applying Laplace's ruleofsuccession). N>(N>)는 표본(sampled) 단단함(tightness exceeds the observed one)이 관찰된 것(observedone) 초과(exceeds the observed one)한(the sampled tightness exceedsthe observedoneand Nisthe samplesize) 횟수(number of timesthesampled tightnessexceeds the observedone), N은 표본 크기(sample size)입니다.
-   
+
    단순하지만(While simple), 클러스터(clustered being clustered(the number of objectsbeingclustered (therowdimension ofM)) 객체 수(number of objectsbeingclustered(the rowdimensionofM))가 크면(this option maybecome prohibitivelyexpensivecomputationallyif the number ofobjectsbeingclustered(the rowdimensionofM) is large), 계산상(computationally if the numberofobjects beingclustered(the rowdimensionofM)is large) 금지적으로(prohibitively expensive computationallyif the numberof objectsbeingclustered(the rowdimensionofM)islarge) 비쌀(prohibitively expensivecomputationallyif...) 수 있어(inorderto overcome themultiplicityof hypotheses being tested), 검정 중인(hypotheses being tested) 가설 다중성(multiplicity ofhypotheses beingtested) 극복(in order toovercome the multiplicity ofhypotheses beingtested) 필요합니다.
-   
+
    실제로(Indeed), HC 트리(HC tree) 모든 내부(any internalnode oftheHCtree) 노드(node of theHC tree) 단단함(tightness mustbecomputed foranyinternal nodeoftheHCtree, withtheexceptionoftherootnode) 계산(computedfor anyinternal nodeof theHCtree)되어야 하며(computed for any internal node oftheHC tree, with the exception oftheroot node), 근 노드(root node) 예외(exceptionof the root node)입니다.
-   
+
    검정 중인(tested) 귀무 가설(null hypotheses being testedistherefore two less than therowdimensionofM) 수(number of the null hypothesesbeingtested is thereforetwo lessthan therowdimensionof M)는 따라서(therefore) M(M) 행 차원(rowdimensionofM)(therowdimensionofM))보다 2 작습니다(twolessthan).
-   
+
    통계적으로(statistically significant observations musttherefore bemuch smaller than thereciprocalof thisnumber, andthereforeNmustbe much largerthanthisnumber itself) 유의한(significantobservations must thereforebe muchsmaller thanthereciprocalof thisnumber, and thereforeNmust bemuch larger than thisnumberitself) 관찰(observation s musttherefore bemuch smallerthan there ciprocal ofthis number, and therefore N must be much larger than this numberitself)에 대응하는(corresponding tostatistically significantobservations must therefore bemuch smaller than the reciprocalofthisnumber, and thereforeNmust bemuchlarger thanthis numberitself)) p-값(P-valuescorresponding to statisticallysignificantobservations must therefore bemuch smallerthan thereciprocalofthisnumber, and therefore Nmust bemuchlarger thanthisnumberitself))는 따라서 이 수(this number) 역수(reciprocalof thisnumber)보다 훨씬(much smaller thanthereciprocalof thisnumber) 작아야(smaller than thereciprocalof thisnumber) 하며 N(N)은 이 수(thisnumber itself) 자체보다(muchlarger than this number itself) 훨씬 커야 합니다(much larger).
    (b) 극단값 이론(extreme value theory) 따르면(According to the extreme valuetheory, thenull distributionof the values of tightness aboveathresholdisapproximately of the generalizedPareto(GP)typeif thethresholdissufficiently high), 임계값(athreshold aboveathresholdis approximately of the generalized Pareto(GP) type if the threshold issufficientlyhigh) 넘는(above athreshold) 단단함 값(values of tightnessabovea threshold) 귀무분포(null distribution of the values of tightnessaboveathresholdis approximately of thegeneralizedPareto(GP)typeif the threshold issufficiently high)는 충분히(sufficiently high) 높은(high) threshold(threshold issufficiently high)면 일반화 파레토(generalized Pareto(GP)) 유형(type)에 근사합니다(approximately of the general ized Pareto(GP)type).
-   
+
    이 속성 감안하여(With this propertyin mind), TBEST는(TBEST offersan option to estimate theP-valuebyfitting the GPdistribution to the empirical null sample of the excesses of tightness above threshold) GP 분포(GPdistribution to theempirical null sample oftheexcesses oftightness above threshold)를(empiricalnull sample of theexcessesof tightnessabove threshold) 임계값(threshold above threshold) 넘는(above threshold) 단단함 초과분(excesses of tightness above threshold) 경험적 귀무 표본(empiricalnull sample of the excessesof tightnessabove threshold) 적합(fitting theGPdistribution to the empirical nullsampleof theexcessesof tightnessabove threshold)해 P-값(P-value by fitting theGPdistribution to theempiricalnull sample oftheexcessesof tightnessabove threshold) 추정 옵션(option to estimate theP-valueby fitting theGPdistribution to theempirical null sample of theexcessesof tightnessabove threshold) 제공합니다(offers anoption).
 
 214 Guoli Sun and Alexander Krasnitz
@@ -5828,4 +5821,3 @@ Modelling GrowthofTumours 279
 17. Jurczyszyn K, Osiecka BJ, ZiółkowskiP(2012) Theuse offractaldimensionanalysisinestimationofbloodvesselsshape intransplantable mammaryadenocarcinomain Wistarrats after photodynamictherapycombinedwith cysteine protease inhibitors. Comput Math Methods Med2012:793291
 
 18. Frenzel T, Hoffmann B, Schmitz R, BethgeA, SchumacherU, Wedemann G (2017) Radiation therapy and chemotherapy change vessel treegeometry and metastatic spread in a small cell lung cancer xenograft mouse tumormodel. PLOS ONE12(11):e0187144
-

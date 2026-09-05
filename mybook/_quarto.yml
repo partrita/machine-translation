@@ -49,7 +49,6 @@ book:
         - causal_inf_r/index.qmd
         - causal-inference-what-if/index.qmd
         - causal-inference-statistics/index.qmd
-        - model-to-meaning/index.qmd
     - part: "생명정보학 및 계산생물학"
       chapters:
         - py_bioinformatics/index.qmd

@@ -1,18 +1,18 @@
 ---
 engine: markdown
-title: "Gapminder 데이터를 이용한 파이썬 초급 실습"
+title: "Python gapminder 실습"
 author: "Allen Lee, Carpentry Instructors"
 date: "2026-08-15"
 ---
 
-# 소개 {.unnumbered}
+# 소개
 
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://slack-invite.carpentries.org/)
 [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--py--gapminder-E01563.svg)](https://carpentries.slack.com/messages/C9X4W03KL)
 [![Binder](https://img.shields.io/badge/launch-JupyterLab-579ACA.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/swcarpentry/python-novice-gapminder/binder?urlpath=lab)
 
-이 프로젝트는 프로그래밍 비전공자를 위해 데이터 분석 및 시각화에 중점을 둔 파이썬 입문 과정입니다. 
-렌더링된 공식 페이지는 [https://swcarpentry.github.io/python-novice-gapminder/](https://swcarpentry.github.io/python-novice-gapminder/) 에서 확인할 수 있으며 
+이 프로젝트는 프로그래밍 비전공자를 위해 데이터 분석 및 시각화에 중점을 둔 파이썬 입문 과정입니다.
+렌더링된 공식 페이지는 [https://swcarpentry.github.io/python-novice-gapminder/](https://swcarpentry.github.io/python-novice-gapminder/) 에서 확인할 수 있으며
 강의 자료 형식 및 빌드에 대한 지침은 [강의 템플릿 문서][sandpaper-docs]를 참고해주세요.
 
 유지보수 담당자:
@@ -218,7 +218,7 @@ JupyterLab에서 별도 탭으로 열린 Jupyter 노트북 화면 예시입니�
 - 노트북 파일은 실제로 JSON이라는 형식(Format)으로 저장됩니다.
 - 브라우저에서 보이는 화면과 그 이면에 저장된 내부 내용은 생김새가 완전히 다릅니다.
 - 덕분에 Jupyter는 소스코드와 평문 텍스트, 그림 이미지를 한 파일 안에 함께 담을 수 있습니다.
-  
+
 :::
 
 :::: {.callout-important title="범례"}
@@ -439,7 +439,7 @@ print(x)
 
 ## 해답
 
-기존 파이썬 코드는 그대로 평문 마크다운 텍스트로 취급됩니다. 
+기존 파이썬 코드는 그대로 평문 마크다운 텍스트로 취급됩니다.
 줄바꿈이 적용되지 않으므로 코드 전체가 하나의 문단으로 이어져 길게 렌더링될 것입니다.
 이 방법은 노트북 안에서 다목적으로 코드를 작성할 때, 코드를 지우지 않으면서 일단 실행되지 않도록 막아 두는(주석 처리처럼 껐다 켤 수 있는) 용도로 매우 유용합니다.
 
@@ -929,7 +929,7 @@ print(min('a', 'A', '0'))
 
 ## 인수의 기본값(Default values)
 
-- 일부 함수는 인수를 생략할 경우 사용하는 기본값이 정해져 있습니다. 
+- 일부 함수는 인수를 생략할 경우 사용하는 기본값이 정해져 있습니다.
 - 예를 들어 `round` 함수는 두 번째 인수를 생략하면 소수점 첫째 자리에서 반올림하여 정수를 반환합니다.
 
 ```{python}
@@ -1001,7 +1001,7 @@ age = 53
 - **윤리적 및 환경적 고려**: AI 모델 학습과 운영에는 막대한 전력과 자원이 소비됩니다. 또한 데이터 저작권이나 투명성 문제에 대해서도 지속적인 논의가 이루어지고 있습니다.
 
 **학습 과정에서의 권장 사항**:
-이 워크숍 기간 동안은 가급적 AI 도구에 의존하기보다 **직접 문제를 해결해 보시길 권장합니다.** 
+이 워크숍 기간 동안은 가급적 AI 도구에 의존하기보다 **직접 문제를 해결해 보시길 권장합니다.**
 1. 입문 단계의 오류는 웹 검색만으로도 충분히 해결 가능한 경우가 많습니다.
 2. 직접 오류를 수정하며 쌓은 기초 지식은 나중에 AI가 생성한 코드가 안전하고 정확한지 판단할 수 있는 중요한 기준이 됩니다.
 3. 스스로 고민하고 해결하는 과정 자체가 프로그래밍 실력을 향상시키는 가장 확실한 방법입니다.
@@ -1556,7 +1556,7 @@ plt.ylabel('Position (km)')
 
 ## 그래프 화면에 표시하기
 
-Jupyter Notebook 환경에서는 그래프 생성 코드를 실행하면 결과가 자동으로 출력되고 노트북 파일에 저장됩니다. 
+Jupyter Notebook 환경에서는 그래프 생성 코드를 실행하면 결과가 자동으로 출력되고 노트북 파일에 저장됩니다.
 하지만 대화형 파이썬 세션이나 스크립트 실행 환경에서는 그래프를 화면에 띄우기 위해 별도의 명령어가 필요합니다.
 
 생성한 그래프를 화면에 나타내려면 다음 명령어를 사용합니다:
@@ -1572,7 +1572,7 @@ plt.show()
 ## [`Pandas dataframe`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)에서 직접 그래프를 그릴 수 있습니다.
 
 - Pandas 데이터프레임 객체를 사용하여 편리하게 그래프를 그릴 수 있습니다.
-- 먼저, 문자열로 되어 있는 열 이름을 숫자로 변환하는 작업이 필요할 수 있습니다. 
+- 먼저, 문자열로 되어 있는 열 이름을 숫자로 변환하는 작업이 필요할 수 있습니다.
   예를 들어, `gdpPercap_` 접두어를 제거하고 남은 연도 문자열을 정수형으로 변환해 보겠습니다.
 
 ```{python}
@@ -1813,7 +1813,7 @@ print('primes:', primes)
 ```
 
 - **메서드(Method)**는 특정 객체에 종속되어 동작하는 함수입니다. `객체명.메서드명()` 형태로 호출합니다.
-- `extend()` 메서드는 다른 리스트의 모든 요소를 기존 리스트 뒤에 합칠 때 사용합니다. 
+- `extend()` 메서드는 다른 리스트의 모든 요소를 기존 리스트 뒤에 합칠 때 사용합니다.
 - 주의: `append()`에 리스트를 전달하면 리스트 자체가 하나의 요소로 추가되어 중첩 리스트(list of lists)가 생성됩니다.
 
 ```{python}
@@ -2411,7 +2411,7 @@ for filename in glob.glob('data/gapminder_*.csv'):
     print(filename, data['gdpPercap_1952'].min())
 ```
 
-- 위 코드의 결과에는 지역별 데이터뿐만 아니라 `gapminder_all.csv`와 같은 전체 데이터 세트도 포함될 수 있습니다. 
+- 위 코드의 결과에는 지역별 데이터뿐만 아니라 `gapminder_all.csv`와 같은 전체 데이터 세트도 포함될 수 있습니다.
 - 특정 파일을 제외하거나 더 구체적인 대상을 지정하려면 패턴을 더 정교하게 작성해야 합니다.
 - 전체 통합 데이터의 최솟값이 특정 지역 데이터의 최솟값과 일치하는지 확인하는 것은 코드가 올바르게 작동하는지 검증하는 좋은 방법이 될 수 있습니다.
 
@@ -2475,7 +2475,7 @@ print('가장 작은 파일의 레코드 건수는', fewest, '건입니다')
 
 ## 여러 데이터 비교 및 시각화하기
 
-모든 지역별 GDP 데이터를 읽어 들여, 각 지역의 연도별 1인당 GDP 평균 변화 추이를 하나의 차트에 그래프로 나타내는 스크립트를 작성해 보세요. 
+모든 지역별 GDP 데이터를 읽어 들여, 각 지역의 연도별 1인당 GDP 평균 변화 추이를 하나의 차트에 그래프로 나타내는 스크립트를 작성해 보세요.
 참고: 데이터프레임 연산 시 숫자가 아닌 데이터가 포함되어 있으면 오류가 발생할 수 있으므로, 숫자 데이터만 선택하여 계산해야 합니다.
 
 ::: {.callout-caution collapse="true" title="해답"}
@@ -2494,7 +2494,7 @@ for filename in glob.glob('data/gapminder_gdp*.csv'):
     # 파일 이름 규칙이 'data/gapminder_gdp_<region>.csv'라고 가정합니다.
     # '_'를 기준으로 문자열을 나누고 마지막 부분에서 '.csv'를 제외하여 지역명을 추출합니다.
     region = filename.split('_')[-1][:-4]
-    
+
     # 숫자 데이터만 사용하여 평균을 계산하고 그래프를 그립니다.
     dataframe.mean(numeric_only=True).plot(ax=ax, label=region)
 
@@ -2513,7 +2513,7 @@ plt.show()
 
 ## 파일 경로 다루기
 
-파이썬의 [`pathlib` 모듈][pathlib-module]을 사용하면 파일 경로, 확장자 분리 등 파일 시스템 조작을 더 쉽고 직관적으로 할 수 있습니다. 
+파이썬의 [`pathlib` 모듈][pathlib-module]을 사용하면 파일 경로, 확장자 분리 등 파일 시스템 조작을 더 쉽고 직관적으로 할 수 있습니다.
 
 ```{python}
 from pathlib import Path
@@ -2761,7 +2761,7 @@ def get_egg_label(mass):
 
 ## 동역학계 시뮬레이션
 
-1. 현재 인구 밀도 `x`와 상수 `r`을 받아 다음 단계의 인구 밀도를 계산하는 `logistic_map(x, r)` 함수를 작성하세요. 
+1. 현재 인구 밀도 `x`와 상수 `r`을 받아 다음 단계의 인구 밀도를 계산하는 `logistic_map(x, r)` 함수를 작성하세요.
    수식: `f(t+1) = r * f(t) * (1 - f(t))`
 2. 루프를 사용하여 10단계 동안 인구 변화를 계산하고 리스트에 저장하세요.
 3. 이 과정을 `iterate(initial_population, t_final, r)` 함수로 캡슐화하세요.
@@ -2919,8 +2919,8 @@ def calc_bulk_density(mass, volume):
     return mass / volume
 ```
 
-만약 `assert` 뒤의 조건이 `False`가 되면, 파이썬은 `AssertionError`를 발생시켜 프로그램을 중단합니다. 에러 메시지에는 어떤 코드에서 문제가 발생했는지 표시되어 원인을 파악하기 쉽습니다. 
-참고로, 파이썬을 실행할 때 `-O` (optimize) 옵션을 사용하면 모든 `assert` 문을 무시하고 실행할 수 있습니다. 
+만약 `assert` 뒤의 조건이 `False`가 되면, 파이썬은 `AssertionError`를 발생시켜 프로그램을 중단합니다. 에러 메시지에는 어떤 코드에서 문제가 발생했는지 표시되어 원인을 파악하기 쉽습니다.
+참고로, 파이썬을 실행할 때 `-O` (optimize) 옵션을 사용하면 모든 `assert` 문을 무시하고 실행할 수 있습니다.
 주의할 점은 `assert`를 프로그램의 상태를 변경하는 용도로 사용해서는 안 된다는 것입니다. 예를 들어 단언문 안에서 변수에 값을 대입하는 등의 작업은 피해야 합니다.
 
 ## 독스트링(docstrings)을 사용하여 함수 설명을 작성하세요.
@@ -3065,7 +3065,7 @@ def transform_string(input_string, iterations):
     print(input_string)
     length = len(input_string)
     current = input_string
-    
+
     for _ in range(iterations):
         new_chars = []
         for i in range(length):
@@ -3075,7 +3075,7 @@ def transform_string(input_string, iterations):
                 new_chars.append('-')
             else:
                 new_chars.append('*')
-        
+
         current = ''.join(new_chars)
         print(current)
 
@@ -3128,7 +3128,7 @@ Leslie Lamport는 이렇게 말했습니다. "글쓰기는 당신의 생각이 �
 
 - 스택 오버플로우의 [일반적인 파이썬 섹션](https://stackoverflow.com/questions/tagged/python?tab=Votes) 뿐만 아니라,
   [NumPy](https://stackoverflow.com/questions/tagged/numpy?tab=Votes),
-  [SciPy](https://stackoverflow.com/questions/tagged/scipy?tab=Votes), 
+  [SciPy](https://stackoverflow.com/questions/tagged/scipy?tab=Votes),
   [Pandas](https://stackoverflow.com/questions/tagged/pandas?tab=Votes) 섹션들도 큰 도움이 될 수 있습니다.
 
 ::: {.callout-note title="핵심 요약"}
@@ -3158,4 +3158,3 @@ Leslie Lamport는 이렇게 말했습니다. "글쓰기는 당신의 생각이 �
 - 우리는 항상 이 과정을 개선하기 위해 노력하고 있습니다.
 
 :::
-

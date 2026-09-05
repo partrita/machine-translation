@@ -1,14 +1,8 @@
 ---
-title: "FastAPI로 생성형 AI 서비스 구축하기"
-sourceTitle: "Building Generative AI Services with FastAPI"
-author: "Alireza Parandeh"
+title: "FastAPI로 AI 서비스 구축"
+sourceTitle: "맥락이 풍부한(Context-Rich) 생성형 AI 애플리케이션 개발을 위한 실전 접근법"
+author: "알리레자 파란데(Alireza Parandeh)"
 ---
-
-# FastAPI로 생성형 AI 서비스 구축하기
-
-맥락이 풍부한(Context-Rich) 생성형 AI 애플리케이션 개발을 위한 실전 접근법
-
-알리레자 파란데(Alireza Parandeh) 지음 | 데이비드 포스터(David Foster) 서문
 
 # 서문
 

@@ -535,3 +535,4 @@ converted/
 .claude/
 skills-lock.json
 .aider*
+.opencode/

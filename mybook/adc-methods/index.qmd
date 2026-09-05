@@ -1,5 +1,5 @@
 ---
-title: "Antibody-Drug Conjugates Methods and Protocols"
+title: "ADC 방법 및 프로토콜"
 ---
 
 # Chapter 1 An Overview of the Current ADC Discovery Landscape
@@ -478,12 +478,11 @@ ture, ideally in the dark, and can be monitored (ideally, by LCMS) to ensure com
 for the subsequent purification method desired (e.g., with >5 volume of 20 mM histidine acetate, pH 5.5 for loading onto a cation exchange column). Alternatively, the reaction may be loaded directly onto an appropriate column without dilution(e.g.,gel filtration column connected to an akta purification system).
 
 ### 3.3 Conjugate
- off bottom seal of Zeba desalting column, unscrew cap Purification by slightly so loose but not falling off and put column in Disposable gel falcontube. Filtration columns 2. Centrifuge at1000gfor2min. (SeeNote11)
-3. Discardflow-through and add0.5N naoh to resin to sanitize
-column and fill to top. Letsitfor30min.
+
+off bottom seal of Zeba desalting column, unscrew cap Purification by slightly so loose but not falling off and put column in Disposable gel falcontube. Filtration columns 2. Centrifuge at1000gfor2min. (SeeNote11)
+3. Discardflow-through and add0.5N naoh to resin to sanitize column and fill to top. Letsitfor30min.
 4. Centrifuge at1000gfor2min.
-5. Discard flow-through and add desired formulation buffer to
-theresin(filledtotop),screwing cap on loosely.
+5. Discard flow-through and add desired formulation buffer to theresin(filledtotop),screwing cap on loosely.
 6. Centrifuge at1000gfor2min.
 
 7. Repeatsteps5and6untilflow-through is ph of buffer. Verify
@@ -492,8 +491,9 @@ appropriate ph inflow-through using ph strips.
 column size) and place column in a new, pre-weighed falcontube.
 9. Centrifuge at1000gfor2minto elute conjugate.
 
-###+ 3.4 Conjugate 1. Add
- 20 mM histidine-acetate pH 5.5 buffer to the column Purification by vessel, filltotop. Disposable cation 2. Centrifuge at500gfor3min. Exchange columns
+### 3.4 Conjugate
+
+1. Add 20 mM histidine-acetate pH 5.5 buffer to the column Purification by vessel, filltotop. Disposable cation 2. Centrifuge at500gfor3min. Exchange columns
 3. Discardflow-through.
 (SeeNote12)
 4. Repeatsteps1to3once(for a total of two washes).
@@ -516,28 +516,22 @@ and place column vessel into new, pre-weighed 50 mL falcontube.
 done, but collect the eluate in a new tube since this second elution will likely contain more aggregate.
 
 ### 3.5 Conjugate
- conjugate sample by tenfold using buffer A (10 mM Purification by cation succinatepH5)and check the ph. Adjust ph with10%acetic Exchange using FPLC acid if necessary to achieve ph5. System(SeeNote14) 2. Load sample onto SPHP column (GE Healthcare) using a sample line connected to sample pump (instead of using a syringe and sample loop).
 
+conjugate sample by tenfold using buffer A (10 mM Purification by cation succinatepH5)and check the ph. Adjust ph with10%acetic Exchange using FPLC acid if necessary to achieve ph5. System(SeeNote14) 2. Load sample onto SPHP column (GE Healthcare) using a sample line connected to sample pump (instead of using a syringe and sample loop).
 al.
 3. Collect load flow-through in case sample loading was ineffi-
 cient. Discard at the end of this procedure if successful in isolating the desired conjugate.
 4. Wash column with5–10column volumes of buffer a.
-5. Elute with a gradient30–100%ofbufferB(10mMsuccinate,
-pH5,300mMNaCl).
-6. Collect 1.5–2 mL fractions in 96-well plates throughout
-method. Pool and concentrate fractions (e.g., using Amicon spin-tubeswitha10,000MWcutoff)as appropriate.
+5. Elute with a gradient30–100%ofbufferB(10mMsuccinate, pH5,300mMNaCl).
+6. Collect 1.5–2 mL fractions in 96-well plates throughout method. Pool and concentrate fractions (e.g., using Amicon spin-tubeswitha10,000MWcutoff)as appropriate.
 
 ### 3.6 Conjugate
- the AKTA system without the column attached with Purification by size-
 
-N NaOH
- by flushing all buffer lines, ports, column lines, Exclusion sample line or loop, and outlet lines with naoh and letting the Chromatography using solutions it for30min. FPLCSystem(SeeNote 2. Flush whole system and lines with water then buffer that will be
+ the AKTA system without the column attached with Purification by size-N NaOH  by flushing all buffer lines, ports, column lines, Exclusion sample line or loop, and outlet lines with naoh and letting the Chromatography using solutions it for30min. FPLCSystem(SeeNote 2. Flush whole system and lines with water then buffer that will be
 15) usedonsize-exclusion column(e.g.,20mMhistidine-acetate,
 pH5.5).
 3. Attach and sanitize column by loading the maximum sample
-volume of
-
-N NaOH
+volume of N NaOH
  to column followed by 1 column volume of water then 1.25 column volume of buffer (make sure pH and conductivity at the end point corresponds to expected buffer ph and conductivity).
 4. Load sample using sample loop on injection valve. Draw up
 sample using needle and luer-loc syringe. Remove needle and knockout all air bubbles. Screw syringe into syringe port on Akta injection valve and inject sample into sample loop.
