@@ -525,6 +525,9 @@ mybook/site_libs/
 mybook/data_analysis/*.html
 mybook/**/*_files/
 
+# ScreenFlow recording bundles accidentally copied with book assets
+*.cmproj
+
 converted/
 .agents/
 .claude/
