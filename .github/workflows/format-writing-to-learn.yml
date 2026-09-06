@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - docs/writing-to-learn-korean-quarto
-    paths-ignore:
-      - .github/workflows/format-writing-to-learn.yml
 
 permissions:
   contents: write
@@ -16,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: docs/writing-to-learn-korean-quarto
           fetch-depth: 0
 
       - name: Improve Korean Quarto formatting
@@ -23,100 +22,42 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re
-
           path = Path("mybook/writing-to-learn/index.qmd")
           text = path.read_text(encoding="utf-8")
-
-          # Keep the document explicitly Korean for Quarto rendering.
-          if "lang:" not in text.split("---", 2)[1]:
-              text = text.replace('date: "2013-01-01"\n---', 'date: "2013-01-01"\nlang: ko\n---', 1)
-
-          # Chapter/part headings: use a single consistent hierarchy.
-          heading_map = {
-              "# PART I": "# 1부",
-              "# 2부": "# 2부",
-          }
-          for old, new in heading_map.items():
-              text = text.replace(old, new)
-
-          # All chapter headings are level 1; the first chapter was the lone level-2 outlier.
+          front = text.split("---", 2)
+          if len(front) == 3 and "lang:" not in front[1]:
+              text = front[0] + "---" + front[1] + "lang: ko\n" + "---" + front[2]
+          text = text.replace("# PART I", "# 1부", 1)
           text = re.sub(r"^## (1\. 헤르메스와 주기율표)$", r"# \1", text, flags=re.M)
-
-          # Standalone bold subsection labels become real Quarto/Markdown headings.
           text = re.sub(r"^\*\*([^*\n]+)\*\*$", r"## \1", text, flags=re.M)
-
-          # Normalize list markers and indentation. Nested list items use two spaces.
-          lines = text.splitlines()
-          out = []
-          for line in lines:
+          lines = []
+          for line in text.splitlines():
               line = line.replace("• ", "- ")
               m = re.match(r"^(\s*)[-*+]\s+", line)
               if m:
                   leading = m.group(1).replace("\t", "  ")
-                  depth = len(leading) // 2
-                  line = "  " * depth + line[len(m.group(1)):]
-              out.append(line.rstrip())
-          text = "\n".join(out).strip() + "\n"
-
-          # Editorial cleanup of frequent machine-translation artifacts in this chapter.
+                  line = "  " * (len(leading) // 2) + line[len(m.group(1)):]
+              lines.append(line.rstrip())
+          text = "\n".join(lines).strip() + "\n"
           replacements = {
-              "팔십 준 나이": "팔십이 넘은 나이",
-              "인문과 우월주의자": "인문계 우월주의자",
-              "자기도 못 배울": "자신도 배울 수 없을",
-              "뇌속에": "뇌 속에",
-              "뇌속": "뇌 속",
-              "뾰족한 누구든": "마음만 먹으면 누구든",
-              "물질 세계에 문맹이나 다름없는 인간": "물질 세계에는 문맹이나 다름없는 인간",
-              "팔십 준 나이에도": "팔십이 넘은 나이에도",
-              "알아 찾는 순간": "찾아내는 순간",
-              "알아차릴 새 없이": "알아차릴 겨를도 없이",
-              "그돈": "그 돈",
-              "맞춤범": "맞춤법",
-              "수학에 손을 놓은 사람이라": "수학을 포기한 사람이라",
-              "뭐, 그게 무엇이든몇인지": "뭐, 그게 몇이든",
-              "제 정신 박은": "제정신인",
-              "글쓰는 사람": "글 쓰는 사람",
-              "글쓰는": "글 쓰는",
-              "글쓰기 교사란 완전히 제 정신은 아니다": "글쓰기 교사는 완전히 제정신인 사람은 아니다",
-              "이왕에": "이왕이면",
-              "평범찮게": "평범하게",
-              "무든 것이": "모든 것이",
-              "외행이 알아야 할": "독자가 알아야 할",
-              "반 다섯 번": "스무 번",
-              "오 녀 년마다": "오 년마다",
-              "종평생": "평생",
-              "전무의미": "무의미",
-              "문췌 자신의 말로": "뭉크 자신의 말로",
-              "그 후로 줄곧여": "그 후로 줄곧",
-              "일두 분간": "일두 분간",
-              "일두 분": "일두 분",
-              "아치 카 교수": "아치 카 교수",
-              "논색거북": "장수거북",
-              "논색거북이": "장수거북이",
-              "그너머": "그 너머",
-              "그나마": "그나마",
-              "그돈을": "그 돈을",
-              "할 말데의": "할 말데의",
-              "다위린": "다윈",
-              "고버 교수": "가버 교수",
-              "영문학 강의는 들었고": "영문학 강의도 들었고",
-              "미니애플리스": "미니애폴리스",
-              "미니애폴리스": "미니애폴리스",
-              "기구연": "기구",
-              "사고방식": "사고방식",
-              "정밀케": "정밀하게",
-              "무한대": "무한",
-              "과목의 통합적 일부": "과목의 통합된 일부",
+              "팔십 준 나이": "팔십이 넘은 나이", "인문과 우월주의자": "인문계 우월주의자",
+              "자기도 못 배울": "자신도 배울 수 없을", "뇌속에": "뇌 속에", "뇌속": "뇌 속",
+              "뾰족한 누구든": "마음만 먹으면 누구든", "알아 찾는 순간": "찾아내는 순간",
+              "알아차릴 새 없이": "알아차릴 겨를도 없이", "그돈": "그 돈", "맞춤범": "맞춤법",
+              "수학에 손을 놓은 사람이라": "수학을 포기한 사람이라", "제 정신 박은": "제정신인",
+              "글쓰는 사람": "글 쓰는 사람", "글쓰는": "글 쓰는", "이왕에": "이왕이면",
+              "평범찮게": "평범하게", "무든 것이": "모든 것이", "외행이 알아야 할": "독자가 알아야 할",
+              "오 녀 년마다": "오 년마다", "종평생": "평생", "전무의미": "무의미",
+              "문췌 자신의 말로": "뭉크 자신의 말로", "그너머": "그 너머", "그돈을": "그 돈을",
+              "다위린": "다윈", "고버 교수": "가버 교수", "정밀케": "정밀하게", "기구연": "기구",
+              "과목의 통합적 일부": "과목의 통합된 일부", "미니애플리스": "미니애폴리스",
           }
           for old, new in replacements.items():
               text = text.replace(old, new)
-
-          # Add one concise callout near the beginning to frame the chapter's thesis.
           marker = "# 1부\n"
           callout = "# 1부\n\n::: {.callout-tip}\n## 이 책의 핵심\n\n좋은 글쓰기는 명료한 사고에서 시작합니다. 무엇을 알고 무엇을 모르는지 글로 드러내는 과정 자체가 배움의 중요한 방법입니다.\n:::\n"
           if "## 이 책의 핵심" not in text and marker in text:
               text = text.replace(marker, callout, 1)
-
           path.write_text(text, encoding="utf-8")
           PY
 
@@ -125,9 +66,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add mybook/writing-to-learn/index.qmd
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
+          if git diff --cached --quiet; then exit 0; fi
           git commit -m "docs: 쓰면서 배우기 한국어·Quarto 서식 개선"
-          git push
+          git push origin HEAD:docs/writing-to-learn-korean-quarto
