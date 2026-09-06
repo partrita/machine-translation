@@ -1,0 +1,129 @@
+name: Format minimalist guide
+
+on:
+  push:
+    branches:
+      - docs/minimalist-guide-korean-quarto
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Improve Korean and Quarto formatting
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          p = Path("mybook/minimalist_guide/index.qmd")
+          s = p.read_text(encoding="utf-8")
+
+          # 자연스러운 문체와 용어 통일
+          replacements = {
+              "하십시오": "하세요",
+              "하십시오.": "하세요.",
+              "하십시오!": "하세요!",
+              "하십시오?": "하세요?",
+              "하실 수 있습니다": "할 수 있습니다",
+              "하실 수 있습니다.": "할 수 있습니다.",
+              "할 수 있도록 하십시오": "할 수 있도록 하세요",
+              "확인하십시오": "확인하세요",
+              "사용하십시오": "사용하세요",
+              "시도하십시오": "시도해 보세요",
+              "생각하십시오": "생각해 보세요",
+              "기억하십시오": "기억해 두세요",
+              "선택하십시오": "선택하세요",
+              "시작하십시오": "시작해 보세요",
+              "실천하십시오": "실천해 보세요",
+              "적용하십시오": "적용해 보세요",
+              "만드십시오": "만들어 보세요",
+              "정리하십시오": "정리하세요",
+              "제거하십시오": "제거하세요",
+              "버리십시오": "버리세요",
+              "비우십시오": "비워 보세요",
+              "줄이십시오": "줄여 보세요",
+              "늘리십시오": "늘려 보세요",
+              "하십시오": "하세요",
+              "해 보십시오": "해 보세요",
+              "살펴보십시오": "살펴보세요",
+              "알아보십시오": "알아보세요",
+              "따르십시오": "따라 보세요",
+              "유지하십시오": "유지하세요",
+              "노력하십시오": "노력해 보세요",
+              "권장합니다": "권합니다",
+              "필요합니다": "필요합니다",
+              "~하는 것이 좋습니다": "~해 보는 것이 좋습니다",
+              "더욱": "더",
+              "매우": "아주",
+              "통해": "통해서",
+              "그렇기 때문에": "그래서",
+              "이러한": "이런",
+              "이것은": "이는",
+              "것입니다.": "것입니다.",
+          }
+          for a, b in replacements.items():
+              s = s.replace(a, b)
+
+          # Quarto 한국어 메타데이터
+          if "lang:" not in s.split("---", 2)[1]:
+              s = s.replace('date: 2026-08-11\n---', 'date: 2026-08-11\nlang: ko\n---', 1)
+
+          # 책의 성격을 안내하는 callout
+          marker = "# 이 책의 사용법"
+          note = '''::: {.callout-note title="이 책을 읽는 방법"}
+          이 책은 정해진 순서대로 따라야 하는 교본이 아니라, 삶을 단순하게 만드는 아이디어를 골라 실천해 보는 안내서입니다. 모든 방법을 그대로 적용하기보다 자신의 생활과 가치관에 맞는 것부터 천천히 시도해 보세요.
+          :::
+
+          '''
+          if marker in s and "이 책을 읽는 방법" not in s:
+              s = s.replace(marker, note + marker, 1)
+
+          # 주요 원칙 섹션을 시각적으로 강조
+          callouts = {
+              "# 미니멀리스트의 삶이란 무엇인가?": "::: {.callout-tip title=\"미니멀리즘의 핵심\"} 미니멀리즘은 단순히 물건의 개수를 줄이는 일이 아니라, 정말 중요한 것에 시간과 공간을 돌려주는 선택입니다. :::",
+              "# 전반적인 미니멀리스트 원칙": "::: {.callout-important title=\"핵심 원칙\"} 덜어내는 것 자체를 목표로 삼기보다, 나에게 중요한 것과 불필요한 것을 구분하는 데 초점을 맞춰 보세요. :::",
+              "# 미니멀리스트가 되는 방법": "::: {.callout-tip title=\"작게 시작하세요\"} 한꺼번에 삶 전체를 바꾸려고 하지 않아도 됩니다. 물건 하나, 일정 하나, 습관 하나부터 가볍게 정리해 보세요. :::",
+              "# 만족감: 여러분은 이미 충분히 가지고 있습니다": "::: {.callout-note title=\"먼저 멈춰 보기\"} 더 사기 전에 지금 가진 것으로 충분한지 잠시 생각해 보세요. 만족감은 새로운 것을 더하는 것보다 현재를 바라보는 데서 시작될 수 있습니다. :::",
+          }
+          for heading, block in callouts.items():
+              if heading in s and block not in s:
+                  s = s.replace(heading, heading + "\n\n" + block, 1)
+
+          # 1~2문장짜리 소제목 아래 내용을 tip callout으로 감싸 가독성 개선.
+          lines = s.splitlines()
+          out = []
+          i = 0
+          while i < len(lines):
+              line = lines[i]
+              if re.match(r"^## [^#]", line) and i + 2 < len(lines):
+                  body = []
+                  j = i + 1
+                  while j < len(lines) and not lines[j].startswith("#"):
+                      if lines[j].strip(): body.append(lines[j])
+                      j += 1
+                  if 0 < len(body) <= 2 and not any(x.startswith((":::" , ">", "- ", "* ", "1. ")) for x in body):
+                      out.append(line)
+                      out.append("")
+                      out.append(f"::: {{.callout-tip title=\"{line[3:].strip()}\"}}")
+                      out.extend(body)
+                      out.append(":::")
+                      out.append("")
+                      i = j
+                      continue
+              out.append(line)
+              i += 1
+          s = "\n".join(out) + "\n"
+
+          p.write_text(s, encoding="utf-8")
+      - name: Remove temporary workflow and commit document
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mybook/minimalist_guide/index.qmd
+          git rm -f .github/workflows/format-minimalist-guide.yml
+          git commit -m "docs: 미니멀리스트 가이드 한국어와 Quarto 서식 개선"
+          git push
