@@ -1,21 +1,17 @@
-## Completion Status Markers [STRICT - EVERY TEXT RESPONSE]
+# AGENTS.md
 
-At the end of **every** text-only response, include exactly one marker on its own line:
+## Project Overview
+- **Purpose**: Document translation and publication as a Quarto-based Web Book.
+- **Source Root**: `mybook/`
+- **Configuration**: `mybook/_quarto.yml` (book structure, chapters, metadata)
+- **Environment & Dependency**: Managed via `pixi` (`pixi.toml`)
 
-```
-TASK_STATUS: COMPLETE
-TASK_STATUS: BLOCKED
-TASK_STATUS: INCOMPLETE
-```
+## Key Commands
+- **Preview (Live Server)**: `pixi run preview` (or `pixi run quarto preview mybook`)
+- **Build / Render**: `pixi run test` (or `pixi run quarto render mybook`)
+- **Add Dependency**: `pixi add <package_name>`
 
-**Mapping to Turn Continuity rules:**
-- `COMPLETE` → used when task is fully done and verified (aligns with Turn Continuity reason #1)
-- `BLOCKED` → used when hard blocker or unrecoverable error (aligns with Turn Continuity reasons #2 and #3)
-- `INCOMPLETE` → **platform-forced only** when OpenCode terminates mid-task due to limits; never choose deliberately
-
-**Placement rules:**
-- The marker must be the last line of the response
-- No additional text after the marker
-- Only ONE marker per response
-
----
+## Conventions & Rules for AI Agents
+1. **Book Structure**: When adding new chapters or documents, update `mybook/_quarto.yml` under `chapters` or `sidebar`.
+2. **Content Files**: Place source content (`.qmd`, `.md`, `.ipynb`) inside `mybook/`.
+3. **Validation**: Run `pixi run test` (quarto render) to verify builds before finalizing document edits.
