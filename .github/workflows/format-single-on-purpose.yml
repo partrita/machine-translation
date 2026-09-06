@@ -26,9 +26,9 @@ jobs:
           s = p.read_text()
 
           # Metadata
-          front = s.split('---', 2)[1]
-          if '\nlang:' not in front:
-              s = s.replace('date: "2020-11-11"\n---', 'date: "2020-11-11"\nlang: ko\n---', 1)
+          parts = s.split('---', 2)
+          if len(parts) >= 3 and '\nlang:' not in parts[1]:
+              s = parts[0] + '---' + parts[1] + '\nlang: ko' + '---' + parts[2]
 
           # Conservative natural-Korean cleanup of clear translation/spacing artifacts.
           repl = {
@@ -38,25 +38,40 @@ jobs:
               '강요당는': '강요당하는', '차안': '차 안', '집밖': '집 밖',
               '집밖에': '집 밖에', '그게 대수였냐요': '그게 무슨 소용이었겠어요',
               '인생 최저점': '인생의 최저점', '그런급박감을': '그런 급박감을',
-              '쫓아다니기가': '쫓아다니기가', '알려주': '알려 주',
-              '도와주': '도와 주', '만들어주': '만들어 주', '돌려주': '돌려 주',
-              '찾아주': '찾아 주', '보여주': '보여 주', '생각해볼': '생각해 볼',
-              '기분들게': '기분 들게', '전아니면 전부': '전부 아니면 전무',
-              '전아니면 전부(all-or-nothing)': '전부 아니면 전무(all-or-nothing)',
+              '기분들게': '기분 들게', '전아니면 전부(all-or-nothing)': '전부 아니면 전무(all-or-nothing)',
+              '전아니면 전부': '전부 아니면 전무',
               '끈적한 공의존적': '끈적하고 공의존적인',
               '옛것을 가려버리고': '옛것을 가려 버리고',
-              '마무리 안 된': '마무리되지 않은', '안 해요': '하지 않아요',
-              '못 합니다': '못 합니다', '못해요': '못 해요',
-              '어떻게 더 잘하기': '더 잘하는 법',
-              '시간 기계에 사는 법 멈추기': '시간 기계에서 빠져나오는 법',
-              '생각에 블랙라이트를 비춰라': '생각에 블랙라이트를 비춰 보라',
-              '생각을 심문해라': '생각을 심문해 보라',
-              '생각 속 반복 패턴을 알아차려라': '생각 속 반복 패턴을 알아차려 보라',
-              '설계도를 찢어라': '설계도를 찢어 버려라',
+              '마무리 안 된': '마무리되지 않은', '좋는': '좋은',
+              '기분들게': '기분 들게', '더러운': '내면의 문제',
+              '개나소나': '누구나', '개같이': '형편없이', '개자식들': '형편없는 사람들',
+              '개자식': '형편없는 사람', '비참한 개자식': '비참한 사람',
+              '통해': '통해서', '그렇기 때문에': '그래서', '이러한': '이런',
+              '매우': '아주', '더욱': '더',
+              '해라': '해 보라', '하라': '해 보라',
+              '찾아라': '찾아 보라', '받아들여라': '받아들여 보라',
+              '집중하라': '집중해 보라', '참여하라': '참여해 보라',
+              '버려라': '버려 보라', '세워라': '세워 보라',
+              '끊어라': '끊어 보라', '가져와라': '가져와 보라',
+              '움직여라': '움직여 보라', '돌려라': '돌려 보라',
           }
           for a,b in repl.items(): s = s.replace(a,b)
 
-          # Normalize standalone bold labels into Markdown headings.
+          # Undo accidental repeated connective forms introduced by the broad pass.
+          for a,b in {
+              '내면의 내면의 문제들':'내면의 문제들',
+              '통해서서':'통해서',
+              '관통해서서':'관통해서',
+              '내 내면의 문제들 안 보려는':'내 내면의 문제들을 보지 않으려는',
+              '관통해서서 나오기':'관통해서 나오기',
+              '관통해서서 나오지도':'관통해서 나오지도',
+              '관통해서서 나오진':'관통해서 나오진',
+              '관통해서서서':'관통해서',
+              '매우 다정':'아주 다정',
+              '그게 대수였냐요':'그게 무슨 소용이었겠어요',
+          }.items(): s=s.replace(a,b)
+
+          # Normalize standalone bold labels into Markdown headings, while keeping dialogue labels bold.
           out=[]
           for line in s.splitlines():
               m=re.fullmatch(r'\*\*([^*]+)\*\*', line.strip())
@@ -68,29 +83,46 @@ jobs:
               out.append(line)
           s='\n'.join(out).rstrip()+'\n'
 
-          # Highlight the book's recurring takeaways with Quarto callouts.
-          for marker, kind, title in [
-              ('**성장의 가장 비옥한 흙은 솔로일 때 가꾸어진다**','note','핵심 메시지'),
-              ('**솔로후드는 단순히 혼자 있는 것만이 아닙니다. 온전한 사람이 되는 것입니다.**','important','이 책의 핵심'),
-              ('**사랑과 연애는 당신 삶의 한 부분일 뿐, 전부가 아닙니다.**','note','기억할 것'),
-              ('**가치는 짓는 겁니다.**','important','핵심 원칙'),
-              ('**하루. 하루. 매일.**','tip','매일 기억할 것'),
-          ]:
-              if marker in s:
-                  s=s.replace(marker, f'::: {{.callout-{kind} title="{title}"}}\n\n{marker}\n\n:::', 1)
+          # Repair callouts around key statements and keep fences on their own lines.
+          broken = {
+              '::: {.callout-important title="이 책의 핵심"}\n\n**솔로후드는 단순히 혼자 있는 것만이 아닙니다. 온전한 사람이 되는 것입니다.**\n\n::: 연애 중에도요.':
+              '::: {.callout-important title="이 책의 핵심"}\n\n**솔로후드는 단순히 혼자 있는 것만이 아닙니다. 온전한 사람이 되는 것입니다.**\n\n:::\n\n연애 중에도요.',
+              '::: {.callout-note title="기억할 것"}\n\n**사랑과 연애는 당신 삶의 한 부분일 뿐, 전부가 아닙니다.**\n\n::: 의미 있고 충족되는':
+              '::: {.callout-note title="기억할 것"}\n\n**사랑과 연애는 당신 삶의 한 부분일 뿐, 전부가 아닙니다.**\n\n:::\n\n의미 있고 충족되는',
+              '::: {.callout-important title="핵심 원칙"}\n\n**가치는 짓는 겁니다.**\n\n::: 그 문장을 다시 읽으세요.':
+              '::: {.callout-important title="핵심 원칙"}\n\n**가치는 짓는 겁니다.**\n\n:::\n\n그 문장을 다시 읽으세요.',
+          }
+          for a,b in broken.items(): s=s.replace(a,b)
 
+          # Add a clean callout for the main practical section if not already present.
+          marker='## 이제 일이 움직이게 하자'
+          if marker in s and 'title="이제 직접 해 보세요"' not in s:
+              s=s.replace(marker, '::: {.callout-tip title="이제 직접 해 보세요"}\n\n'+marker+'\n\n:::', 1)
+
+          # A few high-confidence sentence fixes.
+          s=s.replace('성장의 가장 비옥한 흙은 솔로일 때 가꾸어진다', '성장의 가장 비옥한 토대는 솔로일 때 만들어진다')
+          s=s.replace('관통해서서', '관통해서')
+          s=s.replace('통해서서', '통해서')
+          s=s.replace('익숙치 않으니까요', '익숙하지 않으니까요')
+          s=s.replace('브레이크댄스를 춿습니다', '브레이크댄스를 췄습니다')
+          s=s.replace('대화은', '대화는')
+          s=s.replace('그녀 아버지이', '그녀 아버지가')
+          s=s.replace('그녀 아버지과', '그녀 아버지와')
+          s=s.replace('일해야 한다n는', '일해야 한다는')
+          s=s.replace('어떻게 해주면 좋는지', '어떻게 해 주면 좋은지')
+          s=s.replace('오래눈여겨본', '오래 눈여겨본')
+          s=s.replace('산입권', '산입권')
+          s=s.replace('부차 변화를', '큰 변화를')
+          s=s.replace('배달해주지도', '배달해 주지도')
+          s=s.replace('사랑해 보라는', '사랑해 보라는')
           p.write_text(s)
           PY
-      - name: Commit formatted document
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Commit formatted document and remove temporary workflow
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add mybook/single-on-purpose/index.qmd
-          if git diff --cached --quiet; then
-            echo 'No changes'
-          else
+          if ! git diff --cached --quiet; then
             git commit -m 'docs: 자연스러운 한국어와 Quarto 서식 정리'
             git push origin HEAD:${{ github.event.pull_request.head.ref }}
           fi
