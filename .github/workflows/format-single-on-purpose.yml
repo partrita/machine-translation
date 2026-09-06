@@ -1,0 +1,131 @@
+name: Format Single on Purpose
+
+on:
+  push:
+    branches: [docs/single-on-purpose-korean-quarto]
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/single-on-purpose-korean-quarto
+          fetch-depth: 0
+      - name: Polish Korean Quarto
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('mybook/single-on-purpose/index.qmd')
+          s = p.read_text()
+
+          # Metadata
+          if '\nlang:' not in s.split('---', 2)[1]:
+              s = s.replace('date: "2020-11-11"\n---', 'date: "2020-11-11"\nlang: ko\n---', 1)
+
+          # Natural Korean / obvious translation and spacing artifacts.
+          repl = {
+              '파 묻혀': '파묻혀', '확신히': '확실히', '덪니까': '덥니까',
+              '쫓아다니기가': '쫓아다니기가', '좋는지': '좋은지',
+              '대화은': '대화는', '아니면 안 하나요?': '아니면 연결하지 않고 있나요?',
+              '좋는': '좋은', '대해졌으면': '대해 주었으면', '맞하니': '맞으니',
+              '강요당는': '강요당하는', '길을 맞하니': '길을 맞으니',
+              '차안': '차 안', '차량': '차', '집밖': '집 밖', '집밖에': '집 밖에',
+              '못 하겠어요': '못 하겠어요', '어쩌면 못 만날지도 모르죠': '어쩌면 만나지 못할지도 모르죠',
+              '어떻게 더 잘하기': '더 잘하는 법', '어떻게 더 잘하기': '더 잘하는 법',
+              '생각에 블랙라이트를 비춰라': '생각에 블랙라이트를 비춰 보라',
+              '생각을 심문해라': '생각을 심문해 보라',
+              '생각 속 반복 패턴을 알아차려라': '생각 속 반복 패턴을 알아차려 보라',
+              '시간 기계에 사는 법 멈추기': '시간 기계에서 빠져나오는 법',
+              '설계도를 찢어라': '설계도를 찢어 버려라',
+              '시계를 박살 내라': '시계를 박살 내라',
+              '다시 믿을 때다': '다시 믿을 때다',
+              '진짜 작업을 안 했거든요': '제대로 된 작업을 하지 않았거든요',
+              '그게 대수였냐요': '그게 무슨 소용이었겠어요',
+              '인생 최저점이었습니다': '인생의 최저점이었습니다',
+              '인생을 사는 게 아니에요': '인생을 사는 게 아닙니다',
+              '자기 더러운 것들': '자기 안의 문제들',
+              '더러운 것들을': '내면의 문제들을',
+              '더러운 걸': '내면의 문제를',
+              '더러운 것들': '내면의 문제들',
+              '개나소나': '누구나',
+              '개같이': '형편없이',
+              '개자식': '형편없는 사람',
+              '개자식들': '형편없는 사람들',
+              '비참한 개자식': '비참한 사람',
+              '개조련사': '개 조련사',
+              '개나소나 감사함': '누구나 감사하는 마음',
+              '엄청나게': '아주 많이',
+              '매우': '아주',
+              '더욱': '더',
+              '통해': '통해서',
+              '그렇기 때문에': '그래서',
+              '이러한': '이런',
+              '하십시오': '하세요',
+              '하십시오': '하세요',
+              '해라': '해 보라',
+              '하라': '해 보라',
+              '찾아라': '찾아 보라',
+              '받아들여라': '받아들여 보라',
+              '집중하라': '집중해 보라',
+              '참여하라': '참여해 보라',
+              '버려라': '버려 보라',
+              '세워라': '세워 보라',
+              '끊어라': '끊어 보라',
+              '가져와라': '가져와 보라',
+              '움직여라': '움직여 보라',
+              '돌려라': '돌려 보라',
+          }
+          for a,b in repl.items():
+              s = s.replace(a,b)
+
+          # Normalize standalone bold section labels into real Markdown headings.
+          lines = s.splitlines()
+          out=[]
+          for line in lines:
+              m = re.fullmatch(r'\*\*([^*]+)\*\*', line.strip())
+              if m and not m.group(1).startswith(('JOHN','CHRISTY','MOM','DAD','AMANDA','LOS ANGELES')):
+                  text=m.group(1).strip()
+                  if text not in {'하루. 하루. 매일.', '당신을 위해 춤춰라, 그러면 다른 사람들이 당신과 함께 춤출 것이다. 남을 위해 춤추면 당신은 쇼가 된다. 사람이 아니라.'}:
+                      line = '## ' + text
+              if line.strip() == '***':
+                  line = '---'
+              out.append(line)
+          s='\n'.join(out).rstrip()+'\n'
+
+          # Add readable callouts around recurring takeaways / exercises.
+          markers = [
+              ('**성장의 가장 비옥한 흙은 솔로일 때 가꾸어진다**', 'note', '핵심 메시지'),
+              ('**솔로후드는 단순히 혼자 있는 것만이 아닙니다. 온전한 사람이 되는 것입니다.**', 'important', '이 책의 핵심'),
+              ('**하루. 하루. 매일.**', 'tip', '매일 기억할 것'),
+              ('**가치는 짓는 겁니다.**', 'important', '핵심 원칙'),
+              ('**사랑과 연애는 당신 삶의 한 부분일 뿐, 전부가 아닙니다.**', 'note', '기억할 것'),
+          ]
+          for marker, kind, title in markers:
+              if marker in s and f'{{.callout-{kind}' not in s[s.find(marker)-150:s.find(marker)+len(marker)+150]:
+                  s=s.replace(marker, f'::: {{.callout-{kind} title="{title}"}}\n\n{marker}\n\n:::', 1)
+
+          # Turn the repeated action section into callouts where possible.
+          s=s.replace('## 이제 일이 움직이게 하자\n\n', '::: {.callout-tip title="이제 직접 해 보세요"}\n\n', 1)
+          first_end=s.find('\n---', s.find('::: {.callout-tip title="이제 직접 해 보세요"}'))
+          if first_end != -1:
+              s=s[:first_end]+'\n\n:::'+s[first_end:]
+
+          p.write_text(s)
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mybook/single-on-purpose/index.qmd
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'docs: 자연스러운 한국어와 Quarto 서식 정리'
+            git push origin HEAD:docs/single-on-purpose-korean-quarto
+          fi
