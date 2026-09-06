@@ -20,7 +20,6 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
-          import re
 
           path = Path("mybook/shortness-of-life/index.qmd")
           text = path.read_text(encoding="utf-8")
@@ -58,43 +57,39 @@ jobs:
               "통해": "통해서",
               "그렇기 때문에": "그래서",
               "이러한": "이런",
-              "하십시오?": "하세요?",
-              "하십시오!": "하세요!",
-              "하십시오.": "하세요.",
           }
           for old, new in replacements.items():
               text = text.replace(old, new)
 
-          # Fix common translation artifacts in punctuation and spacing.
-          text = text.replace("  아니,", "— 아니,")
-          text = text.replace("  즉 ", "— 즉 ")
-          text = text.replace("  이 ", "— 이 ")
-          text = text.replace("  그 ", "— 그 ")
-          text = text.replace("  을 ", "— 을 ")
-          text = text.replace("  은 ", "— 은 ")
-          text = text.replace("  만 ", "— 만 ")
-          text = text.replace("  그리고 ", "— 그리고 ")
-          text = text.replace("  그런데 ", "— 그런데 ")
-          text = text.replace("  그래서 ", "— 그래서 ")
-          text = text.replace("  중 ", "— 중 ")
-          text = text.replace("  ", " ")
+          # Normalize common translation artifacts without changing quoted source content.
+          for old, new in [
+              ("  아니,", " — 아니, "),
+              ("  즉 ", " — 즉 "),
+              ("  그런데 ", " — 그런데 "),
+              ("  그래서 ", " — 그래서 "),
+              ("  중 ", " — 중 "),
+          ]:
+              text = text.replace(old, new)
+          while "  " in text:
+              text = text.replace("  ", " ")
 
           if "lang: ko" not in text:
               text = text.replace('date: 2026-08-24\n', 'date: 2026-08-24\nlang: ko\n', 1)
 
-          # Replace an accidentally split central-thesis callout with a clean block.
           bad = '''::: {.callout-tip title="세네카의 핵심 주장"}\n**우리에게 살 시간이 부족한 것이 아니라, 우리가 너무 많이 낭비하는 것입니다.**\n\n삶은 충분히 길으며, 잘 사용한다면 중요한 일을 이루기에 넉넉합니다.\n:::\n 삶은 충분히 길고, 잘만 운용한다면 가장 높은 성취를 이루기에 넉넉히 주어진 것입니다.'''
           good = '''::: {.callout-tip title="세네카의 핵심 주장"}\n**우리에게 살 시간이 부족한 것이 아니라, 우리가 너무 많이 낭비하는 것입니다.**\n\n삶은 충분히 길습니다. 시간을 잘 사용한다면 중요한 일을 이루기에 넉넉합니다.\n:::\n\n삶은 무분별한 사치와 무익한 일에 시간을 낭비할 때 비로소 짧아집니다.'''
           text = text.replace(bad, good, 1)
 
-          # Add a second thematic callout before the final retirement advice.
-          marker = "그러니 사랑하는 파울리누스여, 군중 속에서 몸을 빼내십시오."
-          if marker in text and "평화로운 항구" not in text.split(marker, 1)[0][-1000:]:
-              text = text.replace(
-                  marker,
-                  '''::: {.callout-tip title="삶을 되찾는 방법"}\n남의 요구에 끌려다니는 삶에서 벗어나 **자기 시간을 자기 것으로 되찾는 것**이 세네카가 권하는 은퇴의 의미입니다.\n:::\n\n""" + marker,
-                  1,
-              )
+          marker = "그러니 사랑하는 파울리누스여, 군중 속에서 몸을 빼내세요."
+          if marker in text and "삶을 되찾는 방법" not in text:
+              callout = '''::: {.callout-tip title="삶을 되찾는 방법"}\n남의 요구에 끌려다니는 삶에서 벗어나 **자기 시간을 자기 것으로 되찾는 것**이 세네카가 권하는 은퇴의 의미입니다.\n:::\n\n'''
+              text = text.replace(marker, callout + marker, 1)
+
+          text = text.replace(
+              "# 헬비아를 위로하며\n",
+              '''# 헬비아를 위로하며\n\n::: {.callout-important title="이 장의 주제"}\n상실과 불행 앞에서 슬픔을 억누르기보다, 그것을 정면으로 바라보고 견뎌 내는 힘을 이야기합니다.\n:::\n\n''',
+              1,
+          )
 
           path.write_text(text, encoding="utf-8")
 
