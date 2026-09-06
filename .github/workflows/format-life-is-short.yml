@@ -1,0 +1,115 @@
+name: Format Life Is Short QMD
+
+on:
+  push:
+    branches:
+      - docs/life-is-short-korean-quarto
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Format Korean Quarto document
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('mybook/life-is-short/index.qmd')
+          text = path.read_text(encoding='utf-8')
+
+          # Heading hierarchy: the front-matter title is the document title,
+          # so every chapter/section heading belongs at level 1.
+          text = re.sub(r'^##\\s+', '# ', text, flags=re.MULTILINE)
+          text = re.sub(r'^###\\s+', '## ', text, flags=re.MULTILINE)
+
+          # Normalize nested blockquotes accidentally produced by translation.
+          text = re.sub(r'^(> )>\\s*', r'\\1', text, flags=re.MULTILINE)
+
+          # Consistent list markers and indentation for top-level lists.
+          text = re.sub(r'^\\s*[*+]\\s+', '- ', text, flags=re.MULTILINE)
+          text = re.sub(r'^\\t+', '  ', text, flags=re.MULTILINE)
+          text = re.sub(r'^( {4,})([-*+]\\s+)', r'  \\2', text, flags=re.MULTILINE)
+
+          # Natural, consistent Korean phrasing in places where the current
+          # machine translation is noticeably literal or awkward.
+          replacements = {
+              '인생을 최대한 살아내려는 관심': '인생을 최대한 충실히 살고자 하는 마음',
+              '인생을 최대한 사는 법': '인생을 최대한 충실히 사는 법',
+              '인생을 최대한 살려면': '인생을 최대한 충실히 살려면',
+              '인생을 최대한 살려하며': '인생을 최대한 충실히 살려고',
+              '그렇다 말하면서': '그렇다고 해서',
+              '그렇다 말해도': '그렇다고 해도',
+              '진지히 대하고': '진지하게 대하고',
+              '도움을 돕을 수도': '도움을 줄 수도',
+              '좋은 아이디어 대부분은': '좋은 아이디어의 대부분은',
+              '여기 개념들은': '여기 소개하는 개념들은',
+              '그토록 젊고 생기 넘치던 사람의 죽음': '그토록 젊고 생기 넘치던 사람의 죽음을 보며',
+              '10년 후의 지점에서 보면': '10년이 지난 지금 돌아보면',
+              '제 일을 잘 하면': '제가 일을 잘하면',
+              '대개 긴 기간에 걸친 매우 어려운 노동': '대개 오랜 기간에 걸친 매우 고된 노력',
+              '지속된 집중': '꾸준한 집중',
+              '지속되는 호기심': '꾸준한 호기심',
+              '그렇지 않습니다. 미국과 서구 대부분의 사람들은': '하지만 그렇지 않습니다. 미국과 서구 대부분의 사람들은',
+              '그렇다 말하면서 중요한 모든 게': '그렇다고 해서 중요한 모든 것이',
+              '어디서든 잘 잘 수 있으면': '어디서든 충분히 잘 수 있으면',
+              '최대 효율을 끌어내려는 기업들의 욕구': '직원들의 생산성을 높이려는 기업들의 필요',
+              '삶을 상당히 유쾌해지고': '삶을 훨씬 편안하게 만들고',
+              '더 명석하고 창조적이 됐어요': '더 명료하게 생각하고 창의적으로 일할 수 있게 됐습니다',
+              '유쾌하지 않죠': '바람직하지 않습니다',
+              '유쾌하지 않습니다': '바람직하지 않습니다',
+              '득이 없습니다': '도움이 되지 않습니다',
+              '별일을 해내지 못합니다': '많은 일을 해내지 못합니다',
+              '별일을 하며 바쁘게 사거나': '의미 없이 바쁘게 살거나',
+              '살려하며': '살려고',
+              '자신에 대해 더 좋은 기분을 주는 일': '자신에 대해 더 좋은 기분을 느끼게 하는 일',
+              '자신에게 중요한 일을 할 수 있게': '자신에게 중요한 일을 할 수 있도록',
+              '그에 대해 할 수 있는 건 아무것도 없다는 걸': '그것을 우리가 통제할 수 없다는 사실을',
+              '문제가 시간을 지나 크게 자라게': '문제가 시간이 지나며 커지게',
+              '일이 예상대로 또는 그보다 잘 풀렸을 때조차': '일이 예상대로, 혹은 그보다 더 잘 풀렸을 때조차',
+              '그 참조 프레임 밖으로 벗어나는 건': '그런 참조 틀에서 벗어나는 것은',
+              '우리 모두는, 아이작 뉴턴이 말했듯': '아이작 뉴턴이 말했듯 우리 모두는',
+              '여정을 즉시 시작해 계속 나아가시길 바랍니다': '지금 바로 여정을 시작해 계속 나아가시길 바랍니다',
+              '당신 개개의 목표': '각자의 목표',
+              '백년해로는 영화에만 존재합니다': '백년해로가 영화에만 존재하는 것은 아닙니다',
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+
+          # Replace repeated comma/semicolon joins with Korean sentence flow.
+          text = text.replace('; ', '. ')
+          text = text.replace(': "', ': “').replace('"', '”')
+          # Restore code-ish double quotes in front matter if touched.
+          text = text.replace('title: “', 'title: "').replace('”\\nsubtitle:', '"\\nsubtitle:')
+          text = text.replace('subtitle: “', 'subtitle: "').replace('”\\nauthor:', '"\\nauthor:')
+          text = text.replace('author: “', 'author: "').replace('”\\ndate:', '"\\ndate:')
+
+          # Make the opening thesis visually prominent with a Quarto callout.
+          marker = '## 들어가며'
+          if marker in text and '이 책의 핵심은' not in text:
+              callout = '''::: {.callout-tip title="이 책의 핵심"}
+시간은 되돌릴 수 없습니다. 따라서 중요한 것에 집중하고, 중요하지 않은 일에는 과감히 “아니오”라고 말하며, 자신에게 의미 있는 삶을 지금 만들어가야 합니다.
+:::
+
+'''
+              text = text.replace(marker, callout + marker, 1)
+
+          # Keep exactly one blank line between blocks and no trailing spaces.
+          text = re.sub(r'[ \\t]+\\n', '\\n', text)
+          text = re.sub(r'\\n{3,}', '\\n\\n', text)
+          path.write_text(text.rstrip() + '\\n', encoding='utf-8')
+          PY
+
+      - name: Commit formatted document
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mybook/life-is-short/index.qmd
+          git diff --cached --quiet && exit 0
+          git commit -m 'docs: improve Korean Quarto formatting for Life Is Short'
+          git push
