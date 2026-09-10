@@ -1972,7 +1972,7 @@ SignalP 6.0, DeepLoc 2.1 및 DeepLocPro 1.0 논문의 모든 공동 저자에게
 51. Nielsen H (2024) 단백질 선별 예측. In: Journet L, Cascales E (eds) Bacterial secretion systems: methods and protocols. Springer, New York, pp 2763. https://doi.org/10.1007/978-1-0716-3445-5_2
 52. Nakai K, Kanehisa M (1991) 그람 음성균 단백질 위치 예측을 위한 전문가 시스템. Proteins Struct Funct Bioinforma 11:95110. https://doi.org/10.1002/prot.340110203
 53. Horton P, Park K-J, Obayashi T et al (2007) WoLF PSORT: 단백질 위치 예측 도구. Nucleic Acids Res 35:W585W587. https://doi.org/10.1093/nar/gkm259
-54. Gardy JL, Spencer C, Wang K et al (2003) PSORT-B: 그람 음성균 단백질 위치 예측 개선. Nucleic Acids Res 31:36133617. https://doi.org/10.1093/nar/gkg602
+54. Gardy JL, Spencer C, Wang K et al (2003) PSORT-B: 그람 음성균 단백질 위치 예측 개선. Nucleic Acids Res 31:3613-3617. https://doi.org/10.1093/nar/gkg602
 55. Yu NY, Wagner JR, Laird MR et al (2010) PSORTb 3.0: 모든 원핵생물에 대한 개선된 단백질 위치 예측 도구. Bioinformatics 26:16081615. https://doi.org/10.1093/bioinformatics/btq249
 56. Goldberg T, Hecht M, Hamp T et al (2014) LocTree3 단백질 위치 예측. Nucleic Acids Res 42:W350W355. https://doi.org/10.1093/nar/gku396
 57. Wang X, Zhang J, Li G-Z (2015) 유전자 온톨로지와 멀티 라벨 분류기 앙상블을 이용한 세균 단백질 다중 위치 예측. BMC Bioinformatics 16:S1. https://doi.org/10.1186/1471-2105-16-S12-S1
@@ -2177,7 +2177,7 @@ CNN-Meth의 구체적인 아키텍처는 각각 64개의 필터와 3의 윈도�
 51. Nielsen H (2024) 단백질 선별 예측. In: Journet L, Cascales E (eds) Bacterial secretion systems: methods and protocols. Springer, New York, pp 2763. https://doi.org/10.1007/978-1-0716-3445-5_2
 52. Nakai K, Kanehisa M (1991) 그람 음성균 단백질 위치 예측을 위한 전문가 시스템. Proteins Struct Funct Bioinforma 11:95110. https://doi.org/10.1002/prot.340110203
 53. Horton P, Park K-J, Obayashi T et al (2007) WoLF PSORT: 단백질 위치 예측 도구. Nucleic Acids Res 35:W585W587. https://doi.org/10.1093/nar/gkm259
-54. Gardy JL, Spencer C, Wang K et al (2003) PSORT-B: 그람 음성균 단백질 위치 예측 개선. Nucleic Acids Res 31:36133617. https://doi.org/10.1093/nar/gkg602
+54. Gardy JL, Spencer C, Wang K et al (2003) PSORT-B: 그람 음성균 단백질 위치 예측 개선. Nucleic Acids Res 31:3613-3617. https://doi.org/10.1093/nar/gkg602
 55. Yu NY, Wagner JR, Laird MR et al (2010) PSORTb 3.0: 모든 원핵생물에 대한 개선된 단백질 위치 예측 도구. Bioinformatics 26:16081615. https://doi.org/10.1093/bioinformatics/btq249
 56. Goldberg T, Hecht M, Hamp T et al (2014) LocTree3 단백질 위치 예측. Nucleic Acids Res 42:W350W355. https://doi.org/10.1093/nar/gku396
 57. Wang X, Zhang J, Li G-Z (2015) 유전자 온톨로지와 멀티 라벨 분류기 앙상블을 이용한 세균 단백질 다중 위치 예측. BMC Bioinformatics 16:S1. https://doi.org/10.1186/1471-2105-16-S12-S1

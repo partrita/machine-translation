@@ -19549,7 +19549,7 @@ if __name__ == "__main__":
 
 ```
 
-여기서 Newton's method는 단 한 단계 만에 최솟값으로 바로 이동합니다. 함수가 정확히 2차 함수이고 Hessian이 상수이기 때문입니다.
+여기서 Newton's method는 단 한 단계 만에 최솟값으로 바로 이동합니다. 함수가 정확히 2차 함수이고 Hessian이 상수이기 때문입니다.
 
 더 높은 차원에서는 2차 정보의 근사 형태를 사용할 수 있습니다.
 
@@ -99397,19 +99397,19 @@ print(f"  Max: {np.max(entropies):.3f}")
 
 **우도(Likelihood):**
 
-368126P(L_{ij} = l | T_i = k, 	heta_j) = 	heta_{jkl}368126
+P(L_{ij} = l | T_i = k, 	heta_j) = 	heta_{jkl}
 
 **EM 알고리즘을 통한 모수 추정:**
 
 **E-단계(E-step):** 참 라벨의 사후 확률 추정
 
-368126P(T_i = k | L_i, 	heta) \propto \pi_k \prod_{j=1}^{J} 	heta_{jk,L_{ij}}368126
+P(T_i = k | L_i, 	heta) \propto \pi_k \prod_{j=1}^{J} 	heta_{jk,L_{ij}}
 
 **M-단계(M-step):** 파라미터 업데이트
 
-368126\pi_k = rac{1}{I}\sum_{i=1}^{I} P(T_i = k | L_i, 	heta)368126
+\pi_k = \frac{1}{I}\sum_{i=1}^{I} P(T_i = k | L_i, 	heta)
 
-368126	heta_{jkl} = rac{\sum_{i=1}^{I} P(T_i = k | L_i, 	heta) \mathbb{1}[L_{ij} = l]}{\sum_{i=1}^{I} P(T_i = k | L_i, 	heta)}368126
+	heta_{jkl} = \frac{\sum_{i=1}^{I} P(T_i = k | L_i, 	heta) \mathbb{1}[L_{ij} = l]}{\sum_{i=1}^{I} P(T_i = k | L_i, 	heta)}
 
 ### 구현
 
@@ -105584,7 +105584,7 @@ plt.show()
     -   예측의 경우: 테스트 세트에서의 낮은 MSE 달성이 목표입니다. 테스트 시점의 결측 패턴이 훈련 시점과 유사하다면, 편향된 대체 방법(예: 평균 대체)조차 예측 모델 내에 편향이 흡수되어 우수한 성능을 낼 수 있습니다.
 2.  **어떤 편향-분산 트레이드오프를 목표로 할 것인가:**
     -   인과추론: 낮은 편향(일치성)을 우선시하며 상대적으로 높은 분산을 감수합니다.
-    -   예측: 낮은 $	ext{MSE} = 	ext{편향}^2 + 	ext{분산}$을 우선시합니다. 편향이 다소 존재하지만 안정적인 방법(예: 평균 대체 후 규제 회귀)이 비편향이지만 노이즈가 큰 방법(예: 추정된 성향점수를 활용한 AIPW)보다 우수한 예측 성능을 보일 수 있습니다.
+    -   예측: 낮은 $	\text{MSE} = 	\text{편향}^2 + 	\text{분산}$을 우선시합니다. 편향이 다소 존재하지만 안정적인 방법(예: 평균 대체 후 규제 회귀)이 비편향이지만 노이즈가 큰 방법(예: 추정된 성향점수를 활용한 AIPW)보다 우수한 예측 성능을 보일 수 있습니다.
 3.  **결측 메커니즘을 명시적으로 모형화해야 하는가:**
     -   인과추론: 그렇습니다. IPW 및 AIPW는 응답 성향(response propensity)을 명시적으로 모형화해야 하며 MNAR 환경에서는 민감도 분석이 필수적입니다.
     -   예측: 명시적 모형화가 불필요한 경우가 많습니다. 자체 결측값 처리 기능을 갖춘 트리 기반 앙상블 모델이나 결측 지시자(missingness indicator)를 포함한 대체법은 메커니즘을 명시적으로 모형화하지 않고도 결측에 내포된 정보량을 효과적으로 포착합니다.
@@ -107508,15 +107508,15 @@ class RandomFourierFeatures:
 
 딥러닝에서는 선형 계층과 비선형 활성화 함수(activation function)의 합성 함수 형태로 비선형 피처 맵을 구성합니다:
 
-368126
+
 \phi(x) = \phi^{(L)} \circ \dots \circ \phi^{(1)}(x),
-368126
+
 
 각 계층 $\ell$의 형태는 다음과 같습니다:
 
-368126
+
 \phi^{(\ell)}(h) = \sigma(W^{(\ell)} h + b^{(\ell)}).
-368126
+
 
 2개 층으로 구성된 다층 퍼셉트론(MLP)만으로도 고도의 비선형 결정 경계를 표현할 수 있습니다.
 
@@ -107679,7 +107679,7 @@ def svd_embeddings(
 
 실제 대규모 상용 시스템에서는 다음과 같은 이유로 이 방식을 직접 사용하여 임베딩을 학습하지 않습니다:
 
--   밀집(dense) $|\mathcal{V}| 	imes |\mathcal{V}|$ 공기 행렬은 메모리 용량을 과도하게 차지합니다.
+-   밀집(dense) $|\mathcal{V}| 	\times |\mathcal{V}|$ 공기 행렬은 메모리 용량을 과도하게 차지합니다.
 -   초대형 행렬에 대한 SVD 연산은 계산 비용이 매우 높습니다.
 
 그러나 **행렬 분해의 관점(matrix factorization viewpoint)**은 개념적으로 매우 중요합니다. 이는 다음과 밀접하게 연결됩니다:
@@ -107823,14 +107823,14 @@ class SkipGramNegativeSampling:
 
 ### 6.1 선형 매니폴드: 주성분 분석(PCA) 
 
-주성분 분석(PCA)은 데이터의 저차원 선형 구조를 찾아내는 대표적인 선형 차원 축소 기법입니다. 중심화된 데이터  \in \mathbb{R}^{n 	imes D}$가 주어졌을 때, PCA는 분산을 최대화하는 직교 방향 , \dots, w_d$를 찾습니다.
+주성분 분석(PCA)은 데이터의 저차원 선형 구조를 찾아내는 대표적인 선형 차원 축소 기법입니다. 중심화된 데이터  \in \mathbb{R}^{n 	\times D}$가 주어졌을 때, PCA는 분산을 최대화하는 직교 방향 , \dots, w_d$를 찾습니다.
 
 PCA 임베딩은 다음과 같이 정의됩니다:
 
-368126
+
 z_i = W^	op x_i,
-\quad W = [w_1, \dots, w_d] \in \mathbb{R}^{D 	imes d}.
-368126
+\quad W = [w_1, \dots, w_d] \in \mathbb{R}^{D 	\times d}.
+
 
 행렬 관점에서 이는 $의 상위 $개 특이 벡터(singular vectors)를 통한 선형 투영(projection)에 해당합니다.
 
@@ -107863,17 +107863,17 @@ PCA는 계산이 매우 효율적이며 머신러닝 파이프라인의 전처�
 비선형 기하 구조를 효과적으로 포착하기 위해 **오토인코더(Autoencoder)**를 활용합니다:
 
 -   **인코더(Encoder)**는 입력 $를 잠재 코드(latent code) $로 매핑합니다:
-    368126
-    z = 	ext{enc}_\psi(x).
-    368126
+    
+    z = 	\text{enc}_\psi(x).
+    
 -   **디코더(Decoder)**는 잠재 코드 $로부터 원본 $를 재구성합니다:
-    368126
-    \hat{x} = 	ext{dec}_	heta(z).
-    368126
+    
+    \hat{x} = 	\text{dec}_	heta(z).
+    
 -   재구성 손실(reconstruction loss)을 최소화하도록 전체 네트워크를 학습합니다:
-    368126
-    \min_{\psi, 	heta} \ rac{1}{n} \sum_{i=1}^n \|x_i - \hat{x}_i\|_2^2.
-    368126
+    
+    \min_{\psi, 	heta} \ \frac{1}{n} \sum_{i=1}^n \|x_i - \hat{x}_i\|_2^2.
+    
 
 잠재 표현 $는 학습된 비선형 임베딩에 해당합니다. 적절한 신경망 구조와 정규화(regularization) 기법을 결합하면, 오토인코더는 데이터의 유용한 내재적 구조를 스스로 발견할 수 있습니다.
 
@@ -108026,13 +108026,13 @@ def dequantize_embeddings_8bit(Q: np.ndarray, scale: np.ndarray) -> np.ndarray:
 임베딩 벡터 , z' \in \mathbb{R}^d$가 주어졌을 때, 널리 사용되는 유사도/거리 측도는 다음과 같습니다:
 
 -   **유클리드 거리 (Euclidean distance / L2):**
-    368126
-    d_{	ext{L2}}(z, z') = \|z - z'\|_2.
-    368126
+    
+    d_{	\text{L2}}(z, z') = \|z - z'\|_2.
+    
 -   **코사인 유사도 (Cosine similarity):**
-    368126
-    \cos(z, z') = rac{z^	op z'}{\|z\|_2 \|z'\|_2}.
-    368126
+    
+    \cos(z, z') = \frac{z^	op z'}{\|z\|_2 \|z'\|_2}.
+    
 
 코사인 유사도는 벡터의 크기(scale)에 불변(invariant)하므로, 단어 및 문장 임베딩의 의미적 유사성을 비교할 때 널리 활용됩니다.
 
@@ -108065,15 +108065,15 @@ def batch_cosine_similarity(E: np.ndarray) -> np.ndarray:
     return E_norm @ E_norm.T  # shape (n, n)
 ```
 
-프로덕션 레벨의 검색 및 추천 시스템에서는 모든  	imes n$ 유사도 행렬을 직접 연산하지 않고 HNSW나 IVF와 같은 근사 최근접 이웃(ANN) 인덱스를 활용하여 로그 또는 아차선형(sublinear) 시간 복잡도로 유사 벡터를 검색합니다.
+프로덕션 레벨의 검색 및 추천 시스템에서는 모든  	\times n$ 유사도 행렬을 직접 연산하지 않고 HNSW나 IVF와 같은 근사 최근접 이웃(ANN) 인덱스를 활용하여 로그 또는 아차선형(sublinear) 시간 복잡도로 유사 벡터를 검색합니다.
 
 ### 8.2 최근접 이웃과 유추 연산 (Analogies) 
 
 우수한 단어 임베딩의 가장 두드러진 특징 중 하나는 기하학적 벡터 연산을 통한 의미론적 유추(semantic analogy)가 가능하다는 점입니다. 예를 들어 적절히 학습된 공간에서는 다음과 같은 성질이 관찰됩니다:
 
-368126
-	ext{vec}(	ext{king}) - 	ext{vec}(	ext{man}) + 	ext{vec}(	ext{woman}) pprox 	ext{vec}(	ext{queen}).
-368126
+
+	\text{vec}(	\text{king}) - 	\text{vec}(	\text{man}) + 	\text{vec}(	\text{woman}) \approx 	\text{vec}(	\text{queen}).
+
 
 실무에서는 특정 쿼리 임베딩에 대해 공간상에서 가장 가까운 최근접 이웃들을 탐색하는 작업이 빈번하게 수행됩니다.
 

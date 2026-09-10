@@ -27933,7 +27933,7 @@ $ OPT=build/$TRIPLE/llvm/bin/opt
 $ $OPT -S -O2 < my-file.ll > my
 ```
 
-LLVM 파이프라인 동안의 LLVM IR을 구하여 예컨대 어떤 IR이 최적화 타임 단언 실패를 유발하는지 확인하거나 LLVM이 특정 최적화를 수행하는 시점을 확인하고 싶다면 rustc 플래그 `-C llvm-args=-print-after-all`을 전달하고 필요시 `-C llvm-args='-filter-print-funcs=EXACT_FUNCTION_NAME`을 추가할 수 있습니다 (예: `-C llvm-args='-filter-print-funcs=_ZN11collections3str21_$LT$impl$u20$str$GT$replace17hbe10ea2e7c809b0bE'`).
+LLVM 파이프라인 동안의 LLVM IR을 구하여 예컨대 어떤 IR이 최적화 타임 단언 실패를 유발하는지 확인하거나 LLVM이 특정 최적화를 수행하는 시점을 확인하고 싶다면 rustc 플래그 `-C llvm-args=-print-after-all`을 전달하고 필요시 `-C llvm-args='-filter-print-funcs=EXACT_FUNCTION_NAME`을 추가할 수 있습니다 (예: `-C llvm-args='-filter-print-funcs=_ZN11collections3str21_$LT$impl$u20$str$GT$7replace17hbe10ea2e7c809b0bE'`).
 
 이는 표준 오류로 엄청나게 많은 출력을 생성하므로 해당 내용을 어떤 파일로 파이프(pipe) 연결하는 것이 좋습니다.
 또한 `-filter-print-funcs`도 `-C codegen-units=1`도 사용하지 않는 경우 여러 코드 생성 단위가 병렬로 실행되므로 출력 내용이 섞여서 아무것도 읽을 수 없게 됩니다.

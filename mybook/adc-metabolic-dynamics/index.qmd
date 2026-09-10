@@ -2088,7 +2088,7 @@ PLRP-S 컬럼은 유속 250 μL/min으로 75 °C에서 사전 평형화한다. (
 
 온전한 항체 분석을 수행하려면 MS 소스의 Q-TOF 파라미터를 최적화해야 한다. (In order to perform a complete antibody analysis, the Q-TOF parameters of the MS source must be optimized.) 질량분석기 QSTAR의 디클러스터링 전압(declustering potential, DP)은 120~140 V, 분무 전압은 4500~5000 V, 소스 온도는 350 °C로 설정하고 커튼 가스와 네뷸라이저 가스 파라미터는 각각 40으로 맞춘다. (The declustering potential (DP) of the mass spectrometer QSTAR is set to 120140 V, the spray voltage is 45005000 V, the source temperature is 350 °C, and the curtain and nebulizer gas parameters are set to 40 each.)
 
-질량 스펙트럼은 m/z 1000~4000의 고질량 범위를 포함해야 한다. (The mass spectrum should include the high mass range m/z (10004000).) 전형적인 항체의 예상 스펙트럼 엔벨로프는 20003500 m/z(+45~+60 전하 상태)이다. (The expected spectrum envelope of a typical antibody is 20003500 m/z (+45 to +60 charge states).)
+질량 스펙트럼은 m/z 1000~4000의 고질량 범위를 포함해야 한다. (The mass spectrum should include the high mass range m/z (1000-4000).) 전형적인 항체의 예상 스펙트럼 엔벨로프는 2000-3500 m/z(+45~+60 전하 상태)이다. (The expected spectrum envelope of a typical antibody is 2000-3500 m/z (+45 to +60 charge states).)
 
 정확도를 높이려면 질량분석기를 미리 보정하고 시료 분석이 끝날 때까지 스캔 모드를 유지해야 한다. (In order to improve accuracy, the mass spectrometer should be calibrated in advance, and the mass spectrometer should be kept in scan mode until the sample analysis is completed.) 온전한 항체의 Q-TOF 질량 정확도는 보통 ppm(백만분율) 1 미만이다. (The Q-TOF mass accuracy of intact antibodies is usually less than one part per million.)
 
