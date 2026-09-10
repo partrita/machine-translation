@@ -26,7 +26,7 @@ Aikaterini Kafka, Christos Ermogenous, Luigi Ombrato, Aikaterini Kafka et al.
 
 3.4.3 식세포 작용(Phagocytosis) 분석
 
-1. 호중구 현탁액 100 μl(1 × 10⁴-10⁵ 세포)를 96웰 플레이트나 FACS 튜브에 분주한다.
+1. 호중구 현탁액 100 μl(1 × 10-10 세포)를 96웰 플레이트나 FACS 튜브에 분주한다.
 2. 라텍스 비드-토끼 IgG-FITC 복합체 용액을 최종 농도 1:250이 되도록 넣는다(4.4.9절 참고).
 3. 시료를 37 °C에서 1.5시간 배양한다(식세포 활성은 면역세포 종류에 따라 다를 수 있으므로 배양 시간은 세포 유형마다 최적화가 필요하다).
 4. 실온에서 300 g으로 5분간 원심분리한 뒤 FACS 완충액 400 μL에 재현탁한다. 추가로 세포표면 염색(예: Ly6G)이 필요하면 이 단계에서 항체를 넣고 15-30분간 배양한다(비드 결합에 영향을 주지 않도록 표면 마커를 넣을 때는 세포를 얼음 위에 둔다).
@@ -117,7 +117,7 @@ EDTA ethylenediaminetetraacetic acid / FACS fluorescence-activated cell sorting 
 
 ### 2.1 일회용품
 
-- 75-cm² 세포배양 플라스크(Corning®, New York, NY)
+- 75-cm 세포배양 플라스크(Corning®, New York, NY)
 - 100-mm 페트리접시(Nunc™)
 - 24웰 플레이트(Corning®)
 - 40-μm 세포스트레이너(Falcon, Corning®)
@@ -189,8 +189,8 @@ large-scale primary CAR-NK cell preparation barely optimized되었다. 본 장�
 ### 2.1 세포 배양
 1. 건강한 기증자 leukocyte reduction system cones는 싱가포르 Health Sciences Authority에서 이용 가능하다.
 2. Membrane-bound IL-15, IL-21, 41BBL을 가진 K562 aAPCs는 증식 정지 위해 100 Gy gamma-irradiated된다.
-3. NK cell culture: AIM-V(Invitrogen, Carlsbad, CA) + AB serum 5%(Valley Biomedical, Winchester, VA), IL-2 50 IU/mL(PeproTech, Rocky Hill, NJ), DNase 2.5 μg/mL, filter cap 있는 T75 Nunc EasYFlask 75 cm².
-4. K562 aAPC culture: FBS 10% 보강 IMDM, filter cap 있는 Nunc EasYFlask 175 cm².
+3. NK cell culture: AIM-V(Invitrogen, Carlsbad, CA) + AB serum 5%(Valley Biomedical, Winchester, VA), IL-2 50 IU/mL(PeproTech, Rocky Hill, NJ), DNase 2.5 μg/mL, filter cap 있는 T75 Nunc EasYFlask 75 cm.
+4. K562 aAPC culture: FBS 10% 보강 IMDM, filter cap 있는 Nunc EasYFlask 175 cm.
 
 ### 2.2 세포 분리
 Ficoll-Paque™ Plus / 1× PBS / FBS / AB serum / Freezing media(AB serum + DMSO 10%) / NK cell isolation kit(Miltenyi Biotec, Bergisch Gladbach, Germany)
@@ -218,15 +218,15 @@ Victor3 plate reader(PerkinElmer, Waltham, MA) / DELFIA EuTDA Cytotoxicity Reage
 
 ### 3.1 말초혈액 단핵세포와 primary natural killing 세포 분리
 1. Ficoll-Paque™ Plus density gradient centrifugation으로 건강한 기증자 leukocyte reduction system cones에서 fresh human PBMCs isolate한다.
-2. Isolated PBMCs로 directly next step proceed하거나 freezing media(AB serum + DMSO 10%)로 liquid nitrogen freeze down한다(Note 2 참조). Manufacturer’s instructions(Miltenyi Biotec)에 따라 NK cell isolation에 PBMCs 3~4 × 10⁷개 apply한다. NK cells는 magnetic beads negative selection selected된다.
+2. Isolated PBMCs로 directly next step proceed하거나 freezing media(AB serum + DMSO 10%)로 liquid nitrogen freeze down한다(Note 2 참조). Manufacturer’s instructions(Miltenyi Biotec)에 따라 NK cell isolation에 PBMCs 3~4 × 10개 apply한다. NK cells는 magnetic beads negative selection selected된다.
 3. Isolation 후 NK cell purity flow cytometry Determine한다.(Fig. 2a; Note 3 참조).
 
 ### 3.2 NK 세포 activation과 확장
-1. NK cells 5 × 10⁶개와 100 Gy gamma-irradiated K562 aAPCs(membrane-bound IL-15, IL-21, 41BBL 함유)를 1:1 ratio로 AB serum 5% supplemented AIM-V 10 mL 속 T75 Nunc EasyFlask co-culture하고(37 °C, 5% CO₂ incubator upright place), DNase 2.5 μg/mL와 IL-2 50 IU/mL add하여 7일간 배양한다. Media half volume every 2~3 days Change하고 day 7까지 full volume concentration according IL-2 replenish한다. Culture end 때 Cell number five~tenfold increase해야 한다.
+1. NK cells 5 × 10개와 100 Gy gamma-irradiated K562 aAPCs(membrane-bound IL-15, IL-21, 41BBL 함유)를 1:1 ratio로 AB serum 5% supplemented AIM-V 10 mL 속 T75 Nunc EasyFlask co-culture하고(37 °C, 5% CO₂ incubator upright place), DNase 2.5 μg/mL와 IL-2 50 IU/mL add하여 7일간 배양한다. Media half volume every 2~3 days Change하고 day 7까지 full volume concentration according IL-2 replenish한다. Culture end 때 Cell number five~tenfold increase해야 한다.
 
 ### 3.3 piggyBac Transposon™으로 CAR-NK 세포 생성
 1. NK cells harvest하고 Opti-MEM buffer 세 번 wash한다(Note 4 참조).
-2. Cell pellet을 P3 Primary Cell Nucleofector System Solution 속 90 μL solution당 5 × 10⁶ cells 밀도로 Resuspend한다.
+2. Cell pellet을 P3 Primary Cell Nucleofector System Solution 속 90 μL solution당 5 × 10 cells 밀도로 Resuspend한다.
 3. Completed media(AIM-V with DNase 2.5 μg/mL와 IL-2 50 IU/mL) Prepare한다.
 4. PiggyBac transposon platform plasmid preparation은 previously described되었다 [11, 16]. PiggyBac transposase plasmid 5 μg와 NKG2D CAR plasmid 10 μg(1:2 ratio)를 cell suspension Add한다.
 
@@ -254,9 +254,9 @@ Non-viralCAR-NKCellsGenerationProtocol 285
 
 ### 3.6 시험관 내 세포독성 분석을 통한 CAR-NK 세포 기능 특성화
 Cytotoxicity assay는 generally manufacturer’s protocol(three-hour Europium-release assay with DELFIA EuTDA Cytotoxicity Reagents kit) follow해야 한다.
-1. Target cells(1 × 10⁶개)를 1 mL cell culture medium(AIM-V + 5% AB serum) resuspend하고 bis(acetoxymethyl)2,2′:6′,2″-terpyridine-6,6″-dicarboxylate(BATDA) 2 μL label하여 37 °C, 5% CO₂ incubator 20분 Incubate하고 subsequently PBS washing 두 번 한다(Note 10 참조).
-2. Target cells를 cell culture medium 완전 suspend하여 concentration 5 x 10⁴ cells/mL.
-3. CAR-NK cells와 target cells를 required different effector/target(E:T) ratios triplicates Mix하고 culture medium 200 μL로 U-bottom 96-well plates seed(target cells 웰당 5 × 10³개).
+1. Target cells(1 × 10개)를 1 mL cell culture medium(AIM-V + 5% AB serum) resuspend하고 bis(acetoxymethyl)2,2′:6′,2″-terpyridine-6,6″-dicarboxylate(BATDA) 2 μL label하여 37 °C, 5% CO₂ incubator 20분 Incubate하고 subsequently PBS washing 두 번 한다(Note 10 참조).
+2. Target cells를 cell culture medium 완전 suspend하여 concentration 5 x 10 cells/mL.
+3. CAR-NK cells와 target cells를 required different effector/target(E:T) ratios triplicates Mix하고 culture medium 200 μL로 U-bottom 96-well plates seed(target cells 웰당 5 × 10개).
 4. Spontaneous release of target cells 준비: target cells alone triplicates U-bottom 96-well plates seed한다.
 5. Labelled target cells maximal release 준비: target cells culture medium 190 μL에 DEILFA lysis buffer 10 μL Add하고 triplicates U-bottom 96-well plates seed한다.
 
@@ -267,14 +267,14 @@ Cytotoxicity assay는 generally manufacturer’s protocol(three-hour Europium-re
 ### 3.7 GolgiStop CD107a 탈과립 분석을 통한 CAR-NK 세포 기능 특성화
 1. CAR-NK cells를 PBS 한 번 wash하고 AIM-V + 5% AB serum 1 mL Resuspend한다.
 2. APC-conjugated CD107a antibody와 GolgiStop™ manufacturer’s protocol according CAR-NK cell suspension Add한다.
-3. Target cells 준비: PBS wash, AIM-V supplemented with 5% AB serum resuspend, U-bottom 96-well plate concentration 2 × 10⁵ cells/100 μL/well Seed한다(Note 10 참조).
+3. Target cells 준비: PBS wash, AIM-V supplemented with 5% AB serum resuspend, U-bottom 96-well plate concentration 2 × 10 cells/100 μL/well Seed한다(Note 10 참조).
 4. CAR-NK cells를 target cells와 E:T ratio 1:1(experiment settings based amended될 수 있음) Seed하고 37 °C, 5% CO₂ incubator 5 h 배양한다.
 5. Incubation 후 manufacturer’s protocol according anti-CD56 PE antibody cells Stain한다.
 6. CD56과 CD107a expression detecting flow cytometry analysis Proceed한다.
 
 ## 4 참고사항
 1. In vivo assays는 laboratories between high inconsistency 때문에 본 protocol discussed되지 않는다. Researchers는 requested NSG mice with xenograft consider할 수 있다.
-2. Frozen cells vial당 5 × 10⁷ amount keep recommended다. Warm culture medium(AIM-V with 5% AB serum)으로 PBMC stock one vial Thaw하고 37°C, 5% CO₂ incubator overnight Rest하며 DNase(2.5 μg/mL) fresh culture media supplemented 20-30 mL을 T75 Nunc EasYFlask 함께.
+2. Frozen cells vial당 5 × 10 amount keep recommended다. Warm culture medium(AIM-V with 5% AB serum)으로 PBMC stock one vial Thaw하고 37°C, 5% CO₂ incubator overnight Rest하며 DNase(2.5 μg/mL) fresh culture media supplemented 20-30 mL을 T75 Nunc EasYFlask 함께.
 3. NK cell isolation 후 NK cells purity(CD3-CD56+) 약 90% reach해야 한다. T cell percentage(CD3+)는 generally 1% 미만이어야 한다.
 4. NK cells purity(CD3-CD56+)와 T cell percentage(CD3+, <1%)는 electroporation proceed 전 T cell contamination case 확인 위해 flow cytometry again confirmed되어야 한다(Fig. 2b 참조).
 
@@ -406,7 +406,7 @@ EcN-lux Strains
 10. Growth medium을 biosafety cabinet 안 vacuum suction 사용 Aspirate한다.
 11. Warm tumor cell culture medium 1 mL로 tumor cells Gently resuspend한다.
 12. Tumor cells 10 μl Take out하고 trypan blue staining 10 μl Mix(1:1 ratio). Mixture 10 μL을 cell counting chamber slides Transfer하여 concentration of cells 계산한다.
-13. Tumor cells 1 × 10⁶개를 T25 flask tumor cell culture medium 5 mL Add한다.
+13. Tumor cells 1 × 10개를 T25 flask tumor cell culture medium 5 mL Add한다.
 
 EngineeringProbioticE.coliNissle1917forReleaseofTherapeuticNanobodies 295
 14. Tumor cells containing medium을 culture flask Transfer한다. Tumor cells flask evenly distribute 위해 Gently shake한다.
@@ -453,7 +453,7 @@ CTLA-4nb collection 또는 PD-L1nb collection 100 mM imidazole.
 10. Lysate interest protein western blot technique Confirm·visualize한다(Note 16 참조).
 
 3.3.3 PD-L1 nanobody(PD-L1nb) binding(Note 17 참조, Note 18 참조)
-1. Tissue culture hood에서 A20 cells 1 × 10⁷/mL을 96-well V-bottom plate seeding하며 working volume 100 μl.
+1. Tissue culture hood에서 A20 cells 1 × 10/mL을 96-well V-bottom plate seeding하며 working volume 100 μl.
 2. Cells 450 r.c.f. Centrifuge하고 Fc Block(Tonbo, 1:1000) prepared in FACS buffer(1% BSA, 2.5 mM EDTA in DPBS) Resuspend한다.
 3. 4°C 10분 Incubate한다.
 4. 위 Incubation 동안 “Characterization of Nanobodies” collected lysate samples ten-fold dilutions Prepare한다(Note 19 참조).
@@ -476,7 +476,7 @@ EngineeringProbioticE.coliNissle1917forReleaseofTherapeuticNanobodies 297
 8. ACK lysis buffer 2 mL Add하고 reaction 2분 proceed allow한다.
 9. Supernatant Decant한다.
 10. RPMI media 5 mL Resuspend하고 cell counter 사용 number of cells Count한다.
-11. 6-well tissue culture plate splenocytes 2 × 10⁶ per ml Seed한다.
+11. 6-well tissue culture plate splenocytes 2 × 10 per ml Seed한다.
 12. Splenocytes PMA(50 ng/mL; Sigma-Aldrich)와 ionomycin(1 nM; Calbiochem) Stimulate하고 48 h 37 °C Incubate한다. Negative control serve unstimulated well 하나 Keep sure한다.
 13. 각 well에서 96-well V-bottom plate로 100 μl Transfer한다.
 14. Unstimulated와 stimulated splenocytes purified CTLA-4nb 2 h Incubate한다.
@@ -488,14 +488,14 @@ EngineeringProbioticE.coliNissle1917forReleaseofTherapeuticNanobodies 297
 
 ### 3.4 Mouse models 치료 평가
 1. BALB/c mice Obtain하고 facility acclimate tumor inoculations 전 일주일(Note 25 참조).
-2. Tissue Culture: Expanding tumor cell line subsection described tumor cells culture density 5 × 10⁷/mL까지 하고 ice-cold DPBS Resuspend한다(Note 26 참조).
+2. Tissue Culture: Expanding tumor cell line subsection described tumor cells culture density 5 × 10/mL까지 하고 ice-cold DPBS Resuspend한다(Note 26 참조).
 
 3.4.1 Establishment of subcutaneous model
 3. Appropriate IACUC protocol following animals Anesthetize한다.
 4. Mice asleep 되면 forceps 사용 mouse hind flank skin lifting “tent” Create한다. 29-gauge insulin syringe 사용 cells slowly Inject하며 “tent” other side pierce through careful하지 않는다.
 5. Needle slowly pulling 전 Forceps Release한다. Bubble transiently form해 injection subcutaneous space indeed indicate한다.
 6. Monitor mice, mice wake up cage start moving 후 appropriate place animal facility cage Place한다. Tumors visible·palpable over next 14~20 days 될 것이다.
-7. Tumors palpable 되면 calipers twice a week 사용 tumor-bearing BALB/c mice measure·record tumor volume. CT26 tumor volumes length, width, height measuring calculated된다(V = L × W × H). A20 tumors less solid이므로 tumor z dimension measurement highly variable하며 따라서 total volume length × width² × 0.5 [36] calculated해야 한다. Tumors grow to approximately 150~200 mM³ treatment ready다.
+7. Tumors palpable 되면 calipers twice a week 사용 tumor-bearing BALB/c mice measure·record tumor volume. CT26 tumor volumes length, width, height measuring calculated된다(V = L × W × H). A20 tumors less solid이므로 tumor z dimension measurement highly variable하며 따라서 total volume length × width × 0.5 [36] calculated해야 한다. Tumors grow to approximately 150~200 mM treatment ready다.
 8. Control과 treatment groups comparable tumor volumes Randomize한다. Statistical purposes ~5 mice per group이며 all groups comparable sample sizes 가져야 한다.
 
 3.4.2 Therapeutic bacteria preparation
@@ -511,7 +511,7 @@ EngineeringProbioticE.coliNissle1917forReleaseofTherapeuticNanobodies 299
 8. Bacteria culture 4 °C 3000 r.c.f 10분 Centri-fuge하고 supernatant Discard한다. 1×
 9. Pellet sterile DPBS 50 mL gently pipetting up and down Resuspend한다(Note 28 참조).
 10. Bacteria steps 5, 6 repeating 세 번 Wash한다.
-11. 각 therapeutic strain OD 0.5(~5 × 10⁷ CFU/mL) Adjust한다.
+11. 각 therapeutic strain OD 0.5(~5 × 10 CFU/mL) Adjust한다.
 12. Equal parts cocktail SLIC:PD-L1nb과 SLIC-CTLA-4nb Make하며 combined cocktail OD 0.5.
 
 3.4.3 Therapeutic bacteria administration
@@ -664,9 +664,9 @@ Human T Cell Transduction and Cytolysis Analysis 33
 5. RetroNectin 코팅 플레이트의 각 웰에 바이러스 상층액 2 mL를 넣는다(주의사항 5 참고). 모크(mock) 형질도입 세포가 들어갈 웰에는 DMEM+10% FBS 2 mL를 넣는다.
 6. 플레이트를 파라필름으로 싸서 32 °C에서 3000 rpm(1500 g), 1시간 원심분리한다(저속 가속(4), 저강도 브레이크(3)).
 7. T세포를 회수하여 수를 센다.
-8. 세포를 원심침전시킨 뒤 X-VIVO + 5% H.S + 100 U/mL IL-2 + 5 ng/mL IL-15 배지에서 농도를 0.5 × 10⁶ cells/mL로 맞춘다.
+8. 세포를 원심침전시킨 뒤 X-VIVO + 5% H.S + 100 U/mL IL-2 + 5 ng/mL IL-15 배지에서 농도를 0.5 × 10 cells/mL로 맞춘다.
 9. 코팅된 24웰 플레이트에서 바이러스 상층액 1.5 mL를 제거한다.
-10. 웰마다 T세포 1 mL(0.5 × 10⁶ 세포)를 넣는다.
+10. 웰마다 T세포 1 mL(0.5 × 10 세포)를 넣는다.
 11. 플레이트를 파라필름으로 밀봉하고 32 °C에서 2500 rpm(1000 g), 1시간 원심분리한다(저속 가속(4), 저강도 브레이크(3)).
 12. 파라필름을 떼고 37 °C, 5% CO₂에서 하룻밤 배양한다.
 
@@ -686,7 +686,7 @@ Human T Cell Transduction and Cytolysis Analysis 33
 
 ## 3.9 8일째: 유세포 분석으로 형질도입 효율 확인
 
-1. 세포를 재현탁하고 수를 센 뒤 약 5 × 10⁵ 세포를 FACS 튜브에 옮긴다.
+1. 세포를 재현탁하고 수를 센 뒤 약 5 × 10 세포를 FACS 튜브에 옮긴다.
 2. 세포를 FACS 완충액으로 두 번 세척한다.
 3. 구조체 마커(예: NiR), CD3, Vβ14 등 표면 마커로 세포를 염색한다.
 4. 4 °C에서 어둠 속에 30분간 배양한다.
@@ -940,7 +940,7 @@ C2 - G-Rex® 조직배양 6웰 사용:
 
 1. 293T 세포 회수: 배지를 흡인하고 PBS로 세포를 씻어낸다. 0.25% 트립신-EDTA로 배양 용기에서 세포를 떼어낸다. 10% FBS 보충 DMEM으로 트립신을 중화시키고 세포를 재현탁한다. 50-mL 튜브로 옮긴다.
 2. 실온에서 300×g으로 5분간 원심분리한다. 상층액을 버리고 10% FBS 보충 DMEM 10 mL에 재현탁한다. 혈구계산판으로 세포 수를 센다.
-3. 폴리-D-라이신 코팅 10-cm 플레이트당 3.5 × 10⁶ 세포를 약 10 mL의 10% FBS 보충 DMEM에 분주한다. 플레이트를 여러 방향으로 흔들어 세포를 고르게 퍼뜨리고 37 °C에서 하룻밤 배양한다.
+3. 폴리-D-라이신 코팅 10-cm 플레이트당 3.5 × 10 세포를 약 10 mL의 10% FBS 보충 DMEM에 분주한다. 플레이트를 여러 방향으로 흔들어 세포를 고르게 퍼뜨리고 37 °C에서 하룻밤 배양한다.
 
 #### 3.1.2 Day 0: 293T 세포 형질전환
 
@@ -960,8 +960,8 @@ Mouse CAR T-Cell Production 47
 
 2. 실온에서 300×g으로 5분간 원심분리한다. ACK 완충액 1 mL에 재현탁하고 실온에서 1분간 둔 뒤 RPMI 9 mL를 넣는다.
 3. 실온에서 300×g으로 5분간 원심분리한다. 상층액을 버리고 RPMI 20 mL에 재현탁한다. 혈구계산판으로 세포 수를 센다.
-4. 실온에서 300×g으로 5분간 원심분리한다. 상층액을 버리고 RPMI 기반 CAR T세포 배지 + ConA(2.5 μg/mL) + 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)에서 2 × 10⁶ cells/mL로 재현탁한다.
-5. 웰마다 2 mL씩(웰당 총 4 × 10⁶) 분주하고 플레이트를 37 °C 배양기에 하룻밤 넣어둔다.
+4. 실온에서 300×g으로 5분간 원심분리한다. 상층액을 버리고 RPMI 기반 CAR T세포 배지 + ConA(2.5 μg/mL) + 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)에서 2 × 10 cells/mL로 재현탁한다.
+5. 웰마다 2 mL씩(웰당 총 4 × 10) 분주하고 플레이트를 37 °C 배양기에 하룻밤 넣어둔다.
 
 #### 3.1.4 Day 1: 293T 세포 배지 교체
 
@@ -989,7 +989,7 @@ Mouse CAR T-Cell Production 47
 2. PBS/BSA 용액을 제거하고 웰마다 PBS 1-2 mL로 세척한다.
 3. 부드럽게 피펫팅하여 T세포를 회수하고 50-mL 튜브에 모은다. 혈구계산판으로 세포 수를 센다. 무형질도입 대조군으로 쓸 세포를 따로 덜어둔다.
 
-4. 형질도입할 목표 수의 T세포를 실온에서 300×g으로 5분간 원심분리한다. 바이러스 상층액에서 1 × 10⁶ cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다(주의사항 7 참고).
+4. 형질도입할 목표 수의 T세포를 실온에서 300×g으로 5분간 원심분리한다. 바이러스 상층액에서 1 × 10 cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다(주의사항 7 참고).
 5. 24웰 플레이트에서 PBS를 흡인해 제거하고 웰마다 바이러스 상층액 속 T세포 1 mL를 옮겨 넣는다.
 6. 파라필름으로 플레이트를 밀봉한다. 바이오해저드 로터 커버를 쓰고 32 °C에서 800×g, 가속 4·브레이크 0 조건으로 90분간 원심분리한다.
 7. 원심분리 후 각 웰에 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)가 든 CAR 배지 1 mL를 추가한다.
@@ -1008,7 +1008,7 @@ Mouse CAR T-Cell Production 47
 **Day 2: T세포 형질도입**
 
 1. 피펫팅으로 T세포를 회수해 50-mL 튜브에 모은다. 혈구계산판으로 세포 수를 센다. 무형질도입 대조군용 세포를 따로 덮어둔다. 형질도입할 목표 수의 세포를 실온에서 300×g으로 5분간 원심분리한다. 잔류 혈청을 제거하기 위해 PBS로 T세포를 재현탁하고 다시 실온에서 300×g으로 5분간 원심분리한다.
-2. 바이러스 상층액에 Vectofusin®-1을 10 μg/mL가 되도록 넣고 실온에서 최대 5분간 둔다. 세척한 T세포를 바이러스 상층액/Vectofusin®-1에서 1 × 10⁶ cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다.
+2. 바이러스 상층액에 Vectofusin®-1을 10 μg/mL가 되도록 넣고 실온에서 최대 5분간 둔다. 세척한 T세포를 바이러스 상층액/Vectofusin®-1에서 1 × 10 cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다.
 3. 조직배양용 24웰 플레이트에 웰당 1 mL씩 옮겨 담는다.
 4. 파라필름으로 플레이트를 밀봉한다. 32 °C에서 800×g, 가속 4·브레이크 0 조건으로 90분간 원심분리한다(바이오해저드 로터 커버 사용).
 5. 원심분리 후 24웰 플레이트의 각 웰에 FBS가 든 RPMI 기반 배지를 추가로 1 mL씩 넣고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 더한다.
@@ -1029,8 +1029,8 @@ Mouse CAR T-Cell Production 49
 **Day 2: T세포 형질도입**
 
 1. 부드럽게 피펫팅해 T세포를 회수하고 50-mL 튜브에 모은다. 혈구계산판으로 세포 수를 센다. 형질도입할 목표 수의 세포를 실온에서 300×g으로 5분간 원심분리한다. 잔류 혈청을 제거하기 위해 PBS로 재현탁하고 다시 실온에서 300×g으로 5분간 원심분리한다. 아울러 무형질도입 대조군용 T세포를 따로 덮어둔다.
-2. 레트로바이러스 상층액에 Vectofusin®-1을 10 μg/mL 넣고 실온에서 5분간 둔다. 세척한 T세포를 레트로바이러스 상층액에서 1 × 10⁶ cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다.
-3. 조직배양 24웰 플레이트(방법 C1)에는 웰당 1 mL(1 × 10⁶ 세포)씩, G-Rex® 6웰 배양 플레이트(방법 C2)에는 웰당 최소 5-10 mL 부피에 5×10⁶~1×10⁷ 세포씩 분주한다(주의사항 5 참고).
+2. 레트로바이러스 상층액에 Vectofusin®-1을 10 μg/mL 넣고 실온에서 5분간 둔다. 세척한 T세포를 레트로바이러스 상층액에서 1 × 10 cells/mL로 재현탁하고 마우스 재조합 사이토카인 IL-7(10 ng/mL), IL-15(5 ng/mL)를 넣는다.
+3. 조직배양 24웰 플레이트(방법 C1)에는 웰당 1 mL(1 × 10 세포)씩, G-Rex® 6웰 배양 플레이트(방법 C2)에는 웰당 최소 5-10 mL 부피에 5×10~1×10 세포씩 분주한다(주의사항 5 참고).
 4. 37 °C에서 4시간 배양한다. 24웰 플레이트(방법 C1)에는 사이토카인이 든 CAR 배지(FBS 포함)를 추가로 1 mL, G-Rex® 웰(방법 C2)에는 10-15 mL를 더한다.
 
 **Day 3: T세포 유지 활성화(방법 C1만 해당)**
@@ -1041,7 +1041,7 @@ Mouse CAR T-Cell Production 49
 
 #### 3.3.1 4~5일째: CAR T세포 회수
 
-1. 피펫팅으로 세포를 부드럽게 재현탁한다. 모든 세포를 50-mL 튜브에 모아 혈구계산판으로 수를 센다. 유세포 염색용으로 1 × 10⁶ 세포씩 나눠 96웰 원형바닥 플레이트로 옮긴다.
+1. 피펫팅으로 세포를 부드럽게 재현탁한다. 모든 세포를 50-mL 튜브에 모아 혈구계산판으로 수를 센다. 유세포 염색용으로 1 × 10 세포씩 나눠 96웰 원형바닥 플레이트로 옮긴다.
 2. 플레이트를 800×g으로 2분간 원심분리고 PBS에 희석한 고정 가능한 생존/사멸 염색액 100 μL에 세포를 재현탁한다. 실온에서 10-20분간 배양한다.
 
 **그림 1** 1일째 형질전환 배지를 9 mL의 새 배지로 교체했다. T세포는 표기된 형질도입 촉진제가 있는 상태에서 형질도입되었고 표기된 배양 시스템에서 확장되었다. 시료는 BD FACSymphony™에서 측정하고 FlowJo 10 소프트웨어로 분석했다. (a) 생존 CD8 또는 CD4 T세포에 게이팅한 대표 유세포 플롯으로, 4일째 CAR 마커 유전자 Thy1.1 발현을 보여준다. (b) 표기된 형질도입 조건에서 CD4 및 CD8 T세포의 형질도입율. (c) RetroNectin® 존재 하 스피뉴큘레이션(방법 A) 형질도입 후 CD8 및 CD4 T세포의 CD44와 CD62L 발현 대표 플롯. TE: 형질도입 촉진제(transduction enhancer); UTD: 무형질도입(untransduced)
@@ -1072,13 +1072,13 @@ Mouse CAR T-Cell Production 51
  - 방법 C: 20-35%
 11. 방법 A의 전형적인 확장과 수율 예:
 
- 마리당 10⁷ CAR T세포로 6마리씩 세 집단 치료 시!
- 18회 분주 = 1.8 × 10⁸ 세포 + 주사용 여유분.
+ 마리당 10 CAR T세포로 6마리씩 세 집단 치료 시!
+ 18회 분주 = 1.8 × 10 세포 + 주사용 여유분.
  Day 0: 공여 마우스 네 마리에서 비장 적출. 293T 세포 8 × 10-cm 플레이트 형질전환.
  Day 1: 24웰 플레이트 5개에 RetroNectin® 코팅.
  Day 2: T세포 회수 - 0일째 깐 전체 세포의 70-90% 회수를 기대. 레트로바이러스 상층액을 120 mL로 맞춤. 24웰 플레이트 5개 스피뉴큘레이션.
  Day 3: 세포 절반씩 10 × 24웰 플레이트로 분주.
- Day 4: T세포 회수 - 2일째 깐 세포의 약 3배를 회수할 것으로 기대. 전체 기대 수율 ~4 × 10⁸.
+ Day 4: T세포 회수 - 2일째 깐 세포의 약 3배를 회수할 것으로 기대. 전체 기대 수율 ~4 × 10.
 
 ## 감사의 글
 
@@ -1405,7 +1405,7 @@ NADPH 산화효소 활성에 영향을 주는 것 [16], 자연살해세포 활�
 
 1. 교모세포종 세포주(T98G, ATCC® CRL-1690™).
 2. 10% (v/v) 태아우혈청(Gibco, 16000044), 페니실린-스트렙토마이신 100 U/mL(Gibco, 15140122), 2 mM L-글루타민(Gibco, 25030081)을 보충한 Dulbecco's modified Eagle's medium(Sigma-Aldrich, D6429)(주의사항 2 참고). 4 °C 보관.
-3. 염화칼슘(Ca²⁺)과 염화마그네슘(Mg²⁺)이 없는 Dulbecco's phosphate-buffered saline(PBS, Sigma-Aldrich, D8537).
+3. 염화칼슘(Ca⁺)과 염화마그네슘(Mg⁺)이 없는 Dulbecco's phosphate-buffered saline(PBS, Sigma-Aldrich, D8537).
 4. 트립신/EDTA(Gibco, 25200056). 4 °C 보관.
 5. 에탄올.
 6. 블리치.
@@ -1426,7 +1426,7 @@ NADPH 산화효소 활성에 영향을 주는 것 [16], 자연살해세포 활�
 1. 배양 인서트 2웰 시스템(Ibidi, 80209).
 2. 12웰 플레이트.
 3. 멸균 트위저.
-4. Ca²⁺과 Mg²⁺이 있는 PBS(Sigma-Aldrich, D8662).
+4. Ca⁺과 Mg⁺이 있는 PBS(Sigma-Aldrich, D8662).
 5. Calcein(Invitrogen, C3099). -20 °C 보관.
 
 ### 2.4 f-/g-Actin 비율
@@ -1435,7 +1435,7 @@ NADPH 산화효소 활성에 영향을 주는 것 [16], 자연살해세포 활�
 2. 배양 인서트 2웰 시스템(Ibidi, 80209).
 3. 12웰 플레이트.
 4. 멸균 트위저.
-5. Ca²⁺, Mg²⁺이 있는 PBS.
+5. Ca⁺, Mg⁺이 있는 PBS.
 6. Triton X-100(Sigma-Aldrich, T8787).
 7. TRITC-phalloidin(Sigma-Aldrich, P1951). -20 °C 보관.
 8. Deoxyribonuclease I conjugate(Invitrogen, D12371). -20 °C 보관.
@@ -1486,7 +1486,7 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 77
 1. T75 플라스크에 완전 배지 12 mL로 T98G 세포를 37 °C, 5% CO₂에서 배양한다. 2일마다 배지를 갈아준다.
 2. 배양이 90% confluent에 도달하면 분주한다.
 3. 배양 플라스크에서 배지를 버린다.
-4. Ca²⁺, Mg²⁺ 없는 PBS 5 mL로 세포를 씻는다(주의사항 5 참고).
+4. Ca⁺, Mg⁺ 없는 PBS 5 mL로 세포를 씻는다(주의사항 5 참고).
 5. 배양 플라스크에서 PBS를 제거한다.
 
 78 Özlem Şen et al.
@@ -1504,15 +1504,15 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 77
 ### 3.3 이동 분석
 
 1. 멸균 트위저로 배양 인서트 2웰 시스템(Ibidi, 80209)을 12웰 플레이트에 놓는다.
-2. 웰마다 세포 현탁액 70 μL를 파종한다(5∙10⁴ cells/cm² 파종 밀도)(주의사항 9 참고).
+2. 웰마다 세포 현탁액 70 μL를 파종한다(5∙10 cells/cm 파종 밀도)(주의사항 9 참고).
 3. 세포 부착을 위해 37 °C에서 24시간 배양한다.
 4. 배지를 버리고 대조군용 순수 완전 배지, 21.5 μM Nut, 500 μg/mL PNPs, 또는 500 μg/mL Nut-PNPs를 넣어 24시간 둔다.
 5. 배양 후 멸균 트위저로 모서리를 집어 인서트를 부드럽게 제거한다(주의사항 10 참고).
-6. Ca²⁺, Mg²⁺이 있는 PBS로 세포를 헹궈 비부착 세포나 세포 찌꺼기를 제거한다.
-7. Ca²⁺, Mg²⁺이 있는 PBS로 준비한 1 μM calcein으로 37 °C에서 15분간 염색한다.
-8. Ca²⁺, Mg²⁺이 있는 PBS로 세포를 씻는다.
+6. Ca⁺, Mg⁺이 있는 PBS로 세포를 헹궈 비부착 세포나 세포 찌꺼기를 제거한다.
+7. Ca⁺, Mg⁺이 있는 PBS로 준비한 1 μM calcein으로 37 °C에서 15분간 염색한다.
+8. Ca⁺, Mg⁺이 있는 PBS로 세포를 씻는다.
 9. 4× 대물렌즈로 세포 사이 gap을 촬영한다(0시간).
-10. 1 W/cm² 강도, 1 MHz 주파수의 초음파로 하루 1시간씩 2일간 자극한다. US 프로브 팁을 배양액과 접촉하게 플레이트 위에 놓되 세포에서 5 mm 거리를 둔다.
+10. 1 W/cm 강도, 1 MHz 주파수의 초음파로 하루 1시간씩 2일간 자극한다. US 프로브 팁을 배양액과 접촉하게 플레이트 위에 놓되 세포에서 5 mm 거리를 둔다.
 11. 4× 대물렌즈로 세포 사이 gap을 촬영한다(24시간). 대표 이미지는 그림 1 참고.
 12. ImageJ 소프트웨어의 "Wound Healing" 플러그인으로 이미지를 분석한다.
 
@@ -1527,9 +1527,9 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 79
 1. 3.3절에서 설명한 대로 세포를 파종하고 배양물을 처리한다.
 2. 같은 파라미터로 US로 배양물을 자극한다.
 3. 처리가 끝나면 4% PFA로 4 °C에서 20분간 고정한다.
-4. Ca²⁺, Mg²⁺이 있는 PBS로 헹군 뒤 실온에서 0.1% (v/v) Triton X-100 용액으로 15분간 투과화한다.
+4. Ca⁺, Mg⁺이 있는 PBS로 헹군 뒤 실온에서 0.1% (v/v) Triton X-100 용액으로 15분간 투과화한다.
 5. 용액을 제거하고 TRITC-phalloidin(1:200, v/v), deoxyribonuclease I conjugate(0.3 μM), Hoechst(1:1000, v/v)로 37 °C에서 45분간 f-actin, g-actin, 핵을 염색한다.
-6. Ca²⁺, Mg²⁺이 있는 PBS로 세포를 씻는다.
+6. Ca⁺, Mg⁺이 있는 PBS로 세포를 씻는다.
 7. 공초점 형광현미경으로 scratch 영역의 이미지를 얻는다.
 8. NIS-Elements 소프트웨어로 적색/녹색 신호 비율에서 f-/g-actin 신호 비율을 분석한다(그림 2).
 
@@ -1539,7 +1539,7 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 79
 
 모든 시약은 사용 직전 실온에 맞추고 침전이 생기지 않게 살살 흔든다. 필터에 collagen I 100 μL를 넣어 막을 만든다.
 1. 37 °C에서 2시간 배양한다(주의사항 11 참고).
-2. 상부 챔버의 각 웰에 완전 배지 + 21.5 μM Nut, 500 μg/mL PNPs, 또는 500 μg/mL Nut-PNPs에 현탁한 세포 현탁액(챔버당 2.3∙10⁵ T98G 세포) 200 μL를 넣는다.
+2. 상부 챔버의 각 웰에 완전 배지 + 21.5 μM Nut, 500 μg/mL PNPs, 또는 500 μg/mL Nut-PNPs에 현탁한 세포 현탁액(챔버당 2.3∙10 T98G 세포) 200 μL를 넣는다.
 3. 무균 조건에서 상부 챔버를 분리하고 하부 챔버에 배양액 600 μL를 넣는다.
 4. 상부와 하부 챔버를 다시 결합한다(주의사항 12 참고).
 5. 12시간 배양 후 하부 챔버 배지를 대조군 침습 유도 배지(1:10, v/v)로 교체한다.
@@ -1556,7 +1556,7 @@ Control / Nut / PNPs / Nut-PNPs, ± US - f-actin/g-actin/핵; SU o/w, SU w; 3.0-
 10. 상부 챔버를 분리해 옆에 둔다.
 11. 플레이트를 600 g으로 5분간 원심분리한다.
 12. 하부 챔버의 배지를 버리고 세척 완충액 500 μL로 세포를 헹군다.
-13. 세포 염료 50 μL(Ca²⁺, Mg²⁺이 있는 PBS에 1:250 희석)를 준비하고 세포 분리 완충액 450 μL와 섞는다(웰 하나 분량).
+13. 세포 염료 50 μL(Ca⁺, Mg⁺이 있는 PBS에 1:250 희석)를 준비하고 세포 분리 완충액 450 μL와 섞는다(웰 하나 분량).
 14. 준비한 염료 용액 500 μL를 각 하부 웰에 넣는다.
 15. 상부 챔버를 하부 챔버에 얹고 플레이트를 37 °C에서 30분간 배양한다(주의사항 13 참고).
 
@@ -1731,7 +1731,7 @@ NP를 물리화학적으로 특성화한 뒤에는 NP 제조 중 쓴 용매나 �
 
 #### 3.3.1 Alamar Blue 분석
 
-1. 96웰 마이크로플레이트에 웰당 1 × 10⁴ 세포를 최종 배양액 부피 100 μL로 파종한다.
+1. 96웰 마이크로플레이트에 웰당 1 × 10 세포를 최종 배양액 부피 100 μL로 파종한다.
 2. 마이크로플레이트를 37 °C, 5% CO₂에서 24시간 배양한다.
 
 92 Naym Blal and Daniela Guarnieri
@@ -1749,7 +1749,7 @@ NP를 물리화학적으로 특성화한 뒤에는 NP 제조 중 쓴 용매나 �
 
 #### 3.3.2 공초점현미경 촬영
 
-1. 24웰 플레이트에서 12-mm 글래스 커버글라스 위에 웰당 배지 1 mL로 5 × 10⁴ 세포를 파종한다.
+1. 24웰 플레이트에서 12-mm 글래스 커버글라스 위에 웰당 배지 1 mL로 5 × 10 세포를 파종한다.
 2. 파종 24시간 뒤 PELGA-rhod NPs 50 μg/mL가 든 신선 배지 1 mL로 교체한다.
 3. 37 °C에서 24시간 배양한다.
 4. 배양이 끝나면 배지를 제거하고 세포내섭취되지 않은 NP를 제거하기 위해 PBS로 두 번 헹군다.
@@ -1767,7 +1767,7 @@ Nanoparticles for Tumor Targeting 93
 
 #### 3.3.3 섭취 정량 분석
 
-1. 24웰 플레이트에 웰당 배지 1 mL로 5 × 10⁴ 세포를 파종한다.
+1. 24웰 플레이트에 웰당 배지 1 mL로 5 × 10 세포를 파종한다.
 2. 파종 24시간 뒤 PELGA-rhod NPs 50 μg/mL가 든 신선 배지 1 mL로 교체한다.
 3. 37 °C에서 최대 24시간까지 여러 시점별로 배양한다.
 4. 각 시점에 배지를 제거하고 PBS로 두 번 헹군다.
@@ -1935,7 +1935,7 @@ Microfluidic Device for Functional Assays 101
 **그림 1** 암 기능 분석용 마이크로유체 플랫폼 설계
 
 5. 65 °C 5분, 이어 95 °C 20분 굽며 용매를 모두 증발시킨다.
-6. silicon wafer를 mask aligner로 옮기고 photomask를 얹은 뒤 UV 에너지 240 mJ/cm²로 SU-8 photoresist를 노출시킨다. hot plate에서 65 °C 5분, 95 °C 10분 구워 photoresist를 가교결합시킨다.
+6. silicon wafer를 mask aligner로 옮기고 photomask를 얹은 뒤 UV 에너지 240 mJ/cm로 SU-8 photoresist를 노출시킨다. hot plate에서 65 °C 5분, 95 °C 10분 구워 photoresist를 가교결합시킨다.
 
 Microfluidic Device for Functional Assays 103
 
@@ -1983,7 +1983,7 @@ Microfluidic Device for Functional Assays 105
 
 1. 고해상도 투명 필름 인쇄 서비스를 제공하는 회사가 여럿 있다(예: JD Photo Data, UK).
 2. SU8 몰드 제작과 PDMS 복제는 입자 수·습도·온도가 통제되는 클린룸에서 해야 한다.
-3. 특정 두께를 얻을 PMDS 혼합물 무게 계산에는 다음 식을 썼다: m = πr²hρ. m은 폴리머 혼합물 질량(g), r은 페트리접시 반경(cm), h는 원하는 두께(cm), ρ는 PDMS 밀도(0.965 g/cm³)다.
+3. 특정 두께를 얻을 PMDS 혼합물 무게 계산에는 다음 식을 썼다: m = πrhρ. m은 폴리머 혼합물 질량(g), r은 페트리접시 반경(cm), h는 원하는 두께(cm), ρ는 PDMS 밀도(0.965 g/cm)다.
 4. 미경화 PDMS에서 기포가 없어지지 않으면 dropper나 N₂ 건의 저압 공기로 남은 기포를 터뜨릴 수 있다.
 5. 유리슬라이드 반대편에 PDMS가 묻는 것을 막으려면 누르기 전 윗면을 접착테이프로 덮었다가 경화 후 쉽게 제거할 수 있다.
 6. 균일한 마이크로유체 칩을 얻으려면 PDMS를 평평한 면에서 경화하는 것이 중요하다. 수평계로 평평한 곳에서 하룻밤 배양하는지 확인한다. 또는 오븐을 수평으로 놓았다면 60 °C에서 하룻밤 구워 경화해도 된다.
@@ -2059,14 +2059,14 @@ References
 ### 3.1 마이크로유체 칩 설계 및 제작
 
 1. 칩은 포토리소그래피로 만든 마스터(Si 웨이퍼 위 Su-8 photoresist)에서 PDMS 복제본으로 제작할 수 있다. 제작 단계의 상세한 설명은 선행 문헌 [8, 15] 참고.
-2. 산소 플라즈마 활성화로 6웰 광학바닥 플레이트에 PDMS 복제본을 봉합한다. 공정 변수: density power 0.22 W/cm², pressure 0.8 Torr, time 35 s, 산소 유량 60 sscm. 파라미터는 사용하는 기능화 기기(예: plasma cleaner)에 맞춰 최적화해야 한다(그림 1 참고).
+2. 산소 플라즈마 활성화로 6웰 광학바닥 플레이트에 PDMS 복제본을 봉합한다. 공정 변수: density power 0.22 W/cm, pressure 0.8 Torr, time 35 s, 산소 유량 60 sscm. 파라미터는 사용하는 기능화 기기(예: plasma cleaner)에 맞춰 최적화해야 한다(그림 1 참고).
 
 ![그림1 칩 구조와 겔·배지 저장조 표시 사진](images/img-123-035.jpg)
 
 ### 3.2 MC-38 세포 배양
 
 1. 완전 DMEM에서 세포를 배양한다.
-2. MC-38 암세포를 T75 플라스크에 1 × 10⁶ 세포 파종하고 37 °C, 5% CO₂ 가습 조건에서 배양한다.
+2. MC-38 암세포를 T75 플라스크에 1 × 10 세포 파종하고 37 °C, 5% CO₂ 가습 조건에서 배양한다.
 3. 세포가 confluence(이 세포주 배가 시간은 12시간)에 도달하면 배지를 흡인하고 PBS로 씻는다(T75 플라스크 기준 8 mL).
 
 **그림 1** 칩 구조와 구획별 배지 저장조 표시. 칩은 광학바닥 멀티웰 플레이트에 결합되어 있다(주의사항 2 참고)
@@ -2140,7 +2140,7 @@ References
 
 1. 비장세포는 C57BL/6 마우스 오른쪽 옆구리 피하에 PBS 0.1 mL 속 MC-38 결장선암세포 3 × 105개를 미리 주입하고 그 후 프로토콜 [12]에 따라 희생시켜 분리했다.
 2. 이 멀티웰 플레이트의 glass bottom 두께는 공초점 및 2광자 여기 형광현미경과 호환되며 여러 실험을 연속으로 통제할 수 있게 한다.
-3. 칩은 다섯 개의 주요 구획으로 되어 있다: 유동성 면역세포 투입용 중앙 구획, 종양세포를 하이드로겔 매트릭스(높이 150-250 μm)에 담그는 두 측면 영역, 배지 관류 챔버. 면역 챔버와 종양 챔버는 좁은 마이크로채널 배열 두 세트(200 × 12 × 10 μm³, L×W×H)로 연결된다. 균등하게 100-μm 간격으로 배열된 사다리꼴 등변 마이크로필러(측면 젤 영역당 약 25-30개 계면)는 표면 장력과 모세관력의 균형을 이용해 주입 중 겔 용액을 가두는 장벽 역할을 하며 종양 영역을 양쪽 추가 배지 챔버와 연결해 겔-액체 계면을 만든다.
+3. 칩은 다섯 개의 주요 구획으로 되어 있다: 유동성 면역세포 투입용 중앙 구획, 종양세포를 하이드로겔 매트릭스(높이 150-250 μm)에 담그는 두 측면 영역, 배지 관류 챔버. 면역 챔버와 종양 챔버는 좁은 마이크로채널 배열 두 세트(200 × 12 × 10 μm, L×W×H)로 연결된다. 균등하게 100-μm 간격으로 배열된 사다리꼴 등변 마이크로필러(측면 젤 영역당 약 25-30개 계면)는 표면 장력과 모세관력의 균형을 이용해 주입 중 겔 용액을 가두는 장벽 역할을 하며 종양 영역을 양쪽 추가 배지 챔버와 연결해 겔-액체 계면을 만든다.
 4. 콜라겐 믹스 재료를 모두 미리 차갑게 하고 혼합·마이크로챔버 주입 중 하이드로겔이 조기 중합되지 않도록 미리 차게 한 피펫 팁을 쓴다.
 5. 혼합할 때 피펫 팁을 용액 속에 잠근 채 유지하고 원심튜브를 얼음에서 들어올리지 않는다.
 6. 점성 용액 안에서 채널에 기포가 갇히지 않도록 새 겔 채널마다 새 피펫 팁을 사용해 로드한다.
@@ -2203,25 +2203,25 @@ checkpoint 억제를 쓴 임상 연구 결과와 비슷하다 [10]. 여기서 �
 
 ### 2.2 3D 저산소 종양 모델 확립
 
-1. 암세포: SKOV3 사람 상피 난소암 세포(ATCC). Dulbecco's Modified Eagle's Medium(DMEM; Thermo Fisher)에 10% v/v 태아우혈청(Sigma-Aldrich), 페니실린 100 U mL⁻¹·스트렙토마이신 100 μg mL⁻¹(P/S, Thermo Fisher), 4 × 10⁻³ M sodium pyruvate(Fisher Scientific), 2 × 10⁻³ M GlutaMAX(Thermo Fisher)를 보충해 T75 플라스크에서 배양. DMEM은 4 °C 보관.
-2. 하이드로겔 구성물: 멸균 phosphate-buffered saline(PBS, 1×; VWR)에 녹인 20% w/v gelatin methacryloyl(GelMA; 8% MA) 용액 250 μL. 4 °C 보관. 멸균 PBS에 녹인 2% w/v lithium phenyl-2,4,6-trimethylbenzoylphosphinate(LAP) 75 μL. -80 °C 보관. DMEM 가루(Thermo Fisher) 1.348 g, 7.5% w/v sodium bicarbonate(Thermo Fisher) 0.494 mL, Milli-Q water(Millipore Sigma) 9.51 mL를 섞어 10 mL의 10× 농축 DMEM을 만든다. 10× DMEM의 pH를 7로 조정하고 0.2-μm Nalgene sterile syringe filter(Fisher Scientific)로 여과한 뒤 4 °C 보관. 멸균 1× Ca²⁺-free·Mg²⁺-free PBS(VWR); 실온 보관.
-3. 세포 회수용 멸균 1× Ca²⁺-free·Mg²⁺-free PBS(VWR); 실온 보관.
-4. 1× trypsin/EDTA 용액(0.05%): 10× trypsin-EDTA(0.5%; Thermo Fisher) 5 mL를 1× Ca²⁺-free·Mg²⁺-free PBS(VWR) 45 mL로 희석. 4 °C 보관.
+1. 암세포: SKOV3 사람 상피 난소암 세포(ATCC). Dulbecco's Modified Eagle's Medium(DMEM; Thermo Fisher)에 10% v/v 태아우혈청(Sigma-Aldrich), 페니실린 100 U mL⁻·스트렙토마이신 100 μg mL⁻(P/S, Thermo Fisher), 4 × 10⁻ M sodium pyruvate(Fisher Scientific), 2 × 10⁻ M GlutaMAX(Thermo Fisher)를 보충해 T75 플라스크에서 배양. DMEM은 4 °C 보관.
+2. 하이드로겔 구성물: 멸균 phosphate-buffered saline(PBS, 1×; VWR)에 녹인 20% w/v gelatin methacryloyl(GelMA; 8% MA) 용액 250 μL. 4 °C 보관. 멸균 PBS에 녹인 2% w/v lithium phenyl-2,4,6-trimethylbenzoylphosphinate(LAP) 75 μL. -80 °C 보관. DMEM 가루(Thermo Fisher) 1.348 g, 7.5% w/v sodium bicarbonate(Thermo Fisher) 0.494 mL, Milli-Q water(Millipore Sigma) 9.51 mL를 섞어 10 mL의 10× 농축 DMEM을 만든다. 10× DMEM의 pH를 7로 조정하고 0.2-μm Nalgene sterile syringe filter(Fisher Scientific)로 여과한 뒤 4 °C 보관. 멸균 1× Ca⁺-free·Mg⁺-free PBS(VWR); 실온 보관.
+3. 세포 회수용 멸균 1× Ca⁺-free·Mg⁺-free PBS(VWR); 실온 보관.
+4. 1× trypsin/EDTA 용액(0.05%): 10× trypsin-EDTA(0.5%; Thermo Fisher) 5 mL를 1× Ca⁺-free·Mg⁺-free PBS(VWR) 45 mL로 희석. 4 °C 보관.
 
 5. 볼텍스 믹서.
 6. 멸균된 100 × 15 mm 및 150 × 15 mm(지름 × 높이) 페트리 접시.
 7. 멸균 0.65 mL 마이크로원심튜브.
 8. 멸균 15 mL 및 50 mL 원심튜브.
-9. 120초 동안 최소 2.34 ± 0.26 mW cm⁻²의 세기로 375 ± 14 nm 파장의 자외선(UV)을 방출할 수 있는 여과된 자외선 광원.
+9. 120초 동안 최소 2.34 ± 0.26 mW cm⁻의 세기로 375 ± 14 nm 파장의 자외선(UV)을 방출할 수 있는 여과된 자외선 광원.
 10. 미소기기용 습윤 챔버(배양기 안에서 미소기기를 담아 두는 용기): 멸균 생물안전케비닛에서 준비한다. 킴와이프(Kimwipes, Kimberly-Clark Professional)에 70% IPA를 뿌리고 생물안전케비닛에서 건조시킨다. 접어서 멸균 150 × 15 mm 페트리 접시 안쪽 벽면에 붙여 놓는다. 접은 킴와이프에 멸균수를 적신다. 페트리 접시 안쪽 벽이 젖은 킴와이프로 완전히 둘러싸이도록 한다. 접시에 물이 넘치지 않게 주의하고 남은 멸균수는 흡인해 낸다. 뚜껑을 닫아 사용할 때까지 생물안전케비닛 안에 보관한다.
 
 2.3 CAR-T 세포와 PD-1/PD-L1 억제 요법의 병용
-1. T세포 및 CAR-T 세포 배양: 말초혈액단핵세포(PBMCs)에서 인체 T세포를 분리한다. anti-HER2(4D5) scFv CAR 구조를 지닌 렌티바이러스 입자는 -80 °C에 보관한다. Siegler 등 [12]의 방법을 따라 T세포에 CAR 렌티바이러스를 형질도입한다. T세포 배양액은 X-VIVO 15 무혈청 배지(Lonza)에 5% v/v GemCell 인체 혈청 항체 AB(Gemini Bio-Products), 2 × 10⁻³ M GlutaMAX(Thermo Fisher), 10 × 10⁻⁹ M HEPES 완충액(Corning), 1% v/v P/S(Thermo Fisher), 12.25 × 10⁻³ M N-아세틸-L-시스테인(Sigma-Aldrich), 10 ng mL⁻¹ 인체 IL-2(Peprotech)를 첨가해 만든다. T세포 배양액은 4 °C에 보관한다.
-2. PD-L1 차단: PD-1/PD-L1 Inhibitor 3 분말 100 mg(Selleck Chemicals, IC₅₀ = 5.6 × 10⁻⁹ M)에 멸균수 1 mL를 넣어 원액(53.99 mM)을 만든다. 원액은 -80 °C에 보관한다. 사용 직전 신선한 T세포 배양액에서 원액을 희석해 10 × 10⁻⁹ M 작업용액을 준비한다.
+1. T세포 및 CAR-T 세포 배양: 말초혈액단핵세포(PBMCs)에서 인체 T세포를 분리한다. anti-HER2(4D5) scFv CAR 구조를 지닌 렌티바이러스 입자는 -80 °C에 보관한다. Siegler 등 [12]의 방법을 따라 T세포에 CAR 렌티바이러스를 형질도입한다. T세포 배양액은 X-VIVO 15 무혈청 배지(Lonza)에 5% v/v GemCell 인체 혈청 항체 AB(Gemini Bio-Products), 2 × 10⁻ M GlutaMAX(Thermo Fisher), 10 × 10⁻ M HEPES 완충액(Corning), 1% v/v P/S(Thermo Fisher), 12.25 × 10⁻ M N-아세틸-L-시스테인(Sigma-Aldrich), 10 ng mL⁻ 인체 IL-2(Peprotech)를 첨가해 만든다. T세포 배양액은 4 °C에 보관한다.
+2. PD-L1 차단: PD-1/PD-L1 Inhibitor 3 분말 100 mg(Selleck Chemicals, IC₅₀ = 5.6 × 10⁻ M)에 멸균수 1 mL를 넣어 원액(53.99 mM)을 만든다. 원액은 -80 °C에 보관한다. 사용 직전 신선한 T세포 배양액에서 원액을 희석해 10 × 10⁻ M 작업용액을 준비한다.
 
 2.4 세포독성 분석
 1. 생사 염색액: 살아있는 세포 염색용 calcein-AM(Thermo Fisher)과 죽은 세포 염색용 프로피듐 아이오다이드(propidium iodide, PI; Thermo Fisher). 세포 배양액에서 calcein-AM과 프로피듐 아이오다이드를 각각 5 μM의 작업 농도로 희석해 염색액을 준비한다.
-2. 멸균 1× Ca²⁺·Mg²⁺ 무척 PBS(VWR), 실온 보관.
+2. 멸균 1× Ca⁺·Mg⁺ 무척 PBS(VWR), 실온 보관.
 3. 미소기기를 완전히 분해하기 위한 한쪽날 면도칼.
 4. 멸균 100 × 15 mm(지름 × 높이) 페트리 접시.
 
@@ -2263,16 +2263,16 @@ checkpoint 억제를 쓴 임상 연구 결과와 비슷하다 [10]. 여기서 �
 3. 결합된 PDMS-유리슬라이드를 자외선으로 최소 30분간 멸균한다.
 4. PDMS-유리슬라이드를 즉시 멸균 150 × 15 mm 세포 배양 접시에 넣고 생물안전케비닛으로 옮긴다(Note 12 참조).
 5. LAP 75 μL와 GelMA 250 μL를 볼텍스 믹서로 섞어 작업용 GelMA 용액을 만든다. 섞은 후 용액을 37 °C에 둔다.
-6. SKOV3 세포가 든 T75 플라스크를 생물안전케비닛으로 옮긴다. 배양액을 버리고 세포를 1× Ca²⁺·Mg²⁺ 무척 PBS로 씻는다.
+6. SKOV3 세포가 든 T75 플라스크를 생물안전케비닛으로 옮긴다. 배양액을 버리고 세포를 1× Ca⁺·Mg⁺ 무척 PBS로 씻는다.
 7. 예열한 트립신/EDTA 2 mL를 플라스크에 넣고 37 °C, 5% CO₂ 습윤 배양기에서 4분간, 또는 세포가 플라스크 표면에서 떨어질 때까지 배양한다.
 8. 세포 배양액 6 mL를 넣어 트립신 활성을 멈추고 세포 현탁액을 15 mL 원심튜브에 옮겨 200 × g에서 5분간 원심분리한다.
 9. 세포 펠릿을 흐트러뜨리지 않게 상층액을 조심히 제거하고 예열한 세포 배양액 1 mL로 세포 펠릿을 다시 현탁한다.
-10. 세포를 계수하고 0.65 mL 마이크로원심튜브에 1 × 10⁷개 세포를 200 × g에서 5분간 원심분리해 펠릿으로 모은다.
-11. 상층액을 버리고 세포 펠릿을 다음 성분으로 다시 현탁한다: 1× Ca²⁺·Mg²⁺ 무척 PBS 24.6 μL, 10× DMEM 10 μL, 작업용 GelMA 용액 65 μL(Note 13 참조). 세포가 든 용액의 최종 pH를 약 7로 맞춘다.
+10. 세포를 계수하고 0.65 mL 마이크로원심튜브에 1 × 10개 세포를 200 × g에서 5분간 원심분리해 펠릿으로 모은다.
+11. 상층액을 버리고 세포 펠릿을 다음 성분으로 다시 현탁한다: 1× Ca⁺·Mg⁺ 무척 PBS 24.6 μL, 10× DMEM 10 μL, 작업용 GelMA 용액 65 μL(Note 13 참조). 세포가 든 용액의 최종 pH를 약 7로 맞춘다.
 12. 멸균한 폴리카보네이트 캡을 중심 기둥 면이 위를 향하도록 잡고 세포가 든 GelMA 용액 4 μL를 중심 기둥 표면에 피펫팅한다(Note 14 참조).
 13. 폴리카보네이트 캡을 뒤집어 중심 기둥 면(GelMA 용액 방울이 묻은)이 아래를 향하게 한 뒤 즉시 PDMS-유리슬라이드에 캡을 조립한다(Note 15 참조).
 14. 조립된 미소기기를 멸균 100 mm × 15 mm 페트리 접시에 넣고 여과된 자외선 광원으로 옮긴다(Note 16 참조).
-15. 미소기기를 자외선(파장 375 ± 14 nm)에 2.34 ± 0.26 mW cm⁻²로 120초 노출시켜 GelMA를 가교결합시킨다.
+15. 미소기기를 자외선(파장 375 ± 14 nm)에 2.34 ± 0.26 mW cm⁻로 120초 노출시켜 GelMA를 가교결합시킨다.
 16. 미소기기를 생물안전케비닛으로 되돌려 옮긴다(Note 17 참조).
 17. 미소기기의 PDMS 채널을 1× PBS로 씻어 굳지 않은 남은 GelMA를 제거하고 예열한 세포 배양액으로 채운다(소자당 약 20 μL).
 18. 미소기기를 습윤 챔버에 넣고 습윤 챔버를 37 °C, 5% CO₂ 습윤 배양기에 넣는다(Note 18 참조).
@@ -2280,7 +2280,7 @@ checkpoint 억제를 쓴 임상 연구 결과와 비슷하다 [10]. 여기서 �
 3.3 CAR-T 세포와 PD-1/PD-L1 억제의 병용 요법
 1. 미소기기는 치료액을 미류체닉 채널에 주입하기 전에 정상산소(PDMS 플러그; Note 15 참조) 또는 저산소(폴리카보네이트 캡) 조건에서 24시간 배양한다. 세포와 관련된 모든 과정은 멸균 생물안전케비닛에서 수행하며 세포 배양 시약과 배지는 37 °C로 예열한다.
 2. CAR-T 세포가 든 T75 플라스크를 생물안전케비닛으로 옮긴다. 플라스크의 세포 현탁액을 50 mL 원심튜브에 옮겨 300 × g에서 5분간 원심분리한다.
-3. 상층액을 조심히 버리고 펠릿을 다시 현탁한 후 세포를 계수한다. 배양된 미소기기 하나당 CAR-T 세포 8 × 10⁵개를 300 × g에서 5분간 원심분리해 펠릿으로 모은다(Note 19 참조).
+3. 상층액을 조심히 버리고 펠릿을 다시 현탁한 후 세포를 계수한다. 배양된 미소기기 하나당 CAR-T 세포 8 × 10개를 300 × g에서 5분간 원심분리해 펠릿으로 모은다(Note 19 참조).
 4. 상층액을 버리고 세포 펠릿을 PD-L1/PD-1 inhibitor 3 작업용액으로 다시 현탁해 CAR-T 세포 밀도를 4천만 cells/mL로 맞춘다(Note 20 참조).
 5. 미소기기가 든 습윤 챔버를 생물안전케비닛으로 옮긴다.
 6. 미소기기의 배양액을 빼내고 병용 치료액을 주입한다. 폴리카보네이트 캡/PDMS 플러그가 PDMS-유리슬라이드에 제대로 조립되었는지 확인한다.
@@ -2352,7 +2352,7 @@ Fig. 3 제작 후 조립된 저산소 미소기기 사진
 16. 명시된 멸균 페트리 접시 크기는 우리 자외선 플랫폼에 맞는 것이다. 다른 멸균 운반 방법을 사용해도 된다.
 17. 가교결합 후 폴리카보네이트 캡은 저산소 배양을 위해 그대로 조립해 두거나, 분리하고 6 mm 바이옵시 펀치로 만든 PDMS 플러그로 교체해 정상산소 배양을 한다.
 18. 습윤 챔버는 미소기기가 마르지 않도록 확실히 보장한다.
-19. CAR-T 세포는 각 미소기기에 효과세포/표적세포(E:T) 비율 20:1로 주입한다(각 3차원 마이크로패턴 종양에 약 40,000개의 표적세포가 있다고 가정). 따라서 각 미소기기에 CAR-T 세포 8 × 10⁵개를 주입해야 한다.
+19. CAR-T 세포는 각 미소기기에 효과세포/표적세포(E:T) 비율 20:1로 주입한다(각 3차원 마이크로패턴 종양에 약 40,000개의 표적세포가 있다고 가정). 따라서 각 미소기기에 CAR-T 세포 8 × 10개를 주입해야 한다.
 20. 이 PD-1/PD-L1 억제제와 CAR-T 세포의 혼합물이 병용 치료액이다. 각 미소기기는 병용 치료액 약 20 μL를 담을 수 있다.
 21. 면도칼이 마이크로패턴 종양을 다칠 수 있으므로 PDMS 제거 시 극도로 조심한다. 경험상 절단할 때 칼날을 PDMS-유리슬라이드에서 약 20° 각도로 두는 것이 가장 좋다. 유리 접촉면의 50% 초과 부분을 잘랐으면 PDMS 챔버/채널을 손으로 벗겨낸다. 다만 플라즈마 결합 강도에 따라 더 깊은 절단이 필요할 수 있다. 완전히 해체한 뒤에는 마이크로패턴 종양(가교결합된 세포 함유 GelMA)만 유리슬라이드에 남아 있어야 한다.
 22. (1) 마르지 않도록 하고 (2) 마이크로패턴 전체가 염색되도록 생사 염색액이 마이크로패턴 종양을 완전히 덮어야 한다.
@@ -2428,7 +2428,7 @@ Fig. 1 IsoCode 칩 기술을 이용한 고다중화 단일세포 분비체 분�
 Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보관 표적세포는 CAR-T 세포 자극 7일 전에 해동한다. 동결보관 CAR-T 세포는 자극 하루 전에 해동하고 200 IU/mL IL-2를 첨가한 AIM-V 완전 배지에서 하룻밤 배양한다. CD8⁺ CAR-T 세포는 표적세포주와 1:1 비율로 공배양하여 자극한다. 37 °C, 5% CO₂에서 16-18시간 배양한 후 남은 종양세포는 CD235a 특이적 마그네틱 비즈 분리로 제거한다. CD8⁺ T세포는 CD8 특이적 항체(예: anti-CD8-AF647)로 염색해 IsoCode 칩에 올린다.
 
 3.1 표적 세포주와 비표적 세포주 배양
-1. 동결보관 표적 종양 세포주는 CAR-T 세포 자극 최소 7일 전에 해동해야 한다. CAR-T 세포 자극에 충분한 생존 세포를 확보하려면 동결보관 바이알 하나당 최소 2 × 10⁶개의 세포가 들어 있도록 권장한다.
+1. 동결보관 표적 종양 세포주는 CAR-T 세포 자극 최소 7일 전에 해동해야 한다. CAR-T 세포 자극에 충분한 생존 세포를 확보하려면 동결보관 바이알 하나당 최소 2 × 10개의 세포가 들어 있도록 권장한다.
 2. 세포주마다 50 mL 코니컬 튜브를 하나씩 준비해 세포주 이름을 표기한다.
 3. 두 50 mL 코니컬 튜브에 RPMI 완전 배지 10 mL씩 넣는다.
 4. 50 mL 튜브 뚜껑을 닫고 튜브를 37 °C 수조에 10분간 둔다.
@@ -2436,11 +2436,11 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 6. 동결 바이알의 세포를 천천히 피펫팅해서 미리 표기해 둔 RPMI 완전 배지가 든 50 mL 튜브로 옮긴다.
 7. 코니컬 튜브 뚜껑을 닫고 300 × g에서 10분간 원심분리한다.
 8. 상층액을 버리고 세포 펠릿을 RPMI 완전 배지 1 mL에 현탁해 세포를 계수한다.
-9. RPMI 완전 배지에서 0.5 × 10⁶ cells/mL 농도로 T25 플라스크에 세포를 접종한다.
-10. 2-3일마다 배지를 교환하고 농도를 0.1 × 10⁶~10⁶ cells/mL 사이로 유지한다. T25 플라스크는 최대 20 mL까지, T75는 최대 50 mL까지 쓴다.
+9. RPMI 완전 배지에서 0.5 × 10 cells/mL 농도로 T25 플라스크에 세포를 접종한다.
+10. 2-3일마다 배지를 교환하고 농도를 0.1 × 10~10 cells/mL 사이로 유지한다. T25 플라스크는 최대 20 mL까지, T75는 최대 50 mL까지 쓴다.
 
 3.2 동결보관 CAR-T 세포 해동
-1. 이상적으로는 CAR-T 세포를 최소 5 × 10⁶개 이상, 표적 T세포로 자극하기 하루 전에 해동한다.
+1. 이상적으로는 CAR-T 세포를 최소 5 × 10개 이상, 표적 T세포로 자극하기 하루 전에 해동한다.
 2. 참고로 CAR-T 세포의 다기능성을 최적으로 비교하려면 샘플들이 비슷한 CAR-T 세포 빈도를 가져야 한다. CAR 형질도입률이 고르지 않으면 마그네틱 비즈나 유동세포측정 정렬로 CAR 양성 T세포를 농축한다. CAR의 항원결합 부위를 방해하는 항체나 CAR 검출 시약은 쓰지 않는다.
 3. CAR-T 세포 유형마다 50 mL 코니컬 튜브를 하나씩 준비해 이름을 표기하고 RPMI 완전 배지 10 mL를 채운다.
 4. 각각의 동결보관 CAR-T 세포 바이알을 꺼내 세포가 거의 완전히 녹을 때까지 37 °C 수조에 잠깐 넣는다.
@@ -2448,7 +2448,7 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 6. 실온에서 300 × g, 10분간 원심분리한다.
 7. 상층액을 제거하고 AIM-V 완전 배지에 세포를 현탁한다.
 8. 소량을 트리판 블루로 희석해 세포를 계수한다.
-9. 200 IU/mL IL-2를 보강한 AIM-V 완전 배지에서 3 × 10⁶ cells/mL 농도로 24웰 플레이트(웰당 2 mL)에 세포를 접종한다.
+9. 200 IU/mL IL-2를 보강한 AIM-V 완전 배지에서 3 × 10 cells/mL 농도로 24웰 플레이트(웰당 2 mL)에 세포를 접종한다.
 
 3.3 CD19 특이적 CAR CD8⁺ T세포의 항원특이적 자극
 1. CD19-K562와 NGFR-K562 세포주용 50 mL 코니컬 튜브 두 개, 시험할 CAR CD8⁺ T세포 유형마다 하나씩 튜브를 준비해 표기한다.
@@ -2456,10 +2456,10 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 3. 300 × g에서 10분간 원심분리한다.
 4. 각 세포 펠릿을 AIM-V 완전 배지 1 mL에 현탁한다.
 5. 각 세포 현탁액 소량을 취해 트리판 블루로 희석한 후 세포 수와 생존율을 측정한다(Note 2 참조).
-6. CD19-K562, NGFR-K562, CD19 특이적 CAR CD8⁺ T세포를 AIM-V 완전 배지에서 2 × 10⁶ cells/mL 농도로 현탁한다. 세포 자극은 IL-2 없이 수행함에 유의한다.
+6. CD19-K562, NGFR-K562, CD19 특이적 CAR CD8⁺ T세포를 AIM-V 완전 배지에서 2 × 10 cells/mL 농도로 현탁한다. 세포 자극은 IL-2 없이 수행함에 유의한다.
 7. 96웰 원형바닥 플레이트를 준비해 한쪽 부분에 "NGFR-K562 + CAR CD8⁺ T", 다른 부분에 "CD19-K562 + CAR CD8⁺ T"라고 표기한다. 조건마다 다섯 웰을 권장한다.
 
-8. 표적세포 현탁액 100 μL를 미리 표기해 둔 96웰 원형바닥 플레이트의 웰에 피펫팅한다. 웰당 2 × 10⁵개 T세포가 되어야 한다.
+8. 표적세포 현탁액 100 μL를 미리 표기해 둔 96웰 원형바닥 플레이트의 웰에 피펫팅한다. 웰당 2 × 10개 T세포가 되어야 한다.
 9. K562 세포가 든 각 웰에 CD19 특이적 CAR CD8⁺ T세포 현탁액 100 μL씩 피펫팅한다.
 10. 세포를 배양기에서 37 °C, 5% CO₂로 13-20시간 유지한다(Note 3 참조).
 
@@ -2481,7 +2481,7 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 2. 막 염색약이 든 튜브를 잠깐 스핀다운한다.
 3. 막 염색약 바이알에 DMSO 20 μL를 넣고 피펫으로 현탁한다.
 4. PBS에서 막 염색약을 추가 희석한다(1:500).
-5. CAR CD8⁺ T세포 1 × 10⁶개당 막 염색약 100 μL를 넣는다.
+5. CAR CD8⁺ T세포 1 × 10개당 막 염색약 100 μL를 넣는다.
 6. 빛을 차단하고 37 °C에서 10분간 배양한다.
 7. 배양 후 세포를 재현탁하고 완전 배지를 5배 부피만큼 넣는다.
 8. 빛을 차단하고 37 °C에서 10분 더 배양한다.
@@ -2490,7 +2490,7 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 11. 세포를 0.5% BSA 보강 PBS에 현탁하고 CD8 T세포 염색으로 진행한다.
 
 3.7 CD8-AF647 염색
-1. 최대 10⁶개 세포를 0.5% BSA 보강 PBS 20 μL에 현탁한다.
+1. 최대 10개 세포를 0.5% BSA 보강 PBS 20 μL에 현탁한다.
 1. CD8-AF647 항체 2 μL를 넣는다.
 2. 빛을 차단하고 실온에서 20분간 배양한다.
 3. 0.5% BSA 보강 PBS 1 mL로 씻는다.
@@ -2499,7 +2499,7 @@ Fig. 2 고다중화 단일세포 분비체 분석 프로토콜 개요. 동결보
 2. 상층액을 제거하고 세포 펠릿을 AIM-V 완전 배지에 현탁한다.
 
 3.8 칩 로딩
-1. 염색한 세포를 AIM-V 완전 배지에서 10⁶ cells/mL 농도로 현탁한다.
+1. 염색한 세포를 AIM-V 완전 배지에서 10 cells/mL 농도로 현탁한다.
 1. 칩 하나에 세포 30,000개를 로드한다. 즉, 세포 현탁액 30 μL를 칩의 로딩 포트로 피펫팅한다. 피펫 팁이 로딩 포트 바닥에 살짝 닿아야 한다. 피펫팅 시 기포가 생기지 않도록 첫 정지점(first stop)까지만 눌러 배출한다.
 
 3.9 IsoLight에 시약 튜브 장착
@@ -2542,7 +2542,7 @@ Fig. 4 벌크가 아닌 고다중화 단일세포 분비체 분석이 miR-155 �
 4 Notes
 1. CAR CD4⁺ 또는 CAR CD8⁺ T세포는 개별 IsoCode 칩에 각각 올려야 한다. 이 두 CAR-T 세포 집단은 CD4 또는 CD8 MicroBeads(Miltenyi Biotec) 양성선택으로 벌크 CAR-T 세포에서 농축할 수 있다. 대안으로 CD8 또는 CD4 음성 농축 키트(Miltenyi Biotec 또는 STEMCELL Technologies)를 사용할 수 있다. 이 단계는 CAR-T 세포 자극 전에 수행해야 한다.
 2. 세포 생존율이 80% 미만이면 Ficoll 구배 원심분리 또는 Dead Cell Removal Kit(Miltenyi Biotec)로 죽은 세포를 제거한다. Ficoll 구배 원심분리로 죽은 세포를 제거하려면 세포 현탁액을 300 × g에서 10분간 원심분리하고 상층액을 버린 뒤 세포 펠릿을 AIM-V 완전 배지 5 mL에 현탁한다. 15 mL 코니컬바닥 튜브에 Ficoll 5 mL를 넣고 그 위에 세포 현탁액을 조심스럽게 겹겹이 얹는다. 브레이크 없이 실온에서 700 × g로 20분간 원심분리한다. Ficoll과 AIM-V 배지 사이 층에서 생존 세포를 조심히 회수해 새 15 mL 튜브로 옮긴다. AIM-V 완전 배지 1 mL에 세포를 현탁하고 계수와 생존율 측정을 한다.
-3. CD19 특이적 CAR-T 세포와 표적세포의 최적 배양 시간을 정하려면 독립 실험에서 사이토카인 생산을 검출하는 것이 중요하다. 이는 세포내 사이토카인 염색이나 배양 상층액 벌크 사이토카인 농도 측정으로 할 수 있다. 두 방법 모두 공배양 실험(방법론 3.3 "CAR-T 세포의 항원특이적 자극" 참조)을 6시간, 12시간, 18시간 동안 수행한다. 공배양이 끝나면 표적세포를 제거하고(방법론 3.4 "표적세포 제거" 참조) 세포내 사이토카인 염색이나 벌크 사이토카인 측정으로 사이토카인 생산을 평가한다. 세포내 사이토카인 염색의 경우 CD19 특이적 CAR-T 세포에 모네신(2 μM)과 브레펠딘 A(1 μg/mL)를 넣고 AIM-V 완전 배지에서 10⁶ cells/mL 농도로 13시간 더 배양한다. 13시간 후 사포닌 함유 완충액으로 투과화하고 세포내 사이토카인 염색(예: IFNγ, TNFα, IL-2)을 한다. 유동세포측정을 하여 사이토카인 염색이 가장 높게 나오는 공배양 시간을 결정한다. 우리 예(Fig. 5)에서 TNFα·IL-2 양성 세포 비율은 자극 시간에 크게 변하지 않았으나 IFNγ 양성 세포 기준으로 최적 공배양 시간은 12~18시간 사이 어디든 가능했다. 대안으로 상층액 벌크 사이토카인의 경우 표적세포를 제거한 CD19 특이적 CAR-T 세포를 AIM-V 완전 배지에서 10⁶ cells/mL 농도로 37 °C, 5% CO₂에서 13시간 배양한다. 상층액을 모아 다중 ELISA나 IsoLight CodePlex 분비체 분석 같은 사용 가능한 방법으로 사이토카인 농도를 측정한다.
+3. CD19 특이적 CAR-T 세포와 표적세포의 최적 배양 시간을 정하려면 독립 실험에서 사이토카인 생산을 검출하는 것이 중요하다. 이는 세포내 사이토카인 염색이나 배양 상층액 벌크 사이토카인 농도 측정으로 할 수 있다. 두 방법 모두 공배양 실험(방법론 3.3 "CAR-T 세포의 항원특이적 자극" 참조)을 6시간, 12시간, 18시간 동안 수행한다. 공배양이 끝나면 표적세포를 제거하고(방법론 3.4 "표적세포 제거" 참조) 세포내 사이토카인 염색이나 벌크 사이토카인 측정으로 사이토카인 생산을 평가한다. 세포내 사이토카인 염색의 경우 CD19 특이적 CAR-T 세포에 모네신(2 μM)과 브레펠딘 A(1 μg/mL)를 넣고 AIM-V 완전 배지에서 10 cells/mL 농도로 13시간 더 배양한다. 13시간 후 사포닌 함유 완충액으로 투과화하고 세포내 사이토카인 염색(예: IFNγ, TNFα, IL-2)을 한다. 유동세포측정을 하여 사이토카인 염색이 가장 높게 나오는 공배양 시간을 결정한다. 우리 예(Fig. 5)에서 TNFα·IL-2 양성 세포 비율은 자극 시간에 크게 변하지 않았으나 IFNγ 양성 세포 기준으로 최적 공배양 시간은 12~18시간 사이 어디든 가능했다. 대안으로 상층액 벌크 사이토카인의 경우 표적세포를 제거한 CD19 특이적 CAR-T 세포를 AIM-V 완전 배지에서 10 cells/mL 농도로 37 °C, 5% CO₂에서 13시간 배양한다. 상층액을 모아 다중 ELISA나 IsoLight CodePlex 분비체 분석 같은 사용 가능한 방법으로 사이토카인 농도를 측정한다.
 
 ![Fig.5 ICS를 통한 CAR-T/표적세포 공배양 시간 최적화](images/img-158-046.jpg)
 
@@ -2655,7 +2655,7 @@ Table 2 응용 목적별 확장 시작에 쓰는 T세포 수 예시
 | 생체 외 실험 5 | 10 | 100-300 | |
 
 3.1.2 T세포 자극 및 형질도입
-1. T세포를 R10 완전 배지에서 1 × 10⁶ cells/mL 농도로 준비하고 필요한 세포 수를 적절한 다중웰 평바닥 플레이트나 플라스크에 나눠 담는다. 실험군 수만큼 웰을 쓴다. 미형질도입 T세포(UTD) 대조군을 포함한다(Note 2 참조).
+1. T세포를 R10 완전 배지에서 1 × 10 cells/mL 농도로 준비하고 필요한 세포 수를 적절한 다중웰 평바닥 플레이트나 플라스크에 나눠 담는다. 실험군 수만큼 웰을 쓴다. 미형질도입 T세포(UTD) 대조군을 포함한다(Note 2 참조).
 2. 마그네틱 비즈 하나당 T세포 하나의 비율을 기준으로 필요한 anti-CD3/CD28 마그네틱 비즈 양을 계산한다(Note 3 참조).
 3. 마그네틱 비즈를 충분히 현탁하고 계산한 부피를 DynaMag-2 마그네트에 놓인 1.5 mL 튜브로 옮긴다.
 4. 1분 후 비즈 완충액을 버린다. 튜브를 자장에서 꺼내 예열한 R10 배지 1 mL로 비즈를 씻는다. 세척을 두 번 반복한다.
@@ -2681,7 +2681,7 @@ Table 3 권장 실험용 CRISPR/Cas9 대조군
 3.2.1 비즈 제거(Debeading)
 전기천공 전에 비즈를 세포 배양에서 제거해야 하며 RNP 전기천공은 같은 날 수행한다.
 1. 트리판 블루 배제법 또는 자동 세포계수기로 T세포를 계수한다(Note 6 참조).
-2. 세포 농도를 1 × 10⁶ cells/mL로 맞추는 데 필요한 R10 배지 부피를 계산한다.
+2. 세포 농도를 1 × 10 cells/mL로 맞추는 데 필요한 R10 배지 부피를 계산한다.
 3. 샘플마다 뚜껑 없는 15 mL 튜브 두 개를 15 mL Dynal 마그네트에 올린다.
 4. 세포를 자기 배지 속에서 충분히 섞어 비즈에서 세포를 떼어낸다.
 5. 샘플을 첫 번째 팔콘 튜브로 옮긴다. 1분 후 비즈는 자장 쪽 벽에 모여야 한다.
@@ -2695,7 +2695,7 @@ Table 3 권장 실험용 CRISPR/Cas9 대조군
 3.2.3 T세포 준비
 1. T세포를 300 × g에서 7분간 원심분리하고 상층액을 버린다. 중요! 조건화 배지(상층액)는 전기천공 후 T세포 재현탁에 쓰므로 보관하라. T세포가 분비하는 사이토카인과 인자가 들어 있어 적절한 T세포 확장에 필수적이다.
 2. PBS(무칼슘, 무마그네슘) 10-20 mL를 넣고 300 × g에서 7분간 원심분리한다.
-3. T세포를 Resuspension Buffer R에 반응당 2-3 × 10⁶ 세포가 50 μL가 되도록 원하는 농도로 현탁하고 세포를 얼음 위에 20분을 넘지 않게 둔다. 그보다 오래 두면 세포 생존율과 형질천환 효율이 떨어진다(Note 8 참조). 중요! 반응당 세포 수는 8-10 × 10⁶까지 늘릴 수 있으나 KO 효율이 떨어질 수 있다(표적 좌위에 따라 약 50%). 이렇게 낮은 효율이 오히려 원하는 경우도 있다(예: 관심 유전자 제거가 녹아웃 T세포 집단의 농축을 만드는지 평가할 때). 그러나 더 높은 편집 효율(>80%)을 원하면 T세포를 2-5 × 10⁶ 세포 단위로 나누어 전기천공해야 한다.
+3. T세포를 Resuspension Buffer R에 반응당 2-3 × 10 세포가 50 μL가 되도록 원하는 농도로 현탁하고 세포를 얼음 위에 20분을 넘지 않게 둔다. 그보다 오래 두면 세포 생존율과 형질천환 효율이 떨어진다(Note 8 참조). 중요! 반응당 세포 수는 8-10 × 10까지 늘릴 수 있으나 KO 효율이 떨어질 수 있다(표적 좌위에 따라 약 50%). 이렇게 낮은 효율이 오히려 원하는 경우도 있다(예: 관심 유전자 제거가 녹아웃 T세포 집단의 농축을 만드는지 평가할 때). 그러나 더 높은 편집 효율(>80%)을 원하면 T세포를 2-5 × 10 세포 단위로 나누어 전기천공해야 한다.
 
 3.2.4 RNP 복합체 준비
 1. T세포 원심분리 동안 RNP 복합체를 준비한다. 반응당 Cas9 단백질 10 μg(TrueCut™ Cas9 Protein v2 2 μL)과 sgRNA 2.5 μg(100 μM - 100 pmol/μL sgRNA 약 2 μL)을 Resuspension Buffer R로 최종 50 μL가 되게 섞는다. Cas9/gRNA 몰비는 1:3.3이다. 부드럽게 잘 섞는다(Note 9 참조).
@@ -2705,17 +2705,17 @@ Table 3 권장 실험용 CRISPR/Cas9 대조군
 3.2.5 RNP 복합체 전기천공
 1. Cas9/gRNA 복합체와 섞은 T세포 100 μL를 Neon™ 100-μL 팁으로 피펫팅한다. 중요! 전기천공 팁을 채울 때 기포를 만들지 않는다. 기포가 있으면 형질천환 효율이 낮아지거나 실패한다. 팁 안에 기포가 보이면 샘플을 튜브로 되돌리고 다시 조심스럽게 피펫팅해야 한다.
 2. 전기천공에는 프로그램 #24(1600 V/10 ms/3회 펄스)를 사용한다.
-3. 전기천공한 세포를 즉시 조건화 배지를 필요한 만큼 담아 CAR-T 세포 농도를 1.5 × 10⁶ cells/ml로 맞춘 적절한 용기로 옮기고 플레이트를 37 °C, 5% CO₂ 습윤 배양기에 넣는다(Note 10 참조). 48시간 후 편집 후 CAR-T 세포 확장으로 진행한다.
+3. 전기천공한 세포를 즉시 조건화 배지를 필요한 만큼 담아 CAR-T 세포 농도를 1.5 × 10 cells/ml로 맞춘 적절한 용기로 옮기고 플레이트를 37 °C, 5% CO₂ 습윤 배양기에 넣는다(Note 10 참조). 48시간 후 편집 후 CAR-T 세포 확장으로 진행한다.
 
 3.2.6 편집 후 CAR-T 세포 확장
-T세포 확장의 대수 증식기(day 6-9) 동안 T세포를 매일 계수하고 신선한 배지를 주어 T세포 농도가 2 × 10⁶ cells/mL를 넘지 않게 해야 한다. 세포가 진정될 때(증식 속도 감소와 세포 크기 감소로 판단)까지 배양을 유지한다. 이 프로토콜을 따르면 보통 활성화 후 10-12일경이며 이때 T세포를 동결보관하거나 기능 분석에 쓸 수 있다.
+T세포 확장의 대수 증식기(day 6-9) 동안 T세포를 매일 계수하고 신선한 배지를 주어 T세포 농도가 2 × 10 cells/mL를 넘지 않게 해야 한다. 세포가 진정될 때(증식 속도 감소와 세포 크기 감소로 판단)까지 배양을 유지한다. 이 프로토콜을 따르면 보통 활성화 후 10-12일경이며 이때 T세포를 동결보관하거나 기능 분석에 쓸 수 있다.
 1. 트리판 블루 배제법 또는 자동 세포계수기로 세포를 계수한다.
 2. 아래 공식과 Table 4에 근거해 세포를 적절한 웰이나 플라스크로 옮긴다:
-총 세포 수 N = 3.5 × 10⁵
-3. 신선한 R10 배지를 넣어 세포 농도를 0.8 × 10⁶ cells/mL로 맞춘다. 웰/플라스크 전송 중 세포 손실을 최소화하려면 급이 배지로 웰/플라스크를 씻는다.
-4. 일차 확장 말기(day 8-10)에 CD4⁺와 CD8⁺ T세포의 CAR 발현을 평가하는 데 1 × 10⁵~2 × 10⁵ 세포를 쓴다. CAR은 결합형 표적 재조합 단백질 또는 anti-mouse/human IgG(CAR의 ScFv 기원에 따라)로 염색할 수 있다. Anti-CD4, anti-CD8 항체도 함께 쓸 수 있으며 녹아웃하는 단백질이 세포 표면에 발현된다면 KO 효율 평가용 특이 항체도 포함할 수 있다(아래 소항목 3.3.2 참조). 유동세포측정으로 분석한다.
+총 세포 수 N = 3.5 × 10
+3. 신선한 R10 배지를 넣어 세포 농도를 0.8 × 10 cells/mL로 맞춘다. 웰/플라스크 전송 중 세포 손실을 최소화하려면 급이 배지로 웰/플라스크를 씻는다.
+4. 일차 확장 말기(day 8-10)에 CD4⁺와 CD8⁺ T세포의 CAR 발현을 평가하는 데 1 × 10~2 × 10 세포를 쓴다. CAR은 결합형 표적 재조합 단백질 또는 anti-mouse/human IgG(CAR의 ScFv 기원에 따라)로 염색할 수 있다. Anti-CD4, anti-CD8 항체도 함께 쓸 수 있으며 녹아웃하는 단백질이 세포 표면에 발현된다면 KO 효율 평가용 특이 항체도 포함할 수 있다(아래 소항목 3.3.2 참조). 유동세포측정으로 분석한다.
 5. (선택) 게놈 편집이 표면 분자(CD3, T세포 수용체 구성 성분, β2m 같은 MHC-I 복합체 성분 등)라면 동결보관이나 기능 실험 전에 음성선택(예: 마그네틱 마이크로비즈 사용)으로 편집된 CAR-T 세포를 농축할 수 있다.
-6. 편집 효율 정량화를 위해 그룹당 최소 1 × 10⁶ 세포를 남겨 둔다(소항목 3.3.1 참조).
+6. 편집 효율 정량화를 위해 그룹당 최소 1 × 10 세포를 남겨 둔다(소항목 3.3.1 참조).
 7. T세포를 day 10까지에 동결보관하거나 day 10-12까지 신선하게 사용한다. CD4⁺와 CD8⁺ T세포는 각각 따로 동결보관/시험하거나 1:1로 섞어 동결보관 및 추가 특성 평가를 할 수 있다.
 
 Table 4 T세포 확장에 권장되는 플레이트와 플라스크 크기
@@ -2731,7 +2731,7 @@ Table 4 T세포 확장에 권장되는 플레이트와 플라스크 크기
 
 "N" 열은 매개변수 N의 값 범위를 지정한다. "Well plate/flask type" 열은 각 크기 범위에 대응하는 용기를 제공한다. "horizontal"은 플라스크의 방향을 뜻한다.
 
-Fig. 1 유전자 편집 CAR-T 세포의 생체 외 확장. (a) 일차 인체 CAR-T 세포에서의 T세포 확장과 CRISPR/Cas9 편집 프로토콜 개념도. (b) 일차 T세포 확장 중 유전자 편집 CAR-T 세포의 집단 배가(population doubling). (그래프 축: A) 집단 배가, B) 세포 수(×10⁶); 시기: T세포 분리, T세포 대조 및 활성화, 비즈 제거와 모크, +IL7/IL15, 게놈 편집, PD1 KO CAR-T, Day 0, Day 2-4, Day 1, Day 6, Day 10-12, CAR 형질도입, 급이, 동결보관(0.8e6 cells/ml) 제품)
+Fig. 1 유전자 편집 CAR-T 세포의 생체 외 확장. (a) 일차 인체 CAR-T 세포에서의 T세포 확장과 CRISPR/Cas9 편집 프로토콜 개념도. (b) 일차 T세포 확장 중 유전자 편집 CAR-T 세포의 집단 배가(population doubling). (그래프 축: A) 집단 배가, B) 세포 수(×10); 시기: T세포 분리, T세포 대조 및 활성화, 비즈 제거와 모크, +IL7/IL15, 게놈 편집, PD1 KO CAR-T, Day 0, Day 2-4, Day 1, Day 6, Day 10-12, CAR 형질도입, 급이, 동결보관(0.8e6 cells/ml) 제품)
 
 8. 집단 배가 계산: day 0부터 T세포 일차 확장 끝(day N)까지 얻은 총 세포 수로 day 0에 자극한 세포 수 대비 집단 배가를 다음 공식으로 계산한다:
 Pop.Doub. = log₂(Total Cells Day N) − log₂(Total Cells Day 0)
@@ -2743,16 +2743,16 @@ T세포는 day 0부터 day 10까지 약 4-5회 배가해야 한다. day 10에 �
 단백질 수준 편집 효율 평가에는 표적 단백질의 세포 내 위치에 따라 유동세포측정(표면 또는 세포내 염색), ELISA, 웨스턴 블롯을 사용할 수 있다.
 
 3.3.1 DNA 수준
-1. 상용 DNA 추출 키트를 제조사 지침대로 쓰어 최소 1 × 10⁶개 세포(편집군과 미편집/모크 집단 모두)에서 게놈 DNA를 추출한다(예: DNeasy Blood & Tissue Kits, QIAGEN).
+1. 상용 DNA 추출 키트를 제조사 지침대로 쓰어 최소 1 × 10개 세포(편집군과 미편집/모크 집단 모두)에서 게놈 DNA를 추출한다(예: DNeasy Blood & Tissue Kits, QIAGEN).
 2. 게놈 DNA 150 ng으로 표적 영역을 표준 중합효소연쇄반응(PCR)(예: NEB의 Phusion® High-Fidelity DNA Polymerase)으로 증폭한다. 본 프로토콜에서는 잠재 절단 부위를 포함하는 영역을 둘러싸는 특이 프라이머 설계에 benchling 소프트웨어(https://benchling.com/)를 사용했다(Note 11 참조).
 3. PCR 정제 키트(예: PCR PureLink™, Thermo Fisher)로 PCR 산물을 정제한다. 정제산물 일부로 1% 아가로스 전기영동 겔을 돌려 증폭을 확인한다.
 4. 모크 샘플과 편집 샘플의 정제된 증폭산물을 Sanger 서열분석한다. 증폭 단계에 쓴 프라이머는 indel이 있는 영역에서 좋은 서열 품질을 보장할 만큼 충분히 멀리 있으면 그대로 쓸 수 있다.
-5. ICE(https://ice.synthego.com/)로 총 indel 백분율(삽입 또는 결실을 포함하는 서열의 빈도)과 knockout score(frameshift를 유발하는 indel 또는 >21 bp 결실)를 정량화한다. knockout score가 높을수록 indel이 표적 유전자의 기능적 KO로 이어질 가능성이 크다. R² 값은 indel 분포가 편집 샘플의 Sanger 서열 데이터에 얼마나 잘 맞는지 나타낸다. 얻은 모든 매개변수는 도시화할 수 있다(Fig. 2 참조).
+5. ICE(https://ice.synthego.com/)로 총 indel 백분율(삽입 또는 결실을 포함하는 서열의 빈도)과 knockout score(frameshift를 유발하는 indel 또는 >21 bp 결실)를 정량화한다. knockout score가 높을수록 indel이 표적 유전자의 기능적 KO로 이어질 가능성이 크다. R 값은 indel 분포가 편집 샘플의 Sanger 서열 데이터에 얼마나 잘 맞는지 나타낸다. 얻은 모든 매개변수는 도시화할 수 있다(Fig. 2 참조).
 
 ![Fig.2 ICE 분석 PD-1 KO Sanger 트레이스 예시](images/img-173-047.jpg)
 
 3.3.2 단백질 수준
-1. 세포 표면 발현 표적 단백질의 경우 T세포 2 × 10⁵개를 형광색소 결합 항체로 염색해 유동세포측정으로 분석하고 모크/미편집 샘플과 편집 세포의 발현 수준을 비교한다(예: PD-1과 CD3, Fig. 3a와 b).
+1. 세포 표면 발현 표적 단백질의 경우 T세포 2 × 10개를 형광색소 결합 항체로 염색해 유동세포측정으로 분석하고 모크/미편집 샘플과 편집 세포의 발현 수준을 비교한다(예: PD-1과 CD3, Fig. 3a와 b).
 
 ![Fig.3 CAR-T PD-1 발현 및 CD3 표면 발현 히스토그램](images/img-173-048.png)
 
@@ -2773,7 +2773,7 @@ Fig. 3 (a) T세포 확장 8일째 CAR-T 세포의 PD-1 발현을 유동세포측
 7. sgRNA 설계에는 다른 정보 도구를 쓸 수 있다(Benchling, Invitrogen의 GeneArt CRISPR Search and Design tool, IDT의 CRISPR-Cas9 guide RNA design checker, E-CRISPR, CHOP-CHOP 등).
 8. 피펫팅 오류를 피하려면 약간 여분의 세포를 준비하는 것이 좋다.
 9. 피펫팅 오류를 피하려면 약간 여분의 RNP 복합체를 준비하는 것이 좋다.
-10. 전기천공은 상당한 세포사를 일으킨다(전체 집단의 약 50%). 이를 감안해 T세포를 최소 1.5 × 10⁶ cells/mL 이상의 높은 농도로 두는 것이 좋다.
+10. 전기천공은 상당한 세포사를 일으킨다(전체 집단의 약 50%). 이를 감안해 T세포를 최소 1.5 × 10 cells/mL 이상의 높은 농도로 두는 것이 좋다.
 11. 최상의 결과를 위해서는: (I) Tm >55 °C인 프라이머를 쓰고, (II) 길이 18-22 bp, GC 함량 45-60% 프라이머를 설계하고, (III) 프라이머는 400-500 bp 증폭산물을 만들어야 하며, (IV) 잠재 절단 부위는 증폭산물 중앙에 오지 않게 해 검출 반응이 쉽게 구별되는 두 개의 뚜렷한 산물 밴드를 낳도록 한다. 까다로운 표적의 증폭은 문제 해결과 PCR 최적화가 필요할 수 있다. 예컨대 온도 구배로 프라이머 쌍마다 결합 온도를 최적화할 수 있다. GC-rich 서열이나 이차구조를 가진 서열의 증폭은 DMSO 같은 첨가물이나 특정 완충액으로 개선될 수 있다.
 
 References
@@ -2879,12 +2879,12 @@ TIL과 종양 세포주(TCL) 배양의 시작은 전이 병변의 수술적 절�
 
 3.1.1 비선별/young TIL 배양 확립
 절편 배양
-1. 종양 조직을 절단판에 놓고 해부칼로 6-12개 절편으로 자른다. 각 절편은 크기 1-2 mm³ 정도로 절제 조직의 서로 다른 부위에서 채취하며 절단판 위에 있는 동안 PBS나 CM에 잠겨 있어야 한다.
+1. 종양 조직을 절단판에 놓고 해부칼로 6-12개 절편으로 자른다. 각 절편은 크기 1-2 mm 정도로 절제 조직의 서로 다른 부위에서 채취하며 절단판 위에 있는 동안 PBS나 CM에 잠겨 있어야 한다.
 2. 각 절편을 24웰 플레이트의 개별 웰로 옮기고 웰마다 CM(IL-2 3000 UI/mL 함유) 2 mL를 넣는다.
 
 종양 조직 절편의 효소 소화로 얻은 TILs와 종양세포 배양
-1. "절편 배양" 소항목에서 남은 종양 조직을 해부칼로 1-5 mm³ 절편으로 자른다.
-2. 멸균 기구로 절편을 효소 함유 배지가 든 멸균 용기로 옮긴다(종양조직 1 cm³당 약 50 mL).
+1. "절편 배양" 소항목에서 남은 종양 조직을 해부칼로 1-5 mm 절편으로 자른다.
+2. 멸균 기구로 절편을 효소 함유 배지가 든 멸균 용기로 옮긴다(종양조직 1 cm당 약 50 mL).
 3. 용기에 멸균 마그네틱 교반기를 넣고 증발과 오염을 막으려고 주석 포일로 용기를 감싼다.
 4. 세포 분산이 충분해질 때까지 37 °C에서 2-4시간 또는 실온에서 하룻밤 교반한다.
 5. 세포 현탁액을 멸균 세포 스트레이너로 여과해 50 mL 코니컬 튜브에 받는다. 튜브당 최대 25 mL; Note 7 참조.
@@ -2895,7 +2895,7 @@ TIL과 종양 세포주(TCL) 배양의 시작은 전이 병변의 수술적 절�
 10. 생존 세포 총수를 세려고 펠릿 크기에 따라 PBS 10-50 mL에 세포 펠릿을 현탁한다.
 11. 트리판 블루 염색 배제법으로 총 생존 유핵세포 수를 결정한다.
 12. 1600 rpm(약 500 × g)에서 10분간 원심분리한다.
-13. 상층액을 흡인하고 세포 펠릿을 CM 배지(IL-2 3000 IU/mL 포함)에 현탁해 생존 세포 농도를 0.5 × 10⁶ cells/ml로 만든다.
+13. 상층액을 흡인하고 세포 펠릿을 CM 배지(IL-2 3000 IU/mL 포함)에 현탁해 생존 세포 농도를 0.5 × 10 cells/ml로 만든다.
 14. 세포를 T75(12-15 mL) 또는 T175(25-30 mL) 배양 플라스크나 24웰 플레이트(웰당 2 mL)로 옮긴다.
 
 조직 잔류물 배양(TRC)
@@ -2904,7 +2904,7 @@ TIL과 종양 세포주(TCL) 배양의 시작은 전이 병변의 수술적 절�
 3. 튜브를 300 × g에서 8분간 원심분리한다.
 4. 펠릿 크기에 따라 CM(IL-2 3000 IU/mL 포함) 10-50 mL에 세포 펠릿을 현탁해 총 생존 세포를 센다.
 5. 트리판 블루 염색 배제법으로 총 생존 유핵세포 수를 결정한다.
-6. 세포를 24웰 플레이트(TIL 성장용)나 플라스크(TCL 성장용)로 옮긴다(0.5-1 × 10⁶ cells/mL).
+6. 세포를 24웰 플레이트(TIL 성장용)나 플라스크(TCL 성장용)로 옮긴다(0.5-1 × 10 cells/mL).
 7. 1-3일 후 TIL 세포가 들은 세포 현탁액을 배양 플레이트에서 웰당 2 mL씩 24웰 플레이트로 옮긴다.
 8. 흑색종이 자라도록 플라스크의 배지를 흑색종 배양 배지로 바꾼다.
 
@@ -2914,20 +2914,20 @@ Fig. 2 TIL 형질도입. TIL 형질도입은 전이 병변 수술 절제, 흑색
 
 위 세 가지 방법으로 얻은 세포 통합 및 TILs와 흑색종세포의 분리
 절편 분쇄, 효소 소화 또는 TRC로 얻은 단일세포 현탁액에는 보통 림프구, 흑색종세포, 적혈구, 섬유아세포, 세포 찌꺼기가 뒤섞인 이질적인 세포 혼합물이 들어 있다. 림프구는 부유 상태를 유지하는 고유 성질이 있고 흑색종세포는 배양 용기 표면에 부착하는 경향이 있어 이 둘을 분리한다. 따라서 단일세포 현탁액에 흑색종세포가 많으면 조직배양 플라스크처럼 표면적이 넓은 배양 용기가 필요하다. 게다가 이 성장기에 TILs의 확장 속도는 조직배양 플라스크보다 24웰 플레이트에서 더 높아서 단일세포 현탁액을 아래와 같이 24웰 플레이트와 조직배양 플라스크로 나눈다:
-1. 흑색종세포가 TIL보다 최소 세 배 이상 많은 단일세포 현탁액의 약 4분의 3은 조직배양 플라스크로(T25 플라스크당 흑색종세포 5 × 10⁶ 이하), 약 4분의 1은 24웰 플레이트로 옮긴다(웰당 약 0.25 × 10⁶ 흑색종세포/mL). 단일세포 현탁액에서 흑색종세포가 TIL보다 세 배 미만이면 대부분을 24웰 플레이트에 접종한다. 하룻밤 배양하면 세포 현탁액(T25 플라스크와 24웰 플레이트 모두)에 비부착 림프구가 다른 세포들과 함께 남는다.
+1. 흑색종세포가 TIL보다 최소 세 배 이상 많은 단일세포 현탁액의 약 4분의 3은 조직배양 플라스크로(T25 플라스크당 흑색종세포 5 × 10 이하), 약 4분의 1은 24웰 플레이트로 옮긴다(웰당 약 0.25 × 10 흑색종세포/mL). 단일세포 현탁액에서 흑색종세포가 TIL보다 세 배 미만이면 대부분을 24웰 플레이트에 접종한다. 하룻밤 배양하면 세포 현탁액(T25 플라스크와 24웰 플레이트 모두)에 비부착 림프구가 다른 세포들과 함께 남는다.
 2. 비부착 림프구와 다른 세포(T25 플라스크와 24웰 플레이트에서)를 통합하고 70-mm 세포 스트레이너로 통과시켜 적혈구 큰 덩어리와 세포 찌꺼기를 제거한다. 흑색종세포는 웰에 붙아 남으며 선택적으로 추가 배양해 TIL의 검사용 표적세포로 쓸 수 있다.
-3. 비부착 림프구 수를 센다. 림프구 총수가 약 4 × 10⁶을 넘으면 4번 또는 5번 단계로 진행한다. 4 × 10⁶ 미만이면 비부착 세포가 한 겹의 빽빽한 층을 이루도록 24웰 플레이트에 세포를 접종한다. 5-7일 후 보통 림프구가 증식하기 시작한다. 림프구 밀도가 약 4 × 10⁶에 도달하면 4번 또는 5번 단계로 간다.
-4. 세포 현탁액에 적혈구가 림프구보다 최소 열 배 이상 많거나 세포 찌꺼기가 대량이면 Ficoll-Hypaque 밀도 구배로 현탁액을 분획하고 림프구가 농축된 세포 현탁액을 흑색종세포가 부착된 웰(2번 단계 참조) 또는 새 24웰 플레이트(림프구 1 × 10⁶/2 mL/웰)에 넣는다.
-5. 3번 또는 4번 단계에서 얻은 세포는 확립 과정 내내 CM(hrIL-2 3000 IU/mL 포함)에서 배양한다. 림프구가 증식하기 시작하면(대개 수술 후 약 1주일) 0.5-2 × 10⁶ cells/mL(웰당 2 mL) 농도로 유지한다. TIL 배양은 24웰 플레이트에서 가장 잘 자란다. 모든 흑색종세포가 없어지고 TIL이 최소 5 × 10⁷개에 도달하면 young-TIL 배양이 확립됐다고 볼 수 있다. 이 과정에는 약 10-22일이 걸린다. 단기 배양 TILs는 즉시 동결보관하거나 이후의 대규모 확장에 직접 사용할 수 있다.
+3. 비부착 림프구 수를 센다. 림프구 총수가 약 4 × 10을 넘으면 4번 또는 5번 단계로 진행한다. 4 × 10 미만이면 비부착 세포가 한 겹의 빽빽한 층을 이루도록 24웰 플레이트에 세포를 접종한다. 5-7일 후 보통 림프구가 증식하기 시작한다. 림프구 밀도가 약 4 × 10에 도달하면 4번 또는 5번 단계로 간다.
+4. 세포 현탁액에 적혈구가 림프구보다 최소 열 배 이상 많거나 세포 찌꺼기가 대량이면 Ficoll-Hypaque 밀도 구배로 현탁액을 분획하고 림프구가 농축된 세포 현탁액을 흑색종세포가 부착된 웰(2번 단계 참조) 또는 새 24웰 플레이트(림프구 1 × 10/2 mL/웰)에 넣는다.
+5. 3번 또는 4번 단계에서 얻은 세포는 확립 과정 내내 CM(hrIL-2 3000 IU/mL 포함)에서 배양한다. 림프구가 증식하기 시작하면(대개 수술 후 약 1주일) 0.5-2 × 10 cells/mL(웰당 2 mL) 농도로 유지한다. TIL 배양은 24웰 플레이트에서 가장 잘 자란다. 모든 흑색종세포가 없어지고 TIL이 최소 5 × 10개에 도달하면 young-TIL 배양이 확립됐다고 볼 수 있다. 이 과정에는 약 10-22일이 걸린다. 단기 배양 TILs는 즉시 동결보관하거나 이후의 대규모 확장에 직접 사용할 수 있다.
 
 3.1.2 TILs의 급속 확장 프로토콜(REP)
 이 절은 임상용 TIL 세포의 표준 급속 확장 프로토콜을 더 작은 규모로 설명한다[1, 2](Fig. 2).
 
 ![Fig.2 TIL 형질도입 과정 Pre-REP/REP](images/img-183-050.jpg)
 
-1. TILs를 hrIL-2 3000 IU/mL가 든 eCM에서 해동하고 24웰 플레이트에서 1.0 × 10⁶/mL 농도로 2일간 쉬게 하거나, 소항목 3.1.1 "TIL 배양 확립"의 11번 단계에서 신선하게 분리한 TILs를 사용한다.
+1. TILs를 hrIL-2 3000 IU/mL가 든 eCM에서 해동하고 24웰 플레이트에서 1.0 × 10/mL 농도로 2일간 쉬게 하거나, 소항목 3.1.1 "TIL 배양 확립"의 11번 단계에서 신선하게 분리한 TILs를 사용한다.
 2. [소규모] REP 시작: T25 플라스크에 OKT3 30 ng/mL, hrIL-2 3000 IU/mL(InRepCM 사용), 무관계 공여자 PBMC를 방사선 조사한 것을 사료세포로(5000 rad, TIL:사료세포 = 1:100) 넣고 50% CM + 50% AIM-V 배지에서 TILs를 자극한다.
-3. 바이러스 형질도입 당일(REP day 7) TIL을 회수하고 계수하여 hrIL-2 3000 IU/mL가 든 CM에서 0.5 × 10⁶/mL로 농도를 맞춘다. 즉시 세포를 쓰거나 -80 °C에서 48시간 저장한 뒤 액체질소 저장으로 옮긴다.
+3. 바이러스 형질도입 당일(REP day 7) TIL을 회수하고 계수하여 hrIL-2 3000 IU/mL가 든 CM에서 0.5 × 10/mL로 농도를 맞춘다. 즉시 세포를 쓰거나 -80 °C에서 48시간 저장한 뒤 액체질소 저장으로 옮긴다.
 4. 아래 설명대로 TILs를 유전적으로 변형한다(바이러스 형질도입은 "T세포와 TILs의 레트로바이러스 형질도입" 소항목, mRNA 형질천환은 소항목 3.3.2).
 
 3.2 PBMCs, T세포 또는 세포주 준비
@@ -2939,7 +2939,7 @@ Fig. 2 TIL 형질도입. TIL 형질도입은 전이 병변 수술 절제, 흑색
 
 세포 배양 설정 및 활성화
 4. Cloudz CD3/CD28 미소구를 사용 직전에 바이알을 5-10초 볼텍스로 섞는다. Note 1 참조.
-5. PBMCs 1 × 10⁶개마다 Cloudz CD3/CD28 미소구 20 μL를 넣는다.
+5. PBMCs 1 × 10개마다 Cloudz CD3/CD28 미소구 20 μL를 넣는다.
 6. 흔들거나 기울여 세포와 Cloudz CD3/CD28 미소구를 약 30초간 부드럽게 섞는다.
 7. PBMC 성장 배지에서 가습 배양기(37 °C, 5% CO₂)로 2-3일간 배양한다.
 
@@ -2995,7 +2995,7 @@ Fig. 4 형질도입 과정 개요. 유전 조작 대상 표적세포(TILs 또는
 RetroNectin 코팅 접시 준비 - Day 1
 이 단계에서는 미처리(non-treated), 세포배양 등급 조직배양 플레이트나 접시를 써야 한다.
 1. 코팅 전 멸균 PBS로 희석해 RetroNectin 용액(20-100 μg/mL)을 준비한다.
-2. 6웰 플레이트에 20 μg/mL 농도의 RetroNectin 용액을 웰당 2.25 mL 넣는다(각 웰 지름이 35 mm [≈9 cm²]이므로 밀도 ≈5 μg/cm²). Notes 8, 9 참조. 각 플레이트에 멸균 RetroNectin 용액을 적정량 나눈다.
+2. 6웰 플레이트에 20 μg/mL 농도의 RetroNectin 용액을 웰당 2.25 mL 넣는다(각 웰 지름이 35 mm [≈9 cm]이므로 밀도 ≈5 μg/cm). Notes 8, 9 참조. 각 플레이트에 멸균 RetroNectin 용액을 적정량 나눈다.
 3. 플레이트를 실온에서 2시간 또는 4 °C에서 하룻밤 둔다. Note 10 참조.
 
 Retrovirus의 RetroNectin 코팅 플레이트 결합 - Day 2: 형질도입
@@ -3013,14 +3013,14 @@ Retrovirus의 RetroNectin 코팅 플레이트 결합 - Day 2: 형질도입
 12. 플레이트를 예열한 원심분리기에 넣고 32 °C에서 1000-2000 g으로 2시간 원심분리해 바이러스 입자와 RetroNectin 시약의 결합을 돕는다. 6웰 플레이트의 경우 32 °C에서 2000 g, 2시간이 최적이다.
 13. 레트로바이러스 입자가 RetroNectin 코팅 플레이트에 결합하는 동안 표적 TIL 또는 T세포를 준비한다: 자세한 내용은 Note 13과 아래 "T세포와 TILs의 레트로바이러스 형질도입" 소항목 참조.
 14. 저장 플레이트에서 표적세포를 회수하고 살아있는 세포 수를 센다.
-15. 표적세포를 성장 배지에 현탁한다: T세포는 T세포 배양 배지에서 0.5 × 10⁶ cells/mL 밀도로, TILs는 STIM 배지에서 2 × 10⁶ TILs 밀도로 현탁한다.
+15. 표적세포를 성장 배지에 현탁한다: T세포는 T세포 배양 배지에서 0.5 × 10 cells/mL 밀도로, TILs는 STIM 배지에서 2 × 10 TILs 밀도로 현탁한다.
 16. RetroNectin 결합 바이러스 입자가 있는 플레이트를 원심분리기에서 꺼낸다.
 17. 플레이트에서 바이러스 상층액을 흡인해 소량의 차아염소산나트륨(남은 레트로바이러스 입자 불활성화용)이 든 50 mL 튜브로 옮기되, 웰에 소량을 남겨 둔다(웰 접촉과 건조 방지). 즉시 "T세포와 TILs의 레트로바이러스 형질도입" 소항목 1번 단계로 진행하거나 Note 14를 참조.
 
 T세포와 TILs의 레트로바이러스 형질도입
 1. 표적세포를 RetroNectin 코팅 플레이트에 즉시 넣는다:
-(a) T세포를 0.5 × 10⁶ cells/mL 밀도로 넣는다(T세포 배양 배지 6 mL에 3 × 10⁶ cells). T세포는 "Cloudz CD3/CD28 미소구 우해에 의한 세포 방출 및 세포 회수" 소항목 4번 단계 직후 또는 소항목 3.2.2 "PBMCs로부터 T세포 준비" 12번 단계 직후에 사용한다.
-(b) hrIL-2 300 IU/mL가 든 TIL 레트로바이러스 형질도입용 배지(STIM 배지)에서 TILs를 2 × 10⁶ 밀도로 각 RetroNectin 코팅 웰에 넣는다. TILs는 회수 직후(소항목 3.1.2 "TILs의 급속 확장 프로토콜(REP)") 또는 동결 상태였다면 사용 2일 전에 해동한다.
+(a) T세포를 0.5 × 10 cells/mL 밀도로 넣는다(T세포 배양 배지 6 mL에 3 × 10 cells). T세포는 "Cloudz CD3/CD28 미소구 우해에 의한 세포 방출 및 세포 회수" 소항목 4번 단계 직후 또는 소항목 3.2.2 "PBMCs로부터 T세포 준비" 12번 단계 직후에 사용한다.
+(b) hrIL-2 300 IU/mL가 든 TIL 레트로바이러스 형질도입용 배지(STIM 배지)에서 TILs를 2 × 10 밀도로 각 RetroNectin 코팅 웰에 넣는다. TILs는 회수 직후(소항목 3.1.2 "TILs의 급속 확장 프로토콜(REP)") 또는 동결 상태였다면 사용 2일 전에 해동한다.
 2. 표적세포와 바이러스 입자의 접촉을 돕기 위해 세포 추가 후 플레이트를 원심분리할 수 있다: 플레이트를 싸고 가속/브레이크를 1로 두고 1500 rpm에서 10분간 원심분리한다. 균형을 확실히 맞춘다!
 3. 플레이트를 원심분리기에서 조심히 꺼낸다.
 4. 현미경으로 세포 밀도를 확인한다. 세포가 접종되었는지 확인하는 품질 검사일 뿐이다.
@@ -3035,7 +3035,7 @@ T세포와 TILs의 레트로바이러스 형질도입
 Day 6 이후: 형질도입 T세포의 형질도입 효율 또는 활성 분석(FACS, ELISA, 살해 분석).
 
 형질도입 TILs 유지
-1. 형질도입 TILs를 6웰 배양 플레이트로 옮기고 hrIL-2 300 IU/mL가 든 TILmM1 배지에서 0.5-2.0 × 10⁶ cells/mL 농도로 유지하며 day 10-11까지 계속 확장한다.
+1. 형질도입 TILs를 6웰 배양 플레이트로 옮기고 hrIL-2 300 IU/mL가 든 TILmM1 배지에서 0.5-2.0 × 10 cells/mL 농도로 유지하며 day 10-11까지 계속 확장한다.
 2. Day 10-11에 TILmM1 배지를 TILmM2 배지로 교체.
 3. Day 10 이후: 형질도입 TILs의 형질도입 효율 또는 활성 분석(FACS, ELISA, 살해 분석).
 
@@ -3044,7 +3044,7 @@ T세포 mRNA 형질천환은 회수 직후(소항목 3.2.2 "PBMCs로부터 T세�
 1. 큐벳을 얼음 위에서 미리 차게 식힌다.
 2. TILs 또는 T세포를 센다.
 3. 세포를 회수하고 차가운 Opti-MEM 배지로 씻는다: 상층액을 버리고 신선한 Opti-MEM 배지에 현탁, 원심분리 반복.
-4. 차가운 Opti-MEM 배지에서 최종 1.6 × 10⁷ cells/mL로 현탁하고 얼음 위에 둔다.
+4. 차가운 Opti-MEM 배지에서 최종 1.6 × 10 cells/mL로 현탁하고 얼음 위에 둔다.
 5. 세포 180 μL와 mRNA 10 μg을 차가운 2-mm 큐벳에서 섞고 Gene Pulser Xcell(BioRad)이나 AgilePulse MAX System(BTX) 같은 전기천공 장치로 360-380 V 1-ms 사각파 펄스 조건에서 전기천공한다.
 6. 세포를 즉시 hrIL-2 2 ng/mL가 든 T세포 배양 배지 3 mL가 들어 있는 12웰 플레이트로 옮긴다.
 7. 후속 분석이나 응용을 위해 플레이트를 37 °C, 5% CO₂ 배양기에서 24시간 배양.
@@ -3058,7 +3058,7 @@ T세포 mRNA 형질천환은 회수 직후(소항목 3.2.2 "PBMCs로부터 T세�
 
 4 Notes
 1. 관련 대안으로 Dynabeads Human T-Expander CD3/CD28(Thermo Fisher Scientific, 11141D)과 에펜도르프 또는 코니컬 튜브용 DynaMag(Invitrogen 12321D, 또는 MACSiMAG separator, Miltenyi Biotec 130-092-168)가 있다. 활성화의 다른 방법: PBMCs를 OKT3 250 ng/mL, anti-CD28 mAb 125 ng/mL,
-hrIL-2 1000 IU/mL가 든 성장 배지에 PBMCs를 1.5 × 10⁶ cells/ml로 넣고 37 °C, 5% CO₂에서 72시간 배양한다.
+hrIL-2 1000 IU/mL가 든 성장 배지에 PBMCs를 1.5 × 10 cells/ml로 넣고 37 °C, 5% CO₂에서 72시간 배양한다.
 2. 배지는 0.2 미크론 필터 유닛으로 여과해야 한다.
 3. hrIL-2를 배지에 넣으면 일주일 안에 사용해야 한다. T세포 배지를 IL-2 없이 만들어 두고 필요할 때 일부를 덜어 hrIL-2 함유 T세포 배양 배지를 만드는 것이 좋다.
 4. 대안적 T세포 농축 키트:
@@ -3071,7 +3071,7 @@ hrIL-2 1000 IU/mL가 든 성장 배지에 PBMCs를 1.5 × 10⁶ cells/ml로 넣�
 (b) FuGENE® HD Transfection Reagent(Active Motif).
 6. 검체는 수술 후 몇 시간 안에 멸균 용기의 멸균 생리식염수에 잠긴 상태로 실험실에 도착하는 것이 중요하다. TIL 준비를 즉시 시작하면 조직을 실온에 두고 지연되면 4 °C에 둔다.
 7. 대안으로 세포 현탁액 부피가 클 경우 멸균 금속 메쉬 필터로 여과해 하나 이상의 더 큰 225 mL 튜브에 받을 수 있다.
-8. 다른 플레이트를 쓸 경우 플레이트 면적당 4-20 μg/cm²에 해당하는 부피로 20-100 μg/mL RetroNectin을 코팅한다.(6웰 플레이트 최적 밀도는 5 μg/cm².)
+8. 다른 플레이트를 쓸 경우 플레이트 면적당 4-20 μg/cm에 해당하는 부피로 20-100 μg/mL RetroNectin을 코팅한다.(6웰 플레이트 최적 밀도는 5 μg/cm.)
 9. RetroNectin 단편 손실을 피하려면 PBS로 희석한 RetroNectin 용액을 여과멸균하지 않는다.
 10. RetroNectin 코팅 플레이트는 파라필름으로 밀봉해 4 °C에서 최대 1주일 보관할 수 있다.
 11. 6웰 플레이트에서 흡인한 RetroNectin 용액은 버려도 되고 재사용을 위해 저장해도 된다.
@@ -3166,23 +3166,23 @@ Fig. 2 트랜스포존 기반 인체 CAR-T 세포 제작 과정 개념도. (신�
 4. 림프구가 든 buffy coat 층을 수거한다.
 5. PBS 10 mL로 500 × g, 4 °C에서 3분씩 두 번 씻는다.
 6. 세포를 T세포 배지에 현탁한다.
-7. 세포를 계수하고 생존율을 판정한 뒤 T세포 배지 + 재조합 인체 IL-7 10 ng/mL(4.4 × 10⁵ IU/ug)로 생존 세포 농도를 2 × 10⁶ cells/mL로 희석한다.
+7. 세포를 계수하고 생존율을 판정한 뒤 T세포 배지 + 재조합 인체 IL-7 10 ng/mL(4.4 × 10 IU/ug)로 생존 세포 농도를 2 × 10 cells/mL로 희석한다.
 8. 24웰 플레이트에 웰당 2 mL씩 세포를 접종하고 37 °C, 5% CO₂에서 밤새 배양한다.
 
 3.3 PBMCs의 안정적 형질천환
 AmaxaⓇ Human T Cell NucleofectorⓇ Kit 지침에 따라 형질천환을 수행한다(Fig. 2). 아래는 형질천환 방법의 간략한 개요이다.
-1. 다음 날 아침(day 0), 세포 밀도와 생존율을 확인한다(Note 9 참조). Human T Cell NucleofectorⓇ Solution 최종 100 μL 속에 생존 세포 1 × 10⁷개 + PiggyBac 트랜스포자아제 DNA 5 ug(pRP [Exp]-mCherry-CAG> hyPBase) + CD19-41BB 5 ug 또는 PiggyBac 트랜스포자아제 DNA 5 ug + pTpB-CD19-CD28 5 ug이 들어 있도록 세포를 현탁한다.
+1. 다음 날 아침(day 0), 세포 밀도와 생존율을 확인한다(Note 9 참조). Human T Cell NucleofectorⓇ Solution 최종 100 μL 속에 생존 세포 1 × 10개 + PiggyBac 트랜스포자아제 DNA 5 ug(pRP [Exp]-mCherry-CAG> hyPBase) + CD19-41BB 5 ug 또는 PiggyBac 트랜스포자아제 DNA 5 ug + pTpB-CD19-CD28 5 ug이 들어 있도록 세포를 현탁한다.
 
 2. 세포/DNA 혼합물을 인증 큐벳으로 옮긴다. 샘플이 큐벳 바닥을 덮고 기포가 없어야 한다(Note 10 참조). 큐벳을 닫는다.
 3. 세포/DNA 혼합물이 든 큐벳을 NucleofectorⓇ Cuvette Holder에 삽입한다. NucleofectorⓇ Program U-014를 선택해 프로그램을 실행한다.
 4. 프로그램이 끝나면 샘플을 T세포 배지 2 mL가 든 12웰 플레이트로 옮긴다. 형질천환된 세포를 37 °C, 5% CO₂에서 밤새 배양한다.
 
 3.4 CAR-T 세포 확장
-1. 형질천환 첫날(day 1), 세포 밀도와 생존율을 평가한다. 세포를 T세포 배지에서 최종 2 × 10⁶ cells/mL + rIL-2 100 IU/mL(2×)로 현탁한다.
+1. 형질천환 첫날(day 1), 세포 밀도와 생존율을 평가한다. 세포를 T세포 배지에서 최종 2 × 10 cells/mL + rIL-2 100 IU/mL(2×)로 현탁한다.
 2. 형질천환된 세포를 24웰 플레이트에 웰당 1 mL씩 접종한다.
-3. 형질천환 세포 접종 후 미리 방사선 조사한(100 Gy) CD19⁺ K562 세포를 계수하여 T세포 배지에서 최종 5 × 10⁴로 현탁한다(Note 11 참조).
+3. 형질천환 세포 접종 후 미리 방사선 조사한(100 Gy) CD19⁺ K562 세포를 계수하여 T세포 배지에서 최종 5 × 10로 현탁한다(Note 11 참조).
 4. 현탁된 K562 세포 1 mL를 24웰 플레이트의 형질천환 세포 위에 넣어 최종 부피 웰당 2 mL, rIL-2 50 IU/mL, responder:stimulator = 40:1이 되게 한다.
-5. 37 °C, 5% CO₂에서 14일간 세포를 확장하며 형질천환 세포 성장을 모니터링하고(Fig. 3) 세포 농도를 2 × 10⁶ cells/mL 이하로 유지한다.
+5. 37 °C, 5% CO₂에서 14일간 세포를 확장하며 형질천환 세포 성장을 모니터링하고(Fig. 3) 세포 농도를 2 × 10 cells/mL 이하로 유지한다.
 6. 필요하면 세포를 나누어 신선한 T세포 배지 + rIL-2 50 IU/mL로 먹인다.
 
 ![Fig.3 CAR-T 확장 모니터링](images/img-202-055.jpg)
@@ -3190,7 +3190,7 @@ AmaxaⓇ Human T Cell NucleofectorⓇ Kit 지침에 따라 형질천환을 수�
 3.5 확장된 CAR-T 세포의 동결보관
 14일 확장 후 CAR-T 세포는 이후 분석을 위해 동결보관했다.
 1. 세포를 회수하고 PBS로 500 × g, 4 °C에서 3분씩 두 번 씻는다.
-2. 세포 밀도와 생존율을 확인하고 동결보관 배지에 튜브당 1 × 10⁶ CAR-T 세포씩 나눈다.
+2. 세포 밀도와 생존율을 확인하고 동결보관 배지에 튜브당 1 × 10 CAR-T 세포씩 나눈다.
 3. 튜브를 -80 °C에서 밤새 둔 후 액체질소에 넣어 장기 저장한다(Note 12 참조).
 
 3.6 CAR-T 세포 표현형 분석
@@ -3203,7 +3203,7 @@ AmaxaⓇ Human T Cell NucleofectorⓇ Kit 지침에 따라 형질천환을 수�
 Fig. 3 CAR-T 세포 확장 모니터링. (a, b) (a) 형질천환 전 day 0 PBMCs(왼쪽)와 CD19⁺ K562 세포(오른쪽)의 대표 현미경 사진, (b) PiggyBac + pTpB-hCD19-41BB(왼쪽) 또는 pTpB-hCD19-CD28(오른쪽)으로 형질천환한 확장 PBMCs의 형질천환 후 day 4, 7, 14 사진. (c) 14일 확장 내내 CAR-T 세포 성장 곡선을 보여 주는 선 그래프
 
 5. 배지를 흡인하고 PBS로 500 × g, 4 °C에서 3분씩 두 번 씻는다.
-6. 세포 밀도와 생존율을 확인하고 튜브당 5 × 10⁵ 세포가 되게 원형바닥 튜브에 현탁한다.
+6. 세포 밀도와 생존율을 확인하고 튜브당 5 × 10 세포가 되게 원형바닥 튜브에 현탁한다.
 7. BV421 mouse anti-human CD3(5 μL/검사), PE-Cy7 mouse anti-human CD4(5 μL/검사), APC mouse anti-human CD8(20 μL/검사)을 함유한 염색 버퍼 100 μL 속에서 세포를 어두운 곳에서 4 °C로 30분 배양한다.
 8. 단일 염색 대조구로는 UltraComp eBeads 한 방울을 염색 버퍼 100 μL에 넣는다. 각 튜브에 위 부피대로 적절한 단일 염색약을 넣는다. 어두운 곳에서 4 °C로 30분 배양한다.
 9. 염색 버퍼로 두 번 씻는다.
@@ -3214,7 +3214,7 @@ Fig. 4 유동세포측정 기반 CAR-T 세포 표현형 분석. 14일 CAR-T 확�
 3.7 HEK293Tscan-CD19⁺ 세포 제작
 Neon Transfection System 지침에 따라 형질천환을 수행했다. 아래는 형질천환 방법의 간략한 개요이다.
 1. HEK293HLA⁻(Note 15 참조) 세포의 밀도와 생존율을 평가했다.
-2. Resuspension buffer R 최종 100 ul 속에 생존 세포 5 × 10⁶개 + PiggyBac 트랜스포자아제 DNA 5 ug + pTpB-CMV-Tscan-IRES-hmbCD19 DNA 5 ug이 들도록 세포를 현탁한다.
+2. Resuspension buffer R 최종 100 ul 속에 생존 세포 5 × 10개 + PiggyBac 트랜스포자아제 DNA 5 ug + pTpB-CMV-Tscan-IRES-hmbCD19 DNA 5 ug이 들도록 세포를 현탁한다.
 3. Neon Electroporation Tube에 전해질 완충액 E2 3 mL를 채우고 neon pipette station에 튜브를 꽂는다.
 4. Neon Transfection System 피펫으로 세포/DNA 혼합물 100 μl를 100 μl neon 팁으로 채운다.
 5. 세포/DNA 혼합물이 든 피펫과 팁을 전기천공 튜브에 넣는다. 기포가 없도록 한다(Note 10 참조).
@@ -3223,7 +3223,7 @@ Neon Transfection System 지침에 따라 형질천환을 수행했다. 아래�
 8. 프로그램 완료 후 샘플을 HEK-293T 배지 3 mL가 든 6웰 플레이트로 옮긴다. 형질천환 세포를 37 °C, 5% CO₂에서 밤새 배양한다.
 
 3.8 HEK293Tscan-CD19⁺(Granzyme Attack Assay) 사용 CAR-T 살해 능력 평가 - CAR-T 세포, HEK293Tscan-CD19⁺ 세포, HEK293Tscan-CD19⁺ 세포를 24시간 공배양해 CAR-T 세포 살해 기능 평가
-1. HEK293Tscan CD19⁺ 세포의 밀도와 생존율을 평가한다. HEK 배지에서 4 × 10⁵로 6웰 평바닥 플레이트에 접종한다.
+1. HEK293Tscan CD19⁺ 세포의 밀도와 생존율을 평가한다. HEK 배지에서 4 × 10로 6웰 평바닥 플레이트에 접종한다.
 2. HEK293Tscan CD19⁺ 세포가 플레이트에 붙도록 약 8시간 둔다.
 3. HEK293Tscan이 플레이트 바닥에 붙은 후 배지를 흡인한다.
 4. 이전에 동결보관한 CD19-41BB와 CD19-CD28 CAR-T 세포 앨리콧을 찾는다.
@@ -3231,7 +3231,7 @@ Neon Transfection System 지침에 따라 형질천환을 수행했다. 아래�
 6. 섞고 바이알 내용물 전부를 T세포 배지 9 mL에 넣어 부드럽게 섞는다.
 7. 500 × g, 4 °C에서 3분간 원심분리한다.
 8. 배지를 흡인하고 PBS로 500 × g, 4 °C에서 3분씩 두 번 씻는다.
-9. 세포 밀도와 생존율을 평가하고 T세포 배지에서 4 × 10⁵ cells/mL로 원형바닥 튜브에 현탁한다.
+9. 세포 밀도와 생존율을 평가하고 T세포 배지에서 4 × 10 cells/mL로 원형바닥 튜브에 현탁한다.
 10. 세포 현탁액 4 mL를 부착 HEK293Tscan-CD19⁺ 위에 넣어 CAR-T 세포 : CD19⁺ HEK293Tscan-CD19⁺ = 4:1 비율이 되게 한다(Note 14 참조).
 11. 음성 대조군으로 "친(parental)" 무형질천환(CD19⁻) HEK293Tscan 세포만 CAR-T 세포 : HEK293Tscan = 4:1 비율로 든 웰을 준비한다.
 12. 공배양 세포를 37 °C, 5% CO₂에서 24시간 배양한다.
@@ -3256,7 +3256,7 @@ Fig. 5 유동세포측정 기반 CAR-T 세포 기능 분석. (a) Tscan 표적세
 3. CMV 프로모터가 구동하는 막결합 인체 CD19를 암호화하는 pTpB-CMV-hmbCD19 PiggyBac 트랜스포존 구조물은 Vector Builder에서 합성했다.
 4. 모든 플라스미드는 증류 탈이온수(Milli-Q Biocel, Millipore, USA)에 현탁했다.
 5. 플라스미드 준비 시스템에 엔도톡신 제거 단계가 있는 것이 중요하다.
-6. 가능하면 신선하게 분리한 PBMCs를 쓴다. 해동 PBMCs를 쓸 경우 형질천환 전 T세포 배지 + 재조합 IL-7 10 ng/mL(4.4 × 10⁵ IU/ug)에서 24시간 회복이 필수적이다.
+6. 가능하면 신선하게 분리한 PBMCs를 쓴다. 해동 PBMCs를 쓸 경우 형질천환 전 T세포 배지 + 재조합 IL-7 10 ng/mL(4.4 × 10 IU/ug)에서 24시간 회복이 필수적이다.
 7. Lympholyte® cell separation media는 6개월 이내 것이어야 하며 제조사 권장대로 보관한다.
 8. 급격한 브레이크로 구배를 흐트러뜨리지 않으려면 브레이크를 끄고 로터가 스스로 멈출 때까지 원심분리기를 돌린다.
 9. 트리판 블루 염색 배제법으로 세포 수와 생존율을 판정한다. 형질천환 진행 전에 세포 생존율 >90%여야 한다.
@@ -3296,7 +3296,7 @@ Fig. 1 키메라 항원 수용체로 T세포 방향 전환. (a) 키메라 항원
 
 2.1 T세포 분리.
 · 1/10 Leukopak(STEMCELL Technologies #200-0092).
-· Ca²⁺·Mg²⁺ 무척 Dulbecco's phosphate-buffered saline(DPBS)(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 Dulbecco's phosphate-buffered saline(DPBS)(Gibco #14190144).
 · RPMI 1640 배지, 글루타민 무척(Gibco #11875093).
 · 태아우혈청(FBS)(Gibco #26140079).
 · 페니실린-스트렙토마이신 용액(Gibco #15140122).
@@ -3326,7 +3326,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 2.2 렌티바이러스 생산.
 · HEK293T 세포(ATCC #CRL-3216).
 · Jurkat 세포(ATCC #TIB-152).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · RPMI10 완전 배지(소항목 3.1 참조).
 · DMEM, high glucose, no glutamine 배지(Gibco #11960044).
 · FBS(Gibco #26140079).
@@ -3360,7 +3360,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 2.4 CAR⁺ T세포 정렬.
 · 소항목 3.3에서 형질도입한 T세포.
 · RPMI10 완전 배지(소항목 3.1 참조).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · 트리판 블루 용액(Sigma #T8154-100ML).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
@@ -3381,7 +3381,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 · 트리판 블루 용액(Sigma #T8154-100ML).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · Anti-human CD4 PE/Cy7(clone SK3, Biolegend #344612).
 · Anti-human CD8 PerCP(clone SK1, Biolegend #344708).
 · Ghost BV510 viability dye(TONBO #13-0870-T100).
@@ -3418,7 +3418,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
 · CellTrace Violet Proliferation Kit(Thermo Fisher #C34571).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · Anti-human CD4 PE/Cy7(clone SK3, Biolegend #344612).
 · Anti-human CD8 PerCP(clone SK1, Biolegend #344708).
 · 유동세포계(예: Beckman CytoFLEX).
@@ -3434,7 +3434,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 · 트리판 블루 용액(Sigma #T8154-100ML).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · Anti-human CD4 PE/Cy7(clone SK3, Biolegend #344612).
 · Anti-human CD8 PerCP(clone SK1, Biolegend #344708).
 · Ghost BV510 viability dye(TONBO #13-0870-T100).
@@ -3451,7 +3451,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 · 트리판 블루 용액(Sigma #T8154-100ML).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · Anti-human CD4 Alexa Fluor 700(clone SK3, Biolegend #344622).
 · Anti-human CD8 APC/Cy7(clone SK1, Biolegend #344714).
 · Anti-human PD-1 PerCP(clone EH12.2H7, Biolegend #329938).
@@ -3469,7 +3469,7 @@ Human CD3/28 T Cell Expansion and Activation Dynabeads(Gibco #11131D).
 · 트리판 블루 용액(Sigma #T8154-100ML).
 · 세포계수기(TC20 Automated Cell Counter, Bio-Rad #1450102).
 · Cell Counting Slides(Bio-Rad #1450016).
-· Ca²⁺·Mg²⁺ 무척 DPBS(Gibco #14190144).
+· Ca⁺·Mg⁺ 무척 DPBS(Gibco #14190144).
 · eBioscience Foxp3 transcription factor staining buffer set(Thermo Fisher #00-5523-00).
 · Anti-human CD4 PE/Cy7(clone SK3, Biolegend #344612).
 · Anti-human CD25 APC(clone BC96, Biolegend #302610).
@@ -3504,32 +3504,32 @@ Fig. 2 인체 말초혈액에서 T세포 아집단 정제. (a) leukopak에서 �
 13. 세포를 먼저 DPBS로 1:100 희석해 계수하고(세포 현탁액 10 μl + DPBS 90 μl, 다음 1:10 희석 세포 10 μl + DPBS 90 μl), 트리판 블루 용액과 1:1로 희석(1:100 희석 세포 10 μl + 트리판 블루 10ul). 자동 세포계수기를 쓰면 결과에 100을 곱해 이 200배 희석을 반영한다(대부분의 계수기는 1:1 희석을 가정).
 
 3.1.2 CD4⁺ T세포 농축(음성선택)
-1. PBMCs 15 × 10⁶개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
-2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 50 × 10⁶ cells/mL로 현탁한다.
+1. PBMCs 15 × 10개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
+2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 50 × 10 cells/mL로 현탁한다.
 3. EasySep Human T Cell Enrichment Kit 프로토콜을 따른다.
 4. 트리판 블루와 1:1로 세포를 센다.
 5. 유동세포측정으로 CD4⁺ T세포 순도를 확인한다(Fig. 2a).
 
 3.1.3 CD8⁺ T세포 농축(음성선택)
-1. PBMCs 50 × 10⁶개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
-2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 50 × 10⁶ cells/mL로 현탁한다.
+1. PBMCs 50 × 10개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
+2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 50 × 10 cells/mL로 현탁한다.
 3. EasySep Human CD8+ T Cell Enrichment Kit 프로토콜을 따른다.
 4. 트리판 블루와 1:1로 세포를 센다.
 5. 유동세포측정으로 CD8⁺ T세포 순도를 확인한다(Fig. 2b).
 
 3.1.4 CD25⁺ 세포 농축(양성선택)
-1. PBMCs 10⁹ 개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
-2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 10⁸ cells/mL로 현탁한다.
+1. PBMCs 10 개를 회수해 실온에서 500 g으로 5분간 원심분리한다. 시작 세포 수는 용도에 따라 달라진다.
+2. 세포를 Cell Separation Buffer(DPBS + EDTA 10 mM + FBS 2%)에 10 cells/mL로 현탁한다.
 3. EasySep Human Pan-CD25 Positive Selection and Depletion Kit 프로토콜을 따른다.
 4. 트리판 블루와 1:1로 CD25⁺ 세포를 센다.
 
 3.1.5 CD4⁺ CD25⁺ CD127⁻ Treg 정렬(FACS)
 1. 소항목 3.1.4에서 얻은 CD25⁺ 세포를 실온에서 500 g으로 5분간 원심분리한다.
 2. 세포를 DPBS 200 μL에 현탁한다.
-3. 다음 항체들을 넣는다: anti-human CD4 FITC, anti-human CD25 APC, anti-human CD127 PE를 세포 10⁶개당 항체 1 μL씩. 특히 CD25(clone BC96)의 경우 자재 소항목 (2.1)에 명시된 항체 클론을 꼭 사용한다. EasySep Human Pan-CD25 Positive Selection and Depletion Kit에서 쓴 항체가 CD25 에피토프 일부를 차단했을 수 있기 때문이다.
+3. 다음 항체들을 넣는다: anti-human CD4 FITC, anti-human CD25 APC, anti-human CD127 PE를 세포 10개당 항체 1 μL씩. 특히 CD25(clone BC96)의 경우 자재 소항목 (2.1)에 명시된 항체 클론을 꼭 사용한다. EasySep Human Pan-CD25 Positive Selection and Depletion Kit에서 쓴 항체가 CD25 에피토프 일부를 차단했을 수 있기 때문이다.
 4. 빛을 차단하고 4 °C에서 30분간 배양한다.
 5. DPBS 10 mL를 넣어 씻고 실온에서 500 g으로 5분간 원심분리한다.
-6. 세포를 DPBS에서 15 × 10⁶ cells/mL로 현탁한다.
+6. 세포를 DPBS에서 15 × 10 cells/mL로 현탁한다.
 7. 세포 현탁액을 40-μm 필터 캡으로 FACS 튜브에 여과하고 얼음 위에 둔다.
 8. 정렬 회수용 튜브를 준비한다: 15 mL 코니컬 튜브마다 RPMI10 완전 배지 3 mL(Note 1 참조)을 넣고 얼음 위에 둔다. 회수 튜브 종류와 완전 배지 부피는 사용하는 세포 분류 기기에 따라 달라진다.
 9. 형광보조 세포 분류(FACS)로 CD4⁺CD25⁺CD127⁻ 세포를 정렬한다(Fig. 2c).
@@ -3537,12 +3537,12 @@ Fig. 2 인체 말초혈액에서 T세포 아집단 정제. (a) leukopak에서 �
 
 3.1.6 T세포 활성화
 1. T세포 아집단 정제와 계수 후, RPMI10 완전 배지에서 Human T-Activator CD3/28 for T Cell Expansion and Activation Dynabeads와 재조합 인체 IL-2(rhIL-2)로 24웰 플레이트에서 T세포를 활성화한다.
-2. 확장할 T세포 10⁶개마다 anti-CD3/CD28 Dynabeads 25 μL를 넣어 Dynabeads : T세포 = 1:1 비율로 한다.
+2. 확장할 T세포 10개마다 anti-CD3/CD28 Dynabeads 25 μL를 넣어 Dynabeads : T세포 = 1:1 비율로 한다.
 3. 재조합 인체 IL-2를 넣는다:
 (a) Treg 세포에는 rhIL-2 1000 IU/ml.
 (b) CD4⁺ T세포에는 rhIL-2 100 IU/ml.
 (c) CD8⁺ T세포에는 rhIL-2 300 IU/ml.
-4. T세포를 RPMI10 완전 배지와 rhIL-2가 든 24웰 플레이트 웰당 5 × 10⁵ 세포, 1 mL로 접종하고 37 °C, 5% CO₂ 조직배양 배양기에 넣는다(Note 2, Fig. 3 참조).
+4. T세포를 RPMI10 완전 배지와 rhIL-2가 든 24웰 플레이트 웰당 5 × 10 세포, 1 mL로 접종하고 37 °C, 5% CO₂ 조직배양 배양기에 넣는다(Note 2, Fig. 3 참조).
 
 ![Fig.3a 정제 T세포 활성화 저배율(5×)](images/img-222-067.jpg)
 ![Fig.3b 정제 T세포 활성화 고배율(20×)](images/img-222-068.jpg)
@@ -3553,14 +3553,14 @@ Fig. 2 인체 말초혈액에서 T세포 아집단 정제. (a) leukopak에서 �
 ![Fig.4b 렌티바이러스 형질천환 확인(GFP 발현)](images/img-223-075.jpg)
 
 Day 0
-1. 트리판 블루로 HEK293T 세포를 계수하고 DMEM10 완전 배지에서 10-cm 접시당 3.8 × 10⁶ 세포 밀도로 접종한다. 세포는 미리 확장해 두었다가 원하는 수의 접시로 나눈다. 형질천환 시간표는 다음과 같다(Table 1):
+1. 트리판 블루로 HEK293T 세포를 계수하고 DMEM10 완전 배지에서 10-cm 접시당 3.8 × 10 세포 밀도로 접종한다. 세포는 미리 확장해 두었다가 원하는 수의 접시로 나눈다. 형질천환 시간표는 다음과 같다(Table 1):
 2. 형질천환용 chloroquine diphosphate와 polyethylenimine(PEI) 스톡 용액을 준비한다.
 3. Chloroquine diphosphate salt 0.129 g을 무균 무핵산수 10 mL에 녹여 25 mM chloroquine 스톡 용액을 만든다.
 4. 10-mL 주사기와 0.22-μm 필터로 25 mM chloroquine 스톡 용액을 멸균한다. 필요시 앨리콧으로 나누어 -20 °C 보관.
 5. PEI 0.1 g을 150 mL 오토클레이브 비커 속 초순수(Milli-Q Water Purification System 사용) 90 mL에 녹이고 마그네틱 교반바/교반판으로 저어 1 mg/mL PEI 스톡 용액을 만든다.
 6. pH 미터로 측정하면서 HCl(pH 낮출 때)이나 NaOH(pH 올릴 때)를 소량씩 서서히 넣어 pH 7.0으로 맞춘다.
 7. 10-mL 주사기와 0.22-μm 필터로 1 mg/mL PEI pH 7.0 스톡 용액을 멸균한다. 필요시 앨리콧으로 나누어 -80 °C 보관.
-8. 앨리콧/동결 전에 chloroquine과 PEI 용액을 6웰의 HEK293T 세포 6 × 10⁵개에 DNA 1 μg과 함께 시험해 충분한 형질천환 효율을 내는지 확인한다.
+8. 앨리콧/동결 전에 chloroquine과 PEI 용액을 6웰의 HEK293T 세포 6 × 10개에 DNA 1 μg과 함께 시험해 충분한 형질천환 효율을 내는지 확인한다.
 
 Fig. 3 정제된 인체 T세포 아집단의 활성화. (a) anti-CD3/CD28 비즈 매개 활성화(비즈:세포 = 1:1), 인체 CD4⁺ T세포, CD8⁺ T세포, Treg 세포, 48시간. 5× 배율 사진. (b) anti-CD3/CD28 비즈 매개 활성화, 인체 CD4⁺ T세포, CD8⁺ T세포, Treg 세포, 48시간. 20× 배율 사진
 
@@ -3570,7 +3570,7 @@ Table 1 렌티바이러스 생산용 HEK293T 형질천환 시간표
 
 | Monday(D0) | Tuesday(D1) | Wednesday(D2) | Thursday(D3) | Friday(D4) |
 | --- | --- | --- | --- | --- |
-| 10-cm 접시당 3.8 × 10⁶ 세포로 접종 | chloroquine 넣고 5시간 배치 | 배지 교체 | 바이러스 배지 수거 | 바이러스 배지 수거; 역가 측정용 Jurkat 세포 형질도입 |
+| 10-cm 접시당 3.8 × 10 세포로 접종 | chloroquine 넣고 5시간 배치 | 배지 교체 | 바이러스 배지 수거 | 바이러스 배지 수거; 역가 측정용 Jurkat 세포 형질도입 |
 | - | DNA/PEI 복합체로 형질천환 | ViralBoost 추가 | 신선 배지 + ViralBoost 추가 | - |
 
 Table 2 2세대 CAR 렌티바이러스 생산에 쓰는 플라스미드 DNA 농도
@@ -3616,7 +3616,7 @@ Day 4
 3. 수거한 렌티바이러스 함유 배지를 4 °C에 보관한다.
 
 역가 측정(Titration)
-1. 트리판 블루로 Jurkat 세포를 계수하고 RPMI10 완전 배지 200 μl 속 96웰 원형바닥 플레이트 웰당 10⁴ 세포 밀도로 접종한다.
+1. 트리판 블루로 Jurkat 세포를 계수하고 RPMI10 완전 배지 200 μl 속 96웰 원형바닥 플레이트 웰당 10 세포 밀도로 접종한다.
 2. Jurkat 세포가 든 웰에 렌티바이러스 함유 배지 10, 3, 2 또는 1 μL를 넣는다. 음성 대조군으로 미형질도입 Jurkat 세포 웰을 남겨 둔다.
 3. 형질도입 Jurkat 세포 플레이트를 조직배양 배양기에서 72시간 배양한다.
 4. 세포를 수거해 유동세포측정으로 형질도입 효율을 측정한다. 여기서는 각 조건에서 % GFP⁺ 세포를 판단한다(Fig. 4c).
@@ -3624,14 +3624,14 @@ Day 4
 6. 선형 회귀를 수행하고 외삽하여 원하는 T세포 수를 형질도입하는 데 필요한 부피를 구한다.
 7. 렌티바이러스 함유 배지가 든 튜브를 500 g, 4 °C에서 5분간 원심분리한다.
 8. 렌티바이러스 함유 상층액을 새 코니컬 튜브로 조심히 옮긴다. 이 단계는 세포 찌꺼기를 제거한다.
-9. 렌티바이러스 함유 배지를 앨리콧으로 나누어 필요시 -80 °C 보관한다. 우리는 면역 분석용 CAR 렌티바이러스로 2.5 × 10⁵ T세포 배수를 형질도입하므로 2.5 × 10⁵ Jurkat 세포를 형질도입하는 데 필요한 렌티바이러스 입자 수만큼 앨리콧을 만든다.
+9. 렌티바이러스 함유 배지를 앨리콧으로 나누어 필요시 -80 °C 보관한다. 우리는 면역 분석용 CAR 렌티바이러스로 2.5 × 10 T세포 배수를 형질도입하므로 2.5 × 10 Jurkat 세포를 형질도입하는 데 필요한 렌티바이러스 입자 수만큼 앨리콧을 만든다.
 
 3.3 T세포 형질도입
 1. 트리판 블루로 T세포를 센다.
 2. 실온(RT)에서 500 g으로 5분간 원심분리한다.
-3. 세포를 RPMI10 완전 배지에서 1.25 × 10⁶ cells/mL로 현탁한다.
+3. 세포를 RPMI10 완전 배지에서 1.25 × 10 cells/mL로 현탁한다.
 4. 렌티바이러스 앨리콧을 얼음 위에서 해동한다.
-5. 1.5-mL 마이크로원심튜브 속 T세포 2.5 × 10⁵개(200 μl)에 렌티바이러스 앨리콧을 넣는다. CD4⁺ 및 CD8⁺ T세포는 Treg 세포보다 형질도입이 어려우므로 Treg 세포 2.5 × 10⁵개당 앨리콧 1개, CD4⁺ 또는 CD8⁺ T세포 2.5 × 10⁵개당 앨리콧 2개를 넣는다.
+5. 1.5-mL 마이크로원심튜브 속 T세포 2.5 × 10개(200 μl)에 렌티바이러스 앨리콧을 넣는다. CD4⁺ 및 CD8⁺ T세포는 Treg 세포보다 형질도입이 어려우므로 Treg 세포 2.5 × 10개당 앨리콧 1개, CD4⁺ 또는 CD8⁺ T세포 2.5 × 10개당 앨리콧 2개를 넣는다.
 6. rhIL-2를 최종 농도 Treg 세포 1000 IU/mL, CD4⁺ T세포 100 IU/mL, CD8⁺ T세포 300 IU/mL가 되게 넣는다.
 7. 32 °C에서 1000 g으로 1시간 원심분리한다.
 
@@ -3642,12 +3642,12 @@ Day 4
 3.4 CAR⁺ T세포 정렬
 1. 형질도입 5일 후 트리판 블루로 형질도입 T세포를 센다.
 2. 실온(RT)에서 500 g으로 5분간 원심분리한다.
-3. 세포를 DPBS에서 15 × 10⁶ cells/mL로 현탁한다.
+3. 세포를 DPBS에서 15 × 10 cells/mL로 현탁한다.
 4. 세포 현탁액을 40-μm 필터 캡으로 FACS 튜브에 여과하고 얼음 위에 둔다.
 5. 정렬 회수용 튜브를 준비한다: 15-mL 코니컬 튜브마다 RPMI10 완전 배지 3 mL를 넣고 얼음 위에 둔다. 회수 튜브 종류와 완전 배지 부피는 사용하는 세포 분류 기기에 따라 달라진다.
 6. CAR 리포터 발현 세포(여기서는 GFP⁺)를 FACS로 정렬한다(Fig. 5).
 7. 정렬 후 트리판 블루와 1:1로 세포를 센다.
-8. 정렬한 CAR⁺ T세포를 RPMI10 완전 배지와 rhIL-2가 든 24웰 플레이트 웰당 5 × 10⁵ 세포, 1 mL로 접종하고 조직배양 배양기에 넣는다. 이후 세포를 나누고 필요에 따라 신선한 RPMI10 완전 배지와 rhIL-2를 더하며 CAR⁺ T세포 배양을 계속 확장한다.
+8. 정렬한 CAR⁺ T세포를 RPMI10 완전 배지와 rhIL-2가 든 24웰 플레이트 웰당 5 × 10 세포, 1 mL로 접종하고 조직배양 배양기에 넣는다. 이후 세포를 나누고 필요에 따라 신선한 RPMI10 완전 배지와 rhIL-2를 더하며 CAR⁺ T세포 배양을 계속 확장한다.
 
 ![Fig.5 CAR+ T세포 FACS 정제](images/img-227-080.jpg)
 
@@ -3673,12 +3673,12 @@ Day 0: 공배양 플레이트 준비
 3. CAR+ T 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 CAR+ T 세포 현탁액을 새 15-mL 커니컬 튜브로 옮긴다.
 4. Trypan Blue로 방사선 조사한 K562 세포와 비드 제거한 CAR+ T 세포를 계수한다.
 5. K562 세포와 CAR+ T 세포를 RT에서 500 g, 5분간 원심분리한다.
-6. 세포를 RPMI10 완전 배지로 10⁶ cells/mL 농도로 재현탁한다.
+6. 세포를 RPMI10 완전 배지로 10 cells/mL 농도로 재현탁한다.
 
 Fig. 6 CAR 매개 사람 CAR+ T 세포 활성화. (a) CAR T 세포(예: CD19CAR Treg)의 CAR 매개 초기 활성화를 평가하는 워크플로는, CD19CAR Treg를 방사선 조사한 CD19 발현 K562와 48시간 공배양한 뒤 유세포 분석으로 활성화 마커 CD71(트랜스페린 수용체)의 발현 상승을 검출하는 과정이다. 이후 세포를 9일간 계속 증식시키면 CAR 매개 증식(CAR Treg 세포 수) 평가와 함께 CAR Treg의 표현형 안정성(예: FOXP3 발현)도 확인할 수 있다. (b) 방사선 조사한 K562 또는 CD19-K562와 48시간 공배양 후 사람 CD4+ T 세포, CD8+ T 세포, Treg 세포의 CD19CAR 매개 활성화를 anti-human CD71 FITC 유세포 분석으로 평가했다. 히스토그램은 생존 CD4+GFP+ 세포의 CD71 표면 발현을 나타낸다.
 
 7. CAR Treg를 다룰 때는 rhIL-2를 최종 농도 1000 IU/mL가 되도록 넣는다. CAR CD4+ 또는 CAR CD8+ T 세포라면 rhIL-2를 넣지 않는다.
-8. 96웰 라운드바텀 플레이트에서 1 × 10⁵ CAR+ T 세포를 1 × 10⁵ 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
+8. 96웰 라운드바텀 플레이트에서 1 × 10 CAR+ T 세포를 1 × 10 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
 9. 플레이트를 배양 인큐베이터에서 48시간 배양한다.
 
 Fig. 7 활성화된 사람 CAR+ T 세포의 사이토카인 분비. 미형질전환(UT) 또는 CD19CAR 발현 사람 CD4+ T 세포와 Treg 세포를 방사선 조사한 CD19-K562 세포로 48시간 활성화했을 때의 IFN-γ 및 IL-10 분비. 사이토카인 수준은 효소결합면역흡착분석법(ELISA)으로 공배양 상징액에서 측정했다.
@@ -3716,24 +3716,24 @@ Day 2: 사이토카인 분비 측정
 
 1. CAR+ T 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 CAR+ T 세포 현탁액을 새 15-mL 커니컬 튜브로 옮긴다.
 2. CAR+ T 세포와 CAR 표적 발현 K562 세포(예: CD19-K562)를 Trypan Blue로 계수한다.
-3. CAR+ T 세포 3 × 10⁵개를 확보한다. 이렇게 하면 96웰 라운드바텀 플레이트 웰당 표적 세포 5 × 10⁴개 기준으로 T세포/표적세포 비율 1:1, 1:2, 1:4의 3반복을 커버할 수 있다. 5 × 10⁴×3 + 2.5 × 10⁴×3 + 1.25 × 10⁴×3 = 2.63 × 10⁵ ≈ 3 × 10⁵ CAR+ T 세포이기 때문이다.
+3. CAR+ T 세포 3 × 10개를 확보한다. 이렇게 하면 96웰 라운드바텀 플레이트 웰당 표적 세포 5 × 10개 기준으로 T세포/표적세포 비율 1:1, 1:2, 1:4의 3반복을 커버할 수 있다. 5 × 10×3 + 2.5 × 10×3 + 1.25 × 10×3 = 2.63 × 10 ≈ 3 × 10 CAR+ T 세포이기 때문이다.
 4. RT에서 500 g, 5분간 원심분리한다.
 
 A B 100 80 60 40 20 0 1:1 1:2 1:4 1:1 1:2 1:4 1:1 1:2 1:4 CD4+ T cell CD4+ T cell CD4+ T cell CD8+ T cell CD8+ T cell CD8+ T cell CAR Treg CAR Treg CAR Treg % Cytotoxicity
 
 Fig. 8 CAR 매개 사람 CAR+ T 세포 세포독성. (a) CAR T 세포(예: CD19CAR T 세포)의 CAR 매개 세포독성을 평가하는 워크플로는 CD19CAR T 세포를 CD19-K562 세포와 여러 비율로 공배양하는 과정이다. 일정 시간(예: 48시간) 공배양 후 공배양 상징액을 회수하고 그 안의 젖산탈수소효소(LDH - 세포 용해 시에만 상징액으로 나오는 세포 내 효소) 함량을, LDH를 정량적으로 사용해 착색 생성물인 포르마잔을 만드는 반응으로 측정한다. (b) 48시간 공배양에서 CD19CAR 사람 CD4+ T 세포, CD8+ T 세포, Treg 세포의 CD19-K562 세포에 대한 상대적 세포독성. 비율(1:1, 1:2, 1:4)은 각 조건당 CAR T 세포 수 대 CD19-K562 세포 수의 비를 나타낸다.
 
-5. CAR+ T 세포 3 × 10⁵개를 RPMI10 완전 배지 600 μL로 재현탁한다. 이렇게 하면 1:1 3반복에 각각 200 μL씩 확보된다. CAR Treg라면 rhIL-2를 최종 농도 1000 IU/mL로 넣는다. CAR CD4+ 또는 CD8+ T 세포라면 rhIL-2를 넣지 않는다.
+5. CAR+ T 세포 3 × 10개를 RPMI10 완전 배지 600 μL로 재현탁한다. 이렇게 하면 1:1 3반복에 각각 200 μL씩 확보된다. CAR Treg라면 rhIL-2를 최종 농도 1000 IU/mL로 넣는다. CAR CD4+ 또는 CD8+ T 세포라면 rhIL-2를 넣지 않는다.
 
 6. 96웰 라운드바텀 플레이트에서 연속 희석을 다음처럼 수행한다:
  (a) CAR T 세포 현탁액 200 μL를 1:1 비율 웰 3곳에 각각 옮긴다. μL
  (b) 1:2와 1:4 비율 웰에 RPMI10 완전 배지 100씩 넣는다.
  (c) 3반복 각각에 대해, 1:1 웰의 세포 현탁액 100 μL를 해당 1:2 비율 웰로 옮긴다.
  (d) 3반복 각각에 대해, 1:2 웰의 세포 현탁액 100 μL를 해당 1:4 비율 웰로 옮긴다.
- (e) 1:4 비율 웰에서 세포 현탁액 100 μL를 폐기 용기에 버린다. 이제 각 웰에는 CAR T 세포 현탁액 100 μL에 표적 세포 5 × 10⁴개(1:1), 2.5 × 10⁴개(1:2), 또는 1.25 × 10⁴개(1:4)가 들어 있다.
-7. CAR 표적 발현 K562 세포를 RPMI10 완전 배지로 5 × 10⁵ cells/ml 농도로 재현탁한다. CAR Treg라면 rhIL-2를 최종 농도 1000 IU/mL로 넣는다. CAR CD4+ 또는 CD8+ T 세포라면 rhIL-2를 넣지 않는다.
-8. CAR 표적 발현 K562 세포 5 × 10⁵개를 100 μL에 담아 모든 샘플 웰 위에 부어 각 웰 부피를 200 μL로 맞춘다.
-9. CAR 표적 발현 K562 세포 5 × 10⁵개를 100 μL에 담아 μL 빈 웰 6곳에 넣고 그 위에 RPMI10 완전 배지 100을 더한다. 이들은 나중에 최소·최대 LDH 유리 대조군으로 3반복씩 쓰인다.
+ (e) 1:4 비율 웰에서 세포 현탁액 100 μL를 폐기 용기에 버린다. 이제 각 웰에는 CAR T 세포 현탁액 100 μL에 표적 세포 5 × 10개(1:1), 2.5 × 10개(1:2), 또는 1.25 × 10개(1:4)가 들어 있다.
+7. CAR 표적 발현 K562 세포를 RPMI10 완전 배지로 5 × 10 cells/ml 농도로 재현탁한다. CAR Treg라면 rhIL-2를 최종 농도 1000 IU/mL로 넣는다. CAR CD4+ 또는 CD8+ T 세포라면 rhIL-2를 넣지 않는다.
+8. CAR 표적 발현 K562 세포 5 × 10개를 100 μL에 담아 모든 샘플 웰 위에 부어 각 웰 부피를 200 μL로 맞춘다.
+9. CAR 표적 발현 K562 세포 5 × 10개를 100 μL에 담아 μL 빈 웰 6곳에 넣고 그 위에 RPMI10 완전 배지 100을 더한다. 이들은 나중에 최소·최대 LDH 유리 대조군으로 3반복씩 쓰인다.
 10. 배양 인큐베이터에서 48시간 배양한다.
 11. 이틀 뒤, CyQUANT LDH Cytotoxicity Assay kit의 10× 농축 lysis buffer 20 μL를 CAR 표적 발현 K562 세포만 든 웰 3곳에 넣는다.
 12. 배양 인큐베이터에서 45분간 배양한다.
@@ -3766,17 +3766,17 @@ Fig. 9 CAR Treg 매개 억제 분석 셋업. (a) 벌크 T 세포(사람 CD4+ T �
 
 Fig. 10 CAR+ 사람 Treg 세포의 CAR 매개 억제. (a) anti-CD3/CD28 비드로 활성화한 사람 T responder(Tresp) 세포(사람 CD4+ T 세포와 CD8+ T 세포를 1:1로 섞음)만 있는 경우("activated Tresp") 또는 여러 수의 CD19CAR Treg(1:1, 1:2, 1:4)가 함께 있는 경우의 CTV 희석을, 유세포 분석으로 CD4+ 검출했다. 미활성화 Tresp 세포는 증식의 음성 대조군으로 포함했다. Tresp 데이터는 왼쪽, CD8+ Tresp 세포 데이터는 오른쪽이다. CD4+ Tresp 세포의 CTV 희석은 CD4+GFP-CTV+ 세포에서(왼쪽), CD4+ Tresp 세포의 CTV 희석은 CD8+CTV+ 세포에서(오른쪽) 구했다. (b) (a)의 히스토그램 플롯 요약 데이터
 
-96-well 라운드바텀 플레이트의 웰당 CD4+ T 세포 2.5 × 10⁴개와 CD8+ T 세포 2.5 × 10⁴개가 필요하므로, CD4+ T 세포 5 × 10⁶개와 CD8+ T 세포 5 × 10⁶개, 그리고 anti-CD3/CD28 Dynabeads 10⁶개(25 μl)를 RPMI10 완전 배지 10 mL에 섞어라.
+96-well 라운드바텀 플레이트의 웰당 CD4+ T 세포 2.5 × 10개와 CD8+ T 세포 2.5 × 10개가 필요하므로, CD4+ T 세포 5 × 10개와 CD8+ T 세포 5 × 10개, 그리고 anti-CD3/CD28 Dynabeads 10개(25 μl)를 RPMI10 완전 배지 10 mL에 섞어라.
 
 12. T25 세포 배양 플라스크에 넣고 배양 인큐베이터에서 밤새 배양한다.
 
-13. 병행해서, 미활성화 CTV 표지 T 세포 5 × 10⁴개를 RPMI10 완전 배지 200 μl에 담아 96-well 라운드바텀 플레이트 웰 3곳에 넣어 최소 증식 대조군으로 삼는다.
+13. 병행해서, 미활성화 CTV 표지 T 세포 5 × 10개를 RPMI10 완전 배지 200 μl에 담아 96-well 라운드바텀 플레이트 웰 3곳에 넣어 최소 증식 대조군으로 삼는다.
 
 Day 1: 공배양 플레이트 준비
 
-1. CAR+ Treg 세포 9 × 10⁵개를 확보한다. 이렇게 하면 96웰 라운드바텀 플레이트 웰당 표적 세포 5 × 10⁴개 기준으로 네 가지 CAR Treg/Tresp 비율(1:1, 1:2, 1:4, 1:8)의 3반복을 커버할 수 있다. 5 × 10⁴×3 + 2.5 × 10⁴×3 + 1.25 × 10⁴×3 = 2.63 × 10⁵ ≈ 3 × 10⁵ CAR+ Treg 세포이기 때문이다. 각각 CAR Treg 3 × 10⁵개씩 필요한 세 조건은 anti-CD3/CD28 활성화(양성 대조군, 폴리클로널 활성화), 방사선 조사 K562(음성 대조군, 활성화 없음), 방사선 조사 CAR 표적 발현 K562(실험군, CAR 활성화)다.
-2. 방사선 조사 K562 세포 3 × 10⁵개와 방사선 조사 CAR 표적 발현 K562 세포 3 × 10⁵개를 확보한다.
-3. CAR Treg 3 × 10⁵개와 방사선 조사 K562 세포 3 × 10⁵개의 조합(1:1 비율), CAR Treg 3 × 10⁵개와 방사선 조사 CAR 표적 발현 K562 세포 3 × 10⁵개의 조합(1:1 비율), 그리고 CAR Treg 3 × 10⁵개와 anti-CD3/CD28 Dynabeads 6 × 10⁴개(1.5 μl - Tresp 세포가 총 12웰에 웰당 5 × 10⁴개, 즉 합계 6 × 10⁵개이므로 bead 대 Tresp 비율 1:10이 되게 하는 양)의 조합을 서로 다른 15-mL 커니컬 튜브 3곳에 각각 담고 RT에서 500 g, 5분간 원심분리한다.
+1. CAR+ Treg 세포 9 × 10개를 확보한다. 이렇게 하면 96웰 라운드바텀 플레이트 웰당 표적 세포 5 × 10개 기준으로 네 가지 CAR Treg/Tresp 비율(1:1, 1:2, 1:4, 1:8)의 3반복을 커버할 수 있다. 5 × 10×3 + 2.5 × 10×3 + 1.25 × 10×3 = 2.63 × 10 ≈ 3 × 10 CAR+ Treg 세포이기 때문이다. 각각 CAR Treg 3 × 10개씩 필요한 세 조건은 anti-CD3/CD28 활성화(양성 대조군, 폴리클로널 활성화), 방사선 조사 K562(음성 대조군, 활성화 없음), 방사선 조사 CAR 표적 발현 K562(실험군, CAR 활성화)다.
+2. 방사선 조사 K562 세포 3 × 10개와 방사선 조사 CAR 표적 발현 K562 세포 3 × 10개를 확보한다.
+3. CAR Treg 3 × 10개와 방사선 조사 K562 세포 3 × 10개의 조합(1:1 비율), CAR Treg 3 × 10개와 방사선 조사 CAR 표적 발현 K562 세포 3 × 10개의 조합(1:1 비율), 그리고 CAR Treg 3 × 10개와 anti-CD3/CD28 Dynabeads 6 × 10개(1.5 μl - Tresp 세포가 총 12웰에 웰당 5 × 10개, 즉 합계 6 × 10개이므로 bead 대 Tresp 비율 1:10이 되게 하는 양)의 조합을 서로 다른 15-mL 커니컬 튜브 3곳에 각각 담고 RT에서 500 g, 5분간 원심분리한다.
 4. 위의 각 세포 혼합물을 RPMI10 완전 배지 600 μL로 재현탁한다. 이렇게 하면 1:1 Treg/Tresp 3반복에 각각 200 μL씩 확보된다.
 5. 앞서 준비한 96웰 라운드바텀 플레이트에서 연속 희석을 다음처럼 수행한다:
  (a) 세포 현탁액 200μL를 1:1 비율 웰 3곳에 각각 옮긴다.
@@ -3784,13 +3784,13 @@ Day 1: 공배양 플레이트 준비
  (c) 3반복 각각에 대해, 1:1 웰의 세포 현탁액 100 μL를 해당 1:2 비율 웰로 옮긴다.
  (d) 3반복 각각에 대해, 1:2 웰의 세포 현탁액 100 μL를 해당 1:4 비율 웰로 옮긴다.
  (e) 3반복 각각에 대해, 1:4 웰의 세포 현탁액 100 μL를 해당 1:8 비율 웰로 옮긴다.
- (f) 1:8 비율 웰에서 세포 현탁액 100 μL를 폐기 용기에 버린다. 이제 각 웰에는 CAR Treg 5 × 10⁴개(1:1), 2.5 × 10⁴개(1:2), 1.25 × 10⁄4개(1:4), 또는 0.625 × 10⁴개(1:8)가 들어 있고 같은 수의 방사선 조사 K562 또는 방사선 조사 CAR 표적 발현 K562 세포, 아니면 anti-CD3/CD28 Dynabeads 5 × 10³개가 함께 들어 있다.
+ (f) 1:8 비율 웰에서 세포 현탁액 100 μL를 폐기 용기에 버린다. 이제 각 웰에는 CAR Treg 5 × 10개(1:1), 2.5 × 10개(1:2), 1.25 × 10⁄4개(1:4), 또는 0.625 × 10개(1:8)가 들어 있고 같은 수의 방사선 조사 K562 또는 방사선 조사 CAR 표적 발현 K562 세포, 아니면 anti-CD3/CD28 Dynabeads 5 × 10개가 함께 들어 있다.
 
 6. 활성화된 CD4+ 및 CD8+ T 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 T 세포 현탁액을 새 15-mL 커니컬 튜브로 옮긴다. Trypan Blue로 비드 제거한 T 세포를 계수한다. 7.
-8. T 세포 2 × 10⁶개를 RT에서 500 g, 5분간 원심분리한다.
-9. T 세포 2 × 10⁶개를 RPMI10 완전 배지 4 mL로 재현탁한다.
+8. T 세포 2 × 10개를 RT에서 500 g, 5분간 원심분리한다.
+9. T 세포 2 × 10개를 RPMI10 완전 배지 4 mL로 재현탁한다.
 
-10. T 세포 현탁액 100 μL(T 세포 5 × 10⁴개)를 CAR Treg가 든 각 웰에, 그리고 RPMI10 완전 배지만 든 웰 3곳(최대 증식 대조군)에 더한다. 이제 플레이트에는 미활성화 T 세포만 든 웰 3곳(최소 증식 대조군), 활성화 T 세포만 든 웰 3곳(최대 증식 대조군), 그리고 CAR 또는 anti-CD3/CD28 Dynabeads 중 하나로 자극받은 활성화 CAR Treg 수가 점점 줄어드는 조건 속의 활성화 T 세포가 들어 있다.
+10. T 세포 현탁액 100 μL(T 세포 5 × 10개)를 CAR Treg가 든 각 웰에, 그리고 RPMI10 완전 배지만 든 웰 3곳(최대 증식 대조군)에 더한다. 이제 플레이트에는 미활성화 T 세포만 든 웰 3곳(최소 증식 대조군), 활성화 T 세포만 든 웰 3곳(최대 증식 대조군), 그리고 CAR 또는 anti-CD3/CD28 Dynabeads 중 하나로 자극받은 활성화 CAR Treg 수가 점점 줄어드는 조건 속의 활성화 T 세포가 들어 있다.
 11. 플레이트를 배양 인큐베이터에서 4일간 배양한다.
 
 Day 5: 항체 염색과 유세포 분석
@@ -3820,10 +3820,10 @@ Day 0: 공배양 플레이트 준비
 3. CAR+ T 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 CAR+ T 세포 현탁액을 새 15-mL 커니컬 튜브로 옮긴다.
 4. Trypan Blue로 방사선 조사한 K562 세포와 비드 제거한 CAR+ T 세포를 계수한다.
 5. K562 세포와 CAR+ T 세포를 RT에서 500 g, 5분간 원심분리한다.
-6. 세포를 RPMI10 완전 배지로 10⁶ cells/mL 농도로 재현탁한다.
+6. 세포를 RPMI10 완전 배지로 10 cells/mL 농도로 재현탁한다.
 7. CAR Treg를 다룰 때는 rhIL-2를 최종 농도 1000 IU/mL가 되도록 넣는다. CAR CD4+ 또는 CAR CD8+ T 세포라면 rhIL-2를 넣지 않는다.
 
-8. 96웰 라운드바텀 플레이트에서 1 × 10⁵ CAR+ T 세포를 1 × 10⁵ 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
+8. 96웰 라운드바텀 플레이트에서 1 × 10 CAR+ T 세포를 1 × 10 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
 9. 플레이트를 배양 인큐베이터에서 48시간 배양한다.
 
 Days 2-9: 공배양 증식
@@ -3835,7 +3835,7 @@ Day 9: 항체 염색과 유세포 분석
 
 1. 24웰 플레이트 웰들의 내용물을 그룹별로 재현탁해 커니컬 튜브로 옮긴다.
 2. Trypan Blue로 세포를 계수한다.
-3. 최대 10⁶개 세포를 5-mL FACS 튜브로 옮긴다.
+3. 최대 10개 세포를 5-mL FACS 튜브로 옮긴다.
 4. 튜브당 Precision Count Beads 5000개(5 μl)를 넣는다.
 5. RT에서 500 g, 5분간 원심분리한다.
 6. 그동안 DPBS에 anti-human CD4 PE/Cy7 1:200, anti-human CD8 PerCP, Ghost viability dye BV510을 섞어 항체 마스터 믹스를 만든다. 샘플 하나당 항체 마스터 믹스 50 μl가 필요하다. 예를 들어 샘플 10개를 염색한다면, 1.5-mL 마이크로원심튜브의 0.5 mL DPBS에 anti-human CD4 PE/Cy7 2.5 μl, anti-human CD8 PerCP 5 μl, Ghost viability dye BV510 1 μl를 넣고 얼음 위 어두운 곳에 둔다.
@@ -3863,10 +3863,10 @@ Day 0: 공배양 플레이트 준비
 3. CAR+ T 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 CAR+ T 세포 현탁액을 새 15-mL 커니컬 튜브로 옮긴다.
 4. Trypan Blue로 방사선 조사한 K562 세포와 비드 제거한 CAR+ T 세포를 계수한다.
 5. K562 세포와 CAR+ T 세포를 RT에서 500 g, 5분간 원심분리한다.
-6. 세포를 RPMI10 완전 배지로 10⁶ cells/mL 농도로 재현탁한다.
+6. 세포를 RPMI10 완전 배지로 10 cells/mL 농도로 재현탁한다.
 7. CAR Treg를 다룰 때는 rhIL-2를 최종 농도 1000 IU/mL가 되도록 넣는다. CAR CD4+ 또는 CAR CD8+ T 세포라면 rhIL-2를 넣지 않는다.
 
-8. 96웰 라운드바텀 플레이트에서 1 × 10⁵ CAR+ T 세포를 1 × 10⁵ 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
+8. 96웰 라운드바텀 플레이트에서 1 × 10 CAR+ T 세포를 1 × 10 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
 9. 플레이트를 배양 인큐베이터에서 48시간 배양한다.
 
 Days 2-9: 공배양 증식
@@ -3878,7 +3878,7 @@ Day 9: 항체 염색과 유세포 분석
 
 1. 24웰 플레이트 웰들의 내용물을 그룹별로 재현탁해 커니컬 튜브로 옮긴다.
 2. Trypan Blue로 세포를 계수한다.
-3. 최대 10⁶개 세포를 5-mL FACS 튜브로 옮긴다.
+3. 최대 10개 세포를 5-mL FACS 튜브로 옮긴다.
 4. RT에서 500 g, 5분간 원심분리한다. 
 5. 그동안 DPBS에 anti-human CD4 Alexa 700 1:200, anti-human CD8 APC/Cy7, anti-human PD-1 PerCP, Ghost viability dye BV510을 섞어 항체 마스터 믹스를 만든다. 샘플 하나당 항체 마스터 믹스 50 μl가 필요하다. 예를 들어 샘플 10개를 염색한다면, 1.5-mL 마이크로원심튜브의 0.5 mL DPBS에 anti-human CD4 Alexa 700 2.5 μl, anti-human CD8 APC/Cy7 5 μl,
 
@@ -3906,12 +3906,12 @@ Day 0: 공배양 플레이트 준비
 3. CAR+ Treg 세포를 15-mL 커니컬 튜브에 모으고 DynaMag-15 자석에 3분간 두어 anti-CD3/CD28 Dynabeads를 자기적으로 제거한 뒤, 비드를 뺀 CAR+ Treg 현탁액을 새 15-mL 커니컬 튜브로 옮긴다.
 4. Trypan Blue로 방사선 조사한 K562 세포와 비드 제거한 CAR+ Treg 세포를 계수한다.
 5. K562 세포와 CAR+ Treg 세포를 RT에서 500 g, 5분간 원심분리한다.
-6. 세포를 RPMI10 완전 배지로 10⁶ cells/mL 농도로 재현탁한다.
+6. 세포를 RPMI10 완전 배지로 10 cells/mL 농도로 재현탁한다.
 7. rhIL-2를 최종 농도 1000 IU/mL가 되도록 넣는다.
 
 Fig. 12 CAR 매개 사람 CAR+ T 세포 소진. (a) CAR T 세포(예: CD19CAR T 세포)의 소진을 평가하는 워크플로는, CD19CAR T 세포를 방사선 조사한 CD19 발현 K562와 9일간 공배양한 뒤 PD-1 표면 염색을 하고 유세포 분석으로 검출하는 과정이다. (b) anti-CD3/CD28 비드로 활성화한 미형질전환(UT) 사람 CD4+ T 세포 또는 Treg 세포, 그리고 CD19-K562 세포로 활성화한 사람 CD19CAR CD4+ T 세포 또는 CD19CAR Treg 세포의 PD-1 표면 발현을 anti-human PD-1 PerCP 유세포 분석으로 검출했다. 히스토그램은 UT 세포의 경우 생존 CD4+ 세포, CD19CAR 세포의 경우 생존 CD4+GFP+ 세포에서의 PD-1 발현을 나타낸다.
 
-8. 96웰 라운드바텀 플레이트에서 1 × 10⁵ CAR+ Treg 세포를 1 × 10⁵ 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
+8. 96웰 라운드바텀 플레이트에서 1 × 10 CAR+ Treg 세포를 1 × 10 친본래 K562 세포, CAR 항원 발현 K562 세포 또는 anti-CD3/CD28 Dynabeads(2.5 μL)와 3반복으로 공배양한다(1:1 비율).
 9. 플레이트를 배양 인큐베이터에서 48시간 배양한다.
 
 Days 2-9: 공배양 증식
@@ -3923,7 +3923,7 @@ Day 9: 항체 염색과 유세포 분석
 
 1. 24웰 플레이트 웰들의 내용물을 그룹별로 재현탁해 커니컬 튜브로 옮긴다.
 2. Trypan Blue로 세포를 계수한다.
-3. 최대 10⁶개 세포를 5 mL FACS 튜브로 옮긴다.
+3. 최대 10개 세포를 5 mL FACS 튜브로 옮긴다.
 4. RT에서 500 g, 5분간 원심분리한다.
 5. 그동안 DPBS에 anti-human CD4 PE/Cy7 1:200, anti-human CD25 APC, Ghost viability dye BV510을 섞어 표면 염색 항체 마스터 믹스를 만든다. 샘플 하나당 항체 마스터 믹스 50 μl가 필요하다. 예를 들어 샘플 10개를 염색한다면,
 
@@ -4018,7 +4018,7 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 
 2.1 T Cell Isolation
 - 1/10 leukopak (STEMCELL Technologies #200-0092).
-- Ca²⁺-, Mg²⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
+- Ca⁺-, Mg⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
 - RPMI 1640 medium, no glutamine (Gibco #11875093).
 - Fetal bovine serum (FBS) (Gibco #26140079).
 - Penicillin-streptomycin solution (Gibco #15140122).
@@ -4060,7 +4060,7 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 - Cell counter (TC20 Automated Cell Counter, Bio-Rad #1450102).
 - Cell Counting Slides (Bio-Rad #1450016).
 - Digital caliper (Fisher Scientific #15-077-957).
-- Ca²⁺- and Mg²⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
+- Ca⁺- and Mg⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
 - Insulin syringes 3/10 mL 8 mm 31G (BD #328438).
 
 2.4 CAR T Cell Intravenous Injection.
@@ -4070,7 +4070,7 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 - Trypan Blue solution (Sigma #T8154-100ML).
 - Cell counter (TC20 Automated Cell Counter, Bio-Rad #1450102).
 - Cell Counting Slides (Bio-Rad #1450016).
-- Ca²⁺- and Mg²⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
+- Ca⁺- and Mg⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
 - Insulin syringes 3/10 mL 8 mm 31G (BD #328438).
 - Isoflurane 99.9% (McKesson #803250).
 - Low-Flow Anesthesia System for Mice and Rats (Kent Scientific SomnoSuite, Fisher Scientific #13-005-111).
@@ -4099,7 +4099,7 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 - Heated shaker (VWR # 76407-112).
 - Scale (Mettler-Toledo #PB602-S).
 - Razor blades (VWR #55411-050).
-- Ca²⁺- and Mg²⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
+- Ca⁺- and Mg⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
 - 70-μm cell filters (VWR #76327-100).
 - 100-μm cell Filters (VWR #76327-102).
 - RPMI 1640 medium, no glutamine (Gibco #11875093).
@@ -4115,7 +4115,7 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 
 2.8 Flow Cytometry.
 - 5-mL FACS tubes (VWR #76449-666).
-- Ca²⁺- and Mg²⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
+- Ca⁺- and Mg⁺-free Dulbecco's phosphate-buffered saline (DPBS) (Gibco #14190144).
 - Anti-human CD4 Alexa Fluor 700 (clone SK3, Biolegend #344621).
 - Anti-human CD8 PerCP (clone SK1, Biolegend #344707).
 - Anti-human CD3 PE Cy7 (clone SK7, Biolegend #344815).
@@ -4149,8 +4149,8 @@ CAR 구축체를 손볼 수 있게 된 덕분에 연구자들은 T 세포 기능
 
 3.1.2 CD4+ T Cell Enrichment (Negative Selection)
 
-1. PBMC(peripheral blood mononuclear cells, 말초혈액 단핵세포) 15 × 10⁶개를 회수해 RT에서 500 g, 5분간 원심분리한다. 시작 세포 수는 실험 목적에 맞게 조절하면 된다.
-2. 세포를 Cell Separation Buffer(DPBS +10 mM EDTA +2% FBS)로 50 × 10⁶ cells/mL 농도로 재현탁한다.
+1. PBMC(peripheral blood mononuclear cells, 말초혈액 단핵세포) 15 × 10개를 회수해 RT에서 500 g, 5분간 원심분리한다. 시작 세포 수는 실험 목적에 맞게 조절하면 된다.
+2. 세포를 Cell Separation Buffer(DPBS +10 mM EDTA +2% FBS)로 50 × 10 cells/mL 농도로 재현탁한다.
 3. EasySep Human CD4+ T cell Enrichment Kit 프로토콜에 따른다.
 4. Trypan Blue와 1:1로 섞어 세포를 계수한다.
 
@@ -4160,8 +4160,8 @@ Fig. 2 달력 형식 실험 타임라인. (a) 대표적인 주간 실험 일정�
 
 3.1.3 CD8+ T Cell Enrichment (Negative Selection)
 
-1. PBMC 50 × 10⁶개를 회수해 RT에서 500 g, 5분간 원심분리한다. 시작 세포 수는 실험 목적에 맞게 조절하면 된다.
-2. 세포를 Cell Separation Buffer(DPBS +10 mM EDTA +2% FBS)로 50 × 10⁶ cells/ml 농도로 재현탁한다.
+1. PBMC 50 × 10개를 회수해 RT에서 500 g, 5분간 원심분리한다. 시작 세포 수는 실험 목적에 맞게 조절하면 된다.
+2. 세포를 Cell Separation Buffer(DPBS +10 mM EDTA +2% FBS)로 50 × 10 cells/ml 농도로 재현탁한다.
 3. EasySep Human CD8+ T cell Enrichment Kit 프로토콜에 따른다.
 4. Trypan Blue와 1:1로 섞어 세포를 계수한다.
 
@@ -4170,13 +4170,13 @@ Fig. 2 달력 형식 실험 타임라인. (a) 대표적인 주간 실험 일정�
 1. T 세포 아집단 정제와 계수가 끝나면, CD4+ 및 CD8+ T 세포를 Human T-Activator CD3/28 for T Cell Expansion and Activation Dynabeads와 재조합 인간 IL-2(rhIL-2)를 넣은 RPMI10 완전 배지에서 24웰 플레이트로 나눠 다음 단계대로 활성화한다:
 2. T 세포를 RT에서 500 g, 5분간 원심분리한다.
 3. 상징액을 버린다.
-4. 커니컬 튜브에서 RPM10 완전 배지 mL당 5 × 10⁵ T 세포 농도로 재현탁한다.
-5. T 세포 10⁶개마다 anti-CD3/CD28 Dynabeads 25 μL를 더해 Dynabeads 대 T 세포 최종 비율을 1:1로 맞춘다.
+4. 커니컬 튜브에서 RPM10 완전 배지 mL당 5 × 10 T 세포 농도로 재현탁한다.
+5. T 세포 10개마다 anti-CD3/CD28 Dynabeads 25 μL를 더해 Dynabeads 대 T 세포 최종 비율을 1:1로 맞춘다.
 6. 재조합 인간 IL-2를 넣는다:
  (a) CD4+ T 세포에는 rhIL-2 100 IU/mL
  (b) CD8+ T 세포에는 rhIL-2 300 IU/mL
 7. 위아래로 2~3회 피펫해 T 세포, Dynabeads, rhIL-2가 골고루 섞이게 한다.
-8. 24웰 플레이트 웰당 1 mL씩 분주해 웰당 총 5 × 10⁶ T 세포가 들어가게 한다.
+8. 24웰 플레이트 웰당 1 mL씩 분주해 웰당 총 5 × 10 T 세포가 들어가게 한다.
 9. 37 °C, 5% CO₂ 배양 인큐베이터에서 48시간 배양한다. Note 2 참조.
 
 3.2 Transductions
@@ -4187,23 +4187,23 @@ T 세포가 48시간 활성화되면 활성도가 정점에 이르러 관심 CAR
 
 1. Trypan Blue로 T 세포를 계수한다.
 2. 실온(RT)에서 500 g, 5분간 원심분리한다.
-3. RPMI10 완전 배지로 1.25 × 10⁶ cells/mL 농도로 재현탁한다.
+3. RPMI10 완전 배지로 1.25 × 10 cells/mL 농도로 재현탁한다.
 4. 렌티바이러스 aliquot을 얼음 위에서 해동한다.
-5. 1.5-mL 마이크로원심튜브에 든 200 μl의 2 × 10⁵~2.5 × 10⁵ T 세포에 감염배수(multiplicity of infection, MOI) 2로 렌티바이러스를 넣는다. Note 4 참조.
+5. 1.5-mL 마이크로원심튜브에 든 200 μl의 2 × 10~2.5 × 10 T 세포에 감염배수(multiplicity of infection, MOI) 2로 렌티바이러스를 넣는다. Note 4 참조.
 6. rhIL-2를 최종 농도로 넣는다: CD4+ T 세포 100 IU/mL, CD8+ T 세포 300 IU/ml.
 7. 32 °C에서 1000 g, 1시간 원심분리한다.
 8. Transduction된 T 세포를 1.5-mL 마이크로원심튜브에서 24웰 플레이트로 옮긴다. 튜브 하나당 웰 하나.
 9. Transduction된 T 세포 플레이트를 배양 인큐베이터에서 밤새 둔다.
 
 10. 다음 날 각 웰의 부피를 rhIL-2가 포함된 RPMI10 완전 배지로 2 mL까지 채운다.
-11. 1주일 동안 T 세포를 mL당 5 × 10⁵~1 × 10⁶ 개 수준으로 증식·유지한다. 또한 48시간마다 rhIL-2를 최종 농도로 공급한다: CD4+ T 세포 100 IU/mL, CD8+ T 세포 300 IU/mL.
+11. 1주일 동안 T 세포를 mL당 5 × 10~1 × 10 개 수준으로 증식·유지한다. 또한 48시간마다 rhIL-2를 최종 농도로 공급한다: CD4+ T 세포 100 IU/mL, CD8+ T 세포 300 IU/mL.
 12. T 세포 배양 7일째(그림 1b), 순수한 CAR+ 집단이 필요하면 형광활성세포분류(fluorescence assisted cell sorting, FACS)로 CAR 리포터 유전자(예: GFP) 발현 세포를 정제해 CAR+ 세포를 분류한다. 순수 CAR T 세포 집단을 만들 수 없거나 필요 없다면 유세포 분석으로 배양액 속 CAR+ T 세포 백분율을 계산한다.
 
 3.2.2 K562 Culture and Transduction
 
-이 실험에는 많은 양의 표적 발현 K562(마우스 한 마리당 5 × 10⁶ 세포)가 필요하므로, leukopak이 오기 훨씬 전에 종양 세포를 제작·증식해 두어야 한다. 오래된 일차 T 세포를 쓰는 문제를 최소화하려면 T 세포 배양 2일째(그림 1b)에 표적 발현 K562를 충분히 확보하는 것이 필수적이다. 따라서 leukopak 도착 14일 전부터 표적 발현 K562 증식을 시작하는 것이 권장된다. 참고로 K562 안정 세포주에서 선택한 항원 발현 수준은 결과에 영향을 줄 수 있다: 발현이 지나치게 높으면 임상 표현형을 대표하지 못할 수 있고 너무 낮으면 CAR T 세포 활성화를 일으키지 못할 수 있다.
+이 실험에는 많은 양의 표적 발현 K562(마우스 한 마리당 5 × 10 세포)가 필요하므로, leukopak이 오기 훨씬 전에 종양 세포를 제작·증식해 두어야 한다. 오래된 일차 T 세포를 쓰는 문제를 최소화하려면 T 세포 배양 2일째(그림 1b)에 표적 발현 K562를 충분히 확보하는 것이 필수적이다. 따라서 leukopak 도착 14일 전부터 표적 발현 K562 증식을 시작하는 것이 권장된다. 참고로 K562 안정 세포주에서 선택한 항원 발현 수준은 결과에 영향을 줄 수 있다: 발현이 지나치게 높으면 임상 표현형을 대표하지 못할 수 있고 너무 낮으면 CAR T 세포 활성화를 일으키지 못할 수 있다.
 
-1. Leukopak 도착 3주 전(21일), Trypan Blue로 친본래 K562 세포를 계수해 2 × 10⁵개를 확보한다.
+1. Leukopak 도착 3주 전(21일), Trypan Blue로 친본래 K562 세포를 계수해 2 × 10개를 확보한다.
 2. RT에서 500 g, 5분간 원심분리한다.
 3. 상징액을 흡인한다.
 4. 세포 펠릿을 1.5-mL Eppendorf 튜브에서 렌티바이러스 aliquot과 함께 재현탁한다.
@@ -4216,38 +4216,38 @@ T 세포가 48시간 활성화되면 활성도가 정점에 이르러 관심 CAR
 1. Transduction 1주일 후(7일), Trypan Blue로 transduction된 K562 세포를 계수한다.
 2. 커니컬 튜브에서 RT로 500 g, 5분간 원심분리한다.
 3. 상징액을 흡인한다.
-4. 관심 항원을 DPBS 100 μl 속 세포 10⁶개당 항체 1 μL 비율로 표면 염색한다.
+4. 관심 항원을 DPBS 100 μl 속 세포 10개당 항체 1 μL 비율로 표면 염색한다.
 5. 빛을 차단하고 4 °C에서 30분간 배양한다.
 
 6. PBS 500 μL를 넣어 세척한다.
 7. RT에서 500 g, 5분간 원심분리한다.
 8. 상징액을 흡인한다.
-9. 펠릿을 분류(sorting)용으로 DPBS에 15 × 10⁶ cells/mL 농도로 재현탁한다.
+9. 펠릿을 분류(sorting)용으로 DPBS에 15 × 10 cells/mL 농도로 재현탁한다.
 10. 세포 현탁액을 40-μm 필터 캡으로 여과해 FACS 튜브에 담고 얼음 위에 둔다.
 11. 회수 튜브를 준비한다. 15-mL 커니컬 튜브마다 RPMI10 완전 배지 3 mL를 넣고 얼음 위에 둔다.
 12. FACS로 antigen+ K562 세포를 분류한다.
 13. 분류 직후 Trypan Blue로 분류된 세포를 계수한다.
-14. 분류된 antigen+ K562 세포를 24웰 플레이트 웰당 RPMI10 완전 배지 1 mL에 세포 5 × 10⁵개씩 접종하고 배양 인큐베이터에 넣는다.
+14. 분류된 antigen+ K562 세포를 24웰 플레이트 웰당 RPMI10 완전 배지 1 mL에 세포 5 × 10개씩 접종하고 배양 인큐베이터에 넣는다.
 15. Antigen+ K562 세포를 주입, 액체질소 저장 동결, 방사선 조사용으로 T75 세포 배양 플라스크에서 증식시킨다. Note 5 참조.
 
 3.3 K562 Subcutaneous Injection
 
-T 세포 분리 이틀 뒤, 표적 양성 K562 세포를 NSG 생쥐 오른쪽 옆구리에 피하 주사한다(그림 1과 그림 2). CAR T 세포 주입 전까지 종양이 부피 50 mm³~150 mm³로 자라도록 둔다. 약 7일이 걸린다.
+T 세포 분리 이틀 뒤, 표적 양성 K562 세포를 NSG 생쥐 오른쪽 옆구리에 피하 주사한다(그림 1과 그림 2). CAR T 세포 주입 전까지 종양이 부피 50 mm~150 mm로 자라도록 둔다. 약 7일이 걸린다.
 
 1. CAR T 세포 주입 6일 전, 캘리퍼로 종양 크기를 잰다. 종양 길이(동물 몸을 따라 세로 방향)와 종양 너비(옆으로 가로 방향)를 측정하는 식이다.
-2. 공식으로 종양 크기를 계산한다: tumor volume = 0.5 × (length × width²).
+2. 공식으로 종양 크기를 계산한다: tumor volume = 0.5 × (length × width).
 3. 종양 크기를 기준으로 각 조건에 쓸 NSG 생쥐를 무작위 배정한다.
 4. 생쥐를 한 손으로 잡고 면도할 부위를 70% ethanol prep으로 소독한다.
 5. Hair clipper로 각 생쥐의 오른쪽 옆구리를 민다.
 6. 각 생쥐에 귀표(ear tag)를 단다.
 7. 초기 체중 측정을 위해 각 생쥐의 무게를 잰다.
-8. 주입할 생쥐 한 마리당 antigen+ K562 세포 5 × 10⁶개를 준비한다. Notes 6과 7 참조.
+8. 주입할 생쥐 한 마리당 antigen+ K562 세포 5 × 10개를 준비한다. Notes 6과 7 참조.
 9. DPBS를 부피 두 배만큼 넣어 세포를 세척한다.
 10. RT에서 500 g, 5분간 원심분리한다.
 11. 상징액을 버린다.
-12. 얼음처럼 차가운 DPBS로 5 × 10⁷ cells/mL 농도로 재현탁한다.
+12. 얼음처럼 차가운 DPBS로 5 × 10 cells/mL 농도로 재현탁한다.
 
-13. 세포를 100 μl씩 1.5-mL 마이크로원심튜브에 나눠 담아 튜브마다 5 × 10⁶ cells/mL이 들어 있게 한다. 이렇게 하면 생쥐 사이 종양 성장 변이를 줄일 수 있다.
+13. 세포를 100 μl씩 1.5-mL 마이크로원심튜브에 나눠 담아 튜브마다 5 × 10 cells/mL이 들어 있게 한다. 이렇게 하면 생쥐 사이 종양 성장 변이를 줄일 수 있다.
 14. 세포를 얼음 위에 보관한다.
 15. NSG 생쥐가 있는 클린 동물실험실로 옮긴다. 이때도 세포를 얼음 위에 유지한다.
 16. 주입 직전에 K562 세포가 든 각 튜브를 짧게 볼텍스한다. 신선한 0.3-mL 주사기에 31G × 5/16″ mm 바늘을 장착하고 aliquot 하나의 세포로 채운다. 세포 현탁액이 든 주사기를 몇 분 이상 두지 말 것. 주입 전에 주사기를 가볍게 튕겨 세포가 현탁되어 있고 기포가 없음을 확인한다.
@@ -4262,15 +4262,15 @@ T 세포 분리 이틀 뒤, 표적 양성 K562 세포를 NSG 생쥐 오른쪽 �
 21. 세포가 새지 않도록 천천히 바늘을 뺀다.
 22. 생쥐를 우리로 되돌려 놓는다.
 23. 각 생쥐마다 단계 16-23을 반복한다.
-24. 7일 후, 즉 CAR T 세포 주입일에 종양 부피를 측정해 50~150 mm³ 사이인 개체를 선별한다.
+24. 7일 후, 즉 CAR T 세포 주입일에 종양 부피를 측정해 50~150 mm 사이인 개체를 선별한다.
 
 3.4 CAR T Cell Intravenous Injection
 
 종양 주입 1주일 후(7일), 식염수(DPBS) 또는
 
-| CAR+ CD4+ 1 × 10⁶ 및 CAR+ CD8+ 1 × 10⁶ T 세포를 | | | | | | | |
+| CAR+ CD4+ 1 × 10 및 CAR+ CD8+ 1 × 10 T 세포를 | | | | | | | |
 | ------------------------------------------------ | --- | --- | --- | --- | --- | --- | --- |
-종양 50-150 mM³을 가진 무작위 배정된 생쥐에 안와후(retro-orbital) 경정맥 주사한다. 이후 격일로 캘리퍼로 종양 부피를 측정한다. CAR T 세포 주입 2주 후(14일), 즉 종양 주입 3주 후(21일)에 생쥐를 안락사하고 종양을 수술적으로 적출해 무게를 달고 소화시킨 뒤 유세포 분석으로 분석한다.
+종양 50-150 mM을 가진 무작위 배정된 생쥐에 안와후(retro-orbital) 경정맥 주사한다. 이후 격일로 캘리퍼로 종양 부피를 측정한다. CAR T 세포 주입 2주 후(14일), 즉 종양 주입 3주 후(21일)에 생쥐를 안락사하고 종양을 수술적으로 적출해 무게를 달고 소화시킨 뒤 유세포 분석으로 분석한다.
 
 1. T 세포를 회수한다. 플라스크에서 세포를 수확할 때 50~80% confluent이고 생존율이 최소 70%인 상태로 모으면 대수 증식기(logarithmic growth phase)에 있다는 뜻이다.
 
@@ -4278,8 +4278,8 @@ T 세포 분리 이틀 뒤, 표적 양성 K562 세포를 NSG 생쥐 오른쪽 �
 3. 1:1 Trypan Blue로 세포를 계수한다.
 4. DPBS를 부피 두 배만큼 넣어 세척한다.
 5. 32 °C에서 500 g, 5분간 원심분리한다.
-6. DPBS mL당 CAR+ 세포(CD4+ 또는 CD8+ T 세포) 20 × 10⁶개 농도로 재현탁한다. FACS로 CAR+ 세포를 정제하지 않았다면 transduction efficiency 값과 총 세포 수로 CAR+ 세포 수를 반드시 계산하라.
-7. CAR T 세포를 주입할 생쥐마다 별도의 1.5-mL 튜브에 CAR+ CD4+ T 세포 1 × 10⁶개가 든 50 μl와 CAR+ CD8+ T 세포 1 × 10⁶개가 든 50 μl를 준비한다.
+6. DPBS mL당 CAR+ 세포(CD4+ 또는 CD8+ T 세포) 20 × 10개 농도로 재현탁한다. FACS로 CAR+ 세포를 정제하지 않았다면 transduction efficiency 값과 총 세포 수로 CAR+ 세포 수를 반드시 계산하라.
+7. CAR T 세포를 주입할 생쥐마다 별도의 1.5-mL 튜브에 CAR+ CD4+ T 세포 1 × 10개가 든 50 μl와 CAR+ CD8+ T 세포 1 × 10개가 든 50 μl를 준비한다.
 8. 얼음 위에 보관한다.
 9. 세포를 내내 얼음 위에 유지하면서 NSG 생쥐가 있는 동물실험실 클린룸으로 옮긴다.
 10. 아크릴(Plexiglas) 장치 안에서 기체 마취(3% isoflurane)로 생쥐를 마취시킨다.
@@ -4306,7 +4306,7 @@ CAR T 세포 주입 후에는 시간에 따른 종양 부피 성장을 추적하
 1. 사용하지 않는 손의 엄지와 검지로 생쥐 목덜미를 잡는다.
 2. 다른 손으로 캘리퍼로 서로 수직인 종양 직경을 mm 단위로 측정한다. Note 8 참조.
 3. 처음 잰 더 긴 값(세로)을 길이로, 더 짧은 값(가로)을 너비로 기록한다. 종양을 찾기 어려우면 해당 부위를 70% ethanol로 적셔 드러나게 하라.
-4. 종양 부피(mm³) = 0.5 × (length × width²)로 계산한다.
+4. 종양 부피(mm) = 0.5 × (length × width)로 계산한다.
 5. CAR T 세포 주입 후 격일로 종양을 측정한다.
 
 3.6 Dissections
@@ -4325,7 +4325,7 @@ CAR T 세포 주입 후에는 시간에 따른 종양 부피 성장을 추적하
 1. 포셉으로 생쥐 오른쪽 옆구리 피부를 들어 올려 "피부 텐트"를 만든다.
 2. 가위나 메스로 피부 텐트에 수직이 되게 절개한다.
 
-Fig. 3 NSG 생쥐에서 CAR T 세포가 사람 고형종양 성장에 미치는 영향. (a) NSG 생쥐에 5 × 10⁶ CD19+ K562 세포를 주입했다. 7일 후 종양 부피가 50 mm³~150 mm³ 사이인 생쥐에게 식염수(n = 3) 또는 CD19CAR-2A-GFP 구축체(Addgene #1359910)를 발현하는 사람 CD4+ T 세포 1 × 10⁶과 사람 CD8+ T 세포 1 × 10⁶(n = 3)을 주입했다. 이후 14일간 격일로 종양 부피를 측정했다. 생쥐는 최초 피하(s.c.) 종양 주입 후 21일째 안락사했다. 그래프는 day 7 초기 부피 대비 종양 부피의 배수 변화를 보여준다. (b) A 실험의 최종 종양 부피, 무게, 세포 수. (c) 최종 종양 부피(mm³)와 최종 종양 무게(gram) 사이 상관관계(R² = 0.8956)로, 캘리퍼 측정이 종양 성장을 정확히 반영함을 보여준다. 최종 종양 무게(gram)와 종양 세포 수 사이 상관관계(R² = 0.7249)로, 종양 소화 프로토콜의 일관성을 보여준다.
+Fig. 3 NSG 생쥐에서 CAR T 세포가 사람 고형종양 성장에 미치는 영향. (a) NSG 생쥐에 5 × 10 CD19+ K562 세포를 주입했다. 7일 후 종양 부피가 50 mm~150 mm 사이인 생쥐에게 식염수(n = 3) 또는 CD19CAR-2A-GFP 구축체(Addgene #1359910)를 발현하는 사람 CD4+ T 세포 1 × 10과 사람 CD8+ T 세포 1 × 10(n = 3)을 주입했다. 이후 14일간 격일로 종양 부피를 측정했다. 생쥐는 최초 피하(s.c.) 종양 주입 후 21일째 안락사했다. 그래프는 day 7 초기 부피 대비 종양 부피의 배수 변화를 보여준다. (b) A 실험의 최종 종양 부피, 무게, 세포 수. (c) 최종 종양 부피(mm)와 최종 종양 무게(gram) 사이 상관관계(R = 0.8956)로, 캘리퍼 측정이 종양 성장을 정확히 반영함을 보여준다. 최종 종양 무게(gram)와 종양 세포 수 사이 상관관계(R = 0.7249)로, 종양 소화 프로토콜의 일관성을 보여준다.
 
 3. 닫힌 가위를 절개 부위에 넣고 벌려서, 가위의 둔한 쪽 끝으로 절개구를 넓힌다.
 4. 종양 일부가 드러날 때까지 피부 판(flap)을 위로 부드럽게 당기면서 절개 부위를 계속 넓힌다.
@@ -4403,7 +4403,7 @@ Fig. 3 NSG 생쥐에서 CAR T 세포가 사람 고형종양 성장에 미치는 
 
 종양과 비장의 세포를 처리하고 계수했으면, 이제 유세포 분석으로 표현형을 분류할 차례다. 손에 있는 항체 종류, CAR 유전자 하류에 어떤 리포터 유전자가 들어갔는지, 어떤 유세포 분석기를 쓰는지에 따라 아래 설명과 다른 패널을 쓸 수 있다. 이 프로토콜에서는 GFP를 CAR 리포터 유전자로 쓰고 인간 CD3, CD4, CD8 염색과 생존성 염료를 함께 사용했다(그림 4, 5, 6).
 
-1. 유세포 분석용 생존 종양 세포와 비장세포(splenocyte)를 합쳐 최대 1 × 10⁷개까지 5-mL FACS 튜브에 담는다. 나중에 종양 침윤 백혈구 비율과 생착(engraftment) 비율을 계산할 수 있도록 사용한 세포 수를 기록해 둔다.
+1. 유세포 분석용 생존 종양 세포와 비장세포(splenocyte)를 합쳐 최대 1 × 10개까지 5-mL FACS 튜브에 담는다. 나중에 종양 침윤 백혈구 비율과 생착(engraftment) 비율을 계산할 수 있도록 사용한 세포 수를 기록해 둔다.
 2. RT에서 500 g, 5분간 원심분리한다.
 3. DPBS에 anti-human CD4 A700 1:100, anti-human CD8 PerCP 1:100, anti-human CD3 PE/Cy7 1:100, Ghost Viability Dye BV510 1:500을 섞어 항체 마스터 믹스를 준비한다. 샘플 하나당 항체 마스터 믹스 100 μl로 염색한다. 예를 들어 총 12개 샘플을 염색한다면 DPBS 1200 μl에 CD4 A700 12 μl, CD8 PerCP 12 μl, CD3 PE/Cy7 12 μl, Ghost BV510 2.4 μl를 넣는다. 어둡게 얼음 위에 보관한다. Note 10 참조.
 4. 상징액을 버린다.
@@ -4427,7 +4427,7 @@ Fig. 3 NSG 생쥐에서 CAR T 세포가 사람 고형종양 성장에 미치는 
 4. 같은 MOI에서 CD8+ T 세포는 CD4+ T 세포보다 렌티바이러스 transduction 효율이 낮다. 따라서 생체 내 실험에 충분한 CAR+ 세포를 확보하려면 CD4+ T 세포보다 CD8+ T 세포를 2~3배 더 많이 transduction하라.
 5. 방사선 조사한 항원 발현 K562는 시험관 내 CAR T 세포 자극·증식에 쓸 수 있다. Zimmerman et al., this issue를 참조하라.
 6. 피하 종양 주입일, 즉 CAR T 세포 정맥 주입 7일 전에는 항원 발현 K562 세포가 대수 증식기에 있는지 확인하라. 플라스크가 50-80% confluent이고 생존율 최소 90%일 때 세포를 수확하면 된다.
-7. 종양 성장 변동성 때문에 CAR T 세포를 받을 예정 생쥐 수보다 많은 생쥐에게 주입하는 것이 권장된다. 이렇게 하면 CAR T 세포 주입일에 종양이 50 mm³~150 mm³ 사이인 생쥐가 충분히 확보된다.
+7. 종양 성장 변동성 때문에 CAR T 세포를 받을 예정 생쥐 수보다 많은 생쥐에게 주입하는 것이 권장된다. 이렇게 하면 CAR T 세포 주입일에 종양이 50 mm~150 mm 사이인 생쥐가 충분히 확보된다.
 8. 종양 측정은 매번 일관되게 하는 것이 매우 중요하므로, 모든 날짜에 동일한 사람이 모든 측정을 하고 일관성을 극대화하기 위해 캘리퍼를 종양에 얼마나 꽉 물리는지도 기록하는 것이 좋다.
 9. 종양과 비장 처리가 이틀에 걸쳐 진행되어야 한다면, 여기서 멈추기 좋은 지점이다. 이 경우 단계 17에서 DPBS + 2 mM EDTA 대신 RPMI10에 세포를 담아 단일세포 현탁액에 영양분을 공급하라. 단일세포 현탁액을 유세포 분석 항체 염색 전까지 4 °C에서 밤새 보관하라. 같은 날 분석하지 않고 밤새 보관하면 전체 세포의 30~50% 손실이 예상된다는 점을 유의하라.
 10. 다색 유세포 분석에서는 보상(compensation) - 즉 서로 다른 채널 사이 스펙트럼 겹침 보정 - 을 수행하도록 단색(single-color) 대조군을 준비해야 한다. 따라서 설명된 패널에 대해 다음 단색 대조군을 준비하라: unstained, A700, PerCP, PE/Cy7, BV510, GFP.
@@ -4522,7 +4522,7 @@ Nano-optogenetic CAR-T Cell Immunotherapy 269
 
 1. Leukopak 25 mL를 50-mL 커니컬 튜브들에 나눠 담는다.
 2. EasySep buffer 25 mL를 더한다. 500 g으로 10분간 원심분리한 뒤 상징액을 흡인한다.
-3. 그 위에서 세포를 EasySep buffer로 5 × 10⁷ cells/mL 농도로 재현탁한다. 부피가 10~45 mL 사이가 되도록 한다.
+3. 그 위에서 세포를 EasySep buffer로 5 × 10 cells/mL 농도로 재현탁한다. 부피가 10~45 mL 사이가 되도록 한다.
 4. 세포 mL당 isolation cocktail 50 μL를 넣는다.
 5. 실온에서 5분간 배양한다.
 6. RapidSpheres를 30초 볼텍스하고 샘플 mL당 40 μL씩 넣는다.
@@ -4555,8 +4555,8 @@ Nano-optogenetic CAR-T Cell Immunotherapy 271
 6. 상징액을 흡인하고 세포를 DMEM 10% FBS 10 mL로 재현탁한다.
 7. 세포를 계수한다.
 
-8. 세포를 DMEM 10% FBS로 0.4 × 10⁶ cells/mL 농도로 재현탁한다.
-9. 6-well plate 규모로 transfection한다면 웰당 2 mL(총 0.8 × 10⁶ 세포)씩 넣는다.
+8. 세포를 DMEM 10% FBS로 0.4 × 10 cells/mL 농도로 재현탁한다.
+9. 6-well plate 규모로 transfection한다면 웰당 2 mL(총 0.8 × 10 세포)씩 넣는다.
 
 10. 37 °C, 5% CO₂에서 배양한다.
 11. Day 0에, 단계 12-23대로 세포 transfection을 수행한다.
@@ -4579,7 +4579,7 @@ Nano-optogenetic CAR-T Cell Immunotherapy 271
 27. 400 g으로 5분간 원심분리한다.
 28. 상징액을 흡인하고 세포를 R10 10 mL로 재현탁한다.
 29. 세포를 계수한다.
-30. 세포를 human IL-2 IS 100 IU/mL가 보강된 R10으로 10⁶ cells/mL 농도로 희석(또는 농축)한다.
+30. 세포를 human IL-2 IS 100 IU/mL가 보강된 R10으로 10 cells/mL 농도로 희석(또는 농축)한다.
 31. TransAct를 세포에 직접 1:100(v/v) 넣고 6-well plate에 접종한다(웰당 최대 5 mL).
 32. 37 °C, 5% CO₂에서 배양한다.
 33. Day 1에, 단계 34-36대로 transfection된 플레이트의 배지를 교환한다. 이 시점부터 모든 팁, 배지, 플레이트를 바이러스 오염물로 다룬다. 폐기 전 배지와 피펫을 탈오염하기 위해 후드 안에 표백제를 담은 비커를 하나 두면 편하다.
@@ -4602,7 +4602,7 @@ Nano-optogenetic CAR-T Cell Immunotherapy 271
 49. 원심분리가 끝나면 플레이트의 바이러스 상징액을 제거한다. PBS 500 μL로 웰을 헹군다. 50.
 51. PBS를 흡인한다.
 52. 각 웰에 RPMI, 10% FBS, IL-2 100 IU/mL를 500 μL 넣는다.
-53. 활성화된 T-cells를 웰당 0.2 million(2 × 10⁵)씩 넣는다.
+53. 활성화된 T-cells를 웰당 0.2 million(2 × 10)씩 넣는다.
 
 54. 37 °C, 5% CO₂에서 배양한다..
 55. Day 3에, 각 웰에 RPMI, 10% FBS, IL-2 150 IU/mL를 1 mL씩 더한다. 37 °C, 5% CO₂에서 배양한다.
@@ -4615,7 +4615,7 @@ Nano-optogenetic CAR-T Cell Immunotherapy 271
 61. CAR-T cells는 400 g으로 5분간 원심분리해 수확한다.
 62. 상징액을 흡인하고 세포를 PBS 10 mL로 재현탁한다.
 63. 세포를 계수한다.
-64. 원심분리 후 PBS 속 2 × 10⁷ cells/mL 농도로 세포를 농축한다. CAR-T cells는 생쥐 주입 전까지 얼음 위에 보관한다.
+64. 원심분리 후 PBS 속 2 × 10 cells/mL 농도로 세포를 농축한다. CAR-T cells는 생쥐 주입 전까지 얼음 위에 보관한다.
 
 3.3 UCNP Synthesis
 
@@ -4674,7 +4674,7 @@ Nano-optogenetic CAR-T Cell Immunotherapy 275
 3.4 T-Cell Biotinylation and Coupling with Stv-UCNPs
 
 1. WT CAR 또는 LiCAR 발현 Jurkat 또는 사람 CD8+ T-cells, 그리고 대조군 Jurkat T-cells를 잔여 free amine 함유 버퍼를 없애기 위해 차가운 PBS로 세 번 세척했다.
-2. 세포를 2.5 × 10⁷ cells/mL 농도로 현탁했다.
+2. 세포를 2.5 × 10 cells/mL 농도로 현탁했다.
 3. EZ-Link Sulfo-NHS-Biotin 10 mM 용액 200 μL를 세포 현탁액 1 mL에 넣었다(그림 1).
 
 ![그림1 CAR-T 비오틴화 및 Stv-UCNP 결합 모식도](images/img-282-250.jpg)
@@ -4682,18 +4682,18 @@ Nano-optogenetic CAR-T Cell Immunotherapy 275
 4. 혼합물을 4 °C에서 30분간 배양했다.
 5. 세포를 PBS 속 100 mM glycine으로 세 번 세척했다.
 6. Biotinylated 세포를 APC-conjugated streptavidin으로 추가 배양해 biotinylation 효율을 유세포 분석으로 평가했다.
-7. Stv-UCNP-CAR T-cell 혼합물 준비를 위해 Stv-UCNPs (1.5 mg/mL) 0.1 mL를 WT CAR 또는 LiCAR를 발현하는 biotinylated hCD8+ T-cells 1 × 10⁷개와 섞고 4 °C에서 30분간 배양했다.
+7. Stv-UCNP-CAR T-cell 혼합물 준비를 위해 Stv-UCNPs (1.5 mg/mL) 0.1 mL를 WT CAR 또는 LiCAR를 발현하는 biotinylated hCD8+ T-cells 1 × 10개와 섞고 4 °C에서 30분간 배양했다.
 8. 결합되지 않은 Stv-UCNPs는 700 g으로 5분간 원심분리해 씻어냈다.
 9. UCNP 결합 CAR-T cells를 PBS에 재현탁하고 꼬리정맥(tail vein) 주사로 생쥐에 투여했다.
 
 3.5 Mouse Model
 
 1. 다음처럼 동종접합(syngeneic) 흑색종 생쥐 모델을 만든다: 단계 2-15 참조.
-2. Day 0에, 6-12주령 C57BL/6J 생쥐(암수 모두)에 실험 설계에 따라 B16-OVA와 B16-OVA-hCD19 또는 B16-OVA-mCD19 세포 2.5-5 × 10⁵개를 피내(intradermal) 주사로 접종한다.
+2. Day 0에, 6-12주령 C57BL/6J 생쥐(암수 모두)에 실험 설계에 따라 B16-OVA와 B16-OVA-hCD19 또는 B16-OVA-mCD19 세포 2.5-5 × 10개를 피내(intradermal) 주사로 접종한다.
 3. 디지털 캘리퍼로 매일 종양 크기를 측정하고 종양이 육안으로 보이면 제곱밀리미터 단위로 종양 면적(length x width)을 계산한다.
 4. 접종 후 8일 더 종양을 자라게 한다.
-5. Day 9에, CAR 구축체를 발현하는 마우스 CD8 T-cells 2 × 10⁶과 UCNP 150 μg을 각 종양 안에 함께 주입한다.
-6. Day 10부터 LiCAR 처리 생쥐(hLiCAR 또는 mLiCAR)에게 펄스 근적외선(near-infrared, NIR) 광 치료를 시행한다(980 nm, 출력 밀도 250 mW/cm²; 펄스, 20초 ON; 5분 OFF; 하루 2시간).
+5. Day 9에, CAR 구축체를 발현하는 마우스 CD8 T-cells 2 × 10과 UCNP 150 μg을 각 종양 안에 함께 주입한다.
+6. Day 10부터 LiCAR 처리 생쥐(hLiCAR 또는 mLiCAR)에게 펄스 근적외선(near-infrared, NIR) 광 치료를 시행한다(980 nm, 출력 밀도 250 mW/cm; 펄스, 20초 ON; 5분 OFF; 하루 2시간).
 
 Nano-optogenetic CAR-T Cell Immunotherapy 277
 
@@ -4707,14 +4707,14 @@ Nano-optogenetic CAR-T Cell Immunotherapy 277
 14. 적혈구 제거를 위해 비장과 혈액 세포를 ACK lysis buffer로 처리한다.
 15. 유세포 분석 전에 비장과 혈액 세포를 두 번 세척한다.
 16. 다음처럼 림프종 생쥐 모델을 만든다: 단계 17-21 참조.
-17. Day 0에, 8-12주령 C.B-Igh-1b/GbmsTac-Prkdcscid-Lystbg N7 생쥐 양쪽 옆구리에 CD19+ Raji 세포 1.5 × 10⁵개와 Matrigel matrix의 1:1(부피비) 혼합물을 피내 접종했다(측당 총 부피 100 μL).
+17. Day 0에, 8-12주령 C.B-Igh-1b/GbmsTac-Prkdcscid-Lystbg N7 생쥐 양쪽 옆구리에 CD19+ Raji 세포 1.5 × 10개와 Matrigel matrix의 1:1(부피비) 혼합물을 피내 접종했다(측당 총 부피 100 μL).
 
 18. 디지털 캘리퍼로 1-2일마다 종양 크기를 측정하고 제곱밀리미터 단위로 종양 면적(length × width)을 계산했다.
-19. 7일 후, Stv-UCNP-LiCAR T-cells를 전신 투여했다. 공학적으로 조작된 T-cells 1 × 10⁷개를 Raji 림프종 생쥐 모델에 꼬리정맥으로 주사했으며 주 단위 2회 용량으로 나눴다(그림 2).
+19. 7일 후, Stv-UCNP-LiCAR T-cells를 전신 투여했다. 공학적으로 조작된 T-cells 1 × 10개를 Raji 림프종 생쥐 모델에 꼬리정맥으로 주사했으며 주 단위 2회 용량으로 나눴다(그림 2).
 
 ![그림2 Raji 림프종 마우스 NIR 치료 타임라인](images/img-283-251.jpg)
 
-20. 모든 치료 생쥐를 펄스 NIR 광 자극에 13-14일 노출시켰다(980 nm, 출력 밀도 250 mW/cm²; 20초 ON + 5분 OFF; 하루 2시간; NIR 군) 또는 NIR 광원으로부터 차단했다(dark 군).
+20. 모든 치료 생쥐를 펄스 NIR 광 자극에 13-14일 노출시켰다(980 nm, 출력 밀도 250 mW/cm; 20초 ON + 5분 OFF; 하루 2시간; NIR 군) 또는 NIR 광원으로부터 차단했다(dark 군).
 
 21. Day 20 또는 21에 생쥐를 안락사해 종양을 분리하고 표현형 분석을 진행했다.
 
@@ -4741,8 +4741,8 @@ NK-92 세포주에서 연구된 사례[14]는 있으나 대규모 일차 CAR-NK 
 
 1. 건강한 기증자의 백혈구 감소 시스템(leukocyte reduction system) 콘(cone)은 싱가포르 보건과학청(Health Sciences Authority of Singapore)에서 구할 수 있다.
 2. 막 결합형 IL-15, IL-21, 41BBL을 지닌 K562 aAPCs는 증식을 멈추도록 100 Gy로 감마선 조사한다.
-3. NK cell culture: AIM-V (Invitrogen, Carlsbad, CA)에 5% AB serum (Valley Biomedical, Winchester, VA), 50 IU/mL IL-2 (PeproTech, Rocky Hill, NJ), 2.5 μg/mL DNase 보강, 필터 캡 달린 T75 Nunc EasYFlask 75 cm².
-4. K562 aAPC culture: 10% fetal bovine serum (FBS) 보강 IMDM, 필터 캡 달린 Nunc EasYFlask 175 cm².
+3. NK cell culture: AIM-V (Invitrogen, Carlsbad, CA)에 5% AB serum (Valley Biomedical, Winchester, VA), 50 IU/mL IL-2 (PeproTech, Rocky Hill, NJ), 2.5 μg/mL DNase 보강, 필터 캡 달린 T75 Nunc EasYFlask 75 cm.
+4. K562 aAPC culture: 10% fetal bovine serum (FBS) 보강 IMDM, 필터 캡 달린 Nunc EasYFlask 175 cm.
 
 2.2 Cell Isolation
 
@@ -4809,14 +4809,14 @@ Table 1 NK cells 및 CAR-NK cells의 유세포 분석용 항체
 
 1. 건강한 기증자의 백혈구 감소 시스템 콘에서 Ficoll-Paque™ Plus를 이용해 밀도구배 원심분리로 신선한 사람 PBMC를 분리한다.
 2. 분리된 PBMC를 곧바로 다음 단계로 진행하거나 freezing media(AB serum + 10% DMSO)로 액체질소 동결한다(Note 2 참조).
-3. 제조사 지침(Miltenyi Biotec)대로 NK 세포 분리에 PBMC 3-4 × 10⁷개를 사용한다. NK 세포는 자기비드(magnetic beads)로 음성 선택(negative selection)된다.
+3. 제조사 지침(Miltenyi Biotec)대로 NK 세포 분리에 PBMC 3-4 × 10개를 사용한다. NK 세포는 자기비드(magnetic beads)로 음성 선택(negative selection)된다.
 4. 분리 후 NK 세포 순도를 유세포 분석으로 확인한다.(그림 2a; Note 3 참조).
 
 ![그림2 NK 분리·CAR-NK 농축 유세포 패널](images/img-290-252.jpg)
 
 3.2 NK Cell Activation and Expansion
 
-1. NK 세포 5 × 10⁶개를 100 Gy 감마선 조사 K562 aAPCs(IL-15, IL-21, 41BBL 막결합형 포함)와 1:1 비율로, 5% AB serum 보강 AIM-V 10 mL 속에서 T75 Nunc EasyFlask로 배양한다(37 °C, 5% CO₂ 인큐베이터에 세워서 넣음). DNase 2.5 μg/mL와 IL-2 50 IU/mL를 추가하고 7일간 배양한다. 2~3일마다 배지 부피의 절반을 교환하고,
+1. NK 세포 5 × 10개를 100 Gy 감마선 조사 K562 aAPCs(IL-15, IL-21, 41BBL 막결합형 포함)와 1:1 비율로, 5% AB serum 보강 AIM-V 10 mL 속에서 T75 Nunc EasyFlask로 배양한다(37 °C, 5% CO₂ 인큐베이터에 세워서 넣음). DNase 2.5 μg/mL와 IL-2 50 IU/mL를 추가하고 7일간 배양한다. 2~3일마다 배지 부피의 절반을 교환하고,
 
 2. day 7까지 전체 부피 농도 기준으로 IL-2를 보충한다. 배양 말기에 세포 수는 5배에서 10배 증가해야 한다.
 
@@ -4826,7 +4826,7 @@ Table 1 NK cells 및 CAR-NK cells의 유세포 분석용 항체
 
 2. 세포 펠릿을 P3 Primary Cell Nucleofector
 
-System Solution으로 용액 90 μL당 세포 5 × 10⁶개 밀도로 재현탁한다.
+System Solution으로 용액 90 μL당 세포 5 × 10개 밀도로 재현탁한다.
 
 3. 완성 배지(completed media, DNase 2.5 μg/mL와 IL-2 50 IU/mL가 든 AIM-V)를 준비한다.
 4. piggyBac transposon platform plasmid의 준비 방법은 기존 문헌에 기술되어 있다[11, 16].
@@ -4857,13 +4857,13 @@ Fig. 2 제조 과정 전반에 걸친 NK 세포 및 CAR-NK 세포 유세포 분�
 
 세포독성 분석은 일반적으로 제조사 프로토콜(DELFIA EuTDA Cytotoxicity Reagents kit, 3시간 europium-release assay)을 따른다.
 
-1. 표적 세포(1 × 10⁶개)를 세포 배양 배지(AIM-V + 5% AB serum) 1 mL에 재현탁하고 bis(acetoxymethyl)2,2′:6′,2″-terpyridine-6,6″-dicarboxylate
+1. 표적 세포(1 × 10개)를 세포 배양 배지(AIM-V + 5% AB serum) 1 mL에 재현탁하고 bis(acetoxymethyl)2,2′:6′,2″-terpyridine-6,6″-dicarboxylate
 
 | (BATDA) | 2 μL로 | 37 | °C, | 5% | CO 인큐베이터에서 | | | 20 | min | 염색하며 | 이후 PBS로 | 두 번 |
 | ------- | ------ | -- | ---- | ---- | ----------------- | --- | --- | --- | --- | -------- | ---------- | ------- |
 세척한다(Note 10 참조).
-2. 표적 세포를 세포 배양 배지에서 5 x 10⁴ cells/mL 농도로 완전히 현탁시킨다.
-3. 필요한 서로 다른 effector/target(E:T) 비율마다 CAR-NK 세포와 표적 세포를 3반복으로 섞고 배지 200 μL와 함께 96-well U-bottom plate에 분주한다(웰당 표적 세포 5 × 10³개).
+2. 표적 세포를 세포 배양 배지에서 5 x 10 cells/mL 농도로 완전히 현탁시킨다.
+3. 필요한 서로 다른 effector/target(E:T) 비율마다 CAR-NK 세포와 표적 세포를 3반복으로 섞고 배지 200 μL와 함께 96-well U-bottom plate에 분주한다(웰당 표적 세포 5 × 10개).
 4. 표적 세포의 자발적 유리(spontaneous release) 조건은 표적 세포만을 3반복으로 96-well U-bottom plates에 분주해 준비한다.
 5. 표지된 표적 세포의 최대 유리(maximal release) 조건은 표적 세포가 든 배양 배지 190 μL에 DEILFA lysis buffer 10 μL를 더해, 3반복으로 96-well U-bottom plates에 분주해 준비한다.
 
@@ -4874,7 +4874,7 @@ Fig. 2 제조 과정 전반에 걸친 NK 세포 및 CAR-NK 세포 유세포 분�
 
 1. CAR-NK 세포를 PBS로 한 번 세척하고 AB serum 5% 보강 AIM-V 1 mL로 재현탁한다.
 2. 제조사 프로토콜대로 APC-conjugated CD107a antibody와 GolgiStop™을 CAR-NK 세포 현탁액에 넣는다.
-3. 표적 세포는 PBS로 세척하고 AB serum 5% 보강 AIM-V로 재현탁한 뒤 2 × 10⁵ cells/100 μL/well 농도로 U-bottom 96-well plate에 분주해 준비한다(Note 10 참조).
+3. 표적 세포는 PBS로 세척하고 AB serum 5% 보강 AIM-V로 재현탁한 뒤 2 × 10 cells/100 μL/well 농도로 U-bottom 96-well plate에 분주해 준비한다(Note 10 참조).
 
 4. CAR-NK 세포를 E:T 1:1 비율(실험 설계에 따라 조정 가능)로 표적 세포와 함께 37 °C,
 
@@ -4885,7 +4885,7 @@ Fig. 2 제조 과정 전반에 걸친 NK 세포 및 CAR-NK 세포 유세포 분�
 4 Notes
 
 1. 실험실 간 재현성이 낮아 생체 내 분석은 이 프로토콜에서 다루지 않는다. 필요하다면 NSG 생쥐 이종이식(xenograft) 모델을 고려할 수 있다.
-2. 동결 세포는 vial당 5 × 10⁷개 정도로 보관하는 것이 권장된다. PBMC stock 한 바이알을 따뜻한 배지(AIM-V with 5% AB serum)로 해동하고 DNase(2.5 μg/mL) 보강 신선한 배지 20-30 mL을 넣어 T75 Nunc EasYFlask로 37 °C, 5% CO₂ 인큐베이터에서 하룻밤 안정시킨다(rest overnight).
+2. 동결 세포는 vial당 5 × 10개 정도로 보관하는 것이 권장된다. PBMC stock 한 바이알을 따뜻한 배지(AIM-V with 5% AB serum)로 해동하고 DNase(2.5 μg/mL) 보강 신선한 배지 20-30 mL을 넣어 T75 Nunc EasYFlask로 37 °C, 5% CO₂ 인큐베이터에서 하룻밤 안정시킨다(rest overnight).
 3. NK 세포 분리 후 NK 세포(CD3-CD56+) 순도는 약 90%에 도달해야 한다. T 세포(CD3+) 비율은 일반적으로 1% 미만이어야 한다.
 4. 전기천공 전 T 세포 오염 가능성에 대비해 NK 세포(CD3-CD56+) 순도와 T 세포 비율(CD3+, <1%)을 유세포 분석으로 다시 확인해야 한다(그림 2b).
 
@@ -5097,7 +5097,7 @@ Engineering Probiotic E. coli Nissle 1917 for Release of Therapeutic Nanobodies 
 10. Biosafety cabinet 안에서 진공 흡인으로 growth medium을 제거한다.
 11. 따뜻한 종양세포 배양 배지 1 mL로 종양세포를 부드럽게 재현탁한다.
 12. 종양세포 10 μl를 trypan blue 염색액 10 μl와 섞는다(1:1 비율). 혼합물 10 μl를 cell counting chamber slides에 옮겨 세포 농도를 계산한다.
-13. T25 플라스크의 종양세포 배양 배지 5 mL에 종양세포 1 × 10⁶개를 넣는다.
+13. T25 플라스크의 종양세포 배양 배지 5 mL에 종양세포 1 × 10개를 넣는다.
 
 Engineering Probiotic E. coli Nissle 1917 for Release of Therapeutic Nanobodies 295
 
@@ -5149,7 +5149,7 @@ Engineering Probiotic E. coli Nissle 1917 for Release of Therapeutic Nanobodies 
 
 3.3.3 PD-L1 Nanobody (PD-L1nb) Binding (See Note 17)
 
-1. Tissue culture hood 안에서 A20 세포를 96-well V-bottom plate에 working volume 100 μl로 1 × 10⁷ /mL 농도로 접종한다(Note 18 참조).
+1. Tissue culture hood 안에서 A20 세포를 96-well V-bottom plate에 working volume 100 μl로 1 × 10 /mL 농도로 접종한다(Note 18 참조).
 2. FACS buffer(DPBS 속 1% BSA, 2.5 mM EDTA)로 준비한 Fc Block (Tonbo, 1:1000)에 세포를 450 r.c.f.로 원심분리하고 재현탁한다.
 3. 4 °C에서 10분간 배양한다.
 4. 이 배양 동안 "Characterization of Nanobodies"에서 회수한 lysate 샘플들의 10배 희석액들을 준비한다(Note 19 참조).
@@ -5174,7 +5174,7 @@ Engineering Probiotic E. coli Nissle 1917 for Release of Therapeutic Nanobodies 
 8. ACK lysis buffer 2 mL를 넣어 반응이 2분간 진행되게 한다.
 9. 상징액을 버린다(the supernatant).
 10. RPMI media 5 mL에 재현탁하고 cell counter로 세포 수를 센다.
-11. 6-well tissue culture plate에 splenocyte를 mL당 2 × 10⁶씩 접종한다.
+11. 6-well tissue culture plate에 splenocyte를 mL당 2 × 10씩 접종한다.
 12. PMA (50 ng/mL; Sigma-Aldrich)와 ionomycin (1 nM; Calbiochem)으로 splenocytes를 자극하고 37 °C에서 48 h 배양한다. 음성 대조군용으로 자극하지 않은 well 하나를 남겨둔다.
 13. 각 well에서 96-well V-bottom plate로 96-well V-bottom plate에 100 μl를 옮긴다.
 
@@ -5189,12 +5189,12 @@ Engineering Probiotic E. coli Nissle 1917 for Release of Therapeutic Nanobodies 
 
 1. BALB/c 생쥐를 확보하고 종양 접종 전 시설에서 일주일 동안 순응시킨다(Note 25 참조).
 3.4.1 Establishment of Subcutaneous Model
-2. Tissue Culture: Expanding tumor cell line 소절에서 기술한 대로 종양세포를 배양해 5 × 10⁷ /mL 밀도로 만들고 얼음처럼 차가운 DPBS로 재현탁한다(Note 26 참조).
+2. Tissue Culture: Expanding tumor cell line 소절에서 기술한 대로 종양세포를 배양해 5 × 10 /mL 밀도로 만들고 얼음처럼 차가운 DPBS로 재현탁한다(Note 26 참조).
 3. 적절한 IACUC 프로토콜대로 동물을 마취시킨다.
 4. 생쥐가 잠들면 포셉으로 생쥐 뒷옆구리 피부를 들어 올려 "텐트"를 만든다. 29-gauge insulin syringe로 세포를 천천히 주사하되, "텐트" 반대편을 뚫지 않도록 조심한다.
 5. 바늘을 천천히 빼기 전에 포셑을 놓는다. 순간적으로 기포(bubble)가 생겨야 하며 이것은 주사가 진정으로 피하 공간에서 이루어졌음을 나타낸다.
 6. 생쥐를 관찰하고 생쥐가 깨어 우리 안에서 움직이기 시작하면 우리를 동물시설의 알맞은 장소로 보낸다. 이후 14-20일 내에 종양이 눈에 보이고 만져질 것이다.
-7. 종양이 만져지면 종양 보유 BALB/c 생쥐의 종양 부피를 캘리퍼로 주 2회 측정·기록한다. CT26 종양 부피는 각 종양의 길이, 너비, 높이를 재서 계산한다(V = L × W × H). A20 종양은 덜 단단해서 z축 치수 측정 변동이 매우 크므로, 총 부피는 length × width² × 0.5로 계산해야 한다[36]. 종양이 약 150-200 mM³까지 자라면 치료 준비가 된 것이다.
+7. 종양이 만져지면 종양 보유 BALB/c 생쥐의 종양 부피를 캘리퍼로 주 2회 측정·기록한다. CT26 종양 부피는 각 종양의 길이, 너비, 높이를 재서 계산한다(V = L × W × H). A20 종양은 덜 단단해서 z축 치수 측정 변동이 매우 크므로, 총 부피는 length × width × 0.5로 계산해야 한다[36]. 종양이 약 150-200 mM까지 자라면 치료 준비가 된 것이다.
 8. 대조군과 치료군의 종양 부피가 비슷하도록 생쥐를 무작위 배정한다. 통계적 목적상 그룹당 생쥐 ~5마리가 있어야 하며 모든 그룹의 표본 크기가 비슷해야 한다.
 
 3.4.2 Therapeutic Bacteria Preparation
@@ -5214,7 +5214,7 @@ OD가 약 0.1-0.3(log growth phase)에 도달할 때까지 배양액을 키운�
 8. 4 °C에서 3000 r.c.f로 10분간 원심분리하고 상징액을 버린다. 1×
 9. 멸균 DPBS 50 mL로 펠릿을 위아래로 부드럽게 피펫팅하며 재현탁한다(Note 28 참조).
 10. 단계 5와 6(원심분리와 상징액 폐기)을 세 번 반복해 세균을 세척한다.
-11. 각 치료 균주의 OD를 0.5(~5 × 10⁷ CFU/mL)로 맞춘다.
+11. 각 치료 균주의 OD를 0.5(~5 × 10 CFU/mL)로 맞춘다.
 
 12. SLIC:PD-L1nb와 SLIC-CTLA-4nb를 같은 비율로 섞은 cocktail을 만들되, 합친 cocktail의 OD가 0.5가 되도록 한다. 600
 

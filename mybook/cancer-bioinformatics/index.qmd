@@ -2191,9 +2191,9 @@ DNA와 RNA 리드 정렬 및 전처리 포함한 완전 파이프라인은 다�
 
 ### 2.1 WES 리드의 정렬, 전처리, 품질 관리
 
-리드는 [24]에 기술된 파이프라인으로 처리됩니다. 시퀀싱된 각 샘플마다 원시 리드에서 FastQC¹가 품질 평가 위해 실행됩니다. 품질 지표에는 평균 염기 품질, 서열 중복률, 리드 길이 따라 k-mer 농축이 포함됩니다. 이런 측정은 샘플 시퀀싱과 demultiplexing이 올바르게 수행되었는지 평가에 활용됩니다.
+리드는 [24]에 기술된 파이프라인으로 처리됩니다. 시퀀싱된 각 샘플마다 원시 리드에서 FastQC가 품질 평가 위해 실행됩니다. 품질 지표에는 평균 염기 품질, 서열 중복률, 리드 길이 따라 k-mer 농축이 포함됩니다. 이런 측정은 샘플 시퀀싱과 demultiplexing이 올바르게 수행되었는지 평가에 활용됩니다.
 
-초기 품질 관리 후 어댑터 서열은 필요할 때 Trimmomatic [25] 같은 도구로 잘립니다. 짧은 리드는 BWA [26]로 참조 인간 유전체에 정렬됩니다. Picard²와 SAMtools [27]로 개인 샘플별 단일 정렬 BAM 파일 생성에 쓰입니다. 필요할 때 Picard는 클론 중복 제거에 사용됩니다.
+초기 품질 관리 후 어댑터 서열은 필요할 때 Trimmomatic [25] 같은 도구로 잘립니다. 짧은 리드는 BWA [26]로 참조 인간 유전체에 정렬됩니다. Picard와 SAMtools [27]로 개인 샘플별 단일 정렬 BAM 파일 생성에 쓰입니다. 필요할 때 Picard는 클론 중복 제거에 사용됩니다.
 
 BAM 파일는 재정렬되고 GATK 도구[28]로 재보정(데이터 내 과소·과대 추정된 염기 품질 점수 조정)됩니다.
 
@@ -2229,7 +2229,7 @@ ASE 계산 가능 유전자 수 상한 추정합니다.
 
 ASE 검출 검정력 더 넓은 관점 위해 우리는 dbSNP 144 흔한 SNP와 UCSC knownGene hg19 코딩 영역에서 계산된 유전자당 코딩 SNP 빈도, 그리고 네 가지 서로 다르고 흔히 쓰이는 WES 플랫폼 캡처 영역 고려해 공식으로 ASE 계산 가능 유전자 수를 추정했습니다.
 
-⁵dbSNP144 흔한 SNP만 1000 Genome Project genotype data에서 표현되고 전역 MAF 1% 이상인 것이 고려되었습니다.
+dbSNP144 흔한 SNP만 1000 Genome Project genotype data에서 표현되고 전역 MAF 1% 이상인 것이 고려되었습니다.
 
 ASE 분석 131
 
@@ -2317,7 +2317,7 @@ pileup 계산 사용 리드 필터 위해 최소 염기 품질 점수, 최소 �
 
 > **[워크플로 및 데이터 구조 설명]** SCNA 마스킹 절차 예시. 마스크 안
 
-### 2.6 체세포 복제수 변화(SCNA)의 마스킹
+### 2.6 체세포 복제수 변화의 마스킹
 
 체세포 복제수 이상 존재는 ASE 분석 해석에 영향을 줄 수 있습니다. 예컨대 단일대립유전자 결실을 지닌 유전자는 ASE 유전자로 보일 수 있습니다. 이런 ASE 사건은 분석 최종 목표에 따라 결과에서 마스크, 주석, 또는 유지될 수 있습니다.
 
@@ -4499,7 +4499,7 @@ Predictive Modeling of Anti-CancerDrugSensitivity fromGenetic... 235
 
 예측 위해 서로 다른 데이터셋 생물학적 정보 활용하려면, 선형 가중 결합 모델 고려합니다.
 
-데이터셋별 가중치(weights foreach dataset G_ibyminimizing Σ_j Σ_i (Y_j - y(x_{i,j}))^2 α_i^2 (7)) 추정 위해 선형 최소제곱 회귀(linear least squareregression to estimatetheweights foreach datasetG_iby minimizingΣ_jΣ_i(Y_j-y(x_{i,j}))²α_i²(7)) 사용합니다.
+데이터셋별 가중치(weights foreach dataset G_ibyminimizing Σ_j Σ_i (Y_j - y(x_{i,j}))^2 α_i^2 (7)) 추정 위해 선형 최소제곱 회귀(linear least squareregression to estimatetheweights foreach datasetG_iby minimizingΣ_jΣ_i(Y_j-y(x_{i,j}))α_i(7)) 사용합니다.
 
 여기서 Y_j는 세포줄 실험 약물 반응), α_i는 데이터셋 대응 가중치, d는 통합 모델 생성 사용된) 유전체 특성화) 데이터셋) 수입니다.
 
@@ -4580,9 +4580,9 @@ Jackknife-After-Bootstrap 접근법(Jackknife-After-Bootstrap Approach is usedfo
 
 N_k가 샘플 포함하지) 않는) 부트스트랩) 샘플) 집합)이라 합시다. 0.632 부트스트랩 추정치은) N_k(N_k))로부터) 계산되며) ε_k) 표기됩니다.
 
-표준 오류(The standard error can be computed as s=sqrt((1/(n(n-1)))Σ_{k=1}^{n}(ε_k-ε̄)²)(10)), where ε̄=(1/n)Σ_{k=1}^{n}ε_k)은 다음처럼 계산 가능합니다:
+표준 오류(The standard error can be computed as s=sqrt((1/(n(n-1)))Σ_{k=1}^{n}(ε_k-ε̄))(10)), where ε̄=(1/n)Σ_{k=1}^{n}ε_k)은 다음처럼 계산 가능합니다:
 
-s = sqrt((1/(n(n-1)))·Σ_{k=1}^{n}(ε_k-ε̄)²) (10)
+s = sqrt((1/(n(n-1)))·Σ_{k=1}^{n}(ε_k-ε̄)) (10)
 
 여기서 ε̄ = (1/n)Σ_{k=1}^{n}ε_k.
 
@@ -4903,23 +4903,23 @@ S_GO(t_i, t_j) 값은 0부터 1까지(1)[63] 범위입니다.
 
 ### 3.4 네트워크 기반 추론
 
-이분 그래프 G(D,T,E)(bipartite graphG(D,T, E), amass diffusion-based methodcan be used to generate thepredicted list. For agiven drug d_i, supposingthat a kind of resource isinitially located inthe targets which are interacted withd_i, theresource will diffuse toall targetsin theDTI networkafter thenetwork-basedresource allocation process as describedintheprevious studies[20,21]. Eachtarget nodeaveragely distributes itsresource to allneighboring drugs, and theneachdrug redistributesthereceivedresource toall neighboring targets. Thefinal resource onthe targets thatare not connectedwith the drugd_iinG(D,T,E)couldbeconsideredasthe predicted scoreforeach target,and thetargetswithhighscores are more likelyto interact with d_i.Figure3c gives a simpleexample toillustrate thenetworkbased resource allocation process. Itshows the initialresource of a_ij between d_i andt_jdefinedinEq.1.DenotingF⁰_nm asthe initialresource and F⁰_ij=a_ij, R_nn as the totalresource foreach drug:R=diag(9). Inaddition,H_mm asthetotal resourcefor each target:H=diag(10). Finally,the resource matrix is obtainedasF¹_nm: F¹=F⁰W_mmor F¹ᵀ=F⁰ᵀW_nn where transfermatrix W_mm=(F⁰H⁻¹)ᵀ(R⁻¹F⁰) or W_nn=(R⁻¹F⁰)(F⁰H⁻¹)ᵀ.) 고려하여 질량 확산 기반 방법으로 예측 목록 생성 가능합니다.
+이분 그래프 G(D,T,E)(bipartite graphG(D,T, E), amass diffusion-based methodcan be used to generate thepredicted list. For agiven drug d_i, supposingthat a kind of resource isinitially located inthe targets which are interacted withd_i, theresource will diffuse toall targetsin theDTI networkafter thenetwork-basedresource allocation process as describedintheprevious studies[20,21]. Eachtarget nodeaveragely distributes itsresource to allneighboring drugs, and theneachdrug redistributesthereceivedresource toall neighboring targets. Thefinal resource onthe targets thatare not connectedwith the drugd_iinG(D,T,E)couldbeconsideredasthe predicted scoreforeach target,and thetargetswithhighscores are more likelyto interact with d_i.Figure3c gives a simpleexample toillustrate thenetworkbased resource allocation process. Itshows the initialresource of a_ij between d_i andt_jdefinedinEq.1.DenotingF_nm asthe initialresource and F_ij=a_ij, R_nn as the totalresource foreach drug:R=diag(9). Inaddition,H_mm asthetotal resourcefor each target:H=diag(10). Finally,the resource matrix is obtainedasF_nm: F=FW_mmor Fᵀ=FᵀW_nn where transfermatrix W_mm=(FH⁻)ᵀ(R⁻F) or W_nn=(R⁻F)(FH⁻)ᵀ.) 고려하여 질량 확산 기반 방법으로 예측 목록 생성 가능합니다.
 
 Network-Aided OncologyDrugRepositioning 251
 
-주어진 약물(d_i)에 대해(given drug d_i, supposingthat akind ofresource isinitiallylocatedinthe targetswhichare interacted with d_i, theresource willdiffusetoalltargetsin the DTInetwork afterthenetwork-based resourceallocationprocessasdescribedinthepreviousstudies[20,21]. Eachtarget node averagelydistributes itsresource toallneighboringdrugs, and theneach drugredistributesthereceivedresource to allneighboring targets. Thefinalresource onthetargets that arenotconnectedwith thedrug d_iinG(D,T,E) could beconsidered asthepredictedscore foreach target,and the targetswithhighscores aremorelikelyto interactwith d_i. Figure3c givesa simpleexample to illustratethe networkbasedresource allocation process. It shows theinitial resourceof a_ij betweend_iand t_j definedinEq.1. DenotingF⁰_nm as theinitialresourceandF⁰_ij=a_ij,R_nnasthe totalresource foreachdrug:R=diag(9). In addition, H_mm as thetotalresourceforeachtarget: H=diag(10). Finally,the resourcematrix isobtainedasF¹_nm:F¹=F⁰W_mm or F¹ᵀ=F⁰ᵀW_nn wheretransfermatrix W_mm=(F⁰H⁻¹)ᵀ(R⁻¹F⁰)or W_nn=(R⁻¹F⁰)(F⁰H⁻¹)ᵀ.), 일종의 자원)이 처음)에(d_i)) 상호작용)하는(d_i))) 표적들)) 내)) 위치))한다고 가정하면), 자원)은 이전 연구[20,21] 기술)대로) 네트워크 기반 자원 배정) 과정)) 후)) DTI(DTI) 네트워크)) 내)) 모든)) 표적으로 확산됩니다.
+주어진 약물(d_i)에 대해(given drug d_i, supposingthat akind ofresource isinitiallylocatedinthe targetswhichare interacted with d_i, theresource willdiffusetoalltargetsin the DTInetwork afterthenetwork-based resourceallocationprocessasdescribedinthepreviousstudies[20,21]. Eachtarget node averagelydistributes itsresource toallneighboringdrugs, and theneach drugredistributesthereceivedresource to allneighboring targets. Thefinalresource onthetargets that arenotconnectedwith thedrug d_iinG(D,T,E) could beconsidered asthepredictedscore foreach target,and the targetswithhighscores aremorelikelyto interactwith d_i. Figure3c givesa simpleexample to illustratethe networkbasedresource allocation process. It shows theinitial resourceof a_ij betweend_iand t_j definedinEq.1. DenotingF_nm as theinitialresourceandF_ij=a_ij,R_nnasthe totalresource foreachdrug:R=diag(9). In addition, H_mm as thetotalresourceforeachtarget: H=diag(10). Finally,the resourcematrix isobtainedasF_nm:F=FW_mm or Fᵀ=FᵀW_nn wheretransfermatrix W_mm=(FH⁻)ᵀ(R⁻F)or W_nn=(R⁻F)(FH⁻)ᵀ.), 일종의 자원)이 처음)에(d_i)) 상호작용)하는(d_i))) 표적들)) 내)) 위치))한다고 가정하면), 자원)은 이전 연구[20,21] 기술)대로) 네트워크 기반 자원 배정) 과정)) 후)) DTI(DTI) 네트워크)) 내)) 모든)) 표적으로 확산됩니다.
 
-각(each target nodeaveragely distributesitsresource toallneighboring drugs, and theneachdrug redistributes thereceived resource toall neighboring targets(Fig.3c. Thefinalresource onthe targets thatarenot connected withthedrug d_i in G(D,T,E)could be consideredas the predicted scorefor eachtarget,and thetargetswith high scoresaremorelikelyto interact withd_i.Figure3cgivesasimpleexampletoillustrate the networkbased resourceallocationprocess.It showsthe initialresource ofa_ijbetween d_i andt_jdefinedinEq.1.DenotingF⁰_nmas the initialresourceandF⁰_ij=a_ij, R_nnasthetotalresourceforeachdrug: R=diag(9).Inaddition,H_mmas thetotalresourceforeachtarget:H=diag(10).Finally,the resourcematrixisobtainedasF¹_nm:F¹=F⁰W_mmorF¹ᵀ=F⁰ᵀW_nnw heretransfermatrix W_mm=(F⁰H⁻¹)ᵀ(R⁻¹F⁰) orW_nn=(R⁻¹F⁰)(F⁰H⁻¹)ᵀ.) 표적 노드는 자원을(를) 모든 이웃 약물)에게 평균적으로 분배)하며 그다음 각) 약물)는 받은) 자원)을 모든 이웃 표적)에게 재분배합니다().
+각(each target nodeaveragely distributesitsresource toallneighboring drugs, and theneachdrug redistributes thereceived resource toall neighboring targets(Fig.3c. Thefinalresource onthe targets thatarenot connected withthedrug d_i in G(D,T,E)could be consideredas the predicted scorefor eachtarget,and thetargetswith high scoresaremorelikelyto interact withd_i.Figure3cgivesasimpleexampletoillustrate the networkbased resourceallocationprocess.It showsthe initialresource ofa_ijbetween d_i andt_jdefinedinEq.1.DenotingF_nmas the initialresourceandF_ij=a_ij, R_nnasthetotalresourceforeachdrug: R=diag(9).Inaddition,H_mmas thetotalresourceforeachtarget:H=diag(10).Finally,the resourcematrixisobtainedasF_nm:F=FW_mmorFᵀ=FᵀW_nnw heretransfermatrix W_mm=(FH⁻)ᵀ(R⁻F) orW_nn=(R⁻F)(FH⁻)ᵀ.) 표적 노드는 자원을(를) 모든 이웃 약물)에게 평균적으로 분배)하며 그다음 각) 약물)는 받은) 자원)을 모든 이웃 표적)에게 재분배합니다().
 
 Network-Aided OncologyDrugRepositioning 251
 
 G(D,T,E)에서(the drug d_i in G(D,T,E)) 약물(d_i)와(d_i in G(D,T,E))) 연결되지 않은(not connectedwith thedrug d_iin G(D,T,E))) 표적들(targets thatare notconnected with thedrug d_iin G(D,T,E))) 위(ontargets thatare not connectedwiththedrugd_iinG(D,T,E))) 최종 자원(The finalresource onthe targetsthat arenotconnectedwith thedrugd_iinG(D,T,E)couldbeconsideredasthepredictedscoreforeachtarget, andthetargetswithhigh scoresaremorelikelyto interact withd_i.)은 각) 표적) 예측 점수)로 고려될 수 있으며 높은 점수 표적들)은 d_i와 상호작용)할 가능성이 더 큽니다.
 
-> **[워크플로 및 데이터 구조 설명]** 는 네트워크 기반(networkbasedresourceallocation process. Itshowsthe initialresourceof a_ij betweend_i andt_jdefinedinEq.1. DenotingF⁰_nmas theinitialresourceandF⁰_ij=a_ij, R_nn as thetotal resourceforeach drug:R=diag(...)(9). In addition,H_mmas the total resource foreach target: H=diag(...)(10). Finally,theresource matrix is obtainedasF¹_nm:F¹=F⁰W_mmorF¹ᵀ=F⁰ᵀW_nn wheretransfermatrix W_mm=(F⁰H⁻¹)ᵀ(R⁻¹F⁰) orW_nn=(R⁻¹F⁰)(F⁰H⁻¹)ᵀ.) 자원 배정 과정) 단순한 예시 보여줍니다.
+> **[워크플로 및 데이터 구조 설명]** 는 네트워크 기반(networkbasedresourceallocation process. Itshowsthe initialresourceof a_ij betweend_i andt_jdefinedinEq.1. DenotingF_nmas theinitialresourceandF_ij=a_ij, R_nn as thetotal resourceforeach drug:R=diag(...)(9). In addition,H_mmas the total resource foreach target: H=diag(...)(10). Finally,theresource matrix is obtainedasF_nm:F=FW_mmorFᵀ=FᵀW_nn wheretransfermatrix W_mm=(FH⁻)ᵀ(R⁻F) orW_nn=(R⁻F)(FH⁻)ᵀ.) 자원 배정 과정) 단순한 예시 보여줍니다.
 
 방정식 1 정의된) 약물 d_i(원)와 t_j(사각) 사이) a_ij) 초기 자원)을 보여줍니다.
 
-F⁰_nm을 초기 자원, F⁰_ij=a_ij라 두고 각 약물 총 자원)은:
+F_nm을 초기 자원, F_ij=a_ij라 두고 각 약물 총 자원)은:
 
 R = diag (9)
 
@@ -4927,53 +4927,53 @@ R = diag (9)
 
 H = diag (10)
 
-마지막으로, 자원 행렬인접 행렬은 F¹_nm으로 얻어집니다:
+마지막으로, 자원 행렬인접 행렬은 F_nm으로 얻어집니다:
 
-F¹ = F⁰·W_mm 또는 F¹ᵀ = F⁰ᵀ·W_nn
+F = F·W_mm 또는 Fᵀ = Fᵀ·W_nn
 
-여기서 전이 행렬(matrix W_mm=(F⁰H⁻¹)ᵀ(R⁻¹F⁰) or W_nn=(R⁻¹F⁰)(F⁰H⁻¹)ᵀ)은:
+여기서 전이 행렬(matrix W_mm=(FH⁻)ᵀ(R⁻F) or W_nn=(R⁻F)(FH⁻)ᵀ)은:
 
-W_mm = (F⁰H⁻¹)ᵀ(R⁻¹F⁰)
-W_nn = (R⁻¹F⁰)(F⁰H⁻¹)ᵀ
+W_mm = (FH⁻)ᵀ(R⁻F)
+W_nn = (R⁻F)(FH⁻)ᵀ
 
 #### 3.4.2 가중 네트워크 기반 추론
 
-자연스럽게, 실제 생물학적 시스템에서 약물과 표적 사이(edge between drugand targetis weighted intherealbiologicalsystems, such asIC50 orKivalue. Forthe edge-weightednetwork-based inference(EWNBI), eachedgeofDTInetwork isweightedbythe drug-proteinbindingaffinitybetween drugd_iandtargett_j. The initial resource ofa⁰_ij betweend_iandt_jis definedas follows: a⁰_ij=x_ij if Ki(IC50)<10 μM; 0if Ki(IC50)>10 μM.(12) DenotingF⁰'nm astheinitialresourceandF⁰'_ij=a⁰_ij, R⁰'nn asthe totalres...) edge는 실제 생물학적 시스템예: IC50 또는 Ki 값가중됩니다.
+자연스럽게, 실제 생물학적 시스템에서 약물과 표적 사이(edge between drugand targetis weighted intherealbiologicalsystems, such asIC50 orKivalue. Forthe edge-weightednetwork-based inference(EWNBI), eachedgeofDTInetwork isweightedbythe drug-proteinbindingaffinitybetween drugd_iandtargett_j. The initial resource ofa_ij betweend_iandt_jis definedas follows: a_ij=x_ij if Ki(IC50)<10 μM; 0if Ki(IC50)>10 μM.(12) DenotingF'nm astheinitialresourceandF'_ij=a_ij, R'nn asthe totalres...) edge는 실제 생물학적 시스템예: IC50 또는 Ki 값가중됩니다.
 
 Network-Aided OncologyDrugRepositioning 253
 
-가중 네트워크 기반 추론(network-based inference(EWNBI))의 경우), DTI 네트워크(each edge ofDTI networkisweighted bythedrug-proteinbindingaffinitybetween drugd_iand targett_j. Theinitial resource ofa⁰_ij between d_iandt_j isdefined asfollows:a⁰_ij=x_ij ifKi(IC50)<10 μM;0if Ki(IC50)>10 μM.(12) Denoting F⁰'_nm asthe initialresource andF⁰'_ij=a⁰_ij, R⁰'nn asthe totalres...) 각(each edgeof DTInetworkisweightedby thedrug-proteinbindingaffinitybetween drugd_iandtargett_j)) 가장자리는 약물(d_i)와 표적(t_j) 사이 약물-단백질 결합 친화력x_ij=log10)가중됩니다.
+가중 네트워크 기반 추론(network-based inference(EWNBI))의 경우), DTI 네트워크(each edge ofDTI networkisweighted bythedrug-proteinbindingaffinitybetween drugd_iand targett_j. Theinitial resource ofa_ij between d_iandt_j isdefined asfollows:a_ij=x_ij ifKi(IC50)<10 μM;0if Ki(IC50)>10 μM.(12) Denoting F'_nm asthe initialresource andF'_ij=a_ij, R'nn asthe totalres...) 각(each edgeof DTInetworkisweightedby thedrug-proteinbindingaffinitybetween drugd_iandtargett_j)) 가장자리는 약물(d_i)와 표적(t_j) 사이 약물-단백질 결합 친화력x_ij=log10)가중됩니다.
 
 d_i와 t_j 사이 초기 자원은 다음처럼 정의됩니다:
 
-a⁰_ij = x_ij (if Ki(IC50) < 10 μM)
+a_ij = x_ij (if Ki(IC50) < 10 μM)
  = 0 (if Ki(IC50) > 10 μM) (12)
 
-F⁰'nm을 초기 자원, F⁰'_ij = a⁰_ij라 두고 R⁰'nn을 총 자원으로 마지막으로 자원 행렬(the resourcematrix is obtainedas F⁰', where transfermatrix W⁰'_mm=F⁰'H⁻¹ᵀ R⁻¹F⁰' orW⁰'_nn=R⁻¹F⁰'(F⁰'H⁻¹)ᵀ)은 다음과 같습니다.
+F'nm을 초기 자원, F'_ij = a_ij라 두고 R'nn을 총 자원으로 마지막으로 자원 행렬(the resourcematrix is obtainedas F', where transfermatrix W'_mm=F'H⁻ᵀ R⁻F' orW'_nn=R⁻F'(F'H⁻)ᵀ)은 다음과 같습니다.
 
-F⁰' = F⁰'·W⁰'_mm 또는 F⁰'ᵀ = F⁰'ᵀ·W⁰'_nn
+F' = F'·W'_mm 또는 F'ᵀ = F'ᵀ·W'_nn
 
 여기서 전이 행렬:
 
-W⁰'_mm = (F⁰'H⁻¹)ᵀ(R⁻¹F⁰')
-W⁰'_nn = (R⁻¹F⁰')(F⁰'H⁻¹)ᵀ
+W'_mm = (F'H⁻)ᵀ(R⁻F')
+W'_nn = (R⁻F')(F'H⁻)ᵀ
 
 #### 3.4.3 노드 가중
 
 일반적으로, 더 많이 받는 허브 노드는 종종 더 높은 예측 점수 생성 경향 있으며 이는 거짓 양성률 잠재적 위험) 초래할 수 있습니다.
 
-비가중 NBI 방법(NBI method, thenodeweighted networkbasedinference introducesanew expression ofinitialresource distributionbytaking into accountthe influence ofresources associatedwith thereceiver nodesin DTI bipartite network asdiscussedinaprevious study[21]. Fortheinitial resource matrix, theresource foreach drugand target nodeisthe sameastheunweighted NBI.Thefinalresource matrices are calculatedasF⁰''_nm for drugs andF⁰''_tn fortargets, wheretransfer matrix W⁰''_mm=F⁰'H⁻¹ᵀR⁻¹F⁰'H⁻¹ for drugs or W⁰''_nn=R⁻¹F⁰'R⁻¹F⁰'H⁻¹ fort argets, where H⁰''=H^β_ij fordrugs or W⁰''_ij=R^β_ij fort argets, βasa tunableparameter tobalancethe influence. Comparedwith auniform case(β=0), apositiveβ value strengthens theinfluenceof hub nodes, whileanegative β value weakenstheinfluence ofhub nodes. Thedetaileddescriptions areprovidedinthepreviousstudy[21].))과 비교해, 노드 가중) 네트워크 기반 추론)은 이전 연구[21] 논의)대로) DTI 이분 네트워크)) 내)) 수신 노드))와 관련된)) 자원)) 영향)) 고려해)) 초기 자원 분포)) 새 표현식)) 도입합니다.
+비가중 NBI 방법(NBI method, thenodeweighted networkbasedinference introducesanew expression ofinitialresource distributionbytaking into accountthe influence ofresources associatedwith thereceiver nodesin DTI bipartite network asdiscussedinaprevious study[21]. Fortheinitial resource matrix, theresource foreach drugand target nodeisthe sameastheunweighted NBI.Thefinalresource matrices are calculatedasF''_nm for drugs andF''_tn fortargets, wheretransfer matrix W''_mm=F'H⁻ᵀR⁻F'H⁻ for drugs or W''_nn=R⁻F'R⁻F'H⁻ fort argets, where H''=H^β_ij fordrugs or W''_ij=R^β_ij fort argets, βasa tunableparameter tobalancethe influence. Comparedwith auniform case(β=0), apositiveβ value strengthens theinfluenceof hub nodes, whileanegative β value weakenstheinfluence ofhub nodes. Thedetaileddescriptions areprovidedinthepreviousstudy[21].))과 비교해, 노드 가중) 네트워크 기반 추론)은 이전 연구[21] 논의)대로) DTI 이분 네트워크)) 내)) 수신 노드))와 관련된)) 자원)) 영향)) 고려해)) 초기 자원 분포)) 새 표현식)) 도입합니다.
 
 Network-Aided OncologyDrugRepositioning 253
 
 초기 자원 행렬의 경우 각) 약물))와)) 표적 노드)) 자원))은 비가중) NBI(NBI)))와 동일합니다.
 
-최종 자원 행렬(final resource matrices are calculatedas F⁰''_nm fordrugsand F⁰''_tn fort argets, where transfer matrix W⁰''_mm=F⁰'H⁻¹ᵀR⁻¹F⁰'H⁻¹ for drugs or W⁰''_nn=R⁻¹F⁰'R⁻¹F⁰'H⁻¹ fort argets, where H⁰''=H^β_ijfordrugsorW⁰''_ij=R^β_ijfort argets, βasa tunableparameter tobalancethe influence. Compared with a uniformcase(β=0), apositiveβ value strengthenstheinfluence ofhub nodes, whileanegativeβ value weakenstheinfluence of hub nodes. Thedetailed descriptionsareprovidedinthepreviousstudy[21].)은 약물과(targets, where transfermatrix W⁰''_mm=F⁰'H⁻¹ᵀ R⁻¹F⁰'H⁻¹fordrugsorW⁰''_nn=R⁻¹F⁰'R⁻¹F⁰'H⁻¹for targets, whereH⁰''=H^β_ijfordrugsorW⁰''_ij=R^β_ijfor targets, βasa tunableparameter tobalance the influence. Comparedwithauniform case(β=0), apositive β value strengthens theinfluenceofhub nodes, while anegativeβ valueweakens the influence ofhubnodes. The detailed descriptionsare providedin theprevious study[21].)) 표적 대해 계산되며 전이 행렬은:
+최종 자원 행렬(final resource matrices are calculatedas F''_nm fordrugsand F''_tn fort argets, where transfer matrix W''_mm=F'H⁻ᵀR⁻F'H⁻ for drugs or W''_nn=R⁻F'R⁻F'H⁻ fort argets, where H''=H^β_ijfordrugsorW''_ij=R^β_ijfort argets, βasa tunableparameter tobalancethe influence. Compared with a uniformcase(β=0), apositiveβ value strengthenstheinfluence ofhub nodes, whileanegativeβ value weakenstheinfluence of hub nodes. Thedetailed descriptionsareprovidedinthepreviousstudy[21].)은 약물과(targets, where transfermatrix W''_mm=F'H⁻ᵀ R⁻F'H⁻fordrugsorW''_nn=R⁻F'R⁻F'H⁻for targets, whereH''=H^β_ijfordrugsorW''_ij=R^β_ijfor targets, βasa tunableparameter tobalance the influence. Comparedwithauniform case(β=0), apositive β value strengthens theinfluenceofhub nodes, while anegativeβ valueweakens the influence ofhubnodes. The detailed descriptionsare providedin theprevious study[21].)) 표적 대해 계산되며 전이 행렬은:
 
-약물: W⁰''_mm = F⁰'H⁻¹ᵀR⁻¹F⁰'H⁻¹
-표적: W⁰''_nn = R⁻¹F⁰'R⁻¹F⁰'H⁻¹
+약물: W''_mm = F'H⁻ᵀR⁻F'H⁻
+표적: W''_nn = R⁻F'R⁻F'H⁻
 
-H⁰'' = H^β_ij (약물), W⁰''_ij = R^β_ij (표적)
+H'' = H^β_ij (약물), W''_ij = R^β_ij (표적)
 
 여기서 β는 영향 균형) 위한 조정 가능한 매개변수입니다.
 
@@ -5339,11 +5339,11 @@ Modelling Growth ofTumours 269
 
 경우 3은 우리 생쥐 실험 획득 데이터 모방) 위해 만들어졌습니다.
 
-각각 날마다) 합성 데이터 점들)는 매개변수a=0.36, b=3×10⁹, N₀=0.4×10⁶사용해 네 경우 모두 대해) 생성되었습니다.
+각각 날마다) 합성 데이터 점들)는 매개변수a=0.36, b=3×10, N₀=0.4×10사용해 네 경우 모두 대해) 생성되었습니다.
 
 > **[워크플로 및 데이터 구조 설명]** , b는 Origin 소프트웨어 사용) Gompertz 함수) 활용)) 경우 두 서로 다른 적합 결과 보여줍니다.
 
-> **[워크플로 및 데이터 구조 설명]** 두 서로 다른 경우모든 데이터 점, 포화 수준 제외) 단축된) 데이터 점Gompertz 함수 적합. 이 함수 샘플 날짜(date forthis functionisgeneratedusingparameters: a=0.36, b=3×10⁹ andN₀=0.4×10⁶. Onedatapoint differsby3×10⁸ from theoriginal calculatedpoints. (a) Alldatapoints areapproximatedwiththe Gompertzfunction.(b) Onlydata points up to day12, which featurethe exponential growthphase, areusedfor thefit.Theresulting fit parametersareillustratedinthe boxes) 매개변수a=0.36, b=3×10⁹, N₀=0.4×10⁶사용 생성됩니다. 한 데이터 절은 원래 계산된) 점과 3×10⁸ 다릅니다.
+> **[워크플로 및 데이터 구조 설명]** 두 서로 다른 경우모든 데이터 점, 포화 수준 제외) 단축된) 데이터 점Gompertz 함수 적합. 이 함수 샘플 날짜(date forthis functionisgeneratedusingparameters: a=0.36, b=3×10 andN₀=0.4×10. Onedatapoint differsby3×10 from theoriginal calculatedpoints. (a) Alldatapoints areapproximatedwiththe Gompertzfunction.(b) Onlydata points up to day12, which featurethe exponential growthphase, areusedfor thefit.Theresulting fit parametersareillustratedinthe boxes) 매개변수a=0.36, b=3×10, N₀=0.4×10사용 생성됩니다. 한 데이터 절은 원래 계산된) 점과 3×10 다릅니다.
 
 (a) 모든 데이터 점들)은 Gompertz 함수) 사용 근사)됩니다.
 (b) 지수 성장 단계) 특징지는) 12일까지 데이터 점들만 적합 위해 사용됩니다.
@@ -5354,7 +5354,7 @@ Modelling Growth ofTumours 269
 
 전체 데이터 점 사용 적합 결과는 데이터 생성) 위해 쓰인) 성장 함수) 값) 대응합니다.
 
-포화 수준 출처) 데이터 점들이 생략되고 한 점만 원래 계산된) 점과 3×10⁸ 다를 때, 적합 결과)는 원래 값에서 유의하게 벗어납니다특히 N₀(N₀)가) 차수) 다릅니다.
+포화 수준 출처) 데이터 점들이 생략되고 한 점만 원래 계산된) 점과 3×10 다를 때, 적합 결과)는 원래 값에서 유의하게 벗어납니다특히 N₀(N₀)가) 차수) 다릅니다.
 
 Modelling Growth of Tumours 269
 
@@ -5387,19 +5387,19 @@ Table 1 (역순 텍스트; Gompertz로 생성된 데이터 점들(1): 네 경우
 | Case | 직접 적합 | 선형 회귀 적합 |
 | --- | --- | --- |
 | | N₀ | a | N₀ | a |
-| 원래 데이터 점들(1) | 0.363 | 3.00×10⁹ | 0.404×10⁶ | X |
-| 한 점 다름(2) | 0.383 | 3.00×10⁹ | 0.171×10⁶ | X |
-| 영향받은 데이터 점들(3) | 0.262 | 2.73×10⁹ | 3.35×10⁵ | |
-| 최소 | 0.444 | 4.09×10⁹ | 10.7×10⁶ | |
-| 최대 | 0.644 | 3.81×10⁹ | 3.08×10⁵ | |
+| 원래 데이터 점들(1) | 0.363 | 3.00×10 | 0.404×10 | X |
+| 한 점 다름(2) | 0.383 | 3.00×10 | 0.171×10 | X |
+| 영향받은 데이터 점들(3) | 0.262 | 2.73×10 | 3.35×10 | |
+| 최소 | 0.444 | 4.09×10 | 10.7×10 | |
+| 최대 | 0.644 | 3.81×10 | 3.08×10 | |
 
 Table 2 두 서로 다른) 생쥐) 대해 지수 적합과 선형 회귀) 적합) 사이 매개변수a, N₀비교. 둘째 줄 선형 회귀 결과
 
 | 생쥐 | | 직접 적합 | 선형 회귀 적합 |
 | --- | --- | --- | --- |
-| Mouse1 | N₀ | 34.0×10³ | 43.9×10³ |
+| Mouse1 | N₀ | 34.0×10 | 43.9×10 |
 | | a | 0.3689 | 0.3684 |
-| Mouse2 | N₀ | 5.69×10⁶ | 5.25×10³ |
+| Mouse2 | N₀ | 5.69×10 | 5.25×10 |
 | | a | 0.1630 | 0.4577 |
 
 ...같은 untreated 그룹) 출처) 두 서로 다른) 생쥐) 대해(a)와(a)와 N₀(N₀)) 사이) 지수 적합과 선형 회귀) 적합) 비교 결과입니다.
@@ -5430,9 +5430,9 @@ a b c d
 
 두 적합 방법는 종양 시작 크기 결과 다릅니다.
 
-실험, 약 10⁶개 세포 이식되었습니다.
+실험, 약 10개 세포 이식되었습니다.
 
-따라서 N₀ 범위는 10⁴~1.5×10⁶ 제한 가능합니다.
+따라서 N₀ 범위는 10~1.5×10 제한 가능합니다.
 
 실험 시작 모든 생쥐 주입한(~1) 세포들이 모두 완전히 살아남아야 합니다.
 
@@ -5440,11 +5440,11 @@ a b c d
 
 Modelling Growth ofTumours 273
 
-결과적으로 N₀ 약 1.5×10⁶ 세포 초과 매개변수) 적합 결과는 비현실적입니다.
+결과적으로 N₀ 약 1.5×10 세포 초과 매개변수) 적합 결과는 비현실적입니다.
 
 원발 종양)은 처음) 이식된) 것보다 더 많은 세포) 가질 수 없습니다.
 
-선형 회귀는 두 샘플 모두 현실적인 N₀ 값 주지만 생쥐2 직접 지수 적합 결과는 1.5×10⁶ 세포 시작 종양 크기 상한 넘습니다.
+선형 회귀는 두 샘플 모두 현실적인 N₀ 값 주지만 생쥐2 직접 지수 적합 결과는 1.5×10 세포 시작 종양 크기 상한 넘습니다.
 
 전반적으로, 선형 회귀 방법은 이상치 데이터 절 지닌 데이터 덜 민감하고 매개변수) 더 현실적인 결과) 산출합니다.
 
@@ -5518,7 +5518,7 @@ Iwata 등이 소개한 다중 전이 지닌 종양 성장·크기(growth and siz
 
 β(x) = m·x^{δ/3} (7)
 
-프랙탈 차원 실제(actual definition impliedfor the fractal dimension isnot given inthe original paper[13] Here, we referto the mostcommon and, from acomputational pointofview, mosthandy formofa fractaldimension, thebox-countingdimension. Thesame isalsousedby Gazitetal.[16] to which Iwata etal.[13] referfortheir interpretation ofthefractaldimension ofavessel system. The object ϵis coveredbyagridofnon overlapping boxeswithedge lengthwhich arethencounted.The boxcounting dimension oftheobjectisdefinedtobe d_bc=lim_{ϵ→0} logN(ϵ)/log(1/ϵ)(8), where N(ϵ) denotesthe minimumnumberof boxes of sizeϵ required inorder tofullycover theobject. As atrivial example, one mayconsidertheobjectto beaboxwith volumeV. The minimum number of smallϵ³-boxesneededfor covering thelargerboxisgivenby theratio of their volumes; hence N(ϵ)=V/ϵ³∝ϵ³(9). InsertingEq.9inEq.8yieldsafractaldimensionof3. Eventhough thisexample may besomewhattrivial, itreflectsan essentialpropertyofa fractaldimension. Being ageneralizationof the geometric dimension, i.e., the intuitive understanding ofthe term "dimension," the fractaldimension mustagree withthegeometric one, forany objectwhichhasadefinite geometric definition. Theone-dimensionalCantorset, on the other hand, canbe thoughtofasan object"somewherebetweenapoint-setand aline,"i.e., somewhere between0dand1d. Continuingthesche...) 정의는 원 논문) 제공되지 않았습니다.
+프랙탈 차원 실제(actual definition impliedfor the fractal dimension isnot given inthe original paper[13] Here, we referto the mostcommon and, from acomputational pointofview, mosthandy formofa fractaldimension, thebox-countingdimension. Thesame isalsousedby Gazitetal.[16] to which Iwata etal.[13] referfortheir interpretation ofthefractaldimension ofavessel system. The object ϵis coveredbyagridofnon overlapping boxeswithedge lengthwhich arethencounted.The boxcounting dimension oftheobjectisdefinedtobe d_bc=lim_{ϵ→0} logN(ϵ)/log(1/ϵ)(8), where N(ϵ) denotesthe minimumnumberof boxes of sizeϵ required inorder tofullycover theobject. As atrivial example, one mayconsidertheobjectto beaboxwith volumeV. The minimum number of smallϵ-boxesneededfor covering thelargerboxisgivenby theratio of their volumes; hence N(ϵ)=V/ϵ∝ϵ(9). InsertingEq.9inEq.8yieldsafractaldimensionof3. Eventhough thisexample may besomewhattrivial, itreflectsan essentialpropertyofa fractaldimension. Being ageneralizationof the geometric dimension, i.e., the intuitive understanding ofthe term "dimension," the fractaldimension mustagree withthegeometric one, forany objectwhichhasadefinite geometric definition. Theone-dimensionalCantorset, on the other hand, canbe thoughtofasan object"somewherebetweenapoint-setand aline,"i.e., somewhere between0dand1d. Continuingthesche...) 정의는 원 논문) 제공되지 않았습니다.
 
 Modelling Growth of Tumours 279
 
@@ -5532,11 +5532,11 @@ d_bc = lim_{ϵ→0} log N(ϵ)/log(1/ϵ) (8)
 
 여기서 N(ϵ)는 객체 완전히) 덮기 위해) 필요한) 크기)(ϵ) 상자) 최소) 수 나타냅니다.
 
-사소한 예시(example, one may consider theobjecttobea box with volume V. Theminimumnumberofsmall ϵ³ boxesneeded forcoveringthelargerboxis given bytheratio of theirvolumes; henceN(ϵ)=V/ϵ³∝ϵ³(9))로써 객체)를 부피 지닌 상자) 고려 가능하며.
+사소한 예시(example, one may consider theobjecttobea box with volume V. Theminimumnumberofsmall ϵ boxesneeded forcoveringthelargerboxis given bytheratio of theirvolumes; henceN(ϵ)=V/ϵ∝ϵ(9))로써 객체)를 부피 지닌 상자) 고려 가능하며.
 
-더 큰 상자 덮는데(coveringthelargerboxisgivenby theratio of their volumes; hence N(ϵ)=V/ϵ³∝ϵ³(9))) 필요한 작은) ϵ³(ϵ³)-상자) 개수는 부비 비율 주어지며; 그러므로:
+더 큰 상자 덮는데(coveringthelargerboxisgivenby theratio of their volumes; hence N(ϵ)=V/ϵ∝ϵ(9))) 필요한 작은) ϵ(ϵ)-상자) 개수는 부비 비율 주어지며; 그러므로:
 
-N(ϵ) = V/ϵ³ ∝ ϵ³ (9)
+N(ϵ) = V/ϵ ∝ ϵ (9)
 
 방정식 8에 방정식 9 삽입하면, 프랙탈(상자 카운팅()) 차수인 3을 산출합니다.
 

@@ -31,7 +31,7 @@ author: "벤 골드크레 (BEN GOLDACRE)"
 
 나는 당신이 그들을 찾고 그들에게 말하기를 바랍니다.
 
-### 앞으로 다룰 내용
+## 앞으로 다룰 내용
 
 책은 간단한 궤적을 따릅니다.
 
@@ -363,7 +363,7 @@ author: "벤 골드크레 (BEN GOLDACRE)"
 2. All research staff involved in any trial on humans should be regarded as jointly and severally liable for ensuring that it is published in full within one year of completion.
 3. All those responsible for withholding trial data should have their names prominently posted in a single database, so that others can be made aware of the risk of working with them, or allowing them access to patients for research, in future.
 
-#### 연구윤리심의위원회(IRB)
+#### 연구윤리심의위원회
 
 1. No person should be allowed to conduct trials in humans if a research project they are responsible for is currently withholding trial data from publication more than one year after completion. Where any researcher on a project has a previous track record of delayed publication of trial data, the ethics committee should be notified, and this should be taken into account, as with any researcher guilty of research misconduct.
 2. No trial should be approved without a firm guarantee of publication within one year of completion.
@@ -805,7 +805,7 @@ EU 옴부즈맨의 결론은 명확했는데, EMA는 왜 이 중요한 정보에
 
 그러나 미국에서 시행할 가난한 사람들을 선별적으로 모집하는 것은 많은 환자와 많은 의사와 학자들이 완전히 모르는 또 다른 새로운 개발에 비해 사소하다. 약물 시험은 점점 더 전 세계적으로 아웃소싱되어 규제 열등, 의료 열등, 다양한 의료 문제 및 경우에 따라 완전히 다른 인구를 가진 국가에서 수행된다.
 
-### 임상시험수탁기관(CRO)과 전 세계 임상시험
+### 임상시험수탁기관과 전 세계 임상시험
 
 임상 연구 조직은 매우 새로운 현상이다. 30년 전만 해도 거의 없었으며 현재는 수백 개로 2010년에 전 세계 수익이 200억 달러로 전체 제약 R&D 지출의 약 3분의 1을 차지한다.9 그들은 업계를 대신하여 대부분의 임상 시험 연구를 수행하고 있으며 2008년에는 CRO가 전 세계 115개국에서 200만 명이 넘는 참가자를 대상으로 9,000건 이상의 시험을 실행했다.
 
@@ -1682,7 +1682,7 @@ CRASH 시험은 심각한 두부 손상을 입은 환자가 아직 의식이 없
 
 웅장하다. 이제 세부 사항으로 넘어가겠습니다.
 
-#### 소비자 직접 광고(DTC 광고)
+### 소비자 직접 광고(DTC 광고)
 
 처방전에 서명하는 것에 대한 최종적인 결정은 의사들이 내리는 것이지만 현실적으로 어떤 치료를 선택할지, 치료에 전혀 신경 쓸지에 대한 결정은 자신과 환자 사이에서 이루어진다. 이것은 전적으로 당신이 원하는 방식이지만 환자들이 매출 증대를 원하는 업계에서 기대고 싶은 또 다른 지렛대가 됩니다.
 
@@ -1852,7 +1852,7 @@ NICE의 수장인 마이클 롤린스 경 교수는 이러한 약품을 제조�
 
 1995년 한 조사에 응답한 모든 의학 저널 편집자의 약 절반이 그들이 수락한 광고의 내용을 정확성을 위해 확인하고 동료 검토를 위해 제출해야 한다는 데 동의했다.49 실제로는 거의 일어나지 않는다.50 이러한 광고의 사실적 주장이 증거에 의해 신뢰할 수 있게 뒷받침되지 않는다면, 당신은 이미 이러한 주장을 규율하는 규정이 작동하는지 여부에 대해 알아야 할 모든 것을 알고 있습니다. 전 세계적으로, 그들은 그렇지 않습니다.
 
-#### 제약회사 영업사원(MR)의 실상
+#### 제약회사 영업사원의 실상
 
 약품 대리인은 사무실에 있는 의사를 방문하여 자신의 회사가 최고의 약품이라고 직접 설득하려고 노력하는 사람들이다. 이 사람들은 종종 젊고 매력적이며 선물과 약 회사와의 길고 상호 유익한 관계의 약속을 가지고 있다. 이러한 상호 작용이 얼마나 잘 통제되는지 알기 어렵고 모든 관계와 마찬가지로 상호 신뢰에 따라 점진적으로 구축되므로 친구 간에 가장 심각한 행동이 발생한다. 여기서 이 세상은 더 쉽게 침투하기 어렵기 때문에 나는 더 건조한 증거 세계에서 벗어나 자신감 있게 일부 마약 판매자들과 이야기했다: 멜로드라마적이라고 느끼면 우리는 그들을 내부 고발자라고 부를 수 있지만 그들은 술집에서 듣지 못할 말을 나에게 한 적이 없다고 생각한다.
 
@@ -2108,7 +2108,7 @@ ICMJE 기준은 연구의 구상 및 설계(또는 데이터 수집, 또는 분�
 4. Editors should declare their own conflicts of interest, funding sources if they are working academics, stocks, and so on.
 5. More research should be done looking at whether projected advertising and reprint income has an impact on journals accepting papers.
 
-### 제약회사가 장악한 의학교육(CME)
+### 제약회사가 장악한 의학교육
 
 이 장의 시작 부분에서 나는 오늘 일하는 가장 선배 의사들이 1960년대에 자격을 갖췄다는 냉정한 생각인 것을 당신에게 제시했다. 오늘날의 의대생들은 24세에 자격을 취득하고 그 후 50년 동안 일할 것이다. 의대에 있을 때 강의와 교과서에서 어떤 치료법이 가장 효과가 좋는지 알려주고 테스트를 받습니다. 몇 년이 지난 지금도 당신은 안전하고 제약된 세상에서 전문 시험과 훈련을 하고 있으며 똑똑한 사람들이 적극적으로 가르쳐주고 있다. 그러다가 갑자기 혼자 나가서 환자를 보고 계속 하는 거야. 의학은 수십 년 동안 알아볼 수 없이 당신 주변의 변화를 일으키며, 완전히 새로운 종류의 약이 발명되고, 사람들을 진단하는 완전히 새로운 방법, 심지어 완전히 새로운 질병까지 발명된다. 하지만 아무도 당신에게 시험을 정하지 않고, 아무도 당신에게 읽기 목록을 주지 않으며, 맥앨리스터 교수는 당신에게 어떤 것이 어떻게 작동하는지 말하지 않는다. 혼자야.
 

@@ -78,7 +78,7 @@ ADC에 사용되는 세포독성 페이로드의 전반적인 스펙트럼은 �
 
 마찬가지로 칼리케아미신(Calicheamicin) ADC의 성공은 운시알라마이신(Uncialamycin) [15], 피롤로벤조디아제핀(PBD, Pyrrolobenzodiazepine) [16-18], 듀오카마이신(Duocarmycin) [19, 20] 등 신세대 DNA 손상 페이로드 개발을 촉진했습니다. 그러나 최근 극도로 강력한 초고활성 DNA 손상 페이로드 기반 ADC 다수가 임상에서 잇달아 실패하면서 [21, 22], 세포 증식을 억제하는 대체 기전에 대한 관심이 급증했습니다.
 
-### 키네신 방추 단백질(KSP) 저해제
+### 키네신 방추 단백질 저해제
 바이엘(Bayer) 연구팀은 유사분열 중 중심체 분리에 관여하는 ATP 의존성 미세소관 모터 단백질인 **키네신 방추 단백질(KSP, Kinesin Spindle Protein)**의 활성을 차단하는 일련의 ADC를 보고했습니다 [23]. 이 페이로드는 링커 접합용 아민기를 보유하고 있음에도 불구하고 말레이미드 접합 핸들을 통해 비절단형 링커로 연결되었습니다(ADC1). 내인성 시스테인 잔기를 통해 접합된 이 물질은 DAR 3~4를 나타내며 표적 세포주에 대해 sub-nM 수준의 우수한 효능을 보였습니다.
 
 나아가 리소좀 내에서 높은 극성의 양쪽성 이온(zwitterionic) 라이신 부가물을 방출하도록 설계된 절단형 ADC(ADC2)도 개발되었습니다. 방출된 물질 자체는 세포막 투과성이 낮아 단독 세포독성 시험에서는 효능이 낮았지만 접합체 형태로는 탁월한 항암 효능을 입증했습니다. 이는 방관자 독성을 최소화하면서 암세포 내에 약물을 축적시키는 전략입니다.
@@ -99,7 +99,7 @@ ADC에 사용되는 세포독성 페이로드의 전반적인 스펙트럼은 �
 
 ***
 
-## 1.3 약물-항체 비율(DAR) 향상
+## 1.3 약물-항체 비율 향상
 
 전통적인 ADC 작용 기전에서 세포 내 약물 농도는 표적 수용체 수와 직접적으로 연관됩니다. 수용체 수가 적은 암세포의 경우 세포 내 유입량이 적을 수밖에 없으므로, 이를 극복하기 위해 항체 1분자당 결합하는 약물의 수(DAR)를 늘리는 접근법이 널리 연구되었습니다.
 
@@ -215,7 +215,7 @@ ADC 분야는 지난 10년간의 치열한 시행착오를 밑거름 삼아 링�
 
 ---
 
-### 2.2.2 항체-항생제 접합체 (AAC, Antibody-Antibiotic Conjugate)
+### 2.2.2 항체-항생제 접합체
 
 메티실린 내성 황색포도상구균(MRSA)과 같은 다제내성균은 대식세포나 호중구 등 숙주 식세포 내부에 잠복하여 세포 내 병소(Intracellular reservoir)를 형성함으로써 기존 항생제의 공격을 회피하고 만성 재발성 감염을 유발합니다 [22, 23].
 
@@ -236,7 +236,7 @@ ADC 분야는 지난 10년간의 치열한 시행착오를 밑거름 삼아 링�
 
 ---
 
-### 2.2.4 간 X 수용체(LXR) 작용제 접합체
+### 2.2.4 간 X 수용체 작용제 접합체
 
 간 X 수용체(LXR, Liver X Receptor)는 지질 항상성과 대식세포의 항염증 반응을 조절하는 핵심 핵 수용체입니다 [29]. 합성 LXR 작용제는 죽상동맥경화증 및 염증성 질환 치료제로 큰 기대를 모았으나, 간세포의 LXR을 동시에 자극하여 간 지방증(Hepatic steatosis) 및 고중성지방혈증을 유발하는 표적내(on-target) 간 독성으로 인해 임상 개발이 번번이 중단되었습니다 [30].
 
@@ -245,7 +245,7 @@ ADC 분야는 지난 10년간의 치열한 시행착오를 밑거름 삼아 링�
 
 ---
 
-### 2.2.5 포스포디에스테라아제 4(PDE4) 저해제 접합체
+### 2.2.5 포스포디에스테라아제 4 저해제 접합체
 
 PDE4는 염증 신호 전달의 핵심 2차 전령 물질인 cAMP를 분해하는 효소입니다 [32]. 아프레밀라스트(Apremilast) 등 기존 PDE4 저해제는 우수한 항염증 효능에도 불구하고 중추신경계 및 위장관계 부작용(오심, 구토, 설사)으로 인해 충분한 용량을 투여하기 어려웠습니다 [34].
 
@@ -321,7 +321,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ## 3.2 실험 재료 및 기기
 
-### 3.2.1 원자재 및 시약 (Raw Materials)
+### 3.2.1 원자재 및 시약
 1. **용매 및 용수**: 디메틸설폭사이드(DMSO, 고순도 무수 등급), 주사용수(WFI)
 2. **환원 및 pH 조절 시약**: 10 N 수산화나트륨(NaOH), Tris(2-carboxyethyl)phosphine hydrochloride (TCEP·HCl, 0.5 M 수용액)
 3. **완충액 및 부형제 성분**:
@@ -367,7 +367,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-### 3.3.2 컬럼 크로마토그래피 정제 (CHT Purification)
+### 3.3.2 컬럼 크로마토그래피 정제
 반응 중 형성된 고분자량 응집체(Aggregates)와 켄칭된 미반응 저분자를 제거하기 위해 하이드록시아파타이트 컬럼 크로마토그래피를 수행합니다.
 - **수지**: 세라믹 하이드록시아파타이트 (CHT Type I, 40 μm)
 - **이동상 A**: 10 mM 나트륨 포스페이트, pH 7.0
@@ -379,7 +379,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-### 3.3.3 한외여과/정용여과 (UF/DF) 및 최종 제형화
+### 3.3.3 한외여과/정용여과 및 최종 제형화
 1. 정제된 ADC 용리액을 30 kDa MWCO 재생 셀룰로오스 멤브레인 카세트에 투입합니다.
 2. 제형 완충액(20 mM 히스티딘, pH 5.8)을 사용하여 **8~10 다이아볼륨(Diavolumes)** 이상 정용여과를 수행함으로써 잔류 염과 용매(DMSO)를 완전히 제거합니다.
 3. 표적 농도(약 15~20 mg/mL)로 농축합니다.
@@ -388,20 +388,20 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-## 3.4 완제 ADC 품질 분석 시험법 (Analytical Methods)
+## 3.4 완제 ADC 품질 분석 시험법
 
-### 3.4.1 HIC를 이용한 약물 탑재량(DAR) 및 분포 분석
+### 3.4.1 HIC를 이용한 약물 탑재량 및 분포 분석
 - **컬럼**: Thermo ProPac HIC-10
 - **이동상 A**: 1.5 M 황산암모늄, 50 mM 인산이칼륨, pH 7.0
 - **이동상 B**: 50 mM 인산이칼륨, 10% 이소프로판올, pH 7.0
 - **분석 원리**: DAR이 높을수록(소수성이 클수록) 컬럼에 오래 머무르므로, DAR 0, 2, 4, 6, 8 피크가 단계적으로 분리됩니다. 피크 면적 백분율을 가중 평균하여 평균 DAR을 산출합니다. (목표 평균 DAR: 3.5 ~ 3.8)
 
-### 3.4.2 크기 배제 크로마토그래피(SEC)를 통한 단량체 순도 측정
+### 3.4.2 크기 배제 크로마토그래피를 통한 단량체 순도 측정
 - **컬럼**: YMC-Pack Diol-200 (300 × 8.0 mm)
 - **이동상**: 20 mM 인산나트륨, 400 mM 염화나트륨, pH 7.2
 - **기준**: 고분자 응집체(Aggregates) 함량 < 2.0%, 단량체 순도 ≥ 98.0%
 
-### 3.4.3 환원 역상 HPLC (Reduced RP-HPLC)를 통한 사슬별 접합 분석
+### 3.4.3 환원 역상 HPLC를 통한 사슬별 접합 분석
 - **시료 전처리**: 4 M 구아니딘-HCl 및 20 mM DTT로 37 °C에서 30분간 처리하여 경쇄(L)와 중쇄(H)를 완전히 분리
 - **결과 해석**: 약물이 결합되지 않은 사슬(L0, H0)부터 약물이 결합된 사슬(L1, H1, H2, H3)을 분리 정량하여 경쇄 및 중쇄의 개별 약물 탑재 비율을 정밀 산출합니다.
 
@@ -436,7 +436,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 제넨텍(Genentech)에서 개발한 **THIOMAB™ 기술**은 항체의 중쇄(HC) 또는 경쇄(LC)의 특정 불변 영역(예: LC-V205C, HC-A114C 등)에 돌연변이를 도입하여 한 쌍의 반응성 시스테인 잔기를 정밀하게 배치합니다.
 
-### 캡핑 및 탈차폐(Deblocking)의 필요성
+### 캡핑 및 탈차폐의 필요성
 포유류 세포(CHO) 배양 중 세포질 외부로 분비되는 과정에서, 조작된 시스테인 잔기의 반응성 유리 티올기는 배지 내의 유리 L-시스테인 또는 글루타치온(GSH)과 반응하여 혼합 이황화 결합(Mixed disulfide adduct) 형태인 **"블록(Blocked)"** 상태로 보호됩니다.
 
 따라서 링커-페이로드를 결합하기 위해서는 다음의 2단계 전처리 공정이 필수적입니다.
@@ -510,7 +510,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-### 4.3.3 접합체 정제 공정 (Purification Strategies)
+### 4.3.3 접합체 정제 공정
 
 1. **탈염 스핀 컬럼 정제 (소량 신속 정제)**:
    - 7 kDa Zeba 스핀 컬럼을 20 mM 히스티딘-아세테이트 완충액(pH 5.5)으로 세척 후 시료를 로딩하여 유리 약물을 분리합니다.
@@ -525,14 +525,14 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-## 4.4 품질 특성화 및 분석법 (Analytics)
+## 4.4 품질 특성화 및 분석법
 
 ### 4.4.1 고분해능 LC-MS를 통한 정확한 DAR 산출
 - **탈당화 전처리**: PNGase F(37 °C, 2시간~하룻밤)를 처리하여 N297 당사슬 복잡성을 제거합니다.
 - **Lys-C 단편화**: 경쇄 조작 THIOMAB의 경우 Lys-C 소화를 통해 LC 단편(약 23 kDa)과 HC 단편을 분리 분석함으로써 접합 부위를 직접 입증합니다.
 - **Mass Deconvolution**: ESI-Q-TOF를 통해 비접합 항체(D0), 1개 접합(D1), 2개 접합(D2)의 질량 스펙트럼 피크 면적을 디콘볼루션하여 정확한 평균 DAR(목표치: **1.95 ~ 2.00**)을 산출합니다.
 
-### 4.4.2 크기 배제 크로마토그래피(SEC)를 통한 응집체 모니터링
+### 4.4.2 크기 배제 크로마토그래피를 통한 응집체 모니터링
 - Tosoh TSKgel G3000SWxl 컬럼을 사용하고 200 mM 인산칼륨 완충액(pH 6.2, 15% 이소프로판올 포함)을 이동상으로 사용하여 고분자 응집체(HMW)를 1.0% 미만으로 관리합니다.
 
 ---
@@ -544,7 +544,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 3. **유리 페이로드 한계 기준**: 세포독성 평가 및 동물 실험의 신뢰성을 위해 완제 내 유리 링커-페이로드 잔류량은 전체 약물 대비 **0.5% 미만**이어야 합니다.
 
 
-# 5장: 트랜스글루타미나아제 매개 효소 접합 (Transglutaminase-Mediated Conjugations)
+# 5장: 트랜스글루타미나아제 매개 효소 접합
 
 **저자**: 아나미 야스아키(Yasuaki Anami), 쓰치카마 교지(Kyoji Tsuchikama)
 
@@ -572,7 +572,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 [항체 Q295-CO-NH-(CH2)n-링커-페이로드] + NH3 ↑
 ```
 
-### 글루타민 295(Q295)의 접근성 제어
+### 글루타민 295의 접근성 제어
 천연 온전한 IgG1 항체에서는 중쇄 N297 잔기에 결합된 복잡한 N-글리칸(CH2 도메인 내부)이 바로 인접한 Q295 잔기를 입체적으로 차폐하고 있어 MTGase가 접근할 수 없습니다.
 1. **PNGase F 효소 탈당화**를 수행하거나,
 2. **N297A / N297S 유전 돌연변이**를 도입하면,
@@ -647,7 +647,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-## 5.4 품질 특성화 및 분석법 (Analytics)
+## 5.4 품질 특성화 및 분석법
 
 ### 5.4.1 고해상도 ESI-MS를 통한 완전한 단계별 추적
 - **비환원 온전(Intact) 항체 분석**:
@@ -668,7 +668,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 2. **EVCit 링커의 우수한 체내 안정성**: 친수성 글루탐산(Glu)이 포함된 EVCit 링커는 혈액 내 비특이적 카복실에스테라아제에 의한 조기 분해를 차단하여 기존 ValCit 링커 대비 쥐 모델에서 탁월한 순환 안정성과 항암 효능을 나타냅니다.
 
 
-# 6장: 클릭 화학 접합 (Click Chemistry Conjugations)
+# 6장: 클릭 화학 접합
 
 **저자**: 탁 이안 치오(Tak Ian Chio), 수잔 L. 베인(Susan L. Bane)
 
@@ -704,7 +704,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ## 6.2 실험 재료 및 시약
 
-### 6.2.1 옥심 결찰 (Oxime Ligation) 재료
+### 6.2.1 옥심 결찰 재료
 1. **카보닐(케톤/알데하이드) 작용기 도입 항체**:
    - 비천연 아미노산(p-아세틸페닐알라닌, pAcPhe) 유전 도입 항체 (호박색 종결 코돈 억제 기술)
    - 또는 글리코실트랜스퍼라아제 효소를 통해 케톤 변형 갈락토오스가 도입된 글리칸 조작 항체
@@ -726,7 +726,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ## 6.3 표준 접합 프로토콜
 
-### 6.3.1 옥심 결찰 프로토콜 (Oxime Ligation SOP)
+### 6.3.1 옥심 결찰 프로토콜
 
 1. **완충액 교환**:
    - **방법 A (산성 조건)**: 정제된 카보닐 기능화 항체(10 mg)를 0.1 M 아세트산 완충액(pH 4.5)으로 완충액 교환합니다.
@@ -740,7 +740,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-### 6.3.2 SPAAC 무금속 클릭 접합 프로토콜 (SPAAC SOP)
+### 6.3.2 SPAAC 무금속 클릭 접합 프로토콜
 
 1. **항체 용액 준비**:
    - 아지드 기능화 항체(10 mg)를 PBS 완충액(pH 7.4)으로 평형화하고 농도를 약 **5~10 mg/mL**로 맞춥니다.
@@ -753,7 +753,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-## 6.4 분석 및 특성화 (Analytics)
+## 6.4 분석 및 특성화
 
 1. **고해상도 ESI-MS 분석**:
    - 온전 항체 및 PNGase F 탈당화 시료의 디콘볼루션 질량 스펙트럼을 측정하여 옥심 결합(+이민 탈수 질량) 또는 트리아졸 고리 형성(+DBCO 전분자 질량)에 따른 정확한 분자량 증가를 확인하고 **균일한 DAR 2.0 또는 4.0**을 검증합니다.
@@ -769,7 +769,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 3. **소수성 DBCO 부산물 관리**: DBCO 고리는 소수성이 높으므로 링커 내에 충분한 길이의 친수성 PEG 스페이서(PEG4 이상)를 도입해야 ADC의 체내 청소율 가속화를 방지할 수 있습니다.
 
 
-# 7장: 고처리량 고상 위치 특이적 접합 및 이중 표지 기술 (Utilizing Solid-Phase to Enable High-Throughput, Site-Specific Conjugation and Dual-Labeled Antibody and Fab Conjugates)
+# 7장: 고처리량 고상 위치 특이적 접합 및 이중 표지 기술
 
 **저자**: 수지트 푸텐베틸(Sujiet Puthenveetil)
 
@@ -867,7 +867,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 
 ---
 
-### 7.3.2 이중 표지(Dual-Labeled) 항체 고상 제조 프로토콜
+### 7.3.2 이중 표지 항체 고상 제조 프로토콜
 1. 조작 항체(1 mg)를 PNGase F로 37 °C에서 하룻밤 탈당화시킨 후 단백질 A 비즈에 고정화합니다.
 2. 시스테인 잔기에 대한 환원, 재산화 및 말레이미드-페이로드 A 접합을 상기 프로토콜대로 진행합니다.
 3. 세척 후 비즈 상에 mTGase 및 **BCN-아민(30 당량)**을 투입하여 37 °C에서 Q295 위치에 BCN을 효소 결합시킵니다.
@@ -889,7 +889,7 @@ TCEP에 의한 환원 반응 온도 및 반응 시간은 환원되는 이황화 
 3. **용출액 즉시 중화**: 산성 용출 완충액(pH 3.0)에 항체가 장시간 노출되면 단백질 변성 및 비가역적 침전이 발생하므로, 수집 웰에 반드시 1 M Tris 중화 완충액을 미리 넣어두어야 합니다.
 
 
-# 8장: 가교 시스테인 접합 (Bridged Cysteine Conjugations)
+# 8장: 가교 시스테인 접합
 
 **저자**: 매튜 버드(Matthew Bird), 주앙 누네스(Joao Nunes), 마크 프리제리오(Mark Frigerio)
 
@@ -978,7 +978,7 @@ Step 4: 두 번째 메틸렌설폰의 연속적 베타-제거 및 두 번째 시
 
 ---
 
-### 8.3.3 시스테인 재가교 접합 반응 (Re-bridging Conjugation)
+### 8.3.3 시스테인 재가교 접합 반응
 1. ThioBridge® 비스-설폰-MMAE 시약(3.0 mM 아세토나이트릴 스톡) **53.3 μL (4.8 당량, 이황화 결합 1개당 1.2 당량)**를 준비합니다.
 2. 냉각된 환원 항체 용액에 반응 완충액을 첨가하여 최종 항체 농도를 **4.2 mg/mL**로 맞추고 비스-설폰 시약을 천천히 적하합니다 (최종 유기용매 농도: 4.8% v/v).
 3. 실온(**22 °C**)에서 차광 상태로 **16~20시간(하룻밤)** 동안 반응시킵니다.
@@ -994,7 +994,7 @@ Step 4: 두 번째 메틸렌설폰의 연속적 베타-제거 및 두 번째 시
 
 ---
 
-## 8.4 분석 및 특성화 (Analytics)
+## 8.4 분석 및 특성화
 
 1. **분석용 HIC (TSKgel Butyl-NPR)**:
    - 황산암모늄 염 농도 감소 구배(1.5 M → 0 M)를 적용하여 정제 전후 시료를 분석합니다. 정제된 완제에서 **DAR 4.0 단일 대칭 피크(순도 >95.0%)**를 검증합니다.
@@ -1010,7 +1010,7 @@ Step 4: 두 번째 메틸렌설폰의 연속적 베타-제거 및 두 번째 시
 3. **가교제의 화학량론적 정밀도**: 비스-설폰 가교 시약은 이황화 결합 1쌍당 1.1~1.3 당량(항체 1분자당 4.4~5.2 당량)의 좁은 창에서 최적의 수율을 나타냅니다.
 
 
-# 9장: 당사슬 리모델링을 통한 항체 접합 (Antibody Conjugations via Glycosyl Remodeling)
+# 9장: 당사슬 리모델링을 통한 항체 접합
 
 **저자**: 한나 토프테발(Hanna Toftevall), 헬렌 닐렌(Helen Nyhlen), 프레드릭 올손(Fredrik Olsson), 조나단 셰그렌(Jonathan Sjogren)
 
@@ -1094,7 +1094,7 @@ Step 3: DBCO-링커-페이로드 (예: DBCO-PEG4-Ahx-DM1) 첨가
 
 ---
 
-### 9.3.2 GlycINATOR® (EndoS2) 처리를 통한 Fc 당사슬 절단
+### 9.3.2 GlycINATOR® 처리를 통한 Fc 당사슬 절단
 1. 고정화 GlycINATOR® 스핀 컬럼을 TBS 완충액 300 μL로 3회 원심 세척(200 × g, 1분)합니다.
 2. 항체 용액(100~200 μL)을 컬럼 수지 위에 천천히 가합니다.
 3. 실온(20~25 °C) 또는 37 °C에서 **30분간** 완만하게 교반하며 반응시킵니다.
@@ -1103,7 +1103,7 @@ Step 3: DBCO-링커-페이로드 (예: DBCO-PEG4-Ahx-DM1) 첨가
 
 ---
 
-### 9.3.3 GalT(Y289L) 매개 아지드(-N3) 당 전이 반응
+### 9.3.3 GalT 매개 아지드 당 전이 반응
 1. 탈당화된 항체 용액에 Kit에 포함된 **Buffer Additive 30 μL**와 **UDP-GalNAz 용액 50 μL**, 그리고 **GalT(Y289L) 효소 10 μL**를 순서대로 첨가하고 피펫팅하여 잘 섞습니다.
 2. **30 °C 인큐베이터에서 16~20시간(하룻밤)** 동안 인큐베이션합니다.
 3. 50 kDa 한외여과 필터(1,200 × g, 10분)를 사용하여 TBS 완충액으로 3회 이상 원심여과 세척함으로써 과량의 유리 UDP-GalNAz를 완전히 제거하고 부피를 약 100 μL로 맞춥니다.
@@ -1119,7 +1119,7 @@ Step 3: DBCO-링커-페이로드 (예: DBCO-PEG4-Ahx-DM1) 첨가
 
 ---
 
-## 9.4 분석 및 특성화 (Analytics)
+## 9.4 분석 및 특성화
 
 1. **LC-ESI-MS 단편 분석 **:
    - DTT 환원 후 역상 질량분석을 수행하여 Fd 및 LC 사슬은 변함없이 유지되고 Fc/2 사슬만이 단계별로 정확히 분자량이 증가함을 확인합니다.
@@ -1139,7 +1139,7 @@ Step 3: DBCO-링커-페이로드 (예: DBCO-PEG4-Ahx-DM1) 첨가
 2. **아지드 보존제 제거**: 상용 항체에 포함된 미량의 보존제(Sodium Azide, NaN3)는 UDP-GalNAz 클릭 반응을 방해하므로, 효소 처리 전 반드시 탈염 컬럼으로 완충액을 교환해야 합니다.
 
 
-# 10장: 소수성 상호작용 크로마토그래피를 이용한 ADC 분석 (ADC Analysis by Hydrophobic Interaction Chromatography)
+# 10장: 소수성 상호작용 크로마토그래피를 이용한 ADC 분석
 
 **저자**: 라이언 플레밍(Ryan Fleming)
 
@@ -1211,7 +1211,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 - **유속**: **0.8 mL/min**
 - **시료 주입량**: 50 μg (1 mg/mL 시료 50 μL 주입)
 
-### 10.3.2 펌프 용출 농도 구배 (Gradient Program)
+### 10.3.2 펌프 용출 농도 구배
 
 | 시간 (min) | 이동상 A (%) | 이동상 B (%) | 비고 |
 |---|---|---|---|
@@ -1243,7 +1243,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 3. **압력 상승 시 컬럼 재생**: 장시간 사용으로 컬럼 배압이 증가하면 정방향 및 역방향으로 20% 이소프로판올 완충액을 저유속(0.2 mL/min)으로 세척하여 잔류 소수성 물질을 제거합니다.
 
 
-# 11장: 2차원 액체 크로마토그래피-고분해능 질량분석법을 이용한 ADC 분석 (Two-Dimensional Liquid Chromatography Coupled to High-Resolution Mass Spectrometry for the Analysis of ADCs)
+# 11장: 2차원 액체 크로마토그래피-고분해능 질량분석법을 이용한 ADC 분석
 
 **저자**: 소라야 샤펠(Soraya Chapel), 플로랑 루비에르(Florent Rouviere), 모르간 사뤼(Morgan Sarrut), 사빈 하이니쉬(Sabine Heinisch)
 
@@ -1275,14 +1275,14 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 [온라인 ESI 이온화원] → [고분해능 질량분석기 (HRMS) / 이온 이동도 (IM-MS)]
 ```
 
-### 2D-LC 샘플링 방식의 분류 
+### 2D-LC 샘플링 방식의 분류
 1. **하트 커팅 (Heart-cutting, LC-LC)**: 1D 크로마토그램에서 관심 있는 특정 단일 피크만을 포집하여 2D로 전달합니다.
 2. **다중 하트 커팅 (Multiple Heart-cutting, mLC-LC)**: 여러 개의 관심 피크(예: DAR 0, 2, 4, 6, 8 각 피크)를 독립된 루프에 순차적으로 저장한 후 2D로 순차 분석합니다.
 3. **전면적 포괄 2D-LC (Full Comprehensive, LC×LC)**: 1D의 모든 용출액을 일정한 주기로 연속 포집하여 2D로 전량 분석함으로써 2차원 등고선 맵(2D Contour map)을 생성합니다.
 
 ---
 
-## 11.2 천연 조건 2D-LC 탑다운 분석 (Native Top-Down 2D-LC)
+## 11.2 천연 조건 2D-LC 탑다운 분석
 
 ### 11.2.1 HIC-SEC-HRMS 및 HIC-SEC-IM-MS (DAR 및 위치 이성질체 규명)
 - **1D HIC (황산암모늄 염석)**: DAR 0부터 8까지 온전한 단백질을 소수성에 따라 분리합니다.
@@ -1297,7 +1297,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ---
 
-## 11.3 변성 및 환원 조건 2D-LC 사슬 분석 (Middle-Up 2D-LC)
+## 11.3 변성 및 환원 조건 2D-LC 사슬 분석
 
 ### 11.3.1 HIC-RPLC-HRMS (비공유 사슬 해리 및 서브유닛 구조 규명)
 - 시스테인 접합 ADC는 쇄간 이황화 결합이 끊어져 비공유 상호작용으로 유지됩니다.
@@ -1317,7 +1317,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ---
 
-## 11.4 펩타이드 맵핑 바텀업 분석 (Bottom-Up Peptide Mapping)
+## 11.4 펩타이드 맵핑 바텀업 분석
 
 트립신(Trypsin) 등으로 소화된 수백 개의 펩타이드 단편을 분석하는 펩타이드 맵핑에서 2D-LC(RPLC×RPLC 또는 HILIC×RPLC)는 단일 컬럼 대비 피크 용량(Peak capacity)을 10배 이상 증가시킵니다.
 - 모체 단일클론항체와 ADC 간의 2D 펩타이드 맵을 비교하여 **약물이 결합된 특정 펩타이드 스팟(Conjugated peptide spots)**만을 명확히 식별해 낼 수 있습니다 .
@@ -1332,7 +1332,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 2. **직교성 극대화**: 비변성 분리(HIC, SEC, IEX)와 초고속 탈염 또는 변성 질량분석(RPLC, HRMS, IM-MS)을 매끄럽게 연결하여 ADC의 구조-활성 상관관계(SAR) 연구와 바이오시밀러 비교 동등성 평가를 획기적으로 가속화하고 있습니다.
 
 
-# 12장: 환원 또는 IdeS 소화 후 ADC의 약물 탑재량 및 분포 분석 (Drug Loading and Distribution of ADCs After Reduction or IdeS Digestion and Reduction)
+# 12장: 환원 또는 IdeS 소화 후 ADC의 약물 탑재량 및 분포 분석
 
 **저자**: 엘사 바그너-루세(Elsa Wagner-Rousset), 올리비에 콜라(Olivier Colas), 야니스-니콜라 프랑수아(Yannis-Nicolas Francois), 사빈 하이니쉬(Sabine Heinisch), 다비 기야름(Davy Guillarme), 사라 시앙페라니(Sarah Cianferani), 알랭 벡(Alain Beck)
 
@@ -1442,7 +1442,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ---
 
-## 12.4 데이터 해석 및 DAR 산출 (Data Analysis)
+## 12.4 데이터 해석 및 DAR 산출
 
 ### 12.4.1 UV 크로마토그램 적분 및 단편 분포 정량
 - **환원 시료**: L0, L1, H0, H1, H2, H3 순서로 용출되는 각 피크 면적을 적분합니다 .
@@ -1496,21 +1496,21 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ## 2. 재료 및 시약
 
-### 2.1 이동상 (Mobile Phase)
+### 2.1 이동상
 1. **네이티브 MS 및 SEC-네이티브 MS용 이동상**: 100 mM 암모늄 아세테이트($\text{CH}_3\text{COONH}_4$, $) 수용액. HPLC/MS 등급 물에 초순수 암모늄 아세테이트 고체를 용해하여 조제하고 0.22 μm 필터로 여과한다.
 
-### 2.2 탈당화 ADC 시료 (Deglycosylated ADCs)
+### 2.2 탈당화 ADC 시료
 1. 당사슬에 의한 이질성을 제거하여 MS 스펙트럼 복잡도를 줄이기 위해 PNGase F(N-glycosidase F, Roche)를 사용한다.
 2. ADC 시료(100 μg)에 PNGase F 1 unit을 첨가하고 37 °C에서 밤샘(또는 최소 4시간) 인큐베이션하여 탈당화(deglycosylation)를 수행한다.
 
-### 2.3 수동 탈염 (Manual Desalting)
+### 2.3 수동 탈염
 1. 오프라인 직접 주입 분석용 미세 원심분리 겔 여과 스핀 컬럼: Micro Bio-Spin 6 컬럼(Bio-Rad) 또는 Zeba Spin Desalting Column 40K/7K MWCO(Thermo Fisher Scientific).
 2. 원심분리기(상온 및 4 °C 지원).
 
-### 2.4 세슘 요오드화물 교정액 (Cesium Iodide Calibration Solution)
+### 2.4 세슘 요오드화물 교정액
 1. 고분자량 및 고 m/z 질량 교정용: 2 mg/mL 요오드화 세슘(CsI, Sigma-Aldrich) 용액 (50% 이소프로판올 수용액에 용해).
 
-### 2.5 이온 이동도 교정 표준 단백질 (Ion Mobility Calibrants)
+### 2.5 이온 이동도 교정 표준 단백질
 1. 충돌 단면적(CCS) 캘리브레이션을 위한 표준 단백질:
    - 콘카나발린 A (Concanavalin A from *Canavalia ensiformis*, 102.7 kDa)
    - 알코올 탈수소효소 (Alcohol Dehydrogenase, ADH from *Saccharomyces cerevisiae*, 147.5 kDa)
@@ -1521,17 +1521,17 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ## 3. 방법
 
-### 3.1 ADC 시료 준비 및 탈염 (Sample Preparation and Desalting)
+### 3.1 ADC 시료 준비 및 탈염
 1. **탈당화 반응**: 100 μg의 ADC(라이신 접합체 또는 시스테인 접합체)에 1 unit의 PNGase F를 첨가하고 37 °C에서 밤샘 인큐베이션한다.
 2. **스핀 컬럼 세척 및 평형화**: Bio-Spin 6 컬럼을 1,000 × g에서 2분간 원심분리하여 보관액을 제거한 후, 100 mM 암모늄 아세테이트 완충액 500 μL를 넣고 1,000 × g에서 2분간 원심분리하는 과정을 4회 반복하여 평형화한다.
 3. **시료 탈염**: 평형화된 컬럼 중앙에 탈당화된 ADC 시료(20~50 μL)를 조심스럽게 로딩하고 1,000 × g에서 4분간 원심분리하여 탈염된 ADC 여액을 수집한다.
 4. 필요 시 100 mM 암모늄 아세테이트를 추가하여 최종 농도를 약 2~5 μM로 맞춘다.
 
-### 3.2 질량분석기 질량 축 교정 (Mass Spectrometer Calibration)
+### 3.2 질량분석기 질량 축 교정
 1. 고 m/z 영역 교정을 위해 CsI 용액(2 mg/mL)을 나노 ESI 소스(또는 NanoMate)에 주입한다.
 2. 양이온 모드에서 m/z 1,000 ~ 10,000 범위로 스펙트럼을 획득하고 CsI 클러스터 이온 피크들을 이용하여 질량 축을 교정한다.
 
-### 3.3 오프라인 직접 주입 네이티브 MS 분석 (Direct Infusion Native MS)
+### 3.3 오프라인 직접 주입 네이티브 MS 분석
 1. **나노 ESI 소스 설정 (TriVersa NanoMate / ESI)**:
    - 모세관 전압(Capillary voltage): 1.5 ~ 1.7 kV
    - 전달 가스 압력(Delivery gas pressure): 0.5 ~ 0.8 psi
@@ -1543,7 +1543,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
    - 트랩 충돌 에너지(Trap CE): 4 V, 트랜스퍼 충돌 에너지(Transfer CE): 2 V
 3. **스펙트럼 획득**: 2~3분간 스펙트럼을 누적 기록한다.
 
-### 3.4 오프라인 직접 주입 네이티브 IM-MS 및 CCS 측정 (Direct Infusion Native IM-MS)
+### 3.4 오프라인 직접 주입 네이티브 IM-MS 및 CCS 측정
 1. **장비 튜닝 파라미터**:
    - 샘플링 콘 전압: 80 V (이온 가열에 의한 단백질 구조 변성/언폴딩 방지, *Note 4*)
    - 소스 오프셋: 5 V, 소스 온도: 90 °C
@@ -1567,7 +1567,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ---
 
-### 3.5 온라인 SEC-네이티브 MS 및 SEC-네이티브 IM-MS (Online SEC-Native MS/IM-MS)
+### 3.5 온라인 SEC-네이티브 MS 및 SEC-네이티브 IM-MS
 
 1. **크로마토그래피(SEC) 시스템 구성**:
    - 컬럼: ACQUITY UPLC Protein BEH SEC 컬럼 (200 Å, 1.7 μm, 4.6 × 150 mm) (*Note 9*)
@@ -1587,7 +1587,7 @@ HIC는 고농도 염 완충액(호프마이스터 계열의 황산암모늄 등)
 
 ---
 
-### 3.6 평균 DAR 및 약물 탑재 분포(DLD) 계산
+### 3.6 평균 DAR 및 약물 탑재 분포 계산
 
 질량 스펙트럼에서 각 약물 수($k$)에 해당하는 $I_k$ 피크의 상대 강도($I_k$)를 측정하여 다음 식에 따라 평균 약물-항체 비율($DAR_{av}$)을 계산한다:
 
@@ -1637,7 +1637,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 16. Ruotolo BT, Benesch JLP, Sandercock AM, Hyung S-J, Robinson CV (2008) Ion mobility-mass spectrometry analysis of large protein complexes. Nat Protoc 3:1139
 
 
-# Chapter 14 오비트랩 LC-MS를 이용한 ADC의 고분해능 특성 분석 (High-Resolution Characterization of ADCs by Orbitrap LCMS)
+# Chapter 14 오비트랩 LC-MS를 이용한 ADC의 고분해능 특성 분석
 
 **Jintang He, Surinder Kaur, and Keyang Xu**
 
@@ -1663,7 +1663,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ## 2. 재료 및 시약
 
-### 2.1 친화도 포집 및 시료 전처리 (Affinity Capture)
+### 2.1 친화도 포집 및 시료 전처리
 1. **자성 입자 자동 처리기**: KingFisher 96 Magnetic Particle Processor (Thermo Fisher Scientific)
 2. **스트렙타비딘 코팅 자성 비드**: Dynabeads M-280 Streptavidin (Invitrogen)
 3. **HBS-EP 완충액**: 10 mM HEPES (pH 7.4), 150 mM NaCl, 3.4 mM EDTA, 0.005% Surfactant P20
@@ -1671,7 +1671,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 5. **용리 완충액 (Elution buffer)**: 30% 아세토니트릴 (ACN), 1% 포름산 (FA) 수용액
 6. **원심분리기**: Beckman Coulter Allegra X-14R 원심분리기
 
-### 2.2 역상 액체 크로마토그래피 (Reversed-Phase Liquid Chromatography)
+### 2.2 역상 액체 크로마토그래피
 1. **LC 시스템**: nanoACQUITY UPLC 시스템 (Waters Corporation)
 2. **온전체(Intact) 분석용 모놀리식 컬럼**: PS-DVB (폴리스티렌-디비닐벤젠) 모놀리식 모세관 컬럼 (\text{ }\mu\text{m}\text{ i.d.} 	\times 5\text{ cm}$, Thermo Fisher Scientific)
 3. **환원(Reduced) 사슬 분석용 모놀리식 컬럼**: PS-DVB 모놀리식 모세관 컬럼 (\text{ }\mu\text{m}\text{ i.d.} 	\times 25\text{ cm}$, Thermo Fisher Scientific)
@@ -1679,7 +1679,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 5. **이동상 B**: 아세토니트릴(ACN) 중 0.1% 포름산(FA) 용액
 6. **환원제**: 트리스(2-카르복시에틸)포스핀 염산염 (TCEP, Sigma-Aldrich)
 
-### 2.3 고분해능 오비트랩 질량분석 시스템 (High-Resolution Orbitrap MS)
+### 2.3 고분해능 오비트랩 질량분석 시스템
 1. **질량분석기**: Q Exactive Plus Hybrid Quadrupole-Orbitrap Mass Spectrometer (Thermo Fisher Scientific)
 2. **소프트웨어**: Protein Deconvolution 4.0 소프트웨어 (ReSpect™ 알고리즘 탑재, Thermo Fisher Scientific)
 
@@ -1687,7 +1687,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ## 3. 방법
 
-### 3.1 생체 시료 내 ADC의 친화도 포집 (Affinity Capture of ADCs from Plasma)
+### 3.1 생체 시료 내 ADC의 친화도 포집
 생체 시료(혈장 등)로부터 ADC를 선택적으로 추출하기 위해 자성 비드를 이용한 면역 친화 포집을 수행한다 [7, 11, 12]. KingFisher 96 자성 처리기를 사용하여 혼합, 세척, 수집 및 이동 과정을 자동화한다 (*Note 1*).
 
 1. **항원 고정화**: 96웰 플레이트에서 비오틴화된 표적 항원 세포외 도메인(Biotinylated Antigen ECD)(*Note 2*)을 Dynabeads M-280 Streptavidin 자성 비드와 함께 1시간 동안 인큐베이션하여 비드 표면에 항원을 고정한다.
@@ -1700,7 +1700,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.2 온전한 ADC(Intact ADC)의 역상 모세관 LC 분리
+### 3.2 온전한 ADC의 역상 모세관 LC 분리
 
 온전체 ADC 시료의 탈염 및 크로마토그래피 분리는 Waters nanoACQUITY UPLC 시스템에서 마이크로플로우 모드로 수행한다.
 
@@ -1719,7 +1719,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.3 환원된 ADC(Reduced ADC) 사슬의 역상 모세관 LC 분리
+### 3.3 환원된 ADC 사슬의 역상 모세관 LC 분리
 
 경쇄(LC) 및 중쇄(HC) 서브유닛별 결합 약물 수를 분석하기 위해 환원 처리를 수행한다.
 
@@ -1743,7 +1743,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.4 고분해능 오비트랩 질량분석 (Orbitrap MS Analysis)
+### 3.4 고분해능 오비트랩 질량분석
 
 온전한 ADC 및 환원된 ADC 시료는 Ion Max API 소스가 장착된 Q Exactive Plus 질량분석기에서 측정한다.
 
@@ -1804,7 +1804,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 12. He J, Yu SF, Yee S, Kaur S, Xu K (2018) Characterization of in vivo biotransformations for trastuzumab emtansine by high-resolution accurate-mass mass spectrometry. mAbs 10(7):960-967
 
 
-# Chapter 15 MS/MS 단백질 시퀀싱을 이용한 접합 부위 분석 (Conjugation Site Analysis by MS/MS Protein Sequencing)
+# Chapter 15 MS/MS 단백질 시퀀싱을 이용한 접합 부위 분석
 
 **Linjie Han, Michael Boyne, and Jennifer F. Nemeth**
 
@@ -1850,24 +1850,24 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 모든 시료와 시약은 사용 전 상온에 도달하도록 하며 별도 지침이 없는 한 모든 과정은 상온 및 차광 상태에서 진행한다.
 
-### 3.1 단백질 변성 (Denaturation)
+### 3.1 단백질 변성
 1. 1.5 mL 폴리프로필렌 튜브에 ADC 시료를 변성 완충액(8 M Urea, 100 mM Tris-HCl, pH 7.8)으로 희석하여 최종 농도 1.0 mg/mL(총 부피 500 μL)로 조제한다 (*Note 1*).
 
-### 3.2 이황화 결합 환원 (Reduction)
+### 3.2 이황화 결합 환원
 1. 500 μL의 변성된 시료에 500 mM DTT 용액 5.2 μL를 첨가하여 DTT 최종 농도가 약 5 mM이 되도록 한다 (*Note 2*).
 2. 튜브를 부드럽게 섞은 후, 37 °C 항온수조/배양기에서 차광 상태로 30분간 인큐베이션한다 (*Note 3*).
 3. 인큐베이션 후 상온으로 식힌다.
 
-### 3.3 유리 티올기 알킬화 (Alkylation)
+### 3.3 유리 티올기 알킬화
 1. 환원된 시료 튜브에 500 mM IAM 용액 10.2 μL를 첨가하여 IAM 최종 농도가 약 10 mM이 되도록 한다 (*Note 4*).
 2. 튜브를 부드럽게 혼합한 뒤 상온에서 암소(차광) 조건으로 30분간 인큐베이션한다.
 
-### 3.4 완충액 교환 및 탈염 (Buffer Exchange)
+### 3.4 완충액 교환 및 탈염
 1. 제조사 지침에 따라 Zeba Spin 탈염 컬럼을 100 mM Tris-HCl(pH 7.8) 완충액으로 3~4회 원심 세척하여 평형화한다 (*Note 5*).
 2. 컬럼 베드 중앙에 환원-알킬화된 시료 100 μL를 조심스럽게 로딩한다.
 3. 원심분리(1,000 × g, 2분)하여 100 mM Tris-HCl(pH 7.8) 완충액으로 교환된 정제 시료를 수집한다.
 
-### 3.5 트립신 효소 소화 (Trypsin Digestion)
+### 3.5 트립신 효소 소화
 1. UV-Vis 분광광도계를 이용하여 280 nm에서 탈염된 시료의 단백질 농도를 측정한다 (*Note 6*).
 2. 단백질 50 μg에 해당하는 부피를 새로운 폴리프로필렌 튜브에 분주한다.
 3. 튜브에 아세토니트릴(ACN)을 첨가하여 최종 부피 기준 10% (v/v) 유기용매 농도가 되도록 맞춘다 (*Note 7*).
@@ -1878,7 +1878,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.6 역상 초고성능 액체 크로마토그래피 분리 (UHPLC Separation)
+### 3.6 역상 초고성능 액체 크로마토그래피 분리
 1. **시스템**: 저지연 부피(low dead volume)의 UHPLC 시스템 (*Note 12*).
 2. **컬럼**: C18$ 역상 컬럼 (기공 크기 300 Å 이하, 입자 크기 sub-2 μm ~ 3 μm, .1 	\times 150\text{ mm}$) (*Note 13*).
 3. **이동상**: 이동상 A (0.085% FA, 0.015% TFA in $), 이동상 B (0.085% FA, 0.015% TFA in ACN) (*Note 14*).
@@ -1898,22 +1898,22 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.7 질량분석 획득 (MS/MS Detection)
+### 3.7 질량분석 획득
 1. **이온화 소스 (Positive ESI)**: 모세관 전압, 콘 전압, 탈용매 온도 및 건조 가스 유량을 최적화하여 인-소스 파쇄(in-source fragmentation)를 억제한다.
 2. **스캔 모드**: m/z 50 ~ 2,500 범위의 Full MS 스캔 후, 데이터 의존적(DDA) 방식으로 전구체 이온을 선택하여 MS/MS(CID/HCD) 스캔을 수행한다 (*Note 18*).
 
 ---
 
-### 3.8 데이터 해석 및 접합 부위 동정 (Data Analysis)
+### 3.8 데이터 해석 및 접합 부위 동정
 
-#### 3.8.1 소프트웨어 검색 알고리즘 (Software Searching)
+#### 3.8.1 소프트웨어 검색 알고리즘
 - 데이터베이스 검색 엔진(Byos, BioPharma Finder 등)에 항체 경쇄(LC) 및 중쇄(HC) 아미노산 서열을 입력한다.
 - 효소: Trypsin (최대 2~3 missed cleavages 허용).
 - 고정 변형: Carbamidomethyl (Cys, +57.021 Da).
 - 가변 변형: Deamidation (Asn, Gln), Oxidation (Met, Trp), N-말단 Pyroglutamate 형성, C-말단 Lysine 절단, 그리고 **링커-약물 접합에 따른 정확한 모노아이소토픽 질량 증가값(Mass shift)**.
 - 전구체 및 단편 이온 질량 오차 허용치: 5 ppm 이내 (*Note 19*).
 
-#### 3.8.2 수동 검증 및 시그니처 프래그먼트 이온 활용 (Manual Verification & Signature Ions)
+#### 3.8.2 수동 검증 및 시그니처 프래그먼트 이온 활용
 1. **이론 질량 추출 크로마토그램(EIC)**: 시스테인/라이신 접합 부위 예상 펩타이드의 이론 질량을 계산하고 EIC를 추출하여 일치하는 머무름 시간의 피크를 확인한다.
 2. **페이로드 시그니처 진단 이온(Signature Ions) 활용**:
    - 페이로드가 결합된 펩타이드는 CID 파쇄 시 약물 분자 내부의 특이적 결합이 우선 분해되어 특징적인 저분자량 진단 이온을 생성한다.
@@ -1973,7 +1973,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 21. Coon JJ, Syka JE, Shabanowitz J, Hunt DF (2005) Tandem mass spectrometry for peptide and protein sequence analysis. Biotechniques 38(4):519-523
 
 
-# Chapter 16 라이신 접합 ADC의 접합 부위 정량 및 정성 분석 (Conjugation Site Analysis of Lysine-Conjugated ADCs)
+# Chapter 16 라이신 접합 ADC의 접합 부위 정량 및 정성 분석
 
 **Hua Sang, Gaoyuan Lu, Yuzhe Liu, Xiaolu Chen, Hui Ye, and Wentao Hu**
 
@@ -2026,9 +2026,9 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ## 3. 방법
 
-### 3.1 1단계: 시그니처 이온 핑거프린팅(SFI)을 통한 라이신 접합 부위 동정
+### 3.1 1단계: 시그니처 이온 핑거프린팅을 통한 라이신 접합 부위 동정
 
-#### 3.1.1 페이로드 고유 시그니처 단편 이온(SFIs) 프로파일 수집
+#### 3.1.1 페이로드 고유 시그니처 단편 이온 프로파일 수집
 - 순수 DM1 화합물을 Q-TOF 질량분석기에 직접 주입(infusion)하여 CID 충돌 에너지별 MS/MS 스펙트럼을 획득한다.
 - DM1 분자 파쇄로 생성되는 핵심 진단 이온(m/z 435.18, 485.22, 547.22)의 m/z 및 상대 강도 비율(Fingerprint pattern)을 데이터베이스화한다.
 
@@ -2040,7 +2040,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 5. 키모트립신을 효소:단백질 비율 1:20 (w/w)으로 첨가하고 37 °C에서 밤샘(16시간) 인큐베이션한다.
 6. 10% 포름산을 첨가하여 pH 3 이하로 반응을 정지시킨 뒤, C18$ ZipTip/SPE로 탈염하고 동결건조한다.
 
-#### 3.1.3 NanoLC-MS/MS 정보 의존적 획득 (IDA)
+#### 3.1.3 NanoLC-MS/MS 정보 의존적 획득
 1. 탈염된 펩타이드를 이동상 A로 재구성하여 NanoLC-TripleTOF 5600+에 주입한다.
 2. 유속 300 nL/min에서 90분 그래디언트(5% $
 \rightarrow$ 40% B)를 적용한다.
@@ -2054,7 +2054,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.2 2단계: 정규화 면적 정량법을 통한 각 라이신별 접합 수준(Conjugation Level) 산출
+### 3.2 2단계: 정규화 면적 정량법을 통한 각 라이신별 접합 수준 산출
 
 #### 3.2.1 농도별 단계 희석 시료 준비 및 MRM 분석
 1. 키모트립신 소화된 T-DM1 시료를 C18$ SPE 컬럼으로 정제한 후 0.1% FA 수용액으로 약 1 mg/mL 농도로 재구성한다 (*Note 8*).
@@ -2062,7 +2062,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 3. LC-20AD HPLC 및 QTRAP 5500 시스템에서 각 농도별 시료를 3회 반복(triplicate) MRM 모드로 분석한다.
 4. 동정된 모든 비접합 펩타이드($\text{Peptide}_i$) 및 대응하는 DM1 접합 펩타이드($\text{Peptide}_i\text{-DM1}$) 쌍에 대해 최적 전구체/단편 이온 전이(Transition) 신호를 모니터링한다 (*Note 10*).
 
-#### 3.2.2 상대 이온화 강도 인자 (RIIF) 도출
+#### 3.2.2 상대 이온화 강도 인자 도출
 1. 각 펩타이드 쌍의 농도 대 피크 면적 검량 곡선을 작성하고 선형 회귀 기울기(Slope rate)를 구한다.
 2. 다음 식에 따라 각 펩타이드 쌍 고유의 **RIIF**를 산출한다:
    \text{RIIF}_i = \frac{\text{Slope of Unconjugated Peptide}_i}{\text{Slope of Conjugated Peptide}_i\text{(DM1)}}
@@ -2121,7 +2121,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 13. Marcoux J, Champion T, Colas O et al (2015) Native mass spectrometry and ion mobility characterization of trastuzumab emtansine, a lysine-linked antibody drug conjugate. Protein Sci 24(8):1210-1223
 
 
-# Chapter 17 모세관 전기영동을 이용한 ADC의 특성 분석 (Characterization of ADCs by Capillary Electrophoresis)
+# Chapter 17 모세관 전기영동을 이용한 ADC의 특성 분석
 
 **Wenjing Ning and Yanqun Zhao**
 
@@ -2241,7 +2241,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 
 ---
 
-### 3.2 iCIEF를 이용한 ADC 전하 이질성(Charge Heterogeneity) 분석
+### 3.2 iCIEF를 이용한 ADC 전하 이질성 분석
 
 #### 3.2.1 시료 조제
 1. **Pharmalyte Mix 조제**: 1.0% MC 880 μL, Pharmalyte pH 5-8 50 μL, Pharmalyte pH 8-10.5 50 μL, pI 마커 7.05 10 μL, pI 마커 9.77 10 μL를 혼합하여 준비한다 (*Note 13*).
@@ -2307,7 +2307,7 @@ DAR_{av} = \frac{\sum_{k=0}^{8} k \cdot I_k}{\sum_{k=0}^{8} I_k}
 15. Valliere-Douglass JF, Lewis P, Salas-Solano O, Jiang S (2015) Solid-state mAbs and ADCs subjected to heat-stress stability conditions can be covalently modified with buffer and excipient molecules. J Pharm Sci 104(2):652-665
 
 
-# Chapter 18 모세관 전기영동-질량분석법(CE-MS)을 이용한 시스테인 접합 ADC의 1차 구조 특성 분석
+# Chapter 18 모세관 전기영동-질량분석법을 이용한 시스테인 접합 ADC의 1차 구조 특성 분석
 
 **Rabah Gahoual, Morgan Sarrut, Alain Beck, and Yannis-Nicolas François**
 
@@ -2448,7 +2448,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 15. Giorgetti J, D’Atri V, Canonge J et al (2018) Monoclonal antibody N-glycosylation profiling using capillary electrophoresis-mass spectrometry: assessment and method validation. Talanta 178:530-537
 16. Dada OO, Zhao YM, Jaya N, Salas-Solano O (2017) High-resolution capillary zone electrophoresis with mass spectrometry peptide mapping of therapeutic proteins: peptide recovery and post-translational modification analysis in monoclonal antibodies and antibody-drug conjugates. Anal Chem 89(21):11236-11242
 
-# Chapter 19 소수성 상호작용 크로마토그래피(HIC)를 이용한 ADC의 분취 정제
+# Chapter 19 소수성 상호작용 크로마토그래피를 이용한 ADC의 분취 정제
 
 **Calvin L. Becker, Robert J. Duffy, Jorge Gandarilla, and Steven M. Richter**
 
@@ -2560,7 +2560,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 3.4 분취 분획 품질 평가 및 스케일업(Scale-up) 원칙
+### 3.4 분취 분획 품질 평가 및 스케일업 원칙
 1. 수집된 $E_2$ 정제 분획의 농도(UV 280 nm) 및 부피를 측정하여 수율을 계산한다.
 2. 분석용 HIC(Analytical HIC, Chapter 10 참조)로 순도를 분석하여 $E_2$ 순도가 95% 이상인지 검증한다.
 3. **스케일업 파라미터 유지**: 실험실 규모($4.7\text{ mL}$)에서 파일럿/생산 규모(수십 리터)로 확장할 때, **컬럼 베드 높이(Bed height, 10~20 cm)**와 **선형 유속(Linear velocity, 75 cm/h)**을 동일하게 유지하면서 컬럼 직경(Diameter)만을 단면적 비율로 비례 확장하여 동일한 체류 시간(Residence time)을 보장한다.
@@ -2807,7 +2807,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 3.3 시차 주사 열량측정법(DSC)을 이용한 열역학적 언폴딩 평가
+### 3.3 시차 주사 열량측정법을 이용한 열역학적 언폴딩 평가
 1. ADC 시료를 제형 완충액으로 약 0.5~1.0 mg/mL 농도로 희석한다.
 2. 96웰 플레이트에 시료 및 기준 완충액(Blank)을 로딩한다 (기기 바탕선 보정을 위해 기준액 2세트 포함).
 3. 스캔 온도 범위를 15 °C에서 95 °C까지 분당 1 °C($1\text{ }^\circ\text{C/min}$) 승온 속도로 설정하여 스캔을 실행한다.
@@ -2816,7 +2816,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 3.4 크기 배제 크로마토그래피(SE-HPLC)를 이용한 응집체 및 단편 분석
+### 3.4 크기 배제 크로마토그래피를 이용한 응집체 및 단편 분석
 1. **이동상 평형화**: 0.2 M 인산칼륨, 0.25 M KCl, 5% IPA (pH 6.95) 이동상으로 컬럼(TSKgel G3000SWXL)을 유속 0.5 mL/min에서 안정화시킨다 (*Note 1, 7*).
 2. **시료 주입**: 시료 20~50 μg을 주입하고 유속 0.5 mL/min 등용매 조건으로 30분간 280 nm 흡광도를 모니터링한다.
 3. **피크 적분 및 분류**: Blank 피크를 제외한 후, 고분자량 응집체(HMWS), 주 단량체 피크(Monomer), 저분자량 단편(LMWS)으로 구분하여 적분한다.
@@ -2826,7 +2826,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 3.5 소수성 상호작용 크로마토그래피(HIC)를 이용한 DAR 분포 및 탈접합 분석
+### 3.5 소수성 상호작용 크로마토그래피를 이용한 DAR 분포 및 탈접합 분석
 1. **이동상 및 컬럼**: 이동상 A (1.5 M 황산암모늄, 25 mM 인산염, pH 6.95), 이동상 B (25 mM 인산염, 25% IPA, pH 6.95). TSKgel Butyl-NPR 컬럼 장착.
 2. **분석 조건**: 컬럼 온도 25 °C, 유속 0.8 mL/min (*Note 7, 8*).
 3. **그래디언트**: 0분 0% B $
@@ -2870,7 +2870,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 15. Wakankar A, Chen Y, Gokarn Y, Jacobson FS (2011) Analytical methods for physicochemical characterization of antibody drug conjugates. mAbs 3(2):161-172
 16. Chen T, Chen Y, Stella C, Medley CD, Gruenhagen JA, Zhang K (2016) Antibody-drug conjugate characterization by chromatographic and electrophoretic techniques. J Chromatogr B Analyt Technol Biomed Life Sci 1032:39-50
 
-# Chapter 22 항체-약물 접합체(ADC)의 생물물리학적 특성 분석법
+# Chapter 22 항체-약물 접합체의 생물물리학적 특성 분석법
 
 **Haripada Maity and Srinivas Chennamsetty**
 
@@ -2897,7 +2897,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ## 2. 생물물리학적 분석법 및 프로토콜
 
-### 2.1 원편광 이색성(Circular Dichroism, CD) 분광법
+### 2.1 원편광 이색성 분광법
 
 #### 2.1.1 원리 및 2차/3차 구조 지표
 - **원자외선(Far-UV) CD (190~250 nm)**: 펩타이드 백본 결합의 광학 활성을 측정하여 단백질 2차 구조를 분석함.
@@ -2914,7 +2914,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 2.2 고유 형광(Intrinsic Tryptophan Fluorescence) 분광법
+### 2.2 고유 형광 분광법
 
 #### 2.2.1 원리
 - 트립토판(Trp) 잔기는 소수성 내부 환경에 묻혀 있을 때 높은 양자 수율과 단파장(청색 이동, Blue shift, ~330 nm) 형광 방출을 나타내며 단백질 언폴딩으로 친수성 수용액에 노출되면 형광 강도가 감소하고 장파장(적색 이동, Red shift, ~350 nm)으로 전이된다.
@@ -2928,7 +2928,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 2.3 1-아닐리노나프탈렌-8-설폰산(ANS) 외인성 형광 분광법
+### 2.3 1-아닐리노나프탈렌-8-설폰산 외인성 형광 분광법
 
 #### 2.3.1 원리
 - ANS는 수용액 상에서는 형광이 매우 약하지만 단백질 표면에 노출된 소수성 패치(Hydrophobic patches)나 부분 언폴딩된 중간체(Molten globule)에 결합하면 형광 강도가 수십~수백 배 급증하고 방출 피크가 470 nm 부근으로 청색 이동한다 [13, 14, 16].
@@ -2941,7 +2941,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 2.4 시차 주사 열량측정법 (Differential Scanning Calorimetry, DSC)
+### 2.4 시차 주사 열량측정법
 
 #### 2.4.1 원리
 - 일정한 승온 속도 하에서 단백질 용액이 열에 의해 언폴딩될 때 흡수하는 과잉 열용량($C_p$)을 측정하여 항체의 $C_H2$, Fab, $C_H3$ 도메인별 열전이 온도($T_m$) 및 열역학적 엔탈피($\Delta H$)를 산출한다.
@@ -2953,7 +2953,7 @@ CESI 8000 및 TripleTOF 5600+ 시스템을 대여해 준 Sciex Separations Inc.,
 
 ---
 
-### 2.5 3종 형광 염료를 이용한 차등 주사 형광법 (Differential Scanning Fluorescence, DSF)
+### 2.5 3종 형광 염료를 이용한 차등 주사 형광법
 
 세 가지 메커니즘의 특이적 형광 염료를 병용하여 온도 상승에 따른 **소수성 노출 $
 \rightarrow$ 비특이 응집 $
@@ -3088,7 +3088,7 @@ ADC의 표적 선택성을 엄밀히 검증하기 위해서는 **표적 항원 �
 
 ---
 
-### 3.3 GFP 형질전환 세포를 이용한 공동 배양(Co-culture) 바이스탠더 효과 평가
+### 3.3 GFP 형질전환 세포를 이용한 공동 배양 바이스탠더 효과 평가
 
 $\text{Ag}^+$ 세포에서 유리된 페이로드가 인접한 $\text{Ag}^-$ 세포를 사멸시키는 바이스탠더 효과는 GFP 형광을 지속적으로 발현하는 $\text{Ag}^-$ 세포(MCF-7-GFP)를 이용하여 정량한다 [9].
 
@@ -3148,7 +3148,7 @@ $\text{Ag}^+$ 세포에서 유리된 페이로드가 인접한 $\text{Ag}^-$ 세
 12. Denizot F, Lang R (1986) Rapid colorimetric assay for cell growth and survival. Modifications to the tetrazolium dye procedure giving improved sensitivity and reliability. J Immunol Methods 89:271-277
 13. Septisetyani EP, Ningrum RA, Romadhani Y, Wisnuwardhani PH, Santoso A (2014) Optimization of sodium dodecyl sulphate as a formazan solvent and comparison of MTT assay with WST-1 assay in MCF-7 cells. Indonesian J Pharm 25:245-254
 
-# Chapter 24 LC-MS를 이용한 리소좀 내 ADC 이화작용(Catabolism) 연구
+# Chapter 24 LC-MS를 이용한 리소좀 내 ADC 이화작용 연구
 
 **Andrew J. Bessire and Chakrapani Subramanyam**
 
@@ -3403,7 +3403,7 @@ ight]$$
 2. Grafmuller L, Wei C, Ramanathan R et al (2016) Unconjugated payload quantification and DAR characterization of antibody-drug conjugates using high-resolution MS. Bioanalysis 8(16):1663-1678
 3. Wei C, Zhang G, Clark T et al (2016) Where did the payload go? A quantitative investigation on the destination of the released linker-payload from an antibody-drug conjugate with a maleimide linker in plasma. Anal Chem 88(9):4979-4986
 
-# Chapter 26 리간드 결합 분석법(LBA)을 이용한 생체 시료 내 ADC 농도 측정
+# Chapter 26 리간드 결합 분석법을 이용한 생체 시료 내 ADC 농도 측정
 
 **Dhaval K. Shah and Ashutosh P. Singh**
 
