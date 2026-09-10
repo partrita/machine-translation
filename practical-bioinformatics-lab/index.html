@@ -544,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biostatistics-dummies/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물통계학</span></a>
+  <a href="../biostatistics-dummies/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">바보를 위한 생명통계학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1107,7 +1107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="서문" class="level2">
 <h2 class="anchored" data-anchor-id="서문">서문</h2>
-<p>생명정보학(생명정보학, bioinformatics) 분야는 놀라운 속도로 발전하고 있다. 기계학습과 데이터과학의 최신 성과를 활용하는 새로운 분석 기법들이 빠르게 개발됨에 따라, 오늘날의 생물학자들은 자연계에서 가장 복잡한 시스템에 대해 놀라운 통찰을 얻고 있다. 생명정보학를 배우고자 하는 학생들이 점점 늘어나지만 기존의 생명정보학 교재 대부분은 이론 중심이라 대용량 생물학 데이터를 다루는 데 도움이 되는 실험 중심 매뉴얼은 드물다. 따라서 생명정보학 강의와 통합할 수 있는 실험 교재가 필요하며 그 시급성도 크다.</p>
+<p>생명정보학(bioinformatics) 분야는 놀라운 속도로 발전하고 있다. 기계학습과 데이터과학의 최신 성과를 활용하는 새로운 분석 기법들이 빠르게 개발됨에 따라, 오늘날의 생물학자들은 자연계에서 가장 복잡한 시스템에 대해 놀라운 통찰을 얻고 있다. 생명정보학을 배우고자 하는 학생들이 점점 늘어나지만 기존의 생명정보학 교재 대부분은 이론 중심이라 대용량 생물학 데이터를 다루는 데 도움이 되는 실험 중심 매뉴얼은 드물다. 따라서 생명정보학 강의와 통합할 수 있는 실험 교재가 필요하며 그 시급성도 크다.</p>
 <p>이 책은 생물학, 보건·의료과학, 농업과학, 생물공학, 생명공학(biotechnology), 유전공학 분야의 학생, 교수진, 연구자들을 대상으로 한다. 그 내용은 생물학이나 생명정보학에 관심 있는 학부생, 교수진, 일반 독자도 쉽게 접근할 수 있을 것이다.</p>
 <p>동기 부여가 되는 예제로서, 처음 10개 장은 항생제 내성(antibiotic resistance) 연구에 대한 생명정보학적 접근에 초점을 맞춘다. 생명정보학에 대한 사전 경험은 가정하지 않는다. 마지막 두 장은 R을 이용해 생물학적 질문을 분석하고 해결하는 방법을 다룬다. 사용자는 자신의 컴퓨터에 R 또는 RStudio와 관련 패키지를 설치해야 한다. 마찬가지로 R/RStudio 사용 경험도 필요 없다. 이 책의 모든 예제와 프로그래밍 코드는 입문자를 위해 설계되었다. 이 12개 장은 6~12주 규모의 실험 모듈의 기초로 활용할 수 있다. 이 책은 단독으로도, 강의 과목과 함께 사용해도 좋다.</p>
 </section>
@@ -1115,7 +1115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>제1장 생명정보학 입문</h1>
 <section id="생명정보학란" class="level2">
 <h2 class="anchored" data-anchor-id="생명정보학란">1.1 생명정보학란?</h2>
-<p>20세기 최대의 세 프로젝트는 맨해튼 프로젝트(19421945), 아폴로 프로젝트(19611972), 인간 게놈 프로젝트(human genome project, 19902003)이다. 각각의 뚜렷한 의미가 있었다. 인간 게놈 프로젝트는 인간 DNA 염기서열과 유전자 기능을 규명하는 것을 목표로 한 국제 공동 과학연구 프로젝트였다. 1990년에 정식 출범하여 2003년 4월에 완료되었다. 인간 게놈이 완성된 후 애꿈(Arabidopsis), 생쥐, 제브라피시 등 다른 많은 생물들의 게놈이 해독·분석되었다. 2025년 7월 기준, 미국 국립생물정보센터(National Center for Biotechnology Information, NCBI)에는 진핵생물(동물, 곰팡이, 식물) 53,232종, 원핵생물(세균) 2,692,439종, 바이러스 230,411종의 완전한 게놈 서열과 더불어 세포소기관 게놈(엽록체·미토콘드리아), 플라스미드, 개별 유전자의 많은 서열이 수록되어 있다.</p>
+<p>20세기 최대의 세 프로젝트는 맨해튼 프로젝트(1942-1945), 아폴로 프로젝트(1961-1972), 인간 게놈 프로젝트(human genome project, 1990-2003)이다. 각각의 뚜렷한 의미가 있었다. 인간 게놈 프로젝트는 인간 DNA 염기서열과 유전자 기능을 규명하는 것을 목표로 한 국제 공동 과학연구 프로젝트였다. 1990년에 정식 출범하여 2003년 4월에 완료되었다. 인간 게놈이 완성된 후 애꿈(Arabidopsis), 생쥐, 제브라피시 등 다른 많은 생물들의 게놈이 해독·분석되었다. 2025년 7월 기준, 미국 국립생물정보센터(National Center for Biotechnology Information, NCBI)에는 진핵생물(동물, 곰팡이, 식물) 53,232종, 원핵생물(세균) 2,692,439종, 바이러스 230,411종의 완전한 게놈 서열과 더불어 세포소기관 게놈(엽록체·미토콘드리아), 플라스미드, 개별 유전자의 많은 서열이 수록되어 있다.</p>
 <p>1980년대까지 bioinformatics라는 용어는 널리 쓰이지 않았다. 가장 흔한 용어는 biocomputing 또는 computational biology였다. bioinformatics라는 말은 1970년대 초 폴리언 호헤베흐(Paulien Hogeweg)와 벤 헤스페르(Ben Hesper)가 만든 것으로 보이며 그들은 이를 “생물 시스템에서의 정보적(informatic) 과정에 대한 연구”로 정의했다. 다만 초기 용례 상당수가 네덜란드어로만 존재했기 때문에 이 용어가 영어에서 보편화된 것은 그 이후였다. 필자 개인의 기억으로는 1986년 “Macromolecules, Genes and Computers” 워크숍에서 이 용어를 들었다. 당시에는 상당한 거부감이 있었는데, 많은 사람들이 생명정보학를 정보 저장·검색 관련 주제에 국한된다고 느꼈기 때문이다. 물론 이는 호헤베흐와 헤스페르의 의도와 명백히 다른 것이었다. 어쨌든, ‘bioinformaticist’(생명정보학 학자)라고 자칭하기엔 발음도 어색하고 불편함에도 불구하고 이 이름은 분야의 대표 명칭이 되었다. 그 과정에서 정의도 원래의 것에 훨씬 가깝게 되돌아갔다. 현재는 거의 모든 거대분자 및/또는 생물학적 정보 흐름에 대한 계산 분석이 생명정보학로 간주된다. 여기에는 게놈 조립(assembly)과 주석 달기(annotation), 단백질 구조 예측과 분석, 생물학적 네트워크 분석, 계통수 작성, 고속처리 시퀀싱 데이터 분석, 생물영상 분석, 각종 ‘-옴스(-omics)’ 연구가 포함된다.</p>
 </section>
 <section id="시퀀싱-기술" class="level2">

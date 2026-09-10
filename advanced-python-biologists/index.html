@@ -544,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../biostatistics-dummies/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">생물통계학</span></a>
+  <a href="../biostatistics-dummies/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">바보를 위한 생명통계학</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -960,8 +960,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#집합의-딕셔너리" id="toc-집합의-딕셔너리" class="nav-link" data-scroll-target="#집합의-딕셔너리">집합의 딕셔너리</a></li>
   <li><a href="#튜플의-딕셔너리" id="toc-튜플의-딕셔너리" class="nav-link" data-scroll-target="#튜플의-딕셔너리">튜플의 딕셔너리</a></li>
   <li><a href="#리스트의-딕셔너리" id="toc-리스트의-딕셔너리" class="nav-link" data-scroll-target="#리스트의-딕셔너리">리스트의 딕셔너리</a></li>
-  <li><a href="#중첩-리스트로서의-트리" id="toc-중첩-리스트로서의-트리" class="nav-link" data-scroll-target="#중첩-리스트로서의-트리">중첩 리스트로서의 트리</a></li>
   </ul></li>
+  <li><a href="#중첩-리스트로서의-트리" id="toc-중첩-리스트로서의-트리" class="nav-link" data-scroll-target="#중첩-리스트로서의-트리">중첩 리스트로서의 트리</a></li>
   <li><a href="#정리-1" id="toc-정리-1" class="nav-link" data-scroll-target="#정리-1">정리</a></li>
   <li><a href="#연습-문제-1" id="toc-연습-문제-1" class="nav-link" data-scroll-target="#연습-문제-1">연습 문제</a></li>
   <li><a href="#풀이-1" id="toc-풀이-1" class="nav-link" data-scroll-target="#풀이-1">풀이</a></li>
@@ -1171,14 +1171,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>길이 3, 즉 generate_kmers_rec(3)으로 함수를 호출할 때 무슨 일이 일어나는지 단계별로 따라가 보겠습니다. 먼저 함수는 길이가 1과 같은지 검사합니다. 이는 거짓입니다(길이가 3이므로). 그래서 else 블록이 실행됩니다. result라는 새 빈 목록이 만들어지고 함수는 길이 2짜리 kmers 목록을 얻기 위해 generate_kmers_rec(2)를 호출합니다. generate_kmers_rec(2) 호출 내부에서 앞의 몇 단계가 반복됩니다. length 변수가 1과 같은지 검사하고 아니오이면 else 블록으로 들어가 result라는 새 빈 목록을 만듭니다.</p>
 <p>주목할 점: 이 시점에 result라는 빈 목록이 두 개 있습니다. 하나는 generate_kmers_rec(3) 호출에, 다른 하나는 generate_kmers_rec(2) 호출에 속합니다. 전혀 이상한 일이 아닙니다. 우리는 코드에서 같은 변수 이름을 가진 여러 함수를 언제든 사용하며 파이썬의 스코프(scope) 규칙 덕분에 잘 동작합니다.</p>
 <p>다음으로 길이 1짜리 모든 서열의 목록이 필요하므로 generate_kmers_rec(1)을 호출합니다. 이 함수 호출의 시작에서 length 변수를 검사하니 1과 같습니다. 따라서 함수는 즉시 [‘A’, ‘T’, ‘G’, ‘C’] 목록을 반환하고 함수 호출이 끝납니다. 이제 generate_kmers_rec(2) 호출이 계속 실행될 수 있습니다. 그 목록을 받아 네 서열 각각에 네 염기를 더해 16개의 이이뉴클레오타드(dinucleotide) 목록을 만들어 반환합니다. 이 dinucleotide 목록은 generate_kmers_rec(3)이 받아, 16개 dinucleotide 각각에 네 염기를 더해 64개의 트라이뉴클레오타드(trinucleotide) 목록을 만들어 반환하며 일을 마무리합니다.</p>
-<p>위 같은 재귀 함수를 보면 뻔한 의문이 듭니다. 왜 함수가 영원히 실행되지 않을까요? 함수가 호출될 때마다 자기 자신을 또 호출한다면, 영원히 반환하지 않는 무한한 함수 호출이 생기지 않을까요¹? 위 예제에서 답은 길이가 1인 특수한 경우에 있습니다. 함수 정의를 보면 길이가 1이 아닌 한, 함수 호출은 또 다른 함수 호출을 유발함을 알 수 있습니다. 여기에 함수가 자기 자신을 호출할 때마다 길이를 1씩 줄인다는 사실을 결합하면, 초기 호출의 인자로 어떤 길이가 주어지든 결국 길이 1로 함수가 호출되고 그때부터 함수들이 반환하기 시작한다는 것을 알 수 있습니다.</p>
+<p>위 같은 재귀 함수를 보면 뻔한 의문이 듭니다. 왜 함수가 영원히 실행되지 않을까요? 함수가 호출될 때마다 자기 자신을 또 호출한다면, 영원히 반환하지 않는 무한한 함수 호출이 생기지 않을까요? 위 예제에서 답은 길이가 1인 특수한 경우에 있습니다. 함수 정의를 보면 길이가 1이 아닌 한, 함수 호출은 또 다른 함수 호출을 유발함을 알 수 있습니다. 여기에 함수가 자기 자신을 호출할 때마다 길이를 1씩 줄인다는 사실을 결합하면, 초기 호출의 인자로 어떤 길이가 주어지든 결국 길이 1로 함수가 호출되고 그때부터 함수들이 반환하기 시작한다는 것을 알 수 있습니다.</p>
 <p>일반적으로 모든 재귀 함수가 올바르게 동작하려면 두 가지 기준이 필요합니다. 함수가 자기 자신을 호출하지 않고 반환하게 만드는 특수한 경우가 존재해야 하고 그 특수한 경우가 결국 도달할 것이라는 보장이 있어야 합니다.</p>
 <p>이 장의 서론에서 재귀는 트리 형태 구조를 가진 문제를 푸는 데 적합하다고 했습니다. 주어진 길이의 모든 kmers를 생성하는 문제도 예이지만 이 문제의 트리 같은 성질은 눈에 띄지 않습니다. 좀 더 명확히 하기 위해, 한 번에 한 염기씩 선택해 하나의 3mer를 고르는 과정을 상상해 봅시다. 과정의 시작에서 선택지는 네 가지, 즉 염기마다 하나씩 네 개의 가지(branch)입니다:</p>
 <p>이 경로 중 하나, 예컨대 T라고 표시된 경로를 고르면, 다시 네 개의 가지가 놓여 있습니다:</p>
 <p>이번엔 TG라고 표시된 가지를 고릅니다. 마지막으로 네 가지 선택지 중에서 골라 네 가지 3mer 중 하나에 도착합니다:</p>
 <p>이렇게 보면 이 문제를 트리 형태로 볼 수 있는 이유가 분명합니다. 주어진 길이의 가능한 모든 kmers를 생성하는 일은 트리의 모든 잎(leaf)을 방문하는 것과 같습니다.</p>
 <p>위 예제에서는 반복적 해법과 재귀적 해법 사이에 확실한 승자가 없습니다. 둘 다 읽기 쉬움은 대체로 비슷합니다. 다음 절에서는 더 명백히 트리 형태인 데이터를 살펴보고 재귀가 명백히 최선인 해법인 문제의 예를 보겠습니다.</p>
-<p>¹ 재귀 프로그래밍을 처음 시작할 때는 영원히 반환하지 않는 함수를 만들기가 사실 꽤 쉽습니다!</p>
+<p>재귀 프로그래밍을 처음 시작할 때는 영원히 반환하지 않는 함수를 만들기가 사실 꽤 쉽습니다!</p>
 </section>
 <section id="트리-형태-데이터-처리하기" class="level2">
 <h2 class="anchored" data-anchor-id="트리-형태-데이터-처리하기">트리 형태 데이터 처리하기</h2>
@@ -1238,7 +1238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Galago moholi'</span> : <span class="st">' Lorisiformes'</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>딕셔너리 항목을 정렬하기 위해 여백을 좀 넣었지만 그래도 특별히 읽기 쉽진 않습니다! 그럼에도 트리의 모든 관계가 딕셔너리에도 들어 있으므로, 이것이 전체 분류 체계를 표현한다고 확신할 수 있습니다.</p>
-<p>이 자료 구조를 만들고 나면 무엇을 할 수 있을까요? 주어진 분류군의 모든 부모¹ 목록을 출력하는 함수를 작성해 봅시다. 분류군 이름을 입력받으면, 그 분류군이 소속된 모든 분류군의 리스트를 반환합니다. 예컨대 ’Galago alleni’가 입력되면 [‘Lorisiformes’, ‘Strepsirrhini’, ‘Primates’]를 반환해야 합니다. 노드의 조상 수를 미리 안다면 약간 투박하지만 일을 해내는 함수를 작성할 수 있습니다:</p>
+<p>이 자료 구조를 만들고 나면 무엇을 할 수 있을까요? 주어진 분류군의 모든 부모 목록을 출력하는 함수를 작성해 봅시다. 분류군 이름을 입력받으면, 그 분류군이 소속된 모든 분류군의 리스트를 반환합니다. 예컨대 ’Galago alleni’가 입력되면 [‘Lorisiformes’, ‘Strepsirrhini’, ‘Primates’]를 반환해야 합니다. 노드의 조상 수를 미리 안다면 약간 투박하지만 일을 해내는 함수를 작성할 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ancestors(taxon):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    first_parent <span class="op">=</span> tax_dict.get(taxon)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    second_parent <span class="op">=</span> tax_dict.get(first_parent)</span>
@@ -1254,7 +1254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        taxon <span class="op">=</span> tax_dict.get(taxon)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>get_parents_while.py</p>
-<p>루프를 돌 때마다❶ taxon 변수의 값을 부모 분류군의 이름으로 설정하고, 그것이 while 루프의 다음 반복에서는 자식이 됩니다¹.</p>
+<p>루프를 돌 때마다❶ taxon 변수의 값을 부모 분류군의 이름으로 설정하고, 그것이 while 루프의 다음 반복에서는 자식이 됩니다.</p>
 <p>같은 일을 재귀로 수행하는 또 다른 함수입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ancestors(taxon):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> taxon <span class="op">==</span> <span class="st">'Primates'</span>:                  <span class="co"># ❶</span></span>
@@ -1265,7 +1265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [parent] <span class="op">+</span> parent_ancestors   <span class="co"># ❹</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>get_parents_recursive.py</p>
 <p>이전 예제들과 완전히 다른 접근을 사용합니다. 이 버전의 함수에서는 입력 분류군에 대해 두 가지 경우를 고려합니다❶. 입력 분류군이 ’Primates’이면 조상이 없다는 것(트리의 꼭대기에 있다는 것)을 알므로, 분류군 자신만 담은 리스트를 반환합니다❷. 분류군이 ’Primates’이 아니라면, 그 조상 목록은 “부모 + 부모의 조상들”이라는 사실을 알 수 있습니다. 이 경우 부모를 찾아보고❸, 부모의 조상들을 계산합니다. 이것이 재귀 호출입니다. 마지막으로 우리가 찾던 답, 즉 부모와 부모의 조상들로 이루어진 리스트를 반환합니다❹.</p>
-<p>¹ 이것은 이 장 처음의 kmer 예제에서 한 반복의 긴 서열들이 다음 반복의 짧은 서열이 되는 방식과 매우 흡사합니다.</p>
+<p>이것은 이 장 처음의 kmer 예제에서 한 반복의 긴 서열들이 다음 반복의 짧은 서열이 되는 방식과 매우 흡사합니다.</p>
 <p>kmers 예제와 마찬가지로, 이 재귀 함수가 동작하는 이유는 함수가 자기 자신을 호출하지 않는 특수한 경우(입력 분류군이 ’Primates’인 경우)가 있기 때문입니다. print() 문 몇 개를 추가해 호출하면서 이 함수의 동작을 자세히 살펴보겠습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ancestors(taxon):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'calculating ancestors for '</span> <span class="op">+</span> taxon)</span>
@@ -1308,7 +1308,7 @@ parent ancestors are ['Strepsirrhini', 'Primates']
 about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']
 ['Lorisiformes', 'Strepsirrhini', 'Primates']</code></pre>
 <p>입력 ‘Galago alleni’로 함수를 시작합니다❶. ’Primates’와 같은지 검사하여 같지 않음을 확인하므로 부모를 찾아봅니다❷. 부모가 ’Lorisiformes’임을 알게 됩니다. 다음 단계는 부모의 조상들을 찾는 것이므로 get_ancestors() 함수를 다시 시작합니다. 단, 이번엔 입력 분류군이 ’Lorisiformes’입니다. 이런 식으로 계속 진행하다 마침내 ’Primates’의 조상을 계산하려 합니다❸. 이번에는 get_ancestors()를 새로 호출하는 대신 빈 문자열(빈 리스트)을 반환합니다. 이로써 get_ancestors(’Lorisiformes’) 호출이 반환될 수 있고, 이전 get_ancestors() 호출도 반환될 수 있으며 이런 식으로 최초 호출까지 거슬러 올라갑니다. 출력에서 “about to return the result” print() 문들이 끝 부분에 몰려서 쏟아지는 것을 볼 수 있습니다.</p>
-<p>¹ 재귀 함수에서 벌어지는 일을 시각화하는 유용한 방법은 각 print() 문 앞에 공백을 추가해 함수가 몇 번 호출됐는지² 표현하는 것입니다. 바로 그렇게 하는 함수 변형입니다. 함수 호출의 깊이를 저장할 인자를 하나 추가해야 하며 함수를 호출할 때마다 1씩 증가시킵니다(최초 호출만 깊이 0을 줍니다):</p>
+<p>재귀 함수에서 벌어지는 일을 시각화하는 유용한 방법은 각 print() 문 앞에 공백을 추가해 함수가 몇 번 호출됐는지 표현하는 것입니다. 바로 그렇게 하는 함수 변형입니다. 함수 호출의 깊이를 저장할 인자를 하나 추가해야 하며 함수를 호출할 때마다 1씩 증가시킵니다(최초 호출만 깊이 0을 줍니다):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ancestors(taxon, depth):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    spacer <span class="op">=</span> <span class="st">'  '</span> <span class="op">*</span> depth</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(spacer <span class="op">+</span> <span class="st">'calculating ancestors for '</span> <span class="op">+</span> taxon)</span>
@@ -1329,7 +1329,7 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>get_ancestors(<span class="st">'Galago alleni'</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>get_parents_indented.py</p>
 <p>이 버전에서는 각 함수 호출의 시작에서 공백 문자열인 spacer 변수를 만들고, 출력의 각 줄 앞에 spacer를 붙입니다. 이제 출력은 함수 호출의 층위가 어떻게 쌓였다가 무너지는지 명확하게 보여줍니다:</p>
-<p>² 이것을 기술 용어로 호출 스택(call stack)의 깊이라고 합니다.</p>
+<p>이것을 기술 용어로 호출 스택(call stack)의 깊이라고 합니다.</p>
 <pre class="text"><code>calculating ancestors for Galago alleni
 taxon is not Primates, looking up the parent
 the parent is Lorisiformes
@@ -1361,12 +1361,12 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']</code>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Strepsirrhini'</span> : <span class="st">'Lorisiformes'</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>세 번째 항목이 앞의 두 항목을 덮어쓰기 때문입니다.</p>
-<p>그러나 가능한 방법이 있습니다. 키는 부모 분류군의 이름으로 하고 값은 자식 분류군 이름들의¹ 리스트인 항목을 하나 만드는 것입니다:</p>
+<p>그러나 가능한 방법이 있습니다. 키는 부모 분류군의 이름으로 하고 값은 자식 분류군 이름들의 리스트인 항목을 하나 만드는 것입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tax_dict <span class="op">=</span> {</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Strepsirrhini'</span> : [<span class="st">'Lorisidae'</span>, <span class="st">'Lemuriformes'</span>,<span class="st">'Lorisiformes'</span>]</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이 접근을 쓰면 이전과 정확히 같은 관계 집합을 부모→자식 방식으로 저장할 수 있습니다:</p>
-<p>¹ 딕셔너리에 리스트를 저장한다는 이 아이디어는 복잡한 자료구조 장에서 훨씬 자세히 다룹니다.</p>
+<p>딕셔너리에 리스트를 저장한다는 이 아이디어는 복잡한 자료구조 장에서 훨씬 자세히 다룹니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new_tax_dict <span class="op">=</span> {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Primates'</span>: [<span class="st">'Haplorrhini'</span>, <span class="st">'Strepsirrhini'</span>],</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Tarsiiformes'</span>: [<span class="st">'Tarsius tarsier'</span>],</span>
@@ -1389,8 +1389,8 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']</code>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        result.append(current_taxon)                    <span class="co"># ❹</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>get_children.py</p>
-<p>읽기 가장 쉬운 함수는 아니니 한 줄씩 설명하겠습니다. 결과를 담을 리스트와, 고려해야 할 분류군 이름을 담을 stack¹이라는 리스트를 만드는 것으로 시작합니다❶. 처음에 스택에는 원소 하나, 즉 인자로 주어진 분류군만 있습니다. 그다음 스택의 길이가 양수인 동안, 즉 처리할 분류군이 스택에 남아 있는 동안 계속 실행되는 while 루프에 들어갑니다. 스택에서 분류군을 처리하려면 먼저 pop()으로 제거하고❷, 딕셔너리에서 그 자식들을 찾습니다. 발견한 자식들을 스택 끝에 추가하고❸, 그 분류군 자신을 결과에 추가합니다❹.</p>
-<p>¹ 스택(stack)은 위에서 원소를 넣고 빼는 리스트를 부르는 컴퓨터 과학의 전통적 명칭입니다. 저녁 접시 더미를 떠올려 보세요.</p>
+<p>읽기 가장 쉬운 함수는 아니니 한 줄씩 설명하겠습니다. 결과를 담을 리스트와, 고려해야 할 분류군 이름을 담을 stack이라는 리스트를 만드는 것으로 시작합니다❶. 처음에 스택에는 원소 하나, 즉 인자로 주어진 분류군만 있습니다. 그다음 스택의 길이가 양수인 동안, 즉 처리할 분류군이 스택에 남아 있는 동안 계속 실행되는 while 루프에 들어갑니다. 스택에서 분류군을 처리하려면 먼저 pop()으로 제거하고❷, 딕셔너리에서 그 자식들을 찾습니다. 발견한 자식들을 스택 끝에 추가하고❸, 그 분류군 자신을 결과에 추가합니다❹.</p>
+<p>스택(stack)은 위에서 원소를 넣고 빼는 리스트를 부르는 컴퓨터 과학의 전통적 명칭입니다. 저녁 접시 더미를 떠올려 보세요.</p>
 <p>몇 가지 다른 입력 분류군으로 함수를 호출하는 코드입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_children(<span class="st">'Strepsirrhini'</span>))</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_children(<span class="st">'Lorisiformes'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1414,8 +1414,8 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']</code>
 <section id="정리" class="level2">
 <h2 class="anchored" data-anchor-id="정리">정리</h2>
 <p>이 장에서는 주어진 길이의 가능한 모든 DNA 서열 리스트를 생성하는 두 가지 방법을 비교하면서 시작했습니다. 그 과정에서 재귀 함수, 즉 입력을 단순화한 버전에 대해 자기 자신을 호출하는 함수라는 아이디어를 만났습니다. 재귀 함수에는 두 가지 중요한 성질이 있음을 보았습니다. 자기 자신을 호출하지 않는 특수한 조건이 있고 그 특수한 조건이 결국 도달할 것이라는 보장이 있습니다. 보통은 입력의 단순화가 한계에 도달했을 때입니다. kmer 생성 문제에 재귀를 적용하면서 문제의 트리 형태 구조가 드러났습니다.</p>
-<p>이어서 파이썬에 트리 형태 데이터를 저장하는 몇 가지 방법을 살펴보고 상황에 따라 부모→자식과 자식→부모 방식 모두 유용할 수 있다는 것을 발견했습니다¹. 두 가지 흔한 트리 연산, 즉 부모 목록 찾기와 자식 목록 찾기를 검토했고 둘 모두 반복 함수나 재귀 함수 어느 쪽으로도 수행할 수 있음을 보였습니다. 이 연산들을 분류학적 관계 맥락에서 조사했지만 실제로는 많은 종류의 트리 형태 데이터에 적용할 수 있습니다.</p>
-<p>¹ 트리 데이터를 저장하는 또 다른 방법은 복잡한 자료구조 장의 중첩 리스트(nested lists) 절을 참고하세요.</p>
+<p>이어서 파이썬에 트리 형태 데이터를 저장하는 몇 가지 방법을 살펴보고 상황에 따라 부모→자식과 자식→부모 방식 모두 유용할 수 있다는 것을 발견했습니다. 두 가지 흔한 트리 연산, 즉 부모 목록 찾기와 자식 목록 찾기를 검토했고 둘 모두 반복 함수나 재귀 함수 어느 쪽으로도 수행할 수 있음을 보였습니다. 이 연산들을 분류학적 관계 맥락에서 조사했지만 실제로는 많은 종류의 트리 형태 데이터에 적용할 수 있습니다.</p>
+<p>트리 데이터를 저장하는 또 다른 방법은 복잡한 자료구조 장의 중첩 리스트(nested lists) 절을 참고하세요.</p>
 </section>
 <section id="연습-문제" class="level2">
 <h2 class="anchored" data-anchor-id="연습-문제">연습 문제</h2>
@@ -1434,13 +1434,13 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']</code>
 <p>이고, Tarsius tarsier의 부모들은</p>
 <p>[‘Tarsiiformes’, ‘Haplorrhini’, ‘Primates’]</p>
 <p>입니다. 두 목록을 훑어보면 둘 모두에 등장하는 첫 분류군이 ’Haplorrhini’임을 알 수 있습니다.</p>
-<p>이것을 함수로 구현하는 일은 꽤 직관적입니다. 이 장 앞부분에서 부모 목록을 반환하는 함수를 이미 만들었으니, 그것을 사용해 두 부모 목록을¹ 생성하겠습니다. 두 목록 모두에 나타나는 첫 분류군을 식별하는 가장 쉬운 방법은 두 번째 목록을 한 원소씩 훑으면서 첫 목록에도 있는 원소를 찾는 즉시 반환하는 것입니다:</p>
+<p>이것을 함수로 구현하는 일은 꽤 직관적입니다. 이 장 앞부분에서 부모 목록을 반환하는 함수를 이미 만들었으니, 그것을 사용해 두 부모 목록을 생성하겠습니다. 두 목록 모두에 나타나는 첫 분류군을 식별하는 가장 쉬운 방법은 두 번째 목록을 한 원소씩 훑으면서 첫 목록에도 있는 원소를 찾는 즉시 반환하는 것입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_lca(taxon1, taxon2):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    taxon1_ancestors <span class="op">=</span> [taxon1] <span class="op">+</span> get_ancestors_rec(taxon1)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> taxon <span class="kw">in</span> [taxon2] <span class="op">+</span> get_ancestors_rec(taxon2):</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> taxon <span class="kw">in</span> taxon1_ancestors:</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> taxon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 반복 버전이든 재귀 버전이든 어느 쪽을 써도 상관없습니다.</p>
+<p>반복 버전이든 재귀 버전이든 어느 쪽을 써도 상관없습니다.</p>
 <p>서로 다른 분류군 쌍 몇 개로 호출해 동작을 확인해 보겠습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_lca(<span class="st">'Pan troglodytes'</span>,<span class="st">'Tarsius tarsier'</span>))</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_lca(<span class="st">'Pan troglodytes'</span>,<span class="st">'Pongo abelii'</span>))</span>
@@ -1465,10 +1465,10 @@ Primates</code></pre>
 <pre class="text"><code>LCA of Pongo abelii and Tarsius tarsier is Haplorrhini
 LCA of Haplorrhini and Pan troglodytes is Haplorrhini
 Haplorrhini</code></pre>
-<p>while 루프의 첫 반복에서 taxon1은 ‘Pongo abelii’이고 taxon2는 ’Tarsius tarsier’¹입니다. 앞서 정의한 get_lca() 함수로 이 두 분류군의 최후 공통 조상을 계산해 결과 ’Haplorrhini’를 얻습니다. 이것이 taxon1에 할당됩니다. 이제 while 루프의 두 번째 반복에 들어가, 분류군 리스트에서 마지막(그리고 남은 유일) 원소(’Pan troglodytes’)를 제거해 taxon2에 할당합니다.</p>
-<p>¹ pop 메서드는 리스트의 마지막 원소를 꺼낸다는 점을 기억하세요.</p>
-<p>get_lca() 함수로 ’Haplorrhini’와 ’Pan troglodytes’의 최후 공통 조상을 구하면 ’Haplorrhini’²입니다. 이 값을 taxon1에 할당합니다. 이제 분류군 리스트에 남은 원소가 없으므로 while 루프가 끝나고 taxon1의 값이 반환되고(이어서 출력되고) 이번 함수 호출에서 그 값은 ’Haplorrhini’입니다.</p>
-<p>² 인자 중 하나가 결과이기도 할 때 get_lca 함수가 올바르게 동작해야 하는 이유가 바로 여기 있습니다.</p>
+<p>while 루프의 첫 반복에서 taxon1은 ‘Pongo abelii’이고 taxon2는 ’Tarsius tarsier’입니다. 앞서 정의한 get_lca() 함수로 이 두 분류군의 최후 공통 조상을 계산해 결과 ’Haplorrhini’를 얻습니다. 이것이 taxon1에 할당됩니다. 이제 while 루프의 두 번째 반복에 들어가, 분류군 리스트에서 마지막(그리고 남은 유일) 원소(’Pan troglodytes’)를 제거해 taxon2에 할당합니다.</p>
+<p>pop 메서드는 리스트의 마지막 원소를 꺼낸다는 점을 기억하세요.</p>
+<p>get_lca() 함수로 ’Haplorrhini’와 ’Pan troglodytes’의 최후 공통 조상을 구하면 ’Haplorrhini’입니다. 이 값을 taxon1에 할당합니다. 이제 분류군 리스트에 남은 원소가 없으므로 while 루프가 끝나고 taxon1의 값이 반환되고(이어서 출력되고) 이번 함수 호출에서 그 값은 ’Haplorrhini’입니다.</p>
+<p>인자 중 하나가 결과이기도 할 때 get_lca 함수가 올바르게 동작해야 하는 이유가 바로 여기 있습니다.</p>
 <p>이제 재귀 버전을 시도해 보겠습니다. 이전 예제들처럼 먼저 자연어 설명이 필요합니다. 이건 어떨까요:</p>
 <p>“분류군 리스트의 최후 공통 조상을 찾으려면 리스트의 크기를 본다. 분류군이 둘뿐이라면 답은 그 둘의 최후 공통 조상이다. 셋 이상이라면 첫 번째 분류군을 제거해 taxon1이라 하고 남은 항목들의 최후 공통 조상을 찾아 taxon2라고 한 다음, 답은 taxon1과 taxon2의 최후 공통 조상이다.”</p>
 <p>코드는 다음과 같습니다:</p>
@@ -1502,17 +1502,17 @@ Haplorrhini</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>t[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>그러자 오류가 발생합니다:</p>
 <pre class="text"><code>TypeError: 'tuple' object does not support item assignment</code></pre>
-<p>이 오류의 이유는 튜플은 한번 만들어지면 변경할 수 없기 때문입니다. 원소 하나를 바꿀 수 없을 뿐 아니라, 원소를 추가·제거하거나 뒤집거나 정렬하는 등 튜플을 변경하는 어떠한 연산도 할 수 없습니다. 이런 성질을 가진 자료 구조를 불변(immutable)¹이라고 합니다.</p>
-<p>¹ 파이썬에서 문자열 역시 불변인데, 이상해 보이지만 대개 문제를 일으키지 않습니다.</p>
-<p>처음에는 이게 왜 유용한 성질인지 명확하지 않을 수 있습니다. 변수라는 것은 변할 수 있어야 하는 것 아닌가? 하지만 상황에 따라 튜플을 사용하면 장점이 있습니다. 특정 변수의 값이 할당 후 변하지 않는다고 알면 코드의 동작을 추론하기² 쉬워지고 파이썬이 특정 최적화를 수행해 더 빠르거나 메모리 효율적인 코드를 낳을 때도 있습니다. 또한 불변이기 때문에 튜플을 딕셔너리의 키로 쓸 수 있는데, 리스트로는 불가능한 일입니다.</p>
-<p>² 순수 함수(pure function)와 비슷한 아이디어입니다. 자세한 논의는 함수형 프로그래밍 장을 참고하세요.</p>
+<p>이 오류의 이유는 튜플은 한번 만들어지면 변경할 수 없기 때문입니다. 원소 하나를 바꿀 수 없을 뿐 아니라, 원소를 추가·제거하거나 뒤집거나 정렬하는 등 튜플을 변경하는 어떠한 연산도 할 수 없습니다. 이런 성질을 가진 자료 구조를 불변(immutable)이라고 합니다.</p>
+<p>파이썬에서 문자열 역시 불변인데, 이상해 보이지만 대개 문제를 일으키지 않습니다.</p>
+<p>처음에는 이게 왜 유용한 성질인지 명확하지 않을 수 있습니다. 변수라는 것은 변할 수 있어야 하는 것 아닌가? 하지만 상황에 따라 튜플을 사용하면 장점이 있습니다. 특정 변수의 값이 할당 후 변하지 않는다고 알면 코드의 동작을 추론하기 쉬워지고 파이썬이 특정 최적화를 수행해 더 빠르거나 메모리 효율적인 코드를 낳을 때도 있습니다. 또한 불변이기 때문에 튜플을 딕셔너리의 키로 쓸 수 있는데, 리스트로는 불가능한 일입니다.</p>
+<p>순수 함수(pure function)와 비슷한 아이디어입니다. 자세한 논의는 함수형 프로그래밍 장을 참고하세요.</p>
 <p>원칙적으로 튜플은 이질적(heterogeneous) 데이터에 어울립니다. 서로 다른 정보 조각을 표현하는 원소들의 나열이고 각 원소의 위치가 그 원소에 무엇이 저장되어 있는지를 말해주는 경우죠. 예컨대 DNA 서열 레코드를 표현하는 3원소 튜플을 여럿 만드는 코드입니다. 각 튜플은 서열, 등록번호(accession number), 유전부호(genetic code)를 저장하며 항상 같은 순서를 유지합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> (<span class="st">'actgctagt'</span>, <span class="st">'ABC123'</span>, <span class="dv">1</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> (<span class="st">'ttaggttta'</span>, <span class="st">'XYZ456'</span>, <span class="dv">1</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>t3 <span class="op">=</span> (<span class="st">'cgcgatcgt'</span>, <span class="st">'HIJ789'</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 객체 지향 프로그래밍에 익숙하다면 “경량 불변 객체(lightweight immutable objects)”라고 생각해도 좋습니다.</p>
-<p>튜플을 레코드, 즉 표의 행으로 생각하면 도움이 되는 경우가 많습니다³. 반면 리스트는 각 원소가 같은 종류의 것을 나타내는 동질적(homogeneous) 데이터 저장에 더 적합합니다. 이 책 곳곳에서 튜플을 다시 만나게 될 것이고 적절할 때 예제에 사용하겠습니다.</p>
-<p>³ 객체 지향 프로그래밍에 익숙하다면 경량 불변 객체라고 할 수 있습니다.</p>
+<p>객체 지향 프로그래밍에 익숙하다면 “경량 불변 객체(lightweight immutable objects)”라고 생각해도 좋습니다.</p>
+<p>튜플을 레코드, 즉 표의 행으로 생각하면 도움이 되는 경우가 많습니다. 반면 리스트는 각 원소가 같은 종류의 것을 나타내는 동질적(homogeneous) 데이터 저장에 더 적합합니다. 이 책 곳곳에서 튜플을 다시 만나게 될 것이고 적절할 때 예제에 사용하겠습니다.</p>
+<p>객체 지향 프로그래밍에 익숙하다면 경량 불변 객체라고 할 수 있습니다.</p>
 </section>
 <section id="집합" class="level2">
 <h2 class="anchored" data-anchor-id="집합">집합</h2>
@@ -1526,13 +1526,13 @@ Haplorrhini</code></pre>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># do some processing</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        processed.append(acc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이 방식의 문제는 리스트가 크면 특정 값이 리스트 안에 있는지 검사하는 연산이 오래 걸린다는 점입니다. 위 코드는 처음엔 빠르지만 processed 리스트가 커짐에 따라 매 반복마다 검사하는 데 필요한 시간도 함께 늘어납니다.</p>
-<p>더 빠른 대안은 딕셔너리입니다. 딕셔너리에서 값을 찾는 일은 매우 빠르다는 것을 알고 있으니, 이 방식은 훨씬 빠를 것입니다¹:</p>
+<p>더 빠른 대안은 딕셔너리입니다. 딕셔너리에서 값을 찾는 일은 매우 빠르다는 것을 알고 있으니, 이 방식은 훨씬 빠를 것입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>processed <span class="op">=</span> {}</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> acc <span class="kw">in</span> accessions:</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> acc <span class="kw">in</span> processed:</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># do some processing</span></span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        processed[acc] <span class="op">=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 필자의 컴퓨터에서 processed가 백만 원소를 담고 있을 때 약 천 배 빠릅니다.</p>
+<p>필자의 컴퓨터에서 processed가 백만 원소를 담고 있을 때 약 천 배 빠릅니다.</p>
 <p>하지만 여전히 만족스럽지 못합니다. 우리가 절대 조회하지 않을 값들, 전부 1인 값들을 저장하면서 메모리를 낭비하고 있으니까요.</p>
 <p>파이썬의 집합(set) 타입은 값을 전혀 저장하지 않는 딕셔너리 같은 것입니다. 키들의 모음만 저장하며 특정 키가 집합 안에 있는지 매우 빠르게 검사하게 해 줍니다. 집합 사용은 간단합니다. set() 함수로 빈 집합을 만들고 add()로 원소를 추가하고 in으로 주어진 원소가 집합 안에 있는지 검사합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>processed <span class="op">=</span> <span class="bu">set</span>()</span>
@@ -1589,9 +1589,9 @@ Haplorrhini</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>seq <span class="op">=</span> aln[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>대괄호 두 세트를 써서 특정 위치의 문자를 얻을 수도 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>char <span class="op">=</span> aln[<span class="dv">2</span>][<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>각 안쪽 행에서 특정 위치를 가져와 열(column) 전체를 얻을 수도 있습니다¹:</p>
+<p>각 안쪽 행에서 특정 위치를 가져와 열(column) 전체를 얻을 수도 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> [seq[<span class="dv">3</span>] <span class="cf">for</span> seq <span class="kw">in</span> aln]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 이 문법에 대한 설명은 제너레이터(generator) 장을 참고하세요.</p>
+<p>이 문법에 대한 설명은 제너레이터(generator) 장을 참고하세요.</p>
 </section>
 <section id="딕셔너리의-리스트와-튜플의-리스트" class="level2">
 <h2 class="anchored" data-anchor-id="딕셔너리의-리스트와-튜플의-리스트">딕셔너리의 리스트와 튜플의 리스트</h2>
@@ -1647,8 +1647,8 @@ genetic code: 5</code></pre>
 <p>지금까지 이 장에서 네 가지 컬렉션 타입(파이썬에서는 통틀어 시퀀스(sequence)라고 부르는데, 생물학에서 말하는 DNA나 단백질 서열과 혼동하지 마세요)을 언급했습니다. 리스트, 튜플, 딕셔너리, 집합입니다. 수학적인 독자라면 이미 눈치챘겠지만 2차원 중첩 자료 구조에는 열여섯 가지 조합이 가능합니다. 가능한 모든 변형(딕셔너리의 집합, 리스트의 튜플 등)을 하나하나 다루는 대신, 이 장을 마무리하며 좀 더 유용한 몇 가지에 집중하겠습니다. 딕셔너리가 제공하는 키에서 값으로의 빠른 조회는 중첩 자료 구조에서 매우 유용하므로, 마지막 몇 예제는 집합·튜플·리스트의 딕셔너리를 다룹니다. 그리고 생물학자에게 특히 흥미로운 좀 더 복잡한 구조, 즉 임의 깊이로 중첩된 리스트(arbitrarily-nested lists)까지 다룹니다.</p>
 <section id="집합의-딕셔너리" class="level3">
 <h3 class="anchored" data-anchor-id="집합의-딕셔너리">집합의 딕셔너리</h3>
-<p>프로그램에서 여러 집합을 다룰 때, 그것들을 모두 딕셔너리에 담으면 변수를 잔뜩 만들지 않고도 라벨을 붙이는 편리한 방법이 됩니다. 어떤 관심 생물체가 다양한 중금속 오염물질에 노출되었을 때 과발현(over-expression)되는 유전자들(등록번호로 식별)의 목록을 수집했다고 해 봅시다. 유전자 목록을 집합의 딕셔너리로 저장하겠습니다. 딕셔너리의 키는 중금속 이름이고 값은 유전자 집합입니다¹:</p>
-<p>¹ 물론 실제 분석에서는 이것들을 하드코딩하지 않고 파일에서 유전자 목록을 읽어 만들 것입니다.</p>
+<p>프로그램에서 여러 집합을 다룰 때, 그것들을 모두 딕셔너리에 담으면 변수를 잔뜩 만들지 않고도 라벨을 붙이는 편리한 방법이 됩니다. 어떤 관심 생물체가 다양한 중금속 오염물질에 노출되었을 때 과발현(over-expression)되는 유전자들(등록번호로 식별)의 목록을 수집했다고 해 봅시다. 유전자 목록을 집합의 딕셔너리로 저장하겠습니다. 딕셔너리의 키는 중금속 이름이고 값은 유전자 집합입니다:</p>
+<p>물론 실제 분석에서는 이것들을 하드코딩하지 않고 파일에서 유전자 목록을 읽어 만들 것입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>gene_sets <span class="op">=</span> {</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'arsenic'</span> : {<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">12</span>},</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a> <span class="st">'cadmium'</span> : {<span class="dv">2</span>,<span class="dv">12</span>,<span class="dv">6</span>,<span class="dv">4</span>},</span>
@@ -1665,10 +1665,10 @@ genetic code: 5</code></pre>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(metal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>mercury
 aresenic</code></pre>
-<p>지능형 리스트¹를 쓰면 더 간결하게:</p>
+<p>지능형 리스트를 쓰면 더 간결하게:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([metal <span class="cf">for</span> metal,gene_list <span class="kw">in</span> gene_sets.items() <span class="cf">if</span> <span class="dv">5</span> <span class="kw">in</span> gene_list])</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># prints ['mercury', 'aresenic']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 이 문법에 대한 설명은 지능형 컴프리헨션(comprehensions) 장을 참고하세요.</p>
+<p>이 문법에 대한 설명은 지능형 컴프리헨션(comprehensions) 장을 참고하세요.</p>
 <p>집합 메서드를 활용해 더 정교한 처리도 할 수 있습니다. 집합 메서드 issubset은 한 집합이 다른 집합의 부분집합(subset)인지, 즉 set_one의 모든 원소가 set_two에도 있는지 알려줍니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>set_one.issubset(set_two)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>루프 두 개로 딕셔너리를 반복하며 유전자 집합들을 쌍별로 비교해, 과발현 유전자 전체가 다른 조건에서도 과발현되는 조건들을 찾을 수 있습니다:</p>
@@ -1734,19 +1734,20 @@ cadmium is a subset of arsenic</code></pre>
 <p>dict_of_lists.py</p>
 <p>출력에서 보등 최종 결과는 리스트의 딕셔너리입니다:</p>
 <pre class="text"><code>{'ggaa': [4, 10], 'aatt': [0, 6, 12], 'gaat': [5, 11], 'tgga': [3, 9], 'attg': [1, 7, 13], 'ttgg': [2, 8]}</code></pre>
-<p>딕셔너리에 원소가 저장되는 순서는 시작 위치의 순서와 전혀 상관없다는 점에 주목하세요. 딕셔너리에는 내재된 순서가 없습니다. 모든 값 자체가 리스트라는 것만 기억하면 표준 도구로 딕셔너리의 항목들을 다룰 수 있습니다. 예컨대 딕셔너리 지능형¹(comprehension)으로 각 시작 위치 리스트의 길이를 요구해, 시작 위치 딕셔너리에서 kmer 개수 딕셔너리를 재구성할 수 있습니다:</p>
+<p>딕셔너리에 원소가 저장되는 순서는 시작 위치의 순서와 전혀 상관없다는 점에 주목하세요. 딕셔너리에는 내재된 순서가 없습니다. 모든 값 자체가 리스트라는 것만 기억하면 표준 도구로 딕셔너리의 항목들을 다룰 수 있습니다. 예컨대 딕셔너리 지능형(comprehension)으로 각 시작 위치 리스트의 길이를 요구해, 시작 위치 딕셔너리에서 kmer 개수 딕셔너리를 재구성할 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> {kmer: <span class="bu">len</span>(starts) <span class="cf">for</span> kmer, starts <span class="kw">in</span> kmer2list.items()}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 동작 방식에 대한 논의는 지능형 컴프리헨션 장을 참고하세요.</p>
+<p>동작 방식에 대한 논의는 지능형 컴프리헨션 장을 참고하세요.</p>
 </section>
-<section id="중첩-리스트로서의-트리" class="level3">
-<h3 class="anchored" data-anchor-id="중첩-리스트로서의-트리">중첩 리스트로서의 트리</h3>
+</section>
+<section id="중첩-리스트로서의-트리" class="level2">
+<h2 class="anchored" data-anchor-id="중첩-리스트로서의-트리">중첩 리스트로서의 트리</h2>
 <p>지금까지 살펴본 자료 구조는 모두 2차원이었습니다. 비컬렉션 원소에 도달하기 전까지 컬렉션 층위가 두 개뿐이었죠. 파이썬에서 더 높은 차원의 자료 구조(리스트의 딕셔너리의 리스트, 튜플의 리스트의 집합 등)를 만드는 것도 물론 가능하지만 그런 구조는 우리가 적용하고자 하는 변형을 생각하기 어렵게 만들어 거의 도움이 되지 않습니다. 프로그래밍 문제를 푸는 중에 3차원이나 4차원 자료 구조에 손을 뻗게 된다면, 복잡성의 일부를 객체 안에 캡슐화(encapsulate)하는 편이 좋을 겁니다.</p>
-<p>다만 이 규칙에는 한 가지 예외가 있습니다. 임의 깊이로 중첩된 리스트는 트리 형태 데이터를 묘사하는 꽤 자연스러운 방법입니다. 계통수(phylogenetic tree)를 표현하는 표준 Newick 포맷¹을 생각해 보세요:</p>
+<p>다만 이 규칙에는 한 가지 예외가 있습니다. 임의 깊이로 중첩된 리스트는 트리 형태 데이터를 묘사하는 꽤 자연스러운 방법입니다. 계통수(phylogenetic tree)를 표현하는 표준 Newick 포맷을 생각해 보세요:</p>
 <pre><code>(dog,(raccoon,bear),((sea_lion,seal),((monkey,cat),weasel)));</code></pre>
 <p>소괄호를 대괄호로 바꾸고 분류군 이름들에 따옴표를 붙이면, 중첩된 리스트 집합을 기술하는 유효한 파이썬 코드가 됩니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'dog'</span>, [<span class="st">'raccoon'</span>,<span class="st">'bear'</span>], [[<span class="st">'sea_lion'</span>,<span class="st">'seal'</span>],[<span class="st">'monkey'</span>,<span class="st">'cat'</span>], <span class="st">'weasel'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>리스트 정의를 여러 줄에 걸쳐 나눠도 변하지 않지만 읽기 쉬워지고, 트리 같은 구조가 조금 더 잘 드러납니다:</p>
-<p>¹ http://evolution.genetics.washington.edu/phylip/newicktree.html</p>
+<p>http://evolution.genetics.washington.edu/phylip/newicktree.html</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>[</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'dog'</span>,</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a> [</span>
@@ -1764,8 +1765,8 @@ cadmium is a subset of arsenic</code></pre>
 <span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이 특정 트리는 3차원 리스트로 표현되며 내부 구조는 지금까지 본 다른 중첩 리스트와 다릅니다. 원소마다 중첩 수준이 다르거든요. 최상위 리스트의 첫 번째 원소는 단순 문자열(‘dog’)이고, 두 번째 원소는 리스트([‘raccoon’, ‘bear’])이고, 세 번째 원소는 스스로 중첩된 리스트([[‘sea_lion’,‘seal’], [‘monkey’,‘cat’], ‘weasel’])입니다.</p>
 <p>트리를 표현하는 이 방식은 다른 접근과 비교할 때 몇 가지 흥미로운 성질이 있습니다. 이를 논하려면 재귀 함수를 적극 활용해야 하므로, 이 절을 계속 읽기 전에 재귀 장을 읽었는지 확인하세요.</p>
-<p>특정 서브트리(subtree)에 주어진 잎 노드(leaf node)가 포함되어 있는지 판별하는 재귀 함수부터 작성해 봅시다¹:</p>
-<p>¹ 다른 방법으로는 리스트를 평탄화(flatten)(즉 1차원 리스트로 만들기)한 다음 원소를 찾는 것입니다.</p>
+<p>특정 서브트리(subtree)에 주어진 잎 노드(leaf node)가 포함되어 있는지 판별하는 재귀 함수부터 작성해 봅시다:</p>
+<p>다른 방법으로는 리스트를 평탄화(flatten)(즉 1차원 리스트로 만들기)한 다음 원소를 찾는 것입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> contains(my_list, target):                    <span class="co"># ❶</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> element <span class="kw">in</span> my_list:</span>
@@ -1799,7 +1800,7 @@ cadmium is a subset of arsenic</code></pre>
 <pre class="text"><code>subtree ['dog', ['raccoon', 'bear'], [['sea_lion', 'seal'], ['monkey', 'cat'], 'weasel']] contains monkey and cat
 subtree [['sea_lion', 'seal'], ['monkey', 'cat'], 'weasel'] contains monkey and cat
 subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
-<p>프로그래밍 관점에서 여기서 한 일은 ‘monkey’와 ’cat’ 문자열을 포함하는 모든 서브리스트의 목록을 찾은 것입니다. 계통학 관점에서는 이 두 생물을 포함하는 클레이드(clade)들의 목록을 찾은 것입니다. 가장 작은 클레이드를 찾는 일은 두 생물의 최후 공통 조상을 식별하는 것과 같습니다. 이것은 서브트리의 잎 노드 수를 세는 또 다른 함수를 작성하고 그 함수로 서브트리 목록을 정렬(sort)¹해서 해낼 수 있습니다:</p>
+<p>프로그래밍 관점에서 여기서 한 일은 ‘monkey’와 ’cat’ 문자열을 포함하는 모든 서브리스트의 목록을 찾은 것입니다. 계통학 관점에서는 이 두 생물을 포함하는 클레이드(clade)들의 목록을 찾은 것입니다. 가장 작은 클레이드를 찾는 일은 두 생물의 최후 공통 조상을 식별하는 것과 같습니다. 이것은 서브트리의 잎 노드 수를 세는 또 다른 함수를 작성하고 그 함수로 서브트리 목록을 정렬(sort)해서 해낼 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_leaves(subtree):</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> element <span class="kw">in</span> subtree:</span>
@@ -1812,10 +1813,9 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>subtrees <span class="op">=</span> find_subtrees(tree, <span class="st">'monkey'</span>, <span class="st">'cat'</span>)</span>
 <span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>sorted_subtrees <span class="op">=</span> <span class="bu">sorted</span>(subtrees, key<span class="op">=</span>count_leaves)</span>
 <span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sorted_subtrees[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 이런 정렬 용법은 함수형 프로그래밍 장에서 다룹니다.</p>
+<p>이런 정렬 용법은 함수형 프로그래밍 장에서 다룹니다.</p>
 <p>정렬된 서브트리 목록의 첫 원소, 즉 잎 노드가 가장 적은 것이 두 분류군을 포함하는 가장 작은 클레이드이므로, 두 생물의 최후 공통 조상을 찾은 셈입니다:</p>
 <pre class="text"><code>['monkey', 'cat']</code></pre>
-</section>
 </section>
 <section id="정리-1" class="level2">
 <h2 class="anchored" data-anchor-id="정리-1">정리</h2>
@@ -1834,7 +1834,7 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <section id="풀이-1" class="level2">
 <h2 class="anchored" data-anchor-id="풀이-1">풀이</h2>
 <p><strong>거리 행렬</strong></p>
-<p>이 문제는 두 부분으로 이루어집니다. 유사도 점수 계산과 결과를 담을 딕셔너리 생성입니다. 주어진 집합 쌍의 유사도 점수 계산은 꽤 쉽습니다. 필요한 메서드 이름(union과 intersection)이 문제 설명에 친절히 언급되어 있으므로, 교집합의 원소 수를 합집합의 원소 수로 나누기만 하면 됩니다¹:</p>
+<p>이 문제는 두 부분으로 이루어집니다. 유사도 점수 계산과 결과를 담을 딕셔너리 생성입니다. 주어진 집합 쌍의 유사도 점수 계산은 꽤 쉽습니다. 필요한 메서드 이름(union과 intersection)이 문제 설명에 친절히 언급되어 있으므로, 교집합의 원소 수를 합집합의 원소 수로 나누기만 하면 됩니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>gene_sets <span class="op">=</span> {</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a> <span class="st">'arsenic'</span> : {<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">12</span>},</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a> <span class="st">'cadmium'</span> : {<span class="dv">2</span>,<span class="dv">12</span>,<span class="dv">6</span>,<span class="dv">4</span>},</span>
@@ -1846,7 +1846,7 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a>set2 <span class="op">=</span> gene_sets[<span class="st">'mercury'</span>]</span>
 <span id="cb88-10"><a href="#cb88-10" aria-hidden="true" tabindex="-1"></a>similarity <span class="op">=</span> <span class="bu">len</span>(set1.intersection(set2)) <span class="op">/</span> <span class="bu">len</span>(set1.union(set2))</span>
 <span id="cb88-11"><a href="#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="co"># similarity == 0.625</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 파이썬 2를 사용한다면 from <strong>future</strong> import division을 포함하는 것을 잊지 마세요.</p>
+<p>파이썬 2를 사용한다면 from <strong>future</strong> import division을 포함하는 것을 잊지 마세요.</p>
 <p>가능한 모든 쌍별 비교를 반복하는 것 역시 쉽습니다. 중첩 for 루프 두 개를 쓰면 됩니다. gene_sets 딕셔너리의 각 쌍은 조건 이름(키)과 유전자 식별자 집합(값)으로 이루어져 있음을 기억하세요. 따라서 items 메서드를 쓰는 것이 반복의 최선책입니다. 여기서는 집합을 자기 자신과 비교하지 않도록 조건을 넣어 모든 유사도 점수를 출력합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> condition1, set1 <span class="kw">in</span> gene_sets.items():</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> condition2, set2 <span class="kw">in</span> gene_sets.items():</span>
@@ -1867,7 +1867,7 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> condition1 <span class="op">!=</span> condition2:</span>
 <span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>            similarity <span class="op">=</span> <span class="bu">len</span>(set1.intersection(set2)) <span class="op">/</span> <span class="bu">len</span>(set1.union(set2))</span>
 <span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>            similarity_scores[condition1][condition2] <span class="op">=</span> similarity</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>하지만 KeyError가 발생합니다. 문제는 마지막 줄이 similarity_scores 딕셔너리의 키 condition1에 연관된 값이 이미 존재할 것을 요구하는데, 우리는 그런 값을 만든 적이 없다는 점입니다. 일부 프로그래밍 언어(특히 Perl)는 이런 상황에서 딕셔너리에 키를 자동 생성하지만¹, 파이썬은 우리가 직접 키를 만들 것을 요구합니다. 두 가지 접근이 가능합니다. 외부 루프의 시작에서 condition1의 키를 만들어 값을 빈 딕셔너리로 설정❶하거나:</p>
+<p>하지만 KeyError가 발생합니다. 문제는 마지막 줄이 similarity_scores 딕셔너리의 키 condition1에 연관된 값이 이미 존재할 것을 요구하는데, 우리는 그런 값을 만든 적이 없다는 점입니다. 일부 프로그래밍 언어(특히 Perl)는 이런 상황에서 딕셔너리에 키를 자동 생성하지만, 파이썬은 우리가 직접 키를 만들 것을 요구합니다. 두 가지 접근이 가능합니다. 외부 루프의 시작에서 condition1의 키를 만들어 값을 빈 딕셔너리로 설정❶하거나:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>similarity_scores <span class="op">=</span> {}</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> condition1, set1 <span class="kw">in</span> gene_sets.items():</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>    similarity_scores[condition1] <span class="op">=</span> {}</span>
@@ -1886,7 +1886,7 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a>            single_similarity[condition2] <span class="op">=</span> similarity</span>
 <span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>    similarity_scores[condition1] <span class="op">=</span> single_similarity</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>❶ ❷</p>
-<p>¹ 이 기능은 autovivification이라 불립니다.</p>
+<p>이 기능은 autovivification이라 불립니다.</p>
 <p>어느 쪽이든 동작하고 둘 다 같은 복잡한 자료 구조가 similarity_scores에 저장됩니다:</p>
 <p>distance_matrix.py</p>
 <pre class="text"><code>{
@@ -1895,8 +1895,8 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 'arsenic': {'mercury': 0.625, 'copper': 0.3, 'cadmium': 0.5},
 'cadmium': {'mercury': 0.2857142857142857, 'copper': 0.2857142857142857, 'arsenic': 0.5}
 }</code></pre>
-<p>이 문제가 온전히 데이터 컬렉션의 변형에 관한 것이니, 함수형 프로그래밍 스타일로 해법을 표현할 수 있는지 궁금해질 법합니다. 안쪽 루프는 세 요소를 포함합니다. 딕셔너리 항목 반복, 어떤 변형으로 항목 처리, 특정 항목만 처리되도록 하는 조건입니다. 이런 일에 자연스러운 도구는 딕셔너리 지능형(comprehension)¹이며 안쪽 루프를 이걸 사용하도록 다시 쓸 수 있습니다:</p>
-<p>¹ 이들에 대한 논의는 지능형 컴프리헨션 장을 참고하세요.</p>
+<p>이 문제가 온전히 데이터 컬렉션의 변형에 관한 것이니, 함수형 프로그래밍 스타일로 해법을 표현할 수 있는지 궁금해질 법합니다. 안쪽 루프는 세 요소를 포함합니다. 딕셔너리 항목 반복, 어떤 변형으로 항목 처리, 특정 항목만 처리되도록 하는 조건입니다. 이런 일에 자연스러운 도구는 딕셔너리 지능형(comprehension)이며 안쪽 루프를 이걸 사용하도록 다시 쓸 수 있습니다:</p>
+<p>이들에 대한 논의는 지능형 컴프리헨션 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> condition1, set1 <span class="kw">in</span> gene_sets.items():</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>    single_scores <span class="op">=</span> {</span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>      condition2 : <span class="bu">len</span>(set1.intersection(set2))<span class="op">/</span><span class="bu">len</span>(set1.union(set2))</span>
@@ -1942,8 +1942,8 @@ subtree ['monkey', 'cat'] contains monkey and cat</code></pre>
 <h1>4장: 객체 지향 파이썬</h1>
 <section id="소개" class="level2">
 <h2 class="anchored" data-anchor-id="소개">소개</h2>
-<p>『Python for Biologists』¹를 끝까지 읽었다면 파이썬에는 문자열, 숫자, 파일, 정규표현식 등 서로 다른 “타입”의 것들이 있다는 사실을 어렴풋이 알고 있을 겁니다. 객체 지향 프로그래밍(object oriented programming)이라 불리는 것에 대한 언급도 들어봤을 수 있는데, 흔히 상속(inheritance), 구성(composition), 다형성(polymorphism) 같은 복잡하게 들리는 개념이 잔뜩 있는 무섭고 난해한 기법으로 소개됩니다. 객체 지향 세계에는 초심자를 위협하는 구석이 확실히 많지만 본질적으로 객체 지향 프로그래밍이란 <strong>새로운 타입의 것을 만드는 실천</strong>일 뿐입니다.</p>
-<p>¹ 아니면 사실상 다른 어떤 파이썬 입문서든요.</p>
+<p>『Python for Biologists』를 끝까지 읽었다면 파이썬에는 문자열, 숫자, 파일, 정규표현식 등 서로 다른 “타입”의 것들이 있다는 사실을 어렴풋이 알고 있을 겁니다. 객체 지향 프로그래밍(object oriented programming)이라 불리는 것에 대한 언급도 들어봤을 수 있는데, 흔히 상속(inheritance), 구성(composition), 다형성(polymorphism) 같은 복잡하게 들리는 개념이 잔뜩 있는 무섭고 난해한 기법으로 소개됩니다. 객체 지향 세계에는 초심자를 위협하는 구석이 확실히 많지만 본질적으로 객체 지향 프로그래밍이란 <strong>새로운 타입의 것을 만드는 실천</strong>일 뿐입니다.</p>
+<p>아니면 사실상 다른 어떤 파이썬 입문서든요.</p>
 <p>여러 면에서 객체 지향 프로그래밍 도구를 배우는 일은 함수 작성법을 배우는 일과 비슷합니다. 완전 초보로 작은 프로그램을 짜기 시작할 때는 파이썬의 내장 함수와 메서드를 빌딩 블록으로 쓰는 데 만족합니다. 이후 자체 함수를 작성하는 법을 배우고 이것이 더 크고 복잡한 프로그램을 더 쉽게 작성하게 해준다는 것을 발견합니다. 타입도 마찬가지입니다. 파이썬 언어가 제공하는 타입만으로도 좋고 유용한 프로그램을 작성하는 것이 충분히 가능하지만 자체 타입을 만드는 법을 배우면 광범위한 문제를 훨씬 쉽게 풀 수 있습니다.</p>
 <p>실제로 자체 클래스 작성의 장점은 자체 함수 작성의 장점과 매우 유사합니다. 자체 함수를 작성할 때 우리가 사용해야 할 기본 빌딩 블록은 파이썬 내장 함수와 메서드입니다. 자체 함수 작성은 이전에 못 했던 일을 할 수 있게 해주는 게 아니라, 코드를 훨씬 읽고 쓰기 쉬운 구조로 만들어 훨씬 크고 정교한 프로그램을 작성하게 해줄 뿐입니다(캡슐화(encapsulation) 개념을 떠올려 보세요). 마찬가지로 자체 객체 타입을 만드는 법을 배우는 것도 근본적으로 다른 일을 할 수 있게 해주진 않습니다. 하지만 훨씬 큰 유연성을 허용하는 방식으로 코드를 구조화하게 해줍니다.</p>
 <p>시작하기 전에 명칭에 관해 몇마디 하겠습니다. 지금까지 『Python for Biologists』와 이 책에서는 파이썬의 값들이 여러 가지 “flavour”를 가진다는 사실을 말할 때 type이라는 단어를, 문자열이나 파일 같은 데이터 조각을 말할 때 thing이라는 단어를 사용해 왔습니다. 이 장의 목표는 명시적으로 객체에 관해 이야기하는 것이므로 좀 더 정확해져야 합니다. 이제부터 개별적인 것(thing)은 객체(object)라고 부르고 것의 타입은 그것의 클래스(class)라고 부르겠습니다. 어떤 것이 특정 타입이라고 말하는 대신, 주어진 객체가 어떤 클래스의 인스턴스(instance)라고 말하겠습니다. 예컨대 이 코드 줄에서:</p>
@@ -1987,8 +1987,8 @@ TGACTAGCAATGCATGCTCAGTA</code></pre>
 <span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"complement is "</span> <span class="op">+</span> complement(dna_sequence))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>two_functions.py</p>
 <p>하지만 이 방식은 당연히 확장되지 않습니다. 서열과 함께 유전자 이름, 종 이름까지 담은 큰 컬렉션을 저장하려면 다른 접근이 필요합니다. 딕셔너리 두 개를 만들 수도 있습니다. 하나는 서열과 유전자 이름을, 다른 하나는 서열과 종 이름을 저장하는 식으로요. 하지만 서열은 같은데 서로 다른 종에 속하는 두 서열을 저장하고 싶다면? 딕셔너리 방식은 키가 유일해야 하므로 안 됩니다. 그리고 애초에 주어진 서열의 유전자 이름을 조회하고 싶어할 것 같지 않습니다. 차라리 그 반대일 겁니다.</p>
-<p>이 문제를 우아하게 풀려면 세 정보 조각(서열, 유전자 이름, 종 이름)을 하나의 단위로 다룰 수 있는 커다란 데이터 공에 감싸는 방법이 필요합니다. 이를 위한 한 가지 방법은 복잡한 자료 구조, 예컨대 딕셔너리의¹ 리스트입니다. 각 딕셔너리가 단일 서열 레코드를 나타내며 저장해야 할 세 정보에 대응하는 세 항목을 가집니다. 훨씬 나은 방법은 DNA 서열을 나타내는 클래스를 만들고 그 인스턴스들을 프로그램에서 개별 객체로 생성하고 전달하는 것입니다.</p>
-<p>¹ 이 접근의 몇몇 예제는 복잡한 자료구조 장을 참고하세요.</p>
+<p>이 문제를 우아하게 풀려면 세 정보 조각(서열, 유전자 이름, 종 이름)을 하나의 단위로 다룰 수 있는 커다란 데이터 공에 감싸는 방법이 필요합니다. 이를 위한 한 가지 방법은 복잡한 자료 구조, 예컨대 딕셔너리의 리스트입니다. 각 딕셔너리가 단일 서열 레코드를 나타내며 저장해야 할 세 정보에 대응하는 세 항목을 가집니다. 훨씬 나은 방법은 DNA 서열을 나타내는 클래스를 만들고 그 인스턴스들을 프로그램에서 개별 객체로 생성하고 전달하는 것입니다.</p>
+<p>이 접근의 몇몇 예제는 복잡한 자료구조 장을 참고하세요.</p>
 <p>클래스를 정의하는 것은 직관적이지만 먼저 어떤 인스턴스 변수(instance variables)와 메서드를 가질지 결정해야 합니다. 인스턴스 변수는 특정 객체에 속하는 변수입니다(곧 사용법을 보겠습니다). 메서드가 무엇인지는 이미 압니다. 파이썬 내장 클래스들에 수없이 사용해왔으니까요. 우리 클래스에는 인스턴스 변수 세 개(DNA 서열, 유전자 이름, 종 이름)와 메서드 두 개(앞서 본 get_AT()와 complement())가 있기를 원합니다. 이 예제에서 세 인스턴스 변수는 문자열이겠지만 File 객체나 딕셔너리, 리스트 등일 수도 있습니다.</p>
 <p>우리 새 클래스를 정의하고 인스턴스를 생성하고 몇몇 메서드를 호출하는 코드입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNARecord(<span class="bu">object</span>):                       <span class="co"># ❶</span></span>
@@ -2015,11 +2015,11 @@ TGACTAGCAATGCATGCTCAGTA</code></pre>
 <span id="cb104-22"><a href="#cb104-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'AT is '</span> <span class="op">+</span> <span class="bu">str</span>(d.get_AT()))</span>
 <span id="cb104-23"><a href="#cb104-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'complement is '</span> <span class="op">+</span> d.complement())       <span class="co"># ❹</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>dna_record.py</p>
-<p>¹ 자바 프로그래머라면 this라는 개념으로 익숙할 겁니다.</p>
+<p>자바 프로그래머라면 this라는 개념으로 익숙할 겁니다.</p>
 <p>이 코드 샘플에는 일이 많이 벌어지고 있으니 한 줄씩 살펴보겠습니다.</p>
 <p>class 키워드로 시작하고 클래스 이름 뒤 소괄호에 기반 클래스(base class) 이름이 따라옵니다(기반 클래스의 의미는 지금은 걱정하지 마세요. 나중에 논의합니다). 이 줄은 콜론으로 끝나며 기대하겠지만 클래스 정의의 나머지 부분은 들여쓰기됩니다.</p>
 <p>다음 몇 줄❶에서는 클래스의 몇몇 속성(attribute), 즉 DNA 서열, 유전자 이름, 종 이름을 정의합니다.</p>
-<p>이어서 첫 메서드인 complement() 메서드 정의를 시작합니다❷. 메서드 정의는 함수 정의처럼 동작하지만 self¹라 불리는 특별한 변수를 첫 인자로 받는 점이 다릅니다. 이 self 변수가 메서드 내부에서 객체를 참조하는 방법입니다. 레코드의 DNA 서열을 참조하려면 self.sequence라는 변수 이름을 사용합니다. self 변수가 어떻게 생성되는지 걱정할 필요 없습니다. 객체에 메서드를 호출할 때마다 파이썬이 알아서 self 변수의 값을 설정합니다. get_AT() 메서드❸에서도 self 변수를 활용합니다.</p>
+<p>이어서 첫 메서드인 complement() 메서드 정의를 시작합니다❷. 메서드 정의는 함수 정의처럼 동작하지만 self라 불리는 특별한 변수를 첫 인자로 받는 점이 다릅니다. 이 self 변수가 메서드 내부에서 객체를 참조하는 방법입니다. 레코드의 DNA 서열을 참조하려면 self.sequence라는 변수 이름을 사용합니다. self 변수가 어떻게 생성되는지 걱정할 필요 없습니다. 객체에 메서드를 호출할 때마다 파이썬이 알아서 self 변수의 값을 설정합니다. get_AT() 메서드❸에서도 self 변수를 활용합니다.</p>
 <p>그다음 몇 줄이 새 클래스 사용을 시작하는 곳입니다. 클래스 이름 뒤에 소괄호 한 쌍을 붙여 써서(그 이유는 곧 배웁니다) DNARecord 클래스의 새 인스턴스를 만듭니다❹. 새 객체가 만들어져 변수 d에 할당되면 variablename.attributename 패턴으로 속성들에 접근할 수 있습니다. 그러니 d가 참조하는 DNARecord의 유전자 이름을 얻으려면 단순히 d.gene_name이라고 씁니다. 새 객체에서 메서드를 호출할 때도 같은 패턴을 사용합니다.</p>
 <p>클래스 정의가 어떻게 생겼는지 봤으니, 이것을 개선하려면 무엇을 할 수 있는지 보겠습니다.</p>
 </section>
@@ -2108,8 +2108,8 @@ complement is GCCGCCGCGCCGCGCCGC</code></pre>
 <pre class="text"><code>Traceback (most recent call last):
   replacement1 = self.sequence.replace('A', 't')
 AttributeError: 'DNARecord' object has no attribute 'sequence'</code></pre>
-<p>이 문제에 부딪히지 않도록 파이썬¹에는 생성자(constructor)라 불리는 특수한 종류의 메서드가 있습니다. 생성자의 임무는 새 객체를 만들고 변수들을 설정하는 일을 하나의 문장으로 처리하는 것이며 약간 특수한 문법을 사용합니다:</p>
-<p>¹ 그리고 다른 객체 지향 언어들도요.</p>
+<p>이 문제에 부딪히지 않도록 파이썬에는 생성자(constructor)라 불리는 특수한 종류의 메서드가 있습니다. 생성자의 임무는 새 객체를 만들고 변수들을 설정하는 일을 하나의 문장으로 처리하는 것이며 약간 특수한 문법을 사용합니다:</p>
+<p>그리고 다른 객체 지향 언어들도요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNARecord(<span class="bu">object</span>):</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sequence, gene_name, species_name):   <span class="co"># ❶</span></span>
@@ -2144,8 +2144,8 @@ AttributeError: 'DNARecord' object has no attribute 'sequence'</code></pre>
 <span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AT content is "</span> <span class="op">+</span> <span class="bu">str</span>(d1.get_AT()))</span>
 <span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"complement is "</span> <span class="op">+</span> d1.complement())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>데이터 저장 방식과 처리 방식의 차이에 주목하세요. 명령형 코드에서는 데이터 조각 세 개를 담을 변수 세 개를 만들고 원하는 답을 얻으려 함수에 전달합니다. 객체 지향 스타일에서는 세 데이터 조각을 하나의 객체에 담은 다음, 객체에게 원하는 답을 요청합니다. 객체는 자신의 변수 저장과 AT 및 상보 서열 계산 모두를 책임집니다. 다시 말해, DNARecord 객체의 AT 함량을 알고 싶을 때 서열을 꺼내 함수에 전달하는 게 아니라 AT 함량을 직접 요청하며 그것을 말해주는 것은 객체의 일입니다.</p>
-<p>새 클래스를 정의하고 나면 내장 클래스와 똑같이 행동합니다. File 객체나 String 객체, Integer 객체와 비교했을 때 DNARecord 객체를 사용하는 데 차이는 없습니다. DNARecord 객체를 변수·리스트·딕셔너리에 저장할 수 있고 함수나 메서드의 인자로 전달할 수 있으며 함수나 메서드에서 반환할 수도 있습니다. 예컨대 DNARecord를 인자로 받아 단백질 번역(protein translation)을 문자열로¹ 반환하는 함수입니다:</p>
-<p>¹ 이 함수가 동작하는 방식을 상기하려면 『Python for Biologists』의 딕셔너리 장을 참고하세요.</p>
+<p>새 클래스를 정의하고 나면 내장 클래스와 똑같이 행동합니다. File 객체나 String 객체, Integer 객체와 비교했을 때 DNARecord 객체를 사용하는 데 차이는 없습니다. DNARecord 객체를 변수·리스트·딕셔너리에 저장할 수 있고 함수나 메서드의 인자로 전달할 수 있으며 함수나 메서드에서 반환할 수도 있습니다. 예컨대 DNARecord를 인자로 받아 단백질 번역(protein translation)을 문자열로 반환하는 함수입니다:</p>
+<p>이 함수가 동작하는 방식을 상기하려면 『Python for Biologists』의 딕셔너리 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> translate_dna(dna_record):</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>    gencode <span class="op">=</span> {</span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="st">'ATA'</span>:<span class="st">'I'</span>, <span class="st">'ATC'</span>:<span class="st">'I'</span>, <span class="st">'ATT'</span>:<span class="st">'I'</span>, <span class="st">'ATG'</span>:<span class="st">'M'</span>,</span>
@@ -2175,8 +2175,8 @@ AttributeError: 'DNARecord' object has no attribute 'sequence'</code></pre>
 </section>
 <section id="상속" class="level2">
 <h2 class="anchored" data-anchor-id="상속">상속</h2>
-<p>DNARecord 클래스에 추가할 만한 다른 유용한 메서드가 무엇일까요? 레코드를 FASTA 포맷으로 반환하는 메서드는 어떨까요? gene_name과 species_name 멤버 변수를 결합해 헤더(header)를 구성하고¹ 종 이름의 공백은 밑줄로 바꾸고² 시작에 greater-than 기호(&gt;)를 붙이고 헤더와 서열 사이에 줄바꿈 문자를³ 넣겠습니다:</p>
-<p>¹ FASTA 헤더의 공백을 허용하지 않는 깐깐한 서열 분석 도구들도 있습니다. ² 여러 개의 get_fasta() 메서드 호출 결과를 연달아 써서 다중 서열 FASTA 파일을 만들 수 있도록 마지막에 줄바꿈 문자를 하나 더 추가합니다. ³ 마찬가지로요.</p>
+<p>DNARecord 클래스에 추가할 만한 다른 유용한 메서드가 무엇일까요? 레코드를 FASTA 포맷으로 반환하는 메서드는 어떨까요? gene_name과 species_name 멤버 변수를 결합해 헤더(header)를 구성하고 종 이름의 공백은 밑줄로 바꾸고 시작에 greater-than 기호(&gt;)를 붙이고 헤더와 서열 사이에 줄바꿈 문자를 넣겠습니다:</p>
+<p>FASTA 헤더의 공백을 허용하지 않는 깐깐한 서열 분석 도구들도 있습니다. 여러 개의 get_fasta() 메서드 호출 결과를 연달아 써서 다중 서열 FASTA 파일을 만들 수 있도록 마지막에 줄바꿈 문자를 하나 더 추가합니다. 마찬가지로요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNARecord(<span class="bu">object</span>):</span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sequence, gene_name, species_name):</span>
@@ -2201,8 +2201,8 @@ ATATATTATTATATTATA</code></pre>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> my_dna_records:</span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> d.get_AT() <span class="op">&gt;</span> <span class="fl">0.6</span>:</span>
 <span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>        output.write(d.get_fasta())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>객체가 얼마나 유용한지 봤으니, 단백질 레코드를 표현하는 비슷한 클래스를 만들고 싶어질 겁니다. 일관성을 위해 ProteinRecord라고 부르죠. DNARecord 클래스처럼 gene_name, species_name, sequence를 가집니다. ProteinRecord 클래스에는 어떤 메서드가 있어야 할까요? 단백질 서열의 상보 서열이나 AT 함량을 묻는 건 당연히 무의미합니다. 대신 아미노산 잔기(residue) 중 소수성(hydrophobic)인 비율을 계산하는 메서드를 주겠습니다¹. FASTA 시퀀스를 생성하는 메서드도 포함하겠습니다. DNA와 단백질 FASTA 포맷이 같아 보이므로 get_fasta() 메서드를 그냥 재사용하면 됩니다.</p>
-<p>¹ 이 메서드가 동작하는 방식에 대한 논의는 『Python for Biologists』의 자체 함수 작성 장 연습 문제를 참고하세요.</p>
+<p>객체가 얼마나 유용한지 봤으니, 단백질 레코드를 표현하는 비슷한 클래스를 만들고 싶어질 겁니다. 일관성을 위해 ProteinRecord라고 부르죠. DNARecord 클래스처럼 gene_name, species_name, sequence를 가집니다. ProteinRecord 클래스에는 어떤 메서드가 있어야 할까요? 단백질 서열의 상보 서열이나 AT 함량을 묻는 건 당연히 무의미합니다. 대신 아미노산 잔기(residue) 중 소수성(hydrophobic)인 비율을 계산하는 메서드를 주겠습니다. FASTA 시퀀스를 생성하는 메서드도 포함하겠습니다. DNA와 단백질 FASTA 포맷이 같아 보이므로 get_fasta() 메서드를 그냥 재사용하면 됩니다.</p>
+<p>이 메서드가 동작하는 방식에 대한 논의는 『Python for Biologists』의 자체 함수 작성 장 연습 문제를 참고하세요.</p>
 <p>ProteinRecord 클래스 코드의 첫 시도입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProteinRecord(<span class="bu">object</span>):</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2311,8 +2311,8 @@ MSRSLLLRFLLFLLLLPPLP</code></pre>
 <span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>d1 <span class="op">=</span> DNARecord(<span class="st">'ATCGCGTACGTGATCGTAG'</span>, <span class="st">'COX1'</span>, <span class="st">'Homo sapiens'</span>)</span>
 <span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.get_fasta())</span>
 <span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d1.complement())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>이 예제에서 우리가 인스턴스를 만드는 것은 언제나 서브클래스, 즉 DNARecord와 ProteinRecord뿐임에 주목하세요. SequenceRecord의 인스턴스를 직접 만들지 않습니다¹. 예시로, DNARecord를 인자로 받아 ProteinRecord를 반환하는 번역 함수의 수정 버전입니다:</p>
-<p>¹ 물론 직접 만들지 못할 이유도 없습니다.</p>
+<p>이 예제에서 우리가 인스턴스를 만드는 것은 언제나 서브클래스, 즉 DNARecord와 ProteinRecord뿐임에 주목하세요. SequenceRecord의 인스턴스를 직접 만들지 않습니다. 예시로, DNARecord를 인자로 받아 ProteinRecord를 반환하는 번역 함수의 수정 버전입니다:</p>
+<p>물론 직접 만들지 못할 이유도 없습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> translate_dna(dna_record):</span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>    gencode <span class="op">=</span> {</span>
 <span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="st">'ATA'</span>:<span class="st">'I'</span>, <span class="st">'ATC'</span>:<span class="st">'I'</span>, <span class="st">'ATT'</span>:<span class="st">'I'</span>, <span class="st">'ATG'</span>:<span class="st">'M'</span>,</span>
@@ -2349,8 +2349,8 @@ MSRSLLLRFLLFLLLLPPLP</code></pre>
 </section>
 <section id="오버라이딩" class="level2">
 <h2 class="anchored" data-anchor-id="오버라이딩">오버라이딩</h2>
-<p>가끔 서브클래스가 슈퍼클래스와 약간 다르게 행동하기를 원할 것입니다. 이를 가능하게 하는 메커니즘을 오버라이딩(overriding)이라 합니다. DNARecord 객체에 genetic_code 변수, 즉 NCBI 번호 체계¹로 이 서열의 유전부호 번호를 저장하는 변수를 갖게 하고 싶다고 합시다. 단백질 서열에 유전부호가 있는 건 무의미하므로 이 변수를 SequenceRecord 클래스의 생성자에 단순히 추가할 수 없습니다. 대신 필요한 것은 DNARecord 클래스에 고유한 특화 생성자를 제공하는 것입니다. 유전부호를 인자 중 하나로 받는 생성자죠. 그렇게 하면 새 DNARecord 객체를 만들 때는 DNARecord에 정의된 <strong>init</strong>() 메서드가 사용되지만 그 객체에서 get_fasta()를 호출할 때는 여전히 SequenceRecord에 정의된 메서드가 사용됩니다. 코드를 봅시다:</p>
-<p>¹ http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi</p>
+<p>가끔 서브클래스가 슈퍼클래스와 약간 다르게 행동하기를 원할 것입니다. 이를 가능하게 하는 메커니즘을 오버라이딩(overriding)이라 합니다. DNARecord 객체에 genetic_code 변수, 즉 NCBI 번호 체계로 이 서열의 유전부호 번호를 저장하는 변수를 갖게 하고 싶다고 합시다. 단백질 서열에 유전부호가 있는 건 무의미하므로 이 변수를 SequenceRecord 클래스의 생성자에 단순히 추가할 수 없습니다. 대신 필요한 것은 DNARecord 클래스에 고유한 특화 생성자를 제공하는 것입니다. 유전부호를 인자 중 하나로 받는 생성자죠. 그렇게 하면 새 DNARecord 객체를 만들 때는 DNARecord에 정의된 <strong>init</strong>() 메서드가 사용되지만 그 객체에서 get_fasta()를 호출할 때는 여전히 SequenceRecord에 정의된 메서드가 사용됩니다. 코드를 봅시다:</p>
+<p>http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNARecord(SequenceRecord):</span>
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sequence, gene_name, species_name, genetic_code):</span>
@@ -2374,10 +2374,10 @@ MSRSLLLRFLLFLLLLPPLP</code></pre>
 <span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a><span class="co">## 슈퍼클래스 메서드 호출하기</span></span>
 <span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a>위 예제는 간단합니다. 슈퍼클래스 메서드를 완전히 새로운 것으로 대체하고 싶었기 때문입니다. 만약 기능을 <span class="op">*</span>추가<span class="op">*</span>하고 싶다면 어떨까요? 예컨대 SequenceRecord 생성자에 오류 검사를 조금 추가하기로 했다고 해 봅시다. 생성자 인자로 제공된 종 이름이 정말 종 이름답게 생겼는지 확인하고 싶습니다. 공백으로 구분된 두 부분으로 이루어져야 하고 첫 부분은 대문자로 시작해야 하죠. 이 패턴을 기술하는 정규표현식¹을 작성하고 주어진 종 이름이 일치하지 않으면 오류 메시지와 함께 프로그램을² 종료할 수 있습니다:</span>
+<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a>위 예제는 간단합니다. 슈퍼클래스 메서드를 완전히 새로운 것으로 대체하고 싶었기 때문입니다. 만약 기능을 <span class="op">*</span>추가<span class="op">*</span>하고 싶다면 어떨까요? 예컨대 SequenceRecord 생성자에 오류 검사를 조금 추가하기로 했다고 해 봅시다. 생성자 인자로 제공된 종 이름이 정말 종 이름답게 생겼는지 확인하고 싶습니다. 공백으로 구분된 두 부분으로 이루어져야 하고 첫 부분은 대문자로 시작해야 하죠. 이 패턴을 기술하는 정규표현식을 작성하고 주어진 종 이름이 일치하지 않으면 오류 메시지와 함께 프로그램을 종료할 수 있습니다:</span>
 <span id="cb130-10"><a href="#cb130-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a>¹ 다시 살펴볼 필요가 있다면 『Python <span class="cf">for</span> Biologists』의 정규표현식 장을 참고하세요.</span>
-<span id="cb130-12"><a href="#cb130-12" aria-hidden="true" tabindex="-1"></a>² 이런 상황을 다루는 훨씬 나은 방법이 있으며 예외(exception) 장에서 배우게 됩니다.</span>
+<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a> 다시 살펴볼 필요가 있다면 『Python <span class="cf">for</span> Biologists』의 정규표현식 장을 참고하세요.</span>
+<span id="cb130-12"><a href="#cb130-12" aria-hidden="true" tabindex="-1"></a> 이런 상황을 다루는 훨씬 나은 방법이 있으며 예외(exception) 장에서 배우게 됩니다.</span>
 <span id="cb130-13"><a href="#cb130-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb130-14"><a href="#cb130-14" aria-hidden="true" tabindex="-1"></a>```python</span>
 <span id="cb130-15"><a href="#cb130-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
@@ -2436,15 +2436,15 @@ MSRSLLLRFLLFLLLLPPLP</code></pre>
 <section id="정리-2" class="level2">
 <h2 class="anchored" data-anchor-id="정리-2">정리</h2>
 <p>객체 지향 프로그래밍은 거대한 주제이며 그 파생 주제들만으로 책장 한 권이 통째로 작성되곤 합니다. 이 장에서는 파이썬에서 기본 객체 지향 기능이 작동하는 방식을 간략히 개관했습니다. 간단한 클래스 정의를 사용해 데이터와 코드를 논리적 단위로 함께 패키징하고 프로그램에서 그 단위들을 생성·전달하는 법을 살펴봤습니다. 상속을 사용해 클래스들에게 기능을 공유하게 하는 법과, 기반 클래스의 메서드를 오버라이딩해 특화된 행동을 부여하는 법도 보았습니다. 마지막으로 객체 지향 사고의 중요한 이점 하나, 즉 함수가 서로 다른 타입의 데이터를 투명하게 처리할 수 있는 능력을 살펴봤습니다.</p>
-<p>객체 지향 프로그래밍이 워낙 복잡한 주제라 이 책의 범위를 넘어서지만 읽어볼 가치가 있는 측면들이 많습니다. 구성(composition)은 상속의 대안으로, 다른 방식으로 클래스들의 기능 공유를 가능하게 합니다. 많은 언어와 달리 파이썬은 다중 상속(multiple inheritance)을 허용하는데, 이는 남용하기 쉬운 기법으로 클래스가 여러 부모로부터 상속받게 해줍니다. 흔한 추상적 문제들을 객체 지향 스타일로 해결하는 데 많은 사고가 기울여졌고 그 결과물이 디자인 패턴(design patterns)입니다. 여러 언어와 문제에 적용 가능한 모범 관례 기법들의 집합이죠¹. 마지막으로 객체 지향 프로그래밍의 몇몇 측면, 즉 인터페이스(interface)와 추상 클래스(abstract class)는 파이썬에는 실질적으로 없지만 배워둘 가치가 있습니다.</p>
-<p>¹ 파이썬의 동적 특성 덕분에 많은 디자인 패턴이 불필요해지므로, 다른 언어보다 덜 사용되는 경향이 있습니다.</p>
+<p>객체 지향 프로그래밍이 워낙 복잡한 주제라 이 책의 범위를 넘어서지만 읽어볼 가치가 있는 측면들이 많습니다. 구성(composition)은 상속의 대안으로, 다른 방식으로 클래스들의 기능 공유를 가능하게 합니다. 많은 언어와 달리 파이썬은 다중 상속(multiple inheritance)을 허용하는데, 이는 남용하기 쉬운 기법으로 클래스가 여러 부모로부터 상속받게 해줍니다. 흔한 추상적 문제들을 객체 지향 스타일로 해결하는 데 많은 사고가 기울여졌고 그 결과물이 디자인 패턴(design patterns)입니다. 여러 언어와 문제에 적용 가능한 모범 관례 기법들의 집합이죠. 마지막으로 객체 지향 프로그래밍의 몇몇 측면, 즉 인터페이스(interface)와 추상 클래스(abstract class)는 파이썬에는 실질적으로 없지만 배워둘 가치가 있습니다.</p>
+<p>파이썬의 동적 특성 덕분에 많은 디자인 패턴이 불필요해지므로, 다른 언어보다 덜 사용되는 경향이 있습니다.</p>
 </section>
 <section id="연습-문제-2" class="level2">
 <h2 class="anchored" data-anchor-id="연습-문제-2">연습 문제</h2>
-<p>100개의 반수체(haploid) 개체군에서³ 세 개의 유전자좌(locus)에 걸친 진화를 시뮬레이션하는 객체 지향 프로그램을 작성하세요. 각 유전자좌에는 적합도(fitness)가 약간 다른 두 대립유전자(allele)가 있으며 개체의 전체 적합도는 세 유전자좌의 적합도로부터 곱셈 모델로 계산됩니다(즉, 어떤 개체의 대립유전자 적합도 점수가 1, 0.9, 0.8이라면 개체의 적합도는 1 × 0.9 × 0.8 = 0.72).</p>
+<p>100개의 반수체(haploid) 개체군에서 세 개의 유전자좌(locus)에 걸친 진화를 시뮬레이션하는 객체 지향 프로그램을 작성하세요. 각 유전자좌에는 적합도(fitness)가 약간 다른 두 대립유전자(allele)가 있으며 개체의 전체 적합도는 세 유전자좌의 적합도로부터 곱셈 모델로 계산됩니다(즉, 어떤 개체의 대립유전자 적합도 점수가 1, 0.9, 0.8이라면 개체의 적합도는 1 × 0.9 × 0.8 = 0.72).</p>
 <p>매 세대(generation)마다 시뮬레이션은 두 단계로 진행됩니다. 먼저 선택(selection)을 나타내기 위해 각 개체는 적합도에 반비례하는 확률로 죽임을 당할 수 있습니다. 즉 각 개체마다 0과 1 사이의 난수를 뽑아 그 수가 개체의 적합도보다 크면 죽어 개체군에서 제거됩니다. 둘째, 재생산(reproduction)을 나타내기 위해 개체 수가 다시 100이 되도록 새 개체들이 개체군에 추가됩니다. 재조합 등을 시뮬레이션하는 대신, 새 개체의 대립유전자들은 현재 개체군에서 대립유전자를 무작위로 골라 결정된다고 단순화합니다. 즉 특정 대립유전자가 선택될 확률은 개체군 전체에서의 빈도에 비례합니다.</p>
 <p>매 세대마다 프로그램은 모든 대립유전자의 빈도를 계산해 텍스트 파일에 기록해야 합니다. 시뮬레이션이 끝나면 빈도들을 차트에 그려 시간에 따른 변화를 보여줄 수 있습니다.</p>
-<p>¹ 개체군유전학 배경의 독자들은 이 시뮬레이션의 많은 미흡함을 용서해 주시리라 믿습니다!</p>
+<p>개체군유전학 배경의 독자들은 이 시뮬레이션의 많은 미흡함을 용서해 주시리라 믿습니다!</p>
 </section>
 <section id="풀이-2" class="level2">
 <h2 class="anchored" data-anchor-id="풀이-2">풀이</h2>
@@ -2595,8 +2595,8 @@ MSRSLLLRFLLFLLLLPPLP</code></pre>
 <span id="cb154-7"><a href="#cb154-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb154-8"><a href="#cb154-8" aria-hidden="true" tabindex="-1"></a>summarize_population_alleles(my_population, all_loci)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>simulation1.py</p>
-<p>¹ 시작 개체군의 구성과 개체 제거가 모두 부분적으로 난수에 의해 제어되므로, 이 코드를 실행하면 결과가 달라진다는 점을 기억하세요.</p>
-<p>출력에서 무슨 일이 일어나는지 보입니다. 시뮬레이션이 진행됨에 따라 개체군 크기는 감소하고(개체를 제거만 하고 추가하지 않으니), 적합도가 낮은 대립유전자(소문자)의 빈도는 줄고 대문자의 빈도는 늘어납니다¹:</p>
+<p>시작 개체군의 구성과 개체 제거가 모두 부분적으로 난수에 의해 제어되므로, 이 코드를 실행하면 결과가 달라진다는 점을 기억하세요.</p>
+<p>출력에서 무슨 일이 일어나는지 보입니다. 시뮬레이션이 진행됨에 따라 개체군 크기는 감소하고(개체를 제거만 하고 추가하지 않으니), 적합도가 낮은 대립유전자(소문자)의 빈도는 줄고 대문자의 빈도는 늘어납니다:</p>
 <pre class="text"><code>('A', 0.49)
 ('a', 0.51)
 ('B', 0.47)
@@ -2706,7 +2706,7 @@ at generation 9 population size is 100
 <span id="cb161-28"><a href="#cb161-28" aria-hidden="true" tabindex="-1"></a><span class="co"># close the output file</span></span>
 <span id="cb161-29"><a href="#cb161-29" aria-hidden="true" tabindex="-1"></a>alleles_output.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>simulation2.py</p>
-<p>출력 파일 alleles.csv의 모습입니다. 첫 줄은 대립유전자 빈도의 순서를 알려주고 그다음 줄들은 각각 단일 세대를¹ 나타냅니다:</p>
+<p>출력 파일 alleles.csv의 모습입니다. 첫 줄은 대립유전자 빈도의 순서를 알려주고 그다음 줄들은 각각 단일 세대를 나타냅니다:</p>
 <pre class="text"><code>A , a , B , b , C , c ,
 0.54, 0.46, 0.41, 0.59, 0.4, 0.6,
 0.52, 0.48, 0.49, 0.51, 0.46, 0.54,
@@ -2718,7 +2718,7 @@ at generation 9 population size is 100
 0.7, 0.3, 0.81, 0.19, 0.58, 0.42,
 0.72, 0.28, 0.88, 0.12, 0.62, 0.38,
 0.74, 0.26, 0.92, 0.08, 0.66, 0.34,</code></pre>
-<p>¹ 각 줄 끝의 후행 쉼표는 무시하세요. 제거할 수도 있지만 코드가 더 필요하고 대부분의 스프레드시트 프로그램은 신경 쓰지 않습니다.</p>
+<p>각 줄 끝의 후행 쉼표는 무시하세요. 제거할 수도 있지만 코드가 더 필요하고 대부분의 스프레드시트 프로그램은 신경 쓰지 않습니다.</p>
 <p>range() 함수 호출의 숫자를 바꾸는 것만으로 시뮬레이션의 세대 수를 사소하게 늘릴 수 있습니다. 시뮬레이션 결과를 시각화하려면 alleles.csv 파일을 스프레드시트 소프트웨어로 가져와 차트를 그리면 됩니다. 다음은 100 세대에 걸친 시뮬레이션의 대립유전자 빈도 차트입니다:</p>
 <p>범례에 각 대립유전자의 상대 적합도(위 시뮬레이션 코드에서 설정한 대로)를 추가해 두었습니다. 적합도가 가장 낮은 열위 대립유전자(b와 c)가 개체군에서 비교적 일찍 사라지는 반면, 상대 적합도가 꽤 높은 열위 대립유전자(a)는 사라지는 데 훨씬 오래 걸리고(심지어 우연 때문에 한동안 더 적합한 짝 A보다 빈도가 높기도 합니다) 있음을 볼 수 있습니다.</p>
 </section>
@@ -2727,8 +2727,8 @@ at generation 9 population size is 100
 <h1>5장: 함수형 파이썬</h1>
 <section id="소개-1" class="level2">
 <h2 class="anchored" data-anchor-id="소개-1">소개</h2>
-<p>프로그래밍 웹사이트나 블로그를 조금이라도 읽었다면 함수형 프로그래밍(functional programming) 논의를 피하기 어려웠을 겁니다. 아주 오래된 아이디어임에도 지금 뜨거운 주제이고¹, 최근에는 초심자에게 접근 가능하게 만드는 데 큰 진전이 있었습니다. 하지만 함수형 프로그래밍은 정의하기 까다로우며 생각하는 방법도 몇 가지 있습니다. 이 장은 중요한 함수형 프로그래밍 개념의 빠른 투어로 시작합니다.</p>
-<p>¹ 나중에 그 이유를 설명하겠습니다.</p>
+<p>프로그래밍 웹사이트나 블로그를 조금이라도 읽었다면 함수형 프로그래밍(functional programming) 논의를 피하기 어려웠을 겁니다. 아주 오래된 아이디어임에도 지금 뜨거운 주제이고, 최근에는 초심자에게 접근 가능하게 만드는 데 큰 진전이 있었습니다. 하지만 함수형 프로그래밍은 정의하기 까다로우며 생각하는 방법도 몇 가지 있습니다. 이 장은 중요한 함수형 프로그래밍 개념의 빠른 투어로 시작합니다.</p>
+<p>나중에 그 이유를 설명하겠습니다.</p>
 </section>
 <section id="상태와-변경-가능성" class="level2">
 <h2 class="anchored" data-anchor-id="상태와-변경-가능성">상태와 변경 가능성</h2>
@@ -2737,12 +2737,12 @@ at generation 9 population size is 100
 <span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> i</span>
 <span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>² 변수 x가 mutable(변경 가능)하다고 말하는 또 다른 표현입니다.</p>
-<p>이 프로그램에 상태가 있다는 것은 x 변수에 저장된 값이 프로그램 실행 중 변하기 때문에 알 수 있습니다². 프로그램 시작 시 x의 값은 0입니다. 루프 첫 반복 후 x의 값은 1입니다. 두 번째 반복 후에는 3이고 등등. 같은 일을 하는데 상태를 쓰지 않는 프로그램이 여기 있습니다:</p>
+<p>변수 x가 mutable(변경 가능)하다고 말하는 또 다른 표현입니다.</p>
+<p>이 프로그램에 상태가 있다는 것은 x 변수에 저장된 값이 프로그램 실행 중 변하기 때문에 알 수 있습니다. 프로그램 시작 시 x의 값은 0입니다. 루프 첫 반복 후 x의 값은 1입니다. 두 번째 반복 후에는 3이고 등등. 같은 일을 하는데 상태를 쓰지 않는 프로그램이 여기 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
 <span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>내장 sum() 함수를 사용해 동작합니다. 인자로 리스트¹를 받아 모든 원소의 합을 반환합니다. 주목할 점: 이 코드에서 x 변수의 값은 한 번 설정되고 다시는 바뀌지 않습니다(왜 바람직한지는 이 장 후반에 보겠습니다). 이 관점에서 함수형 프로그래밍은 객체 지향 프로그래밍의 반대처럼 보입니다². 객체 지향 프로그래밍에서는 자신의 상태를 기술하는 여러 속성을 가진 객체(예: 이름과 유전부호를 가진 DNA 서열)를 만들고 주로 그 상태를 조작하는 데 관심이 있으니까요.</p>
-<p>¹ 사실 인자는 리스트처럼 행동하는 것이면 뭐든 됩니다. 즉 어떤 iterable 타입이든요. ² 객체 지향 프로그래밍 장을 아직 읽지 않았다면 지금 읽는 게 좋습니다.</p>
+<p>내장 sum() 함수를 사용해 동작합니다. 인자로 리스트를 받아 모든 원소의 합을 반환합니다. 주목할 점: 이 코드에서 x 변수의 값은 한 번 설정되고 다시는 바뀌지 않습니다(왜 바람직한지는 이 장 후반에 보겠습니다). 이 관점에서 함수형 프로그래밍은 객체 지향 프로그래밍의 반대처럼 보입니다. 객체 지향 프로그래밍에서는 자신의 상태를 기술하는 여러 속성을 가진 객체(예: 이름과 유전부호를 가진 DNA 서열)를 만들고 주로 그 상태를 조작하는 데 관심이 있으니까요.</p>
+<p>사실 인자는 리스트처럼 행동하는 것이면 뭐든 됩니다. 즉 어떤 iterable 타입이든요. 객체 지향 프로그래밍 장을 아직 읽지 않았다면 지금 읽는 게 좋습니다.</p>
 </section>
 <section id="부수-효과" class="level2">
 <h2 class="anchored" data-anchor-id="부수-효과">부수 효과</h2>
@@ -2818,8 +2818,8 @@ l</code></pre>
 <span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>print_list_with_function(<span class="bu">input</span>, get_second)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>람다 표현식의 결과를 변수에 할당하는 것을 생략하고 직접 사용할 수도 있습니다. 같은 코드지만 람다 표현식의 결과를 print_list_with_function()에 직접 전달합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb182"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a>print_list_with_function(<span class="bu">input</span>, <span class="kw">lambda</span> <span class="bu">input</span> : <span class="bu">input</span>[<span class="dv">1</span>] )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>이렇게 사용되는 람다 표현식은 이름이 없기 때문에 익명 표현식(anonymous expression)¹이라 불립니다. 아주 짧은 함수에 이 대체 문법은 코드를 매우 간결하게 표현하게 해주므로 유용합니다.</p>
-<p>¹ 다른 프로그래밍 언어들도 같은 방식으로 동작하는 익명 함수(anonymous function)를 지원합니다.</p>
+<p>이렇게 사용되는 람다 표현식은 이름이 없기 때문에 익명 표현식(anonymous expression)이라 불립니다. 아주 짧은 함수에 이 대체 문법은 코드를 매우 간결하게 표현하게 해주므로 유용합니다.</p>
+<p>다른 프로그래밍 언어들도 같은 방식으로 동작하는 익명 함수(anonymous function)를 지원합니다.</p>
 </section>
 <section id="무엇이-계산되는가" class="level2">
 <h2 class="anchored" data-anchor-id="무엇이-계산되는가">무엇이 계산되는가</h2>
@@ -2838,8 +2838,8 @@ l</code></pre>
 <p>“결과는 0부터 10 사이 숫자들의 합이다.”</p>
 <p>그리고 실제로 답을 어떻게 계산할지는 컴퓨터가 고민하게 맡기는 겁니다. 이 아이디어는 반복적 접근과 재귀적 접근의 차이와 매우 비슷합니다. 아직 안 읽었다면 재귀 장을 참고하세요.</p>
 <p>이 장의 나머지 부분은 두 부분으로 나뉩니다. 첫 부분에서는 위에서 개괄한 기법으로 흔한 프로그래밍 과업을 수행하게 해주는 내장 고차 함수들을 살펴봅니다. 둘째 부분에서는 같은 기법을 우리 자신의 함수에서 활용하는 법을 봅니다.</p>
-<p>이 장의 나머지를 진행하면서 명심할 점이 있습니다. 다른 언어와 달리, 파이썬의 함수형 프로그래밍은 전 아니면 아니오(all-or-nothing)의 문제가 아닙니다¹. 완전한 프로그램을 함수형 스타일로 쓰는 건 사실상 불가능하므로, 프로그램에서 함수형 기능을 사용할 때는 대개 절차적 코드와 섞이게 됩니다.</p>
-<p>¹ 우선 부수 효과 금지는 화면이나 파일에 출력하는 것이 부수 효과이므로, 순수하게 함수형인 프로그램은 결코 어떤 출력도 낼 수 없다는 뜻입니다!</p>
+<p>이 장의 나머지를 진행하면서 명심할 점이 있습니다. 다른 언어와 달리, 파이썬의 함수형 프로그래밍은 전 아니면 아니오(all-or-nothing)의 문제가 아닙니다. 완전한 프로그램을 함수형 스타일로 쓰는 건 사실상 불가능하므로, 프로그램에서 함수형 기능을 사용할 때는 대개 절차적 코드와 섞이게 됩니다.</p>
+<p>우선 부수 효과 금지는 화면이나 파일에 출력하는 것이 부수 효과이므로, 순수하게 함수형인 프로그램은 결코 어떤 출력도 낼 수 없다는 뜻입니다!</p>
 </section>
 <section id="내장-고차-함수" class="level2">
 <h2 class="anchored" data-anchor-id="내장-고차-함수">내장 고차 함수</h2>
@@ -2852,15 +2852,15 @@ l</code></pre>
 <span id="cb184-3"><a href="#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dna <span class="kw">in</span> dna_list:</span>
 <span id="cb184-4"><a href="#cb184-4" aria-hidden="true" tabindex="-1"></a>    lengths.append(<span class="bu">len</span>(dna))</span>
 <span id="cb184-5"><a href="#cb184-5" aria-hidden="true" tabindex="-1"></a><span class="co"># lengths is now [4,8,3,8]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>비슷한 예제 하나 더. 이번엔 각 서열의¹ AT 함량 리스트를 생성하고 싶습니다:</p>
+<p>비슷한 예제 하나 더. 이번엔 각 서열의 AT 함량 리스트를 생성하고 싶습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>dna_list <span class="op">=</span> [<span class="st">'TAGC'</span>, <span class="st">'ACGTATGC'</span>, <span class="st">'ATG'</span>, <span class="st">'ACGGCTAG'</span>]</span>
 <span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>at_contents <span class="op">=</span> []</span>
 <span id="cb185-3"><a href="#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dna <span class="kw">in</span> dna_list:</span>
 <span id="cb185-4"><a href="#cb185-4" aria-hidden="true" tabindex="-1"></a>    at_contents.append((dna.count(<span class="st">'A'</span>) <span class="op">+</span> dna.count(<span class="st">'T'</span>)) <span class="op">/</span> <span class="bu">len</span>(dna))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>map.py</p>
-<p>¹ 파이썬 2에서 이 코드를 실행하려면 from <strong>future</strong> import division을 포함하는 것을 잊지 마세요.</p>
-<p>두 예제는 많은 코드를 공유합니다. 둘 다 일반적인 패턴을 따릅니다. 빈 결과 리스트를 만드는 것으로 시작해 DNA 서열 리스트를 반복하며 각 서열마다 어떤 값을 계산해 결과 리스트에 append 합니다. 리스트의 각 원소에 어떤 함수를 적용해 새 리스트를 생성하는 이 일반적인 패턴을 map²이라 부르며 놀랍지 않게도 map()이라 불리는 함수로 파이썬에 구현되어 있습니다.</p>
-<p>² 원래 리스트의 원소들과 새 리스트 사이에 일대일 매핑(mapping)이 있기 때문에 이렇게 불립니다.</p>
+<p>파이썬 2에서 이 코드를 실행하려면 from <strong>future</strong> import division을 포함하는 것을 잊지 마세요.</p>
+<p>두 예제는 많은 코드를 공유합니다. 둘 다 일반적인 패턴을 따릅니다. 빈 결과 리스트를 만드는 것으로 시작해 DNA 서열 리스트를 반복하며 각 서열마다 어떤 값을 계산해 결과 리스트에 append 합니다. 리스트의 각 원소에 어떤 함수를 적용해 새 리스트를 생성하는 이 일반적인 패턴을 map이라 부르며 놀랍지 않게도 map()이라 불리는 함수로 파이썬에 구현되어 있습니다.</p>
+<p>원래 리스트의 원소들과 새 리스트 사이에 일대일 매핑(mapping)이 있기 때문에 이렇게 불립니다.</p>
 <p>파이썬 map() 함수를 사용하려면 입력 리스트의 단일 원소를 인자로 받아 출력 리스트의 대응 원소를 반환하는 함수(변환 함수(transformation function)라 부르겠습니다)를 공급해야 합니다. 첫 예제(DNA 서열 리스트를 길이 리스트로)에는 내장 len() 함수면 충분합니다. 두 번째 예제(DNA 서열 리스트를 AT 함량 리스트로)에는 인자의 AT 함량을 반환하는 간단한 함수를 작성할 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> division</span>
 <span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2886,8 +2886,8 @@ l</code></pre>
 <p>하지만 내부 동작 방식이 약간 다릅니다. 파이썬 2에서는 map()이 호출되는 즉시 결과 리스트의 모든 원소가 생성되지만 파이썬 3에서는 필요할 때 하나씩 생성됩니다. 이런 동작 유형을 지연(lazy)이라 부릅니다. map()으로 매우 큰 리스트를 만들면 이 차이의 영향을 볼 수 있습니다. 예컨대 range()로 처음 십만 개 정수의 리스트를 만든 다음 map()으로 처음 십만 개 2의 거듭제곱 리스트를 만드는(즉 변환 함수는 각 원소를 받아 2의 그 거듭제곱을 계산) 코드입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">100000</span>))</span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> x : <span class="dv">2</span> <span class="op">**</span> x, l)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 실행 시간 측정 방법의 자세한 설명은 『Effective Python development for Biologists』의 성능(performance) 절을 참고하세요.</p>
-<p>파이썬 2에서는 이 문장이 실행에 매우 오래 걸립니다. 필자의 데스크톱 컴퓨터에서 약 30초¹입니다. 반면 파이썬 3에서는 정확히 같은 문장이 순식간에 실행됩니다. 실제로 원소들이 필요해질 때까지 계산을 시작하지 않기 때문입니다. 예컨대 map 객체를 반복하기 시작할 때요:</p>
+<p>실행 시간 측정 방법의 자세한 설명은 『Effective Python development for Biologists』의 성능(performance) 절을 참고하세요.</p>
+<p>파이썬 2에서는 이 문장이 실행에 매우 오래 걸립니다. 필자의 데스크톱 컴퓨터에서 약 30초입니다. 반면 파이썬 3에서는 정확히 같은 문장이 순식간에 실행됩니다. 실제로 원소들이 필요해질 때까지 계산을 시작하지 않기 때문입니다. 예컨대 map 객체를 반복하기 시작할 때요:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb191"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">100000</span>))</span>
 <span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> x : <span class="dv">2</span> <span class="op">**</span> x, l)</span>
 <span id="cb191-3"><a href="#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> m:</span>
@@ -2926,8 +2926,8 @@ l</code></pre>
 <span id="cb197-6"><a href="#cb197-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(dna, get_at(dna))</span>
 <span id="cb197-7"><a href="#cb197-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dna.count(<span class="st">'A'</span>) <span class="op">+</span> dna.count(<span class="st">'T'</span>)) <span class="op">/</span> <span class="bu">len</span>(dna) <span class="op">&lt;</span> <span class="fl">0.6</span>:</span>
 <span id="cb197-8"><a href="#cb197-8" aria-hidden="true" tabindex="-1"></a>        at_poor_dna.append(dna)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>map과 마찬가지로 파이썬에는 이런 필터링을 위한 내장 함수가 있으며 비슷하게 동작합니다. 파이썬 filter 함수에 단일 원소를 인자로 받아 그 원소가 결과 리스트에 포함되어야 하는지를 True나 False로 표시하는 함수의 이름을 공급합니다. 5염기 초과 DNA 서열만 선택하는 데 쓰는 방법¹입니다:</p>
-<p>¹ 여기 두 예제 모두 람다 표현식으로 다시 쓸 수 있습니다.</p>
+<p>map과 마찬가지로 파이썬에는 이런 필터링을 위한 내장 함수가 있으며 비슷하게 동작합니다. 파이썬 filter 함수에 단일 원소를 인자로 받아 그 원소가 결과 리스트에 포함되어야 하는지를 True나 False로 표시하는 함수의 이름을 공급합니다. 5염기 초과 DNA 서열만 선택하는 데 쓰는 방법입니다:</p>
+<p>여기 두 예제 모두 람다 표현식으로 다시 쓸 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb198"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1" aria-hidden="true" tabindex="-1"></a>dna_list <span class="op">=</span> [<span class="st">'TAGC'</span>, <span class="st">'ACGTATGC'</span>, <span class="st">'ATG'</span>, <span class="st">'ACGGCTAG'</span>]</span>
 <span id="cb198-2"><a href="#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb198-3"><a href="#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_long(dna):</span>
@@ -3004,17 +3004,17 @@ sorted(some_list, key=my_key_function)</code></pre>
 <span id="cb210-5"><a href="#cb210-5" aria-hidden="true" tabindex="-1"></a> (<span class="st">'gene4'</span>, <span class="dv">543</span>, <span class="dv">522</span>)</span>
 <span id="cb210-6"><a href="#cb210-6" aria-hidden="true" tabindex="-1"></a> ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>sort_tuples.py</p>
-<p>목표는 첫 조건 대비 두 번째 조건에서 과발현된 유전자들을 찾는 것입니다. 즉 두 측정값의 비율로 튜플들을 정렬하고 싶습니다. 따라서 키 함수는 단일 튜플을 인자로 받아 세 번째 원소를 두 번째¹ 원소로 나눈 비율을 반환해야 합니다:</p>
+<p>목표는 첫 조건 대비 두 번째 조건에서 과발현된 유전자들을 찾는 것입니다. 즉 두 측정값의 비율로 튜플들을 정렬하고 싶습니다. 따라서 키 함수는 단일 튜플을 인자로 받아 세 번째 원소를 두 번째 원소로 나눈 비율을 반환해야 합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb211"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> division</span>
 <span id="cb211-2"><a href="#cb211-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb211-3"><a href="#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ratio(measurement):</span>
 <span id="cb211-4"><a href="#cb211-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> measurement[<span class="dv">2</span>] <span class="op">/</span> measurement[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 인덱스 2와 1임을 기억하세요.</p>
+<p>인덱스 2와 1임을 기억하세요.</p>
 <p>비율이 가장 높은 유전자들에 관심이 있으니 reverse=True 매개변수를 sorted()에 넘겨, 비율이 가장 높은 유전자들(즉 조건 2에서 가장 많이 과발현된 것들)이 목록 상단에 오게 하는 게 좋겠습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb212"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>(measurements, key<span class="op">=</span>get_ratio, reverse<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="text"><code>[('gene3', 1036, 1966), ('gene4', 543, 522), ('gene1', 121, 98), ('gene2', 56, 32)]</code></pre>
-<p>파이썬¹이 사용하는 정렬 알고리즘은 안정(stable)적입니다. 동등한 원소들(정확히는: 키 함수 통과 후 동등한 원소들)이 같은 순서로 유지된다는 뜻입니다. 여러 개의 단순 정렬을 결합해 복잡한 정렬을 수행하게 해주는 매우 유용한 성질입니다. 염색체 번호, 염기 위치, 유전자좌 이름을 담은 튜플들의 리스트가 있다고 해 봅시다:</p>
-<p>² 궁금하다면 Timsort입니다: http://en.wikipedia.org/wiki/Timsort</p>
+<p>파이썬이 사용하는 정렬 알고리즘은 안정(stable)적입니다. 동등한 원소들(정확히는: 키 함수 통과 후 동등한 원소들)이 같은 순서로 유지된다는 뜻입니다. 여러 개의 단순 정렬을 결합해 복잡한 정렬을 수행하게 해주는 매우 유용한 성질입니다. 염색체 번호, 염기 위치, 유전자좌 이름을 담은 튜플들의 리스트가 있다고 해 봅시다:</p>
+<p>궁금하다면 Timsort입니다: http://en.wikipedia.org/wiki/Timsort</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb214"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a>loci <span class="op">=</span> [</span>
 <span id="cb214-2"><a href="#cb214-2" aria-hidden="true" tabindex="-1"></a> (<span class="dv">4</span>, <span class="dv">9200</span>, <span class="st">'gene1'</span>),</span>
 <span id="cb214-3"><a href="#cb214-3" aria-hidden="true" tabindex="-1"></a> (<span class="dv">6</span>, <span class="dv">63788</span>, <span class="st">'gene2'</span>),</span>
@@ -3108,8 +3108,8 @@ sorted(some_list, key=my_key_function)</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb228"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a>dna <span class="op">=</span> <span class="st">'ATCGATCATCGGCATCGATCGGTATCAGTACGTAC'</span></span>
 <span id="cb228-2"><a href="#cb228-2" aria-hidden="true" tabindex="-1"></a>cg_counts <span class="op">=</span> get_kmers_f(dna, <span class="dv">8</span>, <span class="kw">lambda</span> dna : dna.count(<span class="st">'CG'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>코드를 이런 식으로 구조화해서 실제로 무엇을 얻었을까요? 전부 캡슐화 아이디어로 돌아갑니다. 서로 다른 임무를 수행하는 코드를 분리하는 것이죠. get_kmers_at()처럼 두 임무(kmer 생성과 AT 점수 계산)를 하는 함수 하나를 두는 대신, 이제 kmer 생성이 임무인 함수 하나와 AT 점수 계산이 임무인 별개의 함수를 가집니다. 이 단일 목적 함수들을 빌딩 블록으로 사용해 복잡한 코드 조각을 쉽게 만들 수 있습니다. 사실 get_kmers_f 형태로 우리가 정말로 만든 것은 map 함수의 특수한 종류, 즉 DNA 서열에 작동하도록 설계된 것입니다.</p>
-<p>덜 만날 가능성이 있는 고차 함수의 또 다른 측면이 있습니다. 다른 함수를 반환하는 함수, 일종의 함수 공장(function factory)을 작성할 수 있습니다. 예컨대 DNA 서열을 인자로 받아 EcoRI 제한효소(GAATTC 패턴에서 절단)의 절단 부위를 식별하고 입력 서열의 EcoRI digest가 만들 DNA 프래그먼트들의 리스트를 반환하는 함수를 작성한다고 해 봅시다. 파이썬의 정규표현식 모듈¹로 작성하기 쉽습니다. EcoRI가 첫 염기 <em>뒤</em>를 자른다는 사실을 감안해 매치 위치에 1의 오프셋을 추가하는 것만 신경 쓰면 되고 반환 리스트에 마지막 프래그먼트를 포함하는 것을 잊지 않으면 됩니다:</p>
-<p>² EcoRI 절단 부위 모티프에는 변이가 없어 사실 정규표현식이 필요 없지만 re.finditer 함수는 패턴 매치를 반복하는 유용한 방법입니다.</p>
+<p>덜 만날 가능성이 있는 고차 함수의 또 다른 측면이 있습니다. 다른 함수를 반환하는 함수, 일종의 함수 공장(function factory)을 작성할 수 있습니다. 예컨대 DNA 서열을 인자로 받아 EcoRI 제한효소(GAATTC 패턴에서 절단)의 절단 부위를 식별하고 입력 서열의 EcoRI digest가 만들 DNA 프래그먼트들의 리스트를 반환하는 함수를 작성한다고 해 봅시다. 파이썬의 정규표현식 모듈로 작성하기 쉽습니다. EcoRI가 첫 염기 <em>뒤</em>를 자른다는 사실을 감안해 매치 위치에 1의 오프셋을 추가하는 것만 신경 쓰면 되고 반환 리스트에 마지막 프래그먼트를 포함하는 것을 잊지 않으면 됩니다:</p>
+<p>EcoRI 절단 부위 모티프에는 변이가 없어 사실 정규표현식이 필요 없지만 re.finditer 함수는 패턴 매치를 반복하는 유용한 방법입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb229"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb229-1"><a href="#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ecori_digest(dna):</span>
 <span id="cb229-2"><a href="#cb229-2" aria-hidden="true" tabindex="-1"></a>    current_position <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb229-3"><a href="#cb229-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
@@ -3118,8 +3118,8 @@ sorted(some_list, key=my_key_function)</code></pre>
 <span id="cb229-6"><a href="#cb229-6" aria-hidden="true" tabindex="-1"></a>        current_position <span class="op">=</span> m.start() <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb229-7"><a href="#cb229-7" aria-hidden="true" tabindex="-1"></a>    result.append(dna[current_position:])</span>
 <span id="cb229-8"><a href="#cb229-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>그다음 이 함수가 임의의 제한효소 모티프(그에 딸린 오프셋 포함)에 대해 프래그먼트를 생성할 수 있다면 더 유용하다는 것을 깨닫습니다. 평범하게는 digest 함수를 고쳐 패턴과 오프셋을 추가 인자로¹ 받게 하겠지만 다른 접근이 있습니다. 패턴과 오프셋을 인자로 받아 digest를 수행할 새 함수를 반환하는 함수를 대신 작성하는 겁니다:</p>
-<p>¹ 이에 대한 논의는 『Python for Biologists』의 정규표현식 장을 참고하세요.</p>
+<p>그다음 이 함수가 임의의 제한효소 모티프(그에 딸린 오프셋 포함)에 대해 프래그먼트를 생성할 수 있다면 더 유용하다는 것을 깨닫습니다. 평범하게는 digest 함수를 고쳐 패턴과 오프셋을 추가 인자로 받게 하겠지만 다른 접근이 있습니다. 패턴과 오프셋을 인자로 받아 digest를 수행할 새 함수를 반환하는 함수를 대신 작성하는 겁니다:</p>
+<p>이에 대한 논의는 『Python for Biologists』의 정규표현식 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb230"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_digester(pattern, offset):</span>
 <span id="cb230-2"><a href="#cb230-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb230-3"><a href="#cb230-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> digester(dna):</span>
@@ -3233,11 +3233,11 @@ gi|322830704:1426-2962    gi|225622197|ref|YP...</code></pre>
 <span id="cb240-2"><a href="#cb240-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">not</span> line.startswith(<span class="st">'#'</span>)</span>
 <span id="cb240-3"><a href="#cb240-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb240-4"><a href="#cb240-4" aria-hidden="true" tabindex="-1"></a>hit_lines <span class="op">=</span> <span class="bu">filter</span>(comment_filter, <span class="bu">open</span>(<span class="st">'blast_result.txt'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>이제 기존 mismatch_filter()를 비주석 줄에 실행하고 필터링된 목록의 길이를¹ 요청하기만 하면 됩니다:</p>
+<p>이제 기존 mismatch_filter()를 비주석 줄에 실행하고 필터링된 목록의 길이를 요청하기만 하면 됩니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb241"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb241-1"><a href="#cb241-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">filter</span>(mismatch_filter, hit_lines)</span>
 <span id="cb241-2"><a href="#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(f))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>불행히도 이 코드는 0²을 출력합니다. 명백히 잘못된 결과죠. 문제는 mismatch_filter() 함수에서 입력 파일의 다섯 번째 필드(문자열)와 값 20(정수)을 비교한다는 점입니다. 파이썬 규칙상 어떤 문자열이든 항상 어떤 정수보다 “크므로” 함수는 항상 False를 반환합니다. mismatch_count 변수를 정수로 바꿔 문제를 고칠 수 있습니다:</p>
-<p>¹ 파이썬 3에서 filter 결과는 리스트가 아니라 filter 객체라는 점을 기억하세요. 파이썬 3에서 실행하려면 길이를 묻기 전에 filter 객체를 리스트로 변환해야 합니다: print(len(list(f))) ² 파이썬 3이라면 TypeError가 납니다.</p>
+<p>불행히도 이 코드는 0을 출력합니다. 명백히 잘못된 결과죠. 문제는 mismatch_filter() 함수에서 입력 파일의 다섯 번째 필드(문자열)와 값 20(정수)을 비교한다는 점입니다. 파이썬 규칙상 어떤 문자열이든 항상 어떤 정수보다 “크므로” 함수는 항상 False를 반환합니다. mismatch_count 변수를 정수로 바꿔 문제를 고칠 수 있습니다:</p>
+<p>파이썬 3에서 filter 결과는 리스트가 아니라 filter 객체라는 점을 기억하세요. 파이썬 3에서 실행하려면 길이를 묻기 전에 filter 객체를 리스트로 변환해야 합니다: print(len(list(f))) 파이썬 3이라면 TypeError가 납니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb242"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mismatch_filter(hit_string):</span>
 <span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a>    mismatch_count <span class="op">=</span> <span class="bu">int</span>(hit_string.split(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)[<span class="dv">4</span>])</span>
 <span id="cb242-3"><a href="#cb242-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mismatch_count <span class="op">&lt;</span> <span class="dv">20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3371,8 +3371,8 @@ cc</code></pre>
 <span id="cb255-8"><a href="#cb255-8" aria-hidden="true" tabindex="-1"></a>            sequence <span class="op">=</span> process_sequence(line.rstrip(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))</span>
 <span id="cb255-9"><a href="#cb255-9" aria-hidden="true" tabindex="-1"></a>            output.write(<span class="st">'&gt;'</span> <span class="op">+</span> header <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb255-10"><a href="#cb255-10" aria-hidden="true" tabindex="-1"></a>            output.write(sequence <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>연습 첫 부분(서열 소문자→대문자) 해결에 이 코드를 쓰려 하면 문제에 부딪힙니다. fasta_copy() 함수는 헤더를 처리할 함수를 공급하라고 요구하는데 이번 작업에서는 헤더를 바꾸고 싶지 않습니다. 인자 세 개(source, destination, process_sequence 함수)만으로 fasta_copy()를 호출할 수 없습니다. 오류가 납니다. 네 개가 필요하거든요. 해법은 단순히 입력을 반환하는 “아무것도 안 하는(do-nothing)” 함수를 정의하는¹ 것입니다:</p>
-<p>¹ 기술적으로 identity function(항등 함수)이라 불리며 일부 언어(파이썬은 아님)는 표준 라이브러리에 포함시킵니다.</p>
+<p>연습 첫 부분(서열 소문자→대문자) 해결에 이 코드를 쓰려 하면 문제에 부딪힙니다. fasta_copy() 함수는 헤더를 처리할 함수를 공급하라고 요구하는데 이번 작업에서는 헤더를 바꾸고 싶지 않습니다. 인자 세 개(source, destination, process_sequence 함수)만으로 fasta_copy()를 호출할 수 없습니다. 오류가 납니다. 네 개가 필요하거든요. 해법은 단순히 입력을 반환하는 “아무것도 안 하는(do-nothing)” 함수를 정의하는 것입니다:</p>
+<p>기술적으로 identity function(항등 함수)이라 불리며 일부 언어(파이썬은 아님)는 표준 라이브러리에 포함시킵니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb256"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> do_nothing(x):</span>
 <span id="cb256-2"><a href="#cb256-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이제 입력을 대문자로 변환하는 함수를 정의할 수 있습니다:</p>
@@ -3419,8 +3419,8 @@ ACTGGCATGCATCGTACGTACGATCGATCATGCGATGCTACGATCGACGTGTATATCC</code></pre>
 <span id="cb265-10"><a href="#cb265-10" aria-hidden="true" tabindex="-1"></a>            output.write(<span class="st">'&gt;'</span> <span class="op">+</span> new_header <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb265-11"><a href="#cb265-11" aria-hidden="true" tabindex="-1"></a>            output.write(sequence <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>copy_fasta.py</p>
-<p>¹ 이걸 고치는 다른 방법들이 있습니다. 예컨대 인트로스펙션(introspection)으로 process_header 함수가 기대하는 인자 수를 세어 올바른 수를 전달하는 것 등입니다. 하지만 이런 방법들은 훨씬 복잡하고 이 연습의 범위를 훨씬 넘어섭니다.</p>
-<p>불행히도 이렇게 하면 기존 헤더 수정 함수 둘(fix_spaces()와 truncate())이 깨집니다. 인자 하나만 기대하기 때문입니다. 계속 동작하게 하려면 인자 두 개를 받도록¹ 다시 작성해야 합니다(두 번째는 단순히 무시):</p>
+<p>이걸 고치는 다른 방법들이 있습니다. 예컨대 인트로스펙션(introspection)으로 process_header 함수가 기대하는 인자 수를 세어 올바른 수를 전달하는 것 등입니다. 하지만 이런 방법들은 훨씬 복잡하고 이 연습의 범위를 훨씬 넘어섭니다.</p>
+<p>불행히도 이렇게 하면 기존 헤더 수정 함수 둘(fix_spaces()와 truncate())이 깨집니다. 인자 하나만 기대하기 때문입니다. 계속 동작하게 하려면 인자 두 개를 받도록 다시 작성해야 합니다(두 번째는 단순히 무시):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb266"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb266-1"><a href="#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fix_spaces(header, sequence):</span>
 <span id="cb266-2"><a href="#cb266-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> header.replace(<span class="st">' '</span>, <span class="st">'_'</span>)</span>
 <span id="cb266-3"><a href="#cb266-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3494,11 +3494,11 @@ actgatcatcatcactcgatcgactactatcgatgtcgatctcatcgtag
 </section>
 <section id="리스트와-iterable" class="level2">
 <h2 class="anchored" data-anchor-id="리스트와-iterable">리스트와 iterable</h2>
-<p>사실 위 각 예제에서 리스트를 정의한다고 말하는 건 정확하지 않습니다. 실제로 정의하는 것은 iterable 객체, 즉 반복(iterate)할 수 있는 한 리스트처럼 행동할 수 있는 객체입니다. 이전 경험에서 리스트·문자열·파일이 모두 iterable 객체라는 것(for 루프에 쓸 수 있으니까요)을 알고 있습니다. 많은 종류의 파이썬 객체 역시 iterable 객체를 반환하는 메서드를 가집니다(보통 iterator를 반환한다고 말합니다). 예컨대 딕셔너리¹의 keys() 메서드나 re.finditer() 메서드입니다.</p>
+<p>사실 위 각 예제에서 리스트를 정의한다고 말하는 건 정확하지 않습니다. 실제로 정의하는 것은 iterable 객체, 즉 반복(iterate)할 수 있는 한 리스트처럼 행동할 수 있는 객체입니다. 이전 경험에서 리스트·문자열·파일이 모두 iterable 객체라는 것(for 루프에 쓸 수 있으니까요)을 알고 있습니다. 많은 종류의 파이썬 객체 역시 iterable 객체를 반환하는 메서드를 가집니다(보통 iterator를 반환한다고 말합니다). 예컨대 딕셔너리의 keys() 메서드나 re.finditer() 메서드입니다.</p>
 <p>iterable 객체 목록에 map()과 filter()의 호출 결과를 추가할 수 있습니다. 이 두 함수는 흥미롭습니다. 인자 중 하나로 iterable 객체를 받고 또한 iterable 객체를 반환하기 때문입니다. 따라서 예컨대 map()으로 문자열의 문자들을 처리한 다음 결과 iterable 객체를 filter() 호출에 직접 넘길 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb277"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb277-1"><a href="#cb277-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> x : x.upper(), <span class="st">'abcdef'</span>)</span>
 <span id="cb277-2"><a href="#cb277-2" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> <span class="bu">filter</span>(<span class="kw">lambda</span> x : x <span class="kw">in</span> [<span class="st">'A'</span>, <span class="st">'B'</span>], first)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ keys()가 반환하는 iterable 객체의 정확한 종류는 버전에 따릅니다. 파이썬 2에서는 리스트를, 파이썬 3에서는 iterator를 반환합니다.</p>
+<p>keys()가 반환하는 iterable 객체의 정확한 종류는 버전에 따릅니다. 파이썬 2에서는 리스트를, 파이썬 3에서는 iterator를 반환합니다.</p>
 <p>위 코드에서 주목할 중요한 점은 first가 정확히 어떤 타입의 iterable 객체인지 신경 쓰지 않는다는 것입니다. 리스트일 수도, iterator일 수도, 완전히 다른 무언가일 수도 있습니다. 중요한 것은 first가 iterable이어서 filter() 함수에 전달될 수 있다는 점뿐입니다.</p>
 <p>이런 식의 map()과 filter()의 조합이 꽤 흔하다는 것이 밝혀졌고 파이썬에는 이런 방식으로 리스트를 정의하는 특수한 문법이 있습니다. 이런 특수 표현식을 컴프리헨션(comprehension)이라 부릅니다.</p>
 </section>
@@ -3547,12 +3547,12 @@ actgatcatcatcactcgatcgactactatcgatgtcgatctcatcgtag
 </section>
 <section id="제너레이터-표현식" class="level3">
 <h3 class="anchored" data-anchor-id="제너레이터-표현식">제너레이터 표현식</h3>
-<p>map()과 filter() 대신 list comprehension을 사용할 때의 단점 하나는 lazy하지¹ 않다는 것입니다. 다행히 파이썬에는 generator expression이라 불리는 list comprehension의 내장 lazy 등가물이 있습니다. 문법은 정확히 같지만 대괄호가 아니라 소괄호를 사용합니다. 오래 봐온 map 예제를 먼저 list comprehension으로, 다음 generator expression으로 작성한 것입니다:</p>
+<p>map()과 filter() 대신 list comprehension을 사용할 때의 단점 하나는 lazy하지 않다는 것입니다. 다행히 파이썬에는 generator expression이라 불리는 list comprehension의 내장 lazy 등가물이 있습니다. 문법은 정확히 같지만 대괄호가 아니라 소괄호를 사용합니다. 오래 봐온 map 예제를 먼저 list comprehension으로, 다음 generator expression으로 작성한 것입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb287"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb287-1"><a href="#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this statement takes several minutes to execute</span></span>
 <span id="cb287-2"><a href="#cb287-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> [<span class="dv">2</span> <span class="op">**</span> x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>)]</span>
 <span id="cb287-3"><a href="#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this statement takes no time at all to execute</span></span>
 <span id="cb287-4"><a href="#cb287-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> (<span class="dv">2</span> <span class="op">**</span> x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ laziness가 무엇이고 왜 좋은지에 대한 설명은 함수형 프로그래밍 장의 map() 절을 참고하세요.</p>
+<p>laziness가 무엇이고 왜 좋은지에 대한 설명은 함수형 프로그래밍 장의 map() 절을 참고하세요.</p>
 <p>list comprehension과 generator expression의 중요한 차이, 그리고 잊으면 곤란해질 차이는 generator expression은 소진 가능(exhaustible)하다는 것입니다. 즉 한 번만 iterate 할 수 있습니다. 파일 객체에서 같은 행동을 이미 경험했습니다. 파일의 줄들을 반복하고 나면 파일을 다시 열기 전에는 다시 반복할 수 없죠. 같은 제너레이터를 여러 번 반복하는 코드를 작성하지 않도록 주의하세요. 원하는 대로 되지 않을 겁니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb288"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> (x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>))</span>
 <span id="cb288-2"><a href="#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -3597,9 +3597,9 @@ actgatcatcatcactcgatcgactactatcgatgtcgatctcatcgtag
 <span id="cb292-9"><a href="#cb292-9" aria-hidden="true" tabindex="-1"></a><span class="co"># d is {'aCGTATGC': 0.5, 'aTG': 0.66, 'aCGGCTAG': 0.375, 'tAGC': 0.5}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>dict_comprehension.py</p>
 <p>이렇게 할 때 입력 리스트의 고유한 DNA 서열마다 결과 딕셔너리에 키/값 쌍이 하나씩 생긴다는 것을 기억해야 합니다. 중복 값들은 단순히 덮어씌워집니다.</p>
-<p>dict comprehension으로 할 수 있는 또 하나의 매우 유용한 일은 어떤 속성을 기준으로 객체를 빠르게 조회하게 해주는 딕셔너리를 정의하는 것입니다. name 필드를 가진 DNASequence 객체들¹의 리스트가 있고 name 필드들이 모두 유일하다고 해 봅시다. 이름→객체(name→object) 딕셔너리를 이렇게 만들 수 있습니다:</p>
+<p>dict comprehension으로 할 수 있는 또 하나의 매우 유용한 일은 어떤 속성을 기준으로 객체를 빠르게 조회하게 해주는 딕셔너리를 정의하는 것입니다. name 필드를 가진 DNASequence 객체들의 리스트가 있고 name 필드들이 모두 유일하다고 해 봅시다. 이름→객체(name→object) 딕셔너리를 이렇게 만들 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb293"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb293-1"><a href="#cb293-1" aria-hidden="true" tabindex="-1"></a>name2object <span class="op">=</span> { d.name : d <span class="cf">for</span> d <span class="kw">in</span> list_of_dna_objects }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>¹ 이 구현은 객체 지향 프로그래밍 장을 참고하세요.</p>
+<p>이 구현은 객체 지향 프로그래밍 장을 참고하세요.</p>
 <p>이름만 알면 전체 DNASequence 객체를 검색할 수 있습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb294"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb294-1"><a href="#cb294-1" aria-hidden="true" tabindex="-1"></a>my_object <span class="op">=</span> name2object.get(<span class="st">'ABC123'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
@@ -3617,8 +3617,8 @@ actgatcatcatcactcgatcgactactatcgatgtcgatctcatcgtag
 <section id="이터레이터와-제너레이터" class="level2">
 <h2 class="anchored" data-anchor-id="이터레이터와-제너레이터">이터레이터와 제너레이터</h2>
 <p>이 장과 지난 장에서 iterable 타입(문자열·리스트·딕셔너리 같은 것들)이 파이썬에서 극도로 유용함을 봤습니다. for 루프로 원소들을 반복할 수 있고 map(), filter() 같은 함수형 도구로 처리할 수 있으며 comprehension으로 새 데이터 구조를 정의하는 데 사용할 수 있습니다. 반복(iteration)이 이토록 강력한 아이디어인 만큼 우리 자신의 코드에서도 활용하고 싶어질 겁니다. 즉 자체 iterable 타입을 만들고 싶다는 거죠.</p>
-<p>이를 위한 가장 기본적인 메커니즘은 iterator 인터페이스입니다¹. iterator 인터페이스를 활용하려면 클래스에 <strong>iter</strong>()(밑줄 두 개로 감싸진 iter라는 단어)라는 특수한 이름의 메서드를 부여해 iterator를 반환하게 해야 합니다. 내장 클래스들(문자열 등)의 iterator는 iter() 함수²를 호출해 얻을 수 있습니다. 따라서 객체 반복이 단순히 변수 하나를 반복하는 경우라면 <strong>iter</strong>()를 데이터를 담은 변수의 iterator를 반환하는 것으로 구현할 수 있습니다. 객체 지향 프로그래밍 장의 DNASequence 클래스를 단순화한 버전으로 만든 예제입니다:</p>
-<p>¹ 이 절에서는 클래스 정의를 사용하므로, 아직 읽지 않았다면 객체 지향 프로그래밍 장을 읽었는지 확인하는 것이 좋습니다. ² 내장 iter() 함수와 우리 클래스에 부여하는 <strong>iter</strong>() 메서드의 차이에 주의하세요. 후자는 밑줄 두 개로 감싸져 있습니다.</p>
+<p>이를 위한 가장 기본적인 메커니즘은 iterator 인터페이스입니다. iterator 인터페이스를 활용하려면 클래스에 <strong>iter</strong>()(밑줄 두 개로 감싸진 iter라는 단어)라는 특수한 이름의 메서드를 부여해 iterator를 반환하게 해야 합니다. 내장 클래스들(문자열 등)의 iterator는 iter() 함수를 호출해 얻을 수 있습니다. 따라서 객체 반복이 단순히 변수 하나를 반복하는 경우라면 <strong>iter</strong>()를 데이터를 담은 변수의 iterator를 반환하는 것으로 구현할 수 있습니다. 객체 지향 프로그래밍 장의 DNASequence 클래스를 단순화한 버전으로 만든 예제입니다:</p>
+<p>이 절에서는 클래스 정의를 사용하므로, 아직 읽지 않았다면 객체 지향 프로그래밍 장을 읽었는지 확인하는 것이 좋습니다. 내장 iter() 함수와 우리 클래스에 부여하는 <strong>iter</strong>() 메서드의 차이에 주의하세요. 후자는 밑줄 두 개로 감싸져 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb298"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb298-1"><a href="#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNASequence():</span>
 <span id="cb298-2"><a href="#cb298-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb298-3"><a href="#cb298-3" aria-hidden="true" tabindex="-1"></a>    sequence <span class="op">=</span> <span class="st">'atgccgcat'</span></span>
@@ -3637,8 +3637,8 @@ actgatcatcatcactcgatcgactactatcgatgtcgatctcatcgtag
 <p><strong>iter</strong>()를 사용하는 첫 접근이 낫습니다. 타이핑이 덜해서만이 아니라 구현 세부사항에 의존하지 않기 때문입니다. 클래스에 서열이 저장되는 방식을 바꿀 수 있고(예컨대 변수 이름 변경), <strong>iter</strong>() 메서드만 수정하면</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb300"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb300-1"><a href="#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> base <span class="kw">in</span> my_seq:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>같은 코드 줄들은 계속 동작합니다.</p>
-<p>이제 좀 더 정교한 예제를 봅시다. 개별 염기가 아니라 codon 단위로 객체를 반복하고 싶다면 어떨까요? 이를 위해 iterator가 실제로 무엇인지 좀 더 자세히 살펴봐야 합니다. 정의는 꽤 단순합니다. iterator는 next() 메서드¹를 구현하는 객체일 뿐입니다. next() 메서드는 호출될 때 시퀀스의 다음 원소를 반환하거나, 시퀀스의 끝에 도달했다면 StopIteration 예외²를 발생시켜야 합니다. 우리 경우 가장 쉬운 방법은 next() 메서드를 구현해 DNASequence 클래스를 iterator로 만들고 <strong>iter</strong>() 메서드를 객체 자신을 반환하도록 수정하는 것입니다:</p>
-<p>¹ 파이썬 3에서 메서드 이름이 <strong>next</strong>()로 바뀌었습니다. ² 동작 방식의 세부사항은 예외 장을 참고하세요.</p>
+<p>이제 좀 더 정교한 예제를 봅시다. 개별 염기가 아니라 codon 단위로 객체를 반복하고 싶다면 어떨까요? 이를 위해 iterator가 실제로 무엇인지 좀 더 자세히 살펴봐야 합니다. 정의는 꽤 단순합니다. iterator는 next() 메서드를 구현하는 객체일 뿐입니다. next() 메서드는 호출될 때 시퀀스의 다음 원소를 반환하거나, 시퀀스의 끝에 도달했다면 StopIteration 예외를 발생시켜야 합니다. 우리 경우 가장 쉬운 방법은 next() 메서드를 구현해 DNASequence 클래스를 iterator로 만들고 <strong>iter</strong>() 메서드를 객체 자신을 반환하도록 수정하는 것입니다:</p>
+<p>파이썬 3에서 메서드 이름이 <strong>next</strong>()로 바뀌었습니다. 동작 방식의 세부사항은 예외 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb301"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DNASequence():</span>
 <span id="cb301-2"><a href="#cb301-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb301-3"><a href="#cb301-3" aria-hidden="true" tabindex="-1"></a>    position <span class="op">=</span> <span class="dv">0</span></span>
@@ -3824,8 +3824,8 @@ cgcat</code></pre>
 <span id="cb311-7"><a href="#cb311-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> base <span class="kw">in</span> [<span class="st">'A'</span>, <span class="st">'T'</span>, <span class="st">'G'</span>, <span class="st">'C'</span>]:</span>
 <span id="cb311-8"><a href="#cb311-8" aria-hidden="true" tabindex="-1"></a>                result.append(seq <span class="op">+</span> base)</span>
 <span id="cb311-9"><a href="#cb311-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>동작 세부사항은 다루지 않겠습니다. 재귀 장에서 구현을 심층적으로 살펴볼 수 있습니다. 대신 산출되는 결과에 집중하죠. 이 함수의 출력이 주어진 길이의 네 DNA 염기의 가능한 모든 조합 리스트라는 것을 알고 있으므로, 출력 크기에 대해 확실한 예측을 할 수 있습니다. 반환 리스트의 원소 수는 시퀀스 길이만큼 4를 거듭제곱한 값입니다. 그러니 generate_primers(3) 호출은 64원소 리스트를 반환하지만 길이를 6으로 두 배 늘리면 반환 리스트에 4000개 넘는 원소가 생기고 다시 12로 두 배하면 천육백만 개 넘는 원소를 얻습니다. 현실적인 프라이머 길이(약 20염기)에서는 반환 리스트의 원소 수가 조 단위인데, 당연히 메모리에 들어가지 않습니다¹.</p>
-<p>¹ 물론 조 개 원소 리스트에 어떤 종류든 처리를 시도하는 프로그램은 원소 생성 방식과 무관하게 아마 감당 못 할 정도로 느리겠지만 이 예제에서는 그건 외면하겠습니다.</p>
+<p>동작 세부사항은 다루지 않겠습니다. 재귀 장에서 구현을 심층적으로 살펴볼 수 있습니다. 대신 산출되는 결과에 집중하죠. 이 함수의 출력이 주어진 길이의 네 DNA 염기의 가능한 모든 조합 리스트라는 것을 알고 있으므로, 출력 크기에 대해 확실한 예측을 할 수 있습니다. 반환 리스트의 원소 수는 시퀀스 길이만큼 4를 거듭제곱한 값입니다. 그러니 generate_primers(3) 호출은 64원소 리스트를 반환하지만 길이를 6으로 두 배 늘리면 반환 리스트에 4000개 넘는 원소가 생기고 다시 12로 두 배하면 천육백만 개 넘는 원소를 얻습니다. 현실적인 프라이머 길이(약 20염기)에서는 반환 리스트의 원소 수가 조 단위인데, 당연히 메모리에 들어가지 않습니다.</p>
+<p>물론 조 개 원소 리스트에 어떤 종류든 처리를 시도하는 프로그램은 원소 생성 방식과 무관하게 아마 감당 못 할 정도로 느리겠지만 이 예제에서는 그건 외면하겠습니다.</p>
 <p>따라서 이 함수는 제너레이터로 재작성하기 좋은 후보입니다. 그렇게 할 수 있다면 어느 시점에도 메모리에 단일 원소만 저장하면 됩니다. 놀랍게도 이 함수를 제너레이터로 변환하는 데는 아주 적은 변경이 필요합니다. 값을 반환하거나 결과 리스트에 새 원소를 추가하는 각 지점을 yield 문으로 바꾸기만 하면 됩니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb312"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb312-1"><a href="#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_primers(length):</span>
 <span id="cb312-2"><a href="#cb312-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> length <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -3894,8 +3894,8 @@ AGA
 <p>이런 모든 유형의 오류에 공통인 점은 코드의 고유한(intrinsic) 속성이라는 것입니다. 다시 말해 이런 오류 중 하나를 포함한 코드 조각을 실행하면 매우 예측 가능한 방식으로 매번 같은 문제에 부딪힙니다.</p>
 <p>그러나 코드에 고유하지 않고 대신 어떤 외부 상황의 결과인 또 다른 부류의 오류가 있습니다. 예컨대 존재하지 않는 파일을 열려 할 때 얻는 흔한 오류를 생각해 보세요:</p>
 <pre class="text"><code>IOError: [Errno 2] No such file or directory: 'missing.txt'</code></pre>
-<p>이 오류는 코드의 속성이 아니라 코드가 실행되는 환경의 속성입니다. 오류를 일으킨 정확히 같은 코드 조각을 다른 시점¹이나 다른 폴더에서 실행하면 완벽히 잘 돌아갈 수 있습니다. 프로그래밍에서는 이런 상황들을 예외(exception)라고 부르며 파이썬의 내장 처리 메커니즘을 예외 처리(exception handling)²라 합니다.</p>
-<p>¹ 즉 missing 파일을 만든 후에요. ² 예외 처리는 많은 다른 상황을 다루는 데도 유용하지만 그건 이 장 후반부에 다룹니다.</p>
+<p>이 오류는 코드의 속성이 아니라 코드가 실행되는 환경의 속성입니다. 오류를 일으킨 정확히 같은 코드 조각을 다른 시점이나 다른 폴더에서 실행하면 완벽히 잘 돌아갈 수 있습니다. 프로그래밍에서는 이런 상황들을 예외(exception)라고 부르며 파이썬의 내장 처리 메커니즘을 예외 처리(exception handling)라 합니다.</p>
+<p>즉 missing 파일을 만든 후에요. 예외 처리는 많은 다른 상황을 다루는 데도 유용하지만 그건 이 장 후반부에 다룹니다.</p>
 <p>본격적으로 들어가기 전에 한마디: 이 장의 첫 절은 예외 사용법을 설명하기 위해 꽤 지루한 비생물학적 예제를 사용합니다. 장 후반부에 명확해질 이유 때문인데, 내장 함수로 기본 예외 시스템을 익히는 편이 쉽기 때문입니다. 장 후반에는 생물학 예제로 전환합니다.</p>
 <section id="예외-잡기" class="level2">
 <h2 class="anchored" data-anchor-id="예외-잡기">예외 잡기</h2>
@@ -3952,8 +3952,8 @@ continuing...</code></pre>
 <span id="cb333-7"><a href="#cb333-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
 <span id="cb333-8"><a href="#cb333-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"sorry, couldn't parse the number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>exception_types.py</p>
-<p>매우 강력한 기법입니다. 많은 서로 다른 유형의 오류에 적절히 응답하는 코드를 작성할 수 있게 해주거든요. 여전히 여러 유형의 예외를 처리하는 except 블록을 쓰고 싶다면 그것들을 튜플(tuple)¹로 쓰면 됩니다:</p>
-<p>¹ 튜플을 들어본 적 없다면 복잡한 자료구조 장을 참고하세요.</p>
+<p>매우 강력한 기법입니다. 많은 서로 다른 유형의 오류에 적절히 응답하는 코드를 작성할 수 있게 해주거든요. 여전히 여러 유형의 예외를 처리하는 except 블록을 쓰고 싶다면 그것들을 튜플(tuple)로 쓰면 됩니다:</p>
+<p>튜플을 들어본 적 없다면 복잡한 자료구조 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb334"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb334-1"><a href="#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb334-2"><a href="#cb334-2" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'my_file.txt'</span>)</span>
 <span id="cb334-3"><a href="#cb334-3" aria-hidden="true" tabindex="-1"></a>    my_number <span class="op">=</span> <span class="bu">int</span>(f.read())</span>
@@ -3964,8 +3964,8 @@ continuing...</code></pre>
 <section id="예외에-관한-정보-얻기" class="level3">
 <h3 class="anchored" data-anchor-id="예외에-관한-정보-얻기">예외에 관한 정보 얻기</h3>
 <p>위 파일 열기·파싱 예제의 오류 메시지는 여전히 완벽하지 않습니다. 예외가 발생할 이유가 여럿이기 때문입니다. 예컨대 존재하지 않는 파일을 열려 하는 것도 IOError를 일으키지만 볼 권한이 없는 파일을 열려 하거나 폴더를 파일 대신 열려 하는 것도 그렇습니다. 사용자에게 보여주는 오류 메시지가 예외의 구체적 세부사항 정보를 담고 있다면 더 도움이 될 겁니다.</p>
-<p>그 정보를 얻으려면 예외가 그저 객체¹라는 것(파일 객체나 정규표현식 match 객체처럼)을 기억해야 합니다. except 블록에 작은 수정 하나로 예외 객체에 접근할 수 있습니다:</p>
-<p>² 객체 지향 프로그래밍 장을 읽었다면 다음 설명이 더 잘 이해될 겁니다.</p>
+<p>그 정보를 얻으려면 예외가 그저 객체라는 것(파일 객체나 정규표현식 match 객체처럼)을 기억해야 합니다. except 블록에 작은 수정 하나로 예외 객체에 접근할 수 있습니다:</p>
+<p>객체 지향 프로그래밍 장을 읽었다면 다음 설명이 더 잘 이해될 겁니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb335"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb335-1"><a href="#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">IOError</span> <span class="im">as</span> ex:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>그리고 ex 변수로 예외 객체를 참조할 수 있습니다. 예외 객체로 할 수 있는 일의 세부사항은 예외 타입마다 다릅니다. IOError 예외의 경우 strerror 필드를 참조해 오류의 문자열 설명을 얻을 수 있습니다. IOError를 처리할 때 오류 문자열을 오류 메시지의 일부로 출력하는 업데이트된 예제 버전입니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb336"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb336-1"><a href="#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -3980,8 +3980,8 @@ continuing...</code></pre>
 <pre class="text"><code>sorry, couldn't open the file: No such file or directory
 sorry, couldn't open the file: Permission denied
 sorry, couldn't open the file: Is a directory</code></pre>
-<p>주어진 예외 클래스에 어떤 속성들이 있는지 알아보려 파이썬 문서¹를 참고할 수 있지만 오류의 세부사항을 얻는 더 범용적인 메커니즘도 있습니다. 예외 객체에는 args²라 불리는 필드가 있으며 오류의 세부사항 리스트입니다. 대부분의 예외 타입에서 리스트의 한 원소가 문제의 세부사항을 담은 문자열입니다. ValueError 객체의 경우 그것이 첫 원소이므로 ValueError 처리기를 이렇게 수정할 수 있습니다:</p>
-<p>¹ http://docs.python.org/2/library/exceptions.html ² 객체를 구성하는 데 사용된 인자들을 담고 있다 해서 이렇게 불립니다. 생성자에 관한 세부사항은 객체 지향 프로그래밍 장을 참고하세요.</p>
+<p>주어진 예외 클래스에 어떤 속성들이 있는지 알아보려 파이썬 문서를 참고할 수 있지만 오류의 세부사항을 얻는 더 범용적인 메커니즘도 있습니다. 예외 객체에는 args라 불리는 필드가 있으며 오류의 세부사항 리스트입니다. 대부분의 예외 타입에서 리스트의 한 원소가 문제의 세부사항을 담은 문자열입니다. ValueError 객체의 경우 그것이 첫 원소이므로 ValueError 처리기를 이렇게 수정할 수 있습니다:</p>
+<p>http://docs.python.org/2/library/exceptions.html 객체를 구성하는 데 사용된 인자들을 담고 있다 해서 이렇게 불립니다. 생성자에 관한 세부사항은 객체 지향 프로그래밍 장을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb338"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb338-1"><a href="#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb338-2"><a href="#cb338-2" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'my_file.txt'</span>)</span>
 <span id="cb338-3"><a href="#cb338-3" aria-hidden="true" tabindex="-1"></a>    my_number <span class="op">=</span> <span class="bu">int</span>(f.read())</span>
@@ -3997,9 +3997,9 @@ sorry, couldn't open the file: Is a directory</code></pre>
 </section>
 <section id="예외-처리에서의-else-블록" class="level2">
 <h2 class="anchored" data-anchor-id="예외-처리에서의-else-블록">예외 처리에서의 else 블록</h2>
-<p>지금까지 살펴본 파일 파싱 예제에서 try 블록에는 코드 줄 세 개가 있습니다. 첫 줄은 파일 열기에 문제가 있으면 IOError를 일으킬 수 있고 두 번째 줄은 정수를 읽는 데 문제가 있으면 ValueError를 일으킬 수 있습니다. 하지만 세 번째 줄(값을 출력하는 곳)도 IOError를 일으킬 수 있습니다¹. 이런 일이 생기면 첫 except 블록이 그 예외를 집어들고 프로그램은 입력 파일을 읽는 데 문제가 있었다고 오해의 소지가 있게 사용자에게 알립니다.</p>
+<p>지금까지 살펴본 파일 파싱 예제에서 try 블록에는 코드 줄 세 개가 있습니다. 첫 줄은 파일 열기에 문제가 있으면 IOError를 일으킬 수 있고 두 번째 줄은 정수를 읽는 데 문제가 있으면 ValueError를 일으킬 수 있습니다. 하지만 세 번째 줄(값을 출력하는 곳)도 IOError를 일으킬 수 있습니다. 이런 일이 생기면 첫 except 블록이 그 예외를 집어들고 프로그램은 입력 파일을 읽는 데 문제가 있었다고 오해의 소지가 있게 사용자에게 알립니다.</p>
 <p>print() 줄을 try 블록 밖으로 옮겨 이 상황을 피할 수 있습니다:</p>
-<p>² 예컨대 셸 리다이렉션으로 이 코드를 실행 중인데 출력 파일 장치의 공간이 부족해진 경우 등.</p>
+<p>예컨대 셸 리다이렉션으로 이 코드를 실행 중인데 출력 파일 장치의 공간이 부족해진 경우 등.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb340"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb340-1"><a href="#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb340-2"><a href="#cb340-2" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'my_file.txt'</span>)</span>
 <span id="cb340-3"><a href="#cb340-3" aria-hidden="true" tabindex="-1"></a>    my_number <span class="op">=</span> <span class="bu">int</span>(f.read())</span>
@@ -4119,8 +4119,8 @@ sorry, couldn't open the file: Is a directory</code></pre>
 <p>파일이 열려 있는 동안 발생할 수 있는 어떤 예외와도 무관하게 파일이 항상 닫히게 하기 위해서입니다. 컨텍스트 관리자(context manager)라 불리는 파이썬 기능은 이런 종류의 패턴을 클래스에 캡슐화해 재사용하게 해줍니다. 컨텍스트 관리자는 with 문을 사용해 호출됩니다. 다음 코드 조각은 위와 동등하지만 훨씬 읽기 좋습니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb348"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb348-1"><a href="#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'somefile.txt'</span>) <span class="im">as</span> f:</span>
 <span id="cb348-2"><a href="#cb348-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do something with f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>File 컨텍스트 관리자가 압도적으로 가장 많이 쓰이지만 몇몇 다른 내장 컨텍스트 관리자들이 있으며 자체 컨텍스트 관리자를¹ 정의할 수도 있습니다.</p>
-<p>¹ 어떻게 그리고 왜 하는지에 관한 논의는 이 책의 범위를 넘어서지만 관심 있다면 contextlib 모듈을 살펴보세요.</p>
+<p>File 컨텍스트 관리자가 압도적으로 가장 많이 쓰이지만 몇몇 다른 내장 컨텍스트 관리자들이 있으며 자체 컨텍스트 관리자를 정의할 수도 있습니다.</p>
+<p>어떻게 그리고 왜 하는지에 관한 논의는 이 책의 범위를 넘어서지만 관심 있다면 contextlib 모듈을 살펴보세요.</p>
 </section>
 </section>
 <section id="중첩-tryexcept-블록" class="level2">
@@ -4135,8 +4135,8 @@ sorry, couldn't open the file: Is a directory</code></pre>
 <span id="cb349-7"><a href="#cb349-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'not an integer!'</span>)</span>
 <span id="cb349-8"><a href="#cb349-8" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span>:</span>
 <span id="cb349-9"><a href="#cb349-9" aria-hidden="true" tabindex="-1"></a>    f.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>하지만 동작하지 않습니다. f 변수는 try 블록 내부에서 만들어지므로 finally 블록에서 접근할 수 없거든요². 원하는 결과를 위해 중첩 try 블록 두 개가 필요합니다:</p>
-<p>² 파이썬에서 어떤 종류든 블록 내부에 선언된 변수들의 스코프(scope)는 그 블록으로 제한됨을 기억하세요.</p>
+<p>하지만 동작하지 않습니다. f 변수는 try 블록 내부에서 만들어지므로 finally 블록에서 접근할 수 없거든요. 원하는 결과를 위해 중첩 try 블록 두 개가 필요합니다:</p>
+<p>파이썬에서 어떤 종류든 블록 내부에 선언된 변수들의 스코프(scope)는 그 블록으로 제한됨을 기억하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb350"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb350-1"><a href="#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb350-2"><a href="#cb350-2" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'my_file.txt'</span>)</span>
 <span id="cb350-3"><a href="#cb350-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -4274,8 +4274,8 @@ AT content for ATGGCGCTAGC is 0.363636363636</code></pre>
 <section id="커스텀-예외-타입" class="level2">
 <h2 class="anchored" data-anchor-id="커스텀-예외-타입">커스텀 예외 타입</h2>
 <p>위 예제에서 유효하지 않은 서열 표시에 ValueError를 사용하는 데 꽤 명백한 문제가 있습니다. 그것을 잡아 처리하기 위한 except 블록을 작성하면, 같은 except 블록이 발생할 수 있는 다른 모든 ValueError까지 잡습니다. 파이썬에서 ValueError를 만들 수 있는 연산이 많은데, 그중 하나가 try 블록 어딘가에서 발생하면 위 코드는 특정 서열이 유효하지 않아서 건너뛰었다고 잘못 주장합니다. 프로그래밍 시 큰 곤란으로 이어질 수 있습니다. 사실상 다른 오류를 숨겨 코드 디버깅을 매우 어렵게 만드니까요.</p>
-<p>문제의 근본 원인은 ValueError가 충분히 구체적이지 않다는 점입니다. 폭넓은 상황에 대응해 발생될 수 있으므로 ValueError를 만나도 그것이 get_at_content()에서 일어난 일 때문인지 다른 곳에서 일어난 일 때문인지 알 수 없습니다. 해법은 유효하지 않은 염기의 문제를 나타내는 자체 예외 클래스를 만드는 것입니다. 매우 직관적입니다. Exception 클래스의 서브클래스인¹ 새 클래스를 정의하기만 하면 됩니다. 새 클래스의 임무가 단지 메시지를 담는 것이므로 멤버나 메서드가 필요 없습니다. 클래스 몸통은 pass²여도 되고 Exception 슈퍼클래스의 생성자에 의존할 수 있습니다:</p>
-<p>² 상속 설명은 객체 지향 프로그래밍 장을 참고하세요. ² 파이썬에서 pass는 “아무것도 하지 않음”을 의미하는 자리표시자 코드 조각일 뿐입니다.</p>
+<p>문제의 근본 원인은 ValueError가 충분히 구체적이지 않다는 점입니다. 폭넓은 상황에 대응해 발생될 수 있으므로 ValueError를 만나도 그것이 get_at_content()에서 일어난 일 때문인지 다른 곳에서 일어난 일 때문인지 알 수 없습니다. 해법은 유효하지 않은 염기의 문제를 나타내는 자체 예외 클래스를 만드는 것입니다. 매우 직관적입니다. Exception 클래스의 서브클래스인 새 클래스를 정의하기만 하면 됩니다. 새 클래스의 임무가 단지 메시지를 담는 것이므로 멤버나 메서드가 필요 없습니다. 클래스 몸통은 pass여도 되고 Exception 슈퍼클래스의 생성자에 의존할 수 있습니다:</p>
+<p>상속 설명은 객체 지향 프로그래밍 장을 참고하세요. 파이썬에서 pass는 “아무것도 하지 않음”을 의미하는 자리표시자 코드 조각일 뿐입니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb366"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb366-1"><a href="#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AmbiguousBaseError(<span class="pp">Exception</span>):</span>
 <span id="cb366-2"><a href="#cb366-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이제 get_at_content가 AmbiguousBaseError를 발생시키도록 수정하고 except 블록이 AmbiguousBaseError만 잡도록 바꿉니다:</p>
@@ -4296,8 +4296,8 @@ AT content for ATGGCGCTAGC is 0.363636363636</code></pre>
 <span id="cb367-15"><a href="#cb367-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'skipping invalid sequence '</span> <span class="op">+</span> seq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>custom_error.py</p>
 <p>이제 get_at_content()가 발생시키는 어떤 예외도 코드의 다른 부분에서 발생한 예외들과 섞이지 않습니다. 좋은 부수 이점으로 코드가 더 명확해집니다. 오류 클래스 이름이 그 의미의 간결한 설명이니까요.</p>
-<p>커스텀 예외 타입은 클래스의 한 예일 뿐이므로 다른 커스텀 클래스처럼 다룰 수 있습니다. 예컨대 멤버와 메서드를 추가할 수 있는데, 보통 별로 도움이 되진 않습니다. 더 흥미로운 건 상속을 활용해 클래스 계층에 배치할 수도 있으며 복잡한 클래스 체계를 구축할 때 가끔 유용합니다¹.</p>
-<p>¹ 꽤 최소적인 예는 이 장 두 번째 연습 문제의 풀이를 참고하세요.</p>
+<p>커스텀 예외 타입은 클래스의 한 예일 뿐이므로 다른 커스텀 클래스처럼 다룰 수 있습니다. 예컨대 멤버와 메서드를 추가할 수 있는데, 보통 별로 도움이 되진 않습니다. 더 흥미로운 건 상속을 활용해 클래스 계층에 배치할 수도 있으며 복잡한 클래스 체계를 구축할 때 가끔 유용합니다.</p>
+<p>꽤 최소적인 예는 이 장 두 번째 연습 문제의 풀이를 참고하세요.</p>
 </section>
 <section id="정리-5" class="level2">
 <h2 class="anchored" data-anchor-id="정리-5">정리</h2>
@@ -4458,8 +4458,8 @@ ZeroDivisionError: integer division or modulo by zero</code></pre>
 <p>responding.py</p>
 <p><strong>SequenceRecord 클래스를 위한 예외</strong></p>
 <p>이 문제를 다루는 일은 이 장과 객체 지향 프로그래밍 장의 기법 조합이 필요하므로 진행 전에 둘 다 읽었는지 확인하세요.</p>
-<p>클래스를 작성할 때 생성자가 전달된 인자들을 바탕으로 새 객체를 만드는 일을 책임진다는 것을 알고 있으므로, 검증 코드를 넣을 논리적인 장소처럼 보입니다. 간단한 검증부터 시작하죠. 빈 문자열을 유전자 이름으로 허용하고 싶지 않으니 유전자 이름 길이를 검사해 0과 같으면 오류를 발생시키겠습니다. 이 행동이 DNARecord와 ProteinRecord 객체 양쪽에 적용되길 원하므로 기반 클래스 SequenceRecord¹의 생성자에 추가합니다:</p>
-<p>¹ 기반·파생 클래스에 관한 리마인더는 객체 지향 프로그래밍 장의 상속(inheritance) 절을 참고하세요.</p>
+<p>클래스를 작성할 때 생성자가 전달된 인자들을 바탕으로 새 객체를 만드는 일을 책임진다는 것을 알고 있으므로, 검증 코드를 넣을 논리적인 장소처럼 보입니다. 간단한 검증부터 시작하죠. 빈 문자열을 유전자 이름으로 허용하고 싶지 않으니 유전자 이름 길이를 검사해 0과 같으면 오류를 발생시키겠습니다. 이 행동이 DNARecord와 ProteinRecord 객체 양쪽에 적용되길 원하므로 기반 클래스 SequenceRecord의 생성자에 추가합니다:</p>
+<p>기반·파생 클래스에 관한 리마인더는 객체 지향 프로그래밍 장의 상속(inheritance) 절을 참고하세요.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb378"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb378-1"><a href="#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SequenceRecord(<span class="bu">object</span>):</span>
 <span id="cb378-2"><a href="#cb378-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb378-3"><a href="#cb378-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sequence, gene_name, species_name):</span>
@@ -4535,9 +4535,9 @@ ZeroDivisionError: integer division or modulo by zero</code></pre>
 <span id="cb386-3"><a href="#cb386-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb386-4"><a href="#cb386-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.search(<span class="vs">r'</span><span class="pp">[^FLSYCWPHQRIMTNKVADEG]</span><span class="vs">'</span>, some_protein_sequence):</span>
 <span id="cb386-5"><a href="#cb386-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># raise an exception</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>문제는 어디에 둘 것인가입니다. 좋은 선택지가 두 가지 있습니다¹. 파생 클래스들 각각에서 기반 클래스 생성자를 오버라이드하거나, 슈퍼클래스 생성자가 호출할 수 있는 검증 메서드를 파생 클래스들에 추가하는 것입니다. 첫 접근이 아마 가장 객체 지향적입니다. 파생 클래스가 기반 클래스에서 일반 기능을 상속하면서 자신에게 특화된 기능을 추가하도록 허용하는 원칙을 따르니까요. 이런 종류의 검증 예제는 객체 지향 프로그래밍 장, 특히 기반 클래스 메서드 오버라이딩 절을 참고하세요. 첫 접근의 예는 이전 장에서 이미 봤으니, 둘 다 본 적이 있도록 여기서는 두 번째를 시도하겠습니다. 이렇게 하려면 파생 클래스들 각각(DNARecord와 ProteinRecord)에 서열 검증 메서드를 추가하고 실제 인자 할당 직전 마지막 단계로 부모 클래스(SequenceRecord)의 생성자에서 그것을 호출하기만 하면 됩니다. 상속의 마법 덕분에 생성자에서 서열 검증 메서드가 호출될 때 DNARecord를 만드는지 ProteinRecord를 만드는지에 따라 적절한 서브클래스 메서드가 실행됩니다.</p>
+<p>문제는 어디에 둘 것인가입니다. 좋은 선택지가 두 가지 있습니다. 파생 클래스들 각각에서 기반 클래스 생성자를 오버라이드하거나, 슈퍼클래스 생성자가 호출할 수 있는 검증 메서드를 파생 클래스들에 추가하는 것입니다. 첫 접근이 아마 가장 객체 지향적입니다. 파생 클래스가 기반 클래스에서 일반 기능을 상속하면서 자신에게 특화된 기능을 추가하도록 허용하는 원칙을 따르니까요. 이런 종류의 검증 예제는 객체 지향 프로그래밍 장, 특히 기반 클래스 메서드 오버라이딩 절을 참고하세요. 첫 접근의 예는 이전 장에서 이미 봤으니, 둘 다 본 적이 있도록 여기서는 두 번째를 시도하겠습니다. 이렇게 하려면 파생 클래스들 각각(DNARecord와 ProteinRecord)에 서열 검증 메서드를 추가하고 실제 인자 할당 직전 마지막 단계로 부모 클래스(SequenceRecord)의 생성자에서 그것을 호출하기만 하면 됩니다. 상속의 마법 덕분에 생성자에서 서열 검증 메서드가 호출될 때 DNARecord를 만드는지 ProteinRecord를 만드는지에 따라 적절한 서브클래스 메서드가 실행됩니다.</p>
 <p>서열 검증 메서드가 기반 클래스 생성자에서만 호출되길 의도하므로, 밑줄로 시작하는 메서드는 내부 전용이라는 파이썬 명명 관례를 활용할 수 있습니다. 언어가 어떤 식으로든 강제하는 건 아니지만 소스 코드를 보는 사람에게 어떤 다른 이유로도 서열 검증 메서드를 호출하지 말라는 유용한 힌트입니다. 코드입니다:</p>
-<p>¹ 그리고 (여기서 논하지 않을) 나쁜 것들도 꽤 많습니다!</p>
+<p>그리고 (여기서 논하지 않을) 나쁜 것들도 꽤 많습니다!</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb387"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb387-1"><a href="#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb387-2"><a href="#cb387-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb387-3"><a href="#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SequenceRecord(<span class="bu">object</span>):</span>
