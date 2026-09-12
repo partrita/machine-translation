@@ -133,7 +133,7 @@ Bifunctional Linker
 
 Tubulin inhibitors including auristatins and maytansines have been widely explored for ADC synthesis. Auristatins are synthetic pentapeptides derived from natural tubulin polymerase inhibitor dolastatin-10. Among them, MMAE (monomethyl auristatin E) and MMAF (monomethyl auristatin F) are commonly used as payloads of ADCs, and their structures are shown in Fig. [1.1a, b](#Fig1). In Vitro analysis shows that MMAE is a highly toxic cytotoxin (EC90 less than 1 nmol/l), and MMAF was a modified product of MMAE. MMAF differs from MMAE since a phenylalanine moiety introduced at its C-terminus, contributing to its membrane impermeability. For this reason, the cytotoxicity of MMAF itself is very low, which increases ADC safety in the blood circulation. However, when MMAF is coupled with the monoclonal antibody and internalized into tumor cells, it can produce high cytotoxicity like MMAE [[13](#CR13)].
 
-MMAE, MMAF, DM1 및 DM4의 4가지 화학 구조는 이중 결합 산소 원자와 단일 결합 NH를 갖는 링커가 있는 벤젠 고리를 가지고 있으며 DM1 및 DM4의 구조는 Cl 및 SH기의 부착을 포함한다.
+MMAE, MMAF, DM1 및 DM4의 4가지 화학 구조는 이중 결합 산소 원자와 단일 결합 NH를 가지는 링커가 있는 벤젠 고리를 가지고 있으며 DM1 및 DM4의 구조는 Cl 및 SH기의 부착을 포함한다.
 
 Fig. 1.1
 
@@ -145,7 +145,7 @@ ADC 구성에 쓰이는 메이탄신 유사체로는 주로 메이탄시노이�
 
 Antibiotics such as calicheamicin, duocarmycins and pyrrobenzodiazepine (PBD) derivatives that can damage DNA structures are often used to constructure ADCs [[13](#CR13), [14](#CR14)]. Calicheamicins are a family of enediyne antitumor antibiotics originally extracted from *Micromonospora echinospora,* whose structures contain carbohydrate chain, enediyne moiety, and aglycon consisting of bicycle tridec-9-ene-2, 6-diyne system with a labile methyl trisulfide. Calicheamicins bind the minor groove of the specific sequence of double-stranded DNA and generate 1,4-benzenoid diradical that damages the phosphodiester backbone of DNA, causing cytotoxicity. Of them, calicheamicin γ has the highest activity and is commonly used in ADC synthesis (see Fig. [1.2a](#Fig2) for its structure).
 
-칼리케아마이신 감마, 듀오카마이신 A 및 안트라마이신의 3가지 화학 구조는 이중 결합 산소 원자, 단일 결합 NH 및 수산기를 갖는 벤젠 고리를 가지고 있다. 칼리케아마이신 감마의 구조는 황화물 다리를 가지고 있다.
+칼리케아마이신 감마, 듀오카마이신 A 및 안트라마이신의 3가지 화학 구조는 이중 결합 산소 원자, 단일 결합 NH 및 수산기를 가지는 벤젠 고리를 가지고 있다. 칼리케아마이신 감마의 구조는 황화물 다리를 가지고 있다.
 
 Fig. 1.2
 
@@ -497,7 +497,7 @@ Wash twice with ice cold PBS to remove antibody or ADC that do not bind to the c
 
 To fix the cells on the slide (make sure the cells do not adhere to each other), add 4% paraformaldehyde after rinse the cells with PBS 3 times. Allow cells to fix for 15 mins and then wash twice with PBS. Add 0.1% TritonX-100, 0.2% BSA in PBS at room temperature and incubate for 15 mins to permeabilize cells. After wash cells 3 times with PBS, anti LAMP-1 mouse monoclonal antibody diluted with 1% BSA-PBS was added to the cells and incubated for 45 mins. Again, wash cells 3 times with PBS, cells were stained with FITC -labeled goat anti-human IgG (H + L) and Alexa Fluor 555-labeled goat anti-mouse IgG (H + L). Allow to incubate in dark for 30 mins and wash slides 3 times in PBS. The nuclei were stained with DAPI in dark for 3 mins before washing with PBS 3 times. Anti-quencher solution was dropped on the slide, covered the slide and visualized the subcellular localization of antibody or ADC by confocal laser scanning microscope (Fig. [3.1](#Fig1)).
 
-Daudi 세포의 3개 현미경 사진을 ADC, LAMP-1로 처리하고 병합한다. 길쭉한 막대 모양의 세포의 핵은 밝은 점으로 염색되어 무작위로 분포한다. 겹치는 영역은 원형으로 표시되어 색상으로 강조 표시됩니다.
+Daudi 세포의 3개 현미경 사진을 ADC, LAMP-1로 처리하고 병합한다. 길쭉한 막대 모양의 세포의 핵은 밝은 점으로 염색되어 무작위로 분포한다. 겹치는 영역은 원형으로 표시되어 색상으로 강조 표시 된다.
 
 Fig. 3.1
 
@@ -521,7 +521,7 @@ ADC에 이중특이적 항체를 적용하면 ADC의 내재화와 리소좀 수�
 
 드 괴이즈 등[22]도 같은 방식으로 CD63과 HER2를 표적으로 하는 이중특이적 ADC를 구축했다. 항-HER2 결합 도메인이 종양 특이성을 담당하는 동안, 항-CD63 결합 도메인은 내재화를 촉진한다. 리소좀 관련 막 단백질 3(LAMP3)으로도 불리는 CD63은 네 번 막을 가로지르는 단백질 상과에 속하며 일부 세포 표면에 존재하지만 주로 엔도솜·리소좀 막 같은 세포 내 소포에서 발현된다[23]. CD63은 세포내이입 경로에서 다른 단백질의 수송을 조절하는데, 바로 그래서 CD63을 표적으로 하면 내재화와 리소좀 수송 효율을 끌어올릴 수 있다. HER2 또는 CD63만을 겨냥한 1가 대조군 항체와 비교할 때, 이 이중특이적 구조는 HER2 양성 종양 세포의 리소좀으로 더 효과적으로 운반되었다. 또 시험관 내 및 생체 내 실험에서 우수한 종양 살상 능력을 보였다. 말초혈액의 혈소판과 과립구처럼 CD63만 발현하는 세포까지 표적하는 것을 피하려고 항-CD63 항체의 친화력을 약하게 조정함으로써, 이 이중특이적 ADC의 특이성을 지키고 안전성을 높일 수 있었다[23, 24].
 
-널리 발현되면서도 다른 종양 관련 항원을 끌어당겨 효율적으로 리소좀 표적에 도달시킬 수 있는 표적을 고르는 것이 위 해법들의 공통점이다. 이 ADC의 비특이적 살상을 줄이려면 높은 내재화 결합 도메인의 친화력을 손보거나, ADC가 pH 의존적 방식으로 항원과 결합하게 하여 두 항원을 동시에 발현하는 종양 미세환경에서만 활성을 나타내게 할 필요가 있다. 두 개의 종양 관련 항원을 갖는 이중특이적 ADC 구축도 또 하나의 아이디어다. 두 종양 관련 항원을 동시에 발현하는 종양만 공략 대상이 되므로 적용 가능한 표적은 줄지만 널리 발현된 표적이 낳는 비특이적 살상 효과도 함께 감소한다.
+널리 발현되면서도 다른 종양 관련 항원을 끌어당겨 효율적으로 리소좀 표적에 도달시킬 수 있는 표적을 고르는 것이 위 해법들의 공통점이다. 이 ADC의 비특이적 살상을 줄이려면 높은 내재화 결합 도메인의 친화력을 손보거나, ADC가 pH 의존적 방식으로 항원과 결합하게 하여 두 항원을 동시에 발현하는 종양 미세환경에서만 활성을 나타내게 할 필요가 있다. 두 개의 종양 관련 항원을 가지는 이중특이적 ADC 구축도 또 하나의 아이디어다. 두 종양 관련 항원을 동시에 발현하는 종양만 공략 대상이 되므로 적용 가능한 표적은 줄지만 널리 발현된 표적이 낳는 비특이적 살상 효과도 함께 감소한다.
 
 비슷한 맥락에서 리제네론 제약은 HER2와 프로락틴 수용체(PRLR)를 표적으로 하는 이중특이적 ADC를 구축했다[25]. PRLR은 어떤 종류의 유방암에서 발현되며 유방암 발병기전과 관련이 있다. 따라서 HER2처럼 PRLR 역시 종양 관련 항원이다[26, 27]. 유방 종양 세포 표면에서 PRLR 발현 수준은 HER2보다 낮다. 그러나 자주 세포 표면으로 재활용되는 HER2와 달리[28], PRLR은 계속해서 리소좀으로 운반되어 분해될 수 있다[29]. 이 특성 덕분에 이중특이적 ADC는 내재화 효율이 낮은 항-HER2 부분을 리소좀으로 끌어당긴 뒤 소분자 세포독성 물질을 더 효과적으로 내놓을 수 있다. 실제로 항-HER2 또는 항-PRLR ADC와 비교할 때 PRLR과 HER2를 표적으로 하는 이중특이적 ADC가 유방 종양 세포를 더 효과적으로 죽였다.
 
@@ -720,7 +720,7 @@ CME에서 조절되는 단백질 (Proteins regulated in CME [4])
 | --- | --- |
 | AP-2 및 클라트린 (AP-2 and clathrin) | CCP/CCV의 구성요소 (The component of CCPs/CCVs) |
 | ARF6 GTPase (ARF6 GTPase) | AP-2 및 클라트린의 모집을 조절한다 (Regulates the recruitment of AP-2 and clathrin) |
-| 엡신 및 엔도필린 (Epsins and endophilin) | 멤브레인의 굽힘을 유도합니다 (Induce the bending of the membrane) |
+| 엡신 및 엔도필린 (Epsins and endophilin) | 멤브레인의 굽힘을 유도한다 (Induce the bending of the membrane) |
 | 다이너민 (Dynamin) | 공여체 막으로부터의 소포 발아를 촉진한다 (Promotes vesicle budding from a donor membrane) |
 | 암피피신 (Amphyphisin) | 엔도필린, AP-2 및 클라트린에 결합하는 방법 (Binds endophilin, AP-2 and clathrin) |
 | 엡신 및 엡신-상동성-도메인 단백질 (Epsins and epsin-homology-domain proteins) | 특정 수용체를 코팅 복합체에 연결하는 방법 (Link certain receptors to coat complexes) |
@@ -793,7 +793,7 @@ ADC의 내재화 및 세포 내 수송은 보통 공초점 현미경으로 관�
 
 To give an example, an anti-HER2 monoclonal antibody (Herceptin®, trastuzumab) and the corresponding ADC (Kadcyla®, T-DM1) were used to study the internalization process. The confocal images showed that neither Herceptin® nor Kadcyla® can be transported to lysosome as short as 12 h. Both of them were colocalized with lysosome when HER2-positve cells were treated for 8 h (Fig. [4.3](#Fig3)). Besides, the internalization rate of Kadcyla® was more effective than Herceptin®.
 
-6개의 공초점 이미지입니다. LAMP-1의 이미지, 내재화된 헤르셉틴 및 카드실라 및 병합이 표시된다. 형광성은 리소좀과 헤르셉틴 및 카드실라의 융합의 공간적 중첩을 나타낸다. 그 결과, Kadcyla의 내재화 속도가 Herceptin보다 더 효과적이다.
+6개의 공초점 이미지이다. LAMP-1의 이미지, 내재화된 헤르셉틴 및 카드실라 및 병합이 표시된다. 형광성은 리소좀과 헤르셉틴 및 카드실라의 융합의 공간적 중첩을 나타낸다. 그 결과, Kadcyla의 내재화 속도가 Herceptin보다 더 효과적이다.
 
 Fig. 4.3
 
@@ -976,7 +976,7 @@ ELISA 절차의 예로 Boswell의 [[4](#CR4)] 연구를 들 수 있다.
 
 먼저 생체 기질에서 ADC를 면역포획한다. 포획된 항체는 몰비 12:1로 비오틴화되며 비오틴화된 포획 시약은 초당 5μL의 유속으로 스트렙타비딘 코팅 카트리지에 고정시켰다. 기질 속 ADC 검량 표준액, QC 및 연구 샘플은 DPBS로 1:1 희석한 다음 유속 2μL/min으로 천천히 카트리지에 주입했다. 포획된 분석물은 12mmol/L 염산으로 유속 5μL/min의 조건에서 카트리지에서 용리한 직후 250mmol/L 중탄산암모늄으로 중화했다. 용출된 샘플을 상온에서 특정 효소와 함께 3시간 배양하여 항체에 붙은 페이로드 분자를 방출했다. 배양은 페이로드의 내부 표준물질인 안정 동위원소 표지체가 든 차가운 아세토니트릴을 넣어 종료했다.
 
-다음으로 역상 HPLC 컬럼(예: Acquity UPLC BEH C18, Waters)을 사용해 비접합 화학 화합물의 크로마토그래피 분리를 수행했다. 이동상은 이동상 A(95:5 물:아세토니트릴에 0.005% 수산화암모늄을 함유하는 5mmol/L 중탄산암모늄)와 이동상 B(5:95 물:아세토니트릴)로 구성했으며 유속은 0.8ml/min였다. 구배는 30% B에서 시작해 1.00분 내에 60% B로 올리고 이어서 0.05분 만에 95% B로 바꾼 뒤 0.45분간 유지했다가, 다시 0.05분 만에 30% B로 돌아와 실행이 2.00분에 끝날 때까지 유지했다. 페이로드와 내부 표준물질은 각각 m/z 771 → 98 및 m/z 781 → 98 전이를 갖는 양이온 전자분무 모드의 다중 반응 모니터링(multiple reaction monitoring)으로 검출했다.
+다음으로 역상 HPLC 컬럼(예: Acquity UPLC BEH C18, Waters)을 사용해 비접합 화학 화합물의 크로마토그래피 분리를 수행했다. 이동상은 이동상 A(95:5 물:아세토니트릴에 0.005% 수산화암모늄을 함유하는 5mmol/L 중탄산암모늄)와 이동상 B(5:95 물:아세토니트릴)로 구성했으며 유속은 0.8ml/min였다. 구배는 30% B에서 시작해 1.00분 내에 60% B로 올리고 이어서 0.05분 만에 95% B로 바꾼 뒤 0.45분간 유지했다가, 다시 0.05분 만에 30% B로 돌아와 실행이 2.00분에 끝날 때까지 유지했다. 페이로드와 내부 표준물질은 각각 m/z 771 → 98 및 m/z 781 → 98 전이를 가지는 양이온 전자분무 모드의 다중 반응 모니터링(multiple reaction monitoring)으로 검출했다.
 
 ### 5.3.3 Radiolabeled Antibody Assay
 
@@ -1644,7 +1644,7 @@ Antibody-drug conjugatesSite-specified conjugation Engineered cysteine conjugati
 
 ### 8.1.1 Engineered Cysteine
 
-시스테인의 반응성 티올기는 많은 단백질의 구조와 기능에서 중요한 역할을 하며 ADC의 부위 지정 접합에도 활용할 수 있다. 전통적인 접합법은 단일클론항체의 사슬간 이황화 결합을 부분적으로 환원해야 하는데, 항체마다 접합되는 약물 수와 부위가 달라 소분자 0~8개가 붙은 비균질 ADC 혼합물이 생기고 사슬간 이황화 결합마저 파괴된다. 사슬간 이황화 결합의 온전함을 유지하면서 균질 ADC를 얻으려면 유전공학 기술로 항체의 특정 위치에 시스테인을 삽입하면 된다. 시스테인 도입에 성공하려면 항체 구조와 항원 결합에 영향을 주지 않는 적절한 위치를 골라야 한다. Junutula 등 [8]은 먼저 트라스투주맙(트라스투주맙-Fab 4D5) Fab 단편의 여러 위치에 시스테인을 삽입하고 파지 디스플레이(phage display) 기술로 원래 항체의 친화력을 유지하는 돌연변이 Fab를 선별했다. 경쇄 V110C와 중쇄 A114C가 각각 최적 시스테인 돌연변이 부위로 선택되었다. 온화한 환원-재산화 조건에서 독성 소분자 MMAE에 접합한 공학적 중쇄 A114C 항-MUC16 항체(THIOMAB™)의 재조합 발현으로 부위 지정 접합 ADC를 합성할 수 있었는데, 99.7%가 THIOMAB에 접합되었고 그중 92.1%는 DAR 2를 갖는 THIOMAB(TDC)이었다. 전통적 접합법으로 합성한 ADC와 비교하면 THIOMAB로 만든 TDC는 균일성이 크게 좋아졌고 생체 내 항종양 활성을 보존하는 동시에 내약성이 개선되고 전신 독성도 낮아졌다.
+시스테인의 반응성 티올기는 많은 단백질의 구조와 기능에서 중요한 역할을 하며 ADC의 부위 지정 접합에도 활용할 수 있다. 전통적인 접합법은 단일클론항체의 사슬간 이황화 결합을 부분적으로 환원해야 하는데, 항체마다 접합되는 약물 수와 부위가 달라 소분자 0~8개가 붙은 비균질 ADC 혼합물이 생기고 사슬간 이황화 결합마저 파괴된다. 사슬간 이황화 결합의 온전함을 유지하면서 균질 ADC를 얻으려면 유전공학 기술로 항체의 특정 위치에 시스테인을 삽입하면 된다. 시스테인 도입에 성공하려면 항체 구조와 항원 결합에 영향을 주지 않는 적절한 위치를 골라야 한다. Junutula 등 [8]은 먼저 트라스투주맙(트라스투주맙-Fab 4D5) Fab 단편의 여러 위치에 시스테인을 삽입하고 파지 디스플레이(phage display) 기술로 원래 항체의 친화력을 유지하는 돌연변이 Fab를 선별했다. 경쇄 V110C와 중쇄 A114C가 각각 최적 시스테인 돌연변이 부위로 선택되었다. 온화한 환원-재산화 조건에서 독성 소분자 MMAE에 접합한 공학적 중쇄 A114C 항-MUC16 항체(THIOMAB™)의 재조합 발현으로 부위 지정 접합 ADC를 합성할 수 있었는데, 99.7%가 THIOMAB에 접합되었고 그중 92.1%는 DAR 2를 가지는 THIOMAB(TDC)이었다. 전통적 접합법으로 합성한 ADC와 비교하면 THIOMAB로 만든 TDC는 균일성이 크게 좋아졌고 생체 내 항종양 활성을 보존하는 동시에 내약성이 개선되고 전신 독성도 낮아졌다.
 
 한편 디브로모말레이미드(dibromomaleimide, DBM) 같은 말레이미도카프론산(MC) 기반 이황화 가교 시약은 환원된 이황화 결합을 다시 잇는 동시에 항체의 원래 구조와 기능을 유지할 수 있다(그림 [8.1](#Fig1)). 가교 시약에 약물을 얹으면 접합 약물 수를 기존 최대 8개에서 4개로 줄일 수 있어 과잉 소수성 약물로 인한 응집을 완화한다. Behrens 등 [[9](#CR9)]은 가교 방식으로 트라스투주맙에 MMAF를 접합해 DAR 4의 접합체를 합성했는데, 말레이아마이드로 연결된 전통적 ADC보다 생체 내 활성과 약동학적 성질이 더 좋았다.
 
@@ -1730,7 +1730,7 @@ Fig. 8.6
 
 소르타제 A[21]에 의해 매개되는 트랜스펩티드화. (Transpeptidation mediated by Sortase A [21].) 참고: SrtA의 184번 위치에 있는 C(시스테인)는 LPXTG(X는 천연 아미노산 중 하나) 펩티드 서열에서 T(트레오닌)와 G(글리신) 사이의 펩티드 결합을 친핵적으로 공격한다. (Note: C (Cysteine) at position 184 of SrtA nucleophilically attacks the peptide bond between T (threonine) and G (glycine) in the peptide sequence of LPXTG (X is any of the natural amino acids).) G가 방출되면 카르복시 말단 펩티드가 노출되어 공유 티오 중간체를 형성한다. (When G is released, the carboxy terminal peptide is exposed to form a covalent thio intermediate.) 이 중간체는 용액 속의 폴리글리신 기질을 포획하여 트레오닌과 새로운 펩티드 결합을 만들 수 있다. (The intermediate can capture the polyglycine substrate in solution and form a new peptide bond with threonine)
 
-일러스트. srt A의 돌연변이체인 델타 N 25, 델타 N 59, 델타 N 109는 각각 26~206, 60~206, 110~206번 아미노산 잔기를 갖는다. (The mutants of s r t A of delta N 25, delta N 59, and delta N 109 have amino acid residues from 26 to 206, 60 to 206, and 110 to 206, respectively.) 3M 및 4M SRTA는 60~206번 잔기를 가지며 P 945, D 160N, D 165A, K 196T 돌연변이 부위를 갖는다. (S r t A of 3 M and 4 M has residues from 60 to 206 with mutation sites of P 945, D 160 N, D 165 A, and K 196 T.)
+일러스트. srt A의 돌연변이체인 델타 N 25, 델타 N 59, 델타 N 109는 각각 26~206, 60~206, 110~206번 아미노산 잔기를 가진다. (The mutants of s r t A of delta N 25, delta N 59, and delta N 109 have amino acid residues from 26 to 206, 60 to 206, and 110 to 206, respectively.) 3M 및 4M SRTA는 60~206번 잔기를 가지며 P 945, D 160N, D 165A, K 196T 돌연변이 부위를 가진다. (S r t A of 3 M and 4 M has residues from 60 to 206 with mutation sites of P 945, D 160 N, D 165 A, and K 196 T.)
 
 Fig. 8.7
 
@@ -2400,7 +2400,7 @@ Table 10.1
 | F | LC C 말단(LC C-terminus) | Linker 8-VC-PABC-Aur0101 | 94 (94) | 95 (95) | 95 (95) |
 | F | LC C 말단(LC C-terminus) | Linker 9-VC-PABC-Aur0101 | 97 (97) | 98 (98) | 99 (99) |
 
-R기, 이중결합 O, HH기를 갖는 VC-PABC의 화학 구조가 강조되어 있다. Ces1C 효소가 작용하여 내성 링커를 절단한다. Ces1C는 NH기를 OH기로 치환한다. R기의 10개 링커가 오른쪽에 나열되어 있다. (A chemical structure of V C-P A B C with R group, double bonded O, and H H group is highlighted. The C e s 1 C enzyme acts and cleaves the resistant linkers. C e s C 1 replaces the N H group with the O H group. The 10 linkers of the R group are listed on the right.)
+R기, 이중결합 O, HH기를 가지는 VC-PABC의 화학 구조가 강조되어 있다. Ces1C 효소가 작용하여 내성 링커를 절단한다. Ces1C는 NH기를 OH기로 치환한다. R기의 10개 링커가 오른쪽에 나열되어 있다. (A chemical structure of V C-P A B C with R group, double bonded O, and H H group is highlighted. The C e s 1 C enzyme acts and cleaves the resistant linkers. C e s C 1 replaces the N H group with the O H group. The 10 linkers of the R group are listed on the right.)
 
 Fig. 10.6
 

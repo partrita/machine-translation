@@ -3252,7 +3252,7 @@ Fig. 5 유동세포측정 기반 CAR-T 세포 기능 분석. (a) Tscan 표적세
 
 4 Notes
 1. 4-1BB CAR 구조물은 임상용 JCAR14-17과 비슷하게 설계되었다[19]. 간략히 FM63 scFv가 짧은 IgG1 힌지 도메인과 CD8 기원 막횡단 도메인에 연결되고 그 뒤 41BB 공동자극 도메인과 CD3zeta c-말단이 따른다.
-2. CD28 CAR 구조물은 Genewiz(South Plainfield, NJ)에서 합성했으며 KTE-C19와 비슷하게 설계되었다[19]. 간략히 FM63 scFv가 CD3z c-말단을 갖는 CD28 막횡단 도메인과 신호 전달 도메인에 연결된다.
+2. CD28 CAR 구조물은 Genewiz(South Plainfield, NJ)에서 합성했으며 KTE-C19와 비슷하게 설계되었다[19]. 간략히 FM63 scFv가 CD3z c-말단을 가지는 CD28 막횡단 도메인과 신호 전달 도메인에 연결된다.
 3. CMV 프로모터가 구동하는 막결합 인체 CD19를 암호화하는 pTpB-CMV-hmbCD19 PiggyBac 트랜스포존 구조물은 Vector Builder에서 합성했다.
 4. 모든 플라스미드는 증류 탈이온수(Milli-Q Biocel, Millipore, USA)에 현탁했다.
 5. 플라스미드 준비 시스템에 엔도톡신 제거 단계가 있는 것이 중요하다.
