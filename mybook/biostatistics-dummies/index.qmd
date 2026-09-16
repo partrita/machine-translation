@@ -1,5 +1,5 @@
 ---
-title: "바보를 위한 생명통계학"
+title: "바보도 이해하는 생명통계학"
 author: "존 C. 페줄로 (John C. Pezzullo, PhD)"
 ---
 
