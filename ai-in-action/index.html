@@ -99046,11 +99046,15 @@ $$p_t(y x) =
 <h3>1.2 pass@k 지표</h3>
 <p>단일 표본 합격률은 모델의 능력 분포를 추정하는 데 적합하지 않다. 코드 생성은 확률론적이며 능력 있는 모델은 30%의 확률로 올바른 솔루션을 생성할 수 있기 때문이다. Chenet al. (2021)은 따라서 <span class="math inline">\(\text{pass}@k\)</span>을 정의한다. 독립적으로 추출된 <span class="math inline">\(k\)</span> 샘플 중 적어도 하나가 모든 단위 테스트를 통과할 확률이다.</p>
 <p><span class="math inline">\(k\)</span> 솔루션을 샘플링하고 <span class="math inline">\(k\)</span>이 모델의 실제 성공률에 비해 작을 때 모든 패스가 편향되지 않지만 높은 분산인지 확인하여 pass@k를 직접 계산한다. Chenet al. 문제당 <span class="math inline">\(n \geq k\)</span> 샘플을 그리고 올바른 샘플 수 <span class="math inline">\(c\)</span>을 계산하여 다음을 계산할 것을 제안한다.</p>
-<p>$$<span class="citation" data-cites="k">(<a href="#ref-k" role="doc-biblioref"><strong>k?</strong></a>)</span> = 1 - </p>
-<p>$$ 이 추정기는 모든 <span class="math inline">\(n\)</span> 샘플을 사용하기 때문에 편견이 없으며 순진 추정기보다 분산이 낮다. 조합 분수 <span class="math inline">\(\binom{n-c}{k} / \binom{n}{k}\)</span>은 선택된 모든 <span class="math inline">\(k\)</span> 샘플이 <span class="math inline">\(n - c\)</span> 잘못된 샘플에서 추출될 확률이므로 그 보수는 적어도 하나의 올바른 샘플이 선택될 확률이다.</p>
+<p><span class="math display">\[
+\text{pass}@k = 1 - \frac{\binom{n - c}{k}}{\binom{n}{k}}
+\]</span></p>
+<p>이 추정기는 모든 <span class="math inline">\(n\)</span> 샘플을 사용하기 때문에 편견이 없으며 순진 추정기보다 분산이 낮다. 조합 분수 <span class="math inline">\(\binom{n-c}{k} / \binom{n}{k}\)</span>은 선택된 모든 <span class="math inline">\(k\)</span> 샘플이 <span class="math inline">\(n - c\)</span> 잘못된 샘플에서 추출될 확률이므로 그 보수는 적어도 하나의 올바른 샘플이 선택될 확률이다.</p>
 <p>정수 오버플로 없이 큰 <span class="math inline">\(n\)</span>에 대해 이를 안정적으로 계산하려면 이항 계수 비율을 단순화할 수 있다.</p>
-<p>$$ = _{i=0}^{k-1} </p>
-<p>$$ 이 제품 형식에는 부동 소수점 산술만 포함되며 큰 계승 계산을 피한다.</p>
+<p><span class="math display">\[
+\frac{\binom{n-c}{k}}{\binom{n}{k}} = \prod_{i=0}^{k-1} \frac{n - c - i}{n - i}
+\]</span></p>
+<p>이 제품 형식에는 부동 소수점 산술만 포함되며 큰 계승 계산을 피한다.</p>
 <div class="sourceCode" id="cb1312"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1312-1"><a href="#cb1312-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1312-2"><a href="#cb1312-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Union</span>
 <span id="cb1312-3"><a href="#cb1312-3" aria-hidden="true" tabindex="-1"></a></span>
