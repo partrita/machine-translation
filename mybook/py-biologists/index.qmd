@@ -3212,7 +3212,7 @@ hdu045 has medium AT content
 teg436 has medium AT content
 ```
 
-### 7장: 정규 표현식
+## 7장: 정규 표현식
 
 #### 생물학에서 패턴의 중요성
 
@@ -3840,7 +3840,7 @@ for i in range(1, len(sorted_cuts)):
     print("one fragment size is " + str(fragment_size))
 ```
 
-### 8장: 딕셔너리 (Dictionaries)
+## 8장: 딕셔너리 (Dictionaries)
 
 #### 데이터 쌍 저장하기
 
