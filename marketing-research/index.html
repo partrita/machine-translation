@@ -799,7 +799,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../love-to-learn/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러브 투 런</span></a>
+  <a href="../love-to-learn/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">배우는 것을 사랑하기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1681,11 +1681,11 @@ window.Quarto = {
   <li><a href="#sec-causal-ladder" id="toc-sec-causal-ladder" class="nav-link" data-scroll-target="#sec-causal-ladder">인과추론 사다리</a></li>
   <li><a href="#핵심-인과추론-설계와-실습" id="toc-핵심-인과추론-설계와-실습" class="nav-link" data-scroll-target="#핵심-인과추론-설계와-실습">핵심 인과추론 설계와 실습</a>
   <ul class="collapse">
-  <li><a href="#무작위-통제-실험-rct-a-b-test" id="toc-무작위-통제-실험-rct-a-b-test" class="nav-link" data-scroll-target="#무작위-통제-실험-rct-a-b-test">1. 무작위 통제 실험 (RCT / A-B Test)</a></li>
-  <li><a href="#이중차분법-difference-in-differences-did" id="toc-이중차분법-difference-in-differences-did" class="nav-link" data-scroll-target="#이중차분법-difference-in-differences-did">2. 이중차분법 (Difference-in-Differences, DiD)</a></li>
-  <li><a href="#도구변수법-instrumental-variables-iv" id="toc-도구변수법-instrumental-variables-iv" class="nav-link" data-scroll-target="#도구변수법-instrumental-variables-iv">3. 도구변수법 (Instrumental Variables, IV)</a></li>
-  <li><a href="#회귀-불연속-설계-rdd" id="toc-회귀-불연속-설계-rdd" class="nav-link" data-scroll-target="#회귀-불연속-설계-rdd">4. 회귀 불연속 설계 (RDD)</a></li>
-  <li><a href="#합성-대조군-synthetic-control-method-scm" id="toc-합성-대조군-synthetic-control-method-scm" class="nav-link" data-scroll-target="#합성-대조군-synthetic-control-method-scm">5. 합성 대조군 (Synthetic Control Method, SCM)</a></li>
+  <li><a href="#무작위-통제-실험-rct-a-b-test" id="toc-무작위-통제-실험-rct-a-b-test" class="nav-link" data-scroll-target="#무작위-통제-실험-rct-a-b-test">무작위 통제 실험 (RCT / A-B Test)</a></li>
+  <li><a href="#이중차분법-difference-in-differences-did" id="toc-이중차분법-difference-in-differences-did" class="nav-link" data-scroll-target="#이중차분법-difference-in-differences-did">이중차분법 (Difference-in-Differences, DiD)</a></li>
+  <li><a href="#도구변수법-instrumental-variables-iv" id="toc-도구변수법-instrumental-variables-iv" class="nav-link" data-scroll-target="#도구변수법-instrumental-variables-iv">도구변수법 (Instrumental Variables, IV)</a></li>
+  <li><a href="#회귀-불연속-설계-rdd" id="toc-회귀-불연속-설계-rdd" class="nav-link" data-scroll-target="#회귀-불연속-설계-rdd">회귀 불연속 설계 (RDD)</a></li>
+  <li><a href="#합성-대조군-synthetic-control-method-scm" id="toc-합성-대조군-synthetic-control-method-scm" class="nav-link" data-scroll-target="#합성-대조군-synthetic-control-method-scm">합성 대조군 (Synthetic Control Method, SCM)</a></li>
   </ul></li>
   <li><a href="#인과-설계-선택-및-비교표" id="toc-인과-설계-선택-및-비교표" class="nav-link" data-scroll-target="#인과-설계-선택-및-비교표">인과 설계 선택 및 비교표</a></li>
   <li><a href="#핵심-요약-23" id="toc-핵심-요약-23" class="nav-link" data-scroll-target="#핵심-요약-23">핵심 요약</a></li>
@@ -13498,7 +13498,7 @@ Figure&nbsp;111.2: 관찰 데이터의 선택 편향(왼쪽) 대 무작위 배�
 <section id="핵심-인과추론-설계와-실습" class="level2">
 <h2 class="anchored" data-anchor-id="핵심-인과추론-설계와-실습">핵심 인과추론 설계와 실습</h2>
 <section id="무작위-통제-실험-rct-a-b-test" class="level3">
-<h3 class="anchored" data-anchor-id="무작위-통제-실험-rct-a-b-test">1. 무작위 통제 실험 (RCT / A-B Test)</h3>
+<h3 class="anchored" data-anchor-id="무작위-통제-실험-rct-a-b-test">무작위 통제 실험 (RCT / A-B Test)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb234-3"><a href="#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
@@ -13516,7 +13516,7 @@ Figure&nbsp;111.2: 관찰 데이터의 선택 편향(왼쪽) 대 무작위 배�
 <span id="cb234-15"><a href="#cb234-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"A-B 테스트 추정 ATE:"</span>, <span class="fu">round</span>(<span class="fu">coef</span>(fit_ab)[<span class="st">"D"</span>], <span class="dv">4</span>), <span class="st">" (참값 0.050 복원)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="이중차분법-difference-in-differences-did" class="level3">
-<h3 class="anchored" data-anchor-id="이중차분법-difference-in-differences-did">2. 이중차분법 (Difference-in-Differences, DiD)</h3>
+<h3 class="anchored" data-anchor-id="이중차분법-difference-in-differences-did">이중차분법 (Difference-in-Differences, DiD)</h3>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="fig-ci-did-logic" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -13551,7 +13551,7 @@ Figure&nbsp;111.3: 이중차분법(DiD)의 작동 논리. 시간 차분으로 �
 <span id="cb235-16"><a href="#cb235-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"DiD 상호작용 추정치 (ATT):"</span>, <span class="fu">round</span>(<span class="fu">coef</span>(fit_did)[<span class="st">"treat"</span>], <span class="dv">3</span>), <span class="st">" (참값 2.50 복원)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="도구변수법-instrumental-variables-iv" class="level3">
-<h3 class="anchored" data-anchor-id="도구변수법-instrumental-variables-iv">3. 도구변수법 (Instrumental Variables, IV)</h3>
+<h3 class="anchored" data-anchor-id="도구변수법-instrumental-variables-iv">도구변수법 (Instrumental Variables, IV)</h3>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="fig-ci-iv-dag" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -13587,7 +13587,7 @@ Figure&nbsp;111.4: 도구변수(IV)의 인과 DAG. 공급 측면 비용 이동 �
 <span id="cb236-17"><a href="#cb236-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"2SLS 도구변수 가격 계수:"</span>, <span class="fu">round</span>(<span class="fu">coef</span>(fit_iv)[<span class="st">"price"</span>], <span class="dv">3</span>), <span class="st">" (참값 -1.50 복원)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="회귀-불연속-설계-rdd" class="level3">
-<h3 class="anchored" data-anchor-id="회귀-불연속-설계-rdd">4. 회귀 불연속 설계 (RDD)</h3>
+<h3 class="anchored" data-anchor-id="회귀-불연속-설계-rdd">회귀 불연속 설계 (RDD)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb237"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb237-1"><a href="#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb237-2"><a href="#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb237-3"><a href="#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
@@ -13606,7 +13606,7 @@ Figure&nbsp;111.4: 도구변수(IV)의 인과 DAG. 공급 측면 비용 이동 �
 <span id="cb237-16"><a href="#cb237-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RDD 국소 처치 효과 (Cutoff Effect):"</span>, <span class="fu">round</span>(<span class="fu">coef</span>(rd_fit)[<span class="st">"treat_rd"</span>], <span class="dv">3</span>), <span class="st">" (참값 5.00 복원)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="합성-대조군-synthetic-control-method-scm" class="level3">
-<h3 class="anchored" data-anchor-id="합성-대조군-synthetic-control-method-scm">5. 합성 대조군 (Synthetic Control Method, SCM)</h3>
+<h3 class="anchored" data-anchor-id="합성-대조군-synthetic-control-method-scm">합성 대조군 (Synthetic Control Method, SCM)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb238"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb238-3"><a href="#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>

@@ -794,7 +794,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../love-to-learn/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">러브 투 런</span></a>
+  <a href="../love-to-learn/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">배우는 것을 사랑하기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1090,7 +1090,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#활용-무작위-트립" id="toc-활용-무작위-트립" class="nav-link" data-scroll-target="#활용-무작위-트립">활용: 무작위 트립</a>
   <ul class="collapse">
-  <li><a href="#장-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" id="toc-장-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" class="nav-link" data-scroll-target="#장-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기">3장 트립: 무작위화를 이용한 이진 탐색 트리 균형 맞추기</a>
+  <li><a href="#트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" id="toc-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" class="nav-link" data-scroll-target="#트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기">트립: 무작위화를 이용한 이진 탐색 트리 균형 맞추기</a>
   <ul class="collapse">
   <li><a href="#무작위화-도입" id="toc-무작위화-도입" class="nav-link" data-scroll-target="#무작위화-도입">3.4.2 무작위화 도입</a></li>
   <li><a href="#무작위-트립의-활용-분야" id="toc-무작위-트립의-활용-분야" class="nav-link" data-scroll-target="#무작위-트립의-활용-분야">3.4.3 무작위 트립의 활용 분야</a></li>
@@ -3718,8 +3718,8 @@ class SortedPriorityQueue {
 Bacon Butter Egg Flour Rice Water</code></pre>
 <p>**** 예제와 동일한 키를 포함하는 레드-블랙 트리. 레드-블랙 트리는 2-3 트리를 가장 간단하게 구현한 형태 중 하나다. 레드-블랙 BST는 노드 간의 링크가 두 가지 서로 다른 종류(빨간색 링크(파선)와 검은색 링크(실선))로 구성될 수 있다는 점을 제외하면 일반 BST와 유사하다. 빨간색 링크는 해당하는 2-3 트리에서 동일한 3-노드에 속했을 키들을 연결한다. 반면 검은색 링크는 2-3 트리의 실제 링크 역할을 한다. 여기에는 두 가지 제약 조건이 있다. (1) 어떤 노드도 (들어오거나 나가는) 두 개의 빨간색 링크와 연결될 수 없다. 이는 2-3 트리에 2-노드와 3-노드만 존재한다는 사실을 표현한다. (2) 루트에서 리프까지의 모든 경로는 동일한 개수의 검은색 링크를 가진다. 노드를 빨간색 또는 검은색으로 표시하는 방식도 이와 동등하다. 여기서는 명확성을 위해 빨간색(음영 처리)과 흰색(비음영)을 사용했다. 어떤 경로에서도 연속된 두 개의 빨간색 노드가 존재할 수 없다. 이러한 제약 조건들이 결합되어 레드-블랙 BST에서 빨간색 링크와 검은색 링크가 번갈아 나타나는 가장 긴 경로의 길이가 오직 검은색 링크만으로 이루어진 가장 짧은 경로의 길이의 최대 2배까지만 길어질 수 있음을 보장한다. 결과적으로 트리의 높이가 로그(logarithmic) 비례 수준임을 보장한다. 이러한 불변성은 삽입 및 삭제 후 적절한 회전을 적용하여 유지된다.</p>
 <hr>
-<section id="장-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" class="level2">
-<h2 class="anchored" data-anchor-id="장-트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기">3장 트립: 무작위화를 이용한 이진 탐색 트리 균형 맞추기</h2>
+<section id="트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기" class="level2">
+<h2 class="anchored" data-anchor-id="트립-무작위화를-이용한-이진-탐색-트리-균형-맞추기">트립: 무작위화를 이용한 이진 탐색 트리 균형 맞추기</h2>
 <p>여기서의 핵심 아이디어는 바로 회전을 사용하여 트리의 균형을 재조정할 수 있다는 점이다. 우선순위의 원래 의미를 배제한다면(이 예제에서는 각 제품의 재고 수량이라는 의미를 잊는다면), 이론적으로 각 노드의 우선순위 값을 갱신하여 힙의 불변성을 만족시키는 과정에서 더 균형 잡힌 트리를 생성하도록 유도할 수 있다.</p>
 <p>이 과정을 설명한다. 트리의 오른쪽 브랜치가 불균형한 상태인데, 끝에서 두 번째 레벨의 노드를 갱신함으로써 우회전을 강제하여 해당 노드를 한 레벨 위로 올리고 그 서브트리 및 이 간단한 예제에서는 전체 트리의 균형을 다시 맞출 수 있다.</p>
 <pre><code>       (A)                                (B)
@@ -13149,7 +13149,7 @@ function gradientDescent(f, P0, alpha, maxSteps)
 <h3 class="anchored" data-anchor-id="지역-최솟값을-넘어서-학습률-모멘텀-골짜기">16.3.4 지역 최솟값을 넘어서: 학습률, 모멘텀, 골짜기</h3>
 <p>경사하강법을 사용할 때 주의해야 할 몇 가지 중요한 문제와 이를 해결하기 위한 고급 기법들이 존재한다.</p>
 <section id="학습률의-선택" class="level4">
-<h4 class="anchored" data-anchor-id="학습률의-선택">1. 학습률의 선택</h4>
+<h4 class="anchored" data-anchor-id="학습률의-선택">학습률의 선택</h4>
 <p>리스팅 16.4에서 보았듯이 업데이트 단계마다 그래디언트에 <strong>학습률(learning rate)</strong> <span class="math inline">\(\alpha\)</span>(알파)를 곱해 준다. <span class="math inline">\(\alpha\)</span>는 각 단계에서 이동할 보폭의 크기를 조절하는 하이퍼파라미터(hyper-parameter)다.</p>
 <ul>
 <li><strong>학습률이 너무 큰 경우</strong>: 한 단계에서 너무 멀리 이동하여 최솟값을 지나쳐 버릴 수 있다(overshooting). 심한 경우 최솟값 주변을 진동하다가 발산(diverge)하여 비용이 무한대로 치솟을 수 있다.</li>
@@ -13162,7 +13162,7 @@ function gradientDescent(f, P0, alpha, maxSteps)
 </ul>
 </section>
 <section id="모멘텀" class="level4">
-<h4 class="anchored" data-anchor-id="모멘텀">2. 모멘텀</h4>
+<h4 class="anchored" data-anchor-id="모멘텀">모멘텀</h4>
 <p>경사하강법이 얕은 지역 최솟값에 갇히거나 좁고 긴 골짜기(ravine/valley)에서 좌우로 요동치며 전진이 더뎌지는 문제를 해결하기 위해 물리학의 ‘관성’ 개념을 도입한 <strong>모멘텀(momentum)</strong> 기법이 널리 사용된다.</p>
 <p>모멘텀을 적용한 업데이트 규칙의 기본 형태는 다음과 같다:</p>
 <p>$$P_{t+1} P_t - (1-) g(P_t)</p>
