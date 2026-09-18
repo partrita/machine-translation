@@ -11,7 +11,7 @@ author: "Tamer Khraisha"
 
 이 장들을 통해 금융 데이터 엔지니어링을 이해하고 실무에 적용하는 데 필요한 기본 원칙과 개념을 확립할 수 있다.
 
-## 1장. 금융 데이터 엔지니어링의 이해
+## 금융 데이터 엔지니어링의 이해
 
 매일 이루어지는 수많은 결제, 이체, 거래 및 다양한 금융 활동을 고려할 때, 글로벌 금융 부문이 얼마나 많은 데이터를 생성하는지 상상할 수 있습니까? [매킨지 글로벌 연구소(McKinsey Global Institute)의 2011년 보고서](https://oreil.ly/UCWHq)에 따르면, 미국 내 은행 및 투자 부문에서만 1엑사바이트(exabyte) 이상의 데이터를 저장하고 관리한다. 이해를 돕자면, 1엑사바이트는 10억 기가바이트에 해당하며 수조 개의 디지털 레코드로 환산된다. 동일한 보고서에 따르면 금융 서비스 기업은 평균적으로 다른 부문의 기업보다 더 많은 데이터를 생성하고 저장한다. 몇몇 통계는 훨씬 더 놀랍는다. 예를 들어, 시가총액 기준 미국 최대 은행인 JP모건 체이스(JPMorgan Chase)는 [450페타바이트 이상의 데이터를 관리](https://oreil.ly/b3IWP)하고 있다. 투자 관리 및 투자 서비스를 전문으로 하는 글로벌 금융 서비스 기업인 BNY 멜론(Bank of New York Mellon)은 [1억 1,000만 기가바이트 이상의 글로벌 금융 데이터를 관리](https://oreil.ly/svSHz)한다.
 
@@ -673,7 +673,7 @@ BloombergGPT의 대안으로 한 연구팀은 AI4Finance 재단과 협력하여 
 
 13 FMI 규제에 대해 더 자세히 알고 싶다면 국제결제은행의 [“Principles for Financial Market Infrastructures”](https://oreil.ly/BGLoR) (2012년 4월) 및 [“Core Principles for Systemically Important Payment Systems”](https://oreil.ly/EWSlw) (2001년 1월)을 참조하라.
 
-## 2장. 금융 데이터 생태계
+## 금융 데이터 생태계
 
 이 책 전반에서 논의했듯이, 데이터는 금융 시장 운영의 핵심에 자리 잡을 것이다. 디지털 전환과 클라우드 마이그레이션 노력이 금융 분야 전반으로 확산됨에 따라 점점 더 많은 금융 활동이 디지털 흔적을 남기게 될 것이다. 결과적으로 금융 데이터 생성의 양, 다양성, 속도는 끊임없이 증가하고 있다. 이는 시장 참여자들이 금융 및 비즈니스 활동을 수행하는 데 필수적인 수많은 소스, 유형, 구조, 공급자, 전송 방식, 데이터셋을 아우르는 방대하고 복잡한 금융 데이터 환경을 낳았다.
 
@@ -1461,7 +1461,7 @@ S&P 글로벌 모빌리티(S&P Global Mobility)가 제공하는 [글로벌 신�
 
 15 이 문제에 대한 보다 자세한 논의는 앨런 D. 그로디(Allan D. Grody), 포티오스 하르만지스(Fotios Harmantzis), 그레고리 J. 카플(Gregory J. Kaple)의 논문 [“Operational Risk and Reference Data: Exploring Costs, Capital Requirements and Risk Mitigation”](https://oreil.ly/1TUB7), *Journal of Operational Risk* 1, no. 3 (2006)에서 확인할 수 있다.
 
-## 3장. 금융 식별 시스템
+## 금융 식별 시스템
 
 가격이나 거래 내역과 같은 금융 데이터는 각 레코드를 해당하는 개체에 신뢰성 있게 매핑할 수 있을 때에만 비로소 정보 가치를 제공할 수 있다. 특정 개체에 대한 데이터를 얻기 위해 데이터셋을 필터링할 수 있는 능력은 데이터를 의미 있는 방식으로 분석할 수 있는 기반이 된다.
 
@@ -2149,7 +2149,7 @@ PAN은 8자리에서 19자리까지 가변적인 길이를 가진 숫자 코드�
 
 17 연습 과제: 앞서 국제증권식별번호에서 정의한 룬 알고리즘을 활용하여 신용카드 또는 체크카드 번호의 유효성을 검증해 보라(주의: 본인의 실제 카드 번호를 사용하지 마라. 테스트용 신용카드 번호 목록은 [온라인](https://oreil.ly/8Smmy)에서 확인할 수 있다).
 
-## 4장. 금융 엔티티 시스템
+## 금융 엔티티 시스템
 
 지난 장에서는 금융 식별자와 식별 체계, 그리고 금융 시장에서 이들이 갖는 결정적인 역할에 대해 배웠는다. 중요한 점은 금융 엔티티를 식별하기에 앞서 먼저 데이터를 추출하고 식별할 수 있는 상태로 준비해야 한다는 사실이다. 그러나 금융 분야에서는 엔티티를 즉시 식별할 수 없는 비정형 포맷으로 데이터가 존재하는 경우가 매우 흔한다. 실제로 애널리스트들은 전 세계 데이터의 대다수가 텍스트, 비디오, 오디오, 이미지와 같은 비정형 포맷으로 존재한다고 [추정](https://oreil.ly/5ZUgg)한다. 더욱이 정형 데이터와 비정형 데이터 전반에 걸쳐 동일한 금융 엔티티를 참조하는 데 서로 다른 식별자가 사용되는 일도 대단히 빈번한다. 이러한 요인들이 복합적으로 작용하여 데이터로부터 가치와 인사이트를 추출하려 할 때 중대한 난관을 조성한다.
 
@@ -2960,7 +2960,7 @@ ER을 위한 지도학습 머신러닝 모델을 개발하는 것은 상당히 �
 
 17 이 방향으로 몇 가지 노력이 이루어졌으며 대표적으로 암르 에바이드(Amr Ebaid), 사라바난 티루무루가나탄(Saravanan Thirumuruganathan), 왈리드 G. 아레프(Walid G. Aref), 아메드 엘마가르미드(Ahmed Elmagarmid), 무라드 우자니(Mourad Ouzzani)의 [“Explainer: Entity Resolution Explanations”](https://oreil.ly/kge1X), *2019 IEEE 35th International Conference on Data Engineering (ICDE)* (IEEE, 2019): 2000-2003을 참조하라.
 
-## 5장. 금융 데이터 거버넌스
+## 금융 데이터 거버넌스
 
 금융 시장이 확장됨에 따라 금융 데이터를 수집, 저장, 사용하는 방법과 사용 사례 역시 폭발적으로 증가하고 있다. 이로 인해 금융 업계뿐만 아니라 보다 폭넓은 규제 기관에서도 강력한 데이터 통제, 품질 보증, 개인정보 보호 규칙, 강화된 보안 조치를 촉구하며 우려의 목소리를 내고 있다. 그 결과 데이터 거버넌스 프레임워크는 금융 기관 내에서 데이터 실무를 이끌기 위한 규칙과 원칙을 정의하고 구현하는 유망한 접근 방식으로 부상했다.
 
@@ -3759,7 +3759,7 @@ PCI DSS를 준수하기 위해 12가지 요구사항이 수립되었으며 이�
 6장은 금융 데이터 인프라의 다양한 구성 요소를 수집(Ingestion), 저장(Storage), 변환 및 전달(Transformation and delivery), 모니터링(Monitoring)의 네 가지 구조화된 계층으로 체계화하는 개념적 프레임워크인 금융 데이터 엔지니어링 수명주기(FDEL)를 소개하며 시작한다. 이후 7장부터 10장까지는 이러한 각 계층을 심도 있게 다룬다. 이어서 11장에서는 FDEL을 구현하는 데 흔히 사용되는 다양한 워크플로 아키텍처를 논의한다. 12장은 금융 데이터 엔지니어링의 핵심 프랙티스와 기술을 익힐 수 있도록 설계된 4가지 실습 프로젝트로 마무리된다.
 
 
-## 6장. 금융 데이터 엔지니어링 수명주기 개요
+## 금융 데이터 엔지니어링 수명주기 개요
 
 금융 데이터 엔지니어로서 마주하는 수많은 기술적 대안의 다양성과 복잡성은 압도적일 수 있다. 체계적인 접근 방식이 없다면 이러한 복잡성은 혼란스러운 상황과 막대한 비용을 초래하는 기술 부채의 누적으로 이어질 수 있다. 따라서 이번 장에서는 금융 데이터 엔지니어링을 체계화하여 구성 요소를 계층형 아키텍처로 정리한 *금융 데이터 엔지니어링 수명주기(FDEL, Financial Data Engineering Lifecycle)* 를 소개한다. 이 프레임워크는 데이터 엔지니어링 수명주기에 관한 [조 라이스와 맷 하우슬리의 기초 연구(Joe Reis and Matt Housley)](https://oreil.ly/9Nuvv)에서 영감을 얻었다.
 
@@ -4196,7 +4196,7 @@ FIX와 같은 표준화된 통신 프로토콜은 트레이더, 브로커, 거�
 
 9 이 주제에 관한 흥미로운 글로 Thomas Boillat와 Christine Legner의 [“From On-Premise Software to Cloud Services: The Impact of Cloud Computing on Enterprise Software Vendors’ Business Models”](https://oreil.ly/3bFI9), *Journal of Theoretical and Applied Electronic Commerce Research* 8, no. 3 (December 2013): 39-58을 추천한다.
 
-## 7장. 데이터 수집 계층
+## 데이터 수집 계층
 
 2장에서 우리는 금융 데이터를 생성하는 다양한 소스와 메커니즘을 배웠는다. 여기에는 공공, 시장, 대체, 내부 소스가 포함되었다. 데이터가 소스에서 생성되면 금융 데이터 인프라 내에서의 수명주기는 수집(Ingestion)과 함께 시작된다. 이번 장에서 살펴보겠지만 데이터 수집은 용어가 풍기는 뉘앙스만큼 단순하지 않는다. 오늘날의 복잡한 금융 데이터 생태계에서 데이터 수집은 방대한 유형의 데이터 전송 및 도착 프로세스뿐만 아니라 다양한 수집 기술, 메커니즘 및 형식을 포괄하도록 확장되었다.
 
@@ -4947,7 +4947,7 @@ FactSet은 전 세계 160,000명 이상의 투자 전문가에게 콘텐츠를 �
 
 24 금융 데이터 수집 벤치마킹에 대한 참고 자료로 Manuel Coenen, Christoph Wagner, Alexander Echler, Sebastian Frischbier의 [“Benchmarking Financial Data Feed Systems”](https://oreil.ly/gw2JN), in the *Proceedings of the 13th ACM International Conference on Distributed and Event-based Systems* (June 2019): 252-253을 추천한다.
 
-## 8장. 데이터 저장 계층
+## 데이터 저장 계층
 
 이전 장에서 독자는 금융 데이터 인프라로 데이터를 수집하는 데 사용되는 메커니즘, 기술 및 형식을 포함하여 데이터 수집 계층이 작동하는 방식을 배웠는다. 일단 수집된 데이터는 추가 처리 및 쿼리를 위해 스토리지 위치에 저장되고 영속화되어야 한다. 바로 이 지점에서 데이터 저장 계층이 등장한다.
 
@@ -6002,7 +6002,7 @@ Ripple은 자사의 Ripple CBDC 플랫폼을 통해 국가들이 자체 [중앙�
 
 36 블록체인 데이터베이스 설계 패턴에 대한 자세한 내용은 MongoDB의 가이드 [“Blockchain Database: A Comprehensive Guide”](https://oreil.ly/klrQS)를 참조하라.
 
-## 9장. 데이터 변환 및 전달 계층
+## 데이터 변환 및 전달 계층
 
 지금쯤 독자 독자는 금융 데이터 엔지니어링 수명주기의 첫 두 계층인 수집과 저장에 익숙해졌을 것이다. 다음 계층은 데이터 변환 및 전달 계층(Data Transformation and Delivery Layer)으로, 여기서 두 가지 주요 작업이 일어난다. 첫째, 데이터는 기본 전처리 및 정제부터 복잡한 분석 계산에 이르기까지 일련의 변환을 거친다. 둘째, 데이터는 사전에 수립된 계약에 따라 최종 사용자에게 전달된다. 모든 계층은 비즈니스 요구와 기술적 한계에 따라 서로 영향을 미칠 수 있다는 점을 명심하라. 따라서 수집 및 저장 계층에서 내린 결정은 이 계층에 영향을 미칠 가능성이 높으며 그 반대도 마찬가지이다.
 
@@ -6630,7 +6630,7 @@ Amazon EC2 기반의 Apache Ignite, Amazon EMR 기반의 Apache Spark, AWS Lambd
 
 15 데이터베이스 처리량에 대한 자세한 내용은 펠리페 카르데네티 멘데스(Felipe Cardeneti Mendes), 표트르 사르나(Piotr Sarna), 파벨 에멜리아노프(Pavel Emelyanov), 신시아 던롭(Cynthia Dunlop)의 *Database Performance at Scale: A Practical Guide*(Apress, 2023): 254를 참조하라.
 
-## 10장. 모니터링 계층
+## 모니터링 계층
 
 수집, 저장, 변환 및 전달 계층을 설계하고 구현한 후 구축해야 할 마지막 계층은 *모니터링 계층(Monitoring layer)*이다. 이 계층은 금융 데이터 인프라의 성능, 신뢰성 및 품질을 추적하고 보고하는 데 매우 중요하다.
 
@@ -7035,7 +7035,7 @@ Abel Noser는 거래된 상품, 가격, 수량, 날짜, 매매 방향(매수 또
 
 3 가관측성 데이터 관리 시스템에 대한 포괄적인 논의는 수만 카루무리(Suman Karumuri), 프랑코 솔레자(Franco Solleza), 스탠 즈도닉(Stan Zdonik), 네시메 타트불(Nesime Tatbul)의 [“Towards Observability Data Management at Scale”](https://oreil.ly/N9OXj), *ACM SIGMOD Record* 49, no. 4 (2021년 3월): 18-23을 적극 권장한다.
 
-## 11장. 금융 데이터 워크플로
+## 금융 데이터 워크플로
 
 책의 이 파트 전체에서 독자는 금융 데이터 엔지니어링 수명주기의 기본 계층인 수집, 저장, 변환 및 전달, 모니터링을 살펴보았다. 이 구조화된 프레임워크를 준수하는 것은 효율적인 금융 데이터 인프라를 구축하고 유지 관리하는 데 매우 중요하다.
 
@@ -7344,7 +7344,7 @@ ML 워크플로 설계자는 다양한 도메인별 요구 사항을 통합해�
 
 8 ML 워크플로 설계에서 발생하는 데이터 관련 문제에 대해 자세히 알아보려면 네오클리스 폴리조티스(Neoklis Polyzotis), 수딥 로이(Sudip Roy), 스티븐 유이종 황(Steven Euijong Whang), 마틴 진케비치(Martin Zinkevich)의 [“Data Lifecycle Challenges in Production Machine Learning: A Survey”](https://oreil.ly/K4eIB), *ACM SIGMOD Record* 47, no. 2 (2018년 12월): 17-28을 추천한다.
 
-## 12장. 실습 프로젝트
+## 실습 프로젝트
 
 이제 금융 데이터 엔지니어링에 대한 기본적인 이해를 마쳤으므로 실제로 적용해 볼 시간이다. 이 장에서는 금융 데이터를 직접 다루는 경험을 제공하도록 설계된 일련의 실습 프로젝트를 진행한다.
 

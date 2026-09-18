@@ -11623,7 +11623,7 @@ flowchart LR
 
 ## 핵심 인과추론 설계와 실습
 
-### 1. 무작위 통제 실험 (RCT / A-B Test)
+### 무작위 통제 실험 (RCT / A-B Test)
 
 ```{.r}
 #| echo: true
@@ -11643,7 +11643,7 @@ fit_ab <- lm(Y ~ D)
 cat("A-B 테스트 추정 ATE:", round(coef(fit_ab)["D"], 4), " (참값 0.050 복원)\n")
 ```
 
-### 2. 이중차분법 (Difference-in-Differences, DiD)
+### 이중차분법 (Difference-in-Differences, DiD)
 
 ```{mermaid}
 %%| label: fig-ci-did-logic
@@ -11682,7 +11682,7 @@ fit_did <- lm(sales ~ treated_group + post + treat, data = df_did)
 cat("DiD 상호작용 추정치 (ATT):", round(coef(fit_did)["treat"], 3), " (참값 2.50 복원)\n")
 ```
 
-### 3. 도구변수법 (Instrumental Variables, IV)
+### 도구변수법 (Instrumental Variables, IV)
 
 ```{mermaid}
 %%| label: fig-ci-iv-dag
@@ -11714,7 +11714,7 @@ cat("단순 OLS 가격 계수:", round(coef(fit_naive)["price"], 3), " (내생�
 cat("2SLS 도구변수 가격 계수:", round(coef(fit_iv)["price"], 3), " (참값 -1.50 복원)\n")
 ```
 
-### 4. 회귀 불연속 설계 (RDD)
+### 회귀 불연속 설계 (RDD)
 
 ```{.r}
 #| echo: true
@@ -11735,7 +11735,7 @@ rd_fit <- lm(y_rd ~ I(running - 500) * treat_rd, data = df_rd)
 cat("RDD 국소 처치 효과 (Cutoff Effect):", round(coef(rd_fit)["treat_rd"], 3), " (참값 5.00 복원)\n")
 ```
 
-### 5. 합성 대조군 (Synthetic Control Method, SCM)
+### 합성 대조군 (Synthetic Control Method, SCM)
 
 ```{.r}
 #| echo: true
@@ -14285,6 +14285,5 @@ flowchart LR
 `r if (knitr::is_html_output()) '
 # 참고문헌 {-}
 '`
-
 
 

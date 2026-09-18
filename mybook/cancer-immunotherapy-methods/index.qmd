@@ -81,7 +81,7 @@ Martina Musella, Nicoletta Manduca, Ester Maccafeo, Eliana Ruggiero, Antonella S
 
 EDTA ethylenediaminetetraacetic acid / FACS fluorescence-activated cell sorting / FBS fetal bovine serum / FSC-A forward scatter area / GM-CSF granulocyte-macrophage colony-stimulating factor / IL interleukin / MCA205-OVA ovalbumin-expressing MCA205 / MHC-I major histocompatibility complex I / MHC-II major histocompatibility complex class II / OVA ovalbumin / PB Pacific Blue / PBS phosphate-buffered saline / PI propidium iodide / RBC red blood cell / RPMI Roswell Park Memorial Institute / RT room temperature / SSC-A side scatter area / SSC-W side scatter width / TCR T cell receptor / TGFβ transforming growth factor beta / TME tumor microenvironment / TNFα tumor necrosis factor alpha
 
-## 1 서론
+## 서론
 
 종양 미세환경(tumor microenvironment, TME)이 암의 발생, 진행, 치료 반응에 미치는 생물학적 함의는 최근 몇 년간 커다란 관심을 받아왔다. 면역세포는 TME의 중심 구성 요소이며 종양-숙주 공동진화에 결정적인 영향을 끼친다. 암세포는 "암 면역 주기(cancer immunity cycle)"로 불리는 과정에서 면역 감시와 끊임없이 맞서야 하는데, 이 주기를 이끄는 주역은 수지상세포(DC)와 세포독성 CD8 T 림프구다(이들만 있는 것은 아니다). 이 단계적 과정을 가장 단순하게 그리면 다음과 같다. DC가 말초 조직에서 종양연관항원과 종양특이항원(신생항원이라고도 한다)을 포획·처리하여 주요조직적합성복합체 클래스 I(MHC-I) 분자에 실으면 말초에서 일차 면역반응이 출발한다. 성숙한 DC는 이렇게 해서 림프기관으로 이동하고 CD80/CD86 분자의 상향조절과 염증성 사이토카인(예: 인터루킨[IL]-1β, IL-12, 종양괴사인자 알파[TNFα]) 분비 같은 공자극 신호까지 곁들여 종양특이적 나일리브 CD8 T세포를 교차 프라이밍하고 활성화한다. 일단 활성화된 effector CD8 T 림프구는 T세포수용체(TCR) 레퍼토리를 통해 클론 확장을 거치고, 종양 간질로 이동·침윤하여 세포독성 활성을 발휘하며, 마지막으로 세포사멸과 연련된 수축기에 들어가면서 장기 생존하는 종양 항원특이적 기억세포 풀은 남겨둔다.
 
@@ -93,7 +93,7 @@ EDTA ethylenediaminetetraacetic acid / FACS fluorescence-activated cell sorting 
 
 여기서는 CD8 H-2Kb/오발부민(OVA) 특이적 OT-1 T세포를 OVA 발현 MCA205 육종세포(MCA205-OVA)와 그 CSC 상대 세포(CSC-OVA)에 노출시켜 증식률과 종살 능력을 분석함으로써, 암세포 면역원성과 항원별 T세포 세포독성을 평가하는 상세한 유세포 분석 프로토콜을 소개한다.
 
-## 2 재료
+## 재료
 
 ### 2.1 일회용품
 
@@ -165,7 +165,7 @@ EDTA ethylenediaminetetraacetic acid / FACS fluorescence-activated cell sorting 
 
 large-scale primary CAR-NK cell preparation barely optimized되었다. 본 장에서는 비바이러스 PB transposon system과 인공 항원제시세포(artificial antigen-presenting cells, aAPCs)를 사용해 인체 말초혈액 primary NK세포로부터 대규모 NKG2D CAR-NK 세포 생성·확장 프로토콜을 제시한다(Fig. 1 참조). 이론적으로 이 방법은 PB transposon plasmid와 aAPCs를 그에 맞게 설계하면 다른 어떤 antigen-specific CAR constructs 지닌 NK세포 생성·확장에도 적용 가능하다.
 
-## 2 재료
+## 재료
 ### 2.1 세포 배양
 1. 건강한 기증자 leukocyte reduction system cones는 싱가포르 Health Sciences Authority에서 이용 가능하다.
 2. Membrane-bound IL-15, IL-21, 41BBL을 가진 K562 aAPCs는 증식 정지 위해 100 Gy gamma-irradiated된다.
@@ -194,7 +194,7 @@ Non-viralCAR-NKCellsGenerationProtocol 283
 ### 2.5 기능 분석
 Victor3 plate reader(PerkinElmer, Waltham, MA) / DELFIA EuTDA Cytotoxicity Reagents kit(PerkinElmer) / APC-conjugated CD107a antibody(BD Biosciences) / GolgiStop™ containing monensin(BD Biosciences) / U-bottom 96-well plate / anti-CD56 PE antibody staining(Miltenyi Biotec)(Note 1 참조)
 
-## 3 방법
+## 방법
 
 ### 3.1 말초혈액 단핵세포와 primary natural killing 세포 분리
 1. Ficoll-Paque™ Plus density gradient centrifugation으로 건강한 기증자 leukocyte reduction system cones에서 fresh human PBMCs isolate한다.
@@ -252,7 +252,7 @@ Cytotoxicity assay는 generally manufacturer’s protocol(three-hour Europium-re
 5. Incubation 후 manufacturer’s protocol according anti-CD56 PE antibody cells Stain한다.
 6. CD56과 CD107a expression detecting flow cytometry analysis Proceed한다.
 
-## 4 참고사항
+## 참고사항
 1. In vivo assays는 laboratories between high inconsistency 때문에 본 protocol discussed되지 않는다. Researchers는 requested NSG mice with xenograft consider할 수 있다.
 2. Frozen cells vial당 5 × 10 amount keep recommended다. Warm culture medium(AIM-V with 5% AB serum)으로 PBMC stock one vial Thaw하고 37°C, 5% CO₂ incubator overnight Rest하며 DNase(2.5 μg/mL) fresh culture media supplemented 20-30 mL을 T75 Nunc EasYFlask 함께.
 3. NK cell isolation 후 NK cells purity(CD3-CD56+) 약 90% reach해야 한다. T cell percentage(CD3+)는 generally 1% 미만이어야 한다.
@@ -270,7 +270,7 @@ Lysis Specific (%) = (Experimental release counts − Spontaneous release counts
 
 Acknowledgement This work was supported by the Singapore Ministry of Health’s National Medical Research Council(NMRC/CIRG/1406/2014; NMRC/OFLCG/003/2018) and the establishment of a scalable capability for autologous clinical cell therapy manufacturing(IAF-PP, H18AHa0001) from the Agency for Science, Technology and Research(A*STAR).
 
-## 2 재료
+## 재료
 
 ### 2.1 세포주
 A20(ATCC, TIB-208).
@@ -313,7 +313,7 @@ Pierce Coomassie Plus(Bradford) Assay Kit(Thermo Fisher, 23,236) / HisPur Ni-NTA
 ### 2.11 Imaging과 software
 Living Image / FlowJo Version 10
 
-## 3 방법
+## 방법
 
 ### 3.1 플라스미드와 strain engineering
 
@@ -510,7 +510,7 @@ EngineeringProbioticE.coliNissle1917forReleaseofTherapeuticNanobodies 301
 28. FACS buffer 200μL Resuspend하고 Nytex Filter한다.
 29. Samples BD LSRFortessa cell analyzer Analyze하고 FlowJo data analyses 사용한다.
 
-## 4 참고사항
+## 참고사항
 1. Cell lines authenticity와 sterility microscopy 사용 cell morphology confirm 유지되어야 하며 animal cell lines mycoplasma contamination frequently tested되어야 한다.
 2. Streamlined protocol 목적상 A20 cell line example 사용한다. 그러나 우리는 immunologically colder murine colorectal cell line인 CT26(ATCC, CRL-268) delayed tumor growth also shown했으며 applicable throughout protocol additional notes include할 것이다.
 3. 모든 동물 실험은 Institutional Animal Care and Use Committee 승인받았다(Columbia University, protocols AC-AAAN8002와 AC-AAAZ4470). 여기 described 모든 절차는 Institutional Animal Care and Use Committee(IACUC) approved되어야 한다. All personnel should be trained(including but not limited to health clearance, humane
@@ -664,7 +664,7 @@ Human T Cell Transduction and Cytolysis Analysis 37
 20. E-plate를 SP 시스템에 다시 넣고 원하는 시간 동안 측정을 재개한다(주의사항 14 참고).
 21. 실험이 끝나면 SP 소프트웨어에서 데이터를 분석하거나 내보내 다른 프로그램으로 분석한다(주의사항 15 및 그림 2 참고).
 
-## 4 주의사항
+## 주의사항
 
 ### 형질도입 프로토콜
 
@@ -708,7 +708,7 @@ Human T Cell Transduction and Cytolysis Analysis 39
 | 확장 - 24웰 형식 | 구하기 쉽고 저렴; 소량·대량 생산 모두 가능 | 많은 24웰 플레이트를 다루기 번거로울 수 있음 |
 | G-Rex® | 과정 중 배지 교환 불필요; 기체 교환으로 최대 확장 | 현미경으로 세포 관찰 불가; 스피뉴큘레이션으로 형질도입 강화 불가; 마우스 T세포 배양이 짧아 G-Rex의 장기적 장점을 충분히 살리지 못할 수 있음 |
 
-## 2 재료
+## 재료
 
 ### 2.1 293T 세포 배양
 
@@ -813,7 +813,7 @@ C2 - G-Rex® 조직배양 6웰 사용:
 6. 플레이트 어댑터가 달린 스윙버킷 로터를 갖춘 고속 원심분리기.
 7. 유세포 분석기.
 
-## 3 방법
+## 방법
 
 ### 3.1 레트로바이러스 생산
 
@@ -937,7 +937,7 @@ Mouse CAR T-Cell Production 49
 
 Mouse CAR T-Cell Production 51
 
-## 4 주의사항
+## 주의사항
 
 1. 폴리-D-라이신은 293T 세포의 부착을 돕고 이를 통해 생산 세포의 바이러스 수율을 높인다. 미리 코팅된 플레이트를 쓰거나 제조사 지침에 따라 폴리-D-라이신 용액으로 직접 코팅할 수 있다.
 2. Vectofusin®-1의 효과는 배지 속 혈청 유무에 영향을 받는다. 1일째 293T 세포의 형질전환 배지를 교체할 때는 FBS가 든 RPMI 기반 배지가 아니라 Tex-MACS™ 같은 무혈청 배양 배지를 써야 한다.
@@ -971,7 +971,7 @@ Mouse CAR T-Cell Production 51
 
 ![그림1 ISDoT 탈세포화 ECM 스캐폴드 제작 모식도](images/img-068-017.jpg)
 
-## 2 재료
+## 재료
 
 주의사항 1 참고.
 
@@ -1130,7 +1130,7 @@ ISDoT Applied to the Topographical Analysis of Tumor-Associated ECM 65
 11. Alexa Fluor 647 donkey anti-goat IgG (H + L)(cross-adsorbed 2차 항체; Thermo Fisher Scientific, cat. no. A-21447, RRID:AB_2535864)
 12. Alexa Fluor 647 donkey anti-rabbit IgG (H + L)(highly cross-adsorbed 2차 항체; Thermo Fisher Scientific, cat. no. A-31573, RRID:AB_2536183)
 
-## 3 방법
+## 방법
 
 ### 3.1 준비
 
@@ -1211,7 +1211,7 @@ ISDoT Applied to the Topographical Analysis of Tumor-Associated ECM 71
 
 컴퓨터 제어로 전환하고 사용하는 레이저에 따라 백색광 또는 2광자 레이저 live 모드로 들어간다. 둘 다 쓴다면 2광자 레이저부터 시작한다. 형광 소광을 피하기 위해 레이저 출력을 낮춘다. 선택한 형광물질에 맞춰 검출기(하이브리드 및 PMT)를 고르고 조절한다. 동시 획득 또는 순차 획득 중 하나를 고른다. 레이저 파장, 출력, 게인, 오프셋을 조절한다. 핀홀, 픽셀 크기, 픽셀 체류 시간, 평균화, 줌을 조절한다. 음성 대조군이 검출기에서 신호를 내지 않는지 확인하는 것을 잊지 않는다. z-제어를 스크롤해 z 범위를 정하고 시작점과 끝점을 지정한다. 부피(z-stack) 안 이미지 수는 목적에 맞게 그때그때 고른다. 이미지를 획득한다. 같은 샘플을 오래 촬영할 계획이라면 보관 용액이 항상 샘플을 적시고 있고 대물렌즈의 침지액이 마르지 않는지 확인한다(주의사항 4-6 참고).
 
-## 4 주의사항
+## 주의사항
 
 1. 모든 수술 절차와 샘플 보관은 무균 조건에서 해야 한다.
 2. 모든 용액은 매번 신선하게 준비한다.
@@ -1220,7 +1220,7 @@ ISDoT Applied to the Topographical Analysis of Tumor-Associated ECM 71
 5. ISDoT 수술의 상세 영상은 관련 프로토콜 자료에서 확인할 수 있다.
 6. 3D 영상의 분석과 정량화는 이 프로토콜의 범위 밖이다.
 
-## 2 재료
+## 재료
 
 별도 명시가 없는 한 모든 용액은 실온에서 MilliQ 물로 준비했다.
 
@@ -1301,7 +1301,7 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 77
 2. NIS-Elements 소프트웨어(Nikon).
 3. R 소프트웨어(https://www.r-project.org/)를 사용한 ANOVA 모수검정 및 Tukey's HSD 사후검정.
 
-## 3 방법
+## 방법
 
 ### 3.1 입자 분산액 준비
 
@@ -1397,7 +1397,7 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 81
 19. 표준곡선:
  (a) 세척 완충액(1:1, v/v)에서 T98G 세포 연속 희석을 만들어 총 부피 100 μL에서 표준곡선을 생성한다(세포 수 = 12500, 6250, 3125, 1562, 781, 390, 195, 98, 49). (b) 세척 완충액 100 μL를 blank로 사용한다. (c) 세포 형광 측정은 앞서 설명한 것과 같은 절차를 따른다(주의사항 14 참고).
 
-## 4 주의사항
+## 주의사항
 
 1. 입자는 우리 그룹의 선행 연구 에서 설명한 방법으로 합성하고 표면 기능화했다.
 2. 준비한 배지는 사용 전 여과해도 된다.
@@ -1414,11 +1414,11 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 81
 13. 플레이트 옆면을 살살 두드리면 분리가 잘 된다.
 14. 표준곡선에는 3반복을 사용한다.
 
-## 5 요약
+## 요약
 
 이 장에서는 압전 자극이 세포 골격과 이동·침습 능력에 미치는 영향을 분석할 때 수행할 수 있는 세 가지 단순한 방법론을 소개했다. 이 검사들은 종양세포에 맞춰 최적화되었지만 다른 세포 유형으로도 쉽게 전용할 수 있다. 예컨대 과학적으로 중요한 만큼, 압전 자극이 면역세포에 미치는 영향을 평가할 때 매우 유용할 것으로 기대한다.
 
-## 2 재료
+## 재료
 
 ### 2.1 공중합체와 접합체
 
@@ -1474,7 +1474,7 @@ Nanoparticles for Tumor Targeting 89
 1. Triton X-100 원액을 PBS에 희석해 1% Triton X-100 용해 완충액을 만든다.
 2. 분광형광계(Wallac 1420 Victor2™, PerkinElmer, USA)로 형광을 정량한다.
 
-## 3 방법
+## 방법
 
 ### 3.1 NP 준비
 
@@ -1632,7 +1632,7 @@ Nanoparticles for Tumor Targeting 95
 
 **그림 9** PELGA-TAP 또는 PELGA-Dox 24시간·48시간 처리 후 U87과 HDF 스페로이드의 직경. 데이터는 mean ± SD
 
-## 4 주의사항
+## 주의사항
 
 1. 주의해서 다룬다. 유전적 변이와 암을 일으킬 수 있다. 환기후드 아래에서 작업하고 물질/혼합물을 흡입하지 않는다. 장갑, 보호복, 보호안경을 착용하고 얼굴도 보호한다. 사용 후 피부를 깨끗이 씻는다.
 
@@ -1661,7 +1661,7 @@ Nanoparticles for Tumor Targeting 97
 19. 스페로이드는 PBS 속에 둔다. 샘플을 말리지 않는다. 4 °C 보관 가능하다.
 20. 형광 강도는 ImageJ 같은 다른 영상 분석 소프트웨어로도 측정할 수 있다.
 
-## 2 재료
+## 재료
 
 ### 2.1 SU8 몰드 제작
 
@@ -1697,7 +1697,7 @@ Microfluidic Device for Functional Assays 101
 6. Phosphate-buffered saline(PBS).
 7. 세포독성 유도 용액: 세포독성 약제를 넣은 완전 배지. 연구 종양 종류에 따라 doxorubicin 100 nM(SelleckChem)이나 trametinib 100 nM(SelleckChem) 같은 화학요법제나 표적제를 쓸 수 있다.
 
-## 3 방법
+## 방법
 
 ### 3.1 PDMS 마이크로유체 칩을 위한 SU8 몰드 제작
 
@@ -1755,7 +1755,7 @@ Microfluidic Device for Functional Assays 105
 6. 압력 기반 유량 컨트롤러를 마이크로유체 튜빙으로 칩의 두 입구에 연결한다(주의사항 13 참고). 이 시점에서 세포독성 약제 기울기를 만들려는 실험 설계에 따라 두 용액(원하는 최대 농도의 세포독성 약제 용액과 순수 배지)을 두 입구로 관류한다(주의사항 14 참고). PBS 세척이나 전체 웰 염색은 같은 용액을 양쪽 입구로 관류하면 된다.
 7. 세포 배양 후 세포독성 유도 용액의 효과를 확인하기 위해 형광현미경으로 모든 세포 챔버 이미지를 찍고 원하는 생물학적 파라미터를 정량한다.
 
-## 4 주의사항
+## 주의사항
 
 1. 고해상도 투명 필름 인쇄 서비스를 제공하는 회사가 여럿 있다(예: JD Photo Data, UK).
 2. SU8 몰드 제작과 PDMS 복제는 입자 수·습도·온도가 통제되는 클린룸에서 해야 한다.
@@ -1783,7 +1783,7 @@ JM은 동적 BH3 프로파일링(Dana-Faber Cancer Institute 특허)의 공동 �
 
 Ramon y Cajal Programme, Ministerio de Economia y Competitividad grant RYC-2015-18357(JM). Ministerio de Ciencia, Innovación y Universidades grant RTI2018-094533-A-I00(JM). CELLEX foundation(JM, AM). Beca Trienal Fundación Mari Paz Jiménez Casado(JM). European Research Council, grant ERC-StG-DAMOC 714317(JR-A). European Research Council, H2020 EU framework FET-open BLOC 863037(JR-A). Spanish Ministry of Economy and Competitiveness, "Severo Ochoa" Program for Centers of Excellence in R&D SEV-2020-2023(JR-A). Generalitat de Catalunya, CERCA Programme 2017-SGR-1079(JR-A, JS). Fundación Bancaria "la Caixa" - Obra Social "la Caixa"(project IBEC-La Caixa Health Ageing)(JR-A). Networking Biomedical Research Center(CIBER). CIBER는 VI National R&D&i Plan 2008-2011, Iniciativa Ingenio 2010, Consolider Program, CIBER Actions, Instituto de Salud Carlos III(RD16/0006/0012)의 지원을 받으며 European Regional Development Fund(JS)의 후원도 받았다.
 
-## 2 재료
+## 재료
 
 세포 배양에 쓰는 모든 용액·시약·마이크로유체 장치는 멸균되거나 멸균 가능해야 한다. 콜라겐 믹스 재료는 얼음 위에서 준비하고 4 °C에 보관한다. 폐기물은 폐기 규정을 철저히 지켜 처리한다.
 
@@ -1813,7 +1813,7 @@ Ramon y Cajal Programme, Ministerio de Economia y Competitividad grant RYC-2015-
 3. Reactive ion etching system.
 4. live cell imaging 호환(stage-top incubator) 공초점현미경으로, 405-nm과 488-nm 레이저 라인, 투과광 검출기 및 필터 큐브(DAPI, FITC) 또는 분광 선택을 갖춘 것(멀티웰 플레이트는 공초점 촬영에 호환됨; 주의사항 2 참고).
 
-## 3 방법
+## 방법
 
 이 프로토콜에 쓰는 마이크로칩은 이전에 3D 면역역량 종양 온칩 모델로 소개된 바 있다. 주의사항 3 참고.
 
@@ -1897,7 +1897,7 @@ Ramon y Cajal Programme, Ministerio de Economia y Competitividad grant RYC-2015-
 
 **그림 4** Days 2-3: 처리 후 6, 9, 12시간 시점의 3D 이미지(Z stack 투영). (a) 음성 대조군, (b) 비장세포 공동배양, (c) STS(staurosporine) 처리 세포. 배율 10X. 청색: Hoechst 핵 염색, 녹색: caspase 3/7 활성 마커. 각 스택은 서로 5 mm 간격의 29장 이미지로 구성되어 총 두께 135 mm, XY 촬영 범위 1000 × 1273 mm다
 
-## 4 주의사항
+## 주의사항
 
 1. 비장세포는 C57BL/6 마우스 오른쪽 옆구리 피하에 PBS 0.1 mL 속 MC-38 결장선암세포 3 × 105개를 미리 주입하고 그 후 프로토콜 에 따라 희생시켜 분리했다.
 2. 이 멀티웰 플레이트의 glass bottom 두께는 공초점 및 2광자 여기 형광현미경과 호환되며 여러 실험을 연속으로 통제할 수 있게 한다.
@@ -1918,7 +1918,7 @@ Ramon y Cajal Programme, Ministerio de Economia y Competitividad grant RYC-2015-
 
 ![그림1 조립 전후 저산소 마이크로장치 모식도](images/img-132-039.jpg)
 
-## 2 재료
+## 재료
 
 세포 배양에 쓰기 전 모든 드랩 재료는 70% 에탄올 침지나 고압멸균으로 소독한다. 세포 배양용 용액·시약을 준비할 때 무균 실험실 기법을 지킨다. 모든 세포 배양 작업은 적절한 개인보호구(PPE)를 착용하고 멸균 생물안전캐비닛 안에서 한다. 세포는 37 °C, 5% CO₂ 가습 배양기에서 배양한다.
 
