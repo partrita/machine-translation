@@ -96250,16 +96250,18 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
 
 $k$ 솔루션을 샘플링하고 $k$이 모델의 실제 성공률에 비해 작을 때 모든 패스가 편향되지 않지만 높은 분산인지 확인하여 pass\@k를 직접 계산한다. Chenet al. 문제당 $n \geq k$ 샘플을 그리고 올바른 샘플 수 $c$을 계산하여 다음을 계산할 것을 제안한다.
 
-$$\text{pass}@k = 1 - \frac{\binom{n - c}{k}}{\binom{n}{k}}
-
 $$
+\text{pass}@k = 1 - \frac{\binom{n - c}{k}}{\binom{n}{k}}
+$$
+
 이 추정기는 모든 $n$ 샘플을 사용하기 때문에 편견이 없으며 순진 추정기보다 분산이 낮다. 조합 분수 $\binom{n-c}{k} / \binom{n}{k}$은 선택된 모든 $k$ 샘플이 $n - c$ 잘못된 샘플에서 추출될 확률이므로 그 보수는 적어도 하나의 올바른 샘플이 선택될 확률이다.
 
 정수 오버플로 없이 큰 $n$에 대해 이를 안정적으로 계산하려면 이항 계수 비율을 단순화할 수 있다.
 
-$$\frac{\binom{n-c}{k}}{\binom{n}{k}} = \prod_{i=0}^{k-1} \frac{n - c - i}{n - i}
-
 $$
+\frac{\binom{n-c}{k}}{\binom{n}{k}} = \prod_{i=0}^{k-1} \frac{n - c - i}{n - i}
+$$
+
 이 제품 형식에는 부동 소수점 산술만 포함되며 큰 계승 계산을 피한다.
 
 ```python

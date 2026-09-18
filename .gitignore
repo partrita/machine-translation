@@ -536,3 +536,4 @@ converted/
 skills-lock.json
 .aider*
 .opencode/
+.slim/deepwork/
