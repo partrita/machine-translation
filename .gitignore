@@ -514,7 +514,7 @@ $RECYCLE.BIN/
 .baoyu-skills/
 
 /.quarto/
-**/*.quarto_ipynb
+**/*.quarto_ipynb*
 
 # Quarto
 /_freeze/
