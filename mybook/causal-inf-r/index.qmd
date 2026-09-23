@@ -858,7 +858,7 @@ net_data |>
 ```{.r}
 #| echo: false
 means <- net_data |>
-  group_by(net) |> 
+  group_by(net) |>
   summarize(malaria_risk = mean(malaria_risk)) |>
   arrange(net) |>
   pull(malaria_risk)
@@ -869,7 +869,7 @@ means <- net_data |>
 
 ```{.r}
 net_data |>
-  group_by(net) |> 
+  group_by(net) |>
   summarize(malaria_risk = mean(malaria_risk))
 ```
 
@@ -903,7 +903,7 @@ net_data |>
 if (requireNamespace("ggdag", quietly = TRUE) && requireNamespace("ggokabeito", quietly = TRUE)) {
   library(ggdag, warn.conflicts = FALSE)
   library(ggokabeito)
-  
+
   mosquito_dag <- dagify(
     malaria_risk ~ net + income + health + temperature + resistance,
     net ~ income + health + temperature + eligible + household,
@@ -961,8 +961,8 @@ if (requireNamespace("ggdag", quietly = TRUE) && requireNamespace("ggokabeito", 
 } else {
   # Create a simple placeholder plot if ggdag is not available
   ggplot() +
-    annotate("text", x = 0.5, y = 0.5, 
-             label = "DAG visualization requires ggdag package\nPlease install: remotes::install_github('r-causal/ggdag')", 
+    annotate("text", x = 0.5, y = 0.5,
+             label = "DAG visualization requires ggdag package\nPlease install: remotes::install_github('r-causal/ggdag')",
              hjust = 0.5, vjust = 0.5, size = 4) +
     theme_void()
 }
@@ -1007,7 +1007,7 @@ DAG 용어로 말하자면, 우리에게는 하나 이상의 열린 인과 경�
 if (requireNamespace("ggdag", quietly = TRUE) && requireNamespace("ggokabeito", quietly = TRUE)) {
   library(ggdag, warn.conflicts = FALSE)
   library(ggokabeito)
-  
+
   glyph <- function(data, params, size) {
     data$shape <- 15
     data$size <- 12
@@ -1076,8 +1076,8 @@ if (requireNamespace("ggdag", quietly = TRUE) && requireNamespace("ggokabeito", 
 } else {
   # ggdag 패키지를 사용할 수 없는 경우 간단한 자리 표시용 그래프 생성
   ggplot() +
-    annotate("text", x = 0.5, y = 0.5, 
-             label = "DAG 경로 시각화를 위해서는 ggdag 패키지가 필요합니다\n설치 방법: remotes::install_github('r-causal/ggdag')", 
+    annotate("text", x = 0.5, y = 0.5,
+             label = "DAG 경로 시각화를 위해서는 ggdag 패키지가 필요합니다\n설치 방법: remotes::install_github('r-causal/ggdag')",
              hjust = 0.5, vjust = 0.5, size = 4) +
     theme_void()
 }
@@ -1243,7 +1243,7 @@ if (requireNamespace("halfmoon", quietly = TRUE)) {
     .group = net,
     .wts = wts
   )
-  
+
   ggplot(
     plot_df,
     aes(
@@ -1372,7 +1372,7 @@ sample_terms <- ipw_results$boot_fits[[1]]$term
 net_term <- sample_terms[grepl("net", sample_terms, ignore.case = TRUE) & sample_terms != "(Intercept)"]
 
 ipw_results |>
-  filter(id != "Apparent") |> 
+  filter(id != "Apparent") |>
   mutate(
     estimate = map_dbl(
       boot_fits,
@@ -1417,7 +1417,7 @@ boot_estimate
 if (requireNamespace("tipr", quietly = TRUE)) {
   library(tipr)
   tipping_points <- tip_coef(boot_estimate$.upper, exposure_confounder_effect = 1:5)
-  
+
   tipping_points |>
     ggplot(aes(confounder_outcome_effect, exposure_confounder_effect)) +
     geom_line(color = "#009E73", linewidth = 1.1) +
@@ -1823,7 +1823,7 @@ add_avg_layers <- function(avg_labels, observed_col = "grey50", unobserved_col =
       data = avg_labels |> filter(observed == "unobserved"),
       mapping = aes(x = happiness, y = y_id),
       size = 4,
-      shape = 23, 
+      shape = 23,
       fill = "white",
       color = unobserved_col,
       inherit.aes = FALSE
@@ -2039,7 +2039,7 @@ data_observed_exch |>
 #| label: "fig-po-confounding"
 #| fig-cap: "교란(confounding)이 존재할 때 관찰된 노출 그룹별 평균 잠재적 결과. 맛 배정이 더 이상 잠재적 결과와 독립적이지 않기 때문에 그룹들은 더 이상 교환 가능하지 않습니다."
 #| code-fold: true
-#| message: false 
+#| message: false
 data_observed_exch |>
   select(starts_with("y"), exposure) |>
   pivot_longer(
@@ -2047,7 +2047,7 @@ data_observed_exch |>
     names_prefix = "y_",
     names_to = "potential_outcome",
     values_to = "happiness"
-  ) |> 
+  ) |>
   mutate(
     observed = if_else(exposure == potential_outcome, "observed", "unobserved"),
     potential_outcome = paste0("잠재적 결과: y(", potential_outcome, ")"),
@@ -2055,8 +2055,8 @@ data_observed_exch |>
   ) |>
   ggplot(aes(happiness, exposure, color = observed, fill = observed, shape = observed)) +
   stat_summary(
-    fun = "mean", 
-    size = 3.5, 
+    fun = "mean",
+    size = 3.5,
     geom = "point",
     shape = 23,
     position = position_nudge(y = 0.033)
@@ -2067,23 +2067,23 @@ data_observed_exch |>
     aes(label = round(after_stat(x), 1)),
     vjust = 1.8,
     show.legend = FALSE
-  ) + 
-  facet_wrap(~ potential_outcome) + 
+  ) +
+  facet_wrap(~ potential_outcome) +
   theme(
     panel.grid.major.y = element_blank(),
     panel.border = element_rect(color = "grey40", fill = NA, linewidth = 0.8),
     axis.title.y = element_blank()
-  ) + 
+  ) +
   labs(
-    y = "실제 노출", 
+    y = "실제 노출",
     color = NULL,
     shape = NULL,
     fill = NULL
-  ) + 
-  coord_cartesian(clip = "off") + 
+  ) +
+  coord_cartesian(clip = "off") +
   scale_shape_manual(values = c(19, 21)) +
   scale_fill_manual(values = c(observed = ggokabeito::palette_okabe_ito(1), unobserved = "white")) +
-  scale_x_continuous(breaks = seq(0, 12, by = 2.5), limits = c(-2, 12)) 
+  scale_x_continuous(breaks = seq(0, 12, by = 2.5), limits = c(-2, 12))
 ```
 
 교환 가능성이 위배될 때 우리는 무엇을 할 수 있을까?
@@ -2107,17 +2107,17 @@ data_observed_exch |>
     names_prefix = "y_",
     names_to = "potential_outcome",
     values_to = "happiness"
-  ) |> 
+  ) |>
   mutate(
     observed = if_else(exposure == potential_outcome, "observed", "unobserved"),
     potential_outcome = paste0("potential outcome: y(", potential_outcome, ")"),
     exposure = if_else(exposure == "vanilla", "실제로 바닐라를\n먹음", "실제로 초콜릿을\n먹음")
   ) |>
-  
+
   ggplot(aes(happiness, exposure, color = observed, fill = observed, shape = observed)) +
   stat_summary(
-    fun = "mean", 
-    size = 3.5, 
+    fun = "mean",
+    size = 3.5,
     geom = "point",
     shape = 23,
     position = position_nudge(y = 0.033)
@@ -2128,23 +2128,23 @@ data_observed_exch |>
     aes(label = round(after_stat(x), 1)),
     vjust = 1.8,
     show.legend = FALSE
-  ) + 
-  facet_grid(prefer_chocolate ~ potential_outcome) + 
+  ) +
+  facet_grid(prefer_chocolate ~ potential_outcome) +
   theme(
     panel.grid.major.y = element_blank(),
     panel.border = element_rect(color = "grey40", fill = NA, linewidth = 0.8),
     axis.title.y = element_blank()
-  ) + 
+  ) +
   labs(
-    y = "실제 노출", 
+    y = "실제 노출",
     color = NULL,
     shape = NULL,
     fill = NULL
-  ) + 
-  coord_cartesian(clip = "off") + 
+  ) +
+  coord_cartesian(clip = "off") +
   scale_shape_manual(values = c(19, 21)) +
   scale_fill_manual(values = c(observed = ggokabeito::palette_okabe_ito(1), unobserved = "white")) +
-  scale_x_continuous(breaks = seq(0, 12, by = 2.5), limits = c(-2, 12)) 
+  scale_x_continuous(breaks = seq(0, 12, by = 2.5), limits = c(-2, 12))
 ```
 
 ::: {.callout-warning}
@@ -2671,20 +2671,20 @@ ggplot(plot_data, aes(x = happiness, y = y_id, color = exposure_unobserved)) +
     fill = "white",
     alpha = 0.8
   ) +
-  geom_point(  
+  geom_point(
     data = avg_labels |> filter(observed == "unobserved"),
-    aes(x = happiness, y = y_id, color = exposure_unobserved),  
-    size = 4,  
-    shape = 23, 
-    fill = "white",  
-    inherit.aes = FALSE  
-  ) +  
-  geom_point(  
-    data = avg_labels |> filter(observed == "observed"),  
-    aes(x = happiness, y = y_id, fill = exposure_unobserved, color = exposure_unobserved),  
-    size = 4,  
+    aes(x = happiness, y = y_id, color = exposure_unobserved),
+    size = 4,
     shape = 23,
-    inherit.aes = FALSE  
+    fill = "white",
+    inherit.aes = FALSE
+  ) +
+  geom_point(
+    data = avg_labels |> filter(observed == "observed"),
+    aes(x = happiness, y = y_id, fill = exposure_unobserved, color = exposure_unobserved),
+    size = 4,
+    shape = 23,
+    inherit.aes = FALSE
   ) +
   facet_wrap(~ potential_outcome) +
   scale_y_continuous(
@@ -2759,7 +2759,7 @@ data_observed_interf |>
 간섭과 잘못 정의된 노출은 동일한 가정 위배의 서로 다른 발현일 뿐이다.
 우리가 추정하고 있는 잠재적 결과들이 우리가 묻고 있는 인과적 질문과 일치하지 않는다.
 이 사례에서 우리에게는 세 가지 반사실이 있다: 한 개인이 가졌던 맛과 파트너가 가지지 *않았던* 노출의 조합, 그리고 개인이 가지지 *않았던* 맛과 파트너가 가질 수 있었던 두 가지 맛의 조합이다.
-우리가 계산한 평균들은 이러한 조합 중 어느 것도 추정하고 있는 것 같지 않는다. 
+우리가 계산한 평균들은 이러한 조합 중 어느 것도 추정하고 있는 것 같지 않는다.
 
 
 ```{.r}
@@ -2821,7 +2821,7 @@ unobserved_arrows <- plot_data |>
   filter(!observed, id == unobserved_id, potential_outcome == "y(vanilla)") |>
   mutate(
     xend = happiness + c(0.35, 0.15),
-    yend = y_id - c(0.1, 0.2), 
+    yend = y_id - c(0.1, 0.2),
     x = unobserved_annotation$x,
     y = unobserved_annotation$y,
     potential_outcome = "y(vanilla)"
@@ -4713,7 +4713,7 @@ dagify(
 
 달리 말하면, 이 가정은 연구 대상 단위 중 적어도 하나가 개별 인과 효과를 가진다는 것을 말한다. 만약 `Y`로 향하는 화살표를 가진 변수 `X`가 있다면, 우리는 적어도 한 명의 사람에 대해 연구 중인 `X` 값에 따라 잠재적 결과 `Y(X = x)`에 변화가 있다고 말하는 것이다. 의 용어로 말하면, 모든 개인에 대해 `y_chocolate - y_vanilla`가 0인 상태이다.
 
-연구 대상 단위 중 단 하나도 개별 인과 효과를 갖지 않을 때, 우리는 이를 **강한 무효(sharp null)**라고 부른다. 
+연구 대상 단위 중 단 하나도 개별 인과 효과를 갖지 않을 때, 우리는 이를 **강한 무효(sharp null)**라고 부른다.
 
 :::
 
@@ -5917,7 +5917,7 @@ satisfaction3_strat |>
 
 ## 구간의 수를 바꾸면 어떤 일이 일어날까?
 
-구간의 수를 늘리면 어떻게 되는지 살펴봅시다. 아래 그림에서 우리는 구간의 수를 텍스트 예시의 5개에서 3개에서 20개 사이로 변경해 보았다. 구간의 수가 늘어날수록 편향이 감소하는 것을 확인할 수 있다. 
+구간의 수를 늘리면 어떻게 되는지 살펴봅시다. 아래 그림에서 우리는 구간의 수를 텍스트 예시의 5개에서 3개에서 20개 사이로 변경해 보았다. 구간의 수가 늘어날수록 편향이 감소하는 것을 확인할 수 있다.
 
 
 ```{.r}
@@ -5986,7 +5986,7 @@ satisfaction3 |>
   summarise(estimate = mean(daily - weekly))
 ```
 
-추정치가 `NA`인 이유는 일부 구간에서 노출 그룹 중 하나에 속한 사람이 아무도 없어서 그 차이를 추정할 수 없기 때문이다. 이제가 분석은 우리의 **긍정성(positivity)** 가정을 위배한다. 이는 확률적(stochastic) 위배이다; 이는 우리의 표본 크기 `r scales::comma(n)` 및 구간의 수 30개와 관련이 있다. 우연히 30개 구간 중 적어도 하나에서 노출 그룹 중 하나에 아무도 속하지 않게 되었고 이로 인해 인과 효과를 추정할 수 없게 된 것이다. 이 비모수적 방법은 유연하지만 표본 크기에 따른 한계가 있다. 모수적 모델(parametric models)은 특정 가정 하에 외삽(extrapolate)을 가능하게 해주므로 더 효율적이라는 장점이 있다(우리의 가정이 옳다는 전제 하에 말이죠. @sec-parametric 에서 더 자세히 배워봅시다). 
+추정치가 `NA`인 이유는 일부 구간에서 노출 그룹 중 하나에 속한 사람이 아무도 없어서 그 차이를 추정할 수 없기 때문이다. 이제가 분석은 우리의 **긍정성(positivity)** 가정을 위배한다. 이는 확률적(stochastic) 위배이다; 이는 우리의 표본 크기 `r scales::comma(n)` 및 구간의 수 30개와 관련이 있다. 우연히 30개 구간 중 적어도 하나에서 노출 그룹 중 하나에 아무도 속하지 않게 되었고 이로 인해 인과 효과를 추정할 수 없게 된 것이다. 이 비모수적 방법은 유연하지만 표본 크기에 따른 한계가 있다. 모수적 모델(parametric models)은 특정 가정 하에 외삽(extrapolate)을 가능하게 해주므로 더 효율적이라는 장점이 있다(우리의 가정이 옳다는 전제 하에 말이죠. @sec-parametric 에서 더 자세히 배워봅시다).
 
 
 
@@ -6672,7 +6672,7 @@ parks_metadata_raw |>
 
 ```{.r}
 parks_metadata <- parks_metadata_raw |>
-  ## 노출 정의, 배정 절차, 
+  ## 노출 정의, 배정 절차,
   ## 그리고 분석 계획: ID, 노출, 교란 요인들을 선택합니다
   select(
     # id
@@ -6746,7 +6746,7 @@ ticket_season_by_month |>
     y = "날짜 비율",
     x = NULL,
     fill = "티켓 시즌"
-  ) + 
+  ) +
   theme(panel.grid.major.x = element_blank())
 ```
 
@@ -6771,7 +6771,7 @@ parks_metadata |>
     y = "날짜 비율",
     x = NULL,
     fill = "폐쇄 시간"
-  ) + 
+  ) +
   theme(panel.grid.major.x = element_blank())
 ```
 
@@ -6857,11 +6857,11 @@ seven_dwarfs_9 |>
     park_ticket_season = "티켓 시즌",
     park_close = "폐쇄 시간",
     park_temperature_high = "과거 최고 기온"
-  ) |> 
+  ) |>
   mutate(
     park_close = as.character(park_close),
     park_extra_magic_morning = factor(
-      park_extra_magic_morning, 
+      park_extra_magic_morning,
       labels = c("Magic Hours 없음", "엑스트라 매직 아워")
     )
   ) |>
@@ -6869,7 +6869,7 @@ seven_dwarfs_9 |>
     by = park_extra_magic_morning,
     include = c(
       park_ticket_season,
-      park_close, 
+      park_close,
       park_temperature_high
     )
   ) |>
@@ -6927,8 +6927,8 @@ seven_dwarfs_train |>
 
 ```{.r}
 #| eval: false
-dataset |> 
-  group_by(exposure, exposure_type) |> 
+dataset |>
+  group_by(exposure, exposure_type) |>
   summarize(...)
 ```
 
@@ -7069,7 +7069,7 @@ prop_exposed <- seven_dwarfs_9 |>
   ) |>
   ## 각 구간에서의 노출 비율을 계산합니다
   summarize(
-    prop_exposed = mean(park_extra_magic_morning == "엑스트라 매직 아워"), 
+    prop_exposed = mean(park_extra_magic_morning == "엑스트라 매직 아워"),
     .groups = "drop"
   ) |>
   complete(
@@ -7082,8 +7082,8 @@ prop_exposed <- seven_dwarfs_9 |>
 prop_exposed |>
   ggplot(
     aes(
-      x = park_close_bin, 
-      y = park_temperature_high_bin, 
+      x = park_close_bin,
+      y = park_temperature_high_bin,
       fill = prop_exposed
     )
   ) +
@@ -7443,7 +7443,7 @@ seven_dwarfs_9_with_ps |>
     support = case_when(
       park_extra_magic_morning == 0 &
 .fitted < min(.fitted[park_extra_magic_morning == 1]) ~ "비노출군_범위미만",
-      park_extra_magic_morning == 1 & 
+      park_extra_magic_morning == 1 &
         .fitted > max(.fitted[park_extra_magic_morning == 0]) ~ "노출군_범위초과",
       .default = "공통_지지_영역내",
       .ptype = factor(levels = c("비노출군_범위미만", "공통_지지_영역내", "노출군_범위초과"))
@@ -9395,10 +9395,10 @@ ATE의 경우 전체 매칭(full matching)을 사용해야 하고 ATM의 경우 
 
 | 추정 대상 | MatchIt 명령 |
 |----------|-------------------------------------------------|
-| ATE      | `matchit(…, method = "full", estimand = "ATE")` |
-| ATT      | `matchit(…, estimand = "ATT")`                  |
-| ATC      | `matchit(…, estimand = "ATC")`                  |
-| ATM      | `matchit(…, caliper = <caliper>)`               |
+| ATE      | `matchit(, method = "full", estimand = "ATE")` |
+| ATT      | `matchit(, estimand = "ATT")`                  |
+| ATC      | `matchit(, estimand = "ATC")`                  |
+| ATM      | `matchit(, caliper = <caliper>)`               |
 
 가중치가 서로 다른 인구 집단을 어떻게 목표로 삼는지에 대한 직관은 틸팅 함수로 귀결 된다: 우리는 관심 있는 인구 집단을 대표하도록 가중치의 척도를 조정하는 것이다.
 매칭에 대한 직관은 더 간단하다: 그것은 누구를 제외하고 누구를 남길 것인가의 문제이다.
@@ -9879,7 +9879,7 @@ results
 결과를 데이터 프레임으로 수집할 수도 있다.
 
 ```{.r}
-results |> 
+results |>
   as.data.frame()
 ```
 
@@ -11921,16 +11921,16 @@ fit_stats <- function(dag, actual, posted_60, missing_by = NULL, missing_for = "
   if (!is.null(missing_by) & missing_for == "actual") {
     actual[missing_by] <- NA
   }
-  
+
   if (!is.null(missing_by) & missing_for == "posted") {
     posted_60[missing_by] <- NA
   }
-  
+
   t_actual <- t.test(actual)
   t_posted <- t.test(posted_60 * 60)
   mdl <- lm(actual ~ posted_60)
   mdl_confints <- confint(mdl)
-  
+
   tibble(
     dag = dag,
     mean_actual_estimate = as.numeric(t_actual$estimate),
@@ -12029,7 +12029,7 @@ library(broom)
 calib_model <- lm(
   wait_minutes_actual_avg ~
     wait_minutes_posted_avg * wait_hour +
-    park_extra_magic_morning + 
+    park_extra_magic_morning +
     park_temperature_high + park_close + park_ticket_season,
   data = seven_dwarfs_train_2018)
 
@@ -12044,19 +12044,19 @@ seven_dwarves_calib <- calib_model |>
 library(propensity)
 fit_ipw_effect <- function(.fmla, .data = seven_dwarfs, .trt = "park_extra_magic_morning", .outcome_fmla = wait_minutes_posted_calib ~ park_extra_magic_morning) {
   .trt_var <- rlang::ensym(.trt)
-  
+
   # 성향 점수 모델 적합
   propensity_model <- glm(
     .fmla,
     data = .data,
     family = binomial()
   )
-  
+
   # ATE 가중치 계산
   .df <- propensity_model |>
     augment(type.predict = "response", data = .data) |>
     mutate(w_ate = wt_ate(.fitted, !!.trt_var, exposure_type = "binary"))
-  
+
   # IPW 모델 적합
   lm(.outcome_fmla, data = .df, weights = w_ate) |>
     tidy() |>
@@ -12206,22 +12206,22 @@ seven_dwarfs_mi_data <- complete(seven_dwarfs_mi, action = "all")
 ```{.r}
 fit_ipw_effect <- function(.fmla, .data = seven_dwarfs, .trt = "park_extra_magic_morning", .outcome_fmla = wait_minutes_posted_calib ~ park_extra_magic_morning) {
   .trt_var <- rlang::ensym(.trt)
-  
+
   # 성향 점수 모델 적합
   propensity_model <- glm(
     .fmla,
     data = .data,
     family = binomial()
   )
-  
+
   # ATE 가중치 계산
   .df <- propensity_model |>
     augment(type.predict = "response", data = .data) |>
     mutate(w_ate = wt_ate(.fitted, !!.trt_var, exposure_type = "binary"))
-  
+
   # 결과 모델 적합
-  outcome_model <- lm(.outcome_fmla, data = .df, weights = w_ate) 
-  
+  outcome_model <- lm(.outcome_fmla, data = .df, weights = w_ate)
+
   # IPW 효과 적합
   ipw_output <- ipw(propensity_model, outcome_model, .df)
   return(c(estimate = ipw_output$estimates$estimate,
@@ -15939,10 +15939,10 @@ R에서의 부트스트래핑은 고전적인 `boot` 패키지를 시작으로, 
     indices <- sample(
       # 인덱스 벡터 생성:
       # 1부터 행의 수까지
-      seq_len(nrow(this_data)), 
+      seq_len(nrow(this_data)),
       # this_data와 동일한 길이의
       # 인덱스 벡터를 샘플링
-      size = nrow(this_data), 
+      size = nrow(this_data),
       replace = TRUE
     )
     bootstrap_resample <- this_data[indices, ]

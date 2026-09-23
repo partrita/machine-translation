@@ -5055,7 +5055,7 @@ $$ {#eq-lerner-rule}
 ```{.r}
 set.seed(17)
 M <- 100000                       # 시장 규모
-v <- rlnorm(M, meanlog = log(40), sdlog = 0.5) 
+v <- rlnorm(M, meanlog = log(40), sdlog = 0.5)
 c <- 15                           # 한계비용
 
 p_grid <- seq(15, 100, by = 0.5)
@@ -5255,7 +5255,7 @@ for (t in 1:T_rounds) {
   # 오라클 최적 수익 계산
   exp_rewards <- sapply(1:K_prices, function(a) prices[a] * plogis(sum(theta_true[a, ] * x)))
   oracle_opt[t] <- max(exp_rewards)
-  
+
   # LinUCB 점수 계산
   ucb_scores <- sapply(1:K_prices, function(a) {
     th_hat <- A_inv[[a]] %*% b_vec[[a]]
@@ -5263,15 +5263,15 @@ for (t in 1:T_rounds) {
     cb     <- alpha_ucb * sqrt(t(x) %*% A_inv[[a]] %*% x)
     prices[a] * plogis(p_hat + cb)
   })
-  
+
   arm <- which.max(ucb_scores)
   chosen_prices[t] <- prices[arm]
-  
+
   prob_buy <- plogis(sum(theta_true[arm, ] * x))
   bought   <- rbinom(1, 1, prob_buy)
   r_t      <- prices[arm] * bought
   rewards[t] <- r_t
-  
+
   A_inv[[arm]] <- A_inv[[arm]] - (A_inv[[arm]] %*% x %*% t(x) %*% A_inv[[arm]]) /
                   as.numeric(1 + t(x) %*% A_inv[[arm]] %*% x)
   b_vec[[arm]] <- b_vec[[arm]] + x * bought
@@ -5989,7 +5989,7 @@ flowchart LR
     G1 -->|"이탈"| SW["전환 풀"]
     NP -->|"2세대 채택<br/>(p₂, q₂)"| G2["2세대 설치 기반"]
     SW -->|"업그레이드"| G2
-    G2 -->|"이탈"| G3["3세대 …"]
+    G2 -->|"이탈"| G3["3세대 "]
 ```
 
 ## 성장 곡선과 추세 외삽 {#sec-growth-curves}
@@ -6272,7 +6272,7 @@ calc_structural_virality <- function(parent) {
       adj[[i]] <- c(adj[[i]], parent[i])
     }
   }
-  
+
   dist_mat <- matrix(0, n, n)
   for (i in 1:n) {
     dist <- rep(-1, n); dist[i] <- 0
@@ -14285,5 +14285,3 @@ flowchart LR
 `r if (knitr::is_html_output()) '
 # 참고문헌 {-}
 '`
-
-

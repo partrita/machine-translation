@@ -667,7 +667,7 @@ BloombergGPT의 대안으로 한 연구팀은 AI4Finance 재단과 협력하여 
 
 10 금융 분야의 강화학습에 대한 훌륭한 참고 자료는 아슈윈 라오(Ashwin Rao)와 티콘 옐비스(Tikhon Jelvis)의 *Foundations of Reinforcement Learning with Applications in Finance* (CRC Press, 2022)이다.
 
-11 거짓 발견 문제는 금융 분야에서 잘 알려져 있다. 이 주제에 대한 입문 자료로 캠벨 하비(Campbell R. Harvey), 얀 류(Yan Liu), 허칭 주(Heqing Zhu)의 [“… and the Cross-Section of Expected Returns”](https://oreil.ly/7vaqK), *Review of Financial Studies* 29, no. 1 (2016년 1월): 5-68을 참조하라.
+11 거짓 발견 문제는 금융 분야에서 잘 알려져 있다. 이 주제에 대한 입문 자료로 캠벨 하비(Campbell R. Harvey), 얀 류(Yan Liu), 허칭 주(Heqing Zhu)의 [“ and the Cross-Section of Expected Returns”](https://oreil.ly/7vaqK), *Review of Financial Studies* 29, no. 1 (2016년 1월): 5-68을 참조하라.
 
 12 시스템적 리스크에 대해 더 자세히 알고 싶다면 하이메 카루아나(Jaime Caruana)의 논문인 [“Systemic Risk: How to Deal With It?”](https://oreil.ly/69XKq), 국제결제은행 (2010년 2월)을 추천한다.
 
@@ -919,7 +919,7 @@ X t, t ∈ T
 
 표 2-1. 시계열의 테이블 표현
 
-**시간/변수** X 1 X 2 X 3 … X S T 1 X 11 X 21 X 31 … X S1 T 2 X 12 X 22 X 32 … X S2 … … … … … … T N X 1N X 2N X 3N … X SN
+**시간/변수** X 1 X 2 X 3  X S T 1 X 11 X 21 X 31  X S1 T 2 X 12 X 22 X 32  X S2       T N X 1N X 2N X 3N  X SN
 
 시계열은 주로 시간에 따라 발생하는 금융 활동의 동적이고 트랜잭션 중심적인 특성으로 인해 금융 시장에서 가장 일반적인 데이터 구조이다. 시계열 데이터를 생성하는 금융 활동의 예로는 매매, 가격 책정, 결제, 투자, 추정, 가치 평가, 위험 측정치, 변동성 수치, 기업 이벤트, 성과 및 회계 등이 있다.
 
@@ -939,7 +939,7 @@ X t=z,i,j, i = 1,..., N, j = 1,....., S
 
 표 2-2. 횡단면 데이터의 테이블 표현
 
-**개체/변수** V 1 V 2 V 3 … V S E 1 X 11 X 21 X 31 … X S1 E 2 X 12 X 22 X 32 … X S2 … … … … … … E N X 1N X 2N X 3N … X SN
+**개체/변수** V 1 V 2 V 3  V S E 1 X 11 X 21 X 31  X S1 E 2 X 12 X 22 X 32  X S2       E N X 1N X 2N X 3N  X SN
 
 금융 횡단면 데이터는 금융 기관, 브로커, 투자자, 소비자, 트레이더, 매니저 등 금융 시장의 수많은 참여자뿐만 아니라 금융 자산, 투자 전략, 소비자와 기업의 선택 및 행동 등 다양한 개체의 존재로부터 생성된다.
 
@@ -1242,7 +1242,7 @@ Non-PIT 데이터는 여러 과제를 야기한다. 첫 번째는 *미래 참조
 | 50                 | $ 55.9        | $ 55.66             | 200            |
 | 20                 | $ 55.55       | $ 55.66             | 10             |
 | 560                | $ 55.1        | $ 66.68             | 50             |
-| …                  | …             | …                   | …              |
+|                   |              |                    |               |
 
 오더북에는 다양한 유형의 주문을 제출할 수 있다. 예를 들어 *시장가 주문(Market order)* 은 이용 가능한 최선의 매수/매도 호가로 즉시 매매하는 데 사용된다. *지정가 주문(Limit order)* 은 지정된 최소 매도 호가 이상으로 매도하거나 최대 매수 호가 이하로 매수하는 주문이다. *손절매 주문(Stop-loss order)* 은 가격 수준이 사전 정의된 상한선 또는 하한선에 도달할 때 트리거되어 시장에 제출되는 주문이다. *트레일링 스탑 주문(Trailing stop order)* 은 시장 가격이 특정 백분율이나 금액만큼 유리한 방향으로 움직인 후 반대로 돌아설 때 트리거되는 주문이다.
 
@@ -2218,11 +2218,11 @@ NER 분석 결과는 금융 데이터셋에 엔티티 데이터 보강, 정보 �
 
 NER 시스템을 구축할 때 레이븐팩은 금융 부문의 특수한 요구사항에 직면했다. 엔티티 이름은 시간에 따라 변경될 수 있으며 동일한 이름이 시점에 따라 서로 다른 엔티티를 가리킬 수도 있다. 이는 식별자의 최신 수탁자나 생존 엔티티만을 고려하여 데이터와 분석을 왜곡시키는 생존자 편향(Survivorship bias)과 같은 문제를 초래할 수 있다. 이 문제를 해결하기 위해 레이븐팩은 특정 시점을 인식하는(Point-in-Time-aware) NER 시스템을 구축했다.
 
-NER의 기본 아이디어는 다음과 같이 주석이 달린 텍스트를 입력받아…
+NER의 기본 아이디어는 다음과 같이 주석이 달린 텍스트를 입력받아
 
 > Google has invested more than $1 Billion in Renewable Energy projects in the United States over the past 5 years
 
-… [그림 4-1](#ch04_figure_1_1724776828398223)에 나타난 것처럼 엔티티의 위치와 유형을 강조하는 새로운 텍스트 블록을 생성하는 것이다. 이 예시에서는 회사, 통화, 금액, 업종, 시간, 위치의 여섯 가지 엔티티 유형이 인식되었다.
+ [그림 4-1](#ch04_figure_1_1724776828398223)에 나타난 것처럼 엔티티의 위치와 유형을 강조하는 새로운 텍스트 블록을 생성하는 것이다. 이 예시에서는 회사, 통화, 금액, 업종, 시간, 위치의 여섯 가지 엔티티 유형이 인식되었다.
 
 
 ![그림 4-1. NER 결과의 예시](images/fden_0401.png)
@@ -2284,7 +2284,7 @@ NER의 기본 아이디어는 다음과 같이 주석이 달린 텍스트를 입
 > *and*
 > ***Sole Bookrunner***
 >
-> *…*
+> **
 >
 > *The Borrower has requested the Lenders to extend credit, in the form of*
 > ***Loans or Credits***

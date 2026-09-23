@@ -1066,7 +1066,7 @@ ISDoT Applied to the Topographical Analysis of Tumor-Associated ECM 59
 2. Alexa Fluor 488 donkey anti-rabbit IgG (H + L)(highly cross-adsorbed 2차 항체; Thermo Fisher Scientific, cat. no. A-21206, RRID:AB_2535792)
 3. Alexa Fluor 488 donkey anti-rat IgG (H + L)(highly cross-adsorbed 2차 항체; Thermo Fisher Scientific, cat. no. A-21208, RRID:AB_2535794)
 
-**표 1** 문제 해결 표 
+**표 1** 문제 해결 표
 
 | 문제 | 가능한 원인 | 해결책 | 절차 |
 | ---- | ---------- | ------ | ---- |
@@ -1424,7 +1424,7 @@ Cell Cytoskeleton Modifications upon Piezo-Stimulation 81
 
 이 작업에 쓰는 NP를 준비하려면 다음 시약이 필요하다:
 
-1. PELGA 공중합체 - poly(d,l-lactide-co-glycolide)(PLGA)(Resomer RG502H, Mw 12,000 Da, Boehringer, Germany)와 폴리에틸렌글리콜(PEG)(Mw 1500 Da, Sigma-Aldrich, USA)을 문헌의 프로토콜에 따라 커플링 반응으로 합성한 것 
+1. PELGA 공중합체 - poly(d,l-lactide-co-glycolide)(PLGA)(Resomer RG502H, Mw 12,000 Da, Boehringer, Germany)와 폴리에틸렌글리콜(PEG)(Mw 1500 Da, Sigma-Aldrich, USA)을 문헌의 프로토콜에 따라 커플링 반응으로 합성한 것
 2. Doxorubicin(Dox)(doxorubicin hydrochloride, purity >99%, Discovery Fine Chemicals, UK)(주의사항 1 참고)
 3. MMP2 감수성 펩타이드(Fmoc-Gly-Pro-Leu-Gly-Ile-Ala-Gly-Gln-COOH) - 표준 고상 Fmoc 법으로 합성 [20](주의사항 2 참고). 펩타이드 합성용 아미노산은 IRIS Biotech GmbH, Germany에서 구입
 4. Dox를 PLGA 사슬에 공유결합해 PLGA-Dox 접합체를 만들거나, MMP2 감수성 펩타이드에 결합해 종양활성형 프로드럭(TAP)을 만든 뒤 PLGA에 붙여 PLGA-TAP을 만든다. 절차는 선행 문헌 참고
@@ -2770,7 +2770,7 @@ hrIL-2 1000 IU/mL가 든 성장 배지에 PBMCs를 1.5 × 10 cells/ml로 넣고 
 
 ---
 
-2017년 미국 식품의약국(FDA) 승인으로 이어졌다. T세포를 CAR-T 세포로 엔지니어링하는 방식은 여러 가지가 확립되어 있다. 감마레트로바이러스 또는 렌티바이러스 벡터로 변형된 T세포가 임상시험에서 놀라운 효능을 보였지만 바이러스 접근에는 여러 단점이 있다. 임상 제조 측면에서 특수 제조 공정이 필요해 임상 등급 렌티바이러스 제작은 매우 비싸고 시간이 오래 걸린다. 전임상 환경에서 렌티바이러스 제조의 복잡성은 다양한 구조물을 시험하는 데 필요한 유연성을 떨어뜨리고 바이러스 벡터의 높은 비용은 빠른 전임상 개발을 방해한다. 최근 여러 연구에서 CAR-T 세포 제작의 대안으로 트랜스포존을 쓰는 비바이러스 형질천환 기반 접근이 탐구되었다. 비바이러스 플라스미드 기반 트랜스포존 시스템은 치료 목적 인체 세포의 안정적 유전 변형에 효율적인 방법으로 자리 잡았다. 트랜스포존 기반 엔지니어링의 큰 장점은 유연성과 큰 형질유전자 운반 능력, 복수 형질유전자 동시 전달 능력이다. 게다가 트랜스포존을 암호화하는 플라스미드는 대부분의 기초 분자생물학 실험실에서 대량으로 쉽게 만들 수 있어 더 폭넓은 실험이 가능하다. 트랜스포존 시스템의 또 다른 장점은 CAR-T 세포의 현장(point-of-care) 제조에 쓸 수 있어 제조 시간을 크게 줄인다는 것이다. 이는 특히 렌티바이러스 방식의 기존 CAR-T 세포 제작에 필요한 4-6주 제조 기간을 버티기 어려운 중증 급성 환자에게 중요하다. 결과적으로 Sleeping Beauty와 PiggyBac 트랜스포존 시스템은 여러 적응증에 대해 인체 CAR-T 세포 임상시험 사용이 승인되었다. 본 장에서는 h… (생성 절차를 자세히 설명한다)
+2017년 미국 식품의약국(FDA) 승인으로 이어졌다. T세포를 CAR-T 세포로 엔지니어링하는 방식은 여러 가지가 확립되어 있다. 감마레트로바이러스 또는 렌티바이러스 벡터로 변형된 T세포가 임상시험에서 놀라운 효능을 보였지만 바이러스 접근에는 여러 단점이 있다. 임상 제조 측면에서 특수 제조 공정이 필요해 임상 등급 렌티바이러스 제작은 매우 비싸고 시간이 오래 걸린다. 전임상 환경에서 렌티바이러스 제조의 복잡성은 다양한 구조물을 시험하는 데 필요한 유연성을 떨어뜨리고 바이러스 벡터의 높은 비용은 빠른 전임상 개발을 방해한다. 최근 여러 연구에서 CAR-T 세포 제작의 대안으로 트랜스포존을 쓰는 비바이러스 형질천환 기반 접근이 탐구되었다. 비바이러스 플라스미드 기반 트랜스포존 시스템은 치료 목적 인체 세포의 안정적 유전 변형에 효율적인 방법으로 자리 잡았다. 트랜스포존 기반 엔지니어링의 큰 장점은 유연성과 큰 형질유전자 운반 능력, 복수 형질유전자 동시 전달 능력이다. 게다가 트랜스포존을 암호화하는 플라스미드는 대부분의 기초 분자생물학 실험실에서 대량으로 쉽게 만들 수 있어 더 폭넓은 실험이 가능하다. 트랜스포존 시스템의 또 다른 장점은 CAR-T 세포의 현장(point-of-care) 제조에 쓸 수 있어 제조 시간을 크게 줄인다는 것이다. 이는 특히 렌티바이러스 방식의 기존 CAR-T 세포 제작에 필요한 4-6주 제조 기간을 버티기 어려운 중증 급성 환자에게 중요하다. 결과적으로 Sleeping Beauty와 PiggyBac 트랜스포존 시스템은 여러 적응증에 대해 인체 CAR-T 세포 임상시험 사용이 승인되었다. 본 장에서는 h (생성 절차를 자세히 설명한다)
 
 2. pTpB-hCD19-41BB 벡터. 4-1BB 공동자극 도메인이 있는 anti-CD19 키메라 항원 수용체(CAR)(Note 1 참조).
 
@@ -3545,7 +3545,7 @@ Day 9: 항체 염색과 유세포 분석
 1. 24웰 플레이트 웰들의 내용물을 그룹별로 재현탁해 커니컬 튜브로 옮긴다.
 2. Trypan Blue로 세포를 계수한다.
 3. 최대 10개 세포를 5-mL FACS 튜브로 옮긴다.
-4. RT에서 500 g, 5분간 원심분리한다. 
+4. RT에서 500 g, 5분간 원심분리한다.
 5. 그동안 DPBS에 anti-human CD4 Alexa 700 1:200, anti-human CD8 APC/Cy7, anti-human PD-1 PerCP, Ghost viability dye BV510을 섞어 항체 마스터 믹스를 만든다. 샘플 하나당 항체 마스터 믹스 50 μl가 필요하다. 예를 들어 샘플 10개를 염색한다면, 1.5-mL 마이크로원심튜브의 0.5 mL DPBS에 anti-human CD4 Alexa 700 2.5 μl, anti-human CD8 APC/Cy7 5 μl,
 
 6. 세포 펠릿을 짧게 볼텍스한다.
