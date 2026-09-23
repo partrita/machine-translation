@@ -920,7 +920,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">냅둬 이론</span></a>
+  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">놓아줘 이론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -7433,7 +7433,7 @@ Note
 \tag{89.3}\]</span></span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">17</span>)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">100000</span>                       <span class="co"># 시장 규모</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(M, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">40</span>), <span class="at">sdlog =</span> <span class="fl">0.5</span>) </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(M, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">40</span>), <span class="at">sdlog =</span> <span class="fl">0.5</span>)</span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">15</span>                           <span class="co"># 한계비용</span></span>
 <span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>p_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">15</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="fl">0.5</span>)</span>
@@ -7612,7 +7612,7 @@ Figure&nbsp;89.2: 행동적 가격 효과의 4대 메커니즘: 준거 의존성
 <span id="cb75-29"><a href="#cb75-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 오라클 최적 수익 계산</span></span>
 <span id="cb75-30"><a href="#cb75-30" aria-hidden="true" tabindex="-1"></a>  exp_rewards <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>K_prices, <span class="cf">function</span>(a) prices[a] <span class="sc">*</span> <span class="fu">plogis</span>(<span class="fu">sum</span>(theta_true[a, ] <span class="sc">*</span> x)))</span>
 <span id="cb75-31"><a href="#cb75-31" aria-hidden="true" tabindex="-1"></a>  oracle_opt[t] <span class="ot">&lt;-</span> <span class="fu">max</span>(exp_rewards)</span>
-<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-33"><a href="#cb75-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># LinUCB 점수 계산</span></span>
 <span id="cb75-34"><a href="#cb75-34" aria-hidden="true" tabindex="-1"></a>  ucb_scores <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>K_prices, <span class="cf">function</span>(a) {</span>
 <span id="cb75-35"><a href="#cb75-35" aria-hidden="true" tabindex="-1"></a>    th_hat <span class="ot">&lt;-</span> A_inv[[a]] <span class="sc">%*%</span> b_vec[[a]]</span>
@@ -7620,15 +7620,15 @@ Figure&nbsp;89.2: 행동적 가격 효과의 4대 메커니즘: 준거 의존성
 <span id="cb75-37"><a href="#cb75-37" aria-hidden="true" tabindex="-1"></a>    cb     <span class="ot">&lt;-</span> alpha_ucb <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fu">t</span>(x) <span class="sc">%*%</span> A_inv[[a]] <span class="sc">%*%</span> x)</span>
 <span id="cb75-38"><a href="#cb75-38" aria-hidden="true" tabindex="-1"></a>    prices[a] <span class="sc">*</span> <span class="fu">plogis</span>(p_hat <span class="sc">+</span> cb)</span>
 <span id="cb75-39"><a href="#cb75-39" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb75-40"><a href="#cb75-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-40"><a href="#cb75-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-41"><a href="#cb75-41" aria-hidden="true" tabindex="-1"></a>  arm <span class="ot">&lt;-</span> <span class="fu">which.max</span>(ucb_scores)</span>
 <span id="cb75-42"><a href="#cb75-42" aria-hidden="true" tabindex="-1"></a>  chosen_prices[t] <span class="ot">&lt;-</span> prices[arm]</span>
-<span id="cb75-43"><a href="#cb75-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-43"><a href="#cb75-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-44"><a href="#cb75-44" aria-hidden="true" tabindex="-1"></a>  prob_buy <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="fu">sum</span>(theta_true[arm, ] <span class="sc">*</span> x))</span>
 <span id="cb75-45"><a href="#cb75-45" aria-hidden="true" tabindex="-1"></a>  bought   <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, prob_buy)</span>
 <span id="cb75-46"><a href="#cb75-46" aria-hidden="true" tabindex="-1"></a>  r_t      <span class="ot">&lt;-</span> prices[arm] <span class="sc">*</span> bought</span>
 <span id="cb75-47"><a href="#cb75-47" aria-hidden="true" tabindex="-1"></a>  rewards[t] <span class="ot">&lt;-</span> r_t</span>
-<span id="cb75-48"><a href="#cb75-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-48"><a href="#cb75-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-49"><a href="#cb75-49" aria-hidden="true" tabindex="-1"></a>  A_inv[[arm]] <span class="ot">&lt;-</span> A_inv[[arm]] <span class="sc">-</span> (A_inv[[arm]] <span class="sc">%*%</span> x <span class="sc">%*%</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> A_inv[[arm]]) <span class="sc">/</span></span>
 <span id="cb75-50"><a href="#cb75-50" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">as.numeric</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">t</span>(x) <span class="sc">%*%</span> A_inv[[arm]] <span class="sc">%*%</span> x)</span>
 <span id="cb75-51"><a href="#cb75-51" aria-hidden="true" tabindex="-1"></a>  b_vec[[arm]] <span class="ot">&lt;-</span> b_vec[[arm]] <span class="sc">+</span> x <span class="sc">*</span> bought</span>
@@ -8570,7 +8570,7 @@ v(T) = \frac{1}{n(n-1)} \sum_{i=1}^{n}\sum_{j=1}^{n} d_{ij}
 <span id="cb90-9"><a href="#cb90-9" aria-hidden="true" tabindex="-1"></a>      adj[[i]] <span class="ot">&lt;-</span> <span class="fu">c</span>(adj[[i]], parent[i])</span>
 <span id="cb90-10"><a href="#cb90-10" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb90-11"><a href="#cb90-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-12"><a href="#cb90-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb90-12"><a href="#cb90-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-13"><a href="#cb90-13" aria-hidden="true" tabindex="-1"></a>  dist_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
 <span id="cb90-14"><a href="#cb90-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
 <span id="cb90-15"><a href="#cb90-15" aria-hidden="true" tabindex="-1"></a>    dist <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">1</span>, n); dist[i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>

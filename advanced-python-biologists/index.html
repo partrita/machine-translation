@@ -888,7 +888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">냅둬 이론</span></a>
+  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">놓아줘 이론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1124,7 +1124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>프로그래밍 언어 맥락에서 재귀(recursion)를 간결하게 정의하면 이렇다. <strong>자기 자신을 호출하는 코드를 작성하는 것</strong>입니다. 재귀를 처음 접한다면 이 정의가 큰 도움이 되지 않는다. 두 가지 핵심 질문, 즉 재귀가 <em>왜</em> 유용한지, 파이썬에서 <em>어떻게</em> 하는지에 답하지 못하기 때문이다.</p>
 <p>두 번째 질문은 답하기 쉽다. 파이썬에는 아주 단순한 재귀 문법이 있고 이 장의 예제에서 확인하게 될 것이다.</p>
 <p>첫 번째 질문은 답하기 더 까다롭습니다. 재귀가 유용한 이유는 트리 형태의 구조를 가진 문제를 푸는 코드를 쓸 수 있게 해 주기 때문이다. 이 장의 나머지 대부분은 이 범주에 속하는 생물학적 문제의 예를 보여주는 데 할애 된다. 생각보다 많은 종류의 문제가 여기에 해당한다는 사실을 알게 되실 겁니다.</p>
-<p>트리와는 아무 상관 없어 보이는 문제부터 시작해 보겠다……</p>
+<p>트리와는 아무 상관 없어 보이는 문제부터 시작해 보겠다</p>
 <section id="재귀로-kmer-생성하기" class="level2">
 <h2 class="anchored" data-anchor-id="재귀로-kmer-생성하기">재귀로 kmer 생성하기</h2>
 <p>많은 생물정보학 문제는 kmer를 다룬다. kmer란 주어진 길이의 짧은 DNA 서열이다(길이를 보통 문자 k로 표기하므로 이런 이름이 붙었다). kmer에 관한 뻔한 질문 하나는 이렇다. 길이 k가 주어졌을 때, 가능한 모든 kmers의 목록을 어떻게 생성할까? k에 작은 값, 예컨대 3을 고르면 중첩 for 루프를 나열해 가능한 모든 서열을 생성할 수 있다:</p>
@@ -1420,7 +1420,7 @@ about to return the result: ['Lorisiformes', 'Strepsirrhini', 'Primates']</code>
 <p><strong>최후 공통 조상(Last Common Ancestor)</strong></p>
 <p>트리를 다루는 아주 흔한 연산 중 하나는 노드 그룹의 최후 공통 조상(last common ancestor, LCA)을 찾는 것이다. 프로그래밍에서는 생물학적 의미가 아니라 구조적 의미로 최후 공통 조상을 말한다. 예컨대 영장류 트리에서 Pan troglodytes와 Tarsius tarsier의 최후 공통 조상은 Haplorrhini입니다.</p>
 <p>두 개의 인자, 즉 이 장 앞부분에서 설명한 자식→부모 관계 딕셔너리와 분류군 리스트를 받아 분류군들의 최후 공통 조상을 반환하는 함수를 작성하라. 반복 해법과 재귀 해법을 모두 만들어 볼 수 있는지 확인해 보라.</p>
-<p>힌트: 분류군 리스트의 최후 공통 조상을 찾는 한 가지 접근은 이렇다… 첫 번째와 두 번째 분류군의 최후 공통 조상을 찾아 LC1이라 합시다. 그다음 LC1과 세 번째 분류군의 최후 공통 조상을 찾아 LC2라고 한다. 이어서 LC2와 네 번째 분류군의 최후 공통 조상을 찾는 식으로 계속한다. 마지막 최후 공통 조상이 리스트의 모든 분류군의 최후 공통 조상이기도 하다.</p>
+<p>힌트: 분류군 리스트의 최후 공통 조상을 찾는 한 가지 접근은 이렇다 첫 번째와 두 번째 분류군의 최후 공통 조상을 찾아 LC1이라 합시다. 그다음 LC1과 세 번째 분류군의 최후 공통 조상을 찾아 LC2라고 한다. 이어서 LC2와 네 번째 분류군의 최후 공통 조상을 찾는 식으로 계속한다. 마지막 최후 공통 조상이 리스트의 모든 분류군의 최후 공통 조상이기도 하다.</p>
 </section>
 <section id="풀이" class="level2">
 <h2 class="anchored" data-anchor-id="풀이">풀이</h2>
@@ -4207,7 +4207,7 @@ sorry, couldn't open the file: Is a directory</code></pre>
 <span id="cb359-14"><a href="#cb359-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(function_two())</span>
 <span id="cb359-15"><a href="#cb359-15" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> SomeException:</span>
 <span id="cb359-16"><a href="#cb359-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># handle the exception</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>사실상 예외를 두 번 처리한다. function_one()에서 한 번, 그다음 코드 최상위에서 한 번요. raise 문 얘기가 나온 김에……</p>
+<p>사실상 예외를 두 번 처리한다. function_one()에서 한 번, 그다음 코드 최상위에서 한 번요. raise 문 얘기가 나온 김에</p>
 </section>
 <section id="예외-발생시키기" class="level2">
 <h2 class="anchored" data-anchor-id="예외-발생시키기">예외 발생시키기</h2>

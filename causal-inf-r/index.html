@@ -941,7 +941,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">냅둬 이론</span></a>
+  <a href="../let-them-theory/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">놓아줘 이론</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1879,13 +1879,13 @@ window.Quarto = {
 <span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> .<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> net_data <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(net) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(net) <span class="sc">|&gt;</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">malaria_risk =</span> <span class="fu">mean</span>(malaria_risk)) <span class="sc">|&gt;</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(net) <span class="sc">|&gt;</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(malaria_risk)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>에서 모기장을 사용한 사람들의 밀도는 사용하지 않은 사람들의 밀도보다 왼쪽에 위치한다. 말라리아 위험의 평균 차이는 약 <code>r round(abs(means[[1]] - means[[2]]), digits = 1)</code>이며 이는 모기장 사용이 말라리아에 대해 보호 효과가 있을 수 있음을 시사한다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>net_data <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(net) <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(net) <span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">malaria_risk =</span> <span class="fu">mean</span>(malaria_risk))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>단순 선형 회귀에서도 예상대로 동일한 결과를 확인할 수 있다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
@@ -1907,7 +1907,7 @@ window.Quarto = {
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"ggdag"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>) <span class="sc">&amp;&amp;</span> <span class="fu">requireNamespace</span>(<span class="st">"ggokabeito"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggokabeito)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  mosquito_dag <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    malaria_risk <span class="sc">~</span> net <span class="sc">+</span> income <span class="sc">+</span> health <span class="sc">+</span> temperature <span class="sc">+</span> resistance,</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    net <span class="sc">~</span> income <span class="sc">+</span> health <span class="sc">+</span> temperature <span class="sc">+</span> eligible <span class="sc">+</span> household,</span>
@@ -1965,8 +1965,8 @@ window.Quarto = {
 <span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a simple placeholder plot if ggdag is not available</span></span>
 <span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.5</span>, </span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"DAG visualization requires ggdag package</span><span class="sc">\n</span><span class="st">Please install: remotes::install_github('r-causal/ggdag')"</span>, </span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"DAG visualization requires ggdag package</span><span class="sc">\n</span><span class="st">Please install: remotes::install_github('r-causal/ggdag')"</span>,</span>
 <span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>             <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
 <span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2002,7 +2002,7 @@ window.Quarto = {
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"ggdag"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>) <span class="sc">&amp;&amp;</span> <span class="fu">requireNamespace</span>(<span class="st">"ggokabeito"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggokabeito)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  glyph <span class="ot">&lt;-</span> <span class="cf">function</span>(data, params, size) {</span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>shape <span class="ot">&lt;-</span> <span class="dv">15</span></span>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">12</span></span>
@@ -2071,8 +2071,8 @@ window.Quarto = {
 <span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ggdag 패키지를 사용할 수 없는 경우 간단한 자리 표시용 그래프 생성</span></span>
 <span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.5</span>, </span>
-<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"DAG 경로 시각화를 위해서는 ggdag 패키지가 필요합니다</span><span class="sc">\n</span><span class="st">설치 방법: remotes::install_github('r-causal/ggdag')"</span>, </span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.5</span>,</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"DAG 경로 시각화를 위해서는 ggdag 패키지가 필요합니다</span><span class="sc">\n</span><span class="st">설치 방법: remotes::install_github('r-causal/ggdag')"</span>,</span>
 <span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>             <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
 <span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2202,7 +2202,7 @@ Tip
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.group =</span> net,</span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.wts =</span> wts</span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    plot_df,</span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
@@ -2293,7 +2293,7 @@ Tip
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>net_term <span class="ot">&lt;-</span> sample_terms[<span class="fu">grepl</span>(<span class="st">"net"</span>, sample_terms, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">&amp;</span> sample_terms <span class="sc">!=</span> <span class="st">"(Intercept)"</span>]</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>ipw_results <span class="sc">|&gt;</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">!=</span> <span class="st">"Apparent"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">!=</span> <span class="st">"Apparent"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate =</span> <span class="fu">map_dbl</span>(</span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>      boot_fits,</span>
@@ -2322,7 +2322,7 @@ Tip
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"tipr"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tipr)</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  tipping_points <span class="ot">&lt;-</span> <span class="fu">tip_coef</span>(boot_estimate<span class="sc">$</span>.upper, <span class="at">exposure_confounder_effect =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  tipping_points <span class="sc">|&gt;</span></span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(confounder_outcome_effect, exposure_confounder_effect)) <span class="sc">+</span></span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#009E73"</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
@@ -2622,7 +2622,7 @@ Note
 <span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> avg_labels <span class="sc">|&gt;</span> <span class="fu">filter</span>(observed <span class="sc">==</span> <span class="st">"unobserved"</span>),</span>
 <span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> happiness, <span class="at">y =</span> y_id),</span>
 <span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">4</span>,</span>
-<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> <span class="dv">23</span>, </span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> <span class="dv">23</span>,</span>
 <span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"white"</span>,</span>
 <span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> unobserved_col,</span>
 <span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
@@ -2808,7 +2808,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: "fig-po-confounding"</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "교란(confounding)이 존재할 때 관찰된 노출 그룹별 평균 잠재적 결과. 맛 배정이 더 이상 잠재적 결과와 독립적이지 않기 때문에 그룹들은 더 이상 교환 가능하지 않습니다."</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false </span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>data_observed_exch <span class="sc">|&gt;</span></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"y"</span>), exposure) <span class="sc">|&gt;</span></span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
@@ -2816,7 +2816,7 @@ Note
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"y_"</span>,</span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"potential_outcome"</span>,</span>
 <span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"happiness"</span></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">observed =</span> <span class="fu">if_else</span>(exposure <span class="sc">==</span> potential_outcome, <span class="st">"observed"</span>, <span class="st">"unobserved"</span>),</span>
 <span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">potential_outcome =</span> <span class="fu">paste0</span>(<span class="st">"잠재적 결과: y("</span>, potential_outcome, <span class="st">")"</span>),</span>
@@ -2824,8 +2824,8 @@ Note
 <span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(happiness, exposure, <span class="at">color =</span> observed, <span class="at">fill =</span> observed, <span class="at">shape =</span> observed)) <span class="sc">+</span></span>
 <span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">"mean"</span>, </span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>, </span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">"mean"</span>,</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
 <span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"point"</span>,</span>
 <span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>,</span>
 <span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">y =</span> <span class="fl">0.033</span>)</span>
@@ -2836,23 +2836,23 @@ Note
 <span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(<span class="fu">after_stat</span>(x), <span class="dv">1</span>)),</span>
 <span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.8</span>,</span>
 <span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> potential_outcome) <span class="sc">+</span> </span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> potential_outcome) <span class="sc">+</span></span>
 <span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
 <span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"grey40"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>),</span>
 <span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"실제 노출"</span>, </span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"실제 노출"</span>,</span>
 <span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span>,</span>
 <span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="cn">NULL</span>,</span>
 <span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span></span>
-<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span> </span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span></span>
 <span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">21</span>)) <span class="sc">+</span></span>
 <span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">observed =</span> ggokabeito<span class="sc">::</span><span class="fu">palette_okabe_ito</span>(<span class="dv">1</span>), <span class="at">unobserved =</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
-<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="fl">2.5</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">12</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="fl">2.5</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>교환 가능성이 위배될 때 우리는 무엇을 할 수 있을까? 책 전반에 걸쳐 우리는 이 문제에 많은 시간을 할애할 것이다. 하지만 해결책의 핵심은, 때때로 다른 변수의 수준 내에서 여전히 교환 가능성을 달성할 수 있다는 점이다. 이를 <strong>조건부 교환 가능성(conditional exchangeability)</strong>이라고 부른다: <span class="math inline">\(Y(x) \perp\!\!\!\perp X \mid Z\)</span>. 이 사례에서는 <code>prefer_chocolate</code>의 수준 내에서 교환 가능성이 필요하다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-po-cond-exch</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "교란이 존재할 때 관찰된 노출 그룹별 평균 잠재적 결과. 우리는 여전히 교란 요인의 수준 내에서 *조건부* 교환 가능성을 달성할 수 있습니다. 여기서는 또한 표본 크기의 한계도 보이기 시작합니다. 더 큰 수에서는 유효했을 잠재적 결과들이 어긋나기 시작하기 때문입니다."</span></span>
@@ -2869,17 +2869,17 @@ Note
 <span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"y_"</span>,</span>
 <span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"potential_outcome"</span>,</span>
 <span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"happiness"</span></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">observed =</span> <span class="fu">if_else</span>(exposure <span class="sc">==</span> potential_outcome, <span class="st">"observed"</span>, <span class="st">"unobserved"</span>),</span>
 <span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">potential_outcome =</span> <span class="fu">paste0</span>(<span class="st">"potential outcome: y("</span>, potential_outcome, <span class="st">")"</span>),</span>
 <span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure =</span> <span class="fu">if_else</span>(exposure <span class="sc">==</span> <span class="st">"vanilla"</span>, <span class="st">"실제로 바닐라를</span><span class="sc">\n</span><span class="st">먹음"</span>, <span class="st">"실제로 초콜릿을</span><span class="sc">\n</span><span class="st">먹음"</span>)</span>
 <span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(happiness, exposure, <span class="at">color =</span> observed, <span class="at">fill =</span> observed, <span class="at">shape =</span> observed)) <span class="sc">+</span></span>
 <span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">"mean"</span>, </span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>, </span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">"mean"</span>,</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
 <span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"point"</span>,</span>
 <span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>,</span>
 <span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">y =</span> <span class="fl">0.033</span>)</span>
@@ -2890,23 +2890,23 @@ Note
 <span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(<span class="fu">after_stat</span>(x), <span class="dv">1</span>)),</span>
 <span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.8</span>,</span>
 <span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
-<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(prefer_chocolate <span class="sc">~</span> potential_outcome) <span class="sc">+</span> </span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(prefer_chocolate <span class="sc">~</span> potential_outcome) <span class="sc">+</span></span>
 <span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
 <span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"grey40"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>),</span>
 <span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"실제 노출"</span>, </span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"실제 노출"</span>,</span>
 <span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span>,</span>
 <span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="cn">NULL</span>,</span>
 <span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span></span>
-<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span> </span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span></span>
 <span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">21</span>)) <span class="sc">+</span></span>
 <span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">observed =</span> ggokabeito<span class="sc">::</span><span class="fu">palette_okabe_ito</span>(<span class="dv">1</span>), <span class="at">unobserved =</span> <span class="st">"white"</span>)) <span class="sc">+</span></span>
-<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="fl">2.5</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">12</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="fl">2.5</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3375,20 +3375,20 @@ Tip
 <span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
 <span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
 <span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(  </span>
+<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> avg_labels <span class="sc">|&gt;</span> <span class="fu">filter</span>(observed <span class="sc">==</span> <span class="st">"unobserved"</span>),</span>
-<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> happiness, <span class="at">y =</span> y_id, <span class="at">color =</span> exposure_unobserved),  </span>
-<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>,  </span>
-<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>, </span>
-<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,  </span>
-<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>  </span>
-<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span>  </span>
-<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(  </span>
-<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> avg_labels <span class="sc">|&gt;</span> <span class="fu">filter</span>(observed <span class="sc">==</span> <span class="st">"observed"</span>),  </span>
-<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> happiness, <span class="at">y =</span> y_id, <span class="at">fill =</span> exposure_unobserved, <span class="at">color =</span> exposure_unobserved),  </span>
-<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>,  </span>
+<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> happiness, <span class="at">y =</span> y_id, <span class="at">color =</span> exposure_unobserved),</span>
+<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>,</span>
+<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>,</span>
+<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
+<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> avg_labels <span class="sc">|&gt;</span> <span class="fu">filter</span>(observed <span class="sc">==</span> <span class="st">"observed"</span>),</span>
+<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> happiness, <span class="at">y =</span> y_id, <span class="at">fill =</span> exposure_unobserved, <span class="at">color =</span> exposure_unobserved),</span>
+<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>,</span>
 <span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>,</span>
-<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>  </span>
+<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
 <span id="cb54-51"><a href="#cb54-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb54-52"><a href="#cb54-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> potential_outcome) <span class="sc">+</span></span>
 <span id="cb54-53"><a href="#cb54-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
@@ -3505,7 +3505,7 @@ Tip
 <span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>observed, id <span class="sc">==</span> unobserved_id, potential_outcome <span class="sc">==</span> <span class="st">"y(vanilla)"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> happiness <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.15</span>),</span>
-<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> y_id <span class="sc">-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), </span>
+<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> y_id <span class="sc">-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>),</span>
 <span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> unobserved_annotation<span class="sc">$</span>x,</span>
 <span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> unobserved_annotation<span class="sc">$</span>y,</span>
 <span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">potential_outcome =</span> <span class="st">"y(vanilla)"</span></span>
@@ -6598,7 +6598,7 @@ Note
 <span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이 분석을 위해 우리는 <code>date</code> (조인을 위한 ID 역할을 할 관찰 날짜), <code>wdw_ticket_season</code> (해당 날짜의 티켓 시즌), <code>wdwmaxtemp</code> (과거 최고 기온), <code>mkclose</code> (매직 킹덤 폐쇄 시간), 그리고 <code>mkemhmorn</code> (매직 킹덤에 아침 엑스트라 매직 아워가 있었는지 여부) 변수가 필요하다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>parks_metadata <span class="ot">&lt;-</span> parks_metadata_raw <span class="sc">|&gt;</span></span>
-<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 노출 정의, 배정 절차, </span></span>
+<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 노출 정의, 배정 절차,</span></span>
 <span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 그리고 분석 계획: ID, 노출, 교란 요인들을 선택합니다</span></span>
 <span id="cb176-4"><a href="#cb176-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
 <span id="cb176-5"><a href="#cb176-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># id</span></span>
@@ -6664,7 +6664,7 @@ Tip
 <span id="cb179-7"><a href="#cb179-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"날짜 비율"</span>,</span>
 <span id="cb179-8"><a href="#cb179-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
 <span id="cb179-9"><a href="#cb179-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"티켓 시즌"</span></span>
-<span id="cb179-10"><a href="#cb179-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb179-10"><a href="#cb179-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb179-11"><a href="#cb179-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>연중 대부분의 기간 동안 매직 킹덤은 22:00, 21:00 또는 자정까지 운영되었지만 16:30에 끝나는 날을 포함하여 상당히 다양했다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb180"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>parks_metadata <span class="sc">|&gt;</span></span>
@@ -6680,7 +6680,7 @@ Tip
 <span id="cb181-8"><a href="#cb181-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"날짜 비율"</span>,</span>
 <span id="cb181-9"><a href="#cb181-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
 <span id="cb181-10"><a href="#cb181-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"폐쇄 시간"</span></span>
-<span id="cb181-11"><a href="#cb181-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb181-11"><a href="#cb181-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb181-12"><a href="#cb181-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>디즈니 월드는 플로리다에서 특별히 추워지지는 않지만 여름에는 매우 덥습니다 .</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb182"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-high-temp</span></span>
@@ -6741,11 +6741,11 @@ Note
 <span id="cb186-7"><a href="#cb186-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">park_ticket_season =</span> <span class="st">"티켓 시즌"</span>,</span>
 <span id="cb186-8"><a href="#cb186-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">park_close =</span> <span class="st">"폐쇄 시간"</span>,</span>
 <span id="cb186-9"><a href="#cb186-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">park_temperature_high =</span> <span class="st">"과거 최고 기온"</span></span>
-<span id="cb186-10"><a href="#cb186-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb186-10"><a href="#cb186-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb186-11"><a href="#cb186-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb186-12"><a href="#cb186-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">park_close =</span> <span class="fu">as.character</span>(park_close),</span>
 <span id="cb186-13"><a href="#cb186-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">park_extra_magic_morning =</span> <span class="fu">factor</span>(</span>
-<span id="cb186-14"><a href="#cb186-14" aria-hidden="true" tabindex="-1"></a>      park_extra_magic_morning, </span>
+<span id="cb186-14"><a href="#cb186-14" aria-hidden="true" tabindex="-1"></a>      park_extra_magic_morning,</span>
 <span id="cb186-15"><a href="#cb186-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Magic Hours 없음"</span>, <span class="st">"엑스트라 매직 아워"</span>)</span>
 <span id="cb186-16"><a href="#cb186-16" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb186-17"><a href="#cb186-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
@@ -6753,7 +6753,7 @@ Note
 <span id="cb186-19"><a href="#cb186-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> park_extra_magic_morning,</span>
 <span id="cb186-20"><a href="#cb186-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">include =</span> <span class="fu">c</span>(</span>
 <span id="cb186-21"><a href="#cb186-21" aria-hidden="true" tabindex="-1"></a>      park_ticket_season,</span>
-<span id="cb186-22"><a href="#cb186-22" aria-hidden="true" tabindex="-1"></a>      park_close, </span>
+<span id="cb186-22"><a href="#cb186-22" aria-hidden="true" tabindex="-1"></a>      park_close,</span>
 <span id="cb186-23"><a href="#cb186-23" aria-hidden="true" tabindex="-1"></a>      park_temperature_high</span>
 <span id="cb186-24"><a href="#cb186-24" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb186-25"><a href="#cb186-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
@@ -6780,8 +6780,8 @@ Note
 <p>교환 가능성(Exchangeability)은 확인하기 어려운 가정이다. 많은 경우, 교란 요인은 노출과 결과 모두와 연관 된다. 하지만 교란 요인과가 두 변수 사이의 관계 자체가 교란되어 있을 수도 있다. 교환 가능성에 대한 데이터 확인은 <a href="#sec-eval-ps-model" class="quarto-xref"><span>성향 점수 모델 평가하기</span></a>에서 더 나은 도구를 써서가 가정을 조사할 때까지 미루겠다.</p>
 <p>일관성(Consistency)을 확인하는 한 가지 방법은 여러 버전의 처치 데이터를 쓰는 것이다. 예를 들어, 질문이 “아침 엑스트라 매직 아워” 대신 단순히 “엑스트라 매직 아워”였다면 일관성 위배가 발생했을 수도 있다. 엑스트라 매직 아워는 저녁에도 있으며 이것이 아침 시간대와 다른 효과를 낼 수 있다는 것은 타당해 보인다. 우리는 두 가지 엑스트라 매직 아워 유형을 별개의 노출로 분리하여 데이터를 탐색할 수 있다. 우리는 이미 구체적으로 명시하고 있으므로 이를 직접 계산하지는 않겠지만 아이디어는 다른 종류의 층화와 동일하다. 여기서는 할당된 <code>exposure</code> 값과 <code>exposure_type</code>(예: “아침” 또는 “저녁” 노출)을 그룹화하여 살펴볼 것이다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">|&gt;</span> </span>
-<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exposure, exposure_type) <span class="sc">|&gt;</span> </span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">|&gt;</span></span>
+<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exposure, exposure_type) <span class="sc">|&gt;</span></span>
 <span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>또한 측정하기 어려운 방식으로 아침 엑스트라 매직 아워들이 서로 다를 수도 있다; 우리는 많은 조사를 하지 않고는 이를 확인하지 못할 수도 있다. 이미 아침 엑스트라 매직 아워를 사용한다고 명확히 했으므로가 가정을 더 이상 조사하지 않겠다. 실무에서는 이러한 결정에 신중해야 하며 자신의 노출과 그 다양한 발현 양상에 대해 전문가가 되어야 한다.</p>
 <p>이제 긍정성(positivity)을 파헤쳐 봅시다. 긍정성 가정은 교환 가능성을 달성하기 위해 사용되는 변수들의 각 수준과 조합 내에서 노출된 대상과 노출되지 않은 대상이 모두 존재할 것을 요구한다. 우리는 제안된 각 교란 요인의 분포를 노출에 따라 층화하여 시각화함으로써 이를 탐색할 수 있다. 이는 특정 수준에서 노출된 날짜나 노출되지 않은 날짜가 누락되었는지 이해하는 데 도움을 줄 것이다. 하지만 확률적(stochastic) 긍정성 위배와 구조적(structural) 긍정성 위배의 차이를 구분할 수 있는 유일한 방법은 배경 지식뿐이다. 예를 들어, 특정 폐쇄 시간에 엑스트라 매직 아워가 없었던 것이 단지 우연일 수도 있지만(확률적 위배), 교란 요인들을 고려할 때 엑스트라 매직 아워를 가질 자격이 없는 날들이 있을 수도 있다(구조적 위배).</p>
@@ -6880,7 +6880,7 @@ Note
 <span id="cb195-20"><a href="#cb195-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb195-21"><a href="#cb195-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 각 구간에서의 노출 비율을 계산합니다</span></span>
 <span id="cb195-22"><a href="#cb195-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb195-23"><a href="#cb195-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_exposed =</span> <span class="fu">mean</span>(park_extra_magic_morning <span class="sc">==</span> <span class="st">"엑스트라 매직 아워"</span>), </span>
+<span id="cb195-23"><a href="#cb195-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_exposed =</span> <span class="fu">mean</span>(park_extra_magic_morning <span class="sc">==</span> <span class="st">"엑스트라 매직 아워"</span>),</span>
 <span id="cb195-24"><a href="#cb195-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
 <span id="cb195-25"><a href="#cb195-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb195-26"><a href="#cb195-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(</span>
@@ -6893,8 +6893,8 @@ Note
 <span id="cb195-33"><a href="#cb195-33" aria-hidden="true" tabindex="-1"></a>prop_exposed <span class="sc">|&gt;</span></span>
 <span id="cb195-34"><a href="#cb195-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb195-35"><a href="#cb195-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb195-36"><a href="#cb195-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> park_close_bin, </span>
-<span id="cb195-37"><a href="#cb195-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> park_temperature_high_bin, </span>
+<span id="cb195-36"><a href="#cb195-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> park_close_bin,</span>
+<span id="cb195-37"><a href="#cb195-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> park_temperature_high_bin,</span>
 <span id="cb195-38"><a href="#cb195-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> prop_exposed</span>
 <span id="cb195-39"><a href="#cb195-39" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb195-40"><a href="#cb195-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
@@ -7173,7 +7173,7 @@ Note
 <span id="cb207-3"><a href="#cb207-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">support =</span> <span class="fu">case_when</span>(</span>
 <span id="cb207-4"><a href="#cb207-4" aria-hidden="true" tabindex="-1"></a>      park_extra_magic_morning <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
 <span id="cb207-5"><a href="#cb207-5" aria-hidden="true" tabindex="-1"></a>.fitted <span class="sc">&lt;</span> <span class="fu">min</span>(.fitted[park_extra_magic_morning <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">~</span> <span class="st">"비노출군_범위미만"</span>,</span>
-<span id="cb207-6"><a href="#cb207-6" aria-hidden="true" tabindex="-1"></a>      park_extra_magic_morning <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> </span>
+<span id="cb207-6"><a href="#cb207-6" aria-hidden="true" tabindex="-1"></a>      park_extra_magic_morning <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
 <span id="cb207-7"><a href="#cb207-7" aria-hidden="true" tabindex="-1"></a>        .fitted <span class="sc">&gt;</span> <span class="fu">max</span>(.fitted[park_extra_magic_morning <span class="sc">==</span> <span class="dv">0</span>]) <span class="sc">~</span> <span class="st">"노출군_범위초과"</span>,</span>
 <span id="cb207-8"><a href="#cb207-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="st">"공통_지지_영역내"</span>,</span>
 <span id="cb207-9"><a href="#cb207-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">.ptype =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"비노출군_범위미만"</span>, <span class="st">"공통_지지_영역내"</span>, <span class="st">"노출군_범위초과"</span>))</span>
@@ -8553,19 +8553,19 @@ w_i^{\mathrm{ATO}}
 <tbody>
 <tr class="odd">
 <td>ATE</td>
-<td><code>matchit(…, method = "full", estimand = "ATE")</code></td>
+<td><code>matchit(, method = "full", estimand = "ATE")</code></td>
 </tr>
 <tr class="even">
 <td>ATT</td>
-<td><code>matchit(…, estimand = "ATT")</code></td>
+<td><code>matchit(, estimand = "ATT")</code></td>
 </tr>
 <tr class="odd">
 <td>ATC</td>
-<td><code>matchit(…, estimand = "ATC")</code></td>
+<td><code>matchit(, estimand = "ATC")</code></td>
 </tr>
 <tr class="even">
 <td>ATM</td>
-<td><code>matchit(…, caliper = &lt;caliper&gt;)</code></td>
+<td><code>matchit(, caliper = &lt;caliper&gt;)</code></td>
 </tr>
 </tbody>
 </table>
@@ -8985,7 +8985,7 @@ w_i^{\mathrm{ATO}}
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb301"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb301-1"><a href="#cb301-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">ipw</span>(propensity_model, weighted_mod)</span>
 <span id="cb301-2"><a href="#cb301-2" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>결과를 데이터 프레임으로 수집할 수도 있다.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb302"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb302-1"><a href="#cb302-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb302"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb302-1"><a href="#cb302-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">|&gt;</span></span>
 <span id="cb302-2"><a href="#cb302-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
@@ -10615,16 +10615,16 @@ Warning
 <span id="cb359-22"><a href="#cb359-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(missing_by) <span class="sc">&amp;</span> missing_for <span class="sc">==</span> <span class="st">"actual"</span>) {</span>
 <span id="cb359-23"><a href="#cb359-23" aria-hidden="true" tabindex="-1"></a>    actual[missing_by] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb359-24"><a href="#cb359-24" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb359-25"><a href="#cb359-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb359-25"><a href="#cb359-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb359-26"><a href="#cb359-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(missing_by) <span class="sc">&amp;</span> missing_for <span class="sc">==</span> <span class="st">"posted"</span>) {</span>
 <span id="cb359-27"><a href="#cb359-27" aria-hidden="true" tabindex="-1"></a>    posted_60[missing_by] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb359-28"><a href="#cb359-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb359-29"><a href="#cb359-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb359-29"><a href="#cb359-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb359-30"><a href="#cb359-30" aria-hidden="true" tabindex="-1"></a>  t_actual <span class="ot">&lt;-</span> <span class="fu">t.test</span>(actual)</span>
 <span id="cb359-31"><a href="#cb359-31" aria-hidden="true" tabindex="-1"></a>  t_posted <span class="ot">&lt;-</span> <span class="fu">t.test</span>(posted_60 <span class="sc">*</span> <span class="dv">60</span>)</span>
 <span id="cb359-32"><a href="#cb359-32" aria-hidden="true" tabindex="-1"></a>  mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(actual <span class="sc">~</span> posted_60)</span>
 <span id="cb359-33"><a href="#cb359-33" aria-hidden="true" tabindex="-1"></a>  mdl_confints <span class="ot">&lt;-</span> <span class="fu">confint</span>(mdl)</span>
-<span id="cb359-34"><a href="#cb359-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb359-34"><a href="#cb359-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb359-35"><a href="#cb359-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
 <span id="cb359-36"><a href="#cb359-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">dag =</span> dag,</span>
 <span id="cb359-37"><a href="#cb359-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_actual_estimate =</span> <span class="fu">as.numeric</span>(t_actual<span class="sc">$</span>estimate),</span>
@@ -10707,7 +10707,7 @@ Tip
 <span id="cb360-5"><a href="#cb360-5" aria-hidden="true" tabindex="-1"></a>calib_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
 <span id="cb360-6"><a href="#cb360-6" aria-hidden="true" tabindex="-1"></a>  wait_minutes_actual_avg <span class="sc">~</span></span>
 <span id="cb360-7"><a href="#cb360-7" aria-hidden="true" tabindex="-1"></a>    wait_minutes_posted_avg <span class="sc">*</span> wait_hour <span class="sc">+</span></span>
-<span id="cb360-8"><a href="#cb360-8" aria-hidden="true" tabindex="-1"></a>    park_extra_magic_morning <span class="sc">+</span> </span>
+<span id="cb360-8"><a href="#cb360-8" aria-hidden="true" tabindex="-1"></a>    park_extra_magic_morning <span class="sc">+</span></span>
 <span id="cb360-9"><a href="#cb360-9" aria-hidden="true" tabindex="-1"></a>    park_temperature_high <span class="sc">+</span> park_close <span class="sc">+</span> park_ticket_season,</span>
 <span id="cb360-10"><a href="#cb360-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> seven_dwarfs_train_2018)</span>
 <span id="cb360-11"><a href="#cb360-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -10718,19 +10718,19 @@ Tip
 <span id="cb361-2"><a href="#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(propensity)</span>
 <span id="cb361-3"><a href="#cb361-3" aria-hidden="true" tabindex="-1"></a>fit_ipw_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(.fmla, <span class="at">.data =</span> seven_dwarfs, <span class="at">.trt =</span> <span class="st">"park_extra_magic_morning"</span>, <span class="at">.outcome_fmla =</span> wait_minutes_posted_calib <span class="sc">~</span> park_extra_magic_morning) {</span>
 <span id="cb361-4"><a href="#cb361-4" aria-hidden="true" tabindex="-1"></a>  .trt_var <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">ensym</span>(.trt)</span>
-<span id="cb361-5"><a href="#cb361-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb361-5"><a href="#cb361-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb361-6"><a href="#cb361-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 성향 점수 모델 적합</span></span>
 <span id="cb361-7"><a href="#cb361-7" aria-hidden="true" tabindex="-1"></a>  propensity_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb361-8"><a href="#cb361-8" aria-hidden="true" tabindex="-1"></a>    .fmla,</span>
 <span id="cb361-9"><a href="#cb361-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .data,</span>
 <span id="cb361-10"><a href="#cb361-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="fu">binomial</span>()</span>
 <span id="cb361-11"><a href="#cb361-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb361-12"><a href="#cb361-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb361-12"><a href="#cb361-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb361-13"><a href="#cb361-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ATE 가중치 계산</span></span>
 <span id="cb361-14"><a href="#cb361-14" aria-hidden="true" tabindex="-1"></a>  .df <span class="ot">&lt;-</span> propensity_model <span class="sc">|&gt;</span></span>
 <span id="cb361-15"><a href="#cb361-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">augment</span>(<span class="at">type.predict =</span> <span class="st">"response"</span>, <span class="at">data =</span> .data) <span class="sc">|&gt;</span></span>
 <span id="cb361-16"><a href="#cb361-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">w_ate =</span> <span class="fu">wt_ate</span>(.fitted, <span class="sc">!!</span>.trt_var, <span class="at">exposure_type =</span> <span class="st">"binary"</span>))</span>
-<span id="cb361-17"><a href="#cb361-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb361-17"><a href="#cb361-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb361-18"><a href="#cb361-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># IPW 모델 적합</span></span>
 <span id="cb361-19"><a href="#cb361-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(.outcome_fmla, <span class="at">data =</span> .df, <span class="at">weights =</span> w_ate) <span class="sc">|&gt;</span></span>
 <span id="cb361-20"><a href="#cb361-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
@@ -10864,22 +10864,22 @@ Tip&nbsp;45.1: 루빈의 법칙
 <p>마지막으로 여러 데이터셋에 걸쳐 IPW 효과를 적합시키는 함수를 작성해 보겠다. 루빈의 법칙(Rubin’s Rules)을 적용하려면 처치 효과와 함께 표준 오차도 확인해야 한다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb366"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb366-1"><a href="#cb366-1" aria-hidden="true" tabindex="-1"></a>fit_ipw_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(.fmla, <span class="at">.data =</span> seven_dwarfs, <span class="at">.trt =</span> <span class="st">"park_extra_magic_morning"</span>, <span class="at">.outcome_fmla =</span> wait_minutes_posted_calib <span class="sc">~</span> park_extra_magic_morning) {</span>
 <span id="cb366-2"><a href="#cb366-2" aria-hidden="true" tabindex="-1"></a>  .trt_var <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">ensym</span>(.trt)</span>
-<span id="cb366-3"><a href="#cb366-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb366-3"><a href="#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb366-4"><a href="#cb366-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 성향 점수 모델 적합</span></span>
 <span id="cb366-5"><a href="#cb366-5" aria-hidden="true" tabindex="-1"></a>  propensity_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb366-6"><a href="#cb366-6" aria-hidden="true" tabindex="-1"></a>    .fmla,</span>
 <span id="cb366-7"><a href="#cb366-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .data,</span>
 <span id="cb366-8"><a href="#cb366-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="fu">binomial</span>()</span>
 <span id="cb366-9"><a href="#cb366-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb366-10"><a href="#cb366-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb366-10"><a href="#cb366-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb366-11"><a href="#cb366-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ATE 가중치 계산</span></span>
 <span id="cb366-12"><a href="#cb366-12" aria-hidden="true" tabindex="-1"></a>  .df <span class="ot">&lt;-</span> propensity_model <span class="sc">|&gt;</span></span>
 <span id="cb366-13"><a href="#cb366-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">augment</span>(<span class="at">type.predict =</span> <span class="st">"response"</span>, <span class="at">data =</span> .data) <span class="sc">|&gt;</span></span>
 <span id="cb366-14"><a href="#cb366-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">w_ate =</span> <span class="fu">wt_ate</span>(.fitted, <span class="sc">!!</span>.trt_var, <span class="at">exposure_type =</span> <span class="st">"binary"</span>))</span>
-<span id="cb366-15"><a href="#cb366-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb366-15"><a href="#cb366-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb366-16"><a href="#cb366-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 결과 모델 적합</span></span>
-<span id="cb366-17"><a href="#cb366-17" aria-hidden="true" tabindex="-1"></a>  outcome_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(.outcome_fmla, <span class="at">data =</span> .df, <span class="at">weights =</span> w_ate) </span>
-<span id="cb366-18"><a href="#cb366-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb366-17"><a href="#cb366-17" aria-hidden="true" tabindex="-1"></a>  outcome_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(.outcome_fmla, <span class="at">data =</span> .df, <span class="at">weights =</span> w_ate)</span>
+<span id="cb366-18"><a href="#cb366-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb366-19"><a href="#cb366-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># IPW 효과 적합</span></span>
 <span id="cb366-20"><a href="#cb366-20" aria-hidden="true" tabindex="-1"></a>  ipw_output <span class="ot">&lt;-</span> <span class="fu">ipw</span>(propensity_model, outcome_model, .df)</span>
 <span id="cb366-21"><a href="#cb366-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="at">estimate =</span> ipw_output<span class="sc">$</span>estimates<span class="sc">$</span>estimate,</span>
@@ -14091,10 +14091,10 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb465"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb465-1"><a href="#cb465-1" aria-hidden="true" tabindex="-1"></a>indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
 <span id="cb465-2"><a href="#cb465-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 인덱스 벡터 생성:</span></span>
 <span id="cb465-3"><a href="#cb465-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1부터 행의 수까지</span></span>
-<span id="cb465-4"><a href="#cb465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq_len</span>(<span class="fu">nrow</span>(this_data)), </span>
+<span id="cb465-4"><a href="#cb465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seq_len</span>(<span class="fu">nrow</span>(this_data)),</span>
 <span id="cb465-5"><a href="#cb465-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this_data와 동일한 길이의</span></span>
 <span id="cb465-6"><a href="#cb465-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 인덱스 벡터를 샘플링</span></span>
-<span id="cb465-7"><a href="#cb465-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fu">nrow</span>(this_data), </span>
+<span id="cb465-7"><a href="#cb465-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fu">nrow</span>(this_data),</span>
 <span id="cb465-8"><a href="#cb465-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span></span>
 <span id="cb465-9"><a href="#cb465-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb465-10"><a href="#cb465-10" aria-hidden="true" tabindex="-1"></a>bootstrap_resample <span class="ot">&lt;-</span> this_data[indices, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
