@@ -708,7 +708,6 @@ John Löfblom and Fredrik Y. Frejd
 비항체 골격은 기원, 이차구조 조성, 크기 등 여러 기준으로 분류할 수 있다. 널리 쓰이는 분류 체계 중 하나는 다양화(diversification)가 일어나는 부위에 기반한다. 골격의 유형은 대략 하나 이상의 무작위화된 루프를 가진 안정한 골격(면역글로불린 폴드가 여기 속한다)과, 무작위화가 표면
 
 | --- | --- | --- |
-
 Almut et al. (2011): 높은 친화력, 증가된 혈장 반감기, 이중 표적화에 의한 결합 향상(Hober personal communication)
 FNT-F, Z-domain: TNF 억제, 종양 이그노스(tumour xenograft)의 분해, RFGE: 7.7 nM 차단, EGFR과 IGFR 성장 감소
 Emanuel et al. (2011): 이중 수용체, IGFR: 0.4 nM DK, 세포 내 재흡수 차단, 75.5 pM T
