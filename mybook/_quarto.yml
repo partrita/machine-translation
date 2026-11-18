@@ -39,6 +39,7 @@ book:
     - part: "소프트웨어 설계"
       chapters:
         - philosophy-of-software-design/index.qmd
+        - domain-driven-design/index.qmd
     - part: "인공지능과 머신러닝"
       chapters:
         - why-machines-learn/index.qmd
@@ -47,6 +48,7 @@ book:
         - genai-fastapi/index.qmd
         - llm-privacy-security/index.qmd
         - nexus-harari/index.qmd
+        - accelerando/index.qmd
     - part: "데이터 과학과 데이터 엔지니어링"
       chapters:
         - data-analysis/index.qmd
@@ -109,6 +111,7 @@ book:
       chapters:
         - personal-mba/index.qmd
         - zero-to-one/index.qmd
+        - the-mom-test/index.qmd
         - making-futures-work/index.qmd
         - marketing-research/index.qmd
         - latte-factor/index.qmd
@@ -169,6 +172,8 @@ book:
         - life-is-short/index.qmd
         - siddhartha/index.qmd
         - suttanipata/index.qmd
+        - i-am-a-strange-loop/index.qmd
+        - anathem/index.qmd
         - bible/index.qmd
         - mindfulness-dummies/index.qmd
         - waking-up/index.qmd
