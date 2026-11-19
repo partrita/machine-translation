@@ -997,6 +997,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../children-of-time/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">시간의 아이들</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../starship-troopers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">스타십 트루퍼스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../bible/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">성경</span></a>
   </div>
 </li>
@@ -1098,7 +1108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-to-disagree-better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">How to Disagree Better</span></a>
+  <a href="../how-to-disagree-better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">이견을 더 잘 표현하는 법</span></a>
   </div>
 </li>
       </ul>
@@ -1113,8 +1123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul class="collapse">
-  <li><a href="#how-to-read" id="toc-how-to-read" class="nav-link active" data-scroll-target="#how-to-read">이 책을 읽는 방법</a>
-  <ul class="collapse">
+  <li><a href="#how-to-read" id="toc-how-to-read" class="nav-link active" data-scroll-target="#how-to-read">이 책을 읽는 방법</a></li>
   <li><a href="#대상-독자" id="toc-대상-독자" class="nav-link" data-scroll-target="#대상-독자">대상 독자</a></li>
   <li><a href="#학습-경로" id="toc-학습-경로" class="nav-link" data-scroll-target="#학습-경로">학습 경로</a></li>
   <li><a href="#이-책의-구성" id="toc-이-책의-구성" class="nav-link" data-scroll-target="#이-책의-구성">이 책의 구성</a></li>
@@ -1296,7 +1305,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section-57" id="toc-section-57" class="nav-link" data-scroll-target="#section-57">},</a></li>
   <li><a href="#section-58" id="toc-section-58" class="nav-link" data-scroll-target="#section-58">┊</a></li>
   <li><a href="#section-59" id="toc-section-59" class="nav-link" data-scroll-target="#section-59">}</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1335,9 +1343,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="how-to-read" class="level1">
-<h1>이 책을 읽는 방법</h1>
+<section id="how-to-read" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-read">이 책을 읽는 방법</h2>
 <p>이 책은 Ratatui 문서를 그대로 옮긴 reference가 아니라, 직접 만들면서 배우는 순서로 다시 엮은 학습서입니다. 처음부터 끝까지 읽는 책이 아니라, 2부의 튜토리얼을 따라 앱을 하나씩 완성해 가고, 필요할 때 부록을 사전처럼 꺼내 보는 구성을 의도했습니다.</p>
+</section>
 <section id="대상-독자" class="level2">
 <h2 class="anchored" data-anchor-id="대상-독자">대상 독자</h2>
 <ul>
@@ -4496,8 +4505,9 @@ Type "q"
 <span id="cb99-145"><a href="#cb99-145" aria-hidden="true" tabindex="-1"></a>  <span class="cn">Ok</span>(())</span>
 <span id="cb99-146"><a href="#cb99-146" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="비동기-증가감소-구현" class="level4">
-<h4 class="anchored" data-anchor-id="비동기-증가감소-구현">비동기 증가/감소 구현</h4>
+</section>
+<section id="비동기-증가감소-구현" class="level3">
+<h3 class="anchored" data-anchor-id="비동기-증가감소-구현">비동기 증가/감소 구현</h3>
 <p>나아가 <code>tokio::spawn</code>을 활용하면 카운터 증가/감소와 같은 상태 변경 작업 자체를 특정 지연 후 실행되도록 비동기 스케줄링할 수도 있습니다.</p>
 <p>전체 비동기 액션 파이프라인이 통합된 카운터 앱의 전체 코드는 다음과 같습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
@@ -4665,8 +4675,8 @@ Type "q"
 <span id="cb100-163"><a href="#cb100-163" aria-hidden="true" tabindex="-1"></a>  <span class="cn">Ok</span>(())</span>
 <span id="cb100-164"><a href="#cb100-164" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="비동기-이벤트-스트림" class="level4">
-<h4 class="anchored" data-anchor-id="비동기-이벤트-스트림">비동기 이벤트 스트림</h4>
+<section id="비동기-이벤트-스트림" class="level3">
+<h3 class="anchored" data-anchor-id="비동기-이벤트-스트림">비동기 이벤트 스트림</h3>
 <p>이번 절에서는 Rust의 <code>async</code>/<code>await</code> 문법과 경량 그린 스레드(태스크)를 지원하는 Tokio 런타임을 활용하여 완전한 비동기 <code>EventHandler</code>를 구현해 보겠습니다.</p>
 <p>다음은 OS 스레드 기반 <code>std::thread</code>에서 비동기 태스크 기반 <code>tokio::spawn</code>으로 전환하는 과정을 보여주는 diff입니다. 동기 채널 <code>std::sync::mpsc</code> 대신 비동기 채널인 <code>tokio::sync::mpsc</code>를 사용하며, 채널에서 이벤트를 수신할 때 <code>.await</code>로 대기해야 하므로 <code>next()</code> 메서드 역시 <code>async fn</code>으로 변경됩니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>  enum Event {</span>
@@ -4857,8 +4867,8 @@ Type "q"
 <span id="cb104-58"><a href="#cb104-58" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 <p>하지만 이 방식은 키 이벤트 감지만 비동기화했을 뿐, 애플리케이션 내부 로직 파이프라인 전체가 비동기로 동작하는 것은 아닙니다. 진정한 비동기 아키텍처를 완성하는 방법은 다음 절에서 다루겠습니다.</p>
 </section>
-<section id="액션-디스패치-시스템" class="level4">
-<h4 class="anchored" data-anchor-id="액션-디스패치-시스템">액션 디스패치 시스템</h4>
+<section id="액션-디스패치-시스템" class="level3">
+<h3 class="anchored" data-anchor-id="액션-디스패치-시스템">액션 디스패치 시스템</h3>
 <p>규모가 확장 가능한 완전한 비동기 TUI 애플리케이션을 구축하기 위한 핵심 기법 중 하나는 커맨드/액션/메시지 패턴(<code>Command</code>, <code>Action</code>, <code>Message</code>)을 도입하는 것입니다.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5116,8 +5126,8 @@ Type "q"
 <span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>Action</code> 패턴의 또 다른 핵심 이점은 채널을 통해 액션 메시지를 전송함으로써 백그라운드 태스크나 다른 컴포넌트가 애플리케이션의 다음 동작을 자유롭게 트리거할 수 있다는 것입니다. 이 메커니즘을 다음 절에서 본격적으로 살펴보겠습니다.</p>
 </section>
-<section id="전체-비동기-액션-파이프라인" class="level4">
-<h4 class="anchored" data-anchor-id="전체-비동기-액션-파이프라인">전체 비동기 액션 파이프라인</h4>
+<section id="전체-비동기-액션-파이프라인" class="level3">
+<h3 class="anchored" data-anchor-id="전체-비동기-액션-파이프라인">전체 비동기 액션 파이프라인</h3>
 <p><code>Event</code>와 <code>Action</code>이 분리되었으므로, 이제 <code>Action</code> 전용의 <code>tokio::sync::mpsc</code> 채널을 신설해 보겠습니다. 이렇게 액션 채널을 구축하면 어느 비동기 태스크에서든 채널로 <code>Action</code>을 보내기만 하면 안전하게 상태 업데이트를 발생시킬 수 있습니다.</p>
 <p>다음은 액션 채널을 도입하여 리팩터링한 <code>run</code> 함수입니다. 비동기 작업에서도 액션을 발행할 수 있도록 송신자(<code>action_tx</code>) 복제본을 <code>App</code> 내부에 보관합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb118"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">fn</span> run() <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> <span class="op">{</span></span>
@@ -5396,8 +5406,8 @@ Type "q"
 <span id="cb122-166"><a href="#cb122-166" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 <p>이로써 비동기 I/O나 백그라운드 작업을 자유롭게 스폰하면서도, 스레드 안전하게 상태를 갱신하고 화면을 렌더링하는 견고한 Tokio 기반 TUI 애플리케이션 아키텍처가 완성되었습니다.</p>
 </section>
-<section id="전체-비동기-이벤트-핸들링" class="level4">
-<h4 class="anchored" data-anchor-id="전체-비동기-이벤트-핸들링">전체 비동기 이벤트 핸들링</h4>
+<section id="전체-비동기-이벤트-핸들링" class="level3">
+<h3 class="anchored" data-anchor-id="전체-비동기-이벤트-핸들링">전체 비동기 이벤트 핸들링</h3>
 <p>애플리케이션을 보다 비동기적인 방식으로 동작하게 만드는 방법에는 여러 가지가 있습니다. 가장 손쉬운 방법은 기존의 <code>EventHandler</code>에 더 다양한 <code>Event</code> 배리언트를 추가하는 것입니다. 구체적으로는 메인 실행 루프에서 <code>Event::Render</code> 배리언트를 수신했을 때만 렌더링을 수행하도록 구성하고 싶습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb123"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Clone</span><span class="op">,</span> <span class="bu">Debug</span><span class="op">,</span> Serialize<span class="op">,</span> Deserialize<span class="at">)]</span></span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">enum</span> Event <span class="op">{</span></span>
@@ -5559,11 +5569,10 @@ Type "q"
 <p>위 코드는 일정한 프레임 레이트로 렌더링이 수행되도록 보장합니다. 직접 프레임 레이트와 틱 레이트 값을 변경해 보면서 CPU 사용량이 어떻게 달라지는지 확인해 보는 것도 좋은 실습이 될 것입니다.</p>
 <p>비록 애플리케이션 렌더링은 비동기식으로 동작하지만, 사용자 “액션” 역시 비동기 방식으로 수행할 수 있어야 합니다. 다음 절에서는 애플리케이션이 진정한 비동기 기능을 갖추도록 이를 개선해 보겠습니다.</p>
 </section>
-<section id="결론-및-정리" class="level4">
-<h4 class="anchored" data-anchor-id="결론-및-정리">결론 및 정리</h4>
+<section id="결론-및-정리" class="level3">
+<h3 class="anchored" data-anchor-id="결론-및-정리">결론 및 정리</h3>
 <p>지금까지 Ratatui를 사용하여 <code>async</code> 비동기 애플리케이션을 구축하는 기본 프레임워크를 살펴보았습니다. 구체적으로는 <code>tokio</code>와 <code>crossterm</code>의 비동기 기능을 활용하여 <code>Render</code> 배리언트를 포함하는 <code>Event</code> 및 <code>Action</code> 열거형을 만드는 방법을 배웠습니다. 또한 <code>tokio</code> 채널을 사용하여 도메인 고유의 비동기 작업을 병행 실행하기 위해 <code>Action</code>을 전달하는 방법도 확인했습니다.</p>
 <p>공식 문서에는 <a href="#appendix-concepts"><code>컴포넌트 기반 아키텍처 (Component-based Architecture)</code></a> 설정을 다루는 템플릿에 관한 추가 정보가 수록되어 있습니다.</p>
-</section>
 </section>
 <section id="스스로-해보기-3" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-해보기-3">스스로 해보기</h3>
@@ -5739,8 +5748,9 @@ Type "q"
 <!-- prettier-ignore -->
 <p>여기서 <code>ui</code> 함수에 애플리케이션 상태의 불변 참조를 전달한다는 점에 주목하십시오. 이는 나중에 중요한 의미를 갖습니다.</p>
 </section>
-<section id="이벤트-핸들링" class="level4">
-<h4 class="anchored" data-anchor-id="이벤트-핸들링">이벤트 핸들링</h4>
+</section>
+<section id="이벤트-핸들링" class="level3">
+<h3 class="anchored" data-anchor-id="이벤트-핸들링">이벤트 핸들링</h3>
 <p>앱 구동 준비를 마치고 UI 렌더링 설정까지 완료했으므로, 이제 이벤트 핸들링을 구현해 보겠습니다.</p>
 <section id="폴링" class="level5">
 <h5 class="anchored" data-anchor-id="폴링">폴링</h5>
@@ -5950,7 +5960,6 @@ Type "q"
 <span id="cb146-91"><a href="#cb146-91" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
 <span id="cb146-92"><a href="#cb146-92" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb146-93"><a href="#cb146-93" aria-hidden="true" tabindex="-1"></a>        <span class="co">// --snip--</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
 </section>
 <section id="app.rs-상태-모델" class="level4">
 <h4 class="anchored" data-anchor-id="app.rs-상태-모델">app.rs 상태 모델</h4>
@@ -23270,7 +23279,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 </ul>
 
 
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

@@ -996,6 +996,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../children-of-time/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">시간의 아이들</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../starship-troopers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">스타십 트루퍼스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../bible/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">성경</span></a>
   </div>
 </li>
@@ -1097,7 +1107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-to-disagree-better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">How to Disagree Better</span></a>
+  <a href="../how-to-disagree-better/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">이견을 더 잘 표현하는 법</span></a>
   </div>
 </li>
       </ul>
@@ -1117,11 +1127,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#파일-io에-비동기-활용하기" id="toc-파일-io에-비동기-활용하기" class="nav-link" data-scroll-target="#파일-io에-비동기-활용하기">파일 I/O에 비동기 활용하기</a></li>
   <li><a href="#비동기를-통한-http-요청-성능-향상" id="toc-비동기를-통한-http-요청-성능-향상" class="nav-link" data-scroll-target="#비동기를-통한-http-요청-성능-향상">비동기를 통한 HTTP 요청 성능 향상</a></li>
   <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">요약</a></li>
+  </ul></li>
   <li><a href="#제2장-비동기-rust-기초" id="toc-제2장-비동기-rust-기초" class="nav-link" data-scroll-target="#제2장-비동기-rust-기초">제2장 비동기 Rust 기초</a>
   <ul class="collapse">
+  <li><a href="#퓨처" id="toc-퓨처" class="nav-link" data-scroll-target="#퓨처">퓨처</a></li>
   <li><a href="#퓨처에서의-고정" id="toc-퓨처에서의-고정" class="nav-link" data-scroll-target="#퓨처에서의-고정">퓨처에서의 고정</a></li>
   <li><a href="#퓨처에서의-컨텍스트" id="toc-퓨처에서의-컨텍스트" class="nav-link" data-scroll-target="#퓨처에서의-컨텍스트">퓨처에서의 컨텍스트</a></li>
   <li><a href="#퓨처-간-데이터-공유" id="toc-퓨처-간-데이터-공유" class="nav-link" data-scroll-target="#퓨처-간-데이터-공유">퓨처 간 데이터 공유</a></li>
+  <li><a href="#퓨처는-어떻게-처리되는가" id="toc-퓨처는-어떻게-처리되는가" class="nav-link" data-scroll-target="#퓨처는-어떻게-처리되는가">퓨처는 어떻게 처리되는가?</a></li>
   <li><a href="#비동기-런타임에-대한-참고-사항" id="toc-비동기-런타임에-대한-참고-사항" class="nav-link" data-scroll-target="#비동기-런타임에-대한-참고-사항">비동기 런타임에 대한 참고 사항</a></li>
   <li><a href="#종합-실습-모든-개념-하나로-엮기" id="toc-종합-실습-모든-개념-하나로-엮기" class="nav-link" data-scroll-target="#종합-실습-모든-개념-하나로-엮기">종합 실습: 모든 개념 하나로 엮기</a></li>
   <li><a href="#요약-1" id="toc-요약-1" class="nav-link" data-scroll-target="#요약-1">요약</a></li>
@@ -1188,7 +1201,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#채널-용량-테스트하기" id="toc-채널-용량-테스트하기" class="nav-link" data-scroll-target="#채널-용량-테스트하기">채널 용량 테스트하기</a></li>
   <li><a href="#세밀한-퓨처-테스팅" id="toc-세밀한-퓨처-테스팅" class="nav-link" data-scroll-target="#세밀한-퓨처-테스팅">세밀한 퓨처 테스팅</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1223,8 +1235,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>흔히 ‘비동기 러스트(Async Rust)’라고 불리는 러스트의 비동기 프로그래밍은 개발자가 더 효율적이고 확장성 있는 동시성 코드를 작성할 수 있도록 지원하는 강력한 패러다임입니다. 작업이 하나씩 차례대로 실행되는 전통적인 동기식 프로그래밍과 달리, 비동기 프로그래밍은 여러 작업이 동시에 진행될 수 있도록 합니다. 이는 네트워크 요청이나 파일 처리와 같은 I/O 바운드(I/O-bound) 작업을 다룰 때 특히 유용합니다. 비동기 방식을 사용하면 시스템 리소스를 매우 효율적으로 활용할 수 있으며, CPU 코어를 추가하지 않고도 여러 작업을 동시에 처리해야 하는 애플리케이션의 성능을 크게 향상시킬 수 있습니다.</p>
 <p>러스트의 타입 시스템과 소유권 모델은 러스트 특유의 안전성을 보장합니다. 하지만 비동기 러스트를 제대로 마스터하려면 퓨처(future), 핀(pinning), 실행기(executor)와 같은 고유한 핵심 개념들을 반드시 이해해야 합니다. 이 책은 이러한 개념들을 하나씩 짚어가며 여러분이 진행하는 프로젝트와 프로그램에 비동기 프로그래밍을 능숙하게 적용할 수 있는 지식을 갖추도록 도울 것입니다.</p>
-<section id="제1장-비동기-프로그래밍-소개" class="level1">
-<h1>제1장 비동기 프로그래밍 소개</h1>
+<section id="제1장-비동기-프로그래밍-소개" class="level2">
+<h2 class="anchored" data-anchor-id="제1장-비동기-프로그래밍-소개">제1장 비동기 프로그래밍 소개</h2>
 <p>수년 동안 소프트웨어 엔지니어들은 하드웨어 성능의 끊임없는 향상 덕분에 여유를 누려왔습니다. “컴퓨팅 파워를 더 쏟아부으면 된다”라거나 “쓰기 시간(개발 시간)이 읽기 시간(실행 시간)보다 비싸다”와 같은 말은 느린 알고리즘이나 즉흥적인 접근 방식, 혹은 느린 프로그래밍 언어를 정당화할 때 자주 인용되곤 했습니다. 하지만 이 책을 쓰는 시점을 기준으로 여러 마이크로프로세서 제조업체는 2010년 이후 반도체 발전 속도가 둔화되었다고 보고했으며, 2022년에는 엔비디아(NVIDIA) CEO 젠슨 황(Jensen Huang)이 “무어의 법칙은 끝났다”라고 선언하기도 했습니다. 소프트웨어에 대한 수요가 증가하고 마이크로서비스와 같은 시스템에서 네트워크 I/O 호출 횟수가 늘어남에 따라, 우리는 자원을 더욱 효율적으로 활용해야 합니다.</p>
 <p>바로 이 지점에서 비동기(async) 프로그래밍이 필요합니다. 비동기 프로그래밍을 사용하면 성능 향상을 위해 CPU 코어를 추가할 필요가 없습니다. 대신 서버 응답 대기처럼 작업에 유휴 시간(dead time)이 있을 때, 단일 스레드에서도 여러 작업을 오가며 효율적으로 처리할 수 있습니다.</p>
 <p>우리는 일상에서도 비동기 방식으로 살아갑니다. 예를 들어 세탁기에 빨래를 넣었을 때 세탁이 끝날 때까지 아무것도 하지 않고 가만히 앉아 있지는 않습니다. 대신 다른 일을 합니다. 컴퓨터와 프로그램이 효율적으로 작동하도록 하려면 비동기 프로그래밍을 받아들여야 합니다.</p>
@@ -1701,6 +1713,7 @@ Time taken: 5.494735083s</code></pre>
 <p>이번 장에서는 비동기 프로그래밍을 소개하고 스레드 및 프로세스 관점에서 컴퓨터 시스템과 비동기 프로그래밍이 어떻게 연결되는지 살펴보았습니다. 그런 다음 스레드가 비동기 프로그래밍에 유용하게 쓰일 수 있음을 보이기 위해 스레드 및 프로세스와의 기본적인 고수준 상호작용을 다루었습니다. 이어서 다른 요청의 응답을 기다리는 동안 더 많은 요청을 전송함으로써 여러 HTTP 호출의 성능을 높이는 기본적인 고수준 비동기 프로그래밍을 살펴보았습니다. 또한 비동기 원리를 사용하여 파일 변경 사항을 추적해 보았습니다.</p>
 <p>이 장을 통해 지속적인 CPU 시간이 필요하지 않은 여러 작업을 동시에 처리하는 데 비동기가 얼마나 강력한 도구인지 이해하셨기를 바랍니다. 비동기 덕분에 단일 스레드로도 여러 작업을 동시에 처리할 수 있습니다. 이제 컴퓨터 시스템이라는 맥락에서 비동기 프로그래밍이 어디에 위치하는지 이해했으므로, 2장에서는 기본적인 비동기 프로그래밍 개념들을 살펴보겠습니다.</p>
 </section>
+</section>
 <section id="제2장-비동기-rust-기초" class="level2">
 <h2 class="anchored" data-anchor-id="제2장-비동기-rust-기초">제2장 비동기 Rust 기초</h2>
 <p>이번 장에서는 Rust에서 비동기(async)를 사용하는 데 필요한 핵심 구성 요소를 소개하고 태스크(task), 퓨처(future), <code>async</code>, <code>await</code>의 전반적인 개념을 살펴봅니다. 또한 Rust 비동기 프로그래밍의 잠재력을 온전히 활용하는 데 필수적인 개념인 컨텍스트(context), 핀(pin), 폴링(polling), 클로저(closure)를 다룹니다. 이번 장에 수록된 예제들은 학습 목표를 명확히 보여주기 위해 고른 것으로, 효율성 측면에서 반드시 최적화된 형태는 아닐 수 있습니다. 본 장의 마지막에서는 이러한 모든 개념을 하나로 엮어, 보안이 중요한 프로그램을 위한 비동기 감사 로거(async audit logger)를 직접 구축해 보는 예제를 다룹니다.</p>
@@ -1867,7 +1880,8 @@ It took: 18 seconds</code></pre>
 <p>사람을 나타내는 두 태스크를 조인하면 실행 시간은 28초가 됩니다. 세 태스크를 조인하면 실행 시간은 42초가 됩니다. 각 태스크의 총 블로킹 시간이 14초임을 감안하면 시간 증가는 합리적입니다. 시간이 이렇게 선형으로 늘어나는 양상을 보면, 세 태스크가 비동기 런타임으로 전달되어 큐에 들어가더라도 실행기(executor)는 <code>await</code>를 만날 때 해당 태스크를 유휴(idle) 상태로 두고 큐의 다음 태스크를 처리하면서 유휴 태스크들을 폴링한다는 점을 짐작할 수 있습니다.</p>
 <p>비동기 런타임은 여러 워커와 큐를 가질 수 있으며, 3장에서는 우리만의 런타임을 직접 작성해 볼 것입니다. 이번 절에서 다룬 내용을 고려하여 태스크를 다음과 같이 정의할 수 있습니다.</p>
 <p>이제 퓨처가 무엇인지 살펴보겠습니다.</p>
-<p>이제 퓨처가 무엇인지 살펴보겠습니다. ### 퓨처</p>
+<section id="퓨처" class="level3">
+<h3 class="anchored" data-anchor-id="퓨처">퓨처</h3>
 <p>비동기 프로그래밍의 핵심 기능 중 하나는 퓨처(future)라는 개념입니다. 앞서 언급했듯이 퓨처는 아직 완료되지 않은 비동기 연산의 결과를 나타내는 플레이스홀더 객체입니다. 퓨처를 사용하면 백그라운드에서 태스크가 실행되는 동안 태스크를 시작하고 다른 작업을 계속 진행할 수 있습니다. 퓨처의 작동 방식을 제대로 이해하기 위해 그 라이프사이클을 살펴보겠습니다.</p>
 <p>퓨처가 처음 생성되면 유휴(idle) 상태입니다. 아직 실행되지 않은 상태입니다. 퓨처가 실행되면 값을 산출하거나, 완료(resolve)되거나, 혹은 결과가 나오기를 기다리는 대기 상태(pending)이므로 휴면 상태로 들어갈 수 있습니다. 퓨처가 다시 폴링(poll)될 때 폴링 결과는 <code>Pending</code> 또는 <code>Ready</code> 중 하나가 될 수 있습니다. 퓨처는 완료되거나 취소될 때까지 계속 폴링됩니다.</p>
 <p>퓨처의 작동 방식을 설명하기 위해 기본적인 카운터 퓨처를 만들어 보겠습니다. 이 퓨처는 5까지 숫자를 센 후 완료(<code>Ready</code>) 상태가 됩니다. 먼저 다음 항목들을 임포트해야 합니다.</p>
@@ -1917,6 +1931,7 @@ polling with result: 4
 polling with result: 5</code></pre>
 <p>하나의 퓨처가 큐에서 꺼내져 폴링된 뒤 유휴 상태가 되는 동안, 태스크 큐에서 다른 퓨처가 꺼내져 폴링되었습니다. 이 퓨처들은 번갈아 가며 폴링되었습니다. 여기서 <code>poll</code> 함수가 <code>async</code> 함수가 아니라는 점에 주목하셨을 것입니다. <code>poll</code> 함수가 비동기라면 폴링 중인 퓨처를 해결하기 위해 또 다른 퓨처를 보내 폴링해야 하므로 순환 의존성(circular dependency)이 생기기 때문입니다. 이를 통해 퓨처가 비동기 연산의 기반임을 알 수 있습니다.</p>
 <p><code>poll</code> 함수는 자기 자신의 가변 참조자를 받습니다. 하지만 이 가변 참조자는 <code>Pin</code>으로 감싸져 있으며, 이에 대해 논의해 볼 필요가 있습니다.</p>
+</section>
 <section id="퓨처에서의-고정" class="level3">
 <h3 class="anchored" data-anchor-id="퓨처에서의-고정">퓨처에서의 고정</h3>
 <p>Rust에서 컴파일러는 메모리 내에서 값을 자주 이동(move)시킵니다. 예를 들어 변수를 함수 내부로 이동시키면 메모리 위치가 바뀔 수 있습니다. 메모리 주소가 변경되는 원인은 단순한 값의 이동뿐만이 아닙니다. 컬렉션 역시 메모리 주소를 변경할 수 있습니다. 예를 들어 벡터가 용량 한계에 도달하면 메모리 재할당이 발생하여 메모리 주소가 바뀝니다.</p>
@@ -2251,8 +2266,9 @@ after increment: 0</code></pre>
 <p>다른 프로그래밍 언어들도 비동기 프로그래밍을 위해 퓨처를 구현하며, 그중 일부는 콜백(callback) 모델에 의존합니다. 콜백 모델은 어떤 함수가 완료될 때 실행되는 함수를 사용하며, 이 콜백 함수는 대개 해당 함수의 인자로 전달됩니다. 하지만 콜백 모델은 동적 디스패치(dynamic dispatch)에 의존하기 때문에 Rust에는 적합하지 않았습니다. 동적 디스패치는 컴파일 시점이 아니라 런타임에 실제로 호출될 함수가 결정된다는 것을 의미합니다. 프로그램이 런타임에 어떤 함수를 호출할지 알아내야 하므로 이는 추가적인 오버헤드를 발생시켰습니다. 이는 제로 비용(zero-cost) 접근 방식에 위배되며 성능 저하를 초래했습니다.</p>
 <p>Rust는 폴링(poll) 방식을 사용하는 <code>Future</code> 트레이트를 활용하여 런타임 성능을 최적화하는 대안적 접근 방식을 선택했습니다. 런타임은 언제 폴링을 호출할지 관리하는 책임을 집니다. 콜백을 스케줄링하고 어떤 함수를 호출할지 고민할 필요 없이, 퓨처가 완료되었는지 확인하기 위해 폴링을 사용하기만 하면 됩니다. 퓨처를 단일 힙 할당 내의 상태 머신(state machine)으로 표현할 수 있고, 이 상태 머신이 비동기 함수를 실행하는 데 필요한 지역 변수들을 캡처하므로 이 방식이 훨씬 효율적입니다. 즉, 메모리 할당 크기가 잘못될 염려 없이 태스크당 단 한 번의 메모리 할당만 이루어집니다. 이러한 결정은 구현을 올바르게 완성하기 위해 충분한 시간을 투자한 Rust 프로그래밍 언어의 진면목을 보여주는 증거입니다.</p>
 <p>종종 우리는 <code>async</code>/<code>await</code>를 단독으로 사용하지 않고 태스크가 완료되었을 때 다른 작업을 수행하기를 원합니다. Tokio에서 제공하는 <code>and_then</code>이나 <code>or_else</code>와 같은 특정 콤비네이터(combinator)를 사용하여 이를 지정할 수 있습니다.</p>
-<section id="퓨처는-어떻게-처리되는가" class="level4">
-<h4 class="anchored" data-anchor-id="퓨처는-어떻게-처리되는가">퓨처는 어떻게 처리되는가?</h4>
+</section>
+<section id="퓨처는-어떻게-처리되는가" class="level3">
+<h3 class="anchored" data-anchor-id="퓨처는-어떻게-처리되는가">퓨처는 어떻게 처리되는가?</h3>
 <p>고수준에서 단계별로 살펴보며 퓨처가 어떻게 처리되는지 알아보겠습니다.</p>
 <p><strong>퓨처 생성(Create a future)</strong><br>
 퓨처는 여러 방법으로 생성될 수 있습니다. 일반적인 접근 방식 중 하나는 함수 앞에 <code>async</code> 키워드를 사용하여 비동기 함수를 정의하는 것입니다. 하지만 앞서 보았듯이 <code>Future</code> 트레이트를 직접 구현하여 수동으로 퓨처를 만들 수도 있습니다. 비동기 함수를 호출하면 퓨처가 반환됩니다. 이 시점에서 퓨처는 아직 어떤 계산도 수행하지 않았으며, <code>await</code>가 호출되지도 않은 상태입니다.</p>
@@ -2264,7 +2280,6 @@ after increment: 0</code></pre>
 퓨처가 대기 중(즉, 아직 준비되지 않음)인 경우, 실행기는 나중에 다시 실행할 수 있도록 태스크를 큐에 다시 넣습니다.</p>
 <p><strong>퓨처 완료(Completion of future)</strong><br>
 어느 시점에 태스크 내의 모든 퓨처가 완료되고 <code>poll</code>은 준비(<code>Ready</code>)를 반환합니다. 이때 결과는 <code>Result</code>나 <code>Error</code>일 수 있습니다. 이 시점에서 실행기는 더 이상 필요하지 않은 모든 리소스를 해제하고 결과를 후속 작업으로 전달할 수 있습니다.</p>
-</section>
 </section>
 <section id="비동기-런타임에-대한-참고-사항" class="level3">
 <h3 class="anchored" data-anchor-id="비동기-런타임에-대한-참고-사항">비동기 런타임에 대한 참고 사항</h3>
@@ -7229,7 +7244,6 @@ right: `100000`: Race Condition occurred!'</code></pre>
 <p>이제 우리는 함께한 여정의 끝에 도달했습니다. 비동기 러스트를 활용하는 것에 대해 많은 기대와 흥미를 느끼셨기를 바랍니다. 비동기 러스트는 매우 강력하며 끊임없이 발전하고 있는 분야입니다. 여러분이 새로 습득한 기술과 비동기 지식은 문제 해결을 위한 또 하나의 강력한 도구가 될 것입니다. 문제를 비동기 개념으로 분해하고, 강력하고 빠른 솔루션을 직접 구현할 수 있습니다. 비동기의 아름다움과 러스트가 비동기 시스템을 구현하는 우아한 방식에서 큰 즐거움을 느끼셨기를 진심으로 바랍니다. 여러분이 비동기 러스트로 앞으로 무엇을 만들어낼지 진심으로 기대됩니다!</p>
 
 
-</section>
 </section>
 </section>
 
