@@ -11,6 +11,7 @@ book:
     - part: "컴퓨터 과학과 수학의 기초"
       chapters:
         - linux-commands/index.qmd
+        - elements-of-computing-systems/index.qmd
         - linear-algebra/index.qmd
         - advanced-algorithms-ds/index.qmd
         - hamming-science-engineering/index.qmd
@@ -134,6 +135,7 @@ book:
     - part: "글쓰기와 연구"
       chapters:
         - how-to-read-a-book/index.qmd
+        - elements-of-style/index.qmd
         - craft-of-research/index.qmd
         - how-to-write-essays/index.qmd
         - writing-to-learn/index.qmd
