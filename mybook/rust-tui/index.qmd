@@ -1470,7 +1470,6 @@ impl App {
 
 :::
 
-## :::
 ### 복구 가능한 에러 생성하기
 
 이번 튜토리얼에서는 복구 가능한 에러를 처리하는 방법을 보여주기 위해 인위적인 에러를 하나 추가합니다. `handle_key_event`가 `color_eyre::Result`를 반환하도록 변경하고, 호출자에게 에러를 전파할 수 있도록 증가 및 감소 호출 시 `?` 연산자를 붙여줍니다.
@@ -2840,7 +2839,6 @@ cargo add ratatui crossterm color-eyre tokio tokio-util futures --features tokio
 
 :::
 
-## :::
 ### 초기 설정
 
 앞선 카운터 앱에서 작성했던 단일 파일 다중 함수 예제를 다시 가져와 보겠습니다.
@@ -4915,7 +4913,6 @@ impl App {
 
 :::
 
-## :::
 ### 레이아웃 기초
 
 첫 번째 단계는 위젯을 터미널에 렌더링하는 방식을 이해하는 것입니다.
@@ -15481,7 +15478,6 @@ Action::EditFile => {
 
 :::
 
-## :::
 ### tui-rs에서 Ratatui로 마이그레이션하기
 
 [Ratatui](https://github.com/tui-rs-revival/ratatui)는 개발이 중단된 [tui-rs](https://github.com/fdehau/tui-rs/) 프로젝트를 이어받아 지속적인 유지보수와 기능 확장을 진행 중인 공식 포크 프로젝트입니다.
@@ -16482,7 +16478,6 @@ expression: terminal.backend()
 
 :::
 
-## :::
 ### 4. 스냅샷 변경 사항 처리하기
 
 UI 변경이 의도된 것이라면 다음 명령을 실행하여 스냅샷을 갱신할 수 있습니다:
@@ -19467,7 +19462,6 @@ impl Component for FpsCounter {
 
 :::
 
-## :::
 ### Block
 
 ![Block](images/block.png)
@@ -19875,7 +19869,6 @@ FTL 웹사이트 역시 Ratatui([Ratzilla](/ecosystem/ratzilla) 활용)로 제�
 
 :::
 
-## :::
 ### Mousefood
 
 
@@ -19911,7 +19904,6 @@ Mousefood는 모든 `embedded-graphics` 드로우 타깃(draw target)의 백엔�
 
 :::
 
-## :::
 ### ratcn
 
 > shadcn/ui에서 영감을 얻은, 테마 설정이 가능한 Ratatui용 터미널 UI 컴포넌트 라이브러리입니다.
@@ -19934,7 +19926,6 @@ Ratcn은 Ratatui를 위해 테마 변경이 가능한 버튼, 목록, 탭, 대�
 
 :::
 
-## :::
 ### Ratzilla
 
 > Rust와 WebAssembly로 터미널 테마의 웹 애플리케이션을 제작해 보세요.
@@ -19970,7 +19961,6 @@ Ratcn은 Ratatui를 위해 테마 변경이 가능한 버튼, 목록, 탭, 대�
 
 :::
 
-## :::
 ### tui-uefi
 
 > 마찬가지로 Ratatui를 위한 [uefi](https://docs.rs/uefi) 백엔드를 제공합니다(`no_std`).
@@ -20043,7 +20033,6 @@ use ratatui_core::{
 
 :::
 
-## :::
 ### `no_std` 지원 🛠️ {#no_std-support}
 
 _이제 진정한 임베디드를 지원합니다._
@@ -20082,7 +20071,6 @@ ratatui = { version = "0.30.0", default-features = false }
 
 :::
 
-## :::
 ### 실행 (Execution) 🛠️ {#execution}
 
 대부분의 애플리케이션에 적합한 합리적인 기본값으로 터미널을 초기화한 후 클로저를 실행하는 `ratatui::run()` 메서드가 도입되었습니다.
@@ -21960,7 +21948,6 @@ println!("Current frame count: {}", current_count);
 
 :::
 
-## :::
 ### Ratatui 공식 웹사이트 📚
 
 [Astro](https://astro.build/) 프레임워크를 사용하여 공식 웹사이트([ratatui.rs](https://ratatui.rs))를 전면 개편하고 문서와 튜토리얼을 업데이트했습니다.
