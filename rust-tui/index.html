@@ -202,11 +202,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python-mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 기술</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../effective-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">효율적인 파이썬</span></a>
   </div>
 </li>
@@ -290,11 +285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../writing-for-developers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">개발자를 위한 글쓰기</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../own-your-tech-career/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">개발자 커리어 셀프 매니지먼트</span></a>
   </div>
 </li>
       </ul>
@@ -1138,29 +1128,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#학습-경로" id="toc-학습-경로" class="nav-link" data-scroll-target="#학습-경로">학습 경로</a></li>
   <li><a href="#이-책의-구성" id="toc-이-책의-구성" class="nav-link" data-scroll-target="#이-책의-구성">이 책의 구성</a></li>
   <li><a href="#읽는-법" id="toc-읽는-법" class="nav-link" data-scroll-target="#읽는-법">읽는 법</a></li>
-  <li><a href="#part-intro" id="toc-part-intro" class="nav-link" data-scroll-target="#part-intro">1부. 시작하기: 설치와 첫 화면</a></li>
+  <li><a href="#part-intro" id="toc-part-intro" class="nav-link" data-scroll-target="#part-intro">1부. 시작하기: 설치와 첫 화면</a>
+  <ul class="collapse">
   <li><a href="#ratatui-소개" id="toc-ratatui-소개" class="nav-link" data-scroll-target="#ratatui-소개">Ratatui 소개</a></li>
   <li><a href="#설치-가이드-및-컴파일-기능-플래그" id="toc-설치-가이드-및-컴파일-기능-플래그" class="nav-link" data-scroll-target="#설치-가이드-및-컴파일-기능-플래그">설치 가이드 및 컴파일 기능 플래그</a></li>
   <li><a href="#백엔드-선택" id="toc-백엔드-선택" class="nav-link" data-scroll-target="#백엔드-선택">백엔드 선택</a></li>
   <li><a href="#위젯별-기능-플래그" id="toc-위젯별-기능-플래그" class="nav-link" data-scroll-target="#위젯별-기능-플래그">위젯별 기능 플래그</a></li>
   <li><a href="#불안정unstable-기능-플래그" id="toc-불안정unstable-기능-플래그" class="nav-link" data-scroll-target="#불안정unstable-기능-플래그">불안정(Unstable) 기능 플래그</a></li>
   <li><a href="#quickstart" id="toc-quickstart" class="nav-link" data-scroll-target="#quickstart">워밍업: 20줄로 첫 화면 띄우기</a></li>
-  <li><a href="#part-tutorials" id="toc-part-tutorials" class="nav-link" data-scroll-target="#part-tutorials">2부. 만들어보며 배우기</a></li>
+  </ul></li>
+  <li><a href="#part-tutorials" id="toc-part-tutorials" class="nav-link" data-scroll-target="#part-tutorials">2부. 만들어보며 배우기</a>
+  <ul class="collapse">
   <li><a href="#tutorial-guide" id="toc-tutorial-guide" class="nav-link" data-scroll-target="#tutorial-guide">학습 순서</a></li>
-  <li><a href="#다음-단계" id="toc-다음-단계" class="nav-link" data-scroll-target="#다음-단계">다음 단계</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">}</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">}</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">}</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">}</a></li>
-  <li><a href="#part-advanced" id="toc-part-advanced" class="nav-link" data-scroll-target="#part-advanced">3부. 심화 예제</a></li>
+  <li><a href="#tutorial-hello" id="toc-tutorial-hello" class="nav-link" data-scroll-target="#tutorial-hello">1. Hello Ratatui: 템플릿에서 시작하기</a></li>
+  <li><a href="#tutorial-counter" id="toc-tutorial-counter" class="nav-link" data-scroll-target="#tutorial-counter">2. 동기식 카운터 앱: 상태와 이벤트</a></li>
+  <li><a href="#tutorial-robust" id="toc-tutorial-robust" class="nav-link" data-scroll-target="#tutorial-robust">3. 견고한 카운터 앱: 실패해도 살아남기</a></li>
+  <li><a href="#tutorial-async" id="toc-tutorial-async" class="nav-link" data-scroll-target="#tutorial-async">4. 비동기 카운터 앱: Tokio 액션 파이프라인</a></li>
+  <li><a href="#tutorial-json" id="toc-tutorial-json" class="nav-link" data-scroll-target="#tutorial-json">5. 실전 복합 앱: 대화형 JSON 에디터</a></li>
+  </ul></li>
+  <li><a href="#part-advanced" id="toc-part-advanced" class="nav-link" data-scroll-target="#part-advanced">3부. 심화 예제</a>
+  <ul class="collapse">
   <li><a href="#adv-explorer" id="toc-adv-explorer" class="nav-link" data-scroll-target="#adv-explorer">심화 1. 파일 탐색기: 상태 저장 위젯과 파일 시스템</a></li>
   <li><a href="#adv-log-viewer" id="toc-adv-log-viewer" class="nav-link" data-scroll-target="#adv-log-viewer">심화 2. 실시간 로그 뷰어: 비동기 스트림과 백프레셔</a></li>
   <li><a href="#adv-tasks" id="toc-adv-tasks" class="nav-link" data-scroll-target="#adv-tasks">심화 3. 할 일 보드: 화면 상태 기계와 영속화</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">}</a></li>
   <li><a href="#adv-testing" id="toc-adv-testing" class="nav-link" data-scroll-target="#adv-testing">심화 4. 테스트 가능한 UI: <code>TestBackend</code>와 스냅샷</a></li>
   <li><a href="#adv-performance" id="toc-adv-performance" class="nav-link" data-scroll-target="#adv-performance">심화 5. 프레임 예산: 렌더링 비용 측정과 최적화</a></li>
   <li><a href="#adv-next" id="toc-adv-next" class="nav-link" data-scroll-target="#adv-next">심화 과제: 다음에 만들 것</a></li>
-  <li><a href="#appendix-concepts" id="toc-appendix-concepts" class="nav-link" data-scroll-target="#appendix-concepts">부록 A. 핵심 개념 레퍼런스</a></li>
+  </ul></li>
+  <li><a href="#appendix-concepts" id="toc-appendix-concepts" class="nav-link" data-scroll-target="#appendix-concepts">부록 A. 핵심 개념 레퍼런스</a>
+  <ul class="collapse">
   <li><a href="#개념-총론" id="toc-개념-총론" class="nav-link" data-scroll-target="#개념-총론">개념 총론</a></li>
   <li><a href="#렌더링-파이프라인-심층-분석" id="toc-렌더링-파이프라인-심층-분석" class="nav-link" data-scroll-target="#렌더링-파이프라인-심층-분석">렌더링 파이프라인 심층 분석</a></li>
   <li><a href="#개요-및-원리" id="toc-개요-및-원리" class="nav-link" data-scroll-target="#개요-및-원리">개요 및 원리</a></li>
@@ -1177,8 +1173,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#참고-자료" id="toc-참고-자료" class="nav-link" data-scroll-target="#참고-자료">참고 자료</a></li>
   <li><a href="#위젯-시스템과-상태-저장" id="toc-위젯-시스템과-상태-저장" class="nav-link" data-scroll-target="#위젯-시스템과-상태-저장">위젯 시스템과 상태 저장</a></li>
   <li><a href="#위젯-트레이트" id="toc-위젯-트레이트" class="nav-link" data-scroll-target="#위젯-트레이트">위젯 트레이트</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">}</a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">}</a></li>
   <li><a href="#위젯-구현하기" id="toc-위젯-구현하기" class="nav-link" data-scroll-target="#위젯-구현하기">위젯 구현하기</a></li>
   <li><a href="#단일-사일로-방식" id="toc-단일-사일로-방식" class="nav-link" data-scroll-target="#단일-사일로-방식">단일 사일로 방식</a></li>
   <li><a href="#터미널-백엔드-및-모드" id="toc-터미널-백엔드-및-모드" class="nav-link" data-scroll-target="#터미널-백엔드-및-모드">터미널 백엔드 및 모드</a></li>
@@ -1190,38 +1184,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#애플리케이션-아키텍처-패턴" id="toc-애플리케이션-아키텍처-패턴" class="nav-link" data-scroll-target="#애플리케이션-아키텍처-패턴">애플리케이션 아키텍처 패턴</a></li>
   <li><a href="#엘름-아키텍처-핵심-개요-the-elm-architecture-a-quick-overview" id="toc-엘름-아키텍처-핵심-개요-the-elm-architecture-a-quick-overview" class="nav-link" data-scroll-target="#엘름-아키텍처-핵심-개요-the-elm-architecture-a-quick-overview">엘름 아키텍처: 핵심 개요 (The Elm Architecture: A Quick Overview)</a></li>
   <li><a href="#ratatui에-엘름-아키텍처-적용하기" id="toc-ratatui에-엘름-아키텍처-적용하기" class="nav-link" data-scroll-target="#ratatui에-엘름-아키텍처-적용하기"><code>ratatui</code>에 엘름 아키텍처 적용하기</a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">}</a></li>
   <li><a href="#종합-정리" id="toc-종합-정리" class="nav-link" data-scroll-target="#종합-정리">종합 정리</a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">}</a></li>
   <li><a href="#왜-ratatui에-flux를-사용하는가" id="toc-왜-ratatui에-flux를-사용하는가" class="nav-link" data-scroll-target="#왜-ratatui에-flux를-사용하는가">왜 <code>ratatui</code>에 <code>Flux</code>를 사용하는가?</a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">}</a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">```</a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">}</a></li>
   <li><a href="#std-없이-ratatui-사용하기" id="toc-std-없이-ratatui-사용하기" class="nav-link" data-scroll-target="#std-없이-ratatui-사용하기"><code>std</code> 없이 Ratatui 사용하기</a></li>
   <li><a href="#no_std-위젯-제작하기" id="toc-no_std-위젯-제작하기" class="nav-link" data-scroll-target="#no_std-위젯-제작하기"><code>no_std</code> 위젯 제작하기</a></li>
-  <li><a href="#appendix-widgets" id="toc-appendix-widgets" class="nav-link" data-scroll-target="#appendix-widgets">부록 B. 위젯 및 스타일 레퍼런스</a></li>
+  </ul></li>
+  <li><a href="#appendix-widgets" id="toc-appendix-widgets" class="nav-link" data-scroll-target="#appendix-widgets">부록 B. 위젯 및 스타일 레퍼런스</a>
+  <ul class="collapse">
   <li><a href="#내장-위젯-모음" id="toc-내장-위젯-모음" class="nav-link" data-scroll-target="#내장-위젯-모음">내장 위젯 모음</a></li>
-  <li><a href="#내장-위젯-모음-1" id="toc-내장-위젯-모음-1" class="nav-link" data-scroll-target="#내장-위젯-모음-1">내장 위젯 모음</a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">}</a></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">}</a></li>
-  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">}</a></li>
-  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">}</a></li>
-  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">}</a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">}</a></li>
-  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">}</a></li>
-  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">}</a></li>
-  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">}</a></li>
-  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">}</a></li>
-  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">}</a></li>
-  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">}</a></li>
-  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">}</a></li>
-  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">}</a></li>
   <li><a href="#레이아웃-및-스타일-실전-예제" id="toc-레이아웃-및-스타일-실전-예제" class="nav-link" data-scroll-target="#레이아웃-및-스타일-실전-예제">레이아웃 및 스타일 실전 예제</a></li>
-  <li><a href="#레이아웃-및-스타일-실전-예제-1" id="toc-레이아웃-및-스타일-실전-예제-1" class="nav-link" data-scroll-target="#레이아웃-및-스타일-실전-예제-1">레이아웃 및 스타일 실전 예제</a></li>
-  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">}</a></li>
-  <li><a href="#appendix-recipes" id="toc-appendix-recipes" class="nav-link" data-scroll-target="#appendix-recipes">부록 C. 실전 레시피</a></li>
+  </ul></li>
+  <li><a href="#appendix-recipes" id="toc-appendix-recipes" class="nav-link" data-scroll-target="#appendix-recipes">부록 C. 실전 레시피</a>
+  <ul class="collapse">
   <li><a href="#애플리케이션-개발-실전-기법" id="toc-애플리케이션-개발-실전-기법" class="nav-link" data-scroll-target="#애플리케이션-개발-실전-기법">애플리케이션 개발 실전 기법</a></li>
-  <li><a href="#애플리케이션-개발-실전-기법-1" id="toc-애플리케이션-개발-실전-기법-1" class="nav-link" data-scroll-target="#애플리케이션-개발-실전-기법-1">애플리케이션 개발 실전 기법</a></li>
   <li><a href="#사용법" id="toc-사용법" class="nav-link" data-scroll-target="#사용법">사용법</a></li>
   <li><a href="#전체-예제-코드" id="toc-전체-예제-코드" class="nav-link" data-scroll-target="#전체-예제-코드">전체 예제 코드</a></li>
   <li><a href="#crossterm" id="toc-crossterm" class="nav-link" data-scroll-target="#crossterm">Crossterm</a></li>
@@ -1231,11 +1206,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#better-panic" id="toc-better-panic" class="nav-link" data-scroll-target="#better-panic"><code>better-panic</code></a></li>
   <li><a href="#human-panic" id="toc-human-panic" class="nav-link" data-scroll-target="#human-panic"><code>human-panic</code></a></li>
   <li><a href="#구성-설정" id="toc-구성-설정" class="nav-link" data-scroll-target="#구성-설정">구성 설정</a></li>
-  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27">}</a></li>
-  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28">}</a></li>
   <li><a href="#명령줄-인자-정의" id="toc-명령줄-인자-정의" class="nav-link" data-scroll-target="#명령줄-인자-정의">명령줄 인자 정의</a></li>
   <li><a href="#버전-정보-표시" id="toc-버전-정보-표시" class="nav-link" data-scroll-target="#버전-정보-표시">버전 정보 표시</a></li>
-  <li><a href="#section-29" id="toc-section-29" class="nav-link" data-scroll-target="#section-29">}</a></li>
   <li><a href="#directories-rs를-활용한-경로-해석" id="toc-directories-rs를-활용한-경로-해석" class="nav-link" data-scroll-target="#directories-rs를-활용한-경로-해석"><code>directories-rs</code>를 활용한 경로 해석</a></li>
   <li><a href="#환경-구성-및-기본-구조" id="toc-환경-구성-및-기본-구조" class="nav-link" data-scroll-target="#환경-구성-및-기본-구조">환경 구성 및 기본 구조</a></li>
   <li><a href="#vim-서브프로세스-실행" id="toc-vim-서브프로세스-실행" class="nav-link" data-scroll-target="#vim-서브프로세스-실행">Vim 서브프로세스 실행</a></li>
@@ -1248,60 +1220,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#스크린샷-및-데모-영상-제작-팁" id="toc-스크린샷-및-데모-영상-제작-팁" class="nav-link" data-scroll-target="#스크린샷-및-데모-영상-제작-팁">스크린샷 및 데모 영상 제작 팁</a></li>
   <li><a href="#컴파일-최적화" id="toc-컴파일-최적화" class="nav-link" data-scroll-target="#컴파일-최적화">컴파일 최적화</a></li>
   <li><a href="#레이아웃-렌더링-및-테스트-레시피" id="toc-레이아웃-렌더링-및-테스트-레시피" class="nav-link" data-scroll-target="#레이아웃-렌더링-및-테스트-레시피">레이아웃, 렌더링 및 테스트 레시피</a></li>
-  <li><a href="#레이아웃-렌더링-및-테스트-레시피-1" id="toc-레이아웃-렌더링-및-테스트-레시피-1" class="nav-link" data-scroll-target="#레이아웃-렌더링-및-테스트-레시피-1">레이아웃, 렌더링 및 테스트 레시피</a></li>
-  <li><a href="#section-30" id="toc-section-30" class="nav-link" data-scroll-target="#section-30">}</a></li>
-  <li><a href="#section-31" id="toc-section-31" class="nav-link" data-scroll-target="#section-31">}</a></li>
-  <li><a href="#section-32" id="toc-section-32" class="nav-link" data-scroll-target="#section-32">}</a></li>
-  <li><a href="#section-33" id="toc-section-33" class="nav-link" data-scroll-target="#section-33">}</a></li>
   <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">요약</a></li>
   <li><a href="#관련-참고-자료" id="toc-관련-참고-자료" class="nav-link" data-scroll-target="#관련-참고-자료">관련 참고 자료</a></li>
-  <li><a href="#section-34" id="toc-section-34" class="nav-link" data-scroll-target="#section-34">}</a></li>
   <li><a href="#예제-코드" id="toc-예제-코드" class="nav-link" data-scroll-target="#예제-코드">예제 코드</a></li>
   <li><a href="#span" id="toc-span" class="nav-link" data-scroll-target="#span"><code>Span</code></a></li>
   <li><a href="#line" id="toc-line" class="nav-link" data-scroll-target="#line"><code>Line</code></a></li>
   <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text"><code>Text</code></a></li>
-  <li><a href="#section-35" id="toc-section-35" class="nav-link" data-scroll-target="#section-35">}</a></li>
-  <li><a href="#appendix-templates" id="toc-appendix-templates" class="nav-link" data-scroll-target="#appendix-templates">부록 D. 프로덕션 템플릿 해설</a></li>
+  </ul></li>
+  <li><a href="#appendix-templates" id="toc-appendix-templates" class="nav-link" data-scroll-target="#appendix-templates">부록 D. 프로덕션 템플릿 해설</a>
+  <ul class="collapse">
   <li><a href="#사용법-1" id="toc-사용법-1" class="nav-link" data-scroll-target="#사용법-1">사용법</a></li>
   <li><a href="#배경" id="toc-배경" class="nav-link" data-scroll-target="#배경">배경</a></li>
-  <li><a href="#section-36" id="toc-section-36" class="nav-link" data-scroll-target="#section-36">}</a></li>
   <li><a href="#터미널" id="toc-터미널" class="nav-link" data-scroll-target="#터미널">터미널</a></li>
   <li><a href="#이벤트-루프" id="toc-이벤트-루프" class="nav-link" data-scroll-target="#이벤트-루프">이벤트 루프</a></li>
   <li><a href="#정리-및-종료" id="toc-정리-및-종료" class="nav-link" data-scroll-target="#정리-및-종료">정리 및 종료</a></li>
   <li><a href="#완성된-코드" id="toc-완성된-코드" class="nav-link" data-scroll-target="#완성된-코드">완성된 코드</a></li>
-  <li><a href="#section-37" id="toc-section-37" class="nav-link" data-scroll-target="#section-37">}</a></li>
-  <li><a href="#section-38" id="toc-section-38" class="nav-link" data-scroll-target="#section-38">}</a></li>
   <li><a href="#키-바인딩-및-스타일" id="toc-키-바인딩-및-스타일" class="nav-link" data-scroll-target="#키-바인딩-및-스타일">키 바인딩 및 스타일</a></li>
   <li><a href="#xdg-디렉터리" id="toc-xdg-디렉터리" class="nav-link" data-scroll-target="#xdg-디렉터리">XDG 디렉터리</a></li>
   <li><a href="#final-code" id="toc-final-code" class="nav-link" data-scroll-target="#final-code">최종 코드</a></li>
-  <li><a href="#section-39" id="toc-section-39" class="nav-link" data-scroll-target="#section-39">}</a></li>
-  <li><a href="#httpsuser-images.githubuserconten" id="toc-httpsuser-images.githubuserconten" class="nav-link" data-scroll-target="#httpsuser-images.githubuserconten">![](https://user-images.githubuserconten</a></li>
-  <li><a href="#상태" id="toc-상태" class="nav-link" data-scroll-target="#상태">상태</a></li>
-  <li><a href="#메서드" id="toc-메서드" class="nav-link" data-scroll-target="#메서드">메서드</a></li>
-  <li><a href="#메서드-1" id="toc-메서드-1" class="nav-link" data-scroll-target="#메서드-1">메서드</a></li>
-  <li><a href="#section-40" id="toc-section-40" class="nav-link" data-scroll-target="#section-40">}</a></li>
-  <li><a href="#appendix-ecosystem" id="toc-appendix-ecosystem" class="nav-link" data-scroll-target="#appendix-ecosystem">부록 E. 생태계와 쇼케이스</a></li>
+  </ul></li>
+  <li><a href="#appendix-ecosystem" id="toc-appendix-ecosystem" class="nav-link" data-scroll-target="#appendix-ecosystem">부록 E. 생태계와 쇼케이스</a>
+  <ul class="collapse">
   <li><a href="#내장-위젯-쇼케이스" id="toc-내장-위젯-쇼케이스" class="nav-link" data-scroll-target="#내장-위젯-쇼케이스">내장 위젯 쇼케이스</a></li>
   <li><a href="#서드파티-위젯-안내" id="toc-서드파티-위젯-안내" class="nav-link" data-scroll-target="#서드파티-위젯-안내">서드파티 위젯 안내</a></li>
   <li><a href="#대표-애플리케이션-쇼케이스" id="toc-대표-애플리케이션-쇼케이스" class="nav-link" data-scroll-target="#대표-애플리케이션-쇼케이스">대표 애플리케이션 쇼케이스</a></li>
   <li><a href="#생태계-프로젝트" id="toc-생태계-프로젝트" class="nav-link" data-scroll-target="#생태계-프로젝트">생태계 프로젝트</a></li>
-  <li><a href="#생태계-프로젝트-1" id="toc-생태계-프로젝트-1" class="nav-link" data-scroll-target="#생태계-프로젝트-1">생태계 프로젝트</a></li>
-  <li><a href="#appendix-release-faq" id="toc-appendix-release-faq" class="nav-link" data-scroll-target="#appendix-release-faq">부록 F. 릴리스 하이라이트와 FAQ</a></li>
+  </ul></li>
+  <li><a href="#appendix-release-faq" id="toc-appendix-release-faq" class="nav-link" data-scroll-target="#appendix-release-faq">부록 F. 릴리스 하이라이트와 FAQ</a>
+  <ul class="collapse">
   <li><a href="#주요-릴리스-하이라이트" id="toc-주요-릴리스-하이라이트" class="nav-link" data-scroll-target="#주요-릴리스-하이라이트">주요 릴리스 하이라이트</a></li>
   <li><a href="#ratatui-v0.30-릴리스" id="toc-ratatui-v0.30-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.30-릴리스">Ratatui v0.30 릴리스</a></li>
   <li><a href="#ratatui-v0.29-릴리스" id="toc-ratatui-v0.29-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.29-릴리스">Ratatui v0.29 릴리스</a></li>
   <li><a href="#ratatui-v0.28-릴리스" id="toc-ratatui-v0.28-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.28-릴리스">Ratatui v0.28 릴리스</a></li>
   <li><a href="#ratatui-v0.27-릴리스" id="toc-ratatui-v0.27-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.27-릴리스">Ratatui v0.27 릴리스</a></li>
   <li><a href="#ratatui-v0.26-릴리스" id="toc-ratatui-v0.26-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.26-릴리스">Ratatui v0.26 릴리스</a></li>
-  <li><a href="#section-41" id="toc-section-41" class="nav-link" data-scroll-target="#section-41">}</a></li>
-  <li><a href="#section-42" id="toc-section-42" class="nav-link" data-scroll-target="#section-42">};</a></li>
-  <li><a href="#section-43" id="toc-section-43" class="nav-link" data-scroll-target="#section-43">▕▁▁▏</a></li>
   <li><a href="#ratatui-v0.25-릴리스" id="toc-ratatui-v0.25-릴리스" class="nav-link" data-scroll-target="#ratatui-v0.25-릴리스">Ratatui v0.25 릴리스</a></li>
   <li><a href="#자주-묻는-질문" id="toc-자주-묻는-질문" class="nav-link" data-scroll-target="#자주-묻는-질문">자주 묻는 질문</a></li>
-  <li><a href="#자주-묻는-질문-1" id="toc-자주-묻는-질문-1" class="nav-link" data-scroll-target="#자주-묻는-질문-1">자주 묻는 질문</a></li>
-  <li><a href="#section-44" id="toc-section-44" class="nav-link" data-scroll-target="#section-44">},</a></li>
-  <li><a href="#section-45" id="toc-section-45" class="nav-link" data-scroll-target="#section-45">┊</a></li>
-  <li><a href="#section-46" id="toc-section-46" class="nav-link" data-scroll-target="#section-46">}</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1456,9 +1411,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>스스로 해보기. 각 장 끝에는 응용 과제가 있습니다. 정답은 없고, 다음 장에서 다시 쓰이는 개념을 미리 손으로 익히도록 고른 문제입니다. 최소한 한 문제는 직접 풀어 보시길 권합니다. 읽기만 해서는 키 입력과 상태가 어떻게 맞물리는지 감이 오지 않습니다.</p>
 <p>막혔을 때. 컴파일이 안 되면 ① <code>Cargo.toml</code>의 버전, ② <code>use</code> 목록, ③ 터미널이 깨졌을 때는 <code>reset</code> 명령 순으로 확인하세요. 세 번째는 앱이 패닉으로 죽으면서 터미널 상태를 되돌리지 못한 경우이고, 3장에서 이 문제를 근본적으로 해결합니다.</p>
 </section>
-<section id="part-intro" class="level2">
-<h2 class="anchored" data-anchor-id="part-intro">1부. 시작하기: 설치와 첫 화면</h2>
-</section>
+<section id="part-intro" class="level1">
+<h1>1부. 시작하기: 설치와 첫 화면</h1>
 <section id="ratatui-소개" class="level2">
 <h2 class="anchored" data-anchor-id="ratatui-소개">Ratatui 소개</h2>
 <p>터미널 사용자 인터페이스(TUI, Terminal User Interface)는 CLI의 기동성과 GUI의 직관적인 상호작용을 동시에 제공할 수 있는 가장 강력한 인터페이스 방식 중 하나입니다. Ratatui는 Rust 생태계에서 가장 널리 사용되는 터미널 UI 라이브러리로, 이전 <code>tui-rs</code>의 공식 계승 프로젝트입니다.</p>
@@ -1868,9 +1822,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>지금 만든 앱은 상태가 없습니다. 화면에 늘 같은 글자만 나오죠. 다음 장에서는 템플릿으로 만든 프로젝트를 뜯어보면서, 상태를 보관하는 구조체와 이벤트 루프를 분리하는 방법을 배웁니다. 그 구조가 이 책의 모든 예제에 반복해서 등장합니다.</p>
 </section>
 </section>
-<section id="part-tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="part-tutorials">2부. 만들어보며 배우기</h2>
 </section>
+<section id="part-tutorials" class="level1">
+<h1>2부. 만들어보며 배우기</h1>
 <section id="tutorial-guide" class="level2">
 <h2 class="anchored" data-anchor-id="tutorial-guide">학습 순서</h2>
 <p>이 부의 다섯 장은 앞 장의 코드를 이어받아 조금씩 키워 갑니다. 각 장이 끝날 때마다 실행되는 앱이 하나씩 남으므로, 중간에 멈춰도 손에 남는 것이 있습니다.</p>
@@ -1935,9 +1889,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>각 장 끝에는 스스로 해보기가 있습니다. 정답은 없고, 다음 장이나 심화 예제에서 다시 쓰이는 개념을 미리 손으로 익히도록 고른 문제입니다. 한 장에 최소 하나는 풀어 보세요.</p>
-<ol type="1">
-<li>Hello Ratatui: 템플릿에서 시작하기 {#tutorial-hello}</li>
-</ol>
+</section>
+<section id="tutorial-hello" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-hello">1. Hello Ratatui: 템플릿에서 시작하기</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2079,18 +2033,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>아무 키나 누르면 앱이 종료되고 이전 터미널 상태로 깨끗하게 복귀합니다.</p>
 </section>
 </section>
-</section>
-<section id="다음-단계" class="level2">
-<h2 class="anchored" data-anchor-id="다음-단계">다음 단계</h2>
+<section id="다음-단계" class="level3">
+<h3 class="anchored" data-anchor-id="다음-단계">다음 단계</h3>
 <p>축하합니다! 이제 정상적으로 동작하는 Ratatui 애플리케이션을 완성했습니다. 이어지는 <a href="#tutorial-counter">동기식 카운터 앱(Counter App)</a> 튜토리얼에서는 템플릿 없이 애플리케이션 상태, 명시적인 키 이벤트 처리, 렌더링 테스트를 직접 구현해 봅니다.</p>
+</section>
 <section id="스스로-해보기" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-해보기">스스로 해보기</h3>
 <ol type="1">
-<li><p><code>draw</code> 함수에서 <code>Block</code> 없이 텍스트만 그려 보세요. <code>frame.area()</code> 전체가 캔버스라는 감각이 잡힙니다.</p></li>
-<li><p>화면 중앙에 가로 40, 세로 5짜리 영역만 만들고, 그 안에만 글자를 그려 보세요. <code>Layout::horizontal</code>과 <code>Layout::vertical</code>을 조합하면 됩니다.</p></li>
-<li><p>키를 누를 때마다 화면 어딘가에 눌린 키 이름이 바뀌도록 만들어 보세요. 상태를 하나 추가하고, <code>draw</code>가 그 상태를 읽게 하면 됩니다. 이것이 다음 장 카운터 앱의 축소판입니다.</p></li>
-<li><p>동기식 카운터 앱: 상태와 이벤트 {#tutorial-counter}</p></li>
+<li><code>draw</code> 함수에서 <code>Block</code> 없이 텍스트만 그려 보세요. <code>frame.area()</code> 전체가 캔버스라는 감각이 잡힙니다.</li>
+<li>화면 중앙에 가로 40, 세로 5짜리 영역만 만들고, 그 안에만 글자를 그려 보세요. <code>Layout::horizontal</code>과 <code>Layout::vertical</code>을 조합하면 됩니다.</li>
+<li>키를 누를 때마다 화면 어딘가에 눌린 키 이름이 바뀌도록 만들어 보세요. 상태를 하나 추가하고, <code>draw</code>가 그 상태를 읽게 하면 됩니다. 이것이 다음 장 카운터 앱의 축소판입니다.</li>
 </ol>
+</section>
+</section>
+<section id="tutorial-counter" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-counter">2. 동기식 카운터 앱: 상태와 이벤트</h2>
 <p>앞선 Hello Ratatui 튜토리얼에서는 화면에 텍스트를 출력하고 사용자가 키를 누를 때까지 대기하는 간단한 TUI를 만들어 보았습니다. 이번 튜토리얼에서는 애플리케이션의 상태(State) 관리와 보다 복잡한 사용자 인터랙션을 다루는 방법을 알아봅니다. 사용자가 화면의 숫자를 증가시키거나 감소시킬 수 있는 카운터 애플리케이션을 구축하게 됩니다.</p>
 <p>완성된 애플리케이션의 모습은 다음과 같습니다.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -2102,7 +2059,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>애플리케이션은 [<code>Paragraph</code>] 위젯 안에 카운터 값을 렌더링합니다. 사용자가 좌우 화살표 키를 누르면 카운터 값이 1씩 증가하거나 감소합니다.</p>
 <p>이 장에서 다루는 전체 코드는 웹사이트 공식 GitHub 저장소에서 확인할 수 있습니다.</p>
 <p><a href="https://github.com/ratatui/ratatui-website/tree/main/code/tutorials/counter-app-basic" class="uri">https://github.com/ratatui/ratatui-website/tree/main/code/tutorials/counter-app-basic</a></p>
-</section>
 <section id="새-프로젝트-생성-1" class="level3">
 <h3 class="anchored" data-anchor-id="새-프로젝트-생성-1">새 프로젝트 생성</h3>
 <p>새로운 Rust 프로젝트를 생성하고 편집기로 엽니다.</p>
@@ -2238,9 +2194,6 @@ $EDITOR .</code></pre>
 <span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">}</h2>
 <section id="애플리케이션-화면-표시" class="level3">
 <h3 class="anchored" data-anchor-id="애플리케이션-화면-표시">애플리케이션 화면 표시</h3>
 <section id="프레임-렌더링" class="level4">
@@ -2703,13 +2656,15 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <section id="스스로-해보기-1" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-해보기-1">스스로 해보기</h3>
 <ol type="1">
-<li><p><code>counter</code>를 <code>u8</code>에서 <code>i32</code>로 바꾸고, 한 번에 1이 아니라 10씩 움직이게 해 보세요. 타입을 바꿀 때 컴파일러가 어디를 지적하는지 관찰하는 것이 목적입니다.</p></li>
-<li><p><code>r</code> 키로 0으로 초기화하는 기능을 추가해 보세요. 상태를 바꾸는 경로가 하나 더 생기는데, 이때 <code>handle_key</code>와 <code>draw</code>가 어떻게 분리되어 있는지 확인해 보세요.</p></li>
-<li><p>카운터 값 아래에 <code>Gauge</code> 위젯으로 0~255 범위의 진행률을 함께 표시해 보세요. <code>Gauge::default().ratio(...)</code>는 0.0~1.0을 받습니다. 위젯 여러 개를 세로로 쌓으려면 <code>Layout</code>이 필요합니다.</p></li>
-<li><p><code>App</code>에 <code>history: Vec&lt;i32&gt;</code>를 두고, 최근 값 5개를 화면 아래에 나열해 보세요. 벡터가 길어질 때 어디서 잘라야 하는지 고민해 보시길 권합니다.</p></li>
-<li><p>견고한 카운터 앱: 실패해도 살아남기 {#tutorial-robust}</p></li>
+<li><code>counter</code>를 <code>u8</code>에서 <code>i32</code>로 바꾸고, 한 번에 1이 아니라 10씩 움직이게 해 보세요. 타입을 바꿀 때 컴파일러가 어디를 지적하는지 관찰하는 것이 목적입니다.</li>
+<li><code>r</code> 키로 0으로 초기화하는 기능을 추가해 보세요. 상태를 바꾸는 경로가 하나 더 생기는데, 이때 <code>handle_key</code>와 <code>draw</code>가 어떻게 분리되어 있는지 확인해 보세요.</li>
+<li>카운터 값 아래에 <code>Gauge</code> 위젯으로 0~255 범위의 진행률을 함께 표시해 보세요. <code>Gauge::default().ratio(...)</code>는 0.0~1.0을 받습니다. 위젯 여러 개를 세로로 쌓으려면 <code>Layout</code>이 필요합니다.</li>
+<li><code>App</code>에 <code>history: Vec&lt;i32&gt;</code>를 두고, 최근 값 5개를 화면 아래에 나열해 보세요. 벡터가 길어질 때 어디서 잘라야 하는지 고민해 보시길 권합니다.</li>
 </ol>
 </section>
+</section>
+<section id="tutorial-robust" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-robust">3. 견고한 카운터 앱: 실패해도 살아남기</h2>
 <section id="에러-핸들링-및-터미널-복구" class="level3">
 <h3 class="anchored" data-anchor-id="에러-핸들링-및-터미널-복구">에러 핸들링 및 터미널 복구</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="Source Code">
@@ -2945,9 +2900,6 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    app_result</span>
 <span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">}</h2>
 <section id="color_eyre-사용하기" class="level3">
 <h3 class="anchored" data-anchor-id="color_eyre-사용하기">color_eyre 사용하기</h3>
 <p>Color eyre는 <code>Result</code>에 부가적인 맥락 정보를 추가하는 방식으로 동작합니다. <code>wrap_err</code>(<code>color_eyre::eyre::WrapErr</code> 트레이트에 정의됨)를 호출하여 에러에 컨텍스트를 덧붙일 수 있습니다.</p>
@@ -4212,15 +4164,17 @@ Type "q"
 <section id="스스로-해보기-2" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-해보기-2">스스로 해보기</h3>
 <ol type="1">
-<li><p><code>color_eyre</code> 대신 <code>thiserror</code>로 직접 에러 열거형을 정의해 보세요. <code>#[derive(Debug, thiserror::Error)]</code>와 <code>#[error("...")]</code> 속성만으로 충분합니다.</p></li>
-<li><p>지금까지의 코드를 <code>app.rs</code>, <code>ui.rs</code>, <code>main.rs</code> 세 파일로 나눠 보세요. 나누는 기준은 “터미널을 아는 코드”와 “모르는 코드”입니다. <code>app.rs</code>에는 <code>crossterm</code> 임포트가 하나도 없어야 정상입니다.</p></li>
-<li><p>패닉 훅에서 남긴 메시지를 파일로도 기록해 보세요. 패닉 직후에는 화면이 이미 복원된 상태이므로, <code>eprintln!</code>만으로는 놓치는 경우가 있습니다.</p></li>
-<li><p>일부러 <code>panic!()</code>을 넣고 앱을 죽여 보세요. 터미널이 깨지지 않는지, 에러 메시지가 어디에 출력되는지 확인하는 것이 이 장의 핵심 점검입니다.</p></li>
-<li><p>비동기 카운터 앱: Tokio 액션 파이프라인 {#tutorial-async}</p></li>
+<li><code>color_eyre</code> 대신 <code>thiserror</code>로 직접 에러 열거형을 정의해 보세요. <code>#[derive(Debug, thiserror::Error)]</code>와 <code>#[error("...")]</code> 속성만으로 충분합니다.</li>
+<li>지금까지의 코드를 <code>app.rs</code>, <code>ui.rs</code>, <code>main.rs</code> 세 파일로 나눠 보세요. 나누는 기준은 “터미널을 아는 코드”와 “모르는 코드”입니다. <code>app.rs</code>에는 <code>crossterm</code> 임포트가 하나도 없어야 정상입니다.</li>
+<li>패닉 훅에서 남긴 메시지를 파일로도 기록해 보세요. 패닉 직후에는 화면이 이미 복원된 상태이므로, <code>eprintln!</code>만으로는 놓치는 경우가 있습니다.</li>
+<li>일부러 <code>panic!()</code>을 넣고 앱을 죽여 보세요. 터미널이 깨지지 않는지, 에러 메시지가 어디에 출력되는지 확인하는 것이 이 장의 핵심 점검입니다.</li>
 </ol>
+</section>
+</section>
+<section id="tutorial-async" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-async">4. 비동기 카운터 앱: Tokio 액션 파이프라인</h2>
 <p>앞서 구현한 카운터 앱은 순차적이고 동기적인(블로킹) 방식으로 동작하는 애플리케이션이었습니다. 하지만 네트워크 I/O 작업이나 시간이 오래 걸리는 무거운 연산을 비동기로 처리해야 하는 상황도 빈번히 발생합니다.</p>
 <p>이번 튜토리얼에서는 Rust의 대표적인 비동기 런타임인 <a href="https://tokio.rs/">Tokio</a>를 활용하여 단일 파일 기반의 비동기 TUI 애플리케이션을 만들어 봅니다. 이 예제는 공식 <a href="https://github.com/ratatui/async-template/tree/main/ratatui-counter">비동기 Ratatui 카운터 앱 템플릿</a>을 핵심 로직 위주로 간소화한 것입니다.</p>
-</section>
 <section id="설치" class="level3">
 <h3 class="anchored" data-anchor-id="설치">설치</h3>
 <p>이번 튜토리얼에 필요한 <code>Cargo.toml</code> 파일의 예시는 다음과 같습니다.</p>
@@ -5568,12 +5522,15 @@ Type "q"
 <section id="스스로-해보기-3" class="level3">
 <h3 class="anchored" data-anchor-id="스스로-해보기-3">스스로 해보기</h3>
 <ol type="1">
-<li><p>틱 레이트를 250ms에서 16ms로 바꾸고 <code>top</code> 명령으로 CPU 사용량을 비교해 보세요. 화면에 변화가 없는데도 매 틱마다 다시 그리는 비용이 얼마인지 몸으로 확인하는 실험입니다.</p></li>
-<li><p>1초에 한 번 자동으로 카운터가 증가하는 모드를 추가해 보세요. <code>Action::Tick</code>을 만들고, 이벤트 핸들러 태스크에서 시간을 재면 됩니다.</p></li>
-<li><p><code>Action</code>을 화면에 로그로 남겨 보세요. 최근 10개만 보관하면 디버깅할 때 매우 유용합니다. 3부의 로그 뷰어 예제와 거의 같은 구조입니다.</p></li>
-<li><p><code>mpsc::unbounded_channel</code>과 <code>mpsc::channel(16)</code>의 차이를 실험해 보세요. 전자는 생산자가 절대 막히지 않고, 후자는 수신자가 느리면 생산자가 기다립니다. 어느 쪽이 여러분의 앱에 맞는지는 “입력을 잃어도 되는가”로 결정하면 됩니다.</p></li>
-<li><p>실전 복합 앱: 대화형 JSON 에디터 {#tutorial-json}</p></li>
+<li>틱 레이트를 250ms에서 16ms로 바꾸고 <code>top</code> 명령으로 CPU 사용량을 비교해 보세요. 화면에 변화가 없는데도 매 틱마다 다시 그리는 비용이 얼마인지 몸으로 확인하는 실험입니다.</li>
+<li>1초에 한 번 자동으로 카운터가 증가하는 모드를 추가해 보세요. <code>Action::Tick</code>을 만들고, 이벤트 핸들러 태스크에서 시간을 재면 됩니다.</li>
+<li><code>Action</code>을 화면에 로그로 남겨 보세요. 최근 10개만 보관하면 디버깅할 때 매우 유용합니다. 3부의 로그 뷰어 예제와 거의 같은 구조입니다.</li>
+<li><code>mpsc::unbounded_channel</code>과 <code>mpsc::channel(16)</code>의 차이를 실험해 보세요. 전자는 생산자가 절대 막히지 않고, 후자는 수신자가 느리면 생산자가 기다립니다. 어느 쪽이 여러분의 앱에 맞는지는 “입력을 잃어도 되는가”로 결정하면 됩니다.</li>
 </ol>
+</section>
+</section>
+<section id="tutorial-json" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-json">5. 실전 복합 앱: 대화형 JSON 에디터</h2>
 <p>앞서 Hello Ratatui와 Counter 앱의 기초를 다루었으므로, 이제 보다 복합적이고 완성도 높은 애플리케이션을 구축하고 관리할 준비가 되었습니다.</p>
 <p>이번 튜토리얼에서는 사용자가 키-값(key-value) 쌍을 손쉽게 입력할 수 있는 인터페이스를 제공하고, 이를 JSON 형식으로 변환하여 <code>stdout</code>으로 출력하는 애플리케이션을 제작합니다. 이 애플리케이션의 목적은 사용자가 쉼표나 대괄호, 중괄호 같은 문법 기호를 직접 신경 쓸 필요 없이, 깔끔하고 올바른 JSON 데이터를 생성할 수 있는 직관적인 인터페이스를 제공하는 것입니다.</p>
 <p>완성된 프로그램을 실행했을 때의 동작 예시는 다음 GIF와 같습니다.</p>
@@ -5583,7 +5540,6 @@ Type "q"
 <figcaption>데모</figcaption>
 </figure>
 </div>
-</section>
 <section id="프로젝트-초기화" class="level3">
 <h3 class="anchored" data-anchor-id="프로젝트-초기화">프로젝트 초기화</h3>
 <p>먼저 다음 명령어로 새 Rust 프로젝트를 생성합니다.</p>
@@ -5743,8 +5699,8 @@ Type "q"
 <section id="이벤트-핸들링" class="level3">
 <h3 class="anchored" data-anchor-id="이벤트-핸들링">이벤트 핸들링</h3>
 <p>앱 구동 준비를 마치고 UI 렌더링 설정까지 완료했으므로, 이제 이벤트 핸들링을 구현해 보겠습니다.</p>
-<section id="폴링" class="level5">
-<h5 class="anchored" data-anchor-id="폴링">폴링</h5>
+<section id="폴링" class="level4">
+<h4 class="anchored" data-anchor-id="폴링">폴링</h4>
 <p><code>crossterm</code>을 사용하고 있으므로, 다음과 같이 키보드 이벤트를 간단히 폴링할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb138"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">let</span> <span class="pp">Event::</span>Key(key) <span class="op">=</span> <span class="pp">event::</span>read()<span class="op">?</span> <span class="op">{</span></span>
 <span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">dbg!</span>(key<span class="op">.</span>code)</span>
@@ -5752,7 +5708,6 @@ Type "q"
 <p>그런 다음 그 결과를 매칭하면 됩니다.</p>
 <p>대안으로 백그라운드에서 스레드를 실행하여 <code>Event</code>를 폴링하고 전송하도록 구성할 수도 있지만, 여기서는 설명의 편의를 위해 단순한 방식을 유지하겠습니다.</p>
 <p>이벤트 폴링 프로세스는 사용하는 백엔드에 따라 달라질 수 있으므로, 자세한 내용은 해당 백엔드의 문서를 참조해야 합니다.</p>
-</section>
 <section id="메인-화면" class="level5">
 <h5 class="anchored" data-anchor-id="메인-화면">메인 화면</h5>
 <p>먼저 <code>CurrentScreen::Main</code>에 대한 키 바인딩 및 이벤트 처리를 살펴보겠습니다.</p>
@@ -5952,6 +5907,7 @@ Type "q"
 <span id="cb146-92"><a href="#cb146-92" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb146-93"><a href="#cb146-93" aria-hidden="true" tabindex="-1"></a>        <span class="co">// --snip--</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+</section>
 <section id="app.rs-상태-모델" class="level4">
 <h4 class="anchored" data-anchor-id="app.rs-상태-모델">app.rs 상태 모델</h4>
 <p>앞 절에서 살펴보았듯이 규모가 작은 <code>ratatui</code> 애플리케이션에서는 흔히 <code>App</code> 또는 이와 유사한 이름의 단일 애플리케이션 상태 구조체를 둡니다. 이번 애플리케이션에서도 동일한 패러다임을 따릅니다.</p>
@@ -5995,9 +5951,6 @@ Type "q"
 <span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-</section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">}</h2>
 <section id="전체-애플리케이션-상태" class="level3">
 <h3 class="anchored" data-anchor-id="전체-애플리케이션-상태">전체 애플리케이션 상태</h3>
 <p>사용자의 현재 위치를 추적할 열거형을 갖추었으므로, 이제 필요한 곳 어디든 전달할 수 있는 실제 데이터 저장용 구조체를 만듭니다.</p>
@@ -6009,9 +5962,6 @@ Type "q"
 <span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> currently_editing<span class="op">:</span> <span class="dt">Option</span><span class="op">&lt;</span>CurrentlyEditing<span class="op">&gt;,</span> <span class="co">// the optional state containing which of the key or value pair the user is editing. It is an option, because when the user is not directly editing a key-value pair, this will be set to `None`.</span></span>
 <span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">}</h2>
 <section id="헬퍼-함수" class="level3">
 <h3 class="anchored" data-anchor-id="헬퍼-함수">헬퍼 함수</h3>
 <p>애플리케이션 상태를 단순한 값 보관용으로만 둘 수도 있지만, 코드의 다른 부분에서 작업을 수월하게 해줄 몇 가지 헬퍼 함수를 추가할 수도 있습니다. 물론 이러한 함수들은 애플리케이션 상태 자체에만 영향을 미쳐야 하며, 상태 외부의 어떤 것에도 영향을 주어서는 안 됩니다.</p>
@@ -6853,8 +6803,9 @@ Type "q"
 </ol>
 </section>
 </section>
-<section id="part-advanced" class="level2">
-<h2 class="anchored" data-anchor-id="part-advanced">3부. 심화 예제</h2>
+</section>
+<section id="part-advanced" class="level1">
+<h1>3부. 심화 예제</h1>
 <p>2부에서 만든 앱들은 한 파일 안에서 돌아갑니다. 실제로 쓰는 도구는 그렇지 않습니다. 파일을 읽고, 네트워크에서 데이터를 받고, 상태를 디스크에 남기고, 깨지지 않는지 테스트해야 하죠.</p>
 <p>이 부의 예제는 각각 독립되어 있습니다. 앞의 예제 코드를 이어받지 않으므로 관심 가는 것부터 골라 읽어도 됩니다. 다만 난이도는 순서대로 올라갑니다.</p>
 <table class="caption-top table">
@@ -6899,7 +6850,6 @@ Type "q"
 </tbody>
 </table>
 <p>각 예제는 “일단 돌아가게 만들고 → 기능을 하나씩 얹고 → 마지막에 구조를 정리”하는 순서로 진행합니다. 중간에 컴파일이 안 되면 그 단계의 코드만 붙여 넣고 확인한 뒤 다음으로 넘어가세요.</p>
-</section>
 <section id="adv-explorer" class="level2">
 <h2 class="anchored" data-anchor-id="adv-explorer">심화 1. 파일 탐색기: 상태 저장 위젯과 파일 시스템</h2>
 <p>터미널 파일 관리자는 TUI의 고전입니다. <code>joshuto</code>, <code>yazi</code>, <code>xplr</code> 모두 같은 뼈대를 씁니다. 왼쪽에 목록, 오른쪽에 미리보기, 위에 현재 경로. 단순해 보이지만 가변 상태를 가진 위젯(<code>ListState</code>)과 실패할 수 있는 I/O를 함께 다뤄야 해서 연습에 딱 좋습니다.</p>
@@ -7761,10 +7711,6 @@ Type "q"
 <span id="cb204-36"><a href="#cb204-36" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)</span>
 <span id="cb204-37"><a href="#cb204-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb204-38"><a href="#cb204-38" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">}</h2>
 <p>4단계: 상태 전이</p>
 <p>키 처리와 상태 변경을 한 함수에 모읍니다. 반환값은 <code>()</code>여도 되지만, 저장 실패를 화면에 알려야 하므로 <code>io::Result&lt;()&gt;</code>를 씁니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb205"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> App <span class="op">{</span></span>
@@ -7823,6 +7769,7 @@ Type "q"
 <span id="cb205-54"><a href="#cb205-54" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb205-55"><a href="#cb205-55" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>persist</code>가 에러를 삼키고 <code>status</code>에 담는 점을 눈여겨보세요. 저장 실패로 앱을 죽이는 것은 과합니다. 하지만 조용히 넘어가지도 않습니다. 사용자에게 보여 주고 계속 실행합니다.</p>
+</section>
 <section id="단계-키-입구" class="level3">
 <h3 class="anchored" data-anchor-id="단계-키-입구">5단계: 키 입구</h3>
 <p>화면별 키 매핑은 <code>main.rs</code>가 아니라 <code>app.rs</code>에 둡니다. 터미널 이벤트 타입에 의존하지 않도록 <code>KeyCode</code>만 받습니다. <code>crossterm::event::KeyCode</code>를 임포트하는 순간 <code>app.rs</code>가 터미널에 묶이므로, 자체 열거형으로 바꾸는 편이 더 깔끔하지만 여기서는 실용적으로 <code>KeyCode</code>를 그대로 씁니다.</p>
@@ -8567,10 +8514,10 @@ Type "q"
 <p>이 책의 예제들은 일부러 완성하지 않았습니다. 저장, 검색, 취소, 되돌리기 같은 기능은 독자가 붙이도록 남겨 두었습니다. 그 빈칸을 채우는 과정에서 배우는 것이 이 책에서 가장 오래 남습니다.</p>
 </section>
 </section>
-<section id="appendix-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-concepts">부록 A. 핵심 개념 레퍼런스</h2>
-<p>본문에서 “왜 이렇게 동작하지?” 싶을 때 펼쳐 보는 참조 자료입니다. 렌더링 파이프라인, 버퍼, 위젯 트레이트, 레이아웃 제약, 아키텍처 패턴, <code>no_std</code>를 순서대로 정리했습니다. 처음부터 읽을 필요는 없습니다.</p>
 </section>
+<section id="appendix-concepts" class="level1">
+<h1>부록 A. 핵심 개념 레퍼런스</h1>
+<p>본문에서 “왜 이렇게 동작하지?” 싶을 때 펼쳐 보는 참조 자료입니다. 렌더링 파이프라인, 버퍼, 위젯 트레이트, 레이아웃 제약, 아키텍처 패턴, <code>no_std</code>를 순서대로 정리했습니다. 처음부터 읽을 필요는 없습니다.</p>
 <section id="개념-총론" class="level2">
 <h2 class="anchored" data-anchor-id="개념-총론">개념 총론</h2>
 <p>이 장에서는 터미널 사용자 인터페이스(TUI) 개발의 토대가 되는 핵심 개념들을 종합적으로 다룹니다:</p>
@@ -9039,9 +8986,6 @@ Type "q"
 <span id="cb254-2"><a href="#cb254-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> render(<span class="kw">self</span><span class="op">,</span> area<span class="op">:</span> Rect<span class="op">,</span> buf<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> Buffer)<span class="op">;</span></span>
 <span id="cb254-3"><a href="#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">}</h2>
 <section id="statefulwidget" class="level3">
 <h3 class="anchored" data-anchor-id="statefulwidget">StatefulWidget</h3>
 <p>[<code>StatefulWidget</code>] 트레이트는 [<code>Widget</code>] 트레이트와 유사하지만, 렌더링 도중 관리하고 업데이트할 수 있는 상태(state)가 포함되어 있습니다.</p>
@@ -9050,9 +8994,6 @@ Type "q"
 <span id="cb255-3"><a href="#cb255-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> render(<span class="kw">self</span><span class="op">,</span> area<span class="op">:</span> Rect<span class="op">,</span> buf<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> Buffer<span class="op">,</span> state<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">Self</span><span class="pp">::</span>State)<span class="op">;</span></span>
 <span id="cb255-4"><a href="#cb255-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">}</h2>
 <section id="widgetref-및-statefulwidgetref" class="level3">
 <h3 class="anchored" data-anchor-id="widgetref-및-statefulwidgetref">WidgetRef 및 StatefulWidgetRef</h3>
 <p>[<code>WidgetRef</code>] 트레이트를 사용하면 위젯의 소유권을 소비(consume)하는 대신 참조를 통해 위젯을 렌더링할 수 있어, 개별 위젯이나 위젯 컬렉션을 보관하고 렌더링하는 데 유용합니다.</p>
@@ -9579,9 +9520,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb274-10"><a href="#cb274-10" aria-hidden="true" tabindex="-1"></a>    Running<span class="op">,</span></span>
 <span id="cb274-11"><a href="#cb274-11" aria-hidden="true" tabindex="-1"></a>    Done<span class="op">,</span></span>
 <span id="cb274-12"><a href="#cb274-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-7" class="level2">
-<h2 class="anchored" data-anchor-id="section-7">}</h2>
 <section id="업데이트-처리하기" class="level3">
 <h3 class="anchored" data-anchor-id="업데이트-처리하기">2. 업데이트 처리하기</h3>
 <p>TEA에서 업데이트는 사용자 입력과 같은 이벤트에 의해 트리거되는 액션입니다. 핵심 개념은 이러한 액션이나 이벤트를 각각 메시지에 매핑하는 것입니다. 이는 메시지를 추적하는 enum을 생성함으로써 구현할 수 있습니다. 수신된 메시지를 기반으로 모델의 현재 상태를 활용하여 다음 상태를 결정합니다.</p>
@@ -9911,9 +9849,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb285-147"><a href="#cb285-147" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>))<span class="op">;</span></span>
 <span id="cb285-148"><a href="#cb285-148" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb285-149"><a href="#cb285-149" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-8" class="level2">
-<h2 class="anchored" data-anchor-id="section-8">}</h2>
 <section id="flux-아키텍처" class="level3">
 <h3 class="anchored" data-anchor-id="flux-아키텍처">Flux 아키텍처</h3>
 <p><a href="https://facebookarchive.github.io/flux/docs/in-depth-overview/">Flux</a>는 Facebook에서 대규모 웹 애플리케이션 구축 시 발생하는 문제들을 해결하기 위해 고안한 디자인 패턴입니다. 원래는 웹 애플리케이션을 염두에 두고 설계되었지만, Flux 아키텍처는 터미널 애플리케이션을 포함한 모든 클라이언트 사이드 프로젝트에 적용할 수 있습니다. <code>Flux</code> 아키텍처를 <code>ratatui</code>에 적용한 실제 사례는 <a href="https://github.com/Yengas/rust-chat-server/tree/main/tui" class="uri">https://github.com/Yengas/rust-chat-server/tree/main/tui</a> 에서 확인할 수 있습니다.</p>
@@ -9934,9 +9869,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb286-7"><a href="#cb286-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>store<span class="op">.</span>update(action)<span class="op">;</span></span>
 <span id="cb286-8"><a href="#cb286-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb286-9"><a href="#cb286-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">}</h2>
 <section id="스토어" class="level3">
 <h3 class="anchored" data-anchor-id="스토어">스토어</h3>
 <p>Ratatui에서 스토어는 애플리케이션의 상태와 비즈니스 로직을 보관합니다. 스토어는 다음과 같은 데이터를 표현할 수 있습니다.</p>
@@ -9967,9 +9899,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb287-19"><a href="#cb287-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb287-20"><a href="#cb287-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-10" class="level2">
-<h2 class="anchored" data-anchor-id="section-10">```</h2>
 <section id="액션" class="level3">
 <h3 class="anchored" data-anchor-id="액션">액션</h3>
 <p>액션은 애플리케이션에서 일어나는 모든 변경 사항이나 이벤트를 나타냅니다. 예를 들어 사용자가 키를 누르거나, 메뉴 항목을 선택하거나, 텍스트를 입력할 때 액션이 생성됩니다. 이 액션은 디스패처를 통해 전달되어 관련 스토어에서 처리되며, 결과적으로 애플리케이션 상태의 변경으로 이어집니다.</p>
@@ -9978,9 +9907,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb288-3"><a href="#cb288-3" aria-hidden="true" tabindex="-1"></a>    Decrement<span class="op">,</span></span>
 <span id="cb288-4"><a href="#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-11" class="level2">
-<h2 class="anchored" data-anchor-id="section-11">}</h2>
 <section id="뷰-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="뷰-위젯">뷰 / 위젯</h3>
 <p><code>ratatui</code>의 위젯은 애플리케이션의 UI를 화면에 표시합니다. 위젯 자체는 애플리케이션 상태를 직접 보관하거나 관리하지 않고 오직 표시하는 역할만 합니다. 사용자가 위젯과 상호작용하면 디스패치될 액션이 생성되고, 이 액션이 스토어의 변경을 일으키며, 최종적으로 위젯이 업데이트되어 다시 렌더링됩니다.</p>
@@ -10134,15 +10060,12 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 </div>
 </div>
 </section>
-<section id="appendix-widgets" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-widgets">부록 B. 위젯 및 스타일 레퍼런스</h2>
-<p>내장 위젯 13종의 전체 예제와 스타일 API입니다. 필요한 위젯을 찾아 복사해 쓰는 용도이므로, 본문을 다 읽은 뒤에 훑어보는 편이 효율적입니다.</p>
 </section>
+<section id="appendix-widgets" class="level1">
+<h1>부록 B. 위젯 및 스타일 레퍼런스</h1>
+<p>내장 위젯 13종의 전체 예제와 스타일 API입니다. 필요한 위젯을 찾아 복사해 쓰는 용도이므로, 본문을 다 읽은 뒤에 훑어보는 편이 효율적입니다.</p>
 <section id="내장-위젯-모음" class="level2">
 <h2 class="anchored" data-anchor-id="내장-위젯-모음">내장 위젯 모음</h2>
-</section>
-<section id="내장-위젯-모음-1" class="level2">
-<h2 class="anchored" data-anchor-id="내장-위젯-모음-1">내장 위젯 모음</h2>
 <section id="block-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="block-위젯">Block 위젯</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Block.html"><code>Block</code></a> 위젯의 구조와 실제 렌더링 사용법을 설명합니다.</p>
@@ -10240,9 +10163,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb301-73"><a href="#cb301-73" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-12" class="level2">
-<h2 class="anchored" data-anchor-id="section-12">}</h2>
 <section id="paragraph-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="paragraph-위젯">Paragraph 위젯</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Paragraph.html"><code>Paragraph</code></a> 위젯의 구조와 실제 렌더링 사용법을 설명합니다. 출처: <a href="https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/ratatui-widgets/examples/paragraph.rs">paragraph.rs</a>.</p>
@@ -10357,9 +10277,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb303-91"><a href="#cb303-91" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-13" class="level2">
-<h2 class="anchored" data-anchor-id="section-13">}</h2>
 <section id="list-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="list-위젯">List 위젯</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.List.html"><code>List</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -10475,9 +10392,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb305-91"><a href="#cb305-91" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-14" class="level2">
-<h2 class="anchored" data-anchor-id="section-14">}</h2>
 <section id="table-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="table-위젯">Table 위젯</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Table.html"><code>Table</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -10597,9 +10511,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb307-95"><a href="#cb307-95" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-15" class="level2">
-<h2 class="anchored" data-anchor-id="section-15">}</h2>
 <section id="barchart-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="barchart-위젯">BarChart 위젯</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.BarChart.html"><code>BarChart</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -10696,9 +10607,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb309-72"><a href="#cb309-72" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-16" class="level2">
-<h2 class="anchored" data-anchor-id="section-16">}</h2>
 <section id="chart-차트-및-산점도선-그래프" class="level3">
 <h3 class="anchored" data-anchor-id="chart-차트-및-산점도선-그래프">Chart (차트 및 산점도/선 그래프)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Chart.html"><code>Chart</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -10827,9 +10735,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb311-104"><a href="#cb311-104" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-17" class="level2">
-<h2 class="anchored" data-anchor-id="section-17">}</h2>
 <section id="gauge-linegauge-진행률-표시기" class="level3">
 <h3 class="anchored" data-anchor-id="gauge-linegauge-진행률-표시기">Gauge &amp; LineGauge (진행률 표시기)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Gauge.html"><code>Gauge</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -10928,9 +10833,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb313-74"><a href="#cb313-74" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-18" class="level2">
-<h2 class="anchored" data-anchor-id="section-18">}</h2>
 <section id="sparkline-스파크라인-소형-차트" class="level3">
 <h3 class="anchored" data-anchor-id="sparkline-스파크라인-소형-차트">Sparkline (스파크라인 소형 차트)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Sparkline.html"><code>Sparkline</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -11044,9 +10946,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb315-89"><a href="#cb315-89" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-19" class="level2">
-<h2 class="anchored" data-anchor-id="section-19">}</h2>
 <section id="tabs-탭-내비게이션" class="level3">
 <h3 class="anchored" data-anchor-id="tabs-탭-내비게이션">Tabs (탭 내비게이션)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Tabs.html"><code>Tabs</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -11150,9 +11049,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb317-79"><a href="#cb317-79" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-20" class="level2">
-<h2 class="anchored" data-anchor-id="section-20">}</h2>
 <section id="scrollbar-스크롤바" class="level3">
 <h3 class="anchored" data-anchor-id="scrollbar-스크롤바">Scrollbar (스크롤바)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Scrollbar.html"><code>Scrollbar</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -11300,9 +11196,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb319-123"><a href="#cb319-123" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-21" class="level2">
-<h2 class="anchored" data-anchor-id="section-21">}</h2>
 <section id="canvas-아스키-캔버스-그리기-도구" class="level3">
 <h3 class="anchored" data-anchor-id="canvas-아스키-캔버스-그리기-도구">Canvas (아스키 캔버스 그리기 도구)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/canvas/index.html"><code>Canvas</code></a> 위젯 및 <a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/canvas/index.html"><code>canvas</code></a> 모듈에 포함된 다양한 도형의 활용법을 살펴봅니다.<br>
@@ -11410,9 +11303,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb321-83"><a href="#cb321-83" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-22" class="level2">
-<h2 class="anchored" data-anchor-id="section-22">}</h2>
 <section id="calendar-달력-위젯" class="level3">
 <h3 class="anchored" data-anchor-id="calendar-달력-위젯">Calendar (달력 위젯)</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/calendar/"><code>Calendar</code></a> 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.<br>
@@ -11518,9 +11408,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb323-81"><a href="#cb323-81" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-23" class="level2">
-<h2 class="anchored" data-anchor-id="section-23">}</h2>
 <section id="collapsed-borders-테두리-병합-기법" class="level3">
 <h3 class="anchored" data-anchor-id="collapsed-borders-테두리-병합-기법">Collapsed Borders (테두리 병합 기법)</h3>
 <p>중첩 레이아웃 간격(spacing)과 테두리 병합 전략을 조합하여 인접한 <a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Block.html"><code>Block</code></a> 간의 테두리를 하나로 깔끔하게 합치는(collapse) 기법을 살펴봅니다.<br>
@@ -11656,10 +11543,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb325-111"><a href="#cb325-111" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb325-112"><a href="#cb325-112" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-</section>
-<section id="section-24" class="level2">
-<h2 class="anchored" data-anchor-id="section-24">}</h2>
 <p>Shadow 위젯을 활용한 그림자 효과</p>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Shadow.html"><code>Shadow</code></a> 위젯에서 지원하는 오버레이(overlay), 블록(block), 심볼(symbol) 및 사용자 정의(custom) 렌더링 모드의 동작 방식과 활용법을 살펴봅니다. 소스 코드: <a href="https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/ratatui-widgets/examples/shadow.rs">shadow.rs</a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb326"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ratatui/ratatui.git <span class="at">--branch</span> ratatui-v0.30.2 <span class="at">--depth</span> 1</span>
@@ -11798,8 +11681,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb327-127"><a href="#cb327-127" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="section-25" class="level2">
-<h2 class="anchored" data-anchor-id="section-25">}</h2>
 <section id="사용자-정의-위젯-구현" class="level3">
 <h3 class="anchored" data-anchor-id="사용자-정의-위젯-구현">사용자 정의 위젯 구현</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/widgets/trait.Widget.html"><code>Widget</code></a> 트레이트를 직접 구현하여 독자적인 위젯을 제작하는 방법과 마우스 이벤트(클릭, 이동)와의 상호작용 처리 기법을 알아봅니다. 소스 코드: <a href="https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/examples/apps/custom-widget/src/main.rs">main.rs</a>.</p>
@@ -12079,9 +11960,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 </section>
 <section id="레이아웃-및-스타일-실전-예제" class="level2">
 <h2 class="anchored" data-anchor-id="레이아웃-및-스타일-실전-예제">레이아웃 및 스타일 실전 예제</h2>
-</section>
-<section id="레이아웃-및-스타일-실전-예제-1" class="level2">
-<h2 class="anchored" data-anchor-id="레이아웃-및-스타일-실전-예제-1">레이아웃 및 스타일 실전 예제</h2>
 <section id="레이아웃-제약조건-탐색기" class="level3">
 <h3 class="anchored" data-anchor-id="레이아웃-제약조건-탐색기">레이아웃 제약조건 탐색기</h3>
 <p><a href="https://docs.rs/ratatui/0.30.2/ratatui/layout/struct.Layout.html"><code>Layout</code></a>의 세부 동작 메커니즘을 상세히 다룹니다. 기존 독립형 <code>layout</code> 예제는 업스트림 최신 버전에서 정리(제거)되었으며, 현재 레이아웃과 제약조건 동작을 직접 시험해 볼 수 있는 공식 예제는 <code>constraint-explorer</code>입니다. 소스 코드: <a href="https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/examples/apps/constraint-explorer/src/main.rs">main.rs</a>.</p>
@@ -14354,10 +14232,6 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb337-602"><a href="#cb337-602" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb337-603"><a href="#cb337-603" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-</section>
-<section id="section-26" class="level2">
-<h2 class="anchored" data-anchor-id="section-26">}</h2>
 <p>스타일, 색상 및 텍스트 수식자</p>
 <p>이 예제는 사용 가능한 <a href="https://docs.rs/ratatui/0.30.2/ratatui/style/enum.Color.html"><code>Color</code></a> 옵션들을 보여줍니다. 이 색상들은 모든 스타일 필드에서 활용할 수 있습니다. 소스 코드: <a href="https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/examples/apps/color-explorer/src/main.rs">main.rs</a>.</p>
 <div class="code-with-filename">
@@ -14974,15 +14848,13 @@ TUI Application--&gt;&gt;User: Display UI</code></pre>
 <span id="cb343-82"><a href="#cb343-82" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="appendix-recipes" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-recipes">부록 C. 실전 레시피</h2>
-<p>패닉 훅, 로깅, CLI 인자 파싱, 설정 경로, 외부 에디터 호출, 마이그레이션, 패키징처럼 앱을 “배포 가능한 상태”로 만드는 작업을 모았습니다.</p>
 </section>
+</section>
+<section id="appendix-recipes" class="level1">
+<h1>부록 C. 실전 레시피</h1>
+<p>패닉 훅, 로깅, CLI 인자 파싱, 설정 경로, 외부 에디터 호출, 마이그레이션, 패키징처럼 앱을 “배포 가능한 상태”로 만드는 작업을 모았습니다.</p>
 <section id="애플리케이션-개발-실전-기법" class="level2">
 <h2 class="anchored" data-anchor-id="애플리케이션-개발-실전-기법">애플리케이션 개발 실전 기법</h2>
-</section>
-<section id="애플리케이션-개발-실전-기법-1" class="level2">
-<h2 class="anchored" data-anchor-id="애플리케이션-개발-실전-기법-1">애플리케이션 개발 실전 기법</h2>
 <section id="견고한-패닉-훅과-color-eyre-통합" class="level3">
 <h3 class="anchored" data-anchor-id="견고한-패닉-훅과-color-eyre-통합">견고한 패닉 훅과 color-eyre 통합</h3>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -15574,9 +15446,6 @@ Thank you kindly!</code></pre>
 <span id="cb365-45"><a href="#cb365-45" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span>))<span class="op">;</span></span>
 <span id="cb365-46"><a href="#cb365-46" aria-hidden="true" tabindex="-1"></a>  <span class="cn">Ok</span>(())</span>
 <span id="cb365-47"><a href="#cb365-47" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-27" class="level2">
-<h2 class="anchored" data-anchor-id="section-27">}</h2>
 <section id="터미널-및-이벤트-핸들러-추상화" class="level3">
 <h3 class="anchored" data-anchor-id="터미널-및-이벤트-핸들러-추상화">터미널 및 이벤트 핸들러 추상화</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -15893,9 +15762,6 @@ Thank you kindly!</code></pre>
 <span id="cb368-33"><a href="#cb368-33" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
 <span id="cb368-34"><a href="#cb368-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-28" class="level2">
-<h2 class="anchored" data-anchor-id="section-28">}</h2>
 <section id="tracing을-활용한-로그-파일-기록-터미널-오염-방지" class="level3">
 <h3 class="anchored" data-anchor-id="tracing을-활용한-로그-파일-기록-터미널-오염-방지">tracing을 활용한 로그 파일 기록 (터미널 오염 방지)</h3>
 <p>TUI 애플리케이션에서는 표준 출력/표준 에러에 직접 로그를 출력하면 화면이 깨지므로 파일 로깅이 필수적입니다. <code>tracing</code> 및 관련 의존성을 추가합니다:</p>
@@ -16114,9 +15980,6 @@ Thank you kindly!</code></pre>
 <span id="cb374-45"><a href="#cb374-45" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">"cargo:rustc-env=RATATUI_TEMPLATE_GIT_INFO={}"</span><span class="op">,</span> git_describe)<span class="op">;</span></span>
 <span id="cb374-46"><a href="#cb374-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="section-29" class="level2">
-<h2 class="anchored" data-anchor-id="section-29">}</h2>
 <section id="설정-디렉터리-표준-경로-관리" class="level3">
 <h3 class="anchored" data-anchor-id="설정-디렉터리-표준-경로-관리">설정 디렉터리 표준 경로 관리</h3>
 <p>명령줄 도구나 TUI 애플리케이션에서 파일과 디렉터리를 올바르게 다루면 사용자의 작업 흐름과 자연스럽게 융합되고 표준화된 환경을 제공할 수 있습니다. Linux 및 유닉스 계열 시스템의 핵심 표준 중 하나는 XDG 기본 디렉터리 명세(XDG Base Directory Specification)입니다.</p>
@@ -16459,9 +16322,6 @@ Thank you kindly!</code></pre>
 </section>
 <section id="레이아웃-렌더링-및-테스트-레시피" class="level2">
 <h2 class="anchored" data-anchor-id="레이아웃-렌더링-및-테스트-레시피">레이아웃, 렌더링 및 테스트 레시피</h2>
-</section>
-<section id="레이아웃-렌더링-및-테스트-레시피-1" class="level2">
-<h2 class="anchored" data-anchor-id="레이아웃-렌더링-및-테스트-레시피-1">레이아웃, 렌더링 및 테스트 레시피</h2>
 <section id="위젯-정중앙-배치" class="level3">
 <h3 class="anchored" data-anchor-id="위젯-정중앙-배치">위젯 정중앙 배치</h3>
 <p>문제</p>
@@ -16478,9 +16338,6 @@ Thank you kindly!</code></pre>
 <span id="cb384-4"><a href="#cb384-4" aria-hidden="true" tabindex="-1"></a>    area<span class="op">.</span>centered_horizontally(<span class="pp">Constraint::</span>Length(width))</span>
 <span id="cb384-5"><a href="#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-30" class="level2">
-<h2 class="anchored" data-anchor-id="section-30">}</h2>
 <section id="세로-중앙-정렬" class="level3">
 <h3 class="anchored" data-anchor-id="세로-중앙-정렬">세로 중앙 정렬</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb385"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb385-1"><a href="#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">ratatui::layout::</span><span class="op">{</span>Constraint<span class="op">,</span> Rect<span class="op">};</span></span>
@@ -16489,9 +16346,6 @@ Thank you kindly!</code></pre>
 <span id="cb385-4"><a href="#cb385-4" aria-hidden="true" tabindex="-1"></a>    area<span class="op">.</span>centered_vertically(<span class="pp">Constraint::</span>Length(height))</span>
 <span id="cb385-5"><a href="#cb385-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-31" class="level2">
-<h2 class="anchored" data-anchor-id="section-31">}</h2>
 <section id="가로-및-세로-동시-중앙-정렬" class="level3">
 <h3 class="anchored" data-anchor-id="가로-및-세로-동시-중앙-정렬">가로 및 세로 동시 중앙 정렬</h3>
 <p><code>.centered</code> 메서드를 사용하면 가로와 세로 제약 조건을 한 번에 전달하여 정중앙 <code>Rect</code>를 얻을 수 있습니다:</p>
@@ -16513,9 +16367,6 @@ Thank you kindly!</code></pre>
 <span id="cb386-16"><a href="#cb386-16" aria-hidden="true" tabindex="-1"></a>    area<span class="op">.</span>centered(horizontal<span class="op">,</span> vertical)</span>
 <span id="cb386-17"><a href="#cb386-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-32" class="level2">
-<h2 class="anchored" data-anchor-id="section-32">}</h2>
 <section id="위젯-중앙-정렬-렌더링-예제" class="level3">
 <h3 class="anchored" data-anchor-id="위젯-중앙-정렬-렌더링-예제">위젯 중앙 정렬 렌더링 예제</h3>
 <p>이 메서드를 활용하면 화면 크기가 변하더라도 텍스트나 위젯을 정중앙에 안정적으로 렌더링할 수 있습니다:</p>
@@ -16528,9 +16379,6 @@ Thank you kindly!</code></pre>
 <span id="cb387-7"><a href="#cb387-7" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">.</span>render_widget(text<span class="op">,</span> area)<span class="op">;</span></span>
 <span id="cb387-8"><a href="#cb387-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-33" class="level2">
-<h2 class="anchored" data-anchor-id="section-33">}</h2>
 <section id="팝업-다이얼로그" class="level3">
 <h3 class="anchored" data-anchor-id="팝업-다이얼로그">팝업 다이얼로그</h3>
 <p>중앙 정렬의 가장 흔한 사용 사례는 모달 형태의 팝업 창입니다. 팝업을 그릴 때는 팝업 아래에 깔린 기존 텍스트가 겹쳐 보이지 않도록 콘텐츠를 그리기 전에 먼저 <a href="점유한 영역을 깨끗이 지웁니다. 이전에 그려진 위젯 위에 새 위젯을 덮어 그릴 때 유용합니다."><code>Clear</code></a> 위젯으로 해당 영역을 지워야 합니다:</p>
@@ -16717,9 +16565,6 @@ Thank you kindly!</code></pre>
 <span id="cb393-69"><a href="#cb393-69" aria-hidden="true" tabindex="-1"></a>    frame<span class="op">.</span>render_widget(bottom_right_block<span class="op">,</span> bottom_right)<span class="op">;</span></span>
 <span id="cb393-70"><a href="#cb393-70" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="section-34" class="level2">
-<h2 class="anchored" data-anchor-id="section-34">}</h2>
 <section id="동적-레이아웃-구성" class="level3">
 <h3 class="anchored" data-anchor-id="동적-레이아웃-구성">동적 레이아웃 구성</h3>
 <p>실제 애플리케이션의 화면 요소는 사용자 인터랙션이나 데이터 상태에 따라 동적으로 달라집니다. 예를 들어 채팅 앱에서는 메시지 목록이 길어짐에 따라 입력창의 크기를 유연하게 조절할 수 있습니다:</p>
@@ -17200,9 +17045,6 @@ Thank you kindly!</code></pre>
 <span id="cb427-21"><a href="#cb427-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb427-22"><a href="#cb427-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-35" class="level2">
-<h2 class="anchored" data-anchor-id="section-35">}</h2>
 <section id="테스트-실행하기" class="level3">
 <h3 class="anchored" data-anchor-id="테스트-실행하기">3. 테스트 실행하기</h3>
 <p>테스트를 실행하면(<code>cargo test</code>), <code>Terminal::draw()</code> 메서드의 렌더링 출력이 스냅샷과 비교됩니다. 테스트를 처음 실행하거나 출력이 변경된 경우, [<code>insta</code>]는 <code>snapshots/</code> 디렉터리 아래에 스냅샷 파일을 생성합니다.</p>
@@ -17400,8 +17242,9 @@ PTY 통합 테스트 예시
 <span id="cb433-69"><a href="#cb433-69" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="appendix-templates" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-templates">부록 D. 프로덕션 템플릿 해설</h2>
+</section>
+<section id="appendix-templates" class="level1">
+<h1>부록 D. 프로덕션 템플릿 해설</h1>
 <p>컴포넌트 기반 템플릿의 전체 구조를 파일 단위로 해설합니다. 앱이 커졌을 때 참고할 골격으로 쓰세요.</p>
 <p>대규모 TUI 애플리케이션 개발 시 권장되는 비동기 컴포넌트 템플릿 구조입니다.</p>
 <p>Ratatui는 <a href="https://cargo-generate.github.io/cargo-generate/">cargo-generate</a>를 사용해 애플리케이션을 신속하게 시작할 수 있는 <a href="https://github.com/ratatui/templates">템플릿 모음</a>을 제공합니다.</p>
@@ -17441,7 +17284,6 @@ PTY 통합 테스트 예시
 <p>또 다른 대안적 시작 지점으로, 테마 지원과 맞춤 설정이 가능한 Ratatui용 컴포넌트를 제공하는 <a href="../ecosystem/ratcn/">ratcn</a>을 확인해 보십시오.</p>
 </div>
 </div>
-</section>
 <section id="사용법-1" class="level2">
 <h2 class="anchored" data-anchor-id="사용법-1">사용법</h2>
 <p><code>cargo-generate</code>를 사용하여 바로 시작할 수 있습니다:</p>
@@ -18097,9 +17939,6 @@ PTY 통합 테스트 예시
 <span id="cb454-176"><a href="#cb454-176" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="section-36" class="level2">
-<h2 class="anchored" data-anchor-id="section-36">}</h2>
 <section id="tui.rs-1" class="level3">
 <h3 class="anchored" data-anchor-id="tui.rs-1">tui.rs</h3>
 <p>이 문서에서는 <code>components</code> 템플릿의 <code>tui.rs</code> 파일이 어떻게 동작하는지 설명합니다.</p>
@@ -18601,9 +18440,6 @@ PTY 통합 테스트 예시
 <span id="cb464-234"><a href="#cb464-234" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb464-235"><a href="#cb464-235" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="section-37" class="level2">
-<h2 class="anchored" data-anchor-id="section-37">}</h2>
 <section id="action.rs" class="level3">
 <h3 class="anchored" data-anchor-id="action.rs">action.rs</h3>
 <p>애플리케이션에서 수행할 수 있는 동작을 정의하는 <code>Action</code> 열거형(enum)을 살펴봅니다.</p>
@@ -18663,9 +18499,6 @@ PTY 통합 테스트 예시
 <span id="cb466-14"><a href="#cb466-14" aria-hidden="true" tabindex="-1"></a>    Help<span class="op">,</span></span>
 <span id="cb466-15"><a href="#cb466-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-38" class="level2">
-<h2 class="anchored" data-anchor-id="section-38">}</h2>
 <section id="config.rs" class="level3">
 <h3 class="anchored" data-anchor-id="config.rs">config.rs</h3>
 <p>현재 구현에서는 키 바인딩이 애플리케이션 코드 내부에 하드코딩되어 있습니다.</p>
@@ -19357,9 +19190,6 @@ PTY 통합 테스트 예시
 <span id="cb475-445"><a href="#cb475-445" aria-hidden="true" tabindex="-1"></a>        <span class="cn">None</span></span>
 <span id="cb475-446"><a href="#cb475-446" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb475-447"><a href="#cb475-447" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-39" class="level2">
-<h2 class="anchored" data-anchor-id="section-39">}</h2>
 <section id="cli.rs" class="level3">
 <h3 class="anchored" data-anchor-id="cli.rs">cli.rs</h3>
 <p><code>cli.rs</code> 파일에서는 애플리케이션 실행 시 전달받을 명령줄 인자(CLI arguments)를 정의합니다.</p>
@@ -19976,16 +19806,11 @@ PTY 통합 테스트 예시
 </figure>
 </div>
 </section>
-</section>
-<section id="httpsuser-images.githubuserconten" class="level2">
-<h2 class="anchored" data-anchor-id="httpsuser-images.githubuserconten">![](https://user-images.githubuserconten</h2>
 <section id="fps-성능-모니터링-컴포넌트" class="level3">
 <h3 class="anchored" data-anchor-id="fps-성능-모니터링-컴포넌트">FPS 성능 모니터링 컴포넌트</h3>
 <p>템플릿에 기본 내장된 성능 모니터링 컴포넌트인 <code>FpsCounter</code>의 구현을 살펴보겠습니다.</p>
-</section>
-</section>
-<section id="상태" class="level2">
-<h2 class="anchored" data-anchor-id="상태">상태</h2>
+<section id="상태" class="level4">
+<h4 class="anchored" data-anchor-id="상태">상태</h4>
 <p>이 컴포넌트는 다음과 같은 상태를 관리합니다.</p>
 <ol type="1">
 <li><code>last_tick_update</code>: <code>tick</code>이 마지막으로 갱신된 시점을 기록하는 <code>Instant</code>입니다.</li>
@@ -20005,13 +19830,11 @@ PTY 통합 테스트 예시
 <span id="cb482-9"><a href="#cb482-9" aria-hidden="true" tabindex="-1"></a>    frames_per_second<span class="op">:</span> <span class="dt">f64</span><span class="op">,</span></span>
 <span id="cb482-10"><a href="#cb482-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="메서드" class="level2">
-<h2 class="anchored" data-anchor-id="메서드">메서드</h2>
+<section id="메서드" class="level4">
+<h4 class="anchored" data-anchor-id="메서드">메서드</h4>
 </section>
-<section id="메서드-1" class="level2">
-<h2 class="anchored" data-anchor-id="메서드-1">메서드</h2>
-<section id="impl-fpscounter" class="level3">
-<h3 class="anchored" data-anchor-id="impl-fpscounter"><code>impl FpsCounter</code></h3>
+<section id="impl-fpscounter" class="level4">
+<h4 class="anchored" data-anchor-id="impl-fpscounter"><code>impl FpsCounter</code></h4>
 <p>이 <code>impl</code> 블록에서는 <code>FpsCounter</code> 인스턴스를 생성하는 <code>new</code> 생성자와 함께, 경과 시간을 기반으로 초당 틱 수(<code>ticks_per_second</code>)와 렌더링 프레임 수(<code>frames_per_second</code>)를 계산하는 보조 메서드들을 정의합니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb483"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb483-1"><a href="#cb483-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb483-2"><a href="#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> FpsCounter <span class="op">{</span></span>
@@ -20052,8 +19875,6 @@ PTY 통합 테스트 예시
 <span id="cb483-37"><a href="#cb483-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="section-40" class="level2">
-<h2 class="anchored" data-anchor-id="section-40">}</h2>
 <section id="impl-component" class="level3">
 <h3 class="anchored" data-anchor-id="impl-component"><code>impl Component</code></h3>
 <p>마지막으로 <code>FpsCounter</code>에 <code>Component</code> 트레이트를 구현하여, 다른 UI 구성 요소와 동일하게 메인 루프에서 액션을 받고 화면에 렌더링될 수 있도록 만듭니다.</p>
@@ -20081,10 +19902,10 @@ PTY 통합 테스트 예시
 <span id="cb484-22"><a href="#cb484-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="appendix-ecosystem" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-ecosystem">부록 E. 생태계와 쇼케이스</h2>
-<p>서드파티 위젯과 실제 Ratatui 앱 사례입니다. 직접 만들기 전에 이미 있는 것을 찾아보는 습관이 시간을 아껴 줍니다.</p>
 </section>
+<section id="appendix-ecosystem" class="level1">
+<h1>부록 E. 생태계와 쇼케이스</h1>
+<p>서드파티 위젯과 실제 Ratatui 앱 사례입니다. 직접 만들기 전에 이미 있는 것을 찾아보는 습관이 시간을 아껴 줍니다.</p>
 <section id="내장-위젯-쇼케이스" class="level2">
 <h2 class="anchored" data-anchor-id="내장-위젯-쇼케이스">내장 위젯 쇼케이스</h2>
 <p>쇼케이스 등록에 기여하는 방법은 <a href="https://ratatui.rs/recipes/apps/submitting-to-the-showcase/">쇼케이스 등록 가이드</a> 문서를 참고하세요.</p>
@@ -20724,9 +20545,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 </section>
 <section id="생태계-프로젝트" class="level2">
 <h2 class="anchored" data-anchor-id="생태계-프로젝트">생태계 프로젝트</h2>
-</section>
-<section id="생태계-프로젝트-1" class="level2">
-<h2 class="anchored" data-anchor-id="생태계-프로젝트-1">생태계 프로젝트</h2>
 <section id="tachyonfx" class="level3">
 <h3 class="anchored" data-anchor-id="tachyonfx">Tachyonfx</h3>
 <blockquote class="blockquote">
@@ -20943,10 +20761,10 @@ See https://github.com/withastro/astro/issues/8886 -->
 </ul>
 </section>
 </section>
-<section id="appendix-release-faq" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-release-faq">부록 F. 릴리스 하이라이트와 FAQ</h2>
-<p>버전별 변경 사항과 자주 나오는 질문입니다. 업그레이드할 때, 또는 특정 동작이 버그인지 사양인지 헷갈릴 때 참고하세요.</p>
 </section>
+<section id="appendix-release-faq" class="level1">
+<h1>부록 F. 릴리스 하이라이트와 FAQ</h1>
+<p>버전별 변경 사항과 자주 나오는 질문입니다. 업그레이드할 때, 또는 특정 동작이 버그인지 사양인지 헷갈릴 때 참고하세요.</p>
 <section id="주요-릴리스-하이라이트" class="level2">
 <h2 class="anchored" data-anchor-id="주요-릴리스-하이라이트">주요 릴리스 하이라이트</h2>
 </section>
@@ -22271,9 +22089,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 <span id="cb574-10"><a href="#cb574-10" aria-hidden="true" tabindex="-1"></a>    widget<span class="op">.</span>render_ref(area<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> buf)<span class="op">;</span></span>
 <span id="cb574-11"><a href="#cb574-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-41" class="level2">
-<h2 class="anchored" data-anchor-id="section-41">}</h2>
 <section id="레이아웃-flex" class="level3">
 <h3 class="anchored" data-anchor-id="레이아웃-flex">레이아웃: <code>flex</code> ✨</h3>
 <p>이제 <code>Layout</code>에서 요소 사이의 간격을 조절하는 새로운 방식인 Flex를 지원합니다! CSS의 <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> 개념을 느슨하게 차용한 <code>Flex</code> 열거형을 새로 추가했습니다:</p>
@@ -22486,9 +22301,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 <span id="cb596-4"><a href="#cb596-4" aria-hidden="true" tabindex="-1"></a><span class="va">+     ..Default::default()</span></span>
 <span id="cb596-5"><a href="#cb596-5" aria-hidden="true" tabindex="-1"></a>  };</span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="section-42" class="level2">
-<h2 class="anchored" data-anchor-id="section-42">};</h2>
 <section id="style-into-지원" class="level3">
 <h3 class="anchored" data-anchor-id="style-into-지원">Style: Into 지원 🎨</h3>
 <p>스타일 관련 모든 메서드가 이제 <code>Style</code> 대신 <code>S: Into&lt;Style&gt;</code>을 받습니다. <code>Color</code>와 <code>Modifier</code>가 <code>Into&lt;Style&gt;</code>을 구현하므로 훨씬 더 인체공학적으로 사용할 수 있습니다. 예:</p>
@@ -22524,9 +22336,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 ▕xx▏
 ▕▁▁▏</code></pre>
 </section>
-</section>
-<section id="section-43" class="level2">
-<h2 class="anchored" data-anchor-id="section-43">▕▁▁▏</h2>
 <section id="terminal-프레임-카운트" class="level3">
 <h3 class="anchored" data-anchor-id="terminal-프레임-카운트">Terminal: 프레임 카운트 🔢</h3>
 <p>이제 현재 프레임 카운트를 조회할 수 있습니다!</p>
@@ -22835,9 +22644,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 </section>
 <section id="자주-묻는-질문" class="level2">
 <h2 class="anchored" data-anchor-id="자주-묻는-질문">자주 묻는 질문</h2>
-</section>
-<section id="자주-묻는-질문-1" class="level2">
-<h2 class="anchored" data-anchor-id="자주-묻는-질문-1">자주 묻는 질문</h2>
 <p>Windows 환경에서 키 입력 이벤트가 두 번씩 중복 발생하는 이유는 무엇인가요?</p>
 <p>실무나 온라인의 수많은 예제에서는 키 입력을 전송할 때 다음과 같은 코드를 흔히 사용합니다:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb620"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb620-1"><a href="#cb620-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">CrosstermEvent::</span>Key(e) <span class="op">=&gt;</span> tx<span class="op">.</span>send(<span class="pp">Event::</span>Key(e))<span class="op">,</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
@@ -22848,9 +22654,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 <span id="cb621-3"><a href="#cb621-3" aria-hidden="true" tabindex="-1"></a>      event_tx<span class="op">.</span>send(<span class="pp">Event::</span>Key(key))<span class="op">.</span>unwrap()<span class="op">;</span></span>
 <span id="cb621-4"><a href="#cb621-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb621-5"><a href="#cb621-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">},</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="section-44" class="level2">
-<h2 class="anchored" data-anchor-id="section-44">},</h2>
 <p>어떤 경우에 <code>tokio</code>와 비동기(<code>async</code>/<code>await</code>) 패턴을 도입해야 하나요?</p>
 <p><code>ratatui</code>는 그 자체로 네이티브 비동기(<code>async</code>) 라이브러리가 아닙니다. 그렇다면 <code>tokio</code>나 <code>async</code>/<code>await</code>을 도입하는 것이 유익할까요?</p>
 <p><code>ratatui</code>를 사용하는 애플리케이션 입장에서 라이브러리와 맞닿는 유일한 접점은 사실상 <code>terminal.draw(|f| ui(f))</code> 기능뿐입니다(<code>ratatui</code>가 제공하는 위젯들의 생성 작업은 통상 <code>ui(f)</code> 내부에서 수행됩니다). 그 외의 모든 코드는 개발자가 원하는 방식대로 자유롭게 작성할 수 있습니다.</p>
@@ -22933,9 +22736,6 @@ See https://github.com/withastro/astro/issues/8886 -->
                                 ┊                   ,--------v---------.
                                 ┊                   | Render Component |
                                 ┊                   `------------------'</code></pre>
-</section>
-<section id="section-45" class="level2">
-<h2 class="anchored" data-anchor-id="section-45">┊</h2>
 <p>프로젝트 내에서 서로 다른 버전의 Crossterm이 충돌할 때 어떻게 해결하나요?</p>
 <p>의존성 그래프에 두 개 이상의 서로 다른 Crossterm 메이저 버전이 포함되면, 컴파일러는 다음과 같이 혼란스러운 타입 불일치 에러를 출력합니다:</p>
 <pre class="text"><code>error[E0308]: mismatched types
@@ -23187,11 +22987,6 @@ See https://github.com/withastro/astro/issues/8886 -->
 <span id="cb631-7"><a href="#cb631-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 이벤트 처리</span></span>
 <span id="cb631-8"><a href="#cb631-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 상태 관리</span></span>
 <span id="cb631-9"><a href="#cb631-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-</section>
-<section id="section-46" class="level2">
-<h2 class="anchored" data-anchor-id="section-46">}</h2>
 <p>터미널 렌더링 출력 스트림으로 <code>stdout</code>과 <code>stderr</code> 중 어느 것을 사용해야 하나요?</p>
 <p><code>crossterm</code>을 사용할 때 개발자는 출력을 <code>stdout</code>으로 보낼지, <code>stderr</code>로 보낼지 선택할 수 있습니다.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb632"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb632-1"><a href="#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> t <span class="op">=</span> <span class="pp">Terminal::</span>new(<span class="pp">CrosstermBackend::</span>new(<span class="pp">std::io::</span>stdout()))<span class="op">?;</span></span>
@@ -23237,6 +23032,9 @@ See https://github.com/withastro/astro/issues/8886 -->
 </ul>
 
 
+</section>
+</section>
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

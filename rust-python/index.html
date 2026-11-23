@@ -202,11 +202,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python-mastery/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">고급 파이썬 기술</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../effective-python/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">효율적인 파이썬</span></a>
   </div>
 </li>
@@ -290,11 +285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../writing-for-developers/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">개발자를 위한 글쓰기</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../own-your-tech-career/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">개발자 커리어 셀프 매니지먼트</span></a>
   </div>
 </li>
       </ul>
@@ -1133,7 +1123,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#저장소-서브프로젝트-구성" id="toc-저장소-서브프로젝트-구성" class="nav-link active" data-scroll-target="#저장소-서브프로젝트-구성">저장소 서브프로젝트 구성</a></li>
+  <li><a href="#rust-python-바인딩-기초와-실전-프로젝트" id="toc-rust-python-바인딩-기초와-실전-프로젝트" class="nav-link active" data-scroll-target="#rust-python-바인딩-기초와-실전-프로젝트">Rust-Python 바인딩 기초와 실전 프로젝트</a>
+  <ul class="collapse">
+  <li><a href="#개요" id="toc-개요" class="nav-link" data-scroll-target="#개요">개요</a></li>
+  <li><a href="#저장소-서브프로젝트-구성" id="toc-저장소-서브프로젝트-구성" class="nav-link" data-scroll-target="#저장소-서브프로젝트-구성">저장소 서브프로젝트 구성</a></li>
   <li><a href="#maturin-pyo-빌드-시스템" id="toc-maturin-pyo-빌드-시스템" class="nav-link" data-scroll-target="#maturin-pyo-빌드-시스템">Maturin &amp; PyO 빌드 시스템</a>
   <ul class="collapse">
   <li><a href="#빌드-도구-maturin" id="toc-빌드-도구-maturin" class="nav-link" data-scroll-target="#빌드-도구-maturin">빌드 도구: Maturin</a></li>
@@ -1141,14 +1134,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#프로젝트별-코드-심층-분석" id="toc-프로젝트별-코드-심층-분석" class="nav-link" data-scroll-target="#프로젝트별-코드-심층-분석">프로젝트별 코드 심층 분석</a>
   <ul class="collapse">
+  <li><a href="#string_sum---기본-함수-및-서브모듈-구성" id="toc-string_sum---기본-함수-및-서브모듈-구성" class="nav-link" data-scroll-target="#string_sum---기본-함수-및-서브모듈-구성">1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</a></li>
   <li><a href="#rust-소스-코드-string_sumsrclib.rs" id="toc-rust-소스-코드-string_sumsrclib.rs" class="nav-link" data-scroll-target="#rust-소스-코드-string_sumsrclib.rs">Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#pyo-개발-모범-사례-및-요약" id="toc-pyo-개발-모범-사례-및-요약" class="nav-link" data-scroll-target="#pyo-개발-모범-사례-및-요약">PyO 개발 모범 사례 및 요약</a>
+  <ul class="collapse">
   <li><a href="#pyo-개발-모범-사례" id="toc-pyo-개발-모범-사례" class="nav-link" data-scroll-target="#pyo-개발-모범-사례">PyO 개발 모범 사례</a>
   <ul class="collapse">
   <li><a href="#gil-스코프-최소화" id="toc-gil-스코프-최소화" class="nav-link" data-scroll-target="#gil-스코프-최소화">2. GIL 스코프 최소화</a></li>
   <li><a href="#명확한-예외-매핑" id="toc-명확한-예외-매핑" class="nav-link" data-scroll-target="#명확한-예외-매핑">3. 명확한 예외 매핑</a></li>
   </ul></li>
   <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">요약</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1187,9 +1185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>개요</p>
+<section id="rust-python-바인딩-기초와-실전-프로젝트" class="level1">
+<h1>Rust-Python 바인딩 기초와 실전 프로젝트</h1>
+<section id="개요" class="level2">
+<h2 class="anchored" data-anchor-id="개요">개요</h2>
 <p>이 문서는 <code>rust-python-binding</code> 저장소에 포함된 모든 예제 프로젝트의 코드와 구조를 설명한다.</p>
 <p>Rust의 메모리 안전성과 고성능 연산 능력, Python의 풍부한 생태계와 빠른 프로토타이핑 장점을 결합하려고 <strong>PyO3</strong>(Rust-Python 바인딩 프레임워크)와 <strong>Maturin</strong>(빌드 및 패키징 도구)을 활용한다.</p>
+</section>
 <section id="저장소-서브프로젝트-구성" class="level2">
 <h2 class="anchored" data-anchor-id="저장소-서브프로젝트-구성">저장소 서브프로젝트 구성</h2>
 <p>저장소는 난이도와 용도에 따라 다음 6개 프로젝트로 구성된다.</p>
@@ -1294,10 +1296,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="프로젝트별-코드-심층-분석" class="level2">
 <h2 class="anchored" data-anchor-id="프로젝트별-코드-심층-분석">프로젝트별 코드 심층 분석</h2>
-<ol type="1">
-<li><code>string_sum</code> - 기본 함수 및 서브모듈 구성 {.unnumbered}</li>
-</ol>
+<section id="string_sum---기본-함수-및-서브모듈-구성" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="string_sum---기본-함수-및-서브모듈-구성">1. <code>string_sum</code> - 기본 함수 및 서브모듈 구성</h3>
 <p><code>string_sum</code> 프로젝트는 PyO3의 가장 기본적인 매크로와 서브모듈(Hierarchical Submodule) 선언 방식을 보여준다.</p>
+</section>
 <section id="rust-소스-코드-string_sumsrclib.rs" class="level3">
 <h3 class="anchored" data-anchor-id="rust-소스-코드-string_sumsrclib.rs">Rust 소스 코드 (<code>string_sum/src/lib.rs</code>)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">pyo3::prelude::</span><span class="op">*;</span></span>
@@ -1402,13 +1404,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 파이썬 측정</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">### 파이썬 측정</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>start_python <span class="op">=</span> time.time()</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>python_result <span class="op">=</span> py_fib(N)</span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>python_time <span class="op">=</span> time.time() <span class="op">-</span> start_python</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Python으로 계산한 결과 (N=</span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>python_result<span class="sc">}</span><span class="ss"> (소요 시간: </span><span class="sc">{</span>python_time<span class="sc">:.6f}</span><span class="ss"> 초)"</span>)</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">## Rust 측정</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">### Rust 측정</span></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>start_rust <span class="op">=</span> time.time()</span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>rust_result <span class="op">=</span> rust_fib(N)</span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>rust_time <span class="op">=</span> time.time() <span class="op">-</span> start_rust</span>
@@ -1546,9 +1548,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> [[], []]</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">## t1: Python 함수 실행 스레드</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">### t1: Python 함수 실행 스레드</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> threading.Thread(target<span class="op">=</span>double_list_py, args<span class="op">=</span>(nums, result, <span class="dv">0</span>))</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">## t2: Rust 함수 실행 스레드 (내부에서 allow_threads 호출)</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">### t2: Rust 함수 실행 스레드 (내부에서 allow_threads 호출)</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> threading.Thread(target<span class="op">=</span>double_list, args<span class="op">=</span>(nums, result, <span class="dv">1</span>))</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>t1.start()</span>
@@ -1926,6 +1928,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
+</section>
+<section id="pyo-개발-모범-사례-및-요약" class="level1">
+<h1>PyO 개발 모범 사례 및 요약</h1>
 <section id="pyo-개발-모범-사례" class="level2">
 <h2 class="anchored" data-anchor-id="pyo-개발-모범-사례">PyO 개발 모범 사례</h2>
 <ol type="1">
@@ -1989,6 +1994,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
