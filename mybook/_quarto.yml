@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Machine translation"
-  author: "Taeyoon Kim"
+  author: "Deepthought"
   date: "2025-11-11"
   chapters:
     - index.qmd
@@ -17,7 +17,6 @@ book:
         - hamming-science-engineering/index.qmd
     - part: "프로그래밍 언어와 파이썬"
       chapters:
-        - python-mastery/index.qmd
         - effective-python/index.qmd
         - little-schemer/index.qmd
         - swift-for-py/index.qmd
@@ -36,7 +35,6 @@ book:
         - think-like-cto/index.qmd
         - beyond-vibe-coding/index.qmd
         - writing-for-developers/index.qmd
-        - own-your-tech-career/index.qmd
     - part: "소프트웨어 설계"
       chapters:
         - philosophy-of-software-design/index.qmd
@@ -215,7 +213,8 @@ format:
         icon: chat-quote
     search: false
     code-copy: true
+    toc: true
 
 execute:
-  freeze: true
+  freeze: auto
   eval: false

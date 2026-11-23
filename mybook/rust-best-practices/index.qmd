@@ -677,7 +677,7 @@ fn is_retryable(status: StatusCode) -> bool {
 * ❌ 각 테스트의 실행과 단언은 인라인으로 둬라, 여러 테스트에서 반복돼 보여도 그대로 둬라.
 
 
-## Chapter 2 - Clippy와 린트 규율 {#sec-ch02}
+# Chapter 2 - Clippy와 린트 규율 {#sec-ch02}
 
 Rust 컴파일러와 함께 `cargo clippy`가 설치되어 있는지 확인하세요. Rust 프로젝트에서 터미널에 `cargo clippy -V`를 실행하면 `clippy 0.1.86 (05f9846f89 2025-03-31)`와 비슷한 결과가 나와야 합니다. 터미널에 Clippy 버전이 표시되지 않는다면 다음 명령을 실행하세요. `rustup update && rustup component add clippy`.
 
@@ -796,7 +796,7 @@ redundant_clone = { level = "deny", priority = 9 }
 manual_while_let_some = { level = "deny", priority = 4 }
 pedantic = { level = "warn", priority = 3 }
 ```
-## Chapter 3 - 성능 마인드셋 {#sec-ch03}
+# Chapter 3 - 성능 마인드셋 {#sec-ch03}
 
 성능 작업의 황금률은 다음과 같습니다.
 
@@ -804,7 +804,7 @@ pedantic = { level = "warn", priority = 3 }
 
 Rust 코드는 대개 이미 충분히 빠릅니다. 근거 없이 "최적화"하지 마세요. 병목 지점을 찾은 뒤에만 최적화하세요.
 
-### 먼저 해볼 만한 것들
+## 먼저 해볼 만한 것들
 
 * 빌드할 때 `--release` 플래그를 사용하세요(당연해 보일 수 있지만, Rust 코드가 X 언어 코드보다 느리다는 불만의 99%는 `--release` 플래그를 빼먹은 경우입니다).
 * `$ cargo clippy -- -D clippy::perf`를 실행하면 성능 모범 사례에 대한 중요한 팁을 얻을 수 있습니다.
@@ -1016,7 +1016,7 @@ process(doubled);
 let doubled_iter = items.iter().map(|x| x * 2);
 process(doubled_iter);
 ```
-## Chapter 4 - 에러 처리 {#sec-ch04}
+# Chapter 4 - 에러 처리 {#sec-ch04}
 
 Rust는 엄격한 에러 처리를 강제하지만, 에러를 *어떻게* 다루느냐에 따라 코드가 인체공학적이고, 일관되고, 안전하게 느껴질 수도, 반대로 난해하고 고통스럽게 느껴질 수도 있습니다. 이번 장에서는 라이브러리와 바이너리 전반에서 실패 가능한 연산을 모델링하고 관리하는 모범 사례를 다룹니다.
 
@@ -1200,7 +1200,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 
 > 라이브러리에서는 정말 필요하지 않다면 `Box<dyn std::error::Error>`를 피하세요
 
-## Chapter 5 - 자동화 테스팅 {#sec-ch05}
+# Chapter 5 - 자동화 테스팅 {#sec-ch05}
 
 
 * Rust에서 테스트는 어트리뷰트 매크로 `#[test]`로 선언합니다. 대부분의 코드 에디터에서는 이 매크로가 붙은 함수를 개별적으로 또는 묶음으로 컴파일하고 실행할 수 있습니다.
@@ -1270,7 +1270,7 @@ mod process {
 
 ### 모듈로 정리하기
 
-## 대부분의 IDE에서는 테스트 모듈 하나를 통째로 실행할 수 있습니다.
+대부분의 IDE에서는 테스트 모듈 하나를 통째로 실행할 수 있습니다.
 테스트 출력 이름에도 모듈 이름이 함께 표시됩니다.
 따라서 모듈 이름을 이용해 관련 테스트들을 묶을 수 있습니다.
 
@@ -1593,7 +1593,7 @@ fn endpoint_get_user_data() {
 
 * 스냅샷을 git에 커밋하세요. 테스트 옆의 `snapshots/`에 저장됩니다.
 * 변경 사항은 수락하기 전에 주의 깊게 리뷰하세요.
-## Chapter 6 - 제네릭, 동적 디스패치와 정적 디스패치 {#sec-ch06}
+# Chapter 6 - 제네릭, 동적 디스패치와 정적 디스패치 {#sec-ch06}
 
 > 가능하면 정적으로, 반드시 필요할 때만 동적으로
 
@@ -1757,7 +1757,7 @@ struct Renderer {
     }
     ```
 
-## Chapter 7 - 타입 상태 패턴(Type State Pattern) {#sec-ch07}
+# Chapter 7 - 타입 상태 패턴(Type State Pattern) {#sec-ch07}
 
 컴파일 타임에 상태를 모델링해, 허용되지 않는 상태를 표현할 수 없게 만들어 버그를 예방합니다. Rust의 제네릭과 타입 시스템을 활용해 특정 조건을 만족해야만 도달할 수 있는 하위 타입을 만들며, 이를 통해 일부 연산을 컴파일 타임에 불법으로 만듭니다.
 
@@ -1981,7 +1981,7 @@ impl Client<Connected> {
 * PhantomData는 초보자에게 직관적이지 않고 다소 편법처럼 느껴질 수 있습니다.
 
 > 영리해 보이려고가 아니라, 버그를 줄이거나 안전성을 높이거나 로직을 단순화할 수 있을 때 이 패턴을 사용하세요.
-## Chapter 8 - 주석과 문서화 {#sec-ch08}
+# Chapter 8 - 주석과 문서화 {#sec-ch08}
 
 
 ## 주석과 문서화: 차이점 알기
@@ -2246,11 +2246,11 @@ pub fn add(a: i32, b: i32) -> i32 {
 * ✅ `cargo doc --open`으로 출력 결과를 자주 확인하세요.
 * ✅ 전체 문서 범위를 강제하고 싶다면 최상위 모듈에 `#![deny(missing_docs)]`와 관련 문서 린트를 추가하세요.
 
-## Chapter 9 - 포인터 이해하기 {#sec-ch09}
+# Chapter 9 - 포인터 이해하기 {#sec-ch09}
 
 많은 고수준 언어는 메모리 관리를 숨기며, 할당·힙·스택·소유권·라이프타임을 고민하지 않고 값 전달(데이터 복사)이나 참조 전달(공유 데이터에 대한 참조)로 처리한다. 이 모든 것은 가비지 컬렉터나 VM에 위임된다. 이 주제에 대한 몇 가지 언어 간 비교는 다음과 같다:
 
-### 📌 언어별 비교
+## 📌 언어별 비교
 
 | 언어        	| 값 타입                                  	| 참조/포인터 타입                                           	| 비동기 모델 및 타입                                                         	| 수동 메모리 관리               	|
 |------------	|-----------------------------------------	|-----------------------------------------------------------	|----------------------------------------------------------------------------	|------------------------------	|
@@ -2506,7 +2506,7 @@ let _ = &*CONFIG;
 - [Mara Bos - Rust Atomics and Locks](https://marabos.nl/atomics/)
 - [Semicolon video on pointers](https://www.youtube.com/watch?v=Ag_6Q44PBNs)
 
-## 마무리 {#sec-final}
+# 마무리 {#sec-final}
 
 * Rust는 실수를 막아주지 않지만, 실수를 일찍 발견하기 쉽게 만들어준다.
 * 컴파일러는 적이 아니라 강력한 도구이다. 가장 친한 친구라고 생각하라.
@@ -2515,11 +2515,11 @@ let _ = &*CONFIG;
 * [Rust 공식 API 가이드라인](https://rust-lang.github.io/api-guidelines/about.html)
 * [Rust Analyzer 스타일 가이드](https://rust-analyzer.github.io/book/contributing/style.html)
 
-## 관련 프로젝트
+# 관련 프로젝트
 
 * [mre/idiomatic-rust](https://github.com/mre/idiomatic-rust/tree/master)
 
-## 부록 A. 예제 코드 전문 {.unnumbered}
+# 부록 A. 예제 코드 전문 {.unnumbered}
 
 `examples/` 아래 3개 예제의 전체 소스를 이 책에 그대로 싣는다.
 `cargo test --workspace --all-features` 대상이며, 본문 Chapter 7 · Chapter 9에서 인용된다.

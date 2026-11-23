@@ -67,7 +67,7 @@ lang: ko
 
 막혔을 때. 컴파일이 안 되면 ① `Cargo.toml`의 버전, ② `use` 목록, ③ 터미널이 깨졌을 때는 `reset` 명령 순으로 확인하세요. 세 번째는 앱이 패닉으로 죽으면서 터미널 상태를 되돌리지 못한 경우이고, 3장에서 이 문제를 근본적으로 해결합니다.
 
-## 1부. 시작하기: 설치와 첫 화면 {#part-intro}
+# 1부. 시작하기: 설치와 첫 화면 {#part-intro}
 
 ## Ratatui 소개
 
@@ -396,7 +396,7 @@ frame.render_widget(Paragraph::new("아래쪽"), bottom);
 
 지금 만든 앱은 상태가 없습니다. 화면에 늘 같은 글자만 나오죠. 다음 장에서는 템플릿으로 만든 프로젝트를 뜯어보면서, 상태를 보관하는 구조체와 이벤트 루프를 분리하는 방법을 배웁니다. 그 구조가 이 책의 모든 예제에 반복해서 등장합니다.
 
-## 2부. 만들어보며 배우기 {#part-tutorials}
+# 2부. 만들어보며 배우기 {#part-tutorials}
 
 ## 학습 순서 {#tutorial-guide}
 
@@ -430,7 +430,7 @@ frame.render_widget(Paragraph::new("아래쪽"), bottom);
 
 각 장 끝에는 스스로 해보기가 있습니다. 정답은 없고, 다음 장이나 심화 예제에서 다시 쓰이는 개념을 미리 손으로 익히도록 고른 문제입니다. 한 장에 최소 하나는 풀어 보세요.
 
-1. Hello Ratatui: 템플릿에서 시작하기 {#tutorial-hello}
+## 1. Hello Ratatui: 템플릿에서 시작하기 {#tutorial-hello}
 
 ::: {.callout-note}
 
@@ -584,7 +584,7 @@ cargo run
 
 아무 키나 누르면 앱이 종료되고 이전 터미널 상태로 깨끗하게 복귀합니다.
 
-## 다음 단계
+### 다음 단계
 
 축하합니다! 이제 정상적으로 동작하는 Ratatui 애플리케이션을 완성했습니다. 이어지는 [동기식 카운터 앱(Counter App)](#tutorial-counter) 튜토리얼에서는 템플릿 없이 애플리케이션 상태, 명시적인 키 이벤트 처리, 렌더링 테스트를 직접 구현해 봅니다.
 
@@ -594,7 +594,7 @@ cargo run
 2. 화면 중앙에 가로 40, 세로 5짜리 영역만 만들고, 그 안에만 글자를 그려 보세요. `Layout::horizontal`과 `Layout::vertical`을 조합하면 됩니다.
 3. 키를 누를 때마다 화면 어딘가에 눌린 키 이름이 바뀌도록 만들어 보세요. 상태를 하나 추가하고, `draw`가 그 상태를 읽게 하면 됩니다. 이것이 다음 장 카운터 앱의 축소판입니다.
 
-2. 동기식 카운터 앱: 상태와 이벤트 {#tutorial-counter}
+## 2. 동기식 카운터 앱: 상태와 이벤트 {#tutorial-counter}
 
 앞선 Hello Ratatui 튜토리얼에서는 화면에 텍스트를 출력하고 사용자가 키를 누를 때까지 대기하는 간단한 TUI를 만들어 보았습니다. 이번 튜토리얼에서는 애플리케이션의 상태(State) 관리와 보다 복잡한 사용자 인터랙션을 다루는 방법을 알아봅니다. 사용자가 화면의 숫자를 증가시키거나 감소시킬 수 있는 카운터 애플리케이션을 구축하게 됩니다.
 
@@ -762,7 +762,6 @@ impl App {
 }
 ```
 
-## }
 ### 애플리케이션 화면 표시
 
 #### 프레임 렌더링
@@ -1204,7 +1203,7 @@ macOS/Linux 콘솔에서는 `reset` 명령을 실행하여 깨진 화면 상태�
 3. 카운터 값 아래에 `Gauge` 위젯으로 0~255 범위의 진행률을 함께 표시해 보세요. `Gauge::default().ratio(...)`는 0.0~1.0을 받습니다. 위젯 여러 개를 세로로 쌓으려면 `Layout`이 필요합니다.
 4. `App`에 `history: Vec<i32>`를 두고, 최근 값 5개를 화면 아래에 나열해 보세요. 벡터가 길어질 때 어디서 잘라야 하는지 고민해 보시길 권합니다.
 
-3. 견고한 카운터 앱: 실패해도 살아남기 {#tutorial-robust}
+## 3. 견고한 카운터 앱: 실패해도 살아남기 {#tutorial-robust}
 
 ### 에러 핸들링 및 터미널 복구
 
@@ -1443,7 +1442,6 @@ fn main() -> Result<()> {
 }
 ```
 
-## }
 ### color_eyre 사용하기
 
 Color eyre는 `Result`에 부가적인 맥락 정보를 추가하는 방식으로 동작합니다. `wrap_err`(`color_eyre::eyre::WrapErr` 트레이트에 정의됨)를 호출하여 에러에 컨텍스트를 덧붙일 수 있습니다.
@@ -2802,7 +2800,7 @@ impl Tui {
 3. 패닉 훅에서 남긴 메시지를 파일로도 기록해 보세요. 패닉 직후에는 화면이 이미 복원된 상태이므로, `eprintln!`만으로는 놓치는 경우가 있습니다.
 4. 일부러 `panic!()`을 넣고 앱을 죽여 보세요. 터미널이 깨지지 않는지, 에러 메시지가 어디에 출력되는지 확인하는 것이 이 장의 핵심 점검입니다.
 
-4. 비동기 카운터 앱: Tokio 액션 파이프라인 {#tutorial-async}
+## 4. 비동기 카운터 앱: Tokio 액션 파이프라인 {#tutorial-async}
 
 앞서 구현한 카운터 앱은 순차적이고 동기적인(블로킹) 방식으로 동작하는 애플리케이션이었습니다. 하지만 네트워크 I/O 작업이나 시간이 오래 걸리는 무거운 연산을 비동기로 처리해야 하는 상황도 빈번히 발생합니다.
 
@@ -4273,7 +4271,7 @@ async fn main() -> Result<()> {
 3. `Action`을 화면에 로그로 남겨 보세요. 최근 10개만 보관하면 디버깅할 때 매우 유용합니다. 3부의 로그 뷰어 예제와 거의 같은 구조입니다.
 4. `mpsc::unbounded_channel`과 `mpsc::channel(16)`의 차이를 실험해 보세요. 전자는 생산자가 절대 막히지 않고, 후자는 수신자가 느리면 생산자가 기다립니다. 어느 쪽이 여러분의 앱에 맞는지는 "입력을 잃어도 되는가"로 결정하면 됩니다.
 
-5. 실전 복합 앱: 대화형 JSON 에디터 {#tutorial-json}
+## 5. 실전 복합 앱: 대화형 JSON 에디터 {#tutorial-json}
 
 앞서 Hello Ratatui와 Counter 앱의 기초를 다루었으므로, 이제 보다 복합적이고 완성도 높은 애플리케이션을 구축하고 관리할 준비가 되었습니다.
 
@@ -4509,7 +4507,7 @@ where
 
 앱 구동 준비를 마치고 UI 렌더링 설정까지 완료했으므로, 이제 이벤트 핸들링을 구현해 보겠습니다.
 
-##### 폴링
+#### 폴링
 
 `crossterm`을 사용하고 있으므로, 다음과 같이 키보드 이벤트를 간단히 폴링할 수 있습니다.
 
@@ -4809,7 +4807,6 @@ pub enum CurrentlyEditing {
 }
 ```
 
-## }
 ### 전체 애플리케이션 상태
 
 사용자의 현재 위치를 추적할 열거형을 갖추었으므로, 이제 필요한 곳 어디든 전달할 수 있는 실제 데이터 저장용 구조체를 만듭니다.
@@ -4824,7 +4821,6 @@ pub struct App {
 }
 ```
 
-## }
 ### 헬퍼 함수
 
 애플리케이션 상태를 단순한 값 보관용으로만 둘 수도 있지만, 코드의 다른 부분에서 작업을 수월하게 해줄 몇 가지 헬퍼 함수를 추가할 수도 있습니다. 물론 이러한 함수들은 애플리케이션 상태 자체에만 영향을 미쳐야 하며, 상태 외부의 어떤 것에도 영향을 주어서는 안 됩니다.
@@ -5740,7 +5736,7 @@ fn centered_rect(percent_x: u16, percent_y: u16, r: Rect) -> Rect {
 3. 중첩된 JSON(객체 안의 객체)은 왜 지금 구조로 다루기 어려운지 생각해 보세요. 화면에 트리를 그리려면 어떤 상태가 더 필요한지 정리해 보면, 3부의 파일 탐색기 예제가 왜 그렇게 생겼는지 이해가 됩니다.
 4. 값을 입력하는 팝업에서 커서 이동(←/→)과 중간 삽입을 지원해 보세요. `String`을 `Vec<char>`로 바꾸는 순간 한글 입력에서 무엇이 달라지는지도 함께 관찰해 보시길 권합니다.
 
-## 3부. 심화 예제 {#part-advanced}
+# 3부. 심화 예제 {#part-advanced}
 
 2부에서 만든 앱들은 한 파일 안에서 돌아갑니다. 실제로 쓰는 도구는 그렇지 않습니다. 파일을 읽고, 네트워크에서 데이터를 받고, 상태를 디스크에 남기고, 깨지지 않는지 테스트해야 하죠.
 
@@ -6775,7 +6771,6 @@ impl App {
 }
 ```
 
-## }
 4단계: 상태 전이
 
 키 처리와 상태 변경을 한 함수에 모읍니다. 반환값은 `()`여도 되지만, 저장 실패를 화면에 알려야 하므로 `io::Result<()>`를 씁니다.
@@ -7616,7 +7611,7 @@ const ERROR_STYLE: Style = Style::new().fg(Color::Red);
 
 이 책의 예제들은 일부러 완성하지 않았습니다. 저장, 검색, 취소, 되돌리기 같은 기능은 독자가 붙이도록 남겨 두었습니다. 그 빈칸을 채우는 과정에서 배우는 것이 이 책에서 가장 오래 남습니다.
 
-## 부록 A. 핵심 개념 레퍼런스 {#appendix-concepts}
+# 부록 A. 핵심 개념 레퍼런스 {#appendix-concepts}
 
 본문에서 "왜 이렇게 동작하지?" 싶을 때 펼쳐 보는 참조 자료입니다. 렌더링 파이프라인, 버퍼, 위젯 트레이트, 레이아웃 제약, 아키텍처 패턴, `no_std`를 순서대로 정리했습니다. 처음부터 읽을 필요는 없습니다.
 
@@ -8152,7 +8147,6 @@ pub trait Widget {
 }
 ```
 
-## }
 ### StatefulWidget
 
 [`StatefulWidget`] 트레이트는 [`Widget`] 트레이트와 유사하지만, 렌더링 도중 관리하고 업데이트할 수 있는 상태(state)가 포함되어 있습니다.
@@ -8164,7 +8158,6 @@ pub trait StatefulWidget {
 }
 ```
 
-## }
 ### WidgetRef 및 StatefulWidgetRef
 
 [`WidgetRef`] 트레이트를 사용하면 위젯의 소유권을 소비(consume)하는 대신 참조를 통해 위젯을 렌더링할 수 있어, 개별 위젯이나 위젯 컬렉션을 보관하고 렌더링하는 데 유용합니다.
@@ -8788,7 +8781,6 @@ enum RunningState {
 }
 ```
 
-## }
 ### 2. 업데이트 처리하기
 
 TEA에서 업데이트는 사용자 입력과 같은 이벤트에 의해 트리거되는 액션입니다. 핵심 개념은 이러한 액션이나 이벤트를 각각 메시지에 매핑하는 것입니다. 이는 메시지를 추적하는 enum을 생성함으로써 구현할 수 있습니다. 수신된 메시지를 기반으로 모델의 현재 상태를 활용하여 다음 상태를 결정합니다.
@@ -9153,7 +9145,6 @@ mod tui {
 }
 ```
 
-## }
 ### Flux 아키텍처
 
 [Flux](https://facebookarchive.github.io/flux/docs/in-depth-overview/)는 Facebook에서 대규모 웹 애플리케이션 구축 시 발생하는 문제들을 해결하기 위해 고안한 디자인 패턴입니다. 원래는 웹 애플리케이션을 염두에 두고 설계되었지만, Flux 아키텍처는 터미널 애플리케이션을 포함한 모든 클라이언트 사이드 프로젝트에 적용할 수 있습니다. `Flux` 아키텍처를 `ratatui`에 적용한 실제 사례는 <https://github.com/Yengas/rust-chat-server/tree/main/tui> 에서 확인할 수 있습니다.
@@ -9181,7 +9172,6 @@ impl Dispatcher {
 }
 ```
 
-## }
 ### 스토어
 
 Ratatui에서 스토어는 애플리케이션의 상태와 비즈니스 로직을 보관합니다. 스토어는 다음과 같은 데이터를 표현할 수 있습니다.
@@ -9216,7 +9206,6 @@ impl Store {
 
 ```
 
-## ```
 ### 액션
 
 액션은 애플리케이션에서 일어나는 모든 변경 사항이나 이벤트를 나타냅니다. 예를 들어 사용자가 키를 누르거나, 메뉴 항목을 선택하거나, 텍스트를 입력할 때 액션이 생성됩니다. 이 액션은 디스패처를 통해 전달되어 관련 스토어에서 처리되며, 결과적으로 애플리케이션 상태의 변경으로 이어집니다.
@@ -9228,7 +9217,6 @@ enum Action {
 }
 ```
 
-## }
 ### 뷰 / 위젯
 
 `ratatui`의 위젯은 애플리케이션의 UI를 화면에 표시합니다. 위젯 자체는 애플리케이션 상태를 직접 보관하거나 관리하지 않고 오직 표시하는 역할만 합니다. 사용자가 위젯과 상호작용하면 디스패치될 액션이 생성되고, 이 액션이 스토어의 변경을 일으키며, 최종적으로 위젯이 업데이트되어 다시 렌더링됩니다.
@@ -9391,11 +9379,10 @@ impl Widget for &Greeting {
 :::
 
 
-## 부록 B. 위젯 및 스타일 레퍼런스 {#appendix-widgets}
+# 부록 B. 위젯 및 스타일 레퍼런스 {#appendix-widgets}
 
 내장 위젯 13종의 전체 예제와 스타일 API입니다. 필요한 위젯을 찾아 복사해 쓰는 용도이므로, 본문을 다 읽은 뒤에 훑어보는 편이 효율적입니다.
 
-## 내장 위젯 모음
 
 ## 내장 위젯 모음
 ### Block 위젯
@@ -9488,7 +9475,6 @@ pub fn render_custom_bordered_block(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Paragraph 위젯
 
 [`Paragraph`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Paragraph.html) 위젯의 구조와 실제 렌더링 사용법을 설명합니다.
@@ -9596,7 +9582,6 @@ fn create_lines(area: Rect) -> Vec<Line<'static>> {
 }
 ```
 
-## }
 ### List 위젯
 
 [`List`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.List.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -9704,7 +9689,6 @@ pub fn render_bottom_list(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Table 위젯
 
 [`Table`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Table.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -9816,7 +9800,6 @@ pub fn render_table(frame: &mut Frame, area: Rect, table_state: &mut TableState)
 }
 ```
 
-## }
 ### BarChart 위젯
 
 [`BarChart`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.BarChart.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -9905,7 +9888,6 @@ fn render_vertical_barchart(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Chart (차트 및 산점도/선 그래프)
 
 [`Chart`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Chart.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10026,7 +10008,6 @@ pub fn render_chart(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Gauge & LineGauge (진행률 표시기)
 
 [`Gauge`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Gauge.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10117,7 +10098,6 @@ pub fn render_line_gauge(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Sparkline (스파크라인 소형 차트)
 
 [`Sparkline`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Sparkline.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10223,7 +10203,6 @@ pub fn render_sin_wave(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Tabs (탭 내비게이션)
 
 [`Tabs`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Tabs.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10319,7 +10298,6 @@ pub fn render_content(frame: &mut Frame, area: Rect, selected_tab: usize) {
 }
 ```
 
-## }
 ### Scrollbar (스크롤바)
 
 [`Scrollbar`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Scrollbar.html) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10459,7 +10437,6 @@ fn render_content(
 }
 ```
 
-## }
 ### Canvas (아스키 캔버스 그리기 도구)
 
 [`Canvas`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/canvas/index.html) 위젯 및 [`canvas`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/canvas/index.html) 모듈에 포함된 다양한 도형의 활용법을 살펴봅니다.  
@@ -10559,7 +10536,6 @@ pub fn render_canvas(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Calendar (달력 위젯)
 
 [`Calendar`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/calendar/) 위젯의 구조와 실전 렌더링 사용법을 살펴봅니다.  
@@ -10657,7 +10633,6 @@ fn render_styled_month(frame: &mut Frame, area: Rect) {
 }
 ```
 
-## }
 ### Collapsed Borders (테두리 병합 기법)
 
 중첩 레이아웃 간격(spacing)과 테두리 병합 전략을 조합하여 인접한 [`Block`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Block.html) 간의 테두리를 하나로 깔끔하게 합치는(collapse) 기법을 살펴봅니다.  
@@ -10786,7 +10761,6 @@ fn render_blocks(selected_pane: Pane, frame: &mut Frame<'_>, area: Rect) {
 }
 ```
 
-## }
 Shadow 위젯을 활용한 그림자 효과
 
 [`Shadow`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.Shadow.html) 위젯에서 지원하는 오버레이(overlay), 블록(block), 심볼(symbol) 및 사용자 정의(custom) 렌더링 모드의 동작 방식과 활용법을 살펴봅니다.
@@ -10928,7 +10902,6 @@ fn background_text(area: Rect) -> Text<'static> {
 }
 ```
 
-## }
 ### 사용자 정의 위젯 구현
 
 [`Widget`](https://docs.rs/ratatui/0.30.2/ratatui/widgets/trait.Widget.html) 트레이트를 직접 구현하여 독자적인 위젯을 제작하는 방법과 마우스 이벤트(클릭, 이동)와의 상호작용 처리 기법을 알아봅니다.
@@ -11204,7 +11177,6 @@ fn handle_mouse_event(
 ```
 
 
-## 레이아웃 및 스타일 실전 예제
 
 ## 레이아웃 및 스타일 실전 예제
 ### 레이아웃 제약조건 탐색기
@@ -13472,7 +13444,6 @@ impl ConstraintName {
 }
 ```
 
-## }
 스타일, 색상 및 텍스트 수식자
 
 이 예제는 사용 가능한 [`Color`](https://docs.rs/ratatui/0.30.2/ratatui/style/enum.Color.html) 옵션들을 보여줍니다. 이 색상들은 모든 스타일 필드에서 활용할 수 있습니다. 소스 코드: [main.rs](https://github.com/ratatui/ratatui/blob/ratatui-v0.30.2/examples/apps/color-explorer/src/main.rs).
@@ -14070,11 +14041,10 @@ fn render(frame: &mut Frame) {
 ```
 
 
-## 부록 C. 실전 레시피 {#appendix-recipes}
+# 부록 C. 실전 레시피 {#appendix-recipes}
 
 패닉 훅, 로깅, CLI 인자 파싱, 설정 경로, 외부 에디터 호출, 마이그레이션, 패키징처럼 앱을 "배포 가능한 상태"로 만드는 작업을 모았습니다.
 
-## 애플리케이션 개발 실전 기법
 
 ## 애플리케이션 개발 실전 기법
 ### 견고한 패닉 훅과 color-eyre 통합
@@ -14671,7 +14641,6 @@ pub fn initialize_panic_handler() -> Result<()> {
 }
 ```
 
-## }
 ### 터미널 및 이벤트 핸들러 추상화
 
 ::: {.callout-tip}
@@ -14981,7 +14950,6 @@ impl App {
 }
 ```
 
-## }
 ### tracing을 활용한 로그 파일 기록 (터미널 오염 방지)
 
 TUI 애플리케이션에서는 표준 출력/표준 에러에 직접 로그를 출력하면 화면이 깨지므로 파일 로깅이 필수적입니다. `tracing` 및 관련 의존성을 추가합니다:
@@ -15210,7 +15178,6 @@ fn main() {
 }
 ```
 
-## }
 ### 설정 디렉터리 표준 경로 관리
 
 명령줄 도구나 TUI 애플리케이션에서 파일과 디렉터리를 올바르게 다루면 사용자의 작업 흐름과 자연스럽게 융합되고 표준화된 환경을 제공할 수 있습니다. Linux 및 유닉스 계열 시스템의 핵심 표준 중 하나는 XDG 기본 디렉터리 명세(XDG Base Directory Specification)입니다.
@@ -15569,7 +15536,6 @@ strip = true      # 최종 바이너리에서 디버그 심볼과 심볼 테이�
 - [strip]: 바이너리 용량을 대폭 줄이기 위해 불필요한 디버그 심볼을 분리·제거합니다.
 
 
-## 레이아웃, 렌더링 및 테스트 레시피
 
 ## 레이아웃, 렌더링 및 테스트 레시피
 ### 위젯 정중앙 배치
@@ -15594,7 +15560,6 @@ fn center_horizontal(area: Rect, width: u16) -> Rect {
 }
 ```
 
-## }
 ### 세로 중앙 정렬
 
 ```rust
@@ -15605,7 +15570,6 @@ fn center_vertical(area: Rect, height: u16) -> Rect {
 }
 ```
 
-## }
 ### 가로 및 세로 동시 중앙 정렬
 
 `.centered` 메서드를 사용하면 가로와 세로 제약 조건을 한 번에 전달하여 정중앙 `Rect`를 얻을 수 있습니다:
@@ -15630,7 +15594,6 @@ pub fn center(area: Rect, horizontal: Constraint, vertical: Constraint) -> Rect 
 }
 ```
 
-## }
 ### 위젯 중앙 정렬 렌더링 예제
 
 이 메서드를 활용하면 화면 크기가 변하더라도 텍스트나 위젯을 정중앙에 안정적으로 렌더링할 수 있습니다:
@@ -15646,7 +15609,6 @@ fn render(frame: &mut Frame) {
 }
 ```
 
-## }
 ### 팝업 다이얼로그
 
 중앙 정렬의 가장 흔한 사용 사례는 모달 형태의 팝업 창입니다. 팝업을 그릴 때는 팝업 아래에 깔린 기존 텍스트가 겹쳐 보이지 않도록 콘텐츠를 그리기 전에 먼저 [`Clear`] 위젯으로 해당 영역을 지워야 합니다:
@@ -15835,7 +15797,6 @@ fn draw(frame: &mut Frame) {
 }
 ```
 
-## }
 ### 동적 레이아웃 구성
 
 실제 애플리케이션의 화면 요소는 사용자 인터랙션이나 데이터 상태에 따라 동적으로 달라집니다. 예를 들어 채팅 앱에서는 메시지 목록이 길어짐에 따라 입력창의 크기를 유연하게 조절할 수 있습니다:
@@ -16432,7 +16393,6 @@ mod tests {
 }
 ```
 
-## }
 ### 3. 테스트 실행하기
 
 테스트를 실행하면(`cargo test`), `Terminal::draw()` 메서드의 렌더링 출력이 스냅샷과 비교됩니다. 테스트를 처음 실행하거나 출력이 변경된 경우, [`insta`]는 `snapshots/` 디렉터리 아래에 스냅샷 파일을 생성합니다.
@@ -16629,7 +16589,7 @@ fn render(frame: &mut Frame, state: &AppState) {
 ```
 
 
-## 부록 D. 프로덕션 템플릿 해설 {#appendix-templates}
+# 부록 D. 프로덕션 템플릿 해설 {#appendix-templates}
 
 컴포넌트 기반 템플릿의 전체 구조를 파일 단위로 해설합니다. 앱이 커졌을 때 참고할 골격으로 쓰세요.
 
@@ -17405,7 +17365,6 @@ impl App {
 }
 ```
 
-## }
 ### tui.rs
 
 이 문서에서는 `components` 템플릿의 `tui.rs` 파일이 어떻게 동작하는지 설명합니다.
@@ -17930,7 +17889,6 @@ impl Drop for Tui {
 }
 ```
 
-## }
 ### action.rs
 
 애플리케이션에서 수행할 수 있는 동작을 정의하는 `Action` 열거형(enum)을 살펴봅니다.
@@ -17985,7 +17943,6 @@ pub enum Action {
 }
 ```
 
-## }
 ### config.rs
 
 현재 구현에서는 키 바인딩이 애플리케이션 코드 내부에 하드코딩되어 있습니다.
@@ -18702,7 +18659,6 @@ fn parse_color(s: &str) -> Option<Color> {
 }
 ```
 
-## }
 ### cli.rs
 
 `cli.rs` 파일에서는 애플리케이션 실행 시 전달받을 명령줄 인자(CLI arguments)를 정의합니다.
@@ -19340,12 +19296,11 @@ impl Component for Home {
 
 ![텍스트 입력 및 키 이벤트 데모](https://user-images.githubusercontent.com/1813121/254444604-de8cfcfa-eeec-417a-a8b0-92a7ccb5fcb5.gif)
 
-## ![](https://user-images.githubuserconten
 ### FPS 성능 모니터링 컴포넌트
 
 템플릿에 기본 내장된 성능 모니터링 컴포넌트인 `FpsCounter`의 구현을 살펴보겠습니다.
 
-## 상태
+#### 상태
 
 이 컴포넌트는 다음과 같은 상태를 관리합니다.
 
@@ -19368,10 +19323,9 @@ pub struct FpsCounter {
 }
 ```
 
-## 메서드
 
-## 메서드
-### `impl FpsCounter`
+#### 메서드
+#### `impl FpsCounter`
 
 이 `impl` 블록에서는 `FpsCounter` 인스턴스를 생성하는 `new` 생성자와 함께, 경과 시간을 기반으로 초당 틱 수(`ticks_per_second`)와 렌더링 프레임 수(`frames_per_second`)를 계산하는 보조 메서드들을 정의합니다.
 
@@ -19415,7 +19369,6 @@ impl FpsCounter {
 }
 ```
 
-## }
 ### `impl Component`
 
 마지막으로 `FpsCounter`에 `Component` 트레이트를 구현하여, 다른 UI 구성 요소와 동일하게 메인 루프에서 액션을 받고 화면에 렌더링될 수 있도록 만듭니다.
@@ -19446,7 +19399,7 @@ impl Component for FpsCounter {
 ```
 
 
-## 부록 E. 생태계와 쇼케이스 {#appendix-ecosystem}
+# 부록 E. 생태계와 쇼케이스 {#appendix-ecosystem}
 
 서드파티 위젯과 실제 Ratatui 앱 사례입니다. 직접 만들기 전에 이미 있는 것을 찾아보는 습관이 시간을 아껴 줍니다.
 
@@ -19839,7 +19792,6 @@ AKHQ, Redpanda Console 또는 JetBrains IDE용 카프카 플러그인을 대체�
 
 ![yozefu demo](https://vhs.charm.sh/vhs-UpIJD2h92vKkj01XSS0r0.gif)
 
-## 생태계 프로젝트
 
 ## 생태계 프로젝트
 ### Tachyonfx
@@ -19971,7 +19923,7 @@ Ratcn은 Ratatui를 위해 테마 변경이 가능한 버튼, 목록, 탭, 대�
 - [예제 모음 (Examples)](https://github.com/reubeno/tui-uefi/tree/main/examples)
 
 
-## 부록 F. 릴리스 하이라이트와 FAQ {#appendix-release-faq}
+# 부록 F. 릴리스 하이라이트와 FAQ {#appendix-release-faq}
 
 버전별 변경 사항과 자주 나오는 질문입니다. 업그레이드할 때, 또는 특정 동작이 버그인지 사양인지 헷갈릴 때 참고하세요.
 
@@ -21559,7 +21511,6 @@ for widget in widgets {
 }
 ```
 
-## }
 ### 레이아웃: `flex` ✨
 
 이제 `Layout`에서 요소 사이의 간격을 조절하는 새로운 방식인 Flex를 지원합니다! CSS의 [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) 개념을 느슨하게 차용한 `Flex` 열거형을 새로 추가했습니다:
@@ -21853,7 +21804,6 @@ let line = Line::styled(content, style);
   };
 ```
 
-## };
 ### Style: Into 지원 🎨
 
 스타일 관련 모든 메서드가 이제 `Style` 대신 `S: Into<Style>`을 받습니다. `Color`와 `Modifier`가 `Into<Style>`을 구현하므로 훨씬 더 인체공학적으로 사용할 수 있습니다. 예:
@@ -21906,7 +21856,6 @@ McGugan 박스 테크닉 기반의 톨(Tall) 테두리 세트:
 ▕▁▁▏
 ```
 
-## ▕▁▁▏
 ### Terminal: 프레임 카운트 🔢
 
 이제 현재 프레임 카운트를 조회할 수 있습니다!
@@ -22284,7 +22233,6 @@ Ratatui 조직에 GitHub Sponsors를 활성화했습니다: <https://github.com/
 
 <iframe src="https://github.com/sponsors/ratatui/card" title="Sponsor ratatui" height="225" width="600" style="border: 0;"></iframe>
 
-## 자주 묻는 질문
 
 ## 자주 묻는 질문
 Windows 환경에서 키 입력 이벤트가 두 번씩 중복 발생하는 이유는 무엇인가요?
@@ -22307,7 +22255,6 @@ Windows 환경에서 키 입력 이벤트가 두 번씩 중복 발생하는 이�
   },
 ```
 
-## },
 어떤 경우에 `tokio`와 비동기(`async`/`await`) 패턴을 도입해야 하나요?
 
 `ratatui`는 그 자체로 네이티브 비동기(`async`) 라이브러리가 아닙니다. 그렇다면 `tokio`나 `async`/`await`을 도입하는 것이 유익할까요?
@@ -22404,7 +22351,6 @@ Windows 환경에서 키 입력 이벤트가 두 번씩 중복 발생하는 이�
                                 ┊                   `------------------'
 ```
 
-## ┊
 프로젝트 내에서 서로 다른 버전의 Crossterm이 충돌할 때 어떻게 해결하나요?
 
 의존성 그래프에 두 개 이상의 서로 다른 Crossterm 메이저 버전이 포함되면, 컴파일러는 다음과 같이 혼란스러운 타입 불일치 에러를 출력합니다:
@@ -22663,7 +22609,6 @@ Ratatui는 더블 버퍼링(Double-buffer) 렌더링 기법을 사용하기 때�
   }
 ```
 
-## }
 터미널 렌더링 출력 스트림으로 `stdout`과 `stderr` 중 어느 것을 사용해야 하나요?
 
 `crossterm`을 사용할 때 개발자는 출력을 `stdout`으로 보낼지, `stderr`로 보낼지 선택할 수 있습니다.
