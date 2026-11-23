@@ -23,7 +23,7 @@ lang: ko
 
 공동 편집자인 Kevin Grimes와 저자는 이 책이 독자의 연구 여정에 실질적인 보탬이 되기를 바란다. 자, 이제 함께 SPARK를 시작해 보자!
 
-## 1장 시작하기
+# 1장 시작하기
 
 지난 수십 년간 학계는 기초 연구를 통해 과학적 지평을 넓히는 데 집중해 왔으며 유망한 기초 발견을 신약으로 전환하는 작업은 바이오제약 산업의 몫으로 남겨 두었다. 그러나 최근 추세를 보면 이러한 패러다임에 변화가 필요하다. 제약업계는 단기 수익성 개선과 비용 절감을 위해 연구개발 예산과 기초 연구 인력을 대폭 축소했다. 아울러 바이오테크 벤처캐피털 펀드의 수도 줄어들었으며 특히 신규 바이오테크 스타트업에 투자하는 펀드가 크게 위축되었다. 그 결과 바이오제약 산업 내부에서 자체적으로 시작되는 신약 프로그램은 계속 감소할 것이다. 학계의 발명가들은 초기 신약 발굴 파이프라인의 이러한 공백을 메울 수 있으며 메워야만 한다. 하지만 학계 연구자들은 신약 발굴·개발이라는 응용과학 단계에서 프로젝트를 진전시킬 전문성과 자원이 부족한 경우가 많다. 이 장에서는 신약 개발의 전반적인 과정을 소개하고 핵심적인 초기 단계들을 살펴본다. 구체적으로는 미충족 임상 수요(unmet clinical need)의 파악, 신약의 필수 요건을 정의하는 목표 제품 프로파일(Target Product Profile, TPP)의 수립, 그리고 체계적인 프로젝트 관리 방식의 도입을 다룬다. 이러한 필수 단계들은 성공 확률을 높일 뿐 아니라 목표 달성에 소요되는 비용과 시간을 크게 줄여 준다. 연구실의 발견을 환자의 병상으로(bench-to-bedside) 옮기는 과정은 험난하지만 대단히 보람찬 일이다. 과학적 발견을 심화하는 동시에 정부 지원 연구가 사회 전반의 건강 증진이라는 실질적 결실로 이어지게 만들기 때문이다.
 
@@ -473,7 +473,7 @@ TPP는 개발 중인 신약의 이상적인 특성을 명확히 정의하는 지
 3. Kennedy A (2008) Pharmaceutical project management, vol 182, 2nd edn, Drugs and the pharmaceutical sciences. Informa Healthcare, New York
 4. Linberg SE (2006) Expediting drugs and biologics development, 3rd edn. Parexel International Corporation, Waltham, MA, USA
 
-## 2장 발굴과 전임상 연구
+# 2장 발굴과 전임상 연구
 
 *Daria Mochly-Rosen, Kevin Grimes*
 
@@ -620,7 +620,7 @@ TPP는 개발 중인 신약의 이상적인 특성을 명확히 정의하는 지
 약물 재창출은 새로운 치료법을 신속하고 안전하며 경제적으로 개발할 수 있는 효과적인 전략이다. 특히 환자 치료를 목표로 하지만 자원이 제한적인 학계와 비영리 연구자에게 매우 유리한다. 특허 장벽을 구축하거나 희귀의약품 지정 등 규제 혜택을 적절히 활용하면 상업적으로도 큰 성공을 거둘 수 있다.
 :::
 
-## 3장 임상 진입 준비
+# 3장 임상 진입 준비
 
 *Daria Mochly-Rosen, Kevin Grimes*
 
@@ -1139,7 +1139,7 @@ IND 제출 전에는 피험자의 안전 위험을 최소화하면서 신약의 
 4. Rubinstein LV, Simon RM. Phase I Clinical Trial Design, National Cancer Institute. http://linus.nci.nih.gov/techreport/phaseIctd.pdf
 5. Arrowsmith J (2011) Trial watch: Phase II failures: 2008-2010. Nat Rev Drug Discov 10:328-329
 
-## 4장 기술이전
+# 4장 기술이전
 
 *Daria Mochly-Rosen, Kevin Grimes*
 
@@ -1397,7 +1397,7 @@ IRB 심의 신청은 eProtocol이라는 전자 제출 시스템을 통해 이루
 소속 기관의 인체 대상 연구 규정, 승인 절차, 행정 지원 체계를 사전에 철저히 숙지하라. 이러한 제도와 가이드라인은 연구자 독자와 피험자, 그리고 연구기관 모두를 안전하게 보호하기 위해 마련된 든든한 울타리이다.
 :::
 
-## 5장 상업화와 창업
+# 5장 상업화와 창업
 
 *Daria Mochly-Rosen, Kevin Grimes*
 
@@ -1797,7 +1797,7 @@ SWOT 분석 매트릭스
 6. Moos WH, Kodukula K (2011) Nonprofit pharma: solutions to what ails the industry. Curr Med Chem 18(22):3437-3440
 7. Olliaro P, Seiler J, Kuesel A, Horton J, Clark JN, Don R, Keiser J (2011) Potential drug development candidates for human soil-transmitted helminthiases. PLoS Negl Trop Dis 5(6):e
 
-## 6장 결언: 신약 개발의 미래
+# 6장 결언: 신약 개발의 미래
 
 *Daria Mochly-Rosen, Kevin Grimes*
 

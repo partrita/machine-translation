@@ -19821,6 +19821,177 @@ FTL 웹사이트 역시 Ratatui([Ratzilla](/ecosystem/ratzilla) 활용)로 제�
 
 :::
 
+#### 설치 및 의존성 추가
+
+`tachyonfx`는 기존 Ratatui 프로젝트에 바로 추가해 사용할 수 있습니다. 터미널에서 `cargo add`를 실행하거나 `Cargo.toml`에 직접 추가합니다.
+
+```bash
+cargo add tachyonfx
+```
+
+```toml
+[dependencies]
+ratatui = "0.30"
+tachyonfx = "0.25" # crates.io에서 최신 호환 버전 확인
+```
+
+런타임에 문자열 기반 이펙트 표현식을 파싱·실행하는 DSL 기능이 필요하다면 `dsl` 피처 플래그를 활성화합니다.
+
+```toml
+[dependencies]
+tachyonfx = { version = "0.25", features = ["dsl"] }
+```
+
+#### 동작 원리: 버퍼 후처리(Post-Processing)
+
+`tachyonfx`는 별도의 커스텀 위젯을 그리는 방식이 아니라, **일반 Ratatui 위젯이 먼저 `Buffer`에 렌더링된 뒤 그 셀(Cell)들을 후처리하는 셰이더(Shader) 모델**을 따릅니다.
+
+1. `frame.render_widget(...)`으로 기본 UI(블록, 문단, 테이블 등)를 먼저 버퍼에 그립니다.
+2. 이전 프레임과의 경과 시간(`elapsed`)을 계산합니다.
+3. `tachyonfx`가 버퍼의 각 셀(전경색, 배경색, 문자, 스타일)을 시간 진행도에 따라 변형합니다.
+
+이 구조 덕분에 기존 Ratatui 위젯 코드를 수정하지 않고도 원하는 영역에만 애니메이션과 전환 효과를 얹을 수 있습니다.
+
+#### 기본 적용 예제 (`EffectManager`)
+
+여러 이펙트의 생명주기를 한꺼번에 관리하려면 `EffectManager`를 사용합니다. 매 프레임 `Instant`로 경과 시간을 측정해 `process_effects`에 전달하면, 완료된 이펙트는 자동으로 정리됩니다.
+
+```rust
+use std::{
+    io,
+    time::{Duration, Instant},
+};
+use ratatui::{
+    crossterm::event::{self, Event},
+    layout::Alignment,
+    style::Color,
+    widgets::Paragraph,
+};
+use tachyonfx::{fx, EffectManager, Interpolation};
+
+fn main() -> io::Result<()> {
+    let mut terminal = ratatui::init();
+
+    // 1. 이펙트를 관리할 EffectManager 생성
+    let mut effects: EffectManager<()> = EffectManager::default();
+
+    // 2. 페이드 인(또는 색상 전환) 이펙트 등록
+    let effect = fx::fade_to(
+        Color::Cyan,
+        Color::DarkGray,
+        (1_000, Interpolation::SineIn),
+    );
+    effects.add_effect(effect);
+
+    let mut last_frame = Instant::now();
+
+    loop {
+        let elapsed = last_frame.elapsed();
+        last_frame = Instant::now();
+
+        terminal.draw(|frame| {
+            let area = frame.area();
+
+            // 3. 먼저 일반 Ratatui 위젯을 렌더링
+            let text = Paragraph::new("Hello, TachyonFX!")
+                .alignment(Alignment::Center);
+            frame.render_widget(text, area);
+
+            // 4. 그려진 버퍼 위에 활성 이펙트 적용
+            effects.process_effects(elapsed.into(), frame.buffer_mut(), area);
+        })?;
+
+        // 약 60 FPS 주기로 이벤트 폴링 (키 입력 시 종료)
+        if event::poll(Duration::from_millis(16))? {
+            if let Event::Key(_) = event::read()? {
+                break;
+            }
+        }
+    }
+
+    ratatui::restore();
+    Ok(())
+}
+```
+
+::: {.callout-tip}
+
+화면 전환이나 팝업 열기처럼 같은 대상에 이펙트가 겹칠 수 있는 경우에는 `EffectManager::add_unique_effect`를 사용해 고유 ID로 이펙트를 등록하세요. 동일 ID의 새 이펙트가 추가되면 기존 이펙트를 자동으로 취소하고 교체합니다.
+
+:::
+
+#### 단일 이펙트 직접 렌더링 (`EffectRenderer`)
+
+`EffectManager`를 쓰지 않고 특정 상태에 묶인 이펙트 하나만 직접 실행하고 싶다면 `EffectRenderer` 트레이트의 `frame.render_effect` 메서드를 사용할 수 있습니다.
+
+```rust
+use tachyonfx::{fx, EffectRenderer, Interpolation};
+
+// draw 클로저 내부에서 직접 호출
+frame.render_widget(widget, area);
+frame.render_effect(&mut my_effect, area, elapsed.into());
+```
+
+#### 셀 단위 필터링(`CellFilter`)과 공간 패턴(`Pattern`)
+
+`tachyonfx`의 강점은 사각형 영역 전체가 아니라 조건에 맞는 셀만 골라 이펙트를 적용할 수 있다는 점입니다. `.with_filter(...)`와 `.with_pattern(...)`을 체이닝해 세밀하게 제어할 수 있습니다.
+
+```rust
+use ratatui::layout::Margin;
+use ratatui::style::Color;
+use tachyonfx::{fx, CellFilter, DiagonalPattern, EffectTimer, Interpolation, RadialPattern};
+
+// 테두리를 제외한 내부 영역(Margin 1, 1)의 텍스트 셀에만 HSL 색상 이동 적용
+let inner_text_fx = fx::hsl_shift_fg(
+    [180.0, 50.0, 0.0],
+    EffectTimer::from_ms(1_000, Interpolation::Linear),
+)
+.with_filter(CellFilter::AllOf(vec![
+    CellFilter::Inner(Margin::new(1, 1)),
+    CellFilter::Text,
+    CellFilter::Not(Box::new(CellFilter::FgColor(Color::Black))),
+]));
+
+// 중앙에서 바깥으로 퍼지는 방사형 디졸브(Dissolve) 효과
+let radial_dissolve = fx::dissolve(800)
+    .with_pattern(RadialPattern::center());
+
+// 좌상단에서 우하단으로 대각선 색상 스윕
+let diagonal_fade = fx::fade_to_fg(Color::Cyan, 1_000)
+    .with_pattern(DiagonalPattern::top_left_to_bottom_right());
+```
+
+#### 이펙트 조합과 주요 내장 이펙트
+
+`fx::sequence`와 `fx::parallel`을 사용하면 여러 이펙트를 순차적 또는 동시적으로 합성해 복잡한 연출을 만들 수 있습니다.
+
+```rust
+use ratatui::style::Color;
+use tachyonfx::{fx, Interpolation};
+
+let intro = fx::sequence(&[
+    fx::coalesce((600, Interpolation::QuadOut)),
+    fx::parallel(&[
+        fx::fade_from_fg(Color::Yellow, (500, Interpolation::SineInOut)),
+        fx::hsl_shift_fg([30.0, 0.0, 0.0], 500),
+    ]),
+]);
+```
+
+자주 쓰이는 내장 이펙트는 다음과 같습니다.
+
+| 분류 | 주요 함수 (`tachyonfx::fx`) | 설명 |
+|------|----------------------------|------|
+| 색상 전환 | `fade_from`, `fade_to`, `fade_from_fg`, `fade_to_fg` | 전경/배경 색상을 목표 색상으로 부드럽게 보간 |
+| HSL/명도 | `hsl_shift`, `hsl_shift_fg`, `lighten`, `darken`, `saturate` | HSL 색공간 이동 및 명도·채도 조절 |
+| 텍스트/출현 | `dissolve`, `coalesce`, `evolve`, `explode` | 문자가 흩어지거나 나타나고, 기호가 변형되는 효과 |
+| 스윕/슬라이드 | `sweep_in`, `sweep_out`, `slide_in`, `slide_out`, `expand` | 지정 방향으로 영역이 쓸려 들어오거나 펼쳐지는 효과 |
+| 조합/제어 | `sequence`, `parallel`, `repeat`, `sleep`, `never_complete` | 이펙트 순차·병렬 실행, 반복, 지연 제어 |
+
+#### 런타임 DSL 활용
+
+`dsl` 피처를 활성화하면 Rust 문법과 유사한 문자열 표현식으로 이펙트를 정의해 런타임에 컴파일할 수 있습니다. 앞서 소개한 [Tachyonfx FTL](https://junkdog.github.io/tachyonfx-ftl/) 웹 플레이그라운드에서 이펙트를 실시간으로 실험한 뒤, 해당 DSL 코드를 애플리케이션이나 설정 파일에 그대로 가져와 적용할 때 유용합니다.
+
 ### Mousefood
 
 

@@ -28,7 +28,7 @@ lang: ko
 [singh-sourav]: https://software-carpentry.org/team/#singh-sourav
 [olav-vahtras]: https://software-carpentry.org/team/#vahtras_olav
 
-## 제1장: 실행과 종료
+# 제1장: 실행과 종료
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -353,7 +353,7 @@ $\sum_{i=1}^{N} 2^{-i} \approx 1$
 
 :::
 
-## 제2장: 변수와 할당
+# 제2장: 변수와 할당
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -536,7 +536,7 @@ initial = 'right'
 
 :::
 
-## 제3장: 데이터 타입과 타입 변환
+# 제3장: 데이터 타입과 타입 변환
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -690,7 +690,7 @@ print(num_surveys)  # 15
 
 :::
 
-## 제4장: 내장 함수와 도움말
+# 제4장: 내장 함수와 도움말
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -837,7 +837,7 @@ print(max(len(rich), len(poor)))
 
 :::
 
-## 제5장: 쉬는 시간
+# 제5장: 쉬는 시간
 
 ## 생각해 보기
 
@@ -847,7 +847,7 @@ print(max(len(rich), len(poor)))
 - 코드가 예상과 다르게 동작했을 때 원인을 어떻게 찾아냈는가?
 - 오타나 실수를 줄이기 위해 어떤 코딩 습관을 들이면 좋을까?
 
-## 제6장: 라이브러리 (Libraries)
+# 제6장: 라이브러리 (Libraries)
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -947,7 +947,7 @@ print(random.choice(bases))
 
 :::
 
-## 제7장: 데이터를 데이터프레임으로 읽어오기
+# 제7장: 데이터를 데이터프레임으로 읽어오기
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1049,7 +1049,7 @@ print(data_americas.describe())
 
 :::
 
-## 제8장: Pandas 데이터프레임
+# 제8장: Pandas 데이터프레임
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1174,7 +1174,7 @@ fourth.to_csv('result.csv')
 
 :::
 
-## 제9장: 그래프 그리기 (Plotting)
+# 제9장: 그래프 그리기 (Plotting)
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1331,14 +1331,14 @@ plt.ylabel('GDP per capita')
 
 :::
 
-## 제10장: 점심 시간
+# 제10장: 점심 시간
 
 ## 휴식 및 네트워킹
 
 - 오전 실습 내용을 복습하고 휴식을 취한다.
 - 오후에는 파이썬 리스트, 루프, 조건문, 파일 일괄 처리 및 함수 작성을 진행한다.
 
-## 제11장: 리스트 (Lists)
+# 제11장: 리스트 (Lists)
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1461,7 +1461,7 @@ element = 'carbon'
 
 :::
 
-## 제12장: For 루프
+# 제12장: For 루프
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1576,7 +1576,7 @@ print(message)
 
 :::
 
-## 제13장: 조건문
+# 제13장: 조건문
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1712,7 +1712,7 @@ print('Min:', smallest, 'Max:', largest)
 
 :::
 
-## 제14장: 데이터 세트 순회하기
+# 제14장: 데이터 세트 순회하기
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -1848,7 +1848,7 @@ print('확장자:', p.suffix)
 
 :::
 
-## 제15장: 쉬는 시간
+# 제15장: 쉬는 시간
 
 ## 생각해 보기
 
@@ -1857,7 +1857,7 @@ print('확장자:', p.suffix)
 - 데이터 파일이 수백 개로 늘어났을 때 수작업 대비 `glob`과 루프의 장점은 무엇인가?
 - 자주 반복되는 데이터 분석 로직을 어떻게 더 깔끔하게 정리할 수 있을까?
 
-## 제16장: 함수 작성하기
+# 제16장: 함수 작성하기
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -2018,7 +2018,7 @@ print(iterate(0.5, 10, 1.0))
 
 :::
 
-## 제17장: 변수의 범위 (Scope)
+# 제17장: 변수의 범위 (Scope)
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -2089,7 +2089,7 @@ print(clip(120))
 
 :::
 
-## 제18장: 프로그래밍 스타일
+# 제18장: 프로그래밍 스타일
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -2207,7 +2207,7 @@ transform_string('et cetera', 10)
 
 :::
 
-## 제19장: 마무리
+# 제19장: 마무리
 
 ::: {.callout-tip title="학습 목표"}
 
@@ -2242,7 +2242,7 @@ transform_string('et cetera', 10)
 
 :::
 
-## 제20장: 피드백
+# 제20장: 피드백
 
 ::: {.callout-tip title="학습 목표"}
 
