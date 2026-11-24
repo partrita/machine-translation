@@ -5,7 +5,7 @@ lang: ko
 ---
 # 서론
 
-## 왜 이 책을 읽어야 하는가? {#why-read-this-book}
+### 왜 이 책을 읽어야 하는가? {#why-read-this-book}
 
 당신이 이 책을 펼쳐 들었다면, 무언가 중요한 성취를 이루고 싶어서일 것이다. 새로운 사업을 시작하고 싶거나, 승진을 꿈꾸거나, 세상에 없던 가치를 창조하고 싶을지도 모른다. 하지만 동시에 다음과 같은 걱정들이 앞길을 가로막고 있을 가능성 역시 높다.
 
@@ -17,7 +17,7 @@ lang: ko
 
 건전한 비즈니스 실무의 기본을 마스터하고 싶은 창업가, 학생, 엔지니어, 기업 임원, 전문직 종사자라면 이 책이 훌륭한 길잡이가 되어줄 것이다. 당신이 누구이든, 어떤 목표를 품고 있든, 막연한 두려움과 싸우는 시간은 줄이고 실질적인 변화를 만들어내는 데 집중할 수 있도록 새롭고 명쾌한 비즈니스 관점을 제시할 것이다.
 
-## 모든 것을 다 알 필요는 없다 {#you-dont-need-to-know-it-all}
+### 모든 것을 다 알 필요는 없다 {#you-dont-need-to-know-it-all}
 
 > -해링턴 에머슨(Harrington Emerson), 경영 컨설턴트 및 효율성 전문가1
 
@@ -32,7 +32,7 @@ lang: ko
 
 이 책을 지식의 필터로 활용하라. 세상에 쏟아지는 방대한 비즈니스 정보를 모두 흡수하려 애쓸 필요는 없다. 실제로 넘쳐나는 정보의 대부분은 소음에 불과하다. 이 책을 통해 가장 중요한 핵심 원리를 익히고 이를 바탕으로 가치를 실현하는 진짜 일에 집중하라.
 
-## 사전 경험은 필요 없다 {#no-experience-necessary}
+### 사전 경험은 필요 없다 {#no-experience-necessary}
 
 > -잭 웰치(Jack Welch), 전 제너럴 일렉트릭(GE) CEO
 
@@ -42,12 +42,12 @@ lang: ko
 
 우리는 비즈니스를 새롭고 유용한 시각으로 바라보게 해줄 271가지 핵심 개념을 함께 살펴볼 것이다. 이 책을 다 읽고 나면, 비즈니스의 본질이 무엇이며 성공하는 기업이 실제로 무엇을 하는지 훨씬 명확하고 종합적으로 이해하게 될 것이다.
 
-## 답이 아닌 질문 {#questions-not-answers}
+### 답이 아닌 질문 {#questions-not-answers}
 
 
 대부분의 경영서는 정해진 답을 가르치려 든다. 특정 상황을 위한 기술이나 단편적인 방법론을 제시하는 식이다. 하지만 이 책은 다르다. 답을 주입하기보다 더 나은 질문을 던질 수 있도록 돕는다. *모든* 비즈니스에서 진짜 중요한 핵심이 무엇인지 아는 것이 올바른 결정을 내리는 출발점이다. 처한 상황에서 반드시 던져야 할 핵심 질문을 명확히 알수록, 앞으로 나아가는 데 필요한 해답을 훨씬 빠르게 찾을 수 있다.
 
-## 방법이 아닌 멘탈 모델 {#mental-models-not-methods}
+### 방법이 아닌 멘탈 모델 {#mental-models-not-methods}
 
 > 내 언어의 한계는 내 세계의 한계를 의미한다.
 > -루트비히 비트겐슈타인(Ludwig Wittgenstein), 철학자이자 논리학자
@@ -71,13 +71,13 @@ lang: ko
 
 이 책은 비즈니스의 기본 원리를 체득하여 진짜 중요한 일에 시간과 에너지를 쏟도록 도울 것이다. 가치 있는 상품을 만들고, 고객의 시선을 사로잡으며, 매출을 올리고, 고객 만족을 이끌어내며, 승진하고, 수익을 창출하여 세상을 바꾸는 일 말이다. 타인을 위해 더 큰 가치를 창출하고 재정적 자유를 누릴 뿐 아니라, 일하는 과정 자체를 진심으로 즐기게 될 것이다.
 
-## 나의 퍼스널 MBA {#my-personal-mba}
+### 나의 퍼스널 MBA {#my-personal-mba}
 
 > 독학이야말로 존재하는 유일한 형태의 교육이라고 나는 굳게 믿는다.
 > -아이작 아시모프(Isaac Asimov), 보스턴대학교 생화학 교수이자 500권 이상의 저서를 집필한 작가
 
 ::: {.callout-note}
-## 독서 안내
+### 독서 안내
 이 절에서는 '퍼스널 MBA' 프로젝트의 시작 배경을 소개한다. 배경 맥락을 파악하는 데 유용하지만 이 책의 핵심 가치는 필자의 개인적 경험을 넘어선다. 곧바로 비즈니스 핵심 개념을 학습하고 싶다면 [이 페이지](#what-youll-learn-in-this-book)로 넘어가도 좋다.
 :::
 
@@ -93,7 +93,7 @@ lang: ko
 
 결국 나는 경영대학원에 진학하지 않기로 했다. 다만 비즈니스 *교육* 자체를 포기한 것은 아니었다. 값비싼 MBA 프로그램에 등록하는 대신 양서를 치열하게 탐독하며 나만의 '퍼스널 MBA'를 구축하기 시작했다.
 
-## 비즈니스 독학 속성 과정 {#a-self-directed-crash-course-in-business}
+### 비즈니스 독학 속성 과정 {#a-self-directed-crash-course-in-business}
 
 > 독학한 이들 중 다수는 명문 대학의 박사, 석사, 학사들을 훨씬 능가한다.
 > -루트비히 폰 미제스(Ludwig von Mises), 오스트리아학파 경제학자이자 『인간 행동(Human Action)』의 저자
@@ -116,7 +116,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 2. *사내 승진 경쟁은 본질적인 가치 창출을 방해한다.* 나는 보고서 작성이나 지루한 회의, 사내 줄서기보다 실질적인 성과를 내고 세상을 더 낫게 만드는 일에 집중하고 싶었다. 사내 정치와 파벌 싸움은 대기업 일상의 피할 수 없는 굴레였다.
 3. *누적된 좌절감은 번아웃으로 이어진다.* 일하는 즐거움을 느끼고 싶었지만 매일이 끝없는 소모전처럼 느껴졌다. 이는 건강과 행복, 인간관계에 악영향을 미치기 시작했다. 기업의 울타리에 머물수록 그곳을 벗어나야 한다는 확신이 굳어졌다. 무엇에 집중하고, 누구와 일하며, 어떤 가치를 우선할지 스스로 결정하고 싶었기에, 장기적으로 창업만이 내게 맞는 길이었다.
 
-## 알곡과 가라지 {#the-wheat-and-the-chaff}
+### 알곡과 가라지 {#the-wheat-and-the-chaff}
 
 >
 > -제이콥 브로노프스키(Jacob Bronowski), 작가이자 다큐멘터리 『인간의 사다리(The Ascent of Man)』 진행자
@@ -131,7 +131,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 그러던 어느 날 아침, 퍼스널 MBA는 마침내 세상의 주목을 받으며 단순한 개인 프로젝트를 넘어선 거대한 흐름으로 도약했다.
 
-## 퍼스널 MBA, 세계로 뻗어나가다 {#the-personal-mba-goes-global}
+### 퍼스널 MBA, 세계로 뻗어나가다 {#the-personal-mba-goes-global}
 
 > 문제를 가장 잘 설명하는 사람이 그 문제를 해결할 가능성이 가장 높다.
 > -댄 로암(Dan Roam), 『생각을 시각화하라(The Back of the Napkin)』의 저자
@@ -162,7 +162,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 독자들을 진정으로 돕기 위해, 한 걸음 더 나아가야 했다.
 
-## 멍거의 멘탈 모델 {#mungers-mental-models}
+### 멍거의 멘탈 모델 {#mungers-mental-models}
 
 
 퍼스널 MBA의 다음 도약을 이끈 결정적 영감은 전설적인 투자자 찰리 멍거(Charlie Munger)의 사상을 접했을 때 찾아왔다.
@@ -189,7 +189,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 성공하는 비즈니스맨들이 본능적으로 활용하는 근본 원리를 체계화하려면 내가 직접 바닥부터 찾아내 정리해야 했다. 비즈니스에 대한 이해를 기초부터 완전히 재구축해야 하는 과업이었다.
 
-## 점들을 연결하기 {#connecting-the-dots}
+### 점들을 연결하기 {#connecting-the-dots}
 
 > 모든 일에서 오랫동안 당연하게 여겨온 것들에 가끔씩 물음표를 달아보는 것은 건강한 일이다.
 >
@@ -218,7 +218,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 이 개념들이 강력한 이유는 명확하다. *실제로 효과가 있기 때문이다.* 타인을 위해 더 큰 가치를 창출하고 커리어를 도약시키는 것은 물론, 설정한 목표를 훨씬 수월하게 달성하며 그 과정 자체를 진심으로 즐기게 될 것이다.
 
-## 회의론자들을 위하여 {#for-the-skeptics}
+### 회의론자들을 위하여 {#for-the-skeptics}
 
 > 공공도서관 연체료 1달러 50센트면 충분했을 배움에 15만 달러를 낭비했군.
 >
@@ -227,7 +227,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 이 책은 비즈니스 스쿨 비판서가 아니라 실전 비즈니스 개념을 다룬 책이다. 하지만 많은 이들이 명문 대학의 비싼 간판 없이도 포괄적이고 깊이 있는 비즈니스 역량을 갖출 수 있다는 사실을 선뜻 믿지 못한다. 전통적인 MBA 과정의 장점과 치명적인 한계를 솔직하게 짚어보는 이 절은 바로 이러한 회의론자들을 위한 글이다.
 
-## 비즈니스 스쿨에 가야 할까? {#should-you-go-to-business-school}
+### 비즈니스 스쿨에 가야 할까? {#should-you-go-to-business-school}
 
 > -스콧 버쿤(Scott Berkun), 『일이 되게 하라(Making Things Happen)』 저자
 
@@ -240,7 +240,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 이 책은 당신의 인생을 빚더미에 저당 잡히지 않고도 비즈니스에서 압도적인 성공을 거두는 현실적인 방법을 안내할 것이다.
 
-## 비즈니스 스쿨의 3가지 문제 {#three-big-problems-with-business-schools}
+### 비즈니스 스쿨의 3가지 문제 {#three-big-problems-with-business-schools}
 
 > 대학이란 200명의 학생이 똑같은 책 한 권을 읽는 곳이다. 명백한 비효율이다. 200명이면 200권의 다른 책을 읽을 수 있다.
 > -존 케이지(John Cage), 독학한 작곡가이자 사상가
@@ -253,7 +253,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 실효성이 의심스러운 이론을 배우기 위해 막대한 돈을 낭비할 필요는 없다. 그 대신 진짜 중요한 핵심 비즈니스 개념을 익히는 데 시간과 자원을 쏟아야 한다. 스스로 역량을 키울 의지와 열정만 있다면, 미래를 빚더미에 넘기지 않고도 비즈니스에 필요한 모든 지식을 독학으로 완벽히 마스터할 수 있다.
 
-## 과대망상 {#delusions-of-grandeur}
+### 과대망상 {#delusions-of-grandeur}
 
 > 야심가의 본질은 단지 꿈의 그림자에 불과하다.
 > -윌리엄 셰익스피어(William Shakespeare), 『햄릿(Hamlet)』
@@ -266,7 +266,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 하지만 환상과 현실의 간극은 냉혹하다.
 
-## 당신의 돈과 인생 {#your-money-and-your-life}
+### 당신의 돈과 인생 {#your-money-and-your-life}
 
 > 세상에 공짜 점심은 없다.
 > -로버트 A. 하인라인(Robert A. Heinlein), SF 소설가
@@ -279,7 +279,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 *평균적인* 학교에 진학한다 해도 6만 6,000달러는 결코 적은 돈이 아니다. 하지만 누가 평범한 학교에 만족하겠는가? 골드만삭스(Goldman Sachs) 같은 일류 투자은행이나 맥킨지(McKinsey), 베인(Bain) 같은 탑티어 컨설팅 펌의 입사 제안을 노린다면 상위 10위권 명문대에 들어가야 하며 그러려면 6만 6,000달러 따위와는 비교도 안 될 만큼 *막대한* 비용이 든다.
 
-## 100달러 지폐 꺼내기 {#breaking-out-the-benjamins}
+### 100달러 지폐 꺼내기 {#breaking-out-the-benjamins}
 
 > 빚을 지러 가는 자는 슬픔을 향해 가는 것이요, 바보와 그의 돈은 쉬이 헤어진다.
 > -토머스 터서(Thomas Tusser), 16세기 영국의 시인
@@ -302,7 +302,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 지극히 현명한 조언이다. 학위증이라는 양피지 간판이 절대적으로 필요한 특수 직군이 아니라면, 결코 등록하지 마라.
 
-## MBA가 실제로 주는 것 {#what-an-mba-will-actually-get-you}
+### MBA가 실제로 주는 것 {#what-an-mba-will-actually-get-you}
 
 > 위선자는 거창한 약속을 남발한다. 약속을 지킬 생각이 애초에 없으니 밑질 것이 없기 때문이다.
 >
@@ -323,7 +323,7 @@ P&G에서의 경험은 매 순간이 배움의 연속이었다. 비즈니스의 
 
 슈라가의 시뮬레이션에 따르면, *단지 원금을 회수하고 손익분기점에 도달하는 데만* 졸업 후 무려 12년 동안 뼈 빠지게 일해야 한다. 이마저도 모든 조건이 순조롭게 풀린다는 장밋빛 전제하에서다. 만약 채용 시장이 꽁꽁 얼어붙은 불황기에 졸업한다면 상황은 재앙으로 치닫는다.
 
-## 비즈니스 스쿨의 기원 {#where-business-schools-came-from}
+### 비즈니스 스쿨의 기원 {#where-business-schools-came-from}
 
 > 현대의 주입식 교육 방식이 인간의 순수한 호기심을 완전히 질식시키지 않은 것은 기적에 가깝다.
 >
@@ -348,7 +348,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 하지만 현실에서는 외적 금전 인센티브가 오히려 창의성과 내적 동기, 직무 만족도를 떨어뜨린다는 수많은 반증이 쏟아져 나오고 있다.19 인간 행동을 설명하는 훨씬 정교하고 유용한 현대 심리학 이론들이 존재함에도 불구하고,20 비즈니스 스쿨 강의실에서는 여전히 케케묵은 자극-반응 모델에 매달리고 있다.
 
-## 유통망을 찾아서 {#in-search-of-distribution}
+### 유통망을 찾아서 {#in-search-of-distribution}
 
 > 아무리 유용한 기술이라도 마음에 집착이 생기면 병이 된다.
 >
@@ -358,7 +358,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 창업가들에게 벤처 캐피털(VC) 자금 유치는 필수 코스가 되었다. 외부 자본 없이는 거대 공장이나 전국 브랜드망을 단기간에 구축할 수 없었기 때문이다. 규모의 경제는 대기업이 막강한 자본력을 앞세워 가격을 후려침으로써 중소 경쟁자를 손쉽게 고사시킬 수 있음을 의미했다. 단기간의 폭발적인 투자 수익만을 노리는 투기적 투자자들은 수천억 원대의 매각 차익(exit)을 약속하는 허황된 사업 계획서에 돈을 쏟아부었다. 멀쩡하고 견실한 기업들이 '시너지 창출'과 '기업 다각화'라는 미명하에 인수합병되어 알맹이만 털렸고 경영학계는 이를 선진 경영 기법이라며 부추겼다. 서로 다른 복잡한 조직 시스템을 통합하는 극악의 난이도는 철저히 무시되었고 무리한 합병을 시도한 수많은 기업이 처참한 파멸을 맞았다.
 
-## 불장난 {#playing-with-fire}
+### 불장난 {#playing-with-fire}
 
 > 수학 공식을 들고 오는 자들을 조심하라.
 >
@@ -381,7 +381,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 비즈니스의 본질은 정직하게 돈을 지불하는 고객에게 진정한 가치를 만들어 제공하는 것이지, 합법을 가장한 금융 사기를 설계하는 것이 아니다. 불행하게도 비즈니스 스쿨은 전자를 등한시하고 후자를 가르치는 데 골몰해왔다.
 
-## 바꿀 이유가 없다 {#no-reason-to-change}
+### 바꿀 이유가 없다 {#no-reason-to-change}
 
 > 학교는 가르침을 받아야 할 필요성을 가르친다.
 >
@@ -395,7 +395,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 비즈니스 스쿨도 뒤늦게 혁신을 흉내 내고 있지만 여전히 낡고 왜곡된 이론을 가르치며 현실에 안주하고 있다. 비즈니스 스쿨이 대학에 막대한 수익과 명성을 안겨주는 최고의 돈벌이 수단인데 굳이 시스템을 바꿀 이유가 어디 있겠는가? 비싼 학비를 내고 줄을 서는 지원자가 있는 한, 비즈니스 스쿨이 스스로 교육 방식을 혁신할 것이라 기대해서는 안 된다.
 
-## 비즈니스 스쿨의 유일한 이점 {#the-single-benefit-of-business-schools}
+### 비즈니스 스쿨의 유일한 이점 {#the-single-benefit-of-business-schools}
 
 > 모든 조직은 자신이 해결책으로 존재하는 그 문제를 보존하려 애쓴다.
 >
@@ -409,7 +409,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 반면 스스로 사업을 일구거나, 일과 삶의 균형을 누리며 주체적으로 일하고 싶다면 MBA 진학은 명백한 돈과 시간의 낭비다. 비즈니스 스쿨 연구의 대가인 제프리 페퍼 교수가 《비즈니스위크》 인터뷰에서 밝혔듯이 말이다. "명문 비즈니스 스쿨에 합격할 만큼 똑똑한 사람이라면, 그 학위 없이도 세상 어디서든 이미 성공할 재능을 갖추고 있다."28
 
-## 빚 때문에 일하러 가네 {#i-owe-i-oweits-off-to-work-i-go}
+### 빚 때문에 일하러 가네 {#i-owe-i-oweits-off-to-work-i-go}
 
 > 일이 뜻대로 풀리지 않았을 때, 당신은 여전히 자신이 원하는 자리에 서 있는가?
 >
@@ -427,7 +427,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 무거운 부채 위험과 불확실한 보상을 감안할 때, MBA 프로그램은 결코 현명한 투자가 아니다. 그것은 부주의한 이들을 옭아매는 덫에 불과하다.
 
-## 더 나은 방법 {#a-better-way}
+### 더 나은 방법 {#a-better-way}
 
 > 교육자들을 교육하라! 그러나 먼저 스스로를 교육해야 한다! 바로 이들을 위해 나는 글을 쓴다.
 >
@@ -437,7 +437,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 명문 비즈니스 스쿨에 당당히 합격할 역량이 있고 졸업 후 성공을 일구어낼 열정을 품은 사람이라면, 비즈니스 스쿨 진학 대신 이 책을 통해 비즈니스의 본질을 독학하는 것이야말로 평생 내릴 최고의 결정이 될 것이다.
 
-## 이 책에서 배울 내용 {#what-youll-learn-in-this-book}
+### 이 책에서 배울 내용 {#what-youll-learn-in-this-book}
 
 >
 > -존 T. 리드(John T. Reed), 투자자이자 저술가
@@ -473,13 +473,13 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 한 걸음 더 나아간 전문 통계 이론을 원한다면 M. G. 불머(M. G. Bulmer)의 『통계학 원론(Principles of Statistics)』이 훌륭한 길잡이가 될 것이다.
 
-## 이 책의 활용법 {#how-to-use-this-book}
+### 이 책의 활용법 {#how-to-use-this-book}
 
 >
 > -요한 볼프강 폰 괴테(Johann Wolfgang von Goethe), 시인이자 사상가
 
 ::: {.callout-tip}
-## 이 책의 효과를 극대화하는 5가지 실전 독서 팁
+### 이 책의 효과를 극대화하는 5가지 실전 독서 팁
 
 *가볍게 훑어보고, 넘겨보며, 탐색하라(Browse, skim, and scan).* 첫 장부터 끝까지 의무감으로 정독할 필요는 없다. 목차를 훑어보는 것만으로도 적은 노력으로 큰 통찰을 얻을 수 있다. 눈길을 끄는 흥미로운 개념을 발견하면 먼저 읽고 며칠간 업무 현장에 직접 적용해 보라. 일의 완성도뿐만 아니라 비즈니스를 바라보는 시야 자체가 놀라울 정도로 넓어질 것이다.
 
@@ -495,7 +495,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 자, 이제 비즈니스의 진짜 세계로 첫발을 내딛어보자.
 
-## 제1장: 가치 창출 {#sec-01-value-creation}
+### 제1장: 가치 창출 {#sec-01-value-creation}
 
 >
 
@@ -507,7 +507,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 참조 링크: [personalmba.com/value-creation/](http://personalmba.com/value-creation/)
 
-## 모든 비즈니스의 5가지 요소 {#the-five-parts-of-every-business}
+### 모든 비즈니스의 5가지 요소 {#the-five-parts-of-every-business}
 
 > 비즈니스란 돈을 버는 반복 가능한 프로세스다. 그 밖의 모든 것은 취미에 불과하다.
 >
@@ -537,7 +537,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 참조 링크: [personalmba.com/5-parts-of-every-business/](http://personalmba.com/5-parts-of-every-business/)
 
-## 경제적으로 가치 있는 기술 {#economically-valuable-skills}
+### 경제적으로 가치 있는 기술 {#economically-valuable-skills}
 
 > 세상이 당신에게 생계를 빚졌다고 말하고 다니지 마라. 세상은 당신에게 빚진 것이 하나도 없다. 세상이 먼저 여기에 있었다.
 >
@@ -553,7 +553,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 참조 링크: [personalmba.com/economically-valuable-skills/](http://personalmba.com/economically-valuable-skills/)
 
-## 시장의 철칙 {#the-iron-law-of-the-market}
+### 시장의 철칙 {#the-iron-law-of-the-market}
 
 >
 > - 마크 앤드리슨(Marc Andreessen), 벤처 투자자이자 넷스케이프(Netscape) 공동 설립자
@@ -576,7 +576,7 @@ MBA 프로그램이 유능한 인재를 키워내지 못하는 이유는 명확�
 
 참조 링크: [personalmba.com/iron-law-of-the-market/](http://personalmba.com/iron-law-of-the-market/)
 
-## 핵심 인간 욕구 {#core-human-drives}
+### 핵심 인간 욕구 {#core-human-drives}
 
 > 인간의 욕구를 이해하는 것은 그것을 충족시키는 일의 절반이다.
 >
@@ -605,7 +605,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/core-human-drives/](http://personalmba.com/core-human-drives/)
 
-## 사회적 지위 {#social-status}
+### 사회적 지위 {#social-status}
 
 >
 > - 존 W. 가드너(John W. Gardner), 전 카네기 재단 이사장
@@ -626,7 +626,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/social-status/](http://personalmba.com/social-status/)
 
-## 시장을 평가하는 10가지 방법 {#ten-ways-to-evaluate-a-market}
+### 시장을 평가하는 10가지 방법 {#ten-ways-to-evaluate-a-market}
 
 > 너무나 자주 사람들은 엉뚱한 일에 매달린다. 올바른 일에 힘쓰는 것이 단순히 열심히 일하는 것보다 훨씬 중요하다.
 >
@@ -651,7 +651,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/ten-ways-to-evaluate-a-market/](http://personalmba.com/ten-ways-to-evaluate-a-market/)
 
-## 경쟁의 숨은 이점 {#the-hidden-benefits-of-competition}
+### 경쟁의 숨은 이점 {#the-hidden-benefits-of-competition}
 
 > 진정 두려워해야 할 경쟁자는 당신을 의식하지 않고 묵묵히 자신의 사업을 개선하는 데 전념하는 자다.
 >
@@ -669,7 +669,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/hidden-benefit-of-competition/](http://personalmba.com/hidden-benefit-of-competition/)
 
-## 용병 규칙 {#the-mercenary-rule}
+### 용병 규칙 {#the-mercenary-rule}
 
 > 돈을 신으로 섬긴다면 돈은 악마처럼 당신을 쥐고 흔들 것이다.
 >
@@ -687,7 +687,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/mercenary-rule/](http://personalmba.com/mercenary-rule/)
 
-## 십자군 규칙 {#the-crusader-rule}
+### 십자군 규칙 {#the-crusader-rule}
 
 > 열정에 눈먼 자는 신념의 크기를 뽐내지만 현명한 자는 신념의 단단한 근거를 보여준다.
 >
@@ -703,7 +703,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/crusader-rule/](http://personalmba.com/crusader-rule/)
 
-## 12가지 표준 가치 형태 {#twelve-standard-forms-of-value}
+### 12가지 표준 가치 형태 {#twelve-standard-forms-of-value}
 
 > 가치는 사물 자체에 깃든 내재적 속성이 아니다. 가치는 우리 내면에 있으며 인간이 주변 환경에 반응하는 방식이다.
 >
@@ -728,7 +728,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/12-standard-forms-of-value/](http://personalmba.com/12-standard-forms-of-value/)
 
-## 가치 형태 1: 제품 {#form-of-value-1-product}
+### 가치 형태 1: 제품 {#form-of-value-1-product}
 
 > 비즈니스는 복잡한 금융 과학이 아니다... 사람들이 기꺼이 돈을 낼 만큼 매력적인 제품이나 서비스를 만드는 일이다.
 >
@@ -749,7 +749,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/product/](http://personalmba.com/product/)
 
-## 가치 형태 2: 서비스 {#form-of-value-2-service}
+### 가치 형태 2: 서비스 {#form-of-value-2-service}
 
 > 누구나 남을 도울 수 있기에 누구나 위대해질 수 있다.
 >
@@ -771,7 +771,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/service/](http://personalmba.com/service/)
 
-## 가치 형태 3: 공유 자원 {#form-of-value-3-shared-resource}
+### 가치 형태 3: 공유 자원 {#form-of-value-3-shared-resource}
 
 > 나누지 않는 기쁨은 쉬이 시들어버린다.
 >
@@ -793,7 +793,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/shared-resource/](http://personalmba.com/shared-resource/)
 
-## 가치 형태 4: 구독 {#form-of-value-4-subscription}
+### 가치 형태 4: 구독 {#form-of-value-4-subscription}
 
 > 제 사직서를 수락해 주십시오. 저 같은 사람을 회원으로 받아주는 클럽에는 가입하고 싶지 않는다.
 >
@@ -816,7 +816,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/subscription/](http://personalmba.com/subscription/)
 
-## 가치 형태 5: 재판매 {#form-of-value-5-resale}
+### 가치 형태 5: 재판매 {#form-of-value-5-resale}
 
 > 싸게 사서 비싸게 팔아라.
 >
@@ -839,7 +839,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/resale/](http://personalmba.com/resale/)
 
-## 가치 형태 6: 임대 {#form-of-value-6-lease}
+### 가치 형태 6: 임대 {#form-of-value-6-lease}
 
 > 내가 세운 최선의 이론에 따르면, 인류는 두 부류로 나뉜다. 빌리는 자들과 빌려주는 자들이다.
 >
@@ -859,7 +859,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/lease/](http://personalmba.com/lease/)
 
-## 가치 형태 7: 에이전시 {#form-of-value-7-agency}
+### 가치 형태 7: 에이전시 {#form-of-value-7-agency}
 
 > 나는 화장되기를 바란다. 내 유골의 10분의 1은 계약서대로 내 에이전트에게 떼어주어야 마땅하다.
 >
@@ -882,7 +882,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/agency/](http://personalmba.com/agency/)
 
-## 가치 형태 8: 잠재고객 집결 {#form-of-value-8-audience-aggregation}
+### 가치 형태 8: 잠재고객 집결 {#form-of-value-8-audience-aggregation}
 
 > 당신의 머릿속에 광고 노래가 맴도는 한, TV 방송은 결코 공짜가 아니다.
 >
@@ -903,7 +903,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/audience-aggregation/](http://personalmba.com/audience-aggregation/)
 
-## 가치 형태 9: 대출 {#form-of-value-9-loan}
+### 가치 형태 9: 대출 {#form-of-value-9-loan}
 
 > 돈은 말을 건네지만 신용은 긴 여운을 남긴다.
 >
@@ -926,7 +926,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/loan/](http://personalmba.com/loan/)
 
-## 가치 형태 10: 옵션 {#form-of-value-10-option}
+### 가치 형태 10: 옵션 {#form-of-value-10-option}
 
 > 값을 치르고 선택권을 쥐어라.
 >
@@ -949,7 +949,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참조 링크: [personalmba.com/option/](http://personalmba.com/option/)
 
-## 가치 형태 11: 보험 {#form-of-value-11-insurance}
+### 가치 형태 11: 보험 {#form-of-value-11-insurance}
 
 > 계산된 위험을 감수하라. 그것은 무모한 것과는 완전히 다르다.
 >
@@ -972,7 +972,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/insurance/](http://personalmba.com/insurance/)
 
-## 가치 형태 12: 자본 {#form-of-value-12-capital}
+### 가치 형태 12: 자본 {#form-of-value-12-capital}
 
 > 자본이란 더 많은 부를 얻기 위해 바쳐지는 부의 일부분이다.
 >
@@ -993,7 +993,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/capital/](http://personalmba.com/capital/)
 
-## 번거로움 프리미엄 {#hassle-premium}
+### 번거로움 프리미엄 {#hassle-premium}
 
 > 모든 인간적인 상황에는 저마다의 불편함이 따른다.
 >
@@ -1020,7 +1020,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/hassle-premium/](http://personalmba.com/hassle-premium/)
 
-## 인지 가치 {#perceived-value}
+### 인지 가치 {#perceived-value}
 
 > 사람들은 물건의 가치보다 자신의 돈의 가치를 더 높게 평가할 때 돈을 물건과 바꾸지 않는다.
 >
@@ -1043,7 +1043,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/perceived-value/](http://personalmba.com/perceived-value/)
 
-## 모듈성 {#modularity}
+### 모듈성 {#modularity}
 
 > 위대한 일은 충동으로 이루어지는 것이 아니라, 하나로 모인 작은 일들의 연속으로 이루어진다.
 >
@@ -1059,7 +1059,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/modularity/](http://personalmba.com/modularity/)
 
-## 번들링과 언번들링 {#bundling-and-unbundling}
+### 번들링과 언번들링 {#bundling-and-unbundling}
 
 > 이것 조금, 저것 조금이 모여 세상에 새로움이 탄생한다.
 >
@@ -1077,7 +1077,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/bundling-unbundling/](http://personalmba.com/bundling-unbundling/)
 
-## 중개와 탈중개 {#inter-mediation-and-disinter-mediation}
+### 중개와 탈중개 {#inter-mediation-and-disinter-mediation}
 
 > 재산을 모으는 가장 빠르고 확실한 길은, 당신의 이익을 증진하는 것이 곧 그들의 이익이 된다는 점을 사람들에게 명확히 보여주는 것이다.
 >
@@ -1099,7 +1099,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/intermediation-disintermediation/](http://personalmba.com/intermediation-disintermediation/)
 
-## 프로토타입 {#prototype}
+### 프로토타입 {#prototype}
 
 > 원리는 간단하다. 아무것도 시도하지 않으면 아무것도 배울 수 없다.
 >
@@ -1123,7 +1123,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/prototype/](http://personalmba.com/prototype/)
 
-## 반복 주기 {#the-iteration-cycle}
+### 반복 주기 {#the-iteration-cycle}
 
 > 나는 실패한 적이 없다. 단지 작동하지 않는 1만 가지 방법을 발견했을 뿐이다.
 >
@@ -1149,7 +1149,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/iteration-cycle/](http://personalmba.com/iteration-cycle/)
 
-## 반복 속도 {#iteration-velocity}
+### 반복 속도 {#iteration-velocity}
 
 > 우리의 목표는 시간과 비용 단위당 그 누구보다 더 많은 타석에 들어서는 것이다.
 >
@@ -1169,7 +1169,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/iteration-velocity/](http://personalmba.com/iteration-velocity/)
 
-## 피드백 {#feedback}
+### 피드백 {#feedback}
 
 > 어떤 사업 계획도 고객과의 첫 접촉에서 살아남지 못한다.
 >
@@ -1186,7 +1186,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/feedback/](http://personalmba.com/feedback/)
 
-## 대안 {#alternatives}
+### 대안 {#alternatives}
 
 >
 > -W. H. 머레이(W. H. Murray), 등산가이자 작가
@@ -1209,7 +1209,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/alternatives/](http://personalmba.com/alternatives/)
 
-## 트레이드오프 {#trade-offs}
+### 트레이드오프 {#trade-offs}
 
 > 성공을 보장하는 확실한 공식은 알려줄 수 없지만 실패로 가는 확실한 공식은 안다. 그것은 바로 언제나 모든 사람을 만족시키려 애쓰는 것이다.
 >
@@ -1227,7 +1227,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/tradeoffs/](http://personalmba.com/tradeoffs/)
 
-## 경제적 가치 {#economic-values}
+### 경제적 가치 {#economic-values}
 
 > 성공하는 비즈니스는 사람들의 열렬한 사랑을 받거나, 아니면 절실한 필요를 채워주거나 둘 중 하나다.
 >
@@ -1256,7 +1256,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/economic-values/](http://personalmba.com/economic-values/)
 
-## 상대적 중요도 평가 {#relative-importance-testing}
+### 상대적 중요도 평가 {#relative-importance-testing}
 
 > 가장 중요한 일들이 결코 가장 사소한 일들에 휘둘려서는 안 된다.
 >
@@ -1301,7 +1301,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/relative-importance-testing/](http://personalmba.com/relative-importance-testing/)
 
-## 핵심 가정 {#critical-assumptions}
+### 핵심 가정 {#critical-assumptions}
 
 > 정확하게 틀리는 것보다 대략적으로 맞추는 것이 낫다.
 >
@@ -1333,7 +1333,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/critical-assumptions/](http://personalmba.com/critical-assumptions/)
 
-## 그림자 테스트 {#shadow-testing}
+### 그림자 테스트 {#shadow-testing}
 
 > *Praemonitus praemunitus* (미리 경고를 받으면 미리 방비할 수 있다 / 유비무환).
 >
@@ -1353,7 +1353,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/shadow-testing/](http://personalmba.com/shadow-testing/)
 
-## 최소 실행 가능 제안 {#minimum-viable-offer}
+### 최소 실행 가능 제안 {#minimum-viable-offer}
 
 > 만약 첫 번째 버전의 제품을 보고 부끄럽지 않다면, 너무 늦게 출시한 것이다.
 >
@@ -1381,7 +1381,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/minimum-viable-offer/](http://personalmba.com/minimum-viable-offer/)
 
-## 점진적 확장 {#incremental-augmentation}
+### 점진적 확장 {#incremental-augmentation}
 
 >
 > -폴 부크하이트(Paul Buchheit), 지메일(Gmail) 및 구글 애드센스(Google AdSense) 개발자
@@ -1398,7 +1398,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/incremental-augmentation/](http://personalmba.com/incremental-augmentation/)
 
-## 현장 테스트 {#field-testing}
+### 현장 테스트 {#field-testing}
 
 > 하루에 손을 적어도 세 번 이상 씻을 필요가 없는 엔지니어는 실패자다.
 >
@@ -1421,7 +1421,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크: [personalmba.com/field-testing/](http://personalmba.com/field-testing/)
 
-## 제2장: 마케팅 {#sec-02-marketing}
+### 제2장: 마케팅 {#sec-02-marketing}
 
 > 마케팅에서 저지를 수 있는 가장 치명적인 죄악은 지루함이다.
 >
@@ -1439,7 +1439,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/marketing/](http://personalmba.com/marketing/)
 
-## 주의 집중 {#attention}
+### 주의 집중 {#attention}
 
 > (오늘날과 같은) 주의 경제(attention economy)에서 마케터들은 주의를 얻기 위해 사투를 벌인다. 주의를 얻지 못하면 패배한다.
 >
@@ -1458,7 +1458,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/attention/](http://personalmba.com/attention/)
 
-## 수용성 {#receptivity}
+### 수용성 {#receptivity}
 
 > 한 사람에게 맞는 신발이 다른 사람에게는 발을 조인다. 모든 경우에 들어맞는 삶의 처방전이란 존재하지 않는다.
 >
@@ -1476,7 +1476,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/receptivity/](http://personalmba.com/receptivity/)
 
-## 주목성 {#remarkability}
+### 주목성 {#remarkability}
 
 > 광고는 주목받지 못하는 평범함에 대해 치르는 세금이다.
 >
@@ -1500,7 +1500,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/remarkability/](http://personalmba.com/remarkability/)
 
-## 유망 구매자 {#probable-purchaser}
+### 유망 구매자 {#probable-purchaser}
 
 > 지구상에는 60억 명의 인구가 있다. 그중 99.999%는 당신에게 돈을 주고 싶어 하지 않는다.
 >
@@ -1520,7 +1520,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/probable-purchaser/](http://personalmba.com/probable-purchaser/)
 
-## 선입견과 몰입 상태 {#preoccupation}
+### 선입견과 몰입 상태 {#preoccupation}
 
 > 타인이 당신을 얼마나 드물게 생각하는지 깨닫는다면, 남들이 당신을 어떻게 생각하는지에 대해 그토록 걱정하지는 않을 것이다.
 >
@@ -1540,7 +1540,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/preoccupation/](http://personalmba.com/preoccupation/)
 
-## 인지 수준 단계 {#levels-of-awareness}
+### 인지 수준 단계 {#levels-of-awareness}
 
 > 약속, 그것도 커다란 약속이야말로 광고의 영혼이다.
 >
@@ -1566,7 +1566,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/levels-of-awareness/](http://personalmba.com/levels-of-awareness/)
 
-## 최종 결과 {#end-result}
+### 최종 결과 {#end-result}
 
 > 드릴을 원하는 사람은 아무도 없다. 그들이 원하는 것은 구멍이다.
 >
@@ -1588,7 +1588,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/end-result/](http://personalmba.com/end-result/)
 
-## 시연 {#demonstration}
+### 시연 {#demonstration}
 
 > 진실은 대개 눈으로 보이며 귀로 들리는 법은 드물다.
 >
@@ -1608,7 +1608,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/demonstration/](http://personalmba.com/demonstration/)
 
-## 자격 검증 {#qualification}
+### 자격 검증 {#qualification}
 
 > 광고 없이 팔리지 않는 제품은 광고를 하더라도 수익을 내며 팔리지 않는다.
 >
@@ -1644,7 +1644,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/qualification/](http://personalmba.com/qualification/)
 
-## 시장 진입 시점 {#point-of-market-entry}
+### 시장 진입 시점 {#point-of-market-entry}
 
 > 무관심이라는 부드러움보다 더 단단한 것은 없다.
 >
@@ -1664,7 +1664,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/point-of-market-entry/](http://personalmba.com/point-of-market-entry/)
 
-## 접근 가능성 {#addressability}
+### 접근 가능성 {#addressability}
 
 > 때로는 남들이 가지 않은 길이 가지 않은 채로 남아 있는 데는 다 이유가 있다.
 >
@@ -1688,7 +1688,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/addressability/](http://personalmba.com/addressability/)
 
-## 욕구 {#desire}
+### 욕구 {#desire}
 
 > 하지만 나 진짜 그거 갖고 싶단 말이야!
 >
@@ -1706,7 +1706,7 @@ ERG 이론은 인간 욕망의 일반적인 *우선순위(priority)*를 잘 설�
 
 참고 링크(REFERENCE LINK): [personalmba.com/desire/](http://personalmba.com/desire/)
 
-## 시각화 {#visualization}
+### 시각화 {#visualization}
 
 > 결과물이 스스로를 대변하고 있을 때는 끼어들지 마라.
 >
@@ -1730,7 +1730,7 @@ B&H 포토 비디오(B&H Photo Video)는 다른 시장에서 이와 동일한 �
 
 참고 링크(REFERENCE LINK): [personalmba.com/visualization/](http://personalmba.com/visualization/)
 
-## 프레이밍 {#framing}
+### 프레이밍 {#framing}
 
 > 우리가 듣는 모든 것은 의견이지 사실이 아니다. 우리가 보는 모든 것은 관점이지 진실이 아니다.
 >
@@ -1756,7 +1756,7 @@ B&H 포토 비디오(B&H Photo Video)는 다른 시장에서 이와 동일한 �
 
 참고 링크(REFERENCE LINK): [personalmba.com/framing/](http://personalmba.com/framing/)
 
-## 무료 제공 {#free}
+### 무료 제공 {#free}
 
 > 아무에게도 아무것도 청구하지 않는 것은 수익을 내지 않겠다는 보증서나 다름없다. 주의를 끄는 것과 대가를 받는 것은 전혀 다른 일이다.
 >
@@ -1778,7 +1778,7 @@ B&H 포토 비디오(B&H Photo Video)는 다른 시장에서 이와 동일한 �
 
 참고 링크(REFERENCE LINK): [personalmba.com/free/](http://personalmba.com/free/)
 
-## 허락 {#permission}
+### 허락 {#permission}
 
 > 당신의 이야기를 진심으로 듣고 싶어 하는 사람들에게 파는 것이 원치 않는 낯선 사람들을 방해하는 것보다 훨씬 효과적이다.
 >
@@ -1813,7 +1813,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/permission/](http://personalmba.com/permission/)
 
-## 훅 {#hook}
+### 훅 {#hook}
 
 > 실제로 해낼 수 있다면 그것은 자랑이 아니다.
 >
@@ -1837,7 +1837,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/hook/](http://personalmba.com/hook/)
 
-## 행동 촉구 {#call-to-action}
+### 행동 촉구 {#call-to-action}
 
 > 세상의 온갖 아름다운 감정도 단 한 번의 사랑스러운 행동보다 가볍다.
 >
@@ -1863,7 +1863,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/call-to-action/](http://personalmba.com/call-to-action/)
 
-## 서사 {#narrative}
+### 서사 {#narrative}
 
 > 모든 것에는 저마다의 이야기가 깃들어 있다.
 >
@@ -1887,7 +1887,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/narratives/](http://personalmba.com/narratives/)
 
-## 논란 {#controversy}
+### 논란 {#controversy}
 
 > 청중을 모으고 싶다면 싸움을 시작하라.
 >
@@ -1913,7 +1913,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/controversy/](http://personalmba.com/controversy/)
 
-## 평판 {#reputation}
+### 평판 {#reputation}
 
 > 좋든 싫든, 시장의 인식이 곧 당신의 현실이 된다.
 >
@@ -1931,7 +1931,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참고 링크(REFERENCE LINK): [personalmba.com/reputation/](http://personalmba.com/reputation/)
 
-## 제3장: 영업과 판매 {#sec-03-sales}
+### 제3장: 영업과 판매 {#sec-03-sales}
 
 > 사람들은 물건을 강매당하는 것은 싫어하지만 스스로 구매하는 것은 아주 좋아한다.
 >
@@ -1944,7 +1944,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참조 링크: [personalmba.com/sales/](http://personalmba.com/sales/)
 
-## 거래 {#transaction}
+### 거래 {#transaction}
 
 > 상사는 오직 한 명, 바로 고객뿐이다. 고객은 다른 곳에 돈을 쓰는 것만으로도 회장부터 말단 직원까지 모두를 해고할 수 있다.
 >
@@ -1960,7 +1960,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참조 링크: [personalmba.com/transaction/](http://personalmba.com/transaction/)
 
-## 신뢰 {#trust}
+### 신뢰 {#trust}
 
 > 인생의 비결은 정직과 공정한 거래에 있다. 그것만 흉내 낼 수 있어도 당신은 이미 성공한 것이나 다름없다.
 >
@@ -1982,7 +1982,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참조 링크: [personalmba.com/trust/](http://personalmba.com/trust/)
 
-## 공통분모 {#common-ground}
+### 공통분모 {#common-ground}
 
 > 타협이란 모든 사람이 자신이 케이크의 가장 큰 조각을 가졌다고 믿게 만드는 케이크 분할의 기술이다.
 >
@@ -2002,7 +2002,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참조 링크: [personalmba.com/common-ground/](http://personalmba.com/common-ground/)
 
-## 가격 책정 불확실성의 원리 {#the-pricing-uncertainty-principle}
+### 가격 책정 불확실성의 원리 {#the-pricing-uncertainty-principle}
 
 >
 > -해리 브라운(Harry Browne), 《투자 불변의 법칙(Fail-Safe Investing)》 저자
@@ -2021,7 +2021,7 @@ TV와 라디오 광고의 초기 시절에는 중간 광고(commercial interrupt
 
 참조 링크: [personalmba.com/pricing-uncertainty-principle/](http://personalmba.com/pricing-uncertainty-principle/)
 
-## 4가지 가격 책정 방식 {#four-pricing-methods}
+### 4가지 가격 책정 방식 {#four-pricing-methods}
 
 > 가격 책정이란 비즈니스의 모든 유형적, 무형적 측면에 부여하는 환율이다. 가치를 현금과 맞바꾸는 일이다.
 >
@@ -2059,7 +2059,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/4-pricing-methods/](http://personalmba.com/4-pricing-methods/)
 
-## 가격 전환 충격 {#price-transition-shock}
+### 가격 전환 충격 {#price-transition-shock}
 
 > 파일럿으로 오래 살아남고 싶다면 언제 과감히 밀어붙이고 언제 물러서야 하는지 알아야 한다.
 >
@@ -2091,7 +2091,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/price-transition-shock/](http://personalmba.com/price-transition-shock/)
 
-## 가치 기반 판매 {#value-based-selling}
+### 가치 기반 판매 {#value-based-selling}
 
 > 가격은 당신이 지불하는 돈이고 가치는 당신이 얻는 혜택이다.
 >
@@ -2115,7 +2115,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/value-based-selling/](http://personalmba.com/value-based-selling/)
 
-## 교육 기반 판매 {#education-based-selling}
+### 교육 기반 판매 {#education-based-selling}
 
 >
 > -캐시 시에라(Kathy Sierra), 《헤드 퍼스트(Head First)》 시리즈 공동 기획자이자 저자
@@ -2138,7 +2138,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/education-based-selling/](http://personalmba.com/education-based-selling/)
 
-## 차선책 {#next-best-alternative}
+### 차선책 {#next-best-alternative}
 
 >
 > -로버트 루빈(Robert Rubin), 전 미국 재무장관
@@ -2157,7 +2157,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/next-best-alternative/](http://personalmba.com/next-best-alternative/)
 
-## 독점성 {#exclusivity}
+### 독점성 {#exclusivity}
 
 > 최선의 전략은 언제나 압도적으로 강력해지는 것이다.
 >
@@ -2175,7 +2175,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/exclusivity/](http://personalmba.com/exclusivity/)
 
-## 3가지 보편적 화폐 {#three-universal-currencies}
+### 3가지 보편적 화폐 {#three-universal-currencies}
 
 > 시간은 당신의 돈을 앗아가지만 돈으로 시간을 살 수는 없다.
 >
@@ -2197,7 +2197,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/3-universal-currencies/](http://personalmba.com/3-universal-currencies/)
 
-## 협상의 3가지 차원 {#three-dimensions-of-negotiation}
+### 협상의 3가지 차원 {#three-dimensions-of-negotiation}
 
 > 협상장에 들어설 때 가장 먼저 결정해야 할 것은 상대방이 '노(No)'라고 말할 때 어떻게 대응할 것인가이다.
 >
@@ -2237,7 +2237,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/3-dimensions-of-negotiation/](http://personalmba.com/3-dimensions-of-negotiation/)
 
-## 완충 대리인 {#buffer}
+### 완충 대리인 {#buffer}
 
 > 지식 없는 열정은 무모함의 또 다른 이름이다.
 >
@@ -2267,7 +2267,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/buffer/](http://personalmba.com/buffer/)
 
-## 설득 저항 {#persuasion-resistance}
+### 설득 저항 {#persuasion-resistance}
 
 > 세일즈의 성패는 고객의 태도가 아니라 영업사원의 태도에 달려 있다.
 >
@@ -2295,7 +2295,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/persuasion-resistance/](http://personalmba.com/persuasion-resistance/)
 
-## 상호성 {#reciprocation}
+### 상호성 {#reciprocation}
 
 > 선물은 결코 공짜가 아니다. 선물은 주는 자와 받는 자를 끈끈한 상호성의 고리로 묶어놓는다.
 >
@@ -2315,7 +2315,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/reciprocation/](http://personalmba.com/reciprocation/)
 
-## 불리한 사실의 선제적 인정 {#damaging-admission}
+### 불리한 사실의 선제적 인정 {#damaging-admission}
 
 > 우리가 사소한 결점을 솔직히 고백하는 까닭은 우리에게 더 큰 결점이 없음을 사람들에게 확신시키기 위함이다.
 >
@@ -2340,7 +2340,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/damaging-admission/](http://personalmba.com/damaging-admission/)
 
-## 선택 피로 {#option-fatigue}
+### 선택 피로 {#option-fatigue}
 
 > 나를 고민하게 만들지 마라.
 >
@@ -2358,7 +2358,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/option-fatigue/](http://personalmba.com/option-fatigue/)
 
-## 구매 장벽 {#barriers-to-purchase}
+### 구매 장벽 {#barriers-to-purchase}
 
 > 세일즈는 고객이 '노(No)'라고 말하는 순간부터 비로소 시작된다.
 >
@@ -2392,7 +2392,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/objections-barriers-to-purchase/](http://personalmba.com/objections-barriers-to-purchase/)
 
-## 위험 반전 {#risk-reversal}
+### 위험 반전 {#risk-reversal}
 
 > 완벽한 보증을 원한다면 전기 토스터기나 사라.
 >
@@ -2424,7 +2424,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/risk-reversal/](http://personalmba.com/risk-reversal/)
 
-## 재활성화 {#reactivation}
+### 재활성화 {#reactivation}
 
 > 모든 기업의 가장 위대한 자산은 고객이다. 고객이 존재하지 않는다면 기업도 존재할 수 없다.
 >
@@ -2445,7 +2445,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참조 링크: [personalmba.com/reactivation/](http://personalmba.com/reactivation/)
 
-## 제4장: 가치 전달 {#sec-04-value-delivery}
+### 제4장: 가치 전달 {#sec-04-value-delivery}
 
 > 만족한 고객이야말로 모든 비즈니스 전략 중 최고다.
 >
@@ -2460,7 +2460,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/value-delivery/](http://personalmba.com/value-delivery/)
 
-## 가치 흐름 {#value-stream}
+### 가치 흐름 {#value-stream}
 
 > 훌륭한 디자인이란 불필요한 모든 세부 사항을 제거하는 것이다.
 >
@@ -2497,7 +2497,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/value-stream/](http://personalmba.com/value-stream/)
 
-## 유통 채널 {#distribution-channel}
+### 유통 채널 {#distribution-channel}
 
 > 조개잡이나 사냥꾼, 혹은 구식 곡괭이와 삽을 든 탐광자가 아니라면, 오늘날 혼자만의 힘으로 성공하기란 사실상 불가능하다.
 >
@@ -2525,7 +2525,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/distribution-channel/](http://personalmba.com/distribution-channel/)
 
-## 기대 효과 {#the-expectation-effect}
+### 기대 효과 {#the-expectation-effect}
 
 > 실행할 수 있는 것 이상을 결코 약속하지 마라.
 >
@@ -2559,7 +2559,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/expectation-effect/](http://personalmba.com/expectation-effect/)
 
-## 예측 가능성 {#predictability}
+### 예측 가능성 {#predictability}
 
 > 나는 제품이나 서비스가 성공하려면 반드시 품질을 갖춰야 한다고 믿어왔다. 훌륭한 제품이나 서비스는 그 자체로 최고의 셀링 포인트다.
 >
@@ -2589,7 +2589,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/predictability/](http://personalmba.com/predictability/)
 
-## 품질 {#quality}
+### 품질 {#quality}
 
 >
 > - 헨리 로이스(HENRY ROYCE), 엔지니어이자 롤스로이스 공동 창업자
@@ -2615,7 +2615,7 @@ DCF/NPV법은 지속적인 현금흐름을 창출하는 대상의 가치를 평�
 
 참고 링크: [personalmba.com/quality/](http://personalmba.com/quality/)
 
-## 품질 신호 {#quality-signals}
+### 품질 신호 {#quality-signals}
 
 > 신발을 신은 사람에게는 온 세상이 가죽으로 뒤덮인 것과 같다.
 >
@@ -2639,7 +2639,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/quality-signals/](http://personalmba.com/quality-signals/)
 
-## 처리량 {#throughput}
+### 처리량 {#throughput}
 
 > 전략이 아무리 아름다울지라도, 때로는 그 결과를 살펴봐야 한다.
 >
@@ -2663,7 +2663,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/throughput/](http://personalmba.com/throughput/)
 
-## 복제 {#duplication}
+### 복제 {#duplication}
 
 > 이 세상의 문제들은 오직 두 가지 방법으로만 진정으로 해결된다. 절멸시키거나 복제하는 것이다.
 >
@@ -2683,7 +2683,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/duplication/](http://personalmba.com/duplication/)
 
-## 증식 {#multiplication}
+### 증식 {#multiplication}
 
 > 모든 성장은 활동에 달려 있다. 노력 없이는 육체적으로도 지적으로도 발전할 수 없으며 노력이란 곧 일하는 것을 의미한다.
 >
@@ -2703,7 +2703,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/multiplication/](http://personalmba.com/multiplication/)
 
-## 규모 확장 {#scale}
+### 규모 확장 {#scale}
 
 > *Ut sementem feceris, ita metes.* (뿌린 대로 거두리라.)
 >
@@ -2727,7 +2727,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/scale/](http://personalmba.com/scale/)
 
-## 축적 {#accumulation}
+### 축적 {#accumulation}
 
 > 작은 일에서 얼마나 엄청난 결과가 비롯되는지 생각할 때면, 때로는 세상에 작은 일이란 없다는 생각이 들곤 한다.
 >
@@ -2747,7 +2747,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/accumulation/](http://personalmba.com/accumulation/)
 
-## 증폭 {#amplification}
+### 증폭 {#amplification}
 
 > 자연에는 보상도 처벌도 없다. 오직 결과만이 있을 뿐이다.
 >
@@ -2769,7 +2769,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/amplification/](http://personalmba.com/amplification/)
 
-## 경쟁 장벽 {#barrier-to-competition}
+### 경쟁 장벽 {#barrier-to-competition}
 
 > 경쟁자와 경쟁하지 마라. 그들을 무의미하게 만들어라.
 >
@@ -2789,7 +2789,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/barrier-to-competition/](http://personalmba.com/barrier-to-competition/)
 
-## 힘의 승수 {#force-multiplier}
+### 힘의 승수 {#force-multiplier}
 
 > 인간은 도구를 사용하는 동물이다. 도구가 없으면 그는 아무것도 아니지만 도구가 있으면 그는 모든 것이 된다.
 >
@@ -2813,7 +2813,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/force-multiplier/](http://personalmba.com/force-multiplier/)
 
-## 시스템화 {#systemization}
+### 시스템화 {#systemization}
 
 > 여러분이 하고 있는 일을 프로세스로 설명할 수 없다면, 여러분은 자신이 무엇을 하고 있는지 모르는 것이다.
 >
@@ -2843,7 +2843,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/systemization/](http://personalmba.com/systemization/)
 
-## 우선순위 선별 {#triage}
+### 우선순위 선별 {#triage}
 
 > 지혜로워지는 기술은 무엇을 버려야 할지 아는 기술이다.
 >
@@ -2867,7 +2867,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/triage/](http://personalmba.com/triage/)
 
-## 제5장: 재무와 회계 {#sec-05-finance}
+### 제5장: 재무와 회계 {#sec-05-finance}
 
 > 그는 사람들이 돈을 경멸하듯 말하는 것을 들었다. 그는 그들이 돈 없이 살아보려고 한 적이 있는지 궁금했다.
 >
@@ -2889,7 +2889,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/finance/](http://personalmba.com/finance/)
 
-## 이익 {#profit}
+### 이익 {#profit}
 
 > 사람들에게 이익이란 수익과 비용의 차이라는 점을 상기시켜라. 그러면 당신이 똑똑해 보인다.
 >
@@ -2909,7 +2909,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/profit/](http://personalmba.com/profit/)
 
-## 이익률 {#profit-margin}
+### 이익률 {#profit-margin}
 
 > 나는 이익을 남김으로써 돈을 잃어본 적이 없다.
 >
@@ -2935,7 +2935,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/profit-margin/](http://personalmba.com/profit-margin/)
 
-## 가치 포착 {#value-capture}
+### 가치 포착 {#value-capture}
 
 > 다른 사람들이 원하는 것을 얻도록 충분히 돕는다면, 당신은 인생에서 원하는 모든 것을 얻을 수 있다.
 >
@@ -2965,7 +2965,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/value-capture/](http://personalmba.com/value-capture/)
 
-## 충분성 {#sufficiency}
+### 충분성 {#sufficiency}
 
 > 만족할 줄 알면 욕되지 않고 그칠 줄 알면 위태롭지 않으니, 오래도록 지속할 수 있다.
 >
@@ -3021,7 +3021,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/sufficiency/](http://personalmba.com/sufficiency/)
 
-## 가치 평가 {#valuation}
+### 가치 평가 {#valuation}
 
 > 10센트 동전의 진정한 가치는 그것으로 무엇을 할지 아는 데 있다.
 >
@@ -3041,7 +3041,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/valuation/](http://personalmba.com/valuation/)
 
-## 현금흐름표 {#cash-flow-statement}
+### 현금흐름표 {#cash-flow-statement}
 
 > 돈이 부족한 것이 모든 악의 근원이다.
 >
@@ -3065,7 +3065,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/cash-flow-statement/](http://personalmba.com/cash-flow-statement/)
 
-## 손익계산서 {#income-statement}
+### 손익계산서 {#income-statement}
 
 > 어렸을 때 나는 돈이 인생에서 가장 중요한 것인 줄 알았다. 나이가 들고 보니, 정말 그렇다는 것을 알겠다.
 >
@@ -3105,7 +3105,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/income-statement/](http://personalmba.com/income-statement/)
 
-## 재무상태표 {#balance-sheet}
+### 재무상태표 {#balance-sheet}
 
 > 돈의 가치를 알고 싶다면 가서 돈을 좀 빌려보아라.
 >
@@ -3149,7 +3149,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/balance-sheet/](http://personalmba.com/balance-sheet/)
 
-## 재무 비율 {#financial-ratios}
+### 재무 비율 {#financial-ratios}
 
 > 현실 세계의 시험은 모두 오픈북 테스트이며 당신의 성공은 자유 시장에서 얻은 교훈에 의해 필연적으로 결정된다.
 >
@@ -3173,7 +3173,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/financial-ratios/](http://personalmba.com/financial-ratios/)
 
-## 비용 편익 분석 {#cost-benefit-analysis}
+### 비용 편익 분석 {#cost-benefit-analysis}
 
 >
 > -에이브러햄 링컨(ABRAHAM LINCOLN), 미국 제16대 대통령
@@ -3190,7 +3190,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/cost-benefit-analysis/](http://personalmba.com/cost-benefit-analysis/)
 
-## 매출을 늘리는 4가지 방법 {#four-methods-to-increase-revenue}
+### 매출을 늘리는 4가지 방법 {#four-methods-to-increase-revenue}
 
 > 돈을 획득하는 과정을 지배하는 단순한 법칙들을 이해하는 자에게 돈은 풍족하게 주어진다.
 >
@@ -3221,7 +3221,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/4-methods-to-increase-revenue/](http://personalmba.com/4-methods-to-increase-revenue/)
 
-## 가격 결정력 {#pricing-power}
+### 가격 결정력 {#pricing-power}
 
 > 비즈니스의 진정한 경쟁력은 가격을 올릴 때 겪는 고통의 크기를 통해 오랜 시간에 걸쳐 확인할 수 있다.
 >
@@ -3245,7 +3245,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/pricing-power/](http://personalmba.com/pricing-power/)
 
-## 고객 생애 가치 {#lifetime-value}
+### 고객 생애 가치 {#lifetime-value}
 
 > 고객이 존재하는 목적은 판매를 성사시키는 것이 아니다. 판매의 목적이 바로 고객을 확보하는 것이다.
 >
@@ -3265,7 +3265,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/lifetime-value/](http://personalmba.com/lifetime-value/)
 
-## 허용 획득 비용 {#allowable-acquisition-cost}
+### 허용 획득 비용 {#allowable-acquisition-cost}
 
 >
 > -모리스 로젠탈(MORRIS ROSENTHAL), 출판업자
@@ -3294,7 +3294,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/allowable-acquisition-cost/](http://personalmba.com/allowable-acquisition-cost/)
 
-## 간접비 {#overhead}
+### 간접비 {#overhead}
 
 > 사소한 지출을 조심하라. 작은 구멍 하나가 큰 배를 가라앉힌다.
 >
@@ -3316,7 +3316,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 참고 링크: [personalmba.com/overhead/](http://personalmba.com/overhead/)
 
-## 비용: 고정비와 변동비 {#costs-fixed-and-variable}
+### 비용: 고정비와 변동비 {#costs-fixed-and-variable}
 
 > 비용을 관리하라. 그러면 수익은 저절로 따라올 것이다.
 >
@@ -3334,7 +3334,7 @@ BMW, 포드, 포르쉐, 폭스바겐 등 유수의 자동차 제조사들은 기
 
 REFERENCE LINK: [personalmba.com/costs-fixed-variable/](http://personalmba.com/costs-fixed-variable/)
 
-## 점진적 저하 {#incremental-degradation}
+### 점진적 저하 {#incremental-degradation}
 
 >
 > -게리 허시버그(Gary Hirshberg), 스토니필드 팜(Stonyfield Farm) 공동 창업자
@@ -3359,7 +3359,7 @@ REFERENCE LINK: [personalmba.com/costs-fixed-variable/](http://personalmba.com/c
 
 REFERENCE LINK: [personalmba.com/incremental-degradation/](http://personalmba.com/incremental-degradation/)
 
-## 손익분기점 {#breakeven}
+### 손익분기점 {#breakeven}
 
 > 기업이 설립 후 처음 몇 년 동안 수익을 내는 것은 이례적이며 사실상 비정상적인 일이다. 초기의 제품과 초기의 조직은 결코 완벽할 수 없다.
 >
@@ -3380,7 +3380,7 @@ REFERENCE LINK: [personalmba.com/incremental-degradation/](http://personalmba.co
 
 REFERENCE LINK: [personalmba.com/breakeven/](http://personalmba.com/breakeven/)
 
-## 상각 {#amortization}
+### 상각 {#amortization}
 
 >
 
@@ -3404,7 +3404,7 @@ REFERENCE LINK: [personalmba.com/breakeven/](http://personalmba.com/breakeven/)
 
 REFERENCE LINK: [personalmba.com/amortization/](http://personalmba.com/amortization/)
 
-## 구매력 {#purchasing-power}
+### 구매력 {#purchasing-power}
 
 > 기업가의 역할은 회사에 현금이 바닥나지 않도록 관리하는 것이다.
 >
@@ -3426,7 +3426,7 @@ REFERENCE LINK: [personalmba.com/amortization/](http://personalmba.com/amortizat
 
 REFERENCE LINK: [personalmba.com/purchasing-power/](http://personalmba.com/purchasing-power/)
 
-## 현금흐름 주기 {#cash-flow-cycle}
+### 현금흐름 주기 {#cash-flow-cycle}
 
 > 모든 진실은 현금 계좌에 있다.
 >
@@ -3454,7 +3454,7 @@ REFERENCE LINK: [personalmba.com/purchasing-power/](http://personalmba.com/purch
 
 REFERENCE LINK: [personalmba.com/cash-flow-cycle/](http://personalmba.com/cash-flow-cycle/)
 
-## 직무 분리 {#segregation-of-duties}
+### 직무 분리 {#segregation-of-duties}
 
 > 자본주의의 난제는 신뢰를 형성하는 요소들이 동시에 사기를 조장하는 환경도 만들어낸다는 점이다.
 >
@@ -3485,7 +3485,7 @@ REFERENCE LINK: [personalmba.com/cash-flow-cycle/](http://personalmba.com/cash-f
 
 REFERENCE LINK: [personalmba.com/segregation-of-duties/](http://personalmba.com/segregation-of-duties/)
 
-## 결재 권한 제한 {#limited-authorization}
+### 결재 권한 제한 {#limited-authorization}
 
 > 어리석음이 낳는 결과는 악의가 품은 의도보다 훨씬 잔혹할 때가 많다.
 >
@@ -3503,7 +3503,7 @@ REFERENCE LINK: [personalmba.com/segregation-of-duties/](http://personalmba.com/
 
 REFERENCE LINK: [personalmba.com/limited-authorization/](http://personalmba.com/limited-authorization/)
 
-## 기회비용 {#opportunity-cost}
+### 기회비용 {#opportunity-cost}
 
 > 비즈니스는 그 어떤 직업보다도 끊임없이 미래를 다루는 일이다. 그것은 지속적인 계산이자 선견지명을 발휘하는 본능적인 훈련이다.
 >
@@ -3525,7 +3525,7 @@ REFERENCE LINK: [personalmba.com/limited-authorization/](http://personalmba.com/
 
 REFERENCE LINK: [personalmba.com/opportunity-cost/](http://personalmba.com/opportunity-cost/)
 
-## 화폐의 시간가치 {#time-value-of-money}
+### 화폐의 시간가치 {#time-value-of-money}
 
 > 사람들은 늘 시간이 모든 것을 바꾼다고 말하지만 사실 변화는 스스로 만들어내야 한다.
 >
@@ -3551,7 +3551,7 @@ REFERENCE LINK: [personalmba.com/opportunity-cost/](http://personalmba.com/oppor
 
 REFERENCE LINK: <https://personalmba.com/time-value-of-money/>
 
-## 복리 {#compounding}
+### 복리 {#compounding}
 
 > 하루에 1%씩 발전하라. 단 70일 만에 당신은 두 배 더 뛰어난 사람이 될 것이다.
 >
@@ -3573,7 +3573,7 @@ REFERENCE LINK: <https://personalmba.com/time-value-of-money/>
 
 REFERENCE LINK: [personalmba.com/compounding/](http://personalmba.com/compounding/)
 
-## 레버리지 {#leverage}
+### 레버리지 {#leverage}
 
 >
 
@@ -3597,7 +3597,7 @@ REFERENCE LINK: [personalmba.com/compounding/](http://personalmba.com/compoundin
 
 REFERENCE LINK: [personalmba.com/leverage/](http://personalmba.com/leverage/)
 
-## 자금 조달의 위계 {#hierarchy-of-funding}
+### 자금 조달의 위계 {#hierarchy-of-funding}
 
 > 돈은 때로 너무 비싼 대가를 치르게 한다.
 >
@@ -3653,7 +3653,7 @@ REFERENCE LINK: [personalmba.com/leverage/](http://personalmba.com/leverage/)
 
 REFERENCE LINK: [personalmba.com/hierarchy-of-funding/](http://personalmba.com/hierarchy-of-funding/)
 
-## 부트스트래핑 {#bootstrapping}
+### 부트스트래핑 {#bootstrapping}
 
 > *Felix qui nihil debet.* (빚이 없는 자가 행복하다.)
 >
@@ -3671,7 +3671,7 @@ REFERENCE LINK: [personalmba.com/hierarchy-of-funding/](http://personalmba.com/h
 
 REFERENCE LINK: [personalmba.com/bootstrapping/](http://personalmba.com/bootstrapping/)
 
-## 투자수익률 {#return-on-investment}
+### 투자수익률 {#return-on-investment}
 
 > 최종 결산액(순이익)이 언제나 최우선 순위가 될 필요는 없다는 사실을 배우는 자가 현명하다.
 >
@@ -3691,7 +3691,7 @@ REFERENCE LINK: [personalmba.com/bootstrapping/](http://personalmba.com/bootstra
 
 REFERENCE LINK: [personalmba.com/return-on-investment/](http://personalmba.com/return-on-investment/)
 
-## 매몰비용 {#sunk-cost}
+### 매몰비용 {#sunk-cost}
 
 > 처음 시도해서 성공하지 못했다면 다시 시도하고 또 시도하라. 그래도 안 되면 그만두라. 바보처럼 굴 필요는 없다.
 >
@@ -3717,7 +3717,7 @@ REFERENCE LINK: [personalmba.com/return-on-investment/](http://personalmba.com/r
 
 REFERENCE LINK: [personalmba.com/sunk-cost/](http://personalmba.com/sunk-cost/)
 
-## 내부통제 {#internal-controls}
+### 내부통제 {#internal-controls}
 
 > 영원히 지속될 수 없는 것은 언젠가 멈추기 마련이다.
 >
@@ -3745,7 +3745,7 @@ REFERENCE LINK: [personalmba.com/sunk-cost/](http://personalmba.com/sunk-cost/)
 
 REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/internal-controls/)
 
-## 제6장: 인간의 마음 {#sec-06-human-mind}
+### 제6장: 인간의 마음 {#sec-06-human-mind}
 
 > 이 경기의 90퍼센트는 절반의 정신력에 달려 있다.
 >
@@ -3759,7 +3759,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/human-mind/](http://personalmba.com/human-mind/)
 
-## 원시인 증후군 {#caveman-syndrome}
+### 원시인 증후군 {#caveman-syndrome}
 
 > 모든 인간은 자신의 조상들로부터 발췌한 인용문이다.
 >
@@ -3789,7 +3789,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/caveman-syndrome/](http://personalmba.com/caveman-syndrome/)
 
-## 신체 성능 요구조건 {#performance-requirements}
+### 신체 성능 요구조건 {#performance-requirements}
 
 > 소금이 덜 쳐진 기쁨이란 없다네 / 고통과 피로와 허물로 / 부서지지 않는 기쁨이란 없다네
 >
@@ -3815,7 +3815,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/performance-requirements/](http://personalmba.com/performance-requirements/)
 
-## 양파 뇌 {#the-onion-brain}
+### 양파 뇌 {#the-onion-brain}
 
 > 여기에 표현된 견해가 내 마음의 모든 부분이 동의한 만장일치의 견해를 대변하는 것은 아니다.
 >
@@ -3851,7 +3851,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/onion-brain/](http://personalmba.com/onion-brain/)
 
-## 지각 제어 {#perceptual-control}
+### 지각 제어 {#perceptual-control}
 
 > 유기체의 행동은 제어 시스템의 출력이며 원하는 참조 값으로 지각을 제어하려는 목적으로 수행된다. 행동이란 지각의 제어다.
 >
@@ -3885,7 +3885,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/perceptual-control/](http://personalmba.com/perceptual-control/)
 
-## 기준치 {#reference-level}
+### 기준치 {#reference-level}
 
 > 행동은 우리가 경험하고 있는 것과 우리가 경험하고자 하는 것 사이에 괴리가 발견될 때에만 일어난다.
 >
@@ -3915,7 +3915,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/reference-level/](http://personalmba.com/reference-level/)
 
-## 에너지 보존 {#conservation-of-energy}
+### 에너지 보존 {#conservation-of-energy}
 
 > 인간 행동의 기본 원리는 누구나 최소한의 노력으로 욕망을 충족하려 한다는 점이다.
 >
@@ -3941,7 +3941,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/conservation-of-energy/](http://personalmba.com/conservation-of-energy/)
 
-## 유도 구조 {#guiding-structure}
+### 유도 구조 {#guiding-structure}
 
 > 장기적으로는-그리고 종종 단기적으로도-의지력은 결코 환경을 이길 수 없다.
 >
@@ -3963,7 +3963,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/guiding-structure/](http://personalmba.com/guiding-structure/)
 
-## 재조직화 {#reorganization}
+### 재조직화 {#reorganization}
 
 > 방황하는 모든 이들이 길을 잃은 것은 아니다.
 >
@@ -3991,7 +3991,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/reorganization/](http://personalmba.com/reorganization/)
 
-## 갈등 {#conflict}
+### 갈등 {#conflict}
 
 > 우리가 직면한 중대한 문제는 문제를 일으켰을 때와 같은 수준의 사고방식으로는 해결할 수 없다.
 >
@@ -4029,7 +4029,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/conflict/](http://personalmba.com/conflict/)
 
-## 패턴 매칭 {#pattern-matching}
+### 패턴 매칭 {#pattern-matching}
 
 >
 > -존 어빙(John Irving), 소설가이자 아카데미 각본상 수상자
@@ -4050,7 +4050,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/pattern-matching/](http://personalmba.com/pattern-matching/)
 
-## 심리적 시뮬레이션 {#mental-simulation}
+### 심리적 시뮬레이션 {#mental-simulation}
 
 > 나는 대리석 안에서 천사를 보았고 그를 자유롭게 해줄 때까지 돌을 깎아냈다.
 >
@@ -4074,7 +4074,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/mental-simulation/](http://personalmba.com/mental-simulation/)
 
-## 해석과 재해석 {#interpretation-and-reinterpretation}
+### 해석과 재해석 {#interpretation-and-reinterpretation}
 
 > 우리는 사물을 있는 그대로 보지 않는다. 우리는 우리 자신의 방식대로 사물을 본다.
 >
@@ -4116,7 +4116,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참조 링크: [personalmba.com/interpretation/](http://personalmba.com/interpretation/)
 
-## 동기 부여 {#motivation}
+### 동기 부여 {#motivation}
 
 > 하지만 난 하기 싫단 말이야!
 >
@@ -4140,7 +4140,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/motivation/](http://personalmba.com/motivation/)
 
-## 억제 {#inhibition}
+### 억제 {#inhibition}
 
 > 억제란 멈출 수 있는 능력이다. 적절하게 대응할 준비가 될 때까지 반응을 늦추는 능력이다.
 >
@@ -4159,7 +4159,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/inhibition/](http://personalmba.com/inhibition/)
 
-## 지위 신호 {#status-signals}
+### 지위 신호 {#status-signals}
 
 > 민중 극장이라니, 말도 안 되는 소리! 귀족 극장이라고 이름 붙이면 민중들이 알아서 찾아올 것이다.
 >
@@ -4197,7 +4197,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/status-signals/](http://personalmba.com/status-signals/)
 
-## 지위 오작동 {#status-malfunction}
+### 지위 오작동 {#status-malfunction}
 
 > 다른 사람의 경험으로부터 배우는 능력을 지닌 거의 유일한 존재인 인간은, 그 능력을 사용하기를 몹시 꺼린다는 점에서도 독보적이다.
 >
@@ -4225,7 +4225,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/status-malfunction/](http://personalmba.com/status-malfunction/)
 
-## 손실 회피 {#loss-aversion}
+### 손실 회피 {#loss-aversion}
 
 > 우리의 의심은 배신자요, 시도하는 것을 두려워하게 만들어 우리가 얻을 수 있는 좋은 것들을 잃게 만든다.
 >
@@ -4251,7 +4251,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/loss-aversion/](http://personalmba.com/loss-aversion/)
 
-## 위협 동결 {#threat-lockdown}
+### 위협 동결 {#threat-lockdown}
 
 > 공포에 사로잡힌 영혼이 이룰 수 있는 일은 얼마나 적은가.
 >
@@ -4281,7 +4281,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/threat-lockdown/](http://personalmba.com/threat-lockdown/)
 
-## 인지 범위 한계 {#cognitive-scope-limitation}
+### 인지 범위 한계 {#cognitive-scope-limitation}
 
 > 한 사람의 죽음은 비극이지만 백만 명의 죽음은 통계다.
 >
@@ -4315,7 +4315,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/cognitive-scope-limitation/](http://personalmba.com/cognitive-scope-limitation/)
 
-## 연상 {#association}
+### 연상 {#association}
 
 > 우리는 마음이 가장 잘 해내는 일일수록 가장 의식하지 못한다.
 >
@@ -4339,7 +4339,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/association/](http://personalmba.com/association/)
 
-## 부재 맹목 {#absence-blindness}
+### 부재 맹목 {#absence-blindness}
 
 > 무시한다고 해서 엄연한 사실이 사라지지는 않는다.
 >
@@ -4377,7 +4377,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/absence-blindness/](http://personalmba.com/absence-blindness/)
 
-## 대비 {#contrast}
+### 대비 {#contrast}
 
 > 세상은 아무도 눈치채지 못하는 명백한 사실들로 가득 차 있다.
 >
@@ -4405,7 +4405,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/contrast/](http://personalmba.com/contrast/)
 
-## 희소성 {#scarcity}
+### 희소성 {#scarcity}
 
 > 무언가를 사랑하는 가장 확실한 방법은 그것을 잃을 수도 있음을 깨닫는 것이다.
 >
@@ -4432,7 +4432,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/scarcity/](http://personalmba.com/scarcity/)
 
-## 새로움 {#novelty}
+### 새로움 {#novelty}
 
 > 일손만 빌리려고 사람을 뽑았는데, 왜 생각하는 뇌까지 딸려오는 걸까?
 >
@@ -4456,7 +4456,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/novelty/](http://personalmba.com/novelty/)
 
-## 제7장: 자신과 함께 일하기 {#sec-07-working-with-yourself}
+### 제7장: 자신과 함께 일하기 {#sec-07-working-with-yourself}
 
 > 생각하는 것은 쉽다. 행동하는 것은 어렵다. 생각한 대로 행동하는 것은 가장 어렵다.
 >
@@ -4470,7 +4470,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/working-with-yourself/](http://personalmba.com/working-with-yourself/)
 
-## 아크라시아 {#akrasia}
+### 아크라시아 {#akrasia}
 
 > 가장 치열한 전투는 당신 자신의 영혼이라는 고요한 방 안에서 벌어진다.
 >
@@ -4505,7 +4505,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/akrasia/](http://personalmba.com/akrasia/)
 
-## 단일관념주의 {#monoidealism}
+### 단일관념주의 {#monoidealism}
 
 > 그냥 해라 (Just do it).
 >
@@ -4545,7 +4545,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/monoidealism/](http://personalmba.com/monoidealism/)
 
-## 인지 전환 비용 {#cognitive-switching-penalty}
+### 인지 전환 비용 {#cognitive-switching-penalty}
 
 > 마음을 다스려라. 그렇지 않으면 마음이 당신을 지배할 것이다.
 >
@@ -4579,7 +4579,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/cognitive-switching-penalty/](http://personalmba.com/cognitive-switching-penalty/)
 
-## 완수의 4가지 방법 {#four-methods-of-completion}
+### 완수의 4가지 방법 {#four-methods-of-completion}
 
 >
 > -에드워드 에버렛 헤일(Edward Everett Hale), 19세기 미국 작가이자 성직자
@@ -4602,7 +4602,7 @@ REFERENCE LINK: [personalmba.com/internal-controls/](http://personalmba.com/inte
 
 참고 링크: [personalmba.com/4-methods-of-completion/](http://personalmba.com/4-methods-of-completion/)
 
-## 가장 중요한 과제 {#most-important-tasks}
+### 가장 중요한 과제 {#most-important-tasks}
 
 > 작은 일을 하면서도 늘 큰일을 생각하라. 그래야 모든 작은 일이 올바른 방향을 향해 나아간다.
 >
@@ -4626,7 +4626,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/most-important-tasks/](http://personalmba.com/most-important-tasks/)
 
-## 목표 {#goals}
+### 목표 {#goals}
 
 >
 
@@ -4651,7 +4651,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/goals/](http://personalmba.com/goals/)
 
-## 존재 상태 {#states-of-being}
+### 존재 상태 {#states-of-being}
 
 > 비록 내가 가려던 곳에 도달하지는 못했을지라도, 머물고자 했던 바로 그곳에 마침내 다다랐다고 생각한다.
 >
@@ -4675,7 +4675,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/states-of-being/](http://personalmba.com/states-of-being/)
 
-## 습관 {#habits}
+### 습관 {#habits}
 
 > 우리는 우리가 반복적으로 하는 행동의 결과물이다. 따라서 탁월함이란 행동이 아니라 습관이다.
 >
@@ -4695,7 +4695,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/habits/](http://personalmba.com/habits/)
 
-## 점화 효과 {#priming}
+### 점화 효과 {#priming}
 
 >
 > -헨리 데이비드 소로(Henry David Thoreau)
@@ -4724,7 +4724,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/priming/](http://personalmba.com/priming/)
 
-## 의사결정 {#decision}
+### 의사결정 {#decision}
 
 >
 > -호세 오르테가 이 가셋(José Ortega y Gasset), 철학자이자 에세이스트
@@ -4753,7 +4753,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/decision/](http://personalmba.com/decision/)
 
-## 5단계 왜 {#five-fold-why}
+### 5단계 왜 {#five-fold-why}
 
 > 질문을 던져라. 그리고 그에 이어지는 질문을, 또다시 그에 이어지는 질문을 끝없이 던져라.
 >
@@ -4781,7 +4781,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/five-fold-why/](http://personalmba.com/five-fold-why/)
 
-## 5단계 어떻게 {#five-fold-how}
+### 5단계 어떻게 {#five-fold-how}
 
 > 눈에 보이는 곳까지 최대한 멀리 가라. 그곳에 다다르면 더 멀리 내다볼 수 있게 될 것이다.
 >
@@ -4806,7 +4806,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/five-fold-how/](http://personalmba.com/five-fold-how/)
 
-## 다음 행동 {#next-action}
+### 다음 행동 {#next-action}
 
 > 우리가 할 수 있는 작은 일들을 꾸준하고 신속하게 해치워나간다면, 머지않아 해내지 못할 일이 거의 없다는 사실에 깜짝 놀라게 될 것이다.
 >
@@ -4837,7 +4837,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/next-action/](http://personalmba.com/next-action/)
 
-## 외면화 {#externalization}
+### 외면화 {#externalization}
 
 > 언어는 인간의 생각을 또렷하게 모아주는 렌즈다.
 >
@@ -4867,7 +4867,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/externalization/](http://personalmba.com/externalization/)
 
-## 자기 유도 질문 {#self-elicitation}
+### 자기 유도 질문 {#self-elicitation}
 
 > 내 입으로 직접 말하는 것을 듣기 전까지, 내가 무슨 생각을 하는지 어떻게 알겠는가?
 >
@@ -4911,7 +4911,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/self-elicitation/](http://personalmba.com/self-elicitation/)
 
-## 사고 실험 {#thought-experiment}
+### 사고 실험 {#thought-experiment}
 
 > 질문을 명확하게 던질 수 있다면 이미 문제의 3분의 2를 풀어낸 것이다.
 >
@@ -4941,7 +4941,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/thought-experiment/](http://personalmba.com/thought-experiment/)
 
-## 파킨슨의 법칙 {#parkinsons-law}
+### 파킨슨의 법칙 {#parkinsons-law}
 
 >
 > -데이비드 아킨(David Akin), 메릴랜드 대학교 항공우주공학과 교수
@@ -4980,7 +4980,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/doomsday-scenario/](http://personalmba.com/doomsday-scenario/)
 
-## 과도한 자존 경향 {#excessive-self-regard-tendency}
+### 과도한 자존 경향 {#excessive-self-regard-tendency}
 
 > 1961년에 내가 실수했다고 생각했던 때 이후로는 한 번도 틀려본 적이 없다.
 >
@@ -5021,7 +5021,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/excessive-self-regard-tendency/](http://personalmba.com/excessive-self-regard-tendency/)
 
-## 확증 편향 {#confirmation-bias}
+### 확증 편향 {#confirmation-bias}
 
 > 우리를 곤경에 빠뜨리는 것은 우리가 모르는 것이 아니다. 확실하게 알고 있다고 믿었지만 실제로는 그렇지 않은 것들이다.
 >
@@ -5043,7 +5043,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/confirmation-bias/](http://personalmba.com/confirmation-bias/)
 
-## 사후 확신 편향 {#hindsight-bias}
+### 사후 확신 편향 {#hindsight-bias}
 
 >
 > - 랠프 왈도 에머슨(Ralph Waldo Emerson), 19세기 수필가이자 시인
@@ -5064,7 +5064,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/hindsight-bias/](http://personalmba.com/hindsight-bias/)
 
-## 성과 부하 {#performance-load}
+### 성과 부하 {#performance-load}
 
 > 통제하지 않는다면, 업무는 유능한 사람이 감당하지 못해 물에 잠길 때까지 그에게 쏟아져 들어갈 것이다.
 >
@@ -5086,7 +5086,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/performance-load/](http://personalmba.com/performance-load/)
 
-## 에너지 주기 {#energy-cycles}
+### 에너지 주기 {#energy-cycles}
 
 > 우리 모두에게는 더 효과적으로 사고하는 시간대가 있고 아무 생각도 하지 말아야 하는 시간대가 있다.
 >
@@ -5115,7 +5115,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/energy-cycles/](http://personalmba.com/energy-cycles/)
 
-## 스트레스와 회복 {#stress-and-recovery}
+### 스트레스와 회복 {#stress-and-recovery}
 
 > 오직 너무 멀리 갈 위험을 무릅쓰는 자만이 자신이 얼마나 멀리 갈 수 있는지 알아낼 수 있다.
 >
@@ -5149,7 +5149,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/stress-recovery/](http://personalmba.com/stress-recovery/)
 
-## 테스팅 {#testing}
+### 테스팅 {#testing}
 
 > 발견이란 종종 지침을 따르지 않고, 큰길을 벗어나며, 시도되지 않은 것을 시도함으로써 이루어진다.
 >
@@ -5187,7 +5187,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/testing/](http://personalmba.com/testing/)
 
-## 신비감 {#mystique}
+### 신비감 {#mystique}
 
 > 돈이나 과학적 지식을 물려주듯 감정적 경험을 다음 세대에 전수하는 법을 알았더라면, 우리가 얼마나 많은 슬픔을 피할 수 있었을까.
 >
@@ -5219,7 +5219,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/mystique/](http://personalmba.com/mystique/)
 
-## 쾌락의 쳇바퀴 {#hedonic-treadmill}
+### 쾌락의 쳇바퀴 {#hedonic-treadmill}
 
 > 어떤 사람을 행복하게 만들고 싶다면 그의 재산을 늘려주려 하지 말고 그의 욕망을 줄여주어라.
 >
@@ -5265,7 +5265,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/hedonic-treadmill/](http://personalmba.com/hedonic-treadmill/)
 
-## 비교 오류 {#comparison-fallacy}
+### 비교 오류 {#comparison-fallacy}
 
 > 자신의 내면을 다른 사람의 외면과 절대 비교하지 마라.
 >
@@ -5291,7 +5291,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/comparison-fallacy/](http://personalmba.com/comparison-fallacy/)
 
-## 통제 위치 {#locus-of-control}
+### 통제 위치 {#locus-of-control}
 
 > 내가 바꿀 수 없는 것을 받아들이는 평온함을, 내가 바꿀 수 있는 것을 바꾸는 용기를, 그리고 그 차이를 분별할 수 있는 지혜를 주소서.
 >
@@ -5315,7 +5315,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/locus-of-control/](http://personalmba.com/locus-of-control/)
 
-## 집착 {#attachment}
+### 집착 {#attachment}
 
 > 인생의 중대한 결정이 내려질 때 나팔 소리는 울리지 않는다. 운명은 소리 없이 찾아온다.
 >
@@ -5339,7 +5339,7 @@ MIT 목록을 작성할 때는 *자기 유도 질문(Self-Elicitation)*을 던�
 
 참고 링크: [personalmba.com/attachment/](http://personalmba.com/attachment/)
 
-## 개인 연구개발 {#personal-research-and-development}
+### 개인 연구개발 {#personal-research-and-development}
 
 > 자신의 지갑을 머릿속에 쏟아붓는다면, 그 누구도 그것을 빼앗아 갈 수 없다. 지식에 대한 투자는 언제나 최고의 이자를 지급한다.
 >
@@ -5361,7 +5361,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/personal-research-and-development/](http://personalmba.com/personal-research-and-development/)
 
-## 제한적 신념 {#limiting-belief}
+### 제한적 신념 {#limiting-belief}
 
 > 지적인 불만족이야말로 문명의 원동력이다.
 >
@@ -5393,7 +5393,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/limiting-belief/](http://personalmba.com/limiting-belief/)
 
-## 부실 투자 {#malinvestment}
+### 부실 투자 {#malinvestment}
 
 >
 > - 윌리엄 제임스(William James), 19세기 의사이자 선구적 심리학자
@@ -5443,7 +5443,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/malinvestment/](http://personalmba.com/malinvestment/)
 
-## 선택의 필연성 {#the-necessity-of-choice}
+### 선택의 필연성 {#the-necessity-of-choice}
 
 >
 > - 윌리엄 셰익스피어(William Shakespeare), 《줄리어스 시저(Julius Caesar)》
@@ -5464,7 +5464,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/necessity-of-choice/](http://personalmba.com/necessity-of-choice/)
 
-## 도착의 오류 {#the-arrival-fallacy}
+### 도착의 오류 {#the-arrival-fallacy}
 
 > 누구나 산꼭대기에서 살기를 원하지만 모든 행복과 성장은 산을 오르는 과정에서 일어난다.
 >
@@ -5484,7 +5484,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/arrival-fallacy/](http://personalmba.com/arrival-fallacy/)
 
-## 제8장: 타인과 함께 일하기 {#sec-08-working-with-others}
+### 제8장: 타인과 함께 일하기 {#sec-08-working-with-others}
 
 >
 > -앤드루 카네기(ANDREW CARNEGIE), 19세기 미국의 사업가
@@ -5495,7 +5495,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/working-with-others/](http://personalmba.com/working-with-others/)
 
-## 권력 {#power}
+### 권력 {#power}
 
 >
 > -에이브러햄 링컨(ABRAHAM LINCOLN), 미국 제16대 대통령
@@ -5516,7 +5516,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/power/](http://personalmba.com/power/)
 
-## 비교우위 {#comparative-advantage}
+### 비교우위 {#comparative-advantage}
 
 > 남의 이류가 되기보다 나 자신의 일류가 되어라.
 >
@@ -5542,7 +5542,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/comparative-advantage/](http://personalmba.com/comparative-advantage/)
 
-## 소통 오버헤드 {#communication-overhead}
+### 소통 오버헤드 {#communication-overhead}
 
 > 인류가 온전한 잠재력을 발휘하지 못했고 앞으로도 영원히 발휘하지 못할 단 하나의 이유를 꼽으라면, 그 단어는 바로 '회의'일 것이다.
 >
@@ -5581,7 +5581,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/communication-overhead/](http://personalmba.com/communication-overhead/)
 
-## 중요성 {#importance}
+### 중요성 {#importance}
 
 > 인간 본성의 가장 깊은 본능은 인정받고자 하는 갈망이다.
 >
@@ -5599,7 +5599,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/importance/](http://personalmba.com/importance/)
 
-## 안전감 {#safety}
+### 안전감 {#safety}
 
 >
 > -스콧 애덤스(SCOTT ADAMS), 만화가이자 《딜버트(Dilbert)》의 창작자
@@ -5626,7 +5626,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/safety/](http://personalmba.com/safety/)
 
-## 황금의 3요소 {#the-golden-trifecta}
+### 황금의 3요소 {#the-golden-trifecta}
 
 > 어떤 바보라도 비판하고, 비난하고, 불평할 수 있다. 그리고 대부분의 바보들은 그렇게 한다.
 >
@@ -5648,7 +5648,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/golden-trifecta/](http://personalmba.com/golden-trifecta/)
 
-## 이유 {#reason-why}
+### 이유 {#reason-why}
 
 > 문명은 생각하지 않고도 수행할 수 있는 작업의 수를 늘려감으로써 발전한다.
 >
@@ -5664,7 +5664,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/reason-why/](http://personalmba.com/reason-why/)
 
-## 지휘관의 의도 {#commanders-intent}
+### 지휘관의 의도 {#commanders-intent}
 
 > 사람들에게 일하는 방법을 일일이 지시하지 마라. 무엇을 해야 할지를 알려주면, 그들은 자신들의 기발한 독창성으로 당신을 놀라게 할 것이다.
 >
@@ -5686,7 +5686,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/commanders-intent/](http://personalmba.com/commanders-intent/)
 
-## 인정 획득 {#earned-regard}
+### 인정 획득 {#earned-regard}
 
 > 앞으로 하겠다는 일로는 평판을 쌓을 수 없다.
 >
@@ -5706,7 +5706,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/earned-regard/](http://personalmba.com/earned-regard/)
 
-## 방관자 효과 {#bystander-apathy}
+### 방관자 효과 {#bystander-apathy}
 
 > 책무성이란 한 사람이 책임을 지는 것이다. 두 사람이 동일한 결정에 대해 책임을 진다면, 실제로는 아무도 책임지지 않는 것이다.
 >
@@ -5730,7 +5730,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/bystander-apathy/](http://personalmba.com/bystander-apathy/)
 
-## 계획 오류 {#planning-fallacy}
+### 계획 오류 {#planning-fallacy}
 
 > 호프스태터의 법칙: 어떤 일이든 예상보다 오래 걸린다. 호프스태터의 법칙을 고려하더라도 그렇다.
 >
@@ -5754,7 +5754,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/planning-fallacy/](http://personalmba.com/planning-fallacy/)
 
-## 강제 함수 {#forcing-function}
+### 강제 함수 {#forcing-function}
 
 > 당신이 작성한 일정표는, 고객이 납기를 맞추지 못했다는 이유로 당신을 해고하기 직전까지는 완벽한 허구의 소설처럼 보일 것이다.
 >
@@ -5770,7 +5770,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/forcing-function/](http://personalmba.com/forcing-function/)
 
-## 추천 소개 {#referrals}
+### 추천 소개 {#referrals}
 
 > 세상에서 출세하는 비결은 당신을 돕는 것이 상대방에게도 이득이 된다고 믿게 만드는 것이다.
 >
@@ -5819,7 +5819,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/clanning/](http://personalmba.com/clanning/)
 
-## 수렴과 발산 {#convergence-and-divergence}
+### 수렴과 발산 {#convergence-and-divergence}
 
 >
 
@@ -5845,7 +5845,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/convergence-divergence/](http://personalmba.com/convergence-divergence/)
 
-## 사회적 증거 {#social-proof}
+### 사회적 증거 {#social-proof}
 
 > 5천만 명의 사람이 어리석은 말을 한다 해도, 그것은 여전히 어리석은 말이다.
 >
@@ -5867,7 +5867,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/social-proof/](http://personalmba.com/social-proof/)
 
-## 권위 {#authority}
+### 권위 {#authority}
 
 > 모든 사람을 존중하되, 그 누구에게도 굴종하지 말라.
 >
@@ -5895,7 +5895,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/authority/](http://personalmba.com/authority/)
 
-## 일관성과 헌신 {#commitment-and-consistency}
+### 일관성과 헌신 {#commitment-and-consistency}
 
 > 어리석은 일관성은 옹졸한 마음의 도깨비다.
 >
@@ -5925,7 +5925,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/commitment-consistency/](http://personalmba.com/commitment-consistency/)
 
-## 유인 편향 {#incentive-caused-bias}
+### 유인 편향 {#incentive-caused-bias}
 
 > 신탁을 우러러보라.
 >
@@ -5949,7 +5949,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/incentive-caused-bias/](http://personalmba.com/incentive-caused-bias/)
 
-## 양식 편향 {#modal-bias}
+### 양식 편향 {#modal-bias}
 
 > 우리는 우리에게 동의하는 이들에게서 안식을 얻고 동의하지 않는 이들에게서 성장을 얻는다.
 >
@@ -5969,7 +5969,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/modal-bias/](http://personalmba.com/modal-bias/)
 
-## 귀인 오류 {#attribution-error}
+### 귀인 오류 {#attribution-error}
 
 > 저울에 손가락을 얹어 무게를 속이지 않고 타인의 잘못을 공정하게 잴 수 있는 사람은 드물다.
 >
@@ -5989,7 +5989,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/attribution-error/](http://personalmba.com/attribution-error/)
 
-## 독심술 오류 {#the-mind-reading-fallacy}
+### 독심술 오류 {#the-mind-reading-fallacy}
 
 > 소통에서 발생하는 가장 큰 문제는 소통이 이루어졌다는 착각이다.
 >
@@ -6005,7 +6005,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/mindreading-fallacy/](http://personalmba.com/mindreading-fallacy/)
 
-## 경계 설정 {#boundary-setting}
+### 경계 설정 {#boundary-setting}
 
 > 때로는 1인 기업가에게 가장 힘든 일이 일하는 훈련을 하는 것이 아니라, 일하지 *않는* 훈련을 하는 것 같다는 생각이 든다.
 >
@@ -6027,7 +6027,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/boundary-setting/](http://personalmba.com/boundary-setting/)
 
-## 자비의 원칙 {#the-principle-of-charity}
+### 자비의 원칙 {#the-principle-of-charity}
 
 > 경청이 어려운 이유는 '듣지 않는 것'이 '안 듣는 느낌'으로 다가오는 게 아니라, 그저 '상대방이 틀렸다'는 느낌으로 다가오기 때문이다.
 >
@@ -6050,7 +6050,7 @@ R&D가 존재하는 이유는 실제로 효과가 있기 때문이다. 연구 �
 
 참고 링크: [personalmba.com/principle-of-charity/](http://personalmba.com/principle-of-charity/)
 
-## 옵션 지향성 {#option-orientation}
+### 옵션 지향성 {#option-orientation}
 
 > 세상을 앞으로 나아가게 하는 중요한 일들은 완벽한 사람이 나타나기를 기다려주지 않는다.
 >
@@ -6075,7 +6075,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/option-orientation/](http://personalmba.com/option-orientation/)
 
-## 경영 관리 {#management}
+### 경영 관리 {#management}
 
 > 관리가 일을 올바르게 하는 것이라면, 리더십은 올바른 일을 하는 것이다.
 >
@@ -6107,7 +6107,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/management/](http://personalmba.com/management/)
 
-## 성과 기반 채용 {#performance-based-hiring}
+### 성과 기반 채용 {#performance-based-hiring}
 
 > 모든 말이 끝나고 행동이 완료되었을 때, 실제로 행동한 것보다 말이 앞선 경우가 훨씬 많다.
 >
@@ -6141,7 +6141,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/performance-based-hiring/](http://personalmba.com/performance-based-hiring/)
 
-## 제9장: 시스템의 이해 {#sec-09-understanding-systems}
+### 제9장: 시스템의 이해 {#sec-09-understanding-systems}
 
 > 이해하지 못하는 것을 칭찬하는 것도 나쁘지만 비난하는 것은 더 나쁘다.
 >
@@ -6153,7 +6153,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/understanding-systems/](http://personalmba.com/understanding-systems/)
 
-## 갈의 법칙 {#galls-law}
+### 갈의 법칙 {#galls-law}
 
 >
 > -존 갈(John Gall), 시스템 이론가
@@ -6180,7 +6180,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/galls-law/](http://personalmba.com/galls-law/)
 
-## 유량 {#flow}
+### 유량 {#flow}
 
 > 멈추어 서서는 프로세스를 이해할 수 없다. 이해하려면 프로세스의 흐름과 함께 움직여야 하며 그 흐름에 동참해 함께 흘러가야 한다.
 >
@@ -6196,7 +6196,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/flow/](http://personalmba.com/flow/)
 
-## 저량 {#stock}
+### 저량 {#stock}
 
 >
 > -토머스 J. 왓슨(Thomas J. Watson), 전 IBM 사장
@@ -6213,7 +6213,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/stock/](http://personalmba.com/stock/)
 
-## 여유 공간 {#slack}
+### 여유 공간 {#slack}
 
 > 여유가 있는 사람은 상황을 주도하지만 여유가 없는 사람은 상황에 끌려다니며 판단력을 발휘할 기회조차 얻지 못할 때가 많다.
 >
@@ -6233,7 +6233,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/slack/](http://personalmba.com/slack/)
 
-## 제약 조건 {#constraint}
+### 제약 조건 {#constraint}
 
 > 1위 문제를 해결하고 나면, 2위 문제가 승진하여 1위가 된다.
 >
@@ -6257,7 +6257,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/constraint/](http://personalmba.com/constraint/)
 
-## 피드백 루프 {#feedback-loop}
+### 피드백 루프 {#feedback-loop}
 
 >
 > -제이 W. 포레스터(Jay W. Forrester), MIT 교수이자 시스템 이론가
@@ -6280,7 +6280,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/feedback-loops/](http://personalmba.com/feedback-loops/)
 
-## 자가 촉매 작용 {#autocatalysis}
+### 자가 촉매 작용 {#autocatalysis}
 
 >
 > -E. O. 윌슨(E. O. Wilson), 생물학자이자 박물학자
@@ -6299,7 +6299,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/autocatalysis/](http://personalmba.com/autocatalysis/)
 
-## 환경 {#environment}
+### 환경 {#environment}
 
 > 현실이란 당신이 더 이상 믿지 않는다 해도 여전히 사라지지 않는 것이다.
 >
@@ -6319,7 +6319,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/environment/](http://personalmba.com/environment/)
 
-## 선택 검증 {#selection-test}
+### 선택 검증 {#selection-test}
 
 >
 > -프랭크 허버트(Frank Herbert), 공상과학 소설가
@@ -6338,7 +6338,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/selection-test/](http://personalmba.com/selection-test/)
 
-## 엔트로피 {#entropy}
+### 엔트로피 {#entropy}
 
 > 단지 변화라는 이유로 개선을 거부하는 자들은, 결국 아무런 개선도 없는 가혹한 변화를 맞이하게 될 것이다.
 >
@@ -6356,7 +6356,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/entropy/](http://personalmba.com/entropy/)
 
-## 불확실성 {#uncertainty}
+### 불확실성 {#uncertainty}
 
 > 수정구슬에 기대어 점을 치는 자는 곧 깨진 유리 조각을 씹어 삼키게 될 것이다.
 >
@@ -6391,7 +6391,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/uncertainty/](http://personalmba.com/uncertainty/)
 
-## 변화 {#change}
+### 변화 {#change}
 
 > 살아남는 종은 가장 강한 종도, 가장 똑똑한 종도 아니다. 변화에 가장 잘 적응하는 종이다.
 >
@@ -6409,7 +6409,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/change/](http://personalmba.com/change/)
 
-## 상호의존성 {#interdependence}
+### 상호의존성 {#interdependence}
 
 > 우주 안의 어떤 것을 홀로 떼어내 살펴보려 할 때마다, 그것이 삼라만상 모든 것과 촘촘히 얽혀 있음을 깨닫게 된다.
 >
@@ -6439,7 +6439,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/interdependence/](http://personalmba.com/interdependence/)
 
-## 거래 상대방 위험 {#counterparty-risk}
+### 거래 상대방 위험 {#counterparty-risk}
 
 > 행복에 필요한 모든 조건을 타인이 아닌 자기 자신에게서 찾는 사람이야말로, 가장 훌륭하고 온전한 삶의 방식을 선택한 자다.
 >
@@ -6463,7 +6463,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/counterparty-risk/](http://personalmba.com/counterparty-risk/)
 
-## 2차 효과 {#second-order-effects}
+### 2차 효과 {#second-order-effects}
 
 > 우리는 행동을 선택할 자유는 있지만 그 행동이 불러올 결과를 마음대로 선택할 자유는 없다.
 >
@@ -6491,7 +6491,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/second-order-effects/](http://personalmba.com/second-order-effects/)
 
-## 외부효과 {#externality}
+### 외부효과 {#externality}
 
 >
 > -칼 세이건(Carl Sagan), 천문학자이자 《창백한 푸른 점》 저자
@@ -6516,7 +6516,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/externality/](http://personalmba.com/externality/)
 
-## 정상 사고 {#normal-accidents}
+### 정상 사고 {#normal-accidents}
 
 > 문제는 문제 자체가 아니다. 진짜 문제는 문제가 일어나지 않을 것이라 착각하고 문제가 발생한 것 자체를 비정상으로 여기는 태도다.
 >
@@ -6546,7 +6546,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/normal-accidents/](http://personalmba.com/normal-accidents/)
 
-## 제10장: 시스템 분석 {#sec-10-analyzing-systems}
+### 제10장: 시스템 분석 {#sec-10-analyzing-systems}
 
 > 이해할 수 없다면, 바꿀 수도 없다.
 >
@@ -6560,7 +6560,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/analyzing-systems/](http://personalmba.com/analyzing-systems/)
 
-## 해체 {#deconstruction}
+### 해체 {#deconstruction}
 
 > 완벽함 속에서는 아무것도 만들어질 수 없다. 모든 과정은 무언가를 쪼개는 일을 수반한다.
 >
@@ -6587,7 +6587,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/deconstruction/](http://personalmba.com/deconstruction/)
 
-## 측정 {#measurement}
+### 측정 {#measurement}
 
 > 우리는 하나님을 믿는다. 그러나 다른 모든 사람은 데이터를 가져와야 한다.
 >
@@ -6613,7 +6613,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/measurement/](http://personalmba.com/measurement/)
 
-## 핵심 성과 지표 {#key-performance-indicators}
+### 핵심 성과 지표 {#key-performance-indicators}
 
 > 잘못된 질문에 대한 정확한 답보다 올바른 질문에 대한 대략적인 답을 얻는 편이 낫다.
 >
@@ -6645,7 +6645,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/key-performance-indicator/](http://personalmba.com/key-performance-indicator/)
 
-## 쓰레기를 넣으면 쓰레기가 나온다 {#garbage-in-garbage-out}
+### 쓰레기를 넣으면 쓰레기가 나온다 {#garbage-in-garbage-out}
 
 > 시작을 잘 살피면 결과는 스스로 관리될 것이다.
 >
@@ -6663,7 +6663,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/garbage-in-garbage-out/](http://personalmba.com/garbage-in-garbage-out/)
 
-## 허용 오차 {#tolerance}
+### 허용 오차 {#tolerance}
 
 >
 > -피트 하인(Piet Hein), 수학자이자 시인
@@ -6686,7 +6686,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/tolerance/](http://personalmba.com/tolerance/)
 
-## 분산과 변동성 {#variance}
+### 분산과 변동성 {#variance}
 
 >
 > -마르쿠스 아우렐리우스(Marcus Aurelius), 2세기 로마의 철학자이자 황제
@@ -6703,7 +6703,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/variance/](http://personalmba.com/variance/)
 
-## 분석적 정직성 {#analytical-honesty}
+### 분석적 정직성 {#analytical-honesty}
 
 > 진실에 의해 무너질 수 있는 것이라면 마땅히 무너져야 한다.
 >
@@ -6727,7 +6727,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/analytical-honesty/](http://personalmba.com/analytical-honesty/)
 
-## 맥락 {#context}
+### 맥락 {#context}
 
 > 무언가를 이해하지 못한다면, 그것은 맥락을 모르기 때문이다.
 >
@@ -6747,7 +6747,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/context/](http://personalmba.com/context/)
 
-## 표본 추출 {#sampling}
+### 표본 추출 {#sampling}
 
 > 표본 이론을 믿지 못하겠다면, 다음에 병원에 가서 의사가 피를 조금 뽑으려 할 때 피를 다 뽑아가라고 말해보라.
 >
@@ -6769,7 +6769,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/sampling/](http://personalmba.com/sampling/)
 
-## 표본 오차 {#margin-of-error}
+### 표본 오차 {#margin-of-error}
 
 > 누구나 하나의 사례로부터 일반화한다. 적어도 나는 그렇다.
 >
@@ -6797,7 +6797,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/margin-of-error/](http://personalmba.com/margin-of-error/)
 
-## 비율 {#ratio}
+### 비율 {#ratio}
 
 > 산수를 거부하는 자는 헛소리를 지껄일 운명에 처한다.
 >
@@ -6826,7 +6826,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/ratio/](http://personalmba.com/ratio/)
 
-## 전형성 {#typicality}
+### 전형성 {#typicality}
 
 > 사람을 곤경에 빠뜨리는 것은 몰라서가 아니다. 확실히 알고 있다고 믿었던 것이 사실은 그렇지 않기 때문이다.
 >
@@ -6850,7 +6850,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/typicality/](http://personalmba.com/typicality/)
 
-## 상관관계와 인과관계 {#correlation-and-causation}
+### 상관관계와 인과관계 {#correlation-and-causation}
 
 > 상관관계가 곧 인과관계는 아니지만 분명 강력한 힌트다.
 >
@@ -6878,7 +6878,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/correlation-causation/](http://personalmba.com/correlation-causation/)
 
-## 규범과 기준치 {#norms}
+### 규범과 기준치 {#norms}
 
 > 과거를 기억하지 못하는 자는 과거를 반복할 운명에 처한다.
 >
@@ -6896,7 +6896,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/norms/](http://personalmba.com/norms/)
 
-## 대리 지표 {#proxy}
+### 대리 지표 {#proxy}
 
 > 꼬리를 다리라고 부른다면 개는 다리가 몇 개인가? 네 개다. 꼬리를 다리라고 부른다고 해서 꼬리가 다리가 되는 것은 아니다.
 >
@@ -6920,7 +6920,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/proxy/](http://personalmba.com/proxy/)
 
-## 세분화 {#segmentation}
+### 세분화 {#segmentation}
 
 >
 > -아비나쉬 카우식(Avinash Kaushik), 데이터 분석 전문가이자 기업가
@@ -6941,7 +6941,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/segmentation/](http://personalmba.com/segmentation/)
 
-## 인간화 {#humanization}
+### 인간화 {#humanization}
 
 > 우주의 중심은 사람이다. 물질이 아니다.
 >
@@ -6963,7 +6963,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/humanization/](http://personalmba.com/humanization/)
 
-## 제11장: 시스템 개선 {#sec-11-improving-systems}
+### 제11장: 시스템 개선 {#sec-11-improving-systems}
 
 > 이론상으로는 이론과 실천 사이에 아무런 차이가 없다. 그러나 실천에서는 차이가 존재한다.
 >
@@ -6975,7 +6975,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/improving-systems/](http://personalmba.com/improving-systems/)
 
-## 개입 편향 {#intervention-bias}
+### 개입 편향 {#intervention-bias}
 
 > 모든 복잡한 문제에는 명쾌하고 단순하며 틀린 해답이 존재한다.
 >
@@ -6999,7 +6999,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/intervention-bias/](http://personalmba.com/intervention-bias/)
 
-## 최적화 {#optimization}
+### 최적화 {#optimization}
 
 > 섣부른 최적화는 모든 악의 근원이다.
 >
@@ -7019,7 +7019,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/optimization/](http://personalmba.com/optimization/)
 
-## 리팩터링 {#refactoring}
+### 리팩터링 {#refactoring}
 
 >
 > - 에릭 나굼(ERIK NAGGUM), 컴퓨터 프로그래머
@@ -7040,7 +7040,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/refactoring/](http://personalmba.com/refactoring/)
 
-## 핵심 소수 {#the-critical-few}
+### 핵심 소수 {#the-critical-few}
 
 >
 > - 리처드 코치(RICHARD KOCH), 비즈니스 컨설턴트이자 《80/20 법칙(The 80/20 Principle)》의 저자
@@ -7070,7 +7070,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/critical-few/](http://personalmba.com/critical-few/)
 
-## 수확 체감 {#diminishing-returns}
+### 수확 체감 {#diminishing-returns}
 
 > 마지막 10퍼센트의 성능을 끌어올리는 데 전체 비용의 3분의 1과 전체 문제의 3분의 2가 발생한다.
 >
@@ -7092,7 +7092,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/diminishing-returns/](http://personalmba.com/diminishing-returns/)
 
-## 점진적 부하 {#progressive-load}
+### 점진적 부하 {#progressive-load}
 
 > 조금씩 나아가다 보면 멀리까지 가게 된다.
 >
@@ -7112,7 +7112,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/progressive-load/](http://personalmba.com/progressive-load/)
 
-## 마찰 {#friction}
+### 마찰 {#friction}
 
 > 세상은 넓다. 추진력으로 바꿀 수 있는 에너지를 마찰로 낭비하며 인생을 보내지 않겠다.
 >
@@ -7142,7 +7142,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/friction/](http://personalmba.com/friction/)
 
-## 자동화 {#automation}
+### 자동화 {#automation}
 
 >
 > - 빌 게이츠(BILL GATES), 마이크로소프트 공동 창업자
@@ -7157,7 +7157,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/automation/](http://personalmba.com/automation/)
 
-## 자동화의 역설 {#the-paradox-of-automation}
+### 자동화의 역설 {#the-paradox-of-automation}
 
 > 기계 한 대가 평범한 사람 50명의 몫을 해낼 수는 있다. 하지만 어떤 기계도 비범한 사람 한 명의 몫을 대신할 수는 없다.
 >
@@ -7183,7 +7183,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/paradox-of-automation/](http://personalmba.com/paradox-of-automation/)
 
-## 자동화의 아이러니 {#the-irony-of-automation}
+### 자동화의 아이러니 {#the-irony-of-automation}
 
 >
 > - 라자 파라슈라만(DR. RAJA PARASURAMAN), 조지 메이슨 대학교 심리학 교수
@@ -7204,7 +7204,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/irony-of-automation/](http://personalmba.com/irony-of-automation/)
 
-## 표준 운영 절차 {#standard-operating-procedure}
+### 표준 운영 절차 {#standard-operating-procedure}
 
 > 성공의 척도는 힘든 문제를 겪고 있느냐가 아니라, 작년에 겪었던 문제와 똑같은 문제를 겪고 있느냐에 달려 있다.
 >
@@ -7226,7 +7226,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/standard-operating-procedures/](http://personalmba.com/standard-operating-procedures/)
 
-## 체크리스트 {#checklist}
+### 체크리스트 {#checklist}
 
 > 아무리 뛰어난 전문가라 할지라도 잘 설계된 체크리스트를 활용하면 성과를 한층 끌어올릴 수 있다.
 >
@@ -7258,7 +7258,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/checklisting/](http://personalmba.com/checklisting/)
 
-## 프로세스 오버헤드 {#process-overhead}
+### 프로세스 오버헤드 {#process-overhead}
 
 > 불필요한 일을 세 배나 빠르게 해내는 것을 대단한 진보라고 착각하지 마라.
 >
@@ -7276,7 +7276,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/process-overhead/](http://personalmba.com/process-overhead/)
 
-## 중단 {#cessation}
+### 중단 {#cessation}
 
 > 전혀 할 필요가 없는 일을 아주 효율적으로 해내는 것만큼 쓸모없는 짓은 없다.
 >
@@ -7299,7 +7299,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/cessation/](http://personalmba.com/cessation/)
 
-## 회복탄력성 {#resilience}
+### 회복탄력성 {#resilience}
 
 > 시스템에 불변이라는 구속복을 입히면 도리어 취약성이 자라날 수 있다.
 >
@@ -7345,7 +7345,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/resilience/](http://personalmba.com/resilience/)
 
-## 안전장치 {#fail-safes}
+### 안전장치 {#fail-safes}
 
 > '항상'과 '절대'는 절대 쓰지 말아야 함을 항상 기억해야 할 두 단어다.
 >
@@ -7381,7 +7381,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/fail-safe/](http://personalmba.com/fail-safe/)
 
-## 스트레스 테스트 {#stress-testing}
+### 스트레스 테스트 {#stress-testing}
 
 > 실수를 전혀 저지르지 않는 것은 인간의 능력 밖의 일이다. 그러나 지혜롭고 선한 자들은 자신의 오류와 실수로부터 미래를 위한 지혜를 배운다.
 >
@@ -7403,7 +7403,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/stress-testing/](http://personalmba.com/stress-testing/)
 
-## 시나리오 플래닝 {#scenario-planning}
+### 시나리오 플래닝 {#scenario-planning}
 
 > 미리 내다본 위험은 절반쯤 피한 것이나 다름없다.
 >
@@ -7425,7 +7425,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/scenario-planning/](http://personalmba.com/scenario-planning/)
 
-## 탐색과 활용 {#exploration-exploitation}
+### 탐색과 활용 {#exploration-exploitation}
 
 > 우리는 추측을 통해서만 진리를 정복할 수 있으며 그렇지 않다면 결코 정복할 수 없다.
 >
@@ -7453,7 +7453,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/explore-exploit/](http://personalmba.com/explore-exploit/)
 
-## 지속 가능한 성장 주기 {#sustainable-growth-cycle}
+### 지속 가능한 성장 주기 {#sustainable-growth-cycle}
 
 > 승리한 후에는 투구 끈을 졸라매라.
 >
@@ -7485,7 +7485,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/sustainable-growth-cycle/](http://personalmba.com/sustainable-growth-cycle/)
 
-## 중도 {#the-middle-path}
+### 중도 {#the-middle-path}
 
 > 모든 예술의 거장은 지나침과 모자람을 피하며 중용을 찾아 그것을 선택한다.
 >
@@ -7503,7 +7503,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/middle-path/](http://personalmba.com/middle-path/)
 
-## 실험적 사고방식 {#the-experimental-mind-set}
+### 실험적 사고방식 {#the-experimental-mind-set}
 
 > 팬케이크를 뒤집는 법을 배우는 유일한 길은 그냥 뒤집어보는 것뿐이다!
 >
@@ -7521,7 +7521,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 참고 링크: [personalmba.com/experimental-mindset/](http://personalmba.com/experimental-mindset/)
 
-## 결론: 끝이 아니다 {#sec-conclusion}
+### 결론: 끝이 아니다 {#sec-conclusion}
 
 >
 > -헨리 데이비드 소로(Henry David Thoreau)
@@ -7601,7 +7601,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 즐겁게 탐험하시길!
 
-## 부록 A: 비즈니스 공부를 계속해나가는 방법 {#sec-appendix-a}
+### 부록 A: 비즈니스 공부를 계속해나가는 방법 {#sec-appendix-a}
 
 이 책은 방대한 비즈니스 지식을 거시적 관점에서 조망한 개요서다. 비즈니스 공부는 여기서 끝나는 것이 아니라 이제 막 시작되었을 뿐이다. 이 책이 유익했다면, 가장 흥미롭고 와닿았던 분야의 전문 서적들을 이어서 읽어보기를 권한다.
 
@@ -7609,13 +7609,13 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 
 도서 목록이 업데이트될 때 소식을 받고 싶다면 해당 웹페이지나 [**joshkaufman.net/newsletter**](http://joshkaufman.net/newsletter)에서 이메일 뉴스레터를 신청하면 된다.
 
-## 부록 B: 성과 개선을 위한 49가지 질문 {#sec-appendix-b}
+### 부록 B: 성과 개선을 위한 49가지 질문 {#sec-appendix-b}
 
 좋은 질문은 뇌가 세상을 다른 각도에서 바라보도록 이끈다. 하나의 질문을 가슴에 품고 답을 곰곰이 생각해보면, 지금 서 있는 곳에서 목표 지점으로 나아갈 수 있는 뜻밖의 길을 발견하게 된다.
 
 아래는 몇 년 전 내가 스스로를 위해 작성했던 질문 목록이다. 한 개인으로서, 그리고 전문가로서 내 삶에서 무엇을 개선해야 할지 명확히 파악하기 위해 만든 질문들이었다. 이 질문들은 내 커리어에서 유독 힘들었던 시기에 내가 진정 누구이고 무엇을 원하는지 깨닫는 데 결정적인 도움을 주었다. 내게 큰 힘이 되었듯, 여러분에게도 값진 통찰을 안겨주기를 바란다.
 
-## 몸을 잘 돌보고 있는가? {#do-i-use-my-body-well}
+### 몸을 잘 돌보고 있는가? {#do-i-use-my-body-well}
 
 * 현재 식단의 질은 어떠한가?
 * 잠을 충분히 자고 있는가?
@@ -7624,7 +7624,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 * 바른 자세와 마음의 평정을 유지하고 있는가?
 * 주변 세상을 관찰하는 감각을 키우기 위해 무엇을 할 수 있는가?
 
-## 자신이 원하는 것이 무엇인지 알고 있는가? {#do-i-know-what-i-want}
+### 자신이 원하는 것이 무엇인지 알고 있는가? {#do-i-know-what-i-want}
 
 * 나를 가슴 뛰게 만드는 성취는 무엇인가?
 * 매일 어떤 마음가짐과 존재 상태를 경험하고 싶은가?
@@ -7632,14 +7632,14 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 * 빠르고 확신 있게 결정을 내리고 있는가?
 * 원하지 않는 것 대신 진정으로 바라는 것에 주의를 쏟고 있는가?
 
-## 무엇을 두려워하고 있는가? {#what-am-i-afraid-of}
+### 무엇을 두려워하고 있는가? {#what-am-i-afraid-of}
 
 * 마음속에 품은 두려움 목록을 솔직하고 빠짐없이 적어보았는가?
 * 각 두려움과 정면으로 마주하며 그것이 실제로 벌어졌을 때 어떻게 대처할지 구체적으로 그려보았는가?
 * 스스로를 옭아매는 자기 한계를 알아차리고 바로잡을 수 있는가?
 * 자신의 한계를 기분 좋게 넓혀가고 있는가?
 
-## 마음이 맑고 집중되어 있는가? {#is-my-mind-clear-and-focused}
+### 마음이 맑고 집중되어 있는가? {#is-my-mind-clear-and-focused}
 
 * 머릿속 생각을 글이나 기록으로 밖으로 끄집어내고 있는가?
 * 번뜩이는 생각이 떠오를 때 즉시 붙잡아둘 수 있는 환경을 갖추었는가?
@@ -7648,7 +7648,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 * 시간의 대부분을 한 가지 일에 몰입하는 데 쓰는가, 아니면 산만하게 여러 일을 오가는 데 낭비하는가?
 * 목표와 프로젝트, 진행 상황을 돌아보는 데 충분한 시간을 들이고 있는가?
 
-## 자신감 있고 여유로우며 생산적인가? {#am-i-confident-relaxed-and-productive}
+### 자신감 있고 여유로우며 생산적인가? {#am-i-confident-relaxed-and-productive}
 
 * 나에게 꼭 맞는 계획 수립 방식을 찾았는가?
 * ‘딱 필요한 만큼의 정리 정돈’ 상태를 유지하고 있는가?
@@ -7659,7 +7659,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 * 비생산적인 습관을 없애기 위해 애쓰고 있는가?
 * 다른 사람의 부탁에 부담 없이 “아니오”라고 말할 수 있는가?
 
-## 어떻게 일할 때 최고의 성과를 내는가? {#how-do-i-perform-best}
+### 어떻게 일할 때 최고의 성과를 내는가? {#how-do-i-perform-best}
 
 * 어떤 일을 할 때 특별히 즐거운가?
 * 어떤 분야의 일에 남다른 강점이 있는가?
@@ -7668,7 +7668,7 @@ CEO가 대단히 인내심 강한 사람이 아니라면, 아마 "문제가 터�
 * 사람들과 함께 일하고 소통할 때 선호하는 방식은 무엇인가?
 * 지금 현재 나의 성장을 가로막고 있는 장애물은 무엇인가?
 
-## 행복하고 충만한 삶을 위해 무엇이 필요한가? {#what-do-i-need-to-be-happy-and-fulfilled}
+### 행복하고 충만한 삶을 위해 무엇이 필요한가? {#what-do-i-need-to-be-happy-and-fulfilled}
 
 * 지금 나는 “성공”을 어떻게 정의하고 있는가?
 * 나를 더 충만하게 채워줄 수 있는 성공에 대한 또 다른 정의가 있는가?
